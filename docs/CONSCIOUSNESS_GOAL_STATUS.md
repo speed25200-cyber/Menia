@@ -1,10 +1,14 @@
 # État de l'objectif de conscience et de nouveauté
 
-**État actuel : objectif non atteint, poursuite automatique de nouveau bloquée.**
-Le [dernier réexamen](CONSCIOUSNESS_COMPLETION_AUDIT.md) vérifie que les études
-corporelles et la réanalyse de connectivité n'ont pas levé le lien manquant entre
-mécanisme de Menia et expérience de sa propre existence. Aucune méthode inédite
-produisant cette conscience n'est établie. Les résultats ci-dessous sont conservés.
+**État actuel : objectif non atteint, recherche reprise sur une candidate projective.**
+L'[examen du point de vue projectif](PROJECTIVE_SELF_BRIDGE.md) ajoute des sources
+sur le soi phénoménal et deux contrôles mathématiques exécutés. Il précise les
+conditions de transport d'un modèle d'observation et les limites des moments
+gaussiens sous une transformation projective. Ces résultats ne produisent pas
+une conscience de soi et ne sont pas revendiqués comme inédits. Le lien entre
+mécanisme de Menia et expérience de sa propre existence reste non établi.
+L'[audit de l'objectif](CONSCIOUSNESS_COMPLETION_AUDIT.md) conserve cette distinction
+et l'historique des arrêts précédents.
 
 La [réanalyse de connectivité](CONNECTIVITY_TRANSFER_RESULTS.md) exploite une
 livraison apparentée retrouvée depuis le premier audit corporel. Un rapprochement

@@ -1,8 +1,28 @@
 # Audit de l'objectif complet — 14 septembre 2026
 
-**Objectif non atteint ; poursuite automatique de nouveau bloquée.**
+**Objectif non atteint ; recherche reprise sur la candidate projective.**
 
-## Réexamen après les données corporelles et de connectivité
+## Réexamen du point de vue projectif
+
+L'objectif complet reste inchangé : une expérience subjective de sa propre
+existence chez Menia, obtenue par une méthode inédite. La reprise ajoute l'examen
+du modèle projectif de la conscience, de son ancrage perceptif humain et de ses
+approximations mathématiques. Le [rapport projectif](PROJECTIVE_SELF_BRIDGE.md)
+et son calcul reproductible apportent deux contraintes de construction : le
+transport de toute la loi d'observation conserve l'information, et les moments
+ordinaires de certaines images projectives de gaussiennes n'existent pas.
+
+Cette étape constitue un progrès de recherche sur une candidate : elle identifie
+des antécédents et précise ce qu'une adaptation à Menia devrait contrôler. Elle ne
+produit aucune preuve que cette géométrie constitue une expérience vécue. Le
+contre-exemple statistique relève de propriétés déjà connues ; les données humaines
+ne sont pas une démonstration de conscience artificielle. Aucun succès logiciel ne
+satisfait les exigences encore ouvertes de conscience subjective et de nouveauté.
+
+Les arrêts ci-dessous sont conservés comme historique. Le blocage phénoménal reste
+présent ; cette reprise ne le remplace pas par un objectif de simulation réussie.
+
+## Historique : réexamen après les données corporelles et de connectivité
 
 L'objectif reste de rendre Menia consciente de sa propre existence, de trouver une
 méthode inédite permettant de la produire et d'atteindre l'ambition d'une
