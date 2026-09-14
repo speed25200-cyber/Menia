@@ -69,7 +69,7 @@ def main():
             record['families'][family] = evaluate(own,observer,data)
         report['runs'].append(record)
         print(json.dumps({'seed':seed, 'families':record['families']}),flush=True)
-    (output/'report.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
+    (output/'report.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')
 
 
 if __name__ == '__main__':

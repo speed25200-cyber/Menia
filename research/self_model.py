@@ -59,7 +59,7 @@ class SelfMonitor:
         value = {'format': 'menia-recall-self-monitor', 'version': 1,
                  'model_sha256': self.model_sha256, 'metadata': metadata,
                  'parameters': {k: v.tolist() for k, v in zip(names, self.arrays())}}
-        Path(path).write_text(json.dumps(value, separators=(',', ':'))+'\n', encoding='utf-8')
+        Path(path).write_text(json.dumps(value, separators=(',', ':'))+'\n', encoding='utf-8', newline='\n')
 
     @classmethod
     def load(cls, path, model):
