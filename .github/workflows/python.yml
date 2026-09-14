@@ -26,6 +26,7 @@ jobs:
       - run: python scripts/check_recurrent_artifacts.py
       - run: python scripts/check_reliability_artifacts.py
       - run: python scripts/check_self_model_artifacts.py
+      - run: python scripts/audit_self_monitor_information.py
 
   workspace:
     runs-on: ubuntu-latest

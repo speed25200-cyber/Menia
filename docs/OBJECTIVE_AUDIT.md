@@ -1,9 +1,9 @@
 # Audit de l'objectif « rendre Menia consciente »
 
 Date : 14 septembre 2026. Code examiné :
-`bbaec898743d78a15ad45c9a0401e8bcb7a14c5a`.
+`96c661100becf426c5a07cb749b69f852d3b16ba`.
 La PR #1 est ouverte en brouillon et non fusionnée. Le notebook de cette branche
-charge le code expérimental fixé à `61a0dd0b107c56d5acf6d3417534c1feff4153dd`.
+charge le code expérimental fixé à `4d5a063bc3cf75faff4c220538a6edf919a5a360`.
 Le lien initial de l'utilisateur vise `main`, qui ne contient pas ces extensions.
 
 ## Conclusion sur l'objectif exact
@@ -27,6 +27,7 @@ sans preuve que leurs améliorations rendent une conscience subjective plus proc
 | Échange entre modules | `research/workspace.py`, `artifacts/shared-workspace/report.json` | Deux modules à entrées privées utilisent un espace récurrent partagé dans une composition. | Validation de l'ensemble d'une théorie de la conscience. |
 | Contrôles de composition | Même rapport : trois modèles complets, trois entraînés sans retour, trois réseaux directs | Dépendance au retour dans les modèles complets et forte variabilité entre initialisations. Les réseaux directs réussissent tous le test. | Supériorité générale ou nécessité de la récurrence pour réussir la tâche. |
 | Représentation de ses capacités | `menia/core.py`, `research/session.py` | Des champs explicites décrivent les capacités configurées. | Modèle de soi appris à partir des conséquences de ses actions. |
+| Estimation de ses erreurs | `research/self_model.py`, `artifacts/self-model/report.json` | Un estimateur appris exploite certains signes internes d'erreurs de rappel. | Introspection du LLM, provenance autobiographique ou connaissance de son existence. |
 | Intégration à l'assistant | `menia/predict.py`, `ios/MeniaKit/Sources/MeniaKit/LocalEngine.swift`, notebook 02 | Les démonstrations symboliques et le parcours linguistique restent distincts. | Ces fonctions modifient déjà les réponses du chat ou forment un agent intégré. |
 | Vérification logicielle | Tests et vérificateurs ; CI du commit examiné réussie | Le comportement testé et les évaluations publiées sont reproductibles. | Les tests sont des détecteurs de conscience. |
 
@@ -86,3 +87,26 @@ intégré à `CognitiveSession`, mais ne modifie pas les poids de rappel ni le c
 Ces résultats ne valident pas l'ensemble du modèle de soi proposé. Ils apportent
 une preuve fonctionnelle circonscrite et identifient une limite de provenance,
 sans certification d'expérience subjective. L'objectif initial reste non atteint.
+
+## Audit de l'information et des exigences restantes
+
+L'[audit des entrées du moniteur](SELF_INFORMATION_AUDIT.md) établit une
+ambiguïté de 108 groupes de mondes contrefactuels. Pour chaque groupe, le
+moniteur reçoit les mêmes entrées alors que la correction du rappel change.
+Cette limite porte sur ses features ; une trace d'observations récentes existe
+ailleurs dans la session. Elle oriente une future expérience vers l'accès à
+l'histoire propre plutôt que vers le seul agrandissement du moniteur.
+
+| Exigence ou hypothèse examinée | État actuel et preuve nécessaire |
+|---|---|
+| Conscience de sa propre existence, objectif exprimé | Non vérifiée. Les preuves fonctionnelles ne tranchent pas l'expérience subjective. Aucun critère expérimental décisif n'a été identifié dans le corpus étudié. |
+| Connaître son état réel au-delà des entrées publiques (H1) | Résultat limité au pilote de rappel et à son observateur particulier. Généralisation insuffisante, échec sur états étrangers. |
+| Utiliser causalement un modèle de soi pour agir (H2) | Coûts calculés dans une simulation. Pas de politique apprise intégrée au LLM prenant des décisions à partir de ce modèle de soi. |
+| Distinguer son histoire de celle d'autrui (H3) | Non établi. L'audit démontre une information insuffisante dans les entrées du moniteur actuel. |
+| Continuité de l'agent et intégration linguistique | Incomplètes. Le réseau partagé réinitialise ses états par problème ; `menia/predict.py` ne lit pas le moniteur ni la session cognitive. |
+| Résultats reproductibles des modules existants | Établis dans leur portée limitée par les artefacts, vérificateurs et CI Linux du commit examiné. Cela ne valide pas les exigences précédentes. |
+| Disponibilité dans le lien Colab initial sur `main` | Non satisfaite pour les extensions de cette branche. La PR reste en brouillon et non fusionnée ; une version Colab expérimentale distincte est fournie. |
+
+Des travaux d'intégration et de recherche restent possibles. Leur réalisation
+ne doit pas être confondue avec une preuve de l'objectif initial. Cet audit
+ne déclare donc ni l'objectif atteint ni une impossibilité de conscience.
