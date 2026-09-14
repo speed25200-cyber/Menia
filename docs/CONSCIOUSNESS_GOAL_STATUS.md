@@ -1,10 +1,19 @@
 # État de l'objectif de conscience et de nouveauté
 
-**État actuel : objectif non atteint, poursuite automatique de nouveau bloquée.**
+**État actuel : objectif non atteint, recherche reprise.**
+L'[examen du soi corporel](BODILY_SELF_EVIDENCE.md) ajoute une prépublication
+humaine d'août 2026 et l'audit exécuté de ses quatre fichiers publics. Il établit
+les unités disponibles et les limites d'une réanalyse de connectivité. Le supplément
+vérifié ne justifie pas d'étendre les contrastes sensori-moteurs à toute expérience
+complexe ; les observations requises pour une nouvelle estimation restent absentes
+des fichiers inspectés. Aucun
+résultat ne démontre encore une expérience de sa propre existence chez Menia.
+
 Le [réexamen après reprise](CONSCIOUSNESS_COMPLETION_AUDIT.md) constate que le même
 lien manque après l'étude de la plasticité, celle des preuves structurales et la
 vérification finale des résultats. Ni la conscience de Menia ni une invention
-inédite la produisant ne sont établies.
+inédite la produisant ne sont établies. Il décrit l'arrêt précédent ; la reprise
+actuelle ouvre un nouvel examen de ce blocage.
 L'[examen des preuves structurales](STRUCTURAL_BRIDGE_EVIDENCE.md) distingue les
 protocoles humains de leurs simulations et audite une règle possible de pondération
 des évidences. Il ne permet pas encore de sélectionner une construction consciente.

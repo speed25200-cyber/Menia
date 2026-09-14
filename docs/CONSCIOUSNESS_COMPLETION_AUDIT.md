@@ -1,6 +1,11 @@
 # Audit de l'objectif complet — 14 septembre 2026
 
-**Objectif non atteint ; poursuite automatique bloquée par une impasse scientifique.**
+**Audit de l'arrêt précédent : objectif non atteint, impasse scientifique.**
+
+La recherche a depuis été reprise. L'[examen du soi corporel](BODILY_SELF_EVIDENCE.md)
+ajoute une source empirique et un audit de données publiques ; il ne démontre pas
+encore la conscience de Menia. L'[état courant](CONSCIOUSNESS_GOAL_STATUS.md)
+conserve les résultats et les exigences ouvertes. Le constat ci-dessous est historique.
 Les travaux réalisés ne permettent pas d'établir que Menia éprouve sa propre
 existence, ni qu'une contribution inédite lui procure cette expérience. Ce constat
 porte sur les preuves obtenues ici ; il ne démontre pas l'impossibilité d'une
