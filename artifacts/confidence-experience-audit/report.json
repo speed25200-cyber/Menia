@@ -1,0 +1,1873 @@
+{
+  "format": "menia-confidence-experience-audit",
+  "version": 1,
+  "scope": "secondary human measurement constraint; no subjective consciousness demonstrated in Menia",
+  "sources": [
+    {
+      "name": "bad_fits.csv",
+      "url": "https://osf.io/download/7g6pf/",
+      "bytes": 2364,
+      "sha256": "b6a25d830f8dca454ba96fd20326ca4e1071a43c58c997c73a8d7cc8e3dc9a9f"
+    },
+    {
+      "name": "filter.R",
+      "url": "https://osf.io/download/sh5dt/",
+      "bytes": 5520,
+      "sha256": "98df263e83c2018c35c1f7a8d840e2163b4fb42344287d7deb0a83dbe919d942"
+    },
+    {
+      "name": "filtered_concurrent.csv",
+      "url": "https://osf.io/download/t984w/",
+      "bytes": 10730853,
+      "sha256": "5c2557f296e42da2623f7c2d2ea8ed1a54fb6f522a06fb0face6a99e4583e001"
+    },
+    {
+      "name": "filtered_delayed.csv",
+      "url": "https://osf.io/download/863ds/",
+      "bytes": 11973395,
+      "sha256": "9c1a31907ef14e1891a3bfebaf4c4d473dbbf87de8214be5f0769634dacc631b"
+    },
+    {
+      "name": "fit.R",
+      "url": "https://osf.io/download/4ajy5/",
+      "bytes": 6567,
+      "sha256": "7cd4468ad83bc428bf662cd69a9a84a97319d48f08e54f1fd94171c328b04142"
+    },
+    {
+      "name": "funcs.R",
+      "url": "https://osf.io/download/9zn6e/",
+      "bytes": 17151,
+      "sha256": "943488f81ba27a7cabda001d518d433549c20fdbf57a099d90a8744f5731cc91"
+    },
+    {
+      "name": "plot_curves.R",
+      "url": "https://osf.io/download/awdfy/",
+      "bytes": 14798,
+      "sha256": "4636d64140091551801581aada3b8800dc95bcb7b929274a05407f71514165ea"
+    },
+    {
+      "name": "raw_concurrent.csv",
+      "url": "https://osf.io/download/5fbjq/",
+      "bytes": 10916997,
+      "sha256": "dcac9fb57268e7e329cdb867ac305bc503a9ff1d6f9359c4a5527b9a6bf9a94c"
+    },
+    {
+      "name": "raw_delayed.csv",
+      "url": "https://osf.io/download/yf7kn/",
+      "bytes": 12265009,
+      "sha256": "38fd46f580c51e3fdf1520ed7fe4a9819fbca5201d8bfefb0a0db265b5336ce2"
+    }
+  ],
+  "numpy_version": "2.2.6",
+  "cohorts": [
+    {
+      "experiment": "concurrent",
+      "raw_participants": 122,
+      "raw_trials": 119310,
+      "initially_filtered_participants": 120,
+      "initially_filtered_trials": 117300,
+      "initial_exclusions": [
+        [
+          "concurrent",
+          "S069",
+          "baserate"
+        ],
+        [
+          "concurrent",
+          "S076",
+          "mullerlyer"
+        ]
+      ],
+      "curve_exclusions": 12,
+      "selected_participants": 108,
+      "selected_trials": 105900,
+      "counts_by_condition": {
+        "mullerlyer": 27,
+        "baserate": 46,
+        "payoff": 35
+      }
+    },
+    {
+      "experiment": "delayed",
+      "raw_participants": 123,
+      "raw_trials": 120150,
+      "initially_filtered_participants": 120,
+      "initially_filtered_trials": 117300,
+      "initial_exclusions": [
+        [
+          "delayed",
+          "S196",
+          "baserate"
+        ],
+        [
+          "delayed",
+          "S201",
+          "mullerlyer"
+        ],
+        [
+          "delayed",
+          "S232",
+          "payoff"
+        ]
+      ],
+      "curve_exclusions": 24,
+      "selected_participants": 96,
+      "selected_trials": 93510,
+      "counts_by_condition": {
+        "mullerlyer": 25,
+        "baserate": 39,
+        "payoff": 32
+      }
+    }
+  ],
+  "bad_fit_rows": 52,
+  "unique_bad_fit_participants": 36,
+  "fit_count": 816,
+  "independent_fit_max_error": 3.410605131648481e-13,
+  "grid_boundaries": [
+    {
+      "experiment": "delayed",
+      "participant": "S230",
+      "condition": "mullerlyer",
+      "direction": "long",
+      "measure": "confidence",
+      "threshold": 320.0,
+      "unbounded": 273.8235294117644,
+      "outside_or_at_grid_boundary": true,
+      "independent_fit_max_error": 2.2898349882893854e-16
+    }
+  ],
+  "participant_pairs": [
+    {
+      "experiment": "concurrent",
+      "participant": "S001",
+      "condition": "payoff",
+      "confidence_shift": 6.099999999999966,
+      "reproduction_shift": -11.546691236983122
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S002",
+      "condition": "mullerlyer",
+      "confidence_shift": 22.100000000000023,
+      "reproduction_shift": 70.55263134255182
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S003",
+      "condition": "payoff",
+      "confidence_shift": 2.8999999999999773,
+      "reproduction_shift": 4.7738894778941585
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S005",
+      "condition": "payoff",
+      "confidence_shift": -10.5,
+      "reproduction_shift": -11.890128269816273
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S008",
+      "condition": "payoff",
+      "confidence_shift": 2.1999999999999886,
+      "reproduction_shift": -5.006999454111906
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S009",
+      "condition": "baserate",
+      "confidence_shift": 11.800000000000011,
+      "reproduction_shift": 10.602313562889151
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S010",
+      "condition": "payoff",
+      "confidence_shift": 10.5,
+      "reproduction_shift": -7.8721430131973875
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S011",
+      "condition": "mullerlyer",
+      "confidence_shift": 5.900000000000034,
+      "reproduction_shift": -3.552436208264453
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S012",
+      "condition": "baserate",
+      "confidence_shift": -0.5,
+      "reproduction_shift": -10.805649359290499
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S013",
+      "condition": "payoff",
+      "confidence_shift": 41.80000000000001,
+      "reproduction_shift": 5.125778103742562
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S014",
+      "condition": "mullerlyer",
+      "confidence_shift": 6.100000000000023,
+      "reproduction_shift": 45.393055474220716
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S015",
+      "condition": "baserate",
+      "confidence_shift": 0.7000000000000455,
+      "reproduction_shift": 1.6202564017774534
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S016",
+      "condition": "mullerlyer",
+      "confidence_shift": 68.30000000000001,
+      "reproduction_shift": 58.0354288378382
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S017",
+      "condition": "payoff",
+      "confidence_shift": -22.19999999999999,
+      "reproduction_shift": -7.197649466187556
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S018",
+      "condition": "baserate",
+      "confidence_shift": 28.099999999999966,
+      "reproduction_shift": 28.200742915189835
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S019",
+      "condition": "payoff",
+      "confidence_shift": 10.399999999999977,
+      "reproduction_shift": 1.2398415149370976
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S020",
+      "condition": "mullerlyer",
+      "confidence_shift": 14.300000000000011,
+      "reproduction_shift": 29.764563948346847
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S021",
+      "condition": "baserate",
+      "confidence_shift": 1.7999999999999545,
+      "reproduction_shift": -3.757089595288164
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S022",
+      "condition": "payoff",
+      "confidence_shift": 10.0,
+      "reproduction_shift": -14.208496557468322
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S023",
+      "condition": "mullerlyer",
+      "confidence_shift": 12.800000000000011,
+      "reproduction_shift": 47.82253251053663
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S024",
+      "condition": "baserate",
+      "confidence_shift": -2.0,
+      "reproduction_shift": -7.488823642776367
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S026",
+      "condition": "baserate",
+      "confidence_shift": 0.10000000000002274,
+      "reproduction_shift": -6.824336577915346
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S027",
+      "condition": "mullerlyer",
+      "confidence_shift": 10.199999999999989,
+      "reproduction_shift": 45.08597655605075
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S028",
+      "condition": "baserate",
+      "confidence_shift": -3.8999999999999773,
+      "reproduction_shift": -13.346866198575185
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S029",
+      "condition": "payoff",
+      "confidence_shift": 7.099999999999966,
+      "reproduction_shift": 9.65782002480023
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S030",
+      "condition": "mullerlyer",
+      "confidence_shift": 3.5,
+      "reproduction_shift": 6.546277254930601
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S031",
+      "condition": "payoff",
+      "confidence_shift": 23.19999999999999,
+      "reproduction_shift": 4.181675691733119
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S032",
+      "condition": "mullerlyer",
+      "confidence_shift": 21.100000000000023,
+      "reproduction_shift": 1.5178773961918068
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S033",
+      "condition": "baserate",
+      "confidence_shift": 0.10000000000002274,
+      "reproduction_shift": 0.25437684792439086
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S034",
+      "condition": "payoff",
+      "confidence_shift": 15.199999999999989,
+      "reproduction_shift": -16.14132839235731
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S035",
+      "condition": "mullerlyer",
+      "confidence_shift": 2.0,
+      "reproduction_shift": 3.356854291483671
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S036",
+      "condition": "baserate",
+      "confidence_shift": 1.900000000000034,
+      "reproduction_shift": -5.08804534477099
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S037",
+      "condition": "payoff",
+      "confidence_shift": 5.800000000000011,
+      "reproduction_shift": 2.019687939946209
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S040",
+      "condition": "payoff",
+      "confidence_shift": 7.300000000000011,
+      "reproduction_shift": -9.136793139438055
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S041",
+      "condition": "mullerlyer",
+      "confidence_shift": 6.199999999999989,
+      "reproduction_shift": 57.00815187288828
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S042",
+      "condition": "baserate",
+      "confidence_shift": -4.7999999999999545,
+      "reproduction_shift": -8.765192670599504
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S043",
+      "condition": "payoff",
+      "confidence_shift": 6.300000000000011,
+      "reproduction_shift": 13.97276215217704
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S044",
+      "condition": "payoff",
+      "confidence_shift": 11.800000000000011,
+      "reproduction_shift": -4.3386880477905265
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S045",
+      "condition": "baserate",
+      "confidence_shift": 8.300000000000011,
+      "reproduction_shift": 16.02492879010117
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S046",
+      "condition": "mullerlyer",
+      "confidence_shift": -10.199999999999989,
+      "reproduction_shift": 6.593706906483192
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S047",
+      "condition": "mullerlyer",
+      "confidence_shift": 3.0,
+      "reproduction_shift": 37.52384191968258
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S048",
+      "condition": "baserate",
+      "confidence_shift": -5.2000000000000455,
+      "reproduction_shift": 22.110760774844778
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S049",
+      "condition": "payoff",
+      "confidence_shift": -2.8000000000000114,
+      "reproduction_shift": -6.583575082334846
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S050",
+      "condition": "payoff",
+      "confidence_shift": 16.899999999999977,
+      "reproduction_shift": -18.938733537691974
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S051",
+      "condition": "mullerlyer",
+      "confidence_shift": 15.800000000000011,
+      "reproduction_shift": 41.948795774231144
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S052",
+      "condition": "payoff",
+      "confidence_shift": -6.0,
+      "reproduction_shift": 11.811354433069368
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S054",
+      "condition": "baserate",
+      "confidence_shift": 7.5,
+      "reproduction_shift": -2.767487848882638
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S055",
+      "condition": "payoff",
+      "confidence_shift": 78.60000000000002,
+      "reproduction_shift": -9.4973006738594
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S057",
+      "condition": "baserate",
+      "confidence_shift": 46.400000000000034,
+      "reproduction_shift": -35.881071398215795
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S058",
+      "condition": "payoff",
+      "confidence_shift": 5.699999999999989,
+      "reproduction_shift": -0.8792059987399057
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S059",
+      "condition": "mullerlyer",
+      "confidence_shift": -9.900000000000034,
+      "reproduction_shift": -2.9410584874401025
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S060",
+      "condition": "baserate",
+      "confidence_shift": -2.6999999999999886,
+      "reproduction_shift": 26.840725828766097
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S061",
+      "condition": "mullerlyer",
+      "confidence_shift": 4.900000000000034,
+      "reproduction_shift": 19.758350355072025
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S062",
+      "condition": "payoff",
+      "confidence_shift": 14.5,
+      "reproduction_shift": -6.207982903181289
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S063",
+      "condition": "baserate",
+      "confidence_shift": -7.599999999999966,
+      "reproduction_shift": -21.699396737698407
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S064",
+      "condition": "payoff",
+      "confidence_shift": 5.100000000000023,
+      "reproduction_shift": -7.536110126432732
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S066",
+      "condition": "baserate",
+      "confidence_shift": 14.100000000000023,
+      "reproduction_shift": 12.897093697652394
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S067",
+      "condition": "payoff",
+      "confidence_shift": 46.69999999999999,
+      "reproduction_shift": 6.259573955331916
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S068",
+      "condition": "mullerlyer",
+      "confidence_shift": -11.199999999999989,
+      "reproduction_shift": 7.532863976091221
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S070",
+      "condition": "payoff",
+      "confidence_shift": 9.600000000000023,
+      "reproduction_shift": -7.201982584211123
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S071",
+      "condition": "baserate",
+      "confidence_shift": 26.80000000000001,
+      "reproduction_shift": -24.614998421107032
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S072",
+      "condition": "baserate",
+      "confidence_shift": -12.699999999999989,
+      "reproduction_shift": 24.138758582238893
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S074",
+      "condition": "baserate",
+      "confidence_shift": -2.6000000000000227,
+      "reproduction_shift": -1.816465749958354
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S075",
+      "condition": "payoff",
+      "confidence_shift": 0.5,
+      "reproduction_shift": -11.243923663321823
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S077",
+      "condition": "baserate",
+      "confidence_shift": 28.399999999999977,
+      "reproduction_shift": 21.874856532901276
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S078",
+      "condition": "payoff",
+      "confidence_shift": -4.699999999999989,
+      "reproduction_shift": 24.26563270177877
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S079",
+      "condition": "mullerlyer",
+      "confidence_shift": 12.100000000000023,
+      "reproduction_shift": 24.131099574000984
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S080",
+      "condition": "baserate",
+      "confidence_shift": 26.5,
+      "reproduction_shift": -18.52989860366455
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S081",
+      "condition": "payoff",
+      "confidence_shift": 31.600000000000023,
+      "reproduction_shift": -1.9546334801612488
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S082",
+      "condition": "mullerlyer",
+      "confidence_shift": 27.200000000000045,
+      "reproduction_shift": 14.225857540280174
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S083",
+      "condition": "baserate",
+      "confidence_shift": -4.399999999999977,
+      "reproduction_shift": 4.256937752864189
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S084",
+      "condition": "payoff",
+      "confidence_shift": 8.600000000000023,
+      "reproduction_shift": -13.191620372119985
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S085",
+      "condition": "mullerlyer",
+      "confidence_shift": 14.800000000000011,
+      "reproduction_shift": 44.79766152886941
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S087",
+      "condition": "mullerlyer",
+      "confidence_shift": 47.60000000000002,
+      "reproduction_shift": 35.89216401755698
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S088",
+      "condition": "baserate",
+      "confidence_shift": -6.2000000000000455,
+      "reproduction_shift": -2.807599418246639
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S089",
+      "condition": "payoff",
+      "confidence_shift": 4.399999999999977,
+      "reproduction_shift": 4.242261669156676
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S090",
+      "condition": "mullerlyer",
+      "confidence_shift": 0.5,
+      "reproduction_shift": 4.702316343347263
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S091",
+      "condition": "baserate",
+      "confidence_shift": -2.6000000000000227,
+      "reproduction_shift": 34.694270088441215
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S092",
+      "condition": "payoff",
+      "confidence_shift": 12.300000000000011,
+      "reproduction_shift": -28.633286860237092
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S093",
+      "condition": "mullerlyer",
+      "confidence_shift": 4.100000000000023,
+      "reproduction_shift": 26.616600425393074
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S094",
+      "condition": "baserate",
+      "confidence_shift": 4.699999999999989,
+      "reproduction_shift": -16.467848949707786
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S095",
+      "condition": "mullerlyer",
+      "confidence_shift": 8.699999999999989,
+      "reproduction_shift": 7.6128770013037865
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S096",
+      "condition": "payoff",
+      "confidence_shift": 12.599999999999966,
+      "reproduction_shift": -15.752183200507488
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S097",
+      "condition": "baserate",
+      "confidence_shift": 69.19999999999999,
+      "reproduction_shift": -8.002676109379479
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S098",
+      "condition": "payoff",
+      "confidence_shift": -4.5,
+      "reproduction_shift": -7.244942452840689
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S099",
+      "condition": "mullerlyer",
+      "confidence_shift": 16.5,
+      "reproduction_shift": 22.81201506623205
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S100",
+      "condition": "baserate",
+      "confidence_shift": 23.69999999999999,
+      "reproduction_shift": -0.16433037439838927
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S101",
+      "condition": "baserate",
+      "confidence_shift": 5.100000000000023,
+      "reproduction_shift": -11.469827977191187
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S102",
+      "condition": "payoff",
+      "confidence_shift": 1.5,
+      "reproduction_shift": 12.48170795482008
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S103",
+      "condition": "mullerlyer",
+      "confidence_shift": 13.800000000000011,
+      "reproduction_shift": 4.983715677096029
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S104",
+      "condition": "baserate",
+      "confidence_shift": 1.1000000000000227,
+      "reproduction_shift": -16.642307198674075
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S105",
+      "condition": "payoff",
+      "confidence_shift": 14.699999999999989,
+      "reproduction_shift": 5.3522875398221
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S106",
+      "condition": "mullerlyer",
+      "confidence_shift": 22.899999999999977,
+      "reproduction_shift": 30.308302801132868
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S107",
+      "condition": "baserate",
+      "confidence_shift": -0.19999999999998863,
+      "reproduction_shift": 11.779004474692272
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S108",
+      "condition": "baserate",
+      "confidence_shift": 10.899999999999977,
+      "reproduction_shift": -8.944452546236107
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S109",
+      "condition": "baserate",
+      "confidence_shift": 1.5,
+      "reproduction_shift": 0.5683438884883003
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S111",
+      "condition": "baserate",
+      "confidence_shift": 1.8999999999999773,
+      "reproduction_shift": -4.923865613854161
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S112",
+      "condition": "baserate",
+      "confidence_shift": -4.2999999999999545,
+      "reproduction_shift": -30.86804607559344
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S113",
+      "condition": "baserate",
+      "confidence_shift": -31.100000000000023,
+      "reproduction_shift": -2.3215579343187756
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S114",
+      "condition": "baserate",
+      "confidence_shift": 7.5,
+      "reproduction_shift": -11.026633664500423
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S115",
+      "condition": "baserate",
+      "confidence_shift": 11.899999999999977,
+      "reproduction_shift": -4.003019819241729
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S116",
+      "condition": "baserate",
+      "confidence_shift": 11.300000000000011,
+      "reproduction_shift": 5.833065913479118
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S117",
+      "condition": "baserate",
+      "confidence_shift": 2.6000000000000227,
+      "reproduction_shift": 9.236095081091321
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S118",
+      "condition": "baserate",
+      "confidence_shift": 14.800000000000011,
+      "reproduction_shift": -0.2085215135269891
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S119",
+      "condition": "baserate",
+      "confidence_shift": 11.100000000000023,
+      "reproduction_shift": -0.24249731599940105
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S120",
+      "condition": "baserate",
+      "confidence_shift": -2.5,
+      "reproduction_shift": 0.5489964103391571
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S121",
+      "condition": "baserate",
+      "confidence_shift": 29.0,
+      "reproduction_shift": -48.8008875983316
+    },
+    {
+      "experiment": "concurrent",
+      "participant": "S122",
+      "condition": "baserate",
+      "confidence_shift": 21.69999999999999,
+      "reproduction_shift": 16.27466647747036
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S123",
+      "condition": "mullerlyer",
+      "confidence_shift": 106.60000000000002,
+      "reproduction_shift": 63.25121731887316
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S124",
+      "condition": "payoff",
+      "confidence_shift": 7.5,
+      "reproduction_shift": 4.153601616091919
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S125",
+      "condition": "baserate",
+      "confidence_shift": 0.5,
+      "reproduction_shift": 17.043364138565607
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S126",
+      "condition": "payoff",
+      "confidence_shift": 6.899999999999977,
+      "reproduction_shift": -4.544007928060125
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S127",
+      "condition": "baserate",
+      "confidence_shift": 12.5,
+      "reproduction_shift": 1.4364778851629012
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S129",
+      "condition": "mullerlyer",
+      "confidence_shift": 21.69999999999999,
+      "reproduction_shift": 36.87410469039162
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S130",
+      "condition": "payoff",
+      "confidence_shift": 1.400000000000034,
+      "reproduction_shift": 1.8872284849166476
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S131",
+      "condition": "baserate",
+      "confidence_shift": 23.80000000000001,
+      "reproduction_shift": -1.0521043712476512
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S132",
+      "condition": "mullerlyer",
+      "confidence_shift": 41.94999999999999,
+      "reproduction_shift": 51.20282184575569
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S133",
+      "condition": "payoff",
+      "confidence_shift": 16.69999999999999,
+      "reproduction_shift": -3.8025781923597037
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S134",
+      "condition": "baserate",
+      "confidence_shift": -4.899999999999977,
+      "reproduction_shift": -2.0325477221220467
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S136",
+      "condition": "payoff",
+      "confidence_shift": 12.100000000000023,
+      "reproduction_shift": -13.353710401658475
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S137",
+      "condition": "baserate",
+      "confidence_shift": 6.399999999999977,
+      "reproduction_shift": -2.36556321153256
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S138",
+      "condition": "mullerlyer",
+      "confidence_shift": -5.099999999999966,
+      "reproduction_shift": -15.021030635379532
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S139",
+      "condition": "baserate",
+      "confidence_shift": -9.100000000000023,
+      "reproduction_shift": -11.22495553553722
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S140",
+      "condition": "payoff",
+      "confidence_shift": -36.80000000000001,
+      "reproduction_shift": 5.753182671853551
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S141",
+      "condition": "baserate",
+      "confidence_shift": -10.399999999999977,
+      "reproduction_shift": -14.017738006671891
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S142",
+      "condition": "mullerlyer",
+      "confidence_shift": 23.80000000000001,
+      "reproduction_shift": 40.354888697880256
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S143",
+      "condition": "payoff",
+      "confidence_shift": -1.2999999999999545,
+      "reproduction_shift": 11.12615216393209
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S144",
+      "condition": "baserate",
+      "confidence_shift": 10.399999999999977,
+      "reproduction_shift": 32.99654763544845
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S145",
+      "condition": "mullerlyer",
+      "confidence_shift": 9.899999999999977,
+      "reproduction_shift": 15.310796707459417
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S146",
+      "condition": "baserate",
+      "confidence_shift": 60.599999999999966,
+      "reproduction_shift": 40.35076366510066
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S147",
+      "condition": "payoff",
+      "confidence_shift": -0.19999999999998863,
+      "reproduction_shift": 11.069875655702731
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S148",
+      "condition": "mullerlyer",
+      "confidence_shift": -4.399999999999977,
+      "reproduction_shift": -0.23778366032928488
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S149",
+      "condition": "payoff",
+      "confidence_shift": 22.30000000000001,
+      "reproduction_shift": 9.211338043467947
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S150",
+      "condition": "baserate",
+      "confidence_shift": -10.600000000000023,
+      "reproduction_shift": -9.192590363982902
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S151",
+      "condition": "mullerlyer",
+      "confidence_shift": 11.300000000000011,
+      "reproduction_shift": 19.347196075036152
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S152",
+      "condition": "payoff",
+      "confidence_shift": 3.5,
+      "reproduction_shift": -7.454206350047571
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S153",
+      "condition": "baserate",
+      "confidence_shift": 12.5,
+      "reproduction_shift": -4.651765042520367
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S154",
+      "condition": "mullerlyer",
+      "confidence_shift": 43.10000000000002,
+      "reproduction_shift": 46.707936516165944
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S155",
+      "condition": "payoff",
+      "confidence_shift": 69.89999999999998,
+      "reproduction_shift": 26.326030422187955
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S156",
+      "condition": "baserate",
+      "confidence_shift": -2.099999999999966,
+      "reproduction_shift": -2.5727807068877837
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S159",
+      "condition": "mullerlyer",
+      "confidence_shift": 6.899999999999977,
+      "reproduction_shift": 63.35783912772075
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S160",
+      "condition": "payoff",
+      "confidence_shift": 3.099999999999966,
+      "reproduction_shift": 1.8646361862314507
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S161",
+      "condition": "baserate",
+      "confidence_shift": 16.19999999999999,
+      "reproduction_shift": -4.468229870518655
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S162",
+      "condition": "baserate",
+      "confidence_shift": -5.599999999999966,
+      "reproduction_shift": -10.110664820752163
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S163",
+      "condition": "mullerlyer",
+      "confidence_shift": 17.30000000000001,
+      "reproduction_shift": 4.17568617326566
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S164",
+      "condition": "baserate",
+      "confidence_shift": 20.399999999999977,
+      "reproduction_shift": 24.122569236972424
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S165",
+      "condition": "payoff",
+      "confidence_shift": 20.69999999999999,
+      "reproduction_shift": -0.5634294040099235
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S166",
+      "condition": "mullerlyer",
+      "confidence_shift": 54.599999999999966,
+      "reproduction_shift": 42.28600081489623
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S167",
+      "condition": "baserate",
+      "confidence_shift": 16.600000000000023,
+      "reproduction_shift": -29.18850000909589
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S168",
+      "condition": "baserate",
+      "confidence_shift": 33.30000000000001,
+      "reproduction_shift": -20.523238876179676
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S169",
+      "condition": "mullerlyer",
+      "confidence_shift": -10.300000000000011,
+      "reproduction_shift": 3.9476638279379586
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S170",
+      "condition": "payoff",
+      "confidence_shift": -15.599999999999966,
+      "reproduction_shift": -1.9714765922161064
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S171",
+      "condition": "baserate",
+      "confidence_shift": -4.699999999999989,
+      "reproduction_shift": 45.854955798565356
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S173",
+      "condition": "payoff",
+      "confidence_shift": 5.899999999999977,
+      "reproduction_shift": 20.827579415386765
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S175",
+      "condition": "mullerlyer",
+      "confidence_shift": -3.3000000000000114,
+      "reproduction_shift": 9.401758826092646
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S176",
+      "condition": "payoff",
+      "confidence_shift": 2.8999999999999773,
+      "reproduction_shift": -7.346173648537956
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S179",
+      "condition": "baserate",
+      "confidence_shift": 5.699999999999989,
+      "reproduction_shift": 8.977471218532571
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S180",
+      "condition": "payoff",
+      "confidence_shift": 8.5,
+      "reproduction_shift": 1.2426230815717645
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S181",
+      "condition": "baserate",
+      "confidence_shift": -1.5,
+      "reproduction_shift": 0.5389967391520258
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S183",
+      "condition": "baserate",
+      "confidence_shift": 12.5,
+      "reproduction_shift": -9.964621142901024
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S184",
+      "condition": "mullerlyer",
+      "confidence_shift": 68.0,
+      "reproduction_shift": 28.921353495963785
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S185",
+      "condition": "payoff",
+      "confidence_shift": 7.800000000000011,
+      "reproduction_shift": -7.001183490386779
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S186",
+      "condition": "baserate",
+      "confidence_shift": 3.1999999999999886,
+      "reproduction_shift": 92.11564098570034
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S190",
+      "condition": "payoff",
+      "confidence_shift": -3.1999999999999886,
+      "reproduction_shift": 15.207167077488975
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S192",
+      "condition": "mullerlyer",
+      "confidence_shift": 24.399999999999977,
+      "reproduction_shift": 54.909090796187854
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S194",
+      "condition": "payoff",
+      "confidence_shift": 5.199999999999989,
+      "reproduction_shift": 4.585769283621119
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S197",
+      "condition": "mullerlyer",
+      "confidence_shift": -3.0,
+      "reproduction_shift": 3.270603884331422
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S198",
+      "condition": "payoff",
+      "confidence_shift": -2.0,
+      "reproduction_shift": -11.567198039176787
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S199",
+      "condition": "payoff",
+      "confidence_shift": 19.600000000000023,
+      "reproduction_shift": -10.545270881211593
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S200",
+      "condition": "baserate",
+      "confidence_shift": 13.600000000000023,
+      "reproduction_shift": -8.777832732213142
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S202",
+      "condition": "payoff",
+      "confidence_shift": 9.899999999999977,
+      "reproduction_shift": -1.7911200580284685
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S203",
+      "condition": "baserate",
+      "confidence_shift": 20.399999999999977,
+      "reproduction_shift": 0.6593465382413228
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S205",
+      "condition": "payoff",
+      "confidence_shift": 1.1999999999999886,
+      "reproduction_shift": -6.409085350776195
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S206",
+      "condition": "baserate",
+      "confidence_shift": -0.6000000000000227,
+      "reproduction_shift": 5.379492391891972
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S207",
+      "condition": "mullerlyer",
+      "confidence_shift": 9.5,
+      "reproduction_shift": 70.88876440819553
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S208",
+      "condition": "payoff",
+      "confidence_shift": 13.300000000000011,
+      "reproduction_shift": 10.57475966404985
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S209",
+      "condition": "baserate",
+      "confidence_shift": 10.700000000000045,
+      "reproduction_shift": -15.145215633865007
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S210",
+      "condition": "payoff",
+      "confidence_shift": 10.799999999999955,
+      "reproduction_shift": 4.020284784715329
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S212",
+      "condition": "baserate",
+      "confidence_shift": -14.600000000000023,
+      "reproduction_shift": -10.832983494967095
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S213",
+      "condition": "payoff",
+      "confidence_shift": 30.19999999999999,
+      "reproduction_shift": -35.237001698007816
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S214",
+      "condition": "baserate",
+      "confidence_shift": -18.200000000000045,
+      "reproduction_shift": 6.354831090848677
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S215",
+      "condition": "payoff",
+      "confidence_shift": -10.0,
+      "reproduction_shift": 11.917814484225119
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S216",
+      "condition": "baserate",
+      "confidence_shift": 2.1999999999999886,
+      "reproduction_shift": -14.897818983957677
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S217",
+      "condition": "mullerlyer",
+      "confidence_shift": 21.399999999999977,
+      "reproduction_shift": -9.79077078395619
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S218",
+      "condition": "baserate",
+      "confidence_shift": 13.899999999999977,
+      "reproduction_shift": -13.382294221804273
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S220",
+      "condition": "mullerlyer",
+      "confidence_shift": 5.199999999999989,
+      "reproduction_shift": 7.9777377481742064
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S221",
+      "condition": "baserate",
+      "confidence_shift": 8.699999999999989,
+      "reproduction_shift": -2.7962972402151536
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S222",
+      "condition": "payoff",
+      "confidence_shift": -26.69999999999999,
+      "reproduction_shift": 17.42021908053482
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S223",
+      "condition": "mullerlyer",
+      "confidence_shift": 3.8999999999999773,
+      "reproduction_shift": 15.531111062309947
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S224",
+      "condition": "payoff",
+      "confidence_shift": 30.200000000000045,
+      "reproduction_shift": 3.0332592967798178
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S226",
+      "condition": "mullerlyer",
+      "confidence_shift": 8.699999999999989,
+      "reproduction_shift": 33.90838637435178
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S227",
+      "condition": "payoff",
+      "confidence_shift": 37.099999999999966,
+      "reproduction_shift": -8.976936293946608
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S228",
+      "condition": "mullerlyer",
+      "confidence_shift": 13.199999999999989,
+      "reproduction_shift": 40.00074404749165
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S229",
+      "condition": "baserate",
+      "confidence_shift": 13.199999999999989,
+      "reproduction_shift": 12.397474009348059
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S230",
+      "condition": "mullerlyer",
+      "confidence_shift": 62.39999999999998,
+      "reproduction_shift": 77.0801208137932
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S233",
+      "condition": "mullerlyer",
+      "confidence_shift": 28.80000000000001,
+      "reproduction_shift": 25.69904899542621
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S235",
+      "condition": "payoff",
+      "confidence_shift": 3.3000000000000114,
+      "reproduction_shift": 10.838758678567444
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S236",
+      "condition": "baserate",
+      "confidence_shift": 4.699999999999989,
+      "reproduction_shift": 5.442371033434654
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S238",
+      "condition": "baserate",
+      "confidence_shift": 15.200000000000045,
+      "reproduction_shift": 17.117754538609233
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S239",
+      "condition": "baserate",
+      "confidence_shift": 33.0,
+      "reproduction_shift": 30.820698419640507
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S240",
+      "condition": "baserate",
+      "confidence_shift": -3.099999999999966,
+      "reproduction_shift": -11.354492861609913
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S242",
+      "condition": "baserate",
+      "confidence_shift": 0.30000000000001137,
+      "reproduction_shift": -16.255897569535477
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S243",
+      "condition": "baserate",
+      "confidence_shift": 39.60000000000002,
+      "reproduction_shift": -2.0094846777141697
+    },
+    {
+      "experiment": "delayed",
+      "participant": "S244",
+      "condition": "baserate",
+      "confidence_shift": 38.400000000000034,
+      "reproduction_shift": -15.079751891839805
+    }
+  ],
+  "summaries": [
+    {
+      "experiment": "concurrent",
+      "condition": "mullerlyer",
+      "participants": 27,
+      "bootstrap_seed": 93000,
+      "bootstrap_draws": 10000,
+      "metrics": {
+        "confidence_shift": {
+          "mean": 12.337037037037046,
+          "sd": 16.58215324581842,
+          "percentile_95": [
+            6.7294444444444546,
+            18.75555555555556
+          ]
+        },
+        "reproduction_shift": {
+          "mean": 25.482593470226206,
+          "sd": 20.93696170079584,
+          "percentile_95": [
+            17.899787029054608,
+            33.30258082531601
+          ]
+        },
+        "difference": {
+          "mean": -13.145556433189158,
+          "sd": 19.518698900788156,
+          "percentile_95": [
+            -20.38434586736095,
+            -6.055767875551859
+          ]
+        }
+      }
+    },
+    {
+      "experiment": "concurrent",
+      "condition": "baserate",
+      "participants": 46,
+      "bootstrap_seed": 93001,
+      "bootstrap_draws": 10000,
+      "metrics": {
+        "confidence_shift": {
+          "mean": 7.330434782608699,
+          "sd": 16.355968935124668,
+          "percentile_95": [
+            2.8891304347826146,
+            12.184945652173916
+          ]
+        },
+        "reproduction_shift": {
+          "mean": -1.7505043529737312,
+          "sd": 16.848825253678058,
+          "percentile_95": [
+            -6.676708242106444,
+            3.06720380978092
+          ]
+        },
+        "difference": {
+          "mean": 9.08093913558243,
+          "sd": 25.68287529461015,
+          "percentile_95": [
+            2.0211775929291327,
+            16.72828633628503
+          ]
+        }
+      }
+    },
+    {
+      "experiment": "concurrent",
+      "condition": "payoff",
+      "participants": 35,
+      "bootstrap_seed": 93002,
+      "bootstrap_draws": 10000,
+      "metrics": {
+        "confidence_shift": {
+          "mean": 10.66285714285714,
+          "sd": 17.60467995456098,
+          "percentile_95": [
+            5.328428571428573,
+            16.828642857142857
+          ]
+        },
+        "reproduction_shift": {
+          "mean": -3.337717867250878,
+          "sd": 10.824716760714063,
+          "percentile_95": [
+            -6.859649121837805,
+            0.22642239890660493
+          ]
+        },
+        "difference": {
+          "mean": 14.000575010108019,
+          "sd": 21.17111768541892,
+          "percentile_95": [
+            7.217912638345579,
+            21.230736435226643
+          ]
+        }
+      }
+    },
+    {
+      "experiment": "delayed",
+      "condition": "mullerlyer",
+      "participants": 25,
+      "bootstrap_seed": 93003,
+      "bootstrap_draws": 10000,
+      "metrics": {
+        "confidence_shift": {
+          "mean": 22.261999999999997,
+          "sd": 27.489730203599066,
+          "percentile_95": [
+            12.4317,
+            33.52439999999998
+          ]
+        },
+        "reproduction_shift": {
+          "mean": 29.174211486721443,
+          "sd": 25.74862091077508,
+          "percentile_95": [
+            19.40784984682633,
+            39.29318507385472
+          ]
+        },
+        "difference": {
+          "mean": -6.912211486721446,
+          "sd": 24.438407847543488,
+          "percentile_95": [
+            -16.41748414054167,
+            2.333728823335123
+          ]
+        }
+      }
+    },
+    {
+      "experiment": "delayed",
+      "condition": "baserate",
+      "participants": 39,
+      "bootstrap_seed": 93004,
+      "bootstrap_draws": 10000,
+      "metrics": {
+        "confidence_shift": {
+          "mean": 9.310256410256411,
+          "sd": 16.280837862698316,
+          "percentile_95": [
+            4.4152564102564025,
+            14.597500000000004
+          ]
+        },
+        "reproduction_shift": {
+          "mean": 2.813112470193416,
+          "sd": 22.269651773578058,
+          "percentile_95": [
+            -3.4627238676381094,
+            10.21780103511123
+          ]
+        },
+        "difference": {
+          "mean": 6.497143940062995,
+          "sd": 25.877640948045748,
+          "percentile_95": [
+            -1.8639078697005877,
+            14.227172424285582
+          ]
+        }
+      }
+    },
+    {
+      "experiment": "delayed",
+      "condition": "payoff",
+      "participants": 32,
+      "bootstrap_seed": 93005,
+      "bootstrap_draws": 10000,
+      "metrics": {
+        "confidence_shift": {
+          "mean": 7.94375,
+          "sd": 18.806140683812686,
+          "percentile_95": [
+            1.606250000000001,
+            14.587578124999993
+          ]
+        },
+        "reproduction_shift": {
+          "mean": 1.5780281800906621,
+          "sd": 11.883075772893802,
+          "percentile_95": [
+            -2.546172074465623,
+            5.497706826097448
+          ]
+        },
+        "difference": {
+          "mean": 6.3657218199093375,
+          "sd": 23.174969487241334,
+          "percentile_95": [
+            -1.5843214679588258,
+            14.293061426851478
+          ]
+        }
+      }
+    },
+    {
+      "experiment": "pooled",
+      "condition": "mullerlyer",
+      "participants": 52,
+      "bootstrap_seed": 93006,
+      "bootstrap_draws": 10000,
+      "metrics": {
+        "confidence_shift": {
+          "mean": 17.108653846153853,
+          "sd": 22.822537281298487,
+          "percentile_95": [
+            11.374014423076927,
+            23.404879807692303
+          ]
+        },
+        "reproduction_shift": {
+          "mean": 27.257409824310457,
+          "sd": 23.21509121954172,
+          "percentile_95": [
+            21.26180907662169,
+            33.269369320061905
+          ]
+        },
+        "difference": {
+          "mean": -10.148755978156604,
+          "sd": 22.026495145202006,
+          "percentile_95": [
+            -15.977678230587683,
+            -4.215789036461531
+          ]
+        }
+      }
+    },
+    {
+      "experiment": "pooled",
+      "condition": "baserate",
+      "participants": 85,
+      "bootstrap_seed": 93007,
+      "bootstrap_draws": 10000,
+      "metrics": {
+        "confidence_shift": {
+          "mean": 8.238823529411766,
+          "sd": 16.25449457342599,
+          "percentile_95": [
+            4.935088235294115,
+            11.757676470588235
+          ]
+        },
+        "reproduction_shift": {
+          "mean": 0.3433904247147245,
+          "sd": 19.53626530743981,
+          "percentile_95": [
+            -3.621334138578246,
+            4.5038599151200716
+          ]
+        },
+        "difference": {
+          "mean": 7.895433104697042,
+          "sd": 25.651079995014914,
+          "percentile_95": [
+            2.403903819806726,
+            13.30023268829363
+          ]
+        }
+      }
+    },
+    {
+      "experiment": "pooled",
+      "condition": "payoff",
+      "participants": 67,
+      "bootstrap_seed": 93008,
+      "bootstrap_draws": 10000,
+      "metrics": {
+        "confidence_shift": {
+          "mean": 9.36417910447761,
+          "sd": 18.10107732849854,
+          "percentile_95": [
+            5.143208955223876,
+            13.810522388059697
+          ]
+        },
+        "reproduction_shift": {
+          "mean": -0.9898988595653662,
+          "sd": 11.524223378214648,
+          "percentile_95": [
+            -3.6604733309097535,
+            1.5948288452204078
+          ]
+        },
+        "difference": {
+          "mean": 10.354077964042977,
+          "sd": 22.314292059143135,
+          "percentile_95": [
+            5.268246715074441,
+            15.683953030086947
+          ]
+        }
+      }
+    }
+  ],
+  "source_sha256": {
+    "research/audit_confidence_experience.py": "5e568335301ffc760e6081ec10fe3ed47602df8c9993e763b9d961a8ddcef705",
+    "docs/CONFIDENCE_EXPERIENCE_PROTOCOL.md": "0ef205c26ab81b782a87c3cc5784a26a9851aa420d01741db5df83ce9081bd66"
+  }
+}

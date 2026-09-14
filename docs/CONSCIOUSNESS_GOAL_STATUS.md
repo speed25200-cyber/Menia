@@ -1,6 +1,12 @@
 # État de l'objectif de conscience et de nouveauté
 
 **État actuel : objectif non atteint ; une politique de vérification apprise est intégrée à l'agent expérimental.**
+La [réanalyse de confiance et perception](CONFIDENCE_EXPERIENCE_RESULTS.md)
+ajoute une contrainte humaine : leurs déplacements diffèrent selon les
+manipulations dans les données de 204 participants. Elle limite l'usage de la
+confiance comme indicateur unique et conserve les divergences et limites de la
+livraison analysée. Elle ne démontre pas une expérience de soi chez Menia.
+
 Le [nouveau pilote](LEARNED_VERIFICATION_RESULTS.md) remplace une décision imposée
 par l'apprentissage de coûts d'action. L'usage utile de l'estimation est acquis
 sur la distribution initiale ; la rupture de fiabilité conserve un échec. Cela

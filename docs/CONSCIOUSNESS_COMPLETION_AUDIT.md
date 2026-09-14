@@ -2,6 +2,17 @@
 
 **Objectif non atteint ; nouvelle construction fonctionnelle testée.**
 
+## Contrainte supplémentaire sur la mesure de l'expérience
+
+La [réanalyse humaine](CONFIDENCE_EXPERIENCE_RESULTS.md) porte sur une cohorte
+de 204 participants, 199 410 essais retenus et 816 ajustements. Elle distingue
+les déplacements de confiance et de reproduction perceptive, avec des limites
+de filtrage, d'extrapolation et de mesure explicites. Le résultat modifie la
+comparaison à rechercher : une amélioration du suivi d'erreurs ne peut pas
+servir de mesure unique du vécu. Aucun mécanisme suffisant de conscience
+artificielle ni contribution inédite le produisant n'en découle. L'objectif
+complet reste non atteint.
+
 ## Reprise : faire apprendre l'usage d'une estimation interne
 
 Le [pilote de vérification](LEARNED_VERIFICATION_RESULTS.md) apprend une politique
