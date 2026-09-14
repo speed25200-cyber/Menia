@@ -40,6 +40,15 @@ une conscience et ne modifie pas les poids de mémoire.
 python scripts/check_reliability_artifacts.py
 ```
 
+## Espace partagé récurrent
+
+Le notebook de recherche inclut un [espace partagé récurrent](docs/SHARED_WORKSPACE.md)
+de 13 000 paramètres. Deux modules apprennent une composition symbolique en
+échangeant un état commun. Neuf entraînements CPU et leurs contrôles sont publiés
+dans `artifacts/shared-workspace`. Les ablations montrent une dépendance au retour
+d'information, mais les résultats varient fortement selon l'initialisation et un
+réseau direct réussit mieux cette tâche. Aucune conscience n'est établie.
+
 ## Commencer sur ton A100
 
 [**Ouvrir le notebook dans Colab**](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/main/notebooks/01_colab_a100.ipynb)
@@ -82,7 +91,7 @@ les dépendances transitives résolues sont enregistrées avec `pip freeze`.
 
 ## Statut de validation
 
-- 11 tests du noyau + 16 tests de recherche passés.
+- 11 tests du noyau + 16 tests de rappel + 5 tests d'espace partagé passés.
 - Trois entraînements CPU du petit module exécutés, avec ablations et checkpoints.
 - Comparaisons déterministes exécutées sur 240 cas synthétiques.
 - Code Python et cellules du notebook vérifiés syntaxiquement.

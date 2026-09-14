@@ -6,7 +6,7 @@ def cell(kind,text):
     if kind=='code': value.update({'execution_count':None,'outputs':[]})
     return value
 cells=[
-cell('markdown','''# Menia — mémoire récurrente et limites du rappel
+cell('markdown','''# Menia — mémoire, fiabilité et espace partagé récurrent
 Ce notebook entraîne un **petit module neuronal de mémoire**, pas une conscience
 et pas le modèle de langage Qwen. L’expérience tourne sur CPU ; l’A100 n’est pas
 nécessaire pour ce module de 1 540 paramètres.
@@ -14,6 +14,8 @@ nécessaire pour ce module de 1 540 paramètres.
 Les poids d’un premier entraînement sont déjà dans le dépôt. Les cellules ci-dessous
 permettent de les vérifier et d’en entraîner de nouveaux, puis de calibrer une
 limite de rappel et de mesurer les erreurs sur des épisodes séparés.
+Une seconde expérience étudie un espace partagé de 13 000 paramètres : deux modules
+échangent des informations pour effectuer une composition en deux étapes.
 '''),
 cell('code','''from google.colab import drive
 drive.mount('/content/drive')
@@ -93,6 +95,50 @@ print(session.context())
 session.stop()
 session.clear()
 print('Session arrêtée et état effacé.')
+'''),
+cell('markdown','''## Espace partagé récurrent : composition en deux étapes
+Deux modules reçoivent chacun une table privée. Ils doivent calculer B[A[requête]]
+après disparition des tables, via un espace partagé de huit dimensions.
+Les résultats publiés couvrent trois initialisations, un contrôle entraîné sans
+retour vers les modules et un réseau direct. Les combinaisons de tables du test
+sont exclues de l’entraînement pour toutes les requêtes.
+
+Cette expérience ajoute une circulation interne d’informations testable. Elle
+ne démontre ni conscience ni supériorité générale de cette architecture.
+L’installation suivante utilise PyTorch CPU ; Python 3.12 est l’environnement
+de reproduction vérifié. Aucun GPU n’est nécessaire.
+'''),
+cell('code','''subprocess.run([sys.executable,'-m','pip','install','torch==2.4.1','--index-url','https://download.pytorch.org/whl/cpu'],check=True)
+subprocess.run([sys.executable,'-m','unittest','discover','-s','tests_workspace','-v'],check=True)
+subprocess.run([sys.executable,'scripts/check_workspace_artifacts.py'],check=True)
+workspace_report=json.loads(Path('artifacts/shared-workspace/report.json').read_text())
+for run in workspace_report['runs']:
+    print(run['seed'],run['variant'],'précision',run['evaluation']['none']['accuracy'])
+    if run['variant']=='workspace':
+        print('  retour coupé :',run['evaluation']['no_broadcast']['accuracy'])
+'''),
+cell('code','''import torch
+from research.workspace import SharedWorkspace,lookup_test
+torch.set_num_threads(1)
+workspace_model=SharedWorkspace()
+workspace_model.load_state_dict(torch.load('artifacts/shared-workspace/workspace-17.pt',weights_only=True,map_location='cpu'))
+workspace_model.eval()
+tables,query,target=lookup_test()
+example=137
+with torch.no_grad():
+    output,trace=workspace_model(tables[example:example+1],query[example:example+1],return_trace=True)
+print('Requête :',query[example].argmax().item())
+print('Tables :',tables[example].reshape(2,4,4).argmax(-1).tolist())
+for step,item in enumerate(trace):
+    print('Tour',step+1,'attention vers A et B :',item['attention'][0].tolist())
+print('Réponse prédite :',output['answer'].argmax(-1).item())
+print('Référence externe :',target[example].item())
+
+# Facultatif : reproduire les neuf entraînements dans un nouveau dossier Drive.
+TRAIN_WORKSPACE=False
+if TRAIN_WORKSPACE:
+    subprocess.run([sys.executable,'-m','research.train_workspace','--out',str(OUT/'workspace'),
+                    '--steps','2000','--seeds','17','29','43'],check=True)
 '''),
 cell('markdown','''## Interprétation
 Comparer réseau complet, état effacé à chaque pas, observations masquées et règle

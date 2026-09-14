@@ -25,3 +25,15 @@ jobs:
       - run: python -m unittest discover -s tests_research -v
       - run: python scripts/check_recurrent_artifacts.py
       - run: python scripts/check_reliability_artifacts.py
+
+  workspace:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install torch==2.4.1 --index-url https://download.pytorch.org/whl/cpu
+      - run: pip install numpy==2.2.6
+      - run: python -m unittest discover -s tests_workspace -v
+      - run: python scripts/check_workspace_artifacts.py
