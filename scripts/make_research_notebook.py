@@ -21,7 +21,7 @@ cell('code','''from google.colab import drive
 drive.mount('/content/drive')
 from pathlib import Path
 import subprocess,sys,os,datetime,json
-REVISION='e96d4708e909edb95d601d3708d93d2f7350a1ac'
+REVISION='61a0dd0b107c56d5acf6d3417534c1feff4153dd'
 REPO=Path('/content')/('Menia-recurrent-'+REVISION[:12])
 if not REPO.exists():
     subprocess.run(['git','clone','https://github.com/speed25200-cyber/Menia.git',str(REPO)],check=True)
