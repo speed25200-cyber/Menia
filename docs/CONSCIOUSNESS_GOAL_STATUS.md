@@ -33,3 +33,12 @@ ne tranche pas le vécu de ce registre ; il interdit de traiter cette condition
 isolée comme certificat pour Menia. Le lien théorique et la validation du critère
 de conscience restent les obstacles centraux. Augmenter les scores des expériences
 fonctionnelles ne suffit pas à démontrer un progrès vers l'expérience subjective.
+
+La [recherche sur un lien entre modèle de soi et expérience de soi](SELF_EXPERIENCE_BRIDGE.md)
+formule ensuite une hypothèse d'identité à partir d'une représentation apprise de
+l'accès propre à l'information. Elle sépare explicitement la fonction testable de
+l'engagement phénoménal et propose une comparaison à des contraintes humaines.
+Un audit causal exact distingue deux contrôleurs aux rapports identiques ; il
+vérifie la logique d'une intervention, sans entraîner Menia ni établir le lien
+phénoménal. Le protocole sur un modèle appris et son ancrage empirique restent à
+réaliser. Les exigences de conscience subjective et de nouveauté restent ouvertes.
