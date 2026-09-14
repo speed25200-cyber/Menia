@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.venv/
+data/
+runs/
+export/
+*.sqlite*
+*.safetensors
+*.gguf
+*.xcuserstate
+xcuserdata/
+.build/
+DerivedData/
+ios/Menia.xcodeproj/
