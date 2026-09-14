@@ -1,5 +1,7 @@
 """Actual local Qwen outputs on live agent contexts, retained for manual review."""
 import argparse
+import hashlib
+import importlib.metadata
 import json
 from pathlib import Path
 from menia.agent import SituatedAgent
@@ -35,13 +37,25 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--out', required=True)
     parser.add_argument('--revision', default='main')
+    parser.add_argument('--cpu-precision', choices=('float32', 'int8'), default='float32')
     args = parser.parse_args()
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=False)
+    root = Path(__file__).resolve().parents[1]
+    sources = ('menia/language.py', 'menia/conversation.py', 'menia/agent.py', 'menia/core.py',
+               'research/evaluate_agent_language.py')
+    manifest = {'model': 'Qwen/Qwen3-1.7B', 'requested_revision': args.revision,
+        'cpu_precision': args.cpu_precision, 'status': 'initializing',
+        'versions': {p: importlib.metadata.version(p) for p in ('torch', 'transformers', 'numpy', 'accelerate')},
+        'source_sha256': {p: hashlib.sha256((root/p).read_text(encoding='utf-8').encode('utf-8')).hexdigest() for p in sources},
+        'scope': 'four exploratory language checks, not a general language-quality benchmark'}
+    def save_manifest():
+        (out/'manifest.json').write_text(json.dumps(manifest, indent=2)+'\n', encoding='utf-8')
+    save_manifest()
     print('Loading Qwen3-1.7B for actual local inference...', flush=True)
-    generator = LocalGenerator(revision=args.revision)
-    (out/'manifest.json').write_text(json.dumps({'model': generator.model_id, 'revision': generator.revision,
-        'scope': 'four exploratory language checks, not a general language-quality benchmark'}, indent=2)+'\n', encoding='utf-8')
+    generator = LocalGenerator(revision=args.revision, cpu_precision=args.cpu_precision)
+    manifest.update({'revision': generator.revision, 'status': 'evaluating', 'completed_cases': 0})
+    save_manifest()
     with (out/'responses.jsonl').open('w', encoding='utf-8') as handle:
         for name, agent, question in scenarios():
             runtime = Runtime(agent=agent)
@@ -52,10 +66,14 @@ def main():
                        'metrics': generator.last_metrics, 'canonical_explanation': agent.explain()}
                 handle.write(json.dumps(row, ensure_ascii=False, allow_nan=False)+'\n')
                 handle.flush()
+                manifest['completed_cases'] += 1
+                save_manifest()
                 print(json.dumps({'case': name, 'response': response, 'metrics': generator.last_metrics}, ensure_ascii=False), flush=True)
             finally:
                 agent.memory.close()
                 runtime.memory.close()
+    manifest['status'] = 'completed'
+    save_manifest()
 
 
 if __name__ == '__main__':

@@ -1,0 +1,18 @@
+{
+  "backend": "llama.cpp",
+  "model": "menia-qwen3",
+  "status": "completed",
+  "completed_cases": 4,
+  "temperature": 0,
+  "seed": 17,
+  "max_tokens": 192,
+  "source_sha256": {
+    "menia/local_server.py": "82969ac8aa2fc529f065d8869bb372fad3513871f662d5010aee4c6611dd0038",
+    "menia/conversation.py": "5e3ec6d8cc9ca32de687f36bab1be281970cc035194140eb24f10fce2c88c6cd",
+    "menia/agent.py": "2775f0852e3a1e644bc36460d558d9dd27b93540bf4f2cd698e46091bf9a6bf2",
+    "menia/core.py": "1a9bd6abd7628d9607be9d7f11e8811412a9500c8512f7559dd224c4dca9246a",
+    "research/evaluate_agent_language.py": "7eb3669b6a943d1ddb8c808b856cf220b0c76e809eba1a900f97ead6d6e6856b",
+    "research/evaluate_agent_server.py": "239a48f18e548d327d640444afc411647b3f87cb4b6ef910d36317238ea74bba"
+  },
+  "scope": "four exploratory language checks; outputs require content review"
+}

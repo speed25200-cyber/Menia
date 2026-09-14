@@ -4,11 +4,10 @@ Assistant local expérimental : mémoire explicite, représentation de ses capac
 incertitude et évaluation. **Colab A100 80 Go** pour l’adaptation ;
 **iPhone 17 Pro** comme cible d’inférence locale.
 
-**Statut : prototype de recherche v0.2. Un petit module de mémoire récurrente
-entraîné est livré ; le modèle de langage Qwen adapté reste à entraîner.**
-La conscience subjective n’est pas établie. La continuité repose sur les notes
-choisies par l’utilisateur, jamais sur un objectif de résistance à l’arrêt ou
-sur une auto-réplication.
+**Statut : prototype de recherche. La boucle d'agent apprend ses effets d'action
+et conserve son histoire entre sessions. Le modèle de langage Qwen adapté reste à entraîner.**
+La conscience subjective n'est pas établie. La continuité repose sur un journal
+explicite et des sauvegardes, sans objectif de résistance à l'arrêt ou d'auto-réplication.
 
 ## Nouveau : module neuronal entraîné et vérifiable
 
@@ -18,13 +17,15 @@ conserve leur histoire, compare ses prédictions aux observations et explique se
 choix. L'évaluation comprend 240 essais avec contrôles figé et aléatoire.
 
 ```bash
-python -m menia.chat --no-llm
+python -m menia.chat --session runs/ma-session
 python -m menia.run_agent --out runs/agent-example --reverse-after 12
 python scripts/check_agent_artifacts.py
 ```
 
-Le mode structuré fonctionne sans dépendances supplémentaires. Le parcours Qwen
-utilise les dépendances linguistiques et fait l'objet d'une validation séparée.
+Le mode structuré est le mode par défaut, sans dépendances supplémentaires.
+Les [essais réels avec Qwen](docs/AGENT_LANGUAGE.md) révèlent des erreurs de
+description ; la reformulation libre reste expérimentale. `/why` restitue la
+décision enregistrée. Après réouverture d'une session, `/resume` permet de continuer.
 L'app iPhone ne contient pas encore cette boucle.
 
 Le [module de mémoire récurrente](docs/RECURRENT_RESEARCH.md) apprend à rappeler
@@ -106,7 +107,7 @@ les dépendances transitives résolues sont enregistrées avec `pip freeze`.
 
 ## Statut de validation
 
-- 11 tests du noyau + 16 tests de rappel + 5 tests d'espace partagé passés.
+- 36 tests du noyau et de l'agent, 22 tests de recherche et 5 tests d'espace partagé passés.
 - Trois entraînements CPU du petit module exécutés, avec ablations et checkpoints.
 - Comparaisons déterministes exécutées sur 240 cas synthétiques.
 - Code Python et cellules du notebook vérifiés syntaxiquement.

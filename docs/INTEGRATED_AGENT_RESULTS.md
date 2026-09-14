@@ -76,6 +76,19 @@ Commandes utiles : `/step`, `/run 80`, `/observe landmark`,
 Le témoignage sur la cible est conservé comme tel ; il ne remplace pas la lecture
 du capteur. `/why` expose l'explication enregistrée de la dernière décision.
 
+Pour sauvegarder et reprendre le même agent et son environnement virtuel :
+
+```bash
+python -m menia.chat --no-llm --session runs/ma-session
+```
+
+Relancer cette commande restaure le modèle appris, son journal, les commandes en
+attente d'évaluation et l'environnement, y compris son état aléatoire. Après une
+fermeture normale, la session est arrêtée ; `/resume` la réactive. La mémoire de
+travail repart vide et peut relire le journal. Deux copies alternées du journal
+et un manifeste remplacé atomiquement évitent de mélanger une ancienne version
+de l'agent avec un journal plus récent en cas d'interruption avant sauvegarde.
+
 Pour conserver une expérience complète dans un nouveau dossier :
 
 ```bash
@@ -90,17 +103,30 @@ Un dossier existant est refusé pour préserver les résultats précédents.
 
 Le même `Runtime` possède l'agent qui agit et fournit son état à
 `messages_for_runtime`. Le point d'entrée `menia.chat` accepte un générateur Qwen
-local via `menia/language.py`. Les commandes sont exécutées par le contrôleur ;
+local via `menia/local_server.py` et un serveur llama.cpp. Les commandes sont exécutées par le contrôleur ;
 les questions en langage naturel demandent une description de l'état enregistré.
 Cette séparation permet de comparer l'explication déterministe `/why` et la
 reformulation produite par Qwen.
 
 Les tests d'interface vérifient les états et références réellement transmis.
 Les essais d'inférence Qwen sont suivis séparément : le simple passage du contexte
-ne garantit pas une description linguistique fidèle. La reprise complète du
-parcours interactif après fermeture reste à consolider ; la restauration de
-l'agent avec son journal est actuellement vérifiée au niveau de l'API Python.
+ne garantit pas une description linguistique fidèle. La première évaluation avec
+quantification dynamique int8 a produit quatre réponses hors sujet ; elle ne
+valide pas l'interface linguistique. Ses sorties brutes sont conservées dans
+`artifacts/integrated-agent/language-layerwise-int8`. Des tentatives de chargement
+avec PyTorch 2.4.1 et 2.8.0 ont échoué sans produire de réponses ; un plantage natif
+a été confirmé dans le journal Windows. La voie officielle GGUF Q8_0 a produit
+quatre réponses, mais avec des erreurs de description et deux sorties tronquées.
+Le [compte rendu linguistique](AGENT_LANGUAGE.md) conserve les sorties et la procédure.
+Le mode structuré est donc le mode par défaut. Les explications déterministes restent accessibles via
+`/why` et sont vérifiées contre les événements du contrôleur.
 L'app iPhone et les anciens notebooks ne sont pas modifiés par ce prototype.
+
+La [trace de reprise du CLI](../artifacts/integrated-agent/cli-restart.json)
+provient de deux processus Python distincts : même épisode et même position,
+prédiction en attente évaluée une seule fois après la réouverture. Les tests de
+sauvegarde couvrent aussi les modifications non sauvegardées, la cohérence du
+journal, la conservation des réglages de capacités et de l'état aléatoire.
 
 ## Vérification
 

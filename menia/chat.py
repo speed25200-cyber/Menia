@@ -71,19 +71,34 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--seed', type=int, default=17)
     parser.add_argument('--target', nargs=2, type=int, default=[4, 3])
-    parser.add_argument('--journal', default=':memory:', help='Optional SQLite path for episode history')
-    parser.add_argument('--no-llm', action='store_true')
+    storage = parser.add_mutually_exclusive_group()
+    storage.add_argument('--journal', default=':memory:', help='Optional SQLite path for episode history only')
+    storage.add_argument('--session', help='Directory to save and restore agent, learned effects, history and virtual environment')
+    language = parser.add_mutually_exclusive_group()
+    language.add_argument('--no-llm', action='store_true', help='Structured mode (the default)')
+    language.add_argument('--llama-url', help='Local llama.cpp server, for example http://127.0.0.1:8766')
+    language.add_argument('--hf', action='store_true', help='Experimental Hugging Face backend; not validated on this Windows CPU')
     parser.add_argument('--model', default='Qwen/Qwen3-1.7B')
     parser.add_argument('--revision', default='main')
     args = parser.parse_args()
     generate = None
-    if not args.no_llm:
+    if args.llama_url:
+        from .local_server import LocalServerGenerator
+        generate = LocalServerGenerator(args.llama_url)
+    elif args.hf:
         from .language import LocalGenerator
         generate = LocalGenerator(args.model, args.revision)
-    agent = SituatedAgent(memory=EpisodeMemory(args.journal))
-    runtime = Runtime(agent=agent)
-    session = ChatSession(runtime, VirtualRoom(args.seed, target=args.target), generate)
+    from .session_store import open_session, save_session
+    if args.session:
+        runtime, environment = open_session(args.session, seed=args.seed, target=args.target)
+        agent = runtime.agent
+    else:
+        agent = SituatedAgent(memory=EpisodeMemory(args.journal))
+        runtime, environment = Runtime(agent=agent), VirtualRoom(args.seed, target=args.target)
+    session = ChatSession(runtime, environment, generate)
     print(HELP)
+    if runtime.stopped:
+        print('Session restaurée à l’arrêt ; /resume permet de continuer.')
     try:
         while True:
             try:
@@ -94,10 +109,15 @@ def main():
                 break
             try:
                 print('Menia > ' + session.handle(text))
-            except (ValueError, RuntimeError, PermissionError) as error:
+            except (ValueError, RuntimeError, OSError) as error:
                 print('Menia > ' + str(error))
+            finally:
+                if args.session:
+                    save_session(args.session, runtime, environment)
     finally:
         runtime.stop()
+        if args.session:
+            save_session(args.session, runtime, environment)
         runtime.memory.close()
         agent.memory.close()
 
