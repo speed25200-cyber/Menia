@@ -14,6 +14,7 @@ jobs:
       - run: python scripts/check_agent_artifacts.py
       - run: python scripts/check_agency_discovery_artifacts.py
       - run: python research/audit_plasticity_realization.py --output artifacts/plasticity-realization-audit/report.json --check
+      - run: python research/audit_evidence_weighting.py --output artifacts/evidence-weighting-audit/report.json --check
       - run: python -m compileall -q menia tests scripts
       - run: python scripts/check_notebook.py
 

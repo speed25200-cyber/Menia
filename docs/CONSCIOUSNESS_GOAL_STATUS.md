@@ -1,6 +1,9 @@
 # État de l'objectif de conscience et de nouveauté
 
 **État actuel : objectif non atteint, recherche reprise à la demande d'Emin.**
+L'[examen des preuves structurales](STRUCTURAL_BRIDGE_EVIDENCE.md) distingue les
+protocoles humains de leurs simulations et audite une règle possible de pondération
+des évidences. Il ne permet pas encore de sélectionner une construction consciente.
 L'[audit de la plasticité](PLASTICITY_REALIZATION_AUDIT.md) examine une nouvelle
 piste théorique et vérifie une limite de sa traduction en choix d'architecture.
 Il ne fournit pas de preuve de conscience ou de nouveauté. L'[audit précédent](CONSCIOUSNESS_COMPLETION_AUDIT.md)
