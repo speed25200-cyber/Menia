@@ -17,3 +17,8 @@ choix technique ; elles ne constituent pas des mesures de Menia.
 Les versions directes d’entraînement sont fixées dans requirements-train.txt.
 Leur combinaison reste à tester effectivement sur l’A100. Les sources actuelles
 peuvent présenter des différences avec les versions épinglées.
+
+- [Butlin et al., Consciousness in Artificial Intelligence (2023)](https://arxiv.org/abs/2308.08708) :
+  cadre de recherche par indicateurs, utilisé comme contexte, pas comme validation
+  du module récurrent de Menia. Ses conclusions sur les systèmes de l’époque ne
+  sont pas présentées comme un état des lieux de tous les systèmes en 2026.

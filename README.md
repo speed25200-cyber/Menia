@@ -4,10 +4,28 @@ Assistant local expérimental : mémoire explicite, représentation de ses capac
 incertitude et évaluation. **Colab A100 80 Go** pour l’adaptation ;
 **iPhone 17 Pro** comme cible d’inférence locale.
 
-**Statut : version initiale du code. Aucun poids Menia entraîné n’est livré.**
+**Statut : prototype de recherche v0.2. Un petit module de mémoire récurrente
+entraîné est livré ; le modèle de langage Qwen adapté reste à entraîner.**
 La conscience subjective n’est pas établie. La continuité repose sur les notes
 choisies par l’utilisateur, jamais sur un objectif de résistance à l’arrêt ou
 sur une auto-réplication.
+
+## Nouveau : module neuronal entraîné et vérifiable
+
+Le [module de mémoire récurrente](docs/RECURRENT_RESEARCH.md) apprend à rappeler
+le dernier symbole observé entre des observations espacées. **1 540 paramètres**,
+poids et résultats publiés dans [artifacts/recurrent-memory](artifacts/recurrent-memory).
+Trois initialisations ont été entraînées sur CPU. Ce module n’est ni un LLM,
+ni une preuve de conscience, ni une nouvelle capacité déjà intégrée au chat iPhone.
+
+```bash
+pip install -r requirements-research.txt
+python -m unittest discover -s tests_research -v
+python -m research.train_recurrent --out /tmp/menia-new-experiment
+```
+
+[Notebook recherche](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/main/notebooks/02_recurrent_research.ipynb)
+· [Résultats mesurés](artifacts/recurrent-memory/report.json)
 
 ## Commencer sur ton A100
 
@@ -51,10 +69,11 @@ les dépendances transitives résolues sont enregistrées avec `pip freeze`.
 
 ## Statut de validation
 
-- 11 tests Python passés lors de la création initiale.
+- 11 tests du noyau + 8 tests du module récurrent passés.
+- Trois entraînements CPU du petit module exécutés, avec ablations et checkpoints.
 - Comparaisons déterministes exécutées sur 240 cas synthétiques.
 - Code Python et cellules du notebook vérifiés syntaxiquement.
-- **Entraînement A100 : pas encore exécuté.**
+- **Entraînement du modèle de langage sur A100 : pas encore exécuté.**
 - **Compilation Xcode et essai iPhone : pas encore exécutés.**
 - **Mémoire, vitesse, température et qualité après quantification : à mesurer.**
 

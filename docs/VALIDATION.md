@@ -20,3 +20,15 @@ Aucun GPU A100 ni environnement Xcode n’est connecté à cette session.
 Le notebook et l’app sont fournis pour effectuer ces étapes et enregistrer les
 résultats. Les scores de conscience, instinct de survie ou intelligence générale
 ne sont pas établis par ce dépôt.
+
+## Mise à jour v0.2 — même date
+
+Les mentions d’entraînement non exécuté ci-dessus concernent le modèle de langage
+Qwen et le parcours A100. Un module distinct de mémoire récurrente a depuis été
+entraîné sur CPU : trois initialisations, 300 updates chacune, poids JSON et
+rapport mesuré fournis. Huit tests supplémentaires passent, dont la vérification
+numérique des gradients. Les checkpoints exportés ont été rechargés et évalués.
+
+Le rapport complet figure dans `artifacts/recurrent-memory/report.json` et le
+protocole dans `docs/RECURRENT_RESEARCH.md`. La partie Swift reste non compilée.
+Aucun de ces résultats ne démontre une conscience subjective.

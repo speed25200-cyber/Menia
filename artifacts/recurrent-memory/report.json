@@ -1,0 +1,209 @@
+{
+  "status": "executed CPU experiment",
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "wall_seconds": 1.5064531230000284,
+  "test_seed": 910001,
+  "test_length": 32,
+  "episodes_per_seed": 256,
+  "limitations": [
+    "synthetic family only",
+    "not a language model",
+    "not a consciousness test",
+    "deterministic memory rule is a strong reference",
+    "not integrated with iPhone chat"
+  ],
+  "runs": [
+    {
+      "seed": 17,
+      "parameters": 1540,
+      "checkpoint_sha256": "4b3cd481f8258c17c5f3ffba43abc91239b6f09ffea5781864dca33479aeb69f",
+      "training": [
+        {
+          "step": 1,
+          "train_cross_entropy": 1.3984419936323973
+        },
+        {
+          "step": 50,
+          "train_cross_entropy": 0.5038591619532369
+        },
+        {
+          "step": 100,
+          "train_cross_entropy": 0.22221115446081027
+        },
+        {
+          "step": 150,
+          "train_cross_entropy": 0.06371952521702123
+        },
+        {
+          "step": 200,
+          "train_cross_entropy": 0.02712811969781576
+        },
+        {
+          "step": 250,
+          "train_cross_entropy": 0.0059683784404792675
+        },
+        {
+          "step": 300,
+          "train_cross_entropy": 0.005354538522336749
+        }
+      ],
+      "evaluation": {
+        "learned": {
+          "evaluated_steps": 6597,
+          "accuracy": 1.0,
+          "brier_multiclass": 0.0012411435458820432
+        },
+        "reset_state": {
+          "evaluated_steps": 6597,
+          "accuracy": 0.2582992269213279,
+          "brier_multiclass": 0.7500099384437598
+        },
+        "no_observations": {
+          "evaluated_steps": 6597,
+          "accuracy": 0.2475367591329392,
+          "brier_multiclass": 0.8442884477691898
+        },
+        "constant_class_zero": {
+          "evaluated_steps": 6597,
+          "accuracy": 0.24586933454600576,
+          "brier_multiclass": 1.5082613309079884
+        },
+        "last_observation_rule": {
+          "evaluated_steps": 6597,
+          "accuracy": 1.0,
+          "brier_multiclass": 0.0
+        }
+      }
+    },
+    {
+      "seed": 29,
+      "parameters": 1540,
+      "checkpoint_sha256": "0084eaa56bedf890162977b8183e8f582640d935d7269bb0616251f631b8596f",
+      "training": [
+        {
+          "step": 1,
+          "train_cross_entropy": 1.4106874032082612
+        },
+        {
+          "step": 50,
+          "train_cross_entropy": 0.5671913591802227
+        },
+        {
+          "step": 100,
+          "train_cross_entropy": 0.18255168570150132
+        },
+        {
+          "step": 150,
+          "train_cross_entropy": 0.0850346155867654
+        },
+        {
+          "step": 200,
+          "train_cross_entropy": 0.01587186531501071
+        },
+        {
+          "step": 250,
+          "train_cross_entropy": 0.007166055869091702
+        },
+        {
+          "step": 300,
+          "train_cross_entropy": 0.005606755287889956
+        }
+      ],
+      "evaluation": {
+        "learned": {
+          "evaluated_steps": 6597,
+          "accuracy": 1.0,
+          "brier_multiclass": 0.002152603097345523
+        },
+        "reset_state": {
+          "evaluated_steps": 6597,
+          "accuracy": 0.2582992269213279,
+          "brier_multiclass": 0.7499541814859788
+        },
+        "no_observations": {
+          "evaluated_steps": 6597,
+          "accuracy": 0.2582992269213279,
+          "brier_multiclass": 1.091005477448993
+        },
+        "constant_class_zero": {
+          "evaluated_steps": 6597,
+          "accuracy": 0.24586933454600576,
+          "brier_multiclass": 1.5082613309079884
+        },
+        "last_observation_rule": {
+          "evaluated_steps": 6597,
+          "accuracy": 1.0,
+          "brier_multiclass": 0.0
+        }
+      }
+    },
+    {
+      "seed": 43,
+      "parameters": 1540,
+      "checkpoint_sha256": "b02415d383cbe3033deaaf5b020d77406b64d9bf2455bcd92994242bc1b06ea1",
+      "training": [
+        {
+          "step": 1,
+          "train_cross_entropy": 1.371350411678513
+        },
+        {
+          "step": 50,
+          "train_cross_entropy": 0.5050984452165815
+        },
+        {
+          "step": 100,
+          "train_cross_entropy": 0.2139602032596984
+        },
+        {
+          "step": 150,
+          "train_cross_entropy": 0.06087278595777229
+        },
+        {
+          "step": 200,
+          "train_cross_entropy": 0.025423191298832772
+        },
+        {
+          "step": 250,
+          "train_cross_entropy": 0.009462310813651632
+        },
+        {
+          "step": 300,
+          "train_cross_entropy": 0.009181303656986512
+        }
+      ],
+      "evaluation": {
+        "learned": {
+          "evaluated_steps": 6597,
+          "accuracy": 0.9992420797332121,
+          "brier_multiclass": 0.003673853012141106
+        },
+        "reset_state": {
+          "evaluated_steps": 6597,
+          "accuracy": 0.24586933454600576,
+          "brier_multiclass": 0.7500934597958531
+        },
+        "no_observations": {
+          "evaluated_steps": 6597,
+          "accuracy": 0.24586933454600576,
+          "brier_multiclass": 0.8605424303203176
+        },
+        "constant_class_zero": {
+          "evaluated_steps": 6597,
+          "accuracy": 0.24586933454600576,
+          "brier_multiclass": 1.5082613309079884
+        },
+        "last_observation_rule": {
+          "evaluated_steps": 6597,
+          "accuracy": 1.0,
+          "brier_multiclass": 0.0
+        }
+      }
+    }
+  ],
+  "source_sha256": {
+    "research/recurrent.py": "fad36eb41c1d9649162cb77caeed2e22bdceb4bfb93255a36815f097ca465385",
+    "research/train_recurrent.py": "439927b7ef61dbc5bac4ddab4ab4bea9f579ad82254b97ac61288a5b6220d66e"
+  },
+  "date": "2026-09-14"
+}

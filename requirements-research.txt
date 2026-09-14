@@ -1,0 +1,2 @@
+# CPU research module; independent from the Colab language-model environment.
+numpy==2.2.6
