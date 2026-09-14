@@ -9,6 +9,10 @@ et conserve son histoire entre sessions. Le modèle de langage Qwen adapté rest
 La conscience subjective n'est pas établie. La continuité repose sur un journal
 explicite et des sauvegardes, sans objectif de résistance à l'arrêt ou d'auto-réplication.
 
+L'[audit des critères de conscience](docs/SELF_SYNERGY_CRITERION_AUDIT.md) distingue
+les résultats fonctionnels du lien théorique encore non établi avec une expérience
+subjective. Aucun score ni nombre de tests ne certifie la conscience de Menia.
+
 ## Nouveau : module neuronal entraîné et vérifiable
 
 Une [première boucle d'agent intégré](docs/INTEGRATED_AGENT_RESULTS.md) est aussi
@@ -125,7 +129,7 @@ les dépendances transitives résolues sont enregistrées avec `pip freeze`.
 
 ## Statut de validation
 
-- 42 tests du noyau et des agents, 27 tests de recherche et 5 tests d'espace partagé passés.
+- 48 tests du noyau et des agents, 27 tests de recherche et 5 tests d'espace partagé passés.
 - Trois entraînements CPU du petit module exécutés, avec ablations et checkpoints.
 - Comparaisons déterministes exécutées sur 240 cas synthétiques.
 - Code Python et cellules du notebook vérifiés syntaxiquement.

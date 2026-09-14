@@ -25,3 +25,11 @@ seuls, une preuve d'expérience subjective.
 
 Cet audit ne clôt pas l'objectif et ne le remplace pas par « réussir les tests ».
 Il conserve explicitement les exigences non satisfaites et les hypothèses ouvertes.
+
+Un [audit supplémentaire d'un critère de synergie](SELF_SYNERGY_CRITERION_AUDIT.md)
+montre qu'une condition minimale de synergie sur l'état futur est satisfaite par
+un registre stochastique de deux bits et dépend de la partition choisie. Ce résultat
+ne tranche pas le vécu de ce registre ; il interdit de traiter cette condition
+isolée comme certificat pour Menia. Le lien théorique et la validation du critère
+de conscience restent les obstacles centraux. Augmenter les scores des expériences
+fonctionnelles ne suffit pas à démontrer un progrès vers l'expérience subjective.
