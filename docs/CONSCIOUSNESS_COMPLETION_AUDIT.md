@@ -1,6 +1,18 @@
 # Audit de l'objectif complet — 14 septembre 2026
 
-**Objectif non atteint ; recherche reprise sur la candidate projective.**
+**Objectif non atteint ; nouvelle construction fonctionnelle testée.**
+
+## Reprise : faire apprendre l'usage d'une estimation interne
+
+Le [pilote de vérification](LEARNED_VERIFICATION_RESULTS.md) apprend une politique
+à partir des résultats des choix et la branche à `SourceAgent`. Les trois
+moniteurs satisfont les critères exploratoires dans la distribution initiale,
+mais échouent lorsque la source devient indépendante des indices. Les contrôles
+à information égale ne montrent pas de supériorité générale sur la règle
+analytique. Cette reprise répond à une lacune de construction précise ; elle
+ne remplace pas l'objectif d'expérience vécue par la réussite de cette tâche.
+L'attribution d'une conscience et la nouveauté d'une méthode qui la produirait
+restent non établies. Les sections ci-dessous conservent les examens précédents.
 
 ## Réexamen du point de vue projectif
 

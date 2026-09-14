@@ -34,6 +34,7 @@ jobs:
       - run: python scripts/audit_self_monitor_information.py
       - run: python scripts/check_temporal_effects.py
       - run: python scripts/check_source_monitor.py
+      - run: python -m research.learn_source_policy --out artifacts/learned-verification --check
 
   human-research:
     runs-on: ubuntu-latest

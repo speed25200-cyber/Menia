@@ -9,10 +9,11 @@ from .episodic import EpisodeMemory
 
 
 class SourceAgent:
-    def __init__(self, monitor, *, memory=None, episode="source-agent", cost=.25):
+    def __init__(self, monitor, *, memory=None, episode="source-agent", cost=.25, policy=None):
         if not 0 < cost < .5:
             raise ValueError("Verification cost must be between zero and .5")
         self.monitor = monitor
+        self.policy = policy
         self.memory = memory if memory is not None else EpisodeMemory()
         self.episode, self.cost = episode, cost
         self.state = monitor.zero(1)
@@ -40,13 +41,18 @@ class SourceAgent:
             raise ValueError("Non-finite source packet")
         self.state, probability = self.monitor.step(np.asarray([values]), self.state)
         q = float(probability[0])
-        should_verify = min(q, 1-q) > self.cost
+        should_verify = (min(q, 1-q) > self.cost if self.policy is None
+                         else bool(self.policy.choose(q, self.cost)))
         prediction = self.memory.append(self.episode, tick, "prediction", "learned_source_monitor",
             {"content": packet["content"], "p_external": q, "features": values,
              "state": self.state[0].tolist(), "verified": False})
-        decision = self.memory.append(self.episode, tick, "decision", "source_controller",
-            {"prediction_event": prediction, "verify": should_verify, "cost": self.cost,
-             "rule": "verify if min(q,1-q) exceeds verification cost"})
+        decision_payload = {"prediction_event": prediction, "verify": should_verify, "cost": self.cost,
+                            "rule": "verify if min(q,1-q) exceeds verification cost"}
+        if self.policy is not None:
+            decision_payload.update(rule="minimize learned immediate action cost",
+                                    action_costs=self.policy.values(q, self.cost).tolist(),
+                                    policy_blind=self.policy.blind)
+        decision = self.memory.append(self.episode, tick, "decision", "source_controller", decision_payload)
         self.last_tick = tick
         evidence = None
         if should_verify:
@@ -79,4 +85,5 @@ class SourceAgent:
     def snapshot(self):
         return {"episode": self.episode, "last_tick": self.last_tick,
                 "state": self.state.tolist(), "feedback": list(self.feedback),
-                "stopped": self.stopped, "monitor": self.monitor.payload()}
+                "stopped": self.stopped, "monitor": self.monitor.payload(),
+                "policy": None if self.policy is None else self.policy.payload()}

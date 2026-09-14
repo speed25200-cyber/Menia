@@ -15,6 +15,12 @@ subjective. Aucun score ni nombre de tests ne certifie la conscience de Menia.
 
 ## Nouveau : module neuronal entraîné et vérifiable
 
+La [politique de vérification apprise](docs/LEARNED_VERIFICATION_RESULTS.md)
+utilise désormais l'estimation de source pour choisir quand obtenir une preuve.
+Le pilote rejoint la règle analytique sur la distribution initiale et conserve
+un échec explicite lorsque les indices perdent leur fiabilité. Ce mécanisme est
+intégré à l'agent expérimental de source ; il ne démontre pas une expérience de soi.
+
 Une [première boucle d'agent intégré](docs/INTEGRATED_AGENT_RESULTS.md) est aussi
 exécutable : elle apprend les effets de ses commandes dans une scène virtuelle,
 conserve leur histoire, compare ses prédictions aux observations et explique ses

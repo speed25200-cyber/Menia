@@ -1,6 +1,13 @@
 # État de l'objectif de conscience et de nouveauté
 
-**État actuel : objectif non atteint, recherche reprise sur une candidate projective.**
+**État actuel : objectif non atteint ; une politique de vérification apprise est intégrée à l'agent expérimental.**
+Le [nouveau pilote](LEARNED_VERIFICATION_RESULTS.md) remplace une décision imposée
+par l'apprentissage de coûts d'action. L'usage utile de l'estimation est acquis
+sur la distribution initiale ; la rupture de fiabilité conserve un échec. Cela
+traite une lacune de construction sans établir une expérience subjective ni une
+invention inédite. L'intégration générale de perception, mémoire, action et modèle
+de soi demeure partielle.
+
 L'[examen du point de vue projectif](PROJECTIVE_SELF_BRIDGE.md) ajoute des sources
 sur le soi phénoménal et deux contrôles mathématiques exécutés. Il précise les
 conditions de transport d'un modèle d'observation et les limites des moments

@@ -1,0 +1,2633 @@
+{
+  "format": "menia-learned-verification",
+  "version": 1,
+  "status": "completed",
+  "scope": "functional synthetic pilot; subjective experience and novelty unestablished",
+  "versions": {
+    "python": "3.12.10",
+    "numpy": "2.2.6"
+  },
+  "source_sha256": {
+    "menia/source_environment.py": "e53e7a9ac58d27f1c97da8e98740a7dfddb98ef3439dde90d7c7e4fedb8fde27",
+    "menia/source_monitor.py": "7d3bbe81ba30a21861a366efe9abafdd5515176c1d21a6f3bcc6d1b7457d23d9",
+    "menia/source_policy.py": "d5460bfe6b943df4a48438db8cc84caa4225a928b8589f0928e0323d6d085431",
+    "menia/source_agent.py": "5f7892f7b04b8bdd9158f156f064978a2ecd95d47058ab9b6c173cdf5a206403",
+    "research/learn_source_policy.py": "1f3c4f76d48dffcac9853451c35be6b86c15aa10ea61c8c233da090cd6a27cf0",
+    "docs/LEARNED_VERIFICATION_PROTOCOL.md": "3ca3f107fece8c511ac39b382ca1d11538fbbf84f41d86b3a0b0f330290ded5b"
+  },
+  "models": [
+    {
+      "monitor_seed": 11,
+      "monitor_sha256": "6688113997dc3cd7009014dcc52d2b316e367103059aa0962b7c188ea375f354",
+      "policies": {
+        "learned": {
+          "file": "learned-11.json",
+          "sha256": "821c1e0d71e0348d605c86f89beaf8970bda80d106548feed557a3b685ed8c41"
+        },
+        "blind": {
+          "file": "blind-11.json",
+          "sha256": "38fdbe153b1f2cd6e66a0f36c5c6fa99e9edd5643d324232467d0d474ebc61b6"
+        }
+      },
+      "training": {
+        "environment_seed": 71011,
+        "exploration_seed": 72011,
+        "episodes": 512,
+        "steps_per_episode": 48,
+        "verified": 12295,
+        "accepted": 12281,
+        "parameters_per_policy": 20
+      },
+      "evaluation": [
+        {
+          "condition": "standard",
+          "cost": 0.1,
+          "seed": 81000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.08304850260416669,
+              "verification_rate": 0.60302734375,
+              "memory_error_rate": 0.022745768229166668,
+              "brier": 0.13908837137467722,
+              "episode_loss_sd": 0.022879467393163176,
+              "probe_changed_rate": 0.46875,
+              "probe_loss_delta": 0.055419921875
+            },
+            "blind": {
+              "loss": 0.09999999999999996,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.1376504766968686,
+              "episode_loss_sd": 2.778272043934457e-17
+            },
+            "analytic": {
+              "loss": 0.08263346354166667,
+              "verification_rate": 0.62939453125,
+              "memory_error_rate": 0.019694010416666668,
+              "brier": 0.13899259627155744,
+              "episode_loss_sd": 0.02161416273787372
+            },
+            "always": {
+              "loss": 0.09999999999999996,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.1376504766968686,
+              "episode_loss_sd": 2.778272043934457e-17
+            },
+            "never": {
+              "loss": 0.20442708333333334,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.20442708333333334,
+              "brier": 0.14264754085047693,
+              "episode_loss_sd": 0.0646706661798406
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.0169514973958333,
+              "episode_difference_sd": 0.022879467393163176
+            },
+            "analytic": {
+              "mean_loss_difference": 0.00041503906249999966,
+              "episode_difference_sd": 0.01080280698658975
+            }
+          }
+        },
+        {
+          "condition": "standard",
+          "cost": 0.25,
+          "seed": 81000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.15757242838541666,
+              "verification_rate": 0.3443196614583333,
+              "memory_error_rate": 0.07149251302083333,
+              "brier": 0.13982512298794958,
+              "episode_loss_sd": 0.041493668212040286,
+              "probe_changed_rate": 0.4485677083333333,
+              "probe_loss_delta": 0.062093098958333336
+            },
+            "blind": {
+              "loss": 0.20442708333333334,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.20442708333333334,
+              "brier": 0.14264754085047693,
+              "episode_loss_sd": 0.0646706661798406
+            },
+            "analytic": {
+              "loss": 0.158538818359375,
+              "verification_rate": 0.3439534505208333,
+              "memory_error_rate": 0.07255045572916667,
+              "brier": 0.13986033979587284,
+              "episode_loss_sd": 0.041199091773584606
+            },
+            "always": {
+              "loss": 0.25,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.1376504766968686,
+              "episode_loss_sd": 0.0
+            },
+            "never": {
+              "loss": 0.20442708333333334,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.20442708333333334,
+              "brier": 0.14264754085047693,
+              "episode_loss_sd": 0.0646706661798406
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.04685465494791667,
+              "episode_difference_sd": 0.0448795389115814
+            },
+            "analytic": {
+              "mean_loss_difference": -0.0009663899739583339,
+              "episode_difference_sd": 0.013206285023709966
+            }
+          }
+        },
+        {
+          "condition": "standard",
+          "cost": 0.4,
+          "seed": 81000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.1966796875,
+              "verification_rate": 0.17716471354166666,
+              "memory_error_rate": 0.12581380208333334,
+              "brier": 0.14128299962358812,
+              "episode_loss_sd": 0.05519492769463438,
+              "probe_changed_rate": 0.2882486979166667,
+              "probe_loss_delta": 0.040364583333333336
+            },
+            "blind": {
+              "loss": 0.20442708333333334,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.20442708333333334,
+              "brier": 0.14264754085047693,
+              "episode_loss_sd": 0.0646706661798406
+            },
+            "analytic": {
+              "loss": 0.19729003906250006,
+              "verification_rate": 0.141357421875,
+              "memory_error_rate": 0.1407470703125,
+              "brier": 0.1415719552614705,
+              "episode_loss_sd": 0.0554766025224979
+            },
+            "always": {
+              "loss": 0.39999999999999986,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.1376504766968686,
+              "episode_loss_sd": 1.1113088175737828e-16
+            },
+            "never": {
+              "loss": 0.20442708333333334,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.20442708333333334,
+              "brier": 0.14264754085047693,
+              "episode_loss_sd": 0.0646706661798406
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.007747395833333304,
+              "episode_difference_sd": 0.030596352103932925
+            },
+            "analytic": {
+              "mean_loss_difference": -0.0006103515624999957,
+              "episode_difference_sd": 0.01745721098326708
+            }
+          }
+        },
+        {
+          "condition": "strong_imagery",
+          "cost": 0.1,
+          "seed": 82000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.09281005859374998,
+              "verification_rate": 0.5871175130208334,
+              "memory_error_rate": 0.034098307291666664,
+              "brier": 0.15884916568379523,
+              "episode_loss_sd": 0.027105556154551153,
+              "probe_changed_rate": 0.478759765625,
+              "probe_loss_delta": 0.06368001302083333
+            },
+            "blind": {
+              "loss": 0.09999999999999996,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.15732314470905154,
+              "episode_loss_sd": 2.778272043934457e-17
+            },
+            "analytic": {
+              "loss": 0.09533284505208332,
+              "verification_rate": 0.6009521484375,
+              "memory_error_rate": 0.035237630208333336,
+              "brier": 0.15873347186261513,
+              "episode_loss_sd": 0.028413394374229267
+            },
+            "always": {
+              "loss": 0.09999999999999996,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.15732314470905154,
+              "episode_loss_sd": 2.778272043934457e-17
+            },
+            "never": {
+              "loss": 0.23856608072916666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.23856608072916666,
+              "brier": 0.1637204891293683,
+              "episode_loss_sd": 0.07590181402682784
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.007189941406249982,
+              "episode_difference_sd": 0.027105556154551153
+            },
+            "analytic": {
+              "mean_loss_difference": -0.002522786458333329,
+              "episode_difference_sd": 0.010557680050559567
+            }
+          }
+        },
+        {
+          "condition": "strong_imagery",
+          "cost": 0.25,
+          "seed": 82000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.17720540364583334,
+              "verification_rate": 0.3343098958333333,
+              "memory_error_rate": 0.0936279296875,
+              "brier": 0.15972088930474224,
+              "episode_loss_sd": 0.04924578285868658,
+              "probe_changed_rate": 0.442138671875,
+              "probe_loss_delta": 0.06201171875
+            },
+            "blind": {
+              "loss": 0.23856608072916666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.23856608072916666,
+              "brier": 0.1637204891293683,
+              "episode_loss_sd": 0.07590181402682784
+            },
+            "analytic": {
+              "loss": 0.18257649739583334,
+              "verification_rate": 0.330078125,
+              "memory_error_rate": 0.10005696614583333,
+              "brier": 0.15951645139914647,
+              "episode_loss_sd": 0.050615565012028046
+            },
+            "always": {
+              "loss": 0.25,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.15732314470905154,
+              "episode_loss_sd": 0.0
+            },
+            "never": {
+              "loss": 0.23856608072916666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.23856608072916666,
+              "brier": 0.1637204891293683,
+              "episode_loss_sd": 0.07590181402682784
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.06136067708333334,
+              "episode_difference_sd": 0.04967498352590655
+            },
+            "analytic": {
+              "mean_loss_difference": -0.00537109375,
+              "episode_difference_sd": 0.014250576188650183
+            }
+          }
+        },
+        {
+          "condition": "strong_imagery",
+          "cost": 0.4,
+          "seed": 82000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.2179606119791667,
+              "verification_rate": 0.17329915364583334,
+              "memory_error_rate": 0.14864095052083334,
+              "brier": 0.1613849195177815,
+              "episode_loss_sd": 0.06218845570399051,
+              "probe_changed_rate": 0.28564453125,
+              "probe_loss_delta": 0.044718424479166664
+            },
+            "blind": {
+              "loss": 0.23856608072916666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.23856608072916666,
+              "brier": 0.1637204891293683,
+              "episode_loss_sd": 0.07590181402682784
+            },
+            "analytic": {
+              "loss": 0.22572428385416668,
+              "verification_rate": 0.1326904296875,
+              "memory_error_rate": 0.17264811197916666,
+              "brier": 0.16153753749506855,
+              "episode_loss_sd": 0.06540969111206438
+            },
+            "always": {
+              "loss": 0.39999999999999986,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.15732314470905154,
+              "episode_loss_sd": 1.1113088175737828e-16
+            },
+            "never": {
+              "loss": 0.23856608072916666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.23856608072916666,
+              "brier": 0.1637204891293683,
+              "episode_loss_sd": 0.07590181402682784
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.02060546874999997,
+              "episode_difference_sd": 0.03388650827339908
+            },
+            "analytic": {
+              "mean_loss_difference": -0.007763671874999995,
+              "episode_difference_sd": 0.019908901237453727
+            }
+          }
+        },
+        {
+          "condition": "trace_removed",
+          "cost": 0.1,
+          "seed": 83000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.08780517578125001,
+              "verification_rate": 0.7258707682291666,
+              "memory_error_rate": 0.015218098958333334,
+              "brier": 0.15446107951771526,
+              "episode_loss_sd": 0.018479193732756426,
+              "probe_changed_rate": 0.3968098958333333,
+              "probe_loss_delta": 0.045206705729166664
+            },
+            "blind": {
+              "loss": 0.09999999999999996,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.15226122381203788,
+              "episode_loss_sd": 2.778272043934457e-17
+            },
+            "analytic": {
+              "loss": 0.08865966796875001,
+              "verification_rate": 0.7498779296875,
+              "memory_error_rate": 0.013671875,
+              "brier": 0.1539234255909155,
+              "episode_loss_sd": 0.017259602592996914
+            },
+            "always": {
+              "loss": 0.09999999999999996,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.15226122381203788,
+              "episode_loss_sd": 2.778272043934457e-17
+            },
+            "never": {
+              "loss": 0.24967447916666666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.24967447916666666,
+              "brier": 0.16852273861145287,
+              "episode_loss_sd": 0.07269573860060234
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.012194824218749971,
+              "episode_difference_sd": 0.018479193732756426
+            },
+            "analytic": {
+              "mean_loss_difference": -0.0008544921875000012,
+              "episode_difference_sd": 0.01000527624463222
+            }
+          }
+        },
+        {
+          "condition": "trace_removed",
+          "cost": 0.25,
+          "seed": 83000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.17460123697916666,
+              "verification_rate": 0.4534505208333333,
+              "memory_error_rate": 0.061238606770833336,
+              "brier": 0.15765385889500258,
+              "episode_loss_sd": 0.040711464448088625,
+              "probe_changed_rate": 0.4939778645833333,
+              "probe_loss_delta": 0.06404622395833333
+            },
+            "blind": {
+              "loss": 0.24967447916666666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.24967447916666666,
+              "brier": 0.16852273861145287,
+              "episode_loss_sd": 0.07269573860060234
+            },
+            "analytic": {
+              "loss": 0.17656453450520834,
+              "verification_rate": 0.4538167317708333,
+              "memory_error_rate": 0.0631103515625,
+              "brier": 0.15711740261820065,
+              "episode_loss_sd": 0.04106215088174412
+            },
+            "always": {
+              "loss": 0.25,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.15226122381203788,
+              "episode_loss_sd": 0.0
+            },
+            "never": {
+              "loss": 0.24967447916666666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.24967447916666666,
+              "brier": 0.16852273861145287,
+              "episode_loss_sd": 0.07269573860060234
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.0750732421875,
+              "episode_difference_sd": 0.0557300376604257
+            },
+            "analytic": {
+              "mean_loss_difference": -0.001963297526041666,
+              "episode_difference_sd": 0.015899897602301222
+            }
+          }
+        },
+        {
+          "condition": "trace_removed",
+          "cost": 0.4,
+          "seed": 83000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.22740071614583335,
+              "verification_rate": 0.24287923177083334,
+              "memory_error_rate": 0.1302490234375,
+              "brier": 0.1619415177390823,
+              "episode_loss_sd": 0.05619237320685181,
+              "probe_changed_rate": 0.3606770833333333,
+              "probe_loss_delta": 0.048177083333333336
+            },
+            "blind": {
+              "loss": 0.24967447916666666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.24967447916666666,
+              "brier": 0.16852273861145287,
+              "episode_loss_sd": 0.07269573860060234
+            },
+            "analytic": {
+              "loss": 0.23125813802083336,
+              "verification_rate": 0.19108072916666666,
+              "memory_error_rate": 0.15482584635416666,
+              "brier": 0.16313509566592563,
+              "episode_loss_sd": 0.060090824558258246
+            },
+            "always": {
+              "loss": 0.39999999999999986,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.15226122381203788,
+              "episode_loss_sd": 1.1113088175737828e-16
+            },
+            "never": {
+              "loss": 0.24967447916666666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.24967447916666666,
+              "brier": 0.16852273861145287,
+              "episode_loss_sd": 0.07269573860060234
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.022273763020833292,
+              "episode_difference_sd": 0.04307778882399885
+            },
+            "analytic": {
+              "mean_loss_difference": -0.0038574218749999924,
+              "episode_difference_sd": 0.02357972290975768
+            }
+          }
+        },
+        {
+          "condition": "persistent",
+          "cost": 0.1,
+          "seed": 84000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.07970377604166667,
+              "verification_rate": 0.56591796875,
+              "memory_error_rate": 0.023111979166666668,
+              "brier": 0.12597462743096768,
+              "episode_loss_sd": 0.02331660605949537,
+              "probe_changed_rate": 0.4883626302083333,
+              "probe_loss_delta": 0.0548095703125
+            },
+            "blind": {
+              "loss": 0.09999999999999996,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.12394804711946072,
+              "episode_loss_sd": 2.778272043934457e-17
+            },
+            "analytic": {
+              "loss": 0.07989501953125001,
+              "verification_rate": 0.5934651692708334,
+              "memory_error_rate": 0.020548502604166668,
+              "brier": 0.12570789402954005,
+              "episode_loss_sd": 0.021022546647255603
+            },
+            "always": {
+              "loss": 0.09999999999999996,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.12394804711946072,
+              "episode_loss_sd": 2.778272043934457e-17
+            },
+            "never": {
+              "loss": 0.18587239583333334,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.18587239583333334,
+              "brier": 0.13159452877009367,
+              "episode_loss_sd": 0.061333115248112656
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.0202962239583333,
+              "episode_difference_sd": 0.02331660605949537
+            },
+            "analytic": {
+              "mean_loss_difference": -0.00019124348958333574,
+              "episode_difference_sd": 0.009851638121878715
+            }
+          }
+        },
+        {
+          "condition": "persistent",
+          "cost": 0.25,
+          "seed": 84000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.14323933919270834,
+              "verification_rate": 0.3180745442708333,
+              "memory_error_rate": 0.063720703125,
+              "brier": 0.12778036775609058,
+              "episode_loss_sd": 0.040119259248345716,
+              "probe_changed_rate": 0.4306640625,
+              "probe_loss_delta": 0.058553059895833336
+            },
+            "blind": {
+              "loss": 0.18587239583333334,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.18587239583333334,
+              "brier": 0.13159452877009367,
+              "episode_loss_sd": 0.061333115248112656
+            },
+            "analytic": {
+              "loss": 0.14412434895833334,
+              "verification_rate": 0.3181966145833333,
+              "memory_error_rate": 0.0645751953125,
+              "brier": 0.12781387447670406,
+              "episode_loss_sd": 0.04024006825857058
+            },
+            "always": {
+              "loss": 0.25,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.12394804711946072,
+              "episode_loss_sd": 0.0
+            },
+            "never": {
+              "loss": 0.18587239583333334,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.18587239583333334,
+              "brier": 0.13159452877009367,
+              "episode_loss_sd": 0.061333115248112656
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.042633056640625,
+              "episode_difference_sd": 0.042632277945913524
+            },
+            "analytic": {
+              "mean_loss_difference": -0.0008850097656249996,
+              "episode_difference_sd": 0.012861811883224392
+            }
+          }
+        },
+        {
+          "condition": "persistent",
+          "cost": 0.4,
+          "seed": 84000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.17769368489583334,
+              "verification_rate": 0.16215006510416666,
+              "memory_error_rate": 0.11283365885416667,
+              "brier": 0.1293851857198088,
+              "episode_loss_sd": 0.0525506638739021,
+              "probe_changed_rate": 0.2669270833333333,
+              "probe_loss_delta": 0.040364583333333336
+            },
+            "blind": {
+              "loss": 0.18587239583333334,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.18587239583333334,
+              "brier": 0.13159452877009367,
+              "episode_loss_sd": 0.061333115248112656
+            },
+            "analytic": {
+              "loss": 0.17762044270833335,
+              "verification_rate": 0.13053385416666666,
+              "memory_error_rate": 0.12540690104166666,
+              "brier": 0.1299869711567582,
+              "episode_loss_sd": 0.05453313615160453
+            },
+            "always": {
+              "loss": 0.39999999999999986,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.12394804711946072,
+              "episode_loss_sd": 1.1113088175737828e-16
+            },
+            "never": {
+              "loss": 0.18587239583333334,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.18587239583333334,
+              "brier": 0.13159452877009367,
+              "episode_loss_sd": 0.061333115248112656
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.008178710937499976,
+              "episode_difference_sd": 0.03089054240784224
+            },
+            "analytic": {
+              "mean_loss_difference": 7.324218750000413e-05,
+              "episode_difference_sd": 0.017395630627849573
+            }
+          }
+        },
+        {
+          "condition": "ambiguous",
+          "cost": 0.1,
+          "seed": 85000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.23575846354166655,
+              "verification_rate": 0.6571451822916666,
+              "memory_error_rate": 0.1700439453125,
+              "brier": 0.3566410370787954,
+              "episode_loss_sd": 0.05084530041019925,
+              "probe_changed_rate": 0.4412434895833333,
+              "probe_loss_delta": 0.001953125
+            },
+            "blind": {
+              "loss": 0.09999999999999996,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.3536838491372527,
+              "episode_loss_sd": 2.778272043934457e-17
+            },
+            "analytic": {
+              "loss": 0.22357991536458321,
+              "verification_rate": 0.6871337890625,
+              "memory_error_rate": 0.15486653645833334,
+              "brier": 0.35672774688798087,
+              "episode_loss_sd": 0.050422821124180575
+            },
+            "always": {
+              "loss": 0.09999999999999996,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.3536838491372527,
+              "episode_loss_sd": 2.778272043934457e-17
+            },
+            "never": {
+              "loss": 0.5030517578125,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.5030517578125,
+              "brier": 0.3469043164487136,
+              "episode_loss_sd": 0.07232170179785273
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": 0.13575846354166657,
+              "episode_difference_sd": 0.05084530041019925
+            },
+            "analytic": {
+              "mean_loss_difference": 0.012178548177083331,
+              "episode_difference_sd": 0.027376513301304226
+            }
+          }
+        },
+        {
+          "condition": "ambiguous",
+          "cost": 0.25,
+          "seed": 85000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.40887451171875,
+              "verification_rate": 0.367919921875,
+              "memory_error_rate": 0.31689453125,
+              "brier": 0.3544135459188982,
+              "episode_loss_sd": 0.059286614182755604,
+              "probe_changed_rate": 0.4644368489583333,
+              "probe_loss_delta": 0.0025227864583333335
+            },
+            "blind": {
+              "loss": 0.5030517578125,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.5030517578125,
+              "brier": 0.3469043164487136,
+              "episode_loss_sd": 0.07232170179785273
+            },
+            "analytic": {
+              "loss": 0.4088134765625,
+              "verification_rate": 0.3660481770833333,
+              "memory_error_rate": 0.3173014322916667,
+              "brier": 0.3539908708633508,
+              "episode_loss_sd": 0.05929555707510125
+            },
+            "always": {
+              "loss": 0.25,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.3536838491372527,
+              "episode_loss_sd": 0.0
+            },
+            "never": {
+              "loss": 0.5030517578125,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.5030517578125,
+              "brier": 0.3469043164487136,
+              "episode_loss_sd": 0.07232170179785273
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.09417724609375,
+              "episode_difference_sd": 0.05063972670380003
+            },
+            "analytic": {
+              "mean_loss_difference": 6.103515625000043e-05,
+              "episode_difference_sd": 0.019424948799653716
+            }
+          }
+        },
+        {
+          "condition": "ambiguous",
+          "cost": 0.4,
+          "seed": 85000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.4842773437499999,
+              "verification_rate": 0.18143717447916666,
+              "memory_error_rate": 0.4117024739583333,
+              "brier": 0.3510669158007517,
+              "episode_loss_sd": 0.06552494890533736,
+              "probe_changed_rate": 0.2910970052083333,
+              "probe_loss_delta": 0.0013020833333333333
+            },
+            "blind": {
+              "loss": 0.5030517578125,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.5030517578125,
+              "brier": 0.3469043164487136,
+              "episode_loss_sd": 0.07232170179785273
+            },
+            "analytic": {
+              "loss": 0.48837076822916664,
+              "verification_rate": 0.14111328125,
+              "memory_error_rate": 0.4319254557291667,
+              "brier": 0.35021209955528426,
+              "episode_loss_sd": 0.0668322508098493
+            },
+            "always": {
+              "loss": 0.39999999999999986,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.3536838491372527,
+              "episode_loss_sd": 1.1113088175737828e-16
+            },
+            "never": {
+              "loss": 0.5030517578125,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.5030517578125,
+              "brier": 0.3469043164487136,
+              "episode_loss_sd": 0.07232170179785273
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.01877441406250005,
+              "episode_difference_sd": 0.03275238946621238
+            },
+            "analytic": {
+              "mean_loss_difference": -0.004093424479166677,
+              "episode_difference_sd": 0.020067328131871197
+            }
+          }
+        }
+      ],
+      "exploratory_criteria": {
+        "better_than_blind": true,
+        "within_001_of_analytic": true,
+        "graft_changes_choices": true,
+        "graft_increases_immediate_cost": true
+      }
+    },
+    {
+      "monitor_seed": 23,
+      "monitor_sha256": "fefe20f7e484f8df45c5edff208a38cab064ed32aed54215f940951876f7f893",
+      "policies": {
+        "learned": {
+          "file": "learned-23.json",
+          "sha256": "7d42e7fe83cc44a60233740fe158d190fba38f5e570724ae17ee50e0b054b39e"
+        },
+        "blind": {
+          "file": "blind-23.json",
+          "sha256": "5815fc6d7481643a0db58814a014ac327bf9f3131774a42db4c9dcf14c8217c1"
+        }
+      },
+      "training": {
+        "environment_seed": 71023,
+        "exploration_seed": 72023,
+        "episodes": 512,
+        "steps_per_episode": 48,
+        "verified": 12266,
+        "accepted": 12310,
+        "parameters_per_policy": 20
+      },
+      "evaluation": [
+        {
+          "condition": "standard",
+          "cost": 0.1,
+          "seed": 81000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.08288167317708335,
+              "verification_rate": 0.6330973307291666,
+              "memory_error_rate": 0.019571940104166668,
+              "brier": 0.13862346097748934,
+              "episode_loss_sd": 0.021272071253044623,
+              "probe_changed_rate": 0.4558919270833333,
+              "probe_loss_delta": 0.052652994791666664
+            },
+            "blind": {
+              "loss": 0.09999999999999996,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.13725910985159392,
+              "episode_loss_sd": 2.778272043934457e-17
+            },
+            "analytic": {
+              "loss": 0.08286946614583335,
+              "verification_rate": 0.6622721354166666,
+              "memory_error_rate": 0.016642252604166668,
+              "brier": 0.13871137850455248,
+              "episode_loss_sd": 0.019841999887405315
+            },
+            "always": {
+              "loss": 0.09999999999999996,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.13725910985159392,
+              "episode_loss_sd": 2.778272043934457e-17
+            },
+            "never": {
+              "loss": 0.2060546875,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.2060546875,
+              "brier": 0.14375893531663855,
+              "episode_loss_sd": 0.06645761698354485
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.017118326822916634,
+              "episode_difference_sd": 0.021272071253044623
+            },
+            "analytic": {
+              "mean_loss_difference": 1.2207031249998493e-05,
+              "episode_difference_sd": 0.00962764438423656
+            }
+          }
+        },
+        {
+          "condition": "standard",
+          "cost": 0.25,
+          "seed": 81000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.15888468424479166,
+              "verification_rate": 0.3560791015625,
+              "memory_error_rate": 0.06986490885416667,
+              "brier": 0.13979218303827215,
+              "episode_loss_sd": 0.0408002080242736,
+              "probe_changed_rate": 0.45703125,
+              "probe_loss_delta": 0.060791015625
+            },
+            "blind": {
+              "loss": 0.2060546875,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.2060546875,
+              "brier": 0.14375893531663855,
+              "episode_loss_sd": 0.06645761698354485
+            },
+            "analytic": {
+              "loss": 0.15879313151041666,
+              "verification_rate": 0.362548828125,
+              "memory_error_rate": 0.06815592447916667,
+              "brier": 0.13973390167433872,
+              "episode_loss_sd": 0.040423716751131544
+            },
+            "always": {
+              "loss": 0.25,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.13725910985159392,
+              "episode_loss_sd": 0.0
+            },
+            "never": {
+              "loss": 0.2060546875,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.2060546875,
+              "brier": 0.14375893531663855,
+              "episode_loss_sd": 0.06645761698354485
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.04717000325520833,
+              "episode_difference_sd": 0.047804816765065615
+            },
+            "analytic": {
+              "mean_loss_difference": 9.155273437500016e-05,
+              "episode_difference_sd": 0.00603832770843882
+            }
+          }
+        },
+        {
+          "condition": "standard",
+          "cost": 0.4,
+          "seed": 81000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.1972900390625,
+              "verification_rate": 0.14359537760416666,
+              "memory_error_rate": 0.13985188802083334,
+              "brier": 0.14190774387776228,
+              "episode_loss_sd": 0.05624657823477701,
+              "probe_changed_rate": 0.240478515625,
+              "probe_loss_delta": 0.033894856770833336
+            },
+            "blind": {
+              "loss": 0.2060546875,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.2060546875,
+              "brier": 0.14375893531663855,
+              "episode_loss_sd": 0.06645761698354485
+            },
+            "analytic": {
+              "loss": 0.1974772135416667,
+              "verification_rate": 0.14497884114583334,
+              "memory_error_rate": 0.13948567708333334,
+              "brier": 0.14195502083183134,
+              "episode_loss_sd": 0.05532386531478555
+            },
+            "always": {
+              "loss": 0.39999999999999986,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.13725910985159392,
+              "episode_loss_sd": 1.1113088175737828e-16
+            },
+            "never": {
+              "loss": 0.2060546875,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.2060546875,
+              "brier": 0.14375893531663855,
+              "episode_loss_sd": 0.06645761698354485
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.008764648437499975,
+              "episode_difference_sd": 0.02900928655634327
+            },
+            "analytic": {
+              "mean_loss_difference": -0.00018717447916666576,
+              "episode_difference_sd": 0.017999509621087862
+            }
+          }
+        },
+        {
+          "condition": "strong_imagery",
+          "cost": 0.1,
+          "seed": 82000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.08951416015625001,
+              "verification_rate": 0.6160074869791666,
+              "memory_error_rate": 0.027913411458333332,
+              "brier": 0.15509704082902503,
+              "episode_loss_sd": 0.02477002623153071,
+              "probe_changed_rate": 0.467529296875,
+              "probe_loss_delta": 0.059895833333333336
+            },
+            "blind": {
+              "loss": 0.09999999999999996,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.15504357906246258,
+              "episode_loss_sd": 2.778272043934457e-17
+            },
+            "analytic": {
+              "loss": 0.09092610677083333,
+              "verification_rate": 0.63623046875,
+              "memory_error_rate": 0.027303059895833332,
+              "brier": 0.15510144032369852,
+              "episode_loss_sd": 0.02506333449262935
+            },
+            "always": {
+              "loss": 0.09999999999999996,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.15504357906246258,
+              "episode_loss_sd": 2.778272043934457e-17
+            },
+            "never": {
+              "loss": 0.227294921875,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.227294921875,
+              "brier": 0.15730047048776574,
+              "episode_loss_sd": 0.06970136528120449
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.010485839843749978,
+              "episode_difference_sd": 0.024770026231530705
+            },
+            "analytic": {
+              "mean_loss_difference": -0.0014119466145833316,
+              "episode_difference_sd": 0.008383039427383531
+            }
+          }
+        },
+        {
+          "condition": "strong_imagery",
+          "cost": 0.25,
+          "seed": 82000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.17690022786458334,
+              "verification_rate": 0.3441569010416667,
+              "memory_error_rate": 0.09086100260416667,
+              "brier": 0.15508620354131317,
+              "episode_loss_sd": 0.0483206267004364,
+              "probe_changed_rate": 0.441650390625,
+              "probe_loss_delta": 0.059529622395833336
+            },
+            "blind": {
+              "loss": 0.227294921875,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.227294921875,
+              "brier": 0.15730047048776574,
+              "episode_loss_sd": 0.06970136528120449
+            },
+            "analytic": {
+              "loss": 0.17744954427083334,
+              "verification_rate": 0.35009765625,
+              "memory_error_rate": 0.08992513020833333,
+              "brier": 0.1550340243473681,
+              "episode_loss_sd": 0.04803861503548699
+            },
+            "always": {
+              "loss": 0.25,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.15504357906246258,
+              "episode_loss_sd": 0.0
+            },
+            "never": {
+              "loss": 0.227294921875,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.227294921875,
+              "brier": 0.15730047048776574,
+              "episode_loss_sd": 0.06970136528120449
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.050394694010416664,
+              "episode_difference_sd": 0.045595475492197106
+            },
+            "analytic": {
+              "mean_loss_difference": -0.0005493164062499998,
+              "episode_difference_sd": 0.004910909492024045
+            }
+          }
+        },
+        {
+          "condition": "strong_imagery",
+          "cost": 0.4,
+          "seed": 82000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.21259765625000004,
+              "verification_rate": 0.14208984375,
+              "memory_error_rate": 0.15576171875,
+              "brier": 0.15657773086582913,
+              "episode_loss_sd": 0.06133417983953031,
+              "probe_changed_rate": 0.24088541666666666,
+              "probe_loss_delta": 0.035888671875
+            },
+            "blind": {
+              "loss": 0.227294921875,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.227294921875,
+              "brier": 0.15730047048776574,
+              "episode_loss_sd": 0.06970136528120449
+            },
+            "analytic": {
+              "loss": 0.21802571614583335,
+              "verification_rate": 0.1429443359375,
+              "memory_error_rate": 0.16084798177083334,
+              "brier": 0.1562448971284152,
+              "episode_loss_sd": 0.06215099591515526
+            },
+            "always": {
+              "loss": 0.39999999999999986,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.15504357906246258,
+              "episode_loss_sd": 1.1113088175737828e-16
+            },
+            "never": {
+              "loss": 0.227294921875,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.227294921875,
+              "brier": 0.15730047048776574,
+              "episode_loss_sd": 0.06970136528120449
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.014697265624999975,
+              "episode_difference_sd": 0.02983612079798559
+            },
+            "analytic": {
+              "mean_loss_difference": -0.005428059895833335,
+              "episode_difference_sd": 0.017698870953234185
+            }
+          }
+        },
+        {
+          "condition": "trace_removed",
+          "cost": 0.1,
+          "seed": 83000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.08791097005208333,
+              "verification_rate": 0.7635498046875,
+              "memory_error_rate": 0.011555989583333334,
+              "brier": 0.1534779293115307,
+              "episode_loss_sd": 0.015987007274696152,
+              "probe_changed_rate": 0.35888671875,
+              "probe_loss_delta": 0.0400390625
+            },
+            "blind": {
+              "loss": 0.09999999999999996,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.15167681231330313,
+              "episode_loss_sd": 2.778272043934457e-17
+            },
+            "analytic": {
+              "loss": 0.08852945963541668,
+              "verification_rate": 0.7913004557291666,
+              "memory_error_rate": 0.0093994140625,
+              "brier": 0.15306606752092447,
+              "episode_loss_sd": 0.014631299373750632
+            },
+            "always": {
+              "loss": 0.09999999999999996,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.15167681231330313,
+              "episode_loss_sd": 2.778272043934457e-17
+            },
+            "never": {
+              "loss": 0.24808756510416666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.24808756510416666,
+              "brier": 0.16845459484996908,
+              "episode_loss_sd": 0.07036126284921981
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.012089029947916632,
+              "episode_difference_sd": 0.015987007274696152
+            },
+            "analytic": {
+              "mean_loss_difference": -0.0006184895833333348,
+              "episode_difference_sd": 0.007898425335777014
+            }
+          }
+        },
+        {
+          "condition": "trace_removed",
+          "cost": 0.25,
+          "seed": 83000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.17591349283854166,
+              "verification_rate": 0.4674886067708333,
+              "memory_error_rate": 0.059041341145833336,
+              "brier": 0.15661436545733062,
+              "episode_loss_sd": 0.039132710278535605,
+              "probe_changed_rate": 0.4933268229166667,
+              "probe_loss_delta": 0.0609130859375
+            },
+            "blind": {
+              "loss": 0.24808756510416666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.24808756510416666,
+              "brier": 0.16845459484996908,
+              "episode_loss_sd": 0.07036126284921981
+            },
+            "analytic": {
+              "loss": 0.17601521809895834,
+              "verification_rate": 0.4758707682291667,
+              "memory_error_rate": 0.057047526041666664,
+              "brier": 0.15640369908181873,
+              "episode_loss_sd": 0.03881007864227502
+            },
+            "always": {
+              "loss": 0.25,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.15167681231330313,
+              "episode_loss_sd": 0.0
+            },
+            "never": {
+              "loss": 0.24808756510416666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.24808756510416666,
+              "brier": 0.16845459484996908,
+              "episode_loss_sd": 0.07036126284921981
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.072174072265625,
+              "episode_difference_sd": 0.053911663188874005
+            },
+            "analytic": {
+              "mean_loss_difference": -0.00010172526041666674,
+              "episode_difference_sd": 0.006684885778869669
+            }
+          }
+        },
+        {
+          "condition": "trace_removed",
+          "cost": 0.4,
+          "seed": 83000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.23015136718750004,
+              "verification_rate": 0.19828287760416666,
+              "memory_error_rate": 0.15083821614583334,
+              "brier": 0.16226611401600585,
+              "episode_loss_sd": 0.059035128300242726,
+              "probe_changed_rate": 0.3072916666666667,
+              "probe_loss_delta": 0.0380859375
+            },
+            "blind": {
+              "loss": 0.24808756510416666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.24808756510416666,
+              "brier": 0.16845459484996908,
+              "episode_loss_sd": 0.07036126284921981
+            },
+            "analytic": {
+              "loss": 0.22910156250000002,
+              "verification_rate": 0.20369466145833334,
+              "memory_error_rate": 0.14762369791666666,
+              "brier": 0.16181147901614384,
+              "episode_loss_sd": 0.05749557867749761
+            },
+            "always": {
+              "loss": 0.39999999999999986,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.15167681231330313,
+              "episode_loss_sd": 1.1113088175737828e-16
+            },
+            "never": {
+              "loss": 0.24808756510416666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.24808756510416666,
+              "brier": 0.16845459484996908,
+              "episode_loss_sd": 0.07036126284921981
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.017936197916666632,
+              "episode_difference_sd": 0.03647837779524501
+            },
+            "analytic": {
+              "mean_loss_difference": 0.0010498046874999976,
+              "episode_difference_sd": 0.02110190394343321
+            }
+          }
+        },
+        {
+          "condition": "persistent",
+          "cost": 0.1,
+          "seed": 84000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.07932128906250001,
+              "verification_rate": 0.5999348958333334,
+              "memory_error_rate": 0.019327799479166668,
+              "brier": 0.126569439812822,
+              "episode_loss_sd": 0.022592323843748076,
+              "probe_changed_rate": 0.4746907552083333,
+              "probe_loss_delta": 0.053507486979166664
+            },
+            "blind": {
+              "loss": 0.09999999999999996,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.12448855596700621,
+              "episode_loss_sd": 2.778272043934457e-17
+            },
+            "analytic": {
+              "loss": 0.07928873697916668,
+              "verification_rate": 0.627685546875,
+              "memory_error_rate": 0.016520182291666668,
+              "brier": 0.1263128429670285,
+              "episode_loss_sd": 0.01976686574543266
+            },
+            "always": {
+              "loss": 0.09999999999999996,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.12448855596700621,
+              "episode_loss_sd": 2.778272043934457e-17
+            },
+            "never": {
+              "loss": 0.18863932291666666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.18863932291666666,
+              "brier": 0.1340953764294984,
+              "episode_loss_sd": 0.064212439185054
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.020678710937499966,
+              "episode_difference_sd": 0.022592323843748076
+            },
+            "analytic": {
+              "mean_loss_difference": 3.2552083333330616e-05,
+              "episode_difference_sd": 0.00912437009519887
+            }
+          }
+        },
+        {
+          "condition": "persistent",
+          "cost": 0.25,
+          "seed": 84000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.145751953125,
+              "verification_rate": 0.3341471354166667,
+              "memory_error_rate": 0.062215169270833336,
+              "brier": 0.12894782286794335,
+              "episode_loss_sd": 0.03951656687935318,
+              "probe_changed_rate": 0.4432779947916667,
+              "probe_loss_delta": 0.058919270833333336
+            },
+            "blind": {
+              "loss": 0.18863932291666666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.18863932291666666,
+              "brier": 0.1340953764294984,
+              "episode_loss_sd": 0.064212439185054
+            },
+            "analytic": {
+              "loss": 0.14599609375,
+              "verification_rate": 0.3406575520833333,
+              "memory_error_rate": 0.060831705729166664,
+              "brier": 0.12887947491208063,
+              "episode_loss_sd": 0.039403309148331525
+            },
+            "always": {
+              "loss": 0.25,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.12448855596700621,
+              "episode_loss_sd": 0.0
+            },
+            "never": {
+              "loss": 0.18863932291666666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.18863932291666666,
+              "brier": 0.1340953764294984,
+              "episode_loss_sd": 0.064212439185054
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.04288736979166667,
+              "episode_difference_sd": 0.044679121105716396
+            },
+            "analytic": {
+              "mean_loss_difference": -0.00024414062499999992,
+              "episode_difference_sd": 0.006073536765017902
+            }
+          }
+        },
+        {
+          "condition": "persistent",
+          "cost": 0.4,
+          "seed": 84000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.18251953125,
+              "verification_rate": 0.134033203125,
+              "memory_error_rate": 0.12890625,
+              "brier": 0.13158909798370982,
+              "episode_loss_sd": 0.055140608268213986,
+              "probe_changed_rate": 0.22859700520833334,
+              "probe_loss_delta": 0.033854166666666664
+            },
+            "blind": {
+              "loss": 0.18863932291666666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.18863932291666666,
+              "brier": 0.1340953764294984,
+              "episode_loss_sd": 0.064212439185054
+            },
+            "analytic": {
+              "loss": 0.18073730468750002,
+              "verification_rate": 0.13883463541666666,
+              "memory_error_rate": 0.12520345052083334,
+              "brier": 0.13185781337627786,
+              "episode_loss_sd": 0.05354948707766064
+            },
+            "always": {
+              "loss": 0.39999999999999986,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.12448855596700621,
+              "episode_loss_sd": 1.1113088175737828e-16
+            },
+            "never": {
+              "loss": 0.18863932291666666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.18863932291666666,
+              "brier": 0.1340953764294984,
+              "episode_loss_sd": 0.064212439185054
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.006119791666666646,
+              "episode_difference_sd": 0.029497068579682973
+            },
+            "analytic": {
+              "mean_loss_difference": 0.0017822265625000002,
+              "episode_difference_sd": 0.018272416819585562
+            }
+          }
+        },
+        {
+          "condition": "ambiguous",
+          "cost": 0.1,
+          "seed": 85000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.2217244466145832,
+              "verification_rate": 0.6938069661458334,
+              "memory_error_rate": 0.15234375,
+              "brier": 0.35047375989153867,
+              "episode_loss_sd": 0.04989195611491468,
+              "probe_changed_rate": 0.4169108072916667,
+              "probe_loss_delta": 0.0014648437500000007
+            },
+            "blind": {
+              "loss": 0.09999999999999996,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.3464420669907822,
+              "episode_loss_sd": 2.778272043934457e-17
+            },
+            "analytic": {
+              "loss": 0.2088745117187499,
+              "verification_rate": 0.7264404296875,
+              "memory_error_rate": 0.13623046875,
+              "brier": 0.3501689726917517,
+              "episode_loss_sd": 0.048066876076523796
+            },
+            "always": {
+              "loss": 0.09999999999999996,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.3464420669907822,
+              "episode_loss_sd": 2.778272043934457e-17
+            },
+            "never": {
+              "loss": 0.5025227864583334,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.5025227864583334,
+              "brier": 0.3425619396043021,
+              "episode_loss_sd": 0.072030316645656
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": 0.12172444661458323,
+              "episode_difference_sd": 0.04989195611491468
+            },
+            "analytic": {
+              "mean_loss_difference": 0.01284993489583333,
+              "episode_difference_sd": 0.022601791223489626
+            }
+          }
+        },
+        {
+          "condition": "ambiguous",
+          "cost": 0.25,
+          "seed": 85000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.406036376953125,
+              "verification_rate": 0.3804931640625,
+              "memory_error_rate": 0.3109130859375,
+              "brier": 0.348958796083354,
+              "episode_loss_sd": 0.05964465642494411,
+              "probe_changed_rate": 0.4698079427083333,
+              "probe_loss_delta": 0.0011393229166666667
+            },
+            "blind": {
+              "loss": 0.5025227864583334,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.5025227864583334,
+              "brier": 0.3425619396043021,
+              "episode_loss_sd": 0.072030316645656
+            },
+            "analytic": {
+              "loss": 0.4040934244791667,
+              "verification_rate": 0.38818359375,
+              "memory_error_rate": 0.3070475260416667,
+              "brier": 0.3490344090972277,
+              "episode_loss_sd": 0.05993502537264134
+            },
+            "always": {
+              "loss": 0.25,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.3464420669907822,
+              "episode_loss_sd": 0.0
+            },
+            "never": {
+              "loss": 0.5025227864583334,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.5025227864583334,
+              "brier": 0.3425619396043021,
+              "episode_loss_sd": 0.072030316645656
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.09648640950520833,
+              "episode_difference_sd": 0.05228966282123369
+            },
+            "analytic": {
+              "mean_loss_difference": 0.001942952473958333,
+              "episode_difference_sd": 0.009180770156280278
+            }
+          }
+        },
+        {
+          "condition": "ambiguous",
+          "cost": 0.4,
+          "seed": 85000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.4886637369791666,
+              "verification_rate": 0.14449055989583334,
+              "memory_error_rate": 0.4308675130208333,
+              "brier": 0.3454660670006969,
+              "episode_loss_sd": 0.06639117198086393,
+              "probe_changed_rate": 0.239013671875,
+              "probe_loss_delta": -0.0023193359375
+            },
+            "blind": {
+              "loss": 0.5025227864583334,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.5025227864583334,
+              "brier": 0.3425619396043021,
+              "episode_loss_sd": 0.072030316645656
+            },
+            "analytic": {
+              "loss": 0.48825683593749997,
+              "verification_rate": 0.14957682291666666,
+              "memory_error_rate": 0.4284261067708333,
+              "brier": 0.3453011797890926,
+              "episode_loss_sd": 0.06621055121116935
+            },
+            "always": {
+              "loss": 0.39999999999999986,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.3464420669907822,
+              "episode_loss_sd": 1.1113088175737828e-16
+            },
+            "never": {
+              "loss": 0.5025227864583334,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.5025227864583334,
+              "brier": 0.3425619396043021,
+              "episode_loss_sd": 0.072030316645656
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.013859049479166705,
+              "episode_difference_sd": 0.030389478023942276
+            },
+            "analytic": {
+              "mean_loss_difference": 0.0004069010416666663,
+              "episode_difference_sd": 0.01911373223233201
+            }
+          }
+        }
+      ],
+      "exploratory_criteria": {
+        "better_than_blind": true,
+        "within_001_of_analytic": true,
+        "graft_changes_choices": true,
+        "graft_increases_immediate_cost": true
+      }
+    },
+    {
+      "monitor_seed": 37,
+      "monitor_sha256": "9a28dc728b73986213fb9c8a6e7446a5356d4a5f7a82ebf464695371c66ce28f",
+      "policies": {
+        "learned": {
+          "file": "learned-37.json",
+          "sha256": "968857848a007e590aae2b2ac59332acc971f6ef7e2da52a98b987c3c04f6cae"
+        },
+        "blind": {
+          "file": "blind-37.json",
+          "sha256": "a6fbb6f5a73b73ae6b73de89561c710acd16e955b008b0e3cab7890e6a93a67c"
+        }
+      },
+      "training": {
+        "environment_seed": 71037,
+        "exploration_seed": 72037,
+        "episodes": 512,
+        "steps_per_episode": 48,
+        "verified": 12365,
+        "accepted": 12211,
+        "parameters_per_policy": 20
+      },
+      "evaluation": [
+        {
+          "condition": "standard",
+          "cost": 0.1,
+          "seed": 81000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.08318684895833335,
+              "verification_rate": 0.6597493489583334,
+              "memory_error_rate": 0.0172119140625,
+              "brier": 0.1387815246727728,
+              "episode_loss_sd": 0.019814767209717966,
+              "probe_changed_rate": 0.4403483072916667,
+              "probe_loss_delta": 0.048868815104166664
+            },
+            "blind": {
+              "loss": 0.09999999999999996,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.13693696184652218,
+              "episode_loss_sd": 2.778272043934457e-17
+            },
+            "analytic": {
+              "loss": 0.08328043619791668,
+              "verification_rate": 0.6488850911458334,
+              "memory_error_rate": 0.018391927083333332,
+              "brier": 0.13880551863821755,
+              "episode_loss_sd": 0.020696441547301322
+            },
+            "always": {
+              "loss": 0.09999999999999996,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.13693696184652218,
+              "episode_loss_sd": 2.778272043934457e-17
+            },
+            "never": {
+              "loss": 0.20833333333333334,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.20833333333333334,
+              "brier": 0.1447819822515469,
+              "episode_loss_sd": 0.0653110501224851
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.01681315104166663,
+              "episode_difference_sd": 0.019814767209717966
+            },
+            "analytic": {
+              "mean_loss_difference": -9.358723958333273e-05,
+              "episode_difference_sd": 0.005234536821390423
+            }
+          }
+        },
+        {
+          "condition": "standard",
+          "cost": 0.25,
+          "seed": 81000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.15907796223958334,
+              "verification_rate": 0.3365071614583333,
+              "memory_error_rate": 0.074951171875,
+              "brier": 0.1406872480014318,
+              "episode_loss_sd": 0.041753882932700916,
+              "probe_changed_rate": 0.4456380208333333,
+              "probe_loss_delta": 0.059773763020833336
+            },
+            "blind": {
+              "loss": 0.20833333333333334,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.20833333333333334,
+              "brier": 0.1447819822515469,
+              "episode_loss_sd": 0.0653110501224851
+            },
+            "analytic": {
+              "loss": 0.15876261393229166,
+              "verification_rate": 0.3594970703125,
+              "memory_error_rate": 0.06888834635416667,
+              "brier": 0.14038247813543736,
+              "episode_loss_sd": 0.040550842341019876
+            },
+            "always": {
+              "loss": 0.25,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.13693696184652218,
+              "episode_loss_sd": 0.0
+            },
+            "never": {
+              "loss": 0.20833333333333334,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.20833333333333334,
+              "brier": 0.1447819822515469,
+              "episode_loss_sd": 0.0653110501224851
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.04925537109375,
+              "episode_difference_sd": 0.04575753084535943
+            },
+            "analytic": {
+              "mean_loss_difference": 0.00031534830729166647,
+              "episode_difference_sd": 0.011637348074814433
+            }
+          }
+        },
+        {
+          "condition": "standard",
+          "cost": 0.4,
+          "seed": 81000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.19850260416666668,
+              "verification_rate": 0.13187662760416666,
+              "memory_error_rate": 0.145751953125,
+              "brier": 0.14306951970024892,
+              "episode_loss_sd": 0.05591746097207369,
+              "probe_changed_rate": 0.22607421875,
+              "probe_loss_delta": 0.030924479166666668
+            },
+            "blind": {
+              "loss": 0.20833333333333334,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.20833333333333334,
+              "brier": 0.1447819822515469,
+              "episode_loss_sd": 0.0653110501224851
+            },
+            "analytic": {
+              "loss": 0.1989664713541667,
+              "verification_rate": 0.14595540364583334,
+              "memory_error_rate": 0.14058430989583334,
+              "brier": 0.14285768377359256,
+              "episode_loss_sd": 0.0560381262709676
+            },
+            "always": {
+              "loss": 0.39999999999999986,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.13693696184652218,
+              "episode_loss_sd": 1.1113088175737828e-16
+            },
+            "never": {
+              "loss": 0.20833333333333334,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.20833333333333334,
+              "brier": 0.1447819822515469,
+              "episode_loss_sd": 0.0653110501224851
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.009830729166666644,
+              "episode_difference_sd": 0.0303387609344198
+            },
+            "analytic": {
+              "mean_loss_difference": -0.0004638671875000022,
+              "episode_difference_sd": 0.012784400946621418
+            }
+          }
+        },
+        {
+          "condition": "strong_imagery",
+          "cost": 0.1,
+          "seed": 82000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.090380859375,
+              "verification_rate": 0.641357421875,
+              "memory_error_rate": 0.0262451171875,
+              "brier": 0.15269282182939936,
+              "episode_loss_sd": 0.023881851098092568,
+              "probe_changed_rate": 0.44482421875,
+              "probe_loss_delta": 0.054972330729166664
+            },
+            "blind": {
+              "loss": 0.09999999999999996,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.15154737712547683,
+              "episode_loss_sd": 2.778272043934457e-17
+            },
+            "analytic": {
+              "loss": 0.09020589192708332,
+              "verification_rate": 0.6339111328125,
+              "memory_error_rate": 0.026814778645833332,
+              "brier": 0.15270885718276164,
+              "episode_loss_sd": 0.024281518914665443
+            },
+            "always": {
+              "loss": 0.09999999999999996,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.15154737712547683,
+              "episode_loss_sd": 2.778272043934457e-17
+            },
+            "never": {
+              "loss": 0.22819010416666666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.22819010416666666,
+              "brier": 0.15763823268149385,
+              "episode_loss_sd": 0.0695611347011779
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.00961914062499998,
+              "episode_difference_sd": 0.023881851098092568
+            },
+            "analytic": {
+              "mean_loss_difference": 0.0001749674479166662,
+              "episode_difference_sd": 0.0036579871176963806
+            }
+          }
+        },
+        {
+          "condition": "strong_imagery",
+          "cost": 0.25,
+          "seed": 82000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.17884318033854166,
+              "verification_rate": 0.3271891276041667,
+              "memory_error_rate": 0.0970458984375,
+              "brier": 0.15402502717838476,
+              "episode_loss_sd": 0.04845949910945598,
+              "probe_changed_rate": 0.4269205729166667,
+              "probe_loss_delta": 0.054036458333333336
+            },
+            "blind": {
+              "loss": 0.22819010416666666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.22819010416666666,
+              "brier": 0.15763823268149385,
+              "episode_loss_sd": 0.0695611347011779
+            },
+            "analytic": {
+              "loss": 0.17655436197916666,
+              "verification_rate": 0.3499348958333333,
+              "memory_error_rate": 0.08907063802083333,
+              "brier": 0.1538783241342884,
+              "episode_loss_sd": 0.046985694314043015
+            },
+            "always": {
+              "loss": 0.25,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.15154737712547683,
+              "episode_loss_sd": 0.0
+            },
+            "never": {
+              "loss": 0.22819010416666666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.22819010416666666,
+              "brier": 0.15763823268149385,
+              "episode_loss_sd": 0.0695611347011779
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.049346923828125,
+              "episode_difference_sd": 0.04470631849293851
+            },
+            "analytic": {
+              "mean_loss_difference": 0.0022888183593749996,
+              "episode_difference_sd": 0.012716337401050735
+            }
+          }
+        },
+        {
+          "condition": "strong_imagery",
+          "cost": 0.4,
+          "seed": 82000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.22107747395833335,
+              "verification_rate": 0.12544759114583334,
+              "memory_error_rate": 0.1708984375,
+              "brier": 0.15603772818705577,
+              "episode_loss_sd": 0.06313367667949724,
+              "probe_changed_rate": 0.212158203125,
+              "probe_loss_delta": 0.028035481770833332
+            },
+            "blind": {
+              "loss": 0.22819010416666666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.22819010416666666,
+              "brier": 0.15763823268149385,
+              "episode_loss_sd": 0.0695611347011779
+            },
+            "analytic": {
+              "loss": 0.21696777343750004,
+              "verification_rate": 0.14253743489583334,
+              "memory_error_rate": 0.15995279947916666,
+              "brier": 0.15580045203614756,
+              "episode_loss_sd": 0.06258238920883234
+            },
+            "always": {
+              "loss": 0.39999999999999986,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.15154737712547683,
+              "episode_loss_sd": 1.1113088175737828e-16
+            },
+            "never": {
+              "loss": 0.22819010416666666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.22819010416666666,
+              "brier": 0.15763823268149385,
+              "episode_loss_sd": 0.0695611347011779
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.00711263020833331,
+              "episode_difference_sd": 0.02590111594342988
+            },
+            "analytic": {
+              "mean_loss_difference": 0.00410970052083333,
+              "episode_difference_sd": 0.01383389562109624
+            }
+          }
+        },
+        {
+          "condition": "trace_removed",
+          "cost": 0.1,
+          "seed": 83000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.08829752604166669,
+              "verification_rate": 0.7861328125,
+              "memory_error_rate": 0.009684244791666666,
+              "brier": 0.15112251328860557,
+              "episode_loss_sd": 0.014665795404923378,
+              "probe_changed_rate": 0.3350423177083333,
+              "probe_loss_delta": 0.0355224609375
+            },
+            "blind": {
+              "loss": 0.09999999999999996,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.1488724777106286,
+              "episode_loss_sd": 2.778272043934457e-17
+            },
+            "analytic": {
+              "loss": 0.08802083333333337,
+              "verification_rate": 0.7760416666666666,
+              "memory_error_rate": 0.010416666666666666,
+              "brier": 0.1512651489756701,
+              "episode_loss_sd": 0.015104324824283831
+            },
+            "always": {
+              "loss": 0.09999999999999996,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.1488724777106286,
+              "episode_loss_sd": 2.778272043934457e-17
+            },
+            "never": {
+              "loss": 0.24881998697916666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.24881998697916666,
+              "brier": 0.1692950357970294,
+              "episode_loss_sd": 0.07026868483877684
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.011702473958333296,
+              "episode_difference_sd": 0.014665795404923377
+            },
+            "analytic": {
+              "mean_loss_difference": 0.0002766927083333337,
+              "episode_difference_sd": 0.0039327791520018295
+            }
+          }
+        },
+        {
+          "condition": "trace_removed",
+          "cost": 0.25,
+          "seed": 83000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.17613728841145834,
+              "verification_rate": 0.4403889973958333,
+              "memory_error_rate": 0.0660400390625,
+              "brier": 0.1565977104683848,
+              "episode_loss_sd": 0.04216572373386196,
+              "probe_changed_rate": 0.4866536458333333,
+              "probe_loss_delta": 0.0594482421875
+            },
+            "blind": {
+              "loss": 0.24881998697916666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.24881998697916666,
+              "brier": 0.1692950357970294,
+              "episode_loss_sd": 0.07026868483877684
+            },
+            "analytic": {
+              "loss": 0.17592366536458334,
+              "verification_rate": 0.4654134114583333,
+              "memory_error_rate": 0.0595703125,
+              "brier": 0.15607343451839373,
+              "episode_loss_sd": 0.040220104918413414
+            },
+            "always": {
+              "loss": 0.25,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.1488724777106286,
+              "episode_loss_sd": 0.0
+            },
+            "never": {
+              "loss": 0.24881998697916666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.24881998697916666,
+              "brier": 0.1692950357970294,
+              "episode_loss_sd": 0.07026868483877684
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.07268269856770834,
+              "episode_difference_sd": 0.05286833346184558
+            },
+            "analytic": {
+              "mean_loss_difference": 0.00021362304687500043,
+              "episode_difference_sd": 0.01248890798748122
+            }
+          }
+        },
+        {
+          "condition": "trace_removed",
+          "cost": 0.4,
+          "seed": 83000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.231103515625,
+              "verification_rate": 0.18082682291666666,
+              "memory_error_rate": 0.15877278645833334,
+              "brier": 0.16298326551106632,
+              "episode_loss_sd": 0.05927719502270783,
+              "probe_changed_rate": 0.2935384114583333,
+              "probe_loss_delta": 0.035563151041666664
+            },
+            "blind": {
+              "loss": 0.24881998697916666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.24881998697916666,
+              "brier": 0.1692950357970294,
+              "episode_loss_sd": 0.07026868483877684
+            },
+            "analytic": {
+              "loss": 0.23039550781250004,
+              "verification_rate": 0.20052083333333334,
+              "memory_error_rate": 0.15018717447916666,
+              "brier": 0.16237989187336557,
+              "episode_loss_sd": 0.05854682846668689
+            },
+            "always": {
+              "loss": 0.39999999999999986,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.1488724777106286,
+              "episode_loss_sd": 1.1113088175737828e-16
+            },
+            "never": {
+              "loss": 0.24881998697916666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.24881998697916666,
+              "brier": 0.1692950357970294,
+              "episode_loss_sd": 0.07026868483877684
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.01771647135416663,
+              "episode_difference_sd": 0.03654631800041887
+            },
+            "analytic": {
+              "mean_loss_difference": 0.0007080078124999972,
+              "episode_difference_sd": 0.014915569256419119
+            }
+          }
+        },
+        {
+          "condition": "persistent",
+          "cost": 0.1,
+          "seed": 84000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.08011881510416667,
+              "verification_rate": 0.6302897135416666,
+              "memory_error_rate": 0.01708984375,
+              "brier": 0.12728977723741874,
+              "episode_loss_sd": 0.02012010009028451,
+              "probe_changed_rate": 0.4638671875,
+              "probe_loss_delta": 0.051228841145833336
+            },
+            "blind": {
+              "loss": 0.09999999999999996,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.12443912290840885,
+              "episode_loss_sd": 2.778272043934457e-17
+            },
+            "analytic": {
+              "loss": 0.08017985026041667,
+              "verification_rate": 0.6195068359375,
+              "memory_error_rate": 0.018229166666666668,
+              "brier": 0.12737581953319474,
+              "episode_loss_sd": 0.020803938880129758
+            },
+            "always": {
+              "loss": 0.09999999999999996,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.12443912290840885,
+              "episode_loss_sd": 2.778272043934457e-17
+            },
+            "never": {
+              "loss": 0.19136555989583334,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.19136555989583334,
+              "brier": 0.1363771743735698,
+              "episode_loss_sd": 0.06525492929932128
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.0198811848958333,
+              "episode_difference_sd": 0.02012010009028451
+            },
+            "analytic": {
+              "mean_loss_difference": -6.103515624999924e-05,
+              "episode_difference_sd": 0.004973771090543163
+            }
+          }
+        },
+        {
+          "condition": "persistent",
+          "cost": 0.25,
+          "seed": 84000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.14817301432291666,
+              "verification_rate": 0.3179524739583333,
+              "memory_error_rate": 0.06868489583333333,
+              "brier": 0.13116434607088023,
+              "episode_loss_sd": 0.04109494916779856,
+              "probe_changed_rate": 0.4326985677083333,
+              "probe_loss_delta": 0.058349609375
+            },
+            "blind": {
+              "loss": 0.19136555989583334,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.19136555989583334,
+              "brier": 0.1363771743735698,
+              "episode_loss_sd": 0.06525492929932128
+            },
+            "analytic": {
+              "loss": 0.148193359375,
+              "verification_rate": 0.3390299479166667,
+              "memory_error_rate": 0.06343587239583333,
+              "brier": 0.130804420018679,
+              "episode_loss_sd": 0.04075261984528839
+            },
+            "always": {
+              "loss": 0.25,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.12443912290840885,
+              "episode_loss_sd": 0.0
+            },
+            "never": {
+              "loss": 0.19136555989583334,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.19136555989583334,
+              "brier": 0.1363771743735698,
+              "episode_loss_sd": 0.06525492929932128
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.043192545572916664,
+              "episode_difference_sd": 0.044357267537535314
+            },
+            "analytic": {
+              "mean_loss_difference": -2.0345052083332502e-05,
+              "episode_difference_sd": 0.00975884892795481
+            }
+          }
+        },
+        {
+          "condition": "persistent",
+          "cost": 0.4,
+          "seed": 84000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.1839599609375,
+              "verification_rate": 0.12491861979166667,
+              "memory_error_rate": 0.13399251302083334,
+              "brier": 0.13423637094983046,
+              "episode_loss_sd": 0.05607083214658934,
+              "probe_changed_rate": 0.21964518229166666,
+              "probe_loss_delta": 0.032999674479166664
+            },
+            "blind": {
+              "loss": 0.19136555989583334,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.19136555989583334,
+              "brier": 0.1363771743735698,
+              "episode_loss_sd": 0.06525492929932128
+            },
+            "analytic": {
+              "loss": 0.18384602864583335,
+              "verification_rate": 0.13907877604166666,
+              "memory_error_rate": 0.12821451822916666,
+              "brier": 0.13397482554393514,
+              "episode_loss_sd": 0.05509770129350867
+            },
+            "always": {
+              "loss": 0.39999999999999986,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.12443912290840885,
+              "episode_loss_sd": 1.1113088175737828e-16
+            },
+            "never": {
+              "loss": 0.19136555989583334,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.19136555989583334,
+              "brier": 0.1363771743735698,
+              "episode_loss_sd": 0.06525492929932128
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.0074055989583333166,
+              "episode_difference_sd": 0.028258877018816887
+            },
+            "analytic": {
+              "mean_loss_difference": 0.00011393229166666323,
+              "episode_difference_sd": 0.012721746431065701
+            }
+          }
+        },
+        {
+          "condition": "ambiguous",
+          "cost": 0.1,
+          "seed": 85000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.2097127278645832,
+              "verification_rate": 0.7218017578125,
+              "memory_error_rate": 0.13753255208333334,
+              "brier": 0.35315615112221943,
+              "episode_loss_sd": 0.047301665412268955,
+              "probe_changed_rate": 0.3959147135416667,
+              "probe_loss_delta": 0.0022786458333333335
+            },
+            "blind": {
+              "loss": 0.09999999999999996,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.3504134677631454,
+              "episode_loss_sd": 2.778272043934457e-17
+            },
+            "analytic": {
+              "loss": 0.21481119791666656,
+              "verification_rate": 0.7101236979166666,
+              "memory_error_rate": 0.143798828125,
+              "brier": 0.3532229355660614,
+              "episode_loss_sd": 0.04775676642458029
+            },
+            "always": {
+              "loss": 0.09999999999999996,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.3504134677631454,
+              "episode_loss_sd": 2.778272043934457e-17
+            },
+            "never": {
+              "loss": 0.5026041666666666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.5026041666666666,
+              "brier": 0.34242330234875923,
+              "episode_loss_sd": 0.07243896967121782
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": 0.10971272786458322,
+              "episode_difference_sd": 0.047301665412268955
+            },
+            "analytic": {
+              "mean_loss_difference": -0.0050984700520833315,
+              "episode_difference_sd": 0.012194076673424044
+            }
+          }
+        },
+        {
+          "condition": "ambiguous",
+          "cost": 0.25,
+          "seed": 85000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.411956787109375,
+              "verification_rate": 0.3566487630208333,
+              "memory_error_rate": 0.3227945963541667,
+              "brier": 0.35040405740922637,
+              "episode_loss_sd": 0.060473818546411394,
+              "probe_changed_rate": 0.4581705729166667,
+              "probe_loss_delta": 0.0009765625
+            },
+            "blind": {
+              "loss": 0.5026041666666666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.5026041666666666,
+              "brier": 0.34242330234875923,
+              "episode_loss_sd": 0.07243896967121782
+            },
+            "analytic": {
+              "loss": 0.4050394694010417,
+              "verification_rate": 0.3817138671875,
+              "memory_error_rate": 0.3096110026041667,
+              "brier": 0.35075354047356755,
+              "episode_loss_sd": 0.05900179515315979
+            },
+            "always": {
+              "loss": 0.25,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.3504134677631454,
+              "episode_loss_sd": 0.0
+            },
+            "never": {
+              "loss": 0.5026041666666666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.5026041666666666,
+              "brier": 0.34242330234875923,
+              "episode_loss_sd": 0.07243896967121782
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.09064737955729166,
+              "episode_difference_sd": 0.051248668413236304
+            },
+            "analytic": {
+              "mean_loss_difference": 0.006917317708333333,
+              "episode_difference_sd": 0.014944043573009188
+            }
+          }
+        },
+        {
+          "condition": "ambiguous",
+          "cost": 0.4,
+          "seed": 85000,
+          "episodes": 512,
+          "steps_per_episode": 48,
+          "controllers": {
+            "learned": {
+              "loss": 0.49004720052083334,
+              "verification_rate": 0.13228352864583334,
+              "memory_error_rate": 0.4371337890625,
+              "brier": 0.3455445639912258,
+              "episode_loss_sd": 0.06668390348579145,
+              "probe_changed_rate": 0.22770182291666666,
+              "probe_loss_delta": -0.0025227864583333335
+            },
+            "blind": {
+              "loss": 0.5026041666666666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.5026041666666666,
+              "brier": 0.34242330234875923,
+              "episode_loss_sd": 0.07243896967121782
+            },
+            "analytic": {
+              "loss": 0.4880452473958334,
+              "verification_rate": 0.147216796875,
+              "memory_error_rate": 0.4291585286458333,
+              "brier": 0.3458731350480025,
+              "episode_loss_sd": 0.06601581975157864
+            },
+            "always": {
+              "loss": 0.39999999999999986,
+              "verification_rate": 1.0,
+              "memory_error_rate": 0.0,
+              "brier": 0.3504134677631454,
+              "episode_loss_sd": 1.1113088175737828e-16
+            },
+            "never": {
+              "loss": 0.5026041666666666,
+              "verification_rate": 0.0,
+              "memory_error_rate": 0.5026041666666666,
+              "brier": 0.34242330234875923,
+              "episode_loss_sd": 0.07243896967121782
+            }
+          },
+          "paired": {
+            "blind": {
+              "mean_loss_difference": -0.012556966145833367,
+              "episode_difference_sd": 0.030374032023252694
+            },
+            "analytic": {
+              "mean_loss_difference": 0.0020019531250000024,
+              "episode_difference_sd": 0.012721996797949756
+            }
+          }
+        }
+      ],
+      "exploratory_criteria": {
+        "better_than_blind": true,
+        "within_001_of_analytic": true,
+        "graft_changes_choices": true,
+        "graft_increases_immediate_cost": true
+      }
+    }
+  ]
+}
