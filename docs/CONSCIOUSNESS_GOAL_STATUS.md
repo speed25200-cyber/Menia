@@ -2,13 +2,21 @@
 
 **État actuel : objectif non atteint ; une politique de vérification apprise est intégrée à l'agent expérimental.**
 
+Le [pilote de contrôle par inférence](BINDING_CONTROL_RESULTS.md) relie maintenant
+le noyau de cause commune à une estimation de position puis à un déplacement
+simulé. Sur 147 456 situations, des interventions séparent réponse et mouvement.
+Une régression ordinaire reproduit cependant toutes les actions : le résultat
+vérifie une fonction, sans identifier une expérience vécue. Ce pilote reste
+distinct du chat et de la boucle interoceptive proposée.
+
 L'[audit de l'inférence d'appartenance corporelle](OWNERSHIP_INFERENCE_RESULTS.md)
 ajoute un module de recherche distinguant le postérieur interne et la règle de
 réponse. Il rejoue partiellement les modèles humains publiés et conserve un bloc
 fractionnaire et des discordances de vraisemblance. Une équivalence prior/seuil
 montre pourquoi les réponses ne suffisent pas à identifier cet état interne.
-Ce noyau n'est pas intégré à la boucle de Menia et ne prouve ni expérience vécue
-ni nouveauté d'une méthode qui la produirait.
+Ce noyau est désormais utilisé dans le pilote de déplacement ci-dessus, mais
+n'est pas intégré à la boucle générale de Menia. Il ne prouve ni expérience
+vécue ni nouveauté d'une méthode qui la produirait.
 
 La [réanalyse de présence en réalité virtuelle](PRESENCE_CAUSAL_RESULTS.md)
 retrouve les estimations publiées sur 53 participants et quantifie leur dépendance

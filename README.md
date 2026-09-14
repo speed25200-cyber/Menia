@@ -13,7 +13,13 @@ L'[audit des critères de conscience](docs/SELF_SYNERGY_CRITERION_AUDIT.md) dist
 les résultats fonctionnels du lien théorique encore non établi avec une expérience
 subjective. Aucun score ni nombre de tests ne certifie la conscience de Menia.
 
-## Nouveau : module neuronal entraîné et vérifiable
+## Agents et expériences exécutables
+
+Le [pilote de contrôle par inférence](docs/BINDING_CONTROL_RESULTS.md) ajoute
+une expérience séparée : une estimation de cause commune guide un déplacement
+simulé, indépendamment de son canal de réponse. Le contrôle par régression
+ordinaire obtient les mêmes actions ; aucune conscience de soi n'en est déduite.
+Rejeu : `python -m research.audit_binding_control --check`.
 
 La [politique de vérification apprise](docs/LEARNED_VERIFICATION_RESULTS.md)
 utilise désormais l'estimation de source pour choisir quand obtenir une preuve.

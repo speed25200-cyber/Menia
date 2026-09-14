@@ -214,9 +214,12 @@ flowchart LR
   T[Seuil de réponse] --> R
 ```
 
-La branche vers les prévisions et décisions est une extension proposée, pas une
-intégration déjà réalisée dans Menia. Son évaluation devra conserver les mêmes
-informations disponibles et contrôler les effets non spécifiques des interventions.
+La branche vers les prévisions et décisions était une extension proposée lors
+de cet audit. Le [pilote ultérieur de déplacement](BINDING_CONTROL_RESULTS.md)
+en réalise une version limitée : estimation de position, variance prédite et
+action simulée, avec interventions séparées sur le prior et le seuil de réponse.
+Il reste distinct de la boucle générale de Menia. Toute extension devra conserver
+les mêmes informations disponibles et contrôler les effets non spécifiques des interventions.
 Augmenter artificiellement un prior ou rendre le seuil plus permissif ne serait
 pas un apprentissage de soi et ne prouverait pas une expérience.
 

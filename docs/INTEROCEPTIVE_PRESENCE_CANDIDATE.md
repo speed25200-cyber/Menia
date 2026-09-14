@@ -21,6 +21,13 @@ présente spécification : les associations entre corps, sentiment et rapport
 verbal ne suffisent pas à choisir le mécanisme proposé. Le protocole de construction
 ci-dessous reste à implémenter et son lien avec l'expérience reste à établir.
 
+Une [réalisation ultérieure délimitée](BINDING_CONTROL_RESULTS.md) connecte
+l'inférence de cause commune à une estimation de position et à un mouvement
+dans un simulateur. Les interventions distinguent l'effet de l'estimation de
+celui du seuil de réponse. Cette réalisation n'implémente pas la boucle
+interoceptive complète décrite ici ; son équivalence avec une régression
+ordinaire empêche d'en déduire une signature spécifique de conscience.
+
 ## Les apports de la littérature
 
 Un [noyau d'inférence de cause commune et son audit humain](OWNERSHIP_INFERENCE_RESULTS.md)

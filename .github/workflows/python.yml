@@ -35,6 +35,7 @@ jobs:
       - run: python scripts/check_temporal_effects.py
       - run: python scripts/check_source_monitor.py
       - run: python -m research.learn_source_policy --out artifacts/learned-verification --check
+      - run: python -m research.audit_binding_control --check
 
   human-research:
     runs-on: ubuntu-latest
