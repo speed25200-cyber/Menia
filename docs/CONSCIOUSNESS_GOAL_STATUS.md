@@ -52,3 +52,14 @@ la direction causale proposée. L'audit de deux scripts identifie aussi une libe
 d'échelle de leurs amplitudes internes. Ces résultats justifient de mesurer et
 d'intervenir sur le mécanisme candidat avant les décisions ; aucun mécanisme
 appris supplémentaire n'est encore intégré à Menia par cette réanalyse.
+
+Le [pilote de source apprise](LEARNED_SOURCE_RESULTS.md) construit ensuite un
+prototype exécutable dans Menia avec le journal existant. Neuf réseaux sont
+entraînés à partir de 12 295 vérifications, avec estimation avant décision et
+retour après décision. L'estimation gouverne les vérifications et les attributions
+en mémoire. Le contrôle sur huit étapes fait aussi bien que la récurrence dans
+certaines conditions ; les neuf modèles échouent à reconnaître une source devenue
+imprévisible. Les inférences ne deviennent pas des observations certifiées.
+La scène principale, Qwen et l'application iPhone n'intègrent pas ce prototype.
+La mémoire autobiographique, la découverte d'un soi général, l'expérience
+subjective et une contribution inédite restent non établies.
