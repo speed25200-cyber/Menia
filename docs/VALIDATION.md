@@ -32,3 +32,21 @@ numérique des gradients. Les checkpoints exportés ont été rechargés et éva
 Le rapport complet figure dans `artifacts/recurrent-memory/report.json` et le
 protocole dans `docs/RECURRENT_RESEARCH.md`. La partie Swift reste non compilée.
 Aucun de ces résultats ne démontre une conscience subjective.
+
+## Suivi des limites du rappel — même date
+
+16 tests de recherche et 11 tests du noyau passent. Les checkpoints existants
+ont été réévalués sur 512 histoires de calibration et 512 histoires de test
+séparées par modèle, avec délais prolongés jusqu'à 512 pas, préfixes de tailles
+différentes et interventions sur l'état. Les résultats et politiques se trouvent
+dans `artifacts/recall-reliability`, le protocole dans `docs/RECALL_RELIABILITY.md`.
+Le vérificateur recalcule l'ensemble et compare les empreintes et les nombres.
+Les poids de la mémoire initiale sont inchangés. L'objectif de conscience reste
+non atteint ; le suivi de fiabilité ne détecte notamment pas un état plausible
+provenant d'un autre épisode.
+
+Toutes les cellules de calcul du notebook 02 ont aussi été exécutées localement
+sur CPU : vérification des anciens artefacts, trois nouveaux entraînements de
+300 étapes, calibration, évaluation, session et effacement. Seule l'amorce propre
+à Colab (montage Drive, téléchargement du dépôt et installation) n'a pas été
+exécutée dans Colab. Le runtime A100 et l'application iPhone restent non testés.

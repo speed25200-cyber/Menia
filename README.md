@@ -27,6 +27,19 @@ python -m research.train_recurrent --out /tmp/menia-new-experiment
 [Notebook recherche](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/main/notebooks/02_recurrent_research.ipynb)
 · [Résultats mesurés](artifacts/recurrent-memory/report.json)
 
+## Suivi des limites du rappel
+
+La session peut s'abstenir lorsqu'aucun symbole n'a été observé ou que le rappel
+dépasse une limite calibrée pour ses poids. Les
+[expériences de fiabilité](docs/RECALL_RELIABILITY.md) exposent les erreurs à longs
+délais, la couverture et les échecs après mélange des états internes. Le notebook
+recherche inclut la calibration et les tests séparés. Ce contrôle ne démontre pas
+une conscience et ne modifie pas les poids de mémoire.
+
+```bash
+python scripts/check_reliability_artifacts.py
+```
+
 ## Commencer sur ton A100
 
 [**Ouvrir le notebook dans Colab**](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/main/notebooks/01_colab_a100.ipynb)
@@ -69,7 +82,7 @@ les dépendances transitives résolues sont enregistrées avec `pip freeze`.
 
 ## Statut de validation
 
-- 11 tests du noyau + 8 tests du module récurrent passés.
+- 11 tests du noyau + 16 tests de recherche passés.
 - Trois entraînements CPU du petit module exécutés, avec ablations et checkpoints.
 - Comparaisons déterministes exécutées sur 240 cas synthétiques.
 - Code Python et cellules du notebook vérifiés syntaxiquement.
