@@ -188,6 +188,12 @@ confère pas une perspective vécue.
 
 ## Ce qui reste à construire et à établir
 
+Une [extension ultérieure](ACTIVE_CALIBRATION_RESULTS.md) apprend désormais
+certains paramètres moteurs et visuels depuis des commandes d'étalonnage.
+Elle reprend le contrôleur ci-dessus et conserve des échecs de transition et
+d'identification. Les limitations suivantes décrivent le présent pilote à
+paramètres connus ; cette extension ne constitue pas la boucle complète.
+
 Le résultat acquis est une estimation de position employée par un agent
 expérimental, avec une sortie de réponse indépendante et des interventions
 rejouables. Il reste séparé du chat, de l'iPhone et de l'agent de source déjà

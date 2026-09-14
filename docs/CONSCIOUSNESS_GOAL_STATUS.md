@@ -2,6 +2,14 @@
 
 **État actuel : objectif non atteint ; une politique de vérification apprise est intégrée à l'agent expérimental.**
 
+L'[extension d'étalonnage actif](ACTIVE_CALIBRATION_RESULTS.md) apprend des
+coefficients moteurs et sensoriels qui alimentent le contrôleur de position.
+Elle récupère après plusieurs perturbations, mais conserve une forte dégradation
+transitoire, une attribution fausse lorsque la référence change d'échelle, et
+une non-linéarité ignorée par ses sondes. Une régression ordinaire obtient des
+performances comparables. Cette fonction apprise n'établit pas une expérience
+subjective ni la nouveauté d'une méthode qui la produirait.
+
 Le [pilote de contrôle par inférence](BINDING_CONTROL_RESULTS.md) relie maintenant
 le noyau de cause commune à une estimation de position puis à un déplacement
 simulé. Sur 147 456 situations, des interventions séparent réponse et mouvement.

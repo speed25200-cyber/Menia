@@ -15,6 +15,11 @@ subjective. Aucun score ni nombre de tests ne certifie la conscience de Menia.
 
 ## Agents et expériences exécutables
 
+L'[étalonnage actif](docs/ACTIVE_CALIBRATION_RESULTS.md) apprend des paramètres
+moteurs et sensoriels qui alimentent le contrôle de position. Les récupérations,
+erreurs transitoires et cas d'identification trompeuse sont conservés.
+Rejeu : `python -m research.audit_active_calibration --check`.
+
 Le [pilote de contrôle par inférence](docs/BINDING_CONTROL_RESULTS.md) ajoute
 une expérience séparée : une estimation de cause commune guide un déplacement
 simulé, indépendamment de son canal de réponse. Le contrôle par régression

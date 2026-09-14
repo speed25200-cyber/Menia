@@ -30,6 +30,13 @@ ordinaire empêche d'en déduire une signature spécifique de conscience.
 
 ## Les apports de la littérature
 
+Une [extension d'étalonnage exécutée](ACTIVE_CALIBRATION_RESULTS.md) apprend
+ensuite des propriétés de l'actionneur et de la voie visuelle avant de les
+employer dans ce contrôleur. Elle sépare plusieurs changements grâce à une
+référence supposée stable, mais échoue lorsque cette référence est trompeuse.
+Les ressources propres de perception et de mémoire ainsi que le lien phénoménal
+restent à traiter ; cette extension n'achève pas la candidate interoceptive.
+
 Un [noyau d'inférence de cause commune et son audit humain](OWNERSHIP_INFERENCE_RESULTS.md)
 ont ensuite été ajoutés comme composants de recherche séparés. Ils distinguent
 le postérieur d'une règle de réponse et en vérifient une équivalence qui limite
