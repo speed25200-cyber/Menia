@@ -2,6 +2,14 @@
 
 **État actuel : objectif non atteint ; une politique de vérification apprise est intégrée à l'agent expérimental.**
 
+L'[audit de l'inférence d'appartenance corporelle](OWNERSHIP_INFERENCE_RESULTS.md)
+ajoute un module de recherche distinguant le postérieur interne et la règle de
+réponse. Il rejoue partiellement les modèles humains publiés et conserve un bloc
+fractionnaire et des discordances de vraisemblance. Une équivalence prior/seuil
+montre pourquoi les réponses ne suffisent pas à identifier cet état interne.
+Ce noyau n'est pas intégré à la boucle de Menia et ne prouve ni expérience vécue
+ni nouveauté d'une méthode qui la produirait.
+
 La [réanalyse de présence en réalité virtuelle](PRESENCE_CAUSAL_RESULTS.md)
 retrouve les estimations publiées sur 53 participants et quantifie leur dépendance
 aux hypothèses causales. Deux modèles de sens opposé reconstruisent la même loi

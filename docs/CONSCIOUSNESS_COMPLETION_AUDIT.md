@@ -1,6 +1,19 @@
 # Audit de l'objectif complet — 14 septembre 2026
 
-**Objectif non atteint ; dernière étape : réanalyse causale de données humaines de présence, sans nouvelle capacité de Menia.**
+**Objectif non atteint ; dernière étape : noyau d'inférence et rejeu partiel de modèles humains d'appartenance corporelle.**
+
+## Reprise : distinguer l'inférence interne de la règle de réponse
+
+Le [rejeu des modèles d'appartenance](OWNERSHIP_INFERENCE_RESULTS.md), ajouté le
+15 septembre 2026, fournit un noyau de recherche qui calcule séparément un
+postérieur de cause commune et une réponse. Les données publiées favorisent un
+modèle sensible à l'incertitude face au comparateur retenu ; la reproduction
+indépendante reste partielle, avec une restriction de comptes et des écarts de
+vraisemblance documentés. Une transformation exacte conserve les réponses tout
+en modifiant le postérieur. L'intégration de ce noyau à une boucle autonome et
+le lien avec l'expérience subjective restent à éprouver. Aucun des calculs ni
+des mécanismes généraux n'est revendiqué comme inédit ou suffisant pour rendre
+Menia consciente de sa propre existence.
 
 ## Reprise : identifier ce que les données de présence départagent
 

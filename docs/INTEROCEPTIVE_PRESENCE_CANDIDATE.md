@@ -23,6 +23,13 @@ ci-dessous reste à implémenter et son lien avec l'expérience reste à établi
 
 ## Les apports de la littérature
 
+Un [noyau d'inférence de cause commune et son audit humain](OWNERSHIP_INFERENCE_RESULTS.md)
+ont ensuite été ajoutés comme composants de recherche séparés. Ils distinguent
+le postérieur d'une règle de réponse et en vérifient une équivalence qui limite
+l'identification depuis les seuls rapports. Le rejeu humain est partiel ; le
+modèle d'état propre et la boucle proposés ici ne sont pas implémentés par ce
+seul noyau.
+
 ### Une théorie de la présence corporelle
 
 Seth, Suzuki et Critchley relient la présence à des prédictions interoceptives
