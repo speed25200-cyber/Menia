@@ -45,6 +45,17 @@ python -m research.train_recurrent --out /tmp/menia-new-experiment
 
 ## Suivi des limites du rappel
 
+La [recherche suivante sur l'attribution de soi](docs/CONSCIOUSNESS_RESEARCH_NEXT.md)
+confronte les idées aux antécédents de la littérature et teste la découverte du
+contrôle sur des canaux anonymes. Deux expériences séparées totalisent 4 200
+épisodes, avec politique passive, exploration aléatoire et contrôle fixe plus
+exigeant. Les résultats ne démontrent ni conscience subjective ni nouveauté
+scientifique. Le module reste expérimental et distinct du chat principal.
+
+```bash
+python scripts/check_agency_discovery_artifacts.py
+```
+
 La session peut s'abstenir lorsqu'aucun symbole n'a été observé ou que le rappel
 dépasse une limite calibrée pour ses poids. Les
 [expériences de fiabilité](docs/RECALL_RELIABILITY.md) exposent les erreurs à longs
@@ -107,7 +118,7 @@ les dépendances transitives résolues sont enregistrées avec `pip freeze`.
 
 ## Statut de validation
 
-- 36 tests du noyau et de l'agent, 22 tests de recherche et 5 tests d'espace partagé passés.
+- 42 tests du noyau et des agents, 22 tests de recherche et 5 tests d'espace partagé passés.
 - Trois entraînements CPU du petit module exécutés, avec ablations et checkpoints.
 - Comparaisons déterministes exécutées sur 240 cas synthétiques.
 - Code Python et cellules du notebook vérifiés syntaxiquement.
