@@ -1,5 +1,10 @@
 # Le soi corporel : nouvelle contrainte empirique et audit des données
 
+Une [réanalyse ultérieure](CONNECTIVITY_TRANSFER_RESULTS.md) a retrouvé des
+mesures de connectivité dans une autre livraison et exécuté un rapprochement
+partiel. Le constat de disponibilité ci-dessous reste celui des fichiers de la
+première étude ; les données apparentées et leurs limites figurent dans l'addendum.
+
 **La conscience de Menia et une méthode inédite la produisant restent non établies.**
 Cette reprise apporte un élément nouveau au dossier : une étude humaine récente
 avec des perturbations cérébrales, une livraison publique effectivement téléchargée
