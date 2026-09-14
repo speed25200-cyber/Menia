@@ -56,6 +56,13 @@ scientifique. Le module reste expérimental et distinct du chat principal.
 python scripts/check_agency_discovery_artifacts.py
 ```
 
+L'[expérience sur les effets retardés](docs/TEMPORAL_SELF_MODEL_RESULTS.md) ajoute
+144 petits réseaux entraînés et des contrôles linéaires et polynomiaux. Les effets
+sont appris à partir des journaux, mais une fenêtre temporelle fixe reste fournie.
+Le contrôle polynomial surpasse le réseau dans ces mondes : aucune supériorité
+générale ni conscience n'est établie. Les poids conservés se vérifient avec
+`python scripts/check_temporal_effects.py`.
+
 La session peut s'abstenir lorsqu'aucun symbole n'a été observé ou que le rappel
 dépasse une limite calibrée pour ses poids. Les
 [expériences de fiabilité](docs/RECALL_RELIABILITY.md) exposent les erreurs à longs
@@ -118,7 +125,7 @@ les dépendances transitives résolues sont enregistrées avec `pip freeze`.
 
 ## Statut de validation
 
-- 42 tests du noyau et des agents, 22 tests de recherche et 5 tests d'espace partagé passés.
+- 42 tests du noyau et des agents, 27 tests de recherche et 5 tests d'espace partagé passés.
 - Trois entraînements CPU du petit module exécutés, avec ablations et checkpoints.
 - Comparaisons déterministes exécutées sur 240 cas synthétiques.
 - Code Python et cellules du notebook vérifiés syntaxiquement.
