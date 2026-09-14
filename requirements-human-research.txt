@@ -1,0 +1,3 @@
+# Isolated reproduction environment for the public human behavioural reanalysis.
+numpy==2.4.4
+scipy==1.17.1

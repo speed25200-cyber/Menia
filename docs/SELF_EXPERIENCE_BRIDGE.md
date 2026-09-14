@@ -146,7 +146,13 @@ L'hypothèse est désormais assez explicite pour orienter une construction et ex
 
 ## Sources
 
-Sources consultées le 14 septembre 2026. Recherche ciblée, non exhaustive. Les dates ci-dessous sont celles des publications, et non celles de l'indexation des pages. Les résultats humains n'ont pas été reproduits ici.
+Une [étape empirique ultérieure](HUMAN_REALITY_BRIDGE_RESULTS.md) réanalyse les
+données comportementales de Dijkstra et al. (2025). Elle précise la portée
+rétrospective de l'association entre rapports et l'identifiabilité de certaines
+amplitudes dans le code public. Elle ne réalise pas encore l'expérience apprise
+sur Menia décrite ci-dessus.
+
+Sources consultées le 14 septembre 2026. Recherche ciblée, non exhaustive. Les dates ci-dessous sont celles des publications, et non celles de l'indexation des pages. La synthèse initiale ci-dessus ne comportait pas de réanalyse des données humaines ; l'étape ultérieure est documentée séparément.
 
 [^1]: Cleeremans, A. (9 mai 2011). *The Radical Plasticity Thesis: How the Brain Learns to be Conscious*. Frontiers in Psychology, 2:86. [Article original](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2011.00086/full). Hypothèse et théorie ; argument central et conclusion consultés.
 [^2]: Fleming, S. M. (2020 ; prépublication v3 de décembre 2019). *Awareness as inference in a higher-order state space*. Neuroscience of Consciousness, niz020. [Texte de la prépublication](https://arxiv.org/html/1906.00728v3), [publication](https://doi.org/10.1093/nc/niz020). Modèle, prédictions et limites consultés ; la date de génération HTML ne redéfinit pas la date scientifique.

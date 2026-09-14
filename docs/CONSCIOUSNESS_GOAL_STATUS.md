@@ -42,3 +42,13 @@ Un audit causal exact distingue deux contrôleurs aux rapports identiques ; il
 vérifie la logique d'une intervention, sans entraîner Menia ni établir le lien
 phénoménal. Le protocole sur un modèle appris et son ancrage empirique restent à
 réaliser. Les exigences de conscience subjective et de nouveauté restent ouvertes.
+
+Une [réanalyse des données humaines NIMADET](HUMAN_REALITY_BRIDGE_RESULTS.md)
+apporte une première contrainte empirique : sur 9 432 essais de 26 participants,
+l'association entre vivacité et jugement améliore la prédiction dans des runs
+hors ajustement. Les horodatages montrent toutefois que la vivacité est rapportée
+après le jugement dans tous les essais retenus. L'association ne valide donc pas
+la direction causale proposée. L'audit de deux scripts identifie aussi une liberté
+d'échelle de leurs amplitudes internes. Ces résultats justifient de mesurer et
+d'intervenir sur le mécanisme candidat avant les décisions ; aucun mécanisme
+appris supplémentaire n'est encore intégré à Menia par cette réanalyse.
