@@ -11,16 +11,21 @@ import numpy as np
 from menia.core import Capabilities
 from .recurrent import RecurrentMemory
 from .reliability import RecallPolicy
+from .self_model import SelfMonitor
 
 
 class CognitiveSession:
-    def __init__(self, model: RecurrentMemory, capacity=32, *, policy: RecallPolicy = None):
+    def __init__(self, model: RecurrentMemory, capacity=32, *, policy: RecallPolicy = None,
+                 self_monitor: SelfMonitor = None):
         if not isinstance(capacity,int) or not 1 <= capacity <= 128:
             raise ValueError('Invalid episode capacity')
         self.model = model
         if policy is not None:
             policy.check_model(model)
         self.policy = policy
+        if self_monitor is not None:
+            self_monitor.check_model(model)
+        self.self_monitor = self_monitor
         self.capacity = capacity
         self.capabilities = Capabilities()
         self.state = model.zero()
@@ -38,6 +43,8 @@ class CognitiveSession:
         if self.policy is not None:
             # An in-place training update invalidates the old calibration too.
             self.policy.check_model(self.model)
+        if self.self_monitor is not None:
+            self.self_monitor.check_model(self.model)
         x = np.zeros((1,5))
         if symbol is not None:
             x[0,symbol] = 1
@@ -48,6 +55,10 @@ class CognitiveSession:
             self.observation_age = 0
         elif self.observation_age is not None:
             self.observation_age += 1
+        forecast = (float(self.self_monitor.forecast(self.model, self.state, probabilities,
+                                                    self.observation_age)[0])
+                    if self.self_monitor is not None and self.observation_age is not None
+                    and self.observation_age > 0 else None)
         if symbol is not None:
             answer, answer_source, reason = symbol, 'observation', None
         else:
@@ -58,13 +69,16 @@ class CognitiveSession:
             answer_source = 'recurrent_inference' if reason is None else 'unknown'
         self.sequence += 1
         self.pending = {'sequence':self.sequence, 'probabilities':p.tolist(),
-                        'answer_symbol':answer, 'answer_source':answer_source}
+                        'answer_symbol':answer, 'answer_source':answer_source,
+                        'forecast_recall_correct':forecast}
         event = {'sequence':self.sequence, 'observed_symbol':symbol,
                  'inferred_last_symbol':answer if answer_source == 'recurrent_inference' else None,
                  'model_candidate':int(p.argmax()), 'class_probabilities':p.tolist(),
                  'answer_symbol':answer, 'answer_source':answer_source,
                  'abstained':answer is None, 'uncertainty_reason':reason,
                  'steps_since_observation':self.observation_age,
+                 'forecast_recall_correct':forecast,
+                 'forecast_scope':'learned synthetic recall-success estimate; not consciousness',
                  'scope':'four-symbol recall only', 'source':'user-provided symbolic input'}
         self.episodes.append(event)
         return json.loads(json.dumps(event))
@@ -89,6 +103,9 @@ class CognitiveSession:
                   'answer_correct':(self.pending['answer_symbol'] == actual_symbol
                                     if self.pending['answer_symbol'] is not None else None),
                   'brier_multiclass':float(((p-np.eye(4)[actual_symbol])**2).sum())}
+        forecast = self.pending['forecast_recall_correct']
+        result['forecast_brier'] = (float((forecast-result['correct'])**2)
+                                    if forecast is not None else None)
         self.pending = None
         self.episodes[-1]['assessment'] = result
         return json.loads(json.dumps(result))

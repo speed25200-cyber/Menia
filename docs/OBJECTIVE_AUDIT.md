@@ -75,7 +75,14 @@ publiés jusqu'en 2026. Elle propose trois hypothèses fonctionnelles : connaiss
 de son propre état au-delà des indices publics, usage causal d'un modèle de soi
 dans la décision, et distinction entre son histoire et celle d'autrui.
 
-Ces expériences proposées n'ont pas encore été exécutées. Une réussite serait
-une preuve fonctionnelle circonscrite, pas une certification d'expérience
-subjective. L'objectif initial reste non atteint ; aucun nouvel entraînement
-n'a été lancé pendant cette recherche bibliographique.
+La recherche bibliographique n'avait pas lancé de nouvel entraînement. Elle est
+désormais suivie d'un [pilote exécuté](SELF_MODEL_RESULTS.md) sur l'estimation de
+ses propres erreurs de rappel. Un estimateur lit l'état interne et un observateur
+lit l'état nominal reconstruit à partir des entrées publiques. L'avantage interne
+sur le bruit se reproduit pour les trois mémoires ; le remplacement par un état
+étranger valide produit des prévisions très excessives. Le moniteur appris est
+intégré à `CognitiveSession`, mais ne modifie pas les poids de rappel ni le chat.
+
+Ces résultats ne valident pas l'ensemble du modèle de soi proposé. Ils apportent
+une preuve fonctionnelle circonscrite et identifient une limite de provenance,
+sans certification d'expérience subjective. L'objectif initial reste non atteint.
