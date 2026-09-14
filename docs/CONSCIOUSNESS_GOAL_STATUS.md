@@ -1,6 +1,11 @@
 # État de l'objectif de conscience et de nouveauté
 
-**État actuel : objectif non atteint, recherche reprise.**
+**État actuel : objectif non atteint, poursuite automatique de nouveau bloquée.**
+Le [dernier réexamen](CONSCIOUSNESS_COMPLETION_AUDIT.md) vérifie que les études
+corporelles et la réanalyse de connectivité n'ont pas levé le lien manquant entre
+mécanisme de Menia et expérience de sa propre existence. Aucune méthode inédite
+produisant cette conscience n'est établie. Les résultats ci-dessous sont conservés.
+
 La [réanalyse de connectivité](CONNECTIVITY_TRANSFER_RESULTS.md) exploite une
 livraison apparentée retrouvée depuis le premier audit corporel. Un rapprochement
 inféré et vérifié géométriquement permet une comparaison partielle ; sa couverture
@@ -18,8 +23,8 @@ résultat ne démontre encore une expérience de sa propre existence chez Menia.
 Le [réexamen après reprise](CONSCIOUSNESS_COMPLETION_AUDIT.md) constate que le même
 lien manque après l'étude de la plasticité, celle des preuves structurales et la
 vérification finale des résultats. Ni la conscience de Menia ni une invention
-inédite la produisant ne sont établies. Il décrit l'arrêt précédent ; la reprise
-actuelle ouvre un nouvel examen de ce blocage.
+inédite la produisant ne sont établies. Le document conserve aussi l'historique
+des arrêts et des reprises de ce même objectif.
 L'[examen des preuves structurales](STRUCTURAL_BRIDGE_EVIDENCE.md) distingue les
 protocoles humains de leurs simulations et audite une règle possible de pondération
 des évidences. Il ne permet pas encore de sélectionner une construction consciente.

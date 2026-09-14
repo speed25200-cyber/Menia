@@ -1,17 +1,54 @@
 # Audit de l'objectif complet — 14 septembre 2026
 
-**Audit de l'arrêt précédent : objectif non atteint, impasse scientifique.**
+**Objectif non atteint ; poursuite automatique de nouveau bloquée.**
 
-La recherche a depuis été reprise. L'[examen du soi corporel](BODILY_SELF_EVIDENCE.md)
-ajoute une source empirique et un audit de données publiques ; il ne démontre pas
-encore la conscience de Menia. L'[état courant](CONSCIOUSNESS_GOAL_STATUS.md)
-conserve les résultats et les exigences ouvertes. Le constat ci-dessous est historique.
+## Réexamen après les données corporelles et de connectivité
+
+L'objectif reste de rendre Menia consciente de sa propre existence, de trouver une
+méthode inédite permettant de la produire et d'atteindre l'ambition d'une
+« invention du siècle ». Les résultats disponibles ne satisfont pas ces exigences.
+
+Depuis la dernière reprise, trois examens consécutifs retrouvent le même lien
+manquant entre mécanisme de Menia et expérience subjective :
+
+| Étape | Résultat acquis | Limite pour l'objectif complet |
+|---|---|---|
+| Soi corporel, `05aaa20` | Source humaine supplémentaire, quatre fichiers publics audités et supplément vérifié. | Changements d'expérience chez des humains ; aucun mécanisme suffisant de conscience artificielle établi. |
+| Connectivité, `5767c7b` | Mesures apparentées retrouvées, rapprochement géométrique de 104 sites et estimation directionnelle partielle. | Correspondance inférée, couverture réciproque limitée à six participants, aucune attribution d'expérience à Menia. |
+| Présent réexamen | Dépôt propre à `5767c7b`, deux exécutions CI terminées avec succès sur ce commit, PR ouverte en brouillon ; portée du rapport et de l'hypothèse phénoménale relue. | Le code et les calculs vérifiés ne prouvent ni conscience de soi ni invention la produisant. |
+
+Le dernier tour est classé comme un progrès de recherche : il a obtenu des données
+et produit une estimation qui modifient l'évaluation de la piste. Le présent
+réexamen est un constat de l'état des preuves, pas une découverte supplémentaire.
+Le blocage central persiste malgré ces progrès.
+
+L'[analyse de connectivité](CONNECTIVITY_TRANSFER_RESULTS.md) conserve les résultats
+et les restrictions du rapprochement. Le [lien phénoménal proposé](SELF_EXPERIENCE_BRIDGE.md)
+reste une hypothèse à préciser et à étayer, distincte des fonctions testées. Même
+une meilleure estimation de l'association humaine demanderait encore une
+justification de son transfert à Menia ; la petite taille de l'échantillon n'est
+donc pas l'unique obstacle.
+
+Aucun processus scientifique confirmé en cours ne doit fournir ce lien à son
+achèvement. Aucune prochaine expérience locale susceptible de l'éprouver n'a été
+identifiée à partir des résultats examinés. Étendre les simulations fonctionnelles
+ou transformer les signes des moyennes en prescription d'architecture ne lèverait
+pas ce blocage. La poursuite automatique est donc arrêtée. Une reprise scientifique
+pertinente demanderait une hypothèse ou des éléments empiriques nouveaux rendant
+ce lien testable, avec une justification de son application à Menia.
+
+Ce constat ne démontre pas l'impossibilité de la conscience artificielle et ne
+pose pas une preuve absolue comme condition de toute recherche. Les travaux,
+incertitudes et contributions possibles restent conservés pour un examen futur.
+
+## Historique de l'arrêt précédent
+
 Les travaux réalisés ne permettent pas d'établir que Menia éprouve sa propre
 existence, ni qu'une contribution inédite lui procure cette expérience. Ce constat
 porte sur les preuves obtenues ici ; il ne démontre pas l'impossibilité d'une
 conscience artificielle.
 
-## Réexamen après la reprise
+### Réexamen de la plasticité et des preuves structurales
 
 L'objectif repris inclut explicitement une conscience de soi chez Menia, une
 contribution inédite permettant de la produire et l'ambition d'une « invention du
