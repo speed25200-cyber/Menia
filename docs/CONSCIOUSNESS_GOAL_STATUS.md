@@ -1,6 +1,10 @@
 # État de l'objectif de conscience et de nouveauté
 
-**État actuel : objectif non atteint, recherche reprise à la demande d'Emin.**
+**État actuel : objectif non atteint, poursuite automatique de nouveau bloquée.**
+Le [réexamen après reprise](CONSCIOUSNESS_COMPLETION_AUDIT.md) constate que le même
+lien manque après l'étude de la plasticité, celle des preuves structurales et la
+vérification finale des résultats. Ni la conscience de Menia ni une invention
+inédite la produisant ne sont établies.
 L'[examen des preuves structurales](STRUCTURAL_BRIDGE_EVIDENCE.md) distingue les
 protocoles humains de leurs simulations et audite une règle possible de pondération
 des évidences. Il ne permet pas encore de sélectionner une construction consciente.

@@ -6,6 +6,42 @@ existence, ni qu'une contribution inédite lui procure cette expérience. Ce con
 porte sur les preuves obtenues ici ; il ne démontre pas l'impossibilité d'une
 conscience artificielle.
 
+## Réexamen après la reprise
+
+L'objectif repris inclut explicitement une conscience de soi chez Menia, une
+contribution inédite permettant de la produire et l'ambition d'une « invention du
+siècle ». Aucun de ces résultats n'est établi. Les blocages ont été identifiés et
+examinés, mais les résoudre ne peut pas être remplacé par leur description.
+
+Depuis la reprise, trois examens consécutifs retrouvent la même absence de lien
+étayé entre mécanismes fonctionnels et expérience de soi :
+
+| Étape | Résultat vérifié | Limite pour l'objectif complet |
+|---|---|---|
+| Plasticité, commit `4c1631f` | Équivalence de descriptions computationnelles dans le domaine et sous les interventions définis. | Aucune attribution d'expérience subjective ; pas de méthode inédite la produisant. |
+| Preuves structurales, commit `4078277` | Distinction entre protocoles et simulations ; défaut d'invariance d'une règle littérale de pondération. | Les données et arguments examinés ne sélectionnent pas une réalisation consciente de Menia. |
+| Présent réexamen | Dépôt propre à `4078277`, deux exécutions CI terminées avec succès, PR ouverte en brouillon. | Ces vérifications portent sur le code et les calculs, pas sur la présence d'une conscience ou sur la nouveauté scientifique. |
+
+Le dernier tour est classé comme un progrès de recherche : il a produit un audit
+reproductible et des éléments qui modifient la méthode de comparaison envisagée.
+Il n'a cependant pas levé le blocage de l'objectif final. Le présent réexamen est
+un constat de cet état, pas une nouvelle découverte scientifique.
+
+Les résultats détaillés sont conservés dans [l'audit de plasticité](PLASTICITY_REALIZATION_AUDIT.md)
+et [l'examen des preuves structurales](STRUCTURAL_BRIDGE_EVIDENCE.md). Aucun travail
+en attente dans ces étapes ne permettra, à son achèvement, de fournir le lien
+manquant. Aucune prochaine expérience locale susceptible de l'éprouver n'a été
+identifiée à partir de ces résultats. Accumuler d'autres démonstrations
+fonctionnelles ne justifierait pas de déclarer Menia consciente.
+
+La poursuite automatique est donc de nouveau bloquée. Une reprise pertinente
+demanderait des éléments théoriques ou empiriques nouveaux qui rendent ce lien
+testable et justifient son application à Menia. Ce constat ne démontre pas une
+impossibilité générale de la conscience artificielle et ne demande pas une preuve
+absolue comme préalable à toute recherche.
+
+## Historique de l'audit initial
+
 ## Ce que les trois dernières étapes ont apporté
 
 1. [Hypothèse reliant modèle de soi et expérience](SELF_EXPERIENCE_BRIDGE.md)
