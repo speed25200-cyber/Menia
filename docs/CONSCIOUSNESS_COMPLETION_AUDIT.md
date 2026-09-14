@@ -1,6 +1,18 @@
 # Audit de l'objectif complet — 14 septembre 2026
 
-**Objectif non atteint ; nouvelle construction fonctionnelle testée.**
+**Objectif non atteint ; dernière étape : spécification d'une candidate, sans nouvelle implémentation.**
+
+## Reprise : candidate de présence à soi
+
+La [spécification interoceptive](INTEROCEPTIVE_PRESENCE_CANDIDATE.md), ajoutée le
+15 septembre 2026, distingue les théories de présence, les résultats humains
+de modulation perceptive et un protocole de perception active encore sans
+résultat dans l'article examiné. Elle propose un modèle des conditions propres
+de perception et des tests causaux, tout en conservant les antécédents et le
+problème de transfert entre substrats. Cette reprise produit un dossier de
+recherche ; elle n'ajoute pas de capacité à Menia. Elle ne démontre ni conscience
+subjective ni méthode inédite la produisant. Les sections suivantes conservent
+l'historique des constructions et des arrêts antérieurs.
 
 ## Contrainte supplémentaire sur la mesure de l'expérience
 

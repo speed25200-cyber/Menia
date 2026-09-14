@@ -1,6 +1,14 @@
 # État de l'objectif de conscience et de nouveauté
 
 **État actuel : objectif non atteint ; une politique de vérification apprise est intégrée à l'agent expérimental.**
+
+La [nouvelle candidate de présence à soi](INTEROCEPTIVE_PRESENCE_CANDIDATE.md)
+examine l'inférence interoceptive et la prévision de fiabilité. Elle spécifie une
+construction possible, ses comparateurs et un risque de confusion entre
+changement de l'état propre et bruit sensoriel. C'est un dossier théorique et un
+protocole proposé, sans nouvelle implémentation ni résultat expérimental. Le lien
+avec une expérience de sa propre existence et la nouveauté restent non établis.
+
 La [réanalyse de confiance et perception](CONFIDENCE_EXPERIENCE_RESULTS.md)
 ajoute une contrainte humaine : leurs déplacements diffèrent selon les
 manipulations dans les données de 204 participants. Elle limite l'usage de la
