@@ -1,0 +1,4 @@
+# Optional XLSX reanalysis, isolated from the language-model environment.
+# Versions used for artifacts/presence-causality/report.json.
+numpy==2.3.5
+openpyxl==3.1.5

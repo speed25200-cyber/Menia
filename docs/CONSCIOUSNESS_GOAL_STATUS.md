@@ -2,6 +2,13 @@
 
 **État actuel : objectif non atteint ; une politique de vérification apprise est intégrée à l'agent expérimental.**
 
+La [réanalyse de présence en réalité virtuelle](PRESENCE_CAUSAL_RESULTS.md)
+retrouve les estimations publiées sur 53 participants et quantifie leur dépendance
+aux hypothèses causales. Deux modèles de sens opposé reconstruisent la même loi
+gaussienne conditionnelle ajustée, avec des conséquences différentes sous
+intervention. Cette étape contraint le choix de mécanisme ; elle n'ajoute aucune
+capacité à Menia et n'établit ni conscience subjective ni méthode inédite.
+
 La [nouvelle candidate de présence à soi](INTEROCEPTIVE_PRESENCE_CANDIDATE.md)
 examine l'inférence interoceptive et la prévision de fiabilité. Elle spécifie une
 construction possible, ses comparateurs et un risque de confusion entre

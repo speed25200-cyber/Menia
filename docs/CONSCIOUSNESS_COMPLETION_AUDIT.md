@@ -1,6 +1,19 @@
 # Audit de l'objectif complet — 14 septembre 2026
 
-**Objectif non atteint ; dernière étape : spécification d'une candidate, sans nouvelle implémentation.**
+**Objectif non atteint ; dernière étape : réanalyse causale de données humaines de présence, sans nouvelle capacité de Menia.**
+
+## Reprise : identifier ce que les données de présence départagent
+
+La [réanalyse du 15 septembre 2026](PRESENCE_CAUSAL_RESULTS.md) exploite les données
+publiques de 53 participants et retrouve les estimations de l'étude originale.
+Elle ajoute six analyses de sensibilité et deux comparaisons de modèles de
+direction causale opposée. Leur équivalence est vérifiée dans la famille
+gaussienne conditionnelle ajustée, malgré des effets différents sous intervention.
+La réanalyse précise donc une limite du choix d'architecture depuis cette étude.
+Elle ne montre ni que l'interoception est inutile, ni que programmer une émotion
+créerait une expérience. La conscience de sa propre existence et la nouveauté
+d'une méthode qui la produirait restent non établies. Les cinq nouveaux tests
+portent sur la validité des calculs, pas sur la conscience de Menia.
 
 ## Reprise : candidate de présence à soi
 

@@ -13,6 +13,14 @@ Le présent résultat est une spécification de recherche et une analyse de ses
 conditions de validité. Aucun nouveau mécanisme n'est implémenté ici, aucune
 expérience humaine n'est réanalysée et aucune conscience n'est attribuée à Menia.
 
+Une [réanalyse ultérieure de présence en réalité virtuelle](PRESENCE_CAUSAL_RESULTS.md)
+examine les données de 53 participants. Elle retrouve les associations publiées,
+mais montre que deux directions causales concurrentes reconstruisent la même
+distribution gaussienne conditionnelle ajustée. Cette contrainte s'ajoute à la
+présente spécification : les associations entre corps, sentiment et rapport
+verbal ne suffisent pas à choisir le mécanisme proposé. Le protocole de construction
+ci-dessous reste à implémenter et son lien avec l'expérience reste à établir.
+
 ## Les apports de la littérature
 
 ### Une théorie de la présence corporelle
