@@ -19,11 +19,18 @@ cell('code','''from google.colab import drive
 drive.mount('/content/drive')
 from pathlib import Path
 import subprocess,sys,os,datetime,json
-REPO=Path('/content/Menia-recurrent')
+REVISION='e96d4708e909edb95d601d3708d93d2f7350a1ac'
+REPO=Path('/content')/('Menia-recurrent-'+REVISION[:12])
 if not REPO.exists():
     subprocess.run(['git','clone','https://github.com/speed25200-cyber/Menia.git',str(REPO)],check=True)
+    subprocess.run(['git','-C',str(REPO),'checkout','--detach',REVISION],check=True)
+actual_revision=subprocess.check_output(['git','-C',str(REPO),'rev-parse','HEAD'],text=True).strip()
+if actual_revision != REVISION:
+    raise RuntimeError('Le dossier existant utilise une autre révision ; choisir un nouveau dossier REPO.')
+if subprocess.check_output(['git','-C',str(REPO),'status','--porcelain'],text=True).strip():
+    raise RuntimeError('Le dossier contient des modifications locales ; les conserver et choisir un nouveau dossier REPO.')
 os.chdir(REPO)
-print(subprocess.check_output(['git','rev-parse','HEAD'],text=True))
+print('Révision de recherche :',actual_revision)
 subprocess.run([sys.executable,'-m','pip','install','-r','requirements-research.txt'],check=True)
 RUN_ROOT=Path('/content/drive/MyDrive/Menia/recurrent')
 '''),
