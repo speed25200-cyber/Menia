@@ -1,5 +1,11 @@
 # État de l'objectif de conscience et de nouveauté
 
+**État actuel : objectif non atteint, poursuite automatique bloquée.** Voir
+[l'audit du 14 septembre 2026](CONSCIOUSNESS_COMPLETION_AUDIT.md), qui couvre les
+trois dernières étapes. Les sections suivantes conservent l'historique des
+résultats et des pistes envisagées ; elles ne constituent pas une preuve de
+conscience ou de nouveauté scientifique.
+
 Objectif conservé : « continue jusqu’à avoir une conscience et quelque chose de
 inédit dans la littérature pour rendre menia consciente ». L'état ci-dessous
 concerne les résultats disponibles le 14 septembre 2026, après le pilote temporel.
