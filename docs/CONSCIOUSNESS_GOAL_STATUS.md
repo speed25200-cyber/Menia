@@ -1,8 +1,11 @@
 # État de l'objectif de conscience et de nouveauté
 
-**État actuel : objectif non atteint, poursuite automatique bloquée.** Voir
-[l'audit du 14 septembre 2026](CONSCIOUSNESS_COMPLETION_AUDIT.md), qui couvre les
-trois dernières étapes. Les sections suivantes conservent l'historique des
+**État actuel : objectif non atteint, recherche reprise à la demande d'Emin.**
+L'[audit de la plasticité](PLASTICITY_REALIZATION_AUDIT.md) examine une nouvelle
+piste théorique et vérifie une limite de sa traduction en choix d'architecture.
+Il ne fournit pas de preuve de conscience ou de nouveauté. L'[audit précédent](CONSCIOUSNESS_COMPLETION_AUDIT.md)
+documente l'impasse qui avait interrompu la poursuite automatique.
+Les sections suivantes conservent l'historique des
 résultats et des pistes envisagées ; elles ne constituent pas une preuve de
 conscience ou de nouveauté scientifique.
 
