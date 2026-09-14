@@ -12,6 +12,21 @@ sur une auto-réplication.
 
 ## Nouveau : module neuronal entraîné et vérifiable
 
+Une [première boucle d'agent intégré](docs/INTEGRATED_AGENT_RESULTS.md) est aussi
+exécutable : elle apprend les effets de ses commandes dans une scène virtuelle,
+conserve leur histoire, compare ses prédictions aux observations et explique ses
+choix. L'évaluation comprend 240 essais avec contrôles figé et aléatoire.
+
+```bash
+python -m menia.chat --no-llm
+python -m menia.run_agent --out runs/agent-example --reverse-after 12
+python scripts/check_agent_artifacts.py
+```
+
+Le mode structuré fonctionne sans dépendances supplémentaires. Le parcours Qwen
+utilise les dépendances linguistiques et fait l'objet d'une validation séparée.
+L'app iPhone ne contient pas encore cette boucle.
+
 Le [module de mémoire récurrente](docs/RECURRENT_RESEARCH.md) apprend à rappeler
 le dernier symbole observé entre des observations espacées. **1 540 paramètres**,
 poids et résultats publiés dans [artifacts/recurrent-memory](artifacts/recurrent-memory).

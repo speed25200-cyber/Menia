@@ -1,0 +1,21 @@
+{
+  "seed": 17,
+  "cycles": 73,
+  "actions": 35,
+  "goal_reached": true,
+  "final_position": [
+    4,
+    3
+  ],
+  "target": [
+    4,
+    3
+  ],
+  "observed_transitions": 35,
+  "control_reversal": true,
+  "dropout": 0.0,
+  "slip": 0.0,
+  "mean_forecast_brier": 0.44949237966354233,
+  "explanation": "Ma position observée correspond à la cible observée ; je termine ce déplacement. Références : 249, 2.",
+  "scope": "virtual-room online learning; no subjective-consciousness inference"
+}

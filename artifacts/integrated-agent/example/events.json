@@ -1,0 +1,9273 @@
+[
+  {
+    "id": 1,
+    "episode": "virtual-room-17",
+    "tick": 0,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "target",
+      "reason": "missing_observation",
+      "evidence": []
+    }
+  },
+  {
+    "id": 2,
+    "episode": "virtual-room-17",
+    "tick": 0,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "target",
+      "value": [
+        4,
+        3
+      ]
+    }
+  },
+  {
+    "id": 3,
+    "episode": "virtual-room-17",
+    "tick": 0,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "target",
+      "received": true,
+      "observation_event": 2,
+      "unselected": [
+        "position",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 4,
+    "episode": "virtual-room-17",
+    "tick": 0,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "missing_observation",
+      "evidence": []
+    }
+  },
+  {
+    "id": 5,
+    "episode": "virtual-room-17",
+    "tick": 0,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        0,
+        0
+      ]
+    }
+  },
+  {
+    "id": 6,
+    "episode": "virtual-room-17",
+    "tick": 0,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 5,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 7,
+    "episode": "virtual-room-17",
+    "tick": 0,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "a",
+      "reason": "learn_action_effect",
+      "forecast": {
+        "action": "a",
+        "effect": [
+          -1,
+          -1
+        ],
+        "confidence": 0.11111111111111112,
+        "samples": 0,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.11111111111111112
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 7.0,
+        "b": 7.0,
+        "c": 7.0,
+        "d": 7.0
+      },
+      "evidence": [
+        5,
+        2
+      ]
+    }
+  },
+  {
+    "id": 8,
+    "episode": "virtual-room-17",
+    "tick": 0,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "a",
+      "effect": [
+        -1,
+        -1
+      ],
+      "confidence": 0.11111111111111112,
+      "samples": 0,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.11111111111111112
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.11111111111111112
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.11111111111111112
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.11111111111111112
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.11111111111111112
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.11111111111111112
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.11111111111111112
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.11111111111111112
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.11111111111111112
+        }
+      ],
+      "decision_event": 7,
+      "before_event": 5,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 9,
+    "episode": "virtual-room-17",
+    "tick": 1,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "a",
+      "tick": 1,
+      "executed": true,
+      "prediction_event": 8,
+      "decision_event": 7
+    }
+  },
+  {
+    "id": 10,
+    "episode": "virtual-room-17",
+    "tick": 1,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        8
+      ]
+    }
+  },
+  {
+    "id": 11,
+    "episode": "virtual-room-17",
+    "tick": 1,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        1,
+        0
+      ]
+    }
+  },
+  {
+    "id": 12,
+    "episode": "virtual-room-17",
+    "tick": 1,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "a",
+      "effect": [
+        1,
+        0
+      ],
+      "correct": false,
+      "confidence": 0.11111111111111112,
+      "brier": 0.8888888888888888,
+      "surprisal": 2.197224577336219,
+      "regime_reset": false,
+      "attributable": true,
+      "prediction_event": 8,
+      "action_event": 9,
+      "observation_event": 11
+    }
+  },
+  {
+    "id": 13,
+    "episode": "virtual-room-17",
+    "tick": 1,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 11,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 14,
+    "episode": "virtual-room-17",
+    "tick": 1,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "b",
+      "reason": "learn_action_effect",
+      "forecast": {
+        "action": "b",
+        "effect": [
+          -1,
+          -1
+        ],
+        "confidence": 0.11111111111111112,
+        "samples": 0,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.11111111111111112
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 5.473684210526316,
+        "b": 6.0,
+        "c": 6.0,
+        "d": 6.0
+      },
+      "evidence": [
+        11,
+        2
+      ]
+    }
+  },
+  {
+    "id": 15,
+    "episode": "virtual-room-17",
+    "tick": 1,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "b",
+      "effect": [
+        -1,
+        -1
+      ],
+      "confidence": 0.11111111111111112,
+      "samples": 0,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.11111111111111112
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.11111111111111112
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.11111111111111112
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.11111111111111112
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.11111111111111112
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.11111111111111112
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.11111111111111112
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.11111111111111112
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.11111111111111112
+        }
+      ],
+      "decision_event": 14,
+      "before_event": 11,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 16,
+    "episode": "virtual-room-17",
+    "tick": 2,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "b",
+      "tick": 2,
+      "executed": true,
+      "prediction_event": 15,
+      "decision_event": 14
+    }
+  },
+  {
+    "id": 17,
+    "episode": "virtual-room-17",
+    "tick": 2,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        15
+      ]
+    }
+  },
+  {
+    "id": 18,
+    "episode": "virtual-room-17",
+    "tick": 2,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "id": 19,
+    "episode": "virtual-room-17",
+    "tick": 2,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "b",
+      "effect": [
+        0,
+        1
+      ],
+      "correct": false,
+      "confidence": 0.11111111111111112,
+      "brier": 0.8888888888888888,
+      "surprisal": 2.197224577336219,
+      "regime_reset": false,
+      "attributable": true,
+      "prediction_event": 15,
+      "action_event": 16,
+      "observation_event": 18
+    }
+  },
+  {
+    "id": 20,
+    "episode": "virtual-room-17",
+    "tick": 2,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 18,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 21,
+    "episode": "virtual-room-17",
+    "tick": 2,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "c",
+      "reason": "learn_action_effect",
+      "forecast": {
+        "action": "c",
+        "effect": [
+          -1,
+          -1
+        ],
+        "confidence": 0.11111111111111112,
+        "samples": 0,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.11111111111111112
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 4.473684210526316,
+        "b": 4.473684210526316,
+        "c": 5.0,
+        "d": 5.0
+      },
+      "evidence": [
+        18,
+        2
+      ]
+    }
+  },
+  {
+    "id": 22,
+    "episode": "virtual-room-17",
+    "tick": 2,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "c",
+      "effect": [
+        -1,
+        -1
+      ],
+      "confidence": 0.11111111111111112,
+      "samples": 0,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.11111111111111112
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.11111111111111112
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.11111111111111112
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.11111111111111112
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.11111111111111112
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.11111111111111112
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.11111111111111112
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.11111111111111112
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.11111111111111112
+        }
+      ],
+      "decision_event": 21,
+      "before_event": 18,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 23,
+    "episode": "virtual-room-17",
+    "tick": 3,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "c",
+      "tick": 3,
+      "executed": true,
+      "prediction_event": 22,
+      "decision_event": 21
+    }
+  },
+  {
+    "id": 24,
+    "episode": "virtual-room-17",
+    "tick": 3,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        22
+      ]
+    }
+  },
+  {
+    "id": 25,
+    "episode": "virtual-room-17",
+    "tick": 3,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        0,
+        1
+      ]
+    }
+  },
+  {
+    "id": 26,
+    "episode": "virtual-room-17",
+    "tick": 3,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "c",
+      "effect": [
+        -1,
+        0
+      ],
+      "correct": false,
+      "confidence": 0.11111111111111112,
+      "brier": 0.8888888888888888,
+      "surprisal": 2.197224577336219,
+      "regime_reset": false,
+      "attributable": true,
+      "prediction_event": 22,
+      "action_event": 23,
+      "observation_event": 25
+    }
+  },
+  {
+    "id": 27,
+    "episode": "virtual-room-17",
+    "tick": 3,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 25,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 28,
+    "episode": "virtual-room-17",
+    "tick": 3,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "d",
+      "reason": "learn_action_effect",
+      "forecast": {
+        "action": "d",
+        "effect": [
+          -1,
+          -1
+        ],
+        "confidence": 0.11111111111111112,
+        "samples": 0,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.11111111111111112
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 5.473684210526316,
+        "b": 5.473684210526316,
+        "c": 6.526315789473684,
+        "d": 6.0
+      },
+      "evidence": [
+        25,
+        2
+      ]
+    }
+  },
+  {
+    "id": 29,
+    "episode": "virtual-room-17",
+    "tick": 3,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "d",
+      "effect": [
+        -1,
+        -1
+      ],
+      "confidence": 0.11111111111111112,
+      "samples": 0,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.11111111111111112
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.11111111111111112
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.11111111111111112
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.11111111111111112
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.11111111111111112
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.11111111111111112
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.11111111111111112
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.11111111111111112
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.11111111111111112
+        }
+      ],
+      "decision_event": 28,
+      "before_event": 25,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 30,
+    "episode": "virtual-room-17",
+    "tick": 4,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "d",
+      "tick": 4,
+      "executed": true,
+      "prediction_event": 29,
+      "decision_event": 28
+    }
+  },
+  {
+    "id": 31,
+    "episode": "virtual-room-17",
+    "tick": 4,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        29
+      ]
+    }
+  },
+  {
+    "id": 32,
+    "episode": "virtual-room-17",
+    "tick": 4,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        0,
+        0
+      ]
+    }
+  },
+  {
+    "id": 33,
+    "episode": "virtual-room-17",
+    "tick": 4,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "d",
+      "effect": [
+        0,
+        -1
+      ],
+      "correct": false,
+      "confidence": 0.11111111111111112,
+      "brier": 0.8888888888888888,
+      "surprisal": 2.197224577336219,
+      "regime_reset": false,
+      "attributable": true,
+      "prediction_event": 29,
+      "action_event": 30,
+      "observation_event": 32
+    }
+  },
+  {
+    "id": 34,
+    "episode": "virtual-room-17",
+    "tick": 4,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 32,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 35,
+    "episode": "virtual-room-17",
+    "tick": 4,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "a",
+      "reason": "learn_action_effect",
+      "forecast": {
+        "action": "a",
+        "effect": [
+          1,
+          0
+        ],
+        "confidence": 0.5789473684210527,
+        "samples": 1,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.5789473684210527
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.052631578947368425
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 6.473684210526316,
+        "b": 6.473684210526316,
+        "c": 7.526315789473685,
+        "d": 7.526315789473685
+      },
+      "evidence": [
+        32,
+        2
+      ]
+    }
+  },
+  {
+    "id": 36,
+    "episode": "virtual-room-17",
+    "tick": 4,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "a",
+      "effect": [
+        1,
+        0
+      ],
+      "confidence": 0.5789473684210527,
+      "samples": 1,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.052631578947368425
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.052631578947368425
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.052631578947368425
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.052631578947368425
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.052631578947368425
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.052631578947368425
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.052631578947368425
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.5789473684210527
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.052631578947368425
+        }
+      ],
+      "decision_event": 35,
+      "before_event": 32,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 37,
+    "episode": "virtual-room-17",
+    "tick": 5,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "a",
+      "tick": 5,
+      "executed": true,
+      "prediction_event": 36,
+      "decision_event": 35
+    }
+  },
+  {
+    "id": 38,
+    "episode": "virtual-room-17",
+    "tick": 5,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        36
+      ]
+    }
+  },
+  {
+    "id": 39,
+    "episode": "virtual-room-17",
+    "tick": 5,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        1,
+        0
+      ]
+    }
+  },
+  {
+    "id": 40,
+    "episode": "virtual-room-17",
+    "tick": 5,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "a",
+      "effect": [
+        1,
+        0
+      ],
+      "correct": true,
+      "confidence": 0.5789473684210527,
+      "brier": 0.19944598337950137,
+      "surprisal": 0.5465437063680699,
+      "regime_reset": false,
+      "attributable": true,
+      "prediction_event": 36,
+      "action_event": 37,
+      "observation_event": 39
+    }
+  },
+  {
+    "id": 41,
+    "episode": "virtual-room-17",
+    "tick": 5,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 39,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 42,
+    "episode": "virtual-room-17",
+    "tick": 5,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "b",
+      "reason": "learn_action_effect",
+      "forecast": {
+        "action": "b",
+        "effect": [
+          0,
+          1
+        ],
+        "confidence": 0.5789473684210527,
+        "samples": 1,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.5789473684210527
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.052631578947368425
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 5.310344827586206,
+        "b": 5.473684210526316,
+        "c": 6.526315789473684,
+        "d": 6.526315789473684
+      },
+      "evidence": [
+        39,
+        2
+      ]
+    }
+  },
+  {
+    "id": 43,
+    "episode": "virtual-room-17",
+    "tick": 5,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "b",
+      "effect": [
+        0,
+        1
+      ],
+      "confidence": 0.5789473684210527,
+      "samples": 1,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.052631578947368425
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.052631578947368425
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.052631578947368425
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.052631578947368425
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.052631578947368425
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.5789473684210527
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.052631578947368425
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.052631578947368425
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.052631578947368425
+        }
+      ],
+      "decision_event": 42,
+      "before_event": 39,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 44,
+    "episode": "virtual-room-17",
+    "tick": 6,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "b",
+      "tick": 6,
+      "executed": true,
+      "prediction_event": 43,
+      "decision_event": 42
+    }
+  },
+  {
+    "id": 45,
+    "episode": "virtual-room-17",
+    "tick": 6,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        43
+      ]
+    }
+  },
+  {
+    "id": 46,
+    "episode": "virtual-room-17",
+    "tick": 6,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "id": 47,
+    "episode": "virtual-room-17",
+    "tick": 6,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "b",
+      "effect": [
+        0,
+        1
+      ],
+      "correct": true,
+      "confidence": 0.5789473684210527,
+      "brier": 0.19944598337950137,
+      "surprisal": 0.5465437063680699,
+      "regime_reset": false,
+      "attributable": true,
+      "prediction_event": 43,
+      "action_event": 44,
+      "observation_event": 46
+    }
+  },
+  {
+    "id": 48,
+    "episode": "virtual-room-17",
+    "tick": 6,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 46,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 49,
+    "episode": "virtual-room-17",
+    "tick": 6,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "c",
+      "reason": "learn_action_effect",
+      "forecast": {
+        "action": "c",
+        "effect": [
+          -1,
+          0
+        ],
+        "confidence": 0.5789473684210527,
+        "samples": 1,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.5789473684210527
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.052631578947368425
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 4.310344827586207,
+        "b": 4.310344827586207,
+        "c": 5.526315789473685,
+        "d": 5.526315789473685
+      },
+      "evidence": [
+        46,
+        2
+      ]
+    }
+  },
+  {
+    "id": 50,
+    "episode": "virtual-room-17",
+    "tick": 6,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "c",
+      "effect": [
+        -1,
+        0
+      ],
+      "confidence": 0.5789473684210527,
+      "samples": 1,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.052631578947368425
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.5789473684210527
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.052631578947368425
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.052631578947368425
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.052631578947368425
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.052631578947368425
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.052631578947368425
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.052631578947368425
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.052631578947368425
+        }
+      ],
+      "decision_event": 49,
+      "before_event": 46,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 51,
+    "episode": "virtual-room-17",
+    "tick": 7,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "c",
+      "tick": 7,
+      "executed": true,
+      "prediction_event": 50,
+      "decision_event": 49
+    }
+  },
+  {
+    "id": 52,
+    "episode": "virtual-room-17",
+    "tick": 7,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        50
+      ]
+    }
+  },
+  {
+    "id": 53,
+    "episode": "virtual-room-17",
+    "tick": 7,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        0,
+        1
+      ]
+    }
+  },
+  {
+    "id": 54,
+    "episode": "virtual-room-17",
+    "tick": 7,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "c",
+      "effect": [
+        -1,
+        0
+      ],
+      "correct": true,
+      "confidence": 0.5789473684210527,
+      "brier": 0.19944598337950137,
+      "surprisal": 0.5465437063680699,
+      "regime_reset": false,
+      "attributable": true,
+      "prediction_event": 50,
+      "action_event": 51,
+      "observation_event": 53
+    }
+  },
+  {
+    "id": 55,
+    "episode": "virtual-room-17",
+    "tick": 7,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 53,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 56,
+    "episode": "virtual-room-17",
+    "tick": 7,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "d",
+      "reason": "learn_action_effect",
+      "forecast": {
+        "action": "d",
+        "effect": [
+          0,
+          -1
+        ],
+        "confidence": 0.5789473684210527,
+        "samples": 1,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.5789473684210527
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.052631578947368425
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 5.310344827586206,
+        "b": 5.310344827586206,
+        "c": 6.689655172413793,
+        "d": 6.526315789473684
+      },
+      "evidence": [
+        53,
+        2
+      ]
+    }
+  },
+  {
+    "id": 57,
+    "episode": "virtual-room-17",
+    "tick": 7,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "d",
+      "effect": [
+        0,
+        -1
+      ],
+      "confidence": 0.5789473684210527,
+      "samples": 1,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.052631578947368425
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.052631578947368425
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.052631578947368425
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.5789473684210527
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.052631578947368425
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.052631578947368425
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.052631578947368425
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.052631578947368425
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.052631578947368425
+        }
+      ],
+      "decision_event": 56,
+      "before_event": 53,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 58,
+    "episode": "virtual-room-17",
+    "tick": 8,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "d",
+      "tick": 8,
+      "executed": true,
+      "prediction_event": 57,
+      "decision_event": 56
+    }
+  },
+  {
+    "id": 59,
+    "episode": "virtual-room-17",
+    "tick": 8,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        57
+      ]
+    }
+  },
+  {
+    "id": 60,
+    "episode": "virtual-room-17",
+    "tick": 8,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        0,
+        0
+      ]
+    }
+  },
+  {
+    "id": 61,
+    "episode": "virtual-room-17",
+    "tick": 8,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "d",
+      "effect": [
+        0,
+        -1
+      ],
+      "correct": true,
+      "confidence": 0.5789473684210527,
+      "brier": 0.19944598337950137,
+      "surprisal": 0.5465437063680699,
+      "regime_reset": false,
+      "attributable": true,
+      "prediction_event": 57,
+      "action_event": 58,
+      "observation_event": 60
+    }
+  },
+  {
+    "id": 62,
+    "episode": "virtual-room-17",
+    "tick": 8,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 60,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 63,
+    "episode": "virtual-room-17",
+    "tick": 8,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "a",
+      "reason": "learn_action_effect",
+      "forecast": {
+        "action": "a",
+        "effect": [
+          1,
+          0
+        ],
+        "confidence": 0.7241379310344828,
+        "samples": 2,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.7241379310344828
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.034482758620689655
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 6.310344827586207,
+        "b": 6.310344827586207,
+        "c": 7.689655172413793,
+        "d": 7.689655172413793
+      },
+      "evidence": [
+        60,
+        2
+      ]
+    }
+  },
+  {
+    "id": 64,
+    "episode": "virtual-room-17",
+    "tick": 8,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "a",
+      "effect": [
+        1,
+        0
+      ],
+      "confidence": 0.7241379310344828,
+      "samples": 2,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.7241379310344828
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.034482758620689655
+        }
+      ],
+      "decision_event": 63,
+      "before_event": 60,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 65,
+    "episode": "virtual-room-17",
+    "tick": 9,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "a",
+      "tick": 9,
+      "executed": true,
+      "prediction_event": 64,
+      "decision_event": 63
+    }
+  },
+  {
+    "id": 66,
+    "episode": "virtual-room-17",
+    "tick": 9,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        64
+      ]
+    }
+  },
+  {
+    "id": 67,
+    "episode": "virtual-room-17",
+    "tick": 9,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        1,
+        0
+      ]
+    }
+  },
+  {
+    "id": 68,
+    "episode": "virtual-room-17",
+    "tick": 9,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "a",
+      "effect": [
+        1,
+        0
+      ],
+      "correct": true,
+      "confidence": 0.7241379310344828,
+      "brier": 0.08561236623067775,
+      "surprisal": 0.322773392263051,
+      "regime_reset": false,
+      "attributable": true,
+      "prediction_event": 64,
+      "action_event": 65,
+      "observation_event": 67
+    }
+  },
+  {
+    "id": 69,
+    "episode": "virtual-room-17",
+    "tick": 9,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 67,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 70,
+    "episode": "virtual-room-17",
+    "tick": 9,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "b",
+      "reason": "learn_action_effect",
+      "forecast": {
+        "action": "b",
+        "effect": [
+          0,
+          1
+        ],
+        "confidence": 0.7241379310344828,
+        "samples": 2,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.7241379310344828
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.034482758620689655
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 5.230769230769231,
+        "b": 5.310344827586206,
+        "c": 6.689655172413793,
+        "d": 6.689655172413793
+      },
+      "evidence": [
+        67,
+        2
+      ]
+    }
+  },
+  {
+    "id": 71,
+    "episode": "virtual-room-17",
+    "tick": 9,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "b",
+      "effect": [
+        0,
+        1
+      ],
+      "confidence": 0.7241379310344828,
+      "samples": 2,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.7241379310344828
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.034482758620689655
+        }
+      ],
+      "decision_event": 70,
+      "before_event": 67,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 72,
+    "episode": "virtual-room-17",
+    "tick": 10,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "b",
+      "tick": 10,
+      "executed": true,
+      "prediction_event": 71,
+      "decision_event": 70
+    }
+  },
+  {
+    "id": 73,
+    "episode": "virtual-room-17",
+    "tick": 10,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        71
+      ]
+    }
+  },
+  {
+    "id": 74,
+    "episode": "virtual-room-17",
+    "tick": 10,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "id": 75,
+    "episode": "virtual-room-17",
+    "tick": 10,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "b",
+      "effect": [
+        0,
+        1
+      ],
+      "correct": true,
+      "confidence": 0.7241379310344828,
+      "brier": 0.08561236623067775,
+      "surprisal": 0.322773392263051,
+      "regime_reset": false,
+      "attributable": true,
+      "prediction_event": 71,
+      "action_event": 72,
+      "observation_event": 74
+    }
+  },
+  {
+    "id": 76,
+    "episode": "virtual-room-17",
+    "tick": 10,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 74,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 77,
+    "episode": "virtual-room-17",
+    "tick": 10,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "c",
+      "reason": "learn_action_effect",
+      "forecast": {
+        "action": "c",
+        "effect": [
+          -1,
+          0
+        ],
+        "confidence": 0.7241379310344828,
+        "samples": 2,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.7241379310344828
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.034482758620689655
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 4.230769230769231,
+        "b": 4.230769230769231,
+        "c": 5.689655172413794,
+        "d": 5.689655172413794
+      },
+      "evidence": [
+        74,
+        2
+      ]
+    }
+  },
+  {
+    "id": 78,
+    "episode": "virtual-room-17",
+    "tick": 10,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "c",
+      "effect": [
+        -1,
+        0
+      ],
+      "confidence": 0.7241379310344828,
+      "samples": 2,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.7241379310344828
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.034482758620689655
+        }
+      ],
+      "decision_event": 77,
+      "before_event": 74,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 79,
+    "episode": "virtual-room-17",
+    "tick": 11,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "c",
+      "tick": 11,
+      "executed": true,
+      "prediction_event": 78,
+      "decision_event": 77
+    }
+  },
+  {
+    "id": 80,
+    "episode": "virtual-room-17",
+    "tick": 11,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        78
+      ]
+    }
+  },
+  {
+    "id": 81,
+    "episode": "virtual-room-17",
+    "tick": 11,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        0,
+        1
+      ]
+    }
+  },
+  {
+    "id": 82,
+    "episode": "virtual-room-17",
+    "tick": 11,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "c",
+      "effect": [
+        -1,
+        0
+      ],
+      "correct": true,
+      "confidence": 0.7241379310344828,
+      "brier": 0.08561236623067775,
+      "surprisal": 0.322773392263051,
+      "regime_reset": false,
+      "attributable": true,
+      "prediction_event": 78,
+      "action_event": 79,
+      "observation_event": 81
+    }
+  },
+  {
+    "id": 83,
+    "episode": "virtual-room-17",
+    "tick": 11,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 81,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 84,
+    "episode": "virtual-room-17",
+    "tick": 11,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "d",
+      "reason": "learn_action_effect",
+      "forecast": {
+        "action": "d",
+        "effect": [
+          0,
+          -1
+        ],
+        "confidence": 0.7241379310344828,
+        "samples": 2,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.7241379310344828
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.034482758620689655
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 5.230769230769231,
+        "b": 5.230769230769231,
+        "c": 6.76923076923077,
+        "d": 6.689655172413793
+      },
+      "evidence": [
+        81,
+        2
+      ]
+    }
+  },
+  {
+    "id": 85,
+    "episode": "virtual-room-17",
+    "tick": 11,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "d",
+      "effect": [
+        0,
+        -1
+      ],
+      "confidence": 0.7241379310344828,
+      "samples": 2,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.7241379310344828
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.034482758620689655
+        }
+      ],
+      "decision_event": 84,
+      "before_event": 81,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 86,
+    "episode": "virtual-room-17",
+    "tick": 12,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "d",
+      "tick": 12,
+      "executed": true,
+      "prediction_event": 85,
+      "decision_event": 84
+    }
+  },
+  {
+    "id": 87,
+    "episode": "virtual-room-17",
+    "tick": 12,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        85
+      ]
+    }
+  },
+  {
+    "id": 88,
+    "episode": "virtual-room-17",
+    "tick": 12,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        0,
+        0
+      ]
+    }
+  },
+  {
+    "id": 89,
+    "episode": "virtual-room-17",
+    "tick": 12,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "d",
+      "effect": [
+        0,
+        -1
+      ],
+      "correct": true,
+      "confidence": 0.7241379310344828,
+      "brier": 0.08561236623067775,
+      "surprisal": 0.322773392263051,
+      "regime_reset": false,
+      "attributable": true,
+      "prediction_event": 85,
+      "action_event": 86,
+      "observation_event": 88
+    }
+  },
+  {
+    "id": 90,
+    "episode": "virtual-room-17",
+    "tick": 12,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 88,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 91,
+    "episode": "virtual-room-17",
+    "tick": 12,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "a",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "a",
+        "effect": [
+          1,
+          0
+        ],
+        "confidence": 0.7948717948717949,
+        "samples": 3,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.7948717948717949
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.025641025641025644
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 6.230769230769232,
+        "b": 6.230769230769232,
+        "c": 7.76923076923077,
+        "d": 7.76923076923077
+      },
+      "evidence": [
+        88,
+        2
+      ]
+    }
+  },
+  {
+    "id": 92,
+    "episode": "virtual-room-17",
+    "tick": 12,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "a",
+      "effect": [
+        1,
+        0
+      ],
+      "confidence": 0.7948717948717949,
+      "samples": 3,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.7948717948717949
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.025641025641025644
+        }
+      ],
+      "decision_event": 91,
+      "before_event": 88,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 93,
+    "episode": "virtual-room-17",
+    "tick": 13,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "a",
+      "tick": 13,
+      "executed": true,
+      "prediction_event": 92,
+      "decision_event": 91
+    }
+  },
+  {
+    "id": 94,
+    "episode": "virtual-room-17",
+    "tick": 13,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        92
+      ]
+    }
+  },
+  {
+    "id": 95,
+    "episode": "virtual-room-17",
+    "tick": 13,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        -1,
+        0
+      ]
+    }
+  },
+  {
+    "id": 96,
+    "episode": "virtual-room-17",
+    "tick": 13,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "a",
+      "effect": [
+        -1,
+        0
+      ],
+      "correct": false,
+      "confidence": 0.7948717948717949,
+      "brier": 1.5857988165680474,
+      "surprisal": 3.6635616461296463,
+      "regime_reset": false,
+      "attributable": true,
+      "prediction_event": 92,
+      "action_event": 93,
+      "observation_event": 95
+    }
+  },
+  {
+    "id": 97,
+    "episode": "virtual-room-17",
+    "tick": 13,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 95,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 98,
+    "episode": "virtual-room-17",
+    "tick": 13,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "b",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "b",
+        "effect": [
+          0,
+          1
+        ],
+        "confidence": 0.7948717948717949,
+        "samples": 3,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.7948717948717949
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.025641025641025644
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 7.591836734693876,
+        "b": 7.230769230769232,
+        "c": 8.76923076923077,
+        "d": 8.76923076923077
+      },
+      "evidence": [
+        95,
+        2
+      ]
+    }
+  },
+  {
+    "id": 99,
+    "episode": "virtual-room-17",
+    "tick": 13,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "b",
+      "effect": [
+        0,
+        1
+      ],
+      "confidence": 0.7948717948717949,
+      "samples": 3,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.7948717948717949
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.025641025641025644
+        }
+      ],
+      "decision_event": 98,
+      "before_event": 95,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 100,
+    "episode": "virtual-room-17",
+    "tick": 14,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "b",
+      "tick": 14,
+      "executed": true,
+      "prediction_event": 99,
+      "decision_event": 98
+    }
+  },
+  {
+    "id": 101,
+    "episode": "virtual-room-17",
+    "tick": 14,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        99
+      ]
+    }
+  },
+  {
+    "id": 102,
+    "episode": "virtual-room-17",
+    "tick": 14,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        -1,
+        -1
+      ]
+    }
+  },
+  {
+    "id": 103,
+    "episode": "virtual-room-17",
+    "tick": 14,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "b",
+      "effect": [
+        0,
+        -1
+      ],
+      "correct": false,
+      "confidence": 0.7948717948717949,
+      "brier": 1.5857988165680474,
+      "surprisal": 3.6635616461296463,
+      "regime_reset": false,
+      "attributable": true,
+      "prediction_event": 99,
+      "action_event": 100,
+      "observation_event": 102
+    }
+  },
+  {
+    "id": 104,
+    "episode": "virtual-room-17",
+    "tick": 14,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 102,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 105,
+    "episode": "virtual-room-17",
+    "tick": 14,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "a",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "a",
+        "effect": [
+          1,
+          0
+        ],
+        "confidence": 0.6326530612244897,
+        "samples": 4,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.22448979591836735
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.6326530612244897
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.02040816326530612
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 8.591836734693876,
+        "b": 8.591836734693876,
+        "c": 9.76923076923077,
+        "d": 9.76923076923077
+      },
+      "evidence": [
+        102,
+        2
+      ]
+    }
+  },
+  {
+    "id": 106,
+    "episode": "virtual-room-17",
+    "tick": 14,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "a",
+      "effect": [
+        1,
+        0
+      ],
+      "confidence": 0.6326530612244897,
+      "samples": 4,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.22448979591836735
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.6326530612244897
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.02040816326530612
+        }
+      ],
+      "decision_event": 105,
+      "before_event": 102,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 107,
+    "episode": "virtual-room-17",
+    "tick": 15,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "a",
+      "tick": 15,
+      "executed": true,
+      "prediction_event": 106,
+      "decision_event": 105
+    }
+  },
+  {
+    "id": 108,
+    "episode": "virtual-room-17",
+    "tick": 15,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        106
+      ]
+    }
+  },
+  {
+    "id": 109,
+    "episode": "virtual-room-17",
+    "tick": 15,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        -2,
+        -1
+      ]
+    }
+  },
+  {
+    "id": 110,
+    "episode": "virtual-room-17",
+    "tick": 15,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "a",
+      "effect": [
+        -1,
+        0
+      ],
+      "correct": false,
+      "confidence": 0.6326530612244897,
+      "brier": 1.0045814244064972,
+      "surprisal": 1.493925025312256,
+      "regime_reset": true,
+      "attributable": true,
+      "prediction_event": 106,
+      "action_event": 107,
+      "observation_event": 109
+    }
+  },
+  {
+    "id": 111,
+    "episode": "virtual-room-17",
+    "tick": 15,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 109,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 112,
+    "episode": "virtual-room-17",
+    "tick": 15,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "a",
+      "reason": "learn_action_effect",
+      "forecast": {
+        "action": "a",
+        "effect": [
+          -1,
+          0
+        ],
+        "confidence": 0.7241379310344828,
+        "samples": 2,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.7241379310344828
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.034482758620689655
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 10.689655172413794,
+        "b": 9.591836734693876,
+        "c": 10.76923076923077,
+        "d": 10.76923076923077
+      },
+      "evidence": [
+        109,
+        2
+      ]
+    }
+  },
+  {
+    "id": 113,
+    "episode": "virtual-room-17",
+    "tick": 15,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "a",
+      "effect": [
+        -1,
+        0
+      ],
+      "confidence": 0.7241379310344828,
+      "samples": 2,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.7241379310344828
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.034482758620689655
+        }
+      ],
+      "decision_event": 112,
+      "before_event": 109,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 114,
+    "episode": "virtual-room-17",
+    "tick": 16,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "a",
+      "tick": 16,
+      "executed": true,
+      "prediction_event": 113,
+      "decision_event": 112
+    }
+  },
+  {
+    "id": 115,
+    "episode": "virtual-room-17",
+    "tick": 16,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        113
+      ]
+    }
+  },
+  {
+    "id": 116,
+    "episode": "virtual-room-17",
+    "tick": 16,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        -3,
+        -1
+      ]
+    }
+  },
+  {
+    "id": 117,
+    "episode": "virtual-room-17",
+    "tick": 16,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "a",
+      "effect": [
+        -1,
+        0
+      ],
+      "correct": true,
+      "confidence": 0.7241379310344828,
+      "brier": 0.08561236623067775,
+      "surprisal": 0.322773392263051,
+      "regime_reset": false,
+      "attributable": true,
+      "prediction_event": 113,
+      "action_event": 114,
+      "observation_event": 116
+    }
+  },
+  {
+    "id": 118,
+    "episode": "virtual-room-17",
+    "tick": 16,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 116,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 119,
+    "episode": "virtual-room-17",
+    "tick": 16,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "b",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "b",
+        "effect": [
+          0,
+          1
+        ],
+        "confidence": 0.6326530612244897,
+        "samples": 4,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.22448979591836735
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.6326530612244897
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.02040816326530612
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 11.769230769230772,
+        "b": 10.591836734693876,
+        "c": 11.769230769230772,
+        "d": 11.769230769230772
+      },
+      "evidence": [
+        116,
+        2
+      ]
+    }
+  },
+  {
+    "id": 120,
+    "episode": "virtual-room-17",
+    "tick": 16,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "b",
+      "effect": [
+        0,
+        1
+      ],
+      "confidence": 0.6326530612244897,
+      "samples": 4,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.22448979591836735
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.6326530612244897
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.02040816326530612
+        }
+      ],
+      "decision_event": 119,
+      "before_event": 116,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 121,
+    "episode": "virtual-room-17",
+    "tick": 17,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "b",
+      "tick": 17,
+      "executed": true,
+      "prediction_event": 120,
+      "decision_event": 119
+    }
+  },
+  {
+    "id": 122,
+    "episode": "virtual-room-17",
+    "tick": 17,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        120
+      ]
+    }
+  },
+  {
+    "id": 123,
+    "episode": "virtual-room-17",
+    "tick": 17,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        -3,
+        -2
+      ]
+    }
+  },
+  {
+    "id": 124,
+    "episode": "virtual-room-17",
+    "tick": 17,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "b",
+      "effect": [
+        0,
+        -1
+      ],
+      "correct": false,
+      "confidence": 0.6326530612244897,
+      "brier": 1.0045814244064972,
+      "surprisal": 1.493925025312256,
+      "regime_reset": true,
+      "attributable": true,
+      "prediction_event": 120,
+      "action_event": 121,
+      "observation_event": 123
+    }
+  },
+  {
+    "id": 125,
+    "episode": "virtual-room-17",
+    "tick": 17,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 123,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 126,
+    "episode": "virtual-room-17",
+    "tick": 17,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "b",
+      "reason": "learn_action_effect",
+      "forecast": {
+        "action": "b",
+        "effect": [
+          0,
+          -1
+        ],
+        "confidence": 0.7241379310344828,
+        "samples": 2,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.7241379310344828
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.034482758620689655
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 12.76923076923077,
+        "b": 12.689655172413794,
+        "c": 12.76923076923077,
+        "d": 12.76923076923077
+      },
+      "evidence": [
+        123,
+        2
+      ]
+    }
+  },
+  {
+    "id": 127,
+    "episode": "virtual-room-17",
+    "tick": 17,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "b",
+      "effect": [
+        0,
+        -1
+      ],
+      "confidence": 0.7241379310344828,
+      "samples": 2,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.7241379310344828
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.034482758620689655
+        }
+      ],
+      "decision_event": 126,
+      "before_event": 123,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 128,
+    "episode": "virtual-room-17",
+    "tick": 18,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "b",
+      "tick": 18,
+      "executed": true,
+      "prediction_event": 127,
+      "decision_event": 126
+    }
+  },
+  {
+    "id": 129,
+    "episode": "virtual-room-17",
+    "tick": 18,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        127
+      ]
+    }
+  },
+  {
+    "id": 130,
+    "episode": "virtual-room-17",
+    "tick": 18,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        -3,
+        -3
+      ]
+    }
+  },
+  {
+    "id": 131,
+    "episode": "virtual-room-17",
+    "tick": 18,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "b",
+      "effect": [
+        0,
+        -1
+      ],
+      "correct": true,
+      "confidence": 0.7241379310344828,
+      "brier": 0.08561236623067775,
+      "surprisal": 0.322773392263051,
+      "regime_reset": false,
+      "attributable": true,
+      "prediction_event": 127,
+      "action_event": 128,
+      "observation_event": 130
+    }
+  },
+  {
+    "id": 132,
+    "episode": "virtual-room-17",
+    "tick": 18,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 130,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 133,
+    "episode": "virtual-room-17",
+    "tick": 18,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "a",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "a",
+        "effect": [
+          -1,
+          0
+        ],
+        "confidence": 0.7948717948717949,
+        "samples": 3,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.7948717948717949
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.025641025641025644
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 13.76923076923077,
+        "b": 13.76923076923077,
+        "c": 13.76923076923077,
+        "d": 13.76923076923077
+      },
+      "evidence": [
+        130,
+        2
+      ]
+    }
+  },
+  {
+    "id": 134,
+    "episode": "virtual-room-17",
+    "tick": 18,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "a",
+      "effect": [
+        -1,
+        0
+      ],
+      "confidence": 0.7948717948717949,
+      "samples": 3,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.7948717948717949
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.025641025641025644
+        }
+      ],
+      "decision_event": 133,
+      "before_event": 130,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 135,
+    "episode": "virtual-room-17",
+    "tick": 19,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "a",
+      "tick": 19,
+      "executed": true,
+      "prediction_event": 134,
+      "decision_event": 133
+    }
+  },
+  {
+    "id": 136,
+    "episode": "virtual-room-17",
+    "tick": 19,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        134
+      ]
+    }
+  },
+  {
+    "id": 137,
+    "episode": "virtual-room-17",
+    "tick": 19,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        -4,
+        -3
+      ]
+    }
+  },
+  {
+    "id": 138,
+    "episode": "virtual-room-17",
+    "tick": 19,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "a",
+      "effect": [
+        -1,
+        0
+      ],
+      "correct": true,
+      "confidence": 0.7948717948717949,
+      "brier": 0.047337278106508854,
+      "surprisal": 0.2295744416445001,
+      "regime_reset": false,
+      "attributable": true,
+      "prediction_event": 134,
+      "action_event": 135,
+      "observation_event": 137
+    }
+  },
+  {
+    "id": 139,
+    "episode": "virtual-room-17",
+    "tick": 19,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 137,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 140,
+    "episode": "virtual-room-17",
+    "tick": 19,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "b",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "b",
+        "effect": [
+          0,
+          -1
+        ],
+        "confidence": 0.7948717948717949,
+        "samples": 3,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.7948717948717949
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.025641025641025644
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 14.816326530612242,
+        "b": 14.76923076923077,
+        "c": 14.76923076923077,
+        "d": 14.76923076923077
+      },
+      "evidence": [
+        137,
+        2
+      ]
+    }
+  },
+  {
+    "id": 141,
+    "episode": "virtual-room-17",
+    "tick": 19,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "b",
+      "effect": [
+        0,
+        -1
+      ],
+      "confidence": 0.7948717948717949,
+      "samples": 3,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.7948717948717949
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.025641025641025644
+        }
+      ],
+      "decision_event": 140,
+      "before_event": 137,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 142,
+    "episode": "virtual-room-17",
+    "tick": 20,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "b",
+      "tick": 20,
+      "executed": true,
+      "prediction_event": 141,
+      "decision_event": 140
+    }
+  },
+  {
+    "id": 143,
+    "episode": "virtual-room-17",
+    "tick": 20,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        141
+      ]
+    }
+  },
+  {
+    "id": 144,
+    "episode": "virtual-room-17",
+    "tick": 20,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        -4,
+        -4
+      ]
+    }
+  },
+  {
+    "id": 145,
+    "episode": "virtual-room-17",
+    "tick": 20,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "b",
+      "effect": [
+        0,
+        -1
+      ],
+      "correct": true,
+      "confidence": 0.7948717948717949,
+      "brier": 0.047337278106508854,
+      "surprisal": 0.2295744416445001,
+      "regime_reset": false,
+      "attributable": true,
+      "prediction_event": 141,
+      "action_event": 142,
+      "observation_event": 144
+    }
+  },
+  {
+    "id": 146,
+    "episode": "virtual-room-17",
+    "tick": 20,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 144,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 147,
+    "episode": "virtual-room-17",
+    "tick": 20,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "c",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "c",
+        "effect": [
+          -1,
+          0
+        ],
+        "confidence": 0.7948717948717949,
+        "samples": 3,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.7948717948717949
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.025641025641025644
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 15.816326530612242,
+        "b": 15.816326530612242,
+        "c": 15.76923076923077,
+        "d": 15.76923076923077
+      },
+      "evidence": [
+        144,
+        2
+      ]
+    }
+  },
+  {
+    "id": 148,
+    "episode": "virtual-room-17",
+    "tick": 20,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "c",
+      "effect": [
+        -1,
+        0
+      ],
+      "confidence": 0.7948717948717949,
+      "samples": 3,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.7948717948717949
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.025641025641025644
+        }
+      ],
+      "decision_event": 147,
+      "before_event": 144,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 149,
+    "episode": "virtual-room-17",
+    "tick": 21,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "c",
+      "tick": 21,
+      "executed": true,
+      "prediction_event": 148,
+      "decision_event": 147
+    }
+  },
+  {
+    "id": 150,
+    "episode": "virtual-room-17",
+    "tick": 21,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        148
+      ]
+    }
+  },
+  {
+    "id": 151,
+    "episode": "virtual-room-17",
+    "tick": 21,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        -3,
+        -4
+      ]
+    }
+  },
+  {
+    "id": 152,
+    "episode": "virtual-room-17",
+    "tick": 21,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "c",
+      "effect": [
+        1,
+        0
+      ],
+      "correct": false,
+      "confidence": 0.7948717948717949,
+      "brier": 1.5857988165680474,
+      "surprisal": 3.6635616461296463,
+      "regime_reset": false,
+      "attributable": true,
+      "prediction_event": 148,
+      "action_event": 149,
+      "observation_event": 151
+    }
+  },
+  {
+    "id": 153,
+    "episode": "virtual-room-17",
+    "tick": 21,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 151,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 154,
+    "episode": "virtual-room-17",
+    "tick": 21,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "c",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "c",
+        "effect": [
+          -1,
+          0
+        ],
+        "confidence": 0.6326530612244897,
+        "samples": 4,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.6326530612244897
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.22448979591836735
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.02040816326530612
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 14.816326530612242,
+        "b": 14.816326530612242,
+        "c": 14.40816326530612,
+        "d": 14.76923076923077
+      },
+      "evidence": [
+        151,
+        2
+      ]
+    }
+  },
+  {
+    "id": 155,
+    "episode": "virtual-room-17",
+    "tick": 21,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "c",
+      "effect": [
+        -1,
+        0
+      ],
+      "confidence": 0.6326530612244897,
+      "samples": 4,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.6326530612244897
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.22448979591836735
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.02040816326530612
+        }
+      ],
+      "decision_event": 154,
+      "before_event": 151,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 156,
+    "episode": "virtual-room-17",
+    "tick": 22,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "c",
+      "tick": 22,
+      "executed": true,
+      "prediction_event": 155,
+      "decision_event": 154
+    }
+  },
+  {
+    "id": 157,
+    "episode": "virtual-room-17",
+    "tick": 22,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        155
+      ]
+    }
+  },
+  {
+    "id": 158,
+    "episode": "virtual-room-17",
+    "tick": 22,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        -2,
+        -4
+      ]
+    }
+  },
+  {
+    "id": 159,
+    "episode": "virtual-room-17",
+    "tick": 22,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "c",
+      "effect": [
+        1,
+        0
+      ],
+      "correct": false,
+      "confidence": 0.6326530612244897,
+      "brier": 1.0045814244064972,
+      "surprisal": 1.493925025312256,
+      "regime_reset": true,
+      "attributable": true,
+      "prediction_event": 155,
+      "action_event": 156,
+      "observation_event": 158
+    }
+  },
+  {
+    "id": 160,
+    "episode": "virtual-room-17",
+    "tick": 22,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 158,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 161,
+    "episode": "virtual-room-17",
+    "tick": 22,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "c",
+      "reason": "learn_action_effect",
+      "forecast": {
+        "action": "c",
+        "effect": [
+          1,
+          0
+        ],
+        "confidence": 0.7241379310344828,
+        "samples": 2,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.7241379310344828
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.034482758620689655
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 13.816326530612242,
+        "b": 13.816326530612242,
+        "c": 12.310344827586208,
+        "d": 13.76923076923077
+      },
+      "evidence": [
+        158,
+        2
+      ]
+    }
+  },
+  {
+    "id": 162,
+    "episode": "virtual-room-17",
+    "tick": 22,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "c",
+      "effect": [
+        1,
+        0
+      ],
+      "confidence": 0.7241379310344828,
+      "samples": 2,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.7241379310344828
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.034482758620689655
+        }
+      ],
+      "decision_event": 161,
+      "before_event": 158,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 163,
+    "episode": "virtual-room-17",
+    "tick": 23,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "c",
+      "tick": 23,
+      "executed": true,
+      "prediction_event": 162,
+      "decision_event": 161
+    }
+  },
+  {
+    "id": 164,
+    "episode": "virtual-room-17",
+    "tick": 23,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        162
+      ]
+    }
+  },
+  {
+    "id": 165,
+    "episode": "virtual-room-17",
+    "tick": 23,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        -1,
+        -4
+      ]
+    }
+  },
+  {
+    "id": 166,
+    "episode": "virtual-room-17",
+    "tick": 23,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "c",
+      "effect": [
+        1,
+        0
+      ],
+      "correct": true,
+      "confidence": 0.7241379310344828,
+      "brier": 0.08561236623067775,
+      "surprisal": 0.322773392263051,
+      "regime_reset": false,
+      "attributable": true,
+      "prediction_event": 162,
+      "action_event": 163,
+      "observation_event": 165
+    }
+  },
+  {
+    "id": 167,
+    "episode": "virtual-room-17",
+    "tick": 23,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 165,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 168,
+    "episode": "virtual-room-17",
+    "tick": 23,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "c",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "c",
+        "effect": [
+          1,
+          0
+        ],
+        "confidence": 0.7948717948717949,
+        "samples": 3,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.7948717948717949
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.025641025641025644
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 12.816326530612242,
+        "b": 12.816326530612242,
+        "c": 11.230769230769232,
+        "d": 12.76923076923077
+      },
+      "evidence": [
+        165,
+        2
+      ]
+    }
+  },
+  {
+    "id": 169,
+    "episode": "virtual-room-17",
+    "tick": 23,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "c",
+      "effect": [
+        1,
+        0
+      ],
+      "confidence": 0.7948717948717949,
+      "samples": 3,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.7948717948717949
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.025641025641025644
+        }
+      ],
+      "decision_event": 168,
+      "before_event": 165,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 170,
+    "episode": "virtual-room-17",
+    "tick": 24,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "c",
+      "tick": 24,
+      "executed": true,
+      "prediction_event": 169,
+      "decision_event": 168
+    }
+  },
+  {
+    "id": 171,
+    "episode": "virtual-room-17",
+    "tick": 24,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        169
+      ]
+    }
+  },
+  {
+    "id": 172,
+    "episode": "virtual-room-17",
+    "tick": 24,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        0,
+        -4
+      ]
+    }
+  },
+  {
+    "id": 173,
+    "episode": "virtual-room-17",
+    "tick": 24,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "c",
+      "effect": [
+        1,
+        0
+      ],
+      "correct": true,
+      "confidence": 0.7948717948717949,
+      "brier": 0.047337278106508854,
+      "surprisal": 0.2295744416445001,
+      "regime_reset": false,
+      "attributable": true,
+      "prediction_event": 169,
+      "action_event": 170,
+      "observation_event": 172
+    }
+  },
+  {
+    "id": 174,
+    "episode": "virtual-room-17",
+    "tick": 24,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 172,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 175,
+    "episode": "virtual-room-17",
+    "tick": 24,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "c",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "c",
+        "effect": [
+          1,
+          0
+        ],
+        "confidence": 0.8367346938775508,
+        "samples": 4,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.8367346938775508
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.02040816326530612
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 11.816326530612242,
+        "b": 11.816326530612242,
+        "c": 10.183673469387752,
+        "d": 11.769230769230772
+      },
+      "evidence": [
+        172,
+        2
+      ]
+    }
+  },
+  {
+    "id": 176,
+    "episode": "virtual-room-17",
+    "tick": 24,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "c",
+      "effect": [
+        1,
+        0
+      ],
+      "confidence": 0.8367346938775508,
+      "samples": 4,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.8367346938775508
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.02040816326530612
+        }
+      ],
+      "decision_event": 175,
+      "before_event": 172,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 177,
+    "episode": "virtual-room-17",
+    "tick": 25,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "c",
+      "tick": 25,
+      "executed": true,
+      "prediction_event": 176,
+      "decision_event": 175
+    }
+  },
+  {
+    "id": 178,
+    "episode": "virtual-room-17",
+    "tick": 25,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        176
+      ]
+    }
+  },
+  {
+    "id": 179,
+    "episode": "virtual-room-17",
+    "tick": 25,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        1,
+        -4
+      ]
+    }
+  },
+  {
+    "id": 180,
+    "episode": "virtual-room-17",
+    "tick": 25,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "c",
+      "effect": [
+        1,
+        0
+      ],
+      "correct": true,
+      "confidence": 0.8367346938775508,
+      "brier": 0.029987505206164156,
+      "surprisal": 0.178248231406319,
+      "regime_reset": false,
+      "attributable": true,
+      "prediction_event": 176,
+      "action_event": 177,
+      "observation_event": 179
+    }
+  },
+  {
+    "id": 181,
+    "episode": "virtual-room-17",
+    "tick": 25,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 179,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 182,
+    "episode": "virtual-room-17",
+    "tick": 25,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "c",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "c",
+        "effect": [
+          1,
+          0
+        ],
+        "confidence": 0.8644067796610169,
+        "samples": 5,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.01694915254237288
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.01694915254237288
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.01694915254237288
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.01694915254237288
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.01694915254237288
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.01694915254237288
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.01694915254237288
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.8644067796610169
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.01694915254237288
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 10.816326530612242,
+        "b": 10.816326530612242,
+        "c": 9.152542372881356,
+        "d": 10.76923076923077
+      },
+      "evidence": [
+        179,
+        2
+      ]
+    }
+  },
+  {
+    "id": 183,
+    "episode": "virtual-room-17",
+    "tick": 25,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "c",
+      "effect": [
+        1,
+        0
+      ],
+      "confidence": 0.8644067796610169,
+      "samples": 5,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.01694915254237288
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.01694915254237288
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.01694915254237288
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.01694915254237288
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.01694915254237288
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.01694915254237288
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.01694915254237288
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.8644067796610169
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.01694915254237288
+        }
+      ],
+      "decision_event": 182,
+      "before_event": 179,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 184,
+    "episode": "virtual-room-17",
+    "tick": 26,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "c",
+      "tick": 26,
+      "executed": true,
+      "prediction_event": 183,
+      "decision_event": 182
+    }
+  },
+  {
+    "id": 185,
+    "episode": "virtual-room-17",
+    "tick": 26,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        183
+      ]
+    }
+  },
+  {
+    "id": 186,
+    "episode": "virtual-room-17",
+    "tick": 26,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        2,
+        -4
+      ]
+    }
+  },
+  {
+    "id": 187,
+    "episode": "virtual-room-17",
+    "tick": 26,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "c",
+      "effect": [
+        1,
+        0
+      ],
+      "correct": true,
+      "confidence": 0.8644067796610169,
+      "brier": 0.02068371157713303,
+      "surprisal": 0.14571181118139379,
+      "regime_reset": false,
+      "attributable": true,
+      "prediction_event": 183,
+      "action_event": 184,
+      "observation_event": 186
+    }
+  },
+  {
+    "id": 188,
+    "episode": "virtual-room-17",
+    "tick": 26,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 186,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 189,
+    "episode": "virtual-room-17",
+    "tick": 26,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "c",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "c",
+        "effect": [
+          1,
+          0
+        ],
+        "confidence": 0.8840579710144927,
+        "samples": 6,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.014492753623188406
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.014492753623188406
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.014492753623188406
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.014492753623188406
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.014492753623188406
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.014492753623188406
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.014492753623188406
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.8840579710144927
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.014492753623188406
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 9.816326530612242,
+        "b": 9.816326530612242,
+        "c": 8.130434782608695,
+        "d": 9.76923076923077
+      },
+      "evidence": [
+        186,
+        2
+      ]
+    }
+  },
+  {
+    "id": 190,
+    "episode": "virtual-room-17",
+    "tick": 26,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "c",
+      "effect": [
+        1,
+        0
+      ],
+      "confidence": 0.8840579710144927,
+      "samples": 6,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.014492753623188406
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.014492753623188406
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.014492753623188406
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.014492753623188406
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.014492753623188406
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.014492753623188406
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.014492753623188406
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.8840579710144927
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.014492753623188406
+        }
+      ],
+      "decision_event": 189,
+      "before_event": 186,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 191,
+    "episode": "virtual-room-17",
+    "tick": 27,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "c",
+      "tick": 27,
+      "executed": true,
+      "prediction_event": 190,
+      "decision_event": 189
+    }
+  },
+  {
+    "id": 192,
+    "episode": "virtual-room-17",
+    "tick": 27,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        190
+      ]
+    }
+  },
+  {
+    "id": 193,
+    "episode": "virtual-room-17",
+    "tick": 27,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        3,
+        -4
+      ]
+    }
+  },
+  {
+    "id": 194,
+    "episode": "virtual-room-17",
+    "tick": 27,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "c",
+      "effect": [
+        1,
+        0
+      ],
+      "correct": true,
+      "confidence": 0.8840579710144927,
+      "brier": 0.015122873345935744,
+      "surprisal": 0.12323264042394821,
+      "regime_reset": false,
+      "attributable": true,
+      "prediction_event": 190,
+      "action_event": 191,
+      "observation_event": 193
+    }
+  },
+  {
+    "id": 195,
+    "episode": "virtual-room-17",
+    "tick": 27,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 193,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 196,
+    "episode": "virtual-room-17",
+    "tick": 27,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "c",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "c",
+        "effect": [
+          1,
+          0
+        ],
+        "confidence": 0.8987341772151898,
+        "samples": 7,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.012658227848101266
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.012658227848101266
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.012658227848101266
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.012658227848101266
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.012658227848101266
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.012658227848101266
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.012658227848101266
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.8987341772151898
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.012658227848101266
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 8.816326530612244,
+        "b": 8.816326530612244,
+        "c": 7.113924050632911,
+        "d": 8.76923076923077
+      },
+      "evidence": [
+        193,
+        2
+      ]
+    }
+  },
+  {
+    "id": 197,
+    "episode": "virtual-room-17",
+    "tick": 27,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "c",
+      "effect": [
+        1,
+        0
+      ],
+      "confidence": 0.8987341772151898,
+      "samples": 7,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.012658227848101266
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.012658227848101266
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.012658227848101266
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.012658227848101266
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.012658227848101266
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.012658227848101266
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.012658227848101266
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.8987341772151898
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.012658227848101266
+        }
+      ],
+      "decision_event": 196,
+      "before_event": 193,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 198,
+    "episode": "virtual-room-17",
+    "tick": 28,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "c",
+      "tick": 28,
+      "executed": true,
+      "prediction_event": 197,
+      "decision_event": 196
+    }
+  },
+  {
+    "id": 199,
+    "episode": "virtual-room-17",
+    "tick": 28,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        197
+      ]
+    }
+  },
+  {
+    "id": 200,
+    "episode": "virtual-room-17",
+    "tick": 28,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        4,
+        -4
+      ]
+    }
+  },
+  {
+    "id": 201,
+    "episode": "virtual-room-17",
+    "tick": 28,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "c",
+      "effect": [
+        1,
+        0
+      ],
+      "correct": true,
+      "confidence": 0.8987341772151898,
+      "brier": 0.01153661272232016,
+      "surprisal": 0.10676797542570618,
+      "regime_reset": false,
+      "attributable": true,
+      "prediction_event": 197,
+      "action_event": 198,
+      "observation_event": 200
+    }
+  },
+  {
+    "id": 202,
+    "episode": "virtual-room-17",
+    "tick": 28,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 200,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 203,
+    "episode": "virtual-room-17",
+    "tick": 28,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "d",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "d",
+        "effect": [
+          0,
+          -1
+        ],
+        "confidence": 0.7948717948717949,
+        "samples": 3,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.7948717948717949
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.025641025641025644
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 7.9387755102040805,
+        "b": 7.9387755102040805,
+        "c": 7.96629213483146,
+        "d": 7.923076923076923
+      },
+      "evidence": [
+        200,
+        2
+      ]
+    }
+  },
+  {
+    "id": 204,
+    "episode": "virtual-room-17",
+    "tick": 28,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "d",
+      "effect": [
+        0,
+        -1
+      ],
+      "confidence": 0.7948717948717949,
+      "samples": 3,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.7948717948717949
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.025641025641025644
+        }
+      ],
+      "decision_event": 203,
+      "before_event": 200,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 205,
+    "episode": "virtual-room-17",
+    "tick": 29,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "d",
+      "tick": 29,
+      "executed": true,
+      "prediction_event": 204,
+      "decision_event": 203
+    }
+  },
+  {
+    "id": 206,
+    "episode": "virtual-room-17",
+    "tick": 29,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        204
+      ]
+    }
+  },
+  {
+    "id": 207,
+    "episode": "virtual-room-17",
+    "tick": 29,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        4,
+        -3
+      ]
+    }
+  },
+  {
+    "id": 208,
+    "episode": "virtual-room-17",
+    "tick": 29,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "d",
+      "effect": [
+        0,
+        1
+      ],
+      "correct": false,
+      "confidence": 0.7948717948717949,
+      "brier": 1.5857988165680474,
+      "surprisal": 3.6635616461296463,
+      "regime_reset": false,
+      "attributable": true,
+      "prediction_event": 204,
+      "action_event": 205,
+      "observation_event": 207
+    }
+  },
+  {
+    "id": 209,
+    "episode": "virtual-room-17",
+    "tick": 29,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 207,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 210,
+    "episode": "virtual-room-17",
+    "tick": 29,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "d",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "d",
+        "effect": [
+          0,
+          -1
+        ],
+        "confidence": 0.6326530612244897,
+        "samples": 4,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.6326530612244897
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.22448979591836735
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.02040816326530612
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 6.9387755102040805,
+        "b": 6.9387755102040805,
+        "c": 6.96629213483146,
+        "d": 6.530612244897958
+      },
+      "evidence": [
+        207,
+        2
+      ]
+    }
+  },
+  {
+    "id": 211,
+    "episode": "virtual-room-17",
+    "tick": 29,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "d",
+      "effect": [
+        0,
+        -1
+      ],
+      "confidence": 0.6326530612244897,
+      "samples": 4,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.6326530612244897
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.22448979591836735
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.02040816326530612
+        }
+      ],
+      "decision_event": 210,
+      "before_event": 207,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 212,
+    "episode": "virtual-room-17",
+    "tick": 30,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "d",
+      "tick": 30,
+      "executed": true,
+      "prediction_event": 211,
+      "decision_event": 210
+    }
+  },
+  {
+    "id": 213,
+    "episode": "virtual-room-17",
+    "tick": 30,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        211
+      ]
+    }
+  },
+  {
+    "id": 214,
+    "episode": "virtual-room-17",
+    "tick": 30,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        4,
+        -2
+      ]
+    }
+  },
+  {
+    "id": 215,
+    "episode": "virtual-room-17",
+    "tick": 30,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "d",
+      "effect": [
+        0,
+        1
+      ],
+      "correct": false,
+      "confidence": 0.6326530612244897,
+      "brier": 1.0045814244064972,
+      "surprisal": 1.493925025312256,
+      "regime_reset": true,
+      "attributable": true,
+      "prediction_event": 211,
+      "action_event": 212,
+      "observation_event": 214
+    }
+  },
+  {
+    "id": 216,
+    "episode": "virtual-room-17",
+    "tick": 30,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 214,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 217,
+    "episode": "virtual-room-17",
+    "tick": 30,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "d",
+      "reason": "learn_action_effect",
+      "forecast": {
+        "action": "d",
+        "effect": [
+          0,
+          1
+        ],
+        "confidence": 0.7241379310344828,
+        "samples": 2,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.7241379310344828
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.034482758620689655
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 5.9387755102040805,
+        "b": 5.9387755102040805,
+        "c": 5.96629213483146,
+        "d": 4.517241379310345
+      },
+      "evidence": [
+        214,
+        2
+      ]
+    }
+  },
+  {
+    "id": 218,
+    "episode": "virtual-room-17",
+    "tick": 30,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "d",
+      "effect": [
+        0,
+        1
+      ],
+      "confidence": 0.7241379310344828,
+      "samples": 2,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.7241379310344828
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.034482758620689655
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.034482758620689655
+        }
+      ],
+      "decision_event": 217,
+      "before_event": 214,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 219,
+    "episode": "virtual-room-17",
+    "tick": 31,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "d",
+      "tick": 31,
+      "executed": true,
+      "prediction_event": 218,
+      "decision_event": 217
+    }
+  },
+  {
+    "id": 220,
+    "episode": "virtual-room-17",
+    "tick": 31,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        218
+      ]
+    }
+  },
+  {
+    "id": 221,
+    "episode": "virtual-room-17",
+    "tick": 31,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        4,
+        -1
+      ]
+    }
+  },
+  {
+    "id": 222,
+    "episode": "virtual-room-17",
+    "tick": 31,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "d",
+      "effect": [
+        0,
+        1
+      ],
+      "correct": true,
+      "confidence": 0.7241379310344828,
+      "brier": 0.08561236623067775,
+      "surprisal": 0.322773392263051,
+      "regime_reset": false,
+      "attributable": true,
+      "prediction_event": 218,
+      "action_event": 219,
+      "observation_event": 221
+    }
+  },
+  {
+    "id": 223,
+    "episode": "virtual-room-17",
+    "tick": 31,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 221,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 224,
+    "episode": "virtual-room-17",
+    "tick": 31,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "d",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "d",
+        "effect": [
+          0,
+          1
+        ],
+        "confidence": 0.7948717948717949,
+        "samples": 3,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.7948717948717949
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.025641025641025644
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 4.9387755102040805,
+        "b": 4.9387755102040805,
+        "c": 4.966292134831461,
+        "d": 3.384615384615385
+      },
+      "evidence": [
+        221,
+        2
+      ]
+    }
+  },
+  {
+    "id": 225,
+    "episode": "virtual-room-17",
+    "tick": 31,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "d",
+      "effect": [
+        0,
+        1
+      ],
+      "confidence": 0.7948717948717949,
+      "samples": 3,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.7948717948717949
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.025641025641025644
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.025641025641025644
+        }
+      ],
+      "decision_event": 224,
+      "before_event": 221,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 226,
+    "episode": "virtual-room-17",
+    "tick": 32,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "d",
+      "tick": 32,
+      "executed": true,
+      "prediction_event": 225,
+      "decision_event": 224
+    }
+  },
+  {
+    "id": 227,
+    "episode": "virtual-room-17",
+    "tick": 32,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        225
+      ]
+    }
+  },
+  {
+    "id": 228,
+    "episode": "virtual-room-17",
+    "tick": 32,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        4,
+        0
+      ]
+    }
+  },
+  {
+    "id": 229,
+    "episode": "virtual-room-17",
+    "tick": 32,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "d",
+      "effect": [
+        0,
+        1
+      ],
+      "correct": true,
+      "confidence": 0.7948717948717949,
+      "brier": 0.047337278106508854,
+      "surprisal": 0.2295744416445001,
+      "regime_reset": false,
+      "attributable": true,
+      "prediction_event": 225,
+      "action_event": 226,
+      "observation_event": 228
+    }
+  },
+  {
+    "id": 230,
+    "episode": "virtual-room-17",
+    "tick": 32,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 228,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 231,
+    "episode": "virtual-room-17",
+    "tick": 32,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "d",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "d",
+        "effect": [
+          0,
+          1
+        ],
+        "confidence": 0.8367346938775508,
+        "samples": 4,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.8367346938775508
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.02040816326530612
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 3.938775510204081,
+        "b": 3.938775510204081,
+        "c": 3.9662921348314604,
+        "d": 2.3061224489795915
+      },
+      "evidence": [
+        228,
+        2
+      ]
+    }
+  },
+  {
+    "id": 232,
+    "episode": "virtual-room-17",
+    "tick": 32,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "d",
+      "effect": [
+        0,
+        1
+      ],
+      "confidence": 0.8367346938775508,
+      "samples": 4,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.8367346938775508
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.02040816326530612
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.02040816326530612
+        }
+      ],
+      "decision_event": 231,
+      "before_event": 228,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 233,
+    "episode": "virtual-room-17",
+    "tick": 33,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "d",
+      "tick": 33,
+      "executed": true,
+      "prediction_event": 232,
+      "decision_event": 231
+    }
+  },
+  {
+    "id": 234,
+    "episode": "virtual-room-17",
+    "tick": 33,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        232
+      ]
+    }
+  },
+  {
+    "id": 235,
+    "episode": "virtual-room-17",
+    "tick": 33,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        4,
+        1
+      ]
+    }
+  },
+  {
+    "id": 236,
+    "episode": "virtual-room-17",
+    "tick": 33,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "d",
+      "effect": [
+        0,
+        1
+      ],
+      "correct": true,
+      "confidence": 0.8367346938775508,
+      "brier": 0.029987505206164156,
+      "surprisal": 0.178248231406319,
+      "regime_reset": false,
+      "attributable": true,
+      "prediction_event": 232,
+      "action_event": 233,
+      "observation_event": 235
+    }
+  },
+  {
+    "id": 237,
+    "episode": "virtual-room-17",
+    "tick": 33,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 235,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 238,
+    "episode": "virtual-room-17",
+    "tick": 33,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "d",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "d",
+        "effect": [
+          0,
+          1
+        ],
+        "confidence": 0.8644067796610169,
+        "samples": 5,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.01694915254237288
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.01694915254237288
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.01694915254237288
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.01694915254237288
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.01694915254237288
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.8644067796610169
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.01694915254237288
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.01694915254237288
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.01694915254237288
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 2.938775510204081,
+        "b": 2.938775510204081,
+        "c": 2.9662921348314604,
+        "d": 1.2542372881355932
+      },
+      "evidence": [
+        235,
+        2
+      ]
+    }
+  },
+  {
+    "id": 239,
+    "episode": "virtual-room-17",
+    "tick": 33,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "d",
+      "effect": [
+        0,
+        1
+      ],
+      "confidence": 0.8644067796610169,
+      "samples": 5,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.01694915254237288
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.01694915254237288
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.01694915254237288
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.01694915254237288
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.01694915254237288
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.8644067796610169
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.01694915254237288
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.01694915254237288
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.01694915254237288
+        }
+      ],
+      "decision_event": 238,
+      "before_event": 235,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 240,
+    "episode": "virtual-room-17",
+    "tick": 34,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "d",
+      "tick": 34,
+      "executed": true,
+      "prediction_event": 239,
+      "decision_event": 238
+    }
+  },
+  {
+    "id": 241,
+    "episode": "virtual-room-17",
+    "tick": 34,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        239
+      ]
+    }
+  },
+  {
+    "id": 242,
+    "episode": "virtual-room-17",
+    "tick": 34,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        4,
+        2
+      ]
+    }
+  },
+  {
+    "id": 243,
+    "episode": "virtual-room-17",
+    "tick": 34,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "d",
+      "effect": [
+        0,
+        1
+      ],
+      "correct": true,
+      "confidence": 0.8644067796610169,
+      "brier": 0.02068371157713303,
+      "surprisal": 0.14571181118139379,
+      "regime_reset": false,
+      "attributable": true,
+      "prediction_event": 239,
+      "action_event": 240,
+      "observation_event": 242
+    }
+  },
+  {
+    "id": 244,
+    "episode": "virtual-room-17",
+    "tick": 34,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 242,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 245,
+    "episode": "virtual-room-17",
+    "tick": 34,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "act",
+      "action": "d",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "d",
+        "effect": [
+          0,
+          1
+        ],
+        "confidence": 0.8840579710144927,
+        "samples": 6,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.014492753623188406
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.014492753623188406
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.014492753623188406
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.014492753623188406
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.014492753623188406
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.8840579710144927
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.014492753623188406
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.014492753623188406
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.014492753623188406
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 1.9387755102040813,
+        "b": 1.9387755102040813,
+        "c": 1.9662921348314604,
+        "d": 0.21739130434782608
+      },
+      "evidence": [
+        242,
+        2
+      ]
+    }
+  },
+  {
+    "id": 246,
+    "episode": "virtual-room-17",
+    "tick": 34,
+    "kind": "prediction",
+    "source": "learned_action_model",
+    "payload": {
+      "action": "d",
+      "effect": [
+        0,
+        1
+      ],
+      "confidence": 0.8840579710144927,
+      "samples": 6,
+      "distribution": [
+        {
+          "effect": [
+            -1,
+            -1
+          ],
+          "p": 0.014492753623188406
+        },
+        {
+          "effect": [
+            -1,
+            0
+          ],
+          "p": 0.014492753623188406
+        },
+        {
+          "effect": [
+            -1,
+            1
+          ],
+          "p": 0.014492753623188406
+        },
+        {
+          "effect": [
+            0,
+            -1
+          ],
+          "p": 0.014492753623188406
+        },
+        {
+          "effect": [
+            0,
+            0
+          ],
+          "p": 0.014492753623188406
+        },
+        {
+          "effect": [
+            0,
+            1
+          ],
+          "p": 0.8840579710144927
+        },
+        {
+          "effect": [
+            1,
+            -1
+          ],
+          "p": 0.014492753623188406
+        },
+        {
+          "effect": [
+            1,
+            0
+          ],
+          "p": 0.014492753623188406
+        },
+        {
+          "effect": [
+            1,
+            1
+          ],
+          "p": 0.014492753623188406
+        }
+      ],
+      "decision_event": 245,
+      "before_event": 242,
+      "scope": "next_displacement"
+    }
+  },
+  {
+    "id": 247,
+    "episode": "virtual-room-17",
+    "tick": 35,
+    "kind": "action",
+    "source": "action_interface",
+    "payload": {
+      "action": "d",
+      "tick": 35,
+      "executed": true,
+      "prediction_event": 246,
+      "decision_event": 245
+    }
+  },
+  {
+    "id": 248,
+    "episode": "virtual-room-17",
+    "tick": 35,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        246
+      ]
+    }
+  },
+  {
+    "id": 249,
+    "episode": "virtual-room-17",
+    "tick": 35,
+    "kind": "observation",
+    "source": "virtual_room_sensor",
+    "payload": {
+      "field": "position",
+      "value": [
+        4,
+        3
+      ]
+    }
+  },
+  {
+    "id": 250,
+    "episode": "virtual-room-17",
+    "tick": 35,
+    "kind": "assessment",
+    "source": "transition_evaluator",
+    "payload": {
+      "action": "d",
+      "effect": [
+        0,
+        1
+      ],
+      "correct": true,
+      "confidence": 0.8840579710144927,
+      "brier": 0.015122873345935744,
+      "surprisal": 0.12323264042394821,
+      "regime_reset": false,
+      "attributable": true,
+      "prediction_event": 246,
+      "action_event": 247,
+      "observation_event": 249
+    }
+  },
+  {
+    "id": 251,
+    "episode": "virtual-room-17",
+    "tick": 35,
+    "kind": "attention",
+    "source": "perceptual_controller",
+    "payload": {
+      "selected": "position",
+      "received": true,
+      "observation_event": 249,
+      "unselected": [
+        "target",
+        "landmark"
+      ]
+    }
+  },
+  {
+    "id": 252,
+    "episode": "virtual-room-17",
+    "tick": 35,
+    "kind": "decision",
+    "source": "model_based_planner",
+    "payload": {
+      "kind": "done",
+      "reason": "observed_at_target",
+      "evidence": [
+        249,
+        2
+      ]
+    }
+  }
+]
