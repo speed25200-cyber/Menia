@@ -36,7 +36,8 @@ La perte logistique porte sur la contribution externe révélée après décisio
 Comparer trois architectures : récurrence apprise à porte (16 unités), version
 réinitialisée à chaque étape entraînée séparément, et MLP sur huit étapes (12
 unités). Trois initialisations 11, 23 et 37 ; 300 mises à jour Adam, batch de 32
-séquences, taux 0,003. Tous les poids sont conservés, sans sélection du meilleur.
+séquences, taux 0,003 et écrêtage de norme du gradient à 5. Tous les poids sont
+conservés, sans sélection du meilleur.
 Le contrôleur vérifie si min(q,1-q)>0,25 et attribue une source externe si q>=0,5.
 La politique est conçue à partir des coûts ; seule l'estimation q est apprise.
 
