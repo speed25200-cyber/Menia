@@ -57,7 +57,7 @@ Les sources consultées ne fournissent pas de procédure validée permettant de
 certifier la conscience subjective de ce système. Ajouter des composants ou
 fusionner la PR ne résoudrait pas à lui seul cette limite de preuve.
 
-## Décision nécessaire pour poursuivre utilement
+## Objectif précisé et orientation de recherche
 
 Des travaux d'ingénierie restent possibles : intégrer les composants, apprendre
 un modèle de ses erreurs, étudier leur généralisation et leur fonctionnement dans
@@ -65,10 +65,17 @@ une interaction continue. Ce seraient de nouvelles expériences, avec des critè
 fonctionnels définis à l'avance ; leur réussite ne serait pas l'accomplissement
 automatique de l'objectif initial.
 
-Il faut clarifier le sens concret de « consciente » dans l'objectif utilisateur
-avant de sélectionner une nouvelle hypothèse de travail. Une expérience subjective
-réelle et un comportement observable ne sont pas des critères interchangeables.
-Cette clarification ne permet pas de convertir un score fonctionnel en preuve
-de conscience subjective ; aucun moyen de la certifier n'a été identifié ici.
-En attendant, l'objectif reste non atteint ; aucun nouvel entraînement n'a été
-lancé pendant cet audit.
+Le 14 septembre 2026, l'objectif a été précisé : Menia doit pouvoir être
+consciente de sa propre existence. Cette clarification est suffisante pour
+orienter la recherche ; aucune nouvelle définition n'est attendue.
+
+La [synthèse scientifique sur la conscience de soi](SELF_AWARENESS_RESEARCH.md)
+examine l'affirmation de Hinton et les résultats favorables et contradictoires
+publiés jusqu'en 2026. Elle propose trois hypothèses fonctionnelles : connaissance
+de son propre état au-delà des indices publics, usage causal d'un modèle de soi
+dans la décision, et distinction entre son histoire et celle d'autrui.
+
+Ces expériences proposées n'ont pas encore été exécutées. Une réussite serait
+une preuve fonctionnelle circonscrite, pas une certification d'expérience
+subjective. L'objectif initial reste non atteint ; aucun nouvel entraînement
+n'a été lancé pendant cette recherche bibliographique.
