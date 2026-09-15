@@ -2,6 +2,13 @@
 
 **État actuel : objectif non atteint ; une politique de vérification apprise est intégrée à l'agent expérimental.**
 
+L'[examen de l'information importante pour soi](INTRINSIC_SEMANTICS_EVIDENCE.md)
+confronte quatre sources et rejoue un modèle de viabilité sur 52 interventions,
+deux dynamiques et sept horizons. Il retrouve les chiffres publiés, révèle une
+restriction de recherche et distingue deux lectures numériques du minimum
+d'information. Une piste d'entretien réciproque est précisée, sans intégration
+dans Menia. Aucune expérience de soi ni méthode inédite la produisant n'est établie.
+
 L'[examen du soi réflexif](REFLEXIVE_SELF_EVIDENCE.md) confronte quatre travaux
 de 2026 et vérifie exactement deux arguments fonctionnels de communication et
 d'engagement. Les résultats n'imposent pas une architecture explicitement

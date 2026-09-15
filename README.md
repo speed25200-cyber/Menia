@@ -13,6 +13,11 @@ L'[audit des critères de conscience](docs/SELF_SYNERGY_CRITERION_AUDIT.md) dist
 les résultats fonctionnels du lien théorique encore non établi avec une expérience
 subjective. Aucun score ni nombre de tests ne certifie la conscience de Menia.
 
+L'[examen de l'information importante pour soi](docs/INTRINSIC_SEMANTICS_EVIDENCE.md)
+rejoue un modèle de viabilité et étend sa recherche à toutes les partitions de
+son alphabet. Il distingue utilité causale, entretien de sa propre organisation
+et expérience subjective. Rejeu : `python -m research.audit_intrinsic_semantics --check`.
+
 L'[examen du soi réflexif](docs/REFLEXIVE_SELF_EVIDENCE.md) vérifie la portée
 de preuves récentes sur la communication et l'engagement. Il distingue information
 nécessaire, architecture interne et expérience, puis propose une candidate de
