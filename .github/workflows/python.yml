@@ -65,3 +65,14 @@ jobs:
       - run: pip install numpy==2.2.6
       - run: python -m unittest discover -s tests_workspace -v
       - run: python scripts/check_workspace_artifacts.py
+
+  language-pilot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu
+      - run: pip install -r requirements-cross-model.txt
+      - run: python -m unittest discover -s tests_language -v

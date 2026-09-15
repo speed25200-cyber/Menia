@@ -61,8 +61,11 @@ données. Trois contre-exemples exécutables montrent pourquoi un avantage « so
 ne suffit pas à identifier l'introspection. L'analyse des trois répétitions est
 implémentée, sans changer l'évaluateur initial ; elle conserve les interruptions
 et ajoute les taux de calibration et la discrimination au sein d'une famille.
-Les 117 tests de recherche Python passent localement. Cette étape n'exécute pas
-de nouveau LLM ; la comparaison croisée reste une spécification de travail.
+La suite compte maintenant 127 tests de recherche Python et trois contrôles du
+moteur de génération. La [comparaison croisée possède son notebook Colab](docs/CROSS_MODEL_COLAB.md) :
+Qwen3-4B et Qwen3-8B, 60 problèmes, 408 appels, deux noms permutés et sauvegarde
+des tentatives dans Drive. La collecte sur A100 reste à exécuter ; les contrôles
+logiciels ne sont pas des performances mesurées de ces modèles.
 
 Le [dossier de raccordement au LLM](docs/LLM_COUPLING_RESULTS.md) recommande
 une boucle reliant langage, modèle de capacités et résultats d'action. Un

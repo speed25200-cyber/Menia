@@ -154,9 +154,11 @@ familles restent indéfinies. Ce n'est pas un nouveau résultat du modèle.
 
 ## Spécification du test suivant, après les répétitions
 
-Cette partie est une **spécification de travail** : le collecteur croisant deux
-LLM n'est pas encore implémenté, les révisions des modèles et le budget final
-doivent être fixés avant sa collecte. Elle ne remplace pas les répétitions en cours.
+Cette partie conserve la **spécification de travail initiale**. Le volet
+comportemental dispose désormais d'un [pilote Colab distinct](CROSS_MODEL_COLAB.md),
+avec modèles, révisions, effectif et notebook fixés avant sa collecte. Les
+interventions mécanistiques restent à implémenter. Ce pilote ne remplace pas les
+répétitions iPhone en cours.
 
 1. **Variation dans une famille.** Construire à l'avance un jeu de tâches à
    plusieurs difficultés, puis réserver les exemples d'évaluation. Par exemple,
