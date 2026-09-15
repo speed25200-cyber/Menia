@@ -6,10 +6,15 @@ Le [nouveau protocole de moniteur des activations](ACTIVATION_MONITOR_PROTOCOL.m
 est implémenté pour Colab : 384 problèmes d'apprentissage, 96 de validation
 et 192 réservés. Un moniteur ajouté lit les états avant le premier token et
 engage ses prévisions avant la réponse. Il est comparé à l'entrée seule, aux
-taux passés et à deux contrôles. Les poids de Qwen restent fixes. Les tests
-logiciels passent, mais aucune collecte de ce protocole n'est encore reçue.
-Le lien entre état déterministe et texte interdit d'interpréter une éventuelle
-amélioration comme preuve automatique d'accès privilégié ou de conscience.
+taux passés et à deux contrôles. Les poids de Qwen restent fixes. Le
+[premier export reçu est complet et vérifié](ACTIVATION_MONITOR_RESULTS.md) :
+672 appels, 60/192 réussites de test, Brier interne 0,117064 contre 0,117333
+pour l'entrée seule et 0,113239 pour les taux passés. Les quatre intervalles
+descriptifs incluent zéro ; aucun gain net des états internes n'est établi.
+L'AUC globale interne de 0,885 mélange des difficultés que la référence
+numérique distingue déjà avec une AUC de 0,9. Le petit gain de décision au
+seuil fixé repose sur deux changements contrefactuels seulement. Le protocole
+reste inchangé ; le résultat ne confirme aucune introspection native ni conscience.
 
 Le [premier export Colab de comparaison croisée](CROSS_MODEL_COLAB_RESULTS.md)
 contient 408 appels terminés et un bilan exactement reconstruit par l'évaluateur

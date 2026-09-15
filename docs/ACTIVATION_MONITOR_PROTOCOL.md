@@ -1,10 +1,12 @@
 # Lire les états internes pour prévoir les erreurs
 
 Protocole fixé le 15 septembre 2026, après le résultat négatif du
-[premier pilote croisé](CROSS_MODEL_COLAB_RESULTS.md). Le logiciel et les
-contrôles sont implémentés ; **aucune collecte Qwen3-4B de ce nouveau protocole
-n'est encore reçue**. Il entraîne un moniteur ajouté, sans adapter les poids
-du LLM. Il ne prétend pas produire une conscience.
+[premier pilote croisé](CROSS_MODEL_COLAB_RESULTS.md). Le
+[premier export reçu et vérifié](ACTIVATION_MONITOR_RESULTS.md) contient désormais
+les **672 appels terminés**. Aucun gain net des états internes sur les comparateurs
+n'est établi. Le protocole ci-dessous reste celui fixé avant collecte. Il entraîne
+un moniteur ajouté, sans adapter les poids du LLM. Il ne prétend pas produire
+une conscience.
 
 [Ouvrir le nouveau Colab](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/04_activation_monitor_colab.ipynb).
 Choisir A100, puis « Tout exécuter » ; transmettre `menia-etats-internes.zip`.

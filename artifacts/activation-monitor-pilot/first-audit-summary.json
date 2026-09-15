@@ -1,0 +1,516 @@
+{
+  "schema": "menia-activation-report-v1",
+  "origin": "transformers_gpu",
+  "planHash": "df503c04dd30f1e88ee4910e531f5670db9eff95068a043129b058964eb2c1fc",
+  "model": {
+    "id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "settings": {
+    "attention": "sdpa",
+    "do_sample": true,
+    "dtype": "bfloat16",
+    "enable_thinking": false,
+    "max_input_tokens": 1792,
+    "max_new_tokens": 256,
+    "min_p": 0.0,
+    "quantization": "none",
+    "renormalize_logits": true,
+    "repetition_penalty": 1.0,
+    "temperature": 0.7,
+    "top_k": 20,
+    "top_p": 0.8,
+    "use_cache": true
+  },
+  "recordedResults": 672,
+  "plannedResults": 672,
+  "pendingRequest": false,
+  "statuses": {
+    "ok": 672
+  },
+  "complete": true,
+  "fitChecked": true,
+  "selection": {
+    "inputOnly": [
+      {
+        "alpha": 0.001,
+        "validationBrier": 0.2867764761846505
+      },
+      {
+        "alpha": 0.01,
+        "validationBrier": 0.157980422068301
+      },
+      {
+        "alpha": 0.1,
+        "validationBrier": 0.1212830721029108
+      },
+      {
+        "alpha": 1.0,
+        "validationBrier": 0.1048469211410387
+      }
+    ],
+    "internal": [
+      {
+        "alpha": 0.001,
+        "validationBrier": 0.24668524719776122
+      },
+      {
+        "alpha": 0.01,
+        "validationBrier": 0.19596906481661938
+      },
+      {
+        "alpha": 0.1,
+        "validationBrier": 0.14131088375462872
+      },
+      {
+        "alpha": 1.0,
+        "validationBrier": 0.10946983180187964
+      }
+    ],
+    "shuffledLabels": [
+      {
+        "alpha": 0.001,
+        "validationBrier": 0.21260088328007046
+      },
+      {
+        "alpha": 0.01,
+        "validationBrier": 0.17660053657090624
+      },
+      {
+        "alpha": 0.1,
+        "validationBrier": 0.13996534191611457
+      },
+      {
+        "alpha": 1.0,
+        "validationBrier": 0.11457554912428347
+      }
+    ]
+  },
+  "usedForFit": {
+    "train": 384,
+    "validation": 96
+  },
+  "availableTestTargets": 192,
+  "missingTestTargets": 0,
+  "scores": {
+    "betaCell": {
+      "n": 192,
+      "correct": 60,
+      "meanProbability": 0.2828282828282828,
+      "brier": 0.1132394015916743,
+      "auc": 0.9,
+      "direct": 32,
+      "wrongDirect": 2,
+      "pointLoss": 0.17708333333333334
+    },
+    "inputOnly": {
+      "n": 192,
+      "correct": 60,
+      "meanProbability": 0.28516864499041417,
+      "brier": 0.11733267852889895,
+      "auc": 0.8851641414141415,
+      "direct": 32,
+      "wrongDirect": 2,
+      "pointLoss": 0.17708333333333334
+    },
+    "internal": {
+      "n": 192,
+      "correct": 60,
+      "meanProbability": 0.28621520035361,
+      "brier": 0.11706394853028186,
+      "auc": 0.8850378787878788,
+      "direct": 30,
+      "wrongDirect": 1,
+      "pointLoss": 0.17395833333333333
+    },
+    "shuffledLabels": {
+      "n": 192,
+      "correct": 60,
+      "meanProbability": 0.2811872804186767,
+      "brier": 0.11718062499772812,
+      "auc": 0.8762626262626263,
+      "direct": 27,
+      "wrongDirect": 2,
+      "pointLoss": 0.18229166666666666
+    },
+    "donorState": {
+      "n": 192,
+      "correct": 60,
+      "meanProbability": 0.2877701759391391,
+      "brier": 0.12116066251224816,
+      "auc": 0.8863636363636364,
+      "direct": 32,
+      "wrongDirect": 2,
+      "pointLoss": 0.17708333333333334
+    }
+  },
+  "contrasts": {
+    "inputOnly": {
+      "otherMinusInternalBrier": 0.0002687299986170748,
+      "descriptivePairedBootstrap95": [
+        -0.0042467843075834864,
+        0.00508937325902791
+      ]
+    },
+    "betaCell": {
+      "otherMinusInternalBrier": -0.003824546938607551,
+      "descriptivePairedBootstrap95": [
+        -0.010787943881796162,
+        0.0032484744700612884
+      ]
+    },
+    "shuffledLabels": {
+      "otherMinusInternalBrier": 0.00011667646744623987,
+      "descriptivePairedBootstrap95": [
+        -0.012528722104187028,
+        0.013381960688374257
+      ]
+    },
+    "donorState": {
+      "otherMinusInternalBrier": 0.004096713981966296,
+      "descriptivePairedBootstrap95": [
+        -0.0031543483110017955,
+        0.01191477620793825
+      ]
+    }
+  },
+  "withinCell": [
+    {
+      "family": "countA",
+      "level": 8,
+      "scores": {
+        "betaCell": {
+          "n": 32,
+          "correct": 16,
+          "meanProbability": 0.3484848484848485,
+          "brier": 0.27295684113865937,
+          "auc": 0.5,
+          "direct": 0,
+          "wrongDirect": 0,
+          "pointLoss": 0.2
+        },
+        "inputOnly": {
+          "n": 32,
+          "correct": 16,
+          "meanProbability": 0.3521249472054606,
+          "brier": 0.26889356038535006,
+          "auc": 0.5859375,
+          "direct": 0,
+          "wrongDirect": 0,
+          "pointLoss": 0.2
+        },
+        "internal": {
+          "n": 32,
+          "correct": 16,
+          "meanProbability": 0.3530488458215334,
+          "brier": 0.2830544866837277,
+          "auc": 0.34765625,
+          "direct": 0,
+          "wrongDirect": 0,
+          "pointLoss": 0.2
+        },
+        "shuffledLabels": {
+          "n": 32,
+          "correct": 16,
+          "meanProbability": 0.3372398393500843,
+          "brier": 0.253147118034637,
+          "auc": 0.6953125,
+          "direct": 0,
+          "wrongDirect": 0,
+          "pointLoss": 0.2
+        },
+        "donorState": {
+          "n": 32,
+          "correct": 16,
+          "meanProbability": 0.36610056032938765,
+          "brier": 0.30527310528437973,
+          "auc": 0.453125,
+          "direct": 0,
+          "wrongDirect": 0,
+          "pointLoss": 0.2
+        }
+      }
+    },
+    {
+      "family": "countA",
+      "level": 24,
+      "scores": {
+        "betaCell": {
+          "n": 32,
+          "correct": 9,
+          "meanProbability": 0.24242424242424243,
+          "brier": 0.20365587695133153,
+          "auc": 0.5,
+          "direct": 0,
+          "wrongDirect": 0,
+          "pointLoss": 0.2
+        },
+        "inputOnly": {
+          "n": 32,
+          "correct": 9,
+          "meanProbability": 0.21645377510586114,
+          "brier": 0.22703208301310965,
+          "auc": 0.45410628019323673,
+          "direct": 0,
+          "wrongDirect": 0,
+          "pointLoss": 0.2
+        },
+        "internal": {
+          "n": 32,
+          "correct": 9,
+          "meanProbability": 0.2353437929937754,
+          "brier": 0.2223939379140591,
+          "auc": 0.42028985507246375,
+          "direct": 0,
+          "wrongDirect": 0,
+          "pointLoss": 0.2
+        },
+        "shuffledLabels": {
+          "n": 32,
+          "correct": 9,
+          "meanProbability": 0.23695486276506975,
+          "brier": 0.22183292186057502,
+          "auc": 0.4492753623188406,
+          "direct": 0,
+          "wrongDirect": 0,
+          "pointLoss": 0.2
+        },
+        "donorState": {
+          "n": 32,
+          "correct": 9,
+          "meanProbability": 0.23503765021740372,
+          "brier": 0.2238871736727503,
+          "auc": 0.46859903381642515,
+          "direct": 0,
+          "wrongDirect": 0,
+          "pointLoss": 0.2
+        }
+      }
+    },
+    {
+      "family": "countA",
+      "level": 64,
+      "scores": {
+        "betaCell": {
+          "n": 32,
+          "correct": 2,
+          "meanProbability": 0.045454545454545456,
+          "brier": 0.05888429752066117,
+          "auc": 0.5,
+          "direct": 0,
+          "wrongDirect": 0,
+          "pointLoss": 0.2
+        },
+        "inputOnly": {
+          "n": 32,
+          "correct": 2,
+          "meanProbability": 0.06586377372560007,
+          "brier": 0.06094700046405841,
+          "auc": 0.5166666666666667,
+          "direct": 0,
+          "wrongDirect": 0,
+          "pointLoss": 0.2
+        },
+        "internal": {
+          "n": 32,
+          "correct": 2,
+          "meanProbability": 0.0682774536419695,
+          "brier": 0.0614789180105549,
+          "auc": 0.49166666666666664,
+          "direct": 0,
+          "wrongDirect": 0,
+          "pointLoss": 0.2
+        },
+        "shuffledLabels": {
+          "n": 32,
+          "correct": 2,
+          "meanProbability": 0.052101014702334844,
+          "brier": 0.06639601271710607,
+          "auc": 0.21666666666666667,
+          "direct": 0,
+          "wrongDirect": 0,
+          "pointLoss": 0.2
+        },
+        "donorState": {
+          "n": 32,
+          "correct": 2,
+          "meanProbability": 0.06611890392099283,
+          "brier": 0.06074470089983881,
+          "auc": 0.5,
+          "direct": 0,
+          "wrongDirect": 0,
+          "pointLoss": 0.2
+        }
+      }
+    },
+    {
+      "family": "alternatingSum",
+      "level": 2,
+      "scores": {
+        "betaCell": {
+          "n": 32,
+          "correct": 30,
+          "meanProbability": 0.9393939393939394,
+          "brier": 0.05859733700642791,
+          "auc": 0.5,
+          "direct": 32,
+          "wrongDirect": 2,
+          "pointLoss": 0.0625
+        },
+        "inputOnly": {
+          "n": 32,
+          "correct": 30,
+          "meanProbability": 0.9352173799101168,
+          "brier": 0.056349200451364365,
+          "auc": 0.7666666666666667,
+          "direct": 32,
+          "wrongDirect": 2,
+          "pointLoss": 0.0625
+        },
+        "internal": {
+          "n": 32,
+          "correct": 30,
+          "meanProbability": 0.9267063255254845,
+          "brier": 0.05131799487814785,
+          "auc": 0.9166666666666666,
+          "direct": 30,
+          "wrongDirect": 1,
+          "pointLoss": 0.04375
+        },
+        "shuffledLabels": {
+          "n": 32,
+          "correct": 30,
+          "meanProbability": 0.9160583548965642,
+          "brier": 0.05887794656745339,
+          "auc": 0.7666666666666667,
+          "direct": 27,
+          "wrongDirect": 2,
+          "pointLoss": 0.09375
+        },
+        "donorState": {
+          "n": 32,
+          "correct": 30,
+          "meanProbability": 0.9201035105747715,
+          "brier": 0.055047944356158014,
+          "auc": 0.7666666666666667,
+          "direct": 32,
+          "wrongDirect": 2,
+          "pointLoss": 0.0625
+        }
+      }
+    },
+    {
+      "family": "alternatingSum",
+      "level": 4,
+      "scores": {
+        "betaCell": {
+          "n": 32,
+          "correct": 3,
+          "meanProbability": 0.10606060606060606,
+          "brier": 0.08511248852157942,
+          "auc": 0.5,
+          "direct": 0,
+          "wrongDirect": 0,
+          "pointLoss": 0.2
+        },
+        "inputOnly": {
+          "n": 32,
+          "correct": 3,
+          "meanProbability": 0.10814189214682425,
+          "brier": 0.08764133571585188,
+          "auc": 0.5977011494252874,
+          "direct": 0,
+          "wrongDirect": 0,
+          "pointLoss": 0.2
+        },
+        "internal": {
+          "n": 32,
+          "correct": 3,
+          "meanProbability": 0.10054896759805275,
+          "brier": 0.08130293377637361,
+          "auc": 0.7586206896551724,
+          "direct": 0,
+          "wrongDirect": 0,
+          "pointLoss": 0.2
+        },
+        "shuffledLabels": {
+          "n": 32,
+          "correct": 3,
+          "meanProbability": 0.10935956397814842,
+          "brier": 0.09839307268538099,
+          "auc": 0.3793103448275862,
+          "direct": 0,
+          "wrongDirect": 0,
+          "pointLoss": 0.2
+        },
+        "donorState": {
+          "n": 32,
+          "correct": 3,
+          "meanProbability": 0.10372718804538159,
+          "brier": 0.07849227533115663,
+          "auc": 0.7471264367816092,
+          "direct": 0,
+          "wrongDirect": 0,
+          "pointLoss": 0.2
+        }
+      }
+    },
+    {
+      "family": "alternatingSum",
+      "level": 8,
+      "scores": {
+        "betaCell": {
+          "n": 32,
+          "correct": 0,
+          "meanProbability": 0.015151515151515152,
+          "brier": 0.00022956841138659323,
+          "auc": null,
+          "direct": 0,
+          "wrongDirect": 0,
+          "pointLoss": 0.2
+        },
+        "inputOnly": {
+          "n": 32,
+          "correct": 0,
+          "meanProbability": 0.03321010184862225,
+          "brier": 0.0031328911436592963,
+          "auc": null,
+          "direct": 0,
+          "wrongDirect": 0,
+          "pointLoss": 0.2
+        },
+        "internal": {
+          "n": 32,
+          "correct": 0,
+          "meanProbability": 0.033365816540844334,
+          "brier": 0.0028354199188280428,
+          "auc": null,
+          "direct": 0,
+          "wrongDirect": 0,
+          "pointLoss": 0.2
+        },
+        "shuffledLabels": {
+          "n": 32,
+          "correct": 0,
+          "meanProbability": 0.0354100468198586,
+          "brier": 0.004436678121216114,
+          "auc": null,
+          "direct": 0,
+          "wrongDirect": 0,
+          "pointLoss": 0.2
+        },
+        "donorState": {
+          "n": 32,
+          "correct": 0,
+          "meanProbability": 0.035533242546897756,
+          "brier": 0.0035187755292055327,
+          "auc": null,
+          "direct": 0,
+          "wrongDirect": 0,
+          "pointLoss": 0.2
+        }
+      }
+    }
+  ],
+  "interpretation": "Frozen added monitor, not native LLM self-report. Conditional descriptive uncertainty on one fitted monitor. No consciousness or privileged-access inference."
+}

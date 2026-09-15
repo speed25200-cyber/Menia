@@ -75,9 +75,13 @@ La [suite sur les états internes](docs/ACTIVATION_MONITOR_PROTOCOL.md) possède
 un nouveau Colab : un moniteur apprend sur 384 problèmes, choisit ses réglages
 sur 96 et prédit les 192 suivants depuis les activations avant la réponse.
 L'entrée seule, les taux passés et deux contrôles servent de comparateurs.
-Le logiciel est testé ; aucune collecte de ce nouveau protocole n'est encore
-reçue. Les poids du LLM restent inchangés et le moniteur ajouté ne constitue
-pas une preuve d'introspection native.
+Le [premier export est maintenant vérifié](docs/ACTIVATION_MONITOR_RESULTS.md) :
+672 appels sans erreur technique, 60/192 réponses de test correctes. Le Brier
+interne vaut 0,117064 contre 0,117333 pour l'entrée seule et 0,113239 pour les
+taux passés, plus bas étant meilleur. Les intervalles descriptifs des quatre
+comparaisons incluent zéro ; aucun gain net des états internes n'est établi.
+Les poids du LLM restent inchangés et le moniteur ajouté ne constitue pas une
+preuve d'introspection native.
 
 Le [dossier de raccordement au LLM](docs/LLM_COUPLING_RESULTS.md) recommande
 une boucle reliant langage, modèle de capacités et résultats d'action. Un
