@@ -219,3 +219,16 @@ directes sont fixées : MLX Swift LM 3.31.3, MLX Swift 0.31.3 et Swift Transform
 - [Construction d’IPA avec les outils Codemagic](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/build-ipa.md).
 - [Exemples iOS MLX](https://github.com/ml-explore/mlx-swift-examples).
 - [Capacité Apple Increased Memory Limit](https://developer.apple.com/documentation/bundleresources/entitlements/com.apple.developer.kernel.increased-memory-limit).
+# Expérience suivante : apprendre ses limites
+
+Le [protocole prospectif](IPHONE_CAPABILITY_LEARNING_PROTOCOL.md) ajoute une
+section **Recherche · apprendre mes limites** à la prochaine mise à jour.
+Appuyer sur **Charger**, puis **Apprendre puis prédire · 48 tâches**. Garder l'app
+ouverte pendant les 120 appels locaux. Il n'est pas nécessaire de refaire les
+anciens audits ou de télécharger à nouveau le modèle déjà installé.
+
+Après la fin, ou après une interruption, utiliser **Préparer le rapport
+d'apprentissage**, puis **Partager l'apprentissage** pour exporter
+`apprentissage-menia.json`. Tous les lancements restent séparés et sont conservés.
+Les résultats de ce nouveau protocole n'ont pas encore été recueillis ; un test
+logiciel réussi n'est pas un résultat de Menia sur ces tâches.

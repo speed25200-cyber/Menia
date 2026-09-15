@@ -12,7 +12,7 @@ final class CapabilityLearningAuditTests: XCTestCase {
     private func completeCalibration(_ audit: inout CapabilityLearningAudit) throws {
         for i in 0..<24 {
             try audit.beginCall(i)
-            let answer = audit.problems[i].family == .multiplication ? "incorrect" : String(audit.problems[i].expectedAnswer)
+            let answer = audit.problems[i].family == .multiplication ? String(repeating: "e\u{301}", count: 60) : String(audit.problems[i].expectedAnswer)
             try audit.finishCall(i, answer: answer, duration: 1, firstText: 0.2)
         }
     }

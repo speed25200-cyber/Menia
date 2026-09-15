@@ -179,7 +179,7 @@ public struct CapabilityLearningAudit: Codable, Identifiable, Sendable {
             guard source.count == (condition == .absent ? 0 : 6) else { throw SessionError.invalidState }
             let examples: [[String: Any]] = source.map {
                 ["family": problems[$0.problemIndex].family.rawValue, "question": problems[$0.problemIndex].question,
-                 "answer": String(($0.answer ?? "").prefix(96)), "correct": $0.correct == true]
+                 "answer": String(String.UnicodeScalarView(($0.answer ?? "").unicodeScalars.prefix(96))), "correct": $0.correct == true]
             }
             let payload: [String: Any] = ["family": problem.family.rawValue, "question": problem.question,
                                         "history": condition == .absent ? NSNull() : examples as Any]

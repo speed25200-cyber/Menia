@@ -51,7 +51,7 @@ réussite au format strict `{"p": nombre entre 0 et 1}` :
   addition → multiplication → comptage → somme alternée → addition.
 
 Chaque exemple contient la question, la famille, les 96 premiers caractères de la
-réponse réelle et son résultat booléen. Aucune probabilité numérique n'est fournie
+réponse réelle (96 scalaires Unicode) et son résultat booléen. Aucune probabilité numérique n'est fournie
 au LLM. Les réponses brutes complètes restent dans l'export. L'ordre des trois
 conditions suit chacune des six permutations une fois par famille. Les requêtes
 et identifiants des sources sont sauvegardés avant leur appel.
@@ -124,9 +124,37 @@ utilise du retour d'expérience en mémoire contextuelle sans changer les poids.
 Notre protocole n'est une réplication exacte d'aucun des deux et ne rend pas cette
 idée nouvelle.
 
+Ce plan ne distingue pas encore une connaissance spécifique de soi d'une
+estimation générique de la difficulté. Pour tester cette distinction, il faudra
+notamment des performances différentes entre modèles et des historiques croisés
+sur une même famille. Il ne mesure pas non plus une adaptation à une panne en
+cours de session : la phase d'évaluation garde volontairement la calibration gelée.
+
 Un résultat encourageant serait une amélioration prospective avec l'historique
 pertinent, accompagnée d'une baisse de perte décisionnelle, sans que tout le
 gain soit déjà fourni par Beta. Une égalité, une dégradation ou un surcoût trop
 élevé sont aussi des résultats. Même positif, ce pilote établirait au plus une
 utilisation fonctionnelle de résultats passés dans ce cadre limité. Le diagnostic
 de 84 réponses proposé après l'audit d'absence reste différé et n'est pas inclus ici.
+
+## Exécuter et analyser
+
+Dans la nouvelle version de l'app : Charger → Recherche · apprendre mes limites →
+Apprendre puis prédire · 48 tâches. Garder l'app au premier plan. Après la fin ou
+une interruption : Préparer le rapport d'apprentissage → Partager l'apprentissage.
+Le fichier attendu est `apprentissage-menia.json`. Ne pas sélectionner seulement
+un lancement favorable. Le numéro TestFlight et sa disponibilité doivent être
+vérifiés séparément ; la présence du code ne garantit pas sa livraison.
+
+Analyse locale, sortie contenant seulement des agrégats :
+
+```sh
+python -m research.iphone_capability_learning_report CHEMIN/apprentissage-menia.json \
+  --manifest ios/MeniaCore/Sources/MeniaCore/Resources/qwen3-4b.json \
+  --output .runtime/capability-learning-analysis.json
+```
+
+La CI macOS exporte aussi une collection **synthétique** depuis les tests Swift
+et la fait reconstruire par cet évaluateur Python. Ce contrôle croisé vérifie le
+format de l'app et les calculs, y compris un scénario où l'historique pertinent
+produit de moins bonnes décisions. Il n'appelle pas Qwen.
