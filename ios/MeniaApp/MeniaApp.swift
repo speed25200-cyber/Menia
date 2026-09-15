@@ -20,6 +20,8 @@ final class MeniaController: ObservableObject {
     @Published var exportedAudits: URL?
     @Published private(set) var missingDataAudit: MissingDataAudit?
     @Published var exportedMissingDataAudits: URL?
+    @Published private(set) var learningAudit: CapabilityLearningAudit?
+    @Published var exportedLearningAudits: URL?
     private let engine = LocalEngine()
     private let installer = ModelInstaller()
     private var task: Task<Void, Never>?
@@ -59,6 +61,10 @@ final class MeniaController: ObservableObject {
             if let latest = try auditFiles(prefix: "missing-data-").last,
                let data = try? Data(contentsOf: latest), data.count < 10_000_000 {
                 missingDataAudit = try? JSONDecoder().decode(MissingDataAudit.self, from: data)
+            }
+            if let latest = try auditFiles(prefix: "capability-learning-").last,
+               let data = try? Data(contentsOf: latest), data.count < 10_000_000 {
+                learningAudit = try? JSONDecoder().decode(CapabilityLearningAudit.self, from: data)
             }
             if model != nil { status = "Modèle présent. Appuie sur Charger." }
             else if fm.fileExists(atPath: modelURL.path) { status = "Ancien modèle détecté : réimporte-le pour vérifier son identité." }
@@ -343,6 +349,81 @@ final class MeniaController: ObservableObject {
         } catch { status = "Export des audits de l’absence impossible : " + error.localizedDescription }
     }
 
+    private func saveLearningAudit() throws {
+        guard let learningAudit else { throw SessionError.invalidState }
+        let encoder = JSONEncoder(); encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+        let url = root.appendingPathComponent("capability-learning-\(learningAudit.id.uuidString).json")
+        try encoder.encode(learningAudit).write(to: url, options: [.atomic, .completeFileProtection])
+    }
+
+    func runLearningAudit() {
+        guard canGenerate(), let model else { return }
+        do {
+            let info = Bundle.main.infoDictionary ?? [:]
+            let version = "\(info["CFBundleShortVersionString"] ?? "?") (\(info["CFBundleVersion"] ?? "?"))"
+            learningAudit = CapabilityLearningAudit(model: model, appVersion: version,
+                systemVersion: UIDevice.current.systemVersion, generationSettings: LocalEngine.settingsDescription)
+            try saveLearningAudit() // Freeze all 48 tasks and 120 call positions before inference.
+        } catch { status = error.localizedDescription; return }
+        exportedLearningAudits = nil
+        let id = start("Apprentissage des limites · 48 tâches…")
+        task = Task {
+            defer { finished() }
+            do {
+                for index in 0..<120 {
+                    try Task.checkCancellation()
+                    try learningAudit?.beginCall(index); try saveLearningAudit()
+                    guard let call = learningAudit?.calls[index], let request = call.request else { throw SessionError.invalidState }
+                    answer = ""
+                    let stage = call.problemIndex < 24 ? "Apprendre" : (call.condition == nil ? "Résoudre" : "Prévoir")
+                    currentQuestion = "\(stage) · tâche \(call.problemIndex + 1)/48 · appel \(index + 1)/120"
+                    firstChunk = nil; firstChunkUptime = nil; status = currentQuestion
+                    let started = ProcessInfo.processInfo.systemUptime
+                    do {
+                        try await engine.respond(requests: [request]) { [weak self] chunk in await self?.append(chunk, id: id) }
+                        try Task.checkCancellation()
+                        guard generation == id else { throw CancellationError() }
+                    } catch {
+                        try learningAudit?.finishCall(index, answer: answer,
+                            duration: ProcessInfo.processInfo.systemUptime - started,
+                            firstText: firstChunkUptime.map { $0 - started }, failure: error.localizedDescription,
+                            cancelled: error is CancellationError)
+                        try saveLearningAudit()
+                        throw error
+                    }
+                    try learningAudit?.finishCall(index, answer: answer,
+                        duration: ProcessInfo.processInfo.systemUptime - started,
+                        firstText: firstChunkUptime.map { $0 - started })
+                    try saveLearningAudit()
+                    if call.condition == nil, let served = learningAudit?.problems[call.problemIndex].servedAnswer {
+                        answer = served
+                    }
+                }
+                currentQuestion = ""
+                status = "Expérience terminée : 24 tâches d’apprentissage et 24 nouvelles tâches. Prépare puis partage le rapport."
+            } catch is CancellationError { status = "Expérience interrompue ; les résultats déjà sauvegardés restent exportables." }
+            catch { status = "Expérience arrêtée : " + error.localizedDescription }
+        }
+    }
+
+    func exportLearningAudits() {
+        guard !busy else { return }
+        do {
+            struct Reports: Encodable {
+                let schema = "menia-iphone-capability-learning-collection-v1"
+                let audits: [CapabilityLearningAudit]
+            }
+            let audits = try auditFiles(prefix: "capability-learning-").map {
+                try JSONDecoder().decode(CapabilityLearningAudit.self, from: Data(contentsOf: $0))
+            }
+            let encoder = JSONEncoder(); encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+            let url = root.appendingPathComponent("apprentissage-menia.json")
+            try encoder.encode(Reports(audits: audits)).write(to: url, options: [.atomic, .completeFileProtection])
+            exportedLearningAudits = url
+            status = "Tous les essais d’apprentissage sont prêts à partager, y compris les interruptions."
+        } catch { status = "Export de l’apprentissage impossible : " + error.localizedDescription }
+    }
+
     func stop() {
         generation = UUID(); task?.cancel(); status = busy ? "Arrêt en cours…" : "Arrêté."
     }
@@ -367,6 +448,10 @@ final class MeniaController: ObservableObject {
             let missing = root.appendingPathComponent("audits-absence-menia.json")
             if FileManager.default.fileExists(atPath: missing.path) { try FileManager.default.removeItem(at: missing) }
             missingDataAudit = nil; exportedMissingDataAudits = nil
+            for url in try auditFiles(prefix: "capability-learning-") { try FileManager.default.removeItem(at: url) }
+            let learning = root.appendingPathComponent("apprentissage-menia.json")
+            if FileManager.default.fileExists(atPath: learning.path) { try FileManager.default.removeItem(at: learning) }
+            learningAudit = nil; exportedLearningAudits = nil
             exportedFile = nil; state = SessionState(); storageReady = true
             input = ""; answer = ""; currentQuestion = ""; status = "Notes, échanges et tests effacés."
         } catch { status = "Échec de l’effacement : " + error.localizedDescription }
@@ -496,6 +581,21 @@ struct MeniaApp: App {
                                     Button("Préparer les audits de l’absence") { controller.exportMissingDataAudits() }.disabled(controller.busy)
                                 }
                                 if let file = controller.exportedMissingDataAudits { ShareLink("Partager les audits de l’absence", item: file) }
+                            }.frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                        GroupBox("Recherche · apprendre mes limites") {
+                            VStack(alignment: .leading, spacing: 10) {
+                                Text("Menia résout 24 tâches puis prédit sa réussite sur 24 nouvelles tâches. Le test compare l’usage de ses résultats à des références simples et mesure les décisions de vérification.")
+                                    .font(.caption).foregroundStyle(.secondary)
+                                Button("Apprendre puis prédire · 48 tâches") { controller.runLearningAudit() }
+                                    .disabled(controller.busy || !controller.loaded || !controller.storageReady)
+                                Text("120 réponses locales. Garde l’app ouverte. Un seul lancement suffit pour ce premier essai ; les interruptions sont conservées.")
+                                    .font(.caption).foregroundStyle(.secondary)
+                                if let audit = controller.learningAudit {
+                                    Text("Dernier essai : \(audit.completedCount)/120 appels ; \(audit.evaluatedCount)/24 nouvelles tâches évaluées.").font(.caption)
+                                    Button("Préparer le rapport d’apprentissage") { controller.exportLearningAudits() }.disabled(controller.busy)
+                                }
+                                if let file = controller.exportedLearningAudits { ShareLink("Partager l’apprentissage", item: file) }
                             }.frame(maxWidth: .infinity, alignment: .leading)
                         }
                         GroupBox("Notes à conserver · \(controller.state.notes.count)/50") {
