@@ -33,13 +33,15 @@ mais le choix demandé n'est respecté que 2/12 fois. La réussite complète est
 et les 98 tests de recherche Python passent. Aucun avantage de fidélité propre
 au référent « soi » n'est observé.
 
-**Nouvelle expérience implémentée, sans résultat Qwen à ce stade :**
+**Nouvelle expérience livrée en 0.2.0 (4), sans résultat Qwen à ce stade :**
 [apprendre puis prédire ses limites](docs/IPHONE_CAPABILITY_LEARNING_PROTOCOL.md).
 24 tâches de calibration puis 24 nouveaux exemples, quatre familles, trois
 historiques contrôlés et une réponse candidate commune. Les probabilités précèdent
 la réponse ; la politique principale exécute ou évite une vérification déterministe.
 Les scores sont comparés à des références Beta et à des politiques constantes,
 avec coûts en points et durées séparés. Les poids du LLM ne changent pas.
+Le build est disponible dans le groupe TestFlight **Menia personnel** ;
+34 tests Swift, 106 tests de recherche Python et le contrôle croisé des exports passent.
 Le diagnostic de 84 réponses proposé précédemment reste différé.
 
 Le [dossier de raccordement au LLM](docs/LLM_COUPLING_RESULTS.md) recommande

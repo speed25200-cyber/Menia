@@ -5,14 +5,41 @@ module qui mesure ses réponses à de petits tests de calcul. Aucun entraînemen
 sur Colab n’est nécessaire pour démarrer. La construction d’une application ne
 démontre ni conscience subjective ni nouveauté scientifique.
 
+## Expérience suivante : apprendre ses limites
+
+Le [protocole prospectif](IPHONE_CAPABILITY_LEARNING_PROTOCOL.md) ajoute une
+section **Recherche · apprendre mes limites** à la version **0.2.0 (4)**,
+disponible dans le groupe TestFlight **Menia personnel**.
+Appuyer sur **Charger**, puis **Apprendre puis prédire · 48 tâches**. Garder l'app
+ouverte pendant les 120 appels locaux. Il n'est pas nécessaire de refaire les
+anciens audits ou de télécharger à nouveau le modèle déjà installé.
+
+Après la fin, ou après une interruption, utiliser **Préparer le rapport
+d'apprentissage**, puis **Partager l'apprentissage** pour exporter
+`apprentissage-menia.json`. Tous les lancements restent séparés et sont conservés.
+Les résultats de ce nouveau protocole n'ont pas encore été recueillis ; un test
+logiciel réussi n'est pas un résultat de Menia sur ces tâches.
+
 ## Livraison vérifiée le 15 septembre 2026
+
+**Mise à jour 0.2.0 (4)** : code iPhone du commit
+`465f00111622c8d990d8d9988bb932e8a40d673c`.
+[Codemagic a signé et téléversé l'IPA](https://codemagic.io/app/6aa8a9aef30fba8d006cc3bb/build/6aa8df948a209cb35363cdf8)
+sans erreur à 06:08 UTC. Apple a terminé le traitement et le build affiche
+« En cours de test », associé au groupe **Menia personnel**. L'IPA pèse environ
+17,8 Mo ; le modèle déjà installé est réutilisé. Les 34 tests Swift passent dans
+Codemagic et dans la [compilation GitHub indépendante](https://github.com/speed25200-cyber/Menia/actions/runs/34935125621),
+qui reconstruit aussi un export synthétique avec Python. Les
+[106 tests de recherche Python](https://github.com/speed25200-cyber/Menia/actions/runs/34935734438)
+passent avec le vérificateur renforcé. La réalisation des 48 tâches sur l'iPhone
+reste à effectuer ; ces vérifications ne sont pas des résultats Qwen du pilote.
 
 **Mise à jour 0.2.0 (2)** : le commit `36acfabbcc8fe929465e4ef9c5a58e2ecd0cd397`
 ajoute l'audit de 36 réponses. [Codemagic](https://codemagic.io/app/6aa8a9aef30fba8d006cc3bb/build/6aa8b7afb757b7ac9174f748)
 a signé et téléversé l'IPA sans erreur à 03:18 UTC. Apple a terminé le traitement
 et le build a été ajouté au groupe **Menia personnel**. Les 23 tests Swift et la
 [compilation GitHub](https://github.com/speed25200-cyber/Menia/actions/runs/34924045202)
-passent. Les réponses de ce nouvel audit restent à collecter sur l'iPhone.
+passent. Les réponses de cet audit ont depuis été [analysées](IPHONE_COUPLING_RESULTS.md).
 
 Le commit `f2de97ed0b7677458b13001a9755f3024c67f0eb` a produit **Menia 0.2.0 (1)** :
 
@@ -25,8 +52,8 @@ Le commit `f2de97ed0b7677458b13001a9755f3024c67f0eb` a produit **Menia 0.2.0 (1)
 - [Fiche TestFlight de Menia](https://appstoreconnect.apple.com/apps/6812148686/testflight).
   Le traitement Apple est terminé : build « Prêt à tester », puis associé au
   groupe interne **Menia personnel**, avec un testeur personnel au statut « Invité ».
-  La fiche Apple existante s’appelle **Menja**. L’installation sur l’iPhone et
-  l’exécution du modèle restent à vérifier sur l’appareil.
+  La fiche Apple existante s’appelle **Menja**. Des exports de tests sur appareil
+  ont depuis été reçus et analysés ; voir les rapports liés dans le README.
 
 ## Installation avec Codemagic, sans Mac personnel
 
@@ -219,16 +246,3 @@ directes sont fixées : MLX Swift LM 3.31.3, MLX Swift 0.31.3 et Swift Transform
 - [Construction d’IPA avec les outils Codemagic](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/build-ipa.md).
 - [Exemples iOS MLX](https://github.com/ml-explore/mlx-swift-examples).
 - [Capacité Apple Increased Memory Limit](https://developer.apple.com/documentation/bundleresources/entitlements/com.apple.developer.kernel.increased-memory-limit).
-# Expérience suivante : apprendre ses limites
-
-Le [protocole prospectif](IPHONE_CAPABILITY_LEARNING_PROTOCOL.md) ajoute une
-section **Recherche · apprendre mes limites** à la prochaine mise à jour.
-Appuyer sur **Charger**, puis **Apprendre puis prédire · 48 tâches**. Garder l'app
-ouverte pendant les 120 appels locaux. Il n'est pas nécessaire de refaire les
-anciens audits ou de télécharger à nouveau le modèle déjà installé.
-
-Après la fin, ou après une interruption, utiliser **Préparer le rapport
-d'apprentissage**, puis **Partager l'apprentissage** pour exporter
-`apprentissage-menia.json`. Tous les lancements restent séparés et sont conservés.
-Les résultats de ce nouveau protocole n'ont pas encore été recueillis ; un test
-logiciel réussi n'est pas un résultat de Menia sur ces tâches.

@@ -158,3 +158,12 @@ La CI macOS exporte aussi une collection **synthétique** depuis les tests Swift
 et la fait reconstruire par cet évaluateur Python. Ce contrôle croisé vérifie le
 format de l'app et les calculs, y compris un scénario où l'historique pertinent
 produit de moins bonnes décisions. Il n'appelle pas Qwen.
+
+Vérification du code au commit `465f00111622c8d990d8d9988bb932e8a40d673c` :
+[34 tests Swift, contrôle croisé et compilation iPhone réussis](https://github.com/speed25200-cyber/Menia/actions/runs/34935125621).
+Les [106 tests de recherche Python et les quatre jobs de CI](https://github.com/speed25200-cyber/Menia/actions/runs/34935125585)
+passent également. Ces résultats valident le logiciel, pas la question expérimentale.
+Le vérificateur a ensuite été renforcé au commit `aceb68ff4062d000eab021aff21c03b76f810c0d`
+pour distinguer les booléens des entiers dans les retours d'expérience :
+[CI Python réussie](https://github.com/speed25200-cyber/Menia/actions/runs/34935734438),
+avec reconstruction croisée également réussie dans le job macOS du même commit.
