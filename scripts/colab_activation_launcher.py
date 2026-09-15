@@ -58,7 +58,7 @@ class LoggedRunner:
         return output
 
 
-def bundle_diagnostics(directory, root, destination):
+def bundle_diagnostics(directory, root, destination, *, include_adapters=False):
     """Only this launch's diagnostics and this experiment's direct files."""
     with zipfile.ZipFile(destination, "w", compression=zipfile.ZIP_DEFLATED) as z:
         for item in sorted(Path(directory).iterdir()):
@@ -66,7 +66,8 @@ def bundle_diagnostics(directory, root, destination):
                 z.write(item, "diagnostic/" + item.name)
         if root is not None and Path(root).exists():
             for item in sorted(Path(root).iterdir()):
-                if item.is_file() and item.suffix in (".json", ".jsonl", ".log"):
+                suffixes = (".json", ".jsonl", ".log", ".safetensors") if include_adapters else (".json", ".jsonl", ".log")
+                if item.is_file() and item.suffix in suffixes:
                     z.write(item, "tentatives/" + item.name)
     return Path(destination)
 
@@ -75,7 +76,7 @@ def launch_activation(code_revision, bootstrap_source, *, content=Path("/content
                       mount=None, download=None, runner_factory=LoggedRunner, profile="activation", storage="drive"):
     if not re.fullmatch(r"[0-9a-f]{40}", code_revision):
         raise ValueError("A full immutable code revision is required")
-    if profile not in ("activation", "perturbation"):
+    if profile not in ("activation", "perturbation", "native"):
         raise ValueError("Unknown experiment profile")
     if storage not in ("drive", "local"):
         raise ValueError("Unknown storage mode")
@@ -84,6 +85,8 @@ def launch_activation(code_revision, bootstrap_source, *, content=Path("/content
             module="activation_monitor", stage="6 — Apprendre et évaluer (672 problèmes)"),
         "perturbation": dict(archive="menia-perturbations.zip", folder="perturbation-monitor-v1",
             module="perturbation_monitor", stage="6 — Contrôle technique puis étude appariée (704 appels)"),
+        "native": dict(archive="menia-localisation-native.zip", folder="native-localization-v1",
+            module="native_localization", stage="6 — Entraîner deux adaptateurs puis tester Qwen (1 680 évaluations)"),
     }[profile]
     content = Path(content)
     stamp = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ") + "-" + uuid.uuid4().hex[:8]
@@ -175,7 +178,7 @@ def launch_activation(code_revision, bootstrap_source, *, content=Path("/content
     finally:
         info.update(status=status, stage=runner.stage)
         (directory / "status.json").write_text(json.dumps(info, ensure_ascii=False, indent=2), encoding="utf-8")
-        bundle_diagnostics(directory, root, archive)
+        bundle_diagnostics(directory, root, archive, include_adapters=profile == "native")
         (base / "latest.json").write_text(json.dumps(dict(archive=str(archive), directory=str(directory), status=status)), encoding="utf-8")
         if root is not None:
             # Keep diagnostics alongside results; only Drive survives VM deletion.

@@ -2,6 +2,20 @@
 
 **État actuel : objectif non atteint ; une politique de vérification apprise est intégrée à l'agent expérimental.**
 
+La nouvelle branche [d'apprentissage de localisation interne](NATIVE_LOCALIZATION_PROTOCOL.md)
+entraîne directement deux adaptateurs de Qwen, avec cibles correctes ou mélangées,
+et conserve une version de base. L'évaluation utilise des phrases et des couches
+réservées, une manipulation témoin et une question de lecture publique. Les
+logits conditionnés et le premier token libre sont mesurés séparément. Cette
+expérience adapte des travaux d'introspection entraînée ; elle ne revendique
+pas une méthode originale produisant la conscience. Le logiciel, y compris
+les gradients et la restauration sur un petit Qwen aléatoire, est vérifié
+localement. Les préfixes passent aussi le véritable tokenizer Qwen3-4B.
+**Aucun entraînement ou résultat du modèle préentraîné sur A100 n'est encore
+exécuté ou reçu pour ce protocole.** Les adaptateurs à produire ne sont pas
+intégrés à l'iPhone ; localisation d'une perturbation et conscience de sa
+propre existence restent des propriétés distinctes.
+
 La [suite par perturbations contrôlées](PERTURBATION_MONITOR_PROTOCOL.md) est
 implémentée et testée localement : même question et même graine sous quatre
 conditions, moniteurs figés avant le test, routes de vérification exécutées

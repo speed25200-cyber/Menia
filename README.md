@@ -9,6 +9,16 @@ et conserve son histoire entre sessions. Le modèle de langage Qwen adapté rest
 La conscience subjective n'est pas établie. La continuité repose sur un journal
 explicite et des sauvegardes, sans objectif de résistance à l'arrêt ou d'auto-réplication.
 
+**Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
+Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)
+entraîne deux petits adaptateurs Qwen3-4B, avec cibles correctes ou mélangées,
+puis les compare au modèle de base sur des phrases et des couches réservées.
+La réponse vient de la tête de langage du LLM. Un contrôle de lecture et des
+mesures distinctes du premier token évitent de confondre localisation, attraction
+vers un numéro et conformité de format. Le code est testé localement ; aucun
+résultat A100 de ce nouveau protocole n'est encore acquis. Le ZIP inclut les
+adaptateurs expérimentaux, sans installation dans l'application iPhone.
+
 **Version iPhone 0.2 :** l'[application native et son guide Codemagic](docs/IPHONE.md)
 relient un Qwen3-4B préentraîné en 4 bits à une mémoire persistante et à des mesures
 de ses réponses à des tests de calcul. Le téléchargement du modèle est intégré.
