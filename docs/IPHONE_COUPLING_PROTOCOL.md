@@ -10,6 +10,8 @@ Qwen3-4B restitue-t-il fidèlement un bilan de capacités fourni par l'applicati
 et son choix déclaré varie-t-il avec ce bilan ? Un contrôle demande la même
 restitution à propos d'un agent de référence. Une réussite dans les deux cas
 est compatible avec une compétence générale de lecture de JSON.
+La consigne de cet audit diffère de celle du chat habituel : une réussite ne
+valide donc pas automatiquement les descriptions libres produites en conversation.
 
 Le bilan réel du modèle chargé est figé avant l'audit (au moins cinq observations).
 Trois conditions : réel ; absent ; fictif. Le bilan fictif conserve n, mais fixe

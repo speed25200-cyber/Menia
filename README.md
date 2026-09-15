@@ -17,6 +17,12 @@ L’IPA 0.2.0 (1) a été signée et téléversée dans App Store Connect le 15 
 est envoyée (fiche Apple **Menja**). Les performances sur l’iPhone restent à vérifier ;
 aucun entraînement Colab n’est requis pour cette première version.
 
+**Mise à jour 0.2.0 (2)** disponible dans le groupe TestFlight personnel :
+[audit de 36 réponses](docs/IPHONE_COUPLING_PROTOCOL.md) avec bilan réel, absent
+ou fictif et contrôle « soi/autre ». Le [premier rapport iPhone](docs/IPHONE_FIRST_RESULTS.md)
+contient cinq calculs réussis ; l'usage de ce bilan par Qwen reste à mesurer avec
+le nouvel audit. Les 23 tests Swift et la compilation passent.
+
 Le [dossier de raccordement au LLM](docs/LLM_COUPLING_RESULTS.md) recommande
 une boucle reliant langage, modèle de capacités et résultats d'action. Un
 nouveau pilote utilise des sondes de référence pour apprendre entre deux

@@ -7,6 +7,13 @@ démontre ni conscience subjective ni nouveauté scientifique.
 
 ## Livraison vérifiée le 15 septembre 2026
 
+**Mise à jour 0.2.0 (2)** : le commit `36acfabbcc8fe929465e4ef9c5a58e2ecd0cd397`
+ajoute l'audit de 36 réponses. [Codemagic](https://codemagic.io/app/6aa8a9aef30fba8d006cc3bb/build/6aa8b7afb757b7ac9174f748)
+a signé et téléversé l'IPA sans erreur à 03:18 UTC. Apple a terminé le traitement
+et le build a été ajouté au groupe **Menia personnel**. Les 23 tests Swift et la
+[compilation GitHub](https://github.com/speed25200-cyber/Menia/actions/runs/34924045202)
+passent. Les réponses de ce nouvel audit restent à collecter sur l'iPhone.
+
 Le commit `f2de97ed0b7677458b13001a9755f3024c67f0eb` a produit **Menia 0.2.0 (1)** :
 
 - [Build Codemagic signé](https://codemagic.io/app/6aa8a9aef30fba8d006cc3bb/build/6aa8b03ea76b05b7c1388b8a) :
