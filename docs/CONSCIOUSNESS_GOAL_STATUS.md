@@ -2,6 +2,15 @@
 
 **État actuel : objectif non atteint ; une politique de vérification apprise est intégrée à l'agent expérimental.**
 
+Le [nouveau protocole de moniteur des activations](ACTIVATION_MONITOR_PROTOCOL.md)
+est implémenté pour Colab : 384 problèmes d'apprentissage, 96 de validation
+et 192 réservés. Un moniteur ajouté lit les états avant le premier token et
+engage ses prévisions avant la réponse. Il est comparé à l'entrée seule, aux
+taux passés et à deux contrôles. Les poids de Qwen restent fixes. Les tests
+logiciels passent, mais aucune collecte de ce protocole n'est encore reçue.
+Le lien entre état déterministe et texte interdit d'interpréter une éventuelle
+amélioration comme preuve automatique d'accès privilégié ou de conscience.
+
 Le [premier export Colab de comparaison croisée](CROSS_MODEL_COLAB_RESULTS.md)
 contient 408 appels terminés et un bilan exactement reconstruit par l'évaluateur
 fixé avant les données. Qwen3-4B et Qwen3-8B réussissent chacun 13/36 nouvelles

@@ -71,6 +71,14 @@ par famille/difficulté font mieux que l'auto-prévision selon le Brier. Les deu
 attributions des noms partagent les mêmes réponses et ne sont pas des répétitions
 indépendantes. Aucun avantage d'auto-prévision ni conscience n'est établi.
 
+La [suite sur les états internes](docs/ACTIVATION_MONITOR_PROTOCOL.md) possède
+un nouveau Colab : un moniteur apprend sur 384 problèmes, choisit ses réglages
+sur 96 et prédit les 192 suivants depuis les activations avant la réponse.
+L'entrée seule, les taux passés et deux contrôles servent de comparateurs.
+Le logiciel est testé ; aucune collecte de ce nouveau protocole n'est encore
+reçue. Les poids du LLM restent inchangés et le moniteur ajouté ne constitue
+pas une preuve d'introspection native.
+
 Le [dossier de raccordement au LLM](docs/LLM_COUPLING_RESULTS.md) recommande
 une boucle reliant langage, modèle de capacités et résultats d'action. Un
 nouveau pilote utilise des sondes de référence pour apprendre entre deux
