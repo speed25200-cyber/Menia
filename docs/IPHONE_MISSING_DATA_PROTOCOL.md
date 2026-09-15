@@ -88,3 +88,35 @@ prévisions engagées avant chaque résultat, comparaison au contrôleur numéri
 seul, et coût réel des choix. Un éventuel LoRA sur Colab devra avoir des données
 d'entraînement distinctes des tâches d'évaluation et être réévalué après la
 quantification iPhone. Aucun entraînement ni résultat de ce suivi n'est revendiqué.
+
+## Export et vérification indépendante
+
+Le bouton **Tester l’absence de bilan · 72 réponses** enregistre un plan
+`menia-iphone-missing-data-v1` dans son propre fichier local. Le champ
+`dataOrigin` identifie les contrôles synthétiques. `designRow` conserve le décalage
+0…5 du plan et sa valeur n, même après permutation de l'ordre des blocs. Les
+questions et consignes envoyées ne contiennent ni ces étiquettes ni les scores.
+
+**Préparer les audits de l’absence → Partager les audits de l’absence** exporte
+`audits-absence-menia.json`, schéma `menia-iphone-missing-data-collection-v1`.
+Tous les lancements conservés sont inclus, y compris les essais interrompus.
+Les observations de calcul et les audits v1 restent dans leurs exports distincts.
+L'audit ne reçoit pas les notes ni les conversations de l'utilisateur.
+
+Le vérificateur Python recalcule les scores depuis les sorties brutes et compare
+les notes enregistrées. Il contrôle le plan, les deux interventions de consigne,
+l'omission ou la présence exacte du champ null, les contrôles numériques et les
+statuts. Les contrastes B−A et C−B utilisent uniquement des paires terminées,
+avec leur effectif explicite ; les essais prévus et non terminés restent comptés
+dans les tableaux. Les sorties agrégées omettent les UUID et les dates brutes.
+
+```powershell
+python -m research.iphone_missing_data_report "chemin/vers/audits-absence-menia.json" --manifest ios/MeniaCore/Sources/MeniaCore/Resources/qwen3-4b.json --output "resume-absence.json"
+python -m unittest tests_research.test_iphone_missing_data_report -v
+```
+
+Cinq tests Swift vérifient l'équilibrage des positions et des précédences,
+les interventions exactes, les contrôles, le barème et les interruptions.
+Cinq tests Python indépendants utilisent des réponses synthétiques, dont des
+notes volontairement fausses et des essais incomplets. Leur réussite valide
+l'instrumentation ; elle ne fournit aucune performance du modèle sur ce suivi.
