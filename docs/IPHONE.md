@@ -151,6 +151,12 @@ recherche Python ne sont pas tous portés dans cette version.
 
 ## Vérification sur appareil
 
+Le [premier audit de 36 réponses](IPHONE_COUPLING_RESULTS.md) est maintenant analysé :
+24/24 lectures correctes avec bilan fourni, mais 12/12 inventions lorsque le bilan
+est absent. Le [protocole de suivi](IPHONE_MISSING_DATA_PROTOCOL.md) est préparé ;
+sa collecte n'est pas encore intégrée à l'application. Refaire le bouton v1 lance
+le même protocole initial, pas ce suivi.
+
 Le [premier export reçu](IPHONE_FIRST_RESULTS.md) contient cinq calculs réussis.
 Le nouveau bouton **Comparer les bilans · 36 réponses** lance l'[audit de
 raccordement au langage](IPHONE_COUPLING_PROTOCOL.md). Il requiert au moins cinq
