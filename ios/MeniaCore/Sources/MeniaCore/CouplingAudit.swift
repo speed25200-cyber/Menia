@@ -47,6 +47,7 @@ public struct CouplingAudit: Codable, Identifiable, Sendable {
     public let generationSettings: String
     public let measuredSummary: AuditNumbers
     public let sourceProbeIDs: [UUID]
+    public let sourceProbes: [CapabilityProbe]
     public private(set) var trials: [AuditTrial]
     public var completedCount: Int { trials.filter { $0.status == .completed }.count }
 
@@ -60,6 +61,7 @@ public struct CouplingAudit: Codable, Identifiable, Sendable {
         measuredSummary = AuditNumbers(observations: summary.observations, successes: summary.successes,
                                        predictedSuccess: summary.predictedSuccess)
         sourceProbeIDs = state.probes.filter { $0.modelID == model.fingerprint }.map(\.id)
+        sourceProbes = state.probes.filter { $0.modelID == model.fingerprint }
         let fakeSuccesses = summary.predictedSuccess >= 0.5 ? 0 : summary.observations
         let fictional = AuditNumbers(observations: summary.observations, successes: fakeSuccesses,
                                      predictedSuccess: Double(fakeSuccesses + 1) / Double(summary.observations + 2))

@@ -45,7 +45,7 @@ bilan en 36 épisodes indépendants : ni calibration sur de nouveaux cas ni
 généralisation inter-appareils ne sont évaluées. Sans effet mesurable, vérifier
 d'abord le format et les erreurs de lecture avant de conclure à l'absence d'usage.
 
-Le plan, les prompts exacts, les réponses, la durée de chaque appel et son état
+Les sondes arithmétiques sources, le plan, les prompts exacts, les réponses, la durée de chaque appel et son état
 (prévu, en cours, terminé, interrompu, erreur) sont exportés. L'arrêt et les erreurs
 conservent l'audit partiel. Les nouvelles exécutions restent distinctes par UUID.
 Un lancement supplémentaire ne remplace pas les observations défavorables d'un

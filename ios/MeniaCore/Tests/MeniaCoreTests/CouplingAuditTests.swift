@@ -24,6 +24,8 @@ final class CouplingAuditTests: XCTestCase {
         let before = try encoder.encode(state)
         let result = try audit(state)
         XCTAssertEqual(result.trials.count, 36)
+        XCTAssertEqual(result.sourceProbes.count, 5)
+        XCTAssertEqual(result.sourceProbes.map(\.id), result.sourceProbeIDs)
         XCTAssertEqual(Set(result.trials.map(\.id)).count, 36)
         for role in AuditReferent.allCases {
             let subset = result.trials.filter { $0.referent == role }
