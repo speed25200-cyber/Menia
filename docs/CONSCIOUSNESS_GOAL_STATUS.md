@@ -2,6 +2,13 @@
 
 **État actuel : objectif non atteint ; une politique de vérification apprise est intégrée à l'agent expérimental.**
 
+L'[examen du soi réflexif](REFLEXIVE_SELF_EVIDENCE.md) confronte quatre travaux
+de 2026 et vérifie exactement deux arguments fonctionnels de communication et
+d'engagement. Les résultats n'imposent pas une architecture explicitement
+récursive au-delà de leur contenu fonctionnel minimal. Une candidate de suivi
+et de révision des convictions est proposée, sans être implémentée. L'audit ne
+démontre ni expérience de soi ni nouveauté d'une méthode qui la produirait.
+
 L'[examen du présent vécu](TEMPORAL_PHENOMENAL_BRIDGE.md) étudie la proposition
 temporelle SST, une objection sur la mienneté et le débat sur les neurones
 silencieux. Un audit local de 20 002 calculs montre que le réglage décisionnel

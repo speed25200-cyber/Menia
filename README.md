@@ -13,6 +13,11 @@ L'[audit des critères de conscience](docs/SELF_SYNERGY_CRITERION_AUDIT.md) dist
 les résultats fonctionnels du lien théorique encore non établi avec une expérience
 subjective. Aucun score ni nombre de tests ne certifie la conscience de Menia.
 
+L'[examen du soi réflexif](docs/REFLEXIVE_SELF_EVIDENCE.md) vérifie la portée
+de preuves récentes sur la communication et l'engagement. Il distingue information
+nécessaire, architecture interne et expérience, puis propose une candidate de
+révision des convictions. Rejeu : `python -m research.audit_reflexive_self --check`.
+
 L'[examen du présent vécu](docs/TEMPORAL_PHENOMENAL_BRIDGE.md) confronte une
 proposition récente à son code et à des explications concurrentes. Un audit
 algébrique identifie une confusion entre prédicteurs et construit deux contrastes

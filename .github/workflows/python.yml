@@ -17,6 +17,7 @@ jobs:
       - run: python research/audit_evidence_weighting.py --output artifacts/evidence-weighting-audit/report.json --check
       - run: python research/audit_projective_representation.py --output artifacts/projective-representation-audit/report.json --check
       - run: python -m research.audit_temporal_bridge --check
+      - run: python -m research.audit_reflexive_self --check
       - run: python -m compileall -q menia tests scripts
       - run: python scripts/check_notebook.py
 
