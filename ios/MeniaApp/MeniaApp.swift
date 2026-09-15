@@ -37,6 +37,7 @@ final class MeniaController: ObservableObject {
             var excluded = root
             var values = URLResourceValues(); values.isExcludedFromBackup = true
             try excluded.setResourceValues(values)
+            try ModelInstaller.recoverInterruptedInstall(at: modelURL)
             let existed = fm.fileExists(atPath: store.url.path)
             var restored = try store.load()
             if !existed && fm.fileExists(atPath: legacyNotesURL.path) {

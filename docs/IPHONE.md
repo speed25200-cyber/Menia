@@ -140,13 +140,13 @@ Avec Xcode 26.2 et les outils de ligne de commande sélectionnés :
 ```bash
 brew install xcodegen
 swift test --package-path ios/MeniaCore
-xcodegen generate --spec ios/project.yml
+bash ios/prepare.sh
 open ios/Menia.xcodeproj
 ```
 
 Choisir l’équipe de signature et l’iPhone comme destination. Les dépendances
 directes sont fixées : MLX Swift LM 3.31.3, MLX Swift 0.31.3 et Swift Transformers
-1.3.0. Les dépendances et les poids ne sont pas inclus dans le dépôt.
+1.3.0. Le verrou `ios/Package.resolved`, issu de la compilation réussie, fixe aussi les dépendances transitives. Les bibliothèques et les poids ne sont pas inclus dans le dépôt.
 
 ## Références de construction
 

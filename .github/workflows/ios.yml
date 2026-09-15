@@ -23,8 +23,7 @@ jobs:
       - name: Prepare Xcode project
         run: |
           brew install xcodegen
-          xcodegen generate --spec ios/project.yml
-          if ! xcrun metal --version; then xcodebuild -downloadComponent MetalToolchain; fi
+          bash ios/prepare.sh
       - uses: actions/cache@v4
         with:
           path: ios/SourcePackages

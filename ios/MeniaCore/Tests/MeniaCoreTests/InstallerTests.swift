@@ -92,4 +92,18 @@ final class InstallerTests: XCTestCase {
         XCTAssertTrue(manifest.files.allSatisfy { $0.sha256.count == 64 && $0.bytes > 0 })
         XCTAssertEqual(manifest.files.reduce(Int64(0)) { $0 + $1.bytes }, 2_153_298_402)
     }
+
+    @MainActor func testRestartRestoresPreviousModelAfterInterruptedDirectorySwap() async throws {
+        let root = try directory(); defer { try? FileManager.default.removeItem(at: root) }
+        let source = try fixture(in: root), destination = root.appendingPathComponent("installed")
+        let original = try await ModelInstaller().importDirectory(source, to: destination, progress: { _ in })
+        let backup = root.appendingPathComponent("previous-" + UUID().uuidString)
+        try FileManager.default.moveItem(at: destination, to: backup)
+        let staging = root.appendingPathComponent("install-" + UUID().uuidString)
+        try FileManager.default.createDirectory(at: staging, withIntermediateDirectories: true)
+        try ModelInstaller.recoverInterruptedInstall(at: destination)
+        XCTAssertEqual(try ModelInstaller.descriptor(at: destination).fingerprint, original.fingerprint)
+        XCTAssertFalse(FileManager.default.fileExists(atPath: staging.path))
+        XCTAssertTrue(FileManager.default.fileExists(atPath: source.path))
+    }
 }

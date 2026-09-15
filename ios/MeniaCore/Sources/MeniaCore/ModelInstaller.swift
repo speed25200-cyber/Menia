@@ -90,6 +90,29 @@ public actor ModelInstaller {
             from: Data(contentsOf: directory.appendingPathComponent("menia-model.json")))
     }
 
+    /// Call once at application startup, before allowing any new installation.
+    /// Restore the previous directory if the process died during the final move.
+    public static func recoverInterruptedInstall(at destination: URL) throws {
+        let fm = FileManager.default
+        let parent = destination.deletingLastPathComponent()
+        let entries = try fm.contentsOfDirectory(at: parent, includingPropertiesForKeys: nil)
+        func owned(_ url: URL, prefix: String) -> Bool {
+            let name = url.lastPathComponent
+            return name.hasPrefix(prefix) && UUID(uuidString: String(name.dropFirst(prefix.count))) != nil
+        }
+        let backups = entries.filter { owned($0, prefix: "previous-") }
+        if !fm.fileExists(atPath: destination.path), !backups.isEmpty {
+            // Ambiguous recovery is reported rather than silently choosing a model.
+            guard backups.count == 1 else { throw InstallError.invalidFile("plusieurs modèles précédents à récupérer") }
+            _ = try descriptor(at: backups[0])
+            try checkStructure(at: backups[0])
+            try fm.moveItem(at: backups[0], to: destination)
+        }
+        for entry in entries where owned(entry, prefix: "install-") || owned(entry, prefix: "previous-") {
+            if fm.fileExists(atPath: entry.path) { try fm.removeItem(at: entry) }
+        }
+    }
+
     public static func checkStructure(at directory: URL) throws {
         let fm = FileManager.default
         let config = try JSONSerialization.jsonObject(with: Data(contentsOf: directory.appendingPathComponent("config.json"))) as? [String: Any]
