@@ -9,6 +9,8 @@ Choisir A100, puis « Tout exécuter ». Transmettre `menia-perturbations.zip`,
 même en cas d'arrêt. Le dossier Drive `Menia/perturbation-monitor-v1` est
 séparé des expériences précédentes ; l'installation réutilise leur procédure
 corrigée et exporte un diagnostic même avant la connexion à Drive.
+Le notebook fixe le code scientifique à la révision
+`8db4a3e98812b5680a84423283a996659e75da8d`.
 
 ## Question et portée
 
