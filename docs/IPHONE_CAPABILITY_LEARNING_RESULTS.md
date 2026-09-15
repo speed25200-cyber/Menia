@@ -160,6 +160,13 @@ présenter ni le meilleur seul, ni les répétitions d'un même historique comme
 observations indépendantes. Ces répétitions sur un même appareil restent une
 réplication locale, pas une validation externe.
 
+L'[analyse des répétitions](SELF_PREDICTION_CONTROLS.md#analyse-prête-pour-les-trois-répétitions-iphone)
+est maintenant implémentée dans `research.iphone_learning_replication`. Elle
+réutilise l'évaluateur initial, conserve les trois premières tentatives après ce
+pilote et présente séparément les éventuelles tentatives supplémentaires. Avec
+le seul export reçu, elle ne calcule aucune moyenne de réplication. Les mesures
+ajoutées pour la suite ne modifient pas les résultats principaux ci-dessus.
+
 Deuxième étape, à concevoir séparément après ces répétitions : obtenir des réussites
 et des erreurs au sein de chaque famille, puis croiser les historiques de modèles
 aux capacités différentes sur les mêmes tâches. Ce sera nécessaire pour dépasser

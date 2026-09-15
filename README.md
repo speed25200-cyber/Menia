@@ -55,6 +55,15 @@ des additions : l'anticipation des erreurs au sein d'une même famille reste à
 montrer. Trois répétitions locales du protocole inchangé sont proposées, avec
 conservation de toutes les tentatives. Aucune conscience n'est établie.
 
+La [suite de recherche sur l'auto-prévision](docs/SELF_PREDICTION_CONTROLS.md)
+précise les comparaisons avec un autre modèle et un observateur recevant les mêmes
+données. Trois contre-exemples exécutables montrent pourquoi un avantage « soi »
+ne suffit pas à identifier l'introspection. L'analyse des trois répétitions est
+implémentée, sans changer l'évaluateur initial ; elle conserve les interruptions
+et ajoute les taux de calibration et la discrimination au sein d'une famille.
+Les 117 tests de recherche Python passent localement. Cette étape n'exécute pas
+de nouveau LLM ; la comparaison croisée reste une spécification de travail.
+
 Le [dossier de raccordement au LLM](docs/LLM_COUPLING_RESULTS.md) recommande
 une boucle reliant langage, modèle de capacités et résultats d'action. Un
 nouveau pilote utilise des sondes de référence pour apprendre entre deux
