@@ -61,7 +61,7 @@ données. Trois contre-exemples exécutables montrent pourquoi un avantage « so
 ne suffit pas à identifier l'introspection. L'analyse des trois répétitions est
 implémentée, sans changer l'évaluateur initial ; elle conserve les interruptions
 et ajoute les taux de calibration et la discrimination au sein d'une famille.
-La suite compte maintenant 127 tests de recherche Python et trois contrôles du
+La suite compte maintenant 135 tests de recherche Python et six contrôles du
 moteur de génération. La [comparaison croisée possède son notebook Colab](docs/CROSS_MODEL_COLAB.md) :
 Qwen3-4B et Qwen3-8B, 60 problèmes, 408 appels, deux noms permutés et sauvegarde
 des tentatives dans Drive. Le [premier export reçu et vérifié](docs/CROSS_MODEL_COLAB_RESULTS.md)
