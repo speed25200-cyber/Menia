@@ -64,8 +64,12 @@ et ajoute les taux de calibration et la discrimination au sein d'une famille.
 La suite compte maintenant 127 tests de recherche Python et trois contrôles du
 moteur de génération. La [comparaison croisée possède son notebook Colab](docs/CROSS_MODEL_COLAB.md) :
 Qwen3-4B et Qwen3-8B, 60 problèmes, 408 appels, deux noms permutés et sauvegarde
-des tentatives dans Drive. La collecte sur A100 reste à exécuter ; les contrôles
-logiciels ne sont pas des performances mesurées de ces modèles.
+des tentatives dans Drive. Le [premier export reçu et vérifié](docs/CROSS_MODEL_COLAB_RESULTS.md)
+contient les 408 appels sans erreur technique. Chaque modèle réussit 13/36
+nouvelles tâches ; les prévisions de l'autre modèle et les références numériques
+par famille/difficulté font mieux que l'auto-prévision selon le Brier. Les deux
+attributions des noms partagent les mêmes réponses et ne sont pas des répétitions
+indépendantes. Aucun avantage d'auto-prévision ni conscience n'est établi.
 
 Le [dossier de raccordement au LLM](docs/LLM_COUPLING_RESULTS.md) recommande
 une boucle reliant langage, modèle de capacités et résultats d'action. Un

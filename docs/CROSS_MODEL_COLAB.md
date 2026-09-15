@@ -2,7 +2,10 @@
 
 Préparé le 15 septembre 2026. Collecteur et notebook implémentés. Les contrôles
 logiciels utilisent des réponses synthétiques et un minuscule Qwen3 aléatoire.
-**La collecte Qwen3-4B / Qwen3-8B sur A100 reste à exécuter par l'utilisateur.**
+**Un premier export utilisateur est maintenant reçu et recalculé : 408 appels
+terminés, sans avantage d'auto-prévision observé.** Les
+[résultats et leurs limites](CROSS_MODEL_COLAB_RESULTS.md) sont consignés séparément
+du protocole ci-dessous, qui reste inchangé.
 
 ## Ouvrir et exécuter
 
@@ -39,8 +42,10 @@ des révisions complètes, les dépendances directes sont fixées et l'environne
 résolu est enregistré. L'installation utilise un environnement virtuel séparé.
 Le profil accepte un A100 de 40 ou 80 Go ; il refuse un repli CPU ou une autre
 famille de GPU. Les poids seuls représentent environ 24,4 Go en BF16. Il faut
-aussi de l'espace pour les bibliothèques et la mémoire de travail. La durée de
-ce pilote sur GPU n'a pas été mesurée ; le quota Colab est consommé à l'exécution.
+aussi de l'espace pour les bibliothèques et la mémoire de travail. Le premier
+export rapporte 283,74 s d'appels, chargements compris, hors installation et
+autres opérations du notebook ; ce n'est pas une durée garantie. Le quota Colab
+est consommé à l'exécution.
 
 Le notebook désigne une tentative active dans Drive. Relancer la cellule de
 collecte reprend ce journal ; après déconnexion du runtime, relancer les cellules

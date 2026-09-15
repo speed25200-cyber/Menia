@@ -2,6 +2,17 @@
 
 **État actuel : objectif non atteint ; une politique de vérification apprise est intégrée à l'agent expérimental.**
 
+Le [premier export Colab de comparaison croisée](CROSS_MODEL_COLAB_RESULTS.md)
+contient 408 appels terminés et un bilan exactement reconstruit par l'évaluateur
+fixé avant les données. Qwen3-4B et Qwen3-8B réussissent chacun 13/36 nouvelles
+tâches. Leur auto-prévision a un Brier moins bon que la prévision par l'autre
+modèle et que les deux références numériques par famille/difficulté. Les
+contrastes diagonaux sont négatifs pour les deux attributions des noms, qui
+partagent les mêmes réponses. Ce premier essai ne soutient pas l'avantage
+d'auto-prévision recherché ; aucune conscience ou découverte majeure n'est
+confirmée. Les poids et le protocole restent inchangés ; les activations
+internes ne sont pas mesurées par ce pilote.
+
 Le [dossier de raccordement au langage](LLM_COUPLING_RESULTS.md) précise une
 architecture hybride et ajoute un apprenant entre deux hypothèses d'entretien.
 87 380 probabilités exactes vérifient une ambiguïté des diagnostics ; des sondes
