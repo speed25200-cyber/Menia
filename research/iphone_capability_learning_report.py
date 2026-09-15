@@ -114,7 +114,10 @@ def validate(audit):
                     require(request == dict(instructions=SOLVE, prompt=question), "Candidate sees extra context")
                 else:
                     require(len(source) == (0 if condition == "absent" else 6), "Incomplete calibration history")
-                    require(request["instructions"] == FORECAST and strict_json(request["prompt"]) == payload, "Forecast request mismatch or leaked outcome")
+                    actual = strict_json(request["prompt"])
+                    require(request["instructions"] == FORECAST and
+                            json.dumps(actual, sort_keys=True) == json.dumps(payload, sort_keys=True),
+                            "Forecast request mismatch or leaked outcome")
             terminal = status in ("completed", "error", "cancelled")
             if terminal:
                 require(type(call.get("answer")) is str, "Missing raw answer")

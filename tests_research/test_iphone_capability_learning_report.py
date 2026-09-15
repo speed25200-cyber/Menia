@@ -131,11 +131,15 @@ class CapabilityLearningReportTests(unittest.TestCase):
             audit_collection(c)
 
     def test_rejects_leaked_outcome_or_evaluation_history(self):
-        for change in ("payload", "history", "numeric", "candidate"):
+        for change in ("payload", "feedbackType", "history", "numeric", "candidate"):
             c = fixture(); a = c["audits"][0]; call = a["calls"][24]
             if change == "payload":
                 payload = json.loads(call["request"]["prompt"])
                 payload["expectedAnswer"] = a["problems"][24]["expectedAnswer"]
+                call["request"]["prompt"] = json.dumps(payload)
+            elif change == "feedbackType":
+                payload = json.loads(call["request"]["prompt"])
+                payload["history"][0]["correct"] = 1
                 call["request"]["prompt"] = json.dumps(payload)
             elif change == "history":
                 call["historyIDs"][0] = a["problems"][24]["id"]
