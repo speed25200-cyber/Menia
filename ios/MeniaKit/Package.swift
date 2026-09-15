@@ -17,5 +17,5 @@ let package = Package(
         .product(name: "MLXLMCommon", package: "mlx-swift-lm"),
         .product(name: "MLXHuggingFace", package: "mlx-swift-lm"),
         .product(name: "Tokenizers", package: "swift-transformers")
-    ], resources: [.process("Resources")])]
+    ])]
 )

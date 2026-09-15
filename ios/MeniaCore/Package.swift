@@ -6,7 +6,7 @@ let package = Package(
     platforms: [.iOS(.v18), .macOS(.v15)],
     products: [.library(name: "MeniaCore", targets: ["MeniaCore"])],
     targets: [
-        .target(name: "MeniaCore"),
+        .target(name: "MeniaCore", resources: [.process("Resources")]),
         .testTarget(name: "MeniaCoreTests", dependencies: ["MeniaCore"])
     ]
 )

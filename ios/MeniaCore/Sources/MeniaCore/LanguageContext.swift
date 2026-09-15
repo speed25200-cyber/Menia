@@ -34,11 +34,13 @@ public enum LanguageContext {
         // Shared character budget is only a prefilter. The engine counts the exact
         // templated tokens and tries smaller contexts, keeping the whole question.
         var remaining = max(0, memoryCharacters)
+        var noteBudget = state.exchanges.isEmpty ? remaining : remaining / 2
         var selected: [NoteContext] = []
-        for note in state.notes.reversed().prefix(5) where remaining > 0 {
-            let text = String(note.text.prefix(min(remaining, 800)))
+        for note in state.notes.reversed().prefix(5) where noteBudget > 0 {
+            let text = String(note.text.prefix(min(noteBudget, 800)))
             selected.append(NoteContext(id: note.id, text: text, source: note.source))
             remaining -= text.count
+            noteBudget -= text.count
         }
         var turns: [TurnContext] = []
         for turn in state.exchanges.reversed().prefix(4) where remaining > 0 {
@@ -48,7 +50,7 @@ public enum LanguageContext {
             remaining -= answer.count
             turns.append(TurnContext(question: question, answer: answer, modelID: turn.modelID))
         }
-        let payload = Payload(question: question, notes: selected.reversed(), previousExchanges: turns.reversed(),
+        let payload = Payload(question: question, notes: Array(selected.reversed()), previousExchanges: Array(turns.reversed()),
             measuredCapability: state.capability(modelID: modelID),
             latestProbeID: state.probes.last(where: { $0.modelID == modelID })?.id)
         let encoder = JSONEncoder(); encoder.outputFormatting = [.sortedKeys]

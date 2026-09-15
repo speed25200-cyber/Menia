@@ -9,6 +9,14 @@ et conserve son histoire entre sessions. Le modèle de langage Qwen adapté rest
 La conscience subjective n'est pas établie. La continuité repose sur un journal
 explicite et des sauvegardes, sans objectif de résistance à l'arrêt ou d'auto-réplication.
 
+**Version iPhone 0.2 :** l'[application native et son guide Codemagic](docs/IPHONE.md)
+relient un Qwen3-4B préentraîné en 4 bits à une mémoire persistante et à des mesures
+de ses réponses à des tests de calcul. Le téléchargement du modèle est intégré.
+La configuration produit une IPA Ad Hoc avec les identités de signature de
+l'utilisateur. La signature et les performances sur l'iPhone doivent être vérifiées
+sur le compte et l'appareil concernés ; aucun entraînement Colab n'est requis
+pour cette première version.
+
 Le [dossier de raccordement au LLM](docs/LLM_COUPLING_RESULTS.md) recommande
 une boucle reliant langage, modèle de capacités et résultats d'action. Un
 nouveau pilote utilise des sondes de référence pour apprendre entre deux

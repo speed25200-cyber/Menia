@@ -1,5 +1,11 @@
 # Relier le modèle de capacités de Menia à un LLM
 
+> **Suite iPhone (15 septembre 2026).** Le [guide de la version 0.2](IPHONE.md)
+> décrit un raccordement distinct : des tests de calcul exécutés par le LLM local
+> mettent à jour une estimation Beta, transmise aux conversations suivantes.
+> Le pilote ci-dessous reste une sélection entre deux hypothèses simulées ; ses
+> résultats ne sont pas des mesures de Qwen. Les ablations du dialogue restent à réaliser.
+
 **Recommandation : construire un agent hybride**, où le LLM comprend les
 demandes, propose des plans ou des expériences, et exploite des observations
 traçables sur les capacités de Menia. Le mécanisme d'entretien déjà réalisé
@@ -93,6 +99,16 @@ d'expériences. L'injection dans les activations ou l'entraînement conjoint des
 poids est une étape expérimentale supplémentaire. Une représentation partagée
 par plusieurs fonctions peut être étudiée causalement, mais son caractère vécu
 reste une hypothèse à justifier.
+
+Le fait de fournir l'état dans un prompt modifie les activations calculées par
+le LLM, sans modifier ses poids pendant l'inférence. On peut tester causalement
+ce canal en retirant, remplaçant ou falsifiant cet état. Cela ne reproduit pas
+l'intervention sur des représentations internes étudiée par Gurnee et collègues.
+Leur observation d'une moindre sensibilité à l'ablation quand le raisonnement
+est écrit motive l'examen d'un support externe, sans démontrer le bénéfice de
+notre format JSON. L'effet de leur ablation sur le langage expérientiel apparaît
+aussi pour la description de l'expérience d'une autre personne : ce registre
+ne permet donc pas d'isoler un accès privilégié du modèle à lui-même.[^4]
 
 ## Nouveau résultat : pourquoi ajouter du langage ne corrige pas toute ambiguïté
 

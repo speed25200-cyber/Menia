@@ -16,9 +16,10 @@ struct ModelManifest: Codable, Sendable {
 }
 
 public enum InstallError: LocalizedError {
-    case invalidFile(String), downloadFailed, integrity(String)
+    case invalidFile(String), downloadFailed, integrity(String), invalidModel
     public var errorDescription: String? {
         switch self {
+        case .invalidModel: "Dossier invalide : modèle Qwen3 ou Qwen3.5 MLX 4 bits requis, avec tokenizer et poids complets."
         case .invalidFile(let name): "Fichier de modèle invalide : \(name)."
         case .downloadFailed: "Téléchargement impossible. Vérifie le Wi-Fi puis réessaie."
         case .integrity(let name): "Le fichier \(name) est incomplet ou ne correspond pas au modèle attendu."
@@ -97,16 +98,16 @@ public actor ModelInstaller {
               quant?["bits"] as? Int == 4,
               fm.fileExists(atPath: directory.appendingPathComponent("tokenizer.json").path),
               fm.fileExists(atPath: directory.appendingPathComponent("tokenizer_config.json").path)
-        else { throw EngineError.invalidModel }
+        else { throw InstallError.invalidModel }
         let weights = try fm.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil)
             .filter { $0.pathExtension == "safetensors" }
-        guard !weights.isEmpty else { throw EngineError.invalidModel }
+        guard !weights.isEmpty else { throw InstallError.invalidModel }
         let indexURL = directory.appendingPathComponent("model.safetensors.index.json")
         if fm.fileExists(atPath: indexURL.path) {
             let index = try JSONSerialization.jsonObject(with: Data(contentsOf: indexURL)) as? [String: Any]
             guard let map = index?["weight_map"] as? [String: String], !map.isEmpty,
                   map.values.allSatisfy({ safeName($0) && $0.hasSuffix(".safetensors") && fm.fileExists(atPath: directory.appendingPathComponent($0).path) })
-            else { throw EngineError.invalidModel }
+            else { throw InstallError.invalidModel }
         }
     }
 

@@ -200,7 +200,8 @@ final class MeniaController: ObservableObject {
         do {
             try store.save(SessionState())
             if FileManager.default.fileExists(atPath: legacyNotesURL.path) { try FileManager.default.removeItem(at: legacyNotesURL) }
-            if let exportedFile { try? FileManager.default.removeItem(at: exportedFile) }
+            let report = root.appendingPathComponent("tests-menia.json")
+            if FileManager.default.fileExists(atPath: report.path) { try FileManager.default.removeItem(at: report) }
             exportedFile = nil; state = SessionState(); storageReady = true
             input = ""; answer = ""; currentQuestion = ""; status = "Notes, échanges et tests effacés."
         } catch { status = "Échec de l’effacement : " + error.localizedDescription }
@@ -214,6 +215,7 @@ final class MeniaController: ObservableObject {
                 let model: ModelDescriptor?
                 let probes: [CapabilityProbe]
                 let summary: CapabilitySummary
+                let generationSettings = "context=2048; output<=256; temperature=0.7; topP=0.8; topK=20; thinking=false; no fixed RNG seed"
                 let scope = "Calcul élémentaire seulement. Aucun score de conscience."
             }
             let encoder = JSONEncoder(); encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
