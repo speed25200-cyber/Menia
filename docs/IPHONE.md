@@ -5,6 +5,21 @@ module qui mesure ses réponses à de petits tests de calcul. Aucun entraînemen
 sur Colab n’est nécessaire pour démarrer. La construction d’une application ne
 démontre ni conscience subjective ni nouveauté scientifique.
 
+## Livraison vérifiée le 15 septembre 2026
+
+Le commit `f2de97ed0b7677458b13001a9755f3024c67f0eb` a produit **Menia 0.2.0 (1)** :
+
+- [Build Codemagic signé](https://codemagic.io/app/6aa8a9aef30fba8d006cc3bb/build/6aa8b03ea76b05b7c1388b8a) :
+  tests, archive et export réussis ; artefact `Menia.ipa` de 16,80 Mo.
+- Téléversement App Store Connect confirmé par `UPLOAD SUCCEEDED with no errors`
+  à 02:46 UTC ; identifiant `com.meniaapp.menia`, iOS minimum 18.0.
+- [Compilation GitHub indépendante](https://github.com/speed25200-cyber/Menia/actions/runs/34922062046) :
+  Release iPhone et 17 tests Swift réussis.
+- [Fiche TestFlight de Menia](https://appstoreconnect.apple.com/apps/6812148686/testflight).
+  Le traitement Apple et l’accès du compte de test restent à vérifier dans cette
+  interface authentifiée. L’envoi réussi ne prouve pas encore l’installation sur
+  l’iPhone ni l’exécution du modèle.
+
 ## Installation avec Codemagic, sans Mac personnel
 
 Le fichier [`codemagic.yaml`](../codemagic.yaml) contient deux workflows :
