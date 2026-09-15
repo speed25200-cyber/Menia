@@ -12,6 +12,28 @@ logiciels utilisent des réponses synthétiques et un minuscule Qwen3 aléatoire
 2. Choisir **Exécution → Tout exécuter**, puis autoriser le montage de Drive.
 3. Partager `menia-comparaison-modeles.zip`, téléchargé par la dernière cellule.
 
+### Correction de l'installation Colab
+
+Une capture de l'utilisateur montre l'échec de `python -m venv` dans un runtime
+Python 3.13, avant les modèles. L'erreur interne complète n'est pas visible sur
+la capture. Le correctif supprime la dépendance à `ensurepip` : création de
+l'environnement avec `--without-pip`, puis installation de pip 25.2 au moyen
+de l'application ZIP versionnée de PyPA, vérifiée par SHA-256. Cette voie est
+testée aussi sous Ubuntu 24.04 dont le Python système ne possède ni `ensurepip`
+ni pip. La présence du seul exécutable Python ne suffit plus : pip est vérifié
+et installé s'il manque. Les fichiers déjà présents sont conservés.
+
+Le notebook corrigé utilise `/content/menia-cross-env-v2` et contrôle les
+dépendances avec `pip check`. Les étapes GPU, collecte et export ne démarrent
+que lorsque leurs prérequis sont satisfaits, pour éviter une cascade d'erreurs
+de variables manquantes après une installation interrompue. Le code scientifique
+reste fixé au commit `9070e92d26e0d3e17556268cad7ba2b676937278` ; le plan et le
+barème ne changent pas. Les anciennes copies sur Drive ne sont pas modifiées
+automatiquement : ouvrir le nouveau lien Colab ou en copier la nouvelle version.
+
+Le mécanisme d'amorçage suit l'[installation autonome de pip](https://pip.pypa.io/en/stable/installation/#standalone-zip-application).
+Sa validation logicielle n'est pas une exécution des deux modèles sur A100.
+
 Le code exécuté est fixé à un commit complet dans le notebook. Les modèles ont
 des révisions complètes, les dépendances directes sont fixées et l'environnement
 résolu est enregistré. L'installation utilise un environnement virtuel séparé.

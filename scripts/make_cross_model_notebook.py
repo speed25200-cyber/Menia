@@ -16,9 +16,12 @@ def code(text):
 def make_notebook(revision):
     if not re.fullmatch(r"[0-9a-f]{40}", revision):
         raise ValueError("An immutable full Git commit is required")
+    bootstrap = Path(__file__).with_name("colab_bootstrap.py").read_text(encoding="utf-8")
     cells = [md('''# Menia — prévoir ses propres limites : comparaison entre deux modèles
 
 **À exécuter sur Colab, GPU A100 (40 ou 80 Go).**
+**Installation corrigée : compatible avec un Python sans ensurepip, y compris Colab Python 3.13.**
+Ouvrir ce nouveau notebook ; une ancienne copie sur Drive n'est pas mise à jour automatiquement.
 
 1. **Exécution → Modifier le type d'exécution → GPU A100 → Enregistrer.**
 2. **Exécution → Tout exécuter**, puis autoriser le montage de ton Drive lorsque Colab le demande.
@@ -37,7 +40,11 @@ Ce pilote Colab est distinct des trois répétitions demandées sur l'iPhone.
 
 Cette cellule fixe le code et les bibliothèques. Elle n'altère pas l'environnement Python du notebook.
 Les poids publics seront téléchargés au premier appel. Aucun jeton Hugging Face n'est nécessaire.
-'''), code(f'''from pathlib import Path
+'''), code(bootstrap + f'''
+MENIA_SETUP_OK = False
+MENIA_CHECKS_OK = False
+MENIA_ROOT = None
+from pathlib import Path
 import os, subprocess, sys
 
 CODE_REVISION = "{revision}"
@@ -48,21 +55,23 @@ if not REPO.exists():
 actual = subprocess.check_output(["git", "-C", str(REPO), "rev-parse", "HEAD"], text=True).strip()
 assert actual == CODE_REVISION, "Le dossier contient une autre révision : ne pas mélanger les versions."
 subprocess.run(["git", "-C", str(REPO), "diff", "--exit-code", "HEAD"], check=True)
-VENV = Path("/content/menia-cross-env-v1")
-PYTHON = VENV / "bin/python"
-if not PYTHON.exists():
-    subprocess.run([sys.executable, "-m", "venv", str(VENV)], check=True)
+VENV = Path("/content/menia-cross-env-v2")
+PYTHON = ensure_environment(VENV)
 subprocess.run([str(PYTHON), "-m", "pip", "install", "torch==2.8.0", "--index-url", "https://download.pytorch.org/whl/cu126"], check=True)
 subprocess.run([str(PYTHON), "-m", "pip", "install", "-r", str(REPO / "requirements-cross-model.txt")], check=True)
+subprocess.run([str(PYTHON), "-m", "pip", "check"], check=True)
+MENIA_SETUP_OK = True
 print("Code fixé :", actual)
 '''), md('''## 2. Vérifier le GPU et les contrôles logiciels
 
 Les tests utilisent des réponses synthétiques et un minuscule Qwen aux poids aléatoires.
 Ils vérifient le logiciel ; ils ne fournissent aucun résultat scientifique sur les deux grands modèles.
-'''), code('''CHECK_ENV = dict(os.environ, CUBLAS_WORKSPACE_CONFIG=":4096:8", TOKENIZERS_PARALLELISM="false")
+'''), code('''MENIA_CHECKS_OK = False
+CHECK_ENV = dict(os.environ, CUBLAS_WORKSPACE_CONFIG=":4096:8", TOKENIZERS_PARALLELISM="false")
 subprocess.run([str(PYTHON), "-c", "from research.cross_model_gpu import environment; e=environment(); print(e['gpu'], round(e['gpuBytes']/1024**3, 1), 'GiB')"], cwd=REPO, env=CHECK_ENV, check=True)
 subprocess.run([str(PYTHON), "-m", "unittest", "tests_research.test_cross_model_prediction", "-q"], cwd=REPO, env=CHECK_ENV, check=True)
 subprocess.run([str(PYTHON), "-m", "unittest", "discover", "-s", "tests_language", "-q"], cwd=REPO, env=CHECK_ENV, check=True)
+MENIA_CHECKS_OK = True
 '''), md('''## 3. Sauvegarder et lancer le pilote
 
 Par défaut, cette cellule reprend le journal déjà désigné comme actif, ou en crée un au premier lancement.
@@ -78,6 +87,7 @@ import datetime, json, uuid
 
 ROOT = Path("/content/drive/MyDrive/Menia/cross-model-pilot-v1")
 ROOT.mkdir(parents=True, exist_ok=True)
+MENIA_ROOT = ROOT
 ACTIVE = ROOT / "active-run.json"
 NEW_ATTEMPT = False
 if ACTIVE.exists() and not NEW_ATTEMPT:
@@ -133,6 +143,18 @@ with zipfile.ZipFile(ARCHIVE, "w", compression=zipfile.ZIP_DEFLATED) as z:
             z.write(item, item.name)
 files.download(str(ARCHIVE))
 ''')]
+    # Colab may continue Run All after a cell failure. Dependent stages stop cleanly
+    # instead of generating misleading missing-variable errors or starting inference.
+    guards = {
+        4: ("globals().get('MENIA_SETUP_OK', False)", "Installation incomplète : corriger la première cellule avant de poursuivre."),
+        6: ("globals().get('MENIA_CHECKS_OK', False)", "Les contrôles GPU et logiciels doivent réussir avant de lancer le pilote."),
+        8: ("globals().get('MENIA_ROOT') is not None", "Aucun dossier de collecte ouvert ; aucune expérience n'a démarré."),
+    }
+    for index, (condition, message) in guards.items():
+        source = ''.join(cells[index]['source'])
+        cells[index]['source'] = ("if " + condition + ":\n" +
+                                  ''.join("    " + line if line.strip() else line for line in source.splitlines(True)) +
+                                  "else:\n    print(" + repr(message) + ")\n").splitlines(True)
     for i, cell in enumerate(cells):
         cell["id"] = f"menia-cross-{i:02d}"
     return dict(cells=cells, nbformat=4, nbformat_minor=5,
