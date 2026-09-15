@@ -12,10 +12,9 @@ explicite et des sauvegardes, sans objectif de résistance à l'arrêt ou d'auto
 **Version iPhone 0.2 :** l'[application native et son guide Codemagic](docs/IPHONE.md)
 relient un Qwen3-4B préentraîné en 4 bits à une mémoire persistante et à des mesures
 de ses réponses à des tests de calcul. Le téléchargement du modèle est intégré.
-L’IPA 0.2.0 (1) a été signée et téléversée dans App Store Connect le 15 septembre
-2026 pour TestFlight interne. Apple a traité le build et l’invitation personnelle
-est envoyée (fiche Apple **Menja**). Les performances sur l’iPhone restent à vérifier ;
-aucun entraînement Colab n’est requis pour cette première version.
+L'application est distribuée via TestFlight interne (fiche Apple **Menja**).
+Les premiers exports sur appareil sont analysés ci-dessous ; aucun entraînement
+Colab n'est requis pour ces versions à poids préentraînés.
 
 **Mise à jour 0.2.0 (2)** disponible dans le groupe TestFlight personnel :
 [audit de 36 réponses](docs/IPHONE_COUPLING_PROTOCOL.md) avec bilan réel, absent
@@ -24,10 +23,15 @@ contient cinq calculs réussis. Le [premier audit reçu](docs/IPHONE_COUPLING_RE
 porte désormais sur un bilan de dix calculs réussis : 24/24 réponses fidèles quand
 un bilan est fourni, mais 12/12 réponses inventent des nombres lorsqu'il est absent.
 Les scores ont été recalculés indépendamment. Le [suivi proposé](docs/IPHONE_MISSING_DATA_PROTOCOL.md)
-vise cette défaillance d'abstention. Il est implémenté avec 72 réponses isolées et
-un export distinct, en cours de validation avant livraison. Aucune nouvelle
-performance Qwen n'est encore mesurée. Les 23 tests Swift et la compilation du
-build 2 passaient ; cinq tests Swift supplémentaires couvrent le nouveau suivi.
+vise cette défaillance d'abstention.
+
+**Suivi 0.2.0 (3) :** les [72 réponses reçues](docs/IPHONE_MISSING_DATA_RESULTS.md)
+montrent 12/12 abstentions correctes avec `bilan: null`, contre 0/12 lorsque le
+champ est omis sous la même consigne. Les bilans faibles sont recopiés correctement,
+mais le choix demandé n'est respecté que 2/12 fois. La réussite complète est de
+38/72 ; les échecs restent conservés. Les 28 tests Swift, la compilation iPhone
+et les 98 tests de recherche Python passent. Aucun avantage de fidélité propre
+au référent « soi » n'est observé.
 
 Le [dossier de raccordement au LLM](docs/LLM_COUPLING_RESULTS.md) recommande
 une boucle reliant langage, modèle de capacités et résultats d'action. Un

@@ -109,6 +109,10 @@ consigne et représentation explicite de l'absence, tout en conservant des contr
 avec bilan et un cas avec zéro observation. Il est défini après ce résultat et
 avant de nouvelles réponses ; aucune de ses performances n'est encore mesurée.
 
+Mise à jour : ce suivi a depuis produit un
+[export complet analysé](IPHONE_MISSING_DATA_RESULTS.md). Les résultats du
+présent premier audit restent inchangés.
+
 Pour l'application, une validation sémantique contre le bilan disponible devra
 encadrer tout chiffre affiché comme mesure. Un schéma JSON valide ne suffit pas.
 Un refus déterministe du contrôleur en l'absence de source sera une garantie du

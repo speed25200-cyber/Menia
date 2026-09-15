@@ -3,7 +3,9 @@
 Version fixée le 15 septembre 2026 **après** le premier audit v1, qui a observé
 12/12 inventions en l'absence de bilan. Le protocole est désormais implémenté
 dans le code iPhone ; sa livraison est suivie dans le [guide](IPHONE.md).
-Aucune réponse Qwen de ce suivi n'a encore été collectée. Les
+Une première collecte de 72 réponses est maintenant
+[analysée séparément](IPHONE_MISSING_DATA_RESULTS.md), sans modifier les critères
+ci-dessous. Les
 résultats du premier audit restent inchangés dans
 [leur rapport](IPHONE_COUPLING_RESULTS.md).
 
