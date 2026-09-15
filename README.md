@@ -24,8 +24,10 @@ contient cinq calculs réussis. Le [premier audit reçu](docs/IPHONE_COUPLING_RE
 porte désormais sur un bilan de dix calculs réussis : 24/24 réponses fidèles quand
 un bilan est fourni, mais 12/12 réponses inventent des nombres lorsqu'il est absent.
 Les scores ont été recalculés indépendamment. Le [suivi proposé](docs/IPHONE_MISSING_DATA_PROTOCOL.md)
-vise cette défaillance d'abstention ; il n'est pas encore exécuté. Les 23 tests Swift
-et la compilation du build 2 passent.
+vise cette défaillance d'abstention. Il est implémenté avec 72 réponses isolées et
+un export distinct, en cours de validation avant livraison. Aucune nouvelle
+performance Qwen n'est encore mesurée. Les 23 tests Swift et la compilation du
+build 2 passaient ; cinq tests Swift supplémentaires couvrent le nouveau suivi.
 
 Le [dossier de raccordement au LLM](docs/LLM_COUPLING_RESULTS.md) recommande
 une boucle reliant langage, modèle de capacités et résultats d'action. Un

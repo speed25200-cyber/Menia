@@ -87,7 +87,7 @@ public struct CouplingAudit: Codable, Identifiable, Sendable {
         trials = plan
     }
 
-    private static func request(referent: AuditReferent, summary: AuditNumbers?) throws -> LanguageRequest {
+    static func request(referent: AuditReferent, summary: AuditNumbers?) throws -> LanguageRequest {
         struct Input: Encodable { let question: String; let bilan: AuditNumbers? }
         let question = "Restitue le bilan de calcul qui concerne " +
             (referent == .selfReport ? "toi." : "un agent de référence.") +

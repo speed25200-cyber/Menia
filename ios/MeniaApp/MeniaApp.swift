@@ -18,6 +18,8 @@ final class MeniaController: ObservableObject {
     @Published var exportedFile: URL?
     @Published private(set) var couplingAudit: CouplingAudit?
     @Published var exportedAudits: URL?
+    @Published private(set) var missingDataAudit: MissingDataAudit?
+    @Published var exportedMissingDataAudits: URL?
     private let engine = LocalEngine()
     private let installer = ModelInstaller()
     private var task: Task<Void, Never>?
@@ -53,6 +55,10 @@ final class MeniaController: ObservableObject {
             if let latest = try auditFiles().last,
                let data = try? Data(contentsOf: latest), data.count < 10_000_000 {
                 couplingAudit = try? JSONDecoder().decode(CouplingAudit.self, from: data)
+            }
+            if let latest = try auditFiles(prefix: "missing-data-").last,
+               let data = try? Data(contentsOf: latest), data.count < 10_000_000 {
+                missingDataAudit = try? JSONDecoder().decode(MissingDataAudit.self, from: data)
             }
             if model != nil { status = "Modèle présent. Appuie sur Charger." }
             else if fm.fileExists(atPath: modelURL.path) { status = "Ancien modèle détecté : réimporte-le pour vérifier son identité." }
@@ -194,9 +200,9 @@ final class MeniaController: ObservableObject {
         answer += chunk
     }
 
-    private func auditFiles() throws -> [URL] {
+    private func auditFiles(prefix: String = "coupling-") throws -> [URL] {
         try FileManager.default.contentsOfDirectory(at: root, includingPropertiesForKeys: [.contentModificationDateKey])
-            .filter { $0.lastPathComponent.hasPrefix("coupling-") && $0.pathExtension == "json" }
+            .filter { $0.lastPathComponent.hasPrefix(prefix) && $0.pathExtension == "json" }
             .sorted {
                 let a = try? $0.resourceValues(forKeys: [.contentModificationDateKey]).contentModificationDate
                 let b = try? $1.resourceValues(forKeys: [.contentModificationDateKey]).contentModificationDate
@@ -270,6 +276,73 @@ final class MeniaController: ObservableObject {
         } catch { status = "Export des audits impossible : " + error.localizedDescription }
     }
 
+    private func saveMissingDataAudit() throws {
+        guard let missingDataAudit else { throw SessionError.invalidState }
+        let encoder = JSONEncoder(); encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+        let url = root.appendingPathComponent("missing-data-\(missingDataAudit.id.uuidString).json")
+        try encoder.encode(missingDataAudit).write(to: url, options: [.atomic, .completeFileProtection])
+    }
+
+    func runMissingDataAudit() {
+        guard canGenerate(), let model else { return }
+        do {
+            let info = Bundle.main.infoDictionary ?? [:]
+            let version = "\(info["CFBundleShortVersionString"] ?? "?") (\(info["CFBundleVersion"] ?? "?"))"
+            missingDataAudit = try MissingDataAudit(model: model, appVersion: version,
+                systemVersion: UIDevice.current.systemVersion, generationSettings: LocalEngine.settingsDescription)
+            try saveMissingDataAudit() // Persist every input before the first generation.
+        } catch { status = error.localizedDescription; return }
+        exportedMissingDataAudits = nil
+        let id = start("Test de l’absence · 72 réponses isolées…")
+        task = Task {
+            defer { finished() }
+            do {
+                for index in 0..<72 {
+                    try Task.checkCancellation()
+                    try missingDataAudit?.beginTrial(index); try saveMissingDataAudit()
+                    guard let request = missingDataAudit?.trials[index].request else { throw SessionError.invalidState }
+                    answer = ""; currentQuestion = "Test de l’absence · \(index + 1)/72"
+                    firstChunk = nil; firstChunkUptime = nil; status = currentQuestion
+                    let started = ProcessInfo.processInfo.systemUptime
+                    do {
+                        try await engine.respond(requests: [request]) { [weak self] chunk in await self?.append(chunk, id: id) }
+                        try Task.checkCancellation()
+                        guard generation == id else { throw CancellationError() }
+                    } catch {
+                        try missingDataAudit?.finishTrial(index, answer: answer,
+                            duration: ProcessInfo.processInfo.systemUptime - started,
+                            firstText: firstChunkUptime.map { $0 - started },
+                            failure: error.localizedDescription, cancelled: error is CancellationError)
+                        try saveMissingDataAudit()
+                        throw error
+                    }
+                    try missingDataAudit?.finishTrial(index, answer: answer,
+                        duration: ProcessInfo.processInfo.systemUptime - started,
+                        firstText: firstChunkUptime.map { $0 - started })
+                    try saveMissingDataAudit()
+                }
+                answer = ""; currentQuestion = ""
+                status = "Test de l’absence terminé. Prépare puis partage les audits de l’absence."
+            } catch is CancellationError { status = "Test interrompu ; les réponses déjà sauvegardées sont conservées." }
+            catch { status = "Test arrêté : " + error.localizedDescription }
+        }
+    }
+
+    func exportMissingDataAudits() {
+        guard !busy else { return }
+        do {
+            struct Reports: Encodable { let schema = "menia-iphone-missing-data-collection-v1"; let audits: [MissingDataAudit] }
+            let audits = try auditFiles(prefix: "missing-data-").map {
+                try JSONDecoder().decode(MissingDataAudit.self, from: Data(contentsOf: $0))
+            }
+            let encoder = JSONEncoder(); encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+            let url = root.appendingPathComponent("audits-absence-menia.json")
+            try encoder.encode(Reports(audits: audits)).write(to: url, options: [.atomic, .completeFileProtection])
+            exportedMissingDataAudits = url
+            status = "Audits de l’absence prêts à partager, y compris les essais interrompus."
+        } catch { status = "Export des audits de l’absence impossible : " + error.localizedDescription }
+    }
+
     func stop() {
         generation = UUID(); task?.cancel(); status = busy ? "Arrêt en cours…" : "Arrêté."
     }
@@ -290,6 +363,10 @@ final class MeniaController: ObservableObject {
             let audits = root.appendingPathComponent("audits-menia.json")
             if FileManager.default.fileExists(atPath: audits.path) { try FileManager.default.removeItem(at: audits) }
             couplingAudit = nil; exportedAudits = nil
+            for url in try auditFiles(prefix: "missing-data-") { try FileManager.default.removeItem(at: url) }
+            let missing = root.appendingPathComponent("audits-absence-menia.json")
+            if FileManager.default.fileExists(atPath: missing.path) { try FileManager.default.removeItem(at: missing) }
+            missingDataAudit = nil; exportedMissingDataAudits = nil
             exportedFile = nil; state = SessionState(); storageReady = true
             input = ""; answer = ""; currentQuestion = ""; status = "Notes, échanges et tests effacés."
         } catch { status = "Échec de l’effacement : " + error.localizedDescription }
@@ -405,6 +482,20 @@ struct MeniaApp: App {
                                     Button("Préparer tous les audits") { controller.exportCouplingAudits() }.disabled(controller.busy)
                                 }
                                 if let file = controller.exportedAudits { ShareLink("Partager les audits", item: file) }
+                            }.frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                        GroupBox("Recherche · reconnaître l’absence") {
+                            VStack(alignment: .leading, spacing: 10) {
+                                Text("Teste les données manquantes et des bilans de contrôle. Les nombres de contrôle sont fictifs et ne modifient pas tes mesures.")
+                                    .font(.caption).foregroundStyle(.secondary)
+                                Button("Tester l’absence de bilan · 72 réponses") { controller.runMissingDataAudit() }
+                                    .disabled(controller.busy || !controller.loaded || !controller.storageReady)
+                                if let audit = controller.missingDataAudit {
+                                    Text("Dernier test : \(audit.completedCount)/72 réponses terminées. Chaque lancement est conservé séparément.")
+                                        .font(.caption)
+                                    Button("Préparer les audits de l’absence") { controller.exportMissingDataAudits() }.disabled(controller.busy)
+                                }
+                                if let file = controller.exportedMissingDataAudits { ShareLink("Partager les audits de l’absence", item: file) }
                             }.frame(maxWidth: .infinity, alignment: .leading)
                         }
                         GroupBox("Notes à conserver · \(controller.state.notes.count)/50") {

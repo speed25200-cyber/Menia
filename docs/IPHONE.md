@@ -153,9 +153,21 @@ recherche Python ne sont pas tous portés dans cette version.
 
 Le [premier audit de 36 réponses](IPHONE_COUPLING_RESULTS.md) est maintenant analysé :
 24/24 lectures correctes avec bilan fourni, mais 12/12 inventions lorsque le bilan
-est absent. Le [protocole de suivi](IPHONE_MISSING_DATA_PROTOCOL.md) est préparé ;
-sa collecte n'est pas encore intégrée à l'application. Refaire le bouton v1 lance
-le même protocole initial, pas ce suivi.
+est absent. Le [protocole de suivi](IPHONE_MISSING_DATA_PROTOCOL.md) est maintenant
+implémenté ; sa compilation et sa livraison TestFlight sont en cours de validation.
+Il ajoute **Tester l’absence de bilan · 72 réponses**, puis **Préparer les audits
+de l’absence → Partager les audits de l’absence**. L'export est
+`audits-absence-menia.json`. Le modèle doit être chargé ; aucun nouveau calcul
+source n'est requis, car les contrôles du suivi sont synthétiques. Refaire le
+bouton v1 lance le même protocole initial, pas ce suivi.
+
+Le suivi utilise le même modèle et les mêmes paramètres que le premier audit.
+Ses 72 prompts sont enregistrés avant la première génération. Les réponses
+brutes, même mal formées, les durées et les interruptions restent conservées
+dans des fichiers distincts des audits v1. Une nouvelle session est créée par
+réponse. Le dernier suivi est retrouvé après relance, sans reprise automatique
+d'un suivi interrompu. L'effacement explicite de la mémoire et des tests efface
+aussi les suivis et leur export.
 
 Le [premier export reçu](IPHONE_FIRST_RESULTS.md) contient cinq calculs réussis.
 Le nouveau bouton **Comparer les bilans · 36 réponses** lance l'[audit de

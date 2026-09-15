@@ -1,8 +1,9 @@
 # Suivi proposé : reconnaître l'absence d'un bilan
 
 Version fixée le 15 septembre 2026 **après** le premier audit v1, qui a observé
-12/12 inventions en l'absence de bilan. Ce suivi est une proposition de protocole,
-pas une expérience exécutée ni un nouveau bouton déjà livré sur iPhone. Les
+12/12 inventions en l'absence de bilan. Le protocole est désormais implémenté
+dans le code iPhone ; sa livraison est suivie dans le [guide](IPHONE.md).
+Aucune réponse Qwen de ce suivi n'a encore été collectée. Les
 résultats du premier audit restent inchangés dans
 [leur rapport](IPHONE_COUPLING_RESULTS.md).
 
