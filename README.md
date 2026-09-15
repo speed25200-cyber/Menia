@@ -92,7 +92,10 @@ groupes. Les décisions de vérification sont engagées avant le premier token,
 puis exécutées avec un outil déterministe sur des candidats partagés. Les
 témoins connaissant la condition distinguent une simple détection de perturbation
 d'une prévision de ses conséquences. Aucun résultat A100 de ce protocole n'est
-encore reçu ; les poids de Qwen restent inchangés.
+encore reçu : le premier lancement a passé les contrôles puis échoué au montage
+Drive. Le notebook courant enregistre donc les résultats directement dans Colab,
+sans Drive ; télécharger le ZIP avant la fermeture de cet environnement temporaire.
+Les poids de Qwen et le protocole scientifique restent inchangés.
 
 Le [dossier de raccordement au LLM](docs/LLM_COUPLING_RESULTS.md) recommande
 une boucle reliant langage, modèle de capacités et résultats d'action. Un

@@ -61,7 +61,52 @@ class PerturbationLauncherTests(unittest.TestCase):
         source=''.join(cells[0]['source'])
         compile(source,'perturbation-colab','exec')
         self.assertIn("profile='perturbation'",source)
+        self.assertIn("storage='local'",source)
         self.assertIn(REVISION,source)
+
+    def test_local_mode_skips_drive_and_resumes_local_journal(self):
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d)
+            old=root/'drive/MyDrive/Menia/perturbation-monitor-v1'
+            old.mkdir(parents=True)
+            (old/'prior.jsonl').write_text('earlier data',encoding='utf-8')
+            runners=[]
+            def factory(path):
+                runner=PerturbationRunner(path)
+                runners.append(runner)
+                return runner
+            def forbidden_mount(path):
+                raise AssertionError('Local mode must never request Drive')
+            for _ in range(2):
+                with contextlib.redirect_stdout(io.StringIO()):
+                    result=launch_activation(REVISION,'# fixture',content=root,mount=forbidden_mount,
+                        download=lambda p:None,runner_factory=factory,profile='perturbation',storage='local')
+                self.assertEqual(result['status'],'completed')
+                self.assertEqual(result['storage'],'local')
+            call=next(c for c in runners[-1].calls if 'research.perturbation_monitor_gpu' in c)
+            self.assertIn('--resume',call)
+            self.assertIn('menia-results',call[call.index('research.perturbation_monitor_gpu')+1])
+            self.assertEqual((old/'prior.jsonl').read_text(),'earlier data')
+            with zipfile.ZipFile(root/'menia-perturbations.zip') as z:
+                self.assertTrue(any(n.startswith('tentatives/') and n.endswith('.jsonl') for n in z.namelist()))
+                self.assertNotIn('tentatives/prior.jsonl',z.namelist())
+
+    def test_local_collection_failure_still_exports_partial_results(self):
+        class PartialRunner(PerturbationRunner):
+            def run(self,stage,command,cwd=None):
+                output=super().run(stage,command,cwd)
+                if 'research.perturbation_monitor_gpu' in [str(c) for c in command]:
+                    raise RuntimeError('Synthetic GPU interruption after journal write')
+                return output
+        with tempfile.TemporaryDirectory() as d,contextlib.redirect_stdout(io.StringIO()):
+            downloads=[]
+            result=launch_activation(REVISION,'# fixture',content=Path(d),mount=lambda p:None,
+                download=downloads.append,runner_factory=PartialRunner,profile='perturbation',storage='local')
+            self.assertEqual(result['status'],'failed')
+            self.assertEqual(len(downloads),1)
+            with zipfile.ZipFile(downloads[0]) as z:
+                self.assertIn('diagnostic/error.txt',z.namelist())
+                self.assertTrue(any(n.startswith('tentatives/') and n.endswith('.jsonl') for n in z.namelist()))
 
 
 if __name__=='__main__':

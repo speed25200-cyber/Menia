@@ -6,11 +6,32 @@ Qwen3-4B préentraîné de ce protocole n'est encore reçue.**
 
 [Ouvrir le Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/05_perturbation_monitor_colab.ipynb).
 Choisir A100, puis « Tout exécuter ». Transmettre `menia-perturbations.zip`,
-même en cas d'arrêt. Le dossier Drive `Menia/perturbation-monitor-v1` est
-séparé des expériences précédentes ; l'installation réutilise leur procédure
-corrigée et exporte un diagnostic même avant la connexion à Drive.
+même en cas d'arrêt. **La version courante fonctionne sans Google Drive.**
+Les résultats sont enregistrés dans `/content/menia-results/perturbation-monitor-v1`
+et l'archive est téléchargée à la fin. Enregistrer le ZIP avant la fermeture ou
+suppression de l'environnement Colab : ce stockage est temporaire. Si le
+téléchargement automatique est bloqué, le ZIP est disponible dans le panneau
+Fichiers, sous `/content`. La reprise est possible tant que le même environnement
+existe ; ce mode ne lit ni ne modifie les anciens dossiers Drive.
 Le notebook fixe le code scientifique à la révision
 `8db4a3e98812b5680a84423283a996659e75da8d`.
+
+### Incident reçu et correction du lancement
+
+Le premier ZIP de ce protocole contient uniquement les diagnostics. L'installation,
+le contrôle des dépendances, CUDA et les onze tests logiciels ont réussi sur
+A100-SXM4-40GB / Python 3.13.15. Le programme s'est ensuite arrêté à
+`drive.mount` avec `ValueError: mount failed`, avant le collecteur scientifique.
+Le journal ne précise pas la cause sous-jacente du refus de montage. Le
+[bilan du diagnostic](../artifacts/perturbation-launch-diagnostics/drive-mount-failure.json)
+conserve ces faits ; il n'y a aucun journal de l'étude ni résultat à interpréter.
+
+Le lanceur propose désormais un stockage local utilisé par ce notebook. Il
+omet le montage Drive et exporte les résultats et diagnostics depuis le dossier
+local. Les essais précédents sont conservés, et le mode Drive des anciens
+notebooks reste disponible. Le plan, les poids, les contrôles, les scores et
+la révision scientifique ne changent pas. Ce correctif retire la dépendance
+qui a bloqué le lancement ; il ne prétend pas réparer le service Google Drive.
 
 ## Question et portée
 
@@ -212,9 +233,11 @@ l'exclusion du lot de test et du contrôle initial de l'ajustement, les routes
 effectivement exécutées, les falsifications, le témoin identique et la reprise.
 Trois tests sur un petit Qwen aux poids aléatoires vérifient l'ordre avant
 logits, la norme et l'aléa privé, le retrait des hooks, la restauration des
-réponses normales et l'absence de modification des poids. Trois tests du
+réponses normales et l'absence de modification des poids. Cinq tests du
 nouveau profil Colab vérifient la reprise, la séparation des fichiers,
-l'export des erreurs précoces et l'autonomie du bloc.
+l'export des erreurs précoces, l'autonomie du bloc, l'absence d'appel à Drive
+en mode local et l'export des données partielles après échec. Les onze tests
+des deux profils de lancement passent sous Windows/Python 3.13 et Ubuntu/Python 3.12.
 
 Ces validations logicielles ne sont pas une exécution du modèle préentraîné
 sur A100. La perturbation est artificielle, ciblée sur un seul site, et les

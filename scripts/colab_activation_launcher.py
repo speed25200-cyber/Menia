@@ -72,11 +72,13 @@ def bundle_diagnostics(directory, root, destination):
 
 
 def launch_activation(code_revision, bootstrap_source, *, content=Path("/content"),
-                      mount=None, download=None, runner_factory=LoggedRunner, profile="activation"):
+                      mount=None, download=None, runner_factory=LoggedRunner, profile="activation", storage="drive"):
     if not re.fullmatch(r"[0-9a-f]{40}", code_revision):
         raise ValueError("A full immutable code revision is required")
     if profile not in ("activation", "perturbation"):
         raise ValueError("Unknown experiment profile")
+    if storage not in ("drive", "local"):
+        raise ValueError("Unknown storage mode")
     experiment = {
         "activation": dict(archive="menia-etats-internes.zip", folder="activation-monitor-v1",
             module="activation_monitor", stage="6 — Apprendre et évaluer (672 problèmes)"),
@@ -90,7 +92,7 @@ def launch_activation(code_revision, bootstrap_source, *, content=Path("/content
     directory.mkdir(parents=True, exist_ok=False)
     runner = runner_factory(directory)
     root, archive, status = None, content / experiment["archive"], "failed"
-    info = dict(codeRevision=code_revision, python=platform.python_version(),
+    info = dict(codeRevision=code_revision, python=platform.python_version(), storage=storage,
                 freeDiskGiB=round(shutil.disk_usage(content).free / 1024**3, 2), status="starting")
     try:
         # Fail early on the actual hardware, before downloading another environment.
@@ -129,15 +131,22 @@ def launch_activation(code_revision, bootstrap_source, *, content=Path("/content
                    "from research.cross_model_gpu import environment; e=environment(); print(e['gpu'], e['requiredVersions'])"], cwd=repo)
         runner.run("4 — Tests du moniteur", [python, "-m", "unittest", "tests_research.test_"+experiment["module"],
                    "tests_language.test_"+experiment["module"]+"_gpu", "-v"], cwd=repo)
-        runner.stage = "5 — Connecter Drive"
-        print("\n--- 5 — Connecter Drive ---", flush=True)
-        if mount is None:
-            from google.colab import drive
-            mount = drive.mount
-        mount(str(content / "drive"))
-        folder = content / "drive/MyDrive/Menia" / experiment["folder"]
+        if storage == "drive":
+            runner.stage = "5 — Connecter Drive"
+            print("\n--- 5 — Connecter Drive ---", flush=True)
+            if mount is None:
+                from google.colab import drive
+                mount = drive.mount
+            mount(str(content / "drive"))
+            folder = content / "drive/MyDrive/Menia" / experiment["folder"]
+        else:
+            runner.stage = "5 — Enregistrer dans Colab (sans Drive)"
+            print("\n--- 5 — Enregistrer dans Colab (sans Drive) ---", flush=True)
+            print("Résultats temporaires : télécharger le ZIP avant la suppression de l'environnement Colab.", flush=True)
+            folder = content / "menia-results" / experiment["folder"]
         folder.mkdir(parents=True, exist_ok=True)
         root = folder
+        info["resultsDirectory"] = str(root)
         active_file = root / "active-run.json"
         if active_file.exists():
             active = json.loads(active_file.read_text(encoding="utf-8"))
@@ -169,13 +178,13 @@ def launch_activation(code_revision, bootstrap_source, *, content=Path("/content
         bundle_diagnostics(directory, root, archive)
         (base / "latest.json").write_text(json.dumps(dict(archive=str(archive), directory=str(directory), status=status)), encoding="utf-8")
         if root is not None:
-            # Keep the diagnostic across runtime disconnects once Drive is mounted.
+            # Keep diagnostics alongside results; only Drive survives VM deletion.
             try:
                 shutil.copyfile(directory / "status.json", root / (stamp + ".launcher-status.json"))
                 if (directory / "execution.log").exists():
                     shutil.copyfile(directory / "execution.log", root / (stamp + ".launcher.log"))
             except OSError:
-                print("Copie du diagnostic sur Drive impossible ; l'archive locale reste disponible.", flush=True)
+                print("Copie du diagnostic dans le dossier de résultats impossible ; l'archive locale reste disponible.", flush=True)
         if download is None:
             try:
                 from google.colab import files

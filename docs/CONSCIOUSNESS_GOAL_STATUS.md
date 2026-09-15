@@ -11,6 +11,10 @@ Le Colab effectue d'abord 32 appels de contrôle technique, puis 672 d'étude.
 Aucune collecte Qwen3-4B préentraîné de ce protocole n'est encore reçue. La règle
 de décision est fournie, les poids du LLM sont gelés, et les résultats des
 contrôles synthétiques ne démontrent pas une métacognition native.
+Le premier ZIP contient un échec de montage Drive après installation et onze
+contrôles logiciels réussis, sans journal scientifique. Le nouveau lanceur
+utilise un dossier temporaire Colab et télécharge le ZIP, sans montage Drive ;
+le code scientifique reste fixé à la même révision.
 
 Le [nouveau protocole de moniteur des activations](ACTIVATION_MONITOR_PROTOCOL.md)
 est implémenté pour Colab : 384 problèmes d'apprentissage, 96 de validation
