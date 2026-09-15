@@ -16,11 +16,14 @@ final class MeniaController: ObservableObject {
     @Published private(set) var model: ModelDescriptor?
     @Published private(set) var storageReady = false
     @Published var exportedFile: URL?
+    @Published private(set) var couplingAudit: CouplingAudit?
+    @Published var exportedAudits: URL?
     private let engine = LocalEngine()
     private let installer = ModelInstaller()
     private var task: Task<Void, Never>?
     private var generation = UUID()
     private var firstChunk: Date?
+    private var firstChunkUptime: Double?
     private let root: URL
     private let store: SessionStore
     private var modelURL: URL { root.appendingPathComponent("model", isDirectory: true) }
@@ -47,6 +50,10 @@ final class MeniaController: ObservableObject {
             state = restored; storageReady = true
             if fm.fileExists(atPath: legacyNotesURL.path) { try fm.removeItem(at: legacyNotesURL) }
             model = try? ModelInstaller.descriptor(at: modelURL)
+            if let latest = try auditFiles().last,
+               let data = try? Data(contentsOf: latest), data.count < 10_000_000 {
+                couplingAudit = try? JSONDecoder().decode(CouplingAudit.self, from: data)
+            }
             if model != nil { status = "Modèle présent. Appuie sur Charger." }
             else if fm.fileExists(atPath: modelURL.path) { status = "Ancien modèle détecté : réimporte-le pour vérifier son identité." }
         } catch { status = "Mémoire indisponible : " + error.localizedDescription }
@@ -59,7 +66,7 @@ final class MeniaController: ObservableObject {
     }
 
     private func start(_ message: String) -> UUID {
-        generation = UUID(); busy = true; status = message; firstChunk = nil
+        generation = UUID(); busy = true; status = message; firstChunk = nil; firstChunkUptime = nil
         UIApplication.shared.isIdleTimerDisabled = true
         return generation
     }
@@ -183,8 +190,84 @@ final class MeniaController: ObservableObject {
 
     private func append(_ chunk: String, id: UUID) {
         guard generation == id else { return }
-        if firstChunk == nil, !chunk.isEmpty { firstChunk = Date() }
+        if firstChunk == nil, !chunk.isEmpty { firstChunk = Date(); firstChunkUptime = ProcessInfo.processInfo.systemUptime }
         answer += chunk
+    }
+
+    private func auditFiles() throws -> [URL] {
+        try FileManager.default.contentsOfDirectory(at: root, includingPropertiesForKeys: [.contentModificationDateKey])
+            .filter { $0.lastPathComponent.hasPrefix("coupling-") && $0.pathExtension == "json" }
+            .sorted {
+                let a = try? $0.resourceValues(forKeys: [.contentModificationDateKey]).contentModificationDate
+                let b = try? $1.resourceValues(forKeys: [.contentModificationDateKey]).contentModificationDate
+                return (a ?? .distantPast) < (b ?? .distantPast)
+            }
+    }
+
+    private func saveAudit() throws {
+        guard let couplingAudit else { throw SessionError.invalidState }
+        let encoder = JSONEncoder(); encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+        let url = root.appendingPathComponent("coupling-\(couplingAudit.id.uuidString).json")
+        try encoder.encode(couplingAudit).write(to: url, options: [.atomic, .completeFileProtection])
+    }
+
+    func runCouplingAudit() {
+        guard canGenerate(), let model, capability.observations >= 5 else { return }
+        do {
+            let info = Bundle.main.infoDictionary ?? [:]
+            let version = "\(info["CFBundleShortVersionString"] ?? "?") (\(info["CFBundleVersion"] ?? "?"))"
+            couplingAudit = try CouplingAudit(state: state, model: model, appVersion: version,
+                systemVersion: UIDevice.current.systemVersion, generationSettings: LocalEngine.settingsDescription)
+            try saveAudit() // Freeze the full plan before any model request.
+        } catch { status = error.localizedDescription; return }
+        exportedAudits = nil
+        let id = start("Audit du bilan · 36 réponses isolées…")
+        task = Task {
+            defer { finished() }
+            do {
+                for index in 0..<36 {
+                    try Task.checkCancellation()
+                    try couplingAudit?.beginTrial(index); try saveAudit()
+                    guard let request = couplingAudit?.trials[index].request else { throw SessionError.invalidState }
+                    answer = ""; currentQuestion = "Audit du bilan · \(index + 1)/36"
+                    firstChunk = nil; firstChunkUptime = nil
+                    status = currentQuestion
+                    let started = ProcessInfo.processInfo.systemUptime
+                    do {
+                        try await engine.respond(requests: [request]) { [weak self] chunk in await self?.append(chunk, id: id) }
+                        try Task.checkCancellation()
+                        guard generation == id else { throw CancellationError() }
+                    } catch {
+                        let elapsed = ProcessInfo.processInfo.systemUptime - started
+                        try couplingAudit?.finishTrial(index, answer: answer, duration: elapsed,
+                            firstText: firstChunkUptime.map { $0 - started },
+                            failure: error.localizedDescription, cancelled: error is CancellationError)
+                        try saveAudit()
+                        throw error
+                    }
+                    try couplingAudit?.finishTrial(index, answer: answer,
+                        duration: ProcessInfo.processInfo.systemUptime - started,
+                        firstText: firstChunkUptime.map { $0 - started })
+                    try saveAudit()
+                }
+                answer = ""; currentQuestion = ""
+                status = "Audit terminé. Partage les audits pour comparer les conditions."
+            } catch is CancellationError { status = "Audit interrompu ; les réponses déjà sauvegardées sont conservées." }
+            catch { status = "Audit arrêté : " + error.localizedDescription }
+        }
+    }
+
+    func exportCouplingAudits() {
+        guard !busy else { return }
+        do {
+            struct Reports: Encodable { let schema = "menia-iphone-coupling-collection-v1"; let audits: [CouplingAudit] }
+            let audits = try auditFiles().map { try JSONDecoder().decode(CouplingAudit.self, from: Data(contentsOf: $0)) }
+            let encoder = JSONEncoder(); encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+            let url = root.appendingPathComponent("audits-menia.json")
+            try encoder.encode(Reports(audits: audits)).write(to: url, options: [.atomic, .completeFileProtection])
+            exportedAudits = url
+            status = "Tous les audits sont prêts à partager, y compris les essais interrompus. Aucun échange ni note privée."
+        } catch { status = "Export des audits impossible : " + error.localizedDescription }
     }
 
     func stop() {
@@ -203,6 +286,10 @@ final class MeniaController: ObservableObject {
             if FileManager.default.fileExists(atPath: legacyNotesURL.path) { try FileManager.default.removeItem(at: legacyNotesURL) }
             let report = root.appendingPathComponent("tests-menia.json")
             if FileManager.default.fileExists(atPath: report.path) { try FileManager.default.removeItem(at: report) }
+            for url in try auditFiles() { try FileManager.default.removeItem(at: url) }
+            let audits = root.appendingPathComponent("audits-menia.json")
+            if FileManager.default.fileExists(atPath: audits.path) { try FileManager.default.removeItem(at: audits) }
+            couplingAudit = nil; exportedAudits = nil
             exportedFile = nil; state = SessionState(); storageReady = true
             input = ""; answer = ""; currentQuestion = ""; status = "Notes, échanges et tests effacés."
         } catch { status = "Échec de l’effacement : " + error.localizedDescription }
@@ -216,7 +303,7 @@ final class MeniaController: ObservableObject {
                 let model: ModelDescriptor?
                 let probes: [CapabilityProbe]
                 let summary: CapabilitySummary
-                let generationSettings = "context=2048; output<=256; temperature=0.7; topP=0.8; topK=20; thinking=false; no fixed RNG seed"
+                let generationSettings = LocalEngine.settingsDescription
                 let scope = "Calcul élémentaire seulement. Aucun score de conscience."
             }
             let encoder = JSONEncoder(); encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
@@ -304,6 +391,20 @@ struct MeniaApp: App {
                                 }
                                 Button("Préparer le rapport des tests") { controller.exportTests() }.disabled(controller.busy)
                                 if let file = controller.exportedFile { ShareLink("Partager le rapport", item: file) }
+                            }.frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                        GroupBox("Recherche · usage du bilan") {
+                            VStack(alignment: .leading, spacing: 10) {
+                                Text("Compare les réponses avec le bilan réel, absent ou fictif, à propos de soi ou d’un autre agent. Les mesures réelles et la mémoire restent intactes.")
+                                    .font(.caption).foregroundStyle(.secondary)
+                                Button("Comparer les bilans · 36 réponses") { controller.runCouplingAudit() }
+                                    .disabled(controller.busy || !controller.loaded || !controller.storageReady || controller.capability.observations < 5)
+                                if let audit = controller.couplingAudit {
+                                    Text("Dernier audit : \(audit.completedCount)/36 réponses terminées. Chaque lancement est conservé séparément.")
+                                        .font(.caption)
+                                    Button("Préparer tous les audits") { controller.exportCouplingAudits() }.disabled(controller.busy)
+                                }
+                                if let file = controller.exportedAudits { ShareLink("Partager les audits", item: file) }
                             }.frame(maxWidth: .infinity, alignment: .leading)
                         }
                         GroupBox("Notes à conserver · \(controller.state.notes.count)/50") {

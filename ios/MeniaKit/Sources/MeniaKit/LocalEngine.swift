@@ -21,6 +21,7 @@ public enum EngineError: LocalizedError {
 public actor LocalEngine {
     public static let contextLimit = 2048
     public static let outputLimit = 256
+    public static let settingsDescription = "context=2048; output<=256; temperature=0.7; topP=0.8; topK=20; thinking=false; no fixed RNG seed"
     private var container: ModelContainer?
     public init() {}
 

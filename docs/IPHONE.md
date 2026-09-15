@@ -144,6 +144,17 @@ recherche Python ne sont pas tous portés dans cette version.
 
 ## Vérification sur appareil
 
+Le [premier export reçu](IPHONE_FIRST_RESULTS.md) contient cinq calculs réussis.
+Le nouveau bouton **Comparer les bilans · 36 réponses** lance l'[audit de
+raccordement au langage](IPHONE_COUPLING_PROTOCOL.md). Il requiert au moins cinq
+mesures du modèle chargé et ne modifie ni ces mesures ni la mémoire du chat.
+Après un lancement, **Préparer tous les audits → Partager les audits** exporte
+`audits-menia.json`, avec les prompts, les réponses et les durées des appels,
+y compris les essais interrompus. Chaque lancement a son fichier local distinct.
+Il est préférable de lancer le protocole une fois, puis de partager son résultat
+avant toute modification de la consigne. Les notes et conversations ne sont pas
+incluses. **Effacer la mémoire et les tests** efface aussi ces fichiers locaux.
+
 Tester en Release : conversation en français, souvenir après relance, lancement
 des tests, changement du bilan, export du rapport, arrêt pendant une réponse,
 effacement puis relance, import invalide, téléchargement annulé et mode avion.

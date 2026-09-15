@@ -1,6 +1,6 @@
 import Foundation
 
-public struct LanguageRequest: Sendable {
+public struct LanguageRequest: Codable, Sendable {
     public let instructions: String
     public let prompt: String
     public init(instructions: String, prompt: String) { self.instructions = instructions; self.prompt = prompt }
