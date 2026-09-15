@@ -17,8 +17,10 @@ anciens audits ou de télécharger à nouveau le modèle déjà installé.
 Après la fin, ou après une interruption, utiliser **Préparer le rapport
 d'apprentissage**, puis **Partager l'apprentissage** pour exporter
 `apprentissage-menia.json`. Tous les lancements restent séparés et sont conservés.
-Les résultats de ce nouveau protocole n'ont pas encore été recueillis ; un test
-logiciel réussi n'est pas un résultat de Menia sur ces tâches.
+Le [premier export complet est analysé](IPHONE_CAPABILITY_LEARNING_RESULTS.md).
+La suite prévue comporte trois lancements supplémentaires du même test, puis le
+partage de la collection entière, y compris les tentatives interrompues. Les tests
+logiciels et les performances Qwen restent présentés séparément.
 
 ## Livraison vérifiée le 15 septembre 2026
 
@@ -31,8 +33,8 @@ sans erreur à 06:08 UTC. Apple a terminé le traitement et le build affiche
 Codemagic et dans la [compilation GitHub indépendante](https://github.com/speed25200-cyber/Menia/actions/runs/34935125621),
 qui reconstruit aussi un export synthétique avec Python. Les
 [106 tests de recherche Python](https://github.com/speed25200-cyber/Menia/actions/runs/34935734438)
-passent avec le vérificateur renforcé. La réalisation des 48 tâches sur l'iPhone
-reste à effectuer ; ces vérifications ne sont pas des résultats Qwen du pilote.
+passent avec le vérificateur renforcé. Un export complet des 48 tâches a depuis
+été reçu et analysé ; ces vérifications logicielles sont distinctes des résultats Qwen.
 
 **Mise à jour 0.2.0 (2)** : le commit `36acfabbcc8fe929465e4ef9c5a58e2ecd0cd397`
 ajoute l'audit de 36 réponses. [Codemagic](https://codemagic.io/app/6aa8a9aef30fba8d006cc3bb/build/6aa8b7afb757b7ac9174f748)

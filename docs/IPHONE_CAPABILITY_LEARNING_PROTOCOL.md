@@ -1,8 +1,9 @@
 # Prédire ses limites à partir de ses résultats — protocole v1
 
-Statut : protocole fixé avant toute collecte Qwen de cette expérience. Aucun résultat
-sur iPhone n'est disponible pour ce protocole. Les anciennes mesures de calcul et
-les audits de JSON ne sont pas des résultats de cette expérience.
+Statut : protocole fixé avant toute collecte Qwen de cette expérience. Les
+[premiers résultats reçus](IPHONE_CAPABILITY_LEARNING_RESULTS.md) sont maintenant
+analysés séparément, sans modification du barème ci-dessous. Les anciennes mesures
+de calcul et les audits de JSON ne sont pas des résultats de cette expérience.
 
 ## Question et portée
 

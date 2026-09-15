@@ -33,7 +33,7 @@ mais le choix demandé n'est respecté que 2/12 fois. La réussite complète est
 et les 98 tests de recherche Python passent. Aucun avantage de fidélité propre
 au référent « soi » n'est observé.
 
-**Nouvelle expérience livrée en 0.2.0 (4), sans résultat Qwen à ce stade :**
+**Premier résultat de l'expérience livrée en 0.2.0 (4) :**
 [apprendre puis prédire ses limites](docs/IPHONE_CAPABILITY_LEARNING_PROTOCOL.md).
 24 tâches de calibration puis 24 nouveaux exemples, quatre familles, trois
 historiques contrôlés et une réponse candidate commune. Les probabilités précèdent
@@ -43,6 +43,17 @@ avec coûts en points et durées séparés. Les poids du LLM ne changent pas.
 Le build est disponible dans le groupe TestFlight **Menia personnel** ;
 34 tests Swift, 106 tests de recherche Python et le contrôle croisé des exports passent.
 Le diagnostic de 84 réponses proposé précédemment reste différé.
+
+Le [premier export complet de 120 appels](docs/IPHONE_CAPABILITY_LEARNING_RESULTS.md)
+montre une baisse du Brier de 0,3263 sans historique à 0,1208 avec historique
+pertinent, et de la perte déclarée de 0,2833 à 0,1500 point. Six réponses directes
+sont correctes ; dix-huit tâches sont vérifiées. Beta par famille donne cependant
+de meilleures probabilités (Brier 0,0273). Un contrôle **exploratoire ajouté après
+observation**, fondé sur les taux de réussite de calibration, reproduit exactement
+les décisions du LLM pour la même perte. Toutes les réussites d'évaluation sont
+des additions : l'anticipation des erreurs au sein d'une même famille reste à
+montrer. Trois répétitions locales du protocole inchangé sont proposées, avec
+conservation de toutes les tentatives. Aucune conscience n'est établie.
 
 Le [dossier de raccordement au LLM](docs/LLM_COUPLING_RESULTS.md) recommande
 une boucle reliant langage, modèle de capacités et résultats d'action. Un
