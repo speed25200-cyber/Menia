@@ -13,8 +13,9 @@ explicite et des sauvegardes, sans objectif de résistance à l'arrêt ou d'auto
 relient un Qwen3-4B préentraîné en 4 bits à une mémoire persistante et à des mesures
 de ses réponses à des tests de calcul. Le téléchargement du modèle est intégré.
 L’IPA 0.2.0 (1) a été signée et téléversée dans App Store Connect le 15 septembre
-2026 pour TestFlight interne. L’accès TestFlight et les performances sur l’iPhone
-restent à vérifier ; aucun entraînement Colab n’est requis pour cette première version.
+2026 pour TestFlight interne. Apple a traité le build et l’invitation personnelle
+est envoyée (fiche Apple **Menja**). Les performances sur l’iPhone restent à vérifier ;
+aucun entraînement Colab n’est requis pour cette première version.
 
 Le [dossier de raccordement au LLM](docs/LLM_COUPLING_RESULTS.md) recommande
 une boucle reliant langage, modèle de capacités et résultats d'action. Un
@@ -193,7 +194,8 @@ les dépendances transitives résolues sont enregistrées avec `pip freeze`.
 - **Entraînement du modèle de langage sur A100 : pas encore exécuté.**
 - **Compilation iPhone Release Xcode 26.2 et 17 tests Swift : réussis en CI.**
 - **Signature Apple et téléversement de l’IPA 0.2.0 (1) : réussis dans Codemagic.**
-- **Disponibilité TestFlight et essai sur l’iPhone physique : à vérifier.**
+- **Disponibilité TestFlight et invitation du testeur personnel : confirmées.**
+- **Essai sur l’iPhone physique : à vérifier.**
 - **Mémoire, vitesse, température et qualité après quantification : à mesurer.**
 
 Aucune annonce « 61 tokens/s », « conscience établie » ou « équivalent frontier ».

@@ -16,9 +16,10 @@ Le commit `f2de97ed0b7677458b13001a9755f3024c67f0eb` a produit **Menia 0.2.0 (1)
 - [Compilation GitHub indépendante](https://github.com/speed25200-cyber/Menia/actions/runs/34922062046) :
   Release iPhone et 17 tests Swift réussis.
 - [Fiche TestFlight de Menia](https://appstoreconnect.apple.com/apps/6812148686/testflight).
-  Le traitement Apple et l’accès du compte de test restent à vérifier dans cette
-  interface authentifiée. L’envoi réussi ne prouve pas encore l’installation sur
-  l’iPhone ni l’exécution du modèle.
+  Le traitement Apple est terminé : build « Prêt à tester », puis associé au
+  groupe interne **Menia personnel**, avec un testeur personnel au statut « Invité ».
+  La fiche Apple existante s’appelle **Menja**. L’installation sur l’iPhone et
+  l’exécution du modèle restent à vérifier sur l’appareil.
 
 ## Installation avec Codemagic, sans Mac personnel
 
@@ -42,7 +43,7 @@ Le fichier [`codemagic.yaml`](../codemagic.yaml) contient deux workflows :
 4. Lancer **`menia-iphone`**. Codemagic exécute les tests, génère le projet Xcode,
    applique les profils disponibles, vérifie la fiche Apple et incrémente le
    numéro de build de la version 0.2.0, puis produit `build/ios/ipa/*.ipa`.
-5. Après téléversement et traitement Apple, ouvrir **App Store Connect → Menia
+5. Après téléversement et traitement Apple, ouvrir **App Store Connect → Menja
    → TestFlight** et rendre le build accessible à son compte de test interne.
    Installer ensuite Menia dans l’application **TestFlight sur l’iPhone**.
    Cette IPA est réservée à TestFlight interne : son téléchargement direct
