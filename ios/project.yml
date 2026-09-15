@@ -4,6 +4,8 @@ options:
   deploymentTarget:
     iOS: '18.0'
 packages:
+  MeniaCore:
+    path: MeniaCore
   MeniaKit:
     path: MeniaKit
 targets:
@@ -12,7 +14,12 @@ targets:
     platform: iOS
     sources: [MeniaApp]
     dependencies:
+      - package: MeniaCore
       - package: MeniaKit
+    entitlements:
+      path: MeniaApp/Menia.entitlements
+      properties:
+        com.apple.developer.kernel.increased-memory-limit: true
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: ch.menia.local
@@ -21,6 +28,6 @@ targets:
         GENERATE_INFOPLIST_FILE: YES
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
         INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
-        MARKETING_VERSION: '0.1.0'
+        MARKETING_VERSION: '0.2.0'
         CURRENT_PROJECT_VERSION: '1'
         CODE_SIGN_STYLE: Automatic

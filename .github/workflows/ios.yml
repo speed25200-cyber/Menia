@@ -1,0 +1,48 @@
+name: iPhone build
+on:
+  push:
+    paths: ['ios/**', '.github/workflows/ios.yml', 'codemagic.yaml']
+  pull_request:
+    paths: ['ios/**', '.github/workflows/ios.yml', 'codemagic.yaml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ios-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 45
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_26.2.app/Contents/Developer
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test persistent memory and capability measurement
+        run: swift test --package-path ios/MeniaCore
+      - name: Prepare Xcode project
+        run: |
+          brew install xcodegen
+          xcodegen generate --spec ios/project.yml
+          if ! xcrun metal --version; then xcodebuild -downloadComponent MetalToolchain; fi
+      - uses: actions/cache@v4
+        with:
+          path: ios/SourcePackages
+          key: ios-spm-26.2-${{ hashFiles('ios/**/Package.swift') }}
+      - name: Build unsigned iPhone application
+        run: |
+          set -o pipefail
+          xcodebuild -project ios/Menia.xcodeproj -scheme Menia -configuration Release \
+            -destination 'generic/platform=iOS' -derivedDataPath ios/DerivedData \
+            -clonedSourcePackagesDirPath ios/SourcePackages -skipMacroValidation \
+            CODE_SIGNING_ALLOWED=NO build 2>&1 | tee ios/build.log
+      - name: Package unsigned build
+        run: ditto -c -k --keepParent ios/DerivedData/Build/Products/Release-iphoneos/Menia.app ios/Menia-unsigned.app.zip
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Menia-iPhone-build
+          path: |
+            ios/Menia-unsigned.app.zip
+            ios/build.log
+            ios/Menia.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved

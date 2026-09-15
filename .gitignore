@@ -13,4 +13,7 @@ export/
 xcuserdata/
 .build/
 DerivedData/
+SourcePackages/
+*.app.zip
+ios/build.log
 ios/Menia.xcodeproj/
