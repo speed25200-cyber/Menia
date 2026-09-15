@@ -61,7 +61,7 @@ données. Trois contre-exemples exécutables montrent pourquoi un avantage « so
 ne suffit pas à identifier l'introspection. L'analyse des trois répétitions est
 implémentée, sans changer l'évaluateur initial ; elle conserve les interruptions
 et ajoute les taux de calibration et la discrimination au sein d'une famille.
-La suite compte maintenant 135 tests de recherche Python et six contrôles du
+La suite compte maintenant 143 tests de recherche Python et neuf contrôles du
 moteur de génération. La [comparaison croisée possède son notebook Colab](docs/CROSS_MODEL_COLAB.md) :
 Qwen3-4B et Qwen3-8B, 60 problèmes, 408 appels, deux noms permutés et sauvegarde
 des tentatives dans Drive. Le [premier export reçu et vérifié](docs/CROSS_MODEL_COLAB_RESULTS.md)
@@ -82,6 +82,17 @@ taux passés, plus bas étant meilleur. Les intervalles descriptifs des quatre
 comparaisons incluent zéro ; aucun gain net des états internes n'est établi.
 Les poids du LLM restent inchangés et le moniteur ajouté ne constitue pas une
 preuve d'introspection native.
+
+Le [protocole suivant](docs/PERTURBATION_MONITOR_PROTOCOL.md) compare chaque
+nouvelle question sous calcul normal, manipulation identique et deux rotations
+temporaires d'un état interne. Un nouveau Colab commence par 32 appels de
+contrôle, puis réserve 384 appels pour apprendre, 96 pour valider et 192 pour
+tester. Ces derniers correspondent à 48 questions distinctes, analysées par
+groupes. Les décisions de vérification sont engagées avant le premier token,
+puis exécutées avec un outil déterministe sur des candidats partagés. Les
+témoins connaissant la condition distinguent une simple détection de perturbation
+d'une prévision de ses conséquences. Aucun résultat A100 de ce protocole n'est
+encore reçu ; les poids de Qwen restent inchangés.
 
 Le [dossier de raccordement au LLM](docs/LLM_COUPLING_RESULTS.md) recommande
 une boucle reliant langage, modèle de capacités et résultats d'action. Un

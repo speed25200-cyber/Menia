@@ -2,6 +2,16 @@
 
 **État actuel : objectif non atteint ; une politique de vérification apprise est intégrée à l'agent expérimental.**
 
+La [suite par perturbations contrôlées](PERTURBATION_MONITOR_PROTOCOL.md) est
+implémentée et testée localement : même question et même graine sous quatre
+conditions, moniteurs figés avant le test, routes de vérification exécutées
+sur des candidats partagés. Les témoins conditionnels et les intervalles par
+question empêchent de confondre 192 variantes avec 192 problèmes indépendants.
+Le Colab effectue d'abord 32 appels de contrôle technique, puis 672 d'étude.
+Aucune collecte Qwen3-4B préentraîné de ce protocole n'est encore reçue. La règle
+de décision est fournie, les poids du LLM sont gelés, et les résultats des
+contrôles synthétiques ne démontrent pas une métacognition native.
+
 Le [nouveau protocole de moniteur des activations](ACTIVATION_MONITOR_PROTOCOL.md)
 est implémenté pour Colab : 384 problèmes d'apprentissage, 96 de validation
 et 192 réservés. Un moniteur ajouté lit les états avant le premier token et

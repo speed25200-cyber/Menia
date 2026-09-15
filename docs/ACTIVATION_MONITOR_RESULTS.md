@@ -156,8 +156,10 @@ et mesurer des décisions réellement exécutées ainsi que leur coût.
 Ce serait une expérience distincte de suivi fonctionnel des capacités. Détecter
 la présence d'une perturbation ne suffirait pas : il faudrait prédire ses
 conséquences, généraliser et battre des comparateurs recevant la même histoire
-publique. Cette proposition est **non exécutée et encore à spécifier** ; les
-données présentes ne la valident pas. Elle ne justifie pas de changer la grille
+publique. Cette proposition possède désormais un
+[protocole distinct implémenté et testé localement](PERTURBATION_MONITOR_PROTOCOL.md),
+**sans collecte Qwen3-4B préentraîné reçue**. Les données présentes ne la valident
+pas. Elle ne justifie pas de changer la grille
 de régularisation, la projection ou le seuil sur ce test déjà consulté.
 
 Relancer le même notebook terminé reprend le même dossier et le même plan ;

@@ -72,16 +72,24 @@ def bundle_diagnostics(directory, root, destination):
 
 
 def launch_activation(code_revision, bootstrap_source, *, content=Path("/content"),
-                      mount=None, download=None, runner_factory=LoggedRunner):
+                      mount=None, download=None, runner_factory=LoggedRunner, profile="activation"):
     if not re.fullmatch(r"[0-9a-f]{40}", code_revision):
         raise ValueError("A full immutable code revision is required")
+    if profile not in ("activation", "perturbation"):
+        raise ValueError("Unknown experiment profile")
+    experiment = {
+        "activation": dict(archive="menia-etats-internes.zip", folder="activation-monitor-v1",
+            module="activation_monitor", stage="6 — Apprendre et évaluer (672 problèmes)"),
+        "perturbation": dict(archive="menia-perturbations.zip", folder="perturbation-monitor-v1",
+            module="perturbation_monitor", stage="6 — Contrôle technique puis étude appariée (704 appels)"),
+    }[profile]
     content = Path(content)
     stamp = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ") + "-" + uuid.uuid4().hex[:8]
-    base = content / "menia-activation-diagnostics"
+    base = content / f"menia-{profile}-diagnostics"
     directory = base / stamp
     directory.mkdir(parents=True, exist_ok=False)
     runner = runner_factory(directory)
-    root, archive, status = None, content / "menia-etats-internes.zip", "failed"
+    root, archive, status = None, content / experiment["archive"], "failed"
     info = dict(codeRevision=code_revision, python=platform.python_version(),
                 freeDiskGiB=round(shutil.disk_usage(content).free / 1024**3, 2), status="starting")
     try:
@@ -90,7 +98,7 @@ def launch_activation(code_revision, bootstrap_source, *, content=Path("/content
         info["gpu"] = gpu.strip()
         if "A100" not in gpu:
             raise RuntimeError("Ce notebook exige un A100. Choisir Exécution → Modifier le type d'exécution → GPU A100.")
-        repo = content / ("menia-activation-" + code_revision[:12])
+        repo = content / (f"menia-{profile}-" + code_revision[:12])
         if repo.exists():
             try:
                 actual = runner.run("2 — Vérifier le code", ["git", "-C", repo, "rev-parse", "HEAD"]).strip()
@@ -98,7 +106,7 @@ def launch_activation(code_revision, bootstrap_source, *, content=Path("/content
                 actual = None
             if actual != code_revision:
                 # Never erase or reset an incomplete or foreign checkout.
-                repo = content / ("menia-activation-" + code_revision[:12] + "-" + stamp)
+                repo = content / (f"menia-{profile}-" + code_revision[:12] + "-" + stamp)
         if not repo.exists():
             runner.run("2 — Télécharger le code", ["git", "clone", "--no-checkout", "https://github.com/speed25200-cyber/Menia.git", repo])
             runner.run("2 — Fixer le code", ["git", "-C", repo, "checkout", "--detach", code_revision])
@@ -106,6 +114,7 @@ def launch_activation(code_revision, bootstrap_source, *, content=Path("/content
         if actual != code_revision:
             raise RuntimeError("Le code téléchargé ne correspond pas à la révision fixée.")
         runner.run("2 — Vérifier les sources", ["git", "-C", repo, "diff", "--exit-code", "HEAD"])
+        # Reuse the compatible dependency environment; experiment data stay separate.
         venv = content / "menia-activation-env-v1"
         bootstrap = directory / "bootstrap.py"
         bootstrap.write_text(bootstrap_source + '\nif __name__ == "__main__":\n    ensure_environment(sys.argv[1])\n', encoding="utf-8")
@@ -118,15 +127,15 @@ def launch_activation(code_revision, bootstrap_source, *, content=Path("/content
         runner.run("3 — Vérifier les bibliothèques", [python, "-m", "pip", "check"])
         runner.run("4 — Vérifier CUDA", [python, "-c",
                    "from research.cross_model_gpu import environment; e=environment(); print(e['gpu'], e['requiredVersions'])"], cwd=repo)
-        runner.run("4 — Tests du moniteur", [python, "-m", "unittest", "tests_research.test_activation_monitor",
-                   "tests_language.test_activation_monitor_gpu", "-v"], cwd=repo)
+        runner.run("4 — Tests du moniteur", [python, "-m", "unittest", "tests_research.test_"+experiment["module"],
+                   "tests_language.test_"+experiment["module"]+"_gpu", "-v"], cwd=repo)
         runner.stage = "5 — Connecter Drive"
         print("\n--- 5 — Connecter Drive ---", flush=True)
         if mount is None:
             from google.colab import drive
             mount = drive.mount
         mount(str(content / "drive"))
-        folder = content / "drive/MyDrive/Menia/activation-monitor-v1"
+        folder = content / "drive/MyDrive/Menia" / experiment["folder"]
         folder.mkdir(parents=True, exist_ok=True)
         root = folder
         active_file = root / "active-run.json"
@@ -140,12 +149,12 @@ def launch_activation(code_revision, bootstrap_source, *, content=Path("/content
         else:
             journal = root / (stamp + ".jsonl")
             active_file.write_text(json.dumps(dict(journal=journal.name, codeRevision=code_revision)), encoding="utf-8")
-        command = [python, "-m", "research.activation_monitor_gpu", journal]
+        command = [python, "-m", "research."+experiment["module"]+"_gpu", journal]
         if journal.exists():
             command.append("--resume")
-        runner.run("6 — Apprendre et évaluer (672 problèmes)", command, cwd=repo)
+        runner.run(experiment["stage"], command, cwd=repo)
         for journal in sorted(root.glob("*.jsonl")):
-            runner.run("7 — Recalculer le bilan", [python, "-m", "research.activation_monitor", journal,
+            runner.run("7 — Recalculer le bilan", [python, "-m", "research."+experiment["module"], journal,
                        "--output", journal.with_suffix(".summary.json")], cwd=repo)
         status = "completed"
         print("\nExécution terminée. Préparation de l'archive.", flush=True)
