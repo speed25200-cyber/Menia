@@ -24,16 +24,17 @@ workflows:
       - ios/build.log
 
   menia-iphone:
-    name: Menia - IPA pour mon iPhone (Ad Hoc)
+    name: Menia - iPhone via TestFlight interne
     instance_type: mac_mini_m2
     max_build_duration: 45
+    integrations:
+      app_store_connect: PetMind ASC API
     environment:
       xcode: 26.2
-      # Upload/fetch the matching certificate and Ad Hoc profile in Codemagic
-      # Code signing identities. The profile must contain your iPhone's UDID.
+      # Existing Menia App Store profile imported as menia_app_store in Codemagic.
       ios_signing:
-        distribution_type: ad_hoc
-        bundle_identifier: ch.menia.local
+        distribution_type: app_store
+        bundle_identifier: com.meniaapp.menia
     scripts:
       - name: Tester la mémoire et les mesures de capacités
         script: swift test --package-path ios/MeniaCore
@@ -42,7 +43,9 @@ workflows:
           brew install xcodegen
           bash ios/prepare.sh
       - name: Appliquer le profil de signature
-        script: xcode-project use-profiles
+        script: xcode-project use-profiles --custom-export-options='{"testFlightInternalTestingOnly":true}'
+      - name: Vérifier la fiche Apple et numéroter le build
+        script: python3 ios/prepare_testflight.py
       - name: Construire l’IPA signée
         script: |
           xcode-project build-ipa --project ios/Menia.xcodeproj --scheme Menia \
@@ -50,3 +53,9 @@ workflows:
     artifacts:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
+    publishing:
+      app_store_connect:
+        auth: integration
+        # Upload only. No external beta review, public release or tester invitations.
+        submit_to_testflight: false
+        submit_to_app_store: false

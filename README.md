@@ -12,8 +12,8 @@ explicite et des sauvegardes, sans objectif de résistance à l'arrêt ou d'auto
 **Version iPhone 0.2 :** l'[application native et son guide Codemagic](docs/IPHONE.md)
 relient un Qwen3-4B préentraîné en 4 bits à une mémoire persistante et à des mesures
 de ses réponses à des tests de calcul. Le téléchargement du modèle est intégré.
-La configuration produit une IPA Ad Hoc avec les identités de signature de
-l'utilisateur. La signature et les performances sur l'iPhone doivent être vérifiées
+La configuration prépare une IPA pour TestFlight interne avec les identités de
+signature de l'utilisateur. La signature et les performances sur l'iPhone doivent être vérifiées
 sur le compte et l'appareil concernés ; aucun entraînement Colab n'est requis
 pour cette première version.
 
@@ -192,11 +192,12 @@ les dépendances transitives résolues sont enregistrées avec `pip freeze`.
 - Comparaisons déterministes exécutées sur 240 cas synthétiques.
 - Code Python et cellules du notebook vérifiés syntaxiquement.
 - **Entraînement du modèle de langage sur A100 : pas encore exécuté.**
-- **Compilation Xcode et essai iPhone : pas encore exécutés.**
+- **Compilation iPhone Release Xcode 26.2 et 17 tests Swift : réussis en CI.**
+- **Signature Apple et essai sur l’iPhone physique : à vérifier.**
 - **Mémoire, vitesse, température et qualité après quantification : à mesurer.**
 
 Aucune annonce « 61 tokens/s », « conscience établie » ou « équivalent frontier ».
-Le profil mobile borne le prompt à 1 856 tokens et la sortie à 192 tokens.
+L’application native 0.2 réserve 256 tokens de sortie dans un contexte total de 2 048 tokens.
 La présence d’un modèle de 1,7 milliard de paramètres ne garantit pas à elle seule
 le pic mémoire ou la stabilité de l’appareil.
 

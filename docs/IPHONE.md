@@ -12,30 +12,36 @@ Le fichier [`codemagic.yaml`](../codemagic.yaml) contient deux workflows :
 | Workflow | Résultat |
 |---|---|
 | `menia-check` | Tests Swift et application iPhone **non signée**, pour vérifier la compilation |
-| `menia-iphone` | IPA **Ad Hoc signée**, installable sur les iPhone inclus dans le profil Apple |
+| `menia-iphone` | IPA **App Store signée**, téléversée pour TestFlight interne |
 
 1. Dans Codemagic, connecter le dépôt `speed25200-cyber/Menia` et choisir la
    branche **`codex/recall-reliability`**. Le travail reste dans la PR de recherche,
    il n’est pas encore sur `main`.
 2. Dans **Team settings → Code signing identities**, disposer du certificat
-   Apple Distribution et du profil **Ad Hoc** correspondant. Le profil doit
-   inclure l’UDID de ton iPhone 17 Pro.
-3. Le bundle identifier est actuellement **`ch.menia.local`**. S’il diffère dans
-   ton compte Apple, modifier la même valeur dans `ios/project.yml` et
-   `codemagic.yaml`. Le profil doit autoriser la capacité **Increased Memory Limit**,
+   Apple Distribution et du profil **App Store** correspondant. Le profil Menia
+   existant est importé sous la référence `menia_app_store`.
+3. Le bundle identifier est **`com.meniaapp.menia`**, identique au profil Apple
+   existant. L’intégration Apple est référencée par `PetMind ASC API` dans ce
+   compte Codemagic. Le profil doit autoriser la capacité **Increased Memory Limit**,
    activée sur l’App ID Apple avant de générer/renouveler le profil.
 4. Lancer **`menia-iphone`**. Codemagic exécute les tests, génère le projet Xcode,
-   applique les profils disponibles et produit `build/ios/ipa/*.ipa`.
-5. Ouvrir le lien d’installation de l’artefact depuis **Safari sur l’iPhone**.
-   Une archive `.app.zip` non signée ne peut pas remplacer cette IPA. Si l’iPhone
-   n’est pas inclus dans le profil, l’installation Ad Hoc est refusée.
+   applique les profils disponibles, vérifie la fiche Apple et incrémente le
+   numéro de build de la version 0.2.0, puis produit `build/ios/ipa/*.ipa`.
+5. Après téléversement et traitement Apple, ouvrir **App Store Connect → Menia
+   → TestFlight** et rendre le build accessible à son compte de test interne.
+   Installer ensuite Menia dans l’application **TestFlight sur l’iPhone**.
+   Cette IPA est réservée à TestFlight interne : son téléchargement direct
+   depuis les artefacts Codemagic ne l’installe pas. Aucun UDID n’est requis.
 6. Ouvrir Menia et toucher **Télécharger Qwen3-4B · 2,15 Go** sur Wi-Fi. Garder
    l’application ouverte pendant cette étape. Puis toucher **Charger** et **Envoyer**.
 
 Les secrets Apple restent dans Codemagic. Aucun certificat, clé privée ou profil
-n’est inclus dans le dépôt. Le workflow n’envoie pas l’application sur l’App Store
-ou TestFlight. L’adhésion Apple Developer et le profil restent nécessaires pour
-cette distribution Ad Hoc, même si Codemagic effectue la compilation à distance.
+n’est inclus dans le dépôt. Le workflow téléverse le binaire dans App Store Connect,
+sans soumission à l’examen public App Store, sans examen bêta externe et sans
+invitation de testeurs. Une fiche Menia doit déjà exister dans App Store Connect.
+L’adhésion Apple Developer reste nécessaire. La cryptographie de l’application
+se limite aux services Apple (HTTPS, protection des fichiers et SHA-256 CryptoKit) ;
+`ITSAppUsesNonExemptEncryption` est donc à `NO` pour cette version.
 
 ## Modèle fourni et mode hors ligne
 
@@ -151,6 +157,8 @@ directes sont fixées : MLX Swift LM 3.31.3, MLX Swift 0.31.3 et Swift Transform
 ## Références de construction
 
 - [Signature iOS dans Codemagic](https://docs.codemagic.io/yaml-code-signing/signing-ios/).
+- [Téléversement et TestFlight interne](https://docs.codemagic.io/yaml-publishing/app-store-connect/).
+- [Exemption des services cryptographiques Apple](https://developer.apple.com/help/app-store-connect/reference/app-information/export-compliance-documentation-for-encryption/).
 - [Construction d’IPA avec les outils Codemagic](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/build-ipa.md).
 - [Exemples iOS MLX](https://github.com/ml-explore/mlx-swift-examples).
 - [Capacité Apple Increased Memory Limit](https://developer.apple.com/documentation/bundleresources/entitlements/com.apple.developer.kernel.increased-memory-limit).
