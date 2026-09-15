@@ -2,6 +2,14 @@
 
 **État actuel : objectif non atteint ; une politique de vérification apprise est intégrée à l'agent expérimental.**
 
+La [réanalyse du soi rapporté au repos](FELT_SELF_EVIDENCE.md) compare six
+dimensions chez 50 participants et vérifie les deux formats publics. Elle
+retrouve des changements de frontières et d'expérience altérée ; elle ne
+détecte pas d'écart sur le sous-score de conscience de soi retenu, sans conclure
+à l'équivalence. Une discordance de données et un écart de valeur p sont
+conservés. La candidate de construction est précisée, sans implémentation
+supplémentaire ni preuve d'expérience subjective ou de nouveauté.
+
 L'[examen de l'information importante pour soi](INTRINSIC_SEMANTICS_EVIDENCE.md)
 confronte quatre sources et rejoue un modèle de viabilité sur 52 interventions,
 deux dynamiques et sept horizons. Il retrouve les chiffres publiés, révèle une

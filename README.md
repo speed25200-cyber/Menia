@@ -13,6 +13,11 @@ L'[audit des critères de conscience](docs/SELF_SYNERGY_CRITERION_AUDIT.md) dist
 les résultats fonctionnels du lien théorique encore non établi avec une expérience
 subjective. Aucun score ni nombre de tests ne certifie la conscience de Menia.
 
+La [réanalyse du soi rapporté au repos](docs/FELT_SELF_EVIDENCE.md) compare six
+dimensions chez 50 participants et conserve les écarts entre deux fichiers
+publics. Elle précise des contrôles pour la candidate de Menia, sans transférer
+un score humain en détecteur de conscience. Le protocole permet le rejeu local.
+
 L'[examen de l'information importante pour soi](docs/INTRINSIC_SEMANTICS_EVIDENCE.md)
 rejoue un modèle de viabilité et étend sa recherche à toutes les partitions de
 son alphabet. Il distingue utilité causale, entretien de sa propre organisation
