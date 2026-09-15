@@ -91,11 +91,16 @@ tester. Ces derniers correspondent à 48 questions distinctes, analysées par
 groupes. Les décisions de vérification sont engagées avant le premier token,
 puis exécutées avec un outil déterministe sur des candidats partagés. Les
 témoins connaissant la condition distinguent une simple détection de perturbation
-d'une prévision de ses conséquences. Aucun résultat A100 de ce protocole n'est
-encore reçu : le premier lancement a passé les contrôles puis échoué au montage
-Drive. Le notebook courant enregistre donc les résultats directement dans Colab,
-sans Drive ; télécharger le ZIP avant la fermeture de cet environnement temporaire.
-Les poids de Qwen et le protocole scientifique restent inchangés.
+d'une prévision de ses conséquences. Le
+[premier export complet est vérifié](docs/PERTURBATION_MONITOR_RESULTS.md) :
+704 appels terminés après correction du blocage Drive. Sous perturbation forte,
+le score strict passe de 33/48 à 26/48, mais sept des huit réussites perdues
+contiennent toujours le bon nombre dans un format interdit. Le Brier interne
+(0,157756) ne bat pas les taux passés (0,140055), et ses 35 vérifications
+supplémentaires ne réparent que deux formats supplémentaires, pour un coût
+plus élevé selon le barème fixé. Les résultats officiels restent inchangés ;
+l'inspection du format est descriptive après réception. Le notebook enregistre
+les résultats directement dans Colab, sans Drive : conserver le ZIP téléchargé.
 
 Le [dossier de raccordement au LLM](docs/LLM_COUPLING_RESULTS.md) recommande
 une boucle reliant langage, modèle de capacités et résultats d'action. Un

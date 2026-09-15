@@ -1,8 +1,11 @@
 # Prévoir les conséquences d'une perturbation interne
 
 Protocole distinct, fixé après le [premier résultat des états internes](ACTIVATION_MONITOR_RESULTS.md).
-Le logiciel est implémenté et les contrôles locaux passent. **Aucune collecte
-Qwen3-4B préentraîné de ce protocole n'est encore reçue.**
+Le [premier export complet est désormais reçu et vérifié](PERTURBATION_MONITOR_RESULTS.md) :
+**704 appels sans erreur technique**. La baisse du score strict sous rotation
+forte est principalement liée au format de réponse ; aucun gain global du
+moniteur interne n'est établi. Le protocole ci-dessous reste celui fixé avant
+collecte, sans changement du barème après réception.
 
 [Ouvrir le Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/05_perturbation_monitor_colab.ipynb).
 Choisir A100, puis « Tout exécuter ». Transmettre `menia-perturbations.zip`,
@@ -24,7 +27,8 @@ A100-SXM4-40GB / Python 3.13.15. Le programme s'est ensuite arrêté à
 `drive.mount` avec `ValueError: mount failed`, avant le collecteur scientifique.
 Le journal ne précise pas la cause sous-jacente du refus de montage. Le
 [bilan du diagnostic](../artifacts/perturbation-launch-diagnostics/drive-mount-failure.json)
-conserve ces faits ; il n'y a aucun journal de l'étude ni résultat à interpréter.
+conserve ces faits ; ce premier ZIP ne contient aucun journal de l'étude.
+Le ZIP suivant contient les 704 appels terminés, analysés dans le rapport ci-dessus.
 
 Le lanceur propose désormais un stockage local utilisé par ce notebook. Il
 omet le montage Drive et exporte les résultats et diagnostics depuis le dossier

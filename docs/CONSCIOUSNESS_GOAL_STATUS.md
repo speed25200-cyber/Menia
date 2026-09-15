@@ -8,13 +8,16 @@ conditions, moniteurs figés avant le test, routes de vérification exécutées
 sur des candidats partagés. Les témoins conditionnels et les intervalles par
 question empêchent de confondre 192 variantes avec 192 problèmes indépendants.
 Le Colab effectue d'abord 32 appels de contrôle technique, puis 672 d'étude.
-Aucune collecte Qwen3-4B préentraîné de ce protocole n'est encore reçue. La règle
-de décision est fournie, les poids du LLM sont gelés, et les résultats des
-contrôles synthétiques ne démontrent pas une métacognition native.
-Le premier ZIP contient un échec de montage Drive après installation et onze
-contrôles logiciels réussis, sans journal scientifique. Le nouveau lanceur
-utilise un dossier temporaire Colab et télécharge le ZIP, sans montage Drive ;
-le code scientifique reste fixé à la même révision.
+Le [premier export complet est désormais vérifié](PERTURBATION_MONITOR_RESULTS.md) :
+704 appels sans erreur technique, après un premier lancement bloqué par Drive.
+La rotation forte réduit le score strict de 33/48 à 26/48, mais sept des huit
+réussites perdues restent numériquement correctes dans un format interdit.
+L'inspection post hoc du format ne modifie pas le barème officiel. Le moniteur
+interne ne bat pas les références simples : Brier 0,157756 contre 0,140055 pour
+les taux passés, et un surcoût de cinq points pour 35 vérifications supplémentaires
+réparant deux formats de plus. La dégradation numérique ciblée et un bénéfice
+global du moniteur ne sont pas établis. La règle de décision est fournie et les
+poids du LLM restent gelés ; aucune métacognition native ni conscience n'est confirmée.
 
 Le [nouveau protocole de moniteur des activations](ACTIVATION_MONITOR_PROTOCOL.md)
 est implémenté pour Colab : 384 problèmes d'apprentissage, 96 de validation

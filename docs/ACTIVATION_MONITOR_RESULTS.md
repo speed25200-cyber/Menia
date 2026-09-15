@@ -157,9 +157,11 @@ Ce serait une expérience distincte de suivi fonctionnel des capacités. Détect
 la présence d'une perturbation ne suffirait pas : il faudrait prédire ses
 conséquences, généraliser et battre des comparateurs recevant la même histoire
 publique. Cette proposition possède désormais un
-[protocole distinct implémenté et testé localement](PERTURBATION_MONITOR_PROTOCOL.md),
-**sans collecte Qwen3-4B préentraîné reçue**. Les données présentes ne la valident
-pas. Elle ne justifie pas de changer la grille
+[protocole distinct](PERTURBATION_MONITOR_PROTOCOL.md) et un
+[premier export complet analysé](PERTURBATION_MONITOR_RESULTS.md). Ce nouvel
+essai met surtout en évidence un effet de format, sans gain global du moniteur.
+Les données du présent pilote ne valident pas cette proposition et ne justifient
+pas de changer la grille
 de régularisation, la projection ou le seuil sur ce test déjà consulté.
 
 Relancer le même notebook terminé reprend le même dossier et le même plan ;
