@@ -13,6 +13,11 @@ L'[audit des critères de conscience](docs/SELF_SYNERGY_CRITERION_AUDIT.md) dist
 les résultats fonctionnels du lien théorique encore non établi avec une expérience
 subjective. Aucun score ni nombre de tests ne certifie la conscience de Menia.
 
+L'[examen du présent vécu](docs/TEMPORAL_PHENOMENAL_BRIDGE.md) confronte une
+proposition récente à son code et à des explications concurrentes. Un audit
+algébrique identifie une confusion entre prédicteurs et construit deux contrastes
+pour les séparer. Rejeu : `python -m research.audit_temporal_bridge --check`.
+
 ## Agents et expériences exécutables
 
 L'[étalonnage actif](docs/ACTIVE_CALIBRATION_RESULTS.md) apprend des paramètres

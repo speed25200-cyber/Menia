@@ -2,6 +2,13 @@
 
 **État actuel : objectif non atteint ; une politique de vérification apprise est intégrée à l'agent expérimental.**
 
+L'[examen du présent vécu](TEMPORAL_PHENOMENAL_BRIDGE.md) étudie la proposition
+temporelle SST, une objection sur la mienneté et le débat sur les neurones
+silencieux. Un audit local de 20 002 calculs montre que le réglage décisionnel
+étudié confond deux prédicteurs ; deux contrastes mathématiques les séparent.
+Ce résultat ne reproduit pas toute la simulation publiée, ne crée pas une nouvelle
+boucle dans Menia et ne démontre ni expérience subjective ni méthode inédite.
+
 L'[extension d'étalonnage actif](ACTIVE_CALIBRATION_RESULTS.md) apprend des
 coefficients moteurs et sensoriels qui alimentent le contrôleur de position.
 Elle récupère après plusieurs perturbations, mais conserve une forte dégradation

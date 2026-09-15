@@ -1,0 +1,107 @@
+{
+  "schema": "temporal-bridge-audit-v1",
+  "protocol": "docs/TEMPORAL_BRIDGE_PROTOCOL.md",
+  "scope": "Local algebra, not a full simulation replication or a consciousness measure",
+  "source": {
+    "paper_doi": "10.1093/nc/niag018",
+    "repository": "https://github.com/JanBellingrath/deep_parametric_generative_model_of_temporal_inference",
+    "commit": "d7c01c65310e3cf932e4c5d4d1235be419a3a352",
+    "file": "deep_parametric_generative_model.py",
+    "sha256": "e4598a881183e330edfccb07b26bb86ab1be91216f1d7984fd2600cd05f44c82",
+    "external_code_executed": false
+  },
+  "local_decision_audit": {
+    "beliefs": 10001,
+    "policies": 2,
+    "evaluations": 20002,
+    "preferences": [
+      0.99,
+      0.01
+    ],
+    "channel": [
+      [
+        0.749995000099998,
+        0.250004999900002
+      ],
+      [
+        0.250004999900002,
+        0.749995000099998
+      ]
+    ],
+    "constant_ambiguity_nats": 0.562340637503729,
+    "max_energy_error": 1.7763568394002505e-15,
+    "max_selection_probability_error": 1.5543122344752192e-15,
+    "threshold_disagreements": 0,
+    "risk_range_nats": [
+      0.5965126360231678,
+      2.894026610810967
+    ],
+    "max_probability_change_if_constant_is_dropped": 0.02381671695587942
+  },
+  "proposed_contrasts": {
+    "matched_risk": {
+      "channel_diagonals": [
+        0.9,
+        0.6
+      ],
+      "belief": [
+        0.5,
+        0.5
+      ],
+      "cases": [
+        {
+          "predicted_observations": [
+            0.5,
+            0.5
+          ],
+          "risk": 1.614463080360851,
+          "ambiguity": 0.3250829733914482,
+          "expected_free_energy": 1.9395460537522993
+        },
+        {
+          "predicted_observations": [
+            0.5,
+            0.5
+          ],
+          "risk": 1.614463080360851,
+          "ambiguity": 0.6730116670092565,
+          "expected_free_energy": 2.2874747473701076
+        }
+      ]
+    },
+    "matched_ambiguity": {
+      "channel_diagonal": 0.75,
+      "belief_first_coordinates": [
+        0.25,
+        0.75
+      ],
+      "cases": [
+        {
+          "predicted_observations": [
+            0.375,
+            0.625
+          ],
+          "risk": 2.2204370040296384,
+          "ambiguity": 0.5623351446188083,
+          "expected_free_energy": 2.782772148648447
+        },
+        {
+          "predicted_observations": [
+            0.625,
+            0.375
+          ],
+          "risk": 1.0716570414959907,
+          "ambiguity": 0.5623351446188083,
+          "expected_free_energy": 1.633992186114799
+        }
+      ]
+    }
+  },
+  "limitations": [
+    "No attention trajectories, skip frequencies or published plots reproduced",
+    "No temporal reports generated and no human data fitted",
+    "Functional equivalence does not disprove a phenomenal identity hypothesis",
+    "Risk remains in the action computation even if its plot variable is removed",
+    "The contrasts identify predictors, not consciousness or scientific novelty"
+  ]
+}
