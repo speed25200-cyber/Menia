@@ -9,6 +9,29 @@ du LLM. Il ne prétend pas produire une conscience.
 [Ouvrir le nouveau Colab](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/04_activation_monitor_colab.ipynb).
 Choisir A100, puis « Tout exécuter » ; transmettre `menia-etats-internes.zip`.
 
+### Lanceur autonome et diagnostic
+
+Après un signalement d'échec des cellules sans message d'erreur joint, le
+lancement est regroupé dans un seul bloc autonome. La cause précise de cet
+échec n'est pas encore identifiée. Un défaut du diagnostic a en revanche été
+corrigé : l'ancien export exigeait d'avoir déjà réussi l'installation, les
+contrôles et l'ouverture de Drive. Le nouveau lanceur écrit le diagnostic
+dès le départ, affiche l'étape courante et exporte aussi les échecs précédant
+l'installation des bibliothèques ou la connexion à Drive.
+
+Un contrôle A100 précède les téléchargements. Un checkout incomplet ou d'une
+autre révision est conservé ; un autre dossier est utilisé. Les tentatives
+existantes sont reprises avec le même code scientifique fixé au commit
+`3b768778cf075126c8bc15105dd2cea3a56c8664`. Le plan, les poids, les scores et
+les règles de reprise scientifiques ne changent pas.
+
+L'archive contient `diagnostic/` (étape, statut, sortie des commandes et
+traceback éventuel) et, une fois Drive ouvert, `tentatives/` (toutes les
+tentatives déjà présentes). Aucun diagnostic ne nécessite de variable créée
+par une autre cellule. Six tests vérifient les échecs d'installation, de GPU
+et de Drive, une vraie sortie de sous-processus en erreur, la reprise et
+l'autonomie de la cellule. Ils ne constituent pas une exécution A100 du pilote.
+
 ## Ce que la recherche permet de tenter
 
 **Ashok et May, NeurIPS 2025**, montrent que des sondes lisant les représentations

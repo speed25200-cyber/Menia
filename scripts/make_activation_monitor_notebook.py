@@ -131,9 +131,40 @@ else:
     return notebook
 
 
+def make_resilient_notebook(revision):
+    notebook = make_notebook(revision)
+    bootstrap = Path(__file__).with_name("colab_bootstrap.py").read_text(encoding="utf-8")
+    launcher = Path(__file__).with_name("colab_activation_launcher.py").read_text(encoding="utf-8")
+    notebook["cells"] = [md('''# Menia — états internes : lancement autonome
+
+**Cette version utilise un seul bloc à exécuter.**
+
+1. Choisir **Exécution → Modifier le type d'exécution → GPU A100**.
+2. Cliquer sur **▶** dans le bloc ci-dessous, ou sur **Tout exécuter**.
+3. Autoriser Drive lorsque Colab le demande, puis laisser le programme aller au bout.
+4. Transmettre **`menia-etats-internes.zip`**, même si une étape s'arrête.
+
+L'installation, les contrôles, l'expérience et l'export s'enchaînent automatiquement.
+L'étape en cours est affichée. Le diagnostic est disponible même si l'installation ou Drive échoue.
+Si le téléchargement automatique est bloqué, retrouver l'archive dans le panneau **Fichiers** de Colab.
+
+Le protocole reste inchangé : Qwen3-4B, 384 problèmes d'apprentissage, 96 de validation et 192 de test.
+Le moniteur est figé avant le test ; les prévisions précèdent le premier token. Les poids de Qwen
+ne sont pas entraînés. Le premier pilote croisé et ses données restent conservés.
+
+Ce test mesure une fonction de prévision ajoutée ; il ne certifie pas une conscience.
+Environ 8 Go de poids, plus les bibliothèques, sont nécessaires. Les calculs consomment le quota Colab.
+'''), code("# Lancer ou reprendre Menia\n" + launcher + "\nBOOTSTRAP_SOURCE = " + repr(bootstrap) +
+          "\nMENIA_LAUNCH_RESULT = launch_activation(" + repr(revision) + ", BOOTSTRAP_SOURCE)\n")]
+    for i, cell in enumerate(notebook["cells"]):
+        cell["id"] = f"menia-activation-launch-{i:02d}"
+    notebook["metadata"]["colab"]["name"] = "Menia — états internes — lancement autonome"
+    return notebook
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("revision")
     args = parser.parse_args()
     path = Path("notebooks/04_activation_monitor_colab.ipynb")
-    path.write_text(json.dumps(make_activation_notebook(args.revision), ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
+    path.write_text(json.dumps(make_resilient_notebook(args.revision), ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
