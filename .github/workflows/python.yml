@@ -41,6 +41,7 @@ jobs:
       - run: python -m research.audit_active_calibration --check
       - run: python -m research.audit_intrinsic_semantics --check
       - run: python -m research.audit_capacity_planning --check
+      - run: python -m research.maintenance_identification --check
 
   human-research:
     runs-on: ubuntu-latest

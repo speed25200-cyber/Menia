@@ -2,6 +2,16 @@
 
 **État actuel : objectif non atteint ; une politique de vérification apprise est intégrée à l'agent expérimental.**
 
+Le [dossier de raccordement au langage](LLM_COUPLING_RESULTS.md) précise une
+architecture hybride et ajoute un apprenant entre deux hypothèses d'entretien.
+87 380 probabilités exactes vérifient une ambiguïté des diagnostics ; des sondes
+avec référence la départagent sous modèle correct. Une référence corrompue et
+une classe de modèles incomplète produisent des erreurs confiantes. Le contexte
+pour un LLM est préparé depuis les observations de ce même apprenant, sans
+inférence LLM exécutée, entraînement de poids ou raccordement au chat principal.
+L'expérience subjective et la nouveauté d'une méthode la produisant restent
+non établies.
+
 Le [pilote d'entretien anticipé d'une capacité](CAPACITY_PLANNING_RESULTS.md)
 ajoute une réalisation partielle de la candidate : état caché d'un capteur,
 diagnostic, abstention et entretien simulé. Le contraste 2 × 2 porte sur l'usage

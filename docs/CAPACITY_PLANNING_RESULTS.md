@@ -146,6 +146,10 @@ entretien inefficace précise un manque : apprendre et réviser les conséquence
 de l'entretien, en distinguant un diagnostic trompeur d'une intervention ratée.
 Cette extension n'est pas encore implémentée dans ce pilote.
 
+Prolongement : le [dossier de raccordement au langage](LLM_COUPLING_RESULTS.md)
+ajoute une expérience séparée de sélection entre deux modèles par calibration.
+Elle ne constitue pas encore une révision générale des transitions de ce contrôleur.
+
 L'état du capteur n'entretient pas le processus qui planifie ou qui effectue
 l'entretien. La réalisation est donc partielle. Il manque aussi une phase de
 repos, un modèle de causes externes, une hiérarchie temporelle et l'intégration

@@ -9,6 +9,13 @@ et conserve son histoire entre sessions. Le modèle de langage Qwen adapté rest
 La conscience subjective n'est pas établie. La continuité repose sur un journal
 explicite et des sauvegardes, sans objectif de résistance à l'arrêt ou d'auto-réplication.
 
+Le [dossier de raccordement au LLM](docs/LLM_COUPLING_RESULTS.md) recommande
+une boucle reliant langage, modèle de capacités et résultats d'action. Un
+nouveau pilote utilise des sondes de référence pour apprendre entre deux
+explications d'entretien et prépare leur contexte linguistique. Les échecs sous
+référence trompeuse sont conservés ; aucun LLM n'est exécuté dans ce nouveau test.
+Rejeu : `python -m research.maintenance_identification --check`.
+
 Le [pilote d'entretien anticipé d'une capacité](docs/CAPACITY_PLANNING_RESULTS.md)
 est exécutable : il estime l'état d'un capteur simulé et choisit quand l'entretenir.
 294 912 décisions évaluent diagnostics et anticipation, leurs interactions et leurs
