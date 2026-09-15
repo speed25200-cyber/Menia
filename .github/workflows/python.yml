@@ -40,6 +40,7 @@ jobs:
       - run: python -m research.audit_binding_control --check
       - run: python -m research.audit_active_calibration --check
       - run: python -m research.audit_intrinsic_semantics --check
+      - run: python -m research.audit_capacity_planning --check
 
   human-research:
     runs-on: ubuntu-latest

@@ -170,6 +170,12 @@ disponibles pour l'action, même lorsqu'aucune action immédiate n'est nécessai
 Les descriptions linguistiques seraient analysées séparément des effets causaux.
 
 Ce plan est **une proposition**, pas une nouvelle expérience déjà exécutée.
+
+Mise à jour du 15 septembre 2026 : le [pilote d'entretien anticipé](CAPACITY_PLANNING_RESULTS.md)
+en réalise désormais une partie, avec un contraste corrigé sur l'utilisation des
+diagnostics. Les paramètres sont fournis ; le repos et l'apprentissage restent
+hors de ce nouveau pilote. Les résultats complets et les échecs y sont rapportés.
+
 L'apprentissage de précision ou de conséquences futures possède des antécédents ;
 aucune nouveauté n'est revendiquée. Les observations humaines motivent les
 distinctions et contrôles, mais ne sélectionnent pas l'une des quatre versions

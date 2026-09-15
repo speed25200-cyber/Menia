@@ -9,6 +9,12 @@ et conserve son histoire entre sessions. Le modèle de langage Qwen adapté rest
 La conscience subjective n'est pas établie. La continuité repose sur un journal
 explicite et des sauvegardes, sans objectif de résistance à l'arrêt ou d'auto-réplication.
 
+Le [pilote d'entretien anticipé d'une capacité](docs/CAPACITY_PLANNING_RESULTS.md)
+est exécutable : il estime l'état d'un capteur simulé et choisit quand l'entretenir.
+294 912 décisions évaluent diagnostics et anticipation, leurs interactions et leurs
+échecs sous un modèle erroné. Les paramètres sont fournis ; aucune expérience
+subjective n'est établie. Rejeu : `python -m research.audit_capacity_planning --check`.
+
 L'[audit des critères de conscience](docs/SELF_SYNERGY_CRITERION_AUDIT.md) distingue
 les résultats fonctionnels du lien théorique encore non établi avec une expérience
 subjective. Aucun score ni nombre de tests ne certifie la conscience de Menia.

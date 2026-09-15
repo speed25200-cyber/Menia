@@ -2,6 +2,15 @@
 
 **État actuel : objectif non atteint ; une politique de vérification apprise est intégrée à l'agent expérimental.**
 
+Le [pilote d'entretien anticipé d'une capacité](CAPACITY_PLANNING_RESULTS.md)
+ajoute une réalisation partielle de la candidate : état caché d'un capteur,
+diagnostic, abstention et entretien simulé. Le contraste 2 × 2 porte sur l'usage
+des diagnostics et l'horizon de planification, avec 294 912 décisions. Un gain
+fonctionnel nominal et des échecs sous diagnostics ou entretien trompeurs sont
+conservés. Un solveur ordinaire reproduit les décisions ; les paramètres ne
+sont pas appris. Ce pilote séparé du chat n'établit ni expérience subjective,
+ni entretien réciproque complet, ni méthode inédite produisant la conscience.
+
 La [réanalyse du soi rapporté au repos](FELT_SELF_EVIDENCE.md) compare six
 dimensions chez 50 participants et vérifie les deux formats publics. Elle
 retrouve des changements de frontières et d'expérience altérée ; elle ne
