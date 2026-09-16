@@ -1,0 +1,213 @@
+{
+  "scope": "Public record linkage and exploratory directional contrasts; no consciousness attribution",
+  "audit_code_sha256": "001c11f10d957d66462365009e72c131f5573230b1ea387e0c5db2939f72329c",
+  "sources": {
+    "connectivity_record": "https://zenodo.org/records/15330862",
+    "connectivity_member": "DATA/metaTable.csv",
+    "connectivity_member_sha256": "fa9ce3fde46c677becc89a4fa8fd380ee467dbca6d231811f92ceebe4e716e76",
+    "connectivity_member_bytes": 128178950,
+    "bodily_record": "https://zenodo.org/records/21536139",
+    "bodily_csv_md5": "6b18b1907de4753bd5668a1879d9d6b9",
+    "cohort_archive_md5": "a957990ee73239762e1177ef39872154"
+  },
+  "connectivity": {
+    "rows": 275336,
+    "participants": 27,
+    "columns": [
+      "aSubID",
+      "block_name",
+      "stim_chan",
+      "record_chan",
+      "sc1",
+      "sc2",
+      "rc1",
+      "rc2",
+      "CECS",
+      "JP_label_out1",
+      "JP_label_out2",
+      "JP_label_in1",
+      "JP_label_in2",
+      "Yeo7_out1",
+      "Yeo7_out2",
+      "Yeo7_in1",
+      "Yeo7_in2",
+      "MNIout_coord_1",
+      "MNIout_coord_2",
+      "MNIout_coord_3",
+      "MNIin_coord_1",
+      "MNIin_coord_2",
+      "MNIin_coord_3",
+      "LEPTOout_coord_1",
+      "LEPTOout_coord_2",
+      "LEPTOout_coord_3",
+      "LEPTOin_coord_1",
+      "LEPTOin_coord_2",
+      "LEPTOin_coord_3",
+      "NATIVEout_coord_1",
+      "NATIVEout_coord_2",
+      "NATIVEout_coord_3",
+      "NATIVEin_coord_1",
+      "NATIVEin_coord_2",
+      "NATIVEin_coord_3",
+      "eudDist",
+      "JP_label_out",
+      "JP_label_in",
+      "sCrossBorder",
+      "rCrossBorder",
+      "umapAct",
+      "time_maxCor_clst1",
+      "peak_maxCor_clst1",
+      "time_maxCor_clst2",
+      "peak_maxCor_clst2",
+      "time_maxCor_clst3",
+      "peak_maxCor_clst3",
+      "FSout_coord_1",
+      "FSout_coord_2",
+      "FSout_coord_3",
+      "FSin_coord_1",
+      "FSin_coord_2",
+      "FSin_coord_3"
+    ],
+    "regions": [
+      "ACC",
+      "AMY",
+      "BG",
+      "CLT",
+      "FG",
+      "FP",
+      "HPC",
+      "INS",
+      "INSULA/LFC",
+      "IPL",
+      "ITG",
+      "LFC",
+      "MCC",
+      "MFC",
+      "MTG",
+      "OCC",
+      "OFC",
+      "PHG",
+      "PMC",
+      "SM",
+      "SPL",
+      "STG",
+      "TP",
+      "antTH",
+      "midTH",
+      "pstTH"
+    ],
+    "activation_labels": {
+      "0": 163420,
+      "1": 76899,
+      "NaN": 35017
+    },
+    "finite_F1_rows": 66358,
+    "finite_F1_by_activation_label": {
+      "1": 66358
+    },
+    "nonfinite_F1_rows": 208978,
+    "missing_F1_rows": 0
+  },
+  "bodily": {
+    "rows": 660,
+    "participants": 63
+  },
+  "direct_join": {
+    "exact_participant_id_overlap": 0,
+    "overlap_after_whitespace_and_case_normalization": 0,
+    "note": "This direct string comparison precedes the separately reported candidate linkage",
+    "interpretation": "Zero matching IDs does not establish that the actual people differ"
+  },
+  "cohort_archive": [
+    {
+      "name": "COHORT/CCEPrecPair_noCrossRegion_JPlabel_frequency_table.csv",
+      "bytes": 10784,
+      "columns": [
+        "subID",
+        "brainArea",
+        "elecCount",
+        "elecPercSbj"
+      ],
+      "rows": 362,
+      "distinct_subID": 27,
+      "exact_id_overlap_with_bodily_release": 0
+    },
+    {
+      "name": "COHORT/CCEPstimPair_noCrossRegion_JPlabel_frequency_table.csv",
+      "bytes": 10784,
+      "columns": [
+        "subID",
+        "brainArea",
+        "elecCount",
+        "elecPercSbj"
+      ],
+      "rows": 362,
+      "distinct_subID": 27,
+      "exact_id_overlap_with_bodily_release": 0
+    }
+  ],
+  "candidate_linkage_and_exploratory_analysis": {
+    "method": "Candidate suffix and contact-name linkage, checked against all matched MNI midpoint coordinates",
+    "author_provided_crosswalk": false,
+    "shared_unique_suffixes": 17,
+    "matched_sites_before_coordinate_check": 104,
+    "matched_site_direction_keys": 149,
+    "matched_directional_row_roles": 14384,
+    "coordinate_error_max": 6.691723650686423e-09,
+    "coordinate_tolerance": 0.001,
+    "sites_passing_coordinate_check": 104,
+    "matched_site_categories": {
+      "Ambiguous": 1,
+      "Complex": 20,
+      "Dizzy": 5,
+      "Indeterminate": 1,
+      "Out of Focus": 1,
+      "Sensory-Motor": 10,
+      "Silent": 66
+    },
+    "directional_estimate": "outflow F1 minus inflow F1, paired by site and distal contacts; then equal weighting of sites within participants and participants",
+    "categories": {
+      "Sensory-Motor": {
+        "participants": 3,
+        "mean": 0.023959883597402597,
+        "bootstrap_95_percentile": [
+          -0.04765794857142858,
+          0.06259365036363637
+        ],
+        "sites": 3,
+        "reciprocal_seed_target_pairs": 33,
+        "underlying_directional_rows": 66
+      },
+      "Complex": {
+        "participants": 4,
+        "mean": -0.054533754464448046,
+        "bootstrap_95_percentile": [
+          -0.0989267424038961,
+          0.004180267028409101
+        ],
+        "sites": 5,
+        "reciprocal_seed_target_pairs": 47,
+        "underlying_directional_rows": 97
+      }
+    },
+    "paired_category_difference_SM_minus_Complex": {
+      "participants": 1,
+      "mean": 0.15216812313636363,
+      "bootstrap_95_percentile": null
+    },
+    "participants_in_either_directional_category": 6,
+    "bootstrap": {
+      "resampling_unit": "participant",
+      "draws": 5000,
+      "seed": 20260914,
+      "interval": "95% percentile; exploratory and conditional on candidate linkage"
+    },
+    "interpretation": "Record linkage is inferred and geometrically corroborated; the computation is not an independent replication, a pINS/aINS contrast or an experience detector"
+  },
+  "limitations": [
+    "No supplied subject-ID crosswalk was found in the inspected cohort files",
+    "An INS label does not supply an anterior/posterior insula subdivision",
+    "Bodily response labels are transported only under the explicitly inferred and geometrically checked record linkage",
+    "The directional contrast is exploratory and does not estimate subjective experience in Menia"
+  ]
+}

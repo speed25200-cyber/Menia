@@ -1,0 +1,10 @@
+{
+  "steps": 48,
+  "seed": 91011,
+  "condition": "standard",
+  "kind": "recurrent",
+  "controller": "learned",
+  "cost": 0.25,
+  "verified": 16,
+  "scope": "synthetic source inference; not evidence of subjective consciousness"
+}

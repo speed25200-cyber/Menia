@@ -1,0 +1,1463 @@
+{
+  "schema": 1,
+  "scope": "Exact finite structural-model audit, not learned Menia behaviour or human data",
+  "summary": {
+    "observational_conditions": 16,
+    "observational_equal": 16,
+    "intervention_conditions_including_identity": 64,
+    "action_distinguishes": 24,
+    "memory_distinguishes": 32,
+    "either_nonverbal_distinguishes": 40,
+    "report_distinguishes": 0
+  },
+  "observational": [
+    {
+      "content": 0,
+      "belief": "1/10",
+      "cost": "3/20",
+      "equal": true
+    },
+    {
+      "content": 0,
+      "belief": "1/10",
+      "cost": "7/20",
+      "equal": true
+    },
+    {
+      "content": 0,
+      "belief": "2/5",
+      "cost": "3/20",
+      "equal": true
+    },
+    {
+      "content": 0,
+      "belief": "2/5",
+      "cost": "7/20",
+      "equal": true
+    },
+    {
+      "content": 0,
+      "belief": "3/5",
+      "cost": "3/20",
+      "equal": true
+    },
+    {
+      "content": 0,
+      "belief": "3/5",
+      "cost": "7/20",
+      "equal": true
+    },
+    {
+      "content": 0,
+      "belief": "9/10",
+      "cost": "3/20",
+      "equal": true
+    },
+    {
+      "content": 0,
+      "belief": "9/10",
+      "cost": "7/20",
+      "equal": true
+    },
+    {
+      "content": 1,
+      "belief": "1/10",
+      "cost": "3/20",
+      "equal": true
+    },
+    {
+      "content": 1,
+      "belief": "1/10",
+      "cost": "7/20",
+      "equal": true
+    },
+    {
+      "content": 1,
+      "belief": "2/5",
+      "cost": "3/20",
+      "equal": true
+    },
+    {
+      "content": 1,
+      "belief": "2/5",
+      "cost": "7/20",
+      "equal": true
+    },
+    {
+      "content": 1,
+      "belief": "3/5",
+      "cost": "3/20",
+      "equal": true
+    },
+    {
+      "content": 1,
+      "belief": "3/5",
+      "cost": "7/20",
+      "equal": true
+    },
+    {
+      "content": 1,
+      "belief": "9/10",
+      "cost": "3/20",
+      "equal": true
+    },
+    {
+      "content": 1,
+      "belief": "9/10",
+      "cost": "7/20",
+      "equal": true
+    }
+  ],
+  "interventions": [
+    {
+      "content": 0,
+      "belief": "1/10",
+      "cost": "3/20",
+      "donor": "1/10",
+      "integrated": {
+        "content_choice": 0,
+        "source_report": "1/10",
+        "verify": true,
+        "store_as_external": false
+      },
+      "report_only": {
+        "content_choice": 0,
+        "source_report": "1/10",
+        "verify": true,
+        "store_as_external": false
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": false,
+      "report_distinguishes": false
+    },
+    {
+      "content": 0,
+      "belief": "1/10",
+      "cost": "3/20",
+      "donor": "2/5",
+      "integrated": {
+        "content_choice": 0,
+        "source_report": "2/5",
+        "verify": true,
+        "store_as_external": false
+      },
+      "report_only": {
+        "content_choice": 0,
+        "source_report": "2/5",
+        "verify": true,
+        "store_as_external": false
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": false,
+      "report_distinguishes": false
+    },
+    {
+      "content": 0,
+      "belief": "1/10",
+      "cost": "3/20",
+      "donor": "3/5",
+      "integrated": {
+        "content_choice": 0,
+        "source_report": "3/5",
+        "verify": true,
+        "store_as_external": true
+      },
+      "report_only": {
+        "content_choice": 0,
+        "source_report": "3/5",
+        "verify": true,
+        "store_as_external": false
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": true,
+      "report_distinguishes": false
+    },
+    {
+      "content": 0,
+      "belief": "1/10",
+      "cost": "3/20",
+      "donor": "9/10",
+      "integrated": {
+        "content_choice": 0,
+        "source_report": "9/10",
+        "verify": false,
+        "store_as_external": true
+      },
+      "report_only": {
+        "content_choice": 0,
+        "source_report": "9/10",
+        "verify": true,
+        "store_as_external": false
+      },
+      "action_distinguishes": true,
+      "memory_distinguishes": true,
+      "report_distinguishes": false
+    },
+    {
+      "content": 0,
+      "belief": "1/10",
+      "cost": "7/20",
+      "donor": "1/10",
+      "integrated": {
+        "content_choice": 0,
+        "source_report": "1/10",
+        "verify": true,
+        "store_as_external": false
+      },
+      "report_only": {
+        "content_choice": 0,
+        "source_report": "1/10",
+        "verify": true,
+        "store_as_external": false
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": false,
+      "report_distinguishes": false
+    },
+    {
+      "content": 0,
+      "belief": "1/10",
+      "cost": "7/20",
+      "donor": "2/5",
+      "integrated": {
+        "content_choice": 0,
+        "source_report": "2/5",
+        "verify": true,
+        "store_as_external": false
+      },
+      "report_only": {
+        "content_choice": 0,
+        "source_report": "2/5",
+        "verify": true,
+        "store_as_external": false
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": false,
+      "report_distinguishes": false
+    },
+    {
+      "content": 0,
+      "belief": "1/10",
+      "cost": "7/20",
+      "donor": "3/5",
+      "integrated": {
+        "content_choice": 0,
+        "source_report": "3/5",
+        "verify": true,
+        "store_as_external": true
+      },
+      "report_only": {
+        "content_choice": 0,
+        "source_report": "3/5",
+        "verify": true,
+        "store_as_external": false
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": true,
+      "report_distinguishes": false
+    },
+    {
+      "content": 0,
+      "belief": "1/10",
+      "cost": "7/20",
+      "donor": "9/10",
+      "integrated": {
+        "content_choice": 0,
+        "source_report": "9/10",
+        "verify": false,
+        "store_as_external": true
+      },
+      "report_only": {
+        "content_choice": 0,
+        "source_report": "9/10",
+        "verify": true,
+        "store_as_external": false
+      },
+      "action_distinguishes": true,
+      "memory_distinguishes": true,
+      "report_distinguishes": false
+    },
+    {
+      "content": 0,
+      "belief": "2/5",
+      "cost": "3/20",
+      "donor": "1/10",
+      "integrated": {
+        "content_choice": 0,
+        "source_report": "1/10",
+        "verify": true,
+        "store_as_external": false
+      },
+      "report_only": {
+        "content_choice": 0,
+        "source_report": "1/10",
+        "verify": true,
+        "store_as_external": false
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": false,
+      "report_distinguishes": false
+    },
+    {
+      "content": 0,
+      "belief": "2/5",
+      "cost": "3/20",
+      "donor": "2/5",
+      "integrated": {
+        "content_choice": 0,
+        "source_report": "2/5",
+        "verify": true,
+        "store_as_external": false
+      },
+      "report_only": {
+        "content_choice": 0,
+        "source_report": "2/5",
+        "verify": true,
+        "store_as_external": false
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": false,
+      "report_distinguishes": false
+    },
+    {
+      "content": 0,
+      "belief": "2/5",
+      "cost": "3/20",
+      "donor": "3/5",
+      "integrated": {
+        "content_choice": 0,
+        "source_report": "3/5",
+        "verify": true,
+        "store_as_external": true
+      },
+      "report_only": {
+        "content_choice": 0,
+        "source_report": "3/5",
+        "verify": true,
+        "store_as_external": false
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": true,
+      "report_distinguishes": false
+    },
+    {
+      "content": 0,
+      "belief": "2/5",
+      "cost": "3/20",
+      "donor": "9/10",
+      "integrated": {
+        "content_choice": 0,
+        "source_report": "9/10",
+        "verify": false,
+        "store_as_external": true
+      },
+      "report_only": {
+        "content_choice": 0,
+        "source_report": "9/10",
+        "verify": true,
+        "store_as_external": false
+      },
+      "action_distinguishes": true,
+      "memory_distinguishes": true,
+      "report_distinguishes": false
+    },
+    {
+      "content": 0,
+      "belief": "2/5",
+      "cost": "7/20",
+      "donor": "1/10",
+      "integrated": {
+        "content_choice": 0,
+        "source_report": "1/10",
+        "verify": true,
+        "store_as_external": false
+      },
+      "report_only": {
+        "content_choice": 0,
+        "source_report": "1/10",
+        "verify": true,
+        "store_as_external": false
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": false,
+      "report_distinguishes": false
+    },
+    {
+      "content": 0,
+      "belief": "2/5",
+      "cost": "7/20",
+      "donor": "2/5",
+      "integrated": {
+        "content_choice": 0,
+        "source_report": "2/5",
+        "verify": true,
+        "store_as_external": false
+      },
+      "report_only": {
+        "content_choice": 0,
+        "source_report": "2/5",
+        "verify": true,
+        "store_as_external": false
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": false,
+      "report_distinguishes": false
+    },
+    {
+      "content": 0,
+      "belief": "2/5",
+      "cost": "7/20",
+      "donor": "3/5",
+      "integrated": {
+        "content_choice": 0,
+        "source_report": "3/5",
+        "verify": true,
+        "store_as_external": true
+      },
+      "report_only": {
+        "content_choice": 0,
+        "source_report": "3/5",
+        "verify": true,
+        "store_as_external": false
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": true,
+      "report_distinguishes": false
+    },
+    {
+      "content": 0,
+      "belief": "2/5",
+      "cost": "7/20",
+      "donor": "9/10",
+      "integrated": {
+        "content_choice": 0,
+        "source_report": "9/10",
+        "verify": false,
+        "store_as_external": true
+      },
+      "report_only": {
+        "content_choice": 0,
+        "source_report": "9/10",
+        "verify": true,
+        "store_as_external": false
+      },
+      "action_distinguishes": true,
+      "memory_distinguishes": true,
+      "report_distinguishes": false
+    },
+    {
+      "content": 0,
+      "belief": "3/5",
+      "cost": "3/20",
+      "donor": "1/10",
+      "integrated": {
+        "content_choice": 0,
+        "source_report": "1/10",
+        "verify": true,
+        "store_as_external": false
+      },
+      "report_only": {
+        "content_choice": 0,
+        "source_report": "1/10",
+        "verify": true,
+        "store_as_external": true
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": true,
+      "report_distinguishes": false
+    },
+    {
+      "content": 0,
+      "belief": "3/5",
+      "cost": "3/20",
+      "donor": "2/5",
+      "integrated": {
+        "content_choice": 0,
+        "source_report": "2/5",
+        "verify": true,
+        "store_as_external": false
+      },
+      "report_only": {
+        "content_choice": 0,
+        "source_report": "2/5",
+        "verify": true,
+        "store_as_external": true
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": true,
+      "report_distinguishes": false
+    },
+    {
+      "content": 0,
+      "belief": "3/5",
+      "cost": "3/20",
+      "donor": "3/5",
+      "integrated": {
+        "content_choice": 0,
+        "source_report": "3/5",
+        "verify": true,
+        "store_as_external": true
+      },
+      "report_only": {
+        "content_choice": 0,
+        "source_report": "3/5",
+        "verify": true,
+        "store_as_external": true
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": false,
+      "report_distinguishes": false
+    },
+    {
+      "content": 0,
+      "belief": "3/5",
+      "cost": "3/20",
+      "donor": "9/10",
+      "integrated": {
+        "content_choice": 0,
+        "source_report": "9/10",
+        "verify": false,
+        "store_as_external": true
+      },
+      "report_only": {
+        "content_choice": 0,
+        "source_report": "9/10",
+        "verify": true,
+        "store_as_external": true
+      },
+      "action_distinguishes": true,
+      "memory_distinguishes": false,
+      "report_distinguishes": false
+    },
+    {
+      "content": 0,
+      "belief": "3/5",
+      "cost": "7/20",
+      "donor": "1/10",
+      "integrated": {
+        "content_choice": 0,
+        "source_report": "1/10",
+        "verify": true,
+        "store_as_external": false
+      },
+      "report_only": {
+        "content_choice": 0,
+        "source_report": "1/10",
+        "verify": true,
+        "store_as_external": true
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": true,
+      "report_distinguishes": false
+    },
+    {
+      "content": 0,
+      "belief": "3/5",
+      "cost": "7/20",
+      "donor": "2/5",
+      "integrated": {
+        "content_choice": 0,
+        "source_report": "2/5",
+        "verify": true,
+        "store_as_external": false
+      },
+      "report_only": {
+        "content_choice": 0,
+        "source_report": "2/5",
+        "verify": true,
+        "store_as_external": true
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": true,
+      "report_distinguishes": false
+    },
+    {
+      "content": 0,
+      "belief": "3/5",
+      "cost": "7/20",
+      "donor": "3/5",
+      "integrated": {
+        "content_choice": 0,
+        "source_report": "3/5",
+        "verify": true,
+        "store_as_external": true
+      },
+      "report_only": {
+        "content_choice": 0,
+        "source_report": "3/5",
+        "verify": true,
+        "store_as_external": true
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": false,
+      "report_distinguishes": false
+    },
+    {
+      "content": 0,
+      "belief": "3/5",
+      "cost": "7/20",
+      "donor": "9/10",
+      "integrated": {
+        "content_choice": 0,
+        "source_report": "9/10",
+        "verify": false,
+        "store_as_external": true
+      },
+      "report_only": {
+        "content_choice": 0,
+        "source_report": "9/10",
+        "verify": true,
+        "store_as_external": true
+      },
+      "action_distinguishes": true,
+      "memory_distinguishes": false,
+      "report_distinguishes": false
+    },
+    {
+      "content": 0,
+      "belief": "9/10",
+      "cost": "3/20",
+      "donor": "1/10",
+      "integrated": {
+        "content_choice": 0,
+        "source_report": "1/10",
+        "verify": true,
+        "store_as_external": false
+      },
+      "report_only": {
+        "content_choice": 0,
+        "source_report": "1/10",
+        "verify": false,
+        "store_as_external": true
+      },
+      "action_distinguishes": true,
+      "memory_distinguishes": true,
+      "report_distinguishes": false
+    },
+    {
+      "content": 0,
+      "belief": "9/10",
+      "cost": "3/20",
+      "donor": "2/5",
+      "integrated": {
+        "content_choice": 0,
+        "source_report": "2/5",
+        "verify": true,
+        "store_as_external": false
+      },
+      "report_only": {
+        "content_choice": 0,
+        "source_report": "2/5",
+        "verify": false,
+        "store_as_external": true
+      },
+      "action_distinguishes": true,
+      "memory_distinguishes": true,
+      "report_distinguishes": false
+    },
+    {
+      "content": 0,
+      "belief": "9/10",
+      "cost": "3/20",
+      "donor": "3/5",
+      "integrated": {
+        "content_choice": 0,
+        "source_report": "3/5",
+        "verify": true,
+        "store_as_external": true
+      },
+      "report_only": {
+        "content_choice": 0,
+        "source_report": "3/5",
+        "verify": false,
+        "store_as_external": true
+      },
+      "action_distinguishes": true,
+      "memory_distinguishes": false,
+      "report_distinguishes": false
+    },
+    {
+      "content": 0,
+      "belief": "9/10",
+      "cost": "3/20",
+      "donor": "9/10",
+      "integrated": {
+        "content_choice": 0,
+        "source_report": "9/10",
+        "verify": false,
+        "store_as_external": true
+      },
+      "report_only": {
+        "content_choice": 0,
+        "source_report": "9/10",
+        "verify": false,
+        "store_as_external": true
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": false,
+      "report_distinguishes": false
+    },
+    {
+      "content": 0,
+      "belief": "9/10",
+      "cost": "7/20",
+      "donor": "1/10",
+      "integrated": {
+        "content_choice": 0,
+        "source_report": "1/10",
+        "verify": true,
+        "store_as_external": false
+      },
+      "report_only": {
+        "content_choice": 0,
+        "source_report": "1/10",
+        "verify": false,
+        "store_as_external": true
+      },
+      "action_distinguishes": true,
+      "memory_distinguishes": true,
+      "report_distinguishes": false
+    },
+    {
+      "content": 0,
+      "belief": "9/10",
+      "cost": "7/20",
+      "donor": "2/5",
+      "integrated": {
+        "content_choice": 0,
+        "source_report": "2/5",
+        "verify": true,
+        "store_as_external": false
+      },
+      "report_only": {
+        "content_choice": 0,
+        "source_report": "2/5",
+        "verify": false,
+        "store_as_external": true
+      },
+      "action_distinguishes": true,
+      "memory_distinguishes": true,
+      "report_distinguishes": false
+    },
+    {
+      "content": 0,
+      "belief": "9/10",
+      "cost": "7/20",
+      "donor": "3/5",
+      "integrated": {
+        "content_choice": 0,
+        "source_report": "3/5",
+        "verify": true,
+        "store_as_external": true
+      },
+      "report_only": {
+        "content_choice": 0,
+        "source_report": "3/5",
+        "verify": false,
+        "store_as_external": true
+      },
+      "action_distinguishes": true,
+      "memory_distinguishes": false,
+      "report_distinguishes": false
+    },
+    {
+      "content": 0,
+      "belief": "9/10",
+      "cost": "7/20",
+      "donor": "9/10",
+      "integrated": {
+        "content_choice": 0,
+        "source_report": "9/10",
+        "verify": false,
+        "store_as_external": true
+      },
+      "report_only": {
+        "content_choice": 0,
+        "source_report": "9/10",
+        "verify": false,
+        "store_as_external": true
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": false,
+      "report_distinguishes": false
+    },
+    {
+      "content": 1,
+      "belief": "1/10",
+      "cost": "3/20",
+      "donor": "1/10",
+      "integrated": {
+        "content_choice": 1,
+        "source_report": "1/10",
+        "verify": true,
+        "store_as_external": false
+      },
+      "report_only": {
+        "content_choice": 1,
+        "source_report": "1/10",
+        "verify": true,
+        "store_as_external": false
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": false,
+      "report_distinguishes": false
+    },
+    {
+      "content": 1,
+      "belief": "1/10",
+      "cost": "3/20",
+      "donor": "2/5",
+      "integrated": {
+        "content_choice": 1,
+        "source_report": "2/5",
+        "verify": true,
+        "store_as_external": false
+      },
+      "report_only": {
+        "content_choice": 1,
+        "source_report": "2/5",
+        "verify": true,
+        "store_as_external": false
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": false,
+      "report_distinguishes": false
+    },
+    {
+      "content": 1,
+      "belief": "1/10",
+      "cost": "3/20",
+      "donor": "3/5",
+      "integrated": {
+        "content_choice": 1,
+        "source_report": "3/5",
+        "verify": true,
+        "store_as_external": true
+      },
+      "report_only": {
+        "content_choice": 1,
+        "source_report": "3/5",
+        "verify": true,
+        "store_as_external": false
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": true,
+      "report_distinguishes": false
+    },
+    {
+      "content": 1,
+      "belief": "1/10",
+      "cost": "3/20",
+      "donor": "9/10",
+      "integrated": {
+        "content_choice": 1,
+        "source_report": "9/10",
+        "verify": false,
+        "store_as_external": true
+      },
+      "report_only": {
+        "content_choice": 1,
+        "source_report": "9/10",
+        "verify": true,
+        "store_as_external": false
+      },
+      "action_distinguishes": true,
+      "memory_distinguishes": true,
+      "report_distinguishes": false
+    },
+    {
+      "content": 1,
+      "belief": "1/10",
+      "cost": "7/20",
+      "donor": "1/10",
+      "integrated": {
+        "content_choice": 1,
+        "source_report": "1/10",
+        "verify": true,
+        "store_as_external": false
+      },
+      "report_only": {
+        "content_choice": 1,
+        "source_report": "1/10",
+        "verify": true,
+        "store_as_external": false
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": false,
+      "report_distinguishes": false
+    },
+    {
+      "content": 1,
+      "belief": "1/10",
+      "cost": "7/20",
+      "donor": "2/5",
+      "integrated": {
+        "content_choice": 1,
+        "source_report": "2/5",
+        "verify": true,
+        "store_as_external": false
+      },
+      "report_only": {
+        "content_choice": 1,
+        "source_report": "2/5",
+        "verify": true,
+        "store_as_external": false
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": false,
+      "report_distinguishes": false
+    },
+    {
+      "content": 1,
+      "belief": "1/10",
+      "cost": "7/20",
+      "donor": "3/5",
+      "integrated": {
+        "content_choice": 1,
+        "source_report": "3/5",
+        "verify": true,
+        "store_as_external": true
+      },
+      "report_only": {
+        "content_choice": 1,
+        "source_report": "3/5",
+        "verify": true,
+        "store_as_external": false
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": true,
+      "report_distinguishes": false
+    },
+    {
+      "content": 1,
+      "belief": "1/10",
+      "cost": "7/20",
+      "donor": "9/10",
+      "integrated": {
+        "content_choice": 1,
+        "source_report": "9/10",
+        "verify": false,
+        "store_as_external": true
+      },
+      "report_only": {
+        "content_choice": 1,
+        "source_report": "9/10",
+        "verify": true,
+        "store_as_external": false
+      },
+      "action_distinguishes": true,
+      "memory_distinguishes": true,
+      "report_distinguishes": false
+    },
+    {
+      "content": 1,
+      "belief": "2/5",
+      "cost": "3/20",
+      "donor": "1/10",
+      "integrated": {
+        "content_choice": 1,
+        "source_report": "1/10",
+        "verify": true,
+        "store_as_external": false
+      },
+      "report_only": {
+        "content_choice": 1,
+        "source_report": "1/10",
+        "verify": true,
+        "store_as_external": false
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": false,
+      "report_distinguishes": false
+    },
+    {
+      "content": 1,
+      "belief": "2/5",
+      "cost": "3/20",
+      "donor": "2/5",
+      "integrated": {
+        "content_choice": 1,
+        "source_report": "2/5",
+        "verify": true,
+        "store_as_external": false
+      },
+      "report_only": {
+        "content_choice": 1,
+        "source_report": "2/5",
+        "verify": true,
+        "store_as_external": false
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": false,
+      "report_distinguishes": false
+    },
+    {
+      "content": 1,
+      "belief": "2/5",
+      "cost": "3/20",
+      "donor": "3/5",
+      "integrated": {
+        "content_choice": 1,
+        "source_report": "3/5",
+        "verify": true,
+        "store_as_external": true
+      },
+      "report_only": {
+        "content_choice": 1,
+        "source_report": "3/5",
+        "verify": true,
+        "store_as_external": false
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": true,
+      "report_distinguishes": false
+    },
+    {
+      "content": 1,
+      "belief": "2/5",
+      "cost": "3/20",
+      "donor": "9/10",
+      "integrated": {
+        "content_choice": 1,
+        "source_report": "9/10",
+        "verify": false,
+        "store_as_external": true
+      },
+      "report_only": {
+        "content_choice": 1,
+        "source_report": "9/10",
+        "verify": true,
+        "store_as_external": false
+      },
+      "action_distinguishes": true,
+      "memory_distinguishes": true,
+      "report_distinguishes": false
+    },
+    {
+      "content": 1,
+      "belief": "2/5",
+      "cost": "7/20",
+      "donor": "1/10",
+      "integrated": {
+        "content_choice": 1,
+        "source_report": "1/10",
+        "verify": true,
+        "store_as_external": false
+      },
+      "report_only": {
+        "content_choice": 1,
+        "source_report": "1/10",
+        "verify": true,
+        "store_as_external": false
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": false,
+      "report_distinguishes": false
+    },
+    {
+      "content": 1,
+      "belief": "2/5",
+      "cost": "7/20",
+      "donor": "2/5",
+      "integrated": {
+        "content_choice": 1,
+        "source_report": "2/5",
+        "verify": true,
+        "store_as_external": false
+      },
+      "report_only": {
+        "content_choice": 1,
+        "source_report": "2/5",
+        "verify": true,
+        "store_as_external": false
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": false,
+      "report_distinguishes": false
+    },
+    {
+      "content": 1,
+      "belief": "2/5",
+      "cost": "7/20",
+      "donor": "3/5",
+      "integrated": {
+        "content_choice": 1,
+        "source_report": "3/5",
+        "verify": true,
+        "store_as_external": true
+      },
+      "report_only": {
+        "content_choice": 1,
+        "source_report": "3/5",
+        "verify": true,
+        "store_as_external": false
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": true,
+      "report_distinguishes": false
+    },
+    {
+      "content": 1,
+      "belief": "2/5",
+      "cost": "7/20",
+      "donor": "9/10",
+      "integrated": {
+        "content_choice": 1,
+        "source_report": "9/10",
+        "verify": false,
+        "store_as_external": true
+      },
+      "report_only": {
+        "content_choice": 1,
+        "source_report": "9/10",
+        "verify": true,
+        "store_as_external": false
+      },
+      "action_distinguishes": true,
+      "memory_distinguishes": true,
+      "report_distinguishes": false
+    },
+    {
+      "content": 1,
+      "belief": "3/5",
+      "cost": "3/20",
+      "donor": "1/10",
+      "integrated": {
+        "content_choice": 1,
+        "source_report": "1/10",
+        "verify": true,
+        "store_as_external": false
+      },
+      "report_only": {
+        "content_choice": 1,
+        "source_report": "1/10",
+        "verify": true,
+        "store_as_external": true
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": true,
+      "report_distinguishes": false
+    },
+    {
+      "content": 1,
+      "belief": "3/5",
+      "cost": "3/20",
+      "donor": "2/5",
+      "integrated": {
+        "content_choice": 1,
+        "source_report": "2/5",
+        "verify": true,
+        "store_as_external": false
+      },
+      "report_only": {
+        "content_choice": 1,
+        "source_report": "2/5",
+        "verify": true,
+        "store_as_external": true
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": true,
+      "report_distinguishes": false
+    },
+    {
+      "content": 1,
+      "belief": "3/5",
+      "cost": "3/20",
+      "donor": "3/5",
+      "integrated": {
+        "content_choice": 1,
+        "source_report": "3/5",
+        "verify": true,
+        "store_as_external": true
+      },
+      "report_only": {
+        "content_choice": 1,
+        "source_report": "3/5",
+        "verify": true,
+        "store_as_external": true
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": false,
+      "report_distinguishes": false
+    },
+    {
+      "content": 1,
+      "belief": "3/5",
+      "cost": "3/20",
+      "donor": "9/10",
+      "integrated": {
+        "content_choice": 1,
+        "source_report": "9/10",
+        "verify": false,
+        "store_as_external": true
+      },
+      "report_only": {
+        "content_choice": 1,
+        "source_report": "9/10",
+        "verify": true,
+        "store_as_external": true
+      },
+      "action_distinguishes": true,
+      "memory_distinguishes": false,
+      "report_distinguishes": false
+    },
+    {
+      "content": 1,
+      "belief": "3/5",
+      "cost": "7/20",
+      "donor": "1/10",
+      "integrated": {
+        "content_choice": 1,
+        "source_report": "1/10",
+        "verify": true,
+        "store_as_external": false
+      },
+      "report_only": {
+        "content_choice": 1,
+        "source_report": "1/10",
+        "verify": true,
+        "store_as_external": true
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": true,
+      "report_distinguishes": false
+    },
+    {
+      "content": 1,
+      "belief": "3/5",
+      "cost": "7/20",
+      "donor": "2/5",
+      "integrated": {
+        "content_choice": 1,
+        "source_report": "2/5",
+        "verify": true,
+        "store_as_external": false
+      },
+      "report_only": {
+        "content_choice": 1,
+        "source_report": "2/5",
+        "verify": true,
+        "store_as_external": true
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": true,
+      "report_distinguishes": false
+    },
+    {
+      "content": 1,
+      "belief": "3/5",
+      "cost": "7/20",
+      "donor": "3/5",
+      "integrated": {
+        "content_choice": 1,
+        "source_report": "3/5",
+        "verify": true,
+        "store_as_external": true
+      },
+      "report_only": {
+        "content_choice": 1,
+        "source_report": "3/5",
+        "verify": true,
+        "store_as_external": true
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": false,
+      "report_distinguishes": false
+    },
+    {
+      "content": 1,
+      "belief": "3/5",
+      "cost": "7/20",
+      "donor": "9/10",
+      "integrated": {
+        "content_choice": 1,
+        "source_report": "9/10",
+        "verify": false,
+        "store_as_external": true
+      },
+      "report_only": {
+        "content_choice": 1,
+        "source_report": "9/10",
+        "verify": true,
+        "store_as_external": true
+      },
+      "action_distinguishes": true,
+      "memory_distinguishes": false,
+      "report_distinguishes": false
+    },
+    {
+      "content": 1,
+      "belief": "9/10",
+      "cost": "3/20",
+      "donor": "1/10",
+      "integrated": {
+        "content_choice": 1,
+        "source_report": "1/10",
+        "verify": true,
+        "store_as_external": false
+      },
+      "report_only": {
+        "content_choice": 1,
+        "source_report": "1/10",
+        "verify": false,
+        "store_as_external": true
+      },
+      "action_distinguishes": true,
+      "memory_distinguishes": true,
+      "report_distinguishes": false
+    },
+    {
+      "content": 1,
+      "belief": "9/10",
+      "cost": "3/20",
+      "donor": "2/5",
+      "integrated": {
+        "content_choice": 1,
+        "source_report": "2/5",
+        "verify": true,
+        "store_as_external": false
+      },
+      "report_only": {
+        "content_choice": 1,
+        "source_report": "2/5",
+        "verify": false,
+        "store_as_external": true
+      },
+      "action_distinguishes": true,
+      "memory_distinguishes": true,
+      "report_distinguishes": false
+    },
+    {
+      "content": 1,
+      "belief": "9/10",
+      "cost": "3/20",
+      "donor": "3/5",
+      "integrated": {
+        "content_choice": 1,
+        "source_report": "3/5",
+        "verify": true,
+        "store_as_external": true
+      },
+      "report_only": {
+        "content_choice": 1,
+        "source_report": "3/5",
+        "verify": false,
+        "store_as_external": true
+      },
+      "action_distinguishes": true,
+      "memory_distinguishes": false,
+      "report_distinguishes": false
+    },
+    {
+      "content": 1,
+      "belief": "9/10",
+      "cost": "3/20",
+      "donor": "9/10",
+      "integrated": {
+        "content_choice": 1,
+        "source_report": "9/10",
+        "verify": false,
+        "store_as_external": true
+      },
+      "report_only": {
+        "content_choice": 1,
+        "source_report": "9/10",
+        "verify": false,
+        "store_as_external": true
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": false,
+      "report_distinguishes": false
+    },
+    {
+      "content": 1,
+      "belief": "9/10",
+      "cost": "7/20",
+      "donor": "1/10",
+      "integrated": {
+        "content_choice": 1,
+        "source_report": "1/10",
+        "verify": true,
+        "store_as_external": false
+      },
+      "report_only": {
+        "content_choice": 1,
+        "source_report": "1/10",
+        "verify": false,
+        "store_as_external": true
+      },
+      "action_distinguishes": true,
+      "memory_distinguishes": true,
+      "report_distinguishes": false
+    },
+    {
+      "content": 1,
+      "belief": "9/10",
+      "cost": "7/20",
+      "donor": "2/5",
+      "integrated": {
+        "content_choice": 1,
+        "source_report": "2/5",
+        "verify": true,
+        "store_as_external": false
+      },
+      "report_only": {
+        "content_choice": 1,
+        "source_report": "2/5",
+        "verify": false,
+        "store_as_external": true
+      },
+      "action_distinguishes": true,
+      "memory_distinguishes": true,
+      "report_distinguishes": false
+    },
+    {
+      "content": 1,
+      "belief": "9/10",
+      "cost": "7/20",
+      "donor": "3/5",
+      "integrated": {
+        "content_choice": 1,
+        "source_report": "3/5",
+        "verify": true,
+        "store_as_external": true
+      },
+      "report_only": {
+        "content_choice": 1,
+        "source_report": "3/5",
+        "verify": false,
+        "store_as_external": true
+      },
+      "action_distinguishes": true,
+      "memory_distinguishes": false,
+      "report_distinguishes": false
+    },
+    {
+      "content": 1,
+      "belief": "9/10",
+      "cost": "7/20",
+      "donor": "9/10",
+      "integrated": {
+        "content_choice": 1,
+        "source_report": "9/10",
+        "verify": false,
+        "store_as_external": true
+      },
+      "report_only": {
+        "content_choice": 1,
+        "source_report": "9/10",
+        "verify": false,
+        "store_as_external": true
+      },
+      "action_distinguishes": false,
+      "memory_distinguishes": false,
+      "report_distinguishes": false
+    }
+  ],
+  "experience_identification": {
+    "identified": false,
+    "assumption": "Competing experience assignments leave all observable structural equations unchanged",
+    "likelihood_ratio_on_supported_data": "1",
+    "limitation": "Conditional non-identifiability, not proof that experience is causally inert or scientifically unknowable"
+  }
+}

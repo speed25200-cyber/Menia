@@ -1,0 +1,7 @@
+{
+  "format": "menia-recall-policy",
+  "version": 1,
+  "model_sha256": "f2511e3a3831bada6e1ba256ffdf0ca3975cd119fd623046fad2f754de8b5bd1",
+  "max_age": 14,
+  "min_probability": 0.9
+}

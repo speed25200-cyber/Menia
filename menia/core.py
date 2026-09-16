@@ -49,23 +49,38 @@ class Memory:
         self.db.close()
 
 class Runtime:
-    def __init__(self, memory=None, capabilities=None):
+    def __init__(self, memory=None, capabilities=None, *, agent=None):
         self.memory = memory or Memory()
         self.capabilities = capabilities or Capabilities()
-        self.stopped = False
+        self.agent = agent
+        self.stopped = bool(agent and agent.stopped)
 
     def stop(self):
         self.stopped = True
+        if self.agent is not None:
+            self.agent.stop()
 
     def resume(self, *, user_requested=False):
         if not user_requested:
             raise PermissionError("Only the user may resume")
         self.stopped = False
+        if self.agent is not None:
+            self.agent.resume(user_requested=True)
+
+    def step(self, environment):
+        if self.stopped:
+            raise RuntimeError("Stopped")
+        if self.agent is None or not self.capabilities.memory:
+            raise RuntimeError("An agent with episode memory is required")
+        return self.agent.cycle(environment)
 
     def context(self, query):
         if self.stopped:
             raise RuntimeError("Stopped")
-        return {"capabilities": asdict(self.capabilities), "memory": self.memory.recall(query) if self.capabilities.memory else []}
+        value = {"capabilities": asdict(self.capabilities), "memory": self.memory.recall(query) if self.capabilities.memory else []}
+        if self.agent is not None and self.capabilities.memory:
+            value["agent"] = self.agent.context()
+        return value
 
 def parse_answer(text):
     value = json.loads(text)

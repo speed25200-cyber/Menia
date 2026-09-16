@@ -1,0 +1,8 @@
+# Optional CPU language path; functional agent itself uses Python standard only.
+torch==2.8.0
+numpy==2.2.6
+transformers==4.56.2
+accelerate==1.10.1
+safetensors==0.6.2
+huggingface-hub==0.36.2
+tokenizers==0.22.2

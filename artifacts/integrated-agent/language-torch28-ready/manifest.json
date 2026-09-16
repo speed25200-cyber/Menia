@@ -1,0 +1,20 @@
+{
+  "model": "Qwen/Qwen3-1.7B",
+  "requested_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "cpu_precision": "float32",
+  "status": "initializing",
+  "versions": {
+    "torch": "2.8.0+cpu",
+    "transformers": "4.56.2",
+    "numpy": "2.2.6",
+    "accelerate": "1.10.1"
+  },
+  "source_sha256": {
+    "menia/language.py": "56508f468828be64e655f2645e0972907c74acdbae7debeccd39324c36d25f7d",
+    "menia/conversation.py": "5e3ec6d8cc9ca32de687f36bab1be281970cc035194140eb24f10fce2c88c6cd",
+    "menia/agent.py": "2775f0852e3a1e644bc36460d558d9dd27b93540bf4f2cd698e46091bf9a6bf2",
+    "menia/core.py": "1a9bd6abd7628d9607be9d7f11e8811412a9500c8512f7559dd224c4dca9246a",
+    "research/evaluate_agent_language.py": "7eb3669b6a943d1ddb8c808b856cf220b0c76e809eba1a900f97ead6d6e6856b"
+  },
+  "scope": "four exploratory language checks, not a general language-quality benchmark"
+}

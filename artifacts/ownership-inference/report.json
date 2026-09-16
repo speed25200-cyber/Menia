@@ -1,0 +1,1644 @@
+{
+  "study": "Chancel, Ehrsson & Ma (2022), 10.7554/eLife.77221",
+  "scope": "Model replay and identification audit; no new fit or consciousness attribution",
+  "numpy": "2.3.5",
+  "source_manifest": [
+    {
+      "name": "elife-77221-fig1-data1-v3.xlsx",
+      "sha256": "7331235942a311fe6c84a75c25b5de053741bd25e129c1712ecb2fc25fbf48cb",
+      "bytes": 11021,
+      "url": "https://cdn.elifesciences.org/articles/77221/elife-77221-fig1-data1-v3.xlsx"
+    },
+    {
+      "name": "elife-77221-fig2-data1-v3.xlsx",
+      "sha256": "4c25f3cfa8a010ae7b6c0b6b73b4482a4ece63f17be8f80c6e6a5bd8a8b725cf",
+      "bytes": 93521,
+      "url": "https://cdn.elifesciences.org/articles/77221/elife-77221-fig2-data1-v3.xlsx"
+    },
+    {
+      "name": "elife-77221-fig3-data1-v3.xlsx",
+      "sha256": "8818b715f32c1d711b1bacae4769424a6af5f52e019ea39a859c86967f55a9ee",
+      "bytes": 23132,
+      "url": "https://cdn.elifesciences.org/articles/77221/elife-77221-fig3-data1-v3.xlsx"
+    }
+  ],
+  "cohort": {
+    "participant_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "participants": 15,
+    "tasks": 2,
+    "nominal_cells": 630,
+    "trials_per_cell_in_article": 12,
+    "usable_integer_cells": 609,
+    "nominal_judgments_in_usable_cells": 7308,
+    "unit": "aggregated values; trial order and actual denominators unavailable",
+    "fractional_block": {
+      "participant": 4,
+      "task": "synchrony",
+      "values": [
+        [
+          3.6,
+          7.2,
+          9.6,
+          7.2,
+          10.8,
+          9.6,
+          3.6
+        ],
+        [
+          6.0,
+          12.0,
+          8.4,
+          9.6,
+          9.6,
+          9.6,
+          2.4
+        ],
+        [
+          7.2,
+          9.6,
+          12.0,
+          10.8,
+          12.0,
+          7.2,
+          7.2
+        ]
+      ],
+      "fractional_cells": 17,
+      "omitted_cells_for_binomial_replay": 21,
+      "treatment": "Omit only this task block; retain ownership and published parameters unchanged"
+    }
+  },
+  "descriptive": {
+    "ownership": {
+      "yes_by_noise": [
+        635,
+        699,
+        789
+      ],
+      "trials_by_noise": [
+        1260,
+        1260,
+        1260
+      ],
+      "participant_ids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "delays_ms": [
+        -500,
+        -300,
+        -150,
+        0,
+        150,
+        300,
+        500
+      ]
+    },
+    "synchrony": {
+      "yes_by_noise": [
+        691,
+        717,
+        737
+      ],
+      "trials_by_noise": [
+        1176,
+        1176,
+        1176
+      ],
+      "participant_ids": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "delays_ms": [
+        -300,
+        -150,
+        -50,
+        0,
+        50,
+        150,
+        300
+      ]
+    }
+  },
+  "intervention_example": {
+    "scope": "Four programmed parameter settings, not human observations",
+    "source_sigma": 348.0,
+    "lapse": 0.0,
+    "records": [
+      {
+        "prior": 0.5,
+        "log_threshold": 0.0,
+        "measurement_and_stimulus_ms": 300.0,
+        "sigma_ms": 150.0,
+        "posterior_at_measurement": 0.31867532630609974,
+        "response_probability_at_stimulus": 0.3021681012272898
+      },
+      {
+        "prior": 0.5,
+        "log_threshold": -2.1972245773362196,
+        "measurement_and_stimulus_ms": 300.0,
+        "sigma_ms": 150.0,
+        "posterior_at_measurement": 0.31867532630609974,
+        "response_probability_at_stimulus": 0.7648249717019133
+      },
+      {
+        "prior": 0.9,
+        "log_threshold": 0.0,
+        "measurement_and_stimulus_ms": 300.0,
+        "sigma_ms": 150.0,
+        "posterior_at_measurement": 0.808045254801976,
+        "response_probability_at_stimulus": 0.7648249717019133
+      },
+      {
+        "prior": 0.9,
+        "log_threshold": -2.1972245773362196,
+        "measurement_and_stimulus_ms": 300.0,
+        "sigma_ms": 150.0,
+        "posterior_at_measurement": 0.808045254801976,
+        "response_probability_at_stimulus": 0.9397194717223016
+      }
+    ]
+  },
+  "published_nll_comparisons": {
+    "scope": "Published NLL values; arithmetic only, not independently reproduced likelihoods",
+    "BCI_minus_FC_AIC_and_BIC": {
+      "sum": -64.64627487853903,
+      "participant_differences": [
+        -6.883221857048994,
+        -2.5368656399909923,
+        -5.195732777408011,
+        -6.795359230537997,
+        -4.053557173746981,
+        -18.45399355870603,
+        1.2238396756119982,
+        -2.0290606235314215,
+        6.167316668707997,
+        -17.131111531903997,
+        -5.607483560507205,
+        -1.7071726799013902,
+        -6.671699244166007,
+        4.640940556542006,
+        0.3868860980479951
+      ],
+      "negative_count": 11,
+      "n": 15,
+      "percentile_95": [
+        -117.6284258340714,
+        -16.03833213336483
+      ],
+      "seed": 71500,
+      "draws": 10000
+    },
+    "all_15": {
+      "ids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "different_minus_shared_AIC": {
+        "sum": -352.43187493955594,
+        "participant_differences": [
+          -31.117245610421946,
+          -77.140656139572,
+          -2.3325104569120185,
+          -1.028218473232073,
+          -0.330721919899986,
+          -0.6030468460599536,
+          -6.600073802889938,
+          -14.758214648036017,
+          -29.356231708886014,
+          -16.772414819196,
+          -1.234853209430014,
+          -3.8861467994800023,
+          -63.253107282244,
+          -96.50692777365197,
+          -7.511505449644005
+        ],
+        "negative_count": 15,
+        "n": 15,
+        "percentile_95": [
+          -597.8867791525302,
+          -147.8829104567868
+        ],
+        "seed": 71501,
+        "draws": 10000
+      },
+      "different_minus_shared_BIC": {
+        "sum": -289.0932309184854,
+        "participant_differences": [
+          -26.89466934235058,
+          -72.91807987150064,
+          1.8900658111593502,
+          3.194357794839296,
+          3.8918543481713828,
+          3.619529422011415,
+          -2.377497534818569,
+          -10.535638379964649,
+          -25.133655440814646,
+          -12.549838551124633,
+          2.987723058641355,
+          0.33642946859136647,
+          -59.03053101417263,
+          -92.2843515055806,
+          -3.2889291815726365
+        ],
+        "negative_count": 9,
+        "n": 15,
+        "percentile_95": [
+          -534.5481351314595,
+          -84.54426643571628
+        ],
+        "seed": 71501,
+        "draws": 10000
+      }
+    },
+    "without_S4": {
+      "ids": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "different_minus_shared_AIC": {
+        "sum": -351.40365646632387,
+        "participant_differences": [
+          -31.117245610421946,
+          -77.140656139572,
+          -2.3325104569120185,
+          -0.330721919899986,
+          -0.6030468460599536,
+          -6.600073802889938,
+          -14.758214648036017,
+          -29.356231708886014,
+          -16.772414819196,
+          -1.234853209430014,
+          -3.8861467994800023,
+          -63.253107282244,
+          -96.50692777365197,
+          -7.511505449644005
+        ],
+        "negative_count": 14,
+        "n": 14,
+        "percentile_95": [
+          -591.2560535997711,
+          -148.20919078574133
+        ],
+        "seed": 71501,
+        "draws": 10000
+      },
+      "different_minus_shared_BIC": {
+        "sum": -292.2875887133247,
+        "participant_differences": [
+          -26.89466934235058,
+          -72.91807987150064,
+          1.8900658111593502,
+          3.8918543481713828,
+          3.619529422011415,
+          -2.377497534818569,
+          -10.535638379964649,
+          -25.133655440814646,
+          -12.549838551124633,
+          2.987723058641355,
+          0.33642946859136647,
+          -59.03053101417263,
+          -92.2843515055806,
+          -3.2889291815726365
+        ],
+        "negative_count": 9,
+        "n": 14,
+        "percentile_95": [
+          -532.1399858467722,
+          -89.09312303274218
+        ],
+        "seed": 71501,
+        "draws": 10000
+      }
+    }
+  },
+  "replays": {
+    "printed_source_noise": {
+      "source_sigma": 348.0,
+      "records": [
+        {
+          "participant": 1,
+          "models": {
+            "BCI": {
+              "nll": 98.90917164471722,
+              "published_nll": 98.9015944267885,
+              "difference": 0.007577217928712798
+            },
+            "FC": {
+              "nll": 102.34320535531255,
+              "published_nll": 102.343205355313,
+              "difference": -4.547473508864641e-13
+            },
+            "shared": {
+              "nll": 268.1870396353943,
+              "published_nll": 257.663916677743,
+              "difference": 10.52312295765131
+            },
+            "different": {
+              "nll": 245.3795266146534,
+              "published_nll": 241.105293872532,
+              "difference": 4.274232742121399
+            }
+          }
+        },
+        {
+          "participant": 2,
+          "models": {
+            "BCI": {
+              "nll": 90.38568016267668,
+              "published_nll": 90.3937245189125,
+              "difference": -0.008044356235828332
+            },
+            "FC": {
+              "nll": 91.66215733890802,
+              "published_nll": 91.662157338908,
+              "difference": 1.4210854715202004e-14
+            },
+            "shared": {
+              "nll": 228.26423539175792,
+              "published_nll": 227.419532221898,
+              "difference": 0.8447031698599119
+            },
+            "different": {
+              "nll": 188.0840444552527,
+              "published_nll": 187.849204152112,
+              "difference": 0.23484030314068605
+            }
+          }
+        },
+        {
+          "participant": 3,
+          "models": {
+            "BCI": {
+              "nll": 106.5769534636723,
+              "published_nll": 106.533171991349,
+              "difference": 0.043781472323303205
+            },
+            "FC": {
+              "nll": 109.13103838005286,
+              "published_nll": 109.131038380053,
+              "difference": -1.4210854715202004e-13
+            },
+            "shared": {
+              "nll": 272.7243303961952,
+              "published_nll": 262.41855226681,
+              "difference": 10.305778129385203
+            },
+            "different": {
+              "nll": 267.58321862317894,
+              "published_nll": 260.252297038354,
+              "difference": 7.330921584824921
+            }
+          }
+        },
+        {
+          "participant": 4,
+          "models": {
+            "BCI": {
+              "nll": 140.38116504117465,
+              "published_nll": 140.218597018478,
+              "difference": 0.16256802269666082
+            },
+            "FC": {
+              "nll": 143.61627663374733,
+              "published_nll": 143.616276633747,
+              "difference": 3.410605131648481e-13
+            },
+            "shared": {
+              "nll": null,
+              "published_nll": 277.663653847205,
+              "difference": null,
+              "status": "Not replayed: synchrony counts are fractional; no rounding or inferred denominator"
+            },
+            "different": {
+              "nll": null,
+              "published_nll": 276.149544610589,
+              "difference": null,
+              "status": "Not replayed: synchrony counts are fractional; no rounding or inferred denominator"
+            }
+          }
+        },
+        {
+          "participant": 5,
+          "models": {
+            "BCI": {
+              "nll": 69.83810511633109,
+              "published_nll": 69.8212974739537,
+              "difference": 0.016807642377386856
+            },
+            "FC": {
+              "nll": 71.84807606082721,
+              "published_nll": 71.8480760608272,
+              "difference": 1.4210854715202004e-14
+            },
+            "shared": {
+              "nll": 191.29629856073325,
+              "published_nll": 188.641707513013,
+              "difference": 2.6545910477202597
+            },
+            "different": {
+              "nll": 188.7357048176174,
+              "published_nll": 187.476346553063,
+              "difference": 1.2593582645544075
+            }
+          }
+        },
+        {
+          "participant": 6,
+          "models": {
+            "BCI": {
+              "nll": 129.4060768651094,
+              "published_nll": 129.345057429523,
+              "difference": 0.06101943558641665
+            },
+            "FC": {
+              "nll": 138.57205420887587,
+              "published_nll": 138.572054208876,
+              "difference": -1.4210854715202004e-13
+            },
+            "shared": {
+              "nll": 246.24460448491752,
+              "published_nll": 247.479576525007,
+              "difference": -1.234972040089474
+            },
+            "different": {
+              "nll": 245.00306666109344,
+              "published_nll": 246.178053101977,
+              "difference": -1.174986440883572
+            }
+          }
+        },
+        {
+          "participant": 7,
+          "models": {
+            "BCI": {
+              "nll": 161.16416452803344,
+              "published_nll": 161.163564318271,
+              "difference": 0.000600209762438908
+            },
+            "FC": {
+              "nll": 160.55164448046492,
+              "published_nll": 160.551644480465,
+              "difference": -8.526512829121202e-14
+            },
+            "shared": {
+              "nll": 322.73875422245067,
+              "published_nll": 322.538697573481,
+              "difference": 0.200056648969678
+            },
+            "different": {
+              "nll": 318.72881320832886,
+              "published_nll": 318.238660672036,
+              "difference": 0.4901525362928396
+            }
+          }
+        },
+        {
+          "participant": 8,
+          "models": {
+            "BCI": {
+              "nll": 72.65482022416148,
+              "published_nll": 72.6533812729483,
+              "difference": 0.0014389512131884885
+            },
+            "FC": {
+              "nll": 73.66791158471396,
+              "published_nll": 73.667911584714,
+              "difference": -4.263256414560601e-14
+            },
+            "shared": {
+              "nll": 171.62636883362714,
+              "published_nll": 168.714826848217,
+              "difference": 2.911541985410139
+            },
+            "different": {
+              "nll": 160.89487671929828,
+              "published_nll": 160.335719524199,
+              "difference": 0.5591571950992886
+            }
+          }
+        },
+        {
+          "participant": 9,
+          "models": {
+            "BCI": {
+              "nll": 108.09344044155688,
+              "published_nll": 108.101128443288,
+              "difference": -0.007688001731125382
+            },
+            "FC": {
+              "nll": 105.01747010893432,
+              "published_nll": 105.017470108934,
+              "difference": 3.126388037344441e-13
+            },
+            "shared": {
+              "nll": 228.61097020589867,
+              "published_nll": 226.146035219014,
+              "difference": 2.464934986884657
+            },
+            "different": {
+              "nll": 210.63673382242925,
+              "published_nll": 210.467919364571,
+              "difference": 0.16881445785824667
+            }
+          }
+        },
+        {
+          "participant": 10,
+          "models": {
+            "BCI": {
+              "nll": 126.69276352344882,
+              "published_nll": 126.699747427708,
+              "difference": -0.006983904259186602
+            },
+            "FC": {
+              "nll": 135.2653031936597,
+              "published_nll": 135.26530319366,
+              "difference": -3.126388037344441e-13
+            },
+            "shared": {
+              "nll": 273.6985008550762,
+              "published_nll": 271.108558548653,
+              "difference": 2.589942306423211
+            },
+            "different": {
+              "nll": 261.3822738497054,
+              "published_nll": 261.722351139055,
+              "difference": -0.3400772893495514
+            }
+          }
+        },
+        {
+          "participant": 11,
+          "models": {
+            "BCI": {
+              "nll": 90.5324314322785,
+              "published_nll": 90.479525890416,
+              "difference": 0.05290554186250063
+            },
+            "FC": {
+              "nll": 93.28326767066957,
+              "published_nll": 93.2832676706696,
+              "difference": -2.842170943040401e-14
+            },
+            "shared": {
+              "nll": 209.51083624745868,
+              "published_nll": 203.269496095883,
+              "difference": 6.241340151575685
+            },
+            "different": {
+              "nll": 205.38850064831172,
+              "published_nll": 201.652069491168,
+              "difference": 3.736431157143727
+            }
+          }
+        },
+        {
+          "participant": 12,
+          "models": {
+            "BCI": {
+              "nll": 85.75484210659032,
+              "published_nll": 85.7455343844407,
+              "difference": 0.009307722149614506
+            },
+            "FC": {
+              "nll": 86.59912072439131,
+              "published_nll": 86.5991207243914,
+              "difference": -8.526512829121202e-14
+            },
+            "shared": {
+              "nll": 198.29734605871758,
+              "published_nll": 195.071995824674,
+              "difference": 3.2253502340435887
+            },
+            "different": {
+              "nll": 193.11665618763635,
+              "published_nll": 192.128922424934,
+              "difference": 0.9877337627023621
+            }
+          }
+        },
+        {
+          "participant": 13,
+          "models": {
+            "BCI": {
+              "nll": 107.70566539807395,
+              "published_nll": 107.623733422504,
+              "difference": 0.08193197556994392
+            },
+            "FC": {
+              "nll": 110.95958304458664,
+              "published_nll": 110.959583044587,
+              "difference": -3.694822225952521e-13
+            },
+            "shared": {
+              "nll": 223.85444936844925,
+              "published_nll": 227.62457805199,
+              "difference": -3.7701286835407473
+            },
+            "different": {
+              "nll": 194.91547586884087,
+              "published_nll": 194.998024410868,
+              "difference": -0.08254854202712636
+            }
+          }
+        },
+        {
+          "participant": 14,
+          "models": {
+            "BCI": {
+              "nll": 74.91402346614815,
+              "published_nll": 74.9121739591849,
+              "difference": 0.0018495069632535888
+            },
+            "FC": {
+              "nll": 72.59170368091392,
+              "published_nll": 72.5917036809139,
+              "difference": 2.842170943040401e-14
+            },
+            "shared": {
+              "nll": 233.38277258768653,
+              "published_nll": 224.943096673786,
+              "difference": 8.439675913900544
+            },
+            "different": {
+              "nll": 177.51496530634844,
+              "published_nll": 175.68963278696,
+              "difference": 1.8253325193884393
+            }
+          }
+        },
+        {
+          "participant": 15,
+          "models": {
+            "BCI": {
+              "nll": 104.04583983762461,
+              "published_nll": 104.045539924061,
+              "difference": 0.0002999135636088113
+            },
+            "FC": {
+              "nll": 103.85209687503725,
+              "published_nll": 103.852096875037,
+              "difference": 2.4158453015843406e-13
+            },
+            "shared": {
+              "nll": 207.99090228363679,
+              "published_nll": 207.290778689691,
+              "difference": 0.7001235939457899
+            },
+            "different": {
+              "nll": 202.69141372274646,
+              "published_nll": 202.535025964869,
+              "difference": 0.15638775787746795
+            }
+          }
+        }
+      ],
+      "joint_comparison_participant_ids": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "max_absolute_nll_error_by_model": {
+        "BCI": 0.16256802269666082,
+        "FC": 4.547473508864641e-13,
+        "shared": 10.52312295765131,
+        "different": 7.330921584824921
+      },
+      "score_scope": "Penalized NLL at published parameters, without establishing that they maximize this implementation",
+      "comparisons": {
+        "BCI_minus_FC_2deltaNLL": {
+          "sum": -63.81153217899583,
+          "participant_differences": [
+            -6.868067421190659,
+            -2.5529543524626774,
+            -5.108169832761121,
+            -6.4702231851453575,
+            -4.019941888992236,
+            -18.331954687532914,
+            1.2250400951370466,
+            -2.0261827211049592,
+            6.151940665245121,
+            -17.145079340421745,
+            -5.501672476782147,
+            -1.6885572356019907,
+            -6.50783529302538,
+            4.644639570468456,
+            0.3874859251747296
+          ],
+          "negative_count": 11,
+          "n": 15,
+          "percentile_95": [
+            -116.38770859417295,
+            -15.54937266982101
+          ],
+          "seed": 71500,
+          "draws": 10000
+        },
+        "different_minus_shared_AIC_form": {
+          "sum": -404.7442772531163,
+          "participant_differences": [
+            -43.61502604148177,
+            -78.36038187301045,
+            -8.282223546032583,
+            -3.1211874862316904,
+            -0.4830756476481497,
+            -6.0198820282436145,
+            -19.462984228657717,
+            -33.948472766938835,
+            -22.632454010741526,
+            -6.244671198293929,
+            -8.361379742162455,
+            -55.87794699921676,
+            -109.73561456267618,
+            -8.59897712178065
+          ],
+          "negative_count": 14,
+          "n": 14,
+          "percentile_95": [
+            -654.8869174832665,
+            -196.42646895473413
+          ],
+          "seed": 71501,
+          "draws": 10000
+        },
+        "different_minus_shared_BIC_form": {
+          "sum": -345.6282095001171,
+          "participant_differences": [
+            -39.3924497734104,
+            -74.13780560493909,
+            -4.059647277961214,
+            1.1013887818396784,
+            3.739500620423219,
+            -1.7973057601722457,
+            -15.24040796058635,
+            -29.725896498867467,
+            -18.409877742670158,
+            -2.0220949302225604,
+            -4.138803474091087,
+            -51.65537073114539,
+            -105.51303829460481,
+            -4.3764008537092804
+          ],
+          "negative_count": 12,
+          "n": 14,
+          "percentile_95": [
+            -595.7708497302675,
+            -137.310401201735
+          ],
+          "seed": 71501,
+          "draws": 10000
+        }
+      }
+    },
+    "derived_source_noise": {
+      "source_sigma": 347.6108935769035,
+      "records": [
+        {
+          "participant": 1,
+          "models": {
+            "BCI": {
+              "nll": 98.90937918483024,
+              "published_nll": 98.9015944267885,
+              "difference": 0.00778475804173695
+            },
+            "FC": {
+              "nll": 102.34320535531255,
+              "published_nll": 102.343205355313,
+              "difference": -4.547473508864641e-13
+            },
+            "shared": {
+              "nll": 268.1833911209894,
+              "published_nll": 257.663916677743,
+              "difference": 10.519474443246452
+            },
+            "different": {
+              "nll": 245.35909538909942,
+              "published_nll": 241.105293872532,
+              "difference": 4.253801516567421
+            }
+          }
+        },
+        {
+          "participant": 2,
+          "models": {
+            "BCI": {
+              "nll": 90.38561424271845,
+              "published_nll": 90.3937245189125,
+              "difference": -0.008110276194059907
+            },
+            "FC": {
+              "nll": 91.66215733890802,
+              "published_nll": 91.662157338908,
+              "difference": 1.4210854715202004e-14
+            },
+            "shared": {
+              "nll": 228.265918967269,
+              "published_nll": 227.419532221898,
+              "difference": 0.8463867453709781
+            },
+            "different": {
+              "nll": 188.082249274941,
+              "published_nll": 187.849204152112,
+              "difference": 0.23304512282899736
+            }
+          }
+        },
+        {
+          "participant": 3,
+          "models": {
+            "BCI": {
+              "nll": 106.57823702440912,
+              "published_nll": 106.533171991349,
+              "difference": 0.045065033060126325
+            },
+            "FC": {
+              "nll": 109.13103838005286,
+              "published_nll": 109.131038380053,
+              "difference": -1.4210854715202004e-13
+            },
+            "shared": {
+              "nll": 272.7044910008253,
+              "published_nll": 262.41855226681,
+              "difference": 10.285938734015303
+            },
+            "different": {
+              "nll": 267.5530396732655,
+              "published_nll": 260.252297038354,
+              "difference": 7.300742634911501
+            }
+          }
+        },
+        {
+          "participant": 4,
+          "models": {
+            "BCI": {
+              "nll": 140.38353020584418,
+              "published_nll": 140.218597018478,
+              "difference": 0.1649331873661879
+            },
+            "FC": {
+              "nll": 143.61627663374733,
+              "published_nll": 143.616276633747,
+              "difference": 3.410605131648481e-13
+            },
+            "shared": {
+              "nll": null,
+              "published_nll": 277.663653847205,
+              "difference": null,
+              "status": "Not replayed: synchrony counts are fractional; no rounding or inferred denominator"
+            },
+            "different": {
+              "nll": null,
+              "published_nll": 276.149544610589,
+              "difference": null,
+              "status": "Not replayed: synchrony counts are fractional; no rounding or inferred denominator"
+            }
+          }
+        },
+        {
+          "participant": 5,
+          "models": {
+            "BCI": {
+              "nll": 69.8385228449764,
+              "published_nll": 69.8212974739537,
+              "difference": 0.01722537102268973
+            },
+            "FC": {
+              "nll": 71.84807606082721,
+              "published_nll": 71.8480760608272,
+              "difference": 1.4210854715202004e-14
+            },
+            "shared": {
+              "nll": 191.2919433956123,
+              "published_nll": 188.641707513013,
+              "difference": 2.650235882599304
+            },
+            "different": {
+              "nll": 188.72943509292432,
+              "published_nll": 187.476346553063,
+              "difference": 1.2530885398613236
+            }
+          }
+        },
+        {
+          "participant": 6,
+          "models": {
+            "BCI": {
+              "nll": 129.40744278046026,
+              "published_nll": 129.345057429523,
+              "difference": 0.062385350937262274
+            },
+            "FC": {
+              "nll": 138.57205420887587,
+              "published_nll": 138.572054208876,
+              "difference": -1.4210854715202004e-13
+            },
+            "shared": {
+              "nll": 246.24522114958359,
+              "published_nll": 247.479576525007,
+              "difference": -1.2343553754234051
+            },
+            "different": {
+              "nll": 245.0025441323117,
+              "published_nll": 246.178053101977,
+              "difference": -1.1755089696653158
+            }
+          }
+        },
+        {
+          "participant": 7,
+          "models": {
+            "BCI": {
+              "nll": 161.16417602641502,
+              "published_nll": 161.163564318271,
+              "difference": 0.0006117081440208949
+            },
+            "FC": {
+              "nll": 160.55164448046492,
+              "published_nll": 160.551644480465,
+              "difference": -8.526512829121202e-14
+            },
+            "shared": {
+              "nll": 322.7387464825466,
+              "published_nll": 322.538697573481,
+              "difference": 0.20004890906562878
+            },
+            "different": {
+              "nll": 318.72657681841383,
+              "published_nll": 318.238660672036,
+              "difference": 0.4879161463778132
+            }
+          }
+        },
+        {
+          "participant": 8,
+          "models": {
+            "BCI": {
+              "nll": 72.65492788508692,
+              "published_nll": 72.6533812729483,
+              "difference": 0.0015466121386253917
+            },
+            "FC": {
+              "nll": 73.66791158471396,
+              "published_nll": 73.667911584714,
+              "difference": -4.263256414560601e-14
+            },
+            "shared": {
+              "nll": 171.62569440542455,
+              "published_nll": 168.714826848217,
+              "difference": 2.9108675572075526
+            },
+            "different": {
+              "nll": 160.89170908103736,
+              "published_nll": 160.335719524199,
+              "difference": 0.5559895568383695
+            }
+          }
+        },
+        {
+          "participant": 9,
+          "models": {
+            "BCI": {
+              "nll": 108.09334643519122,
+              "published_nll": 108.101128443288,
+              "difference": -0.007782008096782533
+            },
+            "FC": {
+              "nll": 105.01747010893432,
+              "published_nll": 105.017470108934,
+              "difference": 3.126388037344441e-13
+            },
+            "shared": {
+              "nll": 228.61234929135748,
+              "published_nll": 226.146035219014,
+              "difference": 2.466314072343465
+            },
+            "different": {
+              "nll": 210.6355021764704,
+              "published_nll": 210.467919364571,
+              "difference": 0.1675828118993934
+            }
+          }
+        },
+        {
+          "participant": 10,
+          "models": {
+            "BCI": {
+              "nll": 126.69272781427092,
+              "published_nll": 126.699747427708,
+              "difference": -0.007019613437080352
+            },
+            "FC": {
+              "nll": 135.2653031936597,
+              "published_nll": 135.26530319366,
+              "difference": -3.126388037344441e-13
+            },
+            "shared": {
+              "nll": 273.70010986268835,
+              "published_nll": 271.108558548653,
+              "difference": 2.591551314035371
+            },
+            "different": {
+              "nll": 261.37839259807083,
+              "published_nll": 261.722351139055,
+              "difference": -0.343958540984147
+            }
+          }
+        },
+        {
+          "participant": 11,
+          "models": {
+            "BCI": {
+              "nll": 90.5340027330767,
+              "published_nll": 90.479525890416,
+              "difference": 0.05447684266070496
+            },
+            "FC": {
+              "nll": 93.28326767066957,
+              "published_nll": 93.2832676706696,
+              "difference": -2.842170943040401e-14
+            },
+            "shared": {
+              "nll": 209.49874965820317,
+              "published_nll": 203.269496095883,
+              "difference": 6.229253562320167
+            },
+            "different": {
+              "nll": 205.3725641867433,
+              "published_nll": 201.652069491168,
+              "difference": 3.7204946955752973
+            }
+          }
+        },
+        {
+          "participant": 12,
+          "models": {
+            "BCI": {
+              "nll": 85.75510426863096,
+              "published_nll": 85.7455343844407,
+              "difference": 0.009569884190256062
+            },
+            "FC": {
+              "nll": 86.59912072439131,
+              "published_nll": 86.5991207243914,
+              "difference": -8.526512829121202e-14
+            },
+            "shared": {
+              "nll": 198.29417002184334,
+              "published_nll": 195.071995824674,
+              "difference": 3.222174197169352
+            },
+            "different": {
+              "nll": 193.11211726494406,
+              "published_nll": 192.128922424934,
+              "difference": 0.9831948400100714
+            }
+          }
+        },
+        {
+          "participant": 13,
+          "models": {
+            "BCI": {
+              "nll": 107.70824920062148,
+              "published_nll": 107.623733422504,
+              "difference": 0.08451577811747768
+            },
+            "FC": {
+              "nll": 110.95958304458664,
+              "published_nll": 110.959583044587,
+              "difference": -3.694822225952521e-13
+            },
+            "shared": {
+              "nll": 223.85268247109664,
+              "published_nll": 227.62457805199,
+              "difference": -3.771895580893357
+            },
+            "different": {
+              "nll": 194.9154771995428,
+              "published_nll": 194.998024410868,
+              "difference": -0.08254721132519194
+            }
+          }
+        },
+        {
+          "participant": 14,
+          "models": {
+            "BCI": {
+              "nll": 74.91404767047686,
+              "published_nll": 74.9121739591849,
+              "difference": 0.0018737112919637866
+            },
+            "FC": {
+              "nll": 72.59170368091392,
+              "published_nll": 72.5917036809139,
+              "difference": 2.842170943040401e-14
+            },
+            "shared": {
+              "nll": 233.38583144420676,
+              "published_nll": 224.943096673786,
+              "difference": 8.44273477042077
+            },
+            "different": {
+              "nll": 177.50585337313248,
+              "published_nll": 175.68963278696,
+              "difference": 1.8162205861724772
+            }
+          }
+        },
+        {
+          "participant": 15,
+          "models": {
+            "BCI": {
+              "nll": 104.04584936474163,
+              "published_nll": 104.045539924061,
+              "difference": 0.0003094406806241068
+            },
+            "FC": {
+              "nll": 103.85209687503725,
+              "published_nll": 103.852096875037,
+              "difference": 2.4158453015843406e-13
+            },
+            "shared": {
+              "nll": 207.99120010828625,
+              "published_nll": 207.290778689691,
+              "difference": 0.7004214185952549
+            },
+            "different": {
+              "nll": 202.690764630045,
+              "published_nll": 202.535025964869,
+              "difference": 0.15573866517601687
+            }
+          }
+        }
+      ],
+      "joint_comparison_participant_ids": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "max_absolute_nll_error_by_model": {
+        "BCI": 0.1649331873661879,
+        "FC": 4.547473508864641e-13,
+        "shared": 10.519474443246452,
+        "different": 7.300742634911501
+      },
+      "score_scope": "Penalized NLL at published parameters, without establishing that they maximize this implementation",
+      "comparisons": {
+        "BCI_minus_FC_2deltaNLL": {
+          "sum": -63.791503318690104,
+          "participant_differences": [
+            -6.867652340964611,
+            -2.5530861923791406,
+            -5.1056027112874744,
+            -6.465492855806303,
+            -4.01910643170163,
+            -18.329222856831223,
+            1.2250630919002106,
+            -2.0259673992540854,
+            6.151752652513807,
+            -17.145150758777532,
+            -5.4985298751857385,
+            -1.6880329115207076,
+            -6.5026676879303125,
+            4.644687979125877,
+            0.38750497940876016
+          ],
+          "negative_count": 11,
+          "n": 15,
+          "percentile_95": [
+            -116.37675486971949,
+            -15.542362068917717
+          ],
+          "seed": 71500,
+          "draws": 10000
+        },
+        "different_minus_shared_AIC_form": {
+          "sum": -404.8703569779815,
+          "participant_differences": [
+            -43.64859146378001,
+            -78.36733938465596,
+            -8.302902655119624,
+            -3.125016605375947,
+            -0.485354034543775,
+            -6.024339328265569,
+            -19.467970648774383,
+            -33.95369422977416,
+            -22.643434529235037,
+            -6.252370942919754,
+            -8.364105513798563,
+            -55.87441054310767,
+            -109.75995614214855,
+            -8.600870956482481
+          ],
+          "negative_count": 14,
+          "n": 14,
+          "percentile_95": [
+            -655.0774278522568,
+            -196.5090959902643
+          ],
+          "seed": 71501,
+          "draws": 10000
+        },
+        "different_minus_shared_BIC_form": {
+          "sum": -345.7542892249823,
+          "participant_differences": [
+            -39.426015195708636,
+            -74.1447631165846,
+            -4.080326387048255,
+            1.0975596626954216,
+            3.7372222335275938,
+            -1.8017630601942,
+            -15.245394380703015,
+            -29.73111796170279,
+            -18.42085826116367,
+            -2.029794674848385,
+            -4.141529245727194,
+            -51.6518342750363,
+            -105.53737987407719,
+            -4.3782946884111125
+          ],
+          "negative_count": 12,
+          "n": 14,
+          "percentile_95": [
+            -595.9613600992578,
+            -137.39302823726518
+          ],
+          "seed": 71501,
+          "draws": 10000
+        }
+      }
+    }
+  },
+  "prior_threshold_equivalence": {
+    "source_sigma": 348.0,
+    "grid": {
+      "start": -1500,
+      "end": 1500,
+      "points": 301,
+      "noise_levels": 3,
+      "task_participant_settings": 30
+    },
+    "records": [
+      {
+        "participant": 1,
+        "task": "ownership",
+        "published_prior": 0.765952117630877,
+        "shared_prior": 0.5,
+        "equivalent_log_threshold": -1.1855939382326885,
+        "max_response_probability_error": 0.0,
+        "max_posterior_change_on_grid": 0.2879196148946795
+      },
+      {
+        "participant": 1,
+        "task": "synchrony",
+        "published_prior": 0.47488597465217,
+        "shared_prior": 0.5,
+        "equivalent_log_threshold": 0.10054070829439898,
+        "max_response_probability_error": 0.0,
+        "max_posterior_change_on_grid": 0.025129843520996398
+      },
+      {
+        "participant": 2,
+        "task": "ownership",
+        "published_prior": 0.999275953212677,
+        "shared_prior": 0.5,
+        "equivalent_log_threshold": -7.229930235256507,
+        "max_response_probability_error": 0.0,
+        "max_posterior_change_on_grid": 0.9475665255254851
+      },
+      {
+        "participant": 2,
+        "task": "synchrony",
+        "published_prior": 0.778269519295196,
+        "shared_prior": 0.5,
+        "equivalent_log_threshold": -1.2556102965798852,
+        "max_response_probability_error": 0.0,
+        "max_posterior_change_on_grid": 0.3039622693902085
+      },
+      {
+        "participant": 3,
+        "task": "ownership",
+        "published_prior": 0.522842390962853,
+        "shared_prior": 0.5,
+        "equivalent_log_threshold": -0.09143320935537469,
+        "max_response_probability_error": 0.0,
+        "max_posterior_change_on_grid": 0.022852302504773214
+      },
+      {
+        "participant": 3,
+        "task": "synchrony",
+        "published_prior": 0.450140595100936,
+        "shared_prior": 0.5,
+        "equivalent_log_threshold": 0.20010265056720133,
+        "max_response_probability_error": 0.0,
+        "max_posterior_change_on_grid": 0.04998394961904101
+      },
+      {
+        "participant": 4,
+        "task": "ownership",
+        "published_prior": 0.836002969889012,
+        "shared_prior": 0.5,
+        "equivalent_log_threshold": -1.6287838469963243,
+        "max_response_probability_error": 0.0,
+        "max_posterior_change_on_grid": 0.38608837958214326
+      },
+      {
+        "participant": 4,
+        "task": "synchrony",
+        "published_prior": 0.678786388335229,
+        "shared_prior": 0.5,
+        "equivalent_log_threshold": -0.7482001219067531,
+        "max_response_probability_error": 0.0,
+        "max_posterior_change_on_grid": 0.18486938588058266
+      },
+      {
+        "participant": 5,
+        "task": "ownership",
+        "published_prior": 0.707882879157114,
+        "shared_prior": 0.5,
+        "equivalent_log_threshold": -0.8851238344635008,
+        "max_response_probability_error": 0.0,
+        "max_posterior_change_on_grid": 0.21772939089304344
+      },
+      {
+        "participant": 5,
+        "task": "synchrony",
+        "published_prior": 0.611960286189788,
+        "shared_prior": 0.5,
+        "equivalent_log_threshold": -0.4555596989937095,
+        "max_response_probability_error": 0.0,
+        "max_posterior_change_on_grid": 0.1133999811323384
+      },
+      {
+        "participant": 6,
+        "task": "ownership",
+        "published_prior": 0.625217661574072,
+        "shared_prior": 0.5,
+        "equivalent_log_threshold": -0.5117544210359806,
+        "max_response_probability_error": 0.0,
+        "max_posterior_change_on_grid": 0.12723829136124215
+      },
+      {
+        "participant": 6,
+        "task": "synchrony",
+        "published_prior": 0.570680785517072,
+        "shared_prior": 0.5,
+        "equivalent_log_threshold": -0.2846292767693843,
+        "max_response_probability_error": 0.0,
+        "max_posterior_change_on_grid": 0.07103719395287694
+      },
+      {
+        "participant": 7,
+        "task": "ownership",
+        "published_prior": 0.916388269604386,
+        "shared_prior": 0.5,
+        "equivalent_log_threshold": -2.3942563239940773,
+        "max_response_probability_error": 0.0,
+        "max_posterior_change_on_grid": 0.5359398919733739
+      },
+      {
+        "participant": 7,
+        "task": "synchrony",
+        "published_prior": 0.503465407844533,
+        "shared_prior": 0.5,
+        "equivalent_log_threshold": -0.013861853337923224,
+        "max_response_probability_error": 0.0,
+        "max_posterior_change_on_grid": 0.0034646188593234206
+      },
+      {
+        "participant": 8,
+        "task": "ownership",
+        "published_prior": 0.944963109863511,
+        "shared_prior": 0.5,
+        "equivalent_log_threshold": -2.843142199402155,
+        "max_response_probability_error": 0.0,
+        "max_posterior_change_on_grid": 0.6111533052647394
+      },
+      {
+        "participant": 8,
+        "task": "synchrony",
+        "published_prior": 0.761616885177421,
+        "shared_prior": 0.5,
+        "equivalent_log_threshold": -1.1615645482986798,
+        "max_response_probability_error": 0.0,
+        "max_posterior_change_on_grid": 0.28245387721786025
+      },
+      {
+        "participant": 9,
+        "task": "ownership",
+        "published_prior": 0.992527495014701,
+        "shared_prior": 0.5,
+        "equivalent_log_threshold": -4.889024432634723,
+        "max_response_probability_error": 0.0,
+        "max_posterior_change_on_grid": 0.8402241758105584
+      },
+      {
+        "participant": 9,
+        "task": "synchrony",
+        "published_prior": 0.796784905331424,
+        "shared_prior": 0.5,
+        "equivalent_log_threshold": -1.3663197642471299,
+        "max_response_probability_error": 0.0,
+        "max_posterior_change_on_grid": 0.32871426098881384
+      },
+      {
+        "participant": 10,
+        "task": "ownership",
+        "published_prior": 0.830006204846743,
+        "shared_prior": 0.5,
+        "equivalent_log_threshold": -1.585671239196003,
+        "max_response_probability_error": 0.0,
+        "max_posterior_change_on_grid": 0.3768520255304819
+      },
+      {
+        "participant": 10,
+        "task": "synchrony",
+        "published_prior": 0.56602436005102,
+        "shared_prior": 0.5,
+        "equivalent_log_threshold": -0.2656487128611431,
+        "max_response_probability_error": 0.0,
+        "max_posterior_change_on_grid": 0.06631466011528547
+      },
+      {
+        "participant": 11,
+        "task": "ownership",
+        "published_prior": 0.578493663133304,
+        "shared_prior": 0.5,
+        "equivalent_log_threshold": -0.3165927811987035,
+        "max_response_probability_error": 0.0,
+        "max_posterior_change_on_grid": 0.07897874281381795
+      },
+      {
+        "participant": 11,
+        "task": "synchrony",
+        "published_prior": 0.475135139688791,
+        "shared_prior": 0.5,
+        "equivalent_log_threshold": 0.09954155234636719,
+        "max_response_probability_error": 0.0,
+        "max_posterior_change_on_grid": 0.02486954809429054
+      },
+      {
+        "participant": 12,
+        "task": "ownership",
+        "published_prior": 0.830207458918085,
+        "shared_prior": 0.5,
+        "equivalent_log_threshold": -1.5870982748178841,
+        "max_response_probability_error": 0.0,
+        "max_posterior_change_on_grid": 0.37657274058169793
+      },
+      {
+        "participant": 12,
+        "task": "synchrony",
+        "published_prior": 0.634040201222706,
+        "shared_prior": 0.5,
+        "equivalent_log_threshold": -0.5495888733333136,
+        "max_response_probability_error": 0.0,
+        "max_posterior_change_on_grid": 0.1365255153054143
+      },
+      {
+        "participant": 13,
+        "task": "ownership",
+        "published_prior": 0.999999999987085,
+        "shared_prior": 0.5,
+        "equivalent_log_threshold": -25.072631503470866,
+        "max_response_probability_error": 0.0,
+        "max_posterior_change_on_grid": 0.9999926551532973
+      },
+      {
+        "participant": 13,
+        "task": "synchrony",
+        "published_prior": 0.991584963075911,
+        "shared_prior": 0.5,
+        "equivalent_log_threshold": -4.769284420219309,
+        "max_response_probability_error": 0.0,
+        "max_posterior_change_on_grid": 0.8312678760613825
+      },
+      {
+        "participant": 14,
+        "task": "ownership",
+        "published_prior": 0.991759277158781,
+        "shared_prior": 0.5,
+        "equivalent_log_threshold": -4.790392350159895,
+        "max_response_probability_error": 0.0,
+        "max_posterior_change_on_grid": 0.832849442680183
+      },
+      {
+        "participant": 14,
+        "task": "synchrony",
+        "published_prior": 0.57079103709184,
+        "shared_prior": 0.5,
+        "equivalent_log_threshold": -0.28507928975478847,
+        "max_response_probability_error": 0.0,
+        "max_posterior_change_on_grid": 0.0711456340999147
+      },
+      {
+        "participant": 15,
+        "task": "ownership",
+        "published_prior": 0.96555325955072,
+        "shared_prior": 0.5,
+        "equivalent_log_threshold": -3.333286886883429,
+        "max_response_probability_error": 0.0,
+        "max_posterior_change_on_grid": 0.6821922225975741
+      },
+      {
+        "participant": 15,
+        "task": "synchrony",
+        "published_prior": 0.851734846246163,
+        "shared_prior": 0.5,
+        "equivalent_log_threshold": -1.748273014848499,
+        "max_response_probability_error": 0.0,
+        "max_posterior_change_on_grid": 0.4112106276595332
+      }
+    ],
+    "scope": "Algebraic reparameterization, not a claim about actual human decision costs"
+  }
+}

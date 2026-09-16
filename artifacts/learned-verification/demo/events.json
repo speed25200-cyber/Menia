@@ -1,0 +1,3538 @@
+[
+  {
+    "id": 1,
+    "episode": "source-91011",
+    "tick": 0,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-0",
+      "p_external": 0.794822737018986,
+      "features": [
+        1.5638407470733933,
+        -0.1278994589045599,
+        0,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.016415571631590416,
+        0.30162475091024216,
+        0.3317358427492874,
+        -0.2162423201915996,
+        -0.08924433822229293,
+        -0.1793411066105822,
+        0.22167863172532937,
+        -0.12460516067186363,
+        -0.05695968722056825,
+        -0.27485139404010483,
+        0.3316452607034931,
+        -0.09488326897808223,
+        0.21522937876954246,
+        0.13261376516342308,
+        -0.14819939769048576,
+        0.20887259118141022
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 2,
+    "episode": "source-91011",
+    "tick": 0,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 1,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.22937544490892148,
+        0.25000001572711855
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 3,
+    "episode": "source-91011",
+    "tick": 0,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-0",
+      "attributed_external": true,
+      "p_external": 0.794822737018986,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 2
+    }
+  },
+  {
+    "id": 4,
+    "episode": "source-91011",
+    "tick": 1,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-1",
+      "p_external": 0.17732648919807667,
+      "features": [
+        0.5268932912380546,
+        -1.1809349708773547,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.2326682751965035,
+        -0.3083458837487311,
+        -0.1421923373747202,
+        0.073960499466481,
+        0.25250856548560385,
+        0.168453264160139,
+        -0.2690060018997684,
+        0.19706998300231396,
+        0.18930434855253347,
+        -0.025982383839541823,
+        0.1189017771793122,
+        0.16251875313261607,
+        0.15398969819040273,
+        -0.36840599069635344,
+        -0.012863423760195045,
+        -0.19483804259030063
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 5,
+    "episode": "source-91011",
+    "tick": 1,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 4,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.1488206038729283,
+        0.25000001665231153
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 6,
+    "episode": "source-91011",
+    "tick": 1,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-1",
+      "attributed_external": false,
+      "p_external": 0.17732648919807667,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 5
+    }
+  },
+  {
+    "id": 7,
+    "episode": "source-91011",
+    "tick": 2,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-2",
+      "p_external": 0.4953046089555412,
+      "features": [
+        1.7628845664934432,
+        0.05061217361502879,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.18990136362277293,
+        -0.013898413088874545,
+        0.2621826780177938,
+        -0.07583741727914456,
+        0.09323053494978595,
+        0.07649473004768323,
+        0.021536981851529982,
+        -0.004023435593226224,
+        0.24445529382660752,
+        -0.25466860481529696,
+        0.4998756888135688,
+        0.007021346276127521,
+        0.188692483618921,
+        -0.16868408417682654,
+        -0.14551609052065242,
+        -0.0633361812807226
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 8,
+    "episode": "source-91011",
+    "tick": 2,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 7,
+      "verify": true,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.5001191168240107,
+        0.24999995871676187
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 9,
+    "episode": "source-91011",
+    "tick": 2,
+    "kind": "observation",
+    "source": "source_verifier",
+    "payload": {
+      "field": "source:2",
+      "value": true
+    }
+  },
+  {
+    "id": 10,
+    "episode": "source-91011",
+    "tick": 2,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-2",
+      "attributed_external": true,
+      "p_external": 1.0,
+      "verified": true,
+      "evidence_event": 9,
+      "decision_event": 8
+    }
+  },
+  {
+    "id": 11,
+    "episode": "source-91011",
+    "tick": 3,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-3",
+      "p_external": 0.9150700709611873,
+      "features": [
+        2.4571273340930233,
+        0.3475496056998485,
+        1,
+        1.0,
+        1.0
+      ],
+      "state": [
+        -0.10617342587857659,
+        0.32688654048281146,
+        0.7610693861311819,
+        -0.2654112231324728,
+        0.1925644840472608,
+        -0.35782535782263425,
+        0.6084915333049323,
+        -0.28120819894645904,
+        -0.17862817333185757,
+        -0.5134573088597079,
+        0.8259018611104645,
+        -0.019416810792827952,
+        0.17739729617436423,
+        0.2884738726618409,
+        -0.29675476091009567,
+        0.21162601800927866
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 12,
+    "episode": "source-91011",
+    "tick": 3,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 11,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.09789163079595117,
+        0.2499999816425683
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 13,
+    "episode": "source-91011",
+    "tick": 3,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-3",
+      "attributed_external": true,
+      "p_external": 0.9150700709611873,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 12
+    }
+  },
+  {
+    "id": 14,
+    "episode": "source-91011",
+    "tick": 4,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-0",
+      "p_external": 0.8727613487087706,
+      "features": [
+        1.7297198607173208,
+        1.756935918989424,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.18336246319366725,
+        0.2744607099788337,
+        0.43372122634084015,
+        -0.019046714740986015,
+        0.1676737296847729,
+        -0.5721194478723064,
+        0.36707928702677084,
+        -0.3325229679505435,
+        -0.474009896744741,
+        -0.5257082714197678,
+        0.8152320657815939,
+        -0.24943964089469853,
+        0.1973473314296714,
+        0.013990072001648882,
+        -0.19876759140683742,
+        0.08773384239396992
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 15,
+    "episode": "source-91011",
+    "tick": 4,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 14,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.15142122001058095,
+        0.24999996862647414
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 16,
+    "episode": "source-91011",
+    "tick": 4,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-0",
+      "attributed_external": true,
+      "p_external": 0.8727613487087706,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 15
+    }
+  },
+  {
+    "id": 17,
+    "episode": "source-91011",
+    "tick": 5,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-1",
+      "p_external": 0.8276735641949823,
+      "features": [
+        1.7471360704625565,
+        0.31293462716197296,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.30131884327314146,
+        0.18552147388775497,
+        0.31757954283791684,
+        -0.03302266057918687,
+        0.22965058892383594,
+        -0.517618352895626,
+        0.29409374150259343,
+        -0.30163656673112654,
+        -0.5963702747293964,
+        -0.5068901286741537,
+        0.8139627756643353,
+        -0.2524217580397793,
+        0.2864346855651985,
+        -0.16680967139813602,
+        -0.1939564325528513,
+        0.03718115967036726
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 18,
+    "episode": "source-91011",
+    "tick": 5,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 17,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.19651803682514649,
+        0.24999999587437682
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 19,
+    "episode": "source-91011",
+    "tick": 5,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-1",
+      "attributed_external": true,
+      "p_external": 0.8276735641949823,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 18
+    }
+  },
+  {
+    "id": 20,
+    "episode": "source-91011",
+    "tick": 6,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-2",
+      "p_external": 0.22576337496257504,
+      "features": [
+        0.9190535323793951,
+        -2.114459860929378,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.4413817437404577,
+        -0.41130749866973015,
+        -0.06736218026721139,
+        0.0829443261452245,
+        0.42647203922479765,
+        -0.028745474985713337,
+        -0.12094981113566827,
+        0.22397158849549959,
+        0.06973561973692272,
+        -0.260753590166391,
+        0.5215282735092854,
+        0.1367365068618163,
+        0.2844573711975317,
+        -0.4818865356088496,
+        -0.1242777445509393,
+        -0.2387269352826883
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 21,
+    "episode": "source-91011",
+    "tick": 6,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 20,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.19672582951789153,
+        0.25000003037749274
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 22,
+    "episode": "source-91011",
+    "tick": 6,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-2",
+      "attributed_external": false,
+      "p_external": 0.22576337496257504,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 21
+    }
+  },
+  {
+    "id": 23,
+    "episode": "source-91011",
+    "tick": 7,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-3",
+      "p_external": 0.9029216063238918,
+      "features": [
+        2.920538882601132,
+        1.5038288808867653,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.21339076858656825,
+        0.21313805772984976,
+        0.43591935158866724,
+        -0.39359115097560476,
+        -0.1860619865569335,
+        -0.48678021499699364,
+        0.4439317713923608,
+        -0.028889039377744563,
+        -0.28054768673460684,
+        -0.49487052255114006,
+        0.7073065448970608,
+        -0.2500901609401922,
+        0.3737440792535416,
+        0.07571008929079939,
+        -0.24606867580092137,
+        0.27656558346174487
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 24,
+    "episode": "source-91011",
+    "tick": 7,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 23,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.11344190766097681,
+        0.24999997728617407
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 25,
+    "episode": "source-91011",
+    "tick": 7,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-3",
+      "attributed_external": true,
+      "p_external": 0.9029216063238918,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 24
+    }
+  },
+  {
+    "id": 26,
+    "episode": "source-91011",
+    "tick": 8,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-0",
+      "p_external": 0.9239317966009803,
+      "features": [
+        1.4026454896700078,
+        0.964695592048201,
+        0,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.18629964716783706,
+        0.31071639387513406,
+        0.44105658842490114,
+        -0.2994831066098278,
+        -0.13195353341611266,
+        -0.5995528516793169,
+        0.4380035361215797,
+        -0.13228669449370176,
+        -0.504603485787311,
+        -0.5694602905942217,
+        0.7119085939854468,
+        -0.3045660925217834,
+        0.38076713599779966,
+        0.10472611525807027,
+        -0.15517845844965703,
+        0.3031735135856408
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 27,
+    "episode": "source-91011",
+    "tick": 8,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 26,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.08654844535524711,
+        0.24999998482035013
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 28,
+    "episode": "source-91011",
+    "tick": 8,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-0",
+      "attributed_external": true,
+      "p_external": 0.9239317966009803,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 27
+    }
+  },
+  {
+    "id": 29,
+    "episode": "source-91011",
+    "tick": 9,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-1",
+      "p_external": 0.4719378461614293,
+      "features": [
+        -0.15630257458285235,
+        -0.9229919972279804,
+        0,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.29810129650998846,
+        -0.11496796250160796,
+        -0.05791859661989013,
+        -0.04021375502853755,
+        0.10858061302420974,
+        -0.2825285252274639,
+        0.05692750448202544,
+        0.1699610501395506,
+        -0.38310053270063393,
+        -0.13269085647038437,
+        0.12206728348807372,
+        0.021804435000989303,
+        0.29020741220115626,
+        -0.15805628102360944,
+        0.12288136999846914,
+        0.028375621509357768
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 30,
+    "episode": "source-91011",
+    "tick": 9,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 29,
+      "verify": true,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.4713443086442352,
+        0.24999997543299718
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 31,
+    "episode": "source-91011",
+    "tick": 9,
+    "kind": "observation",
+    "source": "source_verifier",
+    "payload": {
+      "field": "source:9",
+      "value": true
+    }
+  },
+  {
+    "id": 32,
+    "episode": "source-91011",
+    "tick": 9,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-1",
+      "attributed_external": true,
+      "p_external": 1.0,
+      "verified": true,
+      "evidence_event": 31,
+      "decision_event": 30
+    }
+  },
+  {
+    "id": 33,
+    "episode": "source-91011",
+    "tick": 10,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-2",
+      "p_external": 0.9578398954643825,
+      "features": [
+        1.9967734203317204,
+        0.38772299542841726,
+        0,
+        1.0,
+        1.0
+      ],
+      "state": [
+        -0.041564902487231006,
+        0.42753882619822936,
+        0.6754881650701318,
+        -0.39185746210303235,
+        -0.0942220795519623,
+        -0.5719652726739903,
+        0.6723702512832567,
+        -0.16781124219036253,
+        -0.5298265434550726,
+        -0.5160755628614115,
+        0.6266439374705458,
+        -0.006282324679273657,
+        0.2926520344377296,
+        0.4762077751017432,
+        -0.1992828799605722,
+        0.46445963334637125
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 34,
+    "episode": "source-91011",
+    "tick": 10,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 33,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.04314540299268979,
+        0.24999999697966827
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 35,
+    "episode": "source-91011",
+    "tick": 10,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-2",
+      "attributed_external": true,
+      "p_external": 0.9578398954643825,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 34
+    }
+  },
+  {
+    "id": 36,
+    "episode": "source-91011",
+    "tick": 11,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-3",
+      "p_external": 0.8903428971839337,
+      "features": [
+        1.4348195351802289,
+        2.578240283735235,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.15070966164421692,
+        0.3479672164055953,
+        0.316622021380781,
+        0.11308060640170056,
+        0.02858449618545881,
+        -0.7251989759828041,
+        0.3964888314317835,
+        -0.26071174967023736,
+        -0.6807086358558144,
+        -0.5108332352836484,
+        0.6517681007235361,
+        -0.28232393977812875,
+        0.17162284473650086,
+        0.1147347358240694,
+        -0.09129248789851876,
+        0.2117641375683233
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 37,
+    "episode": "source-91011",
+    "tick": 11,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 36,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.12954290606455152,
+        0.24999997277549577
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 38,
+    "episode": "source-91011",
+    "tick": 11,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-3",
+      "attributed_external": true,
+      "p_external": 0.8903428971839337,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 37
+    }
+  },
+  {
+    "id": 39,
+    "episode": "source-91011",
+    "tick": 12,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-0",
+      "p_external": 0.8737465634710232,
+      "features": [
+        1.9072585669260023,
+        0.21280978787655014,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.2944375983079895,
+        0.3036427095130536,
+        0.3250408979211854,
+        -0.026018611716135724,
+        0.15408707364087895,
+        -0.6188772915736,
+        0.3616105256141753,
+        -0.28831894380255996,
+        -0.7177832489749058,
+        -0.5377399835441609,
+        0.7480495507899796,
+        -0.2916544822381907,
+        0.32452511593195843,
+        -0.12352524546802415,
+        -0.1540317177865652,
+        0.16417494555696244
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 40,
+    "episode": "source-91011",
+    "tick": 12,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 39,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.15043580788320704,
+        0.24999996803107927
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 41,
+    "episode": "source-91011",
+    "tick": 12,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-0",
+      "attributed_external": true,
+      "p_external": 0.8737465634710232,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 40
+    }
+  },
+  {
+    "id": 42,
+    "episode": "source-91011",
+    "tick": 13,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-1",
+      "p_external": 0.5584300696956771,
+      "features": [
+        1.1336340233819335,
+        -0.44862180555545744,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.4119887184680774,
+        -0.08677368341310805,
+        0.0361797073832268,
+        0.10291600796056882,
+        0.3165065307360795,
+        -0.31296600676040603,
+        0.09542325895484409,
+        -0.10542868343424494,
+        -0.5720212506897787,
+        -0.3524541451300632,
+        0.6180961038406751,
+        -0.08432509792204351,
+        0.2916077722714152,
+        -0.34856523073366613,
+        -0.10537923976439764,
+        -0.09011426459703312
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 43,
+    "episode": "source-91011",
+    "tick": 13,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 42,
+      "verify": true,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.4775834170743486,
+        0.24999998679835975
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 44,
+    "episode": "source-91011",
+    "tick": 13,
+    "kind": "observation",
+    "source": "source_verifier",
+    "payload": {
+      "field": "source:13",
+      "value": false
+    }
+  },
+  {
+    "id": 45,
+    "episode": "source-91011",
+    "tick": 13,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-1",
+      "attributed_external": false,
+      "p_external": 0.0,
+      "verified": true,
+      "evidence_event": 44,
+      "decision_event": 43
+    }
+  },
+  {
+    "id": 46,
+    "episode": "source-91011",
+    "tick": 14,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-2",
+      "p_external": 0.5074200117073834,
+      "features": [
+        1.7621354606934378,
+        -0.815807824197043,
+        1,
+        1.0,
+        0.0
+      ],
+      "state": [
+        -0.4554174958277667,
+        -0.15679668068734082,
+        0.36104530176926075,
+        0.12137123192079666,
+        0.4255700806177341,
+        -0.0013581357054466003,
+        0.2192991719986896,
+        -0.16946482620247855,
+        -0.09708314156971892,
+        -0.3906997021717543,
+        0.7067955360266784,
+        0.10233512887773705,
+        0.37199979369741876,
+        -0.268051122497682,
+        -0.2338006969892453,
+        -0.12056801971169513
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 47,
+    "episode": "source-91011",
+    "tick": 14,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 46,
+      "verify": true,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.5023051511577918,
+        0.2499999593503797
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 48,
+    "episode": "source-91011",
+    "tick": 14,
+    "kind": "observation",
+    "source": "source_verifier",
+    "payload": {
+      "field": "source:14",
+      "value": false
+    }
+  },
+  {
+    "id": 49,
+    "episode": "source-91011",
+    "tick": 14,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-2",
+      "attributed_external": false,
+      "p_external": 0.0,
+      "verified": true,
+      "evidence_event": 48,
+      "decision_event": 47
+    }
+  },
+  {
+    "id": 50,
+    "episode": "source-91011",
+    "tick": 15,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-3",
+      "p_external": 0.06456037404246362,
+      "features": [
+        0.9709880448331889,
+        -2.439362930946666,
+        1,
+        1.0,
+        0.0
+      ],
+      "state": [
+        -0.5282922853917298,
+        -0.6617443623927821,
+        -0.031896526204658215,
+        0.27006135775066187,
+        0.6164674776170188,
+        0.40955797474431294,
+        -0.31884943706343294,
+        0.251545781838586,
+        0.5220527912563471,
+        -0.12394584352027538,
+        0.32549784952143207,
+        0.4245499482226977,
+        0.31029668803948196,
+        -0.5483848631229012,
+        -0.186643678194605,
+        -0.44929143095186014
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 51,
+    "episode": "source-91011",
+    "tick": 15,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 50,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.049150249756693125,
+        0.2499999946078957
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 52,
+    "episode": "source-91011",
+    "tick": 15,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-3",
+      "attributed_external": false,
+      "p_external": 0.06456037404246362,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 51
+    }
+  },
+  {
+    "id": 53,
+    "episode": "source-91011",
+    "tick": 16,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-0",
+      "p_external": 0.03589385579525753,
+      "features": [
+        0.14635749184834124,
+        -0.6281459771658305,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.36764849974083325,
+        -0.714493664629614,
+        -0.24020214899331166,
+        0.3428221560666902,
+        0.4991704017228831,
+        0.5592519859778259,
+        -0.44248042836406243,
+        0.34061709775404414,
+        0.6726109533288148,
+        0.0734263436734677,
+        0.2449773590268957,
+        0.46147271459653694,
+        0.0382146271454491,
+        -0.4973913160838205,
+        -0.11377080317736735,
+        -0.5405120378561278
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 54,
+    "episode": "source-91011",
+    "tick": 16,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 53,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.026422635739028047,
+        0.24999999118483987
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 55,
+    "episode": "source-91011",
+    "tick": 16,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-0",
+      "attributed_external": false,
+      "p_external": 0.03589385579525753,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 54
+    }
+  },
+  {
+    "id": 56,
+    "episode": "source-91011",
+    "tick": 17,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-1",
+      "p_external": 0.03887119762358744,
+      "features": [
+        -0.638515156213596,
+        -0.28665504275669773,
+        0,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.12577045930457545,
+        -0.6756058409186059,
+        -0.30823090418362636,
+        0.2931453259376395,
+        0.31278191186156723,
+        0.5777272459758422,
+        -0.39872914200705045,
+        0.37207239257875235,
+        0.727470737279962,
+        0.230171263885301,
+        0.011190534244694267,
+        0.45330318904627975,
+        -0.09979552623735138,
+        -0.3273035319164956,
+        -0.01839798995601174,
+        -0.48402109379260094
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 57,
+    "episode": "source-91011",
+    "tick": 17,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 56,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.02878315525832916,
+        0.2499999915403629
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 58,
+    "episode": "source-91011",
+    "tick": 17,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-1",
+      "attributed_external": false,
+      "p_external": 0.03887119762358744,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 57
+    }
+  },
+  {
+    "id": 59,
+    "episode": "source-91011",
+    "tick": 18,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-2",
+      "p_external": 0.6794376756991845,
+      "features": [
+        3.0960778019365853,
+        -0.507238122190438,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.013710219556061123,
+        0.3809789305903848,
+        0.3599592623870933,
+        -0.21941782853124808,
+        -0.10536536932605015,
+        0.17048425529019945,
+        0.24441292272171372,
+        -0.014275780279771999,
+        0.7277457436219069,
+        -0.07584791361666729,
+        0.45371888992694387,
+        0.027745655706436945,
+        0.24479838125828637,
+        0.16905769137241797,
+        -0.21308291477976032,
+        0.1901133176633163
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 60,
+    "episode": "source-91011",
+    "tick": 18,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 59,
+      "verify": true,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.37080050173039764,
+        0.2500000314142878
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 61,
+    "episode": "source-91011",
+    "tick": 18,
+    "kind": "observation",
+    "source": "source_verifier",
+    "payload": {
+      "field": "source:18",
+      "value": true
+    }
+  },
+  {
+    "id": 62,
+    "episode": "source-91011",
+    "tick": 18,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-2",
+      "attributed_external": true,
+      "p_external": 1.0,
+      "verified": true,
+      "evidence_event": 61,
+      "decision_event": 60
+    }
+  },
+  {
+    "id": 63,
+    "episode": "source-91011",
+    "tick": 19,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-3",
+      "p_external": 0.7024056975091233,
+      "features": [
+        0.6001533558700616,
+        1.2403822019446418,
+        0,
+        1.0,
+        1.0
+      ],
+      "state": [
+        0.07986894592500275,
+        0.16850361815158188,
+        0.39076695010958434,
+        0.013172779130074863,
+        0.08499440813317197,
+        -0.26615108925752223,
+        0.37005125075509876,
+        -0.14794681284578767,
+        0.18061258346162462,
+        -0.1198971981313835,
+        0.5430140730730277,
+        0.06877273265044412,
+        -0.11368385104885274,
+        0.2532310970183599,
+        0.015806312146666224,
+        0.04352463849510103
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 64,
+    "episode": "source-91011",
+    "tick": 19,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 63,
+      "verify": true,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.3393593895571497,
+        0.2500000351251668
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 65,
+    "episode": "source-91011",
+    "tick": 19,
+    "kind": "observation",
+    "source": "source_verifier",
+    "payload": {
+      "field": "source:19",
+      "value": true
+    }
+  },
+  {
+    "id": 66,
+    "episode": "source-91011",
+    "tick": 19,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-3",
+      "attributed_external": true,
+      "p_external": 1.0,
+      "verified": true,
+      "evidence_event": 65,
+      "decision_event": 64
+    }
+  },
+  {
+    "id": 67,
+    "episode": "source-91011",
+    "tick": 20,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-0",
+      "p_external": 0.8613580670937431,
+      "features": [
+        0.8382639512106141,
+        0.5296299141777808,
+        0,
+        1.0,
+        1.0
+      ],
+      "state": [
+        0.1005879673455591,
+        0.17350237412942243,
+        0.5306055160905109,
+        -0.11121958661226089,
+        0.13912023552305794,
+        -0.48006468510865885,
+        0.5744458146966304,
+        -0.264633307056902,
+        -0.1944218754003768,
+        -0.22154109345179523,
+        0.6879531910006083,
+        0.09740238706410359,
+        -0.03487092271749308,
+        0.36559328414942294,
+        -0.05888871161625815,
+        0.1803099439027813
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 68,
+    "episode": "source-91011",
+    "tick": 20,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 67,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.16282678601084732,
+        0.24999997551781977
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 69,
+    "episode": "source-91011",
+    "tick": 20,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-0",
+      "attributed_external": true,
+      "p_external": 0.8613580670937431,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 68
+    }
+  },
+  {
+    "id": 70,
+    "episode": "source-91011",
+    "tick": 21,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-1",
+      "p_external": 0.8276122191145311,
+      "features": [
+        1.752575238957464,
+        0.4961796152165428,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.08356584136366925,
+        0.1841570544011379,
+        0.37254805977675226,
+        -0.07862264215622626,
+        0.1894379706140305,
+        -0.5017441817139773,
+        0.3340459714129844,
+        -0.2731378917051948,
+        -0.44991396418417645,
+        -0.3215456549121003,
+        0.7596156415993991,
+        -0.10019576357296092,
+        0.1752336779388269,
+        -0.011911714314620986,
+        -0.09713267625701821,
+        0.1152003273270059
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 71,
+    "episode": "source-91011",
+    "tick": 21,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 70,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.19657939419467382,
+        0.2499999959114495
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 72,
+    "episode": "source-91011",
+    "tick": 21,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-1",
+      "attributed_external": true,
+      "p_external": 0.8276122191145311,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 71
+    }
+  },
+  {
+    "id": 73,
+    "episode": "source-91011",
+    "tick": 22,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-2",
+      "p_external": 0.7876623079776414,
+      "features": [
+        -0.07404436842461581,
+        3.1014856052995587,
+        0,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.01621169506463637,
+        0.15829276673608408,
+        0.041737136282011894,
+        0.12458252933170538,
+        -0.03128186362034509,
+        -0.6745394561650817,
+        0.37602004013224005,
+        -0.3137715796968613,
+        -0.567397837102717,
+        -0.11992073597359057,
+        0.4567321307439049,
+        -0.2973966004458925,
+        -0.022232102886382624,
+        0.022253335051366535,
+        0.09620242615728339,
+        0.09919615178872321
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 74,
+    "episode": "source-91011",
+    "tick": 22,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 73,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.23653730837756148,
+        0.25000002005438093
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 75,
+    "episode": "source-91011",
+    "tick": 22,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-2",
+      "attributed_external": true,
+      "p_external": 0.7876623079776414,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 74
+    }
+  },
+  {
+    "id": 76,
+    "episode": "source-91011",
+    "tick": 23,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-3",
+      "p_external": 0.9817950857086043,
+      "features": [
+        3.7679468048018623,
+        1.4161979670071922,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.11687471610054752,
+        0.6255396800504106,
+        0.515183713195758,
+        -0.5091427317061752,
+        -0.3317633389392426,
+        -0.846921815377611,
+        0.7196591696490531,
+        -0.4510227597522558,
+        -0.7496541175181927,
+        -0.3777276673009978,
+        0.6550810972844092,
+        -0.5693082513093035,
+        0.5014627939414467,
+        0.30295058552597787,
+        -0.08053367837295701,
+        0.5810044237293833
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 77,
+    "episode": "source-91011",
+    "tick": 23,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 76,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.012482282032662143,
+        0.25000000556991037
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 78,
+    "episode": "source-91011",
+    "tick": 23,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-3",
+      "attributed_external": true,
+      "p_external": 0.9817950857086043,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 77
+    }
+  },
+  {
+    "id": 79,
+    "episode": "source-91011",
+    "tick": 24,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-0",
+      "p_external": 0.8006132482758245,
+      "features": [
+        0.4766330311140184,
+        -0.6082725187958379,
+        0,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.30397843533141566,
+        0.16597103990715478,
+        0.0832509398941251,
+        -0.19390035333546796,
+        0.009779534447822008,
+        -0.5959014798903532,
+        0.2940631694850129,
+        -0.11507357861454667,
+        -0.7369223317368205,
+        -0.1420480033919826,
+        0.2555331081947476,
+        -0.2111807678402996,
+        0.4437879792315314,
+        -0.050489757137168634,
+        0.11869060296405445,
+        0.23270720420586077
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 80,
+    "episode": "source-91011",
+    "tick": 24,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 79,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.22358377365631274,
+        0.25000001222773865
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 81,
+    "episode": "source-91011",
+    "tick": 24,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-0",
+      "attributed_external": true,
+      "p_external": 0.8006132482758245,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 80
+    }
+  },
+  {
+    "id": 82,
+    "episode": "source-91011",
+    "tick": 25,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-1",
+      "p_external": 0.8193260212094549,
+      "features": [
+        0.6317160207183767,
+        1.142943918049308,
+        0,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.2666717728929454,
+        0.15371262587076437,
+        0.11760499794332932,
+        -0.08687751841038786,
+        -0.08217604825386052,
+        -0.6279896419439177,
+        0.3481936704776377,
+        -0.17470113278021732,
+        -0.7775533896243456,
+        -0.2699845174454474,
+        0.2844137957980082,
+        -0.24370197671444038,
+        0.31067249892633453,
+        -0.013373126475573014,
+        0.10374178105088477,
+        0.19905409825784626
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 83,
+    "episode": "source-91011",
+    "tick": 25,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 82,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.20486725204894882,
+        0.25000000091904784
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 84,
+    "episode": "source-91011",
+    "tick": 25,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-1",
+      "attributed_external": true,
+      "p_external": 0.8193260212094549,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 83
+    }
+  },
+  {
+    "id": 85,
+    "episode": "source-91011",
+    "tick": 26,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-2",
+      "p_external": 0.2449456047028448,
+      "features": [
+        -0.4255906879671151,
+        0.4298382317720785,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.38618057303332415,
+        -0.22221741520047583,
+        -0.3519196594241065,
+        0.32166942510194113,
+        0.18064438135934138,
+        -0.24808055740804905,
+        -0.11895721593633254,
+        0.014221765452092222,
+        -0.6788785907328223,
+        0.1674321998098924,
+        -0.21489790010629484,
+        -0.07519094974057161,
+        0.04760826507794863,
+        -0.33449160373387354,
+        0.19836295989903008,
+        -0.17813096549118734
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 86,
+    "episode": "source-91011",
+    "tick": 26,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 85,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.21569750842699828,
+        0.2500000358130111
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 87,
+    "episode": "source-91011",
+    "tick": 26,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-2",
+      "attributed_external": false,
+      "p_external": 0.2449456047028448,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 86
+    }
+  },
+  {
+    "id": 88,
+    "episode": "source-91011",
+    "tick": 27,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-3",
+      "p_external": 0.8441525391077108,
+      "features": [
+        2.42535018753638,
+        0.4803729939242748,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.31036378958090505,
+        0.29186152685310285,
+        0.28601236444645634,
+        -0.18399721596285404,
+        -0.1469196877115643,
+        -0.42385983890464884,
+        0.3917895600880862,
+        -0.2140286965711352,
+        -0.5251792071343033,
+        -0.17637695085210753,
+        0.31377076599181547,
+        -0.3123675896875473,
+        0.2996993813924405,
+        0.006430760741283445,
+        -0.04155449331866512,
+        0.2248834214685068
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 89,
+    "episode": "source-91011",
+    "tick": 27,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 88,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.18003576072874886,
+        0.24999998591563724
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 90,
+    "episode": "source-91011",
+    "tick": 27,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-3",
+      "attributed_external": true,
+      "p_external": 0.8441525391077108,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 89
+    }
+  },
+  {
+    "id": 91,
+    "episode": "source-91011",
+    "tick": 28,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-0",
+      "p_external": 0.3932966112277342,
+      "features": [
+        -0.1372792299118355,
+        1.7421003840661409,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.36585722729266845,
+        0.010717327543446648,
+        -0.22384058998167455,
+        0.353028940500646,
+        0.10409838302798723,
+        -0.34474808686109093,
+        -0.033551856366511035,
+        -0.16112766116325633,
+        -0.637106463164839,
+        0.17956220819933222,
+        -0.07914262342361406,
+        -0.3015267212682263,
+        -0.029809715512037926,
+        -0.25022286782241404,
+        0.10349465629692828,
+        -0.1514781086982555
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 92,
+    "episode": "source-91011",
+    "tick": 28,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 91,
+      "verify": true,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.3745022056034172,
+        0.25000003169176954
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 93,
+    "episode": "source-91011",
+    "tick": 28,
+    "kind": "observation",
+    "source": "source_verifier",
+    "payload": {
+      "field": "source:28",
+      "value": false
+    }
+  },
+  {
+    "id": 94,
+    "episode": "source-91011",
+    "tick": 28,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-0",
+      "attributed_external": false,
+      "p_external": 0.0,
+      "verified": true,
+      "evidence_event": 93,
+      "decision_event": 92
+    }
+  },
+  {
+    "id": 95,
+    "episode": "source-91011",
+    "tick": 29,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-1",
+      "p_external": 0.7236529909511705,
+      "features": [
+        0.9608793997049627,
+        0.029089181745100667,
+        0,
+        1.0,
+        0.0
+      ],
+      "state": [
+        -0.2941178581869309,
+        0.10352151071757093,
+        0.2762653923870352,
+        0.05982778194332605,
+        0.07833983861207791,
+        -0.2922742224616751,
+        0.3438380098321784,
+        -0.25235417221331463,
+        -0.40308586658792633,
+        -0.1407093402848802,
+        0.18240197590833349,
+        -0.19981840732327305,
+        0.22036597392783389,
+        0.019994983500811234,
+        -0.17765422958315555,
+        0.06020429987585321
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 96,
+    "episode": "source-91011",
+    "tick": 29,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 95,
+      "verify": true,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.31027379646526904,
+        0.25000003855803254
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 97,
+    "episode": "source-91011",
+    "tick": 29,
+    "kind": "observation",
+    "source": "source_verifier",
+    "payload": {
+      "field": "source:29",
+      "value": true
+    }
+  },
+  {
+    "id": 98,
+    "episode": "source-91011",
+    "tick": 29,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-1",
+      "attributed_external": true,
+      "p_external": 1.0,
+      "verified": true,
+      "evidence_event": 97,
+      "decision_event": 96
+    }
+  },
+  {
+    "id": 99,
+    "episode": "source-91011",
+    "tick": 30,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-2",
+      "p_external": 0.876827549543996,
+      "features": [
+        1.591615294223791,
+        1.3565554626522238,
+        1,
+        1.0,
+        1.0
+      ],
+      "state": [
+        -0.22084298722746312,
+        0.07051257762235708,
+        0.5962816596104491,
+        0.036319087896367244,
+        0.2174987664334217,
+        -0.5650925960425033,
+        0.6077898259767595,
+        -0.39983420146562204,
+        -0.6228098963083337,
+        -0.3481702527823512,
+        0.6734670420833719,
+        -0.23839261665400796,
+        -0.029424982892361187,
+        0.16057753920556964,
+        -0.2591945041070036,
+        0.044123068655036346
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 100,
+    "episode": "source-91011",
+    "tick": 30,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 99,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.14684282041610613,
+        0.24999996792894238
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 101,
+    "episode": "source-91011",
+    "tick": 30,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-2",
+      "attributed_external": true,
+      "p_external": 0.876827549543996,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 100
+    }
+  },
+  {
+    "id": 102,
+    "episode": "source-91011",
+    "tick": 31,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-3",
+      "p_external": 0.9118546710164843,
+      "features": [
+        1.6971127923131415,
+        1.836728038571533,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.2392029620678509,
+        0.15973810424992957,
+        0.42547259202762633,
+        -0.05825402177886643,
+        0.09560713567587886,
+        -0.6950008895812537,
+        0.5145366399450193,
+        -0.440695458919469,
+        -0.7502503047316416,
+        -0.44187388366361213,
+        0.7427008331452469,
+        -0.4389107119807638,
+        0.15744189219305443,
+        0.034471694126836955,
+        -0.2630990131121957,
+        0.11012478865814633
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 103,
+    "episode": "source-91011",
+    "tick": 31,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 102,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.10200740681084114,
+        0.24999998048953784
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 104,
+    "episode": "source-91011",
+    "tick": 31,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-3",
+      "attributed_external": true,
+      "p_external": 0.9118546710164843,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 103
+    }
+  },
+  {
+    "id": 105,
+    "episode": "source-91011",
+    "tick": 32,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-0",
+      "p_external": 0.7412643425093574,
+      "features": [
+        1.0561402922973755,
+        0.6154377911498431,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.3506063760008393,
+        -0.04180814980163418,
+        0.07989939947036465,
+        0.10496071882574008,
+        0.2451308957295656,
+        -0.550684418049695,
+        0.2346640841280515,
+        -0.3220329441473476,
+        -0.787262828435837,
+        -0.26466585605608817,
+        0.6143563265653149,
+        -0.38311523336165487,
+        0.17275522325052206,
+        -0.20584069526669863,
+        -0.19610189019340357,
+        -0.07012945852215254
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 106,
+    "episode": "source-91011",
+    "tick": 32,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 105,
+      "verify": true,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.28616547383977203,
+        0.25000004140344934
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 107,
+    "episode": "source-91011",
+    "tick": 32,
+    "kind": "observation",
+    "source": "source_verifier",
+    "payload": {
+      "field": "source:32",
+      "value": false
+    }
+  },
+  {
+    "id": 108,
+    "episode": "source-91011",
+    "tick": 32,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-0",
+      "attributed_external": false,
+      "p_external": 0.0,
+      "verified": true,
+      "evidence_event": 107,
+      "decision_event": 106
+    }
+  },
+  {
+    "id": 109,
+    "episode": "source-91011",
+    "tick": 33,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-1",
+      "p_external": 0.5789968354986924,
+      "features": [
+        1.0247374916154353,
+        0.7344209221657144,
+        1,
+        1.0,
+        0.0
+      ],
+      "state": [
+        -0.41245470314250054,
+        -0.23522017638471723,
+        0.06826578993684176,
+        0.28153612589826466,
+        0.37285474259280277,
+        -0.37157157238051414,
+        0.23508931555413604,
+        -0.33855931765683983,
+        -0.7342773881812035,
+        -0.14865560344519,
+        0.457017549733486,
+        -0.29504901839753117,
+        0.1836552267913992,
+        -0.25788342618388593,
+        -0.21916172054107386,
+        -0.1896764234570268
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 110,
+    "episode": "source-91011",
+    "tick": 33,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 109,
+      "verify": true,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.4676158511630281,
+        0.24999999786512186
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 111,
+    "episode": "source-91011",
+    "tick": 33,
+    "kind": "observation",
+    "source": "source_verifier",
+    "payload": {
+      "field": "source:33",
+      "value": true
+    }
+  },
+  {
+    "id": 112,
+    "episode": "source-91011",
+    "tick": 33,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-1",
+      "attributed_external": true,
+      "p_external": 1.0,
+      "verified": true,
+      "evidence_event": 111,
+      "decision_event": 110
+    }
+  },
+  {
+    "id": 113,
+    "episode": "source-91011",
+    "tick": 34,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-2",
+      "p_external": 0.1579349441224097,
+      "features": [
+        0.60266086889596,
+        -2.4377974047541136,
+        1,
+        1.0,
+        1.0
+      ],
+      "state": [
+        -0.47843482286029265,
+        -0.696801762513792,
+        0.08150196350359494,
+        0.3063915745028955,
+        0.5548094653292142,
+        0.16857770735450497,
+        0.06695909807980052,
+        0.18457729511823234,
+        0.1451494633610541,
+        0.14821563558983028,
+        0.5440200870109224,
+        0.13960292992167858,
+        0.0316794443891248,
+        -0.28640001944440796,
+        -0.29075787162186173,
+        -0.4020696421018133
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 114,
+    "episode": "source-91011",
+    "tick": 34,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 113,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.1296419071464105,
+        0.25000001115748116
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 115,
+    "episode": "source-91011",
+    "tick": 34,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-2",
+      "attributed_external": false,
+      "p_external": 0.1579349441224097,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 114
+    }
+  },
+  {
+    "id": 116,
+    "episode": "source-91011",
+    "tick": 35,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-3",
+      "p_external": 0.08123176090711051,
+      "features": [
+        -0.8414321383755731,
+        -0.09802083451443089,
+        0,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.23387437300272257,
+        -0.7066567048544924,
+        -0.24717901930457362,
+        0.30529595526344605,
+        0.3853838943435523,
+        0.2815983094083651,
+        -0.11873934875709237,
+        0.32743418540441843,
+        0.2449494274969019,
+        0.3710281261337218,
+        0.0502628681812857,
+        0.20433283691764342,
+        -0.10354740797734165,
+        -0.22923184043234965,
+        -0.06316246458749943,
+        -0.4094683089224552
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 117,
+    "episode": "source-91011",
+    "tick": 35,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 116,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.06236778955456496,
+        0.24999999659861838
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 118,
+    "episode": "source-91011",
+    "tick": 35,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-3",
+      "attributed_external": false,
+      "p_external": 0.08123176090711051,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 117
+    }
+  },
+  {
+    "id": 119,
+    "episode": "source-91011",
+    "tick": 36,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-0",
+      "p_external": 0.049002745204438744,
+      "features": [
+        -0.2047098556030299,
+        -0.15881628848188717,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.16445478225995433,
+        -0.7223622639958669,
+        -0.38418941198181233,
+        0.3566217383907994,
+        0.31540530356408397,
+        0.44464434103846073,
+        -0.3441765893031318,
+        0.35670701225490037,
+        0.4368619073517966,
+        0.4255983982943915,
+        0.024978835698472052,
+        0.18444470833284318,
+        -0.21224047793929368,
+        -0.32924454147733107,
+        -0.09351165245509249,
+        -0.47334514264858024
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 120,
+    "episode": "source-91011",
+    "tick": 36,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 119,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.03681572834005104,
+        0.24999999275016638
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 121,
+    "episode": "source-91011",
+    "tick": 36,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-0",
+      "attributed_external": false,
+      "p_external": 0.049002745204438744,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 120
+    }
+  },
+  {
+    "id": 122,
+    "episode": "source-91011",
+    "tick": 37,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-1",
+      "p_external": 0.4364786101921952,
+      "features": [
+        1.222379777085001,
+        -0.3903181406221272,
+        0,
+        0.0,
+        0.0
+      ],
+      "state": [
+        0.025603425657983514,
+        -0.10651082537146969,
+        0.14343717474227727,
+        -0.050455112708375466,
+        -0.023067447827630566,
+        0.2498862834762899,
+        0.03580814404490537,
+        0.1477759457359126,
+        0.5313391792449647,
+        0.008515569463893147,
+        0.3796743803186992,
+        0.012996792926480913,
+        0.006039106976294756,
+        0.06944774492525393,
+        -0.29360736683339617,
+        -0.036810602935323566
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 123,
+    "episode": "source-91011",
+    "tick": 37,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 122,
+      "verify": true,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.42767832366349934,
+        0.25000000080000834
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 124,
+    "episode": "source-91011",
+    "tick": 37,
+    "kind": "observation",
+    "source": "source_verifier",
+    "payload": {
+      "field": "source:37",
+      "value": false
+    }
+  },
+  {
+    "id": 125,
+    "episode": "source-91011",
+    "tick": 37,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-1",
+      "attributed_external": false,
+      "p_external": 0.0,
+      "verified": true,
+      "evidence_event": 124,
+      "decision_event": 123
+    }
+  },
+  {
+    "id": 126,
+    "episode": "source-91011",
+    "tick": 38,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-2",
+      "p_external": 0.6202763546932907,
+      "features": [
+        1.0323017328119446,
+        0.42370689852127874,
+        0,
+        1.0,
+        0.0
+      ],
+      "state": [
+        0.040999109575094284,
+        0.027829378452971135,
+        0.34654793317062765,
+        -0.03277389574757291,
+        0.11119700606329384,
+        0.043700545221180234,
+        0.12019074782878773,
+        -0.010207217715093003,
+        0.25287681124231354,
+        -0.20546408392948462,
+        0.43906477462814403,
+        -0.02389174818391928,
+        0.176237020813076,
+        0.12530452180710944,
+        -0.24573499296530038,
+        0.0413646968870431
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 127,
+    "episode": "source-91011",
+    "tick": 38,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 126,
+      "verify": true,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.4476099672870395,
+        0.2500000200772005
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 128,
+    "episode": "source-91011",
+    "tick": 38,
+    "kind": "observation",
+    "source": "source_verifier",
+    "payload": {
+      "field": "source:38",
+      "value": true
+    }
+  },
+  {
+    "id": 129,
+    "episode": "source-91011",
+    "tick": 38,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-2",
+      "attributed_external": true,
+      "p_external": 1.0,
+      "verified": true,
+      "evidence_event": 128,
+      "decision_event": 127
+    }
+  },
+  {
+    "id": 130,
+    "episode": "source-91011",
+    "tick": 39,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-3",
+      "p_external": 0.7669860319358721,
+      "features": [
+        2.604680692400465,
+        -1.8139720984865688,
+        1,
+        1.0,
+        1.0
+      ],
+      "state": [
+        -0.1394411532385673,
+        0.21357355393012417,
+        0.7708375305712828,
+        -0.1917723738107029,
+        0.4024888120672512,
+        0.10182342474125029,
+        0.4133731129562166,
+        -0.17288679536205898,
+        0.3961836105356997,
+        -0.3968773988062478,
+        0.8330903420347222,
+        0.2292064519821728,
+        0.32079153572058694,
+        0.15534810629990092,
+        -0.38288111167736316,
+        0.1339601488763007
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 131,
+    "episode": "source-91011",
+    "tick": 39,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 130,
+      "verify": true,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.2572177264357588,
+        0.25000003254967573
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 132,
+    "episode": "source-91011",
+    "tick": 39,
+    "kind": "observation",
+    "source": "source_verifier",
+    "payload": {
+      "field": "source:39",
+      "value": true
+    }
+  },
+  {
+    "id": 133,
+    "episode": "source-91011",
+    "tick": 39,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-3",
+      "attributed_external": true,
+      "p_external": 1.0,
+      "verified": true,
+      "evidence_event": 132,
+      "decision_event": 131
+    }
+  },
+  {
+    "id": 134,
+    "episode": "source-91011",
+    "tick": 40,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-0",
+      "p_external": 0.35432474492512916,
+      "features": [
+        0.04991757017825706,
+        0.3089322056337249,
+        0,
+        1.0,
+        1.0
+      ],
+      "state": [
+        -0.03696508142758661,
+        -0.2158366613488168,
+        0.08180435901200514,
+        0.18683668113669405,
+        0.46391740960015526,
+        -0.04622663168145831,
+        0.19247489694205014,
+        -0.09573989629823067,
+        0.0037901141413112793,
+        0.10222421722976732,
+        0.4035478141175401,
+        0.36703178207890197,
+        -0.12792236073750557,
+        0.12211750460578807,
+        0.10591947342843985,
+        -0.1625509859536808
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 135,
+    "episode": "source-91011",
+    "tick": 40,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 134,
+      "verify": true,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.33025791234511864,
+        0.2500000435344804
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 136,
+    "episode": "source-91011",
+    "tick": 40,
+    "kind": "observation",
+    "source": "source_verifier",
+    "payload": {
+      "field": "source:40",
+      "value": false
+    }
+  },
+  {
+    "id": 137,
+    "episode": "source-91011",
+    "tick": 40,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-0",
+      "attributed_external": false,
+      "p_external": 0.0,
+      "verified": true,
+      "evidence_event": 136,
+      "decision_event": 135
+    }
+  },
+  {
+    "id": 138,
+    "episode": "source-91011",
+    "tick": 41,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-1",
+      "p_external": 0.1303085763968349,
+      "features": [
+        0.4441828598012507,
+        0.1365686771820493,
+        1,
+        1.0,
+        0.0
+      ],
+      "state": [
+        -0.16056516559712136,
+        -0.45630252155265305,
+        -0.15222060834289486,
+        0.3912324760877413,
+        0.4853591696386936,
+        0.16069066261175363,
+        -0.11029036959720909,
+        -0.07502914421375367,
+        0.10306126189805413,
+        0.2130838565502387,
+        0.18266739637101523,
+        0.31930581341302433,
+        -0.07972147047901877,
+        -0.2535807206504522,
+        0.021900259955200646,
+        -0.3382541942593995
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 139,
+    "episode": "source-91011",
+    "tick": 41,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 138,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.10231877605001773,
+        0.2500000033292135
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 140,
+    "episode": "source-91011",
+    "tick": 41,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-1",
+      "attributed_external": false,
+      "p_external": 0.1303085763968349,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 139
+    }
+  },
+  {
+    "id": 141,
+    "episode": "source-91011",
+    "tick": 42,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-2",
+      "p_external": 0.1961553018772956,
+      "features": [
+        0.9438561703326296,
+        -0.4670652286523832,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.16745996322371776,
+        -0.3686328081319275,
+        -0.004240014855592417,
+        0.21508035262529,
+        0.3236414020270293,
+        0.24395179108401543,
+        -0.0775247422812521,
+        -0.007129650893430629,
+        0.3472049724441417,
+        0.0871492658195753,
+        0.4614999166931553,
+        0.20861897292654377,
+        -0.022069686664627493,
+        -0.2535914065647474,
+        -0.11951436769001925,
+        -0.2831612949522282
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 142,
+    "episode": "source-91011",
+    "tick": 42,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 141,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.16744274494967448,
+        0.2500000219876848
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 143,
+    "episode": "source-91011",
+    "tick": 42,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-2",
+      "attributed_external": false,
+      "p_external": 0.1961553018772956,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 142
+    }
+  },
+  {
+    "id": 144,
+    "episode": "source-91011",
+    "tick": 43,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-3",
+      "p_external": 0.19600011053841326,
+      "features": [
+        -0.3717020238421955,
+        0.702703129091232,
+        0,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.035218124274989535,
+        -0.38056709038261344,
+        -0.17898576471296004,
+        0.18735728597692952,
+        0.17537695455095778,
+        0.14144859125921333,
+        -0.08426120038171894,
+        0.04452144374165176,
+        0.23101489604712352,
+        0.20949972464880437,
+        0.18955149899097373,
+        0.12890945037916832,
+        -0.10671759169149314,
+        -0.1690148325848459,
+        0.0002258415493166105,
+        -0.2584329569640894
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 145,
+    "episode": "source-91011",
+    "tick": 43,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 144,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.16728925704495143,
+        0.25000002194370946
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 146,
+    "episode": "source-91011",
+    "tick": 43,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-3",
+      "attributed_external": false,
+      "p_external": 0.19600011053841326,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 145
+    }
+  },
+  {
+    "id": 147,
+    "episode": "source-91011",
+    "tick": 44,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-0",
+      "p_external": 0.10314747962001676,
+      "features": [
+        -0.5287659299400562,
+        -0.8254530524288145,
+        0,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.04022809493403025,
+        -0.46410773443989883,
+        -0.30698929036206357,
+        0.19739471634106845,
+        0.18459052199643794,
+        0.27598054655993687,
+        -0.20707839180083687,
+        0.2520896214479985,
+        0.41778362061651453,
+        0.3424380074155826,
+        -0.07584009294826259,
+        0.23532163653013433,
+        -0.10987008231138592,
+        -0.19077061182424793,
+        0.025716040587841583,
+        -0.28997922057535475
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 148,
+    "episode": "source-91011",
+    "tick": 44,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 147,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.07974318169432014,
+        0.24999999921556432
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 149,
+    "episode": "source-91011",
+    "tick": 44,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-0",
+      "attributed_external": false,
+      "p_external": 0.10314747962001676,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 148
+    }
+  },
+  {
+    "id": 150,
+    "episode": "source-91011",
+    "tick": 45,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-1",
+      "p_external": 0.45256658652190945,
+      "features": [
+        1.928845113742345,
+        -0.4751199507653724,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.05033102389076187,
+        0.038712729386474715,
+        0.24400879941874307,
+        -0.08307518293989913,
+        0.04268955433311057,
+        0.20417180759343956,
+        0.04296691989884485,
+        0.03479230325463942,
+        0.535060079250261,
+        0.006550973552683109,
+        0.4269204513101835,
+        0.02142140727005551,
+        0.10158263988693875,
+        -0.06419775380649646,
+        -0.16914769059139717,
+        -0.033381701946886735
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 151,
+    "episode": "source-91011",
+    "tick": 45,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 150,
+      "verify": true,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.4474897300173546,
+        0.24999998929090883
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 152,
+    "episode": "source-91011",
+    "tick": 45,
+    "kind": "observation",
+    "source": "source_verifier",
+    "payload": {
+      "field": "source:45",
+      "value": true
+    }
+  },
+  {
+    "id": 153,
+    "episode": "source-91011",
+    "tick": 45,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-1",
+      "attributed_external": true,
+      "p_external": 1.0,
+      "verified": true,
+      "evidence_event": 152,
+      "decision_event": 151
+    }
+  },
+  {
+    "id": 154,
+    "episode": "source-91011",
+    "tick": 46,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-2",
+      "p_external": 0.15630538845634726,
+      "features": [
+        0.09734149287698668,
+        0.6850619592485154,
+        1,
+        1.0,
+        1.0
+      ],
+      "state": [
+        -0.06610811588230407,
+        -0.40949361561897313,
+        -0.11444555162525409,
+        0.3608792640404498,
+        0.329204822072791,
+        0.14793392865701588,
+        -0.10038730616492621,
+        -0.02084980259404444,
+        0.1809389416072645,
+        0.32992416641900724,
+        0.34328061137822496,
+        0.1498095192797276,
+        -0.3504510133921894,
+        -0.1686054786165279,
+        0.0014593127128620653,
+        -0.3850832367494765
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 155,
+    "episode": "source-91011",
+    "tick": 46,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 154,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.12803023805060404,
+        0.2500000106957267
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 156,
+    "episode": "source-91011",
+    "tick": 46,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-2",
+      "attributed_external": false,
+      "p_external": 0.15630538845634726,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 155
+    }
+  },
+  {
+    "id": 157,
+    "episode": "source-91011",
+    "tick": 47,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-3",
+      "p_external": 0.29906975555299414,
+      "features": [
+        -0.19164442754493805,
+        0.7507642958059325,
+        0,
+        0.0,
+        0.0
+      ],
+      "state": [
+        0.052650186480118266,
+        -0.3385411695350676,
+        -0.13765334354180586,
+        0.13445665569812887,
+        0.10170387767819357,
+        0.012317932724200287,
+        0.010268012683196832,
+        -0.008264322273102831,
+        0.09631835823815504,
+        0.23558943691980713,
+        0.2389154481550585,
+        0.003996372518501198,
+        -0.24223739641515266,
+        -0.05777404105544507,
+        -0.05084169826331634,
+        -0.21928950562318977
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 158,
+    "episode": "source-91011",
+    "tick": 47,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 157,
+      "verify": true,
+      "cost": 0.25,
+      "rule": "minimize learned immediate action cost",
+      "action_costs": [
+        0.27222931301798137,
+        0.25000004020341876
+      ],
+      "policy_blind": false
+    }
+  },
+  {
+    "id": 159,
+    "episode": "source-91011",
+    "tick": 47,
+    "kind": "observation",
+    "source": "source_verifier",
+    "payload": {
+      "field": "source:47",
+      "value": true
+    }
+  },
+  {
+    "id": 160,
+    "episode": "source-91011",
+    "tick": 47,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-3",
+      "attributed_external": true,
+      "p_external": 1.0,
+      "verified": true,
+      "evidence_event": 159,
+      "decision_event": 158
+    }
+  }
+]

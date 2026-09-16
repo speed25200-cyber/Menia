@@ -1,0 +1,709 @@
+{
+  "version": 1,
+  "episode": "virtual-room-17",
+  "tick": 35,
+  "model": {
+    "actions": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "window": 16,
+    "prior": 0.1,
+    "samples": {
+      "a": [
+        [
+          -1,
+          0
+        ],
+        [
+          -1,
+          0
+        ],
+        [
+          -1,
+          0
+        ],
+        [
+          -1,
+          0
+        ]
+      ],
+      "b": [
+        [
+          0,
+          -1
+        ],
+        [
+          0,
+          -1
+        ],
+        [
+          0,
+          -1
+        ],
+        [
+          0,
+          -1
+        ]
+      ],
+      "c": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "d": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    "errors": [
+      {
+        "action": "a",
+        "effect": [
+          1,
+          0
+        ],
+        "correct": false,
+        "confidence": 0.11111111111111112,
+        "brier": 0.8888888888888888,
+        "surprisal": 2.197224577336219,
+        "regime_reset": false,
+        "attributable": true,
+        "prediction_event": 8,
+        "action_event": 9,
+        "observation_event": 11
+      },
+      {
+        "action": "b",
+        "effect": [
+          0,
+          1
+        ],
+        "correct": false,
+        "confidence": 0.11111111111111112,
+        "brier": 0.8888888888888888,
+        "surprisal": 2.197224577336219,
+        "regime_reset": false,
+        "attributable": true,
+        "prediction_event": 15,
+        "action_event": 16,
+        "observation_event": 18
+      },
+      {
+        "action": "c",
+        "effect": [
+          -1,
+          0
+        ],
+        "correct": false,
+        "confidence": 0.11111111111111112,
+        "brier": 0.8888888888888888,
+        "surprisal": 2.197224577336219,
+        "regime_reset": false,
+        "attributable": true,
+        "prediction_event": 22,
+        "action_event": 23,
+        "observation_event": 25
+      },
+      {
+        "action": "d",
+        "effect": [
+          0,
+          -1
+        ],
+        "correct": false,
+        "confidence": 0.11111111111111112,
+        "brier": 0.8888888888888888,
+        "surprisal": 2.197224577336219,
+        "regime_reset": false,
+        "attributable": true,
+        "prediction_event": 29,
+        "action_event": 30,
+        "observation_event": 32
+      },
+      {
+        "action": "a",
+        "effect": [
+          1,
+          0
+        ],
+        "correct": true,
+        "confidence": 0.5789473684210527,
+        "brier": 0.19944598337950137,
+        "surprisal": 0.5465437063680699,
+        "regime_reset": false,
+        "attributable": true,
+        "prediction_event": 36,
+        "action_event": 37,
+        "observation_event": 39
+      },
+      {
+        "action": "b",
+        "effect": [
+          0,
+          1
+        ],
+        "correct": true,
+        "confidence": 0.5789473684210527,
+        "brier": 0.19944598337950137,
+        "surprisal": 0.5465437063680699,
+        "regime_reset": false,
+        "attributable": true,
+        "prediction_event": 43,
+        "action_event": 44,
+        "observation_event": 46
+      },
+      {
+        "action": "c",
+        "effect": [
+          -1,
+          0
+        ],
+        "correct": true,
+        "confidence": 0.5789473684210527,
+        "brier": 0.19944598337950137,
+        "surprisal": 0.5465437063680699,
+        "regime_reset": false,
+        "attributable": true,
+        "prediction_event": 50,
+        "action_event": 51,
+        "observation_event": 53
+      },
+      {
+        "action": "d",
+        "effect": [
+          0,
+          -1
+        ],
+        "correct": true,
+        "confidence": 0.5789473684210527,
+        "brier": 0.19944598337950137,
+        "surprisal": 0.5465437063680699,
+        "regime_reset": false,
+        "attributable": true,
+        "prediction_event": 57,
+        "action_event": 58,
+        "observation_event": 60
+      },
+      {
+        "action": "a",
+        "effect": [
+          1,
+          0
+        ],
+        "correct": true,
+        "confidence": 0.7241379310344828,
+        "brier": 0.08561236623067775,
+        "surprisal": 0.322773392263051,
+        "regime_reset": false,
+        "attributable": true,
+        "prediction_event": 64,
+        "action_event": 65,
+        "observation_event": 67
+      },
+      {
+        "action": "b",
+        "effect": [
+          0,
+          1
+        ],
+        "correct": true,
+        "confidence": 0.7241379310344828,
+        "brier": 0.08561236623067775,
+        "surprisal": 0.322773392263051,
+        "regime_reset": false,
+        "attributable": true,
+        "prediction_event": 71,
+        "action_event": 72,
+        "observation_event": 74
+      },
+      {
+        "action": "c",
+        "effect": [
+          -1,
+          0
+        ],
+        "correct": true,
+        "confidence": 0.7241379310344828,
+        "brier": 0.08561236623067775,
+        "surprisal": 0.322773392263051,
+        "regime_reset": false,
+        "attributable": true,
+        "prediction_event": 78,
+        "action_event": 79,
+        "observation_event": 81
+      },
+      {
+        "action": "d",
+        "effect": [
+          0,
+          -1
+        ],
+        "correct": true,
+        "confidence": 0.7241379310344828,
+        "brier": 0.08561236623067775,
+        "surprisal": 0.322773392263051,
+        "regime_reset": false,
+        "attributable": true,
+        "prediction_event": 85,
+        "action_event": 86,
+        "observation_event": 88
+      },
+      {
+        "action": "a",
+        "effect": [
+          -1,
+          0
+        ],
+        "correct": false,
+        "confidence": 0.7948717948717949,
+        "brier": 1.5857988165680474,
+        "surprisal": 3.6635616461296463,
+        "regime_reset": false,
+        "attributable": true,
+        "prediction_event": 92,
+        "action_event": 93,
+        "observation_event": 95
+      },
+      {
+        "action": "b",
+        "effect": [
+          0,
+          -1
+        ],
+        "correct": false,
+        "confidence": 0.7948717948717949,
+        "brier": 1.5857988165680474,
+        "surprisal": 3.6635616461296463,
+        "regime_reset": false,
+        "attributable": true,
+        "prediction_event": 99,
+        "action_event": 100,
+        "observation_event": 102
+      },
+      {
+        "action": "a",
+        "effect": [
+          -1,
+          0
+        ],
+        "correct": false,
+        "confidence": 0.6326530612244897,
+        "brier": 1.0045814244064972,
+        "surprisal": 1.493925025312256,
+        "regime_reset": true,
+        "attributable": true,
+        "prediction_event": 106,
+        "action_event": 107,
+        "observation_event": 109
+      },
+      {
+        "action": "a",
+        "effect": [
+          -1,
+          0
+        ],
+        "correct": true,
+        "confidence": 0.7241379310344828,
+        "brier": 0.08561236623067775,
+        "surprisal": 0.322773392263051,
+        "regime_reset": false,
+        "attributable": true,
+        "prediction_event": 113,
+        "action_event": 114,
+        "observation_event": 116
+      },
+      {
+        "action": "b",
+        "effect": [
+          0,
+          -1
+        ],
+        "correct": false,
+        "confidence": 0.6326530612244897,
+        "brier": 1.0045814244064972,
+        "surprisal": 1.493925025312256,
+        "regime_reset": true,
+        "attributable": true,
+        "prediction_event": 120,
+        "action_event": 121,
+        "observation_event": 123
+      },
+      {
+        "action": "b",
+        "effect": [
+          0,
+          -1
+        ],
+        "correct": true,
+        "confidence": 0.7241379310344828,
+        "brier": 0.08561236623067775,
+        "surprisal": 0.322773392263051,
+        "regime_reset": false,
+        "attributable": true,
+        "prediction_event": 127,
+        "action_event": 128,
+        "observation_event": 130
+      },
+      {
+        "action": "a",
+        "effect": [
+          -1,
+          0
+        ],
+        "correct": true,
+        "confidence": 0.7948717948717949,
+        "brier": 0.047337278106508854,
+        "surprisal": 0.2295744416445001,
+        "regime_reset": false,
+        "attributable": true,
+        "prediction_event": 134,
+        "action_event": 135,
+        "observation_event": 137
+      },
+      {
+        "action": "b",
+        "effect": [
+          0,
+          -1
+        ],
+        "correct": true,
+        "confidence": 0.7948717948717949,
+        "brier": 0.047337278106508854,
+        "surprisal": 0.2295744416445001,
+        "regime_reset": false,
+        "attributable": true,
+        "prediction_event": 141,
+        "action_event": 142,
+        "observation_event": 144
+      },
+      {
+        "action": "c",
+        "effect": [
+          1,
+          0
+        ],
+        "correct": false,
+        "confidence": 0.7948717948717949,
+        "brier": 1.5857988165680474,
+        "surprisal": 3.6635616461296463,
+        "regime_reset": false,
+        "attributable": true,
+        "prediction_event": 148,
+        "action_event": 149,
+        "observation_event": 151
+      },
+      {
+        "action": "c",
+        "effect": [
+          1,
+          0
+        ],
+        "correct": false,
+        "confidence": 0.6326530612244897,
+        "brier": 1.0045814244064972,
+        "surprisal": 1.493925025312256,
+        "regime_reset": true,
+        "attributable": true,
+        "prediction_event": 155,
+        "action_event": 156,
+        "observation_event": 158
+      },
+      {
+        "action": "c",
+        "effect": [
+          1,
+          0
+        ],
+        "correct": true,
+        "confidence": 0.7241379310344828,
+        "brier": 0.08561236623067775,
+        "surprisal": 0.322773392263051,
+        "regime_reset": false,
+        "attributable": true,
+        "prediction_event": 162,
+        "action_event": 163,
+        "observation_event": 165
+      },
+      {
+        "action": "c",
+        "effect": [
+          1,
+          0
+        ],
+        "correct": true,
+        "confidence": 0.7948717948717949,
+        "brier": 0.047337278106508854,
+        "surprisal": 0.2295744416445001,
+        "regime_reset": false,
+        "attributable": true,
+        "prediction_event": 169,
+        "action_event": 170,
+        "observation_event": 172
+      },
+      {
+        "action": "c",
+        "effect": [
+          1,
+          0
+        ],
+        "correct": true,
+        "confidence": 0.8367346938775508,
+        "brier": 0.029987505206164156,
+        "surprisal": 0.178248231406319,
+        "regime_reset": false,
+        "attributable": true,
+        "prediction_event": 176,
+        "action_event": 177,
+        "observation_event": 179
+      },
+      {
+        "action": "c",
+        "effect": [
+          1,
+          0
+        ],
+        "correct": true,
+        "confidence": 0.8644067796610169,
+        "brier": 0.02068371157713303,
+        "surprisal": 0.14571181118139379,
+        "regime_reset": false,
+        "attributable": true,
+        "prediction_event": 183,
+        "action_event": 184,
+        "observation_event": 186
+      },
+      {
+        "action": "c",
+        "effect": [
+          1,
+          0
+        ],
+        "correct": true,
+        "confidence": 0.8840579710144927,
+        "brier": 0.015122873345935744,
+        "surprisal": 0.12323264042394821,
+        "regime_reset": false,
+        "attributable": true,
+        "prediction_event": 190,
+        "action_event": 191,
+        "observation_event": 193
+      },
+      {
+        "action": "c",
+        "effect": [
+          1,
+          0
+        ],
+        "correct": true,
+        "confidence": 0.8987341772151898,
+        "brier": 0.01153661272232016,
+        "surprisal": 0.10676797542570618,
+        "regime_reset": false,
+        "attributable": true,
+        "prediction_event": 197,
+        "action_event": 198,
+        "observation_event": 200
+      },
+      {
+        "action": "d",
+        "effect": [
+          0,
+          1
+        ],
+        "correct": false,
+        "confidence": 0.7948717948717949,
+        "brier": 1.5857988165680474,
+        "surprisal": 3.6635616461296463,
+        "regime_reset": false,
+        "attributable": true,
+        "prediction_event": 204,
+        "action_event": 205,
+        "observation_event": 207
+      },
+      {
+        "action": "d",
+        "effect": [
+          0,
+          1
+        ],
+        "correct": false,
+        "confidence": 0.6326530612244897,
+        "brier": 1.0045814244064972,
+        "surprisal": 1.493925025312256,
+        "regime_reset": true,
+        "attributable": true,
+        "prediction_event": 211,
+        "action_event": 212,
+        "observation_event": 214
+      },
+      {
+        "action": "d",
+        "effect": [
+          0,
+          1
+        ],
+        "correct": true,
+        "confidence": 0.7241379310344828,
+        "brier": 0.08561236623067775,
+        "surprisal": 0.322773392263051,
+        "regime_reset": false,
+        "attributable": true,
+        "prediction_event": 218,
+        "action_event": 219,
+        "observation_event": 221
+      },
+      {
+        "action": "d",
+        "effect": [
+          0,
+          1
+        ],
+        "correct": true,
+        "confidence": 0.7948717948717949,
+        "brier": 0.047337278106508854,
+        "surprisal": 0.2295744416445001,
+        "regime_reset": false,
+        "attributable": true,
+        "prediction_event": 225,
+        "action_event": 226,
+        "observation_event": 228
+      },
+      {
+        "action": "d",
+        "effect": [
+          0,
+          1
+        ],
+        "correct": true,
+        "confidence": 0.8367346938775508,
+        "brier": 0.029987505206164156,
+        "surprisal": 0.178248231406319,
+        "regime_reset": false,
+        "attributable": true,
+        "prediction_event": 232,
+        "action_event": 233,
+        "observation_event": 235
+      },
+      {
+        "action": "d",
+        "effect": [
+          0,
+          1
+        ],
+        "correct": true,
+        "confidence": 0.8644067796610169,
+        "brier": 0.02068371157713303,
+        "surprisal": 0.14571181118139379,
+        "regime_reset": false,
+        "attributable": true,
+        "prediction_event": 239,
+        "action_event": 240,
+        "observation_event": 242
+      },
+      {
+        "action": "d",
+        "effect": [
+          0,
+          1
+        ],
+        "correct": true,
+        "confidence": 0.8840579710144927,
+        "brier": 0.015122873345935744,
+        "surprisal": 0.12323264042394821,
+        "regime_reset": false,
+        "attributable": true,
+        "prediction_event": 246,
+        "action_event": 247,
+        "observation_event": 249
+      }
+    ],
+    "learning_enabled": true
+  },
+  "pending": null,
+  "stopped": false,
+  "needs_resync": false,
+  "attention": {
+    "position": {
+      "attempts": 36,
+      "received": 36,
+      "last_event": 249
+    },
+    "target": {
+      "attempts": 1,
+      "received": 1,
+      "last_event": 2
+    },
+    "landmark": {
+      "attempts": 0,
+      "received": 0,
+      "last_event": null
+    }
+  },
+  "last_decision": {
+    "kind": "done",
+    "reason": "observed_at_target",
+    "evidence": [
+      249,
+      2
+    ],
+    "event_id": 252
+  }
+}

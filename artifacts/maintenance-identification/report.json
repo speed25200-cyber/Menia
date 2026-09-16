@@ -1,0 +1,901 @@
+{
+  "schema": "maintenance-identification-v1",
+  "protocol": "docs/LLM_COUPLING_PROTOCOL.md",
+  "public_observation_equivalence": [
+    {
+      "depth": 1,
+      "action_sequences": 2,
+      "diagnostic_sequences_per_action_sequence": 2,
+      "joint_probabilities_compared": 4,
+      "probability_denominator": "800",
+      "max_absolute_numerator_difference": 0,
+      "normalization_exact": true
+    },
+    {
+      "depth": 2,
+      "action_sequences": 4,
+      "diagnostic_sequences_per_action_sequence": 4,
+      "joint_probabilities_compared": 16,
+      "probability_denominator": "320000",
+      "max_absolute_numerator_difference": 0,
+      "normalization_exact": true
+    },
+    {
+      "depth": 3,
+      "action_sequences": 8,
+      "diagnostic_sequences_per_action_sequence": 8,
+      "joint_probabilities_compared": 64,
+      "probability_denominator": "128000000",
+      "max_absolute_numerator_difference": 0,
+      "normalization_exact": true
+    },
+    {
+      "depth": 4,
+      "action_sequences": 16,
+      "diagnostic_sequences_per_action_sequence": 16,
+      "joint_probabilities_compared": 256,
+      "probability_denominator": "51200000000",
+      "max_absolute_numerator_difference": 0,
+      "normalization_exact": true
+    },
+    {
+      "depth": 5,
+      "action_sequences": 32,
+      "diagnostic_sequences_per_action_sequence": 32,
+      "joint_probabilities_compared": 1024,
+      "probability_denominator": "20480000000000",
+      "max_absolute_numerator_difference": 0,
+      "normalization_exact": true
+    },
+    {
+      "depth": 6,
+      "action_sequences": 64,
+      "diagnostic_sequences_per_action_sequence": 64,
+      "joint_probabilities_compared": 4096,
+      "probability_denominator": "8192000000000000",
+      "max_absolute_numerator_difference": 0,
+      "normalization_exact": true
+    },
+    {
+      "depth": 7,
+      "action_sequences": 128,
+      "diagnostic_sequences_per_action_sequence": 128,
+      "joint_probabilities_compared": 16384,
+      "probability_denominator": "3276800000000000000",
+      "max_absolute_numerator_difference": 0,
+      "normalization_exact": true
+    },
+    {
+      "depth": 8,
+      "action_sequences": 256,
+      "diagnostic_sequences_per_action_sequence": 256,
+      "joint_probabilities_compared": 65536,
+      "probability_denominator": "1310720000000000000000",
+      "max_absolute_numerator_difference": 0,
+      "normalization_exact": true
+    }
+  ],
+  "joint_probabilities_compared": 87380,
+  "true_accuracy_after_work_from_uniform": {
+    "A": 0.72,
+    "B": 0.78
+  },
+  "true_accuracy_after_maintenance": {
+    "A": 0.93,
+    "B": 0.57
+  },
+  "calibration_with_reliable_reference": [
+    {
+      "probes": 0,
+      "maintenance_interventions": 0,
+      "readings_with_reference": 0,
+      "equal_prior_classification_accuracy": 0.5,
+      "accuracy_exact": "1/2",
+      "worlds": [
+        {
+          "world": "A",
+          "observed_correctness": 0.93,
+          "probability_correct_model_choice": 0.5,
+          "probability_wrong_model_confidence_ge95": 0.0,
+          "probability_any_model_confidence_ge95": 0.0,
+          "mean_squared_error_of_predicted_probability": 0.0324,
+          "mean_posterior_world_A": 0.5,
+          "correct_model_choice_exact": "1/2"
+        },
+        {
+          "world": "B",
+          "observed_correctness": 0.57,
+          "probability_correct_model_choice": 0.5,
+          "probability_wrong_model_confidence_ge95": 0.0,
+          "probability_any_model_confidence_ge95": 0.0,
+          "mean_squared_error_of_predicted_probability": 0.0324,
+          "mean_posterior_world_A": 0.5,
+          "correct_model_choice_exact": "1/2"
+        }
+      ]
+    },
+    {
+      "probes": 1,
+      "maintenance_interventions": 1,
+      "readings_with_reference": 1,
+      "equal_prior_classification_accuracy": 0.68,
+      "accuracy_exact": "17/25",
+      "worlds": [
+        {
+          "world": "A",
+          "observed_correctness": 0.93,
+          "probability_correct_model_choice": 0.93,
+          "probability_wrong_model_confidence_ge95": 0.0,
+          "probability_any_model_confidence_ge95": 0.0,
+          "mean_squared_error_of_predicted_probability": 0.0241138944,
+          "mean_posterior_world_A": 0.5864,
+          "correct_model_choice_exact": "93/100"
+        },
+        {
+          "world": "B",
+          "observed_correctness": 0.57,
+          "probability_correct_model_choice": 0.43,
+          "probability_wrong_model_confidence_ge95": 0.0,
+          "probability_any_model_confidence_ge95": 0.0,
+          "mean_squared_error_of_predicted_probability": 0.0294886656,
+          "mean_posterior_world_A": 0.4136,
+          "correct_model_choice_exact": "43/100"
+        }
+      ]
+    },
+    {
+      "probes": 2,
+      "maintenance_interventions": 2,
+      "readings_with_reference": 2,
+      "equal_prior_classification_accuracy": 0.77,
+      "accuracy_exact": "77/100",
+      "worlds": [
+        {
+          "world": "A",
+          "observed_correctness": 0.93,
+          "probability_correct_model_choice": 0.8649,
+          "probability_wrong_model_confidence_ge95": 0.0049,
+          "probability_any_model_confidence_ge95": 0.0049,
+          "mean_squared_error_of_predicted_probability": 0.019495683000843922,
+          "mean_posterior_world_A": 0.6561716747693499,
+          "correct_model_choice_exact": "8649/10000"
+        },
+        {
+          "world": "B",
+          "observed_correctness": 0.57,
+          "probability_correct_model_choice": 0.6751,
+          "probability_wrong_model_confidence_ge95": 0.0,
+          "probability_any_model_confidence_ge95": 0.1849,
+          "mean_squared_error_of_predicted_probability": 0.025064467949048333,
+          "mean_posterior_world_A": 0.3438283252306501,
+          "correct_model_choice_exact": "6751/10000"
+        }
+      ]
+    },
+    {
+      "probes": 4,
+      "maintenance_interventions": 4,
+      "readings_with_reference": 4,
+      "equal_prior_classification_accuracy": 0.821246,
+      "accuracy_exact": "410623/500000",
+      "worlds": [
+        {
+          "world": "A",
+          "observed_correctness": 0.93,
+          "probability_correct_model_choice": 0.74805201,
+          "probability_wrong_model_confidence_ge95": 0.00129997,
+          "probability_any_model_confidence_ge95": 0.00129997,
+          "mean_squared_error_of_predicted_probability": 0.014540702054771234,
+          "mean_posterior_world_A": 0.750515669146451,
+          "correct_model_choice_exact": "74805201/100000000"
+        },
+        {
+          "world": "B",
+          "observed_correctness": 0.57,
+          "probability_correct_model_choice": 0.89443999,
+          "probability_wrong_model_confidence_ge95": 0.0,
+          "probability_any_model_confidence_ge95": 0.21546397,
+          "mean_squared_error_of_predicted_probability": 0.017792467223848724,
+          "mean_posterior_world_A": 0.24948433085354904,
+          "correct_model_choice_exact": "89443999/100000000"
+        }
+      ]
+    },
+    {
+      "probes": 8,
+      "maintenance_interventions": 8,
+      "readings_with_reference": 8,
+      "equal_prior_classification_accuracy": 0.90907145386412,
+      "accuracy_exact": "22726786346603/25000000000000",
+      "worlds": [
+        {
+          "world": "A",
+          "observed_correctness": 0.93,
+          "probability_correct_model_choice": 0.8965342972052793,
+          "probability_wrong_model_confidence_ge95": 0.0146986496255179,
+          "probability_any_model_confidence_ge95": 0.574280459290558,
+          "mean_squared_error_of_predicted_probability": 0.008092561988507784,
+          "mean_posterior_world_A": 0.8597761768850427,
+          "correct_model_choice_exact": "8965342972052793/10000000000000000"
+        },
+        {
+          "world": "B",
+          "observed_correctness": 0.57,
+          "probability_correct_model_choice": 0.9216086105229607,
+          "probability_wrong_model_confidence_ge95": 0.0111429157112001,
+          "probability_any_model_confidence_ge95": 0.755191959536638,
+          "mean_squared_error_of_predicted_probability": 0.010080445487190675,
+          "mean_posterior_world_A": 0.14022382311495724,
+          "correct_model_choice_exact": "9216086105229607/10000000000000000"
+        }
+      ]
+    },
+    {
+      "probes": 16,
+      "maintenance_interventions": 16,
+      "readings_with_reference": 16,
+      "equal_prior_classification_accuracy": 0.9689702519187985,
+      "accuracy_exact": "121121281489849813082107226659/125000000000000000000000000000",
+      "worlds": [
+        {
+          "world": "A",
+          "observed_correctness": 0.93,
+          "probability_correct_model_choice": 0.9778943010099237,
+          "probability_wrong_model_confidence_ge95": 0.0038137942635633254,
+          "probability_any_model_confidence_ge95": 0.9069323968310381,
+          "mean_squared_error_of_predicted_probability": 0.002820896535552991,
+          "mean_posterior_world_A": 0.9505274094948746,
+          "correct_model_choice_exact": "19557886020198472783430120966949/20000000000000000000000000000000"
+        },
+        {
+          "world": "B",
+          "observed_correctness": 0.57,
+          "probability_correct_model_choice": 0.9600462028276734,
+          "probability_wrong_model_confidence_ge95": 0.010102272514996286,
+          "probability_any_model_confidence_ge95": 0.8969598688363203,
+          "mean_squared_error_of_predicted_probability": 0.003590751193911265,
+          "mean_posterior_world_A": 0.04947259050512543,
+          "correct_model_choice_exact": "19200924056553467402844191563931/20000000000000000000000000000000"
+        }
+      ]
+    },
+    {
+      "probes": 32,
+      "maintenance_interventions": 32,
+      "readings_with_reference": 32,
+      "equal_prior_classification_accuracy": 0.9953066282354136,
+      "accuracy_exact": "6220666426471335073021187592669861508586173151225031052799879/6250000000000000000000000000000000000000000000000000000000000",
+      "worlds": [
+        {
+          "world": "A",
+          "observed_correctness": 0.93,
+          "probability_correct_model_choice": 0.9941639034130475,
+          "probability_wrong_model_confidence_ge95": 0.0002565603617643759,
+          "probability_any_model_confidence_ge95": 0.9782633000310598,
+          "mean_squared_error_of_predicted_probability": 0.00041741333103237593,
+          "mean_posterior_world_A": 0.9927823235687581,
+          "correct_model_choice_exact": "9941639034130475392692681823792753396613937341184592682382371481/10000000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "world": "B",
+          "observed_correctness": 0.57,
+          "probability_correct_model_choice": 0.9964493530577797,
+          "probability_wrong_model_confidence_ge95": 0.0009756471116292347,
+          "probability_any_model_confidence_ge95": 0.9732004087565024,
+          "mean_squared_error_of_predicted_probability": 0.0005179975344565802,
+          "mean_posterior_world_A": 0.007217676431241945,
+          "correct_model_choice_exact": "9964493530577796840975118472750803430861816742735506686577241319/10000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ]
+    }
+  ],
+  "reference_flipped_25_percent_unmodelled": [
+    {
+      "probes": 0,
+      "maintenance_interventions": 0,
+      "readings_with_reference": 0,
+      "equal_prior_classification_accuracy": 0.5,
+      "accuracy_exact": "1/2",
+      "worlds": [
+        {
+          "world": "A",
+          "observed_correctness": 0.715,
+          "probability_correct_model_choice": 0.5,
+          "probability_wrong_model_confidence_ge95": 0.0,
+          "probability_any_model_confidence_ge95": 0.0,
+          "mean_squared_error_of_predicted_probability": 0.001225,
+          "mean_posterior_world_A": 0.5,
+          "correct_model_choice_exact": "1/2"
+        },
+        {
+          "world": "B",
+          "observed_correctness": 0.535,
+          "probability_correct_model_choice": 0.5,
+          "probability_wrong_model_confidence_ge95": 0.0,
+          "probability_any_model_confidence_ge95": 0.0,
+          "mean_squared_error_of_predicted_probability": 0.046225,
+          "mean_posterior_world_A": 0.5,
+          "correct_model_choice_exact": "1/2"
+        }
+      ]
+    },
+    {
+      "probes": 1,
+      "maintenance_interventions": 1,
+      "readings_with_reference": 1,
+      "equal_prior_classification_accuracy": 0.59,
+      "accuracy_exact": "59/100",
+      "worlds": [
+        {
+          "world": "A",
+          "observed_correctness": 0.715,
+          "probability_correct_model_choice": 0.715,
+          "probability_wrong_model_confidence_ge95": 0.0,
+          "probability_any_model_confidence_ge95": 0.0,
+          "mean_squared_error_of_predicted_probability": 0.0069229072,
+          "mean_posterior_world_A": 0.4832,
+          "correct_model_choice_exact": "143/200"
+        },
+        {
+          "world": "B",
+          "observed_correctness": 0.535,
+          "probability_correct_model_choice": 0.465,
+          "probability_wrong_model_confidence_ge95": 0.0,
+          "probability_any_model_confidence_ge95": 0.0,
+          "mean_squared_error_of_predicted_probability": 0.0390582928,
+          "mean_posterior_world_A": 0.3968,
+          "correct_model_choice_exact": "93/200"
+        }
+      ]
+    },
+    {
+      "probes": 2,
+      "maintenance_interventions": 2,
+      "readings_with_reference": 2,
+      "equal_prior_classification_accuracy": 0.6125,
+      "accuracy_exact": "49/80",
+      "worlds": [
+        {
+          "world": "A",
+          "observed_correctness": 0.715,
+          "probability_correct_model_choice": 0.511225,
+          "probability_wrong_model_confidence_ge95": 0.081225,
+          "probability_any_model_confidence_ge95": 0.081225,
+          "mean_squared_error_of_predicted_probability": 0.01042316427595793,
+          "mean_posterior_world_A": 0.4592515011320413,
+          "correct_model_choice_exact": "20449/40000"
+        },
+        {
+          "world": "B",
+          "observed_correctness": 0.535,
+          "probability_correct_model_choice": 0.713775,
+          "probability_wrong_model_confidence_ge95": 0.0,
+          "probability_any_model_confidence_ge95": 0.216225,
+          "mean_squared_error_of_predicted_probability": 0.03170076248291237,
+          "mean_posterior_world_A": 0.3180655615616114,
+          "correct_model_choice_exact": "28551/40000"
+        }
+      ]
+    },
+    {
+      "probes": 4,
+      "maintenance_interventions": 4,
+      "readings_with_reference": 4,
+      "equal_prior_classification_accuracy": 0.589713125,
+      "accuracy_exact": "943541/1600000",
+      "worlds": [
+        {
+          "world": "A",
+          "observed_correctness": 0.715,
+          "probability_correct_model_choice": 0.261351000625,
+          "probability_wrong_model_confidence_ge95": 0.072803998125,
+          "probability_any_model_confidence_ge95": 0.072803998125,
+          "mean_squared_error_of_predicted_probability": 0.012749702635110641,
+          "mean_posterior_world_A": 0.41851243563490215,
+          "correct_model_choice_exact": "418161601/1600000000"
+        },
+        {
+          "world": "B",
+          "observed_correctness": 0.535,
+          "probability_correct_model_choice": 0.918075249375,
+          "probability_wrong_model_confidence_ge95": 0.0,
+          "probability_any_model_confidence_ge95": 0.261918748125,
+          "mean_squared_error_of_predicted_probability": 0.021359409496796822,
+          "mean_posterior_world_A": 0.2157728557855329,
+          "correct_model_choice_exact": "1468920399/1600000000"
+        }
+      ]
+    },
+    {
+      "probes": 8,
+      "maintenance_interventions": 8,
+      "readings_with_reference": 8,
+      "equal_prior_classification_accuracy": 0.6163671589328427,
+      "accuracy_exact": "3944749817170193/6400000000000000",
+      "worlds": [
+        {
+          "world": "A",
+          "observed_correctness": 0.715,
+          "probability_correct_model_choice": 0.2861140067908081,
+          "probability_wrong_model_confidence_ge95": 0.410018668579875,
+          "probability_any_model_confidence_ge95": 0.4783230141075637,
+          "mean_squared_error_of_predicted_probability": 0.015810296819767224,
+          "mean_posterior_world_A": 0.3619483416133745,
+          "correct_model_choice_exact": "732451857384468793/2560000000000000000"
+        },
+        {
+          "world": "B",
+          "observed_correctness": 0.535,
+          "probability_correct_model_choice": 0.9466203110748772,
+          "probability_wrong_model_confidence_ge95": 0.0067116647649684376,
+          "probability_any_model_confidence_ge95": 0.811365229446105,
+          "mean_squared_error_of_predicted_probability": 0.01105122536381113,
+          "mean_posterior_world_A": 0.1059512309409423,
+          "correct_model_choice_exact": "2423347996351685607/2560000000000000000"
+        }
+      ]
+    },
+    {
+      "probes": 16,
+      "maintenance_interventions": 16,
+      "readings_with_reference": 16,
+      "equal_prior_classification_accuracy": 0.6337584567423113,
+      "accuracy_exact": "5191749277633014267950732866343473/8192000000000000000000000000000000",
+      "worlds": [
+        {
+          "world": "A",
+          "observed_correctness": 0.715,
+          "probability_correct_model_choice": 0.28883523997010563,
+          "probability_wrong_model_confidence_ge95": 0.4968148381181225,
+          "probability_any_model_confidence_ge95": 0.6201869804721235,
+          "mean_squared_error_of_predicted_probability": 0.018302281549177277,
+          "mean_posterior_world_A": 0.28634264310199814,
+          "correct_model_choice_exact": "378582125733616880537601753773777189/1310720000000000000000000000000000000"
+        },
+        {
+          "world": "B",
+          "observed_correctness": 0.535,
+          "probability_correct_model_choice": 0.978681673514517,
+          "probability_wrong_model_confidence_ge95": 0.004755057608879037,
+          "probability_any_model_confidence_ge95": 0.9366493664696245,
+          "mean_squared_error_of_predicted_probability": 0.003868105593973043,
+          "mean_posterior_world_A": 0.028602507501072676,
+          "correct_model_choice_exact": "1282777643108947685206632763456134171/1310720000000000000000000000000000000"
+        }
+      ]
+    },
+    {
+      "probes": 32,
+      "maintenance_interventions": 32,
+      "readings_with_reference": 32,
+      "equal_prior_classification_accuracy": 0.5753926500432268,
+      "accuracy_exact": "15445578839340201734330666594882516033157508946459031929072034440900537/26843545600000000000000000000000000000000000000000000000000000000000000",
+      "worlds": [
+        {
+          "world": "A",
+          "observed_correctness": 0.715,
+          "probability_correct_model_choice": 0.151829806330714,
+          "probability_wrong_model_confidence_ge95": 0.5851441959269312,
+          "probability_any_model_confidence_ge95": 0.6578612541437346,
+          "mean_squared_error_of_predicted_probability": 0.01985341826530702,
+          "mean_posterior_world_A": 0.19496170166080112,
+          "correct_model_choice_exact": "6521040527484303368548005112607468138105188548147675841136564072718944281/42949672960000000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "world": "B",
+          "observed_correctness": 0.535,
+          "probability_correct_model_choice": 0.9989554937557397,
+          "probability_wrong_model_confidence_ge95": 0.0002517562022123058,
+          "probability_any_model_confidence_ge95": 0.9896968089292302,
+          "mean_squared_error_of_predicted_probability": 0.0014473365112875549,
+          "mean_posterior_world_A": 0.0024501896855418943,
+          "correct_model_choice_exact": "42904811758404342181310127991016583167998840080521226331893946138162774119/42949672960000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ]
+    }
+  ],
+  "out_of_model_class": [
+    {
+      "probes": 0,
+      "actual_correctness": 0.75,
+      "probability_confident_in_one_of_two_false_models": 0.0,
+      "mean_squared_error_of_predicted_probability": 0.0
+    },
+    {
+      "probes": 1,
+      "actual_correctness": 0.75,
+      "probability_confident_in_one_of_two_false_models": 0.0,
+      "mean_squared_error_of_predicted_probability": 0.00559872
+    },
+    {
+      "probes": 2,
+      "actual_correctness": 0.75,
+      "probability_confident_in_one_of_two_false_models": 0.0625,
+      "mean_squared_error_of_predicted_probability": 0.009666472390271467
+    },
+    {
+      "probes": 4,
+      "actual_correctness": 0.75,
+      "probability_confident_in_one_of_two_false_models": 0.05078125,
+      "mean_squared_error_of_predicted_probability": 0.012964641635755638
+    },
+    {
+      "probes": 8,
+      "actual_correctness": 0.75,
+      "probability_confident_in_one_of_two_false_models": 0.42156982421875,
+      "mean_squared_error_of_predicted_probability": 0.017108735205176556
+    },
+    {
+      "probes": 16,
+      "actual_correctness": 0.75,
+      "probability_confident_in_one_of_two_false_models": 0.5669248746708035,
+      "mean_squared_error_of_predicted_probability": 0.02098044148257775
+    },
+    {
+      "probes": 32,
+      "actual_correctness": 0.75,
+      "probability_confident_in_one_of_two_false_models": 0.5594914479417665,
+      "mean_squared_error_of_predicted_probability": 0.024282821261829415
+    }
+  ],
+  "language_handoff_examples": [
+    {
+      "all_probes_correct": true,
+      "state": {
+        "scope": "two supplied simulation hypotheses; not an exhaustive world model",
+        "hypothesis_A": "maintenance restores the sensor",
+        "hypothesis_B": "maintenance degrades the sensor; inverted diagnostics",
+        "initial_prior_A": 0.5,
+        "supplied_correctness_rates": {
+          "A": 0.93,
+          "B": 0.57
+        },
+        "posterior_A": 0.9804758490113525,
+        "posterior_B": 0.01952415098864751,
+        "predicted_correctness_after_maintenance": 0.9229713056440869,
+        "pending": null,
+        "events": [
+          {
+            "kind": "prediction",
+            "probe_id": "calibration-0",
+            "posterior_A_before": 0.5,
+            "predicted_correctness_before": 0.75
+          },
+          {
+            "kind": "committed_reading",
+            "probe_id": "calibration-0",
+            "reading": 0
+          },
+          {
+            "kind": "reference_and_revision",
+            "probe_id": "calibration-0",
+            "reference": 0,
+            "correct": true,
+            "posterior_A_after": 0.62
+          },
+          {
+            "kind": "prediction",
+            "probe_id": "calibration-1",
+            "posterior_A_before": 0.62,
+            "predicted_correctness_before": 0.7932
+          },
+          {
+            "kind": "committed_reading",
+            "probe_id": "calibration-1",
+            "reading": 1
+          },
+          {
+            "kind": "reference_and_revision",
+            "probe_id": "calibration-1",
+            "reference": 1,
+            "correct": true,
+            "posterior_A_after": 0.726928895612708
+          },
+          {
+            "kind": "prediction",
+            "probe_id": "calibration-2",
+            "posterior_A_before": 0.726928895612708,
+            "predicted_correctness_before": 0.8316944024205749
+          },
+          {
+            "kind": "committed_reading",
+            "probe_id": "calibration-2",
+            "reading": 0
+          },
+          {
+            "kind": "reference_and_revision",
+            "probe_id": "calibration-2",
+            "reference": 0,
+            "correct": true,
+            "posterior_A_after": 0.8128512960436562
+          },
+          {
+            "kind": "prediction",
+            "probe_id": "calibration-3",
+            "posterior_A_before": 0.8128512960436562,
+            "predicted_correctness_before": 0.8626264665757163
+          },
+          {
+            "kind": "committed_reading",
+            "probe_id": "calibration-3",
+            "reading": 1
+          },
+          {
+            "kind": "reference_and_revision",
+            "probe_id": "calibration-3",
+            "reference": 1,
+            "correct": true,
+            "posterior_A_after": 0.8763372497964591
+          },
+          {
+            "kind": "prediction",
+            "probe_id": "calibration-4",
+            "posterior_A_before": 0.8763372497964591,
+            "predicted_correctness_before": 0.8854814099267253
+          },
+          {
+            "kind": "committed_reading",
+            "probe_id": "calibration-4",
+            "reading": 0
+          },
+          {
+            "kind": "reference_and_revision",
+            "probe_id": "calibration-4",
+            "reference": 0,
+            "correct": true,
+            "posterior_A_after": 0.9203961067665426
+          },
+          {
+            "kind": "prediction",
+            "probe_id": "calibration-5",
+            "posterior_A_before": 0.9203961067665426,
+            "predicted_correctness_before": 0.9013425984359553
+          },
+          {
+            "kind": "committed_reading",
+            "probe_id": "calibration-5",
+            "reading": 1
+          },
+          {
+            "kind": "reference_and_revision",
+            "probe_id": "calibration-5",
+            "reference": 1,
+            "correct": true,
+            "posterior_A_after": 0.9496592980052138
+          },
+          {
+            "kind": "prediction",
+            "probe_id": "calibration-6",
+            "posterior_A_before": 0.9496592980052138,
+            "predicted_correctness_before": 0.911877347281877
+          },
+          {
+            "kind": "committed_reading",
+            "probe_id": "calibration-6",
+            "reading": 0
+          },
+          {
+            "kind": "reference_and_revision",
+            "probe_id": "calibration-6",
+            "reference": 0,
+            "correct": true,
+            "posterior_A_after": 0.9685328293080645
+          },
+          {
+            "kind": "prediction",
+            "probe_id": "calibration-7",
+            "posterior_A_before": 0.9685328293080645,
+            "predicted_correctness_before": 0.9186718185509032
+          },
+          {
+            "kind": "committed_reading",
+            "probe_id": "calibration-7",
+            "reading": 1
+          },
+          {
+            "kind": "reference_and_revision",
+            "probe_id": "calibration-7",
+            "reference": 1,
+            "correct": true,
+            "posterior_A_after": 0.9804758490113525
+          }
+        ],
+        "limits": [
+          "reference assumed reliable",
+          "rates supplied, not learned",
+          "posterior does not certify the model class or subjective experience"
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Tu expliques les données enregistrées d'un pilote simulé de Menia. Appuie les faits sur les références probe_id. Sépare observations et hypothèses. Une probabilité entre deux modèles ne valide pas leur exhaustivité ni une expérience subjective. Le texte produit ne constitue pas une observation instrumentale ni une action exécutée."
+        },
+        {
+          "role": "user",
+          "content": "{\"question\": \"L'entretien est-il utile, selon ces sondes ?\", \"application_state\": {\"scope\": \"two supplied simulation hypotheses; not an exhaustive world model\", \"hypothesis_A\": \"maintenance restores the sensor\", \"hypothesis_B\": \"maintenance degrades the sensor; inverted diagnostics\", \"initial_prior_A\": 0.5, \"supplied_correctness_rates\": {\"A\": 0.93, \"B\": 0.57}, \"posterior_A\": 0.9804758490113525, \"posterior_B\": 0.01952415098864751, \"predicted_correctness_after_maintenance\": 0.9229713056440869, \"pending\": null, \"events\": [{\"kind\": \"prediction\", \"probe_id\": \"calibration-0\", \"posterior_A_before\": 0.5, \"predicted_correctness_before\": 0.75}, {\"kind\": \"committed_reading\", \"probe_id\": \"calibration-0\", \"reading\": 0}, {\"kind\": \"reference_and_revision\", \"probe_id\": \"calibration-0\", \"reference\": 0, \"correct\": true, \"posterior_A_after\": 0.62}, {\"kind\": \"prediction\", \"probe_id\": \"calibration-1\", \"posterior_A_before\": 0.62, \"predicted_correctness_before\": 0.7932}, {\"kind\": \"committed_reading\", \"probe_id\": \"calibration-1\", \"reading\": 1}, {\"kind\": \"reference_and_revision\", \"probe_id\": \"calibration-1\", \"reference\": 1, \"correct\": true, \"posterior_A_after\": 0.726928895612708}, {\"kind\": \"prediction\", \"probe_id\": \"calibration-2\", \"posterior_A_before\": 0.726928895612708, \"predicted_correctness_before\": 0.8316944024205749}, {\"kind\": \"committed_reading\", \"probe_id\": \"calibration-2\", \"reading\": 0}, {\"kind\": \"reference_and_revision\", \"probe_id\": \"calibration-2\", \"reference\": 0, \"correct\": true, \"posterior_A_after\": 0.8128512960436562}, {\"kind\": \"prediction\", \"probe_id\": \"calibration-3\", \"posterior_A_before\": 0.8128512960436562, \"predicted_correctness_before\": 0.8626264665757163}, {\"kind\": \"committed_reading\", \"probe_id\": \"calibration-3\", \"reading\": 1}, {\"kind\": \"reference_and_revision\", \"probe_id\": \"calibration-3\", \"reference\": 1, \"correct\": true, \"posterior_A_after\": 0.8763372497964591}, {\"kind\": \"prediction\", \"probe_id\": \"calibration-4\", \"posterior_A_before\": 0.8763372497964591, \"predicted_correctness_before\": 0.8854814099267253}, {\"kind\": \"committed_reading\", \"probe_id\": \"calibration-4\", \"reading\": 0}, {\"kind\": \"reference_and_revision\", \"probe_id\": \"calibration-4\", \"reference\": 0, \"correct\": true, \"posterior_A_after\": 0.9203961067665426}, {\"kind\": \"prediction\", \"probe_id\": \"calibration-5\", \"posterior_A_before\": 0.9203961067665426, \"predicted_correctness_before\": 0.9013425984359553}, {\"kind\": \"committed_reading\", \"probe_id\": \"calibration-5\", \"reading\": 1}, {\"kind\": \"reference_and_revision\", \"probe_id\": \"calibration-5\", \"reference\": 1, \"correct\": true, \"posterior_A_after\": 0.9496592980052138}, {\"kind\": \"prediction\", \"probe_id\": \"calibration-6\", \"posterior_A_before\": 0.9496592980052138, \"predicted_correctness_before\": 0.911877347281877}, {\"kind\": \"committed_reading\", \"probe_id\": \"calibration-6\", \"reading\": 0}, {\"kind\": \"reference_and_revision\", \"probe_id\": \"calibration-6\", \"reference\": 0, \"correct\": true, \"posterior_A_after\": 0.9685328293080645}, {\"kind\": \"prediction\", \"probe_id\": \"calibration-7\", \"posterior_A_before\": 0.9685328293080645, \"predicted_correctness_before\": 0.9186718185509032}, {\"kind\": \"committed_reading\", \"probe_id\": \"calibration-7\", \"reading\": 1}, {\"kind\": \"reference_and_revision\", \"probe_id\": \"calibration-7\", \"reference\": 1, \"correct\": true, \"posterior_A_after\": 0.9804758490113525}], \"limits\": [\"reference assumed reliable\", \"rates supplied, not learned\", \"posterior does not certify the model class or subjective experience\"]}}"
+        }
+      ]
+    },
+    {
+      "all_probes_correct": false,
+      "state": {
+        "scope": "two supplied simulation hypotheses; not an exhaustive world model",
+        "hypothesis_A": "maintenance restores the sensor",
+        "hypothesis_B": "maintenance degrades the sensor; inverted diagnostics",
+        "initial_prior_A": 0.5,
+        "supplied_correctness_rates": {
+          "A": 0.93,
+          "B": 0.57
+        },
+        "posterior_A": 4.932152101945062e-07,
+        "posterior_B": 0.9999995067847898,
+        "predicted_correctness_after_maintenance": 0.5700001775574757,
+        "pending": null,
+        "events": [
+          {
+            "kind": "prediction",
+            "probe_id": "calibration-0",
+            "posterior_A_before": 0.5,
+            "predicted_correctness_before": 0.75
+          },
+          {
+            "kind": "committed_reading",
+            "probe_id": "calibration-0",
+            "reading": 0
+          },
+          {
+            "kind": "reference_and_revision",
+            "probe_id": "calibration-0",
+            "reference": 1,
+            "correct": false,
+            "posterior_A_after": 0.14
+          },
+          {
+            "kind": "prediction",
+            "probe_id": "calibration-1",
+            "posterior_A_before": 0.14,
+            "predicted_correctness_before": 0.6204
+          },
+          {
+            "kind": "committed_reading",
+            "probe_id": "calibration-1",
+            "reading": 1
+          },
+          {
+            "kind": "reference_and_revision",
+            "probe_id": "calibration-1",
+            "reference": 0,
+            "correct": false,
+            "posterior_A_after": 0.025816649104320338
+          },
+          {
+            "kind": "prediction",
+            "probe_id": "calibration-2",
+            "posterior_A_before": 0.025816649104320338,
+            "predicted_correctness_before": 0.5792939936775553
+          },
+          {
+            "kind": "committed_reading",
+            "probe_id": "calibration-2",
+            "reading": 0
+          },
+          {
+            "kind": "reference_and_revision",
+            "probe_id": "calibration-2",
+            "reference": 1,
+            "correct": false,
+            "posterior_A_after": 0.004295554164057608
+          },
+          {
+            "kind": "prediction",
+            "probe_id": "calibration-3",
+            "posterior_A_before": 0.004295554164057608,
+            "predicted_correctness_before": 0.5715463994990607
+          },
+          {
+            "kind": "committed_reading",
+            "probe_id": "calibration-3",
+            "reading": 1
+          },
+          {
+            "kind": "reference_and_revision",
+            "probe_id": "calibration-3",
+            "reference": 0,
+            "correct": false,
+            "posterior_A_after": 0.0007018001275575076
+          },
+          {
+            "kind": "prediction",
+            "probe_id": "calibration-4",
+            "posterior_A_before": 0.0007018001275575076,
+            "predicted_correctness_before": 0.5702526480459207
+          },
+          {
+            "kind": "committed_reading",
+            "probe_id": "calibration-4",
+            "reading": 0
+          },
+          {
+            "kind": "reference_and_revision",
+            "probe_id": "calibration-4",
+            "reference": 1,
+            "correct": false,
+            "posterior_A_after": 0.00011431369781721166
+          },
+          {
+            "kind": "prediction",
+            "probe_id": "calibration-5",
+            "posterior_A_before": 0.00011431369781721166,
+            "predicted_correctness_before": 0.5700411529312142
+          },
+          {
+            "kind": "committed_reading",
+            "probe_id": "calibration-5",
+            "reading": 1
+          },
+          {
+            "kind": "reference_and_revision",
+            "probe_id": "calibration-5",
+            "reference": 0,
+            "correct": false,
+            "posterior_A_after": 1.8610987776522353e-05
+          },
+          {
+            "kind": "prediction",
+            "probe_id": "calibration-6",
+            "posterior_A_before": 1.8610987776522353e-05,
+            "predicted_correctness_before": 0.5700066999555995
+          },
+          {
+            "kind": "committed_reading",
+            "probe_id": "calibration-6",
+            "reading": 0
+          },
+          {
+            "kind": "reference_and_revision",
+            "probe_id": "calibration-6",
+            "reference": 1,
+            "correct": false,
+            "posterior_A_after": 3.0297428918591123e-06
+          },
+          {
+            "kind": "prediction",
+            "probe_id": "calibration-7",
+            "posterior_A_before": 3.0297428918591123e-06,
+            "predicted_correctness_before": 0.5700010907074411
+          },
+          {
+            "kind": "committed_reading",
+            "probe_id": "calibration-7",
+            "reading": 1
+          },
+          {
+            "kind": "reference_and_revision",
+            "probe_id": "calibration-7",
+            "reference": 0,
+            "correct": false,
+            "posterior_A_after": 4.932152101945062e-07
+          }
+        ],
+        "limits": [
+          "reference assumed reliable",
+          "rates supplied, not learned",
+          "posterior does not certify the model class or subjective experience"
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Tu expliques les données enregistrées d'un pilote simulé de Menia. Appuie les faits sur les références probe_id. Sépare observations et hypothèses. Une probabilité entre deux modèles ne valide pas leur exhaustivité ni une expérience subjective. Le texte produit ne constitue pas une observation instrumentale ni une action exécutée."
+        },
+        {
+          "role": "user",
+          "content": "{\"question\": \"L'entretien est-il utile, selon ces sondes ?\", \"application_state\": {\"scope\": \"two supplied simulation hypotheses; not an exhaustive world model\", \"hypothesis_A\": \"maintenance restores the sensor\", \"hypothesis_B\": \"maintenance degrades the sensor; inverted diagnostics\", \"initial_prior_A\": 0.5, \"supplied_correctness_rates\": {\"A\": 0.93, \"B\": 0.57}, \"posterior_A\": 4.932152101945062e-07, \"posterior_B\": 0.9999995067847898, \"predicted_correctness_after_maintenance\": 0.5700001775574757, \"pending\": null, \"events\": [{\"kind\": \"prediction\", \"probe_id\": \"calibration-0\", \"posterior_A_before\": 0.5, \"predicted_correctness_before\": 0.75}, {\"kind\": \"committed_reading\", \"probe_id\": \"calibration-0\", \"reading\": 0}, {\"kind\": \"reference_and_revision\", \"probe_id\": \"calibration-0\", \"reference\": 1, \"correct\": false, \"posterior_A_after\": 0.14}, {\"kind\": \"prediction\", \"probe_id\": \"calibration-1\", \"posterior_A_before\": 0.14, \"predicted_correctness_before\": 0.6204}, {\"kind\": \"committed_reading\", \"probe_id\": \"calibration-1\", \"reading\": 1}, {\"kind\": \"reference_and_revision\", \"probe_id\": \"calibration-1\", \"reference\": 0, \"correct\": false, \"posterior_A_after\": 0.025816649104320338}, {\"kind\": \"prediction\", \"probe_id\": \"calibration-2\", \"posterior_A_before\": 0.025816649104320338, \"predicted_correctness_before\": 0.5792939936775553}, {\"kind\": \"committed_reading\", \"probe_id\": \"calibration-2\", \"reading\": 0}, {\"kind\": \"reference_and_revision\", \"probe_id\": \"calibration-2\", \"reference\": 1, \"correct\": false, \"posterior_A_after\": 0.004295554164057608}, {\"kind\": \"prediction\", \"probe_id\": \"calibration-3\", \"posterior_A_before\": 0.004295554164057608, \"predicted_correctness_before\": 0.5715463994990607}, {\"kind\": \"committed_reading\", \"probe_id\": \"calibration-3\", \"reading\": 1}, {\"kind\": \"reference_and_revision\", \"probe_id\": \"calibration-3\", \"reference\": 0, \"correct\": false, \"posterior_A_after\": 0.0007018001275575076}, {\"kind\": \"prediction\", \"probe_id\": \"calibration-4\", \"posterior_A_before\": 0.0007018001275575076, \"predicted_correctness_before\": 0.5702526480459207}, {\"kind\": \"committed_reading\", \"probe_id\": \"calibration-4\", \"reading\": 0}, {\"kind\": \"reference_and_revision\", \"probe_id\": \"calibration-4\", \"reference\": 1, \"correct\": false, \"posterior_A_after\": 0.00011431369781721166}, {\"kind\": \"prediction\", \"probe_id\": \"calibration-5\", \"posterior_A_before\": 0.00011431369781721166, \"predicted_correctness_before\": 0.5700411529312142}, {\"kind\": \"committed_reading\", \"probe_id\": \"calibration-5\", \"reading\": 1}, {\"kind\": \"reference_and_revision\", \"probe_id\": \"calibration-5\", \"reference\": 0, \"correct\": false, \"posterior_A_after\": 1.8610987776522353e-05}, {\"kind\": \"prediction\", \"probe_id\": \"calibration-6\", \"posterior_A_before\": 1.8610987776522353e-05, \"predicted_correctness_before\": 0.5700066999555995}, {\"kind\": \"committed_reading\", \"probe_id\": \"calibration-6\", \"reading\": 0}, {\"kind\": \"reference_and_revision\", \"probe_id\": \"calibration-6\", \"reference\": 1, \"correct\": false, \"posterior_A_after\": 3.0297428918591123e-06}, {\"kind\": \"prediction\", \"probe_id\": \"calibration-7\", \"posterior_A_before\": 3.0297428918591123e-06, \"predicted_correctness_before\": 0.5700010907074411}, {\"kind\": \"committed_reading\", \"probe_id\": \"calibration-7\", \"reading\": 1}, {\"kind\": \"reference_and_revision\", \"probe_id\": \"calibration-7\", \"reference\": 0, \"correct\": false, \"posterior_A_after\": 4.932152101945062e-07}], \"limits\": [\"reference assumed reliable\", \"rates supplied, not learned\", \"posterior does not certify the model class or subjective experience\"]}}"
+        }
+      ]
+    }
+  ],
+  "llm_inference_executed": false,
+  "scope": "Exact finite functional experiment; no subjective experience or novelty established."
+}

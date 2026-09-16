@@ -1,0 +1,554 @@
+{
+  "schema": "felt-self-human-audit-v1",
+  "protocol": "docs/FELT_SELF_PROTOCOL.md",
+  "source_doi": "10.1038/s41598-024-59642-y",
+  "source_url": "https://osf.io/download/qm7y2/",
+  "source_sha256": "20127d6cbececaa5a5d8aeb3375b65892a168d67ebd7fa4c58761a573fd967b6",
+  "participants": 50,
+  "sessions": 100,
+  "data_columns": 74,
+  "order_labels": {
+    "A": 14,
+    "B": 12,
+    "C": 12,
+    "D": 12
+  },
+  "order_label_mapping": "Not identified; no assignment of letters to session sequences",
+  "bootstrap": {
+    "seed": 20260915,
+    "draws": 20000,
+    "unit": "participant pair",
+    "interval": "percentile, unadjusted"
+  },
+  "contrast": "Floatation minus Bed",
+  "results": [
+    {
+      "measure": "body_boundaries",
+      "columns": [
+        "FPBBS",
+        "KPBBS"
+      ],
+      "scale": [
+        1,
+        7
+      ],
+      "n_pairs": 50,
+      "float_mean": 3.75,
+      "bed_mean": 4.97,
+      "float_median": 3.5,
+      "bed_median": 5.0,
+      "paired_mean_difference": -1.22,
+      "paired_median_difference": -2.0,
+      "paired_mean_bootstrap_ci95": [
+        -1.76,
+        -0.66
+      ],
+      "difference_counts": {
+        "negative": 36,
+        "zero": 7,
+        "positive": 7
+      },
+      "signed_rank": {
+        "nonzero_pairs": 43,
+        "positive_rank_sum": 189.5,
+        "minimum_rank_sum": 189.5,
+        "p_exact": "750156103/2199023255552",
+        "p": 0.0003411315005905635
+      },
+      "order_label_means": {
+        "A": -2.142857142857143,
+        "B": -0.8333333333333334,
+        "C": -1.0,
+        "D": -0.75
+      },
+      "p_bh_six_measures": 0.002046789003543381,
+      "reject_at_0_05_after_bh": true
+    },
+    {
+      "measure": "reported_self_awareness",
+      "columns": [
+        "FPCI_D15",
+        "KPCI_D15"
+      ],
+      "scale": [
+        0,
+        6
+      ],
+      "n_pairs": 50,
+      "float_mean": 3.84666,
+      "bed_mean": 4.0067,
+      "float_median": 4.0,
+      "bed_median": 4.0,
+      "paired_mean_difference": -0.16004000000000002,
+      "paired_median_difference": 0.0,
+      "paired_mean_bootstrap_ci95": [
+        -0.6200605,
+        0.3136539999999865
+      ],
+      "difference_counts": {
+        "negative": 24,
+        "zero": 7,
+        "positive": 19
+      },
+      "signed_rank": {
+        "nonzero_pairs": 43,
+        "positive_rank_sum": 401.0,
+        "minimum_rank_sum": 401.0,
+        "p_exact": "856598070575/2199023255552",
+        "p": 0.3895357033684377
+      },
+      "order_label_means": {
+        "A": -0.38092857142857145,
+        "B": 0.3333333333333333,
+        "C": -0.5003333333333333,
+        "D": -0.055416666666666635
+      },
+      "p_bh_six_measures": 0.4674428440421252,
+      "reject_at_0_05_after_bh": false
+    },
+    {
+      "measure": "reported_altered_state",
+      "columns": [
+        "FPCI_D16",
+        "KPCI_D16"
+      ],
+      "scale": [
+        0,
+        6
+      ],
+      "n_pairs": 50,
+      "float_mean": 2.84678,
+      "bed_mean": 1.98014,
+      "float_median": 3.3315,
+      "bed_median": 2.0,
+      "paired_mean_difference": 0.86664,
+      "paired_median_difference": 0.6665000000000001,
+      "paired_mean_bootstrap_ci95": [
+        0.34666,
+        1.3866010000000002
+      ],
+      "difference_counts": {
+        "negative": 16,
+        "zero": 5,
+        "positive": 29
+      },
+      "signed_rank": {
+        "nonzero_pairs": 45,
+        "positive_rank_sum": 769.5,
+        "minimum_rank_sum": 265.5,
+        "p_exact": "8249407595/2199023255552",
+        "p": 0.003751396250208927
+      },
+      "order_label_means": {
+        "A": 1.8332857142857146,
+        "B": 0.19441666666666668,
+        "C": 1.167,
+        "D": 0.11074999999999995
+      },
+      "p_bh_six_measures": 0.008693478358452467,
+      "reject_at_0_05_after_bh": true
+    },
+    {
+      "measure": "reported_altered_experience",
+      "columns": [
+        "FPCI_D24",
+        "KPCI_D24"
+      ],
+      "scale": [
+        0,
+        6
+      ],
+      "n_pairs": 50,
+      "float_mean": 2.54158,
+      "bed_mean": 1.9512,
+      "float_median": 2.538,
+      "bed_median": 1.8445,
+      "paired_mean_difference": 0.59038,
+      "paired_median_difference": 0.6154999999999999,
+      "paired_mean_bootstrap_ci95": [
+        0.20884,
+        0.9727029999999999
+      ],
+      "difference_counts": {
+        "negative": 15,
+        "zero": 0,
+        "positive": 35
+      },
+      "signed_rank": {
+        "nonzero_pairs": 50,
+        "positive_rank_sum": 928.5,
+        "minimum_rank_sum": 346.5,
+        "p_exact": "152937288655/35184372088832",
+        "p": 0.004346739179226233
+      },
+      "order_label_means": {
+        "A": 1.1684999999999999,
+        "B": 0.1665833333333333,
+        "C": 0.9427500000000001,
+        "D": -0.012666666666666687
+      },
+      "p_bh_six_measures": 0.008693478358452467,
+      "reject_at_0_05_after_bh": true
+    },
+    {
+      "measure": "reported_volitional_control",
+      "columns": [
+        "FPCI_D19",
+        "KPCI_D19"
+      ],
+      "scale": [
+        0,
+        6
+      ],
+      "n_pairs": 50,
+      "float_mean": 2.74666,
+      "bed_mean": 2.8666799999999997,
+      "float_median": 2.667,
+      "bed_median": 2.8335,
+      "paired_mean_difference": -0.12001999999999997,
+      "paired_median_difference": 0.3315,
+      "paired_mean_bootstrap_ci95": [
+        -0.5334219999999998,
+        0.2736014999999999
+      ],
+      "difference_counts": {
+        "negative": 20,
+        "zero": 3,
+        "positive": 27
+      },
+      "signed_rank": {
+        "nonzero_pairs": 47,
+        "positive_rank_sum": 540.0,
+        "minimum_rank_sum": 540.0,
+        "p_exact": "56511605899743/70368744177664",
+        "p": 0.8030782211640002
+      },
+      "order_label_means": {
+        "A": -0.6901428571428571,
+        "B": 0.4720833333333334,
+        "C": -0.22175000000000003,
+        "D": 0.054749999999999986
+      },
+      "p_bh_six_measures": 0.8030782211640002,
+      "reject_at_0_05_after_bh": false
+    },
+    {
+      "measure": "reported_memory",
+      "columns": [
+        "FPCI_D20",
+        "KPCI_D20"
+      ],
+      "scale": [
+        0,
+        6
+      ],
+      "n_pairs": 50,
+      "float_mean": 3.959960000000001,
+      "bed_mean": 3.6466399999999997,
+      "float_median": 4.165,
+      "bed_median": 3.835,
+      "paired_mean_difference": 0.31332,
+      "paired_median_difference": 0.333,
+      "paired_mean_bootstrap_ci95": [
+        -0.20682049999999996,
+        0.8334600000000001
+      ],
+      "difference_counts": {
+        "negative": 20,
+        "zero": 3,
+        "positive": 27
+      },
+      "signed_rank": {
+        "nonzero_pairs": 47,
+        "positive_rank_sum": 678.0,
+        "minimum_rank_sum": 450.0,
+        "p_exact": "16238724178759/70368744177664",
+        "p": 0.23076615006458212
+      },
+      "order_label_means": {
+        "A": -0.00028571428571438115,
+        "B": 0.19500000000000003,
+        "C": 0.25,
+        "D": 0.8608333333333333
+      },
+      "p_bh_six_measures": 0.3461492250968732,
+      "reject_at_0_05_after_bh": false
+    }
+  ],
+  "scope": [
+    "Exploratory within-participant comparisons of published aggregate subscale scores",
+    "No item-level psychometric validation, causal mediation, or experience classifier",
+    "No reanalysis of the 2026 clinical study or neural mechanism",
+    "No implementation in Menia and no consciousness or novelty established"
+  ],
+  "xlsx_crosscheck": {
+    "source_url": "https://osf.io/download/y4gmp/",
+    "source_sha256": "9c71b185d187e3409354fcdf7a1b759df5147618183dbfc3dc10af5ad2eee549",
+    "matched_participants": 50,
+    "compared_cells": 600,
+    "cells_differing_beyond_0_00051": 38,
+    "cells_differing_beyond_0_0051": [
+      {
+        "column": "FPBBS",
+        "csv": 5.0,
+        "xlsx": 4.5,
+        "absolute_difference": 0.5
+      }
+    ],
+    "sensitivity": "XLSX scores rounded to three decimals, half-even; same paired procedure and bootstrap seed",
+    "results": [
+      {
+        "measure": "body_boundaries",
+        "columns": [
+          "FPBBS",
+          "KPBBS"
+        ],
+        "scale": [
+          1,
+          7
+        ],
+        "n_pairs": 50,
+        "float_mean": 3.74,
+        "bed_mean": 4.97,
+        "float_median": 3.5,
+        "bed_median": 5.0,
+        "paired_mean_difference": -1.23,
+        "paired_median_difference": -2.0,
+        "paired_mean_bootstrap_ci95": [
+          -1.76,
+          -0.66
+        ],
+        "difference_counts": {
+          "negative": 37,
+          "zero": 6,
+          "positive": 7
+        },
+        "signed_rank": {
+          "nonzero_pairs": 44,
+          "positive_rank_sum": 196.5,
+          "minimum_rank_sum": 196.5,
+          "p_exact": "1115550153/4398046511104",
+          "p": 0.00025364673842886987
+        },
+        "order_label_means": {
+          "A": -2.142857142857143,
+          "B": -0.8333333333333334,
+          "C": -1.0416666666666667,
+          "D": -0.75
+        },
+        "p_bh_six_measures": 0.0015218804305732192,
+        "reject_at_0_05_after_bh": true
+      },
+      {
+        "measure": "reported_self_awareness",
+        "columns": [
+          "FPCI_D15",
+          "KPCI_D15"
+        ],
+        "scale": [
+          0,
+          6
+        ],
+        "n_pairs": 50,
+        "float_mean": 3.84666,
+        "bed_mean": 4.0067,
+        "float_median": 4.0,
+        "bed_median": 4.0,
+        "paired_mean_difference": -0.16004000000000002,
+        "paired_median_difference": 0.0,
+        "paired_mean_bootstrap_ci95": [
+          -0.6200600000000001,
+          0.31354149999998593
+        ],
+        "difference_counts": {
+          "negative": 24,
+          "zero": 7,
+          "positive": 19
+        },
+        "signed_rank": {
+          "nonzero_pairs": 43,
+          "positive_rank_sum": 400.0,
+          "minimum_rank_sum": 400.0,
+          "p_exact": "420901410323/1099511627776",
+          "p": 0.3828076026575218
+        },
+        "order_label_means": {
+          "A": -0.38092857142857145,
+          "B": 0.3333333333333333,
+          "C": -0.5000833333333333,
+          "D": -0.05566666666666664
+        },
+        "p_bh_six_measures": 0.4593691231890261,
+        "reject_at_0_05_after_bh": false
+      },
+      {
+        "measure": "reported_altered_state",
+        "columns": [
+          "FPCI_D16",
+          "KPCI_D16"
+        ],
+        "scale": [
+          0,
+          6
+        ],
+        "n_pairs": 50,
+        "float_mean": 2.84666,
+        "bed_mean": 1.9800200000000001,
+        "float_median": 3.333,
+        "bed_median": 2.0,
+        "paired_mean_difference": 0.86664,
+        "paired_median_difference": 0.6665000000000001,
+        "paired_mean_bootstrap_ci95": [
+          0.34669999999999995,
+          1.3866199999999997
+        ],
+        "difference_counts": {
+          "negative": 16,
+          "zero": 5,
+          "positive": 29
+        },
+        "signed_rank": {
+          "nonzero_pairs": 45,
+          "positive_rank_sum": 770.5,
+          "minimum_rank_sum": 264.5,
+          "p_exact": "31693522209/8796093022208",
+          "p": 0.0036031363162010166
+        },
+        "order_label_means": {
+          "A": 1.8332857142857146,
+          "B": 0.19441666666666668,
+          "C": 1.16675,
+          "D": 0.11099999999999995
+        },
+        "p_bh_six_measures": 0.009228031147479498,
+        "reject_at_0_05_after_bh": true
+      },
+      {
+        "measure": "reported_altered_experience",
+        "columns": [
+          "FPCI_D24",
+          "KPCI_D24"
+        ],
+        "scale": [
+          0,
+          6
+        ],
+        "n_pairs": 50,
+        "float_mean": 2.5414999999999996,
+        "bed_mean": 1.9512999999999996,
+        "float_median": 2.538,
+        "bed_median": 1.846,
+        "paired_mean_difference": 0.5902,
+        "paired_median_difference": 0.6154999999999999,
+        "paired_mean_bootstrap_ci95": [
+          0.20869950000000004,
+          0.9723405
+        ],
+        "difference_counts": {
+          "negative": 15,
+          "zero": 1,
+          "positive": 34
+        },
+        "signed_rank": {
+          "nonzero_pairs": 49,
+          "positive_rank_sum": 893.0,
+          "minimum_rank_sum": 332.0,
+          "p_exact": "1298729926161/281474976710656",
+          "p": 0.004614015573739749
+        },
+        "order_label_means": {
+          "A": 1.1685714285714286,
+          "B": 0.16641666666666666,
+          "C": 0.9423333333333334,
+          "D": -0.012916666666666687
+        },
+        "p_bh_six_measures": 0.009228031147479498,
+        "reject_at_0_05_after_bh": true
+      },
+      {
+        "measure": "reported_volitional_control",
+        "columns": [
+          "FPCI_D19",
+          "KPCI_D19"
+        ],
+        "scale": [
+          0,
+          6
+        ],
+        "n_pairs": 50,
+        "float_mean": 2.7467200000000003,
+        "bed_mean": 2.86668,
+        "float_median": 2.667,
+        "bed_median": 2.8335,
+        "paired_mean_difference": -0.11995999999999998,
+        "paired_median_difference": 0.333,
+        "paired_mean_bootstrap_ci95": [
+          -0.5333399999999999,
+          0.27347999999999995
+        ],
+        "difference_counts": {
+          "negative": 20,
+          "zero": 4,
+          "positive": 26
+        },
+        "signed_rank": {
+          "nonzero_pairs": 46,
+          "positive_rank_sum": 515.0,
+          "minimum_rank_sum": 515.0,
+          "p_exact": "27593850009789/35184372088832",
+          "p": 0.7842643870443737
+        },
+        "order_label_means": {
+          "A": -0.6905714285714285,
+          "B": 0.47233333333333344,
+          "C": -0.22200000000000006,
+          "D": 0.055499999999999994
+        },
+        "p_bh_six_measures": 0.7842643870443737,
+        "reject_at_0_05_after_bh": false
+      },
+      {
+        "measure": "reported_memory",
+        "columns": [
+          "FPCI_D20",
+          "KPCI_D20"
+        ],
+        "scale": [
+          0,
+          6
+        ],
+        "n_pairs": 50,
+        "float_mean": 3.9600800000000005,
+        "bed_mean": 3.6466399999999997,
+        "float_median": 4.1665,
+        "bed_median": 3.8335,
+        "paired_mean_difference": 0.31344,
+        "paired_median_difference": 0.333,
+        "paired_mean_bootstrap_ci95": [
+          -0.20660050000000002,
+          0.8334800000000001
+        ],
+        "difference_counts": {
+          "negative": 20,
+          "zero": 3,
+          "positive": 27
+        },
+        "signed_rank": {
+          "nonzero_pairs": 47,
+          "positive_rank_sum": 684.0,
+          "minimum_rank_sum": 444.0,
+          "p_exact": "14543348294183/70368744177664",
+          "p": 0.2066734096812155
+        },
+        "order_label_means": {
+          "A": 0.0001428571428570478,
+          "B": 0.19450000000000003,
+          "C": 0.25025000000000003,
+          "D": 0.8610833333333333
+        },
+        "p_bh_six_measures": 0.31001011452182325,
+        "reject_at_0_05_after_bh": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "kind": "exact plasticity representation audit; not a consciousness measure",
+  "domain": {
+    "state_bits": 2,
+    "input_bits": 1,
+    "patches": 36,
+    "finite_dag_horizon": 4
+  },
+  "checks": {
+    "all_one_step_cases_equal": 288,
+    "single_patch_trajectories_equal": 9216,
+    "multiple_patch_trajectories_equal": 256,
+    "multiple_patch_seed": 20260914
+  },
+  "dag": {
+    "nodes": 59,
+    "operation_nodes": 28,
+    "acyclic": true,
+    "changes_during_execution": false,
+    "serialized_graph_sha256": "6fd59789ad824909ec8e5af32b3fbcfe84d1b1dbf70bd692fef1ebbf3ea2971e"
+  },
+  "hand_checked_examples": {
+    "initial": [
+      1,
+      1
+    ],
+    "inputs": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "dynamic": [
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "frozen": [
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "weight_clamped_at_start": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "scope": [
+    "The fixed table retains state and is not memoryless.",
+    "The DAG includes plasticity updates and has a fixed finite horizon.",
+    "Interventions are transported at a chosen computational grain.",
+    "No equivalence of physical substrates or subjective experience was tested.",
+    "The construction is not a novelty claim or an implementation of self-awareness."
+  ],
+  "source_sha256": "67621a043e131944f584fee1cab90bf7173bc580ade62d5ed78cdbd95e5639d9"
+}

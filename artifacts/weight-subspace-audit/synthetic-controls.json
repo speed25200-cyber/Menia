@@ -1,0 +1,88 @@
+{
+  "origin": "synthetic_counterexamples_not_pretrained_model_results",
+  "paperReplication": false,
+  "consciousnessMeasured": false,
+  "commonComponent": {
+    "models": 16,
+    "tasks": 16,
+    "examples": 32,
+    "uncenteredTopOneEnergyFraction": 0.9900990099009901,
+    "centeredTopOneEnergyFraction": 0.12500000000000003,
+    "fullTaskAccuracy": 1.0,
+    "projectedTaskAccuracy": 0.5,
+    "zeroTieRule": "predict +1; numerical tolerance 1e-12",
+    "centering": "subtract per-coordinate mean across models; not paper HOSVD"
+  },
+  "gaugeChange": {
+    "left": {
+      "shape": [
+        2,
+        2
+      ],
+      "factorRank": 2,
+      "frobeniusNorm": 1.4142135623730951,
+      "singularValues": [
+        1.0,
+        1.0
+      ],
+      "topOneEnergyFraction": 0.5,
+      "rankFor95PercentEnergy": 2
+    },
+    "right": {
+      "shape": [
+        2,
+        2
+      ],
+      "factorRank": 2,
+      "frobeniusNorm": 1.4142135623730951,
+      "singularValues": [
+        1.0,
+        1.0
+      ],
+      "topOneEnergyFraction": 0.5,
+      "rankFor95PercentEnergy": 2
+    },
+    "updateInnerProduct": 2.0,
+    "updateCosine": 0.9999999999999998,
+    "parameterizationDependentFactorCosines": {
+      "a": 0.0,
+      "b": 0.0
+    }
+  },
+  "sharedInitialization": {
+    "left": {
+      "shape": [
+        2,
+        2
+      ],
+      "factorRank": 2,
+      "frobeniusNorm": 0.0,
+      "singularValues": [
+        0.0,
+        0.0
+      ],
+      "topOneEnergyFraction": null,
+      "rankFor95PercentEnergy": 0
+    },
+    "right": {
+      "shape": [
+        2,
+        2
+      ],
+      "factorRank": 2,
+      "frobeniusNorm": 0.0,
+      "singularValues": [
+        0.0,
+        0.0
+      ],
+      "topOneEnergyFraction": null,
+      "rankFor95PercentEnergy": 0
+    },
+    "updateInnerProduct": 0.0,
+    "updateCosine": null,
+    "parameterizationDependentFactorCosines": {
+      "a": 0.9999999999999998,
+      "b": null
+    }
+  }
+}

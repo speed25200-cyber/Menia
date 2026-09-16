@@ -1,0 +1,4146 @@
+[
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "target",
+      "reason": "missing_observation",
+      "evidence": [],
+      "event_id": 1
+    },
+    "result": {
+      "kind": "attention",
+      "field": "target",
+      "received": true,
+      "event_id": 3,
+      "observation_event": 2
+    },
+    "explanation": "Je sélectionne target : je n'ai pas d'observation utilisable de cette information. Références : ."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "missing_observation",
+      "evidence": [],
+      "event_id": 4
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 6,
+      "observation_event": 5
+    },
+    "explanation": "Je sélectionne position : je n'ai pas d'observation utilisable de cette information. Références : ."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "a",
+      "reason": "learn_action_effect",
+      "forecast": {
+        "action": "a",
+        "effect": [
+          -1,
+          -1
+        ],
+        "confidence": 0.11111111111111112,
+        "samples": 0,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.11111111111111112
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 7.0,
+        "b": 7.0,
+        "c": 7.0,
+        "d": 7.0
+      },
+      "evidence": [
+        5,
+        2
+      ],
+      "event_id": 7
+    },
+    "result": {
+      "kind": "action",
+      "action": "a",
+      "event_id": 9
+    },
+    "explanation": "Je teste la commande a pour apprendre son effet (0 transitions récentes observées). Références : 5, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        8
+      ],
+      "event_id": 10
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 13,
+      "observation_event": 11
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 8."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "b",
+      "reason": "learn_action_effect",
+      "forecast": {
+        "action": "b",
+        "effect": [
+          -1,
+          -1
+        ],
+        "confidence": 0.11111111111111112,
+        "samples": 0,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.11111111111111112
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 5.473684210526316,
+        "b": 6.0,
+        "c": 6.0,
+        "d": 6.0
+      },
+      "evidence": [
+        11,
+        2
+      ],
+      "event_id": 14
+    },
+    "result": {
+      "kind": "action",
+      "action": "b",
+      "event_id": 16
+    },
+    "explanation": "Je teste la commande b pour apprendre son effet (0 transitions récentes observées). Références : 11, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        15
+      ],
+      "event_id": 17
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 20,
+      "observation_event": 18
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 15."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "c",
+      "reason": "learn_action_effect",
+      "forecast": {
+        "action": "c",
+        "effect": [
+          -1,
+          -1
+        ],
+        "confidence": 0.11111111111111112,
+        "samples": 0,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.11111111111111112
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 4.473684210526316,
+        "b": 4.473684210526316,
+        "c": 5.0,
+        "d": 5.0
+      },
+      "evidence": [
+        18,
+        2
+      ],
+      "event_id": 21
+    },
+    "result": {
+      "kind": "action",
+      "action": "c",
+      "event_id": 23
+    },
+    "explanation": "Je teste la commande c pour apprendre son effet (0 transitions récentes observées). Références : 18, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        22
+      ],
+      "event_id": 24
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 27,
+      "observation_event": 25
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 22."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "d",
+      "reason": "learn_action_effect",
+      "forecast": {
+        "action": "d",
+        "effect": [
+          -1,
+          -1
+        ],
+        "confidence": 0.11111111111111112,
+        "samples": 0,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.11111111111111112
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.11111111111111112
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 5.473684210526316,
+        "b": 5.473684210526316,
+        "c": 6.526315789473684,
+        "d": 6.0
+      },
+      "evidence": [
+        25,
+        2
+      ],
+      "event_id": 28
+    },
+    "result": {
+      "kind": "action",
+      "action": "d",
+      "event_id": 30
+    },
+    "explanation": "Je teste la commande d pour apprendre son effet (0 transitions récentes observées). Références : 25, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        29
+      ],
+      "event_id": 31
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 34,
+      "observation_event": 32
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 29."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "a",
+      "reason": "learn_action_effect",
+      "forecast": {
+        "action": "a",
+        "effect": [
+          1,
+          0
+        ],
+        "confidence": 0.5789473684210527,
+        "samples": 1,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.5789473684210527
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.052631578947368425
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 6.473684210526316,
+        "b": 6.473684210526316,
+        "c": 7.526315789473685,
+        "d": 7.526315789473685
+      },
+      "evidence": [
+        32,
+        2
+      ],
+      "event_id": 35
+    },
+    "result": {
+      "kind": "action",
+      "action": "a",
+      "event_id": 37
+    },
+    "explanation": "Je teste la commande a pour apprendre son effet (1 transitions récentes observées). Références : 32, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        36
+      ],
+      "event_id": 38
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 41,
+      "observation_event": 39
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 36."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "b",
+      "reason": "learn_action_effect",
+      "forecast": {
+        "action": "b",
+        "effect": [
+          0,
+          1
+        ],
+        "confidence": 0.5789473684210527,
+        "samples": 1,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.5789473684210527
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.052631578947368425
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 5.310344827586206,
+        "b": 5.473684210526316,
+        "c": 6.526315789473684,
+        "d": 6.526315789473684
+      },
+      "evidence": [
+        39,
+        2
+      ],
+      "event_id": 42
+    },
+    "result": {
+      "kind": "action",
+      "action": "b",
+      "event_id": 44
+    },
+    "explanation": "Je teste la commande b pour apprendre son effet (1 transitions récentes observées). Références : 39, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        43
+      ],
+      "event_id": 45
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 48,
+      "observation_event": 46
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 43."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "c",
+      "reason": "learn_action_effect",
+      "forecast": {
+        "action": "c",
+        "effect": [
+          -1,
+          0
+        ],
+        "confidence": 0.5789473684210527,
+        "samples": 1,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.5789473684210527
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.052631578947368425
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 4.310344827586207,
+        "b": 4.310344827586207,
+        "c": 5.526315789473685,
+        "d": 5.526315789473685
+      },
+      "evidence": [
+        46,
+        2
+      ],
+      "event_id": 49
+    },
+    "result": {
+      "kind": "action",
+      "action": "c",
+      "event_id": 51
+    },
+    "explanation": "Je teste la commande c pour apprendre son effet (1 transitions récentes observées). Références : 46, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        50
+      ],
+      "event_id": 52
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 55,
+      "observation_event": 53
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 50."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "d",
+      "reason": "learn_action_effect",
+      "forecast": {
+        "action": "d",
+        "effect": [
+          0,
+          -1
+        ],
+        "confidence": 0.5789473684210527,
+        "samples": 1,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.5789473684210527
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.052631578947368425
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.052631578947368425
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 5.310344827586206,
+        "b": 5.310344827586206,
+        "c": 6.689655172413793,
+        "d": 6.526315789473684
+      },
+      "evidence": [
+        53,
+        2
+      ],
+      "event_id": 56
+    },
+    "result": {
+      "kind": "action",
+      "action": "d",
+      "event_id": 58
+    },
+    "explanation": "Je teste la commande d pour apprendre son effet (1 transitions récentes observées). Références : 53, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        57
+      ],
+      "event_id": 59
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 62,
+      "observation_event": 60
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 57."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "a",
+      "reason": "learn_action_effect",
+      "forecast": {
+        "action": "a",
+        "effect": [
+          1,
+          0
+        ],
+        "confidence": 0.7241379310344828,
+        "samples": 2,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.7241379310344828
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.034482758620689655
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 6.310344827586207,
+        "b": 6.310344827586207,
+        "c": 7.689655172413793,
+        "d": 7.689655172413793
+      },
+      "evidence": [
+        60,
+        2
+      ],
+      "event_id": 63
+    },
+    "result": {
+      "kind": "action",
+      "action": "a",
+      "event_id": 65
+    },
+    "explanation": "Je teste la commande a pour apprendre son effet (2 transitions récentes observées). Références : 60, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        64
+      ],
+      "event_id": 66
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 69,
+      "observation_event": 67
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 64."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "b",
+      "reason": "learn_action_effect",
+      "forecast": {
+        "action": "b",
+        "effect": [
+          0,
+          1
+        ],
+        "confidence": 0.7241379310344828,
+        "samples": 2,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.7241379310344828
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.034482758620689655
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 5.230769230769231,
+        "b": 5.310344827586206,
+        "c": 6.689655172413793,
+        "d": 6.689655172413793
+      },
+      "evidence": [
+        67,
+        2
+      ],
+      "event_id": 70
+    },
+    "result": {
+      "kind": "action",
+      "action": "b",
+      "event_id": 72
+    },
+    "explanation": "Je teste la commande b pour apprendre son effet (2 transitions récentes observées). Références : 67, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        71
+      ],
+      "event_id": 73
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 76,
+      "observation_event": 74
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 71."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "c",
+      "reason": "learn_action_effect",
+      "forecast": {
+        "action": "c",
+        "effect": [
+          -1,
+          0
+        ],
+        "confidence": 0.7241379310344828,
+        "samples": 2,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.7241379310344828
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.034482758620689655
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 4.230769230769231,
+        "b": 4.230769230769231,
+        "c": 5.689655172413794,
+        "d": 5.689655172413794
+      },
+      "evidence": [
+        74,
+        2
+      ],
+      "event_id": 77
+    },
+    "result": {
+      "kind": "action",
+      "action": "c",
+      "event_id": 79
+    },
+    "explanation": "Je teste la commande c pour apprendre son effet (2 transitions récentes observées). Références : 74, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        78
+      ],
+      "event_id": 80
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 83,
+      "observation_event": 81
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 78."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "d",
+      "reason": "learn_action_effect",
+      "forecast": {
+        "action": "d",
+        "effect": [
+          0,
+          -1
+        ],
+        "confidence": 0.7241379310344828,
+        "samples": 2,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.7241379310344828
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.034482758620689655
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 5.230769230769231,
+        "b": 5.230769230769231,
+        "c": 6.76923076923077,
+        "d": 6.689655172413793
+      },
+      "evidence": [
+        81,
+        2
+      ],
+      "event_id": 84
+    },
+    "result": {
+      "kind": "action",
+      "action": "d",
+      "event_id": 86
+    },
+    "explanation": "Je teste la commande d pour apprendre son effet (2 transitions récentes observées). Références : 81, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        85
+      ],
+      "event_id": 87
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 90,
+      "observation_event": 88
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 85."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "a",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "a",
+        "effect": [
+          1,
+          0
+        ],
+        "confidence": 0.7948717948717949,
+        "samples": 3,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.7948717948717949
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.025641025641025644
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 6.230769230769232,
+        "b": 6.230769230769232,
+        "c": 7.76923076923077,
+        "d": 7.76923076923077
+      },
+      "evidence": [
+        88,
+        2
+      ],
+      "event_id": 91
+    },
+    "result": {
+      "kind": "action",
+      "action": "a",
+      "event_id": 93
+    },
+    "explanation": "Je choisis a : mon modèle prévoit le déplacement [1, 0] avec une probabilité de 79%. Cette commande minimise la distance attendue à la cible. Références : 88, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        92
+      ],
+      "event_id": 94
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 97,
+      "observation_event": 95
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 92."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "b",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "b",
+        "effect": [
+          0,
+          1
+        ],
+        "confidence": 0.7948717948717949,
+        "samples": 3,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.7948717948717949
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.025641025641025644
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 7.591836734693876,
+        "b": 7.230769230769232,
+        "c": 8.76923076923077,
+        "d": 8.76923076923077
+      },
+      "evidence": [
+        95,
+        2
+      ],
+      "event_id": 98
+    },
+    "result": {
+      "kind": "action",
+      "action": "b",
+      "event_id": 100
+    },
+    "explanation": "Je choisis b : mon modèle prévoit le déplacement [0, 1] avec une probabilité de 79%. Cette commande minimise la distance attendue à la cible. Références : 95, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        99
+      ],
+      "event_id": 101
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 104,
+      "observation_event": 102
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 99."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "a",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "a",
+        "effect": [
+          1,
+          0
+        ],
+        "confidence": 0.6326530612244897,
+        "samples": 4,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.22448979591836735
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.6326530612244897
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.02040816326530612
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 8.591836734693876,
+        "b": 8.591836734693876,
+        "c": 9.76923076923077,
+        "d": 9.76923076923077
+      },
+      "evidence": [
+        102,
+        2
+      ],
+      "event_id": 105
+    },
+    "result": {
+      "kind": "action",
+      "action": "a",
+      "event_id": 107
+    },
+    "explanation": "Je choisis a : mon modèle prévoit le déplacement [1, 0] avec une probabilité de 63%. Cette commande minimise la distance attendue à la cible. Références : 102, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        106
+      ],
+      "event_id": 108
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 111,
+      "observation_event": 109
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 106."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "a",
+      "reason": "learn_action_effect",
+      "forecast": {
+        "action": "a",
+        "effect": [
+          -1,
+          0
+        ],
+        "confidence": 0.7241379310344828,
+        "samples": 2,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.7241379310344828
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.034482758620689655
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 10.689655172413794,
+        "b": 9.591836734693876,
+        "c": 10.76923076923077,
+        "d": 10.76923076923077
+      },
+      "evidence": [
+        109,
+        2
+      ],
+      "event_id": 112
+    },
+    "result": {
+      "kind": "action",
+      "action": "a",
+      "event_id": 114
+    },
+    "explanation": "Je teste la commande a pour apprendre son effet (2 transitions récentes observées). Références : 109, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        113
+      ],
+      "event_id": 115
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 118,
+      "observation_event": 116
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 113."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "b",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "b",
+        "effect": [
+          0,
+          1
+        ],
+        "confidence": 0.6326530612244897,
+        "samples": 4,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.22448979591836735
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.6326530612244897
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.02040816326530612
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 11.769230769230772,
+        "b": 10.591836734693876,
+        "c": 11.769230769230772,
+        "d": 11.769230769230772
+      },
+      "evidence": [
+        116,
+        2
+      ],
+      "event_id": 119
+    },
+    "result": {
+      "kind": "action",
+      "action": "b",
+      "event_id": 121
+    },
+    "explanation": "Je choisis b : mon modèle prévoit le déplacement [0, 1] avec une probabilité de 63%. Cette commande minimise la distance attendue à la cible. Références : 116, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        120
+      ],
+      "event_id": 122
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 125,
+      "observation_event": 123
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 120."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "b",
+      "reason": "learn_action_effect",
+      "forecast": {
+        "action": "b",
+        "effect": [
+          0,
+          -1
+        ],
+        "confidence": 0.7241379310344828,
+        "samples": 2,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.7241379310344828
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.034482758620689655
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 12.76923076923077,
+        "b": 12.689655172413794,
+        "c": 12.76923076923077,
+        "d": 12.76923076923077
+      },
+      "evidence": [
+        123,
+        2
+      ],
+      "event_id": 126
+    },
+    "result": {
+      "kind": "action",
+      "action": "b",
+      "event_id": 128
+    },
+    "explanation": "Je teste la commande b pour apprendre son effet (2 transitions récentes observées). Références : 123, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        127
+      ],
+      "event_id": 129
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 132,
+      "observation_event": 130
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 127."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "a",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "a",
+        "effect": [
+          -1,
+          0
+        ],
+        "confidence": 0.7948717948717949,
+        "samples": 3,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.7948717948717949
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.025641025641025644
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 13.76923076923077,
+        "b": 13.76923076923077,
+        "c": 13.76923076923077,
+        "d": 13.76923076923077
+      },
+      "evidence": [
+        130,
+        2
+      ],
+      "event_id": 133
+    },
+    "result": {
+      "kind": "action",
+      "action": "a",
+      "event_id": 135
+    },
+    "explanation": "Je choisis a : mon modèle prévoit le déplacement [-1, 0] avec une probabilité de 79%. Cette commande minimise la distance attendue à la cible. Références : 130, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        134
+      ],
+      "event_id": 136
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 139,
+      "observation_event": 137
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 134."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "b",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "b",
+        "effect": [
+          0,
+          -1
+        ],
+        "confidence": 0.7948717948717949,
+        "samples": 3,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.7948717948717949
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.025641025641025644
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 14.816326530612242,
+        "b": 14.76923076923077,
+        "c": 14.76923076923077,
+        "d": 14.76923076923077
+      },
+      "evidence": [
+        137,
+        2
+      ],
+      "event_id": 140
+    },
+    "result": {
+      "kind": "action",
+      "action": "b",
+      "event_id": 142
+    },
+    "explanation": "Je choisis b : mon modèle prévoit le déplacement [0, -1] avec une probabilité de 79%. Cette commande minimise la distance attendue à la cible. Références : 137, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        141
+      ],
+      "event_id": 143
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 146,
+      "observation_event": 144
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 141."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "c",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "c",
+        "effect": [
+          -1,
+          0
+        ],
+        "confidence": 0.7948717948717949,
+        "samples": 3,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.7948717948717949
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.025641025641025644
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 15.816326530612242,
+        "b": 15.816326530612242,
+        "c": 15.76923076923077,
+        "d": 15.76923076923077
+      },
+      "evidence": [
+        144,
+        2
+      ],
+      "event_id": 147
+    },
+    "result": {
+      "kind": "action",
+      "action": "c",
+      "event_id": 149
+    },
+    "explanation": "Je choisis c : mon modèle prévoit le déplacement [-1, 0] avec une probabilité de 79%. Cette commande minimise la distance attendue à la cible. Références : 144, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        148
+      ],
+      "event_id": 150
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 153,
+      "observation_event": 151
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 148."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "c",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "c",
+        "effect": [
+          -1,
+          0
+        ],
+        "confidence": 0.6326530612244897,
+        "samples": 4,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.6326530612244897
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.22448979591836735
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.02040816326530612
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 14.816326530612242,
+        "b": 14.816326530612242,
+        "c": 14.40816326530612,
+        "d": 14.76923076923077
+      },
+      "evidence": [
+        151,
+        2
+      ],
+      "event_id": 154
+    },
+    "result": {
+      "kind": "action",
+      "action": "c",
+      "event_id": 156
+    },
+    "explanation": "Je choisis c : mon modèle prévoit le déplacement [-1, 0] avec une probabilité de 63%. Cette commande minimise la distance attendue à la cible. Références : 151, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        155
+      ],
+      "event_id": 157
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 160,
+      "observation_event": 158
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 155."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "c",
+      "reason": "learn_action_effect",
+      "forecast": {
+        "action": "c",
+        "effect": [
+          1,
+          0
+        ],
+        "confidence": 0.7241379310344828,
+        "samples": 2,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.7241379310344828
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.034482758620689655
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 13.816326530612242,
+        "b": 13.816326530612242,
+        "c": 12.310344827586208,
+        "d": 13.76923076923077
+      },
+      "evidence": [
+        158,
+        2
+      ],
+      "event_id": 161
+    },
+    "result": {
+      "kind": "action",
+      "action": "c",
+      "event_id": 163
+    },
+    "explanation": "Je teste la commande c pour apprendre son effet (2 transitions récentes observées). Références : 158, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        162
+      ],
+      "event_id": 164
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 167,
+      "observation_event": 165
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 162."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "c",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "c",
+        "effect": [
+          1,
+          0
+        ],
+        "confidence": 0.7948717948717949,
+        "samples": 3,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.7948717948717949
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.025641025641025644
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 12.816326530612242,
+        "b": 12.816326530612242,
+        "c": 11.230769230769232,
+        "d": 12.76923076923077
+      },
+      "evidence": [
+        165,
+        2
+      ],
+      "event_id": 168
+    },
+    "result": {
+      "kind": "action",
+      "action": "c",
+      "event_id": 170
+    },
+    "explanation": "Je choisis c : mon modèle prévoit le déplacement [1, 0] avec une probabilité de 79%. Cette commande minimise la distance attendue à la cible. Références : 165, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        169
+      ],
+      "event_id": 171
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 174,
+      "observation_event": 172
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 169."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "c",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "c",
+        "effect": [
+          1,
+          0
+        ],
+        "confidence": 0.8367346938775508,
+        "samples": 4,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.8367346938775508
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.02040816326530612
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 11.816326530612242,
+        "b": 11.816326530612242,
+        "c": 10.183673469387752,
+        "d": 11.769230769230772
+      },
+      "evidence": [
+        172,
+        2
+      ],
+      "event_id": 175
+    },
+    "result": {
+      "kind": "action",
+      "action": "c",
+      "event_id": 177
+    },
+    "explanation": "Je choisis c : mon modèle prévoit le déplacement [1, 0] avec une probabilité de 84%. Cette commande minimise la distance attendue à la cible. Références : 172, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        176
+      ],
+      "event_id": 178
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 181,
+      "observation_event": 179
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 176."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "c",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "c",
+        "effect": [
+          1,
+          0
+        ],
+        "confidence": 0.8644067796610169,
+        "samples": 5,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.01694915254237288
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.01694915254237288
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.01694915254237288
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.01694915254237288
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.01694915254237288
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.01694915254237288
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.01694915254237288
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.8644067796610169
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.01694915254237288
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 10.816326530612242,
+        "b": 10.816326530612242,
+        "c": 9.152542372881356,
+        "d": 10.76923076923077
+      },
+      "evidence": [
+        179,
+        2
+      ],
+      "event_id": 182
+    },
+    "result": {
+      "kind": "action",
+      "action": "c",
+      "event_id": 184
+    },
+    "explanation": "Je choisis c : mon modèle prévoit le déplacement [1, 0] avec une probabilité de 86%. Cette commande minimise la distance attendue à la cible. Références : 179, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        183
+      ],
+      "event_id": 185
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 188,
+      "observation_event": 186
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 183."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "c",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "c",
+        "effect": [
+          1,
+          0
+        ],
+        "confidence": 0.8840579710144927,
+        "samples": 6,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.014492753623188406
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.014492753623188406
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.014492753623188406
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.014492753623188406
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.014492753623188406
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.014492753623188406
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.014492753623188406
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.8840579710144927
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.014492753623188406
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 9.816326530612242,
+        "b": 9.816326530612242,
+        "c": 8.130434782608695,
+        "d": 9.76923076923077
+      },
+      "evidence": [
+        186,
+        2
+      ],
+      "event_id": 189
+    },
+    "result": {
+      "kind": "action",
+      "action": "c",
+      "event_id": 191
+    },
+    "explanation": "Je choisis c : mon modèle prévoit le déplacement [1, 0] avec une probabilité de 88%. Cette commande minimise la distance attendue à la cible. Références : 186, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        190
+      ],
+      "event_id": 192
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 195,
+      "observation_event": 193
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 190."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "c",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "c",
+        "effect": [
+          1,
+          0
+        ],
+        "confidence": 0.8987341772151898,
+        "samples": 7,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.012658227848101266
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.012658227848101266
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.012658227848101266
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.012658227848101266
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.012658227848101266
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.012658227848101266
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.012658227848101266
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.8987341772151898
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.012658227848101266
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 8.816326530612244,
+        "b": 8.816326530612244,
+        "c": 7.113924050632911,
+        "d": 8.76923076923077
+      },
+      "evidence": [
+        193,
+        2
+      ],
+      "event_id": 196
+    },
+    "result": {
+      "kind": "action",
+      "action": "c",
+      "event_id": 198
+    },
+    "explanation": "Je choisis c : mon modèle prévoit le déplacement [1, 0] avec une probabilité de 90%. Cette commande minimise la distance attendue à la cible. Références : 193, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        197
+      ],
+      "event_id": 199
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 202,
+      "observation_event": 200
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 197."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "d",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "d",
+        "effect": [
+          0,
+          -1
+        ],
+        "confidence": 0.7948717948717949,
+        "samples": 3,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.7948717948717949
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.025641025641025644
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 7.9387755102040805,
+        "b": 7.9387755102040805,
+        "c": 7.96629213483146,
+        "d": 7.923076923076923
+      },
+      "evidence": [
+        200,
+        2
+      ],
+      "event_id": 203
+    },
+    "result": {
+      "kind": "action",
+      "action": "d",
+      "event_id": 205
+    },
+    "explanation": "Je choisis d : mon modèle prévoit le déplacement [0, -1] avec une probabilité de 79%. Cette commande minimise la distance attendue à la cible. Références : 200, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        204
+      ],
+      "event_id": 206
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 209,
+      "observation_event": 207
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 204."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "d",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "d",
+        "effect": [
+          0,
+          -1
+        ],
+        "confidence": 0.6326530612244897,
+        "samples": 4,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.6326530612244897
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.22448979591836735
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.02040816326530612
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 6.9387755102040805,
+        "b": 6.9387755102040805,
+        "c": 6.96629213483146,
+        "d": 6.530612244897958
+      },
+      "evidence": [
+        207,
+        2
+      ],
+      "event_id": 210
+    },
+    "result": {
+      "kind": "action",
+      "action": "d",
+      "event_id": 212
+    },
+    "explanation": "Je choisis d : mon modèle prévoit le déplacement [0, -1] avec une probabilité de 63%. Cette commande minimise la distance attendue à la cible. Références : 207, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        211
+      ],
+      "event_id": 213
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 216,
+      "observation_event": 214
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 211."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "d",
+      "reason": "learn_action_effect",
+      "forecast": {
+        "action": "d",
+        "effect": [
+          0,
+          1
+        ],
+        "confidence": 0.7241379310344828,
+        "samples": 2,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.7241379310344828
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.034482758620689655
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.034482758620689655
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 5.9387755102040805,
+        "b": 5.9387755102040805,
+        "c": 5.96629213483146,
+        "d": 4.517241379310345
+      },
+      "evidence": [
+        214,
+        2
+      ],
+      "event_id": 217
+    },
+    "result": {
+      "kind": "action",
+      "action": "d",
+      "event_id": 219
+    },
+    "explanation": "Je teste la commande d pour apprendre son effet (2 transitions récentes observées). Références : 214, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        218
+      ],
+      "event_id": 220
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 223,
+      "observation_event": 221
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 218."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "d",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "d",
+        "effect": [
+          0,
+          1
+        ],
+        "confidence": 0.7948717948717949,
+        "samples": 3,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.7948717948717949
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.025641025641025644
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.025641025641025644
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 4.9387755102040805,
+        "b": 4.9387755102040805,
+        "c": 4.966292134831461,
+        "d": 3.384615384615385
+      },
+      "evidence": [
+        221,
+        2
+      ],
+      "event_id": 224
+    },
+    "result": {
+      "kind": "action",
+      "action": "d",
+      "event_id": 226
+    },
+    "explanation": "Je choisis d : mon modèle prévoit le déplacement [0, 1] avec une probabilité de 79%. Cette commande minimise la distance attendue à la cible. Références : 221, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        225
+      ],
+      "event_id": 227
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 230,
+      "observation_event": 228
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 225."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "d",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "d",
+        "effect": [
+          0,
+          1
+        ],
+        "confidence": 0.8367346938775508,
+        "samples": 4,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.8367346938775508
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.02040816326530612
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.02040816326530612
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 3.938775510204081,
+        "b": 3.938775510204081,
+        "c": 3.9662921348314604,
+        "d": 2.3061224489795915
+      },
+      "evidence": [
+        228,
+        2
+      ],
+      "event_id": 231
+    },
+    "result": {
+      "kind": "action",
+      "action": "d",
+      "event_id": 233
+    },
+    "explanation": "Je choisis d : mon modèle prévoit le déplacement [0, 1] avec une probabilité de 84%. Cette commande minimise la distance attendue à la cible. Références : 228, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        232
+      ],
+      "event_id": 234
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 237,
+      "observation_event": 235
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 232."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "d",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "d",
+        "effect": [
+          0,
+          1
+        ],
+        "confidence": 0.8644067796610169,
+        "samples": 5,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.01694915254237288
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.01694915254237288
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.01694915254237288
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.01694915254237288
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.01694915254237288
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.8644067796610169
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.01694915254237288
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.01694915254237288
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.01694915254237288
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 2.938775510204081,
+        "b": 2.938775510204081,
+        "c": 2.9662921348314604,
+        "d": 1.2542372881355932
+      },
+      "evidence": [
+        235,
+        2
+      ],
+      "event_id": 238
+    },
+    "result": {
+      "kind": "action",
+      "action": "d",
+      "event_id": 240
+    },
+    "explanation": "Je choisis d : mon modèle prévoit le déplacement [0, 1] avec une probabilité de 86%. Cette commande minimise la distance attendue à la cible. Références : 235, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        239
+      ],
+      "event_id": 241
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 244,
+      "observation_event": 242
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 239."
+  },
+  {
+    "decision": {
+      "kind": "act",
+      "action": "d",
+      "reason": "predicted_progress",
+      "forecast": {
+        "action": "d",
+        "effect": [
+          0,
+          1
+        ],
+        "confidence": 0.8840579710144927,
+        "samples": 6,
+        "distribution": [
+          {
+            "effect": [
+              -1,
+              -1
+            ],
+            "p": 0.014492753623188406
+          },
+          {
+            "effect": [
+              -1,
+              0
+            ],
+            "p": 0.014492753623188406
+          },
+          {
+            "effect": [
+              -1,
+              1
+            ],
+            "p": 0.014492753623188406
+          },
+          {
+            "effect": [
+              0,
+              -1
+            ],
+            "p": 0.014492753623188406
+          },
+          {
+            "effect": [
+              0,
+              0
+            ],
+            "p": 0.014492753623188406
+          },
+          {
+            "effect": [
+              0,
+              1
+            ],
+            "p": 0.8840579710144927
+          },
+          {
+            "effect": [
+              1,
+              -1
+            ],
+            "p": 0.014492753623188406
+          },
+          {
+            "effect": [
+              1,
+              0
+            ],
+            "p": 0.014492753623188406
+          },
+          {
+            "effect": [
+              1,
+              1
+            ],
+            "p": 0.014492753623188406
+          }
+        ]
+      },
+      "expected_distances": {
+        "a": 1.9387755102040813,
+        "b": 1.9387755102040813,
+        "c": 1.9662921348314604,
+        "d": 0.21739130434782608
+      },
+      "evidence": [
+        242,
+        2
+      ],
+      "event_id": 245
+    },
+    "result": {
+      "kind": "action",
+      "action": "d",
+      "event_id": 247
+    },
+    "explanation": "Je choisis d : mon modèle prévoit le déplacement [0, 1] avec une probabilité de 88%. Cette commande minimise la distance attendue à la cible. Références : 242, 2."
+  },
+  {
+    "decision": {
+      "kind": "attend",
+      "field": "position",
+      "reason": "verify_action",
+      "evidence": [
+        246
+      ],
+      "event_id": 248
+    },
+    "result": {
+      "kind": "attention",
+      "field": "position",
+      "received": true,
+      "event_id": 251,
+      "observation_event": 249
+    },
+    "explanation": "Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 246."
+  },
+  {
+    "decision": {
+      "kind": "done",
+      "reason": "observed_at_target",
+      "evidence": [
+        249,
+        2
+      ],
+      "event_id": 252
+    },
+    "result": {
+      "kind": "done"
+    },
+    "explanation": "Ma position observée correspond à la cible observée ; je termine ce déplacement. Références : 249, 2."
+  }
+]

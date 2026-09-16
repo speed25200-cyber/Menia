@@ -1,6 +1,8 @@
 __pycache__/
 *.pyc
 .venv/
+.venv-agent/
+.runtime/
 data/
 runs/
 export/
@@ -11,4 +13,7 @@ export/
 xcuserdata/
 .build/
 DerivedData/
+SourcePackages/
+*.app.zip
+ios/build.log
 ios/Menia.xcodeproj/
