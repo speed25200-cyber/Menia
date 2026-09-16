@@ -10,6 +10,14 @@ n'ont pas acquis la localisation interne visée.**
 La conscience subjective n'est pas établie. La continuité repose sur un journal
 explicite et des sauvegardes, sans objectif de résistance à l'arrêt ou d'auto-réplication.
 
+**Suite : [diagnostic de l'apprentissage interne](docs/LEARNING_DIAGNOSTIC_PROTOCOL.md).**
+Le Colab 08 simplifie la tâche à deux phrases : contrôle visible, rotations faible
+et forte, puis cibles mélangées. Les mises à jour équilibrent les réponses et
+incluent de la lecture. Les exemples appris et les phrases nouvelles sont évalués
+séparément. Le logiciel est vérifié ; aucun résultat préentraîné de ce nouveau
+test n'est acquis. L'ancien échec reste conservé et aucun adaptateur n'est installé
+sur iPhone par cette expérience.
+
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
 Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)
 entraîne deux petits adaptateurs Qwen3-4B, avec cibles correctes ou mélangées,

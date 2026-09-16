@@ -2,6 +2,14 @@
 
 **État actuel : objectif non atteint ; une politique de vérification apprise est intégrée à l'agent expérimental.**
 
+Le [diagnostic d'apprentissage](LEARNING_DIAGNOSTIC_PROTOCOL.md) poursuit l'échec
+de localisation avec deux phrases, un contrôle visible, deux intensités cachées
+et un témoin mélangé. Des groupes de gradients équilibrés et des exercices de
+lecture sont implémentés ; un petit Qwen aléatoire vérifie le parcours logiciel.
+Une réanalyse exploratoire des anciens logits ne dépasse pas 20 % de localisation,
+sans conclure à l'absence d'information dans les autres activations. Aucun
+résultat du nouveau test préentraîné ni indice de conscience n'est acquis.
+
 Une [boucle de sélection par rejeu](REPLAY_CONTROLLER_PROTOCOL.md) relie maintenant
 des décisions exécutables à des historiques de réponses. Trois mises à jour de
 contrôleur précèdent un test final réservé, avec les poids de Qwen et les moniteurs
