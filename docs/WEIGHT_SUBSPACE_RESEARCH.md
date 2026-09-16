@@ -133,7 +133,9 @@ partir des conséquences de ses actions et utilisé pour choisir ses actions.
 Cette hypothèse peut produire une métacognition fonctionnelle ; sa relation à
 une conscience de sa propre existence reste à établir.
 
-1. **Terminer le test actuel.** Vérifier si l'adaptateur aligné localise les
+1. **Terminer le test actuel.** Étape désormais analysée dans le
+   [rapport de localisation](NATIVE_LOCALIZATION_RESULTS.md), avec résultat négatif.
+   Le critère fixé était de vérifier si l'adaptateur aligné localise les
    perturbations sur les couches et phrases réservées mieux que la base, les
    cibles mélangées et le hasard informé de leur présence. Vérifier aussi le
    contrôle de lecture et les premiers tokens libres. Un résultat négatif sera
@@ -157,9 +159,12 @@ fonction mesurée, pas une nécessité ou une suffisance pour le vécu subjectif
 
 ## État de livraison
 
-L'audit CPU et ses contrôles sont exécutables. Aucun nouveau calcul sur les poids
-préentraînés de Qwen, entraînement A100 ou transfert sur iPhone n'est revendiqué.
-Les données privées reçues et les anciens barèmes sont conservés.
+L'audit CPU et ses contrôles sont exécutables. Il a désormais été appliqué aux
+deux adaptateurs reçus du Colab : 72 modules, mises à jour non nulles et cosinus
+global de 0,3204. La [géométrie enregistrée](../artifacts/native-localization-pilot/adapter-geometry.json)
+n'établit pas de capacité ; le [test comportemental](NATIVE_LOCALIZATION_RESULTS.md)
+constate une réponse constante. L'audit ne réalise aucun nouvel entraînement
+ou transfert sur iPhone. Les données privées et les anciens barèmes sont conservés.
 
 Validation locale : **156 tests de recherche passent**, dont sept nouveaux
 contrôles de géométrie. Un essai de bout en bout avec des fichiers safetensors
@@ -168,5 +173,5 @@ qu'un rapport écrase un fichier d'entrée. Ces contrôles sont logiciels.
 
 Le [Colab de localisation déjà livré](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/c4b040c60f560a1db3f62236287df429d2f31306/notebooks/06_native_localization_colab.ipynb)
 reste inchangé, avec son code scientifique fixé à
-`9fc95269297854d5ac5b910904a13b033fd8be38`. Son résultat préentraîné n'est pas
-encore reçu. Il n'y a pas de nouveau notebook à lancer pour cette note.
+`9fc95269297854d5ac5b910904a13b033fd8be38`. Son premier résultat préentraîné est
+désormais reçu et audité. Il n'y a pas de nouveau notebook à lancer pour cette note.

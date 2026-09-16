@@ -21,8 +21,10 @@ rétroactivement et ne mesure pas une dégradation du calcul. Il ouvre une branc
 distincte d'apprentissage de localisation. Séparer exactitude numérique et format
 sur de nouvelles tâches arithmétiques reste un autre travail à effectuer.
 
-**État : code et contrôles logiciels disponibles ; aucun résultat d'entraînement
-du Qwen3-4B préentraîné reçu ou exécuté pour cette expérience.**
+**État : premier entraînement Qwen3-4B reçu et évalué.** Le
+[rapport des résultats](NATIVE_LOCALIZATION_RESULTS.md) constate une réponse
+constante « 2 », sans gain de localisation et avec dégradation de la lecture.
+Le plan ci-dessous est celui fixé avant collecte ; il reste inchangé.
 
 [Ouvrir le Colab, un seul bloc et sans Drive](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb).
 Choisir A100, exécuter le bloc et conserver `menia-localisation-native.zip`.
@@ -203,8 +205,10 @@ Un contrôle avec le **véritable tokenizer et la configuration de la révision
 Qwen3-4B fixée** vérifie les 176 préfixes : 151 à 181 tokens, sous la limite
 de 512 ; les chiffres 0 à 5 correspondent chacun à un seul token, IDs 15 à 20.
 Ce contrôle n'a chargé aucun poids du modèle préentraîné et n'a effectué aucun
-entraînement sur A100. La durée et l'occupation mémoire réelles de ce nouveau
-profil restent à mesurer ; aucun repli silencieux vers un autre modèle n'est prévu.
+entraînement sur A100. Le [premier export reçu](NATIVE_LOCALIZATION_RESULTS.md)
+mesure désormais la durée des évaluations ; la durée d'entraînement et le pic
+de mémoire ne sont pas journalisés séparément. Aucun repli silencieux vers un
+autre modèle n'est prévu.
 
 ```sh
 python -m research.native_localization_gpu journal.jsonl

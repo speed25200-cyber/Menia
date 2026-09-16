@@ -157,7 +157,8 @@ d'introspection : il porte sur ce moniteur et ce domaine limité.
 La question distincte préparée dans le [Colab 06](NATIVE_LOCALIZATION_PROTOCOL.md)
 reste ouverte : un adaptateur entraîné peut-il localiser une perturbation interne
 sur des phrases et des couches réservées, mieux que les contrôles, sans dégrader
-la lecture publique ? Aucun export de cette expérience n'est encore reçu.
-Ce test porterait sur une capacité fonctionnelle précise, pas sur une preuve
-d'expérience subjective. Il n'est pas nécessaire de relancer le Colab 07
+la lecture publique ? Son [export est désormais reçu](NATIVE_LOCALIZATION_RESULTS.md) :
+l'adaptateur répond constamment « 2 », sans gain de localisation et avec
+dégradation de la lecture. Ce test porte sur une capacité fonctionnelle précise,
+pas sur une preuve d'expérience subjective. Il n'est pas nécessaire de relancer le Colab 07
 pour corriger les arrondis de l'audit local.

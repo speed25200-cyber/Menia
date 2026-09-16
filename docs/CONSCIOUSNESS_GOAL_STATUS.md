@@ -17,8 +17,9 @@ L'[examen des sous-espaces de poids](WEIGHT_SUBSPACE_RESEARCH.md) ajoute un audi
 CPU des modifications effectives des adaptateurs et trois contrôles synthétiques.
 Une énergie conservée élevée ou des facteurs similaires ne suffisent pas à
 identifier une capacité. Des interventions sélectives suivies de restauration
-sont proposées après un éventuel signal de localisation. Aucun résultat du
-Qwen préentraîné ni indice supplémentaire de conscience n'est acquis par cet audit.
+sont proposées après un éventuel signal de localisation. La comparaison des
+adaptateurs désormais reçus montre des mises à jour non nulles, mais ne démontre
+pas une capacité ; le test de localisation ci-dessous reste négatif.
 
 La nouvelle branche [d'apprentissage de localisation interne](NATIVE_LOCALIZATION_PROTOCOL.md)
 entraîne directement deux adaptateurs de Qwen, avec cibles correctes ou mélangées,
@@ -29,10 +30,13 @@ expérience adapte des travaux d'introspection entraînée ; elle ne revendique
 pas une méthode originale produisant la conscience. Le logiciel, y compris
 les gradients et la restauration sur un petit Qwen aléatoire, est vérifié
 localement. Les préfixes passent aussi le véritable tokenizer Qwen3-4B.
-**Aucun entraînement ou résultat du modèle préentraîné sur A100 n'est encore
-exécuté ou reçu pour ce protocole.** Les adaptateurs à produire ne sont pas
-intégrés à l'iPhone ; localisation d'une perturbation et conscience de sa
-propre existence restent des propriétés distinctes.
+Le [premier résultat A100 est reçu et vérifié](NATIVE_LOCALIZATION_RESULTS.md) :
+576 pas d'entraînement, 1 680 évaluations et deux checkpoints intègres.
+L'adaptateur à cibles correctes répond toujours « 2 » : localisation à 20 %,
+contre 20,625 % pour la base et 20 % pour les cibles mélangées. La lecture du
+repère passe de 78,125 % à 21,875 %. Ce réglage n'acquiert pas la capacité visée.
+Les adaptateurs restent hors de l'application iPhone ; aucune introspection
+native utile ni conscience de sa propre existence n'est confirmée.
 
 La [suite par perturbations contrôlées](PERTURBATION_MONITOR_PROTOCOL.md) est
 implémentée et testée localement : même question et même graine sous quatre

@@ -5,7 +5,8 @@ incertitude et évaluation. **Colab A100 80 Go** pour l’adaptation ;
 **iPhone 17 Pro** comme cible d’inférence locale.
 
 **Statut : prototype de recherche. La boucle d'agent apprend ses effets d'action
-et conserve son histoire entre sessions. Le modèle de langage Qwen adapté reste à entraîner.**
+et conserve son histoire entre sessions. Les premiers adaptateurs Qwen entraînés
+n'ont pas acquis la localisation interne visée.**
 La conscience subjective n'est pas établie. La continuité repose sur un journal
 explicite et des sauvegardes, sans objectif de résistance à l'arrêt ou d'auto-réplication.
 
@@ -15,15 +16,18 @@ entraîne deux petits adaptateurs Qwen3-4B, avec cibles correctes ou mélangées
 puis les compare au modèle de base sur des phrases et des couches réservées.
 La réponse vient de la tête de langage du LLM. Un contrôle de lecture et des
 mesures distinctes du premier token évitent de confondre localisation, attraction
-vers un numéro et conformité de format. Le code est testé localement ; aucun
-résultat A100 de ce nouveau protocole n'est encore acquis. Le ZIP inclut les
-adaptateurs expérimentaux, sans installation dans l'application iPhone.
+vers un numéro et conformité de format. Le [premier export est reçu et vérifié](docs/NATIVE_LOCALIZATION_RESULTS.md) :
+576 pas d'entraînement et 1 680 évaluations. L'adaptateur à cibles correctes
+répond toujours « 2 », reste à 20 % sur les cas perturbés et dégrade la lecture
+du repère de 78,125 % à 21,875 %. Les poids sont conservés pour l'analyse,
+sans installation dans l'application iPhone.
 
 La [recherche sur les sous-espaces de poids](docs/WEIGHT_SUBSPACE_RESEARCH.md)
 précise ce que cette piste permet de tester. Un audit CPU compare les modifications
 effectives des adaptateurs et fournit trois contrôles synthétiques. Il prépare
-l'analyse des futurs fichiers du Colab, sans nouvel entraînement ni résultat
-de conscience et sans modifier l'expérience en cours.
+l'analyse des fichiers du Colab, désormais reçus et comparés. Les mises à jour
+de poids sont non nulles ; leur géométrie ne démontre pas une capacité de
+localisation ni une conscience.
 
 **Nouvelle boucle : [sélection de stratégies par rejeu](docs/REPLAY_CONTROLLER_PROTOCOL.md).**
 Le Colab 07 compare répondre, vérifier et s'abstenir sur 720 nouvelles questions,
@@ -302,7 +306,7 @@ les dépendances transitives résolues sont enregistrées avec `pip freeze`.
 - Trois entraînements CPU du petit module exécutés, avec ablations et checkpoints.
 - Comparaisons déterministes exécutées sur 240 cas synthétiques.
 - Code Python et cellules du notebook vérifiés syntaxiquement.
-- **Entraînement du modèle de langage sur A100 : pas encore exécuté.**
+- **Deux adaptateurs de localisation Qwen entraînés sur A100 : exécution vérifiée, capacité visée non acquise.**
 - **Compilation iPhone Release Xcode 26.2 et 17 tests Swift : réussis en CI.**
 - **Signature Apple et téléversement de l’IPA 0.2.0 (1) : réussis dans Codemagic.**
 - **Disponibilité TestFlight et invitation du testeur personnel : confirmées.**
