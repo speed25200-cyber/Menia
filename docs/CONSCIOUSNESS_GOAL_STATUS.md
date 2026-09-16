@@ -2,6 +2,13 @@
 
 **État actuel : objectif non atteint ; une politique de vérification apprise est intégrée à l'agent expérimental.**
 
+L'[examen des sous-espaces de poids](WEIGHT_SUBSPACE_RESEARCH.md) ajoute un audit
+CPU des modifications effectives des adaptateurs et trois contrôles synthétiques.
+Une énergie conservée élevée ou des facteurs similaires ne suffisent pas à
+identifier une capacité. Des interventions sélectives suivies de restauration
+sont proposées après un éventuel signal de localisation. Aucun résultat du
+Qwen préentraîné ni indice supplémentaire de conscience n'est acquis par cet audit.
+
 La nouvelle branche [d'apprentissage de localisation interne](NATIVE_LOCALIZATION_PROTOCOL.md)
 entraîne directement deux adaptateurs de Qwen, avec cibles correctes ou mélangées,
 et conserve une version de base. L'évaluation utilise des phrases et des couches

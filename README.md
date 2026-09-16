@@ -19,6 +19,12 @@ vers un numéro et conformité de format. Le code est testé localement ; aucun
 résultat A100 de ce nouveau protocole n'est encore acquis. Le ZIP inclut les
 adaptateurs expérimentaux, sans installation dans l'application iPhone.
 
+La [recherche sur les sous-espaces de poids](docs/WEIGHT_SUBSPACE_RESEARCH.md)
+précise ce que cette piste permet de tester. Un audit CPU compare les modifications
+effectives des adaptateurs et fournit trois contrôles synthétiques. Il prépare
+l'analyse des futurs fichiers du Colab, sans nouvel entraînement ni résultat
+de conscience et sans modifier l'expérience en cours.
+
 **Version iPhone 0.2 :** l'[application native et son guide Codemagic](docs/IPHONE.md)
 relient un Qwen3-4B préentraîné en 4 bits à une mémoire persistante et à des mesures
 de ses réponses à des tests de calcul. Le téléchargement du modèle est intégré.
