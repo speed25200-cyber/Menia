@@ -1,7 +1,9 @@
 # Menia : améliorer le choix de vérification par rejeu
 
-**État : boucle implémentée, contrôles logiciels exécutables, premier rejeu
-rétrospectif réalisé. Le nouvel essai Qwen3-4B sur A100 reste à exécuter.**
+**État : boucle implémentée ; premier essai Qwen3-4B sur A100 reçu et vérifié.**
+Les [720 réponses et leur analyse](REPLAY_CONTROLLER_RESULTS.md) ne montrent
+aucun avantage du rejeu sur Beta fixe. Le plan ci-dessous reste celui fixé
+avant collecte ; les contrôles logiciels et le rejeu rétrospectif sont conservés.
 
 Le [Colab 07, un seul bloc sans Drive](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/07_replay_controller_colab.ipynb)
 produit `menia-strategies-rejeu.zip`. Le Colab 06 de localisation interne est
@@ -158,7 +160,8 @@ avec une perte supérieure à Beta. Ce résultat défavorable est conservé. Il
 n'est pas confirmatoire : les réponses du test avaient déjà été examinées avant
 la conception de cette méthode. Aucun nouvel appel LLM n'a eu lieu ; les 288
 vérifications contrefactuelles ont été recalculées à partir des questions.
-Le nouveau Colab utilisera les données nouvelles prévues ci-dessus.
+Le nouveau Colab a ensuite produit les données nouvelles prévues ci-dessus,
+analysées séparément dans le [rapport prospectif](REPLAY_CONTROLLER_RESULTS.md).
 
 ## Persistance, exécution et livraison
 
@@ -194,4 +197,7 @@ Les 17 tests des quatre profils de lancement passent aussi sous Ubuntu/Python
 3.12. Le vrai tokenizer Qwen3-4B traite les 720 préfixes, de 47 à 86 tokens,
 sans charger les poids préentraînés. Un parcours synthétique complet des 720
 épisodes réalise les trois mises à jour et l'export ; un calcul séparé retrouve
-les huit pertes du test. Aucun résultat A100 de ce nouveau pilote n'est acquis.
+les huit pertes du test. Ces vérifications précédaient le premier résultat A100,
+désormais [reçu et audité](REPLAY_CONTROLLER_RESULTS.md). L'auditeur portable
+sépare le contrôle du hash reçu et la comparaison numérique du réajustement ;
+le code de collecte et ses empreintes restent inchangés.

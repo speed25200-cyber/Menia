@@ -28,9 +28,12 @@ de conscience et sans modifier l'expérience en cours.
 **Nouvelle boucle : [sélection de stratégies par rejeu](docs/REPLAY_CONTROLLER_PROTOCOL.md).**
 Le Colab 07 compare répondre, vérifier et s'abstenir sur 720 nouvelles questions,
 avec trois mises à jour du contrôleur et un test final réservé. Les poids de Qwen
-restent fixes. Un premier rejeu rétrospectif fonctionne mais ne bat pas la référence
-Beta ; aucun gain prospectif ni conscience n'est encore établi. Le ZIP exporte
-les contrôleurs expérimentaux, sans installation automatique sur l'iPhone.
+restent fixes. Le [premier export prospectif est reçu et vérifié](docs/REPLAY_CONTROLLER_RESULTS.md) :
+720 réponses, puis 190/192 réussites finales avec 160 vérifications au test.
+La politique choisie revient exactement à Beta fixe ; les états internes et
+les mises à jour par rejeu n'apportent aucun gain dans cet essai. Le bilan est
+reconstruit avec un audit portable des arrondis numériques. Aucun résultat de
+conscience ni installation automatique sur l'iPhone n'en découle.
 
 **Version iPhone 0.2 :** l'[application native et son guide Codemagic](docs/IPHONE.md)
 relient un Qwen3-4B préentraîné en 4 bits à une mémoire persistante et à des mesures

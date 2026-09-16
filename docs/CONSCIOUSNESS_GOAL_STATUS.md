@@ -5,10 +5,13 @@
 Une [boucle de sélection par rejeu](REPLAY_CONTROLLER_PROTOCOL.md) relie maintenant
 des décisions exécutables à des historiques de réponses. Trois mises à jour de
 contrôleur précèdent un test final réservé, avec les poids de Qwen et les moniteurs
-figés. Le premier rejeu des anciennes données ne bat pas la référence Beta.
-Les 720 nouvelles réponses du Colab ne sont pas encore recueillies. Il s'agit
-d'une adaptation limitée de l'idée de Dream-RSI, pas de sa reproduction ni d'une
-mise en évidence de conscience ou de métacognition native.
+figés. Le [premier essai prospectif est reçu et vérifié](REPLAY_CONTROLLER_RESULTS.md) :
+720 réponses, 190/192 bonnes réponses finales avec 160 vérifications au test,
+exactement comme Beta fixe. La sélection n'utilise finalement aucun état interne
+et ne dépasse pas la référence simple. L'audit portable confirme le bilan malgré
+des arrondis de réajustement qui changent l'empreinte binaire locale. Il s'agit
+d'une adaptation limitée de l'idée de Dream-RSI ; aucun gain prospectif par rejeu,
+ni conscience ou métacognition native, n'est établi dans cet essai.
 
 L'[examen des sous-espaces de poids](WEIGHT_SUBSPACE_RESEARCH.md) ajoute un audit
 CPU des modifications effectives des adaptateurs et trois contrôles synthétiques.
