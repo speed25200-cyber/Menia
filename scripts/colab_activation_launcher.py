@@ -76,7 +76,7 @@ def launch_activation(code_revision, bootstrap_source, *, content=Path("/content
                       mount=None, download=None, runner_factory=LoggedRunner, profile="activation", storage="drive"):
     if not re.fullmatch(r"[0-9a-f]{40}", code_revision):
         raise ValueError("A full immutable code revision is required")
-    if profile not in ("activation", "perturbation", "native"):
+    if profile not in ("activation", "perturbation", "native", "replay"):
         raise ValueError("Unknown experiment profile")
     if storage not in ("drive", "local"):
         raise ValueError("Unknown storage mode")
@@ -87,6 +87,8 @@ def launch_activation(code_revision, bootstrap_source, *, content=Path("/content
             module="perturbation_monitor", stage="6 — Contrôle technique puis étude appariée (704 appels)"),
         "native": dict(archive="menia-localisation-native.zip", folder="native-localization-v1",
             module="native_localization", stage="6 — Entraîner deux adaptateurs puis tester Qwen (1 680 évaluations)"),
+        "replay": dict(archive="menia-strategies-rejeu.zip", folder="replay-controller-v1",
+            module="replay_controller", stage="6 — Apprendre les stratégies puis tester (720 réponses)"),
     }[profile]
     content = Path(content)
     stamp = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ") + "-" + uuid.uuid4().hex[:8]
@@ -132,8 +134,10 @@ def launch_activation(code_revision, bootstrap_source, *, content=Path("/content
         runner.run("3 — Vérifier les bibliothèques", [python, "-m", "pip", "check"])
         runner.run("4 — Vérifier CUDA", [python, "-c",
                    "from research.cross_model_gpu import environment; e=environment(); print(e['gpu'], e['requiredVersions'])"], cwd=repo)
-        runner.run("4 — Tests du moniteur", [python, "-m", "unittest", "tests_research.test_"+experiment["module"],
-                   "tests_language.test_"+experiment["module"]+"_gpu", "-v"], cwd=repo)
+        tests = ["tests_research.test_"+experiment["module"], "tests_language.test_"+experiment["module"]+"_gpu"]
+        if profile == "replay":
+            tests.append("tests.test_replay_control")
+        runner.run("4 — Tests du moniteur", [python, "-m", "unittest", *tests, "-v"], cwd=repo)
         if storage == "drive":
             runner.stage = "5 — Connecter Drive"
             print("\n--- 5 — Connecter Drive ---", flush=True)

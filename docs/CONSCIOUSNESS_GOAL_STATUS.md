@@ -2,6 +2,14 @@
 
 **État actuel : objectif non atteint ; une politique de vérification apprise est intégrée à l'agent expérimental.**
 
+Une [boucle de sélection par rejeu](REPLAY_CONTROLLER_PROTOCOL.md) relie maintenant
+des décisions exécutables à des historiques de réponses. Trois mises à jour de
+contrôleur précèdent un test final réservé, avec les poids de Qwen et les moniteurs
+figés. Le premier rejeu des anciennes données ne bat pas la référence Beta.
+Les 720 nouvelles réponses du Colab ne sont pas encore recueillies. Il s'agit
+d'une adaptation limitée de l'idée de Dream-RSI, pas de sa reproduction ni d'une
+mise en évidence de conscience ou de métacognition native.
+
 L'[examen des sous-espaces de poids](WEIGHT_SUBSPACE_RESEARCH.md) ajoute un audit
 CPU des modifications effectives des adaptateurs et trois contrôles synthétiques.
 Une énergie conservée élevée ou des facteurs similaires ne suffisent pas à

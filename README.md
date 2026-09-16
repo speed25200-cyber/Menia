@@ -25,6 +25,13 @@ effectives des adaptateurs et fournit trois contrôles synthétiques. Il prépar
 l'analyse des futurs fichiers du Colab, sans nouvel entraînement ni résultat
 de conscience et sans modifier l'expérience en cours.
 
+**Nouvelle boucle : [sélection de stratégies par rejeu](docs/REPLAY_CONTROLLER_PROTOCOL.md).**
+Le Colab 07 compare répondre, vérifier et s'abstenir sur 720 nouvelles questions,
+avec trois mises à jour du contrôleur et un test final réservé. Les poids de Qwen
+restent fixes. Un premier rejeu rétrospectif fonctionne mais ne bat pas la référence
+Beta ; aucun gain prospectif ni conscience n'est encore établi. Le ZIP exporte
+les contrôleurs expérimentaux, sans installation automatique sur l'iPhone.
+
 **Version iPhone 0.2 :** l'[application native et son guide Codemagic](docs/IPHONE.md)
 relient un Qwen3-4B préentraîné en 4 bits à une mémoire persistante et à des mesures
 de ses réponses à des tests de calcul. Le téléchargement du modèle est intégré.
