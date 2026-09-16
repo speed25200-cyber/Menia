@@ -5,18 +5,20 @@ incertitude et évaluation. **Colab A100 80 Go** pour l’adaptation ;
 **iPhone 17 Pro** comme cible d’inférence locale.
 
 **Statut : prototype de recherche. La boucle d'agent apprend ses effets d'action
-et conserve son histoire entre sessions. Les premiers adaptateurs Qwen entraînés
-n'ont pas acquis la localisation interne visée.**
+et conserve son histoire entre sessions. La localisation interne reste partielle
+dans le dernier diagnostic des adaptateurs Qwen.**
 La conscience subjective n'est pas établie. La continuité repose sur un journal
 explicite et des sauvegardes, sans objectif de résistance à l'arrêt ou d'auto-réplication.
 
-**Suite : [diagnostic de l'apprentissage interne](docs/LEARNING_DIAGNOSTIC_PROTOCOL.md).**
-Le Colab 08 simplifie la tâche à deux phrases : contrôle visible, rotations faible
-et forte, puis cibles mélangées. Les mises à jour équilibrent les réponses et
-incluent de la lecture. Les exemples appris et les phrases nouvelles sont évalués
-séparément. Le logiciel est vérifié ; aucun résultat préentraîné de ce nouveau
-test n'est acquis. L'ancien échec reste conservé et aucun adaptateur n'est installé
-sur iPhone par cette expérience.
+**Résultat du [diagnostic de l'apprentissage interne](docs/LEARNING_DIAGNOSTIC_RESULTS.md).**
+Le Colab 08 est reçu et vérifié : 128 mises à jour et 1 792 évaluations. Sur les
+phrases nouvelles, le signal visible et la lecture du repère atteignent 100 %.
+L'adaptateur fort obtient 42/72 sur la tâche interne complète, contre 24/72 pour
+la base, mais ne dépasse pas cette base sur la localisation des cas perturbés :
+23/48 contre 24/48. Il dépasse le témoin mélangé, à 9/48. Une sensibilité
+partiellement informative apparaît dans ce montage ; sa réplication reste à
+faire. Le [protocole et ses critères](docs/LEARNING_DIAGNOSTIC_PROTOCOL.md)
+restent inchangés. Aucun adaptateur n'est installé sur iPhone par cette expérience.
 
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
 Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)

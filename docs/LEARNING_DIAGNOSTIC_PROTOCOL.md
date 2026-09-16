@@ -6,8 +6,10 @@ mais cela ne démontre pas que l'objectif d'apprentissage soit acquis. Le nouvea
 Colab 08 teste d'abord cette acquisition sur un problème plus petit, avec un
 contrôle positif et des exemples de lecture pendant l'entraînement.
 
-**État : protocole et logiciel préparés après examen des résultats précédents ;
-aucune nouvelle performance Qwen3-4B préentraînée n'est encore mesurée.**
+**État : le [premier export est reçu et vérifié](LEARNING_DIAGNOSTIC_RESULTS.md).
+Contrôle visible et lecture à 100 % au test ; signal interne partiel avec la
+rotation forte, sans gain sur le contraste principal contre la base.**
+Le plan ci-dessous a été fixé avant cette collecte et n'est pas modifié.
 Les expériences antérieures, leurs scores et leurs sources fixées restent
 inchangés. Ce diagnostic ne constitue pas une construction de conscience.
 
@@ -172,5 +174,8 @@ du modèle préentraîné.
 Le tokenizer réel de la révision Qwen vérifie les 1 792 préfixes d'évaluation
 et les 256 variantes répétées de lecture d'apprentissage : 91 à 113 tokens,
 sous la limite de 512. Les trois chiffres sont des tokens distincts (15 à 17).
-Aucun poids préentraîné n'est chargé par ce contrôle. Le temps total et le pic
-mémoire A100 restent à mesurer ; aucun succès fonctionnel n'est annoncé à ce stade.
+Aucun poids préentraîné n'est chargé par ce contrôle du tokenizer. L'export reçu
+ensuite mesure 169,93 s pour les mises à jour et 147,32 s pour les évaluations,
+hors opérations non chronométrées. Le temps total du Colab et le pic mémoire
+A100 ne sont pas mesurés. Les performances sont détaillées dans le rapport lié
+en tête, séparément de ces vérifications logicielles antérieures à la collecte.

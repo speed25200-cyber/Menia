@@ -2,13 +2,16 @@
 
 **État actuel : objectif non atteint ; une politique de vérification apprise est intégrée à l'agent expérimental.**
 
-Le [diagnostic d'apprentissage](LEARNING_DIAGNOSTIC_PROTOCOL.md) poursuit l'échec
-de localisation avec deux phrases, un contrôle visible, deux intensités cachées
-et un témoin mélangé. Des groupes de gradients équilibrés et des exercices de
-lecture sont implémentés ; un petit Qwen aléatoire vérifie le parcours logiciel.
-Une réanalyse exploratoire des anciens logits ne dépasse pas 20 % de localisation,
-sans conclure à l'absence d'information dans les autres activations. Aucun
-résultat du nouveau test préentraîné ni indice de conscience n'est acquis.
+Le [diagnostic d'apprentissage reçu](LEARNING_DIAGNOSTIC_RESULTS.md) apporte un
+progrès partiel : contrôle visible et lecture du repère à 100 % sur les phrases
+nouvelles, avec 128 mises à jour et 1 792 évaluations vérifiées. L'adaptateur fort
+réussit 42/72 conditions ordinaires de localisation, contre 24/72 pour la base.
+Sur les cas perturbés, il obtient 23/48, contre 24/48 pour la base et 9/48 pour
+le témoin mélangé. Il devient sensible à l'intervention, mais ne dépasse pas
+la référence principale ; seul le visible franchit 90 % sur l'apprentissage.
+Le [protocole fixé](LEARNING_DIAGNOSTIC_PROTOCOL.md) reste inchangé. Plusieurs
+initialisations et des contrôles de position sur des données nouvelles restent
+à exécuter. Ce signal artificiellement entraîné ne confirme pas la conscience.
 
 Une [boucle de sélection par rejeu](REPLAY_CONTROLLER_PROTOCOL.md) relie maintenant
 des décisions exécutables à des historiques de réponses. Trois mises à jour de

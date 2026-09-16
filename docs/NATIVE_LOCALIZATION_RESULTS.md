@@ -149,3 +149,9 @@ un contrôle logiciel et d'apprentissage à fixer séparément, sans recycler le
 test reçu pour sélectionner des réglages et annoncer ensuite un gain confirmé.
 Le Colab actuel est complet ; aucune relance à l'identique n'est nécessaire
 pour résoudre une erreur technique.
+
+**Suite désormais reçue :** le [diagnostic Colab 08](LEARNING_DIAGNOSTIC_RESULTS.md)
+acquiert le contrôle visible et conserve la lecture sur une tâche à deux phrases.
+La rotation forte donne un signal interne partiel, sans dépasser la base sur
+le critère principal de localisation des cas perturbés. Ce nouveau montage
+ne remplace pas les résultats négatifs du présent essai à cinq phrases.
