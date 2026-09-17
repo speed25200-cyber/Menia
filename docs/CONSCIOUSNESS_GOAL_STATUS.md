@@ -10,8 +10,12 @@ Sur les cas perturbés, il obtient 23/48, contre 24/48 pour la base et 9/48 pour
 le témoin mélangé. Il devient sensible à l'intervention, mais ne dépasse pas
 la référence principale ; seul le visible franchit 90 % sur l'apprentissage.
 Le [protocole fixé](LEARNING_DIAGNOSTIC_PROTOCOL.md) reste inchangé. Plusieurs
-initialisations et des contrôles de position sur des données nouvelles restent
-à exécuter. Ce signal artificiellement entraîné ne confirme pas la conscience.
+initialisations et des contrôles de position sur des données nouvelles sont
+implémentés dans le [protocole de réplication Colab 09](LOCALIZATION_REPLICATION_PROTOCOL.md).
+Il croise ordre des contenus et numéros publics, avec les mêmes contrôles visibles.
+Ses neuf adaptateurs et 12 480 évaluations préentraînées restent à exécuter ;
+les tests locaux portent sur le logiciel. Ce signal artificiellement entraîné
+ne confirme pas la conscience.
 
 Une [boucle de sélection par rejeu](REPLAY_CONTROLLER_PROTOCOL.md) relie maintenant
 des décisions exécutables à des historiques de réponses. Trois mises à jour de
