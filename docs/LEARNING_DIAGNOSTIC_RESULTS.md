@@ -180,3 +180,9 @@ transfert à la prédiction d'erreurs naturelles et aux choix d'action reste une
 question ultérieure : ce diagnostic apprend à rapporter des perturbations
 artificielles injectées par l'expérimentateur. Aucun de ces checkpoints n'est
 installé dans l'application iPhone.
+
+**Suite désormais reçue :** la [réplication Colab 09](LOCALIZATION_REPLICATION_RESULTS.md)
+ne reproduit pas ce signal. Sur trois initialisations et jeux de phrases nouveaux,
+l'adaptateur fort localise 15/48, 28/48 et 15/48 perturbations contre 24/48 pour
+la base, et ne dépasse plus le témoin mélangé. Les 23/48 et l'avantage de
++29 points ci-dessus restent un résultat isolé.

@@ -2,7 +2,22 @@
 
 **État actuel : objectif non atteint ; une politique de vérification apprise est intégrée à l'agent expérimental.**
 
-Le [diagnostic d'apprentissage reçu](LEARNING_DIAGNOSTIC_RESULTS.md) apporte un
+La [réplication Colab 09 est reçue et vérifiée](LOCALIZATION_REPLICATION_RESULTS.md) :
+neuf adaptateurs, 288 mises à jour et 12 480 évaluations, sans erreur technique.
+Le signal partiel du Colab 08 **ne se reproduit pas**. L'adaptateur fort localise
+15/48, 28/48 et 15/48 perturbations contre 24/48 pour la base ; deux écarts sur
+trois sont négatifs avec un intervalle excluant zéro, et l'avantage sur le témoin
+mélangé disparaît (58/144 contre 63/144). Les 24/48 de la base sont une réponse
+constante par bloc. Le contrôle visible échoue sous numéros inversés, ce qui
+interdit d'attribuer ces échecs à l'accès interne. Un diagnostic exploratoire
+sans seuil, ajouté après réception, indique une information de présence répétée
+dans le bras fort (AUROC 0,82 à 0,87) et une information de position déjà
+présente dans la base non entraînée. La prochaine étape proposée fixe à l'avance
+un critère de détection sans seuil et entraîne le contrôle visible sur les
+quatre présentations. Ni localisation entraînée robuste, ni métacognition
+native, ni conscience ne sont établies.
+
+Le [diagnostic d'apprentissage reçu](LEARNING_DIAGNOSTIC_RESULTS.md) apportait un
 progrès partiel : contrôle visible et lecture du repère à 100 % sur les phrases
 nouvelles, avec 128 mises à jour et 1 792 évaluations vérifiées. L'adaptateur fort
 réussit 42/72 conditions ordinaires de localisation, contre 24/72 pour la base.
@@ -11,11 +26,9 @@ le témoin mélangé. Il devient sensible à l'intervention, mais ne dépasse pa
 la référence principale ; seul le visible franchit 90 % sur l'apprentissage.
 Le [protocole fixé](LEARNING_DIAGNOSTIC_PROTOCOL.md) reste inchangé. Plusieurs
 initialisations et des contrôles de position sur des données nouvelles sont
-implémentés dans le [protocole de réplication Colab 09](LOCALIZATION_REPLICATION_PROTOCOL.md).
-Il croise ordre des contenus et numéros publics, avec les mêmes contrôles visibles.
-Ses neuf adaptateurs et 12 480 évaluations préentraînées restent à exécuter ;
-les tests locaux portent sur le logiciel. Ce signal artificiellement entraîné
-ne confirme pas la conscience.
+implémentés dans le [protocole de réplication Colab 09](LOCALIZATION_REPLICATION_PROTOCOL.md),
+dont le résultat négatif est résumé ci-dessus. Ce signal artificiellement
+entraîné ne confirmait pas la conscience.
 
 Une [boucle de sélection par rejeu](REPLAY_CONTROLLER_PROTOCOL.md) relie maintenant
 des décisions exécutables à des historiques de réponses. Trois mises à jour de

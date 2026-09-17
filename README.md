@@ -5,8 +5,8 @@ incertitude et évaluation. **Colab A100 80 Go** pour l’adaptation ;
 **iPhone 17 Pro** comme cible d’inférence locale.
 
 **Statut : prototype de recherche. La boucle d'agent apprend ses effets d'action
-et conserve son histoire entre sessions. La localisation interne reste partielle
-dans le dernier diagnostic des adaptateurs Qwen.**
+et conserve son histoire entre sessions. La localisation interne entraînée ne se
+reproduit pas dans la dernière réplication des adaptateurs Qwen.**
 La conscience subjective n'est pas établie. La continuité repose sur un journal
 explicite et des sauvegardes, sans objectif de résistance à l'arrêt ou d'auto-réplication.
 
@@ -20,13 +20,19 @@ partiellement informative apparaît dans ce montage ; sa réplication reste à
 faire. Le [protocole et ses critères](docs/LEARNING_DIAGNOSTIC_PROTOCOL.md)
 restent inchangés. Aucun adaptateur n'est installé sur iPhone par cette expérience.
 
-**Suite : [réplication et contrôles de position](docs/LOCALIZATION_REPLICATION_PROTOCOL.md).**
-Le Colab 09 prépare trois initialisations et trois jeux de phrases nouveaux,
-avec neuf adaptateurs et 12 480 évaluations. L'ordre des contenus et les numéros
-affichés sont croisés pour tester les raccourcis possibles. Les paramètres
-d'entraînement restent fixes et toutes les répétitions sont conservées. Les
-tests logiciels sont exécutés localement ; aucun résultat préentraîné de cette
-réplication n'est encore acquis.
+**Résultat de la [réplication avec contrôles de position](docs/LOCALIZATION_REPLICATION_RESULTS.md).**
+Le Colab 09 est reçu et vérifié : trois initialisations et jeux de phrases
+nouveaux, neuf adaptateurs, 288 mises à jour et 12 480 évaluations. **Le gain du
+Colab 08 ne se reproduit pas** : l'adaptateur fort localise 15/48, 28/48 et 15/48
+perturbations, contre 24/48 pour la base, et ne dépasse plus le témoin mélangé
+(58/144 contre 63/144 au total). Le contrôle visible reste à 100 % quand les
+contenus sont inversés, mais tombe vers 50 % quand les numéros affichés le sont :
+la règle du numéro affiché n'est pas apprise, même avec un signal explicite.
+Un diagnostic exploratoire ajouté après réception trouve une information de
+présence répétée dans les logits du bras fort (AUROC 0,82 à 0,87 contre environ
+0,5 pour la base), tandis que l'information de position existe déjà dans la base
+non entraînée. Le [protocole](docs/LOCALIZATION_REPLICATION_PROTOCOL.md) reste
+inchangé ; aucune conscience ni installation sur iPhone n'en découle.
 
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
 Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)
@@ -324,7 +330,7 @@ les dépendances transitives résolues sont enregistrées avec `pip freeze`.
 - Trois entraînements CPU du petit module exécutés, avec ablations et checkpoints.
 - Comparaisons déterministes exécutées sur 240 cas synthétiques.
 - Code Python et cellules du notebook vérifiés syntaxiquement.
-- **Deux adaptateurs de localisation Qwen entraînés sur A100 : exécution vérifiée, capacité visée non acquise.**
+- **Quinze adaptateurs de localisation Qwen entraînés sur A100 en trois essais : exécutions vérifiées, capacité visée non acquise ni reproduite.**
 - **Compilation iPhone Release Xcode 26.2 et 17 tests Swift : réussis en CI.**
 - **Signature Apple et téléversement de l’IPA 0.2.0 (1) : réussis dans Codemagic.**
 - **Disponibilité TestFlight et invitation du testeur personnel : confirmées.**

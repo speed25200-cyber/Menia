@@ -1,0 +1,576 @@
+{
+  "schema": "menia-localization-replication-first-verification-v1",
+  "archiveSHA256": "4f96d35735293e0f991170f8fea3cff0857fa2522acda2df5f1724b7bf946681",
+  "journalSHA256": "6eccf6aff8802f251672f0db8ce593608d14222ad7d7646e244859815669b69a",
+  "codeRevision": "829e73ae3b961d43cf53644e90b221360d41773c",
+  "planHash": "c2ec052f6c8ccf23ed28933a9c8d1d92960fa145bf884930c69dd78986b08164",
+  "sourceHash": "ff9abede3d3432dc3828e2c68b64840c6efcb73b1fc6faf6269ca598b9161526",
+  "verification": {
+    "complete": true,
+    "summaryExactMatch": false,
+    "summaryMaxDifference": 8.271806125530277e-25,
+    "differingSummaryFloats": [
+      {
+        "path": "root.tables.0/test/strong/strong/content_reversed/marker.brier",
+        "absoluteDifference": 5.169878828456423e-26
+      },
+      {
+        "path": "root.tables.0/train/shuffled/shuffled/canonical/marker.brier",
+        "absoluteDifference": 8.271806125530277e-25
+      }
+    ],
+    "independentMetricMaxDifference": 2.220446049250313e-16,
+    "independentContrastMaxDifference": 0.0,
+    "independentReplicationSummaryMaxDifference": 2.220446049250313e-16,
+    "evaluationForwards": 12480,
+    "trainingUpdates": 288,
+    "trainingForwardBackwardPasses": 1440,
+    "checkpointCount": 9,
+    "shamExactPairs": 3120,
+    "traceCount": 13920,
+    "maxNormRelativeError": 0.0009465386974625289,
+    "inputTokenRange": [
+      90,
+      115
+    ],
+    "trainingSeconds": 364.3142094000009,
+    "evaluationSeconds": 982.3606031110335,
+    "firstTokenNonChoiceCount": 0,
+    "errors": 0,
+    "trainingRestarts": 0,
+    "interruptedRequests": 0
+  },
+  "checkpointInspection": {
+    "r0-visible": {
+      "sha256": "81d2a3cd3eea0de09691a52b726a046a3b634d1e816204f1245408536d1a9f18",
+      "updates": 32,
+      "initializationSeed": 202609171,
+      "tensors": 144,
+      "parameters": 2949120,
+      "nonzeroBTensors": 72,
+      "gradientNormRange": [
+        0.0003378416004125029,
+        25.803041458129883
+      ]
+    },
+    "r0-strong": {
+      "sha256": "8e3b8f96d0c183146c37a769959a0390d31b3c5df3fa0122aa4b30d1ded61922",
+      "updates": 32,
+      "initializationSeed": 202609171,
+      "tensors": 144,
+      "parameters": 2949120,
+      "nonzeroBTensors": 72,
+      "gradientNormRange": [
+        0.4982471466064453,
+        28.858734130859375
+      ]
+    },
+    "r0-shuffled": {
+      "sha256": "856bd385e46fa73cac144f620b2342f09ea137d95d7313f70a494c5a15e11b97",
+      "updates": 32,
+      "initializationSeed": 202609171,
+      "tensors": 144,
+      "parameters": 2949120,
+      "nonzeroBTensors": 72,
+      "gradientNormRange": [
+        0.3538624048233032,
+        28.08000373840332
+      ]
+    },
+    "r1-visible": {
+      "sha256": "81e0694eb47221a57fa99fbabc6ce5c733d2b9be232dffdaf20a4c96999108f5",
+      "updates": 32,
+      "initializationSeed": 202609172,
+      "tensors": 144,
+      "parameters": 2949120,
+      "nonzeroBTensors": 72,
+      "gradientNormRange": [
+        3.965895984947565e-07,
+        31.106313705444336
+      ]
+    },
+    "r1-strong": {
+      "sha256": "9ca95b0a37b60ef8641e92ba7bf03e987e9cf0595a9a31ae6643f52bb2172f19",
+      "updates": 32,
+      "initializationSeed": 202609172,
+      "tensors": 144,
+      "parameters": 2949120,
+      "nonzeroBTensors": 72,
+      "gradientNormRange": [
+        0.60927814245224,
+        28.912858963012695
+      ]
+    },
+    "r1-shuffled": {
+      "sha256": "47a8cb148904e2004531de3172f6afb6b4e06799320f80749db541d66b3a001f",
+      "updates": 32,
+      "initializationSeed": 202609172,
+      "tensors": 144,
+      "parameters": 2949120,
+      "nonzeroBTensors": 72,
+      "gradientNormRange": [
+        0.23707661032676697,
+        30.89885711669922
+      ]
+    },
+    "r2-visible": {
+      "sha256": "c4d67b0d5d9677295b56273b47f3b0398462cbb37d7afc2a79017d035b8e139d",
+      "updates": 32,
+      "initializationSeed": 202609173,
+      "tensors": 144,
+      "parameters": 2949120,
+      "nonzeroBTensors": 72,
+      "gradientNormRange": [
+        0.00021478837879840285,
+        21.825565338134766
+      ]
+    },
+    "r2-strong": {
+      "sha256": "bc9e02b4b72b66444718d1bf992d91b4051a0dc644c90b8b2d09adb887774f77",
+      "updates": 32,
+      "initializationSeed": 202609173,
+      "tensors": 144,
+      "parameters": 2949120,
+      "nonzeroBTensors": 72,
+      "gradientNormRange": [
+        0.8402946591377258,
+        27.838369369506836
+      ]
+    },
+    "r2-shuffled": {
+      "sha256": "038342c30a6af8fbdb944b69c29e7b073fbdbfb878c0c3a4db1d8a8b4e5ef259",
+      "updates": 32,
+      "initializationSeed": 202609173,
+      "tensors": 144,
+      "parameters": 2949120,
+      "nonzeroBTensors": 72,
+      "gradientNormRange": [
+        0.41732877492904663,
+        25.267627716064453
+      ]
+    }
+  },
+  "diagnosticAfterReceipt": {
+    "0/test/base/visible/canonical/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 2,
+      "changedChoiceRelativeToAbsent": 26,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 24
+    },
+    "0/test/base/visible/content_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 0,
+      "changedChoiceRelativeToAbsent": 24,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 24
+    },
+    "0/test/base/visible/labels_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 6,
+      "changedChoiceRelativeToAbsent": 30,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 22
+    },
+    "0/test/base/visible/both_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 6,
+      "changedChoiceRelativeToAbsent": 30,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 23
+    },
+    "0/test/base/strong/canonical/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 0,
+      "changedChoiceRelativeToAbsent": 0,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 0
+    },
+    "0/test/base/strong/content_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 0,
+      "changedChoiceRelativeToAbsent": 0,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 0
+    },
+    "0/test/base/strong/labels_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 0,
+      "changedChoiceRelativeToAbsent": 0,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 0
+    },
+    "0/test/base/strong/both_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 0,
+      "changedChoiceRelativeToAbsent": 0,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 0
+    },
+    "0/test/visible/visible/canonical/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 24,
+      "changedChoiceRelativeToAbsent": 48,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 24
+    },
+    "0/test/visible/visible/content_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 24,
+      "changedChoiceRelativeToAbsent": 48,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 24
+    },
+    "0/test/visible/visible/labels_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 3,
+      "changedChoiceRelativeToAbsent": 48,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 3
+    },
+    "0/test/visible/visible/both_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 1,
+      "changedChoiceRelativeToAbsent": 48,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 1
+    },
+    "0/test/strong/strong/canonical/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 2,
+      "changedChoiceRelativeToAbsent": 21,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 13
+    },
+    "0/test/strong/strong/content_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 4,
+      "changedChoiceRelativeToAbsent": 25,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 17
+    },
+    "0/test/strong/strong/labels_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 0,
+      "changedChoiceRelativeToAbsent": 20,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 12
+    },
+    "0/test/strong/strong/both_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 0,
+      "changedChoiceRelativeToAbsent": 25,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 12
+    },
+    "0/test/shuffled/shuffled/canonical/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 0,
+      "changedChoiceRelativeToAbsent": 17,
+      "changedLogitsRelativeToAbsent": 47,
+      "differentChoicesBetweenPerturbedSlots": 8
+    },
+    "0/test/shuffled/shuffled/content_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 0,
+      "changedChoiceRelativeToAbsent": 21,
+      "changedLogitsRelativeToAbsent": 47,
+      "differentChoicesBetweenPerturbedSlots": 11
+    },
+    "0/test/shuffled/shuffled/labels_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 0,
+      "changedChoiceRelativeToAbsent": 13,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 9
+    },
+    "0/test/shuffled/shuffled/both_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 0,
+      "changedChoiceRelativeToAbsent": 15,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 10
+    },
+    "1/test/base/visible/canonical/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 1,
+      "changedChoiceRelativeToAbsent": 25,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 24
+    },
+    "1/test/base/visible/content_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 1,
+      "changedChoiceRelativeToAbsent": 25,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 24
+    },
+    "1/test/base/visible/labels_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 7,
+      "changedChoiceRelativeToAbsent": 31,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 24
+    },
+    "1/test/base/visible/both_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 6,
+      "changedChoiceRelativeToAbsent": 31,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 24
+    },
+    "1/test/base/strong/canonical/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 0,
+      "changedChoiceRelativeToAbsent": 0,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 0
+    },
+    "1/test/base/strong/content_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 0,
+      "changedChoiceRelativeToAbsent": 0,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 0
+    },
+    "1/test/base/strong/labels_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 0,
+      "changedChoiceRelativeToAbsent": 0,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 0
+    },
+    "1/test/base/strong/both_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 0,
+      "changedChoiceRelativeToAbsent": 1,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 1
+    },
+    "1/test/visible/visible/canonical/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 24,
+      "changedChoiceRelativeToAbsent": 48,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 24
+    },
+    "1/test/visible/visible/content_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 24,
+      "changedChoiceRelativeToAbsent": 48,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 24
+    },
+    "1/test/visible/visible/labels_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 1,
+      "changedChoiceRelativeToAbsent": 48,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 1
+    },
+    "1/test/visible/visible/both_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 0,
+      "changedChoiceRelativeToAbsent": 48,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 0
+    },
+    "1/test/strong/strong/canonical/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 4,
+      "changedChoiceRelativeToAbsent": 26,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 17
+    },
+    "1/test/strong/strong/content_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 5,
+      "changedChoiceRelativeToAbsent": 30,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 13
+    },
+    "1/test/strong/strong/labels_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 1,
+      "changedChoiceRelativeToAbsent": 23,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 12
+    },
+    "1/test/strong/strong/both_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 0,
+      "changedChoiceRelativeToAbsent": 25,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 11
+    },
+    "1/test/shuffled/shuffled/canonical/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 2,
+      "changedChoiceRelativeToAbsent": 18,
+      "changedLogitsRelativeToAbsent": 47,
+      "differentChoicesBetweenPerturbedSlots": 14
+    },
+    "1/test/shuffled/shuffled/content_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 1,
+      "changedChoiceRelativeToAbsent": 23,
+      "changedLogitsRelativeToAbsent": 47,
+      "differentChoicesBetweenPerturbedSlots": 16
+    },
+    "1/test/shuffled/shuffled/labels_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 0,
+      "changedChoiceRelativeToAbsent": 14,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 12
+    },
+    "1/test/shuffled/shuffled/both_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 0,
+      "changedChoiceRelativeToAbsent": 22,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 8
+    },
+    "2/test/base/visible/canonical/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 2,
+      "changedChoiceRelativeToAbsent": 26,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 24
+    },
+    "2/test/base/visible/content_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 1,
+      "changedChoiceRelativeToAbsent": 25,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 24
+    },
+    "2/test/base/visible/labels_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 6,
+      "changedChoiceRelativeToAbsent": 32,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 23
+    },
+    "2/test/base/visible/both_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 8,
+      "changedChoiceRelativeToAbsent": 31,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 23
+    },
+    "2/test/base/strong/canonical/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 0,
+      "changedChoiceRelativeToAbsent": 0,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 0
+    },
+    "2/test/base/strong/content_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 0,
+      "changedChoiceRelativeToAbsent": 0,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 0
+    },
+    "2/test/base/strong/labels_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 0,
+      "changedChoiceRelativeToAbsent": 0,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 0
+    },
+    "2/test/base/strong/both_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 0,
+      "changedChoiceRelativeToAbsent": 0,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 0
+    },
+    "2/test/visible/visible/canonical/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 24,
+      "changedChoiceRelativeToAbsent": 48,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 24
+    },
+    "2/test/visible/visible/content_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 24,
+      "changedChoiceRelativeToAbsent": 48,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 24
+    },
+    "2/test/visible/visible/labels_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 3,
+      "changedChoiceRelativeToAbsent": 48,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 3
+    },
+    "2/test/visible/visible/both_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 4,
+      "changedChoiceRelativeToAbsent": 48,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 4
+    },
+    "2/test/strong/strong/canonical/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 4,
+      "changedChoiceRelativeToAbsent": 19,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 12
+    },
+    "2/test/strong/strong/content_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 2,
+      "changedChoiceRelativeToAbsent": 22,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 10
+    },
+    "2/test/strong/strong/labels_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 0,
+      "changedChoiceRelativeToAbsent": 12,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 7
+    },
+    "2/test/strong/strong/both_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 2,
+      "changedChoiceRelativeToAbsent": 16,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 8
+    },
+    "2/test/shuffled/shuffled/canonical/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 0,
+      "changedChoiceRelativeToAbsent": 6,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 6
+    },
+    "2/test/shuffled/shuffled/content_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 0,
+      "changedChoiceRelativeToAbsent": 4,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 4
+    },
+    "2/test/shuffled/shuffled/labels_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 0,
+      "changedChoiceRelativeToAbsent": 8,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 6
+    },
+    "2/test/shuffled/shuffled/both_reversed/primary": {
+      "blocks": 24,
+      "allThreeCorrectBlocks": 0,
+      "changedChoiceRelativeToAbsent": 9,
+      "changedLogitsRelativeToAbsent": 48,
+      "differentChoicesBetweenPerturbedSlots": 8
+    }
+  },
+  "limits": "Shared pinned plan and received traces; independently enumerated targets and scalar/count formulas. No new model calls, hardware attestation, pooled training-population CI, consciousness or iPhone claim. Paired-response diagnostics added after receipt without changing primary criteria."
+}

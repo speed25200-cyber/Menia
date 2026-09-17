@@ -1,7 +1,9 @@
 # Reproduire le signal interne et contrôler les biais de position
 
-**État : nouveau protocole fixé après le diagnostic Colab 08. Les tests logiciels
-sont distincts des résultats Qwen3-4B préentraînés, qui restent à recueillir.**
+**État : le [premier export est reçu et vérifié](LOCALIZATION_REPLICATION_RESULTS.md).
+Le gain du Colab 08 ne se reproduit pas : localisation forte à 15/48, 28/48 et
+15/48 contre 24/48 pour la base, et contrôle visible en échec sous numéros
+inversés.** Le plan ci-dessous a été fixé avant cette collecte et n'est pas modifié.
 Le [Colab 09](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/09_localization_replication_colab.ipynb)
 utilise un seul bloc, sans Drive ni import manuel.
 
