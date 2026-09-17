@@ -2,6 +2,10 @@
 
 **État actuel : objectif non atteint ; une politique de vérification apprise est intégrée à l'agent expérimental.**
 
+La [feuille de route](CONSCIOUSNESS_ROADMAP.md) répond à la question « comment » de façon
+conditionnelle : ce que chaque théorie exigerait, l'état mesuré de Menia, ce qui
+est hors de portée d'un logiciel, et sept étapes à critères fixés d'avance.
+
 La [réplication Colab 09 est reçue et vérifiée](LOCALIZATION_REPLICATION_RESULTS.md) :
 neuf adaptateurs, 288 mises à jour et 12 480 évaluations, sans erreur technique.
 Le signal partiel du Colab 08 **ne se reproduit pas**. L'adaptateur fort localise

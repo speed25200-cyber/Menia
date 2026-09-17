@@ -7,7 +7,9 @@ incertitude et évaluation. **Colab A100 80 Go** pour l’adaptation ;
 **Statut : prototype de recherche. La boucle d'agent apprend ses effets d'action
 et conserve son histoire entre sessions. La localisation interne entraînée ne se
 reproduit pas dans la dernière réplication des adaptateurs Qwen.**
-La conscience subjective n'est pas établie. La continuité repose sur un journal
+La conscience subjective n'est pas établie. La [feuille de route](docs/CONSCIOUSNESS_ROADMAP.md)
+précise, théorie par théorie, ce qu'il faudrait construire, ce qui est hors de
+portée d'un logiciel, et les étapes vérifiables retenues. La continuité repose sur un journal
 explicite et des sauvegardes, sans objectif de résistance à l'arrêt ou d'auto-réplication.
 
 **Résultat du [diagnostic de l'apprentissage interne](docs/LEARNING_DIAGNOSTIC_RESULTS.md).**
