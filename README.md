@@ -34,6 +34,14 @@ présence répétée dans les logits du bras fort (AUROC 0,82 à 0,87 contre env
 non entraînée. Le [protocole](docs/LOCALIZATION_REPLICATION_PROTOCOL.md) reste
 inchangé ; aucune conscience ni installation sur iPhone n'en découle.
 
+**Suite : [détection de présence avec critère fixé à l'avance](docs/PRESENCE_DETECTION_PROTOCOL.md).**
+Le Colab 10 retire la question de la position et teste la seule détection d'une
+perturbation, avec une AUROC sans seuil et une règle de lecture fixées avant
+collecte : trois initialisations, 240 phrases nouvelles, neuf adaptateurs,
+576 mises à jour et 12 864 évaluations. Le test ajoute une intensité réduite et
+deux couches jamais vues à l'entraînement. Les tests logiciels passent
+localement ; aucun résultat préentraîné de ce protocole n'est encore acquis.
+
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
 Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)
 entraîne deux petits adaptateurs Qwen3-4B, avec cibles correctes ou mélangées,

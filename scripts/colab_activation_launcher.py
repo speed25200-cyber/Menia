@@ -76,7 +76,7 @@ def launch_activation(code_revision, bootstrap_source, *, content=Path("/content
                       mount=None, download=None, runner_factory=LoggedRunner, profile="activation", storage="drive"):
     if not re.fullmatch(r"[0-9a-f]{40}", code_revision):
         raise ValueError("A full immutable code revision is required")
-    if profile not in ("activation", "perturbation", "native", "replay", "diagnostic", "replication"):
+    if profile not in ("activation", "perturbation", "native", "replay", "diagnostic", "replication", "presence"):
         raise ValueError("Unknown experiment profile")
     if storage not in ("drive", "local"):
         raise ValueError("Unknown storage mode")
@@ -93,6 +93,8 @@ def launch_activation(code_revision, bootstrap_source, *, content=Path("/content
             module="learning_diagnostic", stage="6 — Diagnostiquer l'apprentissage (quatre adaptateurs)"),
         "replication": dict(archive="menia-replication-localisation.zip", folder="localization-replication-v1",
             module="localization_replication", stage="6 — Trois répétitions et contrôles de position (12 480 évaluations)"),
+        "presence": dict(archive="menia-detection-presence.zip", folder="presence-detection-v1",
+            module="presence_detection", stage="6 — Détection de présence et transfert (12 864 évaluations)"),
     }[profile]
     content = Path(content)
     stamp = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ") + "-" + uuid.uuid4().hex[:8]
@@ -186,7 +188,7 @@ def launch_activation(code_revision, bootstrap_source, *, content=Path("/content
     finally:
         info.update(status=status, stage=runner.stage)
         (directory / "status.json").write_text(json.dumps(info, ensure_ascii=False, indent=2), encoding="utf-8")
-        bundle_diagnostics(directory, root, archive, include_adapters=profile in ("native", "diagnostic", "replication"))
+        bundle_diagnostics(directory, root, archive, include_adapters=profile in ("native", "diagnostic", "replication", "presence"))
         (base / "latest.json").write_text(json.dumps(dict(archive=str(archive), directory=str(directory), status=status)), encoding="utf-8")
         if root is not None:
             # Keep diagnostics alongside results; only Drive survives VM deletion.

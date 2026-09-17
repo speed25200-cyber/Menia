@@ -12,9 +12,11 @@ constante par bloc. Le contrôle visible échoue sous numéros inversés, ce qui
 interdit d'attribuer ces échecs à l'accès interne. Un diagnostic exploratoire
 sans seuil, ajouté après réception, indique une information de présence répétée
 dans le bras fort (AUROC 0,82 à 0,87) et une information de position déjà
-présente dans la base non entraînée. La prochaine étape proposée fixe à l'avance
-un critère de détection sans seuil et entraîne le contrôle visible sur les
-quatre présentations. Ni localisation entraînée robuste, ni métacognition
+présente dans la base non entraînée. Le [protocole Colab 10](PRESENCE_DETECTION_PROTOCOL.md)
+fixe à l'avance une AUROC de présence sans seuil, une règle de lecture exigeant
+les trois répétitions, et un transfert à une intensité et deux couches non vues.
+Il est implémenté et testé localement ; ses 12 864 évaluations préentraînées
+restent à exécuter. Ni localisation entraînée robuste, ni métacognition
 native, ni conscience ne sont établies.
 
 Le [diagnostic d'apprentissage reçu](LEARNING_DIAGNOSTIC_RESULTS.md) apportait un

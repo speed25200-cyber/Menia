@@ -222,12 +222,15 @@ La prochaine question précise est donc : **la détection de présence, mesurée
 par un critère sans seuil fixé avant collecte, se reproduit-elle sur de
 nouvelles phrases, et transfère-t-elle à des directions, des couches ou des
 intensités non vues à l'entraînement ?** Un protocole distinct devra fixer
-cette mesure à l'avance, entraîner le contrôle visible sur les quatre
-présentations, et conserver le témoin mélangé. Les 72 blocs de test reçus
-sont désormais des données examinées et ne peuvent plus servir de validation.
+cette mesure à l'avance, conserver le témoin mélangé, et soit enseigner la
+règle du numéro affiché au contrôle visible, soit retirer cette question.
+Les 72 blocs de test reçus sont désormais des données examinées et ne peuvent
+plus servir de validation.
 
-Cette suite n'est pas exécutée ici. Même réussie, elle établirait une
-sensibilité fonctionnelle à une perturbation injectée par l'expérimentateur.
+Cette suite est fixée dans le [protocole Colab 10](PRESENCE_DETECTION_PROTOCOL.md),
+qui retire la question de la position ; elle n'est pas exécutée ici. Même
+réussie, elle établirait une sensibilité fonctionnelle à une perturbation
+injectée par l'expérimentateur.
 Le lien avec une prévision utile de ses erreurs, avec un modèle de ses
 capacités et a fortiori avec une expérience subjective resterait à établir.
 Aucun de ces neuf adaptateurs n'est installé dans l'application iPhone.
