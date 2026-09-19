@@ -27,6 +27,11 @@ a ensuite commencé le 19 septembre à 16:51 UTC. Les huit tests passent dans
 Colab et un premier groupe complet est observé à 16:53 UTC. Les sources,
 les trois poids et les deux journaux antérieurs sont vérifiés par empreintes.
 Les 44 544 inférences sont en cours ; aucun score n'est interprété à ce stade.
+Le [recalcul arithmétique séparé](CROSS_TASK_INTERCHANGE_AUDIT.md) est publié
+avant lecture des résultats : quatre prédictions, 144 tableaux de transfert,
+48 tableaux intacts, 432 contrastes et les deux familles de prérequis. Deux
+tests synthétiques passent. La présentation des deux directions et des trois
+répétitions est également préparée et inspectée sur des données simulées.
 
 La [réanalyse des pertes](OPTIMIZATION_MEMORY_REVIEW.md) relève ensuite une
 piste exploratoire : l'absence est bien apprise en fin de phase cachée, mais

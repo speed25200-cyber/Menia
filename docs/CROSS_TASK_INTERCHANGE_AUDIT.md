@@ -31,6 +31,12 @@ Il partage cependant le plan, le lecteur d'intégrité et les bibliothèques
 numériques. C'est un contrôle arithmétique supplémentaire, pas une réplication
 extérieure, un audit indépendant du lecteur ou une validation de la conscience.
 
+`scripts/plot_cross_task_interchange.py` fixe la présentation des deux sens
+de transfert, des trois sites, des trois répétitions, de la base et des dix-huit
+contrastes principaux. La figure a été exécutée et inspectée sur le journal
+synthétique hétérogène, avec un titre explicite. Cette image de contrôle reste
+locale ; la figure scientifique attend le journal complet et les deux recalculs.
+
 Après réception et vérification de l'archive complète :
 
 ```powershell
