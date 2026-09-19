@@ -6,8 +6,9 @@ incertitude et évaluation. **Colab A100 80 Go** pour l’adaptation ;
 
 **Statut : prototype de recherche. La boucle d'agent apprend ses effets d'action
 et conserve son histoire entre sessions. La détection de rotations internes
-est reproduite dans trois répétitions ; son compte rendu échoue au contrôle de
-consigne inversée. La localisation reste non reproduite.**
+est reproduite dans trois répétitions. Un nouvel apprentissage oriente le score
+selon la consigne, mais la décision et la généralisation linguistique restent
+fragiles. Le critère global du Colab 12 échoue. La localisation reste non reproduite.**
 La conscience subjective n'est pas établie. La [feuille de route](docs/CONSCIOUSNESS_ROADMAP.md)
 précise les mécanismes candidats, les hypothèses théoriques et les expériences
 envisagées. Elle ne constitue pas une recette validée. La continuité repose sur un journal
@@ -69,15 +70,19 @@ seul accès interne. Le [critère fixé](docs/PRESENCE_SPECIFICITY_PROTOCOL.md)
 échoue ; les 2 304 copies témoins et le recalcul indépendant sont vérifiés.
 Ce notebook continue dans l'environnement du Colab 10 avec ses fichiers conservés.
 
-**Expérience suivante : [composer état interne et consigne](docs/STATE_COMPOSITION_PROTOCOL.md).**
+**Résultat : [composition partielle entre état interne et consigne](docs/STATE_COMPOSITION_RESULTS.md).**
 Le [Colab 12](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/7e87411c771408eceb9c214793894b8f2036e399/notebooks/12_state_composition_colab.ipynb)
-est figé et son entraînement a démarré par MCP sur A100 le 19 septembre : neuf nouveaux adaptateurs,
-576 mises à jour et 25 920 évaluations prévues. Les deux sens de réponse et la
+est terminé et audité après exécution par MCP sur A100 le 19 septembre : neuf nouveaux adaptateurs,
+576 mises à jour et 25 920 évaluations. Les deux sens de réponse et la
 lecture publique sont entraînés ensemble, avec des témoins à étiquettes
 mélangées et sans nouvelles étiquettes internes. Une reformulation est réservée
 au test principal ; les chiffres 2/3 servent de transfert secondaire.
-Les neuf entraînements sont terminés ; les évaluations sont en cours. Le
-bilan complet n'est pas encore établi, ni aucune conclusion sur la conscience.
+Le score caché suit maintenant les codes normal et inversé, y compris la
+reformulation réservée (AUROC 0,899 à 1,000). **Le critère global échoue** :
+quatre contrastes contre le bras consignes ne passent pas et les douze échecs
+de contrôle concernent la lecture reformulée de PHRASE 2. Un bon classement
+coexiste parfois avec une réponse constante de présence. Les 6 480 paires
+témoins, neuf poids et calculs sont vérifiés. Aucune conscience n'est établie.
 
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
 Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)

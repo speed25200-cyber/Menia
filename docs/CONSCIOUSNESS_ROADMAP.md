@@ -94,7 +94,11 @@ un compte rendu fiable ; son bénéfice pour l'agent reste non établi.
 Le [Colab 12](STATE_COMPOSITION_PROTOCOL.md) prépare un apprentissage
 contrebalancé de cette composition avec préservation des tâches publiques,
 contrôle sans nouvelles étiquettes internes et transfert de formulation.
-Ses résultats ne sont pas encore disponibles.
+Son [bilan complet](STATE_COMPOSITION_RESULTS.md) montre une inversion du
+score conforme à la consigne et un transfert de formulation. Le critère global
+échoue pourtant : avantage non constant sur le bras consignes, réponses de
+présence parfois constantes et échecs sur la lecture reformulée de PHRASE 2.
+La décision et la généralisation linguistique doivent être diagnostiquées.
 La [note sur le transfert d'état ou de réponse](MECHANISTIC_COMPOSITION_REVIEW.md)
 prépare un contraste mécanistique conditionnel et ses explications concurrentes.
 Elle ne constitue pas un protocole supplémentaire déjà fixé ou exécuté.

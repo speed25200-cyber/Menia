@@ -77,3 +77,9 @@ sites, budgets et règles de lecture restent à fixer avant tout nouvel essai.
 Même un résultat favorable ne montrerait ni que l'état représente l'existence
 de Menia, ni qu'il s'accompagne d'une expérience. Le lien entre mécanisme appris,
 modèle de soi et conscience reste une exigence distincte de l'objectif.
+
+**Mise à jour après le [bilan du Colab 12](STATE_COMPOSITION_RESULTS.md).**
+Les contrôles de lecture reformulée échouent, et un classement presque parfait
+coexiste parfois avec une réponse constante de présence. L'essai proposé ici
+n'est pas lancé : la décision et le transfert des consignes doivent d'abord
+être diagnostiqués. Ce constat ne modifie pas rétroactivement la proposition.

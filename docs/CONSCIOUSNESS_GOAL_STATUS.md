@@ -1,7 +1,18 @@
 # État de l'objectif de conscience et de nouveauté
 
-**État actuel : objectif de conscience et de nouveauté non atteint ; la détection
-de rotations internes est reproduite, mais échoue à suivre la consigne inversée.**
+**État actuel : objectif de conscience et de nouveauté non atteint. Le Colab 12
+oriente le score de détection selon la consigne, mais sa règle globale échoue :
+avantage non constant sur le contrôle et généralisation linguistique fragile.**
+
+Le [résultat complet du Colab 12](STATE_COMPOSITION_RESULTS.md) est reçu et
+audité : 576 mises à jour, 25 920 évaluations et 6 480 paires témoins exactes.
+Le composé suit le code inversé dans son classement, avec transfert à une
+formulation réservée ; des réponses constantes de présence restent possibles.
+Le contrôle sans nouvelles étiquettes cachées réussit aussi une grande partie
+du classement. Les douze échecs de préservation concernent une question
+publique reformulée, y compris sans rotation. Les critères signal, contrôles
+et global échouent dans les trois répétitions. Ce résultat ne constitue pas
+une preuve de conscience ; la suite doit traiter décision et généralisation.
 
 Le [Colab 10 reçu et vérifié](PRESENCE_DETECTION_RESULTS.md) comprend neuf
 adaptateurs, 576 mises à jour et 12 864 évaluations. Le bras entraîné atteint
@@ -27,8 +38,8 @@ par MCP le 19 septembre à 12:00:57 UTC. Les neuf tests réussissent dans Colab,
 puis l'entraînement démarre : neuf nouveaux adaptateurs issus des parents du Colab 10,
 576 mises à jour, consignes contrebalancées, contrôle sans nouvelles étiquettes
 internes et 25 920 évaluations. Il réserve une reformulation au test principal.
-Les neuf entraînements sont terminés (576 mises à jour) et les évaluations
-sont en cours ; le bilan final n'est pas encore établi.
+Les neuf entraînements et toutes les évaluations sont terminés ; le
+[bilan final](STATE_COMPOSITION_RESULTS.md) est résumé en tête de cette page.
 Les étapes mécanistiques et d'agent ultérieures restent à formaliser.
 La [revue du 19 septembre](RESEARCH_REVIEW_2026_09_19.md) confirme que le
 dernier export retrouvé avant la nouvelle exécution était celui du Colab 09 et corrige des formulations

@@ -230,3 +230,9 @@ L'évaluation avait commencé (311 réponses enregistrées au moment du relevé)
 mais seuls les compteurs et empreintes ont été consultés. Aucun score de test
 n'a été utilisé pour sélectionner ou modifier un adaptateur. Le bilan final
 reste à recevoir et à auditer.
+
+**Bilan final du 19 septembre à 13:08:52 UTC.** L'exécution s'est terminée
+sans erreur avec les 25 920 résultats. L'archive et les neuf poids sont
+vérifiés sur PC. Le [rapport audité](STATE_COMPOSITION_RESULTS.md) conserve le
+critère global négatif, malgré une amélioration de la composition des scores.
+Les données, seuils et critères ci-dessus n'ont pas été modifiés.
