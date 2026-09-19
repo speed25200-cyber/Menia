@@ -104,6 +104,19 @@ une politique directe de même budget parmi les références. Ce précédent
 limite une revendication de nouveauté de la boucle générale ; il ne réalise
 pas son intégration à Menia. Le Colab 12 en cours reste inchangé.
 
+**Complément du 19 septembre, pendant le Colab 20 : Guo et al., 30 juin.**
+Des explications contrefactuelles apprises avec régularisation peuvent devenir
+plus fidèles au modèle courant qu'au checkpoint ayant fourni les étiquettes.
+Les interventions montrent un couplage partiel, avec une asymétrie non résolue.
+Dans leur balayage LoRA sur Hint-MMLU, l'effet apparaît au rang 96 ; ce seuil
+n'est pas une loi générale. Les auteurs ne revendiquent pas une conscience.
+[Texte complet, §2–5, limites, C.2 et D.1](https://arxiv.org/html/2606.32038v1).
+
+**Proposition non exécutée pour Menia :** comparer les explications aux
+comportements ancien et courant, avec observateur externe, témoin sans
+régularisation et contrôle des classes. Le Colab 20 n'entraîne aucune
+explication ; son rang 8 ne teste pas cet effet. Son protocole reste inchangé.
+
 ## Un contrôle « soi/autre » peut donner un faux signal
 
 Le module `research.audit_self_prediction_controls` énumère exactement des cas
