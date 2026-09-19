@@ -127,6 +127,11 @@ destinataire, valeur binaire de la question donneuse, copie du chiffre et
 destinataire inchangé. Les 18 contrastes principaux et les contrôles sont fixés
 avant collecte ; huit tests logiciels passent. Aucun résultat Qwen3-4B de ce
 nouvel essai n'est encore disponible lors du gel du protocole.
+Le [lancement sur A100 par MCP](artifacts/cross-task-interchange-pilot/execution-start.json)
+est ensuite vérifié le 19 septembre à 16:53 UTC : un groupe de 232 passages
+est enregistré, après les huit tests réussis dans Colab. Les poids et les deux
+journaux parents correspondent aux empreintes fixées ; ce reçu ne contient
+aucun score de résultat.
 
 La [préparation du prochain test d'erreurs naturelles](docs/NATURAL_ERROR_CONFIDENCE_REVIEW.md)
 ajoute une capture des probabilités de sortie, absentes des 672 anciens essais.

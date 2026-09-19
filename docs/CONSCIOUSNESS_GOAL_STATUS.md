@@ -21,7 +21,12 @@ les deux questions, dans les deux sens, avec quatre prédictions séparables.
 Il prévoit 44 544 passages, zéro apprentissage, 18 contrastes principaux et
 des contrôles intacts et au sein de chaque tâche. Marqueurs, positions de
 perturbation, états et codes sont équilibrés. Huit tests logiciels passent
-avant gel ; le test du modèle préentraîné reste à exécuter à ce stade.
+avant gel ; aucun résultat du modèle préentraîné n'est disponible à ce stade.
+L'[exécution MCP](../artifacts/cross-task-interchange-pilot/execution-start.json)
+a ensuite commencé le 19 septembre à 16:51 UTC. Les huit tests passent dans
+Colab et un premier groupe complet est observé à 16:53 UTC. Les sources,
+les trois poids et les deux journaux antérieurs sont vérifiés par empreintes.
+Les 44 544 inférences sont en cours ; aucun score n'est interprété à ce stade.
 
 La [réanalyse des pertes](OPTIMIZATION_MEMORY_REVIEW.md) relève ensuite une
 piste exploratoire : l'absence est bien apprise en fin de phase cachée, mais
