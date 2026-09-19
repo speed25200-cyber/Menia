@@ -95,11 +95,14 @@ Les 3 456 témoins, neuf poids et 108 contrastes sont vérifiés ; aucune sortie
 hors code ni erreur technique. La décision native stable reste à obtenir.
 
 **Protocole suivant : [effet de la dernière phase et de la mémoire d'Adam](docs/OPTIMIZER_MEMORY_PROTOCOL.md).**
-Le Colab 14 compare quatre branches depuis un même checkpoint, avec un témoin
+Le [Colab 14](https://colab.research.google.com/github/speed25200-cyber/Menia/a85236779ecddb59d2b46c85011de7a8d23fc4bb/notebooks/14_optimizer_memory_colab.ipynb)
+compare quatre branches depuis un même checkpoint, avec un témoin
 qui doit reproduire exactement les poids du Colab 12. Il prévoit 29 184 réponses
 pour départager rétention, dérive sans nouveaux gradients et effet de l'effacement
-du premier moment. Les tests du moteur sont distincts des résultats GPU encore
-à collecter. L'[indice qui motive le test](docs/OPTIMIZATION_MEMORY_REVIEW.md)
+du premier moment. L'[exécution démarrée le 19 septembre à 14:39 UTC](artifacts/optimizer-memory-pilot/execution-start.json)
+a passé les six tests dans Colab ; le premier témoin retrouve exactement les
+anciens poids. Les autres répétitions et l'évaluation restent en cours à cette
+observation. L'[indice qui motive le test](docs/OPTIMIZATION_MEMORY_REVIEW.md)
 est une réanalyse exploratoire des anciennes pertes, pas une preuve causale.
 
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**

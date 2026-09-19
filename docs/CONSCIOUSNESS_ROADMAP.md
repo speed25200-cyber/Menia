@@ -36,8 +36,9 @@ leurs résultats des interprétations philosophiques.
 Après l'échec du transfert de seuil au Colab 13, le [protocole 14](OPTIMIZER_MEMORY_PROTOCOL.md)
 teste si la dernière phase d'apprentissage et les moments d'Adam dégradent le
 rapport d'état. Ce diagnostic causal précède une correction éventuelle ; il
-ne réalise pas les mécanismes de conscience du tableau suivant et n'a pas
-encore de résultat GPU à la publication du protocole.
+ne réalise pas les mécanismes de conscience du tableau suivant. L'exécution
+GPU est désormais [démarrée](../artifacts/optimizer-memory-pilot/execution-start.json),
+avec reproduction exacte du premier témoin ; l'évaluation comportementale reste à terminer.
 
 ## Ce que chaque théorie exigerait, et où en est Menia
 

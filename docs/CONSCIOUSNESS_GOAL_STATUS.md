@@ -9,8 +9,10 @@ piste exploratoire : l'absence est bien apprise en fin de phase cachée, mais
 souvent mal rapportée après la phase visible finale. Les observations en cours
 d'apprentissage ne prouvent pas cet oubli. Le [protocole 14](OPTIMIZER_MEMORY_PROTOCOL.md)
 compare donc quatre suites depuis les mêmes poids et le même état AdamW,
-avec reproduction exacte obligatoire du témoin original. Ses tests logiciels
-ne sont pas des résultats GPU ; les 29 184 réponses prévues restent à collecter.
+avec reproduction exacte obligatoire du témoin original. L'[exécution GPU](../artifacts/optimizer-memory-pilot/execution-start.json)
+a commencé le 19 septembre à 14:39 UTC : six tests passent dans Colab et le
+premier témoin reproduit exactement les anciens poids. Les 29 184 réponses
+comportementales restent à collecter ; cette observation technique ne les remplace pas.
 Il traite une cause possible d'instabilité avant une éventuelle correction des
 consignes, sans établir de représentation de soi ni d'expérience subjective.
 
