@@ -174,6 +174,17 @@ l'auditeur. Archive, journal, ajustements et prévisions sont vérifiés avant
 interprétation. La [revue sur les décisions natives](docs/NATIVE_ERROR_DECISION_REVIEW.md)
 précise ce qui resterait à tester ; aucun usage natif ni conscience n'est établi.
 
+Le [protocole 18 — choix natifs](docs/NATIVE_CHOICE_PROTOCOL.md) prépare un
+diagnostic distinct : 96 nouvelles questions dans 24 conditions et 180
+contrôles où la probabilité de réussite est explicite. Il compare les actions
+sans mesure fournie et avec les fréquences antérieures du même modèle, sous
+trois coûts, deux formulations et deux codes inversés. Une réponse obligatoire
+sur chaque question évite de ne mesurer que celles acceptées. Les demandes
+de vérification appellent réellement un outil exact ; points attribués et
+durées mesurées restent distincts. Six tests de collecte/génération passent,
+ainsi qu'un test du calcul séparé. Aucun résultat réel de ce protocole n'est
+encore disponible à son gel ; l'objectif de conscience reste non atteint.
+
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
 Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)
 entraîne deux petits adaptateurs Qwen3-4B, avec cibles correctes ou mélangées,

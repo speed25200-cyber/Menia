@@ -20,6 +20,16 @@ intervention causale, ni d'usage natif ou de conscience. La
 [revue des décisions](NATIVE_ERROR_DECISION_REVIEW.md) conserve les contrôles
 nécessaires pour étudier la relation entre estimation et choix effectif.
 
+Le [protocole 18](NATIVE_CHOICE_PROTOCOL.md) prépare ensuite ce diagnostic
+de décision : 96 questions nouvelles, 24 conditions par question, trois coûts,
+deux formulations et deux codes, avec ou sans historique de réussite fourni.
+180 contrôles publics testent la compréhension du risque. Les actions sont
+réellement exécutées, et une réponse obligatoire distincte couvre aussi les
+questions refusées. Six tests passent pour la collecte/génération, puis un
+test vérifie le calcul arithmétique séparé et des bilans altérés. À son gel,
+aucun résultat réel n'est encore annoncé. Ce préalable fonctionnel ne remplace
+ni la construction d'un mécanisme appris ni la preuve d'expérience de soi.
+
 Le [bilan complet du Colab 15](STATE_INTERCHANGE_RESULTS.md) est reçu et vérifié :
 19 584 passages, 3 456 témoins identiques et 4 608 copies finales. À la couche 23,
 l'accord avec l'état du donneur exprimé selon le code destinataire atteint
