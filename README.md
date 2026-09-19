@@ -120,6 +120,14 @@ le recalcul séparé retrouve 72 tableaux, 48 tableaux intacts et 144 contrastes
 La reformulation, le transfert entre questions et l'expérience subjective
 restent non établis.
 
+Le [protocole 16 — transfert entre questions](docs/CROSS_TASK_INTERCHANGE_PROTOCOL.md)
+fixe la suite : 44 544 passages avec les mêmes trois checkpoints et la base,
+sans entraînement, pour distinguer contenu pertinent pour la question
+destinataire, valeur binaire de la question donneuse, copie du chiffre et
+destinataire inchangé. Les 18 contrastes principaux et les contrôles sont fixés
+avant collecte ; huit tests logiciels passent. Aucun résultat Qwen3-4B de ce
+nouvel essai n'est encore disponible lors du gel du protocole.
+
 La [préparation du prochain test d'erreurs naturelles](docs/NATURAL_ERROR_CONFIDENCE_REVIEW.md)
 ajoute une capture des probabilités de sortie, absentes des 672 anciens essais.
 Elle sépare les statistiques disponibles avant la réponse de celles nécessitant

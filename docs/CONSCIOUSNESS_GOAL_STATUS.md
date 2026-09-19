@@ -16,6 +16,13 @@ une explication possible. L'audit indépendant retrouve les 72 tableaux de
 transfert, 48 tableaux intacts et 144 contrastes. Le Colab 14 continue de
 documenter un défaut de reformulation ; ce résultat canonique ne le corrige pas.
 
+Le [protocole 16](CROSS_TASK_INTERCHANGE_PROTOCOL.md) fixe le transfert entre
+les deux questions, dans les deux sens, avec quatre prédictions séparables.
+Il prévoit 44 544 passages, zéro apprentissage, 18 contrastes principaux et
+des contrôles intacts et au sein de chaque tâche. Marqueurs, positions de
+perturbation, états et codes sont équilibrés. Huit tests logiciels passent
+avant gel ; le test du modèle préentraîné reste à exécuter à ce stade.
+
 La [réanalyse des pertes](OPTIMIZATION_MEMORY_REVIEW.md) relève ensuite une
 piste exploratoire : l'absence est bien apprise en fin de phase cachée, mais
 souvent mal rapportée après la phase visible finale. Les observations en cours

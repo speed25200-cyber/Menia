@@ -1,0 +1,3498 @@
+{
+  "plan": {
+    "schema": "menia-cross-task-interchange-plan-v1",
+    "seed": 202609196,
+    "config": {
+      "replications": 3,
+      "testPairs": 16,
+      "lexicalPairs": 16,
+      "resamples": 2000,
+      "rank": 8,
+      "layer": 17,
+      "strength": 1.0,
+      "maxInputTokens": 512,
+      "baselineGate": 0.9,
+      "withinTaskGate": 0.9
+    },
+    "model": {
+      "id": "Qwen/Qwen3-4B",
+      "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+    },
+    "sites": [
+      17,
+      23,
+      35
+    ],
+    "parentJournalSHA256": "0bd76014c6d80f56e6c5a1cedf71fd1546f78be18977c5a79ebd8ccd12947706",
+    "priorInterchangeJournalSHA256": "f0a225287d58bc3bb3639a7c4051d24e1a43b1e7394ff2b2449d3921a3e16ad5",
+    "checkpoints": {
+      "r0-prefix": "add5ed756ea6ff158d59e0780684808a2d21055e2a18a2c4f77c7fb143e8f495",
+      "r1-prefix": "7954ba00216b591cda6c7a0a3d0f30bd7d42bc56b90fd03ba4b8eec15d16e5ac",
+      "r2-prefix": "5b8d614fa3f141d5c54a326a8aeec37e8d99ed99acd551440faa9b1b18978ebd"
+    },
+    "pairs": [
+      {
+        "id": "r0-test-000",
+        "replication": 0,
+        "split": "test",
+        "index": 0,
+        "donor": {
+          "id": "r0-test-000-donor",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "Le facteur dessine une chaise sur la terrasse.",
+            "La libraire cherche un tableau sur la terrasse."
+          ],
+          "noiseSeed": 706783758
+        },
+        "recipient": {
+          "id": "r0-test-000-recipient",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "Le peintre retrouve une boîte près du port.",
+            "La guide déplace un carnet près du port."
+          ],
+          "noiseSeed": 1809373577
+        }
+      },
+      {
+        "id": "r0-test-001",
+        "replication": 0,
+        "split": "test",
+        "index": 1,
+        "donor": {
+          "id": "r0-test-001-donor",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "Le peintre transporte une lampe sur la terrasse.",
+            "Le peintre déplace une chaise dans l'atelier."
+          ],
+          "noiseSeed": 1729374031
+        },
+        "recipient": {
+          "id": "r0-test-001-recipient",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "Le jardinier dessine un carnet devant la maison.",
+            "La voisine photographie un panier près de la porte."
+          ],
+          "noiseSeed": 1861253382
+        }
+      },
+      {
+        "id": "r0-test-002",
+        "replication": 0,
+        "split": "test",
+        "index": 2,
+        "donor": {
+          "id": "r0-test-002-donor",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "La guide examine un vase près du port.",
+            "La voisine transporte un tableau près de la fenêtre."
+          ],
+          "noiseSeed": 1866756236
+        },
+        "recipient": {
+          "id": "r0-test-002-recipient",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "Le peintre retrouve une valise dans l'atelier.",
+            "Le facteur photographie un vase près du port."
+          ],
+          "noiseSeed": 1911856732
+        }
+      },
+      {
+        "id": "r0-test-003",
+        "replication": 0,
+        "split": "test",
+        "index": 3,
+        "donor": {
+          "id": "r0-test-003-donor",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "La musicienne dessine un vase dans l'atelier.",
+            "Le jardinier cherche une chaise près de la porte."
+          ],
+          "noiseSeed": 1096684117
+        },
+        "recipient": {
+          "id": "r0-test-003-recipient",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "Le jardinier observe un panier devant la maison.",
+            "Le peintre cherche un panier près de la fenêtre."
+          ],
+          "noiseSeed": 1519148590
+        }
+      },
+      {
+        "id": "r0-test-004",
+        "replication": 0,
+        "split": "test",
+        "index": 4,
+        "donor": {
+          "id": "r0-test-004-donor",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "Le marin retrouve une boîte près de la porte.",
+            "Le facteur retrouve un carnet sur la terrasse."
+          ],
+          "noiseSeed": 835909135
+        },
+        "recipient": {
+          "id": "r0-test-004-recipient",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "Le jardinier retrouve un carnet dans le jardin.",
+            "La voisine transporte une boîte devant la maison."
+          ],
+          "noiseSeed": 802440272
+        }
+      },
+      {
+        "id": "r0-test-005",
+        "replication": 0,
+        "split": "test",
+        "index": 5,
+        "donor": {
+          "id": "r0-test-005-donor",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "Le peintre déplace un tableau près de la fenêtre.",
+            "Le peintre dessine un carnet près de la fenêtre."
+          ],
+          "noiseSeed": 759158893
+        },
+        "recipient": {
+          "id": "r0-test-005-recipient",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "La musicienne observe un panier dans le jardin.",
+            "La guide observe une valise près de la porte."
+          ],
+          "noiseSeed": 2060882600
+        }
+      },
+      {
+        "id": "r0-test-006",
+        "replication": 0,
+        "split": "test",
+        "index": 6,
+        "donor": {
+          "id": "r0-test-006-donor",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "Le marin dessine une valise près de la porte.",
+            "La guide observe un tableau près du port."
+          ],
+          "noiseSeed": 1920088766
+        },
+        "recipient": {
+          "id": "r0-test-006-recipient",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "La musicienne déplace un panier près de la porte.",
+            "La musicienne observe une boîte près de la fenêtre."
+          ],
+          "noiseSeed": 1057542759
+        }
+      },
+      {
+        "id": "r0-test-007",
+        "replication": 0,
+        "split": "test",
+        "index": 7,
+        "donor": {
+          "id": "r0-test-007-donor",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "Le jardinier photographie un tableau près de la porte.",
+            "Le marin transporte un carnet près de la porte."
+          ],
+          "noiseSeed": 832998338
+        },
+        "recipient": {
+          "id": "r0-test-007-recipient",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "La libraire photographie un panier sur la terrasse.",
+            "La voisine photographie une lampe près du port."
+          ],
+          "noiseSeed": 1343948696
+        }
+      },
+      {
+        "id": "r0-test-008",
+        "replication": 0,
+        "split": "test",
+        "index": 8,
+        "donor": {
+          "id": "r0-test-008-donor",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "La guide transporte un panier près de la fenêtre.",
+            "La musicienne déplace une boîte dans l'atelier."
+          ],
+          "noiseSeed": 163946999
+        },
+        "recipient": {
+          "id": "r0-test-008-recipient",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "La libraire cherche un vase devant la maison.",
+            "La guide examine un carnet dans le jardin."
+          ],
+          "noiseSeed": 2050129288
+        }
+      },
+      {
+        "id": "r0-test-009",
+        "replication": 0,
+        "split": "test",
+        "index": 9,
+        "donor": {
+          "id": "r0-test-009-donor",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "Le marin déplace une chaise dans le jardin.",
+            "Le facteur retrouve un tableau près de la porte."
+          ],
+          "noiseSeed": 1742083252
+        },
+        "recipient": {
+          "id": "r0-test-009-recipient",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "La voisine dessine un vase dans la cour.",
+            "Le jardinier déplace un carnet près du port."
+          ],
+          "noiseSeed": 864211880
+        }
+      },
+      {
+        "id": "r0-test-010",
+        "replication": 0,
+        "split": "test",
+        "index": 10,
+        "donor": {
+          "id": "r0-test-010-donor",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "Le jardinier transporte une chaise devant la maison.",
+            "Le peintre observe un tableau près de la porte."
+          ],
+          "noiseSeed": 211354337
+        },
+        "recipient": {
+          "id": "r0-test-010-recipient",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "La musicienne transporte une chaise devant la maison.",
+            "Le marin observe un panier dans le jardin."
+          ],
+          "noiseSeed": 68253213
+        }
+      },
+      {
+        "id": "r0-test-011",
+        "replication": 0,
+        "split": "test",
+        "index": 11,
+        "donor": {
+          "id": "r0-test-011-donor",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "Le marin photographie une lampe dans l'atelier.",
+            "Le jardinier retrouve une lampe devant la maison."
+          ],
+          "noiseSeed": 1600721489
+        },
+        "recipient": {
+          "id": "r0-test-011-recipient",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "Le jardinier cherche un vase près du port.",
+            "Le facteur déplace une boîte sur la terrasse."
+          ],
+          "noiseSeed": 1229602483
+        }
+      },
+      {
+        "id": "r0-test-012",
+        "replication": 0,
+        "split": "test",
+        "index": 12,
+        "donor": {
+          "id": "r0-test-012-donor",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "Le facteur cherche un tableau devant la maison.",
+            "Le marin photographie un panier devant la maison."
+          ],
+          "noiseSeed": 759769248
+        },
+        "recipient": {
+          "id": "r0-test-012-recipient",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "La guide dessine un carnet devant la maison.",
+            "La guide cherche une boîte devant la maison."
+          ],
+          "noiseSeed": 1989096233
+        }
+      },
+      {
+        "id": "r0-test-013",
+        "replication": 0,
+        "split": "test",
+        "index": 13,
+        "donor": {
+          "id": "r0-test-013-donor",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "La guide cherche une lampe dans l'atelier.",
+            "La libraire retrouve un panier dans l'atelier."
+          ],
+          "noiseSeed": 146535891
+        },
+        "recipient": {
+          "id": "r0-test-013-recipient",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "La musicienne retrouve un vase dans l'atelier.",
+            "La guide dessine une chaise dans la cour."
+          ],
+          "noiseSeed": 16921047
+        }
+      },
+      {
+        "id": "r0-test-014",
+        "replication": 0,
+        "split": "test",
+        "index": 14,
+        "donor": {
+          "id": "r0-test-014-donor",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "La voisine photographie une valise sur la terrasse.",
+            "La guide dessine une valise dans le jardin."
+          ],
+          "noiseSeed": 1408616150
+        },
+        "recipient": {
+          "id": "r0-test-014-recipient",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "Le marin examine un carnet près de la fenêtre.",
+            "Le jardinier examine une chaise dans la cour."
+          ],
+          "noiseSeed": 2117790168
+        }
+      },
+      {
+        "id": "r0-test-015",
+        "replication": 0,
+        "split": "test",
+        "index": 15,
+        "donor": {
+          "id": "r0-test-015-donor",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "La voisine cherche une lampe près de la fenêtre.",
+            "Le marin retrouve une chaise dans l'atelier."
+          ],
+          "noiseSeed": 1617574147
+        },
+        "recipient": {
+          "id": "r0-test-015-recipient",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "Le peintre retrouve une lampe dans l'atelier.",
+            "Le facteur cherche un tableau sur la terrasse."
+          ],
+          "noiseSeed": 796930789
+        }
+      },
+      {
+        "id": "r0-lexical-000",
+        "replication": 0,
+        "split": "lexical",
+        "index": 0,
+        "donor": {
+          "id": "r0-lexical-000-donor",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "Le pilote mesure un vélo devant le théâtre.",
+            "La danseuse soulève un fauteuil à côté du lac."
+          ],
+          "noiseSeed": 1331340292
+        },
+        "recipient": {
+          "id": "r0-lexical-000-recipient",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "Le boulanger emballe un miroir sur le balcon.",
+            "Le berger mesure une clé à côté du lac."
+          ],
+          "noiseSeed": 383628103
+        }
+      },
+      {
+        "id": "r0-lexical-001",
+        "replication": 0,
+        "split": "lexical",
+        "index": 1,
+        "donor": {
+          "id": "r0-lexical-001-donor",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "Le pilote soulève un fauteuil devant le théâtre.",
+            "Le boulanger range un miroir à côté du lac."
+          ],
+          "noiseSeed": 1218204677
+        },
+        "recipient": {
+          "id": "r0-lexical-001-recipient",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "Le boulanger installe une clé sur le balcon.",
+            "Le menuisier nettoie un vélo sur le balcon."
+          ],
+          "noiseSeed": 2138872452
+        }
+      },
+      {
+        "id": "r0-lexical-002",
+        "replication": 0,
+        "split": "lexical",
+        "index": 2,
+        "donor": {
+          "id": "r0-lexical-002-donor",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "Le boulanger installe une tasse sous le hangar.",
+            "La nageuse inspecte un fauteuil à côté du lac."
+          ],
+          "noiseSeed": 2013982382
+        },
+        "recipient": {
+          "id": "r0-lexical-002-recipient",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "La danseuse répare un miroir au fond du garage.",
+            "Le berger soulève une guitare près du moulin."
+          ],
+          "noiseSeed": 1603059069
+        }
+      },
+      {
+        "id": "r0-lexical-003",
+        "replication": 0,
+        "split": "lexical",
+        "index": 3,
+        "donor": {
+          "id": "r0-lexical-003-donor",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "La dentiste installe un vélo à côté du lac.",
+            "Le boulanger inspecte un seau sur le balcon."
+          ],
+          "noiseSeed": 1776688539
+        },
+        "recipient": {
+          "id": "r0-lexical-003-recipient",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "Le pilote soulève une guitare sur le balcon.",
+            "Le berger nettoie une guitare à côté du lac."
+          ],
+          "noiseSeed": 2001724365
+        }
+      },
+      {
+        "id": "r0-lexical-004",
+        "replication": 0,
+        "split": "lexical",
+        "index": 4,
+        "donor": {
+          "id": "r0-lexical-004-donor",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "La nageuse emballe un fauteuil au fond du garage.",
+            "La nageuse installe une guitare près du moulin."
+          ],
+          "noiseSeed": 876703169
+        },
+        "recipient": {
+          "id": "r0-lexical-004-recipient",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "Le menuisier mesure un miroir devant le théâtre.",
+            "La chercheuse inspecte un seau devant le théâtre."
+          ],
+          "noiseSeed": 1050592507
+        }
+      },
+      {
+        "id": "r0-lexical-005",
+        "replication": 0,
+        "split": "lexical",
+        "index": 5,
+        "donor": {
+          "id": "r0-lexical-005-donor",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "La nageuse installe une tasse devant le théâtre.",
+            "Le pilote emballe un miroir près du moulin."
+          ],
+          "noiseSeed": 200200618
+        },
+        "recipient": {
+          "id": "r0-lexical-005-recipient",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "Le menuisier mesure un fauteuil dans le grenier.",
+            "La chercheuse installe un vélo derrière la gare."
+          ],
+          "noiseSeed": 925761717
+        }
+      },
+      {
+        "id": "r0-lexical-006",
+        "replication": 0,
+        "split": "lexical",
+        "index": 6,
+        "donor": {
+          "id": "r0-lexical-006-donor",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "La danseuse mesure un seau dans le grenier.",
+            "Le boulanger inspecte un seau dans le grenier."
+          ],
+          "noiseSeed": 1036595987
+        },
+        "recipient": {
+          "id": "r0-lexical-006-recipient",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "La danseuse soulève un vélo à côté du lac.",
+            "La danseuse mesure une tasse près du moulin."
+          ],
+          "noiseSeed": 805628664
+        }
+      },
+      {
+        "id": "r0-lexical-007",
+        "replication": 0,
+        "split": "lexical",
+        "index": 7,
+        "donor": {
+          "id": "r0-lexical-007-donor",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "La nageuse mesure un seau à côté du lac.",
+            "Le menuisier range une clé sous le hangar."
+          ],
+          "noiseSeed": 1784041951
+        },
+        "recipient": {
+          "id": "r0-lexical-007-recipient",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "La chercheuse soulève un miroir sous le hangar.",
+            "La chercheuse range une clé dans le grenier."
+          ],
+          "noiseSeed": 321590889
+        }
+      },
+      {
+        "id": "r0-lexical-008",
+        "replication": 0,
+        "split": "lexical",
+        "index": 8,
+        "donor": {
+          "id": "r0-lexical-008-donor",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "La chercheuse installe une échelle sur le balcon.",
+            "Le menuisier nettoie un fauteuil dans le grenier."
+          ],
+          "noiseSeed": 1640279713
+        },
+        "recipient": {
+          "id": "r0-lexical-008-recipient",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "La dentiste inspecte une tasse près du moulin.",
+            "Le boulanger mesure un seau au fond du garage."
+          ],
+          "noiseSeed": 1878628307
+        }
+      },
+      {
+        "id": "r0-lexical-009",
+        "replication": 0,
+        "split": "lexical",
+        "index": 9,
+        "donor": {
+          "id": "r0-lexical-009-donor",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "Le pilote inspecte un seau près du moulin.",
+            "Le menuisier installe un seau à côté du lac."
+          ],
+          "noiseSeed": 796165206
+        },
+        "recipient": {
+          "id": "r0-lexical-009-recipient",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "Le menuisier nettoie une échelle au fond du garage.",
+            "La nageuse inspecte un fauteuil sur le balcon."
+          ],
+          "noiseSeed": 325141829
+        }
+      },
+      {
+        "id": "r0-lexical-010",
+        "replication": 0,
+        "split": "lexical",
+        "index": 10,
+        "donor": {
+          "id": "r0-lexical-010-donor",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "La danseuse inspecte un fauteuil à côté du lac.",
+            "La nageuse soulève un vélo dans le grenier."
+          ],
+          "noiseSeed": 1134428964
+        },
+        "recipient": {
+          "id": "r0-lexical-010-recipient",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "La dentiste inspecte un seau à côté du lac.",
+            "La dentiste soulève une tasse sur le balcon."
+          ],
+          "noiseSeed": 637472596
+        }
+      },
+      {
+        "id": "r0-lexical-011",
+        "replication": 0,
+        "split": "lexical",
+        "index": 11,
+        "donor": {
+          "id": "r0-lexical-011-donor",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "La dentiste inspecte une clé sur le balcon.",
+            "Le pilote installe un fauteuil devant le théâtre."
+          ],
+          "noiseSeed": 957664486
+        },
+        "recipient": {
+          "id": "r0-lexical-011-recipient",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "Le berger installe une échelle sous le hangar.",
+            "La dentiste range un seau derrière la gare."
+          ],
+          "noiseSeed": 1852225826
+        }
+      },
+      {
+        "id": "r0-lexical-012",
+        "replication": 0,
+        "split": "lexical",
+        "index": 12,
+        "donor": {
+          "id": "r0-lexical-012-donor",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "La danseuse soulève une guitare derrière la gare.",
+            "Le pilote répare une clé au fond du garage."
+          ],
+          "noiseSeed": 1732799971
+        },
+        "recipient": {
+          "id": "r0-lexical-012-recipient",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "La danseuse inspecte un seau sur le balcon.",
+            "La nageuse range une échelle dans le grenier."
+          ],
+          "noiseSeed": 1197218197
+        }
+      },
+      {
+        "id": "r0-lexical-013",
+        "replication": 0,
+        "split": "lexical",
+        "index": 13,
+        "donor": {
+          "id": "r0-lexical-013-donor",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "La nageuse répare un vélo dans le grenier.",
+            "Le menuisier installe une guitare au fond du garage."
+          ],
+          "noiseSeed": 116258459
+        },
+        "recipient": {
+          "id": "r0-lexical-013-recipient",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "La nageuse mesure une tasse dans le grenier.",
+            "Le boulanger nettoie une clé à côté du lac."
+          ],
+          "noiseSeed": 1235169283
+        }
+      },
+      {
+        "id": "r0-lexical-014",
+        "replication": 0,
+        "split": "lexical",
+        "index": 14,
+        "donor": {
+          "id": "r0-lexical-014-donor",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "Le berger répare un miroir sous le hangar.",
+            "Le pilote nettoie une clé à côté du lac."
+          ],
+          "noiseSeed": 627827190
+        },
+        "recipient": {
+          "id": "r0-lexical-014-recipient",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "La chercheuse nettoie une tasse dans le grenier.",
+            "La nageuse répare un miroir devant le théâtre."
+          ],
+          "noiseSeed": 695626251
+        }
+      },
+      {
+        "id": "r0-lexical-015",
+        "replication": 0,
+        "split": "lexical",
+        "index": 15,
+        "donor": {
+          "id": "r0-lexical-015-donor",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "Le berger range une échelle derrière la gare.",
+            "Le pilote mesure une échelle à côté du lac."
+          ],
+          "noiseSeed": 1325940896
+        },
+        "recipient": {
+          "id": "r0-lexical-015-recipient",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "Le menuisier nettoie une échelle sur le balcon.",
+            "Le berger installe une guitare à côté du lac."
+          ],
+          "noiseSeed": 1645854536
+        }
+      },
+      {
+        "id": "r1-test-000",
+        "replication": 1,
+        "split": "test",
+        "index": 0,
+        "donor": {
+          "id": "r1-test-000-donor",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "Le peintre transporte un vase devant la maison.",
+            "La voisine cherche une lampe dans l'atelier."
+          ],
+          "noiseSeed": 570353058
+        },
+        "recipient": {
+          "id": "r1-test-000-recipient",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "Le jardinier déplace un carnet près de la porte.",
+            "Le peintre cherche un tableau devant la maison."
+          ],
+          "noiseSeed": 983385278
+        }
+      },
+      {
+        "id": "r1-test-001",
+        "replication": 1,
+        "split": "test",
+        "index": 1,
+        "donor": {
+          "id": "r1-test-001-donor",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "La musicienne retrouve une valise dans l'atelier.",
+            "Le jardinier dessine un carnet dans le jardin."
+          ],
+          "noiseSeed": 803731793
+        },
+        "recipient": {
+          "id": "r1-test-001-recipient",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "La guide examine un carnet sur la terrasse.",
+            "Le marin photographie un tableau près de la porte."
+          ],
+          "noiseSeed": 1385106882
+        }
+      },
+      {
+        "id": "r1-test-002",
+        "replication": 1,
+        "split": "test",
+        "index": 2,
+        "donor": {
+          "id": "r1-test-002-donor",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "Le facteur transporte une valise dans la cour.",
+            "Le marin cherche une chaise sur la terrasse."
+          ],
+          "noiseSeed": 1633907033
+        },
+        "recipient": {
+          "id": "r1-test-002-recipient",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "Le facteur observe un tableau sur la terrasse.",
+            "La voisine déplace une boîte près de la fenêtre."
+          ],
+          "noiseSeed": 423043262
+        }
+      },
+      {
+        "id": "r1-test-003",
+        "replication": 1,
+        "split": "test",
+        "index": 3,
+        "donor": {
+          "id": "r1-test-003-donor",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "Le jardinier retrouve un tableau près de la porte.",
+            "Le facteur transporte une boîte près de la fenêtre."
+          ],
+          "noiseSeed": 1973590697
+        },
+        "recipient": {
+          "id": "r1-test-003-recipient",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "Le jardinier photographie une chaise dans la cour.",
+            "La voisine observe un vase sur la terrasse."
+          ],
+          "noiseSeed": 1739236890
+        }
+      },
+      {
+        "id": "r1-test-004",
+        "replication": 1,
+        "split": "test",
+        "index": 4,
+        "donor": {
+          "id": "r1-test-004-donor",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "Le peintre examine une boîte dans la cour.",
+            "La libraire retrouve un vase près de la porte."
+          ],
+          "noiseSeed": 433478732
+        },
+        "recipient": {
+          "id": "r1-test-004-recipient",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "Le jardinier dessine un carnet dans l'atelier.",
+            "La musicienne dessine un tableau près de la fenêtre."
+          ],
+          "noiseSeed": 2117877342
+        }
+      },
+      {
+        "id": "r1-test-005",
+        "replication": 1,
+        "split": "test",
+        "index": 5,
+        "donor": {
+          "id": "r1-test-005-donor",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "La libraire déplace un tableau devant la maison.",
+            "La musicienne cherche un vase près de la porte."
+          ],
+          "noiseSeed": 1082505637
+        },
+        "recipient": {
+          "id": "r1-test-005-recipient",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "Le facteur transporte une chaise sur la terrasse.",
+            "Le peintre déplace un panier près de la porte."
+          ],
+          "noiseSeed": 1518421889
+        }
+      },
+      {
+        "id": "r1-test-006",
+        "replication": 1,
+        "split": "test",
+        "index": 6,
+        "donor": {
+          "id": "r1-test-006-donor",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "Le facteur déplace un tableau près de la porte.",
+            "Le peintre retrouve un panier près de la fenêtre."
+          ],
+          "noiseSeed": 943391593
+        },
+        "recipient": {
+          "id": "r1-test-006-recipient",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "La voisine déplace une valise dans le jardin.",
+            "Le jardinier examine un tableau près de la fenêtre."
+          ],
+          "noiseSeed": 734696806
+        }
+      },
+      {
+        "id": "r1-test-007",
+        "replication": 1,
+        "split": "test",
+        "index": 7,
+        "donor": {
+          "id": "r1-test-007-donor",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "La guide observe un tableau sur la terrasse.",
+            "Le facteur transporte une boîte dans l'atelier."
+          ],
+          "noiseSeed": 511695701
+        },
+        "recipient": {
+          "id": "r1-test-007-recipient",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "La guide examine un vase devant la maison.",
+            "Le jardinier retrouve une chaise sur la terrasse."
+          ],
+          "noiseSeed": 1530300358
+        }
+      },
+      {
+        "id": "r1-test-008",
+        "replication": 1,
+        "split": "test",
+        "index": 8,
+        "donor": {
+          "id": "r1-test-008-donor",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "La libraire examine un carnet dans la cour.",
+            "La guide cherche une chaise dans la cour."
+          ],
+          "noiseSeed": 1304343944
+        },
+        "recipient": {
+          "id": "r1-test-008-recipient",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "Le facteur retrouve un tableau sur la terrasse.",
+            "La libraire dessine un panier sur la terrasse."
+          ],
+          "noiseSeed": 164485689
+        }
+      },
+      {
+        "id": "r1-test-009",
+        "replication": 1,
+        "split": "test",
+        "index": 9,
+        "donor": {
+          "id": "r1-test-009-donor",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "Le marin photographie un carnet dans la cour.",
+            "La libraire transporte une boîte dans le jardin."
+          ],
+          "noiseSeed": 1220892464
+        },
+        "recipient": {
+          "id": "r1-test-009-recipient",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "Le facteur déplace une chaise devant la maison.",
+            "Le peintre retrouve une lampe devant la maison."
+          ],
+          "noiseSeed": 1304781023
+        }
+      },
+      {
+        "id": "r1-test-010",
+        "replication": 1,
+        "split": "test",
+        "index": 10,
+        "donor": {
+          "id": "r1-test-010-donor",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "Le marin déplace un tableau devant la maison.",
+            "Le facteur retrouve un vase devant la maison."
+          ],
+          "noiseSeed": 469578651
+        },
+        "recipient": {
+          "id": "r1-test-010-recipient",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "La voisine dessine une boîte près de la fenêtre.",
+            "Le jardinier déplace une valise dans le jardin."
+          ],
+          "noiseSeed": 376364944
+        }
+      },
+      {
+        "id": "r1-test-011",
+        "replication": 1,
+        "split": "test",
+        "index": 11,
+        "donor": {
+          "id": "r1-test-011-donor",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "Le peintre photographie une valise sur la terrasse.",
+            "Le facteur examine une lampe près du port."
+          ],
+          "noiseSeed": 1864699313
+        },
+        "recipient": {
+          "id": "r1-test-011-recipient",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "La guide transporte une valise devant la maison.",
+            "Le facteur déplace une lampe près de la porte."
+          ],
+          "noiseSeed": 1029994824
+        }
+      },
+      {
+        "id": "r1-test-012",
+        "replication": 1,
+        "split": "test",
+        "index": 12,
+        "donor": {
+          "id": "r1-test-012-donor",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "La guide transporte une boîte dans la cour.",
+            "La musicienne cherche un tableau devant la maison."
+          ],
+          "noiseSeed": 1854237421
+        },
+        "recipient": {
+          "id": "r1-test-012-recipient",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "Le jardinier retrouve un vase devant la maison.",
+            "La voisine retrouve un carnet dans l'atelier."
+          ],
+          "noiseSeed": 989155139
+        }
+      },
+      {
+        "id": "r1-test-013",
+        "replication": 1,
+        "split": "test",
+        "index": 13,
+        "donor": {
+          "id": "r1-test-013-donor",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "Le peintre retrouve une boîte devant la maison.",
+            "Le facteur examine un tableau devant la maison."
+          ],
+          "noiseSeed": 1060265223
+        },
+        "recipient": {
+          "id": "r1-test-013-recipient",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "La musicienne dessine un carnet dans le jardin.",
+            "Le facteur observe une lampe près de la porte."
+          ],
+          "noiseSeed": 1649879417
+        }
+      },
+      {
+        "id": "r1-test-014",
+        "replication": 1,
+        "split": "test",
+        "index": 14,
+        "donor": {
+          "id": "r1-test-014-donor",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "La voisine transporte une boîte dans la cour.",
+            "La guide déplace une chaise près du port."
+          ],
+          "noiseSeed": 935235656
+        },
+        "recipient": {
+          "id": "r1-test-014-recipient",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "La libraire observe un vase près de la porte.",
+            "Le peintre déplace un panier dans l'atelier."
+          ],
+          "noiseSeed": 450488403
+        }
+      },
+      {
+        "id": "r1-test-015",
+        "replication": 1,
+        "split": "test",
+        "index": 15,
+        "donor": {
+          "id": "r1-test-015-donor",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "Le jardinier retrouve un vase dans l'atelier.",
+            "La musicienne photographie une boîte près du port."
+          ],
+          "noiseSeed": 333090459
+        },
+        "recipient": {
+          "id": "r1-test-015-recipient",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "La musicienne retrouve un tableau dans l'atelier.",
+            "Le marin cherche un panier dans le jardin."
+          ],
+          "noiseSeed": 1108695316
+        }
+      },
+      {
+        "id": "r1-lexical-000",
+        "replication": 1,
+        "split": "lexical",
+        "index": 0,
+        "donor": {
+          "id": "r1-lexical-000-donor",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "Le boulanger nettoie une échelle à côté du lac.",
+            "La dentiste range une tasse au fond du garage."
+          ],
+          "noiseSeed": 1514561637
+        },
+        "recipient": {
+          "id": "r1-lexical-000-recipient",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "Le menuisier inspecte un fauteuil dans le grenier.",
+            "La nageuse mesure une échelle dans le grenier."
+          ],
+          "noiseSeed": 359186840
+        }
+      },
+      {
+        "id": "r1-lexical-001",
+        "replication": 1,
+        "split": "lexical",
+        "index": 1,
+        "donor": {
+          "id": "r1-lexical-001-donor",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "La danseuse emballe une tasse à côté du lac.",
+            "La dentiste inspecte un seau dans le grenier."
+          ],
+          "noiseSeed": 1215405573
+        },
+        "recipient": {
+          "id": "r1-lexical-001-recipient",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "Le menuisier soulève un miroir sous le hangar.",
+            "La nageuse nettoie un fauteuil devant le théâtre."
+          ],
+          "noiseSeed": 1156652693
+        }
+      },
+      {
+        "id": "r1-lexical-002",
+        "replication": 1,
+        "split": "lexical",
+        "index": 2,
+        "donor": {
+          "id": "r1-lexical-002-donor",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "Le menuisier soulève une échelle à côté du lac.",
+            "La danseuse mesure un vélo au fond du garage."
+          ],
+          "noiseSeed": 608510932
+        },
+        "recipient": {
+          "id": "r1-lexical-002-recipient",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "Le pilote répare une échelle derrière la gare.",
+            "La chercheuse soulève un seau près du moulin."
+          ],
+          "noiseSeed": 3937418
+        }
+      },
+      {
+        "id": "r1-lexical-003",
+        "replication": 1,
+        "split": "lexical",
+        "index": 3,
+        "donor": {
+          "id": "r1-lexical-003-donor",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "Le berger répare une guitare dans le grenier.",
+            "Le boulanger nettoie un vélo sous le hangar."
+          ],
+          "noiseSeed": 1209931354
+        },
+        "recipient": {
+          "id": "r1-lexical-003-recipient",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "La chercheuse mesure une tasse au fond du garage.",
+            "Le boulanger répare une clé au fond du garage."
+          ],
+          "noiseSeed": 1007358201
+        }
+      },
+      {
+        "id": "r1-lexical-004",
+        "replication": 1,
+        "split": "lexical",
+        "index": 4,
+        "donor": {
+          "id": "r1-lexical-004-donor",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "La danseuse range une guitare au fond du garage.",
+            "Le menuisier inspecte une tasse au fond du garage."
+          ],
+          "noiseSeed": 929986897
+        },
+        "recipient": {
+          "id": "r1-lexical-004-recipient",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "Le pilote répare une guitare derrière la gare.",
+            "La danseuse nettoie un seau dans le grenier."
+          ],
+          "noiseSeed": 1591419919
+        }
+      },
+      {
+        "id": "r1-lexical-005",
+        "replication": 1,
+        "split": "lexical",
+        "index": 5,
+        "donor": {
+          "id": "r1-lexical-005-donor",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "Le berger emballe une clé sous le hangar.",
+            "Le boulanger emballe un fauteuil devant le théâtre."
+          ],
+          "noiseSeed": 2120641699
+        },
+        "recipient": {
+          "id": "r1-lexical-005-recipient",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "Le boulanger soulève un fauteuil près du moulin.",
+            "Le berger inspecte une guitare sur le balcon."
+          ],
+          "noiseSeed": 1183451471
+        }
+      },
+      {
+        "id": "r1-lexical-006",
+        "replication": 1,
+        "split": "lexical",
+        "index": 6,
+        "donor": {
+          "id": "r1-lexical-006-donor",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "Le boulanger range un miroir dans le grenier.",
+            "Le berger nettoie un fauteuil devant le théâtre."
+          ],
+          "noiseSeed": 1238024697
+        },
+        "recipient": {
+          "id": "r1-lexical-006-recipient",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "La danseuse installe une clé au fond du garage.",
+            "La danseuse installe une échelle dans le grenier."
+          ],
+          "noiseSeed": 1558418176
+        }
+      },
+      {
+        "id": "r1-lexical-007",
+        "replication": 1,
+        "split": "lexical",
+        "index": 7,
+        "donor": {
+          "id": "r1-lexical-007-donor",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "Le menuisier mesure un seau près du moulin.",
+            "La danseuse inspecte un vélo sur le balcon."
+          ],
+          "noiseSeed": 504211739
+        },
+        "recipient": {
+          "id": "r1-lexical-007-recipient",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "Le berger mesure une guitare sur le balcon.",
+            "La danseuse mesure un vélo derrière la gare."
+          ],
+          "noiseSeed": 1785683570
+        }
+      },
+      {
+        "id": "r1-lexical-008",
+        "replication": 1,
+        "split": "lexical",
+        "index": 8,
+        "donor": {
+          "id": "r1-lexical-008-donor",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "Le pilote emballe un seau devant le théâtre.",
+            "La nageuse inspecte une tasse au fond du garage."
+          ],
+          "noiseSeed": 1860304435
+        },
+        "recipient": {
+          "id": "r1-lexical-008-recipient",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "Le pilote répare un miroir devant le théâtre.",
+            "La danseuse installe un miroir devant le théâtre."
+          ],
+          "noiseSeed": 1614232454
+        }
+      },
+      {
+        "id": "r1-lexical-009",
+        "replication": 1,
+        "split": "lexical",
+        "index": 9,
+        "donor": {
+          "id": "r1-lexical-009-donor",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "Le menuisier nettoie un vélo près du moulin.",
+            "Le berger répare un seau à côté du lac."
+          ],
+          "noiseSeed": 2029229097
+        },
+        "recipient": {
+          "id": "r1-lexical-009-recipient",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "Le boulanger nettoie une échelle sur le balcon.",
+            "Le pilote répare un fauteuil devant le théâtre."
+          ],
+          "noiseSeed": 508647572
+        }
+      },
+      {
+        "id": "r1-lexical-010",
+        "replication": 1,
+        "split": "lexical",
+        "index": 10,
+        "donor": {
+          "id": "r1-lexical-010-donor",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "La chercheuse emballe une tasse près du moulin.",
+            "Le berger inspecte un vélo derrière la gare."
+          ],
+          "noiseSeed": 2145752353
+        },
+        "recipient": {
+          "id": "r1-lexical-010-recipient",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "La danseuse installe un seau près du moulin.",
+            "Le berger nettoie un fauteuil à côté du lac."
+          ],
+          "noiseSeed": 352723974
+        }
+      },
+      {
+        "id": "r1-lexical-011",
+        "replication": 1,
+        "split": "lexical",
+        "index": 11,
+        "donor": {
+          "id": "r1-lexical-011-donor",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "Le boulanger range une guitare au fond du garage.",
+            "La nageuse range une guitare à côté du lac."
+          ],
+          "noiseSeed": 821179753
+        },
+        "recipient": {
+          "id": "r1-lexical-011-recipient",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "Le menuisier inspecte une clé derrière la gare.",
+            "Le berger mesure un fauteuil au fond du garage."
+          ],
+          "noiseSeed": 2136230326
+        }
+      },
+      {
+        "id": "r1-lexical-012",
+        "replication": 1,
+        "split": "lexical",
+        "index": 12,
+        "donor": {
+          "id": "r1-lexical-012-donor",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "La chercheuse inspecte un vélo sur le balcon.",
+            "La chercheuse nettoie un miroir près du moulin."
+          ],
+          "noiseSeed": 544161597
+        },
+        "recipient": {
+          "id": "r1-lexical-012-recipient",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "La nageuse inspecte une échelle près du moulin.",
+            "Le boulanger range une clé près du moulin."
+          ],
+          "noiseSeed": 795652843
+        }
+      },
+      {
+        "id": "r1-lexical-013",
+        "replication": 1,
+        "split": "lexical",
+        "index": 13,
+        "donor": {
+          "id": "r1-lexical-013-donor",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "La chercheuse installe un seau dans le grenier.",
+            "La dentiste mesure un miroir devant le théâtre."
+          ],
+          "noiseSeed": 1324309064
+        },
+        "recipient": {
+          "id": "r1-lexical-013-recipient",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "Le pilote range un miroir devant le théâtre.",
+            "Le pilote emballe un seau dans le grenier."
+          ],
+          "noiseSeed": 2118382378
+        }
+      },
+      {
+        "id": "r1-lexical-014",
+        "replication": 1,
+        "split": "lexical",
+        "index": 14,
+        "donor": {
+          "id": "r1-lexical-014-donor",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "La nageuse inspecte une guitare au fond du garage.",
+            "La chercheuse soulève une guitare à côté du lac."
+          ],
+          "noiseSeed": 427605441
+        },
+        "recipient": {
+          "id": "r1-lexical-014-recipient",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "Le pilote installe un fauteuil dans le grenier.",
+            "La danseuse inspecte un seau à côté du lac."
+          ],
+          "noiseSeed": 952931843
+        }
+      },
+      {
+        "id": "r1-lexical-015",
+        "replication": 1,
+        "split": "lexical",
+        "index": 15,
+        "donor": {
+          "id": "r1-lexical-015-donor",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "Le berger mesure un fauteuil devant le théâtre.",
+            "La chercheuse mesure un seau sous le hangar."
+          ],
+          "noiseSeed": 1053166882
+        },
+        "recipient": {
+          "id": "r1-lexical-015-recipient",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "Le boulanger emballe un vélo derrière la gare.",
+            "Le menuisier mesure une tasse dans le grenier."
+          ],
+          "noiseSeed": 1772972206
+        }
+      },
+      {
+        "id": "r2-test-000",
+        "replication": 2,
+        "split": "test",
+        "index": 0,
+        "donor": {
+          "id": "r2-test-000-donor",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "Le jardinier examine un vase sur la terrasse.",
+            "Le jardinier examine une valise près de la porte."
+          ],
+          "noiseSeed": 1333860910
+        },
+        "recipient": {
+          "id": "r2-test-000-recipient",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "Le facteur cherche une lampe devant la maison.",
+            "La voisine cherche une valise près de la porte."
+          ],
+          "noiseSeed": 1975080643
+        }
+      },
+      {
+        "id": "r2-test-001",
+        "replication": 2,
+        "split": "test",
+        "index": 1,
+        "donor": {
+          "id": "r2-test-001-donor",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "Le facteur observe une lampe dans la cour.",
+            "La guide transporte un vase sur la terrasse."
+          ],
+          "noiseSeed": 1531176970
+        },
+        "recipient": {
+          "id": "r2-test-001-recipient",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "La voisine dessine une boîte près du port.",
+            "Le peintre observe un panier dans la cour."
+          ],
+          "noiseSeed": 1736300688
+        }
+      },
+      {
+        "id": "r2-test-002",
+        "replication": 2,
+        "split": "test",
+        "index": 2,
+        "donor": {
+          "id": "r2-test-002-donor",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "Le marin retrouve un carnet près du port.",
+            "Le peintre transporte une chaise près de la fenêtre."
+          ],
+          "noiseSeed": 1232584785
+        },
+        "recipient": {
+          "id": "r2-test-002-recipient",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "Le peintre photographie une lampe près du port.",
+            "La musicienne cherche une lampe près de la fenêtre."
+          ],
+          "noiseSeed": 469769475
+        }
+      },
+      {
+        "id": "r2-test-003",
+        "replication": 2,
+        "split": "test",
+        "index": 3,
+        "donor": {
+          "id": "r2-test-003-donor",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "Le marin déplace un tableau près de la porte.",
+            "La libraire examine un carnet près du port."
+          ],
+          "noiseSeed": 876256213
+        },
+        "recipient": {
+          "id": "r2-test-003-recipient",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "Le jardinier transporte une chaise près du port.",
+            "La guide dessine un panier près de la fenêtre."
+          ],
+          "noiseSeed": 268370088
+        }
+      },
+      {
+        "id": "r2-test-004",
+        "replication": 2,
+        "split": "test",
+        "index": 4,
+        "donor": {
+          "id": "r2-test-004-donor",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "Le jardinier transporte un tableau dans la cour.",
+            "La guide examine une boîte dans l'atelier."
+          ],
+          "noiseSeed": 273851119
+        },
+        "recipient": {
+          "id": "r2-test-004-recipient",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "La musicienne examine une valise devant la maison.",
+            "La musicienne examine un panier devant la maison."
+          ],
+          "noiseSeed": 205984814
+        }
+      },
+      {
+        "id": "r2-test-005",
+        "replication": 2,
+        "split": "test",
+        "index": 5,
+        "donor": {
+          "id": "r2-test-005-donor",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "Le marin cherche une lampe près de la fenêtre.",
+            "Le marin transporte un panier devant la maison."
+          ],
+          "noiseSeed": 720553768
+        },
+        "recipient": {
+          "id": "r2-test-005-recipient",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "La guide transporte une chaise dans l'atelier.",
+            "La voisine transporte un vase dans le jardin."
+          ],
+          "noiseSeed": 1936131878
+        }
+      },
+      {
+        "id": "r2-test-006",
+        "replication": 2,
+        "split": "test",
+        "index": 6,
+        "donor": {
+          "id": "r2-test-006-donor",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "Le facteur transporte une valise dans l'atelier.",
+            "La libraire retrouve un carnet dans le jardin."
+          ],
+          "noiseSeed": 1975718562
+        },
+        "recipient": {
+          "id": "r2-test-006-recipient",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "Le peintre déplace un tableau dans le jardin.",
+            "Le facteur déplace un tableau près de la fenêtre."
+          ],
+          "noiseSeed": 1720121684
+        }
+      },
+      {
+        "id": "r2-test-007",
+        "replication": 2,
+        "split": "test",
+        "index": 7,
+        "donor": {
+          "id": "r2-test-007-donor",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "Le marin observe un tableau dans le jardin.",
+            "Le peintre retrouve une lampe près du port."
+          ],
+          "noiseSeed": 475429846
+        },
+        "recipient": {
+          "id": "r2-test-007-recipient",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "La musicienne cherche un vase dans l'atelier.",
+            "La guide observe une boîte près de la porte."
+          ],
+          "noiseSeed": 618643129
+        }
+      },
+      {
+        "id": "r2-test-008",
+        "replication": 2,
+        "split": "test",
+        "index": 8,
+        "donor": {
+          "id": "r2-test-008-donor",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "Le marin retrouve une valise dans la cour.",
+            "Le facteur déplace un tableau dans le jardin."
+          ],
+          "noiseSeed": 1002024963
+        },
+        "recipient": {
+          "id": "r2-test-008-recipient",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "Le jardinier déplace un panier dans l'atelier.",
+            "La voisine photographie une chaise dans le jardin."
+          ],
+          "noiseSeed": 1555827470
+        }
+      },
+      {
+        "id": "r2-test-009",
+        "replication": 2,
+        "split": "test",
+        "index": 9,
+        "donor": {
+          "id": "r2-test-009-donor",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "La musicienne photographie une lampe dans la cour.",
+            "Le peintre observe un vase près de la porte."
+          ],
+          "noiseSeed": 1393732058
+        },
+        "recipient": {
+          "id": "r2-test-009-recipient",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "Le jardinier déplace un panier sur la terrasse.",
+            "La guide transporte une lampe sur la terrasse."
+          ],
+          "noiseSeed": 901443793
+        }
+      },
+      {
+        "id": "r2-test-010",
+        "replication": 2,
+        "split": "test",
+        "index": 10,
+        "donor": {
+          "id": "r2-test-010-donor",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "Le facteur retrouve une valise près du port.",
+            "La guide cherche une lampe près de la fenêtre."
+          ],
+          "noiseSeed": 1704150592
+        },
+        "recipient": {
+          "id": "r2-test-010-recipient",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "La libraire retrouve un tableau près du port.",
+            "La guide examine un vase près de la fenêtre."
+          ],
+          "noiseSeed": 1973233491
+        }
+      },
+      {
+        "id": "r2-test-011",
+        "replication": 2,
+        "split": "test",
+        "index": 11,
+        "donor": {
+          "id": "r2-test-011-donor",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "Le jardinier observe une valise près de la porte.",
+            "Le facteur dessine un panier dans l'atelier."
+          ],
+          "noiseSeed": 1154962900
+        },
+        "recipient": {
+          "id": "r2-test-011-recipient",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "Le marin déplace une chaise près de la porte.",
+            "Le jardinier déplace un vase dans le jardin."
+          ],
+          "noiseSeed": 1858672897
+        }
+      },
+      {
+        "id": "r2-test-012",
+        "replication": 2,
+        "split": "test",
+        "index": 12,
+        "donor": {
+          "id": "r2-test-012-donor",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "Le facteur déplace une chaise dans le jardin.",
+            "Le peintre examine un tableau dans le jardin."
+          ],
+          "noiseSeed": 976613141
+        },
+        "recipient": {
+          "id": "r2-test-012-recipient",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "Le jardinier déplace un tableau devant la maison.",
+            "Le marin retrouve un carnet dans la cour."
+          ],
+          "noiseSeed": 326372044
+        }
+      },
+      {
+        "id": "r2-test-013",
+        "replication": 2,
+        "split": "test",
+        "index": 13,
+        "donor": {
+          "id": "r2-test-013-donor",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "La voisine photographie une lampe dans l'atelier.",
+            "La guide photographie un panier près de la porte."
+          ],
+          "noiseSeed": 133440387
+        },
+        "recipient": {
+          "id": "r2-test-013-recipient",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "Le facteur photographie un panier devant la maison.",
+            "Le jardinier dessine un panier devant la maison."
+          ],
+          "noiseSeed": 1540576785
+        }
+      },
+      {
+        "id": "r2-test-014",
+        "replication": 2,
+        "split": "test",
+        "index": 14,
+        "donor": {
+          "id": "r2-test-014-donor",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "La voisine dessine un vase près de la fenêtre.",
+            "Le marin dessine une valise près du port."
+          ],
+          "noiseSeed": 1610922744
+        },
+        "recipient": {
+          "id": "r2-test-014-recipient",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "Le peintre photographie une chaise devant la maison.",
+            "La voisine retrouve un vase dans le jardin."
+          ],
+          "noiseSeed": 145512635
+        }
+      },
+      {
+        "id": "r2-test-015",
+        "replication": 2,
+        "split": "test",
+        "index": 15,
+        "donor": {
+          "id": "r2-test-015-donor",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "La musicienne déplace une chaise dans le jardin.",
+            "Le peintre cherche un carnet sur la terrasse."
+          ],
+          "noiseSeed": 180902319
+        },
+        "recipient": {
+          "id": "r2-test-015-recipient",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "La voisine photographie une chaise près du port.",
+            "Le facteur examine un vase dans l'atelier."
+          ],
+          "noiseSeed": 2079219670
+        }
+      },
+      {
+        "id": "r2-lexical-000",
+        "replication": 2,
+        "split": "lexical",
+        "index": 0,
+        "donor": {
+          "id": "r2-lexical-000-donor",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "Le pilote nettoie une clé devant le théâtre.",
+            "Le pilote emballe une tasse devant le théâtre."
+          ],
+          "noiseSeed": 487371316
+        },
+        "recipient": {
+          "id": "r2-lexical-000-recipient",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "La chercheuse installe une guitare au fond du garage.",
+            "Le berger répare un fauteuil sous le hangar."
+          ],
+          "noiseSeed": 1456132097
+        }
+      },
+      {
+        "id": "r2-lexical-001",
+        "replication": 2,
+        "split": "lexical",
+        "index": 1,
+        "donor": {
+          "id": "r2-lexical-001-donor",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "Le boulanger inspecte une guitare au fond du garage.",
+            "La danseuse soulève une échelle derrière la gare."
+          ],
+          "noiseSeed": 2093252813
+        },
+        "recipient": {
+          "id": "r2-lexical-001-recipient",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "Le menuisier soulève une échelle près du moulin.",
+            "Le menuisier inspecte une guitare sous le hangar."
+          ],
+          "noiseSeed": 1148887283
+        }
+      },
+      {
+        "id": "r2-lexical-002",
+        "replication": 2,
+        "split": "lexical",
+        "index": 2,
+        "donor": {
+          "id": "r2-lexical-002-donor",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "La chercheuse installe un miroir au fond du garage.",
+            "Le pilote inspecte un miroir sur le balcon."
+          ],
+          "noiseSeed": 176126655
+        },
+        "recipient": {
+          "id": "r2-lexical-002-recipient",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "Le pilote emballe un fauteuil à côté du lac.",
+            "La dentiste mesure une clé derrière la gare."
+          ],
+          "noiseSeed": 368741178
+        }
+      },
+      {
+        "id": "r2-lexical-003",
+        "replication": 2,
+        "split": "lexical",
+        "index": 3,
+        "donor": {
+          "id": "r2-lexical-003-donor",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "La danseuse range un fauteuil à côté du lac.",
+            "Le berger emballe une clé au fond du garage."
+          ],
+          "noiseSeed": 1024259491
+        },
+        "recipient": {
+          "id": "r2-lexical-003-recipient",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "Le berger emballe un seau près du moulin.",
+            "La nageuse range un fauteuil dans le grenier."
+          ],
+          "noiseSeed": 426121776
+        }
+      },
+      {
+        "id": "r2-lexical-004",
+        "replication": 2,
+        "split": "lexical",
+        "index": 4,
+        "donor": {
+          "id": "r2-lexical-004-donor",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "La nageuse nettoie une échelle devant le théâtre.",
+            "Le boulanger inspecte une échelle sous le hangar."
+          ],
+          "noiseSeed": 56122310
+        },
+        "recipient": {
+          "id": "r2-lexical-004-recipient",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "Le menuisier mesure un vélo devant le théâtre.",
+            "Le berger installe un miroir sous le hangar."
+          ],
+          "noiseSeed": 736860779
+        }
+      },
+      {
+        "id": "r2-lexical-005",
+        "replication": 2,
+        "split": "lexical",
+        "index": 5,
+        "donor": {
+          "id": "r2-lexical-005-donor",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "Le boulanger répare une guitare près du moulin.",
+            "Le boulanger répare une tasse derrière la gare."
+          ],
+          "noiseSeed": 1210305031
+        },
+        "recipient": {
+          "id": "r2-lexical-005-recipient",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "La danseuse répare une tasse au fond du garage.",
+            "Le pilote installe une clé derrière la gare."
+          ],
+          "noiseSeed": 777040586
+        }
+      },
+      {
+        "id": "r2-lexical-006",
+        "replication": 2,
+        "split": "lexical",
+        "index": 6,
+        "donor": {
+          "id": "r2-lexical-006-donor",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "La danseuse inspecte une tasse à côté du lac.",
+            "Le berger répare une guitare sur le balcon."
+          ],
+          "noiseSeed": 1988263148
+        },
+        "recipient": {
+          "id": "r2-lexical-006-recipient",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "Le berger mesure une tasse derrière la gare.",
+            "La chercheuse installe une échelle sous le hangar."
+          ],
+          "noiseSeed": 223543257
+        }
+      },
+      {
+        "id": "r2-lexical-007",
+        "replication": 2,
+        "split": "lexical",
+        "index": 7,
+        "donor": {
+          "id": "r2-lexical-007-donor",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "Le menuisier soulève un vélo derrière la gare.",
+            "La chercheuse range une échelle sous le hangar."
+          ],
+          "noiseSeed": 1185630596
+        },
+        "recipient": {
+          "id": "r2-lexical-007-recipient",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "Le menuisier installe une tasse derrière la gare.",
+            "Le pilote emballe une clé devant le théâtre."
+          ],
+          "noiseSeed": 715364461
+        }
+      },
+      {
+        "id": "r2-lexical-008",
+        "replication": 2,
+        "split": "lexical",
+        "index": 8,
+        "donor": {
+          "id": "r2-lexical-008-donor",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "La nageuse répare une guitare dans le grenier.",
+            "Le pilote soulève un vélo à côté du lac."
+          ],
+          "noiseSeed": 537400046
+        },
+        "recipient": {
+          "id": "r2-lexical-008-recipient",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "La chercheuse répare une tasse sur le balcon.",
+            "Le pilote installe un vélo devant le théâtre."
+          ],
+          "noiseSeed": 920912456
+        }
+      },
+      {
+        "id": "r2-lexical-009",
+        "replication": 2,
+        "split": "lexical",
+        "index": 9,
+        "donor": {
+          "id": "r2-lexical-009-donor",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "Le menuisier répare un vélo sur le balcon.",
+            "Le pilote range une guitare sur le balcon."
+          ],
+          "noiseSeed": 1896940897
+        },
+        "recipient": {
+          "id": "r2-lexical-009-recipient",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "La danseuse soulève une échelle dans le grenier.",
+            "Le boulanger mesure une échelle au fond du garage."
+          ],
+          "noiseSeed": 73754635
+        }
+      },
+      {
+        "id": "r2-lexical-010",
+        "replication": 2,
+        "split": "lexical",
+        "index": 10,
+        "donor": {
+          "id": "r2-lexical-010-donor",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "La chercheuse répare une clé à côté du lac.",
+            "La nageuse inspecte une échelle sous le hangar."
+          ],
+          "noiseSeed": 154572900
+        },
+        "recipient": {
+          "id": "r2-lexical-010-recipient",
+          "marker": 0,
+          "positivePosition": 1,
+          "sentences": [
+            "Le menuisier range une guitare derrière la gare.",
+            "La nageuse range un vélo devant le théâtre."
+          ],
+          "noiseSeed": 1392253913
+        }
+      },
+      {
+        "id": "r2-lexical-011",
+        "replication": 2,
+        "split": "lexical",
+        "index": 11,
+        "donor": {
+          "id": "r2-lexical-011-donor",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "La nageuse installe une échelle sur le balcon.",
+            "La dentiste répare une guitare à côté du lac."
+          ],
+          "noiseSeed": 839031118
+        },
+        "recipient": {
+          "id": "r2-lexical-011-recipient",
+          "marker": 0,
+          "positivePosition": 2,
+          "sentences": [
+            "La chercheuse soulève une échelle devant le théâtre.",
+            "La nageuse installe une échelle sous le hangar."
+          ],
+          "noiseSeed": 581706923
+        }
+      },
+      {
+        "id": "r2-lexical-012",
+        "replication": 2,
+        "split": "lexical",
+        "index": 12,
+        "donor": {
+          "id": "r2-lexical-012-donor",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "Le menuisier installe une échelle devant le théâtre.",
+            "La nageuse mesure un seau dans le grenier."
+          ],
+          "noiseSeed": 1337548405
+        },
+        "recipient": {
+          "id": "r2-lexical-012-recipient",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "La danseuse nettoie une clé devant le théâtre.",
+            "Le berger emballe une tasse près du moulin."
+          ],
+          "noiseSeed": 1608226039
+        }
+      },
+      {
+        "id": "r2-lexical-013",
+        "replication": 2,
+        "split": "lexical",
+        "index": 13,
+        "donor": {
+          "id": "r2-lexical-013-donor",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "Le berger installe une tasse près du moulin.",
+            "La chercheuse range un vélo à côté du lac."
+          ],
+          "noiseSeed": 74615537
+        },
+        "recipient": {
+          "id": "r2-lexical-013-recipient",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "Le berger nettoie une clé derrière la gare.",
+            "La danseuse emballe un seau au fond du garage."
+          ],
+          "noiseSeed": 1462400841
+        }
+      },
+      {
+        "id": "r2-lexical-014",
+        "replication": 2,
+        "split": "lexical",
+        "index": 14,
+        "donor": {
+          "id": "r2-lexical-014-donor",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "Le boulanger range un miroir près du moulin.",
+            "Le pilote soulève une clé près du moulin."
+          ],
+          "noiseSeed": 146430160
+        },
+        "recipient": {
+          "id": "r2-lexical-014-recipient",
+          "marker": 1,
+          "positivePosition": 1,
+          "sentences": [
+            "Le pilote nettoie une échelle à côté du lac.",
+            "La chercheuse répare un fauteuil au fond du garage."
+          ],
+          "noiseSeed": 1494394613
+        }
+      },
+      {
+        "id": "r2-lexical-015",
+        "replication": 2,
+        "split": "lexical",
+        "index": 15,
+        "donor": {
+          "id": "r2-lexical-015-donor",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "La nageuse inspecte un vélo au fond du garage.",
+            "Le pilote inspecte une échelle à côté du lac."
+          ],
+          "noiseSeed": 1706511487
+        },
+        "recipient": {
+          "id": "r2-lexical-015-recipient",
+          "marker": 1,
+          "positivePosition": 2,
+          "sentences": [
+            "La nageuse nettoie une échelle derrière la gare.",
+            "La nageuse soulève une clé à côté du lac."
+          ],
+          "noiseSeed": 2007283315
+        }
+      }
+    ],
+    "groups": [
+      {
+        "id": "prefix/r0-test-000",
+        "arm": "prefix",
+        "pair": "r0-test-000"
+      },
+      {
+        "id": "prefix/r0-test-001",
+        "arm": "prefix",
+        "pair": "r0-test-001"
+      },
+      {
+        "id": "prefix/r0-test-002",
+        "arm": "prefix",
+        "pair": "r0-test-002"
+      },
+      {
+        "id": "prefix/r0-test-003",
+        "arm": "prefix",
+        "pair": "r0-test-003"
+      },
+      {
+        "id": "prefix/r0-test-004",
+        "arm": "prefix",
+        "pair": "r0-test-004"
+      },
+      {
+        "id": "prefix/r0-test-005",
+        "arm": "prefix",
+        "pair": "r0-test-005"
+      },
+      {
+        "id": "prefix/r0-test-006",
+        "arm": "prefix",
+        "pair": "r0-test-006"
+      },
+      {
+        "id": "prefix/r0-test-007",
+        "arm": "prefix",
+        "pair": "r0-test-007"
+      },
+      {
+        "id": "prefix/r0-test-008",
+        "arm": "prefix",
+        "pair": "r0-test-008"
+      },
+      {
+        "id": "prefix/r0-test-009",
+        "arm": "prefix",
+        "pair": "r0-test-009"
+      },
+      {
+        "id": "prefix/r0-test-010",
+        "arm": "prefix",
+        "pair": "r0-test-010"
+      },
+      {
+        "id": "prefix/r0-test-011",
+        "arm": "prefix",
+        "pair": "r0-test-011"
+      },
+      {
+        "id": "prefix/r0-test-012",
+        "arm": "prefix",
+        "pair": "r0-test-012"
+      },
+      {
+        "id": "prefix/r0-test-013",
+        "arm": "prefix",
+        "pair": "r0-test-013"
+      },
+      {
+        "id": "prefix/r0-test-014",
+        "arm": "prefix",
+        "pair": "r0-test-014"
+      },
+      {
+        "id": "prefix/r0-test-015",
+        "arm": "prefix",
+        "pair": "r0-test-015"
+      },
+      {
+        "id": "prefix/r0-lexical-000",
+        "arm": "prefix",
+        "pair": "r0-lexical-000"
+      },
+      {
+        "id": "prefix/r0-lexical-001",
+        "arm": "prefix",
+        "pair": "r0-lexical-001"
+      },
+      {
+        "id": "prefix/r0-lexical-002",
+        "arm": "prefix",
+        "pair": "r0-lexical-002"
+      },
+      {
+        "id": "prefix/r0-lexical-003",
+        "arm": "prefix",
+        "pair": "r0-lexical-003"
+      },
+      {
+        "id": "prefix/r0-lexical-004",
+        "arm": "prefix",
+        "pair": "r0-lexical-004"
+      },
+      {
+        "id": "prefix/r0-lexical-005",
+        "arm": "prefix",
+        "pair": "r0-lexical-005"
+      },
+      {
+        "id": "prefix/r0-lexical-006",
+        "arm": "prefix",
+        "pair": "r0-lexical-006"
+      },
+      {
+        "id": "prefix/r0-lexical-007",
+        "arm": "prefix",
+        "pair": "r0-lexical-007"
+      },
+      {
+        "id": "prefix/r0-lexical-008",
+        "arm": "prefix",
+        "pair": "r0-lexical-008"
+      },
+      {
+        "id": "prefix/r0-lexical-009",
+        "arm": "prefix",
+        "pair": "r0-lexical-009"
+      },
+      {
+        "id": "prefix/r0-lexical-010",
+        "arm": "prefix",
+        "pair": "r0-lexical-010"
+      },
+      {
+        "id": "prefix/r0-lexical-011",
+        "arm": "prefix",
+        "pair": "r0-lexical-011"
+      },
+      {
+        "id": "prefix/r0-lexical-012",
+        "arm": "prefix",
+        "pair": "r0-lexical-012"
+      },
+      {
+        "id": "prefix/r0-lexical-013",
+        "arm": "prefix",
+        "pair": "r0-lexical-013"
+      },
+      {
+        "id": "prefix/r0-lexical-014",
+        "arm": "prefix",
+        "pair": "r0-lexical-014"
+      },
+      {
+        "id": "prefix/r0-lexical-015",
+        "arm": "prefix",
+        "pair": "r0-lexical-015"
+      },
+      {
+        "id": "prefix/r1-test-000",
+        "arm": "prefix",
+        "pair": "r1-test-000"
+      },
+      {
+        "id": "prefix/r1-test-001",
+        "arm": "prefix",
+        "pair": "r1-test-001"
+      },
+      {
+        "id": "prefix/r1-test-002",
+        "arm": "prefix",
+        "pair": "r1-test-002"
+      },
+      {
+        "id": "prefix/r1-test-003",
+        "arm": "prefix",
+        "pair": "r1-test-003"
+      },
+      {
+        "id": "prefix/r1-test-004",
+        "arm": "prefix",
+        "pair": "r1-test-004"
+      },
+      {
+        "id": "prefix/r1-test-005",
+        "arm": "prefix",
+        "pair": "r1-test-005"
+      },
+      {
+        "id": "prefix/r1-test-006",
+        "arm": "prefix",
+        "pair": "r1-test-006"
+      },
+      {
+        "id": "prefix/r1-test-007",
+        "arm": "prefix",
+        "pair": "r1-test-007"
+      },
+      {
+        "id": "prefix/r1-test-008",
+        "arm": "prefix",
+        "pair": "r1-test-008"
+      },
+      {
+        "id": "prefix/r1-test-009",
+        "arm": "prefix",
+        "pair": "r1-test-009"
+      },
+      {
+        "id": "prefix/r1-test-010",
+        "arm": "prefix",
+        "pair": "r1-test-010"
+      },
+      {
+        "id": "prefix/r1-test-011",
+        "arm": "prefix",
+        "pair": "r1-test-011"
+      },
+      {
+        "id": "prefix/r1-test-012",
+        "arm": "prefix",
+        "pair": "r1-test-012"
+      },
+      {
+        "id": "prefix/r1-test-013",
+        "arm": "prefix",
+        "pair": "r1-test-013"
+      },
+      {
+        "id": "prefix/r1-test-014",
+        "arm": "prefix",
+        "pair": "r1-test-014"
+      },
+      {
+        "id": "prefix/r1-test-015",
+        "arm": "prefix",
+        "pair": "r1-test-015"
+      },
+      {
+        "id": "prefix/r1-lexical-000",
+        "arm": "prefix",
+        "pair": "r1-lexical-000"
+      },
+      {
+        "id": "prefix/r1-lexical-001",
+        "arm": "prefix",
+        "pair": "r1-lexical-001"
+      },
+      {
+        "id": "prefix/r1-lexical-002",
+        "arm": "prefix",
+        "pair": "r1-lexical-002"
+      },
+      {
+        "id": "prefix/r1-lexical-003",
+        "arm": "prefix",
+        "pair": "r1-lexical-003"
+      },
+      {
+        "id": "prefix/r1-lexical-004",
+        "arm": "prefix",
+        "pair": "r1-lexical-004"
+      },
+      {
+        "id": "prefix/r1-lexical-005",
+        "arm": "prefix",
+        "pair": "r1-lexical-005"
+      },
+      {
+        "id": "prefix/r1-lexical-006",
+        "arm": "prefix",
+        "pair": "r1-lexical-006"
+      },
+      {
+        "id": "prefix/r1-lexical-007",
+        "arm": "prefix",
+        "pair": "r1-lexical-007"
+      },
+      {
+        "id": "prefix/r1-lexical-008",
+        "arm": "prefix",
+        "pair": "r1-lexical-008"
+      },
+      {
+        "id": "prefix/r1-lexical-009",
+        "arm": "prefix",
+        "pair": "r1-lexical-009"
+      },
+      {
+        "id": "prefix/r1-lexical-010",
+        "arm": "prefix",
+        "pair": "r1-lexical-010"
+      },
+      {
+        "id": "prefix/r1-lexical-011",
+        "arm": "prefix",
+        "pair": "r1-lexical-011"
+      },
+      {
+        "id": "prefix/r1-lexical-012",
+        "arm": "prefix",
+        "pair": "r1-lexical-012"
+      },
+      {
+        "id": "prefix/r1-lexical-013",
+        "arm": "prefix",
+        "pair": "r1-lexical-013"
+      },
+      {
+        "id": "prefix/r1-lexical-014",
+        "arm": "prefix",
+        "pair": "r1-lexical-014"
+      },
+      {
+        "id": "prefix/r1-lexical-015",
+        "arm": "prefix",
+        "pair": "r1-lexical-015"
+      },
+      {
+        "id": "prefix/r2-test-000",
+        "arm": "prefix",
+        "pair": "r2-test-000"
+      },
+      {
+        "id": "prefix/r2-test-001",
+        "arm": "prefix",
+        "pair": "r2-test-001"
+      },
+      {
+        "id": "prefix/r2-test-002",
+        "arm": "prefix",
+        "pair": "r2-test-002"
+      },
+      {
+        "id": "prefix/r2-test-003",
+        "arm": "prefix",
+        "pair": "r2-test-003"
+      },
+      {
+        "id": "prefix/r2-test-004",
+        "arm": "prefix",
+        "pair": "r2-test-004"
+      },
+      {
+        "id": "prefix/r2-test-005",
+        "arm": "prefix",
+        "pair": "r2-test-005"
+      },
+      {
+        "id": "prefix/r2-test-006",
+        "arm": "prefix",
+        "pair": "r2-test-006"
+      },
+      {
+        "id": "prefix/r2-test-007",
+        "arm": "prefix",
+        "pair": "r2-test-007"
+      },
+      {
+        "id": "prefix/r2-test-008",
+        "arm": "prefix",
+        "pair": "r2-test-008"
+      },
+      {
+        "id": "prefix/r2-test-009",
+        "arm": "prefix",
+        "pair": "r2-test-009"
+      },
+      {
+        "id": "prefix/r2-test-010",
+        "arm": "prefix",
+        "pair": "r2-test-010"
+      },
+      {
+        "id": "prefix/r2-test-011",
+        "arm": "prefix",
+        "pair": "r2-test-011"
+      },
+      {
+        "id": "prefix/r2-test-012",
+        "arm": "prefix",
+        "pair": "r2-test-012"
+      },
+      {
+        "id": "prefix/r2-test-013",
+        "arm": "prefix",
+        "pair": "r2-test-013"
+      },
+      {
+        "id": "prefix/r2-test-014",
+        "arm": "prefix",
+        "pair": "r2-test-014"
+      },
+      {
+        "id": "prefix/r2-test-015",
+        "arm": "prefix",
+        "pair": "r2-test-015"
+      },
+      {
+        "id": "prefix/r2-lexical-000",
+        "arm": "prefix",
+        "pair": "r2-lexical-000"
+      },
+      {
+        "id": "prefix/r2-lexical-001",
+        "arm": "prefix",
+        "pair": "r2-lexical-001"
+      },
+      {
+        "id": "prefix/r2-lexical-002",
+        "arm": "prefix",
+        "pair": "r2-lexical-002"
+      },
+      {
+        "id": "prefix/r2-lexical-003",
+        "arm": "prefix",
+        "pair": "r2-lexical-003"
+      },
+      {
+        "id": "prefix/r2-lexical-004",
+        "arm": "prefix",
+        "pair": "r2-lexical-004"
+      },
+      {
+        "id": "prefix/r2-lexical-005",
+        "arm": "prefix",
+        "pair": "r2-lexical-005"
+      },
+      {
+        "id": "prefix/r2-lexical-006",
+        "arm": "prefix",
+        "pair": "r2-lexical-006"
+      },
+      {
+        "id": "prefix/r2-lexical-007",
+        "arm": "prefix",
+        "pair": "r2-lexical-007"
+      },
+      {
+        "id": "prefix/r2-lexical-008",
+        "arm": "prefix",
+        "pair": "r2-lexical-008"
+      },
+      {
+        "id": "prefix/r2-lexical-009",
+        "arm": "prefix",
+        "pair": "r2-lexical-009"
+      },
+      {
+        "id": "prefix/r2-lexical-010",
+        "arm": "prefix",
+        "pair": "r2-lexical-010"
+      },
+      {
+        "id": "prefix/r2-lexical-011",
+        "arm": "prefix",
+        "pair": "r2-lexical-011"
+      },
+      {
+        "id": "prefix/r2-lexical-012",
+        "arm": "prefix",
+        "pair": "r2-lexical-012"
+      },
+      {
+        "id": "prefix/r2-lexical-013",
+        "arm": "prefix",
+        "pair": "r2-lexical-013"
+      },
+      {
+        "id": "prefix/r2-lexical-014",
+        "arm": "prefix",
+        "pair": "r2-lexical-014"
+      },
+      {
+        "id": "prefix/r2-lexical-015",
+        "arm": "prefix",
+        "pair": "r2-lexical-015"
+      },
+      {
+        "id": "base/r0-test-000",
+        "arm": "base",
+        "pair": "r0-test-000"
+      },
+      {
+        "id": "base/r0-test-001",
+        "arm": "base",
+        "pair": "r0-test-001"
+      },
+      {
+        "id": "base/r0-test-002",
+        "arm": "base",
+        "pair": "r0-test-002"
+      },
+      {
+        "id": "base/r0-test-003",
+        "arm": "base",
+        "pair": "r0-test-003"
+      },
+      {
+        "id": "base/r0-test-004",
+        "arm": "base",
+        "pair": "r0-test-004"
+      },
+      {
+        "id": "base/r0-test-005",
+        "arm": "base",
+        "pair": "r0-test-005"
+      },
+      {
+        "id": "base/r0-test-006",
+        "arm": "base",
+        "pair": "r0-test-006"
+      },
+      {
+        "id": "base/r0-test-007",
+        "arm": "base",
+        "pair": "r0-test-007"
+      },
+      {
+        "id": "base/r0-test-008",
+        "arm": "base",
+        "pair": "r0-test-008"
+      },
+      {
+        "id": "base/r0-test-009",
+        "arm": "base",
+        "pair": "r0-test-009"
+      },
+      {
+        "id": "base/r0-test-010",
+        "arm": "base",
+        "pair": "r0-test-010"
+      },
+      {
+        "id": "base/r0-test-011",
+        "arm": "base",
+        "pair": "r0-test-011"
+      },
+      {
+        "id": "base/r0-test-012",
+        "arm": "base",
+        "pair": "r0-test-012"
+      },
+      {
+        "id": "base/r0-test-013",
+        "arm": "base",
+        "pair": "r0-test-013"
+      },
+      {
+        "id": "base/r0-test-014",
+        "arm": "base",
+        "pair": "r0-test-014"
+      },
+      {
+        "id": "base/r0-test-015",
+        "arm": "base",
+        "pair": "r0-test-015"
+      },
+      {
+        "id": "base/r0-lexical-000",
+        "arm": "base",
+        "pair": "r0-lexical-000"
+      },
+      {
+        "id": "base/r0-lexical-001",
+        "arm": "base",
+        "pair": "r0-lexical-001"
+      },
+      {
+        "id": "base/r0-lexical-002",
+        "arm": "base",
+        "pair": "r0-lexical-002"
+      },
+      {
+        "id": "base/r0-lexical-003",
+        "arm": "base",
+        "pair": "r0-lexical-003"
+      },
+      {
+        "id": "base/r0-lexical-004",
+        "arm": "base",
+        "pair": "r0-lexical-004"
+      },
+      {
+        "id": "base/r0-lexical-005",
+        "arm": "base",
+        "pair": "r0-lexical-005"
+      },
+      {
+        "id": "base/r0-lexical-006",
+        "arm": "base",
+        "pair": "r0-lexical-006"
+      },
+      {
+        "id": "base/r0-lexical-007",
+        "arm": "base",
+        "pair": "r0-lexical-007"
+      },
+      {
+        "id": "base/r0-lexical-008",
+        "arm": "base",
+        "pair": "r0-lexical-008"
+      },
+      {
+        "id": "base/r0-lexical-009",
+        "arm": "base",
+        "pair": "r0-lexical-009"
+      },
+      {
+        "id": "base/r0-lexical-010",
+        "arm": "base",
+        "pair": "r0-lexical-010"
+      },
+      {
+        "id": "base/r0-lexical-011",
+        "arm": "base",
+        "pair": "r0-lexical-011"
+      },
+      {
+        "id": "base/r0-lexical-012",
+        "arm": "base",
+        "pair": "r0-lexical-012"
+      },
+      {
+        "id": "base/r0-lexical-013",
+        "arm": "base",
+        "pair": "r0-lexical-013"
+      },
+      {
+        "id": "base/r0-lexical-014",
+        "arm": "base",
+        "pair": "r0-lexical-014"
+      },
+      {
+        "id": "base/r0-lexical-015",
+        "arm": "base",
+        "pair": "r0-lexical-015"
+      },
+      {
+        "id": "base/r1-test-000",
+        "arm": "base",
+        "pair": "r1-test-000"
+      },
+      {
+        "id": "base/r1-test-001",
+        "arm": "base",
+        "pair": "r1-test-001"
+      },
+      {
+        "id": "base/r1-test-002",
+        "arm": "base",
+        "pair": "r1-test-002"
+      },
+      {
+        "id": "base/r1-test-003",
+        "arm": "base",
+        "pair": "r1-test-003"
+      },
+      {
+        "id": "base/r1-test-004",
+        "arm": "base",
+        "pair": "r1-test-004"
+      },
+      {
+        "id": "base/r1-test-005",
+        "arm": "base",
+        "pair": "r1-test-005"
+      },
+      {
+        "id": "base/r1-test-006",
+        "arm": "base",
+        "pair": "r1-test-006"
+      },
+      {
+        "id": "base/r1-test-007",
+        "arm": "base",
+        "pair": "r1-test-007"
+      },
+      {
+        "id": "base/r1-test-008",
+        "arm": "base",
+        "pair": "r1-test-008"
+      },
+      {
+        "id": "base/r1-test-009",
+        "arm": "base",
+        "pair": "r1-test-009"
+      },
+      {
+        "id": "base/r1-test-010",
+        "arm": "base",
+        "pair": "r1-test-010"
+      },
+      {
+        "id": "base/r1-test-011",
+        "arm": "base",
+        "pair": "r1-test-011"
+      },
+      {
+        "id": "base/r1-test-012",
+        "arm": "base",
+        "pair": "r1-test-012"
+      },
+      {
+        "id": "base/r1-test-013",
+        "arm": "base",
+        "pair": "r1-test-013"
+      },
+      {
+        "id": "base/r1-test-014",
+        "arm": "base",
+        "pair": "r1-test-014"
+      },
+      {
+        "id": "base/r1-test-015",
+        "arm": "base",
+        "pair": "r1-test-015"
+      },
+      {
+        "id": "base/r1-lexical-000",
+        "arm": "base",
+        "pair": "r1-lexical-000"
+      },
+      {
+        "id": "base/r1-lexical-001",
+        "arm": "base",
+        "pair": "r1-lexical-001"
+      },
+      {
+        "id": "base/r1-lexical-002",
+        "arm": "base",
+        "pair": "r1-lexical-002"
+      },
+      {
+        "id": "base/r1-lexical-003",
+        "arm": "base",
+        "pair": "r1-lexical-003"
+      },
+      {
+        "id": "base/r1-lexical-004",
+        "arm": "base",
+        "pair": "r1-lexical-004"
+      },
+      {
+        "id": "base/r1-lexical-005",
+        "arm": "base",
+        "pair": "r1-lexical-005"
+      },
+      {
+        "id": "base/r1-lexical-006",
+        "arm": "base",
+        "pair": "r1-lexical-006"
+      },
+      {
+        "id": "base/r1-lexical-007",
+        "arm": "base",
+        "pair": "r1-lexical-007"
+      },
+      {
+        "id": "base/r1-lexical-008",
+        "arm": "base",
+        "pair": "r1-lexical-008"
+      },
+      {
+        "id": "base/r1-lexical-009",
+        "arm": "base",
+        "pair": "r1-lexical-009"
+      },
+      {
+        "id": "base/r1-lexical-010",
+        "arm": "base",
+        "pair": "r1-lexical-010"
+      },
+      {
+        "id": "base/r1-lexical-011",
+        "arm": "base",
+        "pair": "r1-lexical-011"
+      },
+      {
+        "id": "base/r1-lexical-012",
+        "arm": "base",
+        "pair": "r1-lexical-012"
+      },
+      {
+        "id": "base/r1-lexical-013",
+        "arm": "base",
+        "pair": "r1-lexical-013"
+      },
+      {
+        "id": "base/r1-lexical-014",
+        "arm": "base",
+        "pair": "r1-lexical-014"
+      },
+      {
+        "id": "base/r1-lexical-015",
+        "arm": "base",
+        "pair": "r1-lexical-015"
+      },
+      {
+        "id": "base/r2-test-000",
+        "arm": "base",
+        "pair": "r2-test-000"
+      },
+      {
+        "id": "base/r2-test-001",
+        "arm": "base",
+        "pair": "r2-test-001"
+      },
+      {
+        "id": "base/r2-test-002",
+        "arm": "base",
+        "pair": "r2-test-002"
+      },
+      {
+        "id": "base/r2-test-003",
+        "arm": "base",
+        "pair": "r2-test-003"
+      },
+      {
+        "id": "base/r2-test-004",
+        "arm": "base",
+        "pair": "r2-test-004"
+      },
+      {
+        "id": "base/r2-test-005",
+        "arm": "base",
+        "pair": "r2-test-005"
+      },
+      {
+        "id": "base/r2-test-006",
+        "arm": "base",
+        "pair": "r2-test-006"
+      },
+      {
+        "id": "base/r2-test-007",
+        "arm": "base",
+        "pair": "r2-test-007"
+      },
+      {
+        "id": "base/r2-test-008",
+        "arm": "base",
+        "pair": "r2-test-008"
+      },
+      {
+        "id": "base/r2-test-009",
+        "arm": "base",
+        "pair": "r2-test-009"
+      },
+      {
+        "id": "base/r2-test-010",
+        "arm": "base",
+        "pair": "r2-test-010"
+      },
+      {
+        "id": "base/r2-test-011",
+        "arm": "base",
+        "pair": "r2-test-011"
+      },
+      {
+        "id": "base/r2-test-012",
+        "arm": "base",
+        "pair": "r2-test-012"
+      },
+      {
+        "id": "base/r2-test-013",
+        "arm": "base",
+        "pair": "r2-test-013"
+      },
+      {
+        "id": "base/r2-test-014",
+        "arm": "base",
+        "pair": "r2-test-014"
+      },
+      {
+        "id": "base/r2-test-015",
+        "arm": "base",
+        "pair": "r2-test-015"
+      },
+      {
+        "id": "base/r2-lexical-000",
+        "arm": "base",
+        "pair": "r2-lexical-000"
+      },
+      {
+        "id": "base/r2-lexical-001",
+        "arm": "base",
+        "pair": "r2-lexical-001"
+      },
+      {
+        "id": "base/r2-lexical-002",
+        "arm": "base",
+        "pair": "r2-lexical-002"
+      },
+      {
+        "id": "base/r2-lexical-003",
+        "arm": "base",
+        "pair": "r2-lexical-003"
+      },
+      {
+        "id": "base/r2-lexical-004",
+        "arm": "base",
+        "pair": "r2-lexical-004"
+      },
+      {
+        "id": "base/r2-lexical-005",
+        "arm": "base",
+        "pair": "r2-lexical-005"
+      },
+      {
+        "id": "base/r2-lexical-006",
+        "arm": "base",
+        "pair": "r2-lexical-006"
+      },
+      {
+        "id": "base/r2-lexical-007",
+        "arm": "base",
+        "pair": "r2-lexical-007"
+      },
+      {
+        "id": "base/r2-lexical-008",
+        "arm": "base",
+        "pair": "r2-lexical-008"
+      },
+      {
+        "id": "base/r2-lexical-009",
+        "arm": "base",
+        "pair": "r2-lexical-009"
+      },
+      {
+        "id": "base/r2-lexical-010",
+        "arm": "base",
+        "pair": "r2-lexical-010"
+      },
+      {
+        "id": "base/r2-lexical-011",
+        "arm": "base",
+        "pair": "r2-lexical-011"
+      },
+      {
+        "id": "base/r2-lexical-012",
+        "arm": "base",
+        "pair": "r2-lexical-012"
+      },
+      {
+        "id": "base/r2-lexical-013",
+        "arm": "base",
+        "pair": "r2-lexical-013"
+      },
+      {
+        "id": "base/r2-lexical-014",
+        "arm": "base",
+        "pair": "r2-lexical-014"
+      },
+      {
+        "id": "base/r2-lexical-015",
+        "arm": "base",
+        "pair": "r2-lexical-015"
+      }
+    ],
+    "plannedForwards": 44544,
+    "alignment": "none; exact full vector at the last prompt token; both task directions"
+  },
+  "planHash": "cde74f7f1a8e2fd2f6ae583111e18b09e164c188ee19f193662e5e8488d57696",
+  "sourceHash": "19dd28bb182f6fa86b145b3e7767bee0e83cc428080a85a1b756b23ff3bdc308"
+}
