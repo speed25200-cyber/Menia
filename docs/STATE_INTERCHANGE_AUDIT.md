@@ -28,6 +28,13 @@ des logits de grande amplitude et des paires hétérogènes. Il vérifie les
 intervalles non dégénérés et le rejet d'un contraste ou d'un prérequis modifié.
 Ces valeurs synthétiques ne sont pas des résultats de Qwen3-4B.
 
+Le script `scripts/plot_state_interchange.py` fixe aussi la présentation des
+trois répétitions, des deux tâches, des trois sites, de la base et des six
+contrastes principaux. Sa mise en page a été exécutée et inspectée sur le jeu
+synthétique, avec un titre explicite. Cette image de contrôle reste locale.
+La figure scientifique sera produite seulement après vérification du bilan
+complet ; les tableaux conserveront également tous les résultats secondaires.
+
 Après réception du journal complet, l'audit se lance avec :
 
 ```powershell
