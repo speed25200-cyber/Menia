@@ -70,7 +70,8 @@ seul accès interne. Le [critère fixé](docs/PRESENCE_SPECIFICITY_PROTOCOL.md)
 Ce notebook continue dans l'environnement du Colab 10 avec ses fichiers conservés.
 
 **Expérience suivante : [composer état interne et consigne](docs/STATE_COMPOSITION_PROTOCOL.md).**
-Le Colab 12 est implémenté avant collecte : neuf nouveaux adaptateurs,
+Le [Colab 12](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/7e87411c771408eceb9c214793894b8f2036e399/notebooks/12_state_composition_colab.ipynb)
+est figé et son entraînement a démarré par MCP sur A100 le 19 septembre : neuf nouveaux adaptateurs,
 576 mises à jour et 25 920 évaluations prévues. Les deux sens de réponse et la
 lecture publique sont entraînés ensemble, avec des témoins à étiquettes
 mélangées et sans nouvelles étiquettes internes. Une reformulation est réservée

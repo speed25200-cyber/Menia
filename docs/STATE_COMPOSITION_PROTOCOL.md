@@ -196,3 +196,28 @@ entrées et leurs spans restent identiques.
 
 Empreinte du plan : `bef98c408309d43ed7e15784b18628ae56065583ead44afaaff8872e57694224`.
 Empreinte de la source scientifique : `f3646182a3a6420fa108ff98d5ca58a7d8612de0c2eac14c19f388394b0ce1e9`.
+
+## Exécution et audit préparé
+
+Code scientifique figé : `9793ec781845c3e7eef686bb06978d7f1eabdb25`.
+[Notebook publié](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/7e87411c771408eceb9c214793894b8f2036e399/notebooks/12_state_composition_colab.ipynb),
+empreinte SHA-256 des octets publiés :
+`8129b0ee6e2cd743814ef670fa3cc0b64bd0932cef4e691671ee417df698a85c`.
+Lancement par MCP le 19 septembre 2026 à **12:00:57 UTC**, sur A100-SXM4 de
+40 Go. Les neuf tests passent dans le runtime en 134,103 secondes avant le
+chargement des poids préentraînés. Les premières mises à jour sont observées ;
+aucun résultat de test n'est encore disponible.
+
+Le [recalcul séparé](../research/audit_state_composition.py) a été écrit pendant
+l'entraînement, avant toute consultation des évaluations. Il reconstruit les
+cibles, les masses par paire, les comparaisons AUROC et les critères, avec un
+bootstrap par multiplicité des blocs. Il doit vérifier 288 tableaux,
+42 contrastes dont 24 principaux, 72 contrôles et 6 480 paires témoins.
+Il partage le lecteur strict et le plan ; il ne constitue pas une réplication
+extérieure. Les checkpoints présents sont vérifiés par empreinte ; l'absence
+d'un fichier est explicitement indiquée dans le résultat de l'audit.
+
+Deux tests de cet auditeur passent sur oracle, réponses non inversées,
+scores aléatoires avec égalités, chiffres inutilisés et sorties hors options.
+Une altération du résumé est rejetée. L'auditeur ne modifie ni les paramètres
+de l'expérience en cours, ni sa règle de lecture.
