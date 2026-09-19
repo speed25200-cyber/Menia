@@ -26,6 +26,16 @@ Ce test porte sur une compétence publique préalable. Il ne remplace pas
 l'estimation apprise des propres réussites et son usage causal, toujours
 à construire et vérifier ; il n'établit ni vécu ni nouveauté.
 
+La [préparation d'une confiance native après réponse](NATIVE_ANSWER_CONFIDENCE_PREPARATION.md)
+transforme uniquement les 1 728 réponses d'apprentissage déjà auditées du
+Colab 17 en cibles mesurées et mélangées. Elle exclut 576 validations et
+1 152 tests, garde le corrigé hors des entrées et conserve la masse des codes
+dans le vocabulaire lors du calcul d'un score. Quatre tests logiciels passent.
+Les 525 réponses correctes et 1 203 incorrectes sont des données anciennes,
+pas une nouvelle performance. Certaines catégories ont presque zéro réussite,
+ce qui limite l'apprentissage d'une discrimination interne à ces catégories.
+Aucun nouvel adaptateur de confiance n'est encore entraîné.
+
 Le [bilan du Colab 21](ACTION_DECOMPOSITION_RESULTS.md) est reçu et vérifié :
 2 448 appels, dont 288 rejeux identiques, avec poids inchangés. Les erreurs
 contextualisées ne se réduisent pas à l'incapacité de comparer les nombres

@@ -270,6 +270,12 @@ chaque présentation ; six tests passent sur PC et Colab. Le
 le processus actif et les premières mises à jour. Ce contrôle public ne mesure
 pas encore une estimation des capacités propres ou une conscience.
 
+La [préparation de confiance après réponse](docs/NATIVE_ANSWER_CONFIDENCE_PREPARATION.md)
+ajoute ensuite 1 728 exemples issus uniquement de l'ancien apprentissage,
+avec cibles exactes ou mélangées et sans corrigé dans l'entrée. Quatre tests
+logiciels passent. Aucun nouveau modèle de confiance n'est encore entraîné ;
+les limites des catégories presque toujours fausses restent explicites.
+
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
 Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)
 entraîne deux petits adaptateurs Qwen3-4B, avec cibles correctes ou mélangées,
