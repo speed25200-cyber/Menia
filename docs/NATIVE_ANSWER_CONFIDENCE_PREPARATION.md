@@ -161,10 +161,30 @@ la cible ne modifie pas les logits qui prédisent cette cible, ce qui vérifie
 l'absence de fuite causale par le token supervisé.
 
 **Ce planning n'est pas encore une expérience scientifique figée ou lancée.**
-Il reste à implémenter le collecteur complet, les comparateurs calibrés,
-les critères et l'audit de reconstruction avant toute collecte. Les seuls
+Il reste à implémenter le collecteur complet, les critères et l'audit de
+reconstruction avant toute collecte. Les seuls
 poids modifiés dans cette étape sont ceux du petit modèle de test local ;
 aucun nouvel adaptateur de confiance Qwen3-4B n'est entraîné.
+
+### Comparateurs ajustés sur la calibration future
+
+[`answer_confidence_baselines.py`](../research/answer_confidence_baselines.py)
+prépare deux comparateurs externes, ajustés séparément pour chaque producteur
+sur ses 96 réponses de calibration nouvelles : fréquence Beta(1,1) par
+catégorie, et régression ridge à pénalité fixe 1. Cette dernière combine
+catégorie, probabilités et entropie avant réponse, vraisemblance moyenne de
+la séquence produite, longueur et validité syntaxique du format entier.
+Ses moyennes et échelles sont apprises sur la calibration seulement ; ses
+sorties sont bornées à [0,1]. Il n'y a pas de sélection d'hyperparamètres sur
+les tests. Le score de séquence est disponible après réponse seulement.
+
+Deux tests supplémentaires passent en 0,040 s. Un cas construit vérifie que
+le taux du modèle adapté suit ses propres réponses, même quand la base a un
+autre taux. Un enregistrement de test volontairement illisible est ignoré
+par l'ajustement ; modifier le corrigé futur ne change pas la prévision.
+Les partitions incomplètes, doublons, échecs techniques et probabilités
+invalides sont refusés. Aucun de ces comparateurs n'a encore été ajusté sur
+des réponses nouvelles de Qwen3-4B : leur validation reste logicielle.
 
 Ce code prépare des données et un calcul de score. Il ne démontre ni
 l'apprentissage ni sa généralisation. Avant toute collecte suivante, il
