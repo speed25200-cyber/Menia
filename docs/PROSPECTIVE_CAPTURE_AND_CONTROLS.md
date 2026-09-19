@@ -111,6 +111,14 @@ et l'emboîtement des comparateurs, le rejet des champs de réponse future et
 l'indépendance du contrôle final aux changements de la seule projection médiane.
 La capture commune n'a pas encore été exécutée sur Qwen3-4B/A100 à ce stade.
 
+`research.joint_capture_validation` fixe ce contrôle GPU sur les deux mêmes
+questions techniques et les graines 421/972, déjà exclues du nouveau jeu.
+Il compare génération originale, états seuls, confiance seule et capture
+commune ; les sorties sont limitées à 32 nouveaux tokens. Douze égalités ou
+contrôles par cas, puis l'invariance de la capture entre graines, sont exigés.
+Le même programme passe d'abord sur le Qwen miniature avec huit tokens maximum.
+Aucun poids n'est ajusté et les échecs éventuels seront conservés.
+
 ```sh
 python -m unittest tests_language.test_joint_prediction_capture tests_research.test_prospective_confidence_features tests_research.test_natural_error_questions tests_research.test_natural_error_readouts -v
 ```
