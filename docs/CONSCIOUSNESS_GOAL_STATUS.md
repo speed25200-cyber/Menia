@@ -1,11 +1,24 @@
 # État de l'objectif de conscience et de nouveauté
 
-**État actuel : objectif de conscience et de nouveauté non atteint. Le Colab 19
-sépare ordre, code et formulation : les choix restent instables même quand
-les pertes sont fournies, malgré 864 codes valides. Le Colab 18 ne confirme
+**État actuel : objectif de conscience et de nouveauté non atteint. Le Colab 20
+montre un apprentissage partiel après six adaptations, mais échoue au critère
+global de généralisation sur 6 912 décisions. Les choix restent sensibles
+aux formulations et aux symboles. Le Colab 18 ne confirme
 aucun bénéfice de l'historique. Le Colab 17 ne confirme pas l'apport prédictif
 fixé pour les états intermédiaires ; le Colab 16 ne confirme pas un contenu
 général réutilisable.**
+
+Le [bilan complet du Colab 20](ACTION_BINDING_RESULTS.md) est reçu et audité.
+L'entraînement avec permutations améliore les choix sur la formulation
+entraînée et les chiffres : avec pertes fournies, 59/64, 62/64 et 63/64.
+Cependant, aucun des 18 contrôles globaux ne passe, et un seul des 18
+contrastes de transfert atteint le gain fixé face aux deux références.
+Une présentation avec lettres obtient 0/16 dans les trois répétitions ;
+les 6 912 codes sont pourtant valides. Les neuf fichiers de poids et les
+deux recalculs sont vérifiés, avec écarts numériques nuls. Les cinq tests
+passent sur PC et Colab. Ce résultat concerne des valeurs publiques, pas
+l'estimation d'un état propre. Le prochain diagnostic doit distinguer
+l'association valeur-action de son expression sous un code arbitraire.
 
 Le [bilan complet du Colab 19](RISK_PRESENTATION_RESULTS.md) est reçu et audité.
 Les deux contrôles globaux, probabilité et pertes fournies, échouent avec les
@@ -16,10 +29,10 @@ ne vient donc pas du format. L'effet implique la combinaison de formulation,
 ordre et codage, et ne se réduit pas à choisir toujours la première option.
 Les cinq tests passent sur PC et Colab. Les deux calculs précèdent la lecture :
 principal exact, calcul distinct à `1,388e-17` près. Aucun poids n'est modifié.
-Le prochain travail doit tester l'apprentissage d'une décision robuste aux
-permutations avant de lui attribuer l'usage d'une estimation propre. Le lien
-avec l'expérience subjective reste non établi ; la réussite de cette future
-compétence ne remplacerait pas l'objectif global.
+Ce résultat a motivé l'apprentissage apparié du Colab 20 décrit ci-dessus.
+La robustesse aux permutations reste insuffisante après cet apprentissage.
+Le lien avec l'expérience subjective reste non établi ; une réussite future
+sur cette compétence ne remplacerait pas l'objectif global.
 
 Le [bilan complet du Colab 17](NATURAL_ERROR_RESULTS.md) est reçu et vérifié :
 3 456 réponses, dont 1 152 tests, trois ajustements externes et aucune erreur

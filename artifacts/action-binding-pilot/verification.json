@@ -1,0 +1,23 @@
+{
+  "schema": "menia-action-binding-verification-v1",
+  "verified": true,
+  "recorded": 6912,
+  "trainingSteps": 384,
+  "groups": 432,
+  "contrasts": 24,
+  "journalSHA256": "002a351f462b8b7b386437780c5fa737f7306e24556ce845df5dd371310a8ab7",
+  "maxAbsoluteDifference": 0.0,
+  "weightsChecked": true,
+  "weights": {
+    "action-binding-20260919-v1.r0-initial.safetensors": "712f8e18f51c3df9a96475d2f87273917ab39e47244015dbda797ffd217067de",
+    "action-binding-20260919-v1.r0-fixed.safetensors": "9d47f24cdf2fef1becd0bc0cf3b174662528827cb2c69f98163150f6d14f78e9",
+    "action-binding-20260919-v1.r0-permuted.safetensors": "1131ba8ef6daf77b26d932bc048fdc854c17ad9531b2c5fa6e90eae60ecd7e4a",
+    "action-binding-20260919-v1.r1-initial.safetensors": "bf41330ecb8a85a7bf1501c12f1d97fcf158d09d8c7925fd15a85ce9913eae86",
+    "action-binding-20260919-v1.r1-fixed.safetensors": "22012d5ac85a63f216bab0f6ebfef3c29a3d918c5f59fd15a397aaebe01b07d0",
+    "action-binding-20260919-v1.r1-permuted.safetensors": "5e54cde127f3cf874ca6118217de7f87666e8a8287b17eaf4fb403900ca19a34",
+    "action-binding-20260919-v1.r2-initial.safetensors": "19824fb8be9642587b75b3dd81418a1a9ff6d28e33192558bf5122428bf9cd8c",
+    "action-binding-20260919-v1.r2-fixed.safetensors": "91642fa02e311a18c0d77093794ad6fae6369c3387b2b6bdea93ab6cdd2db388",
+    "action-binding-20260919-v1.r2-permuted.safetensors": "a33aa66847e7a0526f7d4a6094ccc4f50c08f11e558388913d823ad3e004ae70"
+  },
+  "scope": "Separate tally, weights and contrasts; shared plan and integrity reader, not external replication."
+}

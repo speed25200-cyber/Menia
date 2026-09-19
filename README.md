@@ -4,10 +4,10 @@ Assistant local expérimental : mémoire explicite, représentation de ses capac
 incertitude et évaluation. **Colab A100 40 ou 80 Go** pour l’adaptation ;
 **iPhone 17 Pro** comme cible d’inférence locale.
 
-**Statut : prototype de recherche. Les Colab 18 et 19 sont terminés et audités :
-la décision native reste sensible à la présentation, même avec des pertes
-publiques déjà calculées. Les six entraînements du Colab 20 sont terminés ;
-l'évaluation de l'association entre valeurs et codes d'action reste en cours.
+**Statut : prototype de recherche. Le Colab 20 est terminé et audité : six
+entraînements et 6 912 décisions montrent un apprentissage partiel, mais
+le critère global de généralisation échoue. La décision reste sensible
+aux formulations et aux codes d'action, même avec des pertes déjà calculées.
 Le Colab 17 ne confirme
 aucun des neuf gains prédictifs principaux pour les états intermédiaires.
 La détection de rotations internes est reproduite, mais sa portée générale
@@ -219,21 +219,24 @@ lecture des scores. Ce contrôle ne démontre ni accès à un état privé ni
 conscience ; il motive de tester l'apprentissage d'une association stable
 entre valeurs et codes d'action, avant de lui attribuer un rôle de modèle de soi.
 
+**Résultat : [apprentissage partiel, généralisation insuffisante](docs/ACTION_BINDING_RESULTS.md).**
 Le [Colab 20 fixé](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/4b85eafc626da083ec6a5fb16919a63decc4bffe/notebooks/20_action_binding_colab.ipynb)
-met en œuvre cet [apprentissage apparié](docs/ACTION_BINDING_PROTOCOL.md).
-Deux bras, présentation fixe ou permutations, voient les mêmes cas et budgets,
-avec trois initialisations : six adaptateurs, 384 mises à jour, puis 6 912
-décisions de test sur de nouveaux coûts et probabilités, avec formulations et
-symboles réservés. Le modèle initial sert de troisième référence. Les cinq
-tests passent sur PC et A100 ; le [reçu de lancement](artifacts/action-binding-pilot/launch.json)
-atteste le début de l'entraînement par MCP le 19 septembre à 20:18 UTC.
-À 20:32 UTC, les [six entraînements sont terminés](artifacts/action-binding-pilot/training-freeze.json) :
-384 mises à jour, neuf fichiers de poids vérifiés et entraînement entièrement
-antérieur au premier test. **Évaluation en cours, aucun résultat de
-généralisation annoncé.** Cette méthode
-a des antécédents et teste une compétence publique ; aucune conscience ni
-installation sur iPhone n'en découle. Le notebook conserve l'environnement
-Menia déjà installé et refuse de remplacer une tentative existante.
+est terminé et audité : six adaptateurs, 384 mises à jour et 6 912 décisions
+sur 16 nouveaux cas présentés de plusieurs façons. Les bras fixe et avec
+permutations partagent initialisations et budgets ; le modèle initial sert
+de troisième référence. Avec pertes fournies et formulation entraînée, les
+permutations atteignent 59/64, 62/64 et 63/64 choix corrects avec les chiffres.
+Le transfert aux reformulations et aux lettres reste faible ; une présentation
+avec lettres obtient même 0/16 dans les trois répétitions. **Le critère global
+échoue**, avec zéro contrôle global réussi sur 18 et un seul des 18 contrastes
+de transfert atteignant le gain fixé face aux deux références. Tous les codes
+sont valides. Les cinq tests passent sur PC et A100 ; les deux recalculs
+concordent exactement, les neuf poids et l'archive sont vérifiés dans le
+[reçu final](artifacts/action-binding-pilot/receipt.json). La collecte MCP s'est
+terminée le 19 septembre à 20:52 UTC. Cette méthode a des antécédents et teste
+une compétence publique ; aucune conscience ni installation sur iPhone n'en
+découle. Le notebook conserve l'environnement Menia déjà installé et refuse
+de remplacer une tentative existante.
 
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
 Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)
