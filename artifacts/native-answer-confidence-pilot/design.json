@@ -76,13 +76,13 @@
   "trainingFiles": {
     "measured": {
       "path": "artifacts/answer-confidence-training-data/measured.jsonl",
-      "bytes": 929894,
-      "sha256": "4705f7dd60ff7674a87e6cfbff8a665133e1086fa905698d0634964bc9a5feef"
+      "bytes": 928166,
+      "sha256": "c05a1ebf2cf72075c4ba6124b460e8b37f4bdc5d1a89b17c7df7ff10fe6959e0"
     },
     "shuffled": {
       "path": "artifacts/answer-confidence-training-data/shuffled.jsonl",
-      "bytes": 929894,
-      "sha256": "7a71dfd7cc0df1eb30fed36089a3fa0ffcd89f4b3c441317746a1e8795359c7f"
+      "bytes": 928166,
+      "sha256": "90324205f8c8de187d599f909eb96dd929530fd90e187f88864f4a8952ee11ba"
     }
   },
   "parentReportHash": "d70ac03eb906f2ef4fa18b69f55e68ea71fc65a6c5e6bfd32e501326aafce1e8",
