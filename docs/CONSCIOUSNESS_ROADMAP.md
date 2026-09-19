@@ -91,7 +91,7 @@ le signal favorise encore « 1 » sous consigne inversée et affecte les tâches
 publiques. Les contrôles visibles échouent aussi avec le fort. Il faut traiter
 la composition entre détection et consigne avant d'interpréter ce signal comme
 un compte rendu fiable ; son bénéfice pour l'agent reste non établi.
-Le [Colab 12](STATE_COMPOSITION_PROTOCOL.md) prépare un apprentissage
+Le [Colab 12](STATE_COMPOSITION_PROTOCOL.md) a exécuté un apprentissage
 contrebalancé de cette composition avec préservation des tâches publiques,
 contrôle sans nouvelles étiquettes internes et transfert de formulation.
 Son [bilan complet](STATE_COMPOSITION_RESULTS.md) montre une inversion du
@@ -99,6 +99,10 @@ score conforme à la consigne et un transfert de formulation. Le critère global
 échoue pourtant : avantage non constant sur le bras consignes, réponses de
 présence parfois constantes et échecs sur la lecture reformulée de PHRASE 2.
 La décision et la généralisation linguistique doivent être diagnostiquées.
+Le [protocole 13](COMPOSITION_DIAGNOSTIC_PROTOCOL.md) fixe ce diagnostic sans
+entraînement : comparaison des formulations avec la base et les parents,
+puis seuils numériques externes ajustés uniquement sur l'ancien apprentissage
+et évalués sur de nouveaux blocs. Aucun résultat 13 n'est encore disponible.
 La [note sur le transfert d'état ou de réponse](MECHANISTIC_COMPOSITION_REVIEW.md)
 prépare un contraste mécanistique conditionnel et ses explications concurrentes.
 Elle ne constitue pas un protocole supplémentaire déjà fixé ou exécuté.
@@ -112,7 +116,7 @@ contraste que le [moniteur d'activations](ACTIVATION_MONITOR_RESULTS.md) a manqu
 Après ajustement des poids, mesurer à nouveau les erreurs du checkpoint final :
 son comportement peut différer de celui du parent ayant fourni les étiquettes.
 Le [complément sur la dérive de la cible](SELF_PREDICTION_CONTROLS.md) motive
-ce contrôle pour l'étape future, sans modifier le Colab 12 en cours.
+ce contrôle pour l'étape future, sans modifier les critères du Colab 12 terminé.
 
 **Étape 3 — L'état interne doit guider l'action (HOT-3).** Relier ce signal à
 la décision de vérifier, s'abstenir ou répondre, dans la boucle de

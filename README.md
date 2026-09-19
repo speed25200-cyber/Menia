@@ -84,6 +84,13 @@ de contrôle concernent la lecture reformulée de PHRASE 2. Un bon classement
 coexiste parfois avec une réponse constante de présence. Les 6 480 paires
 témoins, neuf poids et calculs sont vérifiés. Aucune conscience n'est établie.
 
+**Suite fixée : [diagnostic des consignes et de la décision](docs/COMPOSITION_DIAGNOSTIC_PROTOCOL.md).**
+Le Colab 13 prévoit 13 824 évaluations sans entraînement : base, parents et
+variantes sur de nouvelles phrases, avec les deux formulations déjà connues.
+Six seuils externes sont gelés à partir des seuls anciens exemples d'apprentissage.
+Ils seront comparés aux réponses natives ; aucun résultat de cette nouvelle
+collecte n'est encore disponible.
+
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
 Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)
 entraîne deux petits adaptateurs Qwen3-4B, avec cibles correctes ou mélangées,
