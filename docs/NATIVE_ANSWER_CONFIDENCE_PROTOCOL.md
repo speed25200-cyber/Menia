@@ -145,3 +145,19 @@ nouvelle version explicitée, sans écraser les données ni déplacer les seuils
 après lecture des résultats. L'étape suivante dépendra de ce résultat :
 localiser et perturber un mécanisme prédictif réellement appris, puis mesurer
 son usage dans les actions, reste distinct de cette collecte.
+
+## Reçu de lancement
+
+La tentative a démarré le 19 septembre 2026 à 23:30:36 UTC (20 septembre,
+01:30:36 en Suisse) sur A100 40 Go. Les 23 tests logiciels passent aussi
+dans l'environnement Colab, en 216,117 s. Le
+[reçu de lancement](../artifacts/native-answer-confidence-pilot/launch.json)
+confirme le processus actif et 19 mises à jour du premier adaptateur à
+23:35:09 UTC, avec empreintes du plan et des sources conformes. Aucun appel
+de calibration ou de test n'est enregistré à cet instant. Les 23 tests
+locaux avaient passé en deux exécutions (4 et 19 tests).
+
+Code scientifique : `e9af0cf871268a7febb5695762b1fef0879f34ad`. Le
+[notebook Colab 23](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/fe7731117f94a196d76fda2a964453c14dc49a8d/notebooks/23_native_answer_confidence_colab.ipynb)
+est publié séparément et épinglé sur ce code. Ce reçu atteste le démarrage,
+pas l'achèvement ni une amélioration mesurée.

@@ -9,7 +9,9 @@ l'action par son nom reste faible (514/864). La traduction imposée réussit
 423/432. Le Colab 20 reste un échec global de généralisation. Le Colab 18 ne confirme
 aucun bénéfice de l'historique. Le Colab 17 ne confirme pas l'apport prédictif
 fixé pour les états intermédiaires ; le Colab 16 ne confirme pas un contenu
-général réutilisable.**
+général réutilisable. Le Colab 23 vient de démarrer sur A100 pour tester une
+confiance native après réponse ; aucun résultat de cette collecte n'est
+encore disponible.**
 
 Le [protocole du Colab 22](VALUE_ACTION_LEARNING_PROTOCOL.md) compare trois
 recettes d'apprentissage appariées : choix seuls, associations auxiliaires
@@ -42,7 +44,7 @@ dans le vocabulaire lors du calcul d'un score. Quatre tests logiciels passent.
 Les 525 réponses correctes et 1 203 incorrectes sont des données anciennes,
 pas une nouvelle performance. Certaines catégories ont presque zéro réussite,
 ce qui limite l'apprentissage d'une discrimination interne à ces catégories.
-Aucun nouvel adaptateur de confiance n'est encore entraîné.
+L'apprentissage des nouveaux adaptateurs de confiance est maintenant en cours.
 La lecture de la tête de sortie et la comparaison croisée des trois producteurs
 avec les trois évaluateurs sont implémentées. Cinq tests supplémentaires
 passent, dont deux sur un petit Qwen aléatoire : ils vérifient le calcul et
@@ -59,8 +61,11 @@ identiques, face au modèle de base, au témoin mélangé et à deux comparateur
 statistiques. Quatre tests supplémentaires du journal complet passent :
 ils détectent des scores altérés, un contexte incorrect, une calibration
 non figée et une masse de codes insuffisante. Leurs sorties sont synthétiques,
-pas des performances de Menia. Le collecteur et l'audit sont prêts ; le
-lancement réel reste à documenter.
+pas des performances de Menia. Les 23 tests logiciels passent sur PC et
+sur Colab. Le [reçu de lancement](../artifacts/native-answer-confidence-pilot/launch.json)
+constate 19 mises à jour du premier adaptateur, sans appel de calibration
+ou de test à cet instant. Cette progression ne valide pas encore la prévision
+de ses erreurs ni son usage dans une décision.
 
 Le [bilan du Colab 21](ACTION_DECOMPOSITION_RESULTS.md) est reçu et vérifié :
 2 448 appels, dont 288 rejeux identiques, avec poids inchangés. Les erreurs

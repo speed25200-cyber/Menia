@@ -1,0 +1,60 @@
+{
+  "schema": "menia-native-answer-confidence-launch-v1",
+  "job": {
+    "pid": 204304,
+    "startedUTC": "2026-09-19T23:30:36.245954+00:00",
+    "scienceRevision": "e9af0cf871268a7febb5695762b1fef0879f34ad",
+    "notebookRevision": "fe7731117f94a196d76fda2a964453c14dc49a8d",
+    "notebookSHA256": "360112c7ab7e319e768247975921335b9b9bd8258d599f3a9c3e4539dfd7be74",
+    "gpuPreflight": "NVIDIA A100-SXM4-40GB, 0 MiB, 40960 MiB",
+    "directory": "/content/menia-native-confidence-mcp-20260920-v1"
+  },
+  "observedUTC": "2026-09-19T23:35:09.590701+00:00",
+  "observedReturnCode": null,
+  "observedEvents": {
+    "header": 1,
+    "training_start": 1,
+    "training_step": 19
+  },
+  "observedTrainingUnits": {
+    "r0-measured": 19
+  },
+  "planHash": "ece013eaeca2ed764fe56ed68d1b5c94f2cbf293e6fc75ad4eb3dd1708672847",
+  "sourceHash": "52e25ffda3a39c182369b4f9d4f3d8d71d3ec94a47e9683dec3e945737bcee38",
+  "origin": "transformers_gpu",
+  "model": {
+    "id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "requiredVersions": {
+    "accelerate": "1.10.1",
+    "huggingface-hub": "0.36.2",
+    "numpy": "2.2.6",
+    "safetensors": "0.6.2",
+    "tokenizers": "0.22.2",
+    "torch": "2.8.0+cu126",
+    "transformers": "4.56.2"
+  },
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "gpuBytes": 42405855232,
+  "codeCommit": "e9af0cf871268a7febb5695762b1fef0879f34ad",
+  "localTests": {
+    "total": 23,
+    "separateRuns": [
+      {
+        "count": 4,
+        "seconds": 115.481
+      },
+      {
+        "count": 19,
+        "seconds": 1.432
+      }
+    ]
+  },
+  "colabTests": {
+    "count": 23,
+    "seconds": 216.117
+  },
+  "outcomesReviewed": false,
+  "scope": "Launch and initial training observed. No test outcomes or performance conclusion."
+}

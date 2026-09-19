@@ -283,7 +283,7 @@ Les budgets sont de 80 384 tokens d'entrée par entraînement de choix et
 La [préparation de confiance après réponse](docs/NATIVE_ANSWER_CONFIDENCE_PREPARATION.md)
 ajoute ensuite 1 728 exemples issus uniquement de l'ancien apprentissage,
 avec cibles exactes ou mélangées et sans corrigé dans l'entrée. Quatre tests
-logiciels passent. Aucun nouveau modèle de confiance n'est encore entraîné ;
+logiciels passent. L'entraînement de confiance a maintenant démarré ;
 les limites des catégories presque toujours fausses restent explicites.
 La lecture native du score et une comparaison croisée entre producteurs de
 réponses et évaluateurs sont maintenant implémentées, avec cinq tests
@@ -296,7 +296,11 @@ Qwen aléatoire. Le [protocole complet du Colab 23](docs/NATIVE_ANSWER_CONFIDENC
 fixe maintenant la collecte de 10 368 appels et 24 comparaisons principales
 sur réponses identiques. Le collecteur et l'audit passent quatre tests
 supplémentaires sur des sorties construites ; aucune nouvelle performance
-Qwen3-4B n'est encore mesurée.
+Qwen3-4B n'est encore mesurée. Le
+[Colab 23](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/fe7731117f94a196d76fda2a964453c14dc49a8d/notebooks/23_native_answer_confidence_colab.ipynb)
+est lancé sur A100 : 23 tests passent aussi dans Colab, et le
+[reçu de lancement](artifacts/native-answer-confidence-pilot/launch.json)
+confirme les premières mises à jour avec les empreintes attendues.
 
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
 Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)
