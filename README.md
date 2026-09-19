@@ -69,6 +69,14 @@ seul accès interne. Le [critère fixé](docs/PRESENCE_SPECIFICITY_PROTOCOL.md)
 échoue ; les 2 304 copies témoins et le recalcul indépendant sont vérifiés.
 Ce notebook continue dans l'environnement du Colab 10 avec ses fichiers conservés.
 
+**Expérience suivante : [composer état interne et consigne](docs/STATE_COMPOSITION_PROTOCOL.md).**
+Le Colab 12 est implémenté avant collecte : neuf nouveaux adaptateurs,
+576 mises à jour et 25 920 évaluations prévues. Les deux sens de réponse et la
+lecture publique sont entraînés ensemble, avec des témoins à étiquettes
+mélangées et sans nouvelles étiquettes internes. Une reformulation est réservée
+au test principal ; les chiffres 2/3 servent de transfert secondaire.
+Aucun résultat ni conclusion sur la conscience n'est encore disponible pour cet essai.
+
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
 Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)
 entraîne deux petits adaptateurs Qwen3-4B, avec cibles correctes ou mélangées,

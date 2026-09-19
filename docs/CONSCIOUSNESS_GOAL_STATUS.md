@@ -22,8 +22,12 @@ théoriques. Les Colab 10 et 11 possèdent des critères fixés. Le
 [Colab 11](PRESENCE_SPECIFICITY_PROTOCOL.md), exécuté par MCP sur l'A100,
 teste la dépendance du signal au sens de la question avec les neuf adaptateurs
 figés et 9 216 nouvelles évaluations. Son résultat négatif est résumé ci-dessus.
-Les étapes ultérieures restent des
-propositions à formaliser avant collecte.
+Le [Colab 12](STATE_COMPOSITION_PROTOCOL.md) est maintenant implémenté et
+préparé avant collecte : neuf nouveaux adaptateurs issus des parents du Colab 10,
+576 mises à jour, consignes contrebalancées, contrôle sans nouvelles étiquettes
+internes et 25 920 évaluations. Il réserve une reformulation au test principal.
+Aucun résultat de cette nouvelle expérience n'est encore disponible.
+Les étapes mécanistiques et d'agent ultérieures restent à formaliser.
 La [revue du 19 septembre](RESEARCH_REVIEW_2026_09_19.md) confirme que le
 dernier export retrouvé avant la nouvelle exécution était celui du Colab 09 et corrige des formulations
 trop catégoriques de cette feuille de route.

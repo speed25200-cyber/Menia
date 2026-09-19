@@ -76,8 +76,8 @@ naturelles et l'utilité du signal, avec des références adaptées.
 
 ## Feuille de route
 
-Les Colab 10 et 11 possèdent ici des protocoles implémentés et des critères
-déjà fixés. Les étapes suivantes sont des propositions : leurs données,
+Les Colab 10, 11 et 12 possèdent ici des protocoles implémentés et des critères
+déjà fixés. Les étapes mécanistiques et d'agent suivantes sont des propositions : leurs données,
 contrastes, effectifs et règles devront être figés avant les essais concernés.
 Une nouvelle hypothèse ne doit pas requalifier rétroactivement un échec.
 
@@ -91,6 +91,10 @@ le signal favorise encore « 1 » sous consigne inversée et affecte les tâches
 publiques. Les contrôles visibles échouent aussi avec le fort. Il faut traiter
 la composition entre détection et consigne avant d'interpréter ce signal comme
 un compte rendu fiable ; son bénéfice pour l'agent reste non établi.
+Le [Colab 12](STATE_COMPOSITION_PROTOCOL.md) prépare un apprentissage
+contrebalancé de cette composition avec préservation des tâches publiques,
+contrôle sans nouvelles étiquettes internes et transfert de formulation.
+Ses résultats ne sont pas encore disponibles.
 
 **Étape 2 — Des perturbations artificielles aux erreurs naturelles.** Un
 détecteur de rotations injectées n'est pas une connaissance de soi. Il faut
