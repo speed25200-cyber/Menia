@@ -6,6 +6,21 @@ from research.cross_model_prediction import digest
 from research.iphone_coupling_report import require
 
 
+def encode_confidence_training(tokenizer, example, device, *, max_input_tokens=1792):
+    """Context is unsupervised; final two causal positions predict code and EOS."""
+    require(example['target'] in ('0','1'), 'Binary confidence code required')
+    messages=example['messages']
+    require(messages==input_messages(messages[1]['content'],messages[2]['content']), 'Unexpected confidence input')
+    text=tokenizer.apply_chat_template(messages,tokenize=False,add_generation_prompt=True,enable_thinking=False)
+    prefix=tokenizer.encode(text,add_special_tokens=False)
+    label=tokenizer.encode(example['target'],add_special_tokens=False)
+    codes=[tokenizer.encode(s,add_special_tokens=False) for s in ('0','1')]
+    require(all(len(c)==1 for c in codes) and codes[0]!=codes[1], 'Distinct single-token codes required')
+    require(0<len(prefix) and len(prefix)+1<=max_input_tokens, 'Training overflow; no truncation')
+    inputs=torch.tensor([prefix+label],device=device)
+    return dict(input_ids=inputs,attention_mask=torch.ones_like(inputs)),label[0]
+
+
 def assess_answer(model, tokenizer, question, answer, *, max_input_tokens=1792):
     require(not model.training, 'Evaluation mode required')
     messages=input_messages(question,answer)

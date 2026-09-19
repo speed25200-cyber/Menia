@@ -129,6 +129,43 @@ python -m unittest tests_research.test_answer_confidence_crossed tests_language.
 python -m research.answer_confidence_data CHEMIN/journal-colab17.jsonl --output CHEMIN/preparation
 ```
 
+## Planning d'apprentissage et questions nouvelles
+
+[`answer_confidence_plan.py`](../research/answer_confidence_plan.py) prépare
+maintenant un planning déterministe, vérifié sur les fichiers réels déjà
+exportés. Chaque adaptateur reçoit uniquement les 576 anciens exemples
+d'apprentissage de sa répétition, deux fois, par lots de huit : 144 mises
+à jour. Les bras `measured` et `shuffled` voient les mêmes entrées dans le
+même ordre. Les six adaptateurs prévus totalisent 864 mises à jour ; ils
+partiront de trois initialisations appariées, sans reprendre les poids du
+Colab 22. Q/V LoRA de rang 8, multiplicateur 1, AdamW à `1e-4`, betas 0,9/0,999,
+epsilon `1e-8`, sans décroissance, écrêtage à 1. Le modèle reste en mode
+évaluation, avec gradients actifs uniquement dans les adaptateurs.
+
+Le code prépare aussi **864 questions nouvelles** : trois répétitions,
+six catégories, 16 questions de calibration et 32 de test par catégorie.
+Toutes les questions des partitions du Colab 17 et celles des jeux antérieurs
+recensés par son générateur sont exclues, sans consulter leurs réponses.
+Ce contrôle n'établit pas l'absence de ces questions du préentraînement.
+Chaque modèle produira sa propre réponse sur chaque question ; tous les
+modèles noteront chacune des trois réponses figées. Le budget préparé est
+de 2 592 générations et 7 776 lectures de confiance.
+
+Le [reçu du planning préparé](../artifacts/answer-confidence-preparation/draft-design.json)
+conserve l'empreinte des questions et des six ordres d'apprentissage réels.
+Six tests ciblés passent en 1,084 s sur CPU : trois tests du planning et trois
+tests de la tête native. Le nouveau test d'apprentissage utilise un petit
+Qwen aléatoire : une mise à jour change les adaptateurs, laisse les poids
+de base identiques et limite la supervision au verdict et à EOS. Changer
+la cible ne modifie pas les logits qui prédisent cette cible, ce qui vérifie
+l'absence de fuite causale par le token supervisé.
+
+**Ce planning n'est pas encore une expérience scientifique figée ou lancée.**
+Il reste à implémenter le collecteur complet, les comparateurs calibrés,
+les critères et l'audit de reconstruction avant toute collecte. Les seuls
+poids modifiés dans cette étape sont ceux du petit modèle de test local ;
+aucun nouvel adaptateur de confiance Qwen3-4B n'est entraîné.
+
 Ce code prépare des données et un calcul de score. Il ne démontre ni
 l'apprentissage ni sa généralisation. Avant toute collecte suivante, il
 faudra fixer les poids, le budget, des questions réellement nouvelles et les

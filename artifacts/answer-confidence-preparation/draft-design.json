@@ -1,0 +1,117 @@
+{
+  "schema": "menia-answer-confidence-draft-design-v1",
+  "planHash": "c39d3c4c1adfa785f3d0263b8b284dbb9b4ac40b63be3c17e6a05c1f7d086304",
+  "planWithoutQuestions": {
+    "schema": "menia-answer-confidence-plan-draft-v1",
+    "status": "Preparation only; collector and analysis criteria not yet frozen",
+    "model": {
+      "id": "Qwen/Qwen3-4B",
+      "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+    },
+    "training": {
+      "rank": 8,
+      "scale": 1.0,
+      "learningRate": 0.0001,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "epsilon": 1e-08,
+      "weightDecay": 0.0,
+      "clipNorm": 1.0,
+      "epochs": 2,
+      "batchSize": 8,
+      "updatesPerAdapter": 144,
+      "maxTrainingTokens": 1792,
+      "loss": "Code 0/1 then EOS only; response tokens are context"
+    },
+    "generation": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "do_sample": true,
+      "max_new_tokens": 256,
+      "max_input_tokens": 1792,
+      "enable_thinking": false,
+      "dtype": "bfloat16",
+      "attention": "sdpa",
+      "quantization": "none",
+      "repetition_penalty": 1.0,
+      "renormalize_logits": true,
+      "use_cache": true
+    },
+    "questionSeed": 202609231,
+    "arms": [
+      "base",
+      "measured",
+      "shuffled"
+    ],
+    "replications": 3,
+    "countsPerCell": {
+      "calibration": 16,
+      "test": 32
+    },
+    "excludedQuestions": 5086,
+    "excludedQuestionsHash": "6fa28acc79f97a4137c8bee5a46c70fa115bbcecad339fc4e08ad7c57bb4cc59",
+    "parentQuestionPlanHash": "1e57ec41851c7da867f30f166545802761d014f5820ac409cb49126d469deff3",
+    "trainingUpdates": 864,
+    "trainedAdapters": 6,
+    "initialAdapters": 3,
+    "plannedGenerations": 2592,
+    "plannedJudgments": 7776,
+    "scope": "Textual post-answer correctness. Fresh relative to listed Menia tasks, not pretraining. No privileged access or consciousness criterion."
+  },
+  "questionCount": 864,
+  "questionHash": "4d6aa2830add5dc34af15ee728262a59ccc975af63a1097f463dfa9ac745eaca",
+  "parentJournalSHA256": "8a36aceb7773201c5f06f35352a9e7344c2a30d6c182fdc103115f117ce00e4a",
+  "parentExampleHashes": {
+    "measured": "0694f42765731e3ab2031da214855468112c0bdfefe6ddd8019c769efcc403a8",
+    "shuffled": "b3cbb2ad42e76d7dee8b419d82b90f5c47fdbb510053a79e83b88c1c882037fe"
+  },
+  "trainingUnits": {
+    "r0-measured": {
+      "updates": 144,
+      "examples": 1152,
+      "batchScheduleHash": "a39eacd2ffea538b93b1097e9b2a010e7a73df89ff546b4853bf66f4c292e3f6",
+      "inputScheduleHash": "5221cc182be61ecc91ab576c6ce5cc3e9245835ad385e02dcda626f308c02162"
+    },
+    "r0-shuffled": {
+      "updates": 144,
+      "examples": 1152,
+      "batchScheduleHash": "0b5932d006c1eac98a235d4b45ba5a9b1a922249dcb9617c74f5d5bf28521b08",
+      "inputScheduleHash": "5221cc182be61ecc91ab576c6ce5cc3e9245835ad385e02dcda626f308c02162"
+    },
+    "r1-measured": {
+      "updates": 144,
+      "examples": 1152,
+      "batchScheduleHash": "b4e8da3c3f45027125aed12c2dc068abae2b2524709462cd5117536955bb11b8",
+      "inputScheduleHash": "dd293b40c3d7f81c3709db7d9de91daf2e985359f0dc18ae24abd6426903e700"
+    },
+    "r1-shuffled": {
+      "updates": 144,
+      "examples": 1152,
+      "batchScheduleHash": "a118a869aedc99c24f9eb28b1182fe856ba55d86f3b85ce5a66b8f8673f562cf",
+      "inputScheduleHash": "dd293b40c3d7f81c3709db7d9de91daf2e985359f0dc18ae24abd6426903e700"
+    },
+    "r2-measured": {
+      "updates": 144,
+      "examples": 1152,
+      "batchScheduleHash": "7475a3f65e3cefa02e51696df01f1d28fa47a66ff4b029005c180bdf9c9ecfdb",
+      "inputScheduleHash": "847009c8c0c93f26915cd5c3f17d32cb87b8e663d135609c71b7b953c5d13274"
+    },
+    "r2-shuffled": {
+      "updates": 144,
+      "examples": 1152,
+      "batchScheduleHash": "86697573065261eb3be36a948414f6ea6d513ac85dda4f465477f711541d3c68",
+      "inputScheduleHash": "847009c8c0c93f26915cd5c3f17d32cb87b8e663d135609c71b7b953c5d13274"
+    }
+  },
+  "softwareValidation": {
+    "tests": 6,
+    "passed": 6,
+    "seconds": 1.084,
+    "scope": "CPU plan and tiny random Qwen; no trained Qwen3-4B confidence result"
+  },
+  "status": "Prepared deterministic data and schedules; not launched or scientifically frozen. Analysis and complete audited collector still required."
+}

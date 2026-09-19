@@ -284,6 +284,10 @@ réponses et évaluateurs sont maintenant implémentées, avec cinq tests
 supplémentaires. Les contrôles synthétiques distinguent un meilleur jugement
 d'un simple changement des réponses ; aucune performance réelle de confiance
 n'est encore mesurée.
+Un planning vérifié prépare six adaptations appariées et 864 questions
+nouvelles. Six tests ciblés passent sur CPU, dont un apprentissage sur petit
+Qwen aléatoire ; le collecteur scientifique complet reste à finaliser avant
+exécution de cette étape sur Qwen3-4B.
 
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
 Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)

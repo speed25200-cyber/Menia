@@ -45,6 +45,12 @@ passent, dont deux sur un petit Qwen aléatoire : ils vérifient le calcul et
 montrent, sur cas construits, pourquoi un gain apparent peut venir seulement
 d'un changement des réponses. Ces contrôles ne mesurent pas une amélioration
 réelle de Menia ni un accès privilégié à ses états.
+Le planning vérifié prépare maintenant deux passages sur les exemples réels,
+ainsi que 864 questions excluant les anciens jeux. Les entrées et leur ordre
+sont identiques entre bras supervisé et témoin mélangé. Six tests ciblés
+passent pour le planning et la tête native, dont une mise à jour sur petit
+Qwen aléatoire. Le collecteur complet et les critères doivent encore être
+figés avant l'entraînement de confiance de Qwen3-4B.
 
 Le [bilan du Colab 21](ACTION_DECOMPOSITION_RESULTS.md) est reçu et vérifié :
 2 448 appels, dont 288 rejeux identiques, avec poids inchangés. Les erreurs
