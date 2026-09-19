@@ -19,6 +19,10 @@ deux recalculs sont vérifiés, avec écarts numériques nuls. Les cinq tests
 passent sur PC et Colab. Ce résultat concerne des valeurs publiques, pas
 l'estimation d'un état propre. Le prochain diagnostic doit distinguer
 l'association valeur-action de son expression sous un code arbitraire.
+Le [protocole 21](ACTION_DECOMPOSITION_PROTOCOL.md) met ce diagnostic en place :
+comparaison numérique, choix par nom et traduction imposée, avec les poids
+figés et 288 rejeux obligatoires avant les nouvelles réponses. Ses 2 448
+appels sont fixés avant collecte ; aucun résultat n'est encore annoncé.
 
 Le [bilan complet du Colab 19](RISK_PRESENTATION_RESULTS.md) est reçu et audité.
 Les deux contrôles globaux, probabilité et pertes fournies, échouent avec les

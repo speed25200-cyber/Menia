@@ -238,6 +238,13 @@ une compétence publique ; aucune conscience ni installation sur iPhone n'en
 découle. Le notebook conserve l'environnement Menia déjà installé et refuse
 de remplacer une tentative existante.
 
+Le [diagnostic Colab 21](docs/ACTION_DECOMPOSITION_PROTOCOL.md) sépare maintenant
+comparaison numérique, choix par nom et traduction en code : 2 448 appels
+prévus, dont 288 rejeux exacts, avec les six adaptateurs du lot 20 figés.
+Le plan est fixé avant collecte ; aucun résultat de ce diagnostic n'est encore
+annoncé. Les réponses recombinées par le programme ne seront pas assimilées
+à une décision native ni à un modèle de soi appris.
+
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
 Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)
 entraîne deux petits adaptateurs Qwen3-4B, avec cibles correctes ou mélangées,
