@@ -106,6 +106,12 @@ exactement les anciens poids. L'entraînement est terminé et l'évaluation est
 en cours. L'[indice qui motive le test](docs/OPTIMIZATION_MEMORY_REVIEW.md)
 est une réanalyse exploratoire des anciennes pertes, pas une preuve causale.
 
+La [préparation du prochain test d'erreurs naturelles](docs/NATURAL_ERROR_CONFIDENCE_REVIEW.md)
+ajoute une capture des probabilités de sortie, absentes des 672 anciens essais.
+Elle sépare les statistiques disponibles avant la réponse de celles nécessitant
+la réponse rédigée. Dix tests logiciels passent sur un Qwen miniature aléatoire ;
+aucune nouvelle performance de Qwen3-4B n'est encore mesurée avec cette capture.
+
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
 Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)
 entraîne deux petits adaptateurs Qwen3-4B, avec cibles correctes ou mélangées,

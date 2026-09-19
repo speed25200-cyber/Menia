@@ -128,6 +128,11 @@ contraste que le [moniteur d'activations](ACTIVATION_MONITOR_RESULTS.md) a manqu
 *Critère proposé :* gain de Brier avec intervalle excluant zéro contre les deux références.
 Après ajustement des poids, mesurer à nouveau les erreurs du checkpoint final :
 son comportement peut différer de celui du parent ayant fourni les étiquettes.
+La [revue de la confiance de sortie](NATURAL_ERROR_CONFIDENCE_REVIEW.md) identifie
+un comparateur manquant dans les anciens journaux et fournit une capture testée
+sur CPU. Le futur test devra aussi comparer l'information interne aux probabilités
+de sortie calibrées, en séparant prévision avant réponse et vérification après
+rédaction. La collecte correspondante sur Qwen3-4B n'a pas encore eu lieu.
 Le [complément sur la dérive de la cible](SELF_PREDICTION_CONTROLS.md) motive
 ce contrôle pour l'étape future, sans modifier les critères du Colab 12 terminé.
 

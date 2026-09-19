@@ -18,6 +18,13 @@ cours ; cette validation technique ne remplace pas le résultat comportemental.
 Il traite une cause possible d'instabilité avant une éventuelle correction des
 consignes, sans établir de représentation de soi ni d'expérience subjective.
 
+La [préparation du test d'erreurs naturelles](NATURAL_ERROR_CONFIDENCE_REVIEW.md)
+constate que les 672 anciens essais n'enregistraient pas les probabilités de
+sortie. Une capture distingue maintenant statistiques avant le premier token
+et vraisemblance de la réponse complète. Dix tests du générateur, des hooks et
+du calcul passent sur un Qwen miniature aléatoire ; aucune nouvelle collecte
+Qwen3-4B ni comparaison de performance ne résulte encore de cette préparation.
+
 Le [diagnostic 13 reçu et audité](COMPOSITION_DIAGNOSTIC_RESULTS.md) comprend
 13 824 évaluations, zéro entraînement et 3 456 témoins identiques. Les seuils
 ajustés uniquement sur l'ancien apprentissage donnent 90,6–96,9 % d'exactitude
