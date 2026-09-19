@@ -29,6 +29,12 @@ questions refusées. Six tests passent pour la collecte/génération, puis un
 test vérifie le calcul arithmétique séparé et des bilans altérés. À son gel,
 aucun résultat réel n'est encore annoncé. Ce préalable fonctionnel ne remplace
 ni la construction d'un mécanisme appris ni la preuve d'expérience de soi.
+Le [lancement par MCP](../artifacts/native-choice-pilot/execution-start.json)
+est observé le 19 septembre à 19:17:20 UTC : 737 enregistrements sur 4 884,
+sept tests réussis dans Colab et processus existant vivant. L'exécution doit
+être suivie sans nouveau lancement. La réception complète et les deux
+recalculs précéderont la lecture des scores. La présentation, préparée et
+inspectée sur un journal synthétique, conserve toutes les conditions.
 
 Le [bilan complet du Colab 15](STATE_INTERCHANGE_RESULTS.md) est reçu et vérifié :
 19 584 passages, 3 456 témoins identiques et 4 608 copies finales. À la couche 23,

@@ -184,6 +184,14 @@ de vérification appellent réellement un outil exact ; points attribués et
 durées mesurées restent distincts. Six tests de collecte/génération passent,
 ainsi qu'un test du calcul séparé. Aucun résultat réel de ce protocole n'est
 encore disponible à son gel ; l'objectif de conscience reste non atteint.
+Le [Colab 18 fixé](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/8c12825080515632cc858035b79a5a96dcb7b5af/notebooks/18_native_choice_colab.ipynb)
+est lancé par MCP le 19 septembre à 19:13 UTC. Les sept tests passent dans
+Colab ; le [reçu de démarrage](artifacts/native-choice-pilot/execution-start.json)
+atteste 737 enregistrements sur 4 884 à 19:17:20 UTC, processus vivant et
+empreintes conformes. Ce constat ne rapporte pas de score comportemental.
+La figure est préparée et inspectée sur des données synthétiques avant lecture
+des résultats réels ; le calcul principal et le calcul séparé concordent sur
+ce journal fictif à `5,552e-17` près.
 
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
 Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)
