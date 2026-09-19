@@ -1,14 +1,16 @@
 # Menia
 
 Assistant local expérimental : mémoire explicite, représentation de ses capacités,
-incertitude et évaluation. **Colab A100 80 Go** pour l’adaptation ;
+incertitude et évaluation. **Colab A100 40 ou 80 Go** pour l’adaptation ;
 **iPhone 17 Pro** comme cible d’inférence locale.
 
-**Statut : prototype de recherche. Le Colab 17 est terminé et audité : aucun
-des neuf contrastes principaux ne confirme le gain prédictif fixé pour les
-états intermédiaires. Le Colab 16 limite aussi le transfert à une valeur liée
-à la question donneuse. La détection de rotations internes est reproduite,
-mais la localisation, la décision native et la généralisation restent fragiles.**
+**Statut : prototype de recherche. Les Colab 18 et 19 sont terminés et audités :
+la décision native reste sensible à la présentation, même avec des pertes
+publiques déjà calculées. Le Colab 20 entraîne une association entre valeurs
+et codes d'action ; ses résultats restent à recevoir. Le Colab 17 ne confirme
+aucun des neuf gains prédictifs principaux pour les états intermédiaires.
+La détection de rotations internes est reproduite, mais sa portée générale
+et son utilité pour l'action restent à établir.**
 La conscience subjective n'est pas établie. La [feuille de route](docs/CONSCIOUSNESS_ROADMAP.md)
 précise les mécanismes candidats, les hypothèses théoriques et les expériences
 envisagées. Elle ne constitue pas une recette validée. La continuité repose sur un journal
@@ -215,6 +217,19 @@ Colab. Recalcul principal exact, calcul distinct à `1,388e-17` près, avant
 lecture des scores. Ce contrôle ne démontre ni accès à un état privé ni
 conscience ; il motive de tester l'apprentissage d'une association stable
 entre valeurs et codes d'action, avant de lui attribuer un rôle de modèle de soi.
+
+Le [Colab 20 fixé](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/4b85eafc626da083ec6a5fb16919a63decc4bffe/notebooks/20_action_binding_colab.ipynb)
+met en œuvre cet [apprentissage apparié](docs/ACTION_BINDING_PROTOCOL.md).
+Deux bras, présentation fixe ou permutations, voient les mêmes cas et budgets,
+avec trois initialisations : six adaptateurs, 384 mises à jour, puis 6 912
+décisions de test sur de nouveaux coûts et probabilités, avec formulations et
+symboles réservés. Le modèle initial sert de troisième référence. Les cinq
+tests passent sur PC et A100 ; le [reçu de lancement](artifacts/action-binding-pilot/launch.json)
+atteste le début de l'entraînement par MCP le 19 septembre à 20:18 UTC.
+**Collecte en cours, aucun résultat de généralisation annoncé.** Cette méthode
+a des antécédents et teste une compétence publique ; aucune conscience ni
+installation sur iPhone n'en découle. Le notebook conserve l'environnement
+Menia déjà installé et refuse de remplacer une tentative existante.
 
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
 Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)
