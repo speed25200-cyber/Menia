@@ -1,0 +1,143 @@
+{
+  "schema": "menia-value-action-training-freeze-v1",
+  "capturedUTC": "2026-09-19T22:36:51.809886+00:00",
+  "pid": 183649,
+  "returnCode": null,
+  "trainingPrefixSHA256": "ed1c6a6a9b3e7c752e380560811e8f9af5fd08326000d6e939575fadd4be0697",
+  "trainingPrefixBytes": 1961513,
+  "chainHead": "cbd6e58c61b5442c1de081ff59b47f9ff623ee9c44abb51e61bacc32e35eab8f",
+  "units": {
+    "r0-choice": {
+      "steps": 64,
+      "examples": 512,
+      "inputTokens": 80384,
+      "trainingSeconds": 131.04917004200252,
+      "stepSeconds": 130.42094121595437,
+      "initializationHash": "cb6413506d7745bc5da869bc6349983182238130d442070d3cdb6911d63fcf25",
+      "checkpointHash": "8908c6aea25949d49404d8d191381914e3bd604f72689edf0c63d6f0de3addf0"
+    },
+    "r0-linked": {
+      "steps": 64,
+      "examples": 512,
+      "inputTokens": 84224,
+      "trainingSeconds": 131.3687971190011,
+      "stepSeconds": 130.49185672300518,
+      "initializationHash": "cb6413506d7745bc5da869bc6349983182238130d442070d3cdb6911d63fcf25",
+      "checkpointHash": "3ca3f564fc29ff0d3a85180f6afb1d1fb69aebbbc6adbb80c23f1bae794f6a8a"
+    },
+    "r0-shuffled": {
+      "steps": 64,
+      "examples": 512,
+      "inputTokens": 84224,
+      "trainingSeconds": 131.44442214100127,
+      "stepSeconds": 130.5768738549814,
+      "initializationHash": "cb6413506d7745bc5da869bc6349983182238130d442070d3cdb6911d63fcf25",
+      "checkpointHash": "f2057a3d0ebfefd8a15c763f99e3313f97ec93d13ce2cff378ca94d437c0946a"
+    },
+    "r1-choice": {
+      "steps": 64,
+      "examples": 512,
+      "inputTokens": 80384,
+      "trainingSeconds": 131.74508227899787,
+      "stepSeconds": 131.12911593601166,
+      "initializationHash": "327dbf74726f33cb30d6177a3b8a310184241f3d39858c21666cf9b858e00177",
+      "checkpointHash": "518677850e5272adbf33570a2573a294cc1fbcf37a2fe5ed4261c4bc3c54d0f0"
+    },
+    "r1-linked": {
+      "steps": 64,
+      "examples": 512,
+      "inputTokens": 84224,
+      "trainingSeconds": 131.4707880720016,
+      "stepSeconds": 130.6107766020068,
+      "initializationHash": "327dbf74726f33cb30d6177a3b8a310184241f3d39858c21666cf9b858e00177",
+      "checkpointHash": "926cb15f57138f25153bc96afbcecdb66de72b162998f4ff8b351bc1d020c4af"
+    },
+    "r1-shuffled": {
+      "steps": 64,
+      "examples": 512,
+      "inputTokens": 84224,
+      "trainingSeconds": 131.27056574599555,
+      "stepSeconds": 130.41104255100072,
+      "initializationHash": "327dbf74726f33cb30d6177a3b8a310184241f3d39858c21666cf9b858e00177",
+      "checkpointHash": "065a7f52e64880ad4e54db7bcc363fb7091210c90e86b5b6797606416ef21b6c"
+    },
+    "r2-choice": {
+      "steps": 64,
+      "examples": 512,
+      "inputTokens": 80384,
+      "trainingSeconds": 131.12949052699696,
+      "stepSeconds": 130.52496593196702,
+      "initializationHash": "cc235d60d049f8f89cce0ebe4e42045be193629050c78a405cb8f1e604fb5452",
+      "checkpointHash": "c21948fd1bfc86cf6a1fe6fc80b96caf0e6ff4e50e53ca579e84ab812c5d139e"
+    },
+    "r2-linked": {
+      "steps": 64,
+      "examples": 512,
+      "inputTokens": 84224,
+      "trainingSeconds": 132.3913290710043,
+      "stepSeconds": 131.51111071496416,
+      "initializationHash": "cc235d60d049f8f89cce0ebe4e42045be193629050c78a405cb8f1e604fb5452",
+      "checkpointHash": "154175fbf433c49b144ce252b16603a5ddf2eeda4a18d6b2123df283fe4c740c"
+    },
+    "r2-shuffled": {
+      "steps": 64,
+      "examples": 512,
+      "inputTokens": 84224,
+      "trainingSeconds": 132.655538564999,
+      "stepSeconds": 131.77921604899893,
+      "initializationHash": "cc235d60d049f8f89cce0ebe4e42045be193629050c78a405cb8f1e604fb5452",
+      "checkpointHash": "a779919167cb9ba22b4dcc97bd12f7f75ed070d6c4a07e4e3a7a9566948a4b41"
+    }
+  },
+  "files": {
+    "value-action-learning-20260920-v2.r0-choice.safetensors": {
+      "bytes": 11811296,
+      "sha256": "8908c6aea25949d49404d8d191381914e3bd604f72689edf0c63d6f0de3addf0"
+    },
+    "value-action-learning-20260920-v2.r0-initial.safetensors": {
+      "bytes": 11811296,
+      "sha256": "cb6413506d7745bc5da869bc6349983182238130d442070d3cdb6911d63fcf25"
+    },
+    "value-action-learning-20260920-v2.r0-linked.safetensors": {
+      "bytes": 11811296,
+      "sha256": "3ca3f564fc29ff0d3a85180f6afb1d1fb69aebbbc6adbb80c23f1bae794f6a8a"
+    },
+    "value-action-learning-20260920-v2.r0-shuffled.safetensors": {
+      "bytes": 11811296,
+      "sha256": "f2057a3d0ebfefd8a15c763f99e3313f97ec93d13ce2cff378ca94d437c0946a"
+    },
+    "value-action-learning-20260920-v2.r1-choice.safetensors": {
+      "bytes": 11811296,
+      "sha256": "518677850e5272adbf33570a2573a294cc1fbcf37a2fe5ed4261c4bc3c54d0f0"
+    },
+    "value-action-learning-20260920-v2.r1-initial.safetensors": {
+      "bytes": 11811296,
+      "sha256": "327dbf74726f33cb30d6177a3b8a310184241f3d39858c21666cf9b858e00177"
+    },
+    "value-action-learning-20260920-v2.r1-linked.safetensors": {
+      "bytes": 11811296,
+      "sha256": "926cb15f57138f25153bc96afbcecdb66de72b162998f4ff8b351bc1d020c4af"
+    },
+    "value-action-learning-20260920-v2.r1-shuffled.safetensors": {
+      "bytes": 11811296,
+      "sha256": "065a7f52e64880ad4e54db7bcc363fb7091210c90e86b5b6797606416ef21b6c"
+    },
+    "value-action-learning-20260920-v2.r2-choice.safetensors": {
+      "bytes": 11811296,
+      "sha256": "c21948fd1bfc86cf6a1fe6fc80b96caf0e6ff4e50e53ca579e84ab812c5d139e"
+    },
+    "value-action-learning-20260920-v2.r2-initial.safetensors": {
+      "bytes": 11811296,
+      "sha256": "cc235d60d049f8f89cce0ebe4e42045be193629050c78a405cb8f1e604fb5452"
+    },
+    "value-action-learning-20260920-v2.r2-linked.safetensors": {
+      "bytes": 11811296,
+      "sha256": "154175fbf433c49b144ce252b16603a5ddf2eeda4a18d6b2123df283fe4c740c"
+    },
+    "value-action-learning-20260920-v2.r2-shuffled.safetensors": {
+      "bytes": 11811296,
+      "sha256": "a779919167cb9ba22b4dcc97bd12f7f75ed070d6c4a07e4e3a7a9566948a4b41"
+    }
+  },
+  "scope": "Read-only snapshot after all training, during evaluation. No evaluation answers or scores included. Full reconstruction remains required."
+}

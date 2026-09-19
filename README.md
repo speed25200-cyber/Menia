@@ -259,7 +259,8 @@ avec de nouveaux cas ; aucun modèle de soi ni conscience n'est établi ici.
 Le [Colab 22 v2](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/1da6f7bd5421081ef244ed584a41c1b9f42e7133/notebooks/22_value_action_learning_colab.ipynb)
 compare trois entraînements sur trois initialisations : choix seuls, choix
 avec associations correctes, et mêmes entrées avec cibles auxiliaires mélangées.
-Neuf adaptateurs, 576 mises à jour et 9 216 appels sont prévus. Les 24 cas de
+Les neuf adaptateurs sont entraînés après 576 mises à jour ; les 9 216 appels
+d'évaluation sont en cours. Les 24 cas de
 test utilisent de nouvelles valeurs, avec tests de formulation et de codes.
 Le nombre d'exemples est apparié, pas les longueurs d'entrée. La première
 version comportait un raccourci formulation → label ; elle a été arrêtée après
@@ -269,6 +270,9 @@ chaque présentation ; six tests passent sur PC et Colab. Le
 [reçu de lancement](artifacts/value-action-learning-pilot/launch.json) confirme
 le processus actif et les premières mises à jour. Ce contrôle public ne mesure
 pas encore une estimation des capacités propres ou une conscience.
+Le [reçu des poids figés](artifacts/value-action-learning-pilot/training-freeze.json)
+vérifie les douze fichiers avant lecture des scores. Les budgets sont de
+80 384 tokens d'entrée par entraînement de choix et 84 224 avec tâche auxiliaire.
 
 La [préparation de confiance après réponse](docs/NATIVE_ANSWER_CONFIDENCE_PREPARATION.md)
 ajoute ensuite 1 728 exemples issus uniquement de l'ancien apprentissage,

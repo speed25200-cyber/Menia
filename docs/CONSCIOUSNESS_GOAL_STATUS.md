@@ -22,6 +22,10 @@ La v2 équilibre les cibles pour chaque présentation ; six tests passent sur PC
 et Colab. Le [reçu de lancement](../artifacts/value-action-learning-pilot/launch.json)
 confirme le processus actif et les premières mises à jour, sans score de test.
 Les états initiaux sont recréés, aucun poids entraîné de la v1 n'est repris.
+Les neuf entraînements sont désormais terminés. Le [reçu des poids figés](../artifacts/value-action-learning-pilot/training-freeze.json)
+vérifie douze fichiers pendant que l'évaluation continue. Les bras auxiliaires
+emploient 4,78 % de tokens d'entrée supplémentaires ; les durées et les
+empreintes sont conservées avant lecture des scores.
 Ce test porte sur une compétence publique préalable. Il ne remplace pas
 l'estimation apprise des propres réussites et son usage causal, toujours
 à construire et vérifier ; il n'établit ni vécu ni nouveauté.

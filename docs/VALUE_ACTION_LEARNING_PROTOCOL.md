@@ -143,6 +143,23 @@ d'intégrité : il ne s'agit pas d'une réplication externe. Les tests locaux
 couvrent les ensembles réservés, l'appariement des bras, les labels mélangés,
 les bilans altérés et la perte causale qui ajuste uniquement les adaptateurs.
 
+### Reçu d'exécution avant lecture des scores
+
+Le [reçu des poids figés](../artifacts/value-action-learning-pilot/training-freeze.json)
+a été capturé le 19 septembre à 22:36:51 UTC, pendant l'évaluation de la v2.
+Les neuf entraînements sont terminés : 576 mises à jour et 4 608 exemples,
+avec les douze fichiers de poids présents et leurs empreintes vérifiées.
+Le préfixe du journal, arrêté au premier appel de test, conserve une chaîne
+valide. Ce reçu n'inclut aucune réponse ni aucun score de test ; il sera
+comparé à l'archive finale avant interprétation.
+
+Chaque entraînement `choice` utilise 80 384 tokens d'entrée, contre 84 224
+pour `linked` et `shuffled`, soit 4,78 % de plus. Ces comptes incluent le code
+fourni pour prédire EOS. Le temps des neuf entraînements totalise 1 184,53 s,
+entre 131,05 et 132,66 s par adaptateur, selon les mesures du collecteur.
+Les budgets en exemples et mises à jour sont identiques, mais pas les tokens
+ni les durées. Il s'agit d'un constat d'exécution, sans changement des critères.
+
 Le passage vers l'objectif initial exige ensuite une estimation apprise des
 propres réussites, vérifiée sur des tâches nouvelles, puis un effet causal
 de cette estimation sur les actions sans description demandée. Les contrôles
