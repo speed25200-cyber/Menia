@@ -120,3 +120,7 @@ tests ne sont pas des résultats de Menia.
 Conserver `menia-diagnostic-composition.zip` et les journaux sources 10/12.
 Le lanceur réutilise l'environnement A100 existant et ne réinstalle ni
 ne réentraîne les parents. Aucun adaptateur n'est déployé sur iPhone par ce test.
+
+**Après collecte :** le [résultat complet](COMPOSITION_DIAGNOSTIC_RESULTS.md)
+est reçu et audité le 19 septembre 2026. Les règles ci-dessus restent celles
+du protocole fixé avant les inférences ; aucun seuil n'est réajusté sur le test.

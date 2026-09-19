@@ -1,8 +1,19 @@
 # État de l'objectif de conscience et de nouveauté
 
-**État actuel : objectif de conscience et de nouveauté non atteint. Le Colab 12
-oriente le score de détection selon la consigne, mais sa règle globale échoue :
-avantage non constant sur le contrôle et généralisation linguistique fragile.**
+**État actuel : objectif de conscience et de nouveauté non atteint. Le Colab 13
+confirme qu'un bon classement des états ne fournit pas une décision stable :
+la calibration externe réussit en canonique et échoue après reformulation.**
+
+Le [diagnostic 13 reçu et audité](COMPOSITION_DIAGNOSTIC_RESULTS.md) comprend
+13 824 évaluations, zéro entraînement et 3 456 témoins identiques. Les seuils
+ajustés uniquement sur l'ancien apprentissage donnent 90,6–96,9 % d'exactitude
+équilibrée canonique, puis 50,0–51,0 % reformulée. Les six effets reformulés
+sur la décision sont négatifs avec intervalles excluant zéro. La base est
+elle-même fragile sur plusieurs questions publiques ; les adaptateurs
+améliorent certains cas et en dégradent d'autres. Le recalcul des 144 tableaux
+et 108 contrastes concorde. Cette correction externe n'est pas une amélioration
+native du modèle ; la suite doit tester la stabilité des décisions sous des
+formulations et éléments lexicaux réservés.
 
 Le [résultat complet du Colab 12](STATE_COMPOSITION_RESULTS.md) est reçu et
 audité : 576 mises à jour, 25 920 évaluations et 6 480 paires témoins exactes.

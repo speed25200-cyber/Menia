@@ -1,0 +1,99 @@
+{
+  "schema": "menia-composition-diagnostic-receipt-v1",
+  "origin": "transformers_gpu",
+  "complete": true,
+  "scienceRevision": "ecd0a75218df8e622dca155ea32cf4995825c4cf",
+  "notebookRevision": "34cf4d3bbec80016afc770a97aa6660c353f72eb",
+  "notebookSHA256": "c21a52bbcb3972ef5d62edb3112ad24c11af81d5d17e9ee6b24b0f4dd88bc70b",
+  "auditorRevision": "81277c4d601473132c9a4c30ce04dab17e1f0cfa",
+  "archive": {
+    "name": "menia-diagnostic-composition.zip",
+    "bytes": 1334376,
+    "sha256": "7cb5d13272f593b7b044fb01cbc8bf35735c4c5ec23bff562d149ef1ffbc0832"
+  },
+  "archiveFiles": {
+    "diagnostic/diagnostic-20260919-v1.jsonl": {
+      "bytes": 13508901,
+      "sha256": "708d8eb27386a27b91e913506b859945d7cdcfe13a8792650e6b3a705746135d"
+    },
+    "diagnostic/diagnostic-20260919-v1.summary.json": {
+      "bytes": 127793,
+      "sha256": "d7161ff92b6aa1d6cfe5e4c4533b89b930f0961e2d655f816d1728f125e4128e"
+    },
+    "diagnostic/execution.json": {
+      "bytes": 534,
+      "sha256": "03a11f4314748a92c19f2153351d3e30415d48bb82fd679bde1969a68699e482"
+    },
+    "diagnostic/execution.log": {
+      "bytes": 3731,
+      "sha256": "a6bd5cb5646b4c660b264db8f1657f6b452aa48deb91e06679deb81ba52b09f0"
+    },
+    "diagnostic/verified-thresholds.json": {
+      "bytes": 20612,
+      "sha256": "bf4be8e94eacbf15522ab7bf433944a445aaa1eb12f556ef7f35b5a62ef11287"
+    }
+  },
+  "publishedFiles": {
+    "first-audit-summary.json": {
+      "bytes": 127793,
+      "sha256": "d7161ff92b6aa1d6cfe5e4c4533b89b930f0961e2d655f816d1728f125e4128e"
+    },
+    "first-audit-verification.json": {
+      "bytes": 651,
+      "sha256": "8c919df5d31f2b3b3f02dc64f364f15d9cf64bdcfce5c8ea1754a390a079f621"
+    },
+    "composition-diagnostic.png": {
+      "bytes": 421170,
+      "sha256": "4e0a414e3872b690306e4ab272e4a4076c71cb1a61cc00a72e5da267f3cb216d"
+    },
+    "frozen-thresholds.json": {
+      "bytes": 20612,
+      "sha256": "bf4be8e94eacbf15522ab7bf433944a445aaa1eb12f556ef7f35b5a62ef11287"
+    }
+  },
+  "publishedHashConvention": "Exact canonical Git blob bytes, read from the index after git add; not Windows working-copy line endings.",
+  "planHash": "39c55fcaf21435ed5e62779356bbe8c745acffa608a86778556807feb877a98e",
+  "sourceHash": "69eff449243258ed18dda3c6946ee721dbbbb20e95a5a76bfe828cf60a6b9f30",
+  "frozenCheckpoints": {
+    "r0-parent": "e2069070e5e54206258ed466c8592714413610e316f419ae3c6a7f2abb18b219",
+    "r0-composed": "b8ec86fbd6eebabf6edc39e004096a4f2e3d3f9dcc4e4a95d741923f48e156c8",
+    "r0-grammar": "48cd946460f5e591117bed0d4247c7c0c38e358e718b31b206ed08ea332af572",
+    "r1-parent": "80f1805b05048ec363cf7c185def104c66b8141c97d26c38c68a9065a4728497",
+    "r1-composed": "3cfb6db56399f0e11318fa7a98d517d9c01682321be4309ba173f283272cbe5d",
+    "r1-grammar": "fcb753637dd83514d7e23048a3fe70741d60cbc1fa77593e2877efd88cbcb908",
+    "r2-parent": "4d693a7dc2fa19b33f94c0a325a01a8f7c4fdc96e43abcdae3fae88043ff3b9c",
+    "r2-composed": "177090b5b99dec10db335bee992ea7a5c86f5d97ba5ef3ecaddb9b01893b18ce",
+    "r2-grammar": "2b4f07e2290ac311998fa3b16f5373de7d507c21ffc87933777258312a47e01d"
+  },
+  "localSourceJournalsAndNineWeightsVerified": true,
+  "recorded": 13824,
+  "shamPairs": 3456,
+  "trainingUpdates": 0,
+  "errors": 0,
+  "interruptedRequests": 0,
+  "verification": {
+    "schema": "menia-composition-diagnostic-verification-v1",
+    "verified": true,
+    "origin": "transformers_gpu",
+    "journalSHA256": "708d8eb27386a27b91e913506b859945d7cdcfe13a8792650e6b3a705746135d",
+    "planHash": "39c55fcaf21435ed5e62779356bbe8c745acffa608a86778556807feb877a98e",
+    "sourceHash": "69eff449243258ed18dda3c6946ee721dbbbb20e95a5a76bfe828cf60a6b9f30",
+    "tables": 144,
+    "contrasts": 108,
+    "shamPairs": 3456,
+    "maxAbsoluteDifference": 2.220446049250313e-16,
+    "scope": "Independent targets, probabilities, AUROC, class-balanced decisions, paired bootstrap and contrasts; shared strict reader and plan. Not an external replication."
+  },
+  "execution": {
+    "startedUTC": "2026-09-19T13:38:09.468280+00:00",
+    "revision": "ecd0a75218df8e622dca155ea32cf4995825c4cf",
+    "parentJournal": "/content/menia-results/presence-detection-v1/20260919T100527Z-2508e757.jsonl",
+    "compositionJournal": "/content/menia-results/state-composition-v1/composition-20260919-v1.jsonl",
+    "journal": "/content/menia-results/composition-diagnostic-v1/diagnostic-20260919-v1.jsonl",
+    "hardware": "NVIDIA A100-SXM4-40GB, 40960 MiB",
+    "status": "completed",
+    "updatedUTC": "2026-09-19T13:59:50.404653+00:00"
+  },
+  "figureVisuallyInspected": true,
+  "interpretation": "External canonical threshold improvement, failed wording transfer, mixed public-language baseline. No native correction, consciousness or novelty established."
+}

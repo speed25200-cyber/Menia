@@ -84,12 +84,15 @@ de contrôle concernent la lecture reformulée de PHRASE 2. Un bon classement
 coexiste parfois avec une réponse constante de présence. Les 6 480 paires
 témoins, neuf poids et calculs sont vérifiés. Aucune conscience n'est établie.
 
-**Suite fixée : [diagnostic des consignes et de la décision](docs/COMPOSITION_DIAGNOSTIC_PROTOCOL.md).**
-Le Colab 13 prévoit 13 824 évaluations sans entraînement : base, parents et
-variantes sur de nouvelles phrases, avec les deux formulations déjà connues.
-Six seuils externes sont gelés à partir des seuls anciens exemples d'apprentissage.
-Ils seront comparés aux réponses natives ; aucun résultat de cette nouvelle
-collecte n'est encore disponible.
+**Résultat : [le seuil externe ne se transfère pas entre formulations](docs/COMPOSITION_DIAGNOSTIC_RESULTS.md).**
+Le [Colab 13](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/34cf4d3bbec80016afc770a97aa6660c353f72eb/notebooks/13_composition_diagnostic_colab.ipynb)
+est terminé : 13 824 évaluations sans entraînement, base, parents et variantes
+sur de nouvelles phrases. Six seuils fixés sur l'ancien apprentissage portent
+la décision canonique à 90,6–96,9 %, mais seulement à 50,0–51,0 % après
+reformulation. Le classement reste bon. La lecture publique est déjà fragile
+dans la base et change différemment selon les adaptateurs et les codes.
+Les 3 456 témoins, neuf poids et 108 contrastes sont vérifiés ; aucune sortie
+hors code ni erreur technique. La décision native stable reste à obtenir.
 
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
 Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)

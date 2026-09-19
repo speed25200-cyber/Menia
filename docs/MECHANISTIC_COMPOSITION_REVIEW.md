@@ -83,3 +83,10 @@ Les contrôles de lecture reformulée échouent, et un classement presque parfai
 coexiste parfois avec une réponse constante de présence. L'essai proposé ici
 n'est pas lancé : la décision et le transfert des consignes doivent d'abord
 être diagnostiqués. Ce constat ne modifie pas rétroactivement la proposition.
+
+**Après le [diagnostic 13](COMPOSITION_DIAGNOSTIC_RESULTS.md) :** les seuils
+externes améliorent la décision canonique, mais leur transfert reformulé
+échoue dans les trois répétitions. Les témoins linguistiques révèlent aussi
+des fragilités de la base. Le bon classement des états reste une observation
+fonctionnelle ; la présente proposition ne peut supposer une décision native
+correcte et indépendante de la formulation. Elle reste conditionnelle.

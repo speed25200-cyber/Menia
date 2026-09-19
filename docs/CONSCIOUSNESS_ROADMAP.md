@@ -102,7 +102,12 @@ La décision et la généralisation linguistique doivent être diagnostiquées.
 Le [protocole 13](COMPOSITION_DIAGNOSTIC_PROTOCOL.md) fixe ce diagnostic sans
 entraînement : comparaison des formulations avec la base et les parents,
 puis seuils numériques externes ajustés uniquement sur l'ancien apprentissage
-et évalués sur de nouveaux blocs. Aucun résultat 13 n'est encore disponible.
+et évalués sur de nouveaux blocs. Son [résultat complet](COMPOSITION_DIAGNOSTIC_RESULTS.md)
+montre un bénéfice de ces seuils en canonique (90,6–96,9 %), puis leur échec
+reformulé (50,0–51,0 %) malgré un bon classement. La base est elle-même fragile
+sur certaines consignes publiques. La correction suivante doit viser la
+décision native et réserver de nouvelles formulations ; un seuil externe
+ne résout pas la généralisation observée ici.
 La [note sur le transfert d'état ou de réponse](MECHANISTIC_COMPOSITION_REVIEW.md)
 prépare un contraste mécanistique conditionnel et ses explications concurrentes.
 Elle ne constitue pas un protocole supplémentaire déjà fixé ou exécuté.
