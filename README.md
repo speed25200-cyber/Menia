@@ -202,6 +202,20 @@ et la figure conservent toutes les conditions. La prochaine question est la
 stabilité des décisions lorsque formulation, ordre et code sont variés
 indépendamment ; aucun mécanisme de conscience n'est confirmé.
 
+Le [Colab 19](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/ccad792b7e9e78e48d3bf96acd63979c68695e18/notebooks/19_risk_presentation_colab.ipynb)
+réalise ce [diagnostic factoriel](docs/RISK_PRESENTATION_PROTOCOL.md) : 864
+décisions, ordre/code/formulation indépendants, avec probabilité seule ou pertes
+moyennes déjà calculées. Le [lot complet est reçu et audité](docs/RISK_PRESENTATION_RESULTS.md).
+Tous les codes sont valides ; pourtant les deux contrôles globaux échouent.
+Les pertes fournies donnent 54/54 choix corrects dans deux présentations et
+16–31/54 dans les six autres. La conversion d'une valeur publique en choix
+reste sensible à la présentation ; une préférence unique pour la première
+option n'explique pas toutes les conditions. Cinq tests passent sur PC et
+Colab. Recalcul principal exact, calcul distinct à `1,388e-17` près, avant
+lecture des scores. Ce contrôle ne démontre ni accès à un état privé ni
+conscience ; il motive de tester l'apprentissage d'une association stable
+entre valeurs et codes d'action, avant de lui attribuer un rôle de modèle de soi.
+
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
 Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)
 entraîne deux petits adaptateurs Qwen3-4B, avec cibles correctes ou mélangées,

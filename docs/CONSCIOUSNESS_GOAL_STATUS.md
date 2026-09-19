@@ -1,11 +1,25 @@
 # État de l'objectif de conscience et de nouveauté
 
-**État actuel : objectif de conscience et de nouveauté non atteint. Le Colab 18
-échoue aux quatre contrôles publics de risque et aux douze contrastes de
-bénéfice de l'historique. Ses choix suivent une présentation qui confond
-formulation et ordre des options. Le Colab 17 ne confirme pas l'apport prédictif
+**État actuel : objectif de conscience et de nouveauté non atteint. Le Colab 19
+sépare ordre, code et formulation : les choix restent instables même quand
+les pertes sont fournies, malgré 864 codes valides. Le Colab 18 ne confirme
+aucun bénéfice de l'historique. Le Colab 17 ne confirme pas l'apport prédictif
 fixé pour les états intermédiaires ; le Colab 16 ne confirme pas un contenu
 général réutilisable.**
+
+Le [bilan complet du Colab 19](RISK_PRESENTATION_RESULTS.md) est reçu et audité.
+Les deux contrôles globaux, probabilité et pertes fournies, échouent avec les
+deux parseurs. Deux présentations avec pertes fournies réussissent 54/54 choix,
+mais les autres restent entre 16/54 et 31/54. Sept des huit comparaisons
+d'ordre changent au moins une action. Tous les codes sont valides ; l'échec
+ne vient donc pas du format. L'effet implique la combinaison de formulation,
+ordre et codage, et ne se réduit pas à choisir toujours la première option.
+Les cinq tests passent sur PC et Colab. Les deux calculs précèdent la lecture :
+principal exact, calcul distinct à `1,388e-17` près. Aucun poids n'est modifié.
+Le prochain travail doit tester l'apprentissage d'une décision robuste aux
+permutations avant de lui attribuer l'usage d'une estimation propre. Le lien
+avec l'expérience subjective reste non établi ; la réussite de cette future
+compétence ne remplacerait pas l'objectif global.
 
 Le [bilan complet du Colab 17](NATURAL_ERROR_RESULTS.md) est reçu et vérifié :
 3 456 réponses, dont 1 152 tests, trois ajustements externes et aucune erreur
