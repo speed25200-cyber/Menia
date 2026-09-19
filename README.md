@@ -6,8 +6,9 @@ incertitude et évaluation. **Colab A100 40 ou 80 Go** pour l’adaptation ;
 
 **Statut : prototype de recherche. Les Colab 18 et 19 sont terminés et audités :
 la décision native reste sensible à la présentation, même avec des pertes
-publiques déjà calculées. Le Colab 20 entraîne une association entre valeurs
-et codes d'action ; ses résultats restent à recevoir. Le Colab 17 ne confirme
+publiques déjà calculées. Les six entraînements du Colab 20 sont terminés ;
+l'évaluation de l'association entre valeurs et codes d'action reste en cours.
+Le Colab 17 ne confirme
 aucun des neuf gains prédictifs principaux pour les états intermédiaires.
 La détection de rotations internes est reproduite, mais sa portée générale
 et son utilité pour l'action restent à établir.**
@@ -226,7 +227,10 @@ décisions de test sur de nouveaux coûts et probabilités, avec formulations et
 symboles réservés. Le modèle initial sert de troisième référence. Les cinq
 tests passent sur PC et A100 ; le [reçu de lancement](artifacts/action-binding-pilot/launch.json)
 atteste le début de l'entraînement par MCP le 19 septembre à 20:18 UTC.
-**Collecte en cours, aucun résultat de généralisation annoncé.** Cette méthode
+À 20:32 UTC, les [six entraînements sont terminés](artifacts/action-binding-pilot/training-freeze.json) :
+384 mises à jour, neuf fichiers de poids vérifiés et entraînement entièrement
+antérieur au premier test. **Évaluation en cours, aucun résultat de
+généralisation annoncé.** Cette méthode
 a des antécédents et teste une compétence publique ; aucune conscience ni
 installation sur iPhone n'en découle. Le notebook conserve l'environnement
 Menia déjà installé et refuse de remplacer une tentative existante.
