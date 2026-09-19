@@ -4,6 +4,16 @@
 confirme qu'un bon classement des états ne fournit pas une décision stable :
 la calibration externe réussit en canonique et échoue après reformulation.**
 
+La [réanalyse des pertes](OPTIMIZATION_MEMORY_REVIEW.md) relève ensuite une
+piste exploratoire : l'absence est bien apprise en fin de phase cachée, mais
+souvent mal rapportée après la phase visible finale. Les observations en cours
+d'apprentissage ne prouvent pas cet oubli. Le [protocole 14](OPTIMIZER_MEMORY_PROTOCOL.md)
+compare donc quatre suites depuis les mêmes poids et le même état AdamW,
+avec reproduction exacte obligatoire du témoin original. Ses tests logiciels
+ne sont pas des résultats GPU ; les 29 184 réponses prévues restent à collecter.
+Il traite une cause possible d'instabilité avant une éventuelle correction des
+consignes, sans établir de représentation de soi ni d'expérience subjective.
+
 Le [diagnostic 13 reçu et audité](COMPOSITION_DIAGNOSTIC_RESULTS.md) comprend
 13 824 évaluations, zéro entraînement et 3 456 témoins identiques. Les seuils
 ajustés uniquement sur l'ancien apprentissage donnent 90,6–96,9 % d'exactitude

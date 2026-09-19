@@ -33,6 +33,12 @@ Ces positions ne constituent pas une partition exhaustive des théories.
 Le projet poursuit des expériences fonctionnelles falsifiables et distingue
 leurs résultats des interprétations philosophiques.
 
+Après l'échec du transfert de seuil au Colab 13, le [protocole 14](OPTIMIZER_MEMORY_PROTOCOL.md)
+teste si la dernière phase d'apprentissage et les moments d'Adam dégradent le
+rapport d'état. Ce diagnostic causal précède une correction éventuelle ; il
+ne réalise pas les mécanismes de conscience du tableau suivant et n'a pas
+encore de résultat GPU à la publication du protocole.
+
 ## Ce que chaque théorie exigerait, et où en est Menia
 
 Le rapport de Butlin et ses coauteurs organise des indicateurs issus de

@@ -94,6 +94,14 @@ dans la base et change différemment selon les adaptateurs et les codes.
 Les 3 456 témoins, neuf poids et 108 contrastes sont vérifiés ; aucune sortie
 hors code ni erreur technique. La décision native stable reste à obtenir.
 
+**Protocole suivant : [effet de la dernière phase et de la mémoire d'Adam](docs/OPTIMIZER_MEMORY_PROTOCOL.md).**
+Le Colab 14 compare quatre branches depuis un même checkpoint, avec un témoin
+qui doit reproduire exactement les poids du Colab 12. Il prévoit 29 184 réponses
+pour départager rétention, dérive sans nouveaux gradients et effet de l'effacement
+du premier moment. Les tests du moteur sont distincts des résultats GPU encore
+à collecter. L'[indice qui motive le test](docs/OPTIMIZATION_MEMORY_REVIEW.md)
+est une réanalyse exploratoire des anciennes pertes, pas une preuve causale.
+
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
 Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)
 entraîne deux petits adaptateurs Qwen3-4B, avec cibles correctes ou mélangées,
