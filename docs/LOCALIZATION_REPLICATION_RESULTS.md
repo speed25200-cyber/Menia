@@ -176,11 +176,13 @@ sans nouvel appel du modèle ni réglage :
 
 Trois lectures prudentes en découlent.
 
-1. **L'information de présence se reproduit dans le bras fort** : AUROC de 0,82
+1. **Un signal exploratoire de présence est cohérent entre les trois répétitions** : AUROC de 0,82
    à 0,87 dans les trois répétitions, et encore 0,76 à 0,80 sous inversion des
    numéros, contre environ 0,5 pour la base. Le témoin mélangé est plus bas et
-   instable. L'échec au critère principal tient donc en partie à un seuil de
-   décision trop prudent, et non à une absence totale d'information.
+   instable. Cela suggère une séparation de présence que l'argmax n'exploite
+   pas complètement. Ce diagnostic ne démontre pas qu'un changement de seuil
+   résoudrait la localisation : il ne teste ni la bonne position ni un seuil
+   choisi indépendamment de ces données.
 2. **L'information de position canonique préexiste à l'entraînement** : dans la
    base non entraînée, la rotation déplace déjà les logits vers le numéro de la
    ligne touchée dans 19 à 21 blocs sur 24, avec un écart moyen de +2,6 à +2,8,
@@ -209,7 +211,7 @@ séparer ces deux sources de variabilité.
 Ce que l'essai apprend de précis :
 
 - la tâche à trois réponses confond deux questions, détecter et localiser,
-  et c'est la détection qui porte le signal reproductible ;
+  et la détection porte ici le signal exploratoire à tester prospectivement ;
 - le score de position de 50 % de la base est une réponse constante par bloc,
   et ses logits contiennent déjà un effet de position non entraîné : toute
   suite doit comparer le modèle entraîné à cet effet, pas au hasard ;

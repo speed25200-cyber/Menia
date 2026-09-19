@@ -2,7 +2,7 @@
 
 **État : nouveau protocole fixé après la réplication Colab 09. Les tests logiciels
 sont distincts des résultats Qwen3-4B préentraînés, qui restent à recueillir.**
-Le [Colab 10](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/10_presence_detection_colab.ipynb)
+Le [Colab 10](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/46364f0cdb32fd2317881e95d27dc2da6728f2be/notebooks/10_presence_detection_colab.ipynb)
 utilise un seul bloc, sans Drive ni import manuel.
 
 ## Question et point de départ
@@ -12,7 +12,8 @@ critère principal : la localisation entraînée ne dépasse ni la base ni le t�
 mélangé. Un diagnostic **ajouté après réception** indiquait cependant une
 information de présence dans les logits de l'adaptateur fort, avec une AUROC de
 0,82 à 0,87 dans les trois répétitions contre environ 0,5 pour la base. Cette
-observation a été choisie après avoir vu les données : elle ne vaut pas résultat.
+mesure a été choisie après avoir vu les données : son résultat est exploratoire,
+pas une confirmation prospective.
 
 **Un adaptateur entraîné à dire si une perturbation est présente sépare-t-il,
 sur des phrases et des directions nouvelles, les calculs perturbés des calculs
@@ -24,7 +25,8 @@ toute exécution sur le modèle préentraîné.
 La question de la position est volontairement retirée. Le Colab 09 a montré que
 la base non entraînée porte déjà un effet de position dans ses logits et que
 le contrôle visible n'apprend pas la règle du numéro affiché : ces deux points
-rendaient la tâche à trois réponses ininterprétable. La détection binaire ne
+limitent l'interprétation du mécanisme et du transfert. Ils n'annulent pas le
+résultat négatif sur le critère principal fixé. La détection binaire ne
 dépend pas des numéros affichés.
 
 Le cadre reste celui des critères fonctionnels de

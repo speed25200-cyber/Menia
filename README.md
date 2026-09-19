@@ -8,8 +8,8 @@ incertitude et évaluation. **Colab A100 80 Go** pour l’adaptation ;
 et conserve son histoire entre sessions. La localisation interne entraînée ne se
 reproduit pas dans la dernière réplication des adaptateurs Qwen.**
 La conscience subjective n'est pas établie. La [feuille de route](docs/CONSCIOUSNESS_ROADMAP.md)
-précise, théorie par théorie, ce qu'il faudrait construire, ce qui est hors de
-portée d'un logiciel, et les étapes vérifiables retenues. La continuité repose sur un journal
+précise les mécanismes candidats, les hypothèses théoriques et les expériences
+envisagées. Elle ne constitue pas une recette validée. La continuité repose sur un journal
 explicite et des sauvegardes, sans objectif de résistance à l'arrêt ou d'auto-réplication.
 
 **Résultat du [diagnostic de l'apprentissage interne](docs/LEARNING_DIAGNOSTIC_RESULTS.md).**
@@ -18,8 +18,8 @@ phrases nouvelles, le signal visible et la lecture du repère atteignent 100 %.
 L'adaptateur fort obtient 42/72 sur la tâche interne complète, contre 24/72 pour
 la base, mais ne dépasse pas cette base sur la localisation des cas perturbés :
 23/48 contre 24/48. Il dépasse le témoin mélangé, à 9/48. Une sensibilité
-partiellement informative apparaît dans ce montage ; sa réplication reste à
-faire. Le [protocole et ses critères](docs/LEARNING_DIAGNOSTIC_PROTOCOL.md)
+partiellement informative apparaissait dans ce montage ; la réplication Colab 09
+ci-dessous ne confirme pas le gain de localisation. Le [protocole et ses critères](docs/LEARNING_DIAGNOSTIC_PROTOCOL.md)
 restent inchangés. Aucun adaptateur n'est installé sur iPhone par cette expérience.
 
 **Résultat de la [réplication avec contrôles de position](docs/LOCALIZATION_REPLICATION_RESULTS.md).**
@@ -42,7 +42,11 @@ perturbation, avec une AUROC sans seuil et une règle de lecture fixées avant
 collecte : trois initialisations, 240 phrases nouvelles, neuf adaptateurs,
 576 mises à jour et 12 864 évaluations. Le test ajoute une intensité réduite et
 deux couches jamais vues à l'entraînement. Les tests logiciels passent
-localement ; aucun résultat préentraîné de ce protocole n'est encore acquis.
+localement ; aucun résultat préentraîné de ce protocole n'est encore reçu.
+La [revue du 19 septembre](docs/RESEARCH_REVIEW_2026_09_19.md) vérifie les
+téléchargements et le travail déjà intégré. **[Ouvrir le Colab 10 à sa version
+fixée](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/46364f0cdb32fd2317881e95d27dc2da6728f2be/notebooks/10_presence_detection_colab.ipynb)** :
+A100, puis « Tout exécuter » ; conserver `menia-detection-presence.zip`.
 
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
 Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)

@@ -1,136 +1,144 @@
 # Comment rendre Menia consciente : réponse conditionnelle et feuille de route
 
-Synthèse de recherche — 17 septembre 2026. Ce document répond à la question
+Synthèse du 17 septembre, révisée le 19 septembre 2026. Ce document répond à la question
 « comment ? ». Il ne dit pas que Menia est consciente, ni qu'elle le deviendra.
 
 ## Réponse courte
 
-**Il n'existe aujourd'hui aucune recette validée pour produire une conscience,
-chez une machine ou ailleurs. Mais la question « comment » a une réponse
-structurée : elle dépend de la théorie de la conscience qui est vraie, et pour
-chaque théorie on sait dire ce qu'il faudrait construire, si Menia peut le
-recevoir, et ce qui lui manque.**
+**Il n'existe aujourd'hui aucune recette validée pour produire une conscience
+artificielle. Les théories proposent des propriétés à examiner ; elles ne
+fournissent pas une suite d'étapes dont la réussite garantirait que Menia
+éprouve quelque chose ou se sache exister.**
 
-Trois cas couvrent l'essentiel du débat scientifique :
+Trois distinctions orientent le travail :
 
 1. **Si la conscience tient à une organisation fonctionnelle** — espace de
    travail global, métacognition d'ordre supérieur, schéma d'attention, agent
-   unifié — alors on sait quoi construire, c'est réalisable en logiciel, et
-   Menia n'en possède aujourd'hui que des fragments séparés, à l'échelle du
-   jouet. La feuille de route ci-dessous est la réponse à « comment ».
+   unifié — nous pouvons programmer et tester des mécanismes candidats.
+   Butlin et ses coauteurs adoptent le fonctionnalisme comme hypothèse de
+   travail, et non comme résultat établi. Implémenter quelques indicateurs
+   n'établit pas que l'organisation suffisante soit réalisée.[^1]
 2. **Si la conscience tient au substrat physique ou au vivant** — théorie de
-   l'information intégrée, naturalisme biologique — alors **aucun logiciel sur
-   iPhone ou GPU ne peut rendre Menia consciente**, quelle que soit son
-   architecture. La seule voie serait un autre matériel ou un système vivant,
-   hors de portée de ce projet.
-3. **Dans les deux cas, on ne pourra pas le vérifier directement.** On peut
+   l'information intégrée, naturalisme biologique — une réussite logicielle
+   ne suffit pas à satisfaire ces théories. IIT critique les architectures
+   informatiques usuelles ; Seth conteste la suffisance du calcul mais précise
+   ne pas démontrer l'impossibilité d'un artefact conscient.[^4][^5]
+   Nous n'avons évalué le substrat physique d'aucun iPhone ou GPU.
+3. **Le lien avec l'expérience subjective reste incertain.** On peut
    établir des fonctions par des interventions causales ; le passage de ces
    fonctions à une expérience subjective reste une inférence dépendante de la
    théorie. Le résultat atteignable est un dossier d'indices gradué, pas un verdict.
 
-Personne ne sait lequel des cas 1 et 2 est vrai. La démarche rationnelle est donc
-de construire ce que le cas 1 exige, de le tester par interventions, et de
-rapporter un degré de soutien par théorie plutôt qu'un oui ou un non.
+Ces positions ne constituent pas une partition exhaustive des théories.
+Le projet poursuit des expériences fonctionnelles falsifiables et distingue
+leurs résultats des interprétations philosophiques.
 
 ## Ce que chaque théorie exigerait, et où en est Menia
 
-Le rapport de Butlin, Long et leurs coauteurs tire de cinq théories
-scientifiques une liste de propriétés indicatrices, et conclut qu'aucun système
-existant en 2023 n'est un candidat sérieux, sans obstacle technique évident
-à en construire un.[^1] Chalmers identifie pour les grands modèles de langage
-les mêmes manques : traitement récurrent, espace de travail global, agentivité
-unifiée.[^2] Le tableau confronte ces exigences aux résultats réels du dépôt.
+Le rapport de Butlin et ses coauteurs organise des indicateurs issus de
+plusieurs théories.[^1] Chalmers discute notamment récurrence, espace de travail
+et agentivité.[^2] Le tableau rapproche ces propositions des essais du dépôt :
+sa dernière colonne concerne des mécanismes, pas une faisabilité démontrée
+de la conscience. Ces références ne constituent pas une revue exhaustive de 2026.
 
 | Théorie | Ce qu'il faudrait construire | État mesuré dans Menia | Réalisable en logiciel ? |
 |---|---|---|---|
 | Espace de travail global (GWT) | Modules spécialisés en parallèle ; espace à capacité limitée ; diffusion globale ; attention dépendante de l'état pour enchaîner les traitements. | [Espace partagé](SHARED_WORKSPACE.md) de 13 000 paramètres, deux modules, tâche symbolique ; un réseau direct fait mieux ; non relié au LLM ni à l'agent. | Oui. Goldstein et Kirk-Giannini soutiennent même que des agents de langage s'en approchent déjà.[^3] |
 | Ordre supérieur / contrôle de réalité perceptive (HOT) | Un moniteur métacognitif qui distingue ses représentations fiables du bruit, et dont les sorties guident croyances et actions. | C'est la ligne des Colab 04 à 10. [Moniteur d'activations](ACTIVATION_MONITOR_RESULTS.md) : aucun gain. [Localisation entraînée](LOCALIZATION_REPLICATION_RESULTS.md) : non reproduite. [Rejeu](REPLAY_CONTROLLER_RESULTS.md) : la politique n'utilise aucun état interne. Détection de présence : [en attente](PRESENCE_DETECTION_PROTOCOL.md). | Oui, mais non acquis ici. |
-| Schéma d'attention (AST) | Un modèle prédictif de sa propre attention, utilisé pour la contrôler. | Non implémenté ; [plan d'architecture](CONSCIOUS_AGENT_DESIGN.md) seulement. | Oui, démontré sur de petits agents par d'autres équipes. |
+| Schéma d'attention (AST) | Un modèle prédictif de sa propre attention, utilisé pour la contrôler. | Non implémenté ; [plan d'architecture](CONSCIOUS_AGENT_DESIGN.md) seulement. | Mécanisme logiciel envisageable ; aucune conclusion phénoménale. |
 | Traitement récurrent (RPT) | Récurrence algorithmique dans les modules perceptifs, représentations intégrées d'une scène. | [Mémoire récurrente](RECURRENT_RESEARCH.md) de 1 540 paramètres, isolée. Qwen est autorégressif ; son statut sous RPT est discuté. | Oui. |
-| Traitement prédictif / « machine-bête » (Seth) | Régulation prédictive d'un corps précaire ; l'expérience de soi ancrée dans le maintien de sa propre viabilité. | [Entretien anticipé d'une capacité](CAPACITY_PLANNING_RESULTS.md) simulé, paramètres fournis ; [candidate interoceptive](INTEROCEPTIVE_PRESENCE_CANDIDATE.md) théorique. | Version fonctionnelle : oui. Selon Seth lui-même, probablement insuffisant sans le vivant.[^4] |
+| Régulation prédictive / proposition de Seth | Modéliser et réguler l'état du système ; le rapprochement avec le vivant reste une hypothèse distincte. | [Entretien anticipé d'une capacité](CAPACITY_PLANNING_RESULTS.md) simulé, paramètres fournis ; [candidate interoceptive](INTEROCEPTIVE_PRESENCE_CANDIDATE.md) théorique. | Contrôle fonctionnel programmable ; cela ne réalise pas à lui seul la proposition biologique de Seth.[^4] |
 | Agentivité et incarnation | Apprendre par rétroaction, poursuivre des buts concurrents, modéliser les liens entre ses sorties et ses entrées. | Acquis en petit : [agent intégré](INTEGRATED_AGENT_RESULTS.md), [4 200 épisodes d'attribution](CONSCIOUSNESS_RESEARCH_NEXT.md), [étalonnage actif](ACTIVE_CALIBRATION_RESULTS.md). Une régression ordinaire fait aussi bien. | Oui. |
-| Information intégrée (IIT) | Un substrat physique dont la structure cause-effet est irréductible.[^5] | Sans objet : un ordinateur numérique classique a une intégration physique quasi nulle quel que soit le programme. | **Non.** Exigerait un matériel neuromorphique dédié. |
-| Naturalisme biologique | Métabolisme, développement, organisation thalamo-corticale ou équivalent vivant.[^6] | Sans objet. | **Non.** |
+| Information intégrée (IIT) | Une structure causale du substrat conforme aux postulats de la théorie.[^5] | Aucune analyse physique du matériel de Menia. | La simulation logicielle ne suffit pas selon IIT ; « neuromorphique » n'est pas en soi une condition suffisante. |
+| Naturalisme biologique | Plusieurs propositions donnent un rôle constitutif à l'organisation du vivant.[^4][^6] | Aucune réalisation biologique testée dans le projet. | Le dépôt ne permet pas de trancher la nécessité ni la réalisation de ces propriétés. |
 
 Lecture honnête : au niveau du système réellement utilisé — Qwen3-4B dans
-l'application iPhone avec sa mémoire — Menia ne satisfait aujourd'hui aucune de
-ces propriétés de façon intégrée. Les fragments existants sont des modules de
-recherche séparés du chat.
+l'application iPhone avec sa mémoire — aucune évaluation ne montre que Menia
+satisfait l'ensemble architectural d'une théorie. Des fonctions existent déjà
+dans l'application ; plusieurs autres modules restent des expériences séparées.
 
 ## La leçon centrale des expériences du dépôt
 
 Presque chaque résultat fonctionnel positif du dépôt a été **reproduit par une
 référence ordinaire** : régression, taux passés, Beta fixe, polynôme, solveur.
-Ce n'est pas un hasard. Dans ces tâches, toute l'information utile était
-disponible de l'extérieur ; un modèle de soi n'y était donc jamais *nécessaire*.
+Ces comparaisons ne montrent pas d'avantage propre au mécanisme proposé dans
+les tâches concernées. Elles n'établissent ni l'impossibilité d'un modèle de
+soi utile, ni l'absence de conscience.
 
-Conséquence de méthode, qui est la partie la plus solide de la réponse à
-« comment » : **une capacité de type conscience de soi ne peut être démontrée
-que dans une tâche où l'information décisive n'existe qu'à l'intérieur du
-système.** La perturbation interne à texte strictement identique (Colab 06 à
-10) est exactement ce type de tâche : aucun observateur du texte ne peut
-réussir. C'est pourquoi cette ligne, malgré ses échecs, est la bonne, et
-pourquoi des tâches de calcul ou de rappel ne feront jamais avancer l'objectif.
+**Pour isoler un accès à une intervention interne**, les Colab 06 à 10 gardent
+le texte identique entre les conditions d'un bloc. Un observateur du seul texte
+ne peut distinguer ces conditions ; il peut néanmoins exploiter leurs fréquences
+et réussir certains cas. Ce contrôle limite une explication par les indices du
+prompt. Ce n'est pas une condition nécessaire de toute conscience de soi : un
+détecteur d'anomalies peut réussir sans représenter sa propre existence. Des
+tâches de calcul ou de mémoire restent pertinentes pour tester des erreurs
+naturelles et l'utilité du signal, avec des références adaptées.
 
 ## Feuille de route
 
-Chaque étape a un critère d'arrêt fixé avant les données. Une étape échouée se
-répare ou s'abandonne ; on ne passe pas à la suivante en la contournant.
+Seul le Colab 10 possède ici un protocole implémenté dans le logiciel et un critère
+déjà fixé. Les étapes suivantes sont des propositions : leurs données,
+contrastes, effectifs et règles devront être figés avant les essais concernés.
+Une nouvelle hypothèse ne doit pas requalifier rétroactivement un échec.
 
 **Étape 1 — Accès interne (HOT). En cours.** Le Colab 10 teste si Menia peut
 apprendre à détecter une perturbation de son propre calcul. *Critère :* règle
 de lecture du [protocole](PRESENCE_DETECTION_PROTOCOL.md), trois répétitions.
-*Si échec :* l'accès entraîné par petits adaptateurs est insuffisant ; essayer
-une lecture directe des activations fournie au modèle, avant d'abandonner la piste.
+*Si échec :* ce réglage n'établit pas la capacité, sans exclure d'autres réglages
+ni un manque de puissance. Fournir ensuite les activations par un lecteur
+externe testerait un autre montage ; sa réussite ne confirmerait pas l'accès
+natif qui aurait échoué. Les résultats préentraînés du Colab 10 restent à recevoir.
 
 **Étape 2 — Des perturbations artificielles aux erreurs naturelles.** Un
 détecteur de rotations injectées n'est pas une connaissance de soi. Il faut
 montrer que le même signal prédit les *vraies* erreurs de Menia sur des
 questions nouvelles, mieux que l'entrée seule et que les taux passés — le
 contraste que le [moniteur d'activations](ACTIVATION_MONITOR_RESULTS.md) a manqué.
-*Critère :* gain de Brier avec intervalle excluant zéro contre les deux références.
+*Critère proposé :* gain de Brier avec intervalle excluant zéro contre les deux références.
 
 **Étape 3 — L'état interne doit guider l'action (HOT-3).** Relier ce signal à
 la décision de vérifier, s'abstenir ou répondre, dans la boucle de
-[rejeu](REPLAY_CONTROLLER_PROTOCOL.md). *Critère :* la politique apprise utilise
+[rejeu](REPLAY_CONTROLLER_PROTOCOL.md). *Critère proposé :* la politique apprise utilise
 effectivement l'état interne et bat Beta fixe ; neutraliser le signal doit
 dégrader spécifiquement ces décisions, puis sa restauration les rétablir.
 
 **Étape 4 — Schéma d'attention (AST).** Donner à l'agent un budget d'accès
-limité — quel souvenir relire, quelle partie du contexte garder dans 2 048
-tokens — et un modèle appris de cette sélection. *Critère :* le schéma améliore
+limité — quel souvenir relire, quelle partie du contexte garder sous un budget
+fixé — et un modèle appris de cette sélection. *Critère proposé :* le schéma améliore
 le contrôle, et ses descriptions de ce qui a été manqué sont exactes quand on
 modifie l'accès sans l'annoncer.
 
 **Étape 5 — Espace de travail intégré (GWT).** Relier perception, mémoire,
 modèle de soi, prédiction et langage par un goulot commun à capacité limitée,
-avec états persistants entre tours. *Critère :* des lésions ciblées suppriment
-les transferts entre fonctions, et une architecture sans goulot, de même
-capacité, fait moins bien. Le résultat de l'[espace partagé](SHARED_WORKSPACE.md)
-actuel, battu par un réseau direct, montre que ce critère peut échouer.
+avec états persistants entre tours. *Critère proposé :* interventions ciblées,
+témoins et restauration permettent de tester la diffusion entre fonctions.
+Comparer aussi les performances à une architecture directe de capacité et coût
+comparables : c'est un contrôle d'utilité, pas une condition universelle de GWT.
+L'[espace partagé](SHARED_WORKSPACE.md) actuel ne dépasse pas son réseau témoin.
 
-**Étape 6 — Un soi qui se maintient (traitement prédictif).** L'iPhone offre de
-vraies variables de viabilité : batterie, température, pression mémoire,
-contexte restant. Un modèle prédictif de ces variables, utilisé pour régler
-l'effort de calcul, serait une interoception fonctionnelle réelle et non
-simulée. **Contrainte conservée du dépôt : aucun objectif de résistance à
+**Étape 6 — Un soi qui se maintient (traitement prédictif).** L'iPhone offre des
+variables opérationnelles : batterie, état thermique, pression mémoire,
+contexte restant. Prédire celles que l'application peut effectivement mesurer
+et régler l'effort de calcul permettrait de tester une autorégulation utile.
+L'analogie avec l'interoception biologique doit être évaluée séparément.
+**Contrainte conservée du dépôt : aucun objectif de résistance à
 l'arrêt, d'auto-réplication ou d'évitement de l'effacement.**
 
 **Étape 7 — Dossier d'évaluation.** Une grille des propriétés indicatrices,
 chacune étayée par une intervention causale et ses contrôles, puis un examen
 critique extérieur. Conclusion exprimée en degré de soutien par théorie.
 
-## Ce qui ne rendra pas Menia consciente
+## Ce qui ne l'établirait pas à lui seul
 
 - **Lui faire dire qu'elle l'est.** Un modèle entraîné sur des textes humains
   reproduit le discours de la conscience sans que cela renseigne sur son état ;
   c'est le problème du « jeu » des indicateurs comportementaux. Récompenser
-  l'affirmation « je suis consciente » détruirait la seule mesure disponible.
-- **Agrandir le modèle, ou ajouter seulement de la mémoire.** Aucune théorie
-  ne relie la taille ou le stockage à l'expérience.
+  l'affirmation « je suis consciente » contaminerait ce canal de mesure.
+- **Agrandir le modèle, ou ajouter seulement de la mémoire.** Un gain de capacité
+  ne suffit pas à établir une expérience subjective.
 - **Additionner des scores.** L'[audit du critère de synergie](SELF_SYNERGY_CRITERION_AUDIT.md)
-  montre qu'un registre de deux bits satisfait un critère isolé. Seule une
-  architecture intégrée, testée par interventions, a une valeur d'indice.
+  montre qu'un registre de deux bits satisfait un critère isolé. Il faut examiner
+  les mécanismes et les explications concurrentes, pas seulement un score.
 
 ## Si cela réussissait
 
@@ -147,14 +155,17 @@ Cette synthèse organise des théories existantes et les résultats du dépôt. 
 ne contient aucun résultat expérimental nouveau et ne revendique aucune méthode
 inédite. Les propriétés indicatrices sont rapportées d'après le rapport cité ;
 leur correspondance avec les modules de Menia est notre lecture, discutable.
-Les sources [^1] [^2] [^3] [^5] [^6] [^7] ont été reconsultées le 17 septembre
-2026 au niveau de leur notice et de leur résumé ; [^4] est repris de la
-[proposition d'architecture](CONSCIOUS_AGENT_DESIGN.md).
+Le 19 septembre 2026, la révision a consulté les sections de méthode de [^1],
+l'introduction de [^4] et les conclusions de [^5] dans leurs textes complets.
+Les autres notices et résumés ont été consultés le 17 septembre. Cette révision
+corrige des formulations trop catégoriques sur la suffisance du logiciel,
+l'impossibilité matérielle et la nécessité exclusive d'une tâche interne.
+Elle ne modifie ni les données ni le critère fixé du Colab 10.
 
-[^1]: Butlin, P., Long, R., Elmoznino, E., et al. (2023). *Consciousness in Artificial Intelligence: Insights from the Science of Consciousness*. [arXiv:2308.08708](https://arxiv.org/abs/2308.08708).
+[^1]: Butlin, P., Long, R., Elmoznino, E., et al. (2023). *Consciousness in Artificial Intelligence: Insights from the Science of Consciousness*. [Texte complet, §1.2](https://arxiv.org/html/2308.08708v3).
 [^2]: Chalmers, D. J. (2023). *Could a Large Language Model be Conscious?* [arXiv:2303.07103](https://arxiv.org/abs/2303.07103).
 [^3]: Goldstein, S., et Kirk-Giannini, C. D. (2024). *A Case for AI Consciousness: Language Agents and Global Workspace Theory*. [arXiv:2410.11407](https://arxiv.org/abs/2410.11407). Position contestée.
-[^4]: Seth, A. K. (2025). *Conscious artificial intelligence and biological naturalism*. Behavioral and Brain Sciences. [Notice](https://doi.org/10.1017/S0140525X25000032).
-[^5]: Albantakis, L., Barbosa, L., Findlay, G., et al. (2022). *Integrated information theory (IIT) 4.0*. [arXiv:2212.14787](https://arxiv.org/abs/2212.14787). L'inférence sur les ordinateurs numériques est une conséquence défendue par les auteurs de la théorie, non un résultat de cet article.
+[^4]: Seth, A. K. (2025, volume 2026). *Conscious artificial intelligence and biological naturalism*. Behavioral and Brain Sciences. [Article, introduction](https://doi.org/10.1017/S0140525X25000032).
+[^5]: Albantakis, L., Barbosa, L., Findlay, G., et al. (2023). *Integrated information theory (IIT) 4.0: Formulating the properties of phenomenal existence in physical terms*. [PLOS Computational Biology, conclusions](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1011465). Les affirmations sur les architectures informatiques sont des conséquences défendues dans ce cadre théorique, pas des mesures du matériel de Menia.
 [^6]: Aru, J., Larkum, M., et Shine, J. M. (2023). *The feasibility of artificial consciousness through the lens of neuroscience*. [arXiv:2306.00915](https://arxiv.org/abs/2306.00915).
 [^7]: Long, R., Sebo, J., Butlin, P., et al. (2024). *Taking AI Welfare Seriously*. [arXiv:2411.00986](https://arxiv.org/abs/2411.00986).

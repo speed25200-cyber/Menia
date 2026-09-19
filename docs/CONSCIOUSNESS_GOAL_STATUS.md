@@ -3,8 +3,12 @@
 **État actuel : objectif non atteint ; une politique de vérification apprise est intégrée à l'agent expérimental.**
 
 La [feuille de route](CONSCIOUSNESS_ROADMAP.md) répond à la question « comment » de façon
-conditionnelle : ce que chaque théorie exigerait, l'état mesuré de Menia, ce qui
-est hors de portée d'un logiciel, et sept étapes à critères fixés d'avance.
+conditionnelle : mécanismes candidats, état mesuré de Menia et limites
+théoriques. Le Colab 10 possède un critère fixé ; les six étapes ultérieures
+restent des propositions à formaliser avant collecte.
+La [revue du 19 septembre](RESEARCH_REVIEW_2026_09_19.md) confirme que le
+dernier export retrouvé est celui du Colab 09 et corrige des formulations
+trop catégoriques de cette feuille de route.
 
 La [réplication Colab 09 est reçue et vérifiée](LOCALIZATION_REPLICATION_RESULTS.md) :
 neuf adaptateurs, 288 mises à jour et 12 480 évaluations, sans erreur technique.
@@ -20,7 +24,7 @@ présente dans la base non entraînée. Le [protocole Colab 10](PRESENCE_DETECTI
 fixe à l'avance une AUROC de présence sans seuil, une règle de lecture exigeant
 les trois répétitions, et un transfert à une intensité et deux couches non vues.
 Il est implémenté et testé localement ; ses 12 864 évaluations préentraînées
-restent à exécuter. Ni localisation entraînée robuste, ni métacognition
+restent à recevoir. Ni localisation entraînée robuste, ni métacognition
 native, ni conscience ne sont établies.
 
 Le [diagnostic d'apprentissage reçu](LEARNING_DIAGNOSTIC_RESULTS.md) apportait un
