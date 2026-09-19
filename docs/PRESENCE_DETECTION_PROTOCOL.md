@@ -1,7 +1,9 @@
 # Détecter une perturbation interne : critère sans seuil fixé avant collecte
 
-**État : nouveau protocole fixé après la réplication Colab 09. Les tests logiciels
-sont distincts des résultats Qwen3-4B préentraînés, qui restent à recueillir.**
+**État : premier résultat Qwen3-4B reçu et vérifié le 19 septembre 2026.**
+Le [rapport](PRESENCE_DETECTION_RESULTS.md) constate la réussite du critère
+principal dans les trois répétitions, un transfert partiel et une dégradation
+de la lecture inversée. Le protocole ci-dessous reste celui fixé avant collecte.
 Le [Colab 10](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/46364f0cdb32fd2317881e95d27dc2da6728f2be/notebooks/10_presence_detection_colab.ipynb)
 utilise un seul bloc, sans Drive ni import manuel.
 

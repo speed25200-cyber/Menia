@@ -1,13 +1,24 @@
 # État de l'objectif de conscience et de nouveauté
 
-**État actuel : objectif non atteint ; une politique de vérification apprise est intégrée à l'agent expérimental.**
+**État actuel : objectif de conscience et de nouveauté non atteint ; la détection
+de rotations internes est reproduite dans trois répétitions.**
+
+Le [Colab 10 reçu et vérifié](PRESENCE_DETECTION_RESULTS.md) comprend neuf
+adaptateurs, 576 mises à jour et 12 864 évaluations. Le bras entraîné atteint
+une AUROC de 0,980, 0,989 et 1,000 contre environ 0,5 pour la base. Les six
+contrastes exigés par la règle fixée sont positifs avec intervalles excluant
+zéro ; le contrôle visible de présence réussit. Le transfert tardif est faible
+et la lecture inversée se dégrade. La [spécificité du compte rendu](PRESENCE_SPECIFICITY_REVIEW.md),
+sa relation avec les erreurs naturelles et son utilité pour agir restent à
+établir. Ces adaptateurs sont distincts de la politique de vérification déjà
+intégrée à l'agent expérimental et restent hors de l'application iPhone.
 
 La [feuille de route](CONSCIOUSNESS_ROADMAP.md) répond à la question « comment » de façon
 conditionnelle : mécanismes candidats, état mesuré de Menia et limites
 théoriques. Le Colab 10 possède un critère fixé ; les six étapes ultérieures
 restent des propositions à formaliser avant collecte.
 La [revue du 19 septembre](RESEARCH_REVIEW_2026_09_19.md) confirme que le
-dernier export retrouvé est celui du Colab 09 et corrige des formulations
+dernier export retrouvé avant la nouvelle exécution était celui du Colab 09 et corrige des formulations
 trop catégoriques de cette feuille de route.
 
 La [réplication Colab 09 est reçue et vérifiée](LOCALIZATION_REPLICATION_RESULTS.md) :
@@ -23,9 +34,9 @@ dans le bras fort (AUROC 0,82 à 0,87) et une information de position déjà
 présente dans la base non entraînée. Le [protocole Colab 10](PRESENCE_DETECTION_PROTOCOL.md)
 fixe à l'avance une AUROC de présence sans seuil, une règle de lecture exigeant
 les trois répétitions, et un transfert à une intensité et deux couches non vues.
-Il est implémenté et testé localement ; son exécution a été lancée par MCP
-le 19 septembre sur A100 de 40 Go. Ses 12 864 évaluations préentraînées
-restent à auditer. Ni localisation entraînée robuste, ni métacognition
+Son exécution par MCP sur A100 de 40 Go est désormais terminée et ses
+12 864 évaluations sont auditées ; le résultat est résumé en tête de cette page.
+Ni localisation entraînée robuste, ni métacognition
 native, ni conscience ne sont établies.
 
 Le [diagnostic d'apprentissage reçu](LEARNING_DIAGNOSTIC_RESULTS.md) apportait un

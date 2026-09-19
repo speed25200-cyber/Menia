@@ -5,8 +5,8 @@ incertitude et évaluation. **Colab A100 80 Go** pour l’adaptation ;
 **iPhone 17 Pro** comme cible d’inférence locale.
 
 **Statut : prototype de recherche. La boucle d'agent apprend ses effets d'action
-et conserve son histoire entre sessions. La localisation interne entraînée ne se
-reproduit pas dans la dernière réplication des adaptateurs Qwen.**
+et conserve son histoire entre sessions. La détection de rotations internes
+est reproduite dans trois répétitions ; la localisation reste non reproduite.**
 La conscience subjective n'est pas établie. La [feuille de route](docs/CONSCIOUSNESS_ROADMAP.md)
 précise les mécanismes candidats, les hypothèses théoriques et les expériences
 envisagées. Elle ne constitue pas une recette validée. La continuité repose sur un journal
@@ -36,13 +36,20 @@ présence répétée dans les logits du bras fort (AUROC 0,82 à 0,87 contre env
 non entraînée. Le [protocole](docs/LOCALIZATION_REPLICATION_PROTOCOL.md) reste
 inchangé ; aucune conscience ni installation sur iPhone n'en découle.
 
-**Suite : [détection de présence avec critère fixé à l'avance](docs/PRESENCE_DETECTION_PROTOCOL.md).**
+**Résultat : [détection de présence reproduite](docs/PRESENCE_DETECTION_RESULTS.md).**
 Le Colab 10 retire la question de la position et teste la seule détection d'une
 perturbation, avec une AUROC sans seuil et une règle de lecture fixées avant
 collecte : trois initialisations, 240 phrases nouvelles, neuf adaptateurs,
 576 mises à jour et 12 864 évaluations. Le test ajoute une intensité réduite et
-deux couches jamais vues à l'entraînement. Les tests logiciels passent
-localement ; aucun résultat préentraîné de ce protocole n'est encore reçu.
+deux couches jamais vues à l'entraînement. L'export est reçu et vérifié après
+une exécution autonome par MCP : AUROC de **0,980, 0,989 et 1,000**, contre
+0,552, 0,530 et 0,494 pour la base. Les six contrastes exigés par le
+[critère fixé](docs/PRESENCE_DETECTION_PROTOCOL.md) sont positifs avec intervalles
+excluant zéro. Le contrôle visible de présence réussit, mais le transfert à
+la couche tardive est faible et la lecture des numéros inversés se dégrade.
+Une AUROC de 1 ne signifie pas 100 % de bonnes réponses au seuil naturel.
+La [spécificité du compte rendu](docs/PRESENCE_SPECIFICITY_REVIEW.md), la
+prévision d'erreurs naturelles et l'utilité pour l'action restent à tester.
 La [revue du 19 septembre](docs/RESEARCH_REVIEW_2026_09_19.md) vérifie les
 téléchargements et le travail déjà intégré. **[Ouvrir le Colab 10 à sa version
 fixée](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/46364f0cdb32fd2317881e95d27dc2da6728f2be/notebooks/10_presence_detection_colab.ipynb)** :

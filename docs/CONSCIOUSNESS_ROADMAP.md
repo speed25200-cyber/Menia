@@ -44,7 +44,7 @@ de la conscience. Ces références ne constituent pas une revue exhaustive de 20
 | Théorie | Ce qu'il faudrait construire | État mesuré dans Menia | Réalisable en logiciel ? |
 |---|---|---|---|
 | Espace de travail global (GWT) | Modules spécialisés en parallèle ; espace à capacité limitée ; diffusion globale ; attention dépendante de l'état pour enchaîner les traitements. | [Espace partagé](SHARED_WORKSPACE.md) de 13 000 paramètres, deux modules, tâche symbolique ; un réseau direct fait mieux ; non relié au LLM ni à l'agent. | Oui. Goldstein et Kirk-Giannini soutiennent même que des agents de langage s'en approchent déjà.[^3] |
-| Ordre supérieur / contrôle de réalité perceptive (HOT) | Un moniteur métacognitif qui distingue ses représentations fiables du bruit, et dont les sorties guident croyances et actions. | C'est la ligne des Colab 04 à 10. [Moniteur d'activations](ACTIVATION_MONITOR_RESULTS.md) : aucun gain. [Localisation entraînée](LOCALIZATION_REPLICATION_RESULTS.md) : non reproduite. [Rejeu](REPLAY_CONTROLLER_RESULTS.md) : la politique n'utilise aucun état interne. Détection de présence : [en attente](PRESENCE_DETECTION_PROTOCOL.md). | Oui, mais non acquis ici. |
+| Ordre supérieur / contrôle de réalité perceptive (HOT) | Un moniteur métacognitif qui distingue ses représentations fiables du bruit, et dont les sorties guident croyances et actions. | C'est la ligne des Colab 04 à 10. [Moniteur d'activations](ACTIVATION_MONITOR_RESULTS.md) : aucun gain. [Localisation entraînée](LOCALIZATION_REPLICATION_RESULTS.md) : non reproduite. [Rejeu](REPLAY_CONTROLLER_RESULTS.md) : la politique n'utilise aucun état interne. [Détection de présence](PRESENCE_DETECTION_RESULTS.md) : critère satisfait, portée métacognitive non établie. | Mécanisme envisageable ; le détecteur seul ne réalise pas HOT. |
 | Schéma d'attention (AST) | Un modèle prédictif de sa propre attention, utilisé pour la contrôler. | Non implémenté ; [plan d'architecture](CONSCIOUS_AGENT_DESIGN.md) seulement. | Mécanisme logiciel envisageable ; aucune conclusion phénoménale. |
 | Traitement récurrent (RPT) | Récurrence algorithmique dans les modules perceptifs, représentations intégrées d'une scène. | [Mémoire récurrente](RECURRENT_RESEARCH.md) de 1 540 paramètres, isolée. Qwen est autorégressif ; son statut sous RPT est discuté. | Oui. |
 | Régulation prédictive / proposition de Seth | Modéliser et réguler l'état du système ; le rapprochement avec le vivant reste une hypothèse distincte. | [Entretien anticipé d'une capacité](CAPACITY_PLANNING_RESULTS.md) simulé, paramètres fournis ; [candidate interoceptive](INTEROCEPTIVE_PRESENCE_CANDIDATE.md) théorique. | Contrôle fonctionnel programmable ; cela ne réalise pas à lui seul la proposition biologique de Seth.[^4] |
@@ -81,13 +81,13 @@ déjà fixé. Les étapes suivantes sont des propositions : leurs données,
 contrastes, effectifs et règles devront être figés avant les essais concernés.
 Une nouvelle hypothèse ne doit pas requalifier rétroactivement un échec.
 
-**Étape 1 — Accès interne (HOT). En cours.** Le Colab 10 teste si Menia peut
-apprendre à détecter une perturbation de son propre calcul. *Critère :* règle
-de lecture du [protocole](PRESENCE_DETECTION_PROTOCOL.md), trois répétitions.
-*Si échec :* ce réglage n'établit pas la capacité, sans exclure d'autres réglages
-ni un manque de puissance. Fournir ensuite les activations par un lecteur
-externe testerait un autre montage ; sa réussite ne confirmerait pas l'accès
-natif qui aurait échoué. Les résultats préentraînés du Colab 10 restent à recevoir.
+**Étape 1 — Détection interne ; portée métacognitive à tester.** Le Colab 10
+[satisfait son critère](PRESENCE_DETECTION_RESULTS.md) dans trois répétitions :
+AUROC de 0,980, 0,989 et 1,000, avec avantages sur les cibles mélangées et la
+base. Cette détection apprise n'identifie pas à elle seule un mécanisme d'ordre
+supérieur. Le transfert tardif est faible et la lecture inversée se dégrade.
+La prochaine expérience proposée contrôle la [spécificité du compte rendu](PRESENCE_SPECIFICITY_REVIEW.md)
+avec des consignes et des tâches témoins, avant toute intégration du détecteur.
 
 **Étape 2 — Des perturbations artificielles aux erreurs naturelles.** Un
 détecteur de rotations injectées n'est pas une connaissance de soi. Il faut

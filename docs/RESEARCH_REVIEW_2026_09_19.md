@@ -61,7 +61,12 @@ vérifié par SHA-256, puis exécuté sans modification en processus séparé ;
 les cellules MCP lisent son journal sans interrompre l'entraînement. Cette
 séparation évite de confondre un délai d'observation MCP avec un échec du calcul.
 Les neuf tests du protocole et du moteur passent aussi sur ce Colab avant
-le chargement du Qwen préentraîné. Les résultats complets restent à auditer.
+le chargement du Qwen préentraîné. **L'exécution est maintenant terminée et
+le [résultat complet est audité](PRESENCE_DETECTION_RESULTS.md)** : 12 864
+évaluations, 576 mises à jour, neuf checkpoints, aucune erreur et critère
+principal satisfait dans les trois répétitions. La détection apprise atteint
+une AUROC de 0,980, 0,989 et 1,000, avec transfert partiel. Les limites sur le
+seuil de réponse et la lecture inversée sont conservées dans le rapport.
 
 Une [note de spécificité du rapport](PRESENCE_SPECIFICITY_REVIEW.md), écrite
 pendant l'entraînement et avant consultation des évaluations, prépare la
@@ -91,7 +96,7 @@ lanceur. Ils couvrent notamment le calcul de l'AUROC, les contrôles, les
 gradients, les reprises après interruption et la conservation des exports.
 Ils ne sont pas des résultats du Qwen3-4B préentraîné sur A100.
 
-À réception, appliquer le [protocole inchangé](PRESENCE_DETECTION_PROTOCOL.md) :
+Pour la vérification, appliquer le [protocole inchangé](PRESENCE_DETECTION_PROTOCOL.md) :
 vérifier complétude, checkpoints, copies témoins, déterminisme et contrôle
 visible avant d'interpréter les contrastes. Conserver les trois répétitions,
 y compris les échecs. Le booléen de la règle statistique ne remplace pas cet
