@@ -4,8 +4,9 @@ Assistant local expérimental : mémoire explicite, représentation de ses capac
 incertitude et évaluation. **Colab A100 40 ou 80 Go** pour l’adaptation ;
 **iPhone 17 Pro** comme cible d’inférence locale.
 
-**Statut : prototype de recherche. Le Colab 22 v2 est lancé : apprentissage
-auxiliaire d'associations valeur-action, sans résultat de test annoncé.
+**Statut : prototype de recherche. Le Colab 22 v2 est terminé et audité :
+associations correctes sur 576/576 tests dans la présentation évaluée,
+mais décision encore fragile et critère global non atteint.
 La v1 a été arrêtée avant évaluation pour un défaut de données documenté.
 Le Colab 21 est terminé et audité :
 comparaison numérique réussie sur 864/864 appels, mais choix de l'action
@@ -255,12 +256,12 @@ parents sont vérifiés. Aucune sortie invalide ni tronquée. La prochaine
 étape doit tester l'association valeur-action réalisée par le modèle,
 avec de nouveaux cas ; aucun modèle de soi ni conscience n'est établi ici.
 
-**En cours : [apprentissage d'associations valeur-action](docs/VALUE_ACTION_LEARNING_PROTOCOL.md).**
+**Résultat : [associations apprises, décision encore fragile](docs/VALUE_ACTION_LEARNING_RESULTS.md).**
 Le [Colab 22 v2](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/1da6f7bd5421081ef244ed584a41c1b9f42e7133/notebooks/22_value_action_learning_colab.ipynb)
 compare trois entraînements sur trois initialisations : choix seuls, choix
 avec associations correctes, et mêmes entrées avec cibles auxiliaires mélangées.
 Les neuf adaptateurs sont entraînés après 576 mises à jour ; les 9 216 appels
-d'évaluation sont en cours. Les 24 cas de
+d'évaluation sont terminés et audités. Les 24 cas de
 test utilisent de nouvelles valeurs, avec tests de formulation et de codes.
 Le nombre d'exemples est apparié, pas les longueurs d'entrée. La première
 version comportait un raccourci formulation → label ; elle a été arrêtée après
@@ -268,11 +269,16 @@ version comportait un raccourci formulation → label ; elle a été arrêtée a
 et son archive sont conservés. La version corrigée équilibre les cibles dans
 chaque présentation ; six tests passent sur PC et Colab. Le
 [reçu de lancement](artifacts/value-action-learning-pilot/launch.json) confirme
-le processus actif et les premières mises à jour. Ce contrôle public ne mesure
+le démarrage et les premières mises à jour. Ce contrôle public ne mesure
 pas encore une estimation des capacités propres ou une conscience.
-Le [reçu des poids figés](artifacts/value-action-learning-pilot/training-freeze.json)
-vérifie les douze fichiers avant lecture des scores. Les budgets sont de
-80 384 tokens d'entrée par entraînement de choix et 84 224 avec tâche auxiliaire.
+Le [reçu final](artifacts/value-action-learning-pilot/receipt.json) vérifie les
+douze poids et les deux recalculs, sans écart. Le bras avec associations
+correctes obtient 576/576 recherches d'association, et 77,26 % de choix
+optimaux sous formulations nouvelles avec chiffres, contre 67,01 % pour
+les choix seuls. Mais seuls 3/24 contrôles globaux passent ; le critère fixé
+échoue et 19/72 groupes de choix de ce bras donnent une réponse constante.
+Les budgets sont de 80 384 tokens d'entrée par entraînement de choix et
+84 224 avec tâche auxiliaire.
 
 La [préparation de confiance après réponse](docs/NATIVE_ANSWER_CONFIDENCE_PREPARATION.md)
 ajoute ensuite 1 728 exemples issus uniquement de l'ancien apprentissage,

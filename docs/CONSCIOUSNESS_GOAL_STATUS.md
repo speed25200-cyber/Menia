@@ -1,8 +1,9 @@
 # État de l'objectif de conscience et de nouveauté
 
 **État actuel : objectif de conscience et de nouveauté non atteint. Le Colab 22
-v2 est lancé pour apprendre l'association valeur-action ; aucun score réel
-de ce lot n'est encore annoncé. Le Colab 21
+v2 est reçu et audité : 576/576 associations retrouvées pour le bras correct,
+mais aucun de ses trois contrôles globaux de choix ne passe. Le critère
+principal échoue. Le Colab 21
 réussit les comparaisons numériques isolées (864/864), mais le choix de
 l'action par son nom reste faible (514/864). La traduction imposée réussit
 423/432. Le Colab 20 reste un échec global de généralisation. Le Colab 18 ne confirme
@@ -12,7 +13,7 @@ général réutilisable.**
 
 Le [protocole du Colab 22](VALUE_ACTION_LEARNING_PROTOCOL.md) compare trois
 recettes d'apprentissage appariées : choix seuls, associations auxiliaires
-correctes, associations auxiliaires mélangées. Neuf adaptateurs sont prévus,
+correctes, associations auxiliaires mélangées. Neuf adaptateurs sont entraînés,
 avec 576 mises à jour, puis 9 216 appels sur 24 cas nouveaux. La première
 version a été interrompue après 22 mises à jour du premier bras, avant tout
 test : ses cibles auxiliaires dépendaient seulement de la formulation.
@@ -20,12 +21,15 @@ Le [reçu d'arrêt](../artifacts/value-action-learning-pilot/aborted-v1.json)
 conserve les empreintes de l'archive et du journal, vérifiés après réception.
 La v2 équilibre les cibles pour chaque présentation ; six tests passent sur PC
 et Colab. Le [reçu de lancement](../artifacts/value-action-learning-pilot/launch.json)
-confirme le processus actif et les premières mises à jour, sans score de test.
+documente le démarrage et les premières mises à jour, sans score de test.
 Les états initiaux sont recréés, aucun poids entraîné de la v1 n'est repris.
-Les neuf entraînements sont désormais terminés. Le [reçu des poids figés](../artifacts/value-action-learning-pilot/training-freeze.json)
-vérifie douze fichiers pendant que l'évaluation continue. Les bras auxiliaires
-emploient 4,78 % de tokens d'entrée supplémentaires ; les durées et les
-empreintes sont conservées avant lecture des scores.
+Le [bilan du Colab 22](VALUE_ACTION_LEARNING_RESULTS.md) confirme trois contrôles
+globaux réussis sur 24, tous pour la recherche d'association du bras correct.
+Six des neuf contrastes réservés dépassent de cinq points les trois références,
+mais 19/72 groupes de choix de ce bras donnent une réponse constante à 12/24.
+Les douze poids correspondent au reçu pris pendant l'évaluation ; les deux
+recalculs sont exacts. Les bras auxiliaires emploient 4,78 % de tokens d'entrée
+supplémentaires. Ce gain partiel ne résout pas le transfert des décisions.
 Ce test porte sur une compétence publique préalable. Il ne remplace pas
 l'estimation apprise des propres réussites et son usage causal, toujours
 à construire et vérifier ; il n'établit ni vécu ni nouveauté.

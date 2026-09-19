@@ -150,8 +150,11 @@ a été capturé le 19 septembre à 22:36:51 UTC, pendant l'évaluation de la v2
 Les neuf entraînements sont terminés : 576 mises à jour et 4 608 exemples,
 avec les douze fichiers de poids présents et leurs empreintes vérifiées.
 Le préfixe du journal, arrêté au premier appel de test, conserve une chaîne
-valide. Ce reçu n'inclut aucune réponse ni aucun score de test ; il sera
-comparé à l'archive finale avant interprétation.
+valide. Ce reçu n'inclut aucune réponse ni aucun score de test. Après réception,
+le [reçu final](../artifacts/value-action-learning-pilot/receipt.json) confirme
+la correspondance des poids, du préfixe et des coûts avec l'archive, avant
+interprétation. Le [bilan](VALUE_ACTION_LEARNING_RESULTS.md) conserve l'échec
+du critère fixé et les résultats partiels.
 
 Chaque entraînement `choice` utilise 80 384 tokens d'entrée, contre 84 224
 pour `linked` et `shuffled`, soit 4,78 % de plus. Ces comptes incluent le code
