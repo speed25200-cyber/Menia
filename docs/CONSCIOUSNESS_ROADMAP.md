@@ -95,6 +95,9 @@ Le [Colab 12](STATE_COMPOSITION_PROTOCOL.md) prépare un apprentissage
 contrebalancé de cette composition avec préservation des tâches publiques,
 contrôle sans nouvelles étiquettes internes et transfert de formulation.
 Ses résultats ne sont pas encore disponibles.
+La [note sur le transfert d'état ou de réponse](MECHANISTIC_COMPOSITION_REVIEW.md)
+prépare un contraste mécanistique conditionnel et ses explications concurrentes.
+Elle ne constitue pas un protocole supplémentaire déjà fixé ou exécuté.
 
 **Étape 2 — Des perturbations artificielles aux erreurs naturelles.** Un
 détecteur de rotations injectées n'est pas une connaissance de soi. Il faut
