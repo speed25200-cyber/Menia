@@ -25,6 +25,16 @@ l'évaluation d'une réponse proposée et la prévision sans réponse particuli�
 Nous préparons ici le premier cas : un signal produit après rédaction ne sera
 pas présenté comme une connaissance disponible avant celle-ci.
 
+Une vérification bibliographique supplémentaire porte sur le biais d'auto-évaluation.
+[Roytburg et al., 2026, §§3–4](https://arxiv.org/html/2601.22548v1) comparent les
+jugements sur une réponse propre incorrecte à ceux sur des réponses également
+incorrectes d'autres modèles à la même question. Leur étude montre qu'une
+préférence apparente peut refléter les difficultés du juge sur cette question.
+Pour Menia, nous en déduisons qu'un avantage sur ses propres réponses ne devra
+pas être appelé accès privilégié. La matrice croisée permettra de rapporter
+aussi les sous-ensembles à exactitude comparable, en affichant leurs effectifs.
+Cette analyse conditionnelle reste à intégrer au bilan final du prochain protocole.
+
 ## Ce que le code prépare
 
 [`answer_confidence_data.py`](../research/answer_confidence_data.py) exige
