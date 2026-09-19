@@ -1,6 +1,6 @@
 # Contrôle de la capture de confiance sur le modèle préentraîné
 
-19 septembre 2026. **Contrôle technique préparé avant exécution GPU.** Il
+19 septembre 2026. **Contrôle technique préparé, exécuté sur A100 et reçu.** Il
 complète la [revue du comparateur de confiance](NATURAL_ERROR_CONFIDENCE_REVIEW.md).
 Il ne mesure ni la capacité à prévoir une erreur ni la conscience.
 
@@ -51,3 +51,28 @@ insuffisant pour choisir un prédicteur. Il restera à comparer entrée et
 confiance de sortie à l'apport supplémentaire d'états internes, sur des
 questions nouvelles et sans utiliser la réponse finale dans une prévision
 censée la précéder.
+
+## Résultat reçu
+
+Le code a été publié à `d4be8137166c6d47dc942e8fd9c6d2a7878d66d1` avant
+l'exécution du 19 septembre, de 17:18:20 à 17:18:30 UTC. Le modèle chargé est
+Qwen3-4B BF16 sur A100 de 40 Go, révision
+`1cfa9a7208912126459214e8b04321603b3df60c`. Le processus distinct se termine
+avec le code zéro. Les [quatre cas et quarante vérifications](../artifacts/output-confidence-validation/validation.json)
+passent : tokens, texte, métadonnées, états aléatoires, instant du callback,
+retrait du hook et concordance des calculs. L'écart numérique maximal est
+`7,743892332934266e-14`, sous la tolérance fixée de `1e-10`.
+
+Les sorties comptent deux ou trois tokens, soit dix tokens enregistrés au
+total, incluant les quatre tokens de fin `151645`. Les douze générations des
+trois chemins reproduisent les mêmes séquences par cas. La limite de 32 tokens
+n'est atteinte dans aucun cas. Cette vérification ne couvre donc pas de longues
+générations, tous les prompts, les adaptateurs ou une autre configuration.
+L'exactitude des réponses n'est pas le critère de cet essai.
+
+Le fichier exact de 12 992 octets est récupéré par MCP et vérifié sur PC :
+SHA-256 `68fbe1802769640edbe33fb3f5eacac39c162d848f0d08e65b7d685cfb9ac093`.
+Le [reçu](../artifacts/output-confidence-validation/receipt.json) conserve
+la révision, les empreintes, les dates et la portée du résultat. Ce contrôle
+lève le blocage technique de la capture sur ces cas ; aucun gain de prévision
+des erreurs naturelles n'a encore été mesuré.

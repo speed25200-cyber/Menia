@@ -140,8 +140,11 @@ tests synthétiques passent ; il partage le plan et le lecteur d'intégrité.
 La [préparation du prochain test d'erreurs naturelles](docs/NATURAL_ERROR_CONFIDENCE_REVIEW.md)
 ajoute une capture des probabilités de sortie, absentes des 672 anciens essais.
 Elle sépare les statistiques disponibles avant la réponse de celles nécessitant
-la réponse rédigée. Dix tests logiciels passent sur un Qwen miniature aléatoire ;
-aucune nouvelle performance de Qwen3-4B n'est encore mesurée avec cette capture.
+la réponse rédigée. Dix tests logiciels passent sur un Qwen miniature aléatoire.
+Un [contrôle technique reçu sur Qwen3-4B/A100](docs/OUTPUT_CONFIDENCE_VALIDATION.md)
+conserve exactement les tokens et états aléatoires dans quatre cas courts ;
+quarante vérifications passent et les calculs concordent à moins de `7,75e-14`.
+Aucun gain de prévision des erreurs naturelles n'est encore mesuré.
 
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
 Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)

@@ -1,8 +1,9 @@
 # Prévoir une erreur réelle : le comparateur de confiance manquant
 
-19 septembre 2026. **Instrumentation implémentée et testée sur un Qwen miniature
-aléatoire, sur CPU. Aucune nouvelle mesure de Qwen3-4B et aucun nouvel entraînement
-dans cette étape.** Le Colab 14 poursuit séparément son protocole figé.
+19 septembre 2026. **Instrumentation vérifiée sur un Qwen miniature sur CPU,
+puis sur quatre cas courts de Qwen3-4B/A100. Aucun gain de prévision des erreurs
+ni nouvel entraînement dans cette étape.** Le Colab 16 poursuit séparément son
+protocole figé.
 
 ## Lacune constatée dans les données existantes
 
@@ -90,7 +91,11 @@ l'inclusion d'EOS et le retrait du hook si l'enregistrement échoue. Le cas EOS
 distingue notamment le score brut de la distribution filtrée pour le tirage.
 Les six tests existants du générateur et du moniteur restent verts : **dix tests
 réussis** au total. Il s'agit de contrôles logiciels sur un petit modèle
-aléatoire ; l'absence d'effet sur Qwen3-4B/A100 reste à vérifier réellement.
+aléatoire. Le [contrôle préentraîné désormais reçu](OUTPUT_CONFIDENCE_VALIDATION.md)
+ajoute quatre cas courts et quarante vérifications sur Qwen3-4B/A100 : les
+tokens et états aléatoires sont identiques, et le recalcul depuis les logits
+natifs concorde à moins de `7,75e-14`. Dix tokens sont enregistrés dans ces
+quatre cas ; cela ne garantit pas l'absence d'effet pour toutes les générations.
 
 ```sh
 python -m unittest tests_language.test_output_confidence_trace tests_language.test_cross_model_gpu tests_language.test_activation_monitor_gpu -v
@@ -102,9 +107,10 @@ Cette section est une spécification de travail, pas un protocole enregistré
 ni un résultat. Les tâches, effectifs, répétitions et contrastes devront être
 figés avant une nouvelle collecte confirmatoire.
 
-1. Vérifier la capture sur Qwen3-4B avec et sans instrumentation, mêmes requêtes,
-   poids, paramètres et graines. Si les générations diffèrent, conserver la
-   divergence et comprendre sa cause avant de comparer des prévisions.
+1. Le contrôle technique Qwen3-4B est exécuté sur quatre cas fixes. Conserver
+   leur exclusion des nouveaux jeux réservés ; étendre la vérification si le
+   modèle, les adaptateurs ou le chemin de génération changent. Toute divergence
+   doit être comprise avant de comparer des prévisions.
 2. Enregistrer séparément les prévisions avant réponse et les décisions après
    rédaction. Une probabilité du token finalement choisi n'est pas une variable
    disponible avant son choix ; elle ne doit pas être glissée dans le premier test.

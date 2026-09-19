@@ -83,8 +83,11 @@ La [préparation du test d'erreurs naturelles](NATURAL_ERROR_CONFIDENCE_REVIEW.m
 constate que les 672 anciens essais n'enregistraient pas les probabilités de
 sortie. Une capture distingue maintenant statistiques avant le premier token
 et vraisemblance de la réponse complète. Dix tests du générateur, des hooks et
-du calcul passent sur un Qwen miniature aléatoire ; aucune nouvelle collecte
-Qwen3-4B ni comparaison de performance ne résulte encore de cette préparation.
+du calcul passent sur un Qwen miniature aléatoire. Un [contrôle technique reçu
+sur Qwen3-4B/A100](OUTPUT_CONFIDENCE_VALIDATION.md) conserve les mêmes tokens et
+états aléatoires dans quatre cas courts, avec quarante vérifications réussies.
+Les calculs retrouvent les logits natifs à moins de `7,75e-14`. Ce résultat
+limité valide la capture sur ces cas, sans nouveau gain de prévision des erreurs.
 
 Le [diagnostic 13 reçu et audité](COMPOSITION_DIAGNOSTIC_RESULTS.md) comprend
 13 824 évaluations, zéro entraînement et 3 456 témoins identiques. Les seuils

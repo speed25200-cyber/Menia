@@ -1,0 +1,21 @@
+{
+  "schema": "menia-output-confidence-validation-receipt-v1",
+  "resultSHA256": "68fbe1802769640edbe33fb3f5eacac39c162d848f0d08e65b7d685cfb9ac093",
+  "resultBytes": 12992,
+  "sourceRevision": "d4be8137166c6d47dc942e8fd9c6d2a7878d66d1",
+  "sourceHash": "7d92d9167afd20ec32240d2cd72636da915e22f83d39535bce14415c6c363061",
+  "startedUTC": "2026-09-19T17:18:20.582858+00:00",
+  "completedUTC": "2026-09-19T17:18:30.345905+00:00",
+  "hardware": "NVIDIA A100-SXM4-40GB",
+  "model": {
+    "id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "plannedCases": 4,
+  "completedCases": 4,
+  "checks": 40,
+  "passed": true,
+  "recordedGeneratedTokens": 10,
+  "maxAbsoluteDifference": 7.743892332934266e-14,
+  "scope": "Technical equivalence on four short cases only; no metacognition accuracy, consciousness claim or general guarantee of unaltered generation."
+}
