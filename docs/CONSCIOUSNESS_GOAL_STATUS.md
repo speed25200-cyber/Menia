@@ -105,6 +105,10 @@ est observé sur A100 à 18:13:55 UTC le 19 septembre : 76 réponses sur 3 456,
 après les huit tests réussis dans Colab. Les sources et le plan correspondent
 aux empreintes publiées ; aucun score n'est interprété. L'exécution existante
 doit être suivie sans nouveau lancement, puis reçue et auditée intégralement.
+Le [second calcul arithmétique](NATURAL_ERROR_AUDIT.md) est préparé et testé
+avant les scores : Brier, AUROC, calibration, bootstrap et critère, avec les
+trois répétitions et les neuf comparaisons principales. Il partage le plan et
+le lecteur du journal ; il ne constitue pas une réplication extérieure.
 
 Le [diagnostic 13 reçu et audité](COMPOSITION_DIAGNOSTIC_RESULTS.md) comprend
 13 824 évaluations, zéro entraînement et 3 456 témoins identiques. Les seuils
