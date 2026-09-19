@@ -4,6 +4,12 @@
 son protocole. Aucun nouvel adaptateur de confiance n'est encore entraîné,
 aucune nouvelle performance de prévision n'est annoncée.
 
+Cette préparation est désormais suivie du
+[protocole complet du Colab 23](NATIVE_ANSWER_CONFIDENCE_PROTOCOL.md), avec
+collecteur, comparaisons figées et audit. Les paragraphes ci-dessous conservent
+les étapes de préparation ; l'état d'exécution sera documenté dans le nouveau
+protocole et son reçu de lancement.
+
 Le Colab 17 n'a pas confirmé le gain fixé pour un lecteur externe avant le
 premier token. Ce résultat ne teste pas un LLM entraîné à juger la réponse
 qu'il vient de produire. Le Colab 22 examine une compétence de décision avec

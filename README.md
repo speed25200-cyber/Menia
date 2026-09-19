@@ -292,8 +292,11 @@ d'un simple changement des réponses ; aucune performance réelle de confiance
 n'est encore mesurée.
 Un planning vérifié prépare six adaptations appariées et 864 questions
 nouvelles. Six tests ciblés passent sur CPU, dont un apprentissage sur petit
-Qwen aléatoire ; le collecteur scientifique complet reste à finaliser avant
-exécution de cette étape sur Qwen3-4B.
+Qwen aléatoire. Le [protocole complet du Colab 23](docs/NATIVE_ANSWER_CONFIDENCE_PROTOCOL.md)
+fixe maintenant la collecte de 10 368 appels et 24 comparaisons principales
+sur réponses identiques. Le collecteur et l'audit passent quatre tests
+supplémentaires sur des sorties construites ; aucune nouvelle performance
+Qwen3-4B n'est encore mesurée.
 
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
 Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)

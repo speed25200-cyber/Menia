@@ -53,8 +53,14 @@ Le planning vérifié prépare maintenant deux passages sur les exemples réels,
 ainsi que 864 questions excluant les anciens jeux. Les entrées et leur ordre
 sont identiques entre bras supervisé et témoin mélangé. Six tests ciblés
 passent pour le planning et la tête native, dont une mise à jour sur petit
-Qwen aléatoire. Le collecteur complet et les critères doivent encore être
-figés avant l'entraînement de confiance de Qwen3-4B.
+Qwen aléatoire. Le [protocole complet du Colab 23](NATIVE_ANSWER_CONFIDENCE_PROTOCOL.md)
+fixe maintenant 10 368 appels et 24 comparaisons principales sur réponses
+identiques, face au modèle de base, au témoin mélangé et à deux comparateurs
+statistiques. Quatre tests supplémentaires du journal complet passent :
+ils détectent des scores altérés, un contexte incorrect, une calibration
+non figée et une masse de codes insuffisante. Leurs sorties sont synthétiques,
+pas des performances de Menia. Le collecteur et l'audit sont prêts ; le
+lancement réel reste à documenter.
 
 Le [bilan du Colab 21](ACTION_DECOMPOSITION_RESULTS.md) est reçu et vérifié :
 2 448 appels, dont 288 rejeux identiques, avec poids inchangés. Les erreurs
