@@ -35,6 +35,12 @@ Les 525 réponses correctes et 1 203 incorrectes sont des données anciennes,
 pas une nouvelle performance. Certaines catégories ont presque zéro réussite,
 ce qui limite l'apprentissage d'une discrimination interne à ces catégories.
 Aucun nouvel adaptateur de confiance n'est encore entraîné.
+La lecture de la tête de sortie et la comparaison croisée des trois producteurs
+avec les trois évaluateurs sont implémentées. Cinq tests supplémentaires
+passent, dont deux sur un petit Qwen aléatoire : ils vérifient le calcul et
+montrent, sur cas construits, pourquoi un gain apparent peut venir seulement
+d'un changement des réponses. Ces contrôles ne mesurent pas une amélioration
+réelle de Menia ni un accès privilégié à ses états.
 
 Le [bilan du Colab 21](ACTION_DECOMPOSITION_RESULTS.md) est reçu et vérifié :
 2 448 appels, dont 288 rejeux identiques, avec poids inchangés. Les erreurs

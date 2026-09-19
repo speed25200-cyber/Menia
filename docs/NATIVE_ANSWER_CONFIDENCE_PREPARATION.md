@@ -83,8 +83,49 @@ des effectifs par catégorie lors du mélange ; rétention des formats erronés,
 refus des doublons et des échecs techniques ; calcul du rapport et de la
 masse sur des logits connus, y compris des valeurs extrêmes.
 
+Deux tests supplémentaires sur un **minuscule Qwen à poids aléatoires, sur
+CPU**, vérifient la lecture réelle de la tête de sortie dans
+[`answer_confidence_gpu.py`](../research/answer_confidence_gpu.py). Le rapport
+et la masse correspondent à un passage complet indépendant, à la précision
+float32. L'appel ne tire aucun token et ne modifie ni poids ni état du générateur
+aléatoire. Il refuse les entrées trop longues plutôt que de les tronquer.
+Il recalcule le préfixe textuel entier : ce n'est pas un accès au cache caché
+de la génération originale, ni une mesure de performance de Qwen3-4B.
+
+### Séparer le changement de jugement du changement de réponse
+
+Une adaptation peut changer à la fois les réponses et leur évaluation. Comparer
+seulement la base sur ses réponses au modèle adapté sur les siennes confondrait
+ces effets. [`answer_confidence_crossed.py`](../research/answer_confidence_crossed.py)
+exige donc, pour chaque question, une matrice complète : trois producteurs
+(`base`, `measured`, `shuffled`) et les trois mêmes modèles comme évaluateurs.
+Chaque réponse figée est présentée à tous les évaluateurs avec une entrée
+identique, dont l'empreinte est vérifiée. La matrice sera calculée séparément
+dans chaque répétition ; elle n'invente pas neuf ensembles indépendants.
+
+En notant B(g,p) le Brier du juge g sur les réponses du producteur p, le gain
+apparent d'un modèle m se décompose exactement sur les mêmes questions :
+
+`B(base,base) - B(m,m) = [B(base,base) - B(m,base)] + [B(m,base) - B(m,m)]`.
+
+Le premier terme compare les juges à réponses fixes ; le second change les
+réponses à juge fixe. Le code conserve aussi l'autre décomposition, passant
+par B(base,m). Ces deux chemins peuvent différer en présence d'interactions :
+il s'agit d'identités descriptives, pas d'une attribution causale unique.
+La précision de chaque producteur et la masse des codes restent visibles.
+
+Trois tests logiciels couvrent deux cas construits et les matrices invalides.
+Dans le premier cas, un gain de Brier de 0,30 provient entièrement des réponses
+modifiées, alors que tous les juges restent identiques. Dans le second,
+le gain de 0,33 vient du jugement à réponses inchangées. Le
+[reçu synthétique](../artifacts/answer-confidence-preparation/crossed-controls.json)
+conserve les deux matrices. **Ces nombres sont imposés par les cas de contrôle,
+pas mesurés sur Menia.** Au total, les cinq nouveaux tests passent, en plus
+des quatre tests de préparation précédents.
+
 ```sh
 python -m unittest tests_research.test_answer_confidence_data -v
+python -m unittest tests_research.test_answer_confidence_crossed tests_language.test_answer_confidence_gpu -v
 python -m research.answer_confidence_data CHEMIN/journal-colab17.jsonl --output CHEMIN/preparation
 ```
 

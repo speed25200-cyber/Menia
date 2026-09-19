@@ -275,6 +275,11 @@ ajoute ensuite 1 728 exemples issus uniquement de l'ancien apprentissage,
 avec cibles exactes ou mélangées et sans corrigé dans l'entrée. Quatre tests
 logiciels passent. Aucun nouveau modèle de confiance n'est encore entraîné ;
 les limites des catégories presque toujours fausses restent explicites.
+La lecture native du score et une comparaison croisée entre producteurs de
+réponses et évaluateurs sont maintenant implémentées, avec cinq tests
+supplémentaires. Les contrôles synthétiques distinguent un meilleur jugement
+d'un simple changement des réponses ; aucune performance réelle de confiance
+n'est encore mesurée.
 
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
 Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)
