@@ -44,6 +44,9 @@ aussi dans Colab. À 16:08:51 UTC, 24 groupes et 3 264 passages sont enregistré
 sur 144 groupes et 19 584 passages prévus. Les empreintes des trois checkpoints
 et du journal parent sont vérifiées. Il s'agit d'un constat de démarrage ;
 les scores comportementaux ne sont pas encore analysés.
+Un [recalcul arithmétique séparé](STATE_INTERCHANGE_AUDIT.md) est préparé avant
+leur lecture. Deux tests synthétiques couvrent mécanismes connus, erreurs,
+sorties hors options et bilans altérés ; ils ne préjugent pas du résultat GPU.
 
 La [préparation du test d'erreurs naturelles](NATURAL_ERROR_CONFIDENCE_REVIEW.md)
 constate que les 672 anciens essais n'enregistraient pas les probabilités de
