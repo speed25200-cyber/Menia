@@ -155,6 +155,11 @@ ajustements séparés, neuf contrastes principaux avec correction de multiplicit
 et seuil de gain fixé. Huit tests de collecte passent, dont la vérification
 du journal au premier tirage d'un Qwen miniature. Aucun gain de prévision
 des nouvelles questions n'est encore mesuré au moment du gel.
+Le [Colab 17 à version fixe](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/a6e8ee683573995de69f9e861e9903d465d4538a/notebooks/17_natural_error_colab.ipynb)
+est ensuite lancé par MCP le 19 septembre à 18:13 UTC. Les huit tests passent
+dans Colab et le [reçu de démarrage](artifacts/natural-error-pilot/execution-start.json)
+atteste 76 réponses enregistrées à 18:13:55 UTC sur 3 456 prévues, avec les
+empreintes attendues. Ce constat daté ne contient aucun résultat de prévision.
 
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
 Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)

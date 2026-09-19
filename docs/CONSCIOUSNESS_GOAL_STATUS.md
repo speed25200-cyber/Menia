@@ -100,6 +100,11 @@ avec neuf contrastes corrigés et un gain minimal fixé. Le journal engage les
 prévisions avant le premier tirage et refuse les remplacements silencieux
 d'essais interrompus. Huit tests de collecte passent. Aucun gain de prévision,
 usage natif de ce lecteur ou conscience n'est encore établi.
+Le [lancement 17 par MCP](../artifacts/natural-error-pilot/execution-start.json)
+est observé sur A100 à 18:13:55 UTC le 19 septembre : 76 réponses sur 3 456,
+après les huit tests réussis dans Colab. Les sources et le plan correspondent
+aux empreintes publiées ; aucun score n'est interprété. L'exécution existante
+doit être suivie sans nouveau lancement, puis reçue et auditée intégralement.
 
 Le [diagnostic 13 reçu et audité](COMPOSITION_DIAGNOSTIC_RESULTS.md) comprend
 13 824 évaluations, zéro entraînement et 3 456 témoins identiques. Les seuils
