@@ -114,6 +114,10 @@ mécanistique canonique. Il fixe 19 584 passages, sans apprentissage ni recherch
 d'alignement, et distingue trois prédictions grâce à toutes les combinaisons
 d'états et de codes. Six tests logiciels passent ; aucun résultat Qwen3-4B de
 cette nouvelle expérience n'est encore disponible lors du gel du protocole.
+L'[exécution par MCP](artifacts/state-interchange-pilot/execution-start.json)
+est ensuite observée sur l'A100 de 40 Go : 3 264 passages enregistrés à
+16:08:51 UTC le 19 septembre, sur 19 584 prévus. Les six tests passent aussi
+dans Colab ; ce reçu de démarrage ne constitue pas un résultat scientifique.
 
 La [préparation du prochain test d'erreurs naturelles](docs/NATURAL_ERROR_CONFIDENCE_REVIEW.md)
 ajoute une capture des probabilités de sortie, absentes des 672 anciens essais.

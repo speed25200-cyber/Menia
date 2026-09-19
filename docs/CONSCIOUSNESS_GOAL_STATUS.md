@@ -38,6 +38,13 @@ Six tests logiciels passent, dont un groupe complet de 136 passages d'un Qwen
 miniature aléatoire. Le transfert de formulation reste non résolu ; les prérequis
 de compétence seront revérifiés sur les nouvelles phrases avant interprétation.
 
+L'[exécution 15 par MCP](../artifacts/state-interchange-pilot/execution-start.json)
+a démarré le 19 septembre à 16:03 UTC sur l'A100 de 40 Go. Les six tests passent
+aussi dans Colab. À 16:08:51 UTC, 24 groupes et 3 264 passages sont enregistrés
+sur 144 groupes et 19 584 passages prévus. Les empreintes des trois checkpoints
+et du journal parent sont vérifiées. Il s'agit d'un constat de démarrage ;
+les scores comportementaux ne sont pas encore analysés.
+
 La [préparation du test d'erreurs naturelles](NATURAL_ERROR_CONFIDENCE_REVIEW.md)
 constate que les 672 anciens essais n'enregistraient pas les probabilités de
 sortie. Une capture distingue maintenant statistiques avant le premier token

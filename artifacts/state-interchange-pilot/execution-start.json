@@ -1,0 +1,67 @@
+{
+  "schema": "menia-state-interchange-start-receipt-v1",
+  "status": "inference-observed-live",
+  "job": {
+    "pid": 94044,
+    "startedUTC": "2026-09-19T16:03:23.909117+00:00",
+    "scienceRevision": "0a86c18796c788400492f0c45036595057760e60",
+    "notebookRevision": "2465b90921b1b7436b6e67aca9bd921c5378d7b8",
+    "notebookSHA256": "d9cd42e684b09534d54fd8402534f82dc5e209be2892307225226d5cecc5f20b",
+    "directory": "/content/menia-state-interchange-mcp-20260919",
+    "archive": "/content/menia-transfert-etat.zip"
+  },
+  "observationUTC": "2026-09-19T16:08:51.173727+00:00",
+  "hardware": "NVIDIA A100-SXM4-40GB, 32 %, 8294 MiB, 40960 MiB",
+  "identity": {
+    "planHash": "fee156fac3ba04bf90c3686bc55b0fc5943adad7467ff75ac795fa9731a0d14c",
+    "sourceHash": "69227c29fa78eb3b5184bf10bb505be78a385357bf14c9cea5d1d1efdc8e8bbb",
+    "plannedForwards": 19584,
+    "groups": 144,
+    "parentJournalSHA256": "0bd76014c6d80f56e6c5a1cedf71fd1546f78be18977c5a79ebd8ccd12947706",
+    "checkpoints": {
+      "r0-prefix": "add5ed756ea6ff158d59e0780684808a2d21055e2a18a2c4f77c7fb143e8f495",
+      "r1-prefix": "7954ba00216b591cda6c7a0a3d0f30bd7d42bc56b90fd03ba4b8eec15d16e5ac",
+      "r2-prefix": "5b8d614fa3f141d5c54a326a8aeec37e8d99ed99acd551440faa9b1b18978ebd"
+    },
+    "settings": {
+      "dtype": "bfloat16",
+      "sampling": false,
+      "thinking": false,
+      "useCache": false,
+      "firstTokenOnly": true,
+      "attention": "sdpa",
+      "alignmentTraining": false,
+      "weightUpdates": 0,
+      "replications": 3,
+      "testPairs": 16,
+      "lexicalPairs": 8,
+      "resamples": 2000,
+      "rank": 8,
+      "layer": 17,
+      "strength": 1.0,
+      "maxInputTokens": 512,
+      "baselineGate": 0.9
+    },
+    "requiredVersions": {
+      "torch": "2.8.0+cu126",
+      "transformers": "4.56.2",
+      "numpy": "2.2.6",
+      "accelerate": "1.10.1",
+      "safetensors": "0.6.2",
+      "huggingface-hub": "0.36.2",
+      "tokenizers": "0.22.2"
+    }
+  },
+  "events": {
+    "header": 1,
+    "group_start": 25,
+    "group_complete": 24
+  },
+  "recordedForwards": 3264,
+  "lastCompleteGroup": "prefix/r0-lexical-007",
+  "returnCode": null,
+  "localTests": 6,
+  "colabTests": 6,
+  "behavioralScoresReviewed": false,
+  "scope": "Dated execution-start evidence, not live status or a completed experiment. All outcome interpretation awaits complete collection, integrity controls and independent arithmetic."
+}
