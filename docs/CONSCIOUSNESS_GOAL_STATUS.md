@@ -18,6 +18,13 @@ cours ; cette validation technique ne remplace pas le résultat comportemental.
 Il traite une cause possible d'instabilité avant une éventuelle correction des
 consignes, sans établir de représentation de soi ni d'expérience subjective.
 
+Un [audit auxiliaire des déplacements](OPTIMIZER_DISPLACEMENT_AUDIT.md), calculé
+sur les sauvegardes avant lecture du bilan comportemental complet, trouve des
+directions presque identiques entre poursuite originale et gradients nuls
+(cosinus 0,999804–0,999999). La formule indépendante d'Adam retrouve la branche
+nulle à moins de 9,91 × 10⁻⁹ par coordonnée. Cela vérifie la manipulation et
+précise une cause candidate ; les effets sur les réponses restent à analyser.
+
 La [préparation du test d'erreurs naturelles](NATURAL_ERROR_CONFIDENCE_REVIEW.md)
 constate que les 672 anciens essais n'enregistraient pas les probabilités de
 sortie. Une capture distingue maintenant statistiques avant le premier token
