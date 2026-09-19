@@ -131,6 +131,11 @@ devra équilibrer séparément états physiques, marqueurs et codes. Cette suite
 est une proposition après résultat, pas une expérience déjà réalisée ni une
 preuve que les deux tâches partagent un même sous-espace.
 
+**Mise à jour :** le [Colab 16 est désormais reçu et audité](CROSS_TASK_INTERCHANGE_RESULTS.md).
+Le transfert croisé favorise la valeur de la question donneuse, ce qui limite
+l'interprétation générale du présent résultat. Le protocole 15 et ses mesures
+restent inchangés.
+
 La reformulation reste un échec ouvert du Colab 14. La disponibilité de ce
 contenu avant toute question, son influence sur des actions non verbalisées,
 sa relation aux erreurs naturelles et sa portée pour la représentation de sa

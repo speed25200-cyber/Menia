@@ -35,7 +35,8 @@ extérieure, un audit indépendant du lecteur ou une validation de la conscience
 de transfert, des trois sites, des trois répétitions, de la base et des dix-huit
 contrastes principaux. La figure a été exécutée et inspectée sur le journal
 synthétique hétérogène, avec un titre explicite. Cette image de contrôle reste
-locale ; la figure scientifique attend le journal complet et les deux recalculs.
+locale. La figure scientifique est ensuite produite après réception du journal
+complet et réussite des deux recalculs, puis inspectée visuellement.
 
 Après réception et vérification de l'archive complète :
 
@@ -47,3 +48,10 @@ Le bilan doit également concorder avec le recalcul de l'analyse principale.
 Les fichiers parents et les trois checkpoints sont recontrôlés sur PC. Les
 résultats complets, y compris les directions défavorables et tous les tableaux
 secondaires, sont conservés avant toute interprétation.
+
+**Application au résultat complet :** les 44 544 passages sont reçus sans
+erreur ni reprise. Le recalcul principal est exactement identique au résumé
+GPU ; le second calcul retrouve les 144 tableaux de transfert, 48 tableaux
+intacts et 432 contrastes, avec un écart maximal de 1,777 × 10⁻¹⁵. Les deux
+vérifications réussissent avant la lecture des scores. Le [bilan](CROSS_TASK_INTERCHANGE_RESULTS.md)
+publie toutes les directions, y compris celles défavorables au contenu général.

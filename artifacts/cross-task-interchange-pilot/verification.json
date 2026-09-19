@@ -1,0 +1,17 @@
+{
+  "schema": "menia-cross-task-interchange-verification-v1",
+  "verified": true,
+  "origin": "transformers_gpu",
+  "journalSHA256": "38659cc9b6cb37f8b3d1eb05666d64d9439e4f2c150e13a6feb318124b5cab8f",
+  "planHash": "cde74f7f1a8e2fd2f6ae583111e18b09e164c188ee19f193662e5e8488d57696",
+  "sourceHash": "19dd28bb182f6fa86b145b3e7767bee0e83cc428080a85a1b756b23ff3bdc308",
+  "tables": 144,
+  "baselineTables": 48,
+  "contrasts": 432,
+  "primaryContrasts": 18,
+  "selfShams": 4608,
+  "finalLayerCopies": 12288,
+  "crossTaskTransfers": 18432,
+  "maxAbsoluteDifference": 1.7763568394002505e-15,
+  "scope": "Independent four-target coding, full-vocabulary losses, actual-token copy/retention, paired stratified bootstrap, contrasts and both prerequisites. Shared plan, strict reader and numerical libraries; not an external replication or consciousness test."
+}

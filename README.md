@@ -117,25 +117,24 @@ individuels excluant zéro. Les douze prérequis intacts passent. Le contrôle
 public se transfère lui aussi à 100 % : le résultat n'établit pas une spécificité
 de connaissance de soi. Les 3 456 témoins et 4 608 copies finales sont exacts ;
 le recalcul séparé retrouve 72 tableaux, 48 tableaux intacts et 144 contrastes.
-La reformulation, le transfert entre questions et l'expérience subjective
-restent non établis.
+La reformulation et l'expérience subjective restent non établies ; le test
+entre questions ci-dessous limite l'interprétation du transfert.
 
-Le [protocole 16 — transfert entre questions](docs/CROSS_TASK_INTERCHANGE_PROTOCOL.md)
-fixe la suite : 44 544 passages avec les mêmes trois checkpoints et la base,
-sans entraînement, pour distinguer contenu pertinent pour la question
-destinataire, valeur binaire de la question donneuse, copie du chiffre et
-destinataire inchangé. Les 18 contrastes principaux et les contrôles sont fixés
-avant collecte ; huit tests logiciels passent. Aucun résultat Qwen3-4B de ce
-nouvel essai n'est encore disponible lors du gel du protocole.
-Le [lancement sur A100 par MCP](artifacts/cross-task-interchange-pilot/execution-start.json)
-est ensuite vérifié le 19 septembre à 16:53 UTC : un groupe de 232 passages
-est enregistré, après les huit tests réussis dans Colab. Les poids et les deux
-journaux parents correspondent aux empreintes fixées ; ce reçu ne contient
-aucun score de résultat.
-Un [second calcul arithmétique](docs/CROSS_TASK_INTERCHANGE_AUDIT.md), préparé
-pendant l'inférence avant lecture des scores, couvre les quatre prédictions,
-144 tableaux de transfert, 48 tableaux intacts et 432 contrastes. Ses deux
-tests synthétiques passent ; il partage le plan et le lecteur d'intégrité.
+Le [Colab 16 — transfert entre questions](docs/CROSS_TASK_INTERCHANGE_RESULTS.md)
+est terminé et audité : 44 544 passages, sans entraînement, avec les mêmes
+trois checkpoints et la base. **Le transfert favorise la valeur binaire de la
+question donneuse, plutôt que le contenu utilisable pour l'autre question.**
+À la couche 23, caché → public donne 73,44 / 86,33 / 83,20 % d'accord avec cette
+valeur, contre 46,88 / 53,52 / 42,58 % avec le contenu destinataire ; dans l'autre
+sens, 100 % contre 50 %. Les six contrastes correspondants sont négatifs avec
+intervalles individuels excluant zéro. Les dix-huit prérequis passent ; aucun
+des dix-huit contrastes principaux ne favorise le contenu destinataire avec
+un intervalle excluant zéro. Les 4 608 témoins et 12 288 copies finales sont
+exacts ; 144 tableaux de transfert, 48 tableaux intacts et 432 contrastes sont
+recalculés avant interprétation. Le [protocole](docs/CROSS_TASK_INTERCHANGE_PROTOCOL.md)
+et l'[auditeur séparé](docs/CROSS_TASK_INTERCHANGE_AUDIT.md) restent figés.
+L'échange d'un vecteur entier ne localise pas un circuit de bit et n'exclut pas
+une représentation générale ailleurs ; il ne confirme pas ici un modèle de soi.
 
 La [préparation du prochain test d'erreurs naturelles](docs/NATURAL_ERROR_CONFIDENCE_REVIEW.md)
 ajoute une capture des probabilités de sortie, absentes des 672 anciens essais.

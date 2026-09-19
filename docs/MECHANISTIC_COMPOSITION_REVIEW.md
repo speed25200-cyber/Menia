@@ -112,3 +112,14 @@ canonique, mais ne tranche pas entre une représentation d'état disponible
 indépendamment de la question et une valeur binaire calculée pour répondre
 à la question courante. Les échanges entre tâches sont la prochaine question
 à spécifier ; ils n'ont pas été effectués dans cette expérience.
+
+**Après le [bilan complet 16](CROSS_TASK_INTERCHANGE_RESULTS.md) :** les deux
+questions sont maintenant croisées. À la couche 23, les trois répétitions
+favorisent la valeur de la question donneuse avec le code destinataire :
+73,44–86,33 % dans le sens caché → public et 100 % dans l'autre sens, contre
+42,58–53,52 % et 50 % pour le contenu pertinent à la question destinataire.
+Les six contrastes entre ces deux prédictions excluent zéro contre le contenu
+général, alors que tous les prérequis passent. Le transfert est donc mieux
+décrit ici comme conditionné par la question déjà posée. Le vecteur entier
+peut transporter d'autres éléments de contexte : ce résultat ne localise
+pas un bit unique et n'exclut pas une représentation plus générale ailleurs.

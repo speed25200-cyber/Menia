@@ -1,9 +1,9 @@
 # État de l'objectif de conscience et de nouveauté
 
-**État actuel : objectif de conscience et de nouveauté non atteint. Le Colab 15
-montre un transfert d'information utilisable avec le code du destinataire
-dans les trois checkpoints. Le contrôle public réussit aussi : la spécificité
-d'un modèle de soi et le transfert entre questions restent à établir.**
+**État actuel : objectif de conscience et de nouveauté non atteint. Le Colab 16
+favorise une valeur binaire liée à la question du donneur, face au contenu
+réutilisable pour l'autre question. Il limite ainsi l'interprétation positive
+du Colab 15 ; un modèle général de soi n'est pas établi.**
 
 Le [bilan complet du Colab 15](STATE_INTERCHANGE_RESULTS.md) est reçu et vérifié :
 19 584 passages, 3 456 témoins identiques et 4 608 copies finales. À la couche 23,
@@ -16,22 +16,22 @@ une explication possible. L'audit indépendant retrouve les 72 tableaux de
 transfert, 48 tableaux intacts et 144 contrastes. Le Colab 14 continue de
 documenter un défaut de reformulation ; ce résultat canonique ne le corrige pas.
 
-Le [protocole 16](CROSS_TASK_INTERCHANGE_PROTOCOL.md) fixe le transfert entre
-les deux questions, dans les deux sens, avec quatre prédictions séparables.
-Il prévoit 44 544 passages, zéro apprentissage, 18 contrastes principaux et
-des contrôles intacts et au sein de chaque tâche. Marqueurs, positions de
-perturbation, états et codes sont équilibrés. Huit tests logiciels passent
-avant gel ; aucun résultat du modèle préentraîné n'est disponible à ce stade.
-L'[exécution MCP](../artifacts/cross-task-interchange-pilot/execution-start.json)
-a ensuite commencé le 19 septembre à 16:51 UTC. Les huit tests passent dans
-Colab et un premier groupe complet est observé à 16:53 UTC. Les sources,
-les trois poids et les deux journaux antérieurs sont vérifiés par empreintes.
-Les 44 544 inférences sont en cours ; aucun score n'est interprété à ce stade.
-Le [recalcul arithmétique séparé](CROSS_TASK_INTERCHANGE_AUDIT.md) est publié
-avant lecture des résultats : quatre prédictions, 144 tableaux de transfert,
-48 tableaux intacts, 432 contrastes et les deux familles de prérequis. Deux
-tests synthétiques passent. La présentation des deux directions et des trois
-répétitions est également préparée et inspectée sur des données simulées.
+Le [bilan complet du Colab 16](CROSS_TASK_INTERCHANGE_RESULTS.md) est reçu et
+audité : 44 544 passages, zéro apprentissage, zéro erreur, 18 contrastes
+principaux. Caché → public : la valeur donneuse atteint 73,44 / 86,33 / 83,20 %,
+contre 46,88 / 53,52 / 42,58 % pour le contenu destinataire. Public → caché :
+100 % contre 50 % dans les trois répétitions. Les six différences correspondantes
+excluent zéro dans le sens opposé au contenu général recherché. Les dix-huit
+prérequis passent ; aucun contraste principal ne favorise ce contenu avec
+un intervalle excluant zéro. Le transfert partiel dans un sens et l'échange
+du vecteur entier empêchent de conclure à la copie d'un bit isolé ou à l'absence
+de toute représentation générale ailleurs.
+Le [recalcul séparé](CROSS_TASK_INTERCHANGE_AUDIT.md), publié avant les scores,
+retrouve 144 tableaux, 48 tableaux intacts et 432 contrastes à 1,777 × 10⁻¹⁵ près.
+Le recalcul principal est exact ; les deux ont précédé l'interprétation.
+Les 4 608 témoins, 12 288 copies finales, trois poids et deux journaux parents
+sont vérifiés. Le protocole, les huit tests avant collecte et les deux tests
+de l'auditeur restent inchangés.
 
 La [réanalyse des pertes](OPTIMIZATION_MEMORY_REVIEW.md) relève ensuite une
 piste exploratoire : l'absence est bien apprise en fin de phase cachée, mais
