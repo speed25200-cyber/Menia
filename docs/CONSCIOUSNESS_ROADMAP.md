@@ -102,6 +102,10 @@ montrer que le même signal prédit les *vraies* erreurs de Menia sur des
 questions nouvelles, mieux que l'entrée seule et que les taux passés — le
 contraste que le [moniteur d'activations](ACTIVATION_MONITOR_RESULTS.md) a manqué.
 *Critère proposé :* gain de Brier avec intervalle excluant zéro contre les deux références.
+Après ajustement des poids, mesurer à nouveau les erreurs du checkpoint final :
+son comportement peut différer de celui du parent ayant fourni les étiquettes.
+Le [complément sur la dérive de la cible](SELF_PREDICTION_CONTROLS.md) motive
+ce contrôle pour l'étape future, sans modifier le Colab 12 en cours.
 
 **Étape 3 — L'état interne doit guider l'action (HOT-3).** Relier ce signal à
 la décision de vérifier, s'abstenir ou répondre, dans la boucle de

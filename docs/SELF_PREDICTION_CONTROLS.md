@@ -68,6 +68,23 @@ nouveauté. Ce complément ne reproduit pas leurs expériences et ne change pas
 le [protocole du Colab 11](PRESENCE_SPECIFICITY_PROTOCOL.md).
 [Texte complet](https://arxiv.org/pdf/2608.30980).
 
+**Complément du 19 septembre : Blandfort et Pawar, prépublication du 9 septembre.**
+Dans neuf évaluations comportementales, demander une prévision sur une IA
+générique reste une référence forte face à l'auto-prévision. Leur §4.7 montre
+aussi qu'un entraînement sur les comportements passés peut changer ceux qu'il
+faudrait prévoir ; les gains observés restent étroits. Le §7 limite la portée
+aux tâches, modèles et réglages étudiés, et signale des résultats non reproduits
+sur le test fixé. Cela ne démontre pas une impossibilité de toute introspection.
+[Strangers to Themselves, §4.7 et §7](https://arxiv.org/html/2609.09899v1#S4.SS7).
+
+**Conséquence proposée pour Menia :** un futur essai de prévision d'erreurs
+devra mesurer le comportement du checkpoint final sur des tâches réservées,
+en plus de celui du parent. Les étiquettes du parent ne décriront pas
+automatiquement le modèle ajusté. Cette exigence concerne les comportements
+appris ; les conditions physiques injectées du Colab 12 restent fixées par
+l'expérimentateur. Elle ne modifie pas son protocole en cours et n'est pas une
+invention revendiquée.
+
 ## Un contrôle « soi/autre » peut donner un faux signal
 
 Le module `research.audit_self_prediction_controls` énumère exactement des cas
