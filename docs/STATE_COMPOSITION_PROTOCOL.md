@@ -221,3 +221,12 @@ Deux tests de cet auditeur passent sur oracle, réponses non inversées,
 scores aléatoires avec égalités, chiffres inutilisés et sorties hors options.
 Une altération du résumé est rejetée. L'auditeur ne modifie ni les paramètres
 de l'expérience en cours, ni sa règle de lecture.
+
+**Point de passage du 19 septembre à 12:29:19 UTC.** Les neuf adaptateurs
+sont entraînés, après 576 mises à jour, sans erreur ni reprise enregistrée.
+Les empreintes des neuf fichiers ont été revérifiées et conservées dans un
+[manifeste de gel](../artifacts/state-composition-pilot/training-freeze.json).
+L'évaluation avait commencé (311 réponses enregistrées au moment du relevé),
+mais seuls les compteurs et empreintes ont été consultés. Aucun score de test
+n'a été utilisé pour sélectionner ou modifier un adaptateur. Le bilan final
+reste à recevoir et à auditer.

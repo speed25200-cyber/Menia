@@ -1,0 +1,33 @@
+{
+  "utc": "2026-09-19T12:29:19.620865+00:00",
+  "trainingComplete": true,
+  "events": {
+    "header": 1,
+    "training_start": 9,
+    "training_step": 576,
+    "training_complete": 9,
+    "request": 312,
+    "result": 311
+  },
+  "checkpoints": {
+    "r0-composed": "b8ec86fbd6eebabf6edc39e004096a4f2e3d3f9dcc4e4a95d741923f48e156c8",
+    "r0-shuffled": "d8159b4be83db4fa60125f4d1e027d7e9477ea7a2064f3b24c31122e47de9dbc",
+    "r0-grammar": "48cd946460f5e591117bed0d4247c7c0c38e358e718b31b206ed08ea332af572",
+    "r1-composed": "3cfb6db56399f0e11318fa7a98d517d9c01682321be4309ba173f283272cbe5d",
+    "r1-shuffled": "26a69ff1217e049ad76084868d6a0824dd1cdea23a54cd41cbb5920df39e8943",
+    "r1-grammar": "fcb753637dd83514d7e23048a3fe70741d60cbc1fa77593e2877efd88cbcb908",
+    "r2-composed": "177090b5b99dec10db335bee992ea7a5c86f5d97ba5ef3ecaddb9b01893b18ce",
+    "r2-shuffled": "dd9188dfdb5e71053d0a14f9322a468b925550810e3d06bb2fb10c7394bda4ee",
+    "r2-grammar": "2b4f07e2290ac311998fa3b16f5373de7d507c21ffc87933777258312a47e01d"
+  },
+  "trainingPrefixSHA256": "389c4096a5329cc769947bac5cb3b5df836978ec5a3abc5692e96dfd9a7fe10a",
+  "planHash": "bef98c408309d43ed7e15784b18628ae56065583ead44afaaff8872e57694224",
+  "sourceHash": "f3646182a3a6420fa108ff98d5ca58a7d8612de0c2eac14c19f388394b0ce1e9",
+  "trainingUpdates": 576,
+  "schema": "menia-state-composition-checkpoint-freeze-v1",
+  "scienceRevision": "9793ec781845c3e7eef686bb06978d7f1eabdb25",
+  "auditorCommit": "bdda8bdb1ed6a3aefe64ec28ed84819c777de6d9",
+  "purpose": "Checkpoint hashes verified before examination of evaluation scores. Evaluation had already started when this manifest was recorded.",
+  "observationsInspected": "Event counts and checkpoint hashes only; no evaluation logits or scores.",
+  "experimentComplete": false
+}

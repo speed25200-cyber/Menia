@@ -76,7 +76,8 @@ est figé et son entraînement a démarré par MCP sur A100 le 19 septembre : ne
 lecture publique sont entraînés ensemble, avec des témoins à étiquettes
 mélangées et sans nouvelles étiquettes internes. Une reformulation est réservée
 au test principal ; les chiffres 2/3 servent de transfert secondaire.
-Aucun résultat ni conclusion sur la conscience n'est encore disponible pour cet essai.
+Les neuf entraînements sont terminés ; les évaluations sont en cours. Le
+bilan complet n'est pas encore établi, ni aucune conclusion sur la conscience.
 
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
 Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)

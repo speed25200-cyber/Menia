@@ -27,7 +27,8 @@ par MCP le 19 septembre à 12:00:57 UTC. Les neuf tests réussissent dans Colab,
 puis l'entraînement démarre : neuf nouveaux adaptateurs issus des parents du Colab 10,
 576 mises à jour, consignes contrebalancées, contrôle sans nouvelles étiquettes
 internes et 25 920 évaluations. Il réserve une reformulation au test principal.
-Aucun résultat de cette nouvelle expérience n'est encore disponible.
+Les neuf entraînements sont terminés (576 mises à jour) et les évaluations
+sont en cours ; le bilan final n'est pas encore établi.
 Les étapes mécanistiques et d'agent ultérieures restent à formaliser.
 La [revue du 19 septembre](RESEARCH_REVIEW_2026_09_19.md) confirme que le
 dernier export retrouvé avant la nouvelle exécution était celui du Colab 09 et corrige des formulations
