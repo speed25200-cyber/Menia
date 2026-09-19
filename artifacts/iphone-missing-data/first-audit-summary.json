@@ -1,0 +1,583 @@
+{
+  "schema": "menia-iphone-missing-data-analysis-v1",
+  "auditCount": 1,
+  "deviceExecutionAttested": false,
+  "completeCollectionHistoryAttested": false,
+  "tokensPerSecondMeasurable": false,
+  "totals": {
+    "planned": 72,
+    "completed": 72,
+    "statuses": {
+      "completed": 72
+    },
+    "validFormat": 72,
+    "numbersCorrect": 48,
+    "actionCorrect": 41,
+    "completeSuccess": 38,
+    "actions": {
+      "mesurer": 25,
+      "repondre": 19,
+      "verifier": 28
+    }
+  },
+  "audits": [
+    {
+      "appVersion": "0.2.0 (3)",
+      "generationSettings": "context=2048; output<=256; temperature=0.7; topP=0.8; topK=20; thinking=false; no fixed RNG seed",
+      "fullPlanConforms": true,
+      "storedGradesMatch": true,
+      "gradeDiscrepancyTrials": [],
+      "totals": {
+        "planned": 72,
+        "completed": 72,
+        "statuses": {
+          "completed": 72
+        },
+        "validFormat": 72,
+        "numbersCorrect": 48,
+        "actionCorrect": 41,
+        "completeSuccess": 38,
+        "actions": {
+          "mesurer": 25,
+          "repondre": 19,
+          "verifier": 28
+        }
+      },
+      "cells": [
+        {
+          "referent": "selfReport",
+          "condition": "originalOmitted",
+          "planned": 6,
+          "completed": 6,
+          "statuses": {
+            "completed": 6
+          },
+          "validFormat": 6,
+          "numbersCorrect": 0,
+          "actionCorrect": 2,
+          "completeSuccess": 0,
+          "actions": {
+            "mesurer": 2,
+            "repondre": 1,
+            "verifier": 3
+          }
+        },
+        {
+          "referent": "selfReport",
+          "condition": "revisedOmitted",
+          "planned": 6,
+          "completed": 6,
+          "statuses": {
+            "completed": 6
+          },
+          "validFormat": 6,
+          "numbersCorrect": 0,
+          "actionCorrect": 1,
+          "completeSuccess": 0,
+          "actions": {
+            "mesurer": 1,
+            "repondre": 4,
+            "verifier": 1
+          }
+        },
+        {
+          "referent": "selfReport",
+          "condition": "revisedNull",
+          "planned": 6,
+          "completed": 6,
+          "statuses": {
+            "completed": 6
+          },
+          "validFormat": 6,
+          "numbersCorrect": 6,
+          "actionCorrect": 6,
+          "completeSuccess": 6,
+          "actions": {
+            "mesurer": 6
+          }
+        },
+        {
+          "referent": "selfReport",
+          "condition": "providedHigh",
+          "planned": 6,
+          "completed": 6,
+          "statuses": {
+            "completed": 6
+          },
+          "validFormat": 6,
+          "numbersCorrect": 6,
+          "actionCorrect": 6,
+          "completeSuccess": 6,
+          "actions": {
+            "repondre": 6
+          }
+        },
+        {
+          "referent": "selfReport",
+          "condition": "providedLow",
+          "planned": 6,
+          "completed": 6,
+          "statuses": {
+            "completed": 6
+          },
+          "validFormat": 6,
+          "numbersCorrect": 6,
+          "actionCorrect": 1,
+          "completeSuccess": 1,
+          "actions": {
+            "mesurer": 5,
+            "verifier": 1
+          }
+        },
+        {
+          "referent": "selfReport",
+          "condition": "providedZero",
+          "planned": 6,
+          "completed": 6,
+          "statuses": {
+            "completed": 6
+          },
+          "validFormat": 6,
+          "numbersCorrect": 6,
+          "actionCorrect": 6,
+          "completeSuccess": 6,
+          "actions": {
+            "verifier": 6
+          }
+        },
+        {
+          "referent": "otherAgent",
+          "condition": "originalOmitted",
+          "planned": 6,
+          "completed": 6,
+          "statuses": {
+            "completed": 6
+          },
+          "validFormat": 6,
+          "numbersCorrect": 0,
+          "actionCorrect": 0,
+          "completeSuccess": 0,
+          "actions": {
+            "repondre": 1,
+            "verifier": 5
+          }
+        },
+        {
+          "referent": "otherAgent",
+          "condition": "revisedOmitted",
+          "planned": 6,
+          "completed": 6,
+          "statuses": {
+            "completed": 6
+          },
+          "validFormat": 6,
+          "numbersCorrect": 0,
+          "actionCorrect": 0,
+          "completeSuccess": 0,
+          "actions": {
+            "repondre": 1,
+            "verifier": 5
+          }
+        },
+        {
+          "referent": "otherAgent",
+          "condition": "revisedNull",
+          "planned": 6,
+          "completed": 6,
+          "statuses": {
+            "completed": 6
+          },
+          "validFormat": 6,
+          "numbersCorrect": 6,
+          "actionCorrect": 6,
+          "completeSuccess": 6,
+          "actions": {
+            "mesurer": 6
+          }
+        },
+        {
+          "referent": "otherAgent",
+          "condition": "providedHigh",
+          "planned": 6,
+          "completed": 6,
+          "statuses": {
+            "completed": 6
+          },
+          "validFormat": 6,
+          "numbersCorrect": 6,
+          "actionCorrect": 6,
+          "completeSuccess": 6,
+          "actions": {
+            "repondre": 6
+          }
+        },
+        {
+          "referent": "otherAgent",
+          "condition": "providedLow",
+          "planned": 6,
+          "completed": 6,
+          "statuses": {
+            "completed": 6
+          },
+          "validFormat": 6,
+          "numbersCorrect": 6,
+          "actionCorrect": 1,
+          "completeSuccess": 1,
+          "actions": {
+            "mesurer": 5,
+            "verifier": 1
+          }
+        },
+        {
+          "referent": "otherAgent",
+          "condition": "providedZero",
+          "planned": 6,
+          "completed": 6,
+          "statuses": {
+            "completed": 6
+          },
+          "validFormat": 6,
+          "numbersCorrect": 6,
+          "actionCorrect": 6,
+          "completeSuccess": 6,
+          "actions": {
+            "verifier": 6
+          }
+        }
+      ],
+      "contrasts": [
+        {
+          "referent": "selfReport",
+          "contrast": "B-A",
+          "plannedPairs": 6,
+          "completedPairs": 6,
+          "meanNumbersChange": 0.0,
+          "meanJointChange": 0.0,
+          "pairs": [
+            {
+              "block": 0,
+              "numbersChange": 0,
+              "jointChange": 0
+            },
+            {
+              "block": 1,
+              "numbersChange": 0,
+              "jointChange": 0
+            },
+            {
+              "block": 2,
+              "numbersChange": 0,
+              "jointChange": 0
+            },
+            {
+              "block": 3,
+              "numbersChange": 0,
+              "jointChange": 0
+            },
+            {
+              "block": 4,
+              "numbersChange": 0,
+              "jointChange": 0
+            },
+            {
+              "block": 5,
+              "numbersChange": 0,
+              "jointChange": 0
+            }
+          ]
+        },
+        {
+          "referent": "selfReport",
+          "contrast": "C-B",
+          "plannedPairs": 6,
+          "completedPairs": 6,
+          "meanNumbersChange": 1.0,
+          "meanJointChange": 1.0,
+          "pairs": [
+            {
+              "block": 0,
+              "numbersChange": 1,
+              "jointChange": 1
+            },
+            {
+              "block": 1,
+              "numbersChange": 1,
+              "jointChange": 1
+            },
+            {
+              "block": 2,
+              "numbersChange": 1,
+              "jointChange": 1
+            },
+            {
+              "block": 3,
+              "numbersChange": 1,
+              "jointChange": 1
+            },
+            {
+              "block": 4,
+              "numbersChange": 1,
+              "jointChange": 1
+            },
+            {
+              "block": 5,
+              "numbersChange": 1,
+              "jointChange": 1
+            }
+          ]
+        },
+        {
+          "referent": "otherAgent",
+          "contrast": "B-A",
+          "plannedPairs": 6,
+          "completedPairs": 6,
+          "meanNumbersChange": 0.0,
+          "meanJointChange": 0.0,
+          "pairs": [
+            {
+              "block": 0,
+              "numbersChange": 0,
+              "jointChange": 0
+            },
+            {
+              "block": 1,
+              "numbersChange": 0,
+              "jointChange": 0
+            },
+            {
+              "block": 2,
+              "numbersChange": 0,
+              "jointChange": 0
+            },
+            {
+              "block": 3,
+              "numbersChange": 0,
+              "jointChange": 0
+            },
+            {
+              "block": 4,
+              "numbersChange": 0,
+              "jointChange": 0
+            },
+            {
+              "block": 5,
+              "numbersChange": 0,
+              "jointChange": 0
+            }
+          ]
+        },
+        {
+          "referent": "otherAgent",
+          "contrast": "C-B",
+          "plannedPairs": 6,
+          "completedPairs": 6,
+          "meanNumbersChange": 1.0,
+          "meanJointChange": 1.0,
+          "pairs": [
+            {
+              "block": 0,
+              "numbersChange": 1,
+              "jointChange": 1
+            },
+            {
+              "block": 1,
+              "numbersChange": 1,
+              "jointChange": 1
+            },
+            {
+              "block": 2,
+              "numbersChange": 1,
+              "jointChange": 1
+            },
+            {
+              "block": 3,
+              "numbersChange": 1,
+              "jointChange": 1
+            },
+            {
+              "block": 4,
+              "numbersChange": 1,
+              "jointChange": 1
+            },
+            {
+              "block": 5,
+              "numbersChange": 1,
+              "jointChange": 1
+            }
+          ]
+        }
+      ],
+      "absentOutputPatterns": [
+        {
+          "referent": "otherAgent",
+          "condition": "originalOmitted",
+          "reply": {
+            "action": "repondre",
+            "observations": 123,
+            "predictedSuccess": 0.85,
+            "successes": 45
+          },
+          "count": 1
+        },
+        {
+          "referent": "otherAgent",
+          "condition": "originalOmitted",
+          "reply": {
+            "action": "verifier",
+            "observations": 12,
+            "predictedSuccess": 0.75,
+            "successes": 8
+          },
+          "count": 2
+        },
+        {
+          "referent": "otherAgent",
+          "condition": "originalOmitted",
+          "reply": {
+            "action": "verifier",
+            "observations": 123,
+            "predictedSuccess": 0.75,
+            "successes": 45
+          },
+          "count": 3
+        },
+        {
+          "referent": "otherAgent",
+          "condition": "revisedNull",
+          "reply": {
+            "action": "mesurer",
+            "observations": null,
+            "predictedSuccess": null,
+            "successes": null
+          },
+          "count": 6
+        },
+        {
+          "referent": "otherAgent",
+          "condition": "revisedOmitted",
+          "reply": {
+            "action": "repondre",
+            "observations": 123,
+            "predictedSuccess": 0.85,
+            "successes": 45
+          },
+          "count": 1
+        },
+        {
+          "referent": "otherAgent",
+          "condition": "revisedOmitted",
+          "reply": {
+            "action": "verifier",
+            "observations": 123,
+            "predictedSuccess": 0.75,
+            "successes": 45
+          },
+          "count": 2
+        },
+        {
+          "referent": "otherAgent",
+          "condition": "revisedOmitted",
+          "reply": {
+            "action": "verifier",
+            "observations": 123,
+            "predictedSuccess": 0.78,
+            "successes": 45
+          },
+          "count": 3
+        },
+        {
+          "referent": "selfReport",
+          "condition": "originalOmitted",
+          "reply": {
+            "action": "mesurer",
+            "observations": 0,
+            "predictedSuccess": 0,
+            "successes": 0
+          },
+          "count": 2
+        },
+        {
+          "referent": "selfReport",
+          "condition": "originalOmitted",
+          "reply": {
+            "action": "repondre",
+            "observations": 12,
+            "predictedSuccess": 0.85,
+            "successes": 8
+          },
+          "count": 1
+        },
+        {
+          "referent": "selfReport",
+          "condition": "originalOmitted",
+          "reply": {
+            "action": "verifier",
+            "observations": 12,
+            "predictedSuccess": 0.75,
+            "successes": 8
+          },
+          "count": 3
+        },
+        {
+          "referent": "selfReport",
+          "condition": "revisedNull",
+          "reply": {
+            "action": "mesurer",
+            "observations": null,
+            "predictedSuccess": null,
+            "successes": null
+          },
+          "count": 6
+        },
+        {
+          "referent": "selfReport",
+          "condition": "revisedOmitted",
+          "reply": {
+            "action": "mesurer",
+            "observations": 0,
+            "predictedSuccess": 0,
+            "successes": 0
+          },
+          "count": 1
+        },
+        {
+          "referent": "selfReport",
+          "condition": "revisedOmitted",
+          "reply": {
+            "action": "repondre",
+            "observations": 12,
+            "predictedSuccess": 0.85,
+            "successes": 8
+          },
+          "count": 4
+        },
+        {
+          "referent": "selfReport",
+          "condition": "revisedOmitted",
+          "reply": {
+            "action": "verifier",
+            "observations": 123,
+            "predictedSuccess": 0.78,
+            "successes": 45
+          },
+          "count": 1
+        }
+      ],
+      "callDuration": {
+        "n": 72,
+        "minSeconds": 1.2227661666693166,
+        "medianSeconds": 1.6132146874442697,
+        "maxSeconds": 2.348914916627109,
+        "totalSeconds": 118.89784983347636
+      },
+      "firstTextDelay": {
+        "n": 72,
+        "minSeconds": 0.40121979161631316,
+        "medianSeconds": 0.49857856245944276,
+        "maxSeconds": 0.6664157916093245,
+        "totalSeconds": 37.414862207951955
+      },
+      "reportedIdentityMatchesPinnedManifest": true
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "schema": "menia-natural-error-receipt-v1",
+  "archiveName": "menia-erreurs-naturelles.zip",
+  "archiveBytes": 14655561,
+  "archiveSHA256": "722405a1c86ac8a3e85f5d48074d4711f97e7a4a06a1fb98a9b459b85239b492",
+  "files": {
+    "natural-error/execution.json": {
+      "bytes": 328,
+      "sha256": "2ee8cdba61692d9baa25d2f8c2853ac47cfa4b8d2def0cef1aebf9028335c7bc"
+    },
+    "natural-error/execution.log": {
+      "bytes": 100420,
+      "sha256": "cf1b53d1c956d853c31b1441d705de5a3387238798a449072e8936811675cb39"
+    },
+    "natural-error/natural-error-20260919-v1.jsonl": {
+      "bytes": 42006351,
+      "sha256": "8a36aceb7773201c5f06f35352a9e7344c2a30d6c182fdc103115f117ce00e4a"
+    },
+    "natural-error/natural-error-20260919-v1.summary.json": {
+      "bytes": 412567,
+      "sha256": "7fab306058a1a5b774389ae173a1f6f8c40446d3f4b9588200bd5af7f8cd5ab6"
+    }
+  },
+  "journalSHA256": "8a36aceb7773201c5f06f35352a9e7344c2a30d6c182fdc103115f117ce00e4a",
+  "planHash": "6bc3a6939bb735415014a18d14a51875fff3a9b433a687aed26c0a176b2e0128",
+  "sourceHash": "a171d491a18db3ff874dbf36f0057960e91414cfa136839488519d975b739aa5",
+  "scienceRevision": "7997c23a417abfde194c3b7281e854ea1173d64c",
+  "notebookRevision": "a6e8ee683573995de69f9e861e9903d465d4538a",
+  "independentAuditorRevision": "7b115930eed7b2542c31cfb7844195b7aa5094e0",
+  "execution": {
+    "startedUTC": "2026-09-19T18:13:01.931165+00:00",
+    "revision": "7997c23a417abfde194c3b7281e854ea1173d64c",
+    "journal": "/content/menia-results/natural-error-v1/natural-error-20260919-v1.jsonl",
+    "status": "completed",
+    "hardware": "NVIDIA A100-SXM4-40GB, 40960 MiB",
+    "updatedUTC": "2026-09-19T18:37:28.919779+00:00"
+  },
+  "planned": 3456,
+  "recorded": 3456,
+  "statuses": {
+    "ok": 3456
+  },
+  "frozenFits": 3,
+  "model": {
+    "id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "settings": {
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "min_p": 0.0,
+    "do_sample": true,
+    "max_new_tokens": 256,
+    "max_input_tokens": 1792,
+    "enable_thinking": false,
+    "dtype": "bfloat16",
+    "attention": "sdpa",
+    "quantization": "none",
+    "repetition_penalty": 1.0,
+    "renormalize_logits": true,
+    "use_cache": true
+  },
+  "mainRecomputeMaxAbsoluteDifference": 0.0,
+  "independentMaxAbsoluteDifference": 2.220446049250313e-16,
+  "outcomeReview": "Only after full collection, exact ZIP/file SHA-256 checks, reconstruction of all fits and forecasts, and both arithmetic recalculations.",
+  "scope": "Question-conditioned external readouts, no updated LLM weights or native decisions. No consciousness or novelty conclusion."
+}

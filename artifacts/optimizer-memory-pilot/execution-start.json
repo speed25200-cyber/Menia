@@ -1,0 +1,71 @@
+{
+  "schema": "menia-optimizer-memory-start-receipt-v1",
+  "status": "training-observed-live",
+  "job": {
+    "pid": 73280,
+    "startedUTC": "2026-09-19T14:39:59.473281+00:00",
+    "scienceRevision": "9826a65adf9c9826dc4dce5c1efd2b5710936311",
+    "notebookRevision": "a85236779ecddb59d2b46c85011de7a8d23fc4bb",
+    "notebookSHA256": "3712f293206260766dadadf5cb422f35d28d01bc0ddabe70acadc93be79cceeb",
+    "directory": "/content/menia-optimizer-memory-mcp-20260919",
+    "archive": "/content/menia-memoire-optimiseur.zip"
+  },
+  "observationUTC": "2026-09-19T14:44:40.925919+00:00",
+  "hardware": "NVIDIA A100-SXM4-40GB, 21 %, 9118 MiB, 40960 MiB",
+  "identity": {
+    "utc": "2026-09-19T14:44:39.878174+00:00",
+    "planHash": "1610c06f7f2846cbd30ca1f45f258ff83a1e596044273dc61fc8e488956512cf",
+    "sourceHash": "adc8769234100063ae56b3f4def89e4de7e81af26e3302fdc9b20b635b77c45f",
+    "planned": 29184,
+    "trainingUnits": 12,
+    "carryReferences": {
+      "r0-carry": "b8ec86fbd6eebabf6edc39e004096a4f2e3d3f9dcc4e4a95d741923f48e156c8",
+      "r1-carry": "3cfb6db56399f0e11318fa7a98d517d9c01682321be4309ba173f283272cbe5d",
+      "r2-carry": "177090b5b99dec10db335bee992ea7a5c86f5d97ba5ef3ecaddb9b01893b18ce"
+    },
+    "settings": {
+      "dtype": "bfloat16",
+      "sampling": false,
+      "thinking": false,
+      "useCache": false,
+      "firstTokenOnly": true,
+      "attention": "sdpa",
+      "optimizer": "AdamW",
+      "weightDecay": 0.0,
+      "learningRate": 0.0002,
+      "replications": 3,
+      "prefixSteps": 48,
+      "tailSteps": 16,
+      "testBlocks": 24,
+      "lexicalBlocks": 12,
+      "resamples": 2000,
+      "rank": 8,
+      "layer": 17,
+      "strength": 1.0,
+      "maxInputTokens": 512
+    }
+  },
+  "events": {
+    "header": 1,
+    "training_start": 5,
+    "training_step": 108,
+    "training_complete": 4
+  },
+  "checkpoints": {
+    "r0-prefix": "add5ed756ea6ff158d59e0780684808a2d21055e2a18a2c4f77c7fb143e8f495",
+    "r0-carry": "b8ec86fbd6eebabf6edc39e004096a4f2e3d3f9dcc4e4a95d741923f48e156c8",
+    "r0-reset_m": "f00d1766e1b5dcc017d62e9982429d54d4f4909f450ed74688f37b6499f14ad8",
+    "r0-zero_grad": "58a63d7963dd913c5595b12f786bb0c9de97fb8ff1e8e6844fbaae9b3eb27634"
+  },
+  "lastTrainingStep": {
+    "key": "r1-prefix",
+    "step": 12
+  },
+  "localTests": 6,
+  "colabTests": 6,
+  "independentArithmeticTests": 2,
+  "trainingReturnCode": null,
+  "behavioralResultsObserved": 0,
+  "firstCarryReproducesOriginal": true,
+  "scope": "Dated execution-start evidence, not a live status or completed experiment. Full behavioral interpretation awaits all three carry hashes and complete paired evaluation."
+}

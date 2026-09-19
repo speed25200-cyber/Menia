@@ -1,0 +1,63 @@
+{
+  "schema": "menia-native-logit-diagnostic-v1",
+  "origin": "exploratory_reanalysis_of_previously_inspected_data",
+  "journalSHA256": "dfe2b58ea365002b9ef5948ac1c7c28b226dc68926f3857fa403cd01ae386f8e",
+  "methods": {
+    "features": "Six native digit logits centered within row; optionally subtract centered unperturbed logits from same block",
+    "fit": "Five one-vs-rest ridge regressions, alpha=1, standardized using the eight validation blocks only; clipped probabilities; first argmax tie",
+    "evaluation": "32 previously inspected test blocks; five perturbed positions each; no tuning or new Qwen calls",
+    "referenceAccuracy": 0.2,
+    "pairedDeltaUsesCounterfactualReference": true
+  },
+  "results": [
+    {
+      "arm": "base",
+      "features": "centeredLogits",
+      "fitExamples": 40,
+      "diagnosticExamples": 160,
+      "correct": 31,
+      "accuracy": 0.19375
+    },
+    {
+      "arm": "base",
+      "features": "pairedCenteredDelta",
+      "fitExamples": 40,
+      "diagnosticExamples": 160,
+      "correct": 26,
+      "accuracy": 0.1625
+    },
+    {
+      "arm": "aligned",
+      "features": "centeredLogits",
+      "fitExamples": 40,
+      "diagnosticExamples": 160,
+      "correct": 28,
+      "accuracy": 0.175
+    },
+    {
+      "arm": "aligned",
+      "features": "pairedCenteredDelta",
+      "fitExamples": 40,
+      "diagnosticExamples": 160,
+      "correct": 30,
+      "accuracy": 0.1875
+    },
+    {
+      "arm": "shuffled",
+      "features": "centeredLogits",
+      "fitExamples": 40,
+      "diagnosticExamples": 160,
+      "correct": 25,
+      "accuracy": 0.15625
+    },
+    {
+      "arm": "shuffled",
+      "features": "pairedCenteredDelta",
+      "fitExamples": 40,
+      "diagnosticExamples": 160,
+      "correct": 28,
+      "accuracy": 0.175
+    }
+  ],
+  "interpretation": "No observed gain over 20% in these six descriptive readouts; not evidence that all internal representations lack position information. Not a confirmatory generalization test."
+}

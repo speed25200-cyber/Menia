@@ -1,0 +1,29 @@
+{
+  "schema": "menia-state-interchange-design-v1",
+  "status": "fixed-before-gpu-collection",
+  "planHash": "fee156fac3ba04bf90c3686bc55b0fc5943adad7467ff75ac795fa9731a0d14c",
+  "sourceHash": "69227c29fa78eb3b5184bf10bb505be78a385357bf14c9cea5d1d1efdc8e8bbb",
+  "parentJournalSHA256": "0bd76014c6d80f56e6c5a1cedf71fd1546f78be18977c5a79ebd8ccd12947706",
+  "checkpoints": {
+    "r0-prefix": "add5ed756ea6ff158d59e0780684808a2d21055e2a18a2c4f77c7fb143e8f495",
+    "r1-prefix": "7954ba00216b591cda6c7a0a3d0f30bd7d42bc56b90fd03ba4b8eec15d16e5ac",
+    "r2-prefix": "5b8d614fa3f141d5c54a326a8aeec37e8d99ed99acd551440faa9b1b18978ebd"
+  },
+  "plannedForwards": 19584,
+  "groups": 144,
+  "pairs": 72,
+  "selfShams": 3456,
+  "finalLayerCopies": 4608,
+  "tables": 72,
+  "contrasts": 144,
+  "primaryContrasts": 6,
+  "baselineTables": 48,
+  "sites": [
+    17,
+    23,
+    35
+  ],
+  "weightUpdates": 0,
+  "learnedAlignment": false,
+  "tests": "Six local tests passed, including 136 actual tiny-random-Qwen forwards. No pretrained Qwen result."
+}

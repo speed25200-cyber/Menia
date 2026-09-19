@@ -1,0 +1,71 @@
+{
+  "schema": "menia-risk-presentation-receipt-v1",
+  "archiveName": "menia-presentation-risque.zip",
+  "archiveBytes": 155205,
+  "archiveSHA256": "f4c652694d3381d43a27cb986d0d1f6fad0532f25372333b37a40ea7efd6de4e",
+  "files": {
+    "risk-presentation/execution.json": {
+      "bytes": 336,
+      "sha256": "ca77130034a26cec6bf69786550f1bfe4b92c195531f1cb205e1d74ccb8f5589"
+    },
+    "risk-presentation/execution.log": {
+      "bytes": 3493,
+      "sha256": "f56467f0aaa3527140fcfb7395e65b91abe83436088fc163c659bfe72175bb2c"
+    },
+    "risk-presentation/risk-presentation-20260919-v1.jsonl": {
+      "bytes": 2865471,
+      "sha256": "c2f47174f0019f09aace6cb145b7d28b302c4ee2444631cbb62c38da1c3e2523"
+    },
+    "risk-presentation/risk-presentation-20260919-v1.summary.json": {
+      "bytes": 11425,
+      "sha256": "c13c0f55c7e3f4d15d27e76391fc79c4a5a470d3df2278973e227e745c1a1172"
+    }
+  },
+  "journalSHA256": "c2f47174f0019f09aace6cb145b7d28b302c4ee2444631cbb62c38da1c3e2523",
+  "scienceRevision": "ed5a8a58e18318df04166f9f32c8ecf76a830a06",
+  "notebookRevision": "ccad792b7e9e78e48d3bf96acd63979c68695e18",
+  "execution": {
+    "startedUTC": "2026-09-19T19:50:55.784328+00:00",
+    "revision": "ed5a8a58e18318df04166f9f32c8ecf76a830a06",
+    "journal": "/content/menia-results/risk-presentation-v1/risk-presentation-20260919-v1.jsonl",
+    "status": "completed",
+    "hardware": "NVIDIA A100-SXM4-40GB, 40960 MiB",
+    "updatedUTC": "2026-09-19T19:53:32.854206+00:00"
+  },
+  "model": {
+    "id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "settings": {
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "min_p": 0.0,
+    "do_sample": true,
+    "max_new_tokens": 16,
+    "max_input_tokens": 1792,
+    "enable_thinking": false,
+    "dtype": "bfloat16",
+    "attention": "sdpa",
+    "quantization": "none",
+    "repetition_penalty": 1.0,
+    "renormalize_logits": true,
+    "use_cache": true
+  },
+  "planHash": "808de84d0eeb15d257b4b691f7ff65ac8b6cac1bbea9891a3bd9d1ef4e4dc224",
+  "sourceHash": "16b95cd62c6b4ce4cdb80557853215415d344e3a0a9813e306db2565527fca02",
+  "mainRecomputeMaxAbsoluteDifference": 0.0,
+  "independentMaxAbsoluteDifference": 1.3877787807814457e-17,
+  "localTests": {
+    "count": 5,
+    "seconds": 6.195,
+    "passed": true
+  },
+  "colabTests": {
+    "count": 5,
+    "seconds": 9.034,
+    "passed": true
+  },
+  "outcomeReview": "Complete archive reception, hashes and both calculations preceded outcome review.",
+  "scope": "Finite public risk diagnostic; no trained private representation, subjective consciousness or novelty established."
+}

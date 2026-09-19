@@ -1,0 +1,23 @@
+{
+  "schema": "menia-optimizer-memory-design-v1",
+  "status": "frozen-before-gpu-collection",
+  "planHash": "1610c06f7f2846cbd30ca1f45f258ff83a1e596044273dc61fc8e488956512cf",
+  "sourceHash": "adc8769234100063ae56b3f4def89e4de7e81af26e3302fdc9b20b635b77c45f",
+  "parentJournalSHA256": "fdbe7d9e764e509789e552591a8b13ef46ba3bf2efd3543eed08e63595acd526",
+  "compositionJournalSHA256": "a8dc7d8b018f34ea7c07fe80b08a3775e9ea0b7e132f05b64357c4ff122b8a7c",
+  "carryReferences": {
+    "r0-carry": "b8ec86fbd6eebabf6edc39e004096a4f2e3d3f9dcc4e4a95d741923f48e156c8",
+    "r1-carry": "3cfb6db56399f0e11318fa7a98d517d9c01682321be4309ba173f283272cbe5d",
+    "r2-carry": "177090b5b99dec10db335bee992ea7a5c86f5d97ba5ef3ecaddb9b01893b18ce"
+  },
+  "planned": 29184,
+  "checkpoints": 12,
+  "optimizerSteps": 288,
+  "gradientSteps": 240,
+  "zeroGradientSteps": 48,
+  "primaryContrasts": 18,
+  "allContrasts": 306,
+  "tables": 408,
+  "shamPairs": 7296,
+  "tests": "6 local tests passed; includes a randomly initialized tiny Qwen. No experimental result in this artifact."
+}

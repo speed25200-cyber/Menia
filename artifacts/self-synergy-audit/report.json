@@ -1,0 +1,790 @@
+{
+  "scope": "one-step bivariate nonnegative-PID consistency audit; not consciousness or PIRD",
+  "equation": "A_next = A XOR B; B_next = independent fair bit",
+  "original": {
+    "stationary_uniform": true,
+    "i_first_future_bits": 0.0,
+    "i_second_future_bits": 0.0,
+    "i_joint_future_bits": 1.0,
+    "synergy_bounds_bits": [
+      1.0,
+      1.0
+    ]
+  },
+  "mixed_encoding": {
+    "stationary_uniform": true,
+    "i_first_future_bits": 1.0,
+    "i_second_future_bits": 0.0,
+    "i_joint_future_bits": 1.0,
+    "synergy_bounds_bits": [
+      0.0,
+      0.0
+    ]
+  },
+  "same_distribution_for_xor_and_lookup": true,
+  "exact_transition_joint": [
+    {
+      "current": [
+        0,
+        0
+      ],
+      "future": [
+        0,
+        0
+      ],
+      "probability": "1/8"
+    },
+    {
+      "current": [
+        0,
+        0
+      ],
+      "future": [
+        0,
+        1
+      ],
+      "probability": "1/8"
+    },
+    {
+      "current": [
+        0,
+        1
+      ],
+      "future": [
+        1,
+        0
+      ],
+      "probability": "1/8"
+    },
+    {
+      "current": [
+        0,
+        1
+      ],
+      "future": [
+        1,
+        1
+      ],
+      "probability": "1/8"
+    },
+    {
+      "current": [
+        1,
+        0
+      ],
+      "future": [
+        1,
+        0
+      ],
+      "probability": "1/8"
+    },
+    {
+      "current": [
+        1,
+        0
+      ],
+      "future": [
+        1,
+        1
+      ],
+      "probability": "1/8"
+    },
+    {
+      "current": [
+        1,
+        1
+      ],
+      "future": [
+        0,
+        0
+      ],
+      "probability": "1/8"
+    },
+    {
+      "current": [
+        1,
+        1
+      ],
+      "future": [
+        0,
+        1
+      ],
+      "probability": "1/8"
+    }
+  ],
+  "all_24_state_encodings": [
+    {
+      "encoding": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "stationary_uniform": true,
+      "i_first_future_bits": 0.0,
+      "i_second_future_bits": 0.0,
+      "i_joint_future_bits": 1.0,
+      "synergy_bounds_bits": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "encoding": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "stationary_uniform": true,
+      "i_first_future_bits": 0.0,
+      "i_second_future_bits": 1.0,
+      "i_joint_future_bits": 1.0,
+      "synergy_bounds_bits": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "encoding": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "stationary_uniform": true,
+      "i_first_future_bits": 0.0,
+      "i_second_future_bits": 0.0,
+      "i_joint_future_bits": 1.0,
+      "synergy_bounds_bits": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "encoding": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "stationary_uniform": true,
+      "i_first_future_bits": 1.0,
+      "i_second_future_bits": 0.0,
+      "i_joint_future_bits": 1.0,
+      "synergy_bounds_bits": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "encoding": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "stationary_uniform": true,
+      "i_first_future_bits": 0.0,
+      "i_second_future_bits": 1.0,
+      "i_joint_future_bits": 1.0,
+      "synergy_bounds_bits": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "encoding": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "stationary_uniform": true,
+      "i_first_future_bits": 1.0,
+      "i_second_future_bits": 0.0,
+      "i_joint_future_bits": 1.0,
+      "synergy_bounds_bits": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "encoding": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "stationary_uniform": true,
+      "i_first_future_bits": 0.0,
+      "i_second_future_bits": 1.0,
+      "i_joint_future_bits": 1.0,
+      "synergy_bounds_bits": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "encoding": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "stationary_uniform": true,
+      "i_first_future_bits": 0.0,
+      "i_second_future_bits": 0.0,
+      "i_joint_future_bits": 1.0,
+      "synergy_bounds_bits": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "encoding": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "stationary_uniform": true,
+      "i_first_future_bits": 0.0,
+      "i_second_future_bits": 1.0,
+      "i_joint_future_bits": 1.0,
+      "synergy_bounds_bits": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "encoding": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "stationary_uniform": true,
+      "i_first_future_bits": 1.0,
+      "i_second_future_bits": 0.0,
+      "i_joint_future_bits": 1.0,
+      "synergy_bounds_bits": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "encoding": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "stationary_uniform": true,
+      "i_first_future_bits": 0.0,
+      "i_second_future_bits": 0.0,
+      "i_joint_future_bits": 1.0,
+      "synergy_bounds_bits": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "encoding": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "stationary_uniform": true,
+      "i_first_future_bits": 1.0,
+      "i_second_future_bits": 0.0,
+      "i_joint_future_bits": 1.0,
+      "synergy_bounds_bits": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "encoding": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "stationary_uniform": true,
+      "i_first_future_bits": 1.0,
+      "i_second_future_bits": 0.0,
+      "i_joint_future_bits": 1.0,
+      "synergy_bounds_bits": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "encoding": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "stationary_uniform": true,
+      "i_first_future_bits": 0.0,
+      "i_second_future_bits": 0.0,
+      "i_joint_future_bits": 1.0,
+      "synergy_bounds_bits": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "encoding": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "stationary_uniform": true,
+      "i_first_future_bits": 1.0,
+      "i_second_future_bits": 0.0,
+      "i_joint_future_bits": 1.0,
+      "synergy_bounds_bits": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "encoding": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "stationary_uniform": true,
+      "i_first_future_bits": 0.0,
+      "i_second_future_bits": 1.0,
+      "i_joint_future_bits": 1.0,
+      "synergy_bounds_bits": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "encoding": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "stationary_uniform": true,
+      "i_first_future_bits": 0.0,
+      "i_second_future_bits": 0.0,
+      "i_joint_future_bits": 1.0,
+      "synergy_bounds_bits": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "encoding": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "stationary_uniform": true,
+      "i_first_future_bits": 0.0,
+      "i_second_future_bits": 1.0,
+      "i_joint_future_bits": 1.0,
+      "synergy_bounds_bits": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "encoding": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "stationary_uniform": true,
+      "i_first_future_bits": 1.0,
+      "i_second_future_bits": 0.0,
+      "i_joint_future_bits": 1.0,
+      "synergy_bounds_bits": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "encoding": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "stationary_uniform": true,
+      "i_first_future_bits": 0.0,
+      "i_second_future_bits": 1.0,
+      "i_joint_future_bits": 1.0,
+      "synergy_bounds_bits": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "encoding": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "stationary_uniform": true,
+      "i_first_future_bits": 1.0,
+      "i_second_future_bits": 0.0,
+      "i_joint_future_bits": 1.0,
+      "synergy_bounds_bits": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "encoding": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "stationary_uniform": true,
+      "i_first_future_bits": 0.0,
+      "i_second_future_bits": 0.0,
+      "i_joint_future_bits": 1.0,
+      "synergy_bounds_bits": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "encoding": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "stationary_uniform": true,
+      "i_first_future_bits": 0.0,
+      "i_second_future_bits": 1.0,
+      "i_joint_future_bits": 1.0,
+      "synergy_bounds_bits": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "encoding": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "stationary_uniform": true,
+      "i_first_future_bits": 0.0,
+      "i_second_future_bits": 0.0,
+      "i_joint_future_bits": 1.0,
+      "synergy_bounds_bits": [
+        1.0,
+        1.0
+      ]
+    }
+  ],
+  "interpretation": "A positive self-targeted synergy criterion is satisfied by this tiny stochastic register. Mixing subsystem coordinates can change synergy while preserving the joint process up to isomorphism. This does not establish absence or presence of subjective experience."
+}

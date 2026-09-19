@@ -1,0 +1,33 @@
+{
+  "schema": "menia-state-composition-receipt-v1",
+  "experimentComplete": true,
+  "archiveName": "menia-composition-etat.zip",
+  "archiveBytes": 100838450,
+  "archiveSHA256": "1e51a1bbd9709ba0985bc1ccfc8ba2f2b61d7204ba468c32ca62da5effc39603",
+  "journalSHA256": "a8dc7d8b018f34ea7c07fe80b08a3775e9ea0b7e132f05b64357c4ff122b8a7c",
+  "planHash": "bef98c408309d43ed7e15784b18628ae56065583ead44afaaff8872e57694224",
+  "sourceHash": "f3646182a3a6420fa108ff98d5ca58a7d8612de0c2eac14c19f388394b0ce1e9",
+  "scienceRevision": "9793ec781845c3e7eef686bb06978d7f1eabdb25",
+  "notebookRevision": "7e87411c771408eceb9c214793894b8f2036e399",
+  "startedUTC": "2026-09-19T12:00:57.491426+00:00",
+  "finishedUTC": "2026-09-19T13:08:52.507837+00:00",
+  "hardware": "NVIDIA A100-SXM4-40GB, 40960 MiB",
+  "publicCheckpointFreezeMatched": true,
+  "checkpointsVerified": 9,
+  "evaluations": 25920,
+  "trainingUpdates": 576,
+  "primaryContrastsPassed": 20,
+  "primaryContrasts": 24,
+  "controlGatesPassed": 60,
+  "controlGates": 72,
+  "signalRuleMet": false,
+  "controlRuleMet": false,
+  "fixedReadingRuleMet": false,
+  "artifacts": {
+    "first-audit-summary.json": "eedc45d3df488ba0f2e2ca8b4ac42afc84c609e537183695fce19faf469ae9af",
+    "first-audit-verification.json": "7c3e1e28fb5941b16d4bafead9c43f6692b06504e5eac60e9596a34874f7a878",
+    "state-composition.png": "1d3c8f67dd49aa10b70ca58b921926aba7904cc6c8f2c6dcf94c7d3ad60f6816"
+  },
+  "note": "Complete experiment, not completion of the consciousness goal. No new adapter installed on iPhone.",
+  "artifactHashEncoding": "Exact Git blob bytes; text line endings normalized by the repository."
+}

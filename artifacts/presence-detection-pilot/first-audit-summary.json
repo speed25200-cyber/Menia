@@ -1,0 +1,5248 @@
+{
+  "schema": "menia-presence-detection-report-v1",
+  "origin": "transformers_gpu",
+  "complete": true,
+  "planHash": "447f5d2c82fc23ea6eeba49b9bc984f423752c5a012be50fc89c3d018d635bd0",
+  "sourceHash": "a1beb0f2052d7f6e58df402dc1c5395abd5f1b966b5ed0d265a79b354fb5be2d",
+  "recorded": 12864,
+  "planned": 12864,
+  "trained": {
+    "r0-visible": "8f9984a3d027298e6b1ac8a56b6f1449c3b2525c767ef7576b923c4e6d4ba979",
+    "r0-strong": "e2069070e5e54206258ed466c8592714413610e316f419ae3c6a7f2abb18b219",
+    "r0-shuffled": "b521dbd2363cef29739be13cb02dcebbe3269c48bcf73bc51d84259a59a7b739",
+    "r1-visible": "ebd344fd27dc3354658f2deb823b6bae83e0c15758873fd45e2dc2d4a396013b",
+    "r1-strong": "80f1805b05048ec363cf7c185def104c66b8141c97d26c38c68a9065a4728497",
+    "r1-shuffled": "e59a50cc39d924040667caffb586bfce39c6595cf5e4b81707fee2cc136f287f",
+    "r2-visible": "4c6fc8ad2a63ad0a8d108db487ee591749c47c6c91a3430552dce04569e5d4cf",
+    "r2-strong": "4d693a7dc2fa19b33f94c0a325a01a8f7c4fdc96e43abcdae3fae88043ff3b9c",
+    "r2-shuffled": "b4d054c4c85571d65c136273b9d9eaedb233265a7b6c73e017dd9e68d5625ad1"
+  },
+  "pendingRequest": false,
+  "tables": {
+    "0/train/base/visible/trained/canonical/primary": {
+      "n": 48,
+      "blocks": 16,
+      "correct": 0.8333333333333334,
+      "firstTokenCorrect": 0.8333333333333334,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999765095611414,
+      "brier": 0.3139508112790041,
+      "predictionCounts": [
+        8,
+        40,
+        0
+      ],
+      "presenceAUROC": 0.9716796875,
+      "presenceAUROCInterval95": [
+        0.9375,
+        1.0
+      ],
+      "withinBlockOrdering": 1.0,
+      "withinBlockOrderingInterval95": [
+        1.0,
+        1.0
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.5,
+      "presenceBalancedAccuracy": 0.75,
+      "trainingTargetAccuracy": 0.8333333333333334
+    },
+    "0/train/base/visible/trained/canonical/marker": {
+      "n": 48,
+      "blocks": 16,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999913076559,
+      "brier": 5.285808343927259e-05,
+      "predictionCounts": [
+        0,
+        24,
+        24
+      ]
+    },
+    "0/test/base/visible/trained/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.8333333333333334,
+      "firstTokenCorrect": 0.8333333333333334,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999878348575698,
+      "brier": 0.3048203996147995,
+      "predictionCounts": [
+        12,
+        60,
+        0
+      ],
+      "presenceAUROC": 0.9635416666666666,
+      "presenceAUROCInterval95": [
+        0.9253472222222222,
+        0.9939236111111112
+      ],
+      "withinBlockOrdering": 1.0,
+      "withinBlockOrderingInterval95": [
+        1.0,
+        1.0
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.5,
+      "presenceBalancedAccuracy": 0.75,
+      "trainingTargetAccuracy": null
+    },
+    "0/test/base/visible/trained/canonical/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999933772616,
+      "brier": 0.004100207516475615,
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "0/test/base/visible/trained/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.9305555555555556,
+      "firstTokenCorrect": 0.9305555555555556,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999998269809617,
+      "brier": 0.12504354289616268,
+      "predictionCounts": [
+        23,
+        49,
+        0
+      ],
+      "presenceAUROC": 0.9921875,
+      "presenceAUROCInterval95": [
+        0.9791666666666666,
+        1.0
+      ],
+      "withinBlockOrdering": 1.0,
+      "withinBlockOrderingInterval95": [
+        1.0,
+        1.0
+      ],
+      "presenceSensitivity": 0.9583333333333334,
+      "presenceSpecificity": 0.875,
+      "presenceBalancedAccuracy": 0.9166666666666667,
+      "trainingTargetAccuracy": null
+    },
+    "0/test/base/visible/trained/both_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6527777777777778,
+      "firstTokenCorrect": 0.6527777777777778,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999900658926,
+      "brier": 0.43668855232753523,
+      "predictionCounts": [
+        0,
+        51,
+        21
+      ]
+    },
+    "0/train/base/strong/trained/canonical/primary": {
+      "n": 48,
+      "blocks": 16,
+      "correct": 0.6458333333333334,
+      "firstTokenCorrect": 0.6458333333333334,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999900658926,
+      "brier": 0.7082352788571642,
+      "predictionCounts": [
+        1,
+        47,
+        0
+      ],
+      "presenceAUROC": 0.560546875,
+      "presenceAUROCInterval95": [
+        0.4775390625,
+        0.6523925781249997
+      ],
+      "withinBlockOrdering": 0.59375,
+      "withinBlockOrderingInterval95": [
+        0.40625,
+        0.75
+      ],
+      "presenceSensitivity": 0.96875,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.484375,
+      "trainingTargetAccuracy": 0.6458333333333334
+    },
+    "0/train/base/strong/trained/canonical/marker": {
+      "n": 48,
+      "blocks": 16,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999962747097,
+      "brier": 2.675595888540196e-13,
+      "predictionCounts": [
+        0,
+        24,
+        24
+      ]
+    },
+    "0/test/base/strong/trained/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999958607886,
+      "brier": 0.6666636322806677,
+      "predictionCounts": [
+        0,
+        72,
+        0
+      ],
+      "presenceAUROC": 0.5516493055555556,
+      "presenceAUROCInterval95": [
+        0.48740234374999997,
+        0.6241427951388888
+      ],
+      "withinBlockOrdering": 0.6041666666666666,
+      "withinBlockOrderingInterval95": [
+        0.4479166666666667,
+        0.7604166666666666
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null
+    },
+    "0/test/base/strong/trained/canonical/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999925494194,
+      "brier": 1.3664399435931474e-13,
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "0/test/base/strong/trained/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999933772616,
+      "brier": 0.66628193983939,
+      "predictionCounts": [
+        0,
+        72,
+        0
+      ],
+      "presenceAUROC": 0.6362847222222222,
+      "presenceAUROCInterval95": [
+        0.5464192708333333,
+        0.73828125
+      ],
+      "withinBlockOrdering": 0.7708333333333334,
+      "withinBlockOrderingInterval95": [
+        0.6145833333333334,
+        0.8960937499999986
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null
+    },
+    "0/test/base/strong/trained/both_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.7083333333333334,
+      "firstTokenCorrect": 0.7083333333333334,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999842709966,
+      "brier": 0.3802324450559203,
+      "predictionCounts": [
+        0,
+        57,
+        15
+      ]
+    },
+    "0/test/base/strong/weaker/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999950329462,
+      "brier": 0.6666628754418163,
+      "predictionCounts": [
+        0,
+        72,
+        0
+      ],
+      "presenceAUROC": 0.5334201388888888,
+      "presenceAUROCInterval95": [
+        0.4917534722222222,
+        0.5894205729166666
+      ],
+      "withinBlockOrdering": 0.65625,
+      "withinBlockOrderingInterval95": [
+        0.5205729166666667,
+        0.78125
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null
+    },
+    "0/test/base/strong/weaker/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999908937348,
+      "brier": 0.6662890712955342,
+      "predictionCounts": [
+        0,
+        72,
+        0
+      ],
+      "presenceAUROC": 0.5542534722222222,
+      "presenceAUROCInterval95": [
+        0.48045789930555555,
+        0.64150390625
+      ],
+      "withinBlockOrdering": 0.6145833333333334,
+      "withinBlockOrderingInterval95": [
+        0.4583333333333333,
+        0.75
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null
+    },
+    "0/test/base/strong/earlier/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999917215772,
+      "brier": 0.6666628753374526,
+      "predictionCounts": [
+        0,
+        72,
+        0
+      ],
+      "presenceAUROC": 0.6089409722222222,
+      "presenceAUROCInterval95": [
+        0.5234266493055556,
+        0.7105143229166666
+      ],
+      "withinBlockOrdering": 0.6458333333333334,
+      "withinBlockOrderingInterval95": [
+        0.4895833333333333,
+        0.8020833333333334
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null
+    },
+    "0/test/base/strong/earlier/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999933772616,
+      "brier": 0.667659717155169,
+      "predictionCounts": [
+        0,
+        72,
+        0
+      ],
+      "presenceAUROC": 0.6514756944444444,
+      "presenceAUROCInterval95": [
+        0.59765625,
+        0.7205078125
+      ],
+      "withinBlockOrdering": 0.71875,
+      "withinBlockOrderingInterval95": [
+        0.625,
+        0.8125
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null
+    },
+    "0/test/base/strong/later/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999925494194,
+      "brier": 0.6666628754108405,
+      "predictionCounts": [
+        0,
+        72,
+        0
+      ],
+      "presenceAUROC": 0.4752604166666667,
+      "presenceAUROCInterval95": [
+        0.43228081597222223,
+        0.4939236111111111
+      ],
+      "withinBlockOrdering": 0.2708333333333333,
+      "withinBlockOrderingInterval95": [
+        0.15625,
+        0.3958333333333333
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null
+    },
+    "0/test/base/strong/later/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999933772616,
+      "brier": 0.6662835614480299,
+      "predictionCounts": [
+        0,
+        72,
+        0
+      ],
+      "presenceAUROC": 0.48046875,
+      "presenceAUROCInterval95": [
+        0.4448784722222222,
+        0.4917534722222222
+      ],
+      "withinBlockOrdering": 0.2708333333333333,
+      "withinBlockOrderingInterval95": [
+        0.16666666666666666,
+        0.3854166666666667
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null
+    },
+    "0/train/visible/visible/trained/canonical/primary": {
+      "n": 48,
+      "blocks": 16,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999639888605,
+      "brier": 1.4880983377814955e-14,
+      "predictionCounts": [
+        16,
+        32,
+        0
+      ],
+      "presenceAUROC": 1.0,
+      "presenceAUROCInterval95": [
+        1.0,
+        1.0
+      ],
+      "withinBlockOrdering": 1.0,
+      "withinBlockOrderingInterval95": [
+        1.0,
+        1.0
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 1.0,
+      "trainingTargetAccuracy": 1.0
+    },
+    "0/train/visible/visible/trained/canonical/marker": {
+      "n": 48,
+      "blocks": 16,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999937911829,
+      "brier": 0.006833418922460813,
+      "predictionCounts": [
+        0,
+        24,
+        24
+      ]
+    },
+    "0/test/visible/visible/trained/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999701976776,
+      "brier": 1.2961033763113878e-14,
+      "predictionCounts": [
+        24,
+        48,
+        0
+      ],
+      "presenceAUROC": 1.0,
+      "presenceAUROCInterval95": [
+        1.0,
+        1.0
+      ],
+      "withinBlockOrdering": 1.0,
+      "withinBlockOrderingInterval95": [
+        1.0,
+        1.0
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 1.0,
+      "trainingTargetAccuracy": null
+    },
+    "0/test/visible/visible/trained/canonical/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.9583333333333334,
+      "firstTokenCorrect": 0.9583333333333334,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999991721578,
+      "brier": 0.04881405554406888,
+      "predictionCounts": [
+        0,
+        39,
+        33
+      ]
+    },
+    "0/test/visible/visible/trained/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999983443154,
+      "brier": 1.0948721337626698e-14,
+      "predictionCounts": [
+        24,
+        48,
+        0
+      ],
+      "presenceAUROC": 1.0,
+      "presenceAUROCInterval95": [
+        1.0,
+        1.0
+      ],
+      "withinBlockOrdering": 1.0,
+      "withinBlockOrderingInterval95": [
+        1.0,
+        1.0
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 1.0,
+      "trainingTargetAccuracy": null
+    },
+    "0/test/visible/visible/trained/both_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.8055555555555556,
+      "firstTokenCorrect": 0.8055555555555556,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999842709966,
+      "brier": 0.27870233262292854,
+      "predictionCounts": [
+        0,
+        28,
+        44
+      ]
+    },
+    "0/train/strong/strong/trained/canonical/primary": {
+      "n": 48,
+      "blocks": 16,
+      "correct": 0.9375,
+      "firstTokenCorrect": 0.9375,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999998273948828,
+      "brier": 0.09216130570614568,
+      "predictionCounts": [
+        19,
+        29,
+        0
+      ],
+      "presenceAUROC": 1.0,
+      "presenceAUROCInterval95": [
+        1.0,
+        1.0
+      ],
+      "withinBlockOrdering": 1.0,
+      "withinBlockOrderingInterval95": [
+        1.0,
+        1.0
+      ],
+      "presenceSensitivity": 0.90625,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 0.953125,
+      "trainingTargetAccuracy": 0.9375
+    },
+    "0/train/strong/strong/trained/canonical/marker": {
+      "n": 48,
+      "blocks": 16,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999997355043888,
+      "brier": 1.6270984340980036e-07,
+      "predictionCounts": [
+        0,
+        24,
+        24
+      ]
+    },
+    "0/test/strong/strong/trained/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.875,
+      "firstTokenCorrect": 0.875,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999997922115855,
+      "brier": 0.1827343912949228,
+      "predictionCounts": [
+        31,
+        41,
+        0
+      ],
+      "presenceAUROC": 0.9800347222222222,
+      "presenceAUROCInterval95": [
+        0.9565972222222222,
+        0.9978298611111112
+      ],
+      "withinBlockOrdering": 1.0,
+      "withinBlockOrderingInterval95": [
+        1.0,
+        1.0
+      ],
+      "presenceSensitivity": 0.8333333333333334,
+      "presenceSpecificity": 0.9583333333333334,
+      "presenceBalancedAccuracy": 0.8958333333333334,
+      "trainingTargetAccuracy": null
+    },
+    "0/test/strong/strong/trained/canonical/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999997152222527,
+      "brier": 1.146324574920966e-06,
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "0/test/strong/strong/trained/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.8333333333333334,
+      "firstTokenCorrect": 0.8333333333333334,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999994056092368,
+      "brier": 0.22879736799249764,
+      "predictionCounts": [
+        24,
+        48,
+        0
+      ],
+      "presenceAUROC": 0.8975694444444444,
+      "presenceAUROCInterval95": [
+        0.8393988715277778,
+        0.9587782118055556
+      ],
+      "withinBlockOrdering": 0.9791666666666666,
+      "withinBlockOrderingInterval95": [
+        0.9479166666666666,
+        1.0
+      ],
+      "presenceSensitivity": 0.875,
+      "presenceSpecificity": 0.75,
+      "presenceBalancedAccuracy": 0.8125,
+      "trainingTargetAccuracy": null
+    },
+    "0/test/strong/strong/trained/both_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.3055555555555556,
+      "firstTokenCorrect": 0.3055555555555556,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.999977621767256,
+      "brier": 1.0020178747388293,
+      "predictionCounts": [
+        0,
+        18,
+        54
+      ]
+    },
+    "0/test/strong/strong/weaker/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.4861111111111111,
+      "firstTokenCorrect": 0.4861111111111111,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.999999796350797,
+      "brier": 0.7168149545058272,
+      "predictionCounts": [
+        59,
+        13,
+        0
+      ],
+      "presenceAUROC": 0.8446180555555556,
+      "presenceAUROCInterval95": [
+        0.7756076388888888,
+        0.9192816840277778
+      ],
+      "withinBlockOrdering": 0.96875,
+      "withinBlockOrderingInterval95": [
+        0.9270833333333334,
+        1.0
+      ],
+      "presenceSensitivity": 0.25,
+      "presenceSpecificity": 0.9583333333333334,
+      "presenceBalancedAccuracy": 0.6041666666666667,
+      "trainingTargetAccuracy": null
+    },
+    "0/test/strong/strong/weaker/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.5972222222222222,
+      "firstTokenCorrect": 0.5972222222222222,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999995885623826,
+      "brier": 0.5883968550557219,
+      "predictionCounts": [
+        41,
+        31,
+        0
+      ],
+      "presenceAUROC": 0.7387152777777778,
+      "presenceAUROCInterval95": [
+        0.6788194444444444,
+        0.8198893229166666
+      ],
+      "withinBlockOrdering": 0.9166666666666666,
+      "withinBlockOrderingInterval95": [
+        0.8229166666666666,
+        0.9895833333333334
+      ],
+      "presenceSensitivity": 0.5208333333333334,
+      "presenceSpecificity": 0.75,
+      "presenceBalancedAccuracy": 0.6354166666666667,
+      "trainingTargetAccuracy": null
+    },
+    "0/test/strong/strong/earlier/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.75,
+      "firstTokenCorrect": 0.75,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999998302923309,
+      "brier": 0.2842506393624115,
+      "predictionCounts": [
+        40,
+        32,
+        0
+      ],
+      "presenceAUROC": 0.9618055555555556,
+      "presenceAUROCInterval95": [
+        0.9210069444444444,
+        0.9956597222222222
+      ],
+      "withinBlockOrdering": 0.9895833333333334,
+      "withinBlockOrderingInterval95": [
+        0.96875,
+        1.0
+      ],
+      "presenceSensitivity": 0.6458333333333334,
+      "presenceSpecificity": 0.9583333333333334,
+      "presenceBalancedAccuracy": 0.8020833333333334,
+      "trainingTargetAccuracy": null
+    },
+    "0/test/strong/strong/earlier/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.7361111111111112,
+      "firstTokenCorrect": 0.7361111111111112,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999996787971921,
+      "brier": 0.3623417696345296,
+      "predictionCounts": [
+        31,
+        41,
+        0
+      ],
+      "presenceAUROC": 0.8589409722222222,
+      "presenceAUROCInterval95": [
+        0.8098958333333334,
+        0.9188368055555556
+      ],
+      "withinBlockOrdering": 1.0,
+      "withinBlockOrderingInterval95": [
+        1.0,
+        1.0
+      ],
+      "presenceSensitivity": 0.7291666666666666,
+      "presenceSpecificity": 0.75,
+      "presenceBalancedAccuracy": 0.7395833333333333,
+      "trainingTargetAccuracy": null
+    },
+    "0/test/strong/strong/later/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.3472222222222222,
+      "firstTokenCorrect": 0.3472222222222222,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999998054570622,
+      "brier": 1.1608791981918973,
+      "predictionCounts": [
+        69,
+        3,
+        0
+      ],
+      "presenceAUROC": 0.5407986111111112,
+      "presenceAUROCInterval95": [
+        0.5251627604166668,
+        0.5798719618055556
+      ],
+      "withinBlockOrdering": 0.8125,
+      "withinBlockOrderingInterval95": [
+        0.6875,
+        0.9166666666666666
+      ],
+      "presenceSensitivity": 0.041666666666666664,
+      "presenceSpecificity": 0.9583333333333334,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null
+    },
+    "0/test/strong/strong/later/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.4166666666666667,
+      "firstTokenCorrect": 0.4166666666666667,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999996051192284,
+      "brier": 0.9729830978297412,
+      "predictionCounts": [
+        54,
+        18,
+        0
+      ],
+      "presenceAUROC": 0.5234375,
+      "presenceAUROCInterval95": [
+        0.4991319444444444,
+        0.5690321180555554
+      ],
+      "withinBlockOrdering": 0.6666666666666666,
+      "withinBlockOrderingInterval95": [
+        0.53125,
+        0.7916666666666666
+      ],
+      "presenceSensitivity": 0.25,
+      "presenceSpecificity": 0.75,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null
+    },
+    "0/train/shuffled/shuffled/trained/canonical/primary": {
+      "n": 48,
+      "blocks": 16,
+      "correct": 0.4583333333333333,
+      "firstTokenCorrect": 0.4583333333333333,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999275555213293,
+      "brier": 0.6408377653222982,
+      "predictionCounts": [
+        42,
+        6,
+        0
+      ],
+      "presenceAUROC": 0.498046875,
+      "presenceAUROCInterval95": [
+        0.349560546875,
+        0.6572753906249997
+      ],
+      "withinBlockOrdering": 0.53125,
+      "withinBlockOrderingInterval95": [
+        0.359375,
+        0.71875
+      ],
+      "presenceSensitivity": 0.1875,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 0.59375,
+      "trainingTargetAccuracy": 0.4583333333333333
+    },
+    "0/train/shuffled/shuffled/trained/canonical/marker": {
+      "n": 48,
+      "blocks": 16,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999980218708515,
+      "brier": 7.519801860956882e-09,
+      "predictionCounts": [
+        0,
+        24,
+        24
+      ]
+    },
+    "0/test/shuffled/shuffled/trained/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.375,
+      "firstTokenCorrect": 0.375,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999299620588621,
+      "brier": 0.5997603029428394,
+      "predictionCounts": [
+        69,
+        3,
+        0
+      ],
+      "presenceAUROC": 0.6458333333333334,
+      "presenceAUROCInterval95": [
+        0.5394748263888889,
+        0.7565104166666666
+      ],
+      "withinBlockOrdering": 0.7083333333333334,
+      "withinBlockOrderingInterval95": [
+        0.5833333333333334,
+        0.8229166666666666
+      ],
+      "presenceSensitivity": 0.0625,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 0.53125,
+      "trainingTargetAccuracy": null
+    },
+    "0/test/shuffled/shuffled/trained/canonical/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999982673260901,
+      "brier": 2.3302473090816774e-09,
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "0/test/shuffled/shuffled/trained/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.375,
+      "firstTokenCorrect": 0.375,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9998609787887998,
+      "brier": 0.6196652620775134,
+      "predictionCounts": [
+        69,
+        3,
+        0
+      ],
+      "presenceAUROC": 0.5950520833333334,
+      "presenceAUROCInterval95": [
+        0.513009982638889,
+        0.6931532118055556
+      ],
+      "withinBlockOrdering": 0.6875,
+      "withinBlockOrderingInterval95": [
+        0.5729166666666666,
+        0.7916666666666666
+      ],
+      "presenceSensitivity": 0.0625,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 0.53125,
+      "trainingTargetAccuracy": null
+    },
+    "0/test/shuffled/shuffled/trained/both_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.5277777777777778,
+      "firstTokenCorrect": 0.5277777777777778,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999317518538899,
+      "brier": 0.8226936068123661,
+      "predictionCounts": [
+        0,
+        2,
+        70
+      ]
+    },
+    "0/test/shuffled/shuffled/weaker/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.3472222222222222,
+      "firstTokenCorrect": 0.3472222222222222,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999351865715451,
+      "brier": 0.6309289009009615,
+      "predictionCounts": [
+        71,
+        1,
+        0
+      ],
+      "presenceAUROC": 0.60546875,
+      "presenceAUROCInterval95": [
+        0.5420789930555555,
+        0.6805555555555556
+      ],
+      "withinBlockOrdering": 0.6875,
+      "withinBlockOrderingInterval95": [
+        0.5729166666666666,
+        0.78125
+      ],
+      "presenceSensitivity": 0.020833333333333332,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 0.5104166666666666,
+      "trainingTargetAccuracy": null
+    },
+    "0/test/shuffled/shuffled/weaker/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.3611111111111111,
+      "firstTokenCorrect": 0.3611111111111111,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9998855706718233,
+      "brier": 0.6647875097350379,
+      "predictionCounts": [
+        70,
+        2,
+        0
+      ],
+      "presenceAUROC": 0.5342881944444444,
+      "presenceAUROCInterval95": [
+        0.4835069444444444,
+        0.5894205729166666
+      ],
+      "withinBlockOrdering": 0.6145833333333334,
+      "withinBlockOrderingInterval95": [
+        0.5,
+        0.7291666666666666
+      ],
+      "presenceSensitivity": 0.041666666666666664,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 0.5208333333333334,
+      "trainingTargetAccuracy": null
+    },
+    "0/test/shuffled/shuffled/earlier/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.4027777777777778,
+      "firstTokenCorrect": 0.4027777777777778,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999442903531922,
+      "brier": 0.5859970509455692,
+      "predictionCounts": [
+        67,
+        5,
+        0
+      ],
+      "presenceAUROC": 0.6736111111111112,
+      "presenceAUROCInterval95": [
+        0.5941731770833334,
+        0.7560980902777776
+      ],
+      "withinBlockOrdering": 0.7291666666666666,
+      "withinBlockOrderingInterval95": [
+        0.6041666666666666,
+        0.8541666666666666
+      ],
+      "presenceSensitivity": 0.10416666666666667,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 0.5520833333333334,
+      "trainingTargetAccuracy": null
+    },
+    "0/test/shuffled/shuffled/earlier/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.4861111111111111,
+      "firstTokenCorrect": 0.4861111111111111,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999138952957259,
+      "brier": 0.5970159345788446,
+      "predictionCounts": [
+        61,
+        11,
+        0
+      ],
+      "presenceAUROC": 0.6315104166666666,
+      "presenceAUROCInterval95": [
+        0.5755208333333334,
+        0.69619140625
+      ],
+      "withinBlockOrdering": 0.6770833333333334,
+      "withinBlockOrderingInterval95": [
+        0.5729166666666666,
+        0.7708333333333334
+      ],
+      "presenceSensitivity": 0.22916666666666666,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 0.6145833333333334,
+      "trainingTargetAccuracy": null
+    },
+    "0/test/shuffled/shuffled/later/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.3333333333333333,
+      "firstTokenCorrect": 0.3333333333333333,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999375599953864,
+      "brier": 0.6559408163146918,
+      "predictionCounts": [
+        72,
+        0,
+        0
+      ],
+      "presenceAUROC": 0.5668402777777778,
+      "presenceAUROCInterval95": [
+        0.5460069444444444,
+        0.6111111111111112
+      ],
+      "withinBlockOrdering": 0.78125,
+      "withinBlockOrderingInterval95": [
+        0.6979166666666666,
+        0.8645833333333334
+      ],
+      "presenceSensitivity": 0.0,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null
+    },
+    "0/test/shuffled/shuffled/later/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.3611111111111111,
+      "firstTokenCorrect": 0.3611111111111111,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999024255408181,
+      "brier": 0.6911408805038876,
+      "predictionCounts": [
+        70,
+        2,
+        0
+      ],
+      "presenceAUROC": 0.4891493055555556,
+      "presenceAUROCInterval95": [
+        0.4479166666666667,
+        0.52734375
+      ],
+      "withinBlockOrdering": 0.5,
+      "withinBlockOrderingInterval95": [
+        0.3854166666666667,
+        0.625
+      ],
+      "presenceSensitivity": 0.041666666666666664,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 0.5208333333333334,
+      "trainingTargetAccuracy": null
+    },
+    "1/train/base/visible/trained/canonical/primary": {
+      "n": 48,
+      "blocks": 16,
+      "correct": 0.8333333333333334,
+      "firstTokenCorrect": 0.8333333333333334,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999880827963352,
+      "brier": 0.3136226212590853,
+      "predictionCounts": [
+        8,
+        40,
+        0
+      ],
+      "presenceAUROC": 0.943359375,
+      "presenceAUROCInterval95": [
+        0.859375,
+        1.0
+      ],
+      "withinBlockOrdering": 0.9375,
+      "withinBlockOrderingInterval95": [
+        0.84375,
+        1.0
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.5,
+      "presenceBalancedAccuracy": 0.75,
+      "trainingTargetAccuracy": 0.8333333333333334
+    },
+    "1/train/base/visible/trained/canonical/marker": {
+      "n": 48,
+      "blocks": 16,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999888241291,
+      "brier": 3.8263176690250616e-05,
+      "predictionCounts": [
+        0,
+        24,
+        24
+      ]
+    },
+    "1/test/base/visible/trained/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.8472222222222222,
+      "firstTokenCorrect": 0.8472222222222222,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999894185198678,
+      "brier": 0.2995907696641583,
+      "predictionCounts": [
+        13,
+        59,
+        0
+      ],
+      "presenceAUROC": 0.9730902777777778,
+      "presenceAUROCInterval95": [
+        0.9383680555555556,
+        0.9969618055555556
+      ],
+      "withinBlockOrdering": 0.9791666666666666,
+      "withinBlockOrderingInterval95": [
+        0.9375,
+        1.0
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.5416666666666666,
+      "presenceBalancedAccuracy": 0.7708333333333333,
+      "trainingTargetAccuracy": null
+    },
+    "1/test/base/visible/trained/canonical/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999842709966,
+      "brier": 0.0005474371948574644,
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "1/test/base/visible/trained/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.9305555555555556,
+      "firstTokenCorrect": 0.9305555555555556,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999994436899821,
+      "brier": 0.12113684885608829,
+      "predictionCounts": [
+        21,
+        51,
+        0
+      ],
+      "presenceAUROC": 0.9769965277777778,
+      "presenceAUROCInterval95": [
+        0.9518120659722222,
+        0.9991319444444444
+      ],
+      "withinBlockOrdering": 1.0,
+      "withinBlockOrderingInterval95": [
+        1.0,
+        1.0
+      ],
+      "presenceSensitivity": 0.9791666666666666,
+      "presenceSpecificity": 0.8333333333333334,
+      "presenceBalancedAccuracy": 0.90625,
+      "trainingTargetAccuracy": null
+    },
+    "1/test/base/visible/trained/both_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.5972222222222222,
+      "firstTokenCorrect": 0.5972222222222222,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999850988388,
+      "brier": 0.5339847075185,
+      "predictionCounts": [
+        0,
+        51,
+        21
+      ]
+    },
+    "1/train/base/strong/trained/canonical/primary": {
+      "n": 48,
+      "blocks": 16,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999913076559,
+      "brier": 0.6666658448359878,
+      "predictionCounts": [
+        0,
+        48,
+        0
+      ],
+      "presenceAUROC": 0.484375,
+      "presenceAUROCInterval95": [
+        0.3798828125,
+        0.5810791015624999
+      ],
+      "withinBlockOrdering": 0.46875,
+      "withinBlockOrderingInterval95": [
+        0.265625,
+        0.671875
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": 0.6666666666666666
+    },
+    "1/train/base/strong/trained/canonical/marker": {
+      "n": 48,
+      "blocks": 16,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999937911829,
+      "brier": 3.8375268431352624e-13,
+      "predictionCounts": [
+        0,
+        24,
+        24
+      ]
+    },
+    "1/test/base/strong/trained/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999925494194,
+      "brier": 0.6669178097455846,
+      "predictionCounts": [
+        0,
+        72,
+        0
+      ],
+      "presenceAUROC": 0.5295138888888888,
+      "presenceAUROCInterval95": [
+        0.45745442708333334,
+        0.6128472222222222
+      ],
+      "withinBlockOrdering": 0.6041666666666666,
+      "withinBlockOrderingInterval95": [
+        0.4375,
+        0.7708333333333334
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null
+    },
+    "1/test/base/strong/trained/canonical/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999908937348,
+      "brier": 1.0423446497252161e-13,
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "1/test/base/strong/trained/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6388888888888888,
+      "firstTokenCorrect": 0.6388888888888888,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999892380502,
+      "brier": 0.7182889218922516,
+      "predictionCounts": [
+        2,
+        70,
+        0
+      ],
+      "presenceAUROC": 0.5772569444444444,
+      "presenceAUROCInterval95": [
+        0.5121527777777778,
+        0.6597222222222222
+      ],
+      "withinBlockOrdering": 0.625,
+      "withinBlockOrderingInterval95": [
+        0.4791666666666667,
+        0.7708333333333334
+      ],
+      "presenceSensitivity": 0.9583333333333334,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.4791666666666667,
+      "trainingTargetAccuracy": null
+    },
+    "1/test/base/strong/trained/both_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.75,
+      "firstTokenCorrect": 0.75,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.999999988410208,
+      "brier": 0.3021957072703018,
+      "predictionCounts": [
+        0,
+        54,
+        18
+      ]
+    },
+    "1/test/base/strong/weaker/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.999999994205104,
+      "brier": 0.6666652730128608,
+      "predictionCounts": [
+        0,
+        72,
+        0
+      ],
+      "presenceAUROC": 0.4978298611111111,
+      "presenceAUROCInterval95": [
+        0.44790581597222223,
+        0.55078125
+      ],
+      "withinBlockOrdering": 0.5520833333333334,
+      "withinBlockOrderingInterval95": [
+        0.3958333333333333,
+        0.7083333333333334
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null
+    },
+    "1/test/base/strong/weaker/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6527777777777778,
+      "firstTokenCorrect": 0.6527777777777778,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999900658926,
+      "brier": 0.6906034565693555,
+      "predictionCounts": [
+        1,
+        71,
+        0
+      ],
+      "presenceAUROC": 0.5108506944444444,
+      "presenceAUROCInterval95": [
+        0.46309678819444444,
+        0.5711805555555556
+      ],
+      "withinBlockOrdering": 0.5833333333333334,
+      "withinBlockOrderingInterval95": [
+        0.4375,
+        0.7291666666666666
+      ],
+      "presenceSensitivity": 0.9791666666666666,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.4895833333333333,
+      "trainingTargetAccuracy": null
+    },
+    "1/test/base/strong/earlier/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999925494194,
+      "brier": 0.6666652590789968,
+      "predictionCounts": [
+        0,
+        72,
+        0
+      ],
+      "presenceAUROC": 0.5737847222222222,
+      "presenceAUROCInterval95": [
+        0.4952256944444444,
+        0.6632161458333332
+      ],
+      "withinBlockOrdering": 0.6041666666666666,
+      "withinBlockOrderingInterval95": [
+        0.4583333333333333,
+        0.75
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null
+    },
+    "1/test/base/strong/earlier/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.999999988410208,
+      "brier": 0.6653907409478208,
+      "predictionCounts": [
+        0,
+        72,
+        0
+      ],
+      "presenceAUROC": 0.6072048611111112,
+      "presenceAUROCInterval95": [
+        0.5386176215277778,
+        0.6879448784722222
+      ],
+      "withinBlockOrdering": 0.6875,
+      "withinBlockOrderingInterval95": [
+        0.5416666666666666,
+        0.8333333333333334
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null
+    },
+    "1/test/base/strong/later/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.999999994205104,
+      "brier": 0.6666652590600955,
+      "predictionCounts": [
+        0,
+        72,
+        0
+      ],
+      "presenceAUROC": 0.4713541666666667,
+      "presenceAUROCInterval95": [
+        0.4331597222222222,
+        0.4926323784722222
+      ],
+      "withinBlockOrdering": 0.2916666666666667,
+      "withinBlockOrderingInterval95": [
+        0.17708333333333334,
+        0.4270833333333333
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null
+    },
+    "1/test/base/strong/later/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999900658926,
+      "brier": 0.6654179899351048,
+      "predictionCounts": [
+        0,
+        72,
+        0
+      ],
+      "presenceAUROC": 0.5008680555555556,
+      "presenceAUROCInterval95": [
+        0.4618055555555556,
+        0.5351779513888888
+      ],
+      "withinBlockOrdering": 0.40625,
+      "withinBlockOrderingInterval95": [
+        0.25,
+        0.5625
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null
+    },
+    "1/train/visible/visible/trained/canonical/primary": {
+      "n": 48,
+      "blocks": 16,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999962747097,
+      "brier": 3.112912016522727e-13,
+      "predictionCounts": [
+        16,
+        32,
+        0
+      ],
+      "presenceAUROC": 1.0,
+      "presenceAUROCInterval95": [
+        1.0,
+        1.0
+      ],
+      "withinBlockOrdering": 1.0,
+      "withinBlockOrderingInterval95": [
+        1.0,
+        1.0
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 1.0,
+      "trainingTargetAccuracy": 1.0
+    },
+    "1/train/visible/visible/trained/canonical/marker": {
+      "n": 48,
+      "blocks": 16,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999863406023,
+      "brier": 0.005927074168140783,
+      "predictionCounts": [
+        0,
+        24,
+        24
+      ]
+    },
+    "1/test/visible/visible/trained/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999933772616,
+      "brier": 1.525288862319426e-13,
+      "predictionCounts": [
+        24,
+        48,
+        0
+      ],
+      "presenceAUROC": 1.0,
+      "presenceAUROCInterval95": [
+        1.0,
+        1.0
+      ],
+      "withinBlockOrdering": 1.0,
+      "withinBlockOrderingInterval95": [
+        1.0,
+        1.0
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 1.0,
+      "trainingTargetAccuracy": null
+    },
+    "1/test/visible/visible/trained/canonical/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.9722222222222222,
+      "firstTokenCorrect": 0.9722222222222222,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999850988388,
+      "brier": 0.035825983256976564,
+      "predictionCounts": [
+        0,
+        38,
+        34
+      ]
+    },
+    "1/test/visible/visible/trained/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999983443154,
+      "brier": 1.0304301495255823e-11,
+      "predictionCounts": [
+        24,
+        48,
+        0
+      ],
+      "presenceAUROC": 1.0,
+      "presenceAUROCInterval95": [
+        1.0,
+        1.0
+      ],
+      "withinBlockOrdering": 1.0,
+      "withinBlockOrderingInterval95": [
+        1.0,
+        1.0
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 1.0,
+      "trainingTargetAccuracy": null
+    },
+    "1/test/visible/visible/trained/both_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.625,
+      "firstTokenCorrect": 0.625,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999925494194,
+      "brier": 0.5078197869406734,
+      "predictionCounts": [
+        0,
+        49,
+        23
+      ]
+    },
+    "1/train/strong/strong/trained/canonical/primary": {
+      "n": 48,
+      "blocks": 16,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 1.000000002483527,
+      "brier": 7.581198018296705e-07,
+      "predictionCounts": [
+        16,
+        32,
+        0
+      ],
+      "presenceAUROC": 1.0,
+      "presenceAUROCInterval95": [
+        1.0,
+        1.0
+      ],
+      "withinBlockOrdering": 1.0,
+      "withinBlockOrderingInterval95": [
+        1.0,
+        1.0
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 1.0,
+      "trainingTargetAccuracy": 1.0
+    },
+    "1/train/strong/strong/trained/canonical/marker": {
+      "n": 48,
+      "blocks": 16,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999888241291,
+      "brier": 5.741116462180375e-12,
+      "predictionCounts": [
+        0,
+        24,
+        24
+      ]
+    },
+    "1/test/strong/strong/trained/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.9444444444444444,
+      "firstTokenCorrect": 0.9444444444444444,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 1.0000000074505806,
+      "brier": 0.10410991821958014,
+      "predictionCounts": [
+        28,
+        44,
+        0
+      ],
+      "presenceAUROC": 0.9891493055555556,
+      "presenceAUROCInterval95": [
+        0.9704861111111112,
+        1.0
+      ],
+      "withinBlockOrdering": 1.0,
+      "withinBlockOrderingInterval95": [
+        1.0,
+        1.0
+      ],
+      "presenceSensitivity": 0.9166666666666666,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 0.9583333333333333,
+      "trainingTargetAccuracy": null
+    },
+    "1/test/strong/strong/trained/canonical/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999950329462,
+      "brier": 3.045405014162069e-12,
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "1/test/strong/strong/trained/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.9305555555555556,
+      "firstTokenCorrect": 0.9305555555555556,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999958607886,
+      "brier": 0.1277843936253518,
+      "predictionCounts": [
+        27,
+        45,
+        0
+      ],
+      "presenceAUROC": 0.98828125,
+      "presenceAUROCInterval95": [
+        0.9696180555555556,
+        1.0
+      ],
+      "withinBlockOrdering": 1.0,
+      "withinBlockOrderingInterval95": [
+        1.0,
+        1.0
+      ],
+      "presenceSensitivity": 0.9166666666666666,
+      "presenceSpecificity": 0.9583333333333334,
+      "presenceBalancedAccuracy": 0.9375,
+      "trainingTargetAccuracy": null
+    },
+    "1/test/strong/strong/trained/both_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.2777777777777778,
+      "firstTokenCorrect": 0.2777777777777778,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999995471702682,
+      "brier": 1.1976984029079432,
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "1/test/strong/strong/weaker/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.5416666666666666,
+      "firstTokenCorrect": 0.5416666666666666,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999975164732,
+      "brier": 0.8532993245969478,
+      "predictionCounts": [
+        57,
+        15,
+        0
+      ],
+      "presenceAUROC": 0.8376736111111112,
+      "presenceAUROCInterval95": [
+        0.79208984375,
+        0.8988823784722222
+      ],
+      "withinBlockOrdering": 0.9791666666666666,
+      "withinBlockOrderingInterval95": [
+        0.9375,
+        1.0
+      ],
+      "presenceSensitivity": 0.3125,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 0.65625,
+      "trainingTargetAccuracy": null
+    },
+    "1/test/strong/strong/weaker/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.5,
+      "firstTokenCorrect": 0.5,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999983443154,
+      "brier": 0.9070521785284732,
+      "predictionCounts": [
+        58,
+        14,
+        0
+      ],
+      "presenceAUROC": 0.8289930555555556,
+      "presenceAUROCInterval95": [
+        0.759103732638889,
+        0.9101779513888888
+      ],
+      "withinBlockOrdering": 0.9479166666666666,
+      "withinBlockOrderingInterval95": [
+        0.875,
+        1.0
+      ],
+      "presenceSensitivity": 0.2708333333333333,
+      "presenceSpecificity": 0.9583333333333334,
+      "presenceBalancedAccuracy": 0.6145833333333334,
+      "trainingTargetAccuracy": null
+    },
+    "1/test/strong/strong/earlier/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.7222222222222222,
+      "firstTokenCorrect": 0.7222222222222222,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999917215772,
+      "brier": 0.53544721454681,
+      "predictionCounts": [
+        44,
+        28,
+        0
+      ],
+      "presenceAUROC": 0.9596354166666666,
+      "presenceAUROCInterval95": [
+        0.9223090277777778,
+        0.9926215277777778
+      ],
+      "withinBlockOrdering": 1.0,
+      "withinBlockOrderingInterval95": [
+        1.0,
+        1.0
+      ],
+      "presenceSensitivity": 0.5833333333333334,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 0.7916666666666667,
+      "trainingTargetAccuracy": null
+    },
+    "1/test/strong/strong/earlier/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.7361111111111112,
+      "firstTokenCorrect": 0.7361111111111112,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 1.0000000016556845,
+      "brier": 0.5025903755237263,
+      "predictionCounts": [
+        41,
+        31,
+        0
+      ],
+      "presenceAUROC": 0.8927951388888888,
+      "presenceAUROCInterval95": [
+        0.8298611111111112,
+        0.9522569444444444
+      ],
+      "withinBlockOrdering": 0.9270833333333334,
+      "withinBlockOrderingInterval95": [
+        0.8541666666666666,
+        0.9895833333333334
+      ],
+      "presenceSensitivity": 0.625,
+      "presenceSpecificity": 0.9583333333333334,
+      "presenceBalancedAccuracy": 0.7916666666666667,
+      "trainingTargetAccuracy": null
+    },
+    "1/test/strong/strong/later/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.3333333333333333,
+      "firstTokenCorrect": 0.3333333333333333,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999892380502,
+      "brier": 1.31661743323648,
+      "predictionCounts": [
+        72,
+        0,
+        0
+      ],
+      "presenceAUROC": 0.5716145833333334,
+      "presenceAUROCInterval95": [
+        0.5520833333333334,
+        0.628493923611111
+      ],
+      "withinBlockOrdering": 0.8854166666666666,
+      "withinBlockOrderingInterval95": [
+        0.8125,
+        0.9479166666666666
+      ],
+      "presenceSensitivity": 0.0,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null
+    },
+    "1/test/strong/strong/later/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.3472222222222222,
+      "firstTokenCorrect": 0.3472222222222222,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999975164732,
+      "brier": 1.258495385875975,
+      "predictionCounts": [
+        69,
+        3,
+        0
+      ],
+      "presenceAUROC": 0.5894097222222222,
+      "presenceAUROCInterval95": [
+        0.5698784722222222,
+        0.6519205729166666
+      ],
+      "withinBlockOrdering": 0.9375,
+      "withinBlockOrderingInterval95": [
+        0.875,
+        0.9791666666666666
+      ],
+      "presenceSensitivity": 0.041666666666666664,
+      "presenceSpecificity": 0.9583333333333334,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null
+    },
+    "1/train/shuffled/shuffled/trained/canonical/primary": {
+      "n": 48,
+      "blocks": 16,
+      "correct": 0.6041666666666666,
+      "firstTokenCorrect": 0.6041666666666666,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999977573752403,
+      "brier": 0.6673731685695455,
+      "predictionCounts": [
+        11,
+        37,
+        0
+      ],
+      "presenceAUROC": 0.572265625,
+      "presenceAUROCInterval95": [
+        0.4072021484375,
+        0.7490234375
+      ],
+      "withinBlockOrdering": 0.625,
+      "withinBlockOrderingInterval95": [
+        0.46875,
+        0.78125
+      ],
+      "presenceSensitivity": 0.78125,
+      "presenceSpecificity": 0.25,
+      "presenceBalancedAccuracy": 0.515625,
+      "trainingTargetAccuracy": 0.8958333333333334
+    },
+    "1/train/shuffled/shuffled/trained/canonical/marker": {
+      "n": 48,
+      "blocks": 16,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999205271403,
+      "brier": 6.72929140893358e-11,
+      "predictionCounts": [
+        0,
+        24,
+        24
+      ]
+    },
+    "1/test/shuffled/shuffled/trained/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6111111111111112,
+      "firstTokenCorrect": 0.6111111111111112,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.999998410542806,
+      "brier": 0.6072497187045749,
+      "predictionCounts": [
+        4,
+        68,
+        0
+      ],
+      "presenceAUROC": 0.5299479166666666,
+      "presenceAUROCInterval95": [
+        0.43618706597222223,
+        0.644118923611111
+      ],
+      "withinBlockOrdering": 0.5625,
+      "withinBlockOrderingInterval95": [
+        0.4375,
+        0.6979166666666666
+      ],
+      "presenceSensitivity": 0.9166666666666666,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.4583333333333333,
+      "trainingTargetAccuracy": null
+    },
+    "1/test/shuffled/shuffled/trained/canonical/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999238385094,
+      "brier": 1.8187165970384433e-11,
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "1/test/shuffled/shuffled/trained/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.5833333333333334,
+      "firstTokenCorrect": 0.5833333333333334,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999957722094324,
+      "brier": 0.49892119450635675,
+      "predictionCounts": [
+        34,
+        38,
+        0
+      ],
+      "presenceAUROC": 0.6770833333333334,
+      "presenceAUROCInterval95": [
+        0.5572916666666666,
+        0.7842990451388888
+      ],
+      "withinBlockOrdering": 0.7083333333333334,
+      "withinBlockOrderingInterval95": [
+        0.5625,
+        0.8333333333333334
+      ],
+      "presenceSensitivity": 0.5833333333333334,
+      "presenceSpecificity": 0.5833333333333334,
+      "presenceBalancedAccuracy": 0.5833333333333334,
+      "trainingTargetAccuracy": null
+    },
+    "1/test/shuffled/shuffled/trained/both_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.75,
+      "firstTokenCorrect": 0.75,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999980595376756,
+      "brier": 0.400388153549399,
+      "predictionCounts": [
+        0,
+        34,
+        38
+      ]
+    },
+    "1/test/shuffled/shuffled/weaker/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.625,
+      "firstTokenCorrect": 0.625,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999986191590627,
+      "brier": 0.5913202384996453,
+      "predictionCounts": [
+        3,
+        69,
+        0
+      ],
+      "presenceAUROC": 0.4982638888888889,
+      "presenceAUROCInterval95": [
+        0.43271484374999997,
+        0.5759548611111112
+      ],
+      "withinBlockOrdering": 0.5104166666666666,
+      "withinBlockOrderingInterval95": [
+        0.3958333333333333,
+        0.6354166666666666
+      ],
+      "presenceSensitivity": 0.9375,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.46875,
+      "trainingTargetAccuracy": null
+    },
+    "1/test/shuffled/shuffled/weaker/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.4722222222222222,
+      "firstTokenCorrect": 0.4722222222222222,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999966704183154,
+      "brier": 0.6725545143464184,
+      "predictionCounts": [
+        42,
+        30,
+        0
+      ],
+      "presenceAUROC": 0.5403645833333334,
+      "presenceAUROCInterval95": [
+        0.4574110243055556,
+        0.6245768229166666
+      ],
+      "withinBlockOrdering": 0.6354166666666666,
+      "withinBlockOrderingInterval95": [
+        0.5,
+        0.7604166666666666
+      ],
+      "presenceSensitivity": 0.4166666666666667,
+      "presenceSpecificity": 0.5833333333333334,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null
+    },
+    "1/test/shuffled/shuffled/earlier/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.625,
+      "firstTokenCorrect": 0.625,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999989627136124,
+      "brier": 0.577384411780176,
+      "predictionCounts": [
+        3,
+        69,
+        0
+      ],
+      "presenceAUROC": 0.5629340277777778,
+      "presenceAUROCInterval95": [
+        0.46396484374999997,
+        0.6736219618055556
+      ],
+      "withinBlockOrdering": 0.6041666666666666,
+      "withinBlockOrderingInterval95": [
+        0.4583333333333333,
+        0.75
+      ],
+      "presenceSensitivity": 0.9375,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.46875,
+      "trainingTargetAccuracy": null
+    },
+    "1/test/shuffled/shuffled/earlier/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.5972222222222222,
+      "firstTokenCorrect": 0.5972222222222222,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999973848462105,
+      "brier": 0.48472033843915313,
+      "predictionCounts": [
+        33,
+        39,
+        0
+      ],
+      "presenceAUROC": 0.6961805555555556,
+      "presenceAUROCInterval95": [
+        0.60546875,
+        0.78603515625
+      ],
+      "withinBlockOrdering": 0.75,
+      "withinBlockOrderingInterval95": [
+        0.59375,
+        0.8958333333333334
+      ],
+      "presenceSensitivity": 0.6041666666666666,
+      "presenceSpecificity": 0.5833333333333334,
+      "presenceBalancedAccuracy": 0.59375,
+      "trainingTargetAccuracy": null
+    },
+    "1/test/shuffled/shuffled/later/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999986539284388,
+      "brier": 0.5697780401806409,
+      "predictionCounts": [
+        0,
+        72,
+        0
+      ],
+      "presenceAUROC": 0.4852430555555556,
+      "presenceAUROCInterval95": [
+        0.4457465277777778,
+        0.5199652777777778
+      ],
+      "withinBlockOrdering": 0.4166666666666667,
+      "withinBlockOrderingInterval95": [
+        0.2604166666666667,
+        0.5729166666666666
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null
+    },
+    "1/test/shuffled/shuffled/later/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.4583333333333333,
+      "firstTokenCorrect": 0.4583333333333333,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999958003560702,
+      "brier": 0.6905013742479928,
+      "predictionCounts": [
+        43,
+        29,
+        0
+      ],
+      "presenceAUROC": 0.5121527777777778,
+      "presenceAUROCInterval95": [
+        0.4856770833333333,
+        0.5473198784722222
+      ],
+      "withinBlockOrdering": 0.6041666666666666,
+      "withinBlockOrderingInterval95": [
+        0.4895833333333333,
+        0.71875
+      ],
+      "presenceSensitivity": 0.3958333333333333,
+      "presenceSpecificity": 0.5833333333333334,
+      "presenceBalancedAccuracy": 0.48958333333333337,
+      "trainingTargetAccuracy": null
+    },
+    "2/train/base/visible/trained/canonical/primary": {
+      "n": 48,
+      "blocks": 16,
+      "correct": 0.875,
+      "firstTokenCorrect": 0.875,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999801156421503,
+      "brier": 0.23165966547519534,
+      "predictionCounts": [
+        10,
+        38,
+        0
+      ],
+      "presenceAUROC": 0.986328125,
+      "presenceAUROCInterval95": [
+        0.9609375,
+        1.0
+      ],
+      "withinBlockOrdering": 1.0,
+      "withinBlockOrderingInterval95": [
+        1.0,
+        1.0
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.625,
+      "presenceBalancedAccuracy": 0.8125,
+      "trainingTargetAccuracy": 0.875
+    },
+    "2/train/base/visible/trained/canonical/marker": {
+      "n": 48,
+      "blocks": 16,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999888241291,
+      "brier": 0.001332662377144755,
+      "predictionCounts": [
+        0,
+        24,
+        24
+      ]
+    },
+    "2/test/base/visible/trained/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.8333333333333334,
+      "firstTokenCorrect": 0.8333333333333334,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999906271696091,
+      "brier": 0.3333131712701683,
+      "predictionCounts": [
+        12,
+        60,
+        0
+      ],
+      "presenceAUROC": 0.9596354166666666,
+      "presenceAUROCInterval95": [
+        0.9262152777777778,
+        0.9869791666666666
+      ],
+      "withinBlockOrdering": 0.9791666666666666,
+      "withinBlockOrderingInterval95": [
+        0.9375,
+        1.0
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.5,
+      "presenceBalancedAccuracy": 0.75,
+      "trainingTargetAccuracy": null
+    },
+    "2/test/base/visible/trained/canonical/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999817874696,
+      "brier": 0.0003154238592736917,
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "2/test/base/visible/trained/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.9166666666666666,
+      "firstTokenCorrect": 0.9166666666666666,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.999999475147989,
+      "brier": 0.17943021723239702,
+      "predictionCounts": [
+        22,
+        50,
+        0
+      ],
+      "presenceAUROC": 0.9739583333333334,
+      "presenceAUROCInterval95": [
+        0.9418402777777778,
+        0.9982638888888888
+      ],
+      "withinBlockOrdering": 1.0,
+      "withinBlockOrderingInterval95": [
+        1.0,
+        1.0
+      ],
+      "presenceSensitivity": 0.9583333333333334,
+      "presenceSpecificity": 0.8333333333333334,
+      "presenceBalancedAccuracy": 0.8958333333333334,
+      "trainingTargetAccuracy": null
+    },
+    "2/test/base/visible/trained/both_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.5833333333333334,
+      "firstTokenCorrect": 0.5833333333333334,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999867545234,
+      "brier": 0.6101425726206777,
+      "predictionCounts": [
+        0,
+        48,
+        24
+      ]
+    },
+    "2/train/base/strong/trained/canonical/primary": {
+      "n": 48,
+      "blocks": 16,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999900658926,
+      "brier": 0.667042875100529,
+      "predictionCounts": [
+        0,
+        48,
+        0
+      ],
+      "presenceAUROC": 0.5419921875,
+      "presenceAUROCInterval95": [
+        0.4491943359375,
+        0.6318359375
+      ],
+      "withinBlockOrdering": 0.5625,
+      "withinBlockOrderingInterval95": [
+        0.34375,
+        0.78125
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": 0.6666666666666666
+    },
+    "2/train/base/strong/trained/canonical/marker": {
+      "n": 48,
+      "blocks": 16,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999975164732,
+      "brier": 1.2655261462130637e-13,
+      "predictionCounts": [
+        0,
+        24,
+        24
+      ]
+    },
+    "2/test/base/strong/trained/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999925494194,
+      "brier": 0.6706304691302799,
+      "predictionCounts": [
+        0,
+        72,
+        0
+      ],
+      "presenceAUROC": 0.4939236111111111,
+      "presenceAUROCInterval95": [
+        0.4084201388888889,
+        0.5985460069444444
+      ],
+      "withinBlockOrdering": 0.5625,
+      "withinBlockOrderingInterval95": [
+        0.3958333333333333,
+        0.7291666666666666
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null
+    },
+    "2/test/base/strong/trained/canonical/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999892380502,
+      "brier": 4.833689869158344e-13,
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "2/test/base/strong/trained/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999908937348,
+      "brier": 0.6637798642943736,
+      "predictionCounts": [
+        4,
+        68,
+        0
+      ],
+      "presenceAUROC": 0.6015625,
+      "presenceAUROCInterval95": [
+        0.5277777777777778,
+        0.6922743055555556
+      ],
+      "withinBlockOrdering": 0.7395833333333334,
+      "withinBlockOrderingInterval95": [
+        0.59375,
+        0.875
+      ],
+      "presenceSensitivity": 0.9583333333333334,
+      "presenceSpecificity": 0.08333333333333333,
+      "presenceBalancedAccuracy": 0.5208333333333334,
+      "trainingTargetAccuracy": null
+    },
+    "2/test/base/strong/trained/both_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.7083333333333334,
+      "firstTokenCorrect": 0.7083333333333334,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999850988388,
+      "brier": 0.44564068924382816,
+      "predictionCounts": [
+        0,
+        57,
+        15
+      ]
+    },
+    "2/test/base/strong/weaker/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999875823656,
+      "brier": 0.6666653357398175,
+      "predictionCounts": [
+        0,
+        72,
+        0
+      ],
+      "presenceAUROC": 0.51953125,
+      "presenceAUROCInterval95": [
+        0.4518229166666667,
+        0.6063585069444444
+      ],
+      "withinBlockOrdering": 0.5729166666666666,
+      "withinBlockOrderingInterval95": [
+        0.4166666666666667,
+        0.7395833333333334
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null
+    },
+    "2/test/base/strong/weaker/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6527777777777778,
+      "firstTokenCorrect": 0.6527777777777778,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999917215772,
+      "brier": 0.6666433240901175,
+      "predictionCounts": [
+        5,
+        67,
+        0
+      ],
+      "presenceAUROC": 0.5203993055555556,
+      "presenceAUROCInterval95": [
+        0.4717881944444444,
+        0.5815972222222222
+      ],
+      "withinBlockOrdering": 0.6354166666666666,
+      "withinBlockOrderingInterval95": [
+        0.4791666666666667,
+        0.78125
+      ],
+      "presenceSensitivity": 0.9375,
+      "presenceSpecificity": 0.08333333333333333,
+      "presenceBalancedAccuracy": 0.5104166666666666,
+      "trainingTargetAccuracy": null
+    },
+    "2/test/base/strong/earlier/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999925494194,
+      "brier": 0.6666653355663312,
+      "predictionCounts": [
+        0,
+        72,
+        0
+      ],
+      "presenceAUROC": 0.5438368055555556,
+      "presenceAUROCInterval95": [
+        0.4505208333333333,
+        0.6475694444444444
+      ],
+      "withinBlockOrdering": 0.53125,
+      "withinBlockOrderingInterval95": [
+        0.375,
+        0.6875
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null
+    },
+    "2/test/base/strong/earlier/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6805555555555556,
+      "firstTokenCorrect": 0.6805555555555556,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999900658926,
+      "brier": 0.6354065795398214,
+      "predictionCounts": [
+        3,
+        69,
+        0
+      ],
+      "presenceAUROC": 0.5733506944444444,
+      "presenceAUROCInterval95": [
+        0.49347873263888886,
+        0.6614691840277778
+      ],
+      "withinBlockOrdering": 0.6354166666666666,
+      "withinBlockOrderingInterval95": [
+        0.4895833333333333,
+        0.78125
+      ],
+      "presenceSensitivity": 0.9791666666666666,
+      "presenceSpecificity": 0.08333333333333333,
+      "presenceBalancedAccuracy": 0.53125,
+      "trainingTargetAccuracy": null
+    },
+    "2/test/base/strong/later/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999875823656,
+      "brier": 0.6666653355888977,
+      "predictionCounts": [
+        0,
+        72,
+        0
+      ],
+      "presenceAUROC": 0.4796006944444444,
+      "presenceAUROCInterval95": [
+        0.44833984374999997,
+        0.5030381944444444
+      ],
+      "withinBlockOrdering": 0.3854166666666667,
+      "withinBlockOrderingInterval95": [
+        0.2604166666666667,
+        0.5104166666666666
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null
+    },
+    "2/test/base/strong/later/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6388888888888888,
+      "firstTokenCorrect": 0.6388888888888888,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999925494194,
+      "brier": 0.6946644318667803,
+      "predictionCounts": [
+        6,
+        66,
+        0
+      ],
+      "presenceAUROC": 0.4817708333333333,
+      "presenceAUROCInterval95": [
+        0.4470486111111111,
+        0.4991319444444444
+      ],
+      "withinBlockOrdering": 0.3229166666666667,
+      "withinBlockOrderingInterval95": [
+        0.19791666666666666,
+        0.4583333333333333
+      ],
+      "presenceSensitivity": 0.9166666666666666,
+      "presenceSpecificity": 0.08333333333333333,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null
+    },
+    "2/train/visible/visible/trained/canonical/primary": {
+      "n": 48,
+      "blocks": 16,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999994325141112,
+      "brier": 1.6568568302725335e-10,
+      "predictionCounts": [
+        16,
+        32,
+        0
+      ],
+      "presenceAUROC": 1.0,
+      "presenceAUROCInterval95": [
+        1.0,
+        1.0
+      ],
+      "withinBlockOrdering": 1.0,
+      "withinBlockOrderingInterval95": [
+        1.0,
+        1.0
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 1.0,
+      "trainingTargetAccuracy": 1.0
+    },
+    "2/train/visible/visible/trained/canonical/marker": {
+      "n": 48,
+      "blocks": 16,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999838570753,
+      "brier": 0.0036494742002473137,
+      "predictionCounts": [
+        0,
+        24,
+        24
+      ]
+    },
+    "2/test/visible/visible/trained/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999995935294363,
+      "brier": 2.4368151353813913e-09,
+      "predictionCounts": [
+        24,
+        48,
+        0
+      ],
+      "presenceAUROC": 1.0,
+      "presenceAUROCInterval95": [
+        1.0,
+        1.0
+      ],
+      "withinBlockOrdering": 1.0,
+      "withinBlockOrderingInterval95": [
+        1.0,
+        1.0
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 1.0,
+      "trainingTargetAccuracy": null
+    },
+    "2/test/visible/visible/trained/canonical/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999817874696,
+      "brier": 0.0039031683059710448,
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "2/test/visible/visible/trained/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999644027816,
+      "brier": 3.26181897759704e-06,
+      "predictionCounts": [
+        24,
+        48,
+        0
+      ],
+      "presenceAUROC": 1.0,
+      "presenceAUROCInterval95": [
+        1.0,
+        1.0
+      ],
+      "withinBlockOrdering": 1.0,
+      "withinBlockOrderingInterval95": [
+        1.0,
+        1.0
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 1.0,
+      "trainingTargetAccuracy": null
+    },
+    "2/test/visible/visible/trained/both_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.5833333333333334,
+      "firstTokenCorrect": 0.5833333333333334,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999867545234,
+      "brier": 0.5163520055721296,
+      "predictionCounts": [
+        0,
+        40,
+        32
+      ]
+    },
+    "2/train/strong/strong/trained/canonical/primary": {
+      "n": 48,
+      "blocks": 16,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999950329462,
+      "brier": 0.00107988277398803,
+      "predictionCounts": [
+        16,
+        32,
+        0
+      ],
+      "presenceAUROC": 1.0,
+      "presenceAUROCInterval95": [
+        1.0,
+        1.0
+      ],
+      "withinBlockOrdering": 1.0,
+      "withinBlockOrderingInterval95": [
+        1.0,
+        1.0
+      ],
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 1.0,
+      "trainingTargetAccuracy": 1.0
+    },
+    "2/train/strong/strong/trained/canonical/marker": {
+      "n": 48,
+      "blocks": 16,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999888241291,
+      "brier": 4.175330476993054e-09,
+      "predictionCounts": [
+        0,
+        24,
+        24
+      ]
+    },
+    "2/test/strong/strong/trained/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.7222222222222222,
+      "firstTokenCorrect": 0.7222222222222222,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999908937348,
+      "brier": 0.4411586730330791,
+      "predictionCounts": [
+        44,
+        28,
+        0
+      ],
+      "presenceAUROC": 1.0,
+      "presenceAUROCInterval95": [
+        1.0,
+        1.0
+      ],
+      "withinBlockOrdering": 1.0,
+      "withinBlockOrderingInterval95": [
+        1.0,
+        1.0
+      ],
+      "presenceSensitivity": 0.5833333333333334,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 0.7916666666666667,
+      "trainingTargetAccuracy": null
+    },
+    "2/test/strong/strong/trained/canonical/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999908937348,
+      "brier": 2.229919036894655e-08,
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "2/test/strong/strong/trained/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.7638888888888888,
+      "firstTokenCorrect": 0.7638888888888888,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999817874696,
+      "brier": 0.41667944742841584,
+      "predictionCounts": [
+        41,
+        31,
+        0
+      ],
+      "presenceAUROC": 0.9891493055555556,
+      "presenceAUROCInterval95": [
+        0.96875,
+        1.0
+      ],
+      "withinBlockOrdering": 1.0,
+      "withinBlockOrderingInterval95": [
+        1.0,
+        1.0
+      ],
+      "presenceSensitivity": 0.6458333333333334,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 0.8229166666666667,
+      "trainingTargetAccuracy": null
+    },
+    "2/test/strong/strong/trained/both_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.19444444444444445,
+      "firstTokenCorrect": 0.19444444444444445,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999991117252244,
+      "brier": 1.1667522911049386,
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "2/test/strong/strong/weaker/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.4166666666666667,
+      "firstTokenCorrect": 0.4166666666666667,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999809596274,
+      "brier": 1.1565769404188737,
+      "predictionCounts": [
+        66,
+        6,
+        0
+      ],
+      "presenceAUROC": 0.9270833333333334,
+      "presenceAUROCInterval95": [
+        0.8828125,
+        0.9735243055555556
+      ],
+      "withinBlockOrdering": 0.9791666666666666,
+      "withinBlockOrderingInterval95": [
+        0.9375,
+        1.0
+      ],
+      "presenceSensitivity": 0.125,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 0.5625,
+      "trainingTargetAccuracy": null
+    },
+    "2/test/strong/strong/weaker/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.4027777777777778,
+      "firstTokenCorrect": 0.4027777777777778,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999784761004,
+      "brier": 1.1071688298696691,
+      "predictionCounts": [
+        67,
+        5,
+        0
+      ],
+      "presenceAUROC": 0.8315972222222222,
+      "presenceAUROCInterval95": [
+        0.7712565104166668,
+        0.9036566840277778
+      ],
+      "withinBlockOrdering": 0.9895833333333334,
+      "withinBlockOrderingInterval95": [
+        0.96875,
+        1.0
+      ],
+      "presenceSensitivity": 0.10416666666666667,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 0.5520833333333334,
+      "trainingTargetAccuracy": null
+    },
+    "2/test/strong/strong/earlier/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6388888888888888,
+      "firstTokenCorrect": 0.6388888888888888,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999925494194,
+      "brier": 0.645075288736012,
+      "predictionCounts": [
+        50,
+        22,
+        0
+      ],
+      "presenceAUROC": 0.9921875,
+      "presenceAUROCInterval95": [
+        0.9774197048611112,
+        1.0
+      ],
+      "withinBlockOrdering": 1.0,
+      "withinBlockOrderingInterval95": [
+        1.0,
+        1.0
+      ],
+      "presenceSensitivity": 0.4583333333333333,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 0.7291666666666666,
+      "trainingTargetAccuracy": null
+    },
+    "2/test/strong/strong/earlier/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.5694444444444444,
+      "firstTokenCorrect": 0.5694444444444444,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.999999976820416,
+      "brier": 0.742613256592625,
+      "predictionCounts": [
+        55,
+        17,
+        0
+      ],
+      "presenceAUROC": 0.9440104166666666,
+      "presenceAUROCInterval95": [
+        0.9027777777777778,
+        0.9791666666666666
+      ],
+      "withinBlockOrdering": 0.9791666666666666,
+      "withinBlockOrderingInterval95": [
+        0.9375,
+        1.0
+      ],
+      "presenceSensitivity": 0.3541666666666667,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 0.6770833333333334,
+      "trainingTargetAccuracy": null
+    },
+    "2/test/strong/strong/later/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.3333333333333333,
+      "firstTokenCorrect": 0.3333333333333333,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999999917215772,
+      "brier": 1.3332324230274755,
+      "predictionCounts": [
+        72,
+        0,
+        0
+      ],
+      "presenceAUROC": 0.6111111111111112,
+      "presenceAUROCInterval95": [
+        0.5885416666666666,
+        0.6714409722222222
+      ],
+      "withinBlockOrdering": 0.9375,
+      "withinBlockOrderingInterval95": [
+        0.875,
+        0.9791666666666666
+      ],
+      "presenceSensitivity": 0.0,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null
+    },
+    "2/test/strong/strong/later/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.3333333333333333,
+      "firstTokenCorrect": 0.3333333333333333,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.999999985926681,
+      "brier": 1.3300273420285094,
+      "predictionCounts": [
+        72,
+        0,
+        0
+      ],
+      "presenceAUROC": 0.5629340277777778,
+      "presenceAUROCInterval95": [
+        0.5438259548611112,
+        0.6111436631944444
+      ],
+      "withinBlockOrdering": 0.8333333333333334,
+      "withinBlockOrderingInterval95": [
+        0.75,
+        0.9166666666666666
+      ],
+      "presenceSensitivity": 0.0,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null
+    },
+    "2/train/shuffled/shuffled/trained/canonical/primary": {
+      "n": 48,
+      "blocks": 16,
+      "correct": 0.5208333333333334,
+      "firstTokenCorrect": 0.5208333333333334,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999405207733313,
+      "brier": 0.49478672386450767,
+      "predictionCounts": [
+        19,
+        29,
+        0
+      ],
+      "presenceAUROC": 0.5546875,
+      "presenceAUROCInterval95": [
+        0.4345703125,
+        0.673828125
+      ],
+      "withinBlockOrdering": 0.546875,
+      "withinBlockOrderingInterval95": [
+        0.421875,
+        0.671875
+      ],
+      "presenceSensitivity": 0.59375,
+      "presenceSpecificity": 0.375,
+      "presenceBalancedAccuracy": 0.484375,
+      "trainingTargetAccuracy": 0.8125
+    },
+    "2/train/shuffled/shuffled/trained/canonical/marker": {
+      "n": 48,
+      "blocks": 16,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.999998697390159,
+      "brier": 4.73045995787732e-10,
+      "predictionCounts": [
+        0,
+        24,
+        24
+      ]
+    },
+    "2/test/shuffled/shuffled/trained/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6111111111111112,
+      "firstTokenCorrect": 0.6111111111111112,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999465073148409,
+      "brier": 0.47206284833319834,
+      "predictionCounts": [
+        18,
+        54,
+        0
+      ],
+      "presenceAUROC": 0.5455729166666666,
+      "presenceAUROCInterval95": [
+        0.4605034722222222,
+        0.6267686631944444
+      ],
+      "withinBlockOrdering": 0.5208333333333334,
+      "withinBlockOrderingInterval95": [
+        0.375,
+        0.65625
+      ],
+      "presenceSensitivity": 0.7708333333333334,
+      "presenceSpecificity": 0.2916666666666667,
+      "presenceBalancedAccuracy": 0.53125,
+      "trainingTargetAccuracy": null
+    },
+    "2/test/shuffled/shuffled/trained/canonical/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999987035989761,
+      "brier": 7.335339365963421e-10,
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "2/test/shuffled/shuffled/trained/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.5277777777777778,
+      "firstTokenCorrect": 0.5277777777777778,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999455503291554,
+      "brier": 0.5389347076658989,
+      "predictionCounts": [
+        36,
+        36,
+        0
+      ],
+      "presenceAUROC": 0.4991319444444444,
+      "presenceAUROCInterval95": [
+        0.42143012152777776,
+        0.5816080729166666
+      ],
+      "withinBlockOrdering": 0.5,
+      "withinBlockOrderingInterval95": [
+        0.3645833333333333,
+        0.65625
+      ],
+      "presenceSensitivity": 0.5208333333333334,
+      "presenceSpecificity": 0.5416666666666666,
+      "presenceBalancedAccuracy": 0.53125,
+      "trainingTargetAccuracy": null
+    },
+    "2/test/shuffled/shuffled/trained/both_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.8888888888888888,
+      "firstTokenCorrect": 0.8888888888888888,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999704783161482,
+      "brier": 0.17858658457897958,
+      "predictionCounts": [
+        0,
+        28,
+        44
+      ]
+    },
+    "2/test/shuffled/shuffled/weaker/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.5694444444444444,
+      "firstTokenCorrect": 0.5694444444444444,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999524975816408,
+      "brier": 0.47456465063336395,
+      "predictionCounts": [
+        21,
+        51,
+        0
+      ],
+      "presenceAUROC": 0.5290798611111112,
+      "presenceAUROCInterval95": [
+        0.4800347222222222,
+        0.5811631944444444
+      ],
+      "withinBlockOrdering": 0.5,
+      "withinBlockOrderingInterval95": [
+        0.3645833333333333,
+        0.6458333333333334
+      ],
+      "presenceSensitivity": 0.7083333333333334,
+      "presenceSpecificity": 0.2916666666666667,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null
+    },
+    "2/test/shuffled/shuffled/weaker/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.5277777777777778,
+      "firstTokenCorrect": 0.5277777777777778,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999517541792657,
+      "brier": 0.5373214664268292,
+      "predictionCounts": [
+        36,
+        36,
+        0
+      ],
+      "presenceAUROC": 0.5073784722222222,
+      "presenceAUROCInterval95": [
+        0.4617947048611111,
+        0.5564236111111112
+      ],
+      "withinBlockOrdering": 0.4895833333333333,
+      "withinBlockOrderingInterval95": [
+        0.3645833333333333,
+        0.6041666666666666
+      ],
+      "presenceSensitivity": 0.5208333333333334,
+      "presenceSpecificity": 0.5416666666666666,
+      "presenceBalancedAccuracy": 0.53125,
+      "trainingTargetAccuracy": null
+    },
+    "2/test/shuffled/shuffled/earlier/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.625,
+      "firstTokenCorrect": 0.625,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999614705642065,
+      "brier": 0.4487674337195357,
+      "predictionCounts": [
+        17,
+        55,
+        0
+      ],
+      "presenceAUROC": 0.5907118055555556,
+      "presenceAUROCInterval95": [
+        0.5143120659722222,
+        0.6601671006944444
+      ],
+      "withinBlockOrdering": 0.5625,
+      "withinBlockOrderingInterval95": [
+        0.4479166666666667,
+        0.6770833333333334
+      ],
+      "presenceSensitivity": 0.7916666666666666,
+      "presenceSpecificity": 0.2916666666666667,
+      "presenceBalancedAccuracy": 0.5416666666666666,
+      "trainingTargetAccuracy": null
+    },
+    "2/test/shuffled/shuffled/earlier/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.5555555555555556,
+      "firstTokenCorrect": 0.5555555555555556,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999595152007209,
+      "brier": 0.5203171420395445,
+      "predictionCounts": [
+        34,
+        38,
+        0
+      ],
+      "presenceAUROC": 0.5282118055555556,
+      "presenceAUROCInterval95": [
+        0.4644097222222222,
+        0.5811740451388888
+      ],
+      "withinBlockOrdering": 0.40625,
+      "withinBlockOrderingInterval95": [
+        0.3020833333333333,
+        0.5104166666666666
+      ],
+      "presenceSensitivity": 0.5625,
+      "presenceSpecificity": 0.5416666666666666,
+      "presenceBalancedAccuracy": 0.5520833333333333,
+      "trainingTargetAccuracy": null
+    },
+    "2/test/shuffled/shuffled/later/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6111111111111112,
+      "firstTokenCorrect": 0.6111111111111112,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999555456969473,
+      "brier": 0.4784279919420129,
+      "predictionCounts": [
+        18,
+        54,
+        0
+      ],
+      "presenceAUROC": 0.5099826388888888,
+      "presenceAUROCInterval95": [
+        0.4839409722222222,
+        0.5434136284722222
+      ],
+      "withinBlockOrdering": 0.5729166666666666,
+      "withinBlockOrderingInterval95": [
+        0.4583333333333333,
+        0.6770833333333334
+      ],
+      "presenceSensitivity": 0.7708333333333334,
+      "presenceSpecificity": 0.2916666666666667,
+      "presenceBalancedAccuracy": 0.53125,
+      "trainingTargetAccuracy": null
+    },
+    "2/test/shuffled/shuffled/later/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.4861111111111111,
+      "firstTokenCorrect": 0.4861111111111111,
+      "firstTokenIsOption": 1.0,
+      "choiceMass": 0.9999556235141225,
+      "brier": 0.5176851447809607,
+      "predictionCounts": [
+        39,
+        33,
+        0
+      ],
+      "presenceAUROC": 0.5134548611111112,
+      "presenceAUROCInterval95": [
+        0.4926215277777778,
+        0.54296875
+      ],
+      "withinBlockOrdering": 0.5833333333333334,
+      "withinBlockOrderingInterval95": [
+        0.4791666666666667,
+        0.6875
+      ],
+      "presenceSensitivity": 0.4583333333333333,
+      "presenceSpecificity": 0.5416666666666666,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null
+    }
+  },
+  "contrasts": [
+    {
+      "replication": 0,
+      "arm": "strong",
+      "other": "base",
+      "condition": "trained",
+      "layout": "canonical",
+      "primary": true,
+      "metric": "presenceAUROC",
+      "difference": 0.42838541666666663,
+      "interval95": [
+        0.3589192708333333,
+        0.49392361111111116
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 0,
+      "arm": "strong",
+      "other": "shuffled",
+      "condition": "trained",
+      "layout": "canonical",
+      "primary": true,
+      "metric": "presenceAUROC",
+      "difference": 0.33420138888888884,
+      "interval95": [
+        0.2222222222222222,
+        0.44228515624999987
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 0,
+      "arm": "strong",
+      "other": "chance",
+      "condition": "trained",
+      "layout": "canonical",
+      "primary": true,
+      "metric": "presenceAUROC",
+      "difference": 0.4800347222222222,
+      "interval95": [
+        0.4565972222222222,
+        0.49782986111111116
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 0,
+      "arm": "strong",
+      "other": "base",
+      "condition": "trained",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.2612847222222222,
+      "interval95": [
+        0.15927734374999997,
+        0.3559136284722222
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 0,
+      "arm": "strong",
+      "other": "shuffled",
+      "condition": "trained",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.30251736111111105,
+      "interval95": [
+        0.2091905381944445,
+        0.3906358506944444
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 0,
+      "arm": "strong",
+      "other": "chance",
+      "condition": "trained",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.3975694444444444,
+      "interval95": [
+        0.33939887152777776,
+        0.45877821180555556
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 0,
+      "arm": "strong",
+      "other": "base",
+      "condition": "weaker",
+      "layout": "canonical",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.31119791666666674,
+      "interval95": [
+        0.2386935763888888,
+        0.38412543402777777
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 0,
+      "arm": "strong",
+      "other": "shuffled",
+      "condition": "weaker",
+      "layout": "canonical",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.23914930555555558,
+      "interval95": [
+        0.16274956597222218,
+        0.32204861111111105
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 0,
+      "arm": "strong",
+      "other": "chance",
+      "condition": "weaker",
+      "layout": "canonical",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.3446180555555556,
+      "interval95": [
+        0.27560763888888884,
+        0.41928168402777777
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 0,
+      "arm": "strong",
+      "other": "base",
+      "condition": "weaker",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.18446180555555558,
+      "interval95": [
+        0.09284939236111109,
+        0.28255208333333326
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 0,
+      "arm": "strong",
+      "other": "shuffled",
+      "condition": "weaker",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.20442708333333337,
+      "interval95": [
+        0.13845486111111105,
+        0.2860568576388887
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 0,
+      "arm": "strong",
+      "other": "chance",
+      "condition": "weaker",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.2387152777777778,
+      "interval95": [
+        0.17881944444444442,
+        0.3198893229166666
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 0,
+      "arm": "strong",
+      "other": "base",
+      "condition": "earlier",
+      "layout": "canonical",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.35286458333333337,
+      "interval95": [
+        0.26432291666666663,
+        0.43836805555555547
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 0,
+      "arm": "strong",
+      "other": "shuffled",
+      "condition": "earlier",
+      "layout": "canonical",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.2881944444444444,
+      "interval95": [
+        0.1926974826388888,
+        0.3784830729166666
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 0,
+      "arm": "strong",
+      "other": "chance",
+      "condition": "earlier",
+      "layout": "canonical",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.4618055555555556,
+      "interval95": [
+        0.4210069444444444,
+        0.4956597222222222
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 0,
+      "arm": "strong",
+      "other": "base",
+      "condition": "earlier",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.2074652777777778,
+      "interval95": [
+        0.13194444444444442,
+        0.288650173611111
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 0,
+      "arm": "strong",
+      "other": "shuffled",
+      "condition": "earlier",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.22743055555555558,
+      "interval95": [
+        0.14408637152777776,
+        0.31728515625
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 0,
+      "arm": "strong",
+      "other": "chance",
+      "condition": "earlier",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.3589409722222222,
+      "interval95": [
+        0.30989583333333337,
+        0.4188368055555556
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 0,
+      "arm": "strong",
+      "other": "base",
+      "condition": "later",
+      "layout": "canonical",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.06553819444444448,
+      "interval95": [
+        0.051215277777777846,
+        0.1349826388888889
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 0,
+      "arm": "strong",
+      "other": "shuffled",
+      "condition": "later",
+      "layout": "canonical",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": -0.02604166666666663,
+      "interval95": [
+        -0.0703125,
+        0.020833333333333263
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 0,
+      "arm": "strong",
+      "other": "chance",
+      "condition": "later",
+      "layout": "canonical",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.04079861111111116,
+      "interval95": [
+        0.025162760416666718,
+        0.07987196180555554
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 0,
+      "arm": "strong",
+      "other": "base",
+      "condition": "later",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.04296875,
+      "interval95": [
+        0.015614149305555502,
+        0.11546223958333333
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 0,
+      "arm": "strong",
+      "other": "shuffled",
+      "condition": "later",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.03428819444444442,
+      "interval95": [
+        -0.005653211805555601,
+        0.09202473958333328
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 0,
+      "arm": "strong",
+      "other": "chance",
+      "condition": "later",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.0234375,
+      "interval95": [
+        -0.0008680555555555802,
+        0.0690321180555554
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 1,
+      "arm": "strong",
+      "other": "base",
+      "condition": "trained",
+      "layout": "canonical",
+      "primary": true,
+      "metric": "presenceAUROC",
+      "difference": 0.45963541666666674,
+      "interval95": [
+        0.3767252604166666,
+        0.5347330729166666
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 1,
+      "arm": "strong",
+      "other": "shuffled",
+      "condition": "trained",
+      "layout": "canonical",
+      "primary": true,
+      "metric": "presenceAUROC",
+      "difference": 0.45920138888888895,
+      "interval95": [
+        0.3445746527777778,
+        0.5577365451388888
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 1,
+      "arm": "strong",
+      "other": "chance",
+      "condition": "trained",
+      "layout": "canonical",
+      "primary": true,
+      "metric": "presenceAUROC",
+      "difference": 0.4891493055555556,
+      "interval95": [
+        0.47048611111111116,
+        0.5
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 1,
+      "arm": "strong",
+      "other": "base",
+      "condition": "trained",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.4110243055555556,
+      "interval95": [
+        0.3333224826388889,
+        0.4726779513888888
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 1,
+      "arm": "strong",
+      "other": "shuffled",
+      "condition": "trained",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.31119791666666663,
+      "interval95": [
+        0.20571831597222218,
+        0.4266493055555556
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 1,
+      "arm": "strong",
+      "other": "chance",
+      "condition": "trained",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.48828125,
+      "interval95": [
+        0.4696180555555556,
+        0.5
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 1,
+      "arm": "strong",
+      "other": "base",
+      "condition": "weaker",
+      "layout": "canonical",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.33984375000000006,
+      "interval95": [
+        0.2868815104166666,
+        0.4079861111111111
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 1,
+      "arm": "strong",
+      "other": "shuffled",
+      "condition": "weaker",
+      "layout": "canonical",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.33940972222222227,
+      "interval95": [
+        0.2525933159722222,
+        0.4331597222222222
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 1,
+      "arm": "strong",
+      "other": "chance",
+      "condition": "weaker",
+      "layout": "canonical",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.33767361111111116,
+      "interval95": [
+        0.29208984374999997,
+        0.3988823784722222
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 1,
+      "arm": "strong",
+      "other": "base",
+      "condition": "weaker",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.31814236111111116,
+      "interval95": [
+        0.2547743055555556,
+        0.3910698784722222
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 1,
+      "arm": "strong",
+      "other": "shuffled",
+      "condition": "weaker",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.2886284722222222,
+      "interval95": [
+        0.20007595486111113,
+        0.38457031249999996
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 1,
+      "arm": "strong",
+      "other": "chance",
+      "condition": "weaker",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.3289930555555556,
+      "interval95": [
+        0.2591037326388889,
+        0.4101779513888888
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 1,
+      "arm": "strong",
+      "other": "base",
+      "condition": "earlier",
+      "layout": "canonical",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.3858506944444444,
+      "interval95": [
+        0.30077039930555555,
+        0.4652994791666666
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 1,
+      "arm": "strong",
+      "other": "shuffled",
+      "condition": "earlier",
+      "layout": "canonical",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.39670138888888884,
+      "interval95": [
+        0.27864583333333337,
+        0.4978298611111111
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 1,
+      "arm": "strong",
+      "other": "chance",
+      "condition": "earlier",
+      "layout": "canonical",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.45963541666666663,
+      "interval95": [
+        0.4223090277777778,
+        0.4926215277777778
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 1,
+      "arm": "strong",
+      "other": "base",
+      "condition": "earlier",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.2855902777777777,
+      "interval95": [
+        0.19833984375000008,
+        0.3702473958333333
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 1,
+      "arm": "strong",
+      "other": "shuffled",
+      "condition": "earlier",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.19661458333333326,
+      "interval95": [
+        0.09807942708333335,
+        0.3003580729166666
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 1,
+      "arm": "strong",
+      "other": "chance",
+      "condition": "earlier",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.39279513888888884,
+      "interval95": [
+        0.32986111111111116,
+        0.4522569444444444
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 1,
+      "arm": "strong",
+      "other": "base",
+      "condition": "later",
+      "layout": "canonical",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.10026041666666669,
+      "interval95": [
+        0.07118055555555558,
+        0.18013237847222213
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 1,
+      "arm": "strong",
+      "other": "shuffled",
+      "condition": "later",
+      "layout": "canonical",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.08637152777777779,
+      "interval95": [
+        0.05208333333333337,
+        0.15716145833333311
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 1,
+      "arm": "strong",
+      "other": "chance",
+      "condition": "later",
+      "layout": "canonical",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.07161458333333337,
+      "interval95": [
+        0.05208333333333337,
+        0.12849392361111098
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 1,
+      "arm": "strong",
+      "other": "base",
+      "condition": "later",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.08854166666666663,
+      "interval95": [
+        0.05814887152777777,
+        0.16537543402777774
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 1,
+      "arm": "strong",
+      "other": "shuffled",
+      "condition": "later",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.07725694444444442,
+      "interval95": [
+        0.04643012152777777,
+        0.13628472222222227
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 1,
+      "arm": "strong",
+      "other": "chance",
+      "condition": "later",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.08940972222222221,
+      "interval95": [
+        0.06987847222222221,
+        0.1519205729166666
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 2,
+      "arm": "strong",
+      "other": "base",
+      "condition": "trained",
+      "layout": "canonical",
+      "primary": true,
+      "metric": "presenceAUROC",
+      "difference": 0.5060763888888888,
+      "interval95": [
+        0.4014539930555555,
+        0.5915798611111112
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 2,
+      "arm": "strong",
+      "other": "shuffled",
+      "condition": "trained",
+      "layout": "canonical",
+      "primary": true,
+      "metric": "presenceAUROC",
+      "difference": 0.45442708333333337,
+      "interval95": [
+        0.37323133680555554,
+        0.5394965277777778
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 2,
+      "arm": "strong",
+      "other": "chance",
+      "condition": "trained",
+      "layout": "canonical",
+      "primary": true,
+      "metric": "presenceAUROC",
+      "difference": 0.5,
+      "interval95": [
+        0.5,
+        0.5
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 2,
+      "arm": "strong",
+      "other": "base",
+      "condition": "trained",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.3875868055555556,
+      "interval95": [
+        0.30251736111111116,
+        0.4561740451388888
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 2,
+      "arm": "strong",
+      "other": "shuffled",
+      "condition": "trained",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.49001736111111116,
+      "interval95": [
+        0.4118815104166667,
+        0.5620768229166666
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 2,
+      "arm": "strong",
+      "other": "chance",
+      "condition": "trained",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.4891493055555556,
+      "interval95": [
+        0.46875,
+        0.5
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 2,
+      "arm": "strong",
+      "other": "base",
+      "condition": "weaker",
+      "layout": "canonical",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.40755208333333337,
+      "interval95": [
+        0.3202907986111111,
+        0.4887586805555553
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 2,
+      "arm": "strong",
+      "other": "shuffled",
+      "condition": "weaker",
+      "layout": "canonical",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.3980034722222222,
+      "interval95": [
+        0.344607204861111,
+        0.4583333333333333
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 2,
+      "arm": "strong",
+      "other": "chance",
+      "condition": "weaker",
+      "layout": "canonical",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.42708333333333337,
+      "interval95": [
+        0.3828125,
+        0.4735243055555556
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 2,
+      "arm": "strong",
+      "other": "base",
+      "condition": "weaker",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.31119791666666663,
+      "interval95": [
+        0.2365125868055555,
+        0.39410807291666666
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 2,
+      "arm": "strong",
+      "other": "shuffled",
+      "condition": "weaker",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.32421875,
+      "interval95": [
+        0.27517361111111116,
+        0.3871636284722222
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 2,
+      "arm": "strong",
+      "other": "chance",
+      "condition": "weaker",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.3315972222222222,
+      "interval95": [
+        0.2712565104166667,
+        0.40365668402777777
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 2,
+      "arm": "strong",
+      "other": "base",
+      "condition": "earlier",
+      "layout": "canonical",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.4483506944444444,
+      "interval95": [
+        0.3424153645833333,
+        0.5442708333333333
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 2,
+      "arm": "strong",
+      "other": "shuffled",
+      "condition": "earlier",
+      "layout": "canonical",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.4014756944444444,
+      "interval95": [
+        0.32986111111111116,
+        0.47787543402777777
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 2,
+      "arm": "strong",
+      "other": "chance",
+      "condition": "earlier",
+      "layout": "canonical",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.4921875,
+      "interval95": [
+        0.4774197048611111,
+        0.5
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 2,
+      "arm": "strong",
+      "other": "base",
+      "condition": "earlier",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.3706597222222222,
+      "interval95": [
+        0.2877495659722222,
+        0.44401041666666663
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 2,
+      "arm": "strong",
+      "other": "shuffled",
+      "condition": "earlier",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.41579861111111105,
+      "interval95": [
+        0.3702148437500001,
+        0.47916666666666663
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 2,
+      "arm": "strong",
+      "other": "chance",
+      "condition": "earlier",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.44401041666666663,
+      "interval95": [
+        0.4027777777777778,
+        0.47916666666666663
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 2,
+      "arm": "strong",
+      "other": "base",
+      "condition": "later",
+      "layout": "canonical",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.13151041666666674,
+      "interval95": [
+        0.10112847222222227,
+        0.20444878472222208
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 2,
+      "arm": "strong",
+      "other": "shuffled",
+      "condition": "later",
+      "layout": "canonical",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.10112847222222232,
+      "interval95": [
+        0.059016927083333344,
+        0.1662434895833333
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 2,
+      "arm": "strong",
+      "other": "chance",
+      "condition": "later",
+      "layout": "canonical",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.11111111111111116,
+      "interval95": [
+        0.08854166666666663,
+        0.1714409722222222
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 2,
+      "arm": "strong",
+      "other": "base",
+      "condition": "later",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.08116319444444448,
+      "interval95": [
+        0.062055121527777764,
+        0.14192708333333337
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 2,
+      "arm": "strong",
+      "other": "shuffled",
+      "condition": "later",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.04947916666666663,
+      "interval95": [
+        0.021256510416666718,
+        0.09766710069444438
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 2,
+      "arm": "strong",
+      "other": "chance",
+      "condition": "later",
+      "layout": "both_reversed",
+      "primary": false,
+      "metric": "presenceAUROC",
+      "difference": 0.06293402777777779,
+      "interval95": [
+        0.043825954861111134,
+        0.11114366319444431
+      ],
+      "blocks": 24
+    }
+  ],
+  "replicationMeansAndRanges": {
+    "test/base/visible/trained/canonical/primary": {
+      "presenceAUROC": {
+        "mean": 0.9654224537037037,
+        "minimum": 0.9596354166666666,
+        "maximum": 0.9730902777777778,
+        "replications": 3
+      },
+      "withinBlockOrdering": {
+        "mean": 0.986111111111111,
+        "minimum": 0.9791666666666666,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "presenceBalancedAccuracy": {
+        "mean": 0.7569444444444443,
+        "minimum": 0.75,
+        "maximum": 0.7708333333333333,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.312574780183042,
+        "minimum": 0.2995907696641583,
+        "maximum": 0.3333131712701683,
+        "replications": 3
+      }
+    },
+    "test/base/visible/trained/both_reversed/primary": {
+      "presenceAUROC": {
+        "mean": 0.9810474537037037,
+        "minimum": 0.9739583333333334,
+        "maximum": 0.9921875,
+        "replications": 3
+      },
+      "withinBlockOrdering": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "presenceBalancedAccuracy": {
+        "mean": 0.90625,
+        "minimum": 0.8958333333333334,
+        "maximum": 0.9166666666666667,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.14187020299488265,
+        "minimum": 0.12113684885608829,
+        "maximum": 0.17943021723239702,
+        "replications": 3
+      }
+    },
+    "test/base/strong/trained/canonical/primary": {
+      "presenceAUROC": {
+        "mean": 0.5250289351851852,
+        "minimum": 0.4939236111111111,
+        "maximum": 0.5516493055555556,
+        "replications": 3
+      },
+      "withinBlockOrdering": {
+        "mean": 0.5902777777777778,
+        "minimum": 0.5625,
+        "maximum": 0.6041666666666666,
+        "replications": 3
+      },
+      "presenceBalancedAccuracy": {
+        "mean": 0.5,
+        "minimum": 0.5,
+        "maximum": 0.5,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.6680706370521774,
+        "minimum": 0.6666636322806677,
+        "maximum": 0.6706304691302799,
+        "replications": 3
+      }
+    },
+    "test/base/strong/trained/both_reversed/primary": {
+      "presenceAUROC": {
+        "mean": 0.6050347222222222,
+        "minimum": 0.5772569444444444,
+        "maximum": 0.6362847222222222,
+        "replications": 3
+      },
+      "withinBlockOrdering": {
+        "mean": 0.7118055555555557,
+        "minimum": 0.625,
+        "maximum": 0.7708333333333334,
+        "replications": 3
+      },
+      "presenceBalancedAccuracy": {
+        "mean": 0.5,
+        "minimum": 0.4791666666666667,
+        "maximum": 0.5208333333333334,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.6827835753420052,
+        "minimum": 0.6637798642943736,
+        "maximum": 0.7182889218922516,
+        "replications": 3
+      }
+    },
+    "test/base/strong/weaker/canonical/primary": {
+      "presenceAUROC": {
+        "mean": 0.5169270833333334,
+        "minimum": 0.4978298611111111,
+        "maximum": 0.5334201388888888,
+        "replications": 3
+      },
+      "withinBlockOrdering": {
+        "mean": 0.59375,
+        "minimum": 0.5520833333333334,
+        "maximum": 0.65625,
+        "replications": 3
+      },
+      "presenceBalancedAccuracy": {
+        "mean": 0.5,
+        "minimum": 0.5,
+        "maximum": 0.5,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.6666644947314982,
+        "minimum": 0.6666628754418163,
+        "maximum": 0.6666653357398175,
+        "replications": 3
+      }
+    },
+    "test/base/strong/weaker/both_reversed/primary": {
+      "presenceAUROC": {
+        "mean": 0.5285011574074073,
+        "minimum": 0.5108506944444444,
+        "maximum": 0.5542534722222222,
+        "replications": 3
+      },
+      "withinBlockOrdering": {
+        "mean": 0.6111111111111112,
+        "minimum": 0.5833333333333334,
+        "maximum": 0.6354166666666666,
+        "replications": 3
+      },
+      "presenceBalancedAccuracy": {
+        "mean": 0.5,
+        "minimum": 0.4895833333333333,
+        "maximum": 0.5104166666666666,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.6745119506516691,
+        "minimum": 0.6662890712955342,
+        "maximum": 0.6906034565693555,
+        "replications": 3
+      }
+    },
+    "test/base/strong/earlier/canonical/primary": {
+      "presenceAUROC": {
+        "mean": 0.5755208333333334,
+        "minimum": 0.5438368055555556,
+        "maximum": 0.6089409722222222,
+        "replications": 3
+      },
+      "withinBlockOrdering": {
+        "mean": 0.59375,
+        "minimum": 0.53125,
+        "maximum": 0.6458333333333334,
+        "replications": 3
+      },
+      "presenceBalancedAccuracy": {
+        "mean": 0.5,
+        "minimum": 0.5,
+        "maximum": 0.5,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.6666644899942602,
+        "minimum": 0.6666628753374526,
+        "maximum": 0.6666653355663312,
+        "replications": 3
+      }
+    },
+    "test/base/strong/earlier/both_reversed/primary": {
+      "presenceAUROC": {
+        "mean": 0.6106770833333334,
+        "minimum": 0.5733506944444444,
+        "maximum": 0.6514756944444444,
+        "replications": 3
+      },
+      "withinBlockOrdering": {
+        "mean": 0.6805555555555555,
+        "minimum": 0.6354166666666666,
+        "maximum": 0.71875,
+        "replications": 3
+      },
+      "presenceBalancedAccuracy": {
+        "mean": 0.5104166666666666,
+        "minimum": 0.5,
+        "maximum": 0.53125,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.6561523458809371,
+        "minimum": 0.6354065795398214,
+        "maximum": 0.667659717155169,
+        "replications": 3
+      }
+    },
+    "test/base/strong/later/canonical/primary": {
+      "presenceAUROC": {
+        "mean": 0.47540509259259256,
+        "minimum": 0.4713541666666667,
+        "maximum": 0.4796006944444444,
+        "replications": 3
+      },
+      "withinBlockOrdering": {
+        "mean": 0.31597222222222227,
+        "minimum": 0.2708333333333333,
+        "maximum": 0.3854166666666667,
+        "replications": 3
+      },
+      "presenceBalancedAccuracy": {
+        "mean": 0.5,
+        "minimum": 0.5,
+        "maximum": 0.5,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.6666644900199445,
+        "minimum": 0.6666628754108405,
+        "maximum": 0.6666653355888977,
+        "replications": 3
+      }
+    },
+    "test/base/strong/later/both_reversed/primary": {
+      "presenceAUROC": {
+        "mean": 0.4877025462962963,
+        "minimum": 0.48046875,
+        "maximum": 0.5008680555555556,
+        "replications": 3
+      },
+      "withinBlockOrdering": {
+        "mean": 0.3333333333333333,
+        "minimum": 0.2708333333333333,
+        "maximum": 0.40625,
+        "replications": 3
+      },
+      "presenceBalancedAccuracy": {
+        "mean": 0.5,
+        "minimum": 0.5,
+        "maximum": 0.5,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.6754553277499716,
+        "minimum": 0.6654179899351048,
+        "maximum": 0.6946644318667803,
+        "replications": 3
+      }
+    },
+    "test/visible/visible/trained/canonical/primary": {
+      "presenceAUROC": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "withinBlockOrdering": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "presenceBalancedAccuracy": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 8.123268751004621e-10,
+        "minimum": 1.2961033763113878e-14,
+        "maximum": 2.4368151353813913e-09,
+        "replications": 3
+      }
+    },
+    "test/visible/visible/trained/both_reversed/primary": {
+      "presenceAUROC": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "withinBlockOrdering": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "presenceBalancedAccuracy": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 1.0872764309490856e-06,
+        "minimum": 1.0948721337626698e-14,
+        "maximum": 3.26181897759704e-06,
+        "replications": 3
+      }
+    },
+    "test/strong/strong/trained/canonical/primary": {
+      "presenceAUROC": {
+        "mean": 0.9897280092592592,
+        "minimum": 0.9800347222222222,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "withinBlockOrdering": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "presenceBalancedAccuracy": {
+        "mean": 0.8819444444444443,
+        "minimum": 0.7916666666666667,
+        "maximum": 0.9583333333333333,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.242667660849194,
+        "minimum": 0.10410991821958014,
+        "maximum": 0.4411586730330791,
+        "replications": 3
+      }
+    },
+    "test/strong/strong/trained/both_reversed/primary": {
+      "presenceAUROC": {
+        "mean": 0.9583333333333334,
+        "minimum": 0.8975694444444444,
+        "maximum": 0.9891493055555556,
+        "replications": 3
+      },
+      "withinBlockOrdering": {
+        "mean": 0.9930555555555555,
+        "minimum": 0.9791666666666666,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "presenceBalancedAccuracy": {
+        "mean": 0.857638888888889,
+        "minimum": 0.8125,
+        "maximum": 0.9375,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.2577537363487551,
+        "minimum": 0.1277843936253518,
+        "maximum": 0.41667944742841584,
+        "replications": 3
+      }
+    },
+    "test/strong/strong/weaker/canonical/primary": {
+      "presenceAUROC": {
+        "mean": 0.8697916666666666,
+        "minimum": 0.8376736111111112,
+        "maximum": 0.9270833333333334,
+        "replications": 3
+      },
+      "withinBlockOrdering": {
+        "mean": 0.9756944444444443,
+        "minimum": 0.96875,
+        "maximum": 0.9791666666666666,
+        "replications": 3
+      },
+      "presenceBalancedAccuracy": {
+        "mean": 0.607638888888889,
+        "minimum": 0.5625,
+        "maximum": 0.65625,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.9088970731738829,
+        "minimum": 0.7168149545058272,
+        "maximum": 1.1565769404188737,
+        "replications": 3
+      }
+    },
+    "test/strong/strong/weaker/both_reversed/primary": {
+      "presenceAUROC": {
+        "mean": 0.7997685185185186,
+        "minimum": 0.7387152777777778,
+        "maximum": 0.8315972222222222,
+        "replications": 3
+      },
+      "withinBlockOrdering": {
+        "mean": 0.9513888888888888,
+        "minimum": 0.9166666666666666,
+        "maximum": 0.9895833333333334,
+        "replications": 3
+      },
+      "presenceBalancedAccuracy": {
+        "mean": 0.6006944444444445,
+        "minimum": 0.5520833333333334,
+        "maximum": 0.6354166666666667,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.8675392878179548,
+        "minimum": 0.5883968550557219,
+        "maximum": 1.1071688298696691,
+        "replications": 3
+      }
+    },
+    "test/strong/strong/earlier/canonical/primary": {
+      "presenceAUROC": {
+        "mean": 0.9712094907407408,
+        "minimum": 0.9596354166666666,
+        "maximum": 0.9921875,
+        "replications": 3
+      },
+      "withinBlockOrdering": {
+        "mean": 0.9965277777777778,
+        "minimum": 0.9895833333333334,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "presenceBalancedAccuracy": {
+        "mean": 0.7743055555555555,
+        "minimum": 0.7291666666666666,
+        "maximum": 0.8020833333333334,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.48825771421507785,
+        "minimum": 0.2842506393624115,
+        "maximum": 0.645075288736012,
+        "replications": 3
+      }
+    },
+    "test/strong/strong/earlier/both_reversed/primary": {
+      "presenceAUROC": {
+        "mean": 0.8985821759259259,
+        "minimum": 0.8589409722222222,
+        "maximum": 0.9440104166666666,
+        "replications": 3
+      },
+      "withinBlockOrdering": {
+        "mean": 0.96875,
+        "minimum": 0.9270833333333334,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "presenceBalancedAccuracy": {
+        "mean": 0.7361111111111112,
+        "minimum": 0.6770833333333334,
+        "maximum": 0.7916666666666667,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.5358484672502937,
+        "minimum": 0.3623417696345296,
+        "maximum": 0.742613256592625,
+        "replications": 3
+      }
+    },
+    "test/strong/strong/later/canonical/primary": {
+      "presenceAUROC": {
+        "mean": 0.574508101851852,
+        "minimum": 0.5407986111111112,
+        "maximum": 0.6111111111111112,
+        "replications": 3
+      },
+      "withinBlockOrdering": {
+        "mean": 0.8784722222222222,
+        "minimum": 0.8125,
+        "maximum": 0.9375,
+        "replications": 3
+      },
+      "presenceBalancedAccuracy": {
+        "mean": 0.5,
+        "minimum": 0.5,
+        "maximum": 0.5,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 1.270243018151951,
+        "minimum": 1.1608791981918973,
+        "maximum": 1.3332324230274755,
+        "replications": 3
+      }
+    },
+    "test/strong/strong/later/both_reversed/primary": {
+      "presenceAUROC": {
+        "mean": 0.55859375,
+        "minimum": 0.5234375,
+        "maximum": 0.5894097222222222,
+        "replications": 3
+      },
+      "withinBlockOrdering": {
+        "mean": 0.8125,
+        "minimum": 0.6666666666666666,
+        "maximum": 0.9375,
+        "replications": 3
+      },
+      "presenceBalancedAccuracy": {
+        "mean": 0.5,
+        "minimum": 0.5,
+        "maximum": 0.5,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 1.1871686085780753,
+        "minimum": 0.9729830978297412,
+        "maximum": 1.3300273420285094,
+        "replications": 3
+      }
+    },
+    "test/shuffled/shuffled/trained/canonical/primary": {
+      "presenceAUROC": {
+        "mean": 0.5737847222222222,
+        "minimum": 0.5299479166666666,
+        "maximum": 0.6458333333333334,
+        "replications": 3
+      },
+      "withinBlockOrdering": {
+        "mean": 0.5972222222222223,
+        "minimum": 0.5208333333333334,
+        "maximum": 0.7083333333333334,
+        "replications": 3
+      },
+      "presenceBalancedAccuracy": {
+        "mean": 0.5069444444444444,
+        "minimum": 0.4583333333333333,
+        "maximum": 0.53125,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.5596909566602043,
+        "minimum": 0.47206284833319834,
+        "maximum": 0.6072497187045749,
+        "replications": 3
+      }
+    },
+    "test/shuffled/shuffled/trained/both_reversed/primary": {
+      "presenceAUROC": {
+        "mean": 0.5904224537037037,
+        "minimum": 0.4991319444444444,
+        "maximum": 0.6770833333333334,
+        "replications": 3
+      },
+      "withinBlockOrdering": {
+        "mean": 0.6319444444444445,
+        "minimum": 0.5,
+        "maximum": 0.7083333333333334,
+        "replications": 3
+      },
+      "presenceBalancedAccuracy": {
+        "mean": 0.5486111111111112,
+        "minimum": 0.53125,
+        "maximum": 0.5833333333333334,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.552507054749923,
+        "minimum": 0.49892119450635675,
+        "maximum": 0.6196652620775134,
+        "replications": 3
+      }
+    },
+    "test/shuffled/shuffled/weaker/canonical/primary": {
+      "presenceAUROC": {
+        "mean": 0.5442708333333334,
+        "minimum": 0.4982638888888889,
+        "maximum": 0.60546875,
+        "replications": 3
+      },
+      "withinBlockOrdering": {
+        "mean": 0.5659722222222222,
+        "minimum": 0.5,
+        "maximum": 0.6875,
+        "replications": 3
+      },
+      "presenceBalancedAccuracy": {
+        "mean": 0.4930555555555555,
+        "minimum": 0.46875,
+        "maximum": 0.5104166666666666,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.5656045966779902,
+        "minimum": 0.47456465063336395,
+        "maximum": 0.6309289009009615,
+        "replications": 3
+      }
+    },
+    "test/shuffled/shuffled/weaker/both_reversed/primary": {
+      "presenceAUROC": {
+        "mean": 0.52734375,
+        "minimum": 0.5073784722222222,
+        "maximum": 0.5403645833333334,
+        "replications": 3
+      },
+      "withinBlockOrdering": {
+        "mean": 0.579861111111111,
+        "minimum": 0.4895833333333333,
+        "maximum": 0.6354166666666666,
+        "replications": 3
+      },
+      "presenceBalancedAccuracy": {
+        "mean": 0.5173611111111112,
+        "minimum": 0.5,
+        "maximum": 0.53125,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.6248878301694285,
+        "minimum": 0.5373214664268292,
+        "maximum": 0.6725545143464184,
+        "replications": 3
+      }
+    },
+    "test/shuffled/shuffled/earlier/canonical/primary": {
+      "presenceAUROC": {
+        "mean": 0.6090856481481481,
+        "minimum": 0.5629340277777778,
+        "maximum": 0.6736111111111112,
+        "replications": 3
+      },
+      "withinBlockOrdering": {
+        "mean": 0.6319444444444444,
+        "minimum": 0.5625,
+        "maximum": 0.7291666666666666,
+        "replications": 3
+      },
+      "presenceBalancedAccuracy": {
+        "mean": 0.5208333333333334,
+        "minimum": 0.46875,
+        "maximum": 0.5520833333333334,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.5373829654817602,
+        "minimum": 0.4487674337195357,
+        "maximum": 0.5859970509455692,
+        "replications": 3
+      }
+    },
+    "test/shuffled/shuffled/earlier/both_reversed/primary": {
+      "presenceAUROC": {
+        "mean": 0.6186342592592593,
+        "minimum": 0.5282118055555556,
+        "maximum": 0.6961805555555556,
+        "replications": 3
+      },
+      "withinBlockOrdering": {
+        "mean": 0.6111111111111112,
+        "minimum": 0.40625,
+        "maximum": 0.75,
+        "replications": 3
+      },
+      "presenceBalancedAccuracy": {
+        "mean": 0.5868055555555556,
+        "minimum": 0.5520833333333333,
+        "maximum": 0.6145833333333334,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.5340178050191807,
+        "minimum": 0.48472033843915313,
+        "maximum": 0.5970159345788446,
+        "replications": 3
+      }
+    },
+    "test/shuffled/shuffled/later/canonical/primary": {
+      "presenceAUROC": {
+        "mean": 0.5206886574074074,
+        "minimum": 0.4852430555555556,
+        "maximum": 0.5668402777777778,
+        "replications": 3
+      },
+      "withinBlockOrdering": {
+        "mean": 0.5902777777777778,
+        "minimum": 0.4166666666666667,
+        "maximum": 0.78125,
+        "replications": 3
+      },
+      "presenceBalancedAccuracy": {
+        "mean": 0.5104166666666666,
+        "minimum": 0.5,
+        "maximum": 0.53125,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.5680489494791152,
+        "minimum": 0.4784279919420129,
+        "maximum": 0.6559408163146918,
+        "replications": 3
+      }
+    },
+    "test/shuffled/shuffled/later/both_reversed/primary": {
+      "presenceAUROC": {
+        "mean": 0.5049189814814815,
+        "minimum": 0.4891493055555556,
+        "maximum": 0.5134548611111112,
+        "replications": 3
+      },
+      "withinBlockOrdering": {
+        "mean": 0.5625,
+        "minimum": 0.5,
+        "maximum": 0.6041666666666666,
+        "replications": 3
+      },
+      "presenceBalancedAccuracy": {
+        "mean": 0.5034722222222222,
+        "minimum": 0.48958333333333337,
+        "maximum": 0.5208333333333334,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.6331091331776136,
+        "minimum": 0.5176851447809607,
+        "maximum": 0.6911408805038876,
+        "replications": 3
+      }
+    }
+  },
+  "fixedReadingRuleMet": true,
+  "shamPairs": 3216,
+  "unperturbedPairs": 3216,
+  "unperturbedMismatches": 0,
+  "trainingRestarts": 0,
+  "interruptedRequests": 0,
+  "errors": 0,
+  "trainingUpdateEvents": 576,
+  "trainingSeconds": 736.3205151779956,
+  "evaluationSeconds": 1046.779835129003,
+  "scope": "Three initialization/data replications of binary presence detection; threshold-free criterion and reading rule fixed before data; transfer to unseen strength and layers. Descriptive intervals; detector of injected rotations only; no consciousness, natural-error or iPhone claim."
+}

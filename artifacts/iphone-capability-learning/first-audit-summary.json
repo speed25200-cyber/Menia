@@ -1,0 +1,684 @@
+{
+  "schema": "menia-iphone-capability-learning-analysis-v1",
+  "auditCount": 1,
+  "deviceExecutionAttested": false,
+  "completeCollectionHistoryAttested": false,
+  "lossUnits": "declared points: wrong direct=1, verify=0.2, correct direct=0",
+  "executedPolicy": "relevant forecast with fixed threshold and invalid-format verification fallback",
+  "otherPolicies": "paired counterfactual scores on the same candidate and deterministic verifier",
+  "invalidProbabilityForSystemBrier": 0.5,
+  "audits": [
+    {
+      "appVersion": "0.2.0 (4)",
+      "generationSettings": "context=2048; output<=256; temperature=0.7; topP=0.8; topK=20; thinking=false; no fixed RNG seed",
+      "fullPlanAndStoredScoresConform": true,
+      "calibrationCompleted": 24,
+      "evaluationCompleted": 24,
+      "complete": true,
+      "statuses": {
+        "completed": 120
+      },
+      "calibration": [
+        {
+          "family": "addition",
+          "n": 6,
+          "successes": 5,
+          "betaNext": 0.75,
+          "prequentialBrier": 0.20661470143613003
+        },
+        {
+          "family": "multiplication",
+          "n": 6,
+          "successes": 0,
+          "betaNext": 0.125,
+          "prequentialBrier": 0.08529950869236584
+        },
+        {
+          "family": "countA",
+          "n": 6,
+          "successes": 0,
+          "betaNext": 0.125,
+          "prequentialBrier": 0.08529950869236584
+        },
+        {
+          "family": "alternatingSum",
+          "n": 6,
+          "successes": 0,
+          "betaNext": 0.125,
+          "prequentialBrier": 0.08529950869236584
+        }
+      ],
+      "evaluationSuccesses": 6,
+      "methods": {
+        "relevant": {
+          "n": 24,
+          "validForecasts": 24,
+          "invalidForecasts": 0,
+          "verified": 18,
+          "directAnswers": 6,
+          "directErrors": 0,
+          "directErrorRate": 0.0,
+          "meanPointLoss": 0.15,
+          "systemBrier": 0.12083333333333333,
+          "validOnlyBrier": 0.12083333333333333,
+          "extraForecastDuration": {
+            "n": 24,
+            "minSeconds": 1.0228277917485684,
+            "medianSeconds": 1.3749647499644198,
+            "maxSeconds": 1.8556823333492503,
+            "totalSeconds": 33.63412012520712
+          }
+        },
+        "absent": {
+          "n": 24,
+          "validForecasts": 24,
+          "invalidForecasts": 0,
+          "verified": 14,
+          "directAnswers": 10,
+          "directErrors": 4,
+          "directErrorRate": 0.4,
+          "meanPointLoss": 0.2833333333333333,
+          "systemBrier": 0.32629583333333334,
+          "validOnlyBrier": 0.32629583333333334,
+          "extraForecastDuration": {
+            "n": 24,
+            "minSeconds": 0.689096208428964,
+            "medianSeconds": 0.8186248125275597,
+            "maxSeconds": 1.0059017082676291,
+            "totalSeconds": 19.675303875119425
+          }
+        },
+        "otherFamily": {
+          "n": 24,
+          "validForecasts": 24,
+          "invalidForecasts": 0,
+          "verified": 20,
+          "directAnswers": 4,
+          "directErrors": 3,
+          "directErrorRate": 0.75,
+          "meanPointLoss": 0.2916666666666667,
+          "systemBrier": 0.3152083333333333,
+          "validOnlyBrier": 0.3152083333333333,
+          "extraForecastDuration": {
+            "n": 24,
+            "minSeconds": 1.1073912916472182,
+            "medianSeconds": 1.4020996458129957,
+            "maxSeconds": 1.6828235832508653,
+            "totalSeconds": 33.56893187458627
+          }
+        },
+        "betaFamily": {
+          "n": 24,
+          "validForecasts": 24,
+          "invalidForecasts": 0,
+          "verified": 24,
+          "directAnswers": 0,
+          "directErrors": 0,
+          "directErrorRate": null,
+          "meanPointLoss": 0.20000000000000004,
+          "systemBrier": 0.02734375,
+          "validOnlyBrier": 0.02734375
+        },
+        "betaPooled": {
+          "n": 24,
+          "validForecasts": 24,
+          "invalidForecasts": 0,
+          "verified": 24,
+          "directAnswers": 0,
+          "directErrors": 0,
+          "directErrorRate": null,
+          "meanPointLoss": 0.20000000000000004,
+          "systemBrier": 0.1878698224852071,
+          "validOnlyBrier": 0.1878698224852071
+        },
+        "prior": {
+          "n": 24,
+          "validForecasts": 24,
+          "invalidForecasts": 0,
+          "verified": 24,
+          "directAnswers": 0,
+          "directErrors": 0,
+          "directErrorRate": null,
+          "meanPointLoss": 0.20000000000000004,
+          "systemBrier": 0.25,
+          "validOnlyBrier": 0.25
+        },
+        "alwaysAnswer": {
+          "n": 24,
+          "verified": 0,
+          "directAnswers": 24,
+          "directErrors": 18,
+          "directErrorRate": 0.75,
+          "meanPointLoss": 0.75
+        },
+        "alwaysVerify": {
+          "n": 24,
+          "verified": 24,
+          "directAnswers": 0,
+          "directErrors": 0,
+          "directErrorRate": null,
+          "meanPointLoss": 0.20000000000000004
+        }
+      },
+      "families": {
+        "addition": {
+          "relevant": {
+            "n": 6,
+            "validForecasts": 6,
+            "invalidForecasts": 0,
+            "verified": 0,
+            "directAnswers": 6,
+            "directErrors": 0,
+            "directErrorRate": 0.0,
+            "meanPointLoss": 0.0,
+            "systemBrier": 0.022500000000000006,
+            "validOnlyBrier": 0.022500000000000006,
+            "extraForecastDuration": {
+              "n": 6,
+              "minSeconds": 1.0228277917485684,
+              "medianSeconds": 1.1667546458775178,
+              "maxSeconds": 1.322549624950625,
+              "totalSeconds": 7.0015357084339485
+            }
+          },
+          "absent": {
+            "n": 6,
+            "validForecasts": 6,
+            "invalidForecasts": 0,
+            "verified": 0,
+            "directAnswers": 6,
+            "directErrors": 0,
+            "directErrorRate": 0.0,
+            "meanPointLoss": 0.0,
+            "systemBrier": 0.0022666666666666677,
+            "validOnlyBrier": 0.0022666666666666677,
+            "extraForecastDuration": {
+              "n": 6,
+              "minSeconds": 0.689096208428964,
+              "medianSeconds": 0.7564977083238773,
+              "maxSeconds": 0.8588519167387858,
+              "totalSeconds": 4.615928541868925
+            }
+          },
+          "otherFamily": {
+            "n": 6,
+            "validForecasts": 6,
+            "invalidForecasts": 0,
+            "verified": 5,
+            "directAnswers": 1,
+            "directErrors": 0,
+            "directErrorRate": 0.0,
+            "meanPointLoss": 0.16666666666666666,
+            "systemBrier": 0.4633333333333333,
+            "validOnlyBrier": 0.4633333333333333,
+            "extraForecastDuration": {
+              "n": 6,
+              "minSeconds": 1.1073912916472182,
+              "medianSeconds": 1.3049175416235812,
+              "maxSeconds": 1.4169879166875035,
+              "totalSeconds": 7.787350749829784
+            }
+          },
+          "betaFamily": {
+            "n": 6,
+            "validForecasts": 6,
+            "invalidForecasts": 0,
+            "verified": 6,
+            "directAnswers": 0,
+            "directErrors": 0,
+            "directErrorRate": null,
+            "meanPointLoss": 0.20000000000000004,
+            "systemBrier": 0.0625,
+            "validOnlyBrier": 0.0625
+          },
+          "betaPooled": {
+            "n": 6,
+            "validForecasts": 6,
+            "invalidForecasts": 0,
+            "verified": 6,
+            "directAnswers": 0,
+            "directErrors": 0,
+            "directErrorRate": null,
+            "meanPointLoss": 0.20000000000000004,
+            "systemBrier": 0.5917159763313609,
+            "validOnlyBrier": 0.5917159763313609
+          },
+          "prior": {
+            "n": 6,
+            "validForecasts": 6,
+            "invalidForecasts": 0,
+            "verified": 6,
+            "directAnswers": 0,
+            "directErrors": 0,
+            "directErrorRate": null,
+            "meanPointLoss": 0.20000000000000004,
+            "systemBrier": 0.25,
+            "validOnlyBrier": 0.25
+          },
+          "alwaysAnswer": {
+            "n": 6,
+            "verified": 0,
+            "directAnswers": 6,
+            "directErrors": 0,
+            "directErrorRate": 0.0,
+            "meanPointLoss": 0.0
+          },
+          "alwaysVerify": {
+            "n": 6,
+            "verified": 6,
+            "directAnswers": 0,
+            "directErrors": 0,
+            "directErrorRate": null,
+            "meanPointLoss": 0.20000000000000004
+          }
+        },
+        "multiplication": {
+          "relevant": {
+            "n": 6,
+            "validForecasts": 6,
+            "invalidForecasts": 0,
+            "verified": 6,
+            "directAnswers": 0,
+            "directErrors": 0,
+            "directErrorRate": null,
+            "meanPointLoss": 0.20000000000000004,
+            "systemBrier": 0.12249999999999998,
+            "validOnlyBrier": 0.12249999999999998,
+            "extraForecastDuration": {
+              "n": 6,
+              "minSeconds": 1.142798583372496,
+              "medianSeconds": 1.3392220833920874,
+              "maxSeconds": 1.4516865416662768,
+              "totalSeconds": 7.938585000112653
+            }
+          },
+          "absent": {
+            "n": 6,
+            "validForecasts": 6,
+            "invalidForecasts": 0,
+            "verified": 6,
+            "directAnswers": 0,
+            "directErrors": 0,
+            "directErrorRate": null,
+            "meanPointLoss": 0.20000000000000004,
+            "systemBrier": 0.13583333333333333,
+            "validOnlyBrier": 0.13583333333333333,
+            "extraForecastDuration": {
+              "n": 6,
+              "minSeconds": 0.6955237917136401,
+              "medianSeconds": 0.7566093541681767,
+              "maxSeconds": 0.819555833353661,
+              "totalSeconds": 4.576154000125825
+            }
+          },
+          "otherFamily": {
+            "n": 6,
+            "validForecasts": 6,
+            "invalidForecasts": 0,
+            "verified": 6,
+            "directAnswers": 0,
+            "directErrors": 0,
+            "directErrorRate": null,
+            "meanPointLoss": 0.20000000000000004,
+            "systemBrier": 0.0825,
+            "validOnlyBrier": 0.0825,
+            "extraForecastDuration": {
+              "n": 6,
+              "minSeconds": 1.3282869582762942,
+              "medianSeconds": 1.51920254167635,
+              "maxSeconds": 1.6381297083571553,
+              "totalSeconds": 9.065911791636609
+            }
+          },
+          "betaFamily": {
+            "n": 6,
+            "validForecasts": 6,
+            "invalidForecasts": 0,
+            "verified": 6,
+            "directAnswers": 0,
+            "directErrors": 0,
+            "directErrorRate": null,
+            "meanPointLoss": 0.20000000000000004,
+            "systemBrier": 0.015625,
+            "validOnlyBrier": 0.015625
+          },
+          "betaPooled": {
+            "n": 6,
+            "validForecasts": 6,
+            "invalidForecasts": 0,
+            "verified": 6,
+            "directAnswers": 0,
+            "directErrors": 0,
+            "directErrorRate": null,
+            "meanPointLoss": 0.20000000000000004,
+            "systemBrier": 0.0532544378698225,
+            "validOnlyBrier": 0.0532544378698225
+          },
+          "prior": {
+            "n": 6,
+            "validForecasts": 6,
+            "invalidForecasts": 0,
+            "verified": 6,
+            "directAnswers": 0,
+            "directErrors": 0,
+            "directErrorRate": null,
+            "meanPointLoss": 0.20000000000000004,
+            "systemBrier": 0.25,
+            "validOnlyBrier": 0.25
+          },
+          "alwaysAnswer": {
+            "n": 6,
+            "verified": 0,
+            "directAnswers": 6,
+            "directErrors": 6,
+            "directErrorRate": 1.0,
+            "meanPointLoss": 1.0
+          },
+          "alwaysVerify": {
+            "n": 6,
+            "verified": 6,
+            "directAnswers": 0,
+            "directErrors": 0,
+            "directErrorRate": null,
+            "meanPointLoss": 0.20000000000000004
+          }
+        },
+        "countA": {
+          "relevant": {
+            "n": 6,
+            "validForecasts": 6,
+            "invalidForecasts": 0,
+            "verified": 6,
+            "directAnswers": 0,
+            "directErrors": 0,
+            "directErrorRate": null,
+            "meanPointLoss": 0.20000000000000004,
+            "systemBrier": 0.1758333333333333,
+            "validOnlyBrier": 0.1758333333333333,
+            "extraForecastDuration": {
+              "n": 6,
+              "minSeconds": 1.4555135000264272,
+              "medianSeconds": 1.5946039792033844,
+              "maxSeconds": 1.8556823333492503,
+              "totalSeconds": 9.811784916673787
+            }
+          },
+          "absent": {
+            "n": 6,
+            "validForecasts": 6,
+            "invalidForecasts": 0,
+            "verified": 6,
+            "directAnswers": 0,
+            "directErrors": 0,
+            "directErrorRate": null,
+            "meanPointLoss": 0.20000000000000004,
+            "systemBrier": 0.5391666666666667,
+            "validOnlyBrier": 0.5391666666666667,
+            "extraForecastDuration": {
+              "n": 6,
+              "minSeconds": 0.8179594583343714,
+              "medianSeconds": 0.8519140625139698,
+              "maxSeconds": 1.0059017082676291,
+              "totalSeconds": 5.3066769583383575
+            }
+          },
+          "otherFamily": {
+            "n": 6,
+            "validForecasts": 6,
+            "invalidForecasts": 0,
+            "verified": 6,
+            "directAnswers": 0,
+            "directErrors": 0,
+            "directErrorRate": null,
+            "meanPointLoss": 0.20000000000000004,
+            "systemBrier": 0.0725,
+            "validOnlyBrier": 0.0725,
+            "extraForecastDuration": {
+              "n": 6,
+              "minSeconds": 1.349229708313942,
+              "medianSeconds": 1.4163420833647251,
+              "maxSeconds": 1.6828235832508653,
+              "totalSeconds": 8.870099583175033
+            }
+          },
+          "betaFamily": {
+            "n": 6,
+            "validForecasts": 6,
+            "invalidForecasts": 0,
+            "verified": 6,
+            "directAnswers": 0,
+            "directErrors": 0,
+            "directErrorRate": null,
+            "meanPointLoss": 0.20000000000000004,
+            "systemBrier": 0.015625,
+            "validOnlyBrier": 0.015625
+          },
+          "betaPooled": {
+            "n": 6,
+            "validForecasts": 6,
+            "invalidForecasts": 0,
+            "verified": 6,
+            "directAnswers": 0,
+            "directErrors": 0,
+            "directErrorRate": null,
+            "meanPointLoss": 0.20000000000000004,
+            "systemBrier": 0.0532544378698225,
+            "validOnlyBrier": 0.0532544378698225
+          },
+          "prior": {
+            "n": 6,
+            "validForecasts": 6,
+            "invalidForecasts": 0,
+            "verified": 6,
+            "directAnswers": 0,
+            "directErrors": 0,
+            "directErrorRate": null,
+            "meanPointLoss": 0.20000000000000004,
+            "systemBrier": 0.25,
+            "validOnlyBrier": 0.25
+          },
+          "alwaysAnswer": {
+            "n": 6,
+            "verified": 0,
+            "directAnswers": 6,
+            "directErrors": 6,
+            "directErrorRate": 1.0,
+            "meanPointLoss": 1.0
+          },
+          "alwaysVerify": {
+            "n": 6,
+            "verified": 6,
+            "directAnswers": 0,
+            "directErrors": 0,
+            "directErrorRate": null,
+            "meanPointLoss": 0.20000000000000004
+          }
+        },
+        "alternatingSum": {
+          "relevant": {
+            "n": 6,
+            "validForecasts": 6,
+            "invalidForecasts": 0,
+            "verified": 6,
+            "directAnswers": 0,
+            "directErrors": 0,
+            "directErrorRate": null,
+            "meanPointLoss": 0.20000000000000004,
+            "systemBrier": 0.1625,
+            "validOnlyBrier": 0.1625,
+            "extraForecastDuration": {
+              "n": 6,
+              "minSeconds": 1.2815158332232386,
+              "medianSeconds": 1.4440408542286605,
+              "maxSeconds": 1.6835868334164843,
+              "totalSeconds": 8.88221449998673
+            }
+          },
+          "absent": {
+            "n": 6,
+            "validForecasts": 6,
+            "invalidForecasts": 0,
+            "verified": 2,
+            "directAnswers": 4,
+            "directErrors": 4,
+            "directErrorRate": 1.0,
+            "meanPointLoss": 0.7333333333333334,
+            "systemBrier": 0.6279166666666667,
+            "validOnlyBrier": 0.6279166666666667,
+            "extraForecastDuration": {
+              "n": 6,
+              "minSeconds": 0.761879958328791,
+              "medianSeconds": 0.8540043332614005,
+              "maxSeconds": 0.9933668333105743,
+              "totalSeconds": 5.176544374786317
+            }
+          },
+          "otherFamily": {
+            "n": 6,
+            "validForecasts": 6,
+            "invalidForecasts": 0,
+            "verified": 3,
+            "directAnswers": 3,
+            "directErrors": 3,
+            "directErrorRate": 1.0,
+            "meanPointLoss": 0.6,
+            "systemBrier": 0.6425,
+            "validOnlyBrier": 0.6425,
+            "extraForecastDuration": {
+              "n": 6,
+              "minSeconds": 1.1203727916581556,
+              "medianSeconds": 1.2768311458057724,
+              "maxSeconds": 1.5222322499612346,
+              "totalSeconds": 7.845569749944843
+            }
+          },
+          "betaFamily": {
+            "n": 6,
+            "validForecasts": 6,
+            "invalidForecasts": 0,
+            "verified": 6,
+            "directAnswers": 0,
+            "directErrors": 0,
+            "directErrorRate": null,
+            "meanPointLoss": 0.20000000000000004,
+            "systemBrier": 0.015625,
+            "validOnlyBrier": 0.015625
+          },
+          "betaPooled": {
+            "n": 6,
+            "validForecasts": 6,
+            "invalidForecasts": 0,
+            "verified": 6,
+            "directAnswers": 0,
+            "directErrors": 0,
+            "directErrorRate": null,
+            "meanPointLoss": 0.20000000000000004,
+            "systemBrier": 0.0532544378698225,
+            "validOnlyBrier": 0.0532544378698225
+          },
+          "prior": {
+            "n": 6,
+            "validForecasts": 6,
+            "invalidForecasts": 0,
+            "verified": 6,
+            "directAnswers": 0,
+            "directErrors": 0,
+            "directErrorRate": null,
+            "meanPointLoss": 0.20000000000000004,
+            "systemBrier": 0.25,
+            "validOnlyBrier": 0.25
+          },
+          "alwaysAnswer": {
+            "n": 6,
+            "verified": 0,
+            "directAnswers": 6,
+            "directErrors": 6,
+            "directErrorRate": 1.0,
+            "meanPointLoss": 1.0
+          },
+          "alwaysVerify": {
+            "n": 6,
+            "verified": 6,
+            "directAnswers": 0,
+            "directErrors": 0,
+            "directErrorRate": null,
+            "meanPointLoss": 0.20000000000000004
+          }
+        }
+      },
+      "contrasts": [
+        {
+          "contrast": "relevant-absent",
+          "commonValidOnly": false,
+          "n": 24,
+          "meanBrierDifference": -0.20546250000000002,
+          "meanPointLossDifference": -0.13333333333333333
+        },
+        {
+          "contrast": "relevant-absent",
+          "commonValidOnly": true,
+          "n": 24,
+          "meanBrierDifference": -0.20546250000000002,
+          "meanPointLossDifference": -0.13333333333333333
+        },
+        {
+          "contrast": "relevant-otherFamily",
+          "commonValidOnly": false,
+          "n": 24,
+          "meanBrierDifference": -0.194375,
+          "meanPointLossDifference": -0.1416666666666667
+        },
+        {
+          "contrast": "relevant-otherFamily",
+          "commonValidOnly": true,
+          "n": 24,
+          "meanBrierDifference": -0.194375,
+          "meanPointLossDifference": -0.1416666666666667
+        },
+        {
+          "contrast": "relevant-betaFamily",
+          "commonValidOnly": false,
+          "n": 24,
+          "meanBrierDifference": 0.09348958333333333,
+          "meanPointLossDifference": -0.05000000000000001
+        },
+        {
+          "contrast": "relevant-betaFamily",
+          "commonValidOnly": true,
+          "n": 24,
+          "meanBrierDifference": 0.09348958333333333,
+          "meanPointLossDifference": -0.05000000000000001
+        }
+      ],
+      "allCompletedCallsDuration": {
+        "n": 120,
+        "minSeconds": 0.25973462499678135,
+        "medianSeconds": 0.8186248125275597,
+        "maxSeconds": 1.8556823333492503,
+        "totalSeconds": 104.7416571668582
+      },
+      "firstTextDelay": {
+        "n": 120,
+        "minSeconds": 0.13710187503602356,
+        "medianSeconds": 0.48869347921572626,
+        "maxSeconds": 1.4645737917162478,
+        "totalSeconds": 72.81221483368427
+      },
+      "numericForecastDuration": {
+        "n": 24,
+        "minSeconds": 1.1875061318278313e-05,
+        "medianSeconds": 2.77708750218153e-05,
+        "maxSeconds": 4.775007255375385e-05,
+        "totalSeconds": 0.0006572089623659849
+      },
+      "executedVerificationDuration": {
+        "n": 18,
+        "minSeconds": 3.332970663905144e-07,
+        "medianSeconds": 5.416804924607277e-07,
+        "maxSeconds": 7.083290256559849e-06,
+        "totalSeconds": 3.770831972360611e-05
+      },
+      "reportedIdentityMatchesPinnedManifest": true
+    }
+  ]
+}

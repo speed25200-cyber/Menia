@@ -1,0 +1,205 @@
+{
+  "scope": "Public release inventory and descriptive counts; no consciousness inference",
+  "audit_code_sha256": "9e00ab335a649f594353a54040c8afac2ce38ce620ce7a5227ea103292598703",
+  "source": {
+    "record": "https://zenodo.org/records/21536139",
+    "doi": "10.5281/zenodo.21536139",
+    "license": "CC-BY-4.0",
+    "authors": "Dian Lyu, Lamara Allen, Sofia Pantis, Elif Goksun Karagoz, Julian Quabs, Josef Parvizi",
+    "paper_doi": "10.21203/rs.3.rs-10503199/v1"
+  },
+  "files": {
+    "EBS_elecloc_QCcleaned.csv": {
+      "bytes": 175427,
+      "md5": "6b18b1907de4753bd5668a1879d9d6b9",
+      "sha256": "b85f36d54f3b9ec08f7afa6ec0f99ee8d2fb2664b19601dda36072a5fcf4e740",
+      "url": "https://zenodo.org/api/records/21536139/files/EBS_elecloc_QCcleaned.csv/content"
+    },
+    "Part1-EBS.zip": {
+      "bytes": 3362627,
+      "md5": "dbf5fb015c5b2963246a532c896ba4fb",
+      "sha256": "5f7586dc966bb8c3a5bfc05c366dfe64d2be9dc0cb4b5e7c4305f03f2b74ed94",
+      "url": "https://zenodo.org/api/records/21536139/files/Part1-EBS.zip/content"
+    },
+    "Part2-Neuroimaging.zip": {
+      "bytes": 15459,
+      "md5": "133259cb818e89a3c6bb19682b7c08a0",
+      "sha256": "dcc483c2fbd4bea8d081044246236e505461ae40b429e305bbfda5c3f3ad606d",
+      "url": "https://zenodo.org/api/records/21536139/files/Part2-Neuroimaging.zip/content"
+    },
+    "Part3-CCEP.zip": {
+      "bytes": 332800,
+      "md5": "aee3bd8e0c4960e592957bdb8121fdc2",
+      "sha256": "511badef7cc4d24a696e41b699d4aa15d6ed3c98c940fa2d6899213c0aa4945b",
+      "url": "https://zenodo.org/api/records/21536139/files/Part3-CCEP.zip/content"
+    }
+  },
+  "archive_inventory": {
+    "Part1-EBS.zip": [
+      {
+        "name": "Part1-EBS/Plot_EBScoverage_elecLoc_inNetworks.ipynb",
+        "bytes": 693295
+      },
+      {
+        "name": "Part1-EBS/WordCloud_separatingResponses2.ipynb",
+        "bytes": 3790001
+      },
+      {
+        "name": "Part1-EBS/plot_group_response_eleloc.m",
+        "bytes": 8587
+      }
+    ],
+    "Part2-Neuroimaging.zip": [
+      {
+        "name": "Part2-Neuroimaging/HCP_FC_kmeans.m",
+        "bytes": 13147
+      },
+      {
+        "name": "Part2-Neuroimaging/cingFC_lateral_search_HCP.m",
+        "bytes": 8547
+      },
+      {
+        "name": "Part2-Neuroimaging/cingulate_traj_seedFC.m",
+        "bytes": 10519
+      },
+      {
+        "name": "Part2-Neuroimaging/plot_CingSurf_traj.m",
+        "bytes": 12288
+      }
+    ],
+    "Part3-CCEP.zip": [
+      {
+        "name": "Part3-CCEP/MNE_spectra_stats_2sampleTest-SMvxComplex.ipynb",
+        "bytes": 467562
+      },
+      {
+        "name": "Part3-CCEP/aggregateCCEP_ebsCAT_GlasserParc_bilateral_v4_mean.m",
+        "bytes": 11913
+      }
+    ]
+  },
+  "csv": {
+    "columns": [
+      "subject",
+      "bipolar",
+      "elec_1",
+      "elec_2",
+      "Hot_Cold",
+      "Category",
+      "e1_sdist",
+      "e2_sdist",
+      "e1_vIofElec",
+      "e2_vIofElec",
+      "elec1_Yeo7",
+      "elec2_Yeo7",
+      "e1_Gordon333",
+      "e2_Gordon333",
+      "Lateralization",
+      "BodyPart",
+      "xHEMI_rsp",
+      "seedHEMI",
+      "e1_mni_cords_1",
+      "e1_mni_cords_2",
+      "e1_mni_cords_3",
+      "e2_mni_cords_1",
+      "e2_mni_cords_2",
+      "e2_mni_cords_3"
+    ],
+    "rows": 660,
+    "subjects": 63,
+    "unique_subject_bipolar_labels": 660,
+    "unique_subject_unordered_contact_pairs": 639,
+    "duplicate_exact_rows": 0,
+    "pairs_with_multiple_rows": 21,
+    "pairs_with_both_contact_orders": 21,
+    "pairs_with_conflicting_hot_cold": 3,
+    "pairs_with_conflicting_response_labels": 3,
+    "conflicting_category_patterns": {
+      "Complex / Silent": 2,
+      "Out of Focus / Silent_nearOut of Focus": 1
+    },
+    "rows_by_response": {
+      "cold": 424,
+      "hot": 236
+    },
+    "rows_by_category": {
+      "Complex": 84,
+      "Dizzy": 23,
+      "Indeterminate": 10,
+      "Out of Focus": 5,
+      "Sensory-Motor": 103,
+      "Silent": 331,
+      "Silent_nearComplex": 22,
+      "Silent_nearDizzy": 11,
+      "Silent_nearIndeterminate": 4,
+      "Silent_nearOut of Focus": 4,
+      "Silent_nearSensory-Motor": 50,
+      "Silent_nearVestibular": 2,
+      "Vestibular": 11
+    },
+    "unique_sites_by_category": {
+      "Complex": 78,
+      "Dizzy": 22,
+      "Indeterminate": 10,
+      "Out of Focus": 5,
+      "Sensory-Motor": 101,
+      "Silent": 326,
+      "Silent_nearComplex": 21,
+      "Silent_nearDizzy": 10,
+      "Silent_nearIndeterminate": 4,
+      "Silent_nearOut of Focus": 3,
+      "Silent_nearSensory-Motor": 50,
+      "Silent_nearVestibular": 2,
+      "Vestibular": 10
+    },
+    "subjects_by_category_nonexclusive": {
+      "Complex": 26,
+      "Dizzy": 10,
+      "Indeterminate": 6,
+      "Out of Focus": 5,
+      "Sensory-Motor": 23,
+      "Silent": 60,
+      "Silent_nearComplex": 13,
+      "Silent_nearDizzy": 8,
+      "Silent_nearIndeterminate": 4,
+      "Silent_nearOut of Focus": 2,
+      "Silent_nearSensory-Motor": 18,
+      "Silent_nearVestibular": 1,
+      "Vestibular": 8
+    },
+    "response_category_cross_table": {
+      "cold": {
+        "Silent": 331,
+        "Silent_nearComplex": 22,
+        "Silent_nearDizzy": 11,
+        "Silent_nearIndeterminate": 4,
+        "Silent_nearOut of Focus": 4,
+        "Silent_nearSensory-Motor": 50,
+        "Silent_nearVestibular": 2
+      },
+      "hot": {
+        "Complex": 84,
+        "Dizzy": 23,
+        "Indeterminate": 10,
+        "Out of Focus": 5,
+        "Sensory-Motor": 103,
+        "Vestibular": 11
+      }
+    },
+    "unique_subject_contact_keys": 847,
+    "contacts_shared_by_distinct_stimulation_pairs": 397,
+    "max_distinct_pairs_sharing_one_contact": 12,
+    "sites_per_subject": {
+      "min": 1,
+      "max": 32,
+      "sum": 639
+    },
+    "unordered_pair_interpretation": "The release dictionary says contact order is arbitrary under alternating polarity. Reversed pairs require trial-level reconciliation; no rows are deleted or relabeled here."
+  },
+  "not_estimated": [
+    "Reproduction of CCEP connectivity effects or causal mediation",
+    "Presence versus absence of subjective consciousness",
+    "Transfer of bodily experience to Menia",
+    "Scientific novelty of an architecture"
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "schema": "menia-cross-task-start-receipt-v1",
+  "status": "inference-observed-live",
+  "job": {
+    "pid": 105982,
+    "startedUTC": "2026-09-19T16:51:51.433055+00:00",
+    "scienceRevision": "b97753c1cca1f936e7319f971e1c1a4058df0a01",
+    "notebookRevision": "1b384c4d355df85b66f2b51d146dd4b8fc9a3dbb",
+    "notebookSHA256": "d55e5bc5e56b3de73b2cb82864fab7d523e828fbd65a2f30009da58155602158",
+    "directory": "/content/menia-cross-task-mcp-20260919",
+    "archive": "/content/menia-transfert-entre-taches.zip"
+  },
+  "observationUTC": "2026-09-19T16:53:17.846344+00:00",
+  "hardware": "NVIDIA A100-SXM4-40GB, 32 %, 8294 MiB, 40960 MiB",
+  "identity": {
+    "planHash": "cde74f7f1a8e2fd2f6ae583111e18b09e164c188ee19f193662e5e8488d57696",
+    "sourceHash": "19dd28bb182f6fa86b145b3e7767bee0e83cc428080a85a1b756b23ff3bdc308",
+    "plannedForwards": 44544,
+    "groups": 192,
+    "parentJournalSHA256": "0bd76014c6d80f56e6c5a1cedf71fd1546f78be18977c5a79ebd8ccd12947706",
+    "priorInterchangeJournalSHA256": "f0a225287d58bc3bb3639a7c4051d24e1a43b1e7394ff2b2449d3921a3e16ad5",
+    "checkpoints": {
+      "r0-prefix": "add5ed756ea6ff158d59e0780684808a2d21055e2a18a2c4f77c7fb143e8f495",
+      "r1-prefix": "7954ba00216b591cda6c7a0a3d0f30bd7d42bc56b90fd03ba4b8eec15d16e5ac",
+      "r2-prefix": "5b8d614fa3f141d5c54a326a8aeec37e8d99ed99acd551440faa9b1b18978ebd"
+    },
+    "settings": {
+      "dtype": "bfloat16",
+      "sampling": false,
+      "thinking": false,
+      "useCache": false,
+      "firstTokenOnly": true,
+      "attention": "sdpa",
+      "alignmentTraining": false,
+      "weightUpdates": 0,
+      "replications": 3,
+      "testPairs": 16,
+      "lexicalPairs": 16,
+      "resamples": 2000,
+      "rank": 8,
+      "layer": 17,
+      "strength": 1.0,
+      "maxInputTokens": 512,
+      "baselineGate": 0.9,
+      "withinTaskGate": 0.9
+    },
+    "requiredVersions": {
+      "torch": "2.8.0+cu126",
+      "transformers": "4.56.2",
+      "numpy": "2.2.6",
+      "accelerate": "1.10.1",
+      "safetensors": "0.6.2",
+      "huggingface-hub": "0.36.2",
+      "tokenizers": "0.22.2"
+    }
+  },
+  "events": {
+    "header": 1,
+    "group_start": 2,
+    "group_complete": 1
+  },
+  "recordedForwards": 232,
+  "lastCompleteGroup": "prefix/r0-test-000",
+  "returnCode": null,
+  "localTests": 8,
+  "colabTests": 8,
+  "behavioralScoresReviewed": false,
+  "scope": "Dated execution-start evidence, not live status or a completed experiment. Full outcome interpretation awaits complete collection, integrity controls and independent arithmetic."
+}

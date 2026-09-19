@@ -1,0 +1,10 @@
+{
+  "schema": "menia-risk-presentation-verification-v1",
+  "verified": true,
+  "recorded": 864,
+  "groups": 16,
+  "orderComparisons": 8,
+  "journalSHA256": "c2f47174f0019f09aace6cb145b7d28b302c4ee2444631cbb62c38da1c3e2523",
+  "maxAbsoluteDifference": 1.3877787807814457e-17,
+  "scope": "Separate parser and integer tally; shared validated journal/plan, no external replication."
+}

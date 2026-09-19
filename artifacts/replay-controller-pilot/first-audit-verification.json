@@ -1,0 +1,260 @@
+{
+  "schema": "menia-replay-audit-v1",
+  "journalSHA256": "4564a464394b2daac4d6cbdcfb078a6df20eb49e5f3a0a571a46355704fa50b5",
+  "codeRevision": "0b5919afcf8af2f4b5b28adbb57b80c9bef4f718",
+  "sourceHash": "0bcf034bc7b88333e63b654c8ecdcfe502495f8f62bb4758ad6ceaf49a87f838",
+  "planHash": "e2b3ca44a5adde9e95b66bb0517187924521752bd2f95fb30a459c0baebe4409",
+  "verification": {
+    "storedFitHashVerified": true,
+    "calibrationHashVerified": true,
+    "sourceAndPlanVerified": true,
+    "numericRefitVerified": true,
+    "refitHashEqualsStored": false,
+    "maxRefitWeightDifference": 1.3357370765021415e-16,
+    "svdMaxWeightDifferences": {
+      "inputOnly": 9.540979117872439e-17,
+      "internal": 1.43982048506075e-16,
+      "shuffledLabels": 1.0278236595162582e-16
+    },
+    "independentCandidateScores": 603,
+    "independentlyRegradedResults": 720,
+    "testRoutesChecked": 1536,
+    "summaryVerified": true,
+    "exportedPolicyVerified": true,
+    "maxSummaryNumericDifference": 5.551115123125783e-17,
+    "inputTokenRange": [
+      47,
+      86
+    ],
+    "maxOutputTokens": 86
+  },
+  "diagnosticAfterReceipt": {
+    "policyTrajectory": [
+      {
+        "phase": "round1",
+        "policies": {
+          "learned": {
+            "below": "verify",
+            "kind": "threshold",
+            "source": "inputOnly",
+            "threshold": 0.6
+          },
+          "public": {
+            "below": "verify",
+            "kind": "threshold",
+            "source": "inputOnly",
+            "threshold": 0.6
+          },
+          "shuffled": {
+            "below": "verify",
+            "kind": "threshold",
+            "source": "inputOnly",
+            "threshold": 0.6
+          }
+        },
+        "losses": {
+          "learned": {
+            "candidates": 75,
+            "episodes": 96,
+            "incumbentLoss": 0.17708333333333334,
+            "selectedLoss": 0.17500000000000002
+          },
+          "public": {
+            "candidates": 51,
+            "episodes": 96,
+            "incumbentLoss": 0.17708333333333334,
+            "selectedLoss": 0.17500000000000002
+          },
+          "shuffled": {
+            "candidates": 75,
+            "episodes": 96,
+            "incumbentLoss": 0.17708333333333334,
+            "selectedLoss": 0.17500000000000002
+          }
+        }
+      },
+      {
+        "phase": "round2",
+        "policies": {
+          "learned": {
+            "below": "verify",
+            "kind": "threshold",
+            "source": "betaCell",
+            "threshold": 0.8
+          },
+          "public": {
+            "below": "verify",
+            "kind": "threshold",
+            "source": "betaCell",
+            "threshold": 0.8
+          },
+          "shuffled": {
+            "below": "verify",
+            "kind": "threshold",
+            "source": "shuffledLabels",
+            "threshold": 0.7
+          }
+        },
+        "losses": {
+          "learned": {
+            "candidates": 75,
+            "episodes": 192,
+            "incumbentLoss": 0.18333333333333335,
+            "selectedLoss": 0.18229166666666666
+          },
+          "public": {
+            "candidates": 51,
+            "episodes": 192,
+            "incumbentLoss": 0.18333333333333335,
+            "selectedLoss": 0.18229166666666666
+          },
+          "shuffled": {
+            "candidates": 75,
+            "episodes": 192,
+            "incumbentLoss": 0.18333333333333335,
+            "selectedLoss": 0.18020833333333333
+          }
+        }
+      },
+      {
+        "phase": "round3",
+        "policies": {
+          "learned": {
+            "below": "verify",
+            "kind": "threshold",
+            "source": "betaCell",
+            "threshold": 0.8
+          },
+          "public": {
+            "below": "verify",
+            "kind": "threshold",
+            "source": "betaCell",
+            "threshold": 0.8
+          },
+          "shuffled": {
+            "below": "verify",
+            "kind": "threshold",
+            "source": "shuffledLabels",
+            "threshold": 0.7
+          }
+        },
+        "losses": {
+          "learned": {
+            "candidates": 75,
+            "episodes": 288,
+            "incumbentLoss": 0.17708333333333334,
+            "selectedLoss": 0.17708333333333334
+          },
+          "public": {
+            "candidates": 51,
+            "episodes": 288,
+            "incumbentLoss": 0.17708333333333334,
+            "selectedLoss": 0.17708333333333334
+          },
+          "shuffled": {
+            "candidates": 75,
+            "episodes": 288,
+            "incumbentLoss": 0.17500000000000002,
+            "selectedLoss": 0.17500000000000002
+          }
+        }
+      }
+    ],
+    "testByCell": {
+      "countA:8": {
+        "n": 32,
+        "rawCorrect": 11,
+        "calibrationProbability": 0.5238095238095238,
+        "learned": {
+          "n": 32,
+          "meanPointLoss": 0.2,
+          "finalCorrect": 32,
+          "actionCounts": {
+            "direct": 0,
+            "verify": 32,
+            "abstain": 0
+          }
+        }
+      },
+      "countA:24": {
+        "n": 32,
+        "rawCorrect": 4,
+        "calibrationProbability": 0.23809523809523808,
+        "learned": {
+          "n": 32,
+          "meanPointLoss": 0.2,
+          "finalCorrect": 32,
+          "actionCounts": {
+            "direct": 0,
+            "verify": 32,
+            "abstain": 0
+          }
+        }
+      },
+      "countA:64": {
+        "n": 32,
+        "rawCorrect": 1,
+        "calibrationProbability": 0.023809523809523808,
+        "learned": {
+          "n": 32,
+          "meanPointLoss": 0.2,
+          "finalCorrect": 32,
+          "actionCounts": {
+            "direct": 0,
+            "verify": 32,
+            "abstain": 0
+          }
+        }
+      },
+      "alternatingSum:2": {
+        "n": 32,
+        "rawCorrect": 30,
+        "calibrationProbability": 0.9523809523809523,
+        "learned": {
+          "n": 32,
+          "meanPointLoss": 0.0625,
+          "finalCorrect": 30,
+          "actionCounts": {
+            "direct": 32,
+            "verify": 0,
+            "abstain": 0
+          }
+        }
+      },
+      "alternatingSum:4": {
+        "n": 32,
+        "rawCorrect": 0,
+        "calibrationProbability": 0.14285714285714285,
+        "learned": {
+          "n": 32,
+          "meanPointLoss": 0.2,
+          "finalCorrect": 32,
+          "actionCounts": {
+            "direct": 0,
+            "verify": 32,
+            "abstain": 0
+          }
+        }
+      },
+      "alternatingSum:8": {
+        "n": 32,
+        "rawCorrect": 1,
+        "calibrationProbability": 0.023809523809523808,
+        "learned": {
+          "n": 32,
+          "meanPointLoss": 0.2,
+          "finalCorrect": 32,
+          "actionCounts": {
+            "direct": 0,
+            "verify": 32,
+            "abstain": 0
+          }
+        }
+      }
+    },
+    "learnedActionsIdenticalToPublic": true,
+    "testLearnedActionsIdenticalToFixedBeta": true
+  },
+  "scope": "Read-only consistency and numerical audit. Shared fixed parser/features; no independent hardware attestation, new Qwen inference, or consciousness test.",
+  "archiveSHA256": "3d7c249359e68335390c5ed0d74c17a89de2fe7ddf08b4b500837a05584ebc1e"
+}

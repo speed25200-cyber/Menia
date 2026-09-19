@@ -1,0 +1,43 @@
+{
+  "bytes": 2940435,
+  "sha256": "40356dae89b7123b9b757386af13339b245edcfe7bdd6ef7fd7ece0b8bec9936",
+  "files": {
+    "optimizer-memory/checkpoint-manifest.json": {
+      "bytes": 2370,
+      "sha256": "308b444fa064f113145373095e56bd325c26ed72bd03ec776ddf52f1c9814bfe"
+    },
+    "optimizer-memory/execution.json": {
+      "bytes": 524,
+      "sha256": "fcca9e2328cd65bac0cd47189d16b3b84102d67dbbe561f4e8392bd0fde68512"
+    },
+    "optimizer-memory/execution.log": {
+      "bytes": 4778,
+      "sha256": "3ea49611e8bb043b6b0d3475149bd977de7412deaeaa658d66048c46797feceb"
+    },
+    "optimizer-memory/memory-20260919-v1.jsonl": {
+      "bytes": 29672379,
+      "sha256": "0bd76014c6d80f56e6c5a1cedf71fd1546f78be18977c5a79ebd8ccd12947706"
+    },
+    "optimizer-memory/memory-20260919-v1.summary.json": {
+      "bytes": 464221,
+      "sha256": "644f9fc9411af47c69c81fa28a00af8a65679b505cb4d8a0e89aca35ed3cc164"
+    }
+  },
+  "checkpointsMatched": 15,
+  "planHash": "1610c06f7f2846cbd30ca1f45f258ff83a1e596044273dc61fc8e488956512cf",
+  "sourceHash": "adc8769234100063ae56b3f4def89e4de7e81af26e3302fdc9b20b635b77c45f",
+  "schema": "menia-optimizer-memory-receipt-v1",
+  "archiveName": "menia-memoire-optimiseur.zip",
+  "scienceRevision": "9826a65adf9c9826dc4dce5c1efd2b5710936311",
+  "startedUTC": "2026-09-19T14:39:59.552494+00:00",
+  "completedUTC": "2026-09-19T15:36:44.179629+00:00",
+  "hardware": "NVIDIA A100-SXM4-40GB, 40960 MiB",
+  "status": "completed",
+  "transfer": {
+    "chunkBytes": 262144,
+    "chunks": 12,
+    "archiveCRC": "passed",
+    "perFileSHA256": "passed"
+  },
+  "localPrimaryRecalculationMaxDifference": 1.1102230246251565e-15
+}

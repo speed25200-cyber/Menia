@@ -1,0 +1,917 @@
+{
+  "schema": "menia-localization-replication-logit-diagnostic-v1",
+  "origin": "exploratory_reanalysis_added_after_receipt",
+  "journalSHA256": "6eccf6aff8802f251672f0db8ce593608d14222ad7d7646e244859815669b69a",
+  "methods": {
+    "presence": "AUROC of 1-P(0) over 48 perturbed versus 24 unperturbed ordinary rows; shams excluded; rows within a block are paired, not independent",
+    "position": "Within block and identical text: [logit(number on line 1)-logit(number on line 2)] when line 1 is touched minus the same contrast when line 2 is touched; correct sign is positive; ties count one half",
+    "intervals": "2000 block resamples, seed 202609170+1900+replication; descriptive, conditional on each adapter, no multiplicity correction",
+    "chanceReference": {
+      "presenceAUROC": 0.5,
+      "pairedPositionSignRate": 0.5
+    }
+  },
+  "results": {
+    "0/base/visible/canonical": {
+      "blocks": 24,
+      "presenceAUROC": 1.0,
+      "pairedPositionBlocksCorrectSign": 24.0,
+      "pairedPositionSignRate": 1.0,
+      "pairedPositionSignRateInterval95": [
+        1.0,
+        1.0
+      ],
+      "meanPairedLogitMargin": 40.859375,
+      "meanPairedLogitMarginInterval95": [
+        39.60911458333333,
+        42.07317708333333
+      ]
+    },
+    "0/base/visible/content_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 1.0,
+      "pairedPositionBlocksCorrectSign": 24.0,
+      "pairedPositionSignRate": 1.0,
+      "pairedPositionSignRateInterval95": [
+        1.0,
+        1.0
+      ],
+      "meanPairedLogitMargin": 41.005208333333336,
+      "meanPairedLogitMarginInterval95": [
+        39.59361979166667,
+        42.46875
+      ]
+    },
+    "0/base/visible/labels_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 1.0,
+      "pairedPositionBlocksCorrectSign": 12.0,
+      "pairedPositionSignRate": 0.5,
+      "pairedPositionSignRateInterval95": [
+        0.2916666666666667,
+        0.7083333333333334
+      ],
+      "meanPairedLogitMargin": -1.6041666666666667,
+      "meanPairedLogitMarginInterval95": [
+        -8.449739583333333,
+        5.365104166666663
+      ]
+    },
+    "0/base/visible/both_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 1.0,
+      "pairedPositionBlocksCorrectSign": 12.0,
+      "pairedPositionSignRate": 0.5,
+      "pairedPositionSignRateInterval95": [
+        0.2916666666666667,
+        0.7083333333333334
+      ],
+      "meanPairedLogitMargin": -1.40625,
+      "meanPairedLogitMarginInterval95": [
+        -8.302604166666667,
+        5.3127604166666655
+      ]
+    },
+    "0/base/strong/canonical": {
+      "blocks": 24,
+      "presenceAUROC": 0.5125868055555556,
+      "pairedPositionBlocksCorrectSign": 21.0,
+      "pairedPositionSignRate": 0.875,
+      "pairedPositionSignRateInterval95": [
+        0.7489583333333334,
+        1.0
+      ],
+      "meanPairedLogitMargin": 2.5520833333333335,
+      "meanPairedLogitMarginInterval95": [
+        1.5208333333333333,
+        3.6041666666666665
+      ]
+    },
+    "0/base/strong/content_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 0.5056423611111112,
+      "pairedPositionBlocksCorrectSign": 21.0,
+      "pairedPositionSignRate": 0.875,
+      "pairedPositionSignRateInterval95": [
+        0.75,
+        1.0
+      ],
+      "meanPairedLogitMargin": 2.84375,
+      "meanPairedLogitMarginInterval95": [
+        1.82265625,
+        3.875260416666665
+      ]
+    },
+    "0/base/strong/labels_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 0.5403645833333334,
+      "pairedPositionBlocksCorrectSign": 14.0,
+      "pairedPositionSignRate": 0.5833333333333334,
+      "pairedPositionSignRateInterval95": [
+        0.3958333333333333,
+        0.7708333333333334
+      ],
+      "meanPairedLogitMargin": 0.2916666666666667,
+      "meanPairedLogitMarginInterval95": [
+        -0.25,
+        0.8020833333333334
+      ]
+    },
+    "0/base/strong/both_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 0.5581597222222222,
+      "pairedPositionBlocksCorrectSign": 16.5,
+      "pairedPositionSignRate": 0.6875,
+      "pairedPositionSignRateInterval95": [
+        0.5203125000000001,
+        0.8541666666666666
+      ],
+      "meanPairedLogitMargin": 0.3854166666666667,
+      "meanPairedLogitMarginInterval95": [
+        -0.03125,
+        0.7708333333333334
+      ]
+    },
+    "0/visible/visible/canonical": {
+      "blocks": 24,
+      "presenceAUROC": 1.0,
+      "pairedPositionBlocksCorrectSign": 24.0,
+      "pairedPositionSignRate": 1.0,
+      "pairedPositionSignRateInterval95": [
+        1.0,
+        1.0
+      ],
+      "meanPairedLogitMargin": 24.479166666666668,
+      "meanPairedLogitMarginInterval95": [
+        23.817578124999997,
+        25.114713541666664
+      ]
+    },
+    "0/visible/visible/content_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 1.0,
+      "pairedPositionBlocksCorrectSign": 24.0,
+      "pairedPositionSignRate": 1.0,
+      "pairedPositionSignRateInterval95": [
+        1.0,
+        1.0
+      ],
+      "meanPairedLogitMargin": 24.260416666666668,
+      "meanPairedLogitMarginInterval95": [
+        23.5,
+        25.052213541666664
+      ]
+    },
+    "0/visible/visible/labels_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 1.0,
+      "pairedPositionBlocksCorrectSign": 12.0,
+      "pairedPositionSignRate": 0.5,
+      "pairedPositionSignRateInterval95": [
+        0.2916666666666667,
+        0.7083333333333334
+      ],
+      "meanPairedLogitMargin": 0.8020833333333334,
+      "meanPairedLogitMarginInterval95": [
+        -3.6098958333333333,
+        5.427083333333333
+      ]
+    },
+    "0/visible/visible/both_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 1.0,
+      "pairedPositionBlocksCorrectSign": 12.0,
+      "pairedPositionSignRate": 0.5,
+      "pairedPositionSignRateInterval95": [
+        0.2916666666666667,
+        0.7083333333333334
+      ],
+      "meanPairedLogitMargin": 0.65625,
+      "meanPairedLogitMarginInterval95": [
+        -3.7453125,
+        4.891927083333326
+      ]
+    },
+    "0/strong/strong/canonical": {
+      "blocks": 24,
+      "presenceAUROC": 0.8689236111111112,
+      "pairedPositionBlocksCorrectSign": 18.5,
+      "pairedPositionSignRate": 0.7708333333333334,
+      "pairedPositionSignRateInterval95": [
+        0.625,
+        0.9166666666666666
+      ],
+      "meanPairedLogitMargin": 0.7291666666666666,
+      "meanPairedLogitMarginInterval95": [
+        0.40625,
+        1.09375
+      ]
+    },
+    "0/strong/strong/content_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 0.8454861111111112,
+      "pairedPositionBlocksCorrectSign": 22.5,
+      "pairedPositionSignRate": 0.9375,
+      "pairedPositionSignRateInterval95": [
+        0.8333333333333334,
+        1.0
+      ],
+      "meanPairedLogitMargin": 0.9010416666666666,
+      "meanPairedLogitMarginInterval95": [
+        0.6145833333333334,
+        1.2239583333333333
+      ]
+    },
+    "0/strong/strong/labels_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 0.7630208333333334,
+      "pairedPositionBlocksCorrectSign": 9.5,
+      "pairedPositionSignRate": 0.3958333333333333,
+      "pairedPositionSignRateInterval95": [
+        0.22916666666666666,
+        0.5625
+      ],
+      "meanPairedLogitMargin": -0.171875,
+      "meanPairedLogitMarginInterval95": [
+        -0.4583333333333333,
+        0.07825520833333262
+      ]
+    },
+    "0/strong/strong/both_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 0.7756076388888888,
+      "pairedPositionBlocksCorrectSign": 8.5,
+      "pairedPositionSignRate": 0.3541666666666667,
+      "pairedPositionSignRateInterval95": [
+        0.1875,
+        0.5213541666666639
+      ],
+      "meanPairedLogitMargin": -0.28125,
+      "meanPairedLogitMarginInterval95": [
+        -0.5626302083333333,
+        -0.03125
+      ]
+    },
+    "0/shuffled/shuffled/canonical": {
+      "blocks": 24,
+      "presenceAUROC": 0.6944444444444444,
+      "pairedPositionBlocksCorrectSign": 13.0,
+      "pairedPositionSignRate": 0.5416666666666666,
+      "pairedPositionSignRateInterval95": [
+        0.3744791666666667,
+        0.7291666666666666
+      ],
+      "meanPairedLogitMargin": 0.14583333333333334,
+      "meanPairedLogitMarginInterval95": [
+        0.0,
+        0.3072916666666667
+      ]
+    },
+    "0/shuffled/shuffled/content_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 0.63671875,
+      "pairedPositionBlocksCorrectSign": 17.5,
+      "pairedPositionSignRate": 0.7291666666666666,
+      "pairedPositionSignRateInterval95": [
+        0.5625,
+        0.875
+      ],
+      "meanPairedLogitMargin": 0.22395833333333334,
+      "meanPairedLogitMarginInterval95": [
+        0.026041666666666668,
+        0.4270833333333333
+      ]
+    },
+    "0/shuffled/shuffled/labels_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 0.6449652777777778,
+      "pairedPositionBlocksCorrectSign": 13.5,
+      "pairedPositionSignRate": 0.5625,
+      "pairedPositionSignRateInterval95": [
+        0.3958333333333333,
+        0.7291666666666666
+      ],
+      "meanPairedLogitMargin": -0.026041666666666668,
+      "meanPairedLogitMarginInterval95": [
+        -0.171875,
+        0.10429687499999929
+      ]
+    },
+    "0/shuffled/shuffled/both_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 0.6293402777777778,
+      "pairedPositionBlocksCorrectSign": 10.5,
+      "pairedPositionSignRate": 0.4375,
+      "pairedPositionSignRateInterval95": [
+        0.2708333333333333,
+        0.6041666666666666
+      ],
+      "meanPairedLogitMargin": -0.07291666666666667,
+      "meanPairedLogitMarginInterval95": [
+        -0.22929687499999998,
+        0.0625
+      ]
+    },
+    "1/base/visible/canonical": {
+      "blocks": 24,
+      "presenceAUROC": 1.0,
+      "pairedPositionBlocksCorrectSign": 24.0,
+      "pairedPositionSignRate": 1.0,
+      "pairedPositionSignRateInterval95": [
+        1.0,
+        1.0
+      ],
+      "meanPairedLogitMargin": 41.510416666666664,
+      "meanPairedLogitMarginInterval95": [
+        40.348958333333336,
+        42.573046874999996
+      ]
+    },
+    "1/base/visible/content_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 1.0,
+      "pairedPositionBlocksCorrectSign": 24.0,
+      "pairedPositionSignRate": 1.0,
+      "pairedPositionSignRateInterval95": [
+        1.0,
+        1.0
+      ],
+      "meanPairedLogitMargin": 41.145833333333336,
+      "meanPairedLogitMarginInterval95": [
+        39.8125,
+        42.48463541666666
+      ]
+    },
+    "1/base/visible/labels_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 1.0,
+      "pairedPositionBlocksCorrectSign": 12.0,
+      "pairedPositionSignRate": 0.5,
+      "pairedPositionSignRateInterval95": [
+        0.2916666666666667,
+        0.7083333333333334
+      ],
+      "meanPairedLogitMargin": -0.53125,
+      "meanPairedLogitMarginInterval95": [
+        -7.9484375,
+        7.011197916666663
+      ]
+    },
+    "1/base/visible/both_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 1.0,
+      "pairedPositionBlocksCorrectSign": 12.0,
+      "pairedPositionSignRate": 0.5,
+      "pairedPositionSignRateInterval95": [
+        0.2916666666666667,
+        0.7083333333333334
+      ],
+      "meanPairedLogitMargin": -0.14583333333333334,
+      "meanPairedLogitMarginInterval95": [
+        -7.395833333333333,
+        6.6669270833333325
+      ]
+    },
+    "1/base/strong/canonical": {
+      "blocks": 24,
+      "presenceAUROC": 0.5299479166666666,
+      "pairedPositionBlocksCorrectSign": 19.0,
+      "pairedPositionSignRate": 0.7916666666666666,
+      "pairedPositionSignRateInterval95": [
+        0.625,
+        0.9583333333333334
+      ],
+      "meanPairedLogitMargin": 2.7708333333333335,
+      "meanPairedLogitMarginInterval95": [
+        1.7604166666666667,
+        3.844010416666665
+      ]
+    },
+    "1/base/strong/content_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 0.5247395833333334,
+      "pairedPositionBlocksCorrectSign": 22.0,
+      "pairedPositionSignRate": 0.9166666666666666,
+      "pairedPositionSignRateInterval95": [
+        0.7916666666666666,
+        1.0
+      ],
+      "meanPairedLogitMargin": 2.6875,
+      "meanPairedLogitMarginInterval95": [
+        1.8645833333333333,
+        3.6041666666666665
+      ]
+    },
+    "1/base/strong/labels_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 0.5642361111111112,
+      "pairedPositionBlocksCorrectSign": 13.5,
+      "pairedPositionSignRate": 0.5625,
+      "pairedPositionSignRateInterval95": [
+        0.375,
+        0.75
+      ],
+      "meanPairedLogitMargin": 0.5520833333333334,
+      "meanPairedLogitMarginInterval95": [
+        0.0,
+        1.1773437499999986
+      ]
+    },
+    "1/base/strong/both_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 0.5581597222222222,
+      "pairedPositionBlocksCorrectSign": 16.5,
+      "pairedPositionSignRate": 0.6875,
+      "pairedPositionSignRateInterval95": [
+        0.5203125000000001,
+        0.8541666666666666
+      ],
+      "meanPairedLogitMargin": 0.40625,
+      "meanPairedLogitMarginInterval95": [
+        -0.22916666666666666,
+        0.9270833333333334
+      ]
+    },
+    "1/visible/visible/canonical": {
+      "blocks": 24,
+      "presenceAUROC": 1.0,
+      "pairedPositionBlocksCorrectSign": 24.0,
+      "pairedPositionSignRate": 1.0,
+      "pairedPositionSignRateInterval95": [
+        1.0,
+        1.0
+      ],
+      "meanPairedLogitMargin": 36.078125,
+      "meanPairedLogitMarginInterval95": [
+        35.401041666666664,
+        36.755208333333336
+      ]
+    },
+    "1/visible/visible/content_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 1.0,
+      "pairedPositionBlocksCorrectSign": 24.0,
+      "pairedPositionSignRate": 1.0,
+      "pairedPositionSignRateInterval95": [
+        1.0,
+        1.0
+      ],
+      "meanPairedLogitMargin": 36.067708333333336,
+      "meanPairedLogitMarginInterval95": [
+        35.515625,
+        36.64596354166667
+      ]
+    },
+    "1/visible/visible/labels_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 1.0,
+      "pairedPositionBlocksCorrectSign": 23.0,
+      "pairedPositionSignRate": 0.9583333333333334,
+      "pairedPositionSignRateInterval95": [
+        0.875,
+        1.0
+      ],
+      "meanPairedLogitMargin": 7.854166666666667,
+      "meanPairedLogitMarginInterval95": [
+        5.520572916666667,
+        10.396354166666665
+      ]
+    },
+    "1/visible/visible/both_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 1.0,
+      "pairedPositionBlocksCorrectSign": 19.0,
+      "pairedPositionSignRate": 0.7916666666666666,
+      "pairedPositionSignRateInterval95": [
+        0.625,
+        0.9583333333333334
+      ],
+      "meanPairedLogitMargin": 5.161458333333333,
+      "meanPairedLogitMarginInterval95": [
+        2.7550781250000003,
+        7.411588541666665
+      ]
+    },
+    "1/strong/strong/canonical": {
+      "blocks": 24,
+      "presenceAUROC": 0.8372395833333334,
+      "pairedPositionBlocksCorrectSign": 19.5,
+      "pairedPositionSignRate": 0.8125,
+      "pairedPositionSignRateInterval95": [
+        0.6666666666666666,
+        0.9375
+      ],
+      "meanPairedLogitMargin": 0.75,
+      "meanPairedLogitMarginInterval95": [
+        0.4427083333333333,
+        1.109375
+      ]
+    },
+    "1/strong/strong/content_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 0.8450520833333334,
+      "pairedPositionBlocksCorrectSign": 20.5,
+      "pairedPositionSignRate": 0.8541666666666666,
+      "pairedPositionSignRateInterval95": [
+        0.7291666666666666,
+        0.9583333333333334
+      ],
+      "meanPairedLogitMargin": 0.6041666666666666,
+      "meanPairedLogitMarginInterval95": [
+        0.359375,
+        0.8697916666666666
+      ]
+    },
+    "1/strong/strong/labels_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 0.7829861111111112,
+      "pairedPositionBlocksCorrectSign": 10.5,
+      "pairedPositionSignRate": 0.4375,
+      "pairedPositionSignRateInterval95": [
+        0.25,
+        0.625
+      ],
+      "meanPairedLogitMargin": -0.09895833333333333,
+      "meanPairedLogitMarginInterval95": [
+        -0.2604166666666667,
+        0.046875
+      ]
+    },
+    "1/strong/strong/both_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 0.7717013888888888,
+      "pairedPositionBlocksCorrectSign": 10.5,
+      "pairedPositionSignRate": 0.4375,
+      "pairedPositionSignRateInterval95": [
+        0.2708333333333333,
+        0.625
+      ],
+      "meanPairedLogitMargin": 0.010416666666666666,
+      "meanPairedLogitMarginInterval95": [
+        -0.140625,
+        0.18229166666666666
+      ]
+    },
+    "1/shuffled/shuffled/canonical": {
+      "blocks": 24,
+      "presenceAUROC": 0.6701388888888888,
+      "pairedPositionBlocksCorrectSign": 17.5,
+      "pairedPositionSignRate": 0.7291666666666666,
+      "pairedPositionSignRateInterval95": [
+        0.5625,
+        0.875
+      ],
+      "meanPairedLogitMargin": 0.34375,
+      "meanPairedLogitMarginInterval95": [
+        0.1875,
+        0.515625
+      ]
+    },
+    "1/shuffled/shuffled/content_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 0.6788194444444444,
+      "pairedPositionBlocksCorrectSign": 20.5,
+      "pairedPositionSignRate": 0.8541666666666666,
+      "pairedPositionSignRateInterval95": [
+        0.7083333333333334,
+        0.9791666666666666
+      ],
+      "meanPairedLogitMargin": 0.3125,
+      "meanPairedLogitMarginInterval95": [
+        0.21354166666666666,
+        0.4270833333333333
+      ]
+    },
+    "1/shuffled/shuffled/labels_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 0.5980902777777778,
+      "pairedPositionBlocksCorrectSign": 6.5,
+      "pairedPositionSignRate": 0.2708333333333333,
+      "pairedPositionSignRateInterval95": [
+        0.125,
+        0.4375
+      ],
+      "meanPairedLogitMargin": -0.11979166666666667,
+      "meanPairedLogitMarginInterval95": [
+        -0.19270833333333334,
+        -0.057291666666666664
+      ]
+    },
+    "1/shuffled/shuffled/both_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 0.6098090277777778,
+      "pairedPositionBlocksCorrectSign": 9.0,
+      "pairedPositionSignRate": 0.375,
+      "pairedPositionSignRateInterval95": [
+        0.22916666666666666,
+        0.5416666666666666
+      ],
+      "meanPairedLogitMargin": -0.0625,
+      "meanPairedLogitMarginInterval95": [
+        -0.140625,
+        0.015625
+      ]
+    },
+    "2/base/visible/canonical": {
+      "blocks": 24,
+      "presenceAUROC": 1.0,
+      "pairedPositionBlocksCorrectSign": 24.0,
+      "pairedPositionSignRate": 1.0,
+      "pairedPositionSignRateInterval95": [
+        1.0,
+        1.0
+      ],
+      "meanPairedLogitMargin": 41.197916666666664,
+      "meanPairedLogitMarginInterval95": [
+        39.911328125000004,
+        42.45325520833333
+      ]
+    },
+    "2/base/visible/content_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 1.0,
+      "pairedPositionBlocksCorrectSign": 24.0,
+      "pairedPositionSignRate": 1.0,
+      "pairedPositionSignRateInterval95": [
+        1.0,
+        1.0
+      ],
+      "meanPairedLogitMargin": 41.755208333333336,
+      "meanPairedLogitMarginInterval95": [
+        40.697916666666664,
+        42.78151041666666
+      ]
+    },
+    "2/base/visible/labels_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 1.0,
+      "pairedPositionBlocksCorrectSign": 12.0,
+      "pairedPositionSignRate": 0.5,
+      "pairedPositionSignRateInterval95": [
+        0.2916666666666667,
+        0.7083333333333334
+      ],
+      "meanPairedLogitMargin": -0.21875,
+      "meanPairedLogitMarginInterval95": [
+        -7.197916666666667,
+        6.322916666666667
+      ]
+    },
+    "2/base/visible/both_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 1.0,
+      "pairedPositionBlocksCorrectSign": 12.0,
+      "pairedPositionSignRate": 0.5,
+      "pairedPositionSignRateInterval95": [
+        0.2916666666666667,
+        0.7083333333333334
+      ],
+      "meanPairedLogitMargin": -1.2916666666666667,
+      "meanPairedLogitMarginInterval95": [
+        -8.355208333333334,
+        5.979687499999997
+      ]
+    },
+    "2/base/strong/canonical": {
+      "blocks": 24,
+      "presenceAUROC": 0.5368923611111112,
+      "pairedPositionBlocksCorrectSign": 21.0,
+      "pairedPositionSignRate": 0.875,
+      "pairedPositionSignRateInterval95": [
+        0.75,
+        1.0
+      ],
+      "meanPairedLogitMargin": 2.8125,
+      "meanPairedLogitMarginInterval95": [
+        1.6979166666666667,
+        3.875
+      ]
+    },
+    "2/base/strong/content_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 0.5421006944444444,
+      "pairedPositionBlocksCorrectSign": 18.0,
+      "pairedPositionSignRate": 0.75,
+      "pairedPositionSignRateInterval95": [
+        0.5833333333333334,
+        0.9166666666666666
+      ],
+      "meanPairedLogitMargin": 1.9791666666666667,
+      "meanPairedLogitMarginInterval95": [
+        1.1458333333333333,
+        2.75
+      ]
+    },
+    "2/base/strong/labels_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 0.55078125,
+      "pairedPositionBlocksCorrectSign": 19.0,
+      "pairedPositionSignRate": 0.7916666666666666,
+      "pairedPositionSignRateInterval95": [
+        0.6458333333333334,
+        0.9166666666666666
+      ],
+      "meanPairedLogitMargin": 0.96875,
+      "meanPairedLogitMarginInterval95": [
+        0.4791666666666667,
+        1.4791666666666667
+      ]
+    },
+    "2/base/strong/both_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 0.5334201388888888,
+      "pairedPositionBlocksCorrectSign": 17.5,
+      "pairedPositionSignRate": 0.7291666666666666,
+      "pairedPositionSignRateInterval95": [
+        0.5416666666666666,
+        0.8958333333333334
+      ],
+      "meanPairedLogitMargin": 0.5520833333333334,
+      "meanPairedLogitMarginInterval95": [
+        0.041666666666666664,
+        1.09375
+      ]
+    },
+    "2/visible/visible/canonical": {
+      "blocks": 24,
+      "presenceAUROC": 1.0,
+      "pairedPositionBlocksCorrectSign": 24.0,
+      "pairedPositionSignRate": 1.0,
+      "pairedPositionSignRateInterval95": [
+        1.0,
+        1.0
+      ],
+      "meanPairedLogitMargin": 30.25,
+      "meanPairedLogitMarginInterval95": [
+        29.786458333333332,
+        30.677083333333332
+      ]
+    },
+    "2/visible/visible/content_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 1.0,
+      "pairedPositionBlocksCorrectSign": 24.0,
+      "pairedPositionSignRate": 1.0,
+      "pairedPositionSignRateInterval95": [
+        1.0,
+        1.0
+      ],
+      "meanPairedLogitMargin": 30.6875,
+      "meanPairedLogitMarginInterval95": [
+        30.239453124999997,
+        31.09375
+      ]
+    },
+    "2/visible/visible/labels_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 1.0,
+      "pairedPositionBlocksCorrectSign": 13.0,
+      "pairedPositionSignRate": 0.5416666666666666,
+      "pairedPositionSignRateInterval95": [
+        0.3333333333333333,
+        0.75
+      ],
+      "meanPairedLogitMargin": 5.520833333333333,
+      "meanPairedLogitMarginInterval95": [
+        2.2020833333333334,
+        8.755468749999999
+      ]
+    },
+    "2/visible/visible/both_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 1.0,
+      "pairedPositionBlocksCorrectSign": 12.0,
+      "pairedPositionSignRate": 0.5,
+      "pairedPositionSignRateInterval95": [
+        0.2916666666666667,
+        0.7083333333333334
+      ],
+      "meanPairedLogitMargin": 5.875,
+      "meanPairedLogitMarginInterval95": [
+        2.359244791666667,
+        9.494791666666666
+      ]
+    },
+    "2/strong/strong/canonical": {
+      "blocks": 24,
+      "presenceAUROC": 0.8159722222222222,
+      "pairedPositionBlocksCorrectSign": 21.0,
+      "pairedPositionSignRate": 0.875,
+      "pairedPositionSignRateInterval95": [
+        0.75,
+        0.9791666666666666
+      ],
+      "meanPairedLogitMargin": 0.890625,
+      "meanPairedLogitMarginInterval95": [
+        0.5,
+        1.3125
+      ]
+    },
+    "2/strong/strong/content_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 0.8207465277777778,
+      "pairedPositionBlocksCorrectSign": 21.0,
+      "pairedPositionSignRate": 0.875,
+      "pairedPositionSignRateInterval95": [
+        0.75,
+        0.9791666666666666
+      ],
+      "meanPairedLogitMargin": 0.7864583333333334,
+      "meanPairedLogitMarginInterval95": [
+        0.4791666666666667,
+        1.0885416666666667
+      ]
+    },
+    "2/strong/strong/labels_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 0.7990451388888888,
+      "pairedPositionBlocksCorrectSign": 11.0,
+      "pairedPositionSignRate": 0.4583333333333333,
+      "pairedPositionSignRateInterval95": [
+        0.2708333333333333,
+        0.6458333333333334
+      ],
+      "meanPairedLogitMargin": -0.18229166666666666,
+      "meanPairedLogitMarginInterval95": [
+        -0.484375,
+        0.07304687499999929
+      ]
+    },
+    "2/strong/strong/both_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 0.7990451388888888,
+      "pairedPositionBlocksCorrectSign": 12.0,
+      "pairedPositionSignRate": 0.5,
+      "pairedPositionSignRateInterval95": [
+        0.3125,
+        0.6875
+      ],
+      "meanPairedLogitMargin": 0.0,
+      "meanPairedLogitMarginInterval95": [
+        -0.17708333333333334,
+        0.16145833333333334
+      ]
+    },
+    "2/shuffled/shuffled/canonical": {
+      "blocks": 24,
+      "presenceAUROC": 0.3923611111111111,
+      "pairedPositionBlocksCorrectSign": 8.0,
+      "pairedPositionSignRate": 0.3333333333333333,
+      "pairedPositionSignRateInterval95": [
+        0.16666666666666666,
+        0.5
+      ],
+      "meanPairedLogitMargin": -0.21875,
+      "meanPairedLogitMarginInterval95": [
+        -0.45846354166666664,
+        0.03125
+      ]
+    },
+    "2/shuffled/shuffled/content_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 0.4444444444444444,
+      "pairedPositionBlocksCorrectSign": 9.0,
+      "pairedPositionSignRate": 0.375,
+      "pairedPositionSignRateInterval95": [
+        0.1875,
+        0.5625
+      ],
+      "meanPairedLogitMargin": -0.125,
+      "meanPairedLogitMarginInterval95": [
+        -0.3489583333333333,
+        0.09375
+      ]
+    },
+    "2/shuffled/shuffled/labels_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 0.4392361111111111,
+      "pairedPositionBlocksCorrectSign": 10.5,
+      "pairedPositionSignRate": 0.4375,
+      "pairedPositionSignRateInterval95": [
+        0.25,
+        0.625
+      ],
+      "meanPairedLogitMargin": 0.041666666666666664,
+      "meanPairedLogitMarginInterval95": [
+        -0.140625,
+        0.2553385416666659
+      ]
+    },
+    "2/shuffled/shuffled/both_reversed": {
+      "blocks": 24,
+      "presenceAUROC": 0.4661458333333333,
+      "pairedPositionBlocksCorrectSign": 13.0,
+      "pairedPositionSignRate": 0.5416666666666666,
+      "pairedPositionSignRateInterval95": [
+        0.375,
+        0.6880208333333305
+      ],
+      "meanPairedLogitMargin": 0.09895833333333333,
+      "meanPairedLogitMarginInterval95": [
+        -0.036458333333333336,
+        0.2604166666666667
+      ]
+    }
+  },
+  "limits": "Same received logits as the fixed report; no new Qwen call, tuning, or change of the primary criteria. A positive paired margin shows that the intervention site moves the digit logits in the taught direction; it is not a usable report, a natural-error prediction, or evidence of consciousness."
+}

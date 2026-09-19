@@ -11,6 +11,13 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m unittest discover -s tests -v
+      - run: python scripts/check_agent_artifacts.py
+      - run: python scripts/check_agency_discovery_artifacts.py
+      - run: python research/audit_plasticity_realization.py --output artifacts/plasticity-realization-audit/report.json --check
+      - run: python research/audit_evidence_weighting.py --output artifacts/evidence-weighting-audit/report.json --check
+      - run: python research/audit_projective_representation.py --output artifacts/projective-representation-audit/report.json --check
+      - run: python -m research.audit_temporal_bridge --check
+      - run: python -m research.audit_reflexive_self --check
       - run: python -m compileall -q menia tests scripts
       - run: python scripts/check_notebook.py
 
@@ -24,3 +31,52 @@ jobs:
       - run: pip install -r requirements-research.txt
       - run: python -m unittest discover -s tests_research -v
       - run: python scripts/check_recurrent_artifacts.py
+      - run: python scripts/check_reliability_artifacts.py
+      - run: python scripts/check_self_model_artifacts.py
+      - run: python scripts/audit_self_monitor_information.py
+      - run: python scripts/check_temporal_effects.py
+      - run: python scripts/check_source_monitor.py
+      - run: python -m research.learn_source_policy --out artifacts/learned-verification --check
+      - run: python -m research.audit_binding_control --check
+      - run: python -m research.audit_active_calibration --check
+      - run: python -m research.audit_intrinsic_semantics --check
+      - run: python -m research.audit_capacity_planning --check
+      - run: python -m research.maintenance_identification --check
+      - run: python -m research.audit_self_prediction_controls --check
+
+  human-research:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements-human-research.txt
+      - run: python -m unittest discover -s tests_human_research -v
+
+  workspace:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install torch==2.4.1 --index-url https://download.pytorch.org/whl/cpu
+      - run: pip install numpy==2.2.6
+      - run: python -m unittest discover -s tests_workspace -v
+      - run: python scripts/check_workspace_artifacts.py
+
+  language-pilot:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.12', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m unittest discover -s tests_bootstrap -v
+      - run: pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu
+      - run: pip install -r requirements-cross-model.txt
+      - run: python -m unittest discover -s tests_language -v
