@@ -308,6 +308,9 @@ directe des codes de sortie. Cinq tests passent sur Qwen miniature aléatoire,
 sans changer les poids ni le Colab 23. Il reste à identifier une représentation
 prédictive et à mesurer son usage dans l'action ; les contrôles construits ne
 sont pas des performances de Menia.
+Le constructeur de branches tient aussi compte du rendu différent du dernier
+tour assistant dans le format Qwen : trois tests et quatre cas sur le tokenizer
+réel vérifient la frontière avant les nouvelles demandes, sans charger de modèle.
 
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
 Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)

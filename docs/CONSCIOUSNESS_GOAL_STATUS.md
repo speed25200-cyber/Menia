@@ -77,6 +77,12 @@ Ces opérations sont vérifiées sur CPU ; aucune direction de confiance
 apprise ni effet utile sur une décision n'est encore identifié. Elles ne
 modifient pas la tentative Colab 23 en cours.
 
+Le contrôle du tokenizer Qwen3-4B révèle ensuite une différence entre le
+rendu autonome du passé et son rendu suivi d'une nouvelle demande. Le
+constructeur de branches corrige cette frontière et vérifie les IDs, avec
+trois tests supplémentaires et quatre cas sur le tokenizer réel. Aucun modèle
+n'est chargé pour ce contrôle ; il ne mesure pas une capacité de Menia.
+
 Le [bilan du Colab 21](ACTION_DECOMPOSITION_RESULTS.md) est reçu et vérifié :
 2 448 appels, dont 288 rejeux identiques, avec poids inchangés. Les erreurs
 contextualisées ne se réduisent pas à l'incapacité de comparer les nombres

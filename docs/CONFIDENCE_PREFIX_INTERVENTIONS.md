@@ -83,6 +83,42 @@ python -m research.confidence_prefix_control --output artifacts/confidence-prefi
 
 ## Ce qui manque avant une expérience interprétable
 
+### Vérification de la frontière sur le tokenizer réel
+
+Le [format Qwen de la révision fixée](https://huggingface.co/Qwen/Qwen3-4B/blob/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json)
+distingue le dernier tour assistant d'un tour assistant dans un historique
+suivi d'une nouvelle question. Sur quatre chaînes techniques, le rendu
+autonome du passé ajoute un bloc de raisonnement vide ; celui du même passé
+à l'intérieur des deux branches ne l'ajoute pas. Prendre naïvement le premier
+comme préfixe du second donnerait une frontière incorrecte.
+
+[`confidence_prompt_fork.py`](../research/confidence_prompt_fork.py) résout
+ce problème pour le format Qwen et les trois tours texte pris en charge.
+Il rend le passé suivi d'un tour utilisateur vide, vérifie puis retire
+exactement ce dernier encadrement, et exige que chaque branche réelle commence
+par les mêmes tokens. Il ne cherche pas le plus long préfixe commun, qui
+pourrait inclure des mots partagés par les demandes de jugement et d'action.
+La frontière précède donc le nouveau rôle utilisateur, même si les demandes
+commencent par les mêmes mots. Les marqueurs réservés de rôles et d'outils
+dans les contenus sont refusés.
+
+Trois tests supplémentaires passent sur un format hors ligne reproduisant
+cette dépendance au dernier rôle. Le
+[contrôle du tokenizer réel](../artifacts/confidence-prefix-preparation/tokenizer-check.json)
+utilise ensuite les fichiers exacts de Qwen3-4B, révision
+`1cfa9a7208912126459214e8b04321603b3df60c`. Les quatre cas produisent des préfixes
+de 50, 50, 56 et 50 tokens, identiques dans les deux branches ; le rendu
+autonome échoue comme préfixe dans les quatre cas. Les empreintes des deux
+fichiers du tokenizer sont conservées. Aucun modèle n'est chargé, aucune
+réponse n'est générée et aucun score d'exactitude n'est mesuré par ce contrôle.
+
+```sh
+python -m unittest tests_research.test_confidence_prompt_fork -v
+python -m research.confidence_prompt_fork_validation --output artifacts/confidence-prefix-preparation/tokenizer-check.json
+```
+
+### Conditions scientifiques encore à remplir
+
 Aucune direction de confiance n'est encore identifiée ou ajustée. Il faudra
 vérifier le résultat du Colab 23, puis utiliser des données de découverte
 distinctes d'un nouveau test. Les couches, positions, rangs, donneurs,
