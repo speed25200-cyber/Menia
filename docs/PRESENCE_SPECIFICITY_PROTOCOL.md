@@ -6,6 +6,13 @@ expérience**. Il est motivé par le résultat positif du
 [note de contrôle](PRESENCE_SPECIFICITY_REVIEW.md). Il ne modifie pas le critère
 du Colab 10 et ne constitue pas sa réplication avec de nouveaux entraînements.
 
+**Exécution lancée le 19 septembre à 11:13 UTC**, par le MCP officiel Colab,
+sur A100 de 40 Go. La révision scientifique `e783e117f2d59c89bcf4be467506ae115e5aaeff`
+et le [notebook de continuation](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/84a7d43808423f0e0e905fc05c29f00cdf6b634f/notebooks/11_presence_specificity_colab.ipynb)
+ont été publiés avant ce lancement. Les huit tests passent aussi dans Colab.
+L'archive prévue est `menia-specificite-questions.zip` ; aucun résultat n'est
+encore rapporté dans cette version du protocole.
+
 ## Question et explication concurrente
 
 Le score `logit(1) − logit(0)` sépare très bien présence et absence dans le
@@ -133,3 +140,11 @@ Le tokenizer réel traite les **2 304 conditions d'entrée distinctes** (réutil
 pour les quatre bras) en **92 à 119 tokens**. Aucun poids préentraîné n'est
 chargé pour cette vérification. Le plan comporte l'empreinte
 `0d59ec577260a857acaa25acf0ddca295f8b3a7c877196084371828b448a8981`.
+
+Un [second calcul des mesures](../research/audit_presence_specificity.py), écrit
+avant consultation des réponses du modèle préentraîné, utilise ses propres
+cibles, prédictions et comparaisons par paires. Il calcule le bootstrap par
+multiplicités des blocs. Vérifié sur trois journaux synthétiques (oracle,
+biais fixe, logits aléatoires), son écart maximal est de `3,56 × 10⁻¹⁵`.
+Il partage le lecteur strict du protocole : il s'agit d'une vérification
+arithmétique, pas d'une réplication par un autre laboratoire.

@@ -55,6 +55,14 @@ téléchargements et le travail déjà intégré. **[Ouvrir le Colab 10 à sa ve
 fixée](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/46364f0cdb32fd2317881e95d27dc2da6728f2be/notebooks/10_presence_detection_colab.ipynb)** :
 A100, puis « Tout exécuter » ; conserver `menia-detection-presence.zip`.
 
+**Contrôle suivant : [spécificité à la question](docs/PRESENCE_SPECIFICITY_PROTOCOL.md).**
+Le [Colab 11](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/84a7d43808423f0e0e905fc05c29f00cdf6b634f/notebooks/11_presence_specificity_colab.ipynb)
+est lancé par MCP : neuf adaptateurs figés, zéro mise à jour, 9 216 évaluations
+sur des phrases nouvelles. Il inverse les réponses demandées et ajoute des
+questions publiques indépendantes de la perturbation. Le protocole et les
+contrôles sont fixés avant collecte ; aucun résultat n'est encore présenté ici.
+Ce notebook continue dans l'environnement du Colab 10 avec ses fichiers conservés.
+
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
 Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)
 entraîne deux petits adaptateurs Qwen3-4B, avec cibles correctes ou mélangées,

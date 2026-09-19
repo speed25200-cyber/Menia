@@ -53,9 +53,20 @@ l'auto-modélisation après entraînement par renforcement sur des données
 synthétiques, avec du transfert à certaines tâches réservées. Ils distinguent
 cette amélioration d'un accès privilégié au processus interne, qui n'est pas
 systématiquement établi. Cette piste rend un entraînement ciblé intéressant,
-sans en faire automatiquement un mécanisme d'introspection. La présente note
-s'appuie sur le résumé primaire vérifié, pas sur une reproduction de leurs résultats.
+sans en faire automatiquement un mécanisme d'introspection.
 [Article](https://arxiv.org/abs/2608.30980).
+
+**Complément du 19 septembre : texte complet consulté, §2 et §3.3.3, figure 4.**
+Leur score retire une référence adaptée à la distribution des réponses, afin
+qu'une classe majoritaire ne suffise pas. L'amélioration par apprentissage
+multitâche inclut Qwen3-4B. La comparaison croisée maintient la cible fixe et
+change le modèle qui prédit son comportement ; elle ne montre pas un avantage
+constant pour la prédiction de soi. Ce résultat renforce deux contrôles déjà
+prévus ici : références conditionnelles et comparaison réciproque. Entraîner
+Qwen3-4B à prévoir son comportement ne constituerait donc pas, en soi, une
+nouveauté. Ce complément ne reproduit pas leurs expériences et ne change pas
+le [protocole du Colab 11](PRESENCE_SPECIFICITY_PROTOCOL.md) en cours.
+[Texte complet](https://arxiv.org/pdf/2608.30980).
 
 ## Un contrôle « soi/autre » peut donner un faux signal
 

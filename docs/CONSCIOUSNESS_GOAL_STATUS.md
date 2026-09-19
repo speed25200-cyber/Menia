@@ -15,8 +15,11 @@ intégrée à l'agent expérimental et restent hors de l'application iPhone.
 
 La [feuille de route](CONSCIOUSNESS_ROADMAP.md) répond à la question « comment » de façon
 conditionnelle : mécanismes candidats, état mesuré de Menia et limites
-théoriques. Le Colab 10 possède un critère fixé ; les six étapes ultérieures
-restent des propositions à formaliser avant collecte.
+théoriques. Les Colab 10 et 11 possèdent des critères fixés. Le
+[Colab 11](PRESENCE_SPECIFICITY_PROTOCOL.md), lancé par MCP sur l'A100,
+teste la dépendance du signal au sens de la question avec les neuf adaptateurs
+figés et 9 216 nouvelles évaluations. Les étapes ultérieures restent des
+propositions à formaliser avant collecte.
 La [revue du 19 septembre](RESEARCH_REVIEW_2026_09_19.md) confirme que le
 dernier export retrouvé avant la nouvelle exécution était celui du Colab 09 et corrige des formulations
 trop catégoriques de cette feuille de route.

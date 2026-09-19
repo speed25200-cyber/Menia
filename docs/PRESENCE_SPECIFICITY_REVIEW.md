@@ -3,7 +3,10 @@
 Note méthodologique du 19 septembre 2026, écrite pendant l'entraînement du
 Colab 10, avant consultation de ses évaluations. Elle ne change ni son code,
 ni son critère principal, ni ses conditions de test. Les essais proposés
-ci-dessous ne sont pas encore un protocole fixé ou exécuté.
+ci-dessous n'étaient pas encore un protocole fixé ou exécuté lors de sa rédaction.
+**Mise à jour :** le [protocole distinct du Colab 11](PRESENCE_SPECIFICITY_PROTOCOL.md)
+est désormais implémenté, figé dans la révision `e783e117f2d59c89bcf4be467506ae115e5aaeff`,
+et lancé sur l'A100 le 19 septembre. La note d'origine ci-dessous est conservée.
 
 ## Ce qui motive ce contrôle
 

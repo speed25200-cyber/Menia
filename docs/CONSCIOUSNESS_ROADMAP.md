@@ -76,8 +76,8 @@ naturelles et l'utilité du signal, avec des références adaptées.
 
 ## Feuille de route
 
-Seul le Colab 10 possède ici un protocole implémenté dans le logiciel et un critère
-déjà fixé. Les étapes suivantes sont des propositions : leurs données,
+Les Colab 10 et 11 possèdent ici des protocoles implémentés et des critères
+déjà fixés. Les étapes suivantes sont des propositions : leurs données,
 contrastes, effectifs et règles devront être figés avant les essais concernés.
 Une nouvelle hypothèse ne doit pas requalifier rétroactivement un échec.
 
@@ -86,8 +86,9 @@ Une nouvelle hypothèse ne doit pas requalifier rétroactivement un échec.
 AUROC de 0,980, 0,989 et 1,000, avec avantages sur les cibles mélangées et la
 base. Cette détection apprise n'identifie pas à elle seule un mécanisme d'ordre
 supérieur. Le transfert tardif est faible et la lecture inversée se dégrade.
-La prochaine expérience proposée contrôle la [spécificité du compte rendu](PRESENCE_SPECIFICITY_REVIEW.md)
-avec des consignes et des tâches témoins, avant toute intégration du détecteur.
+Le [Colab 11](PRESENCE_SPECIFICITY_PROTOCOL.md), implémenté et lancé par MCP,
+contrôle la spécificité du compte rendu avec des consignes inversées et des
+tâches témoins, avant toute intégration du détecteur.
 
 **Étape 2 — Des perturbations artificielles aux erreurs naturelles.** Un
 détecteur de rotations injectées n'est pas une connaissance de soi. Il faut
