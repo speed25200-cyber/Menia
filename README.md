@@ -132,6 +132,10 @@ est ensuite vérifié le 19 septembre à 16:53 UTC : un groupe de 232 passages
 est enregistré, après les huit tests réussis dans Colab. Les poids et les deux
 journaux parents correspondent aux empreintes fixées ; ce reçu ne contient
 aucun score de résultat.
+Un [second calcul arithmétique](docs/CROSS_TASK_INTERCHANGE_AUDIT.md), préparé
+pendant l'inférence avant lecture des scores, couvre les quatre prédictions,
+144 tableaux de transfert, 48 tableaux intacts et 432 contrastes. Ses deux
+tests synthétiques passent ; il partage le plan et le lecteur d'intégrité.
 
 La [préparation du prochain test d'erreurs naturelles](docs/NATURAL_ERROR_CONFIDENCE_REVIEW.md)
 ajoute une capture des probabilités de sortie, absentes des 672 anciens essais.
