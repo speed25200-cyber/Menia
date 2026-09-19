@@ -145,6 +145,10 @@ Un [contrôle technique reçu sur Qwen3-4B/A100](docs/OUTPUT_CONFIDENCE_VALIDATI
 conserve exactement les tokens et états aléatoires dans quatre cas courts ;
 quarante vérifications passent et les calculs concordent à moins de `7,75e-14`.
 Aucun gain de prévision des erreurs naturelles n'est encore mesuré.
+La [capture commune et ses comparateurs](docs/PROSPECTIVE_CAPTURE_AND_CONTROLS.md)
+sont préparés : contrôle enrichi de sortie, 3 456 questions nouvelles dans les
+anciens domaines, trois ajustements indépendants de lecteurs et quatorze tests
+logiciels réussis. Le protocole de collecte complet reste à finaliser.
 
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
 Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)

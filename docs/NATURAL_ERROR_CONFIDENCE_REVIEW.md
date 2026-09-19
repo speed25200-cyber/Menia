@@ -135,3 +135,10 @@ Un rejeu éventuel des 672 anciennes questions serait une analyse exploratoire,
 puisque leurs réponses et leur ancien test sont connus. Il ne deviendrait pas
 un nouveau test réservé par simple changement de fichier. Un bénéfice fonctionnel
 ne réglerait pas, à lui seul, la question de l'expérience subjective demandée.
+
+La [préparation logicielle suivante](PROSPECTIVE_CAPTURE_AND_CONTROLS.md) ajoute
+une capture commune, des comparateurs emboîtés incluant la représentation avant
+sortie, 3 456 questions disjointes des anciens essais et des lecteurs ajustés
+sans accès au test. Quatorze tests passent, dont trois contrôles existants du
+générateur. Le collecteur prospectif et son analyse restent à finaliser ; ce
+travail ne fournit aucune nouvelle performance prédictive de Qwen3-4B.

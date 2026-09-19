@@ -88,6 +88,11 @@ sur Qwen3-4B/A100](OUTPUT_CONFIDENCE_VALIDATION.md) conserve les mêmes tokens e
 états aléatoires dans quatre cas courts, avec quarante vérifications réussies.
 Les calculs retrouvent les logits natifs à moins de `7,75e-14`. Ce résultat
 limité valide la capture sur ces cas, sans nouveau gain de prévision des erreurs.
+La [capture commune et ses comparateurs](PROSPECTIVE_CAPTURE_AND_CONTROLS.md)
+ajoutent ensuite un contrôle utilisant l'état final, en plus des résumés de
+confiance, ainsi que 3 456 questions disjointes et des lecteurs sans accès au
+test. Quatorze tests logiciels passent. Le collecteur et l'analyse restent à
+finaliser avant collecte ; ce travail ne change aucun résultat déjà mesuré.
 
 Le [diagnostic 13 reçu et audité](COMPOSITION_DIAGNOSTIC_RESULTS.md) comprend
 13 824 évaluations, zéro entraînement et 3 456 témoins identiques. Les seuils
