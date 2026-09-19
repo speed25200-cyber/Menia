@@ -47,7 +47,29 @@ affirmations universelles sur l'impossibilité matérielle et sur la nécessité
 exclusive d'une tâche à information interne. Le diagnostic des logits ne
 présente plus un réglage de seuil comme une solution démontrée à la localisation.
 
-## Prochaine exécution
+## Exécution par MCP lancée le 19 septembre
+
+Le serveur officiel [Google Colab MCP](https://github.com/googlecolab/colab-mcp),
+révision `b9ab3899e0f1fa493390b1fd6d54aa2e464ecdf1`, est installé et connecté.
+Un client Python du SDK MCP découvre les outils du notebook, ajoute les cellules
+et les exécute. Cette voie est utilisée parce que les outils ajoutés après la
+connexion ne sont pas exposés dans le catalogue natif de la session Codex.
+
+L'exécution réelle a commencé à **10:05:27 UTC** sur **A100-SXM4-40GB**,
+Python 3.13.15. Le lanceur publié ci-dessous est récupéré à sa révision fixe,
+vérifié par SHA-256, puis exécuté sans modification en processus séparé ;
+les cellules MCP lisent son journal sans interrompre l'entraînement. Cette
+séparation évite de confondre un délai d'observation MCP avec un échec du calcul.
+Les neuf tests du protocole et du moteur passent aussi sur ce Colab avant
+le chargement du Qwen préentraîné. Les résultats complets restent à auditer.
+
+Une [note de spécificité du rapport](PRESENCE_SPECIFICITY_REVIEW.md), écrite
+pendant l'entraînement et avant consultation des évaluations, prépare la
+lecture d'un éventuel signal : une AUROC élevée peut rester compatible avec
+un détecteur ordinaire et un biais attaché au chiffre de réponse. Cette note
+ne modifie pas le critère de l'expérience en cours.
+
+## Reproduire cette exécution
 
 **[Ouvrir le Colab 10 — version fixée](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/46364f0cdb32fd2317881e95d27dc2da6728f2be/notebooks/10_presence_detection_colab.ipynb)**.
 Choisir A100, puis « Tout exécuter ». Conserver `menia-detection-presence.zip`.

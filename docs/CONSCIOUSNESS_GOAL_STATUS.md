@@ -23,8 +23,9 @@ dans le bras fort (AUROC 0,82 à 0,87) et une information de position déjà
 présente dans la base non entraînée. Le [protocole Colab 10](PRESENCE_DETECTION_PROTOCOL.md)
 fixe à l'avance une AUROC de présence sans seuil, une règle de lecture exigeant
 les trois répétitions, et un transfert à une intensité et deux couches non vues.
-Il est implémenté et testé localement ; ses 12 864 évaluations préentraînées
-restent à recevoir. Ni localisation entraînée robuste, ni métacognition
+Il est implémenté et testé localement ; son exécution a été lancée par MCP
+le 19 septembre sur A100 de 40 Go. Ses 12 864 évaluations préentraînées
+restent à auditer. Ni localisation entraînée robuste, ni métacognition
 native, ni conscience ne sont établies.
 
 Le [diagnostic d'apprentissage reçu](LEARNING_DIAGNOSTIC_RESULTS.md) apportait un
