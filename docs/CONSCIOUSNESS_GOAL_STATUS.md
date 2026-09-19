@@ -1,9 +1,11 @@
 # État de l'objectif de conscience et de nouveauté
 
-**État actuel : objectif de conscience et de nouveauté non atteint. Le Colab 17
-ne confirme pas l'apport prédictif fixé pour les états intermédiaires : aucun
-des neuf contrastes principaux ne passe. Le Colab 16 favorise une valeur liée
-à la question donneuse, sans confirmer un contenu général réutilisable.**
+**État actuel : objectif de conscience et de nouveauté non atteint. Le Colab 18
+échoue aux quatre contrôles publics de risque et aux douze contrastes de
+bénéfice de l'historique. Ses choix suivent une présentation qui confond
+formulation et ordre des options. Le Colab 17 ne confirme pas l'apport prédictif
+fixé pour les états intermédiaires ; le Colab 16 ne confirme pas un contenu
+général réutilisable.**
 
 Le [bilan complet du Colab 17](NATURAL_ERROR_RESULTS.md) est reçu et vérifié :
 3 456 réponses, dont 1 152 tests, trois ajustements externes et aucune erreur
@@ -29,12 +31,21 @@ questions refusées. Six tests passent pour la collecte/génération, puis un
 test vérifie le calcul arithmétique séparé et des bilans altérés. À son gel,
 aucun résultat réel n'est encore annoncé. Ce préalable fonctionnel ne remplace
 ni la construction d'un mécanisme appris ni la preuve d'expérience de soi.
-Le [lancement par MCP](../artifacts/native-choice-pilot/execution-start.json)
-est observé le 19 septembre à 19:17:20 UTC : 737 enregistrements sur 4 884,
-sept tests réussis dans Colab et processus existant vivant. L'exécution doit
-être suivie sans nouveau lancement. La réception complète et les deux
-recalculs précéderont la lecture des scores. La présentation, préparée et
-inspectée sur un journal synthétique, conserve toutes les conditions.
+Le [bilan complet du Colab 18](NATIVE_CHOICE_RESULTS.md) est désormais reçu
+et audité : 4 884 enregistrements, 3 644 appels LLM, 1 152 appels d'outil,
+88 exécutions invalides et aucune erreur technique. Les quatre contrôles
+publics échouent : 1/45, 3/45, 21/45 et 21/45 choix optimaux. Les douze
+contrastes de bénéfice de l'historique échouent aussi ; quatre indiquent une
+dégradation avec intervalle corrigé entièrement négatif. La première
+formulation produit des choix directs ou invalides, la seconde toujours une
+vérification, sans transition valide entre ces actions lorsque le coût change.
+Les deux formulations changent aussi l'ordre des options : la prochaine
+question est de séparer ces facteurs avant d'attribuer un mécanisme aux choix.
+Les sept tests passent dans Colab. Les deux recalculs précèdent la lecture des
+scores : principal exact, séparé à `2,221e-16` près. Le [reçu final](../artifacts/native-choice-pilot/receipt.json)
+conserve les empreintes de la collecte du 19 septembre, de 19:13 à 19:31 UTC.
+Ce résultat ne montre pas une amélioration de la décision par l'historique,
+ni une conscience de soi ; aucun nouveau lot ni changement iPhone n'est lancé.
 
 Le [bilan complet du Colab 15](STATE_INTERCHANGE_RESULTS.md) est reçu et vérifié :
 19 584 passages, 3 456 témoins identiques et 4 608 copies finales. À la couche 23,

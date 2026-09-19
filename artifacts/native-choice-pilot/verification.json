@@ -1,0 +1,14 @@
+{
+  "schema": "menia-native-choice-verification-v1",
+  "verified": true,
+  "origin": "transformers_gpu",
+  "planHash": "04c2b51abaee6bf57950b7b9e820a395715dbb6b0536135e31f884cd609e9499",
+  "sourceHash": "473f12cc9623f9639f85e3d0dde71bd0f52e5e744c2deb82643d07d05ec82705",
+  "journalSHA256": "d469753914339cfaddb0b49cbcdd10b966c8ea6874d51fa791ebe490f7d7d785",
+  "recorded": 4884,
+  "publicRiskTables": 4,
+  "nativeTables": 24,
+  "primaryContrasts": 12,
+  "maxAbsoluteDifference": 2.220446049250313e-16,
+  "scope": "Separate exact grading, scalar loss/latency accounting, native actions inferred from executed engine, paired bootstrap and manual quantiles. Shared plan and strict journal reader. Not an external collector replication."
+}

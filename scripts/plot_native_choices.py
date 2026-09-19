@@ -42,7 +42,7 @@ def plot(report,verification,path):
             for position,value in zip(x+offset,values):ax.text(position,value+.015,f'{value:.3f}',ha='center',fontsize=9,rotation=90)
         ax.set(xticks=x,xticklabels=labels,ylim=(0,1.18),ylabel='Perte moyenne en points',title=f'Coût de vérification : {cost:.1f}\n96 questions par condition · actions exécutées')
         ax.grid(axis='y',alpha=.15)
-        if column==0:ax.legend(loc='upper left',frameon=False,fontsize=9)
+        if column==0:fig.legend(*ax.get_legend_handles_labels(),loc='upper center',bbox_to_anchor=(.5,.958),ncol=2,frameon=False,fontsize=10)
         ax=fig.add_subplot(gs[2,column])
         for i,(w,m) in enumerate(configs):
             c=next(c for c in comparisons if (c['cost'],c['wording'],c['mapping'])==(cost,w,m))
@@ -60,7 +60,7 @@ def plot(report,verification,path):
     if report['origin']=='synthetic_fixture':title='DONNÉES SYNTHÉTIQUES — vérification de la présentation'
     fig.suptitle(title,fontsize=16,y=.985)
     fig.text(.5,.035,'En bas : traits épais = intervalles individuels à 95 % ; traits fins = intervalles nominaux à 99,5833… % pour les douze comparaisons.\n'
-        'Seuil de gain fixé : 0,02 point. Bootstrap de 96 questions stratifié par catégorie ; réponses partagées entre conditions, pas 2 304 unités indépendantes.\n'
+        'Seuil de gain fixé : 0,02 point. Bootstrap de 96 questions stratifié par catégorie ; questions partagées entre conditions, pas 2 304 unités indépendantes.\n'
         'Les points sont une utilité attribuée, distincte des durées mesurées. L’historique peut modifier le choix et la réponse. Ce graphique ne mesure pas la conscience.',
         ha='center',fontsize=10)
     fig.tight_layout(rect=(.008,.11,.992,.955),h_pad=3,w_pad=2.5)

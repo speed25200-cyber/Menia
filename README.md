@@ -185,13 +185,22 @@ durées mesurées restent distincts. Six tests de collecte/génération passent,
 ainsi qu'un test du calcul séparé. Aucun résultat réel de ce protocole n'est
 encore disponible à son gel ; l'objectif de conscience reste non atteint.
 Le [Colab 18 fixé](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/8c12825080515632cc858035b79a5a96dcb7b5af/notebooks/18_native_choice_colab.ipynb)
-est lancé par MCP le 19 septembre à 19:13 UTC. Les sept tests passent dans
-Colab ; le [reçu de démarrage](artifacts/native-choice-pilot/execution-start.json)
-atteste 737 enregistrements sur 4 884 à 19:17:20 UTC, processus vivant et
-empreintes conformes. Ce constat ne rapporte pas de score comportemental.
-La figure est préparée et inspectée sur des données synthétiques avant lecture
-des résultats réels ; le calcul principal et le calcul séparé concordent sur
-ce journal fictif à `5,552e-17` près.
+est [terminé et audité](docs/NATIVE_CHOICE_RESULTS.md), après exécution par MCP
+le 19 septembre de 19:13 à 19:31 UTC : 4 884 enregistrements sans erreur technique,
+3 644 appels LLM, 1 152 appels d'outil et 88 exécutions sans action pour code
+invalide. **Les quatre contrôles publics et les douze contrastes de bénéfice
+de l'historique échouent.** Les contrôles atteignent 1/45, 3/45, 21/45 et
+21/45 choix optimaux, sous le seuil de 41/45. Les choix valides sont toujours
+directs dans la première formulation, toujours avec outil dans la seconde.
+Le changement de formulation change aussi l'ordre des options : le diagnostic
+ne sépare pas ces deux causes possibles. L'historique ne réduit aucune perte ;
+quatre contrastes montrent une dégradation avec intervalle corrigé excluant zéro.
+Les sept tests passent dans Colab. Le recalcul principal est exact et le
+[calcul séparé](artifacts/native-choice-pilot/verification.json) concorde à
+`2,221e-16` près, avant lecture des scores. Le [reçu final](artifacts/native-choice-pilot/receipt.json)
+et la figure conservent toutes les conditions. La prochaine question est la
+stabilité des décisions lorsque formulation, ordre et code sont variés
+indépendamment ; aucun mécanisme de conscience n'est confirmé.
 
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
 Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)
