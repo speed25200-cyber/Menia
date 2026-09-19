@@ -6,6 +6,12 @@ La [capture de confiance seule](OUTPUT_CONFIDENCE_VALIDATION.md) est déjà
 vérifiée sur quatre cas courts du Qwen3-4B préentraîné. Le présent ajout capture
 aussi l'entrée et deux états internes dans la même génération.
 
+**Suite fixée depuis cette préparation :** le [protocole Colab 17](NATURAL_ERROR_PROTOCOL.md)
+réunit maintenant ces composants avec un journal avant tirage, un traitement
+explicite des interruptions et neuf comparaisons principales. Les huit tests
+de collecte passent. Les paragraphes de préparation ci-dessous décrivent l'état
+antérieur au gel ; aucun gain de prévision du nouveau jeu n'est encore mesuré.
+
 ## Une comparaison avec trois nombres ne suffit pas
 
 Le maximum de probabilité, la marge des deux premiers tokens et l'entropie

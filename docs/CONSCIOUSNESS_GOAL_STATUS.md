@@ -93,8 +93,13 @@ ajoutent ensuite un contrôle utilisant l'état final, en plus des résumés de
 confiance, ainsi que 3 456 questions disjointes et des lecteurs sans accès au
 test. Quatorze tests logiciels passent. La capture commune est ensuite exécutée
 sur Qwen3-4B/A100 : quatre cas courts passent 48 vérifications cumulées et les
-deux contrôles entre graines. Le collecteur et l'analyse restent à finaliser
-avant les 3 456 nouvelles questions ; aucun gain de prévision n'est établi.
+deux contrôles entre graines. Le [protocole 17](NATURAL_ERROR_PROTOCOL.md) fixe
+ensuite collecte et analyse avant les 3 456 nouvelles questions. Il compare
+l'apport intermédiaire au contrôle final et à deux états de remplacement,
+avec neuf contrastes corrigés et un gain minimal fixé. Le journal engage les
+prévisions avant le premier tirage et refuse les remplacements silencieux
+d'essais interrompus. Huit tests de collecte passent. Aucun gain de prévision,
+usage natif de ce lecteur ou conscience n'est encore établi.
 
 Le [diagnostic 13 reçu et audité](COMPOSITION_DIAGNOSTIC_RESULTS.md) comprend
 13 824 évaluations, zéro entraînement et 3 456 témoins identiques. Les seuils
