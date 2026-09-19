@@ -302,6 +302,13 @@ est lancé sur A100 : 23 tests passent aussi dans Colab, et le
 [reçu de lancement](artifacts/native-answer-confidence-pilot/launch.json)
 confirme les premières mises à jour avec les empreintes attendues.
 
+Une [préparation d'interventions causales](docs/CONFIDENCE_PREFIX_INTERVENTIONS.md)
+ajoute ensuite un échange partiel au préfixe commun et un témoin de modification
+directe des codes de sortie. Cinq tests passent sur Qwen miniature aléatoire,
+sans changer les poids ni le Colab 23. Il reste à identifier une représentation
+prédictive et à mesurer son usage dans l'action ; les contrôles construits ne
+sont pas des performances de Menia.
+
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
 Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)
 entraîne deux petits adaptateurs Qwen3-4B, avec cibles correctes ou mélangées,

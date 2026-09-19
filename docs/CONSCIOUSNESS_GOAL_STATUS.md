@@ -67,6 +67,16 @@ constate 19 mises à jour du premier adaptateur, sans appel de calibration
 ou de test à cet instant. Cette progression ne valide pas encore la prévision
 de ses erreurs ni son usage dans une décision.
 
+La [préparation d'interventions avant jugement et action](CONFIDENCE_PREFIX_INTERVENTIONS.md)
+ajoute cinq tests sur petit Qwen aléatoire. Un échange partiel cible le même
+préfixe avant deux suites divergentes ; le témoin sans changement conserve
+exactement les logits. Un second témoin déplace directement le log-rapport
+de deux tokens de −1 ou +1 sans utiliser de labels d'exactitude. Il montre
+pourquoi déplacer un score ne suffit pas à découvrir une auto-évaluation.
+Ces opérations sont vérifiées sur CPU ; aucune direction de confiance
+apprise ni effet utile sur une décision n'est encore identifié. Elles ne
+modifient pas la tentative Colab 23 en cours.
+
 Le [bilan du Colab 21](ACTION_DECOMPOSITION_RESULTS.md) est reçu et vérifié :
 2 448 appels, dont 288 rejeux identiques, avec poids inchangés. Les erreurs
 contextualisées ne se réduisent pas à l'incapacité de comparer les nombres
