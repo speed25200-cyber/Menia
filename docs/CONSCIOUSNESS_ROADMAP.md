@@ -116,6 +116,12 @@ reformulé (50,0–51,0 %) malgré un bon classement. La base est elle-même fra
 sur certaines consignes publiques. La correction suivante doit viser la
 décision native et réserver de nouvelles formulations ; un seuil externe
 ne résout pas la généralisation observée ici.
+Le [Colab 14 reçu et audité](OPTIMIZER_MEMORY_RESULTS.md) précise une cause :
+la poursuite d'Adam sans nouveaux gradients suffit à détériorer les décisions
+canoniques. Effacer son premier moment améliore les six conditions principales,
+mais détériore les six conditions reformulées. La prochaine correction doit donc
+traiter ensemble rétention et généralisation, avec formulations nouvelles et
+contrôles publics ; un simple changement d'optimiseur ne règle pas le problème.
 La [note sur le transfert d'état ou de réponse](MECHANISTIC_COMPOSITION_REVIEW.md)
 prépare un contraste mécanistique conditionnel et ses explications concurrentes.
 Elle ne constitue pas un protocole supplémentaire déjà fixé ou exécuté.

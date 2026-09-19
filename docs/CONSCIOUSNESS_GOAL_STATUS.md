@@ -1,8 +1,8 @@
 # État de l'objectif de conscience et de nouveauté
 
-**État actuel : objectif de conscience et de nouveauté non atteint. Le Colab 13
-confirme qu'un bon classement des états ne fournit pas une décision stable :
-la calibration externe réussit en canonique et échoue après reformulation.**
+**État actuel : objectif de conscience et de nouveauté non atteint. Le Colab 14
+identifie une dérive liée aux moments d'Adam : leur remise à zéro protège la
+décision canonique, mais le bénéfice ne généralise pas aux reformulations.**
 
 La [réanalyse des pertes](OPTIMIZATION_MEMORY_REVIEW.md) relève ensuite une
 piste exploratoire : l'absence est bien apprise en fin de phase cachée, mais
@@ -12,18 +12,23 @@ compare donc quatre suites depuis les mêmes poids et le même état AdamW,
 avec reproduction exacte obligatoire du témoin original. L'[exécution GPU](../artifacts/optimizer-memory-pilot/execution-start.json)
 a commencé le 19 septembre à 14:39 UTC. Les six tests passent dans Colab et
 les [trois témoins reproduisent exactement les anciens poids](../artifacts/optimizer-memory-pilot/training-freeze.json).
-Les 288 mises à jour sont terminées, les douze checkpoints et trois états
-d'optimiseur sont vérifiés sur PC. La collecte des 29 184 réponses est en
-cours ; cette validation technique ne remplace pas le résultat comportemental.
-Il traite une cause possible d'instabilité avant une éventuelle correction des
-consignes, sans établir de représentation de soi ni d'expérience subjective.
+Les 288 mises à jour et 29 184 évaluations sont terminées ; les douze checkpoints,
+trois états d'optimiseur et 7 296 témoins identiques sont vérifiés sur PC.
+Le [bilan complet](OPTIMIZER_MEMORY_RESULTS.md) retrouve les 408 tableaux et
+306 contrastes par recalcul indépendant. La poursuite originale et les pas
+sans nouveaux gradients dégradent les six conditions canoniques principales.
+L'effacement du premier moment gagne 10,42–48,96 points, mais perd 4,17–26,04
+points dans les six conditions reformulées. Les intervalles individuels
+excluent zéro ; ils ne constituent pas un verdict global corrigé.
+L'expérience précise une cause d'instabilité, sans résoudre la généralisation
+native ni établir de représentation de soi ou d'expérience subjective.
 
 Un [audit auxiliaire des déplacements](OPTIMIZER_DISPLACEMENT_AUDIT.md), calculé
 sur les sauvegardes avant lecture du bilan comportemental complet, trouve des
 directions presque identiques entre poursuite originale et gradients nuls
 (cosinus 0,999804–0,999999). La formule indépendante d'Adam retrouve la branche
-nulle à moins de 9,91 × 10⁻⁹ par coordonnée. Cela vérifie la manipulation et
-précise une cause candidate ; les effets sur les réponses restent à analyser.
+nulle à moins de 9,91 × 10⁻⁹ par coordonnée. Cela vérifie la manipulation ; les
+effets sur les réponses et leurs compromis sont désormais analysés ci-dessus.
 
 La [préparation du test d'erreurs naturelles](NATURAL_ERROR_CONFIDENCE_REVIEW.md)
 constate que les 672 anciens essais n'enregistraient pas les probabilités de

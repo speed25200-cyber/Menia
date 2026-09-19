@@ -4,6 +4,10 @@ Note du 19 septembre 2026, après les résultats 12 et 13. **Réanalyse explorat
 et proposition expérimentale ; aucune nouvelle inférence Qwen préentraînée
 n'est encore exécutée pour cette proposition.**
 
+Mise à jour : cette note conserve l'indice initial. Le test proposé a ensuite
+été figé, exécuté et audité dans le [bilan du Colab 14](OPTIMIZER_MEMORY_RESULTS.md),
+qui distingue sa correction canonique de son coût sur la reformulation.
+
 ## L'indice dans le journal existant
 
 Le [Colab 12](STATE_COMPOSITION_PROTOCOL.md) entraîne quatre époques de 16 mises

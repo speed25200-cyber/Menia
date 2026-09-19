@@ -94,17 +94,19 @@ dans la base et change différemment selon les adaptateurs et les codes.
 Les 3 456 témoins, neuf poids et 108 contrastes sont vérifiés ; aucune sortie
 hors code ni erreur technique. La décision native stable reste à obtenir.
 
-**Protocole suivant : [effet de la dernière phase et de la mémoire d'Adam](docs/OPTIMIZER_MEMORY_PROTOCOL.md).**
+**Résultat : [dérive d'Adam et compromis entre formulations](docs/OPTIMIZER_MEMORY_RESULTS.md).**
 Le [Colab 14](https://colab.research.google.com/github/speed25200-cyber/Menia/a85236779ecddb59d2b46c85011de7a8d23fc4bb/notebooks/14_optimizer_memory_colab.ipynb)
-compare quatre branches depuis un même checkpoint, avec un témoin
-qui doit reproduire exactement les poids du Colab 12. Il prévoit 29 184 réponses
-pour départager rétention, dérive sans nouveaux gradients et effet de l'effacement
-du premier moment. L'[exécution démarrée le 19 septembre à 14:39 UTC](artifacts/optimizer-memory-pilot/execution-start.json)
-a passé les six tests dans Colab. Les [douze checkpoints et trois états Adam](artifacts/optimizer-memory-pilot/training-freeze.json)
-sont maintenant sauvegardés et vérifiés sur PC ; les trois témoins retrouvent
-exactement les anciens poids. L'entraînement est terminé et l'évaluation est
-en cours. L'[indice qui motive le test](docs/OPTIMIZATION_MEMORY_REVIEW.md)
-est une réanalyse exploratoire des anciennes pertes, pas une preuve causale.
+est reçu et audité : 288 pas d'optimisation, 29 184 réponses, 7 296 paires témoins
+exactes et trois reproductions des anciens poids. La dernière phase originale
+dégrade la décision canonique ; seize pas sans nouveaux gradients suffisent
+aussi à la dégrader. L'effacement du premier moment améliore les six conditions
+principales de 10,42–48,96 points, mais dégrade les six conditions reformulées de
+4,17–26,04 points. Le diagnostic identifie une cause d'instabilité, sans résoudre
+la généralisation. Les 408 tableaux et 306 contrastes concordent avec le recalcul
+indépendant ; les douze checkpoints et trois états Adam sont sauvegardés.
+L'[audit des déplacements](docs/OPTIMIZER_DISPLACEMENT_AUDIT.md) confirme la
+trajectoire du contrôle nul par une formule indépendante. Aucun résultat de
+conscience ni installation sur iPhone n'en découle.
 
 La [préparation du prochain test d'erreurs naturelles](docs/NATURAL_ERROR_CONFIDENCE_REVIEW.md)
 ajoute une capture des probabilités de sortie, absentes des 672 anciens essais.
