@@ -109,15 +109,16 @@ trajectoire du contrôle nul par une formule indépendante. Aucun résultat de
 conscience ni installation sur iPhone n'en découle.
 
 Le [protocole 15 — transfert d'état ou copie de réponse](docs/STATE_INTERCHANGE_PROTOCOL.md)
-prend les trois checkpoints précédant la dérive d'Adam pour un diagnostic
-mécanistique canonique. Il fixe 19 584 passages, sans apprentissage ni recherche
-d'alignement, et distingue trois prédictions grâce à toutes les combinaisons
-d'états et de codes. Six tests logiciels passent ; aucun résultat Qwen3-4B de
-cette nouvelle expérience n'est encore disponible lors du gel du protocole.
-L'[exécution par MCP](artifacts/state-interchange-pilot/execution-start.json)
-est ensuite observée sur l'A100 de 40 Go : 3 264 passages enregistrés à
-16:08:51 UTC le 19 septembre, sur 19 584 prévus. Les six tests passent aussi
-dans Colab ; ce reçu de démarrage ne constitue pas un résultat scientifique.
+est [terminé, reçu et audité](docs/STATE_INTERCHANGE_RESULTS.md) : 19 584 passages,
+sans apprentissage ni alignement appris. À la couche 23, les trois checkpoints
+favorisent l'état du donneur utilisé avec le code destinataire : 93,36 %, 96,09 %
+et 100 % d'accord ; les six contrastes principaux sont positifs avec intervalles
+individuels excluant zéro. Les douze prérequis intacts passent. Le contrôle
+public se transfère lui aussi à 100 % : le résultat n'établit pas une spécificité
+de connaissance de soi. Les 3 456 témoins et 4 608 copies finales sont exacts ;
+le recalcul séparé retrouve 72 tableaux, 48 tableaux intacts et 144 contrastes.
+La reformulation, le transfert entre questions et l'expérience subjective
+restent non établis.
 
 La [préparation du prochain test d'erreurs naturelles](docs/NATURAL_ERROR_CONFIDENCE_REVIEW.md)
 ajoute une capture des probabilités de sortie, absentes des 672 anciens essais.

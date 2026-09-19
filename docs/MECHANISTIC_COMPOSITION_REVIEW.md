@@ -101,3 +101,14 @@ font la même prédiction. Le plan factoriel complet sépare ces deux explicatio
 du transfert d'état. Il commence par un échange de vecteur entier, sans alignement
 appris, avec couches de contrôle fixées ; ce n'est pas encore la localisation
 d'un sous-espace ni une démonstration de modèle de soi.
+
+**Après le [bilan complet 15](STATE_INTERCHANGE_RESULTS.md) :** les trois
+répétitions favorisent le transfert d'état avec le code destinataire à la
+couche 23 (93,36 %, 96,09 %, 100 % d'accord). Les douze prérequis intacts passent
+et les six différences principales sont positives avec intervalles individuels
+excluant zéro. Le contrôle public réalise le même type de transfert à 100 %.
+Ce résultat apporte un appui au mécanisme fonctionnel testé dans le domaine
+canonique, mais ne tranche pas entre une représentation d'état disponible
+indépendamment de la question et une valeur binaire calculée pour répondre
+à la question courante. Les échanges entre tâches sont la prochaine question
+à spécifier ; ils n'ont pas été effectués dans cette expérience.

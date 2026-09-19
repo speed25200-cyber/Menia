@@ -1,8 +1,20 @@
 # État de l'objectif de conscience et de nouveauté
 
-**État actuel : objectif de conscience et de nouveauté non atteint. Le Colab 14
-identifie une dérive liée aux moments d'Adam : leur remise à zéro protège la
-décision canonique, mais le bénéfice ne généralise pas aux reformulations.**
+**État actuel : objectif de conscience et de nouveauté non atteint. Le Colab 15
+montre un transfert d'information utilisable avec le code du destinataire
+dans les trois checkpoints. Le contrôle public réussit aussi : la spécificité
+d'un modèle de soi et le transfert entre questions restent à établir.**
+
+Le [bilan complet du Colab 15](STATE_INTERCHANGE_RESULTS.md) est reçu et vérifié :
+19 584 passages, 3 456 témoins identiques et 4 608 copies finales. À la couche 23,
+l'accord avec l'état du donneur exprimé selon le code destinataire atteint
+93,36 %, 96,09 % et 100 %. Les six contrastes principaux sont positifs avec
+intervalles individuels excluant zéro, sans correction de multiplicité. Les
+douze prérequis intacts passent. Le marqueur public se transfère à 100 % dans
+les trois répétitions ; une valeur binaire calculée selon la question reste
+une explication possible. L'audit indépendant retrouve les 72 tableaux de
+transfert, 48 tableaux intacts et 144 contrastes. Le Colab 14 continue de
+documenter un défaut de reformulation ; ce résultat canonique ne le corrige pas.
 
 La [réanalyse des pertes](OPTIMIZATION_MEMORY_REVIEW.md) relève ensuite une
 piste exploratoire : l'absence est bien apprise en fin de phase cachée, mais
@@ -30,23 +42,25 @@ directions presque identiques entre poursuite originale et gradients nuls
 nulle à moins de 9,91 × 10⁻⁹ par coordonnée. Cela vérifie la manipulation ; les
 effets sur les réponses et leurs compromis sont désormais analysés ci-dessus.
 
-Le [protocole 15](STATE_INTERCHANGE_PROTOCOL.md) examine maintenant un mécanisme
+Le [protocole 15](STATE_INTERCHANGE_PROTOCOL.md) a examiné un mécanisme
 sur les trois checkpoints avant cette dérive, dans leur domaine canonique.
 Il fixe 19 584 passages sans apprentissage, trois sites d'échange et un plan
 factoriel distinguant transfert d'état, copie du chiffre et absence d'effet.
 Six tests logiciels passent, dont un groupe complet de 136 passages d'un Qwen
 miniature aléatoire. Le transfert de formulation reste non résolu ; les prérequis
-de compétence seront revérifiés sur les nouvelles phrases avant interprétation.
+de compétence ont été revérifiés sur les nouvelles phrases et passent tous.
 
 L'[exécution 15 par MCP](../artifacts/state-interchange-pilot/execution-start.json)
 a démarré le 19 septembre à 16:03 UTC sur l'A100 de 40 Go. Les six tests passent
 aussi dans Colab. À 16:08:51 UTC, 24 groupes et 3 264 passages sont enregistrés
-sur 144 groupes et 19 584 passages prévus. Les empreintes des trois checkpoints
-et du journal parent sont vérifiées. Il s'agit d'un constat de démarrage ;
-les scores comportementaux ne sont pas encore analysés.
-Un [recalcul arithmétique séparé](STATE_INTERCHANGE_AUDIT.md) est préparé avant
+sur 144 groupes et 19 584 passages prévus. Ce constat de démarrage daté est
+conservé ; le [reçu final](../artifacts/state-interchange-pilot/receipt.json)
+atteste désormais la réception complète et les empreintes des trois checkpoints
+et du journal parent.
+Un [recalcul arithmétique séparé](STATE_INTERCHANGE_AUDIT.md) a été préparé avant
 leur lecture. Deux tests synthétiques couvrent mécanismes connus, erreurs,
-sorties hors options et bilans altérés ; ils ne préjugent pas du résultat GPU.
+sorties hors options et bilans altérés. Appliqué au bilan GPU complet, il concorde
+à 2,665 × 10⁻¹⁵ près ; il partage le plan et le lecteur d'intégrité.
 
 La [préparation du test d'erreurs naturelles](NATURAL_ERROR_CONFIDENCE_REVIEW.md)
 constate que les 672 anciens essais n'enregistraient pas les probabilités de
