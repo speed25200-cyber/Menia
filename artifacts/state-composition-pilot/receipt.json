@@ -25,8 +25,9 @@
   "fixedReadingRuleMet": false,
   "artifacts": {
     "first-audit-summary.json": "eedc45d3df488ba0f2e2ca8b4ac42afc84c609e537183695fce19faf469ae9af",
-    "first-audit-verification.json": "40d35fb513edb8460ffd732f8f8342b6c30d524a641f942170eb69b75712a54b",
+    "first-audit-verification.json": "7c3e1e28fb5941b16d4bafead9c43f6692b06504e5eac60e9596a34874f7a878",
     "state-composition.png": "1d3c8f67dd49aa10b70ca58b921926aba7904cc6c8f2c6dcf94c7d3ad60f6816"
   },
-  "note": "Complete experiment, not completion of the consciousness goal. No new adapter installed on iPhone."
+  "note": "Complete experiment, not completion of the consciousness goal. No new adapter installed on iPhone.",
+  "artifactHashEncoding": "Exact Git blob bytes; text line endings normalized by the repository."
 }
