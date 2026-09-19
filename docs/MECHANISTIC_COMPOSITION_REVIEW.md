@@ -90,3 +90,14 @@ externes améliorent la décision canonique, mais leur transfert reformulé
 des fragilités de la base. Le bon classement des états reste une observation
 fonctionnelle ; la présente proposition ne peut supposer une décision native
 correcte et indépendante de la formulation. Elle reste conditionnelle.
+
+**Après le [bilan 14](OPTIMIZER_MEMORY_RESULTS.md) :** le checkpoint commun
+avant la dernière phase retrouve une décision canonique correcte dans les trois
+répétitions. Le [protocole 15](STATE_INTERCHANGE_PROTOCOL.md) prend ces trois
+checkpoints pour un pilote canonique, sans supposer résolue la généralisation.
+Il précise une ambiguïté du tableau initial : quand état et code sont tous deux
+opposés, copier le chiffre du donneur et conserver la réponse du destinataire
+font la même prédiction. Le plan factoriel complet sépare ces deux explications
+du transfert d'état. Il commence par un échange de vecteur entier, sans alignement
+appris, avec couches de contrôle fixées ; ce n'est pas encore la localisation
+d'un sous-espace ni une démonstration de modèle de soi.

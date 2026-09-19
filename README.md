@@ -108,6 +108,13 @@ L'[audit des déplacements](docs/OPTIMIZER_DISPLACEMENT_AUDIT.md) confirme la
 trajectoire du contrôle nul par une formule indépendante. Aucun résultat de
 conscience ni installation sur iPhone n'en découle.
 
+Le [protocole 15 — transfert d'état ou copie de réponse](docs/STATE_INTERCHANGE_PROTOCOL.md)
+prend les trois checkpoints précédant la dérive d'Adam pour un diagnostic
+mécanistique canonique. Il fixe 19 584 passages, sans apprentissage ni recherche
+d'alignement, et distingue trois prédictions grâce à toutes les combinaisons
+d'états et de codes. Six tests logiciels passent ; aucun résultat Qwen3-4B de
+cette nouvelle expérience n'est encore disponible lors du gel du protocole.
+
 La [préparation du prochain test d'erreurs naturelles](docs/NATURAL_ERROR_CONFIDENCE_REVIEW.md)
 ajoute une capture des probabilités de sortie, absentes des 672 anciens essais.
 Elle sépare les statistiques disponibles avant la réponse de celles nécessitant

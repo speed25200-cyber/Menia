@@ -30,6 +30,14 @@ directions presque identiques entre poursuite originale et gradients nuls
 nulle à moins de 9,91 × 10⁻⁹ par coordonnée. Cela vérifie la manipulation ; les
 effets sur les réponses et leurs compromis sont désormais analysés ci-dessus.
 
+Le [protocole 15](STATE_INTERCHANGE_PROTOCOL.md) examine maintenant un mécanisme
+sur les trois checkpoints avant cette dérive, dans leur domaine canonique.
+Il fixe 19 584 passages sans apprentissage, trois sites d'échange et un plan
+factoriel distinguant transfert d'état, copie du chiffre et absence d'effet.
+Six tests logiciels passent, dont un groupe complet de 136 passages d'un Qwen
+miniature aléatoire. Le transfert de formulation reste non résolu ; les prérequis
+de compétence seront revérifiés sur les nouvelles phrases avant interprétation.
+
 La [préparation du test d'erreurs naturelles](NATURAL_ERROR_CONFIDENCE_REVIEW.md)
 constate que les 672 anciens essais n'enregistraient pas les probabilités de
 sortie. Une capture distingue maintenant statistiques avant le premier token
