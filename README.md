@@ -4,10 +4,11 @@ Assistant local expérimental : mémoire explicite, représentation de ses capac
 incertitude et évaluation. **Colab A100 40 ou 80 Go** pour l’adaptation ;
 **iPhone 17 Pro** comme cible d’inférence locale.
 
-**Statut : prototype de recherche. Le Colab 20 est terminé et audité : six
-entraînements et 6 912 décisions montrent un apprentissage partiel, mais
-le critère global de généralisation échoue. La décision reste sensible
-aux formulations et aux codes d'action, même avec des pertes déjà calculées.
+**Statut : prototype de recherche. Le Colab 21 est terminé et audité :
+comparaison numérique réussie sur 864/864 appels, mais choix de l'action
+par son nom limité à 514/864. La traduction d'un nom imposé réussit 423/432.
+Le Colab 20 reste un apprentissage partiel dont le critère global échoue.
+La décision reste sensible aux formulations et aux codes d'action.
 Le Colab 17 ne confirme
 aucun des neuf gains prédictifs principaux pour les états intermédiaires.
 La détection de rotations internes est reproduite, mais sa portée générale
@@ -238,12 +239,18 @@ une compétence publique ; aucune conscience ni installation sur iPhone n'en
 découle. Le notebook conserve l'environnement Menia déjà installé et refuse
 de remplacer une tentative existante.
 
-Le [diagnostic Colab 21](docs/ACTION_DECOMPOSITION_PROTOCOL.md) sépare maintenant
-comparaison numérique, choix par nom et traduction en code : 2 448 appels
-prévus, dont 288 rejeux exacts, avec les six adaptateurs du lot 20 figés.
-Le plan est fixé avant collecte ; aucun résultat de ce diagnostic n'est encore
-annoncé. Les réponses recombinées par le programme ne seront pas assimilées
-à une décision native ni à un modèle de soi appris.
+**Résultat : [comparaison réussie, décision contextualisée fragile](docs/ACTION_DECOMPOSITION_RESULTS.md).**
+Le [Colab 21](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/f8562d8b95e1fe83e9f29b6a21da1f29d66fa8e2/notebooks/21_action_decomposition_colab.ipynb)
+est terminé : 2 448 appels, 288 rejeux identiques au parent et six adaptateurs
+figés. La comparaison des pertes seules réussit 864/864 ; le choix DIRECT ou
+VERIFIER dans le contexte, 514/864 ; la traduction d'un nom imposé, 423/432.
+Associer le minimum à l'action par le programme, puis le traduire, atteint
+97,92 %, mais cette opération externe ne corrige pas la décision native du
+LLM. Un groupe demeure à 8/16 dans chaque bras et répétition. Les cinq tests
+passent sur PC et A100 ; les deux recalculs sont exacts et les neuf poids
+parents sont vérifiés. Aucune sortie invalide ni tronquée. La prochaine
+étape doit tester l'association valeur-action réalisée par le modèle,
+avec de nouveaux cas ; aucun modèle de soi ni conscience n'est établi ici.
 
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
 Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)

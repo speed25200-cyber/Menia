@@ -117,6 +117,25 @@ comportements ancien et courant, avec observateur externe, témoin sans
 régularisation et contrôle des classes. Le Colab 20 n'entraîne aucune
 explication ; son rang 8 ne teste pas cet effet. Son protocole reste inchangé.
 
+**Complément du 19 septembre, pendant le Colab 21 : Predictive Metacognition.**
+Le manuscrit accepté de *Scientific Reports* décrit un apprentissage conjoint
+du langage et de la confiance pour Llama-3-8B et Phi-3-Mini, avec LoRA et une
+tête de confiance conditionnelle. Il rapporte des gains de calibration et
+précise que les comparaisons aux modèles fermés emploient une extraction
+différente de la confiance. Les scripts et poids sont annoncés sur demande.
+Sa méthode définit des étiquettes binaires de correction, mais illustre aussi
+le corpus avec des valeurs de confiance graduées ; la relation exacte entre
+ces deux descriptions doit être clarifiée avant une reproduction.
+[Manuscrit accepté, §3–4](https://www.nature.com/articles/s41598-026-54840-2_reference.pdf).
+
+**Conséquence pour Menia :** ajouter une perte de confiance à celle du langage
+a un antécédent direct. Pour une adaptation propre, conserver la provenance
+des cibles : résultat réel de la réponse du checkpoint évalué, ou confiance
+attribuée au texte. Ces deux cibles ne testent pas la même chose. Un gain
+de calibration ne suffit pas à établir un accès privilégié ni une conscience.
+Ce travail est une piste d'entraînement distincte du lecteur externe testé
+au Colab 17 ; il ne change pas le diagnostic figé du Colab 21.
+
 ## Un contrôle « soi/autre » peut donner un faux signal
 
 Le module `research.audit_self_prediction_controls` énumère exactement des cas

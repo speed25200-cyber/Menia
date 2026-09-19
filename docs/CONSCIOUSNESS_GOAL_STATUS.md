@@ -1,12 +1,24 @@
 # État de l'objectif de conscience et de nouveauté
 
-**État actuel : objectif de conscience et de nouveauté non atteint. Le Colab 20
-montre un apprentissage partiel après six adaptations, mais échoue au critère
-global de généralisation sur 6 912 décisions. Les choix restent sensibles
-aux formulations et aux symboles. Le Colab 18 ne confirme
+**État actuel : objectif de conscience et de nouveauté non atteint. Le Colab 21
+réussit les comparaisons numériques isolées (864/864), mais le choix de
+l'action par son nom reste faible (514/864). La traduction imposée réussit
+423/432. Le Colab 20 reste un échec global de généralisation. Le Colab 18 ne confirme
 aucun bénéfice de l'historique. Le Colab 17 ne confirme pas l'apport prédictif
 fixé pour les états intermédiaires ; le Colab 16 ne confirme pas un contenu
 général réutilisable.**
+
+Le [bilan du Colab 21](ACTION_DECOMPOSITION_RESULTS.md) est reçu et vérifié :
+2 448 appels, dont 288 rejeux identiques, avec poids inchangés. Les erreurs
+contextualisées ne se réduisent pas à l'incapacité de comparer les nombres
+isolés de cette grille. Le chemin recombiné « minimum puis code » atteint
+97,92 %, mais le programme y associe le minimum à son action ; ce gain ne
+montre donc pas une correction native du modèle. La recombinaison passant
+par son choix par nom ne produit pas de gain constant. Les cinq tests passent,
+les deux recalculs sont exacts et les neuf poids parents sont vérifiés.
+Le prochain travail doit apprendre et tester cette association dans le
+modèle, avec de nouveaux cas, avant de lui attribuer l'usage d'une estimation
+propre. Le résultat ne démontre ni conscience ni nouveauté de principe.
 
 Le [bilan complet du Colab 20](ACTION_BINDING_RESULTS.md) est reçu et audité.
 L'entraînement avec permutations améliore les choix sur la formulation
@@ -17,12 +29,9 @@ Une présentation avec lettres obtient 0/16 dans les trois répétitions ;
 les 6 912 codes sont pourtant valides. Les neuf fichiers de poids et les
 deux recalculs sont vérifiés, avec écarts numériques nuls. Les cinq tests
 passent sur PC et Colab. Ce résultat concerne des valeurs publiques, pas
-l'estimation d'un état propre. Le prochain diagnostic doit distinguer
-l'association valeur-action de son expression sous un code arbitraire.
-Le [protocole 21](ACTION_DECOMPOSITION_PROTOCOL.md) met ce diagnostic en place :
-comparaison numérique, choix par nom et traduction imposée, avec les poids
-figés et 288 rejeux obligatoires avant les nouvelles réponses. Ses 2 448
-appels sont fixés avant collecte ; aucun résultat n'est encore annoncé.
+l'estimation d'un état propre. Le [protocole 21](ACTION_DECOMPOSITION_PROTOCOL.md)
+a ensuite séparé comparaison numérique, choix par nom et traduction imposée,
+avec les poids figés ; les résultats sont présentés ci-dessus.
 
 Le [bilan complet du Colab 19](RISK_PRESENTATION_RESULTS.md) est reçu et audité.
 Les deux contrôles globaux, probabilité et pertes fournies, échouent avec les
