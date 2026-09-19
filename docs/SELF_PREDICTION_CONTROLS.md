@@ -85,6 +85,25 @@ appris ; les conditions physiques injectées du Colab 12 restent fixées par
 l'expérimentateur. Elle ne modifie pas son protocole en cours et n'est pas une
 invention revendiquée.
 
+**Complément du 19 septembre : Tomaszewski, prépublication du 14 août.**
+Le *Self-Interventional Learning* apprend les conséquences de modifications
+internes et les prédit avant leur exécution réservée. Les expériences causales
+utilisent notamment un système construit de 24 composants. La comparaison
+avec des associations intervention–conséquence permutées sépare l'information
+apprise de la seule distribution des cibles ; utiliser cette information
+améliore les actions face au contrôle qui l'ignore. L'avantage sur une mémoire
+empirique directe n'est toutefois pas significatif, et l'avantage de robustesse
+ne se retrouve pas sur CIFAR-10/ResNet. Le texte exclut une conclusion de conscience.
+[Méthodes, résultats et limites, §4.6–4.10, §6 et §7.6](https://arxiv.org/html/2608.14894v1#S4.SS6).
+Sources lues ; résultats rapportés par l'auteur, non reproduits ici.
+
+**Conséquence pour la suite :** distinguer détection d'une intervention,
+prévision de ses conséquences et utilité décisionnelle. Dans un futur essai,
+figer prévisions et actions avant les conséquences réservées, et conserver
+une politique directe de même budget parmi les références. Ce précédent
+limite une revendication de nouveauté de la boucle générale ; il ne réalise
+pas son intégration à Menia. Le Colab 12 en cours reste inchangé.
+
 ## Un contrôle « soi/autre » peut donner un faux signal
 
 Le module `research.audit_self_prediction_controls` énumère exactement des cas
