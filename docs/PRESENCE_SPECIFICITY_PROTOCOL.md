@@ -10,8 +10,10 @@ du Colab 10 et ne constitue pas sa réplication avec de nouveaux entraînements.
 sur A100 de 40 Go. La révision scientifique `e783e117f2d59c89bcf4be467506ae115e5aaeff`
 et le [notebook de continuation](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/84a7d43808423f0e0e905fc05c29f00cdf6b634f/notebooks/11_presence_specificity_colab.ipynb)
 ont été publiés avant ce lancement. Les huit tests passent aussi dans Colab.
-L'archive prévue est `menia-specificite-questions.zip` ; aucun résultat n'est
-encore rapporté dans cette version du protocole.
+**Mise à jour après collecte :** les 9 216 évaluations sont terminées et
+l'archive `menia-specificite-questions.zip` est reçue. Le
+[résultat négatif](PRESENCE_SPECIFICITY_RESULTS.md) et son audit sont rapportés
+séparément ; les règles scientifiques ci-dessous restent inchangées.
 
 ## Question et explication concurrente
 

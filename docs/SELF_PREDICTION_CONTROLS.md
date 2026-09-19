@@ -65,7 +65,7 @@ constant pour la prédiction de soi. Ce résultat renforce deux contrôles déj�
 prévus ici : références conditionnelles et comparaison réciproque. Entraîner
 Qwen3-4B à prévoir son comportement ne constituerait donc pas, en soi, une
 nouveauté. Ce complément ne reproduit pas leurs expériences et ne change pas
-le [protocole du Colab 11](PRESENCE_SPECIFICITY_PROTOCOL.md) en cours.
+le [protocole du Colab 11](PRESENCE_SPECIFICITY_PROTOCOL.md).
 [Texte complet](https://arxiv.org/pdf/2608.30980).
 
 ## Un contrôle « soi/autre » peut donner un faux signal

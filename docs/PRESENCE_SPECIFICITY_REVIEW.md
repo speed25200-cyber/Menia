@@ -6,7 +6,9 @@ ni son critère principal, ni ses conditions de test. Les essais proposés
 ci-dessous n'étaient pas encore un protocole fixé ou exécuté lors de sa rédaction.
 **Mise à jour :** le [protocole distinct du Colab 11](PRESENCE_SPECIFICITY_PROTOCOL.md)
 est désormais implémenté, figé dans la révision `e783e117f2d59c89bcf4be467506ae115e5aaeff`,
-et lancé sur l'A100 le 19 septembre. La note d'origine ci-dessous est conservée.
+et exécuté sur l'A100 le 19 septembre. Son
+[résultat négatif est reçu et vérifié](PRESENCE_SPECIFICITY_RESULTS.md).
+La note d'origine ci-dessous est conservée.
 
 ## Ce qui motive ce contrôle
 

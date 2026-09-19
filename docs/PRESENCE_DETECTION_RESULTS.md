@@ -139,9 +139,11 @@ condition dans le texte. Il dépasse les références de ce test. La
 explique toutefois pourquoi une bonne détection peut rester une classification
 ordinaire et ne démontre pas une compréhension de la question sur soi.
 
-La prochaine expérience doit tester la spécificité du compte rendu avec les
-adaptateurs figés : échanges explicites des réponses `0`/`1`, questions de
-lecture publique utilisant les mêmes réponses, et contrôles visibles de
-compréhension. Ses données et critères seront fixés séparément avant exécution.
+Cette suite a désormais été exécutée dans le
+[Colab 11](PRESENCE_SPECIFICITY_RESULTS.md), avec adaptateurs figés, réponses
+`0`/`1` inversées, questions de lecture publique et contrôles visibles. Elle
+échoue à son critère distinct : le signal reste orienté vers « 1 » malgré
+l'inversion et déborde sur les questions publiques. La détection mesurée ici
+reste valide, mais ne démontre pas un compte rendu sémantiquement fiable.
 Le transfert aux erreurs naturelles et le bénéfice pour les décisions restent
 à tester ensuite. Aucun adaptateur n'est installé sur l'iPhone par cet essai.

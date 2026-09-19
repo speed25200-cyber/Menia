@@ -107,3 +107,21 @@ Une réussite établirait une détection entraînée dans ce montage. La prévis
 d'erreurs naturelles et l'utilité pour les décisions nécessiteraient ensuite
 des essais distincts. Aucun adaptateur de ces expériences n'est installé dans
 l'application iPhone par cette continuation.
+
+## Complément après le Colab 11
+
+Le [test de spécificité](PRESENCE_SPECIFICITY_RESULTS.md) est terminé :
+9 216 évaluations, neuf adaptateurs figés, zéro mise à jour, aucune erreur,
+2 304 copies témoins exactes et recalcul indépendant concordant. La présence
+reste détectable sur les phrases nouvelles, mais les scores ne s'inversent
+pas avec la règle demandée. Ils favorisent aussi « 1 » dans les questions
+publiques. Leur amplitude dépend de la question : il ne s'agit pas exactement
+d'un déplacement constant indépendant de toute consigne. Le contrôle visible
+échoue aussi pour les adaptateurs forts, ce qui empêche d'attribuer ce défaut
+au seul accès interne. Le critère fixé est négatif ; celui du Colab 10 ne change pas.
+
+La consultation du texte complet de Zeng et al. précise également le précédent
+sur l'entraînement de Qwen3-4B, avec amélioration de l'auto-modélisation sans
+avantage constant de prédiction de soi. Le [complément de lecture](SELF_PREDICTION_CONTROLS.md)
+sépare ce résultat publié de nos propres expériences. Aucun de ces éléments
+ne justifie une revendication de conscience ou de nouveauté majeure.

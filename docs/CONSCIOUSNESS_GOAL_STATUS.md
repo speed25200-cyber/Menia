@@ -1,24 +1,28 @@
 # État de l'objectif de conscience et de nouveauté
 
 **État actuel : objectif de conscience et de nouveauté non atteint ; la détection
-de rotations internes est reproduite dans trois répétitions.**
+de rotations internes est reproduite, mais échoue à suivre la consigne inversée.**
 
 Le [Colab 10 reçu et vérifié](PRESENCE_DETECTION_RESULTS.md) comprend neuf
 adaptateurs, 576 mises à jour et 12 864 évaluations. Le bras entraîné atteint
 une AUROC de 0,980, 0,989 et 1,000 contre environ 0,5 pour la base. Les six
 contrastes exigés par la règle fixée sont positifs avec intervalles excluant
 zéro ; le contrôle visible de présence réussit. Le transfert tardif est faible
-et la lecture inversée se dégrade. La [spécificité du compte rendu](PRESENCE_SPECIFICITY_REVIEW.md),
-sa relation avec les erreurs naturelles et son utilité pour agir restent à
-établir. Ces adaptateurs sont distincts de la politique de vérification déjà
+et la lecture inversée se dégrade. Le [Colab 11 reçu et vérifié](PRESENCE_SPECIFICITY_RESULTS.md)
+échoue au critère de spécificité : la perturbation favorise « 1 » malgré
+l'inversion demandée et sur des questions publiques, avec une amplitude qui
+dépend de la question. Le contrôle visible échoue aussi pour le fort ; le défaut
+ne peut donc pas être attribué au seul accès interne. Sa relation avec les
+erreurs naturelles et son utilité pour agir restent à établir. Ces adaptateurs sont distincts de la politique de vérification déjà
 intégrée à l'agent expérimental et restent hors de l'application iPhone.
 
 La [feuille de route](CONSCIOUSNESS_ROADMAP.md) répond à la question « comment » de façon
 conditionnelle : mécanismes candidats, état mesuré de Menia et limites
 théoriques. Les Colab 10 et 11 possèdent des critères fixés. Le
-[Colab 11](PRESENCE_SPECIFICITY_PROTOCOL.md), lancé par MCP sur l'A100,
+[Colab 11](PRESENCE_SPECIFICITY_PROTOCOL.md), exécuté par MCP sur l'A100,
 teste la dépendance du signal au sens de la question avec les neuf adaptateurs
-figés et 9 216 nouvelles évaluations. Les étapes ultérieures restent des
+figés et 9 216 nouvelles évaluations. Son résultat négatif est résumé ci-dessus.
+Les étapes ultérieures restent des
 propositions à formaliser avant collecte.
 La [revue du 19 septembre](RESEARCH_REVIEW_2026_09_19.md) confirme que le
 dernier export retrouvé avant la nouvelle exécution était celui du Colab 09 et corrige des formulations

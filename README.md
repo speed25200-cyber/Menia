@@ -6,7 +6,8 @@ incertitude et évaluation. **Colab A100 80 Go** pour l’adaptation ;
 
 **Statut : prototype de recherche. La boucle d'agent apprend ses effets d'action
 et conserve son histoire entre sessions. La détection de rotations internes
-est reproduite dans trois répétitions ; la localisation reste non reproduite.**
+est reproduite dans trois répétitions ; son compte rendu échoue au contrôle de
+consigne inversée. La localisation reste non reproduite.**
 La conscience subjective n'est pas établie. La [feuille de route](docs/CONSCIOUSNESS_ROADMAP.md)
 précise les mécanismes candidats, les hypothèses théoriques et les expériences
 envisagées. Elle ne constitue pas une recette validée. La continuité repose sur un journal
@@ -48,19 +49,24 @@ une exécution autonome par MCP : AUROC de **0,980, 0,989 et 1,000**, contre
 excluant zéro. Le contrôle visible de présence réussit, mais le transfert à
 la couche tardive est faible et la lecture des numéros inversés se dégrade.
 Une AUROC de 1 ne signifie pas 100 % de bonnes réponses au seuil naturel.
-La [spécificité du compte rendu](docs/PRESENCE_SPECIFICITY_REVIEW.md), la
-prévision d'erreurs naturelles et l'utilité pour l'action restent à tester.
+La [spécificité du compte rendu](docs/PRESENCE_SPECIFICITY_RESULTS.md) échoue au
+test suivant ; la prévision d'erreurs naturelles et l'utilité pour l'action
+restent à établir.
 La [revue du 19 septembre](docs/RESEARCH_REVIEW_2026_09_19.md) vérifie les
 téléchargements et le travail déjà intégré. **[Ouvrir le Colab 10 à sa version
 fixée](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/46364f0cdb32fd2317881e95d27dc2da6728f2be/notebooks/10_presence_detection_colab.ipynb)** :
 A100, puis « Tout exécuter » ; conserver `menia-detection-presence.zip`.
 
-**Contrôle suivant : [spécificité à la question](docs/PRESENCE_SPECIFICITY_PROTOCOL.md).**
+**Résultat : [échec de la spécificité à la question](docs/PRESENCE_SPECIFICITY_RESULTS.md).**
 Le [Colab 11](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/84a7d43808423f0e0e905fc05c29f00cdf6b634f/notebooks/11_presence_specificity_colab.ipynb)
-est lancé par MCP : neuf adaptateurs figés, zéro mise à jour, 9 216 évaluations
-sur des phrases nouvelles. Il inverse les réponses demandées et ajoute des
-questions publiques indépendantes de la perturbation. Le protocole et les
-contrôles sont fixés avant collecte ; aucun résultat n'est encore présenté ici.
+est terminé et audité : neuf adaptateurs figés, zéro mise à jour, 9 216 évaluations
+sur des phrases nouvelles. La présence reste détectable (AUROC 0,943 / 0,972 /
+1,000), mais les scores restent orientés vers « 1 » quand la règle est inversée
+(AUROC orientée 0,056 / 0,020 / 0,013). Le signal déborde sur les questions
+publiques ; sa taille dépend toutefois de la question. Les contrôles visibles
+échouent aussi pour les adaptateurs forts, empêchant d'attribuer le défaut au
+seul accès interne. Le [critère fixé](docs/PRESENCE_SPECIFICITY_PROTOCOL.md)
+échoue ; les 2 304 copies témoins et le recalcul indépendant sont vérifiés.
 Ce notebook continue dans l'environnement du Colab 10 avec ses fichiers conservés.
 
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**

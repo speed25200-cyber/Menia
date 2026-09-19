@@ -86,9 +86,11 @@ Une nouvelle hypothèse ne doit pas requalifier rétroactivement un échec.
 AUROC de 0,980, 0,989 et 1,000, avec avantages sur les cibles mélangées et la
 base. Cette détection apprise n'identifie pas à elle seule un mécanisme d'ordre
 supérieur. Le transfert tardif est faible et la lecture inversée se dégrade.
-Le [Colab 11](PRESENCE_SPECIFICITY_PROTOCOL.md), implémenté et lancé par MCP,
-contrôle la spécificité du compte rendu avec des consignes inversées et des
-tâches témoins, avant toute intégration du détecteur.
+Le [Colab 11](PRESENCE_SPECIFICITY_RESULTS.md) échoue au contrôle de spécificité :
+le signal favorise encore « 1 » sous consigne inversée et affecte les tâches
+publiques. Les contrôles visibles échouent aussi avec le fort. Il faut traiter
+la composition entre détection et consigne avant d'interpréter ce signal comme
+un compte rendu fiable ; son bénéfice pour l'agent reste non établi.
 
 **Étape 2 — Des perturbations artificielles aux erreurs naturelles.** Un
 détecteur de rotations injectées n'est pas une connaissance de soi. Il faut
