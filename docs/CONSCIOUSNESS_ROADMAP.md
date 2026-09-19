@@ -38,7 +38,8 @@ teste si la dernière phase d'apprentissage et les moments d'Adam dégradent le
 rapport d'état. Ce diagnostic causal précède une correction éventuelle ; il
 ne réalise pas les mécanismes de conscience du tableau suivant. L'exécution
 GPU est désormais [démarrée](../artifacts/optimizer-memory-pilot/execution-start.json),
-avec reproduction exacte du premier témoin ; l'évaluation comportementale reste à terminer.
+avec [reproduction exacte des trois témoins et sauvegarde des douze checkpoints](../artifacts/optimizer-memory-pilot/training-freeze.json) ;
+l'évaluation comportementale reste à terminer.
 
 ## Ce que chaque théorie exigerait, et où en est Menia
 

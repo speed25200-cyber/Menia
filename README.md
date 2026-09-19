@@ -100,9 +100,10 @@ compare quatre branches depuis un même checkpoint, avec un témoin
 qui doit reproduire exactement les poids du Colab 12. Il prévoit 29 184 réponses
 pour départager rétention, dérive sans nouveaux gradients et effet de l'effacement
 du premier moment. L'[exécution démarrée le 19 septembre à 14:39 UTC](artifacts/optimizer-memory-pilot/execution-start.json)
-a passé les six tests dans Colab ; le premier témoin retrouve exactement les
-anciens poids. Les autres répétitions et l'évaluation restent en cours à cette
-observation. L'[indice qui motive le test](docs/OPTIMIZATION_MEMORY_REVIEW.md)
+a passé les six tests dans Colab. Les [douze checkpoints et trois états Adam](artifacts/optimizer-memory-pilot/training-freeze.json)
+sont maintenant sauvegardés et vérifiés sur PC ; les trois témoins retrouvent
+exactement les anciens poids. L'entraînement est terminé et l'évaluation est
+en cours. L'[indice qui motive le test](docs/OPTIMIZATION_MEMORY_REVIEW.md)
 est une réanalyse exploratoire des anciennes pertes, pas une preuve causale.
 
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
