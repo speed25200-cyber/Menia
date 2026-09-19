@@ -1,12 +1,30 @@
 # État de l'objectif de conscience et de nouveauté
 
-**État actuel : objectif de conscience et de nouveauté non atteint. Le Colab 21
+**État actuel : objectif de conscience et de nouveauté non atteint. Le Colab 22
+v2 est lancé pour apprendre l'association valeur-action ; aucun score réel
+de ce lot n'est encore annoncé. Le Colab 21
 réussit les comparaisons numériques isolées (864/864), mais le choix de
 l'action par son nom reste faible (514/864). La traduction imposée réussit
 423/432. Le Colab 20 reste un échec global de généralisation. Le Colab 18 ne confirme
 aucun bénéfice de l'historique. Le Colab 17 ne confirme pas l'apport prédictif
 fixé pour les états intermédiaires ; le Colab 16 ne confirme pas un contenu
 général réutilisable.**
+
+Le [protocole du Colab 22](VALUE_ACTION_LEARNING_PROTOCOL.md) compare trois
+recettes d'apprentissage appariées : choix seuls, associations auxiliaires
+correctes, associations auxiliaires mélangées. Neuf adaptateurs sont prévus,
+avec 576 mises à jour, puis 9 216 appels sur 24 cas nouveaux. La première
+version a été interrompue après 22 mises à jour du premier bras, avant tout
+test : ses cibles auxiliaires dépendaient seulement de la formulation.
+Le [reçu d'arrêt](../artifacts/value-action-learning-pilot/aborted-v1.json)
+conserve les empreintes de l'archive et du journal, vérifiés après réception.
+La v2 équilibre les cibles pour chaque présentation ; six tests passent sur PC
+et Colab. Le [reçu de lancement](../artifacts/value-action-learning-pilot/launch.json)
+confirme le processus actif et les premières mises à jour, sans score de test.
+Les états initiaux sont recréés, aucun poids entraîné de la v1 n'est repris.
+Ce test porte sur une compétence publique préalable. Il ne remplace pas
+l'estimation apprise des propres réussites et son usage causal, toujours
+à construire et vérifier ; il n'établit ni vécu ni nouveauté.
 
 Le [bilan du Colab 21](ACTION_DECOMPOSITION_RESULTS.md) est reçu et vérifié :
 2 448 appels, dont 288 rejeux identiques, avec poids inchangés. Les erreurs

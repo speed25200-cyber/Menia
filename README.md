@@ -4,7 +4,10 @@ Assistant local expérimental : mémoire explicite, représentation de ses capac
 incertitude et évaluation. **Colab A100 40 ou 80 Go** pour l’adaptation ;
 **iPhone 17 Pro** comme cible d’inférence locale.
 
-**Statut : prototype de recherche. Le Colab 21 est terminé et audité :
+**Statut : prototype de recherche. Le Colab 22 v2 est lancé : apprentissage
+auxiliaire d'associations valeur-action, sans résultat de test annoncé.
+La v1 a été arrêtée avant évaluation pour un défaut de données documenté.
+Le Colab 21 est terminé et audité :
 comparaison numérique réussie sur 864/864 appels, mais choix de l'action
 par son nom limité à 514/864. La traduction d'un nom imposé réussit 423/432.
 Le Colab 20 reste un apprentissage partiel dont le critère global échoue.
@@ -251,6 +254,21 @@ passent sur PC et A100 ; les deux recalculs sont exacts et les neuf poids
 parents sont vérifiés. Aucune sortie invalide ni tronquée. La prochaine
 étape doit tester l'association valeur-action réalisée par le modèle,
 avec de nouveaux cas ; aucun modèle de soi ni conscience n'est établi ici.
+
+**En cours : [apprentissage d'associations valeur-action](docs/VALUE_ACTION_LEARNING_PROTOCOL.md).**
+Le [Colab 22 v2](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/1da6f7bd5421081ef244ed584a41c1b9f42e7133/notebooks/22_value_action_learning_colab.ipynb)
+compare trois entraînements sur trois initialisations : choix seuls, choix
+avec associations correctes, et mêmes entrées avec cibles auxiliaires mélangées.
+Neuf adaptateurs, 576 mises à jour et 9 216 appels sont prévus. Les 24 cas de
+test utilisent de nouvelles valeurs, avec tests de formulation et de codes.
+Le nombre d'exemples est apparié, pas les longueurs d'entrée. La première
+version comportait un raccourci formulation → label ; elle a été arrêtée après
+22 mises à jour, avant tout test. Son [reçu d'arrêt](artifacts/value-action-learning-pilot/aborted-v1.json)
+et son archive sont conservés. La version corrigée équilibre les cibles dans
+chaque présentation ; six tests passent sur PC et Colab. Le
+[reçu de lancement](artifacts/value-action-learning-pilot/launch.json) confirme
+le processus actif et les premières mises à jour. Ce contrôle public ne mesure
+pas encore une estimation des capacités propres ou une conscience.
 
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
 Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)
