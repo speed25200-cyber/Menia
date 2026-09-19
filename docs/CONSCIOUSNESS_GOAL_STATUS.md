@@ -91,8 +91,10 @@ limité valide la capture sur ces cas, sans nouveau gain de prévision des erreu
 La [capture commune et ses comparateurs](PROSPECTIVE_CAPTURE_AND_CONTROLS.md)
 ajoutent ensuite un contrôle utilisant l'état final, en plus des résumés de
 confiance, ainsi que 3 456 questions disjointes et des lecteurs sans accès au
-test. Quatorze tests logiciels passent. Le collecteur et l'analyse restent à
-finaliser avant collecte ; ce travail ne change aucun résultat déjà mesuré.
+test. Quatorze tests logiciels passent. La capture commune est ensuite exécutée
+sur Qwen3-4B/A100 : quatre cas courts passent 48 vérifications cumulées et les
+deux contrôles entre graines. Le collecteur et l'analyse restent à finaliser
+avant les 3 456 nouvelles questions ; aucun gain de prévision n'est établi.
 
 Le [diagnostic 13 reçu et audité](COMPOSITION_DIAGNOSTIC_RESULTS.md) comprend
 13 824 évaluations, zéro entraînement et 3 456 témoins identiques. Les seuils

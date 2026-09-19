@@ -148,7 +148,10 @@ Aucun gain de prévision des erreurs naturelles n'est encore mesuré.
 La [capture commune et ses comparateurs](docs/PROSPECTIVE_CAPTURE_AND_CONTROLS.md)
 sont préparés : contrôle enrichi de sortie, 3 456 questions nouvelles dans les
 anciens domaines, trois ajustements indépendants de lecteurs et quatorze tests
-logiciels réussis. Le protocole de collecte complet reste à finaliser.
+logiciels réussis. La capture commune est ensuite vérifiée sur Qwen3-4B/A100 :
+les quatre cas courts passent 48 contrôles et deux vérifications entre graines.
+Le protocole de collecte complet reste à finaliser ; aucun gain de prévision
+des erreurs n'en découle encore.
 
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
 Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)

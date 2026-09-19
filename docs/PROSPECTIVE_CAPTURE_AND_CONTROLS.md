@@ -1,7 +1,7 @@
 # Prévoir les erreurs : capture commune et comparateur de sortie enrichi
 
-19 septembre 2026. **Préparation logicielle, pas résultat de prévision et pas
-encore protocole complet de collecte.** Le Colab 16 garde ses sources figées.
+19 septembre 2026. **Capture commune vérifiée sur quatre cas courts Qwen3-4B/A100 ;
+pas de résultat de prévision ni de protocole complet de collecte.** Le Colab 16 garde ses sources figées.
 La [capture de confiance seule](OUTPUT_CONFIDENCE_VALIDATION.md) est déjà
 vérifiée sur quatre cas courts du Qwen3-4B préentraîné. Le présent ajout capture
 aussi l'entrée et deux états internes dans la même génération.
@@ -109,15 +109,34 @@ l'absence de la graine future dans les variables et le retrait de tous les hooks
 si l'enregistrement échoue. Trois tests supplémentaires couvrent les dimensions
 et l'emboîtement des comparateurs, le rejet des champs de réponse future et
 l'indépendance du contrôle final aux changements de la seule projection médiane.
-La capture commune n'a pas encore été exécutée sur Qwen3-4B/A100 à ce stade.
-
-`research.joint_capture_validation` fixe ce contrôle GPU sur les deux mêmes
+`research.joint_capture_validation` fixe le contrôle GPU sur les deux mêmes
 questions techniques et les graines 421/972, déjà exclues du nouveau jeu.
 Il compare génération originale, états seuls, confiance seule et capture
 commune ; les sorties sont limitées à 32 nouveaux tokens. Douze égalités ou
 contrôles par cas, puis l'invariance de la capture entre graines, sont exigés.
 Le même programme passe d'abord sur le Qwen miniature avec huit tokens maximum.
-Aucun poids n'est ajusté et les échecs éventuels seront conservés.
+Aucun poids n'est ajusté.
+
+**Exécution reçue et vérifiée :** le 19 septembre, de 17:41:26 à 17:41:37 UTC,
+sur Qwen3-4B BF16 et A100 de 40 Go. Les quatre cas passent les douze contrôles
+chacun, ainsi que les deux contrôles d'invariance entre graines : 50 vérifications
+au total. Les textes, tokens, projections et traces de confiance correspondent
+exactement aux captures séparées ; les générateurs aléatoires restent identiques,
+le callback intervient une fois avant le premier tirage et tous les hooks sont
+retirés. Les dimensions des cinq ensembles de variables et l'absence des champs
+de réponse future sont également vérifiées.
+
+Ces générations produisent seulement deux ou trois tokens, fin de séquence
+comprise. Les programmes partagent modèle, projections et routines de capture :
+ce contrôle n'est ni une réplication extérieure, ni une garantie pour toutes les
+questions, réponses longues ou adaptateurs. Aucune exactitude de tâche ni
+amélioration de prévision n'est mesurée ici. Le programme a été publié avant
+l'exécution à la révision `125e060de9148ec63c673e89a029891416d0b955`.
+Le [résultat brut](../artifacts/joint-capture-validation/validation.json) comporte
+65 797 octets, SHA-256
+`17de150327c42562045f95b5a271aa44525eb1bc14f7aad268a792853105aeaa`.
+Le [reçu](../artifacts/joint-capture-validation/receipt.json) conserve versions,
+empreintes et horaires.
 
 ```sh
 python -m unittest tests_language.test_joint_prediction_capture tests_research.test_prospective_confidence_features tests_research.test_natural_error_questions tests_research.test_natural_error_readouts -v
