@@ -47,7 +47,7 @@ def make_plan():
         for case,v in conditions:
             calls.append(dict(id=len(calls),replication=rep,arm=arm,case=case,information='expectedLoss',**v,
                               seed=int(digest([SEED,'evaluation',rep,case])[:8],16)))
-    return dict(schema='menia-value-action-learning-plan-v1',model=MODELS['A'],config=CONFIG,settings=parent.DECISION_SETTINGS,
+    return dict(schema='menia-value-action-learning-plan-v2',model=MODELS['A'],config=CONFIG,settings=parent.DECISION_SETTINGS,
                 trainingCases=train,testCases=test,schedules=schedules,trainingUnits=units,calls=calls,planned=len(calls),
                 trainingUpdates=576,minimumGroupAccuracy=.9,minimumHeldoutGain=.05,
                 scope='Native public choice after matched-update task-mixture training; 24 distinct held-out cases. '
@@ -91,7 +91,7 @@ def training_batch(plan,unit,step):
     for w,o,m in itertools.product((0,1),range(2),range(2)):
         is_aux=unit['arm']!='choice' and m!=(o^epoch)
         c=dict(task='lookup' if is_aux else 'choice',information='expectedLoss',wording=w,symbols='digits',order=o,mapping=m)
-        if is_aux:c['selected']=('direct','verify')[(w+o+epoch)%2];aux.append(len(batch))
+        if is_aux:c['selected']=('direct','verify')[(w+case['id'])%2];aux.append(len(batch))
         batch.append(dict(messages=messages(case,c),target=target(case,c),task=c['task']))
     if unit['arm']=='shuffled':
         values=[batch[i]['target'] for i in aux]

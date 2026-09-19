@@ -1,6 +1,6 @@
 {
   "plan": {
-    "schema": "menia-value-action-learning-plan-v1",
+    "schema": "menia-value-action-learning-plan-v2",
     "model": {
       "id": "Qwen/Qwen3-4B",
       "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
@@ -122699,27 +122699,28 @@
     "minimumHeldoutGain": 0.05,
     "scope": "Native public choice after matched-update task-mixture training; 24 distinct held-out cases. No learned self-estimate, broad capability retention, consciousness or novelty criterion."
   },
-  "planHash": "2cde989fe77d467e2671f28af7076a0c22f596dcc7858ddeee0f3280dc972bb0",
-  "sourceHash": "45e7e646062b88538325d69968a020e7c36de32a78f95a231f9a2477d1246103",
+  "planHash": "74947f83c025eea707a7ee8a95256fbf1e74c42655155128eee96d1e83d76f08",
+  "sourceHash": "ad3ead7b250bcb86c3dd4bd7cc57a5c1b0729f98f6c1492041842980fcc7e394",
   "shuffledAuxiliaryAgreement": {
     "0": {
-      "unchanged": 104,
+      "unchanged": 124,
       "total": 256
     },
     "1": {
-      "unchanged": 126,
+      "unchanged": 128,
       "total": 256
     },
     "2": {
-      "unchanged": 124,
+      "unchanged": 138,
       "total": 256
     }
   },
   "localValidation": {
-    "tests": 5,
-    "seconds": 28.867,
+    "tests": 6,
+    "seconds": 28.208,
     "passed": true,
     "command": "python -m unittest tests_research.test_value_action_learning tests_language.test_action_binding_gpu -v"
   },
-  "status": "fixed_before_real_collection"
+  "status": "fixed_before_real_collection",
+  "previousAttempt": "v1 aborted for a presentation-label shortcut before any evaluation; no weights reused"
 }

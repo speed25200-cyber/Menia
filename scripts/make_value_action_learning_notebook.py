@@ -19,7 +19,7 @@ REVISION = "{revision}"
 url = f"https://raw.githubusercontent.com/speed25200-cyber/Menia/{{REVISION}}/scripts/colab_value_action_learning_launcher.py"
 data = urllib.request.urlopen(url, timeout=60).read()
 assert hashlib.sha256(data).hexdigest() == "{sha}", "Launcher changed"
-path = pathlib.Path("/content/menia-value-action-learning-launcher.py")
+path = pathlib.Path("/content/menia-value-action-learning-v2-launcher.py")
 path.write_bytes(data)
 spec = importlib.util.spec_from_file_location("menia_value_action_learning_launcher", path)
 module = importlib.util.module_from_spec(spec)
@@ -32,12 +32,12 @@ print(result)
         if kind=='code':result.update(execution_count=None,outputs=[])
         return result
     notebook=dict(nbformat=4,nbformat_minor=5,metadata=dict(kernelspec=dict(name='python3',display_name='Python 3',language='python')),
-        cells=[cell('markdown','# Menia — apprentissage des valeurs et codes d’action\n\n'
+        cells=[cell('markdown','# Menia — apprentissage des associations valeur-action (v2)\n\n'
             'Colab 22 : neuf adaptateurs, 576 mises à jour, 9 216 appels réservés au test. '
             'Conserver le runtime A100 et l’environnement Menia. Trois entraînements appariés sur trois initialisations ; une seule tentative. '
             'Le choix sous risque public est un contrôle fonctionnel, pas une preuve de conscience.\n\n'
             f'[Protocole fixé](https://github.com/speed25200-cyber/Menia/blob/{revision}/docs/VALUE_ACTION_LEARNING_PROTOCOL.md).\n'),
-            cell('code',code),cell('code','from google.colab import files\nfiles.download("/content/menia-apprentissage-valeurs-actions.zip")\n')])
+            cell('code',code),cell('code','from google.colab import files\nfiles.download("/content/menia-apprentissage-valeurs-actions-v2.zip")\n')])
     path=ROOT/'notebooks/22_value_action_learning_colab.ipynb'
     path.write_text(json.dumps(notebook,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(dict(scienceRevision=revision,launcherSHA256=sha)))

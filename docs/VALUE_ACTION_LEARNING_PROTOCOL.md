@@ -1,6 +1,13 @@
 # Colab 22 : apprendre à relier une valeur à son action
 
-19 septembre 2026. Protocole fixé avant la première réponse réelle du lot.
+20 septembre 2026, heure locale. Version 2 fixée avant toute évaluation.
+La première version a été arrêtée après 22 mises à jour du premier bras,
+avant toute requête de test : un défaut de génération rendait chaque code
+auxiliaire déterminé par la formulation (128 cibles `2` pour `w0`, 128 cibles
+`1` pour `w1`, par adaptateur). Le processus s'est terminé, les traces sont
+conservées dans le [reçu d'arrêt](../artifacts/value-action-learning-pilot/aborted-v1.json),
+et aucun de ses poids n'est repris. Cette correction répond à
+un défaut de données, sans sélection à partir de scores de test.
 Le [Colab 21](ACTION_DECOMPOSITION_RESULTS.md) réussit 864/864 comparaisons
 numériques isolées, mais seulement 514/864 choix par nom dans un contexte
 d'action. La traduction imposée nom → code réussit 423/432. Le chemin
@@ -62,6 +69,14 @@ affectations des chiffres 1/2 : huit exemples d'un même cas. Pour les bras
 mixtes, quatre vues deviennent des recherches d'association ; leurs rôles
 s'inversent à la seconde époque. La valeur demandée est choisie dans les
 données publiques d'une action, et non calculée à partir de l'action optimale.
+Dans cette version, l'action demandée dépend de la formulation et de la parité
+de l'identifiant du cas tiré au hasard, au lieu de l'ordre et de l'époque.
+Chaque formulation comporte une cible de chaque code par lot auxiliaire.
+Pour chaque combinaison formulation/ordre/affectation, les 32 occurrences
+auxiliaires contiennent exactement 16 cibles de chaque code. Un test dédié
+vérifie cette propriété ; ces indices de présentation ne prédisent plus le
+label. La généralisation à de nouveaux cas reste nécessaire pour écarter
+la mémorisation des exemples.
 
 Deux époques : 64 mises à jour et 512 exemples par adaptateur. Neuf
 adaptateurs, **576 mises à jour et 4 608 exemples** au total. L'égalité de

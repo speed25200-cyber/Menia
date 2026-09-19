@@ -13,11 +13,11 @@ def launch_value_action_learning(revision, content=Path('/content')):
     content=Path(content)
     python=content/'menia-activation-env-v1/bin/python'
     if not python.is_file():raise RuntimeError('Conserver le runtime Menia A100 et son environnement Python.')
-    root=content/'menia-results/value-action-learning-v1'
+    root=content/'menia-results/value-action-learning-v2'
     root.mkdir(parents=True,exist_ok=True)
     status=root/'execution.json'
-    journal=root/'value-action-learning-20260919-v1.jsonl'
-    archive=content/'menia-apprentissage-valeurs-actions.zip'
+    journal=root/'value-action-learning-20260920-v2.jsonl'
+    archive=content/'menia-apprentissage-valeurs-actions-v2.zip'
     repo=content/('menia-value-action-learning-source-'+revision[:12])
     if status.exists() or journal.exists() or archive.exists():raise RuntimeError('Tentative existante : conserver et auditer ; aucun nouveau lancement automatique.')
     manifest=dict(startedUTC=datetime.datetime.now(datetime.timezone.utc).isoformat(),revision=revision,journal=str(journal),status='preparing')

@@ -1,4 +1,5 @@
 import copy
+from collections import Counter, defaultdict
 import json
 from pathlib import Path
 import tempfile
@@ -68,6 +69,22 @@ class ValueActionLearningTests(unittest.TestCase):
         self.assertTrue(verify(self.path,self.report,check_weights=False)['verified'])
         altered=copy.deepcopy(self.report);altered['contrasts'][0]['accuracy']['linked']-=.01
         with self.assertRaises(ValueError):verify(self.path,altered,check_weights=False)
+
+    def test_auxiliary_codes_balanced_conditionally_on_each_surface(self):
+        p=s.make_plan()
+        for rep in range(3):
+            surfaces=defaultdict(Counter)
+            for step in range(1,65):
+                batch=s.training_batch(p,dict(replication=rep,arm='linked'),step)
+                wordings=defaultdict(Counter)
+                for i,e in enumerate(batch):
+                    if e['task']=='lookup':
+                        w,o,m=i//4,(i//2)%2,i%2
+                        surfaces[(w,o,m)][e['target']]+=1
+                        wordings[w][e['target']]+=1
+                self.assertEqual(dict(wordings),{0:Counter({'1':1,'2':1}),1:Counter({'1':1,'2':1})})
+            self.assertEqual(len(surfaces),8)
+            for counts in surfaces.values():self.assertEqual(counts,Counter({'1':16,'2':16}))
 
     def test_rehashed_auxiliary_training_change_rejected(self):
         rows=[json.loads(l) for l in self.path.read_text(encoding='utf-8').splitlines()]
