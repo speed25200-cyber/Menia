@@ -79,3 +79,9 @@ par une nouvelle projection choisie sur son test. Une éventuelle nouvelle
 représentation exige un nouveau protocole et des questions réservées.
 L'usage natif utile serait un résultat fonctionnel supplémentaire ; le lien
 avec une expérience de sa propre existence et la nouveauté resteraient à établir.
+
+**Mise à jour après audit.** Le [Colab 17](NATURAL_ERROR_RESULTS.md) ne passe
+aucun de ses neuf contrastes principaux. Cette revue antérieure ne doit donc
+pas être lue comme l'annonce d'un signal interne validé à intervenir. Les
+contrôles de compréhension des coûts restent pertinents ; la sélection d'une
+nouvelle représentation requiert un autre protocole et un test réservé.

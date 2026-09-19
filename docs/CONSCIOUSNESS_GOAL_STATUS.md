@@ -1,9 +1,24 @@
 # État de l'objectif de conscience et de nouveauté
 
-**État actuel : objectif de conscience et de nouveauté non atteint. Le Colab 16
-favorise une valeur binaire liée à la question du donneur, face au contenu
-réutilisable pour l'autre question. Il limite ainsi l'interprétation positive
-du Colab 15 ; un modèle général de soi n'est pas établi.**
+**État actuel : objectif de conscience et de nouveauté non atteint. Le Colab 17
+ne confirme pas l'apport prédictif fixé pour les états intermédiaires : aucun
+des neuf contrastes principaux ne passe. Le Colab 16 favorise une valeur liée
+à la question donneuse, sans confirmer un contenu général réutilisable.**
+
+Le [bilan complet du Colab 17](NATURAL_ERROR_RESULTS.md) est reçu et vérifié :
+3 456 réponses, dont 1 152 tests, trois ajustements externes et aucune erreur
+technique. Les gains de Brier face à l'état final valent −0,000039 / 0,000849 /
+−0,001224 ; tous sont sous le minimum de 0,005. Aucun des neuf contrastes contre
+les trois contrôles ne passe, alors que les minimums de réussites et d'erreurs
+sont atteints. Les neuf bornes supérieures corrigées restent sous le seuil
+de gain ; le troisième contraste contre l'état final indique une dégradation.
+La fréquence par catégorie explique déjà une forte AUROC globale. Les deux
+recalculs ont précédé la lecture : principal exact, arithmétique séparée à
+`2,221e-16` près, sur 24 tableaux globaux, 144 tableaux par cellule et 21
+contrastes. Ce résultat n'identifie pas de lecteur privilégié justifiant une
+intervention causale, ni d'usage natif ou de conscience. La
+[revue des décisions](NATIVE_ERROR_DECISION_REVIEW.md) conserve les contrôles
+nécessaires pour étudier la relation entre estimation et choix effectif.
 
 Le [bilan complet du Colab 15](STATE_INTERCHANGE_RESULTS.md) est reçu et vérifié :
 19 584 passages, 3 456 témoins identiques et 4 608 copies finales. À la couche 23,
@@ -103,8 +118,9 @@ usage natif de ce lecteur ou conscience n'est encore établi.
 Le [lancement 17 par MCP](../artifacts/natural-error-pilot/execution-start.json)
 est observé sur A100 à 18:13:55 UTC le 19 septembre : 76 réponses sur 3 456,
 après les huit tests réussis dans Colab. Les sources et le plan correspondent
-aux empreintes publiées ; aucun score n'est interprété. L'exécution existante
-doit être suivie sans nouveau lancement, puis reçue et auditée intégralement.
+aux empreintes publiées ; aucun score n'est interprété à ce stade. Ce constat
+de démarrage est conservé ; le bilan complet et l'audit sont désormais publiés
+ci-dessus, après réception de la même exécution, sans nouveau lancement.
 Le [second calcul arithmétique](NATURAL_ERROR_AUDIT.md) est préparé et testé
 avant les scores : Brier, AUROC, calibration, bootstrap et critère, avec les
 trois répétitions et les neuf comparaisons principales. Il partage le plan et

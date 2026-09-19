@@ -28,7 +28,22 @@ La présentation fixée dans `scripts/plot_natural_errors.py` conserve les huit
 lecteurs, les trois répétitions et les neuf contrastes principaux. Elle est
 vérifiée sur des données simulées avant application aux données réelles.
 Le protocole exige l'archive complète et la réussite des deux recalculs avant
-l'interprétation des scores ; aucun résultat réel n'est encore annoncé ici.
+l'interprétation des scores.
+
+## Application au lot GPU complet
+
+Le [résultat reçu](NATURAL_ERROR_RESULTS.md) contient 3 456 réponses et trois
+ajustements figés. Les prévisions sont reconstruites depuis les données
+autorisées avant réponse. Le recalcul principal est exactement identique au
+bilan Colab ; ce calcul séparé concorde à `2,220446049250313e-16` près sur
+les 24 tableaux globaux, 144 tableaux par cellule, 21 contrastes et le critère.
+Les deux vérifications ont réussi avant la première lecture des scores.
+La figure fixée est appliquée aux résultats et inspectée sans modification.
+Les neuf comparaisons principales échouent au critère annoncé ; les prérequis
+de collecte et de présence des deux classes passent dans les trois répétitions.
+Le [reçu](../artifacts/natural-error-pilot/receipt.json) conserve les empreintes
+de l'archive, du journal et des sources. Les limites d'indépendance décrites
+ci-dessus restent applicables.
 
 ```sh
 python -m research.audit_natural_errors JOURNAL.jsonl --summary RESUME.json --output VERIFICATION.json

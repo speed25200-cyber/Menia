@@ -4,11 +4,11 @@ Assistant local expérimental : mémoire explicite, représentation de ses capac
 incertitude et évaluation. **Colab A100 80 Go** pour l’adaptation ;
 **iPhone 17 Pro** comme cible d’inférence locale.
 
-**Statut : prototype de recherche. La boucle d'agent apprend ses effets d'action
-et conserve son histoire entre sessions. La détection de rotations internes
-est reproduite dans trois répétitions. Un nouvel apprentissage oriente le score
-selon la consigne, mais la décision et la généralisation linguistique restent
-fragiles. Le critère global du Colab 12 échoue. La localisation reste non reproduite.**
+**Statut : prototype de recherche. Le Colab 17 est terminé et audité : aucun
+des neuf contrastes principaux ne confirme le gain prédictif fixé pour les
+états intermédiaires. Le Colab 16 limite aussi le transfert à une valeur liée
+à la question donneuse. La détection de rotations internes est reproduite,
+mais la localisation, la décision native et la généralisation restent fragiles.**
 La conscience subjective n'est pas établie. La [feuille de route](docs/CONSCIOUSNESS_ROADMAP.md)
 précise les mécanismes candidats, les hypothèses théoriques et les expériences
 envisagées. Elle ne constitue pas une recette validée. La continuité repose sur un journal
@@ -143,7 +143,7 @@ la réponse rédigée. Dix tests logiciels passent sur un Qwen miniature aléato
 Un [contrôle technique reçu sur Qwen3-4B/A100](docs/OUTPUT_CONFIDENCE_VALIDATION.md)
 conserve exactement les tokens et états aléatoires dans quatre cas courts ;
 quarante vérifications passent et les calculs concordent à moins de `7,75e-14`.
-Aucun gain de prévision des erreurs naturelles n'est encore mesuré.
+Ce contrôle technique ne mesurait pas un gain de prévision des erreurs naturelles.
 La [capture commune et ses comparateurs](docs/PROSPECTIVE_CAPTURE_AND_CONTROLS.md)
 sont préparés : contrôle enrichi de sortie, 3 456 questions nouvelles dans les
 anciens domaines, trois ajustements indépendants de lecteurs et quatorze tests
@@ -156,14 +156,23 @@ et seuil de gain fixé. Huit tests de collecte passent, dont la vérification
 du journal au premier tirage d'un Qwen miniature. Aucun gain de prévision
 des nouvelles questions n'est encore mesuré au moment du gel.
 Le [Colab 17 à version fixe](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/a6e8ee683573995de69f9e861e9903d465d4538a/notebooks/17_natural_error_colab.ipynb)
-est ensuite lancé par MCP le 19 septembre à 18:13 UTC. Les huit tests passent
-dans Colab et le [reçu de démarrage](artifacts/natural-error-pilot/execution-start.json)
-atteste 76 réponses enregistrées à 18:13:55 UTC sur 3 456 prévues, avec les
-empreintes attendues. Ce constat daté ne contient aucun résultat de prévision.
-Le [second calcul](docs/NATURAL_ERROR_AUDIT.md), préparé avant lecture des scores,
-couvre les 24 tableaux globaux, 144 tableaux par cellule, 21 contrastes et le
-critère complet. Deux tests synthétiques passent ; la figure prévue est rendue
-et inspectée sur des données simulées. Les sources de collecte restent figées.
+est [terminé et audité](docs/NATURAL_ERROR_RESULTS.md) après exécution par MCP
+le 19 septembre de 18:13 à 18:37 UTC : 3 456 réponses, trois jeux de lecteurs
+ajustés séparément, aucune erreur technique. **Le critère global échoue et aucun des
+neuf contrastes principaux ne passe.** Face au contrôle avec état final, les
+gains de Brier sont −0,000039 / 0,000849 / −0,001224, sous le minimum fixé de
+0,005 ; le troisième indique une dégradation avec intervalle corrigé excluant
+zéro. Les neuf bornes supérieures corrigées restent sous 0,005. Les trois lots
+ont suffisamment de réussites et d'erreurs. Une AUROC globale élevée est déjà
+obtenue par la simple fréquence Beta par catégorie ; elle ne suffit pas à
+montrer une reconnaissance des erreurs propres à chaque question.
+Le [second calcul](docs/NATURAL_ERROR_AUDIT.md), préparé avant les scores,
+retrouve les 24 tableaux globaux, 144 tableaux par cellule, 21 contrastes et le
+critère à `2,221e-16` près ; le recalcul principal est exact. Les huit tests
+de collecte passent sur les deux machines, ainsi que les deux tests de
+l'auditeur. Archive, journal, ajustements et prévisions sont vérifiés avant
+interprétation. La [revue sur les décisions natives](docs/NATIVE_ERROR_DECISION_REVIEW.md)
+précise ce qui resterait à tester ; aucun usage natif ni conscience n'est établi.
 
 **Nouvelle expérience : [apprentissage de localisation interne](docs/NATIVE_LOCALIZATION_PROTOCOL.md).**
 Le [Colab à un seul bloc](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/codex/recall-reliability/notebooks/06_native_localization_colab.ipynb)

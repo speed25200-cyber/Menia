@@ -120,12 +120,12 @@ de l'étendre ici à une représentation générale de soi.
 La [préparation sur les erreurs naturelles](PROSPECTIVE_CAPTURE_AND_CONTROLS.md)
 aborde une autre question : des variables internes permettent-elles de prévoir
 les erreurs avant la génération, au-delà de contrôles de sortie enrichis ?
-Ses captures passent les contrôles techniques, mais les 3 456 questions nouvelles
-ne sont pas encore collectées. Une prévision avant le premier token reste
-conditionnée par la question et peut provenir d'un lecteur externe ; elle ne
-résoudrait donc pas à elle seule la disponibilité avant toute question ni
-l'utilisation native pour l'action. Le protocole complet doit être figé avant
-ses résultats.
+Ses captures passent les contrôles techniques ; le [protocole 17](NATURAL_ERROR_PROTOCOL.md)
+est ensuite figé et les 3 456 questions collectées. Le [bilan complet](NATURAL_ERROR_RESULTS.md)
+ne confirme pas l'apport intermédiaire selon ses neuf contrastes principaux.
+Une prévision avant le premier token reste conditionnée par la question et
+provient ici d'un lecteur externe ; elle ne résoudrait donc pas à elle seule
+la disponibilité avant toute question ni l'utilisation native pour l'action.
 
 L'objectif de conscience et de nouveauté reste **non atteint**. Aucun poids
 issu de ces recherches n'est installé sur l'iPhone.
