@@ -1,12 +1,26 @@
 # État de l'objectif de conscience et de nouveauté
 
+**Expérience lancée le 20 septembre à 07:45 UTC :** l'[apprentissage comparé
+du lecteur](PROSPECTIVE_READER_LEARNING_PROTOCOL.md) tourne sur l'A100 40 Go.
+La révision scientifique est `97ca234a2e4f2f37f24f78ee60fd8a925a0a7404` ;
+le processus Colab porte le PID 327308. Les 23 tests passent sur Colab en
+1,513 seconde. La [capture de lancement](../artifacts/prospective-reader-learning/launch.json)
+atteste le démarrage, pas un résultat final. Deux lecteurs partent des mêmes
+poids et reçoivent 224 mises à jour chacun : mémoire réelle contre rejeu du
+texte. Le critère réservé exige un gain de perte **et** une meilleure
+discrimination des erreurs au sein d'un tableau, sous les deux conventions
+A/B. Les 16 tableaux réservés sont évalués après apprentissage ; leurs
+prévisions précèdent leurs réponses. Aucun succès comportemental n'est
+revendiqué au lancement. Le lecteur évalue le producteur gelé, pas ses propres
+poids adaptés : ce point reste à distinguer d'une auto-évaluation intégrée.
+
 **Dernier contrôle technique, 20 septembre :** le [lecteur entraînable](RETAINED_READER_CONTROL_RESULTS.md)
 exécute une mise à jour sur la mémoire conservée de Qwen3-4B sans changer les
 huit rappels du producteur. La perte sur huit exemples baisse de 5,8672 à 5,7656,
 mais les prévisions restent constantes et seulement 4/8 sont correctes. Les poids
 exportés et les branches sont audités. Les 32 nouveaux tableaux d'apprentissage
-et les 16 réservés sont préparés, sans résultat de modèle ; l'apprentissage
-comparé et son évaluation restent à effectuer. Ce contrôle suit une frontière
+et les 16 réservés étaient préparés sans appel du modèle lors de ce contrôle ;
+leur étude comparée est maintenant lancée selon le protocole ci-dessus. Ce contrôle suit une frontière
 déjà publiée par Activated LoRA et ne confirme ni conscience ni nouveauté.
 
 **Dernier test comportemental, 20 septembre :** le [test d'une seule paire](PROSPECTIVE_PAIR_DISCOVERY_RESULTS.md)
