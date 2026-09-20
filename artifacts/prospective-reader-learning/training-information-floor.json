@@ -1,0 +1,164 @@
+{
+  "schema": "menia-reader-training-information-floor-v1",
+  "journalPrefixSHA256": "9dfd743dcaad85d333b7cdd51d807f513d8430bb43df6fdd1fe5af4a35c8a2d5",
+  "chainEnd": "280ef6c876144cb3b6c8f10da38491d272d0e9cf9071a578be0a58c27ba80d28",
+  "planHash": "d1266cdf7cb1a8a06eb04ff070a4a46c632496ce50e3fc5adb81aebdba35c915",
+  "collectionSourceHash": "06644cec2fd5a000b9aaba231e744f8932ad3e90d4a2ca232a4e70006cbac55f",
+  "analysisSourceSHA256": "5a273aa59e6293bbbba00941467cc427f13dd9e51809b42852f2485e11768f3e",
+  "verifiedPrefixOperations": 800,
+  "trainingStates": 32,
+  "trainingTasks": 768,
+  "taskOutcomesByCondition": {
+    "actual": {
+      "success": 254,
+      "valid": 256,
+      "failure": 2
+    },
+    "values_permuted": {
+      "failure": 62,
+      "valid": 256,
+      "success": 194
+    },
+    "joint_permuted": {
+      "success": 253,
+      "valid": 256,
+      "failure": 3
+    }
+  },
+  "taskContrasts": [
+    {
+      "condition": "actual",
+      "group": "selected",
+      "n": 64,
+      "correct": 63,
+      "nativeChangesFromActual": 0
+    },
+    {
+      "condition": "actual",
+      "group": "other",
+      "n": 192,
+      "correct": 191,
+      "nativeChangesFromActual": 0
+    },
+    {
+      "condition": "values_permuted",
+      "group": "selected",
+      "n": 64,
+      "correct": 3,
+      "nativeChangesFromActual": 60
+    },
+    {
+      "condition": "values_permuted",
+      "group": "other",
+      "n": 192,
+      "correct": 191,
+      "nativeChangesFromActual": 2
+    },
+    {
+      "condition": "joint_permuted",
+      "group": "selected",
+      "n": 64,
+      "correct": 62,
+      "nativeChangesFromActual": 1
+    },
+    {
+      "condition": "joint_permuted",
+      "group": "other",
+      "n": 192,
+      "correct": 191,
+      "nativeChangesFromActual": 0
+    }
+  ],
+  "jointNativeChanges": [
+    {
+      "case": 1008,
+      "target": 4,
+      "group": "selected",
+      "expectedBit": 0,
+      "actualCorrect": true,
+      "jointCorrect": false,
+      "actualLogits": [
+        45.25,
+        44.25
+      ],
+      "jointLogits": [
+        44.25,
+        45.25
+      ]
+    }
+  ],
+  "floors": {
+    "text": {
+      "all": {
+        "examples": 3584,
+        "distinctInputs": 640,
+        "conflictingInputs": 124,
+        "conflictingExamples": 744,
+        "minimumConditionalBrier": 0.046130952380952384,
+        "minimumConditionalCodeCrossEntropyNats": 0.13213352154334282,
+        "codeEOSCrossEntropyLowerBoundNats": 0.06606676077167141,
+        "minimumNativeErrors": 248,
+        "maximumNativeAccuracy": 0.9308035714285714
+      },
+      "forecast": {
+        "examples": 3072,
+        "distinctInputs": 512,
+        "conflictingInputs": 124,
+        "conflictingExamples": 744,
+        "minimumConditionalBrier": 0.05381944444444445,
+        "minimumConditionalCodeCrossEntropyNats": 0.15415577513389997,
+        "codeEOSCrossEntropyLowerBoundNats": 0.07707788756694998,
+        "minimumNativeErrors": 248,
+        "maximumNativeAccuracy": 0.9192708333333334
+      },
+      "coding": {
+        "examples": 512,
+        "distinctInputs": 128,
+        "conflictingInputs": 0,
+        "conflictingExamples": 0,
+        "minimumConditionalBrier": 0.0,
+        "minimumConditionalCodeCrossEntropyNats": 0.0,
+        "codeEOSCrossEntropyLowerBoundNats": 0.0,
+        "minimumNativeErrors": 0,
+        "maximumNativeAccuracy": 1.0
+      }
+    },
+    "state": {
+      "all": {
+        "examples": 3584,
+        "distinctInputs": 1664,
+        "conflictingInputs": 0,
+        "conflictingExamples": 0,
+        "minimumConditionalBrier": 0.0,
+        "minimumConditionalCodeCrossEntropyNats": 0.0,
+        "codeEOSCrossEntropyLowerBoundNats": 0.0,
+        "minimumNativeErrors": 0,
+        "maximumNativeAccuracy": 1.0
+      },
+      "forecast": {
+        "examples": 3072,
+        "distinctInputs": 1536,
+        "conflictingInputs": 0,
+        "conflictingExamples": 0,
+        "minimumConditionalBrier": 0.0,
+        "minimumConditionalCodeCrossEntropyNats": 0.0,
+        "codeEOSCrossEntropyLowerBoundNats": 0.0,
+        "minimumNativeErrors": 0,
+        "maximumNativeAccuracy": 1.0
+      },
+      "coding": {
+        "examples": 512,
+        "distinctInputs": 128,
+        "conflictingInputs": 0,
+        "conflictingExamples": 0,
+        "minimumConditionalBrier": 0.0,
+        "minimumConditionalCodeCrossEntropyNats": 0.0,
+        "codeEOSCrossEntropyLowerBoundNats": 0.0,
+        "minimumNativeErrors": 0,
+        "maximumNativeAccuracy": 1.0
+      }
+    }
+  },
+  "assumptions": "One fixed predictor, private copies, no condition ID or update index as input, equal weighting of the actual four-epoch training examples. Input equivalence uses both complete-query token hash and accessible-cache hash. Coding prompts are separate input groups.",
+  "interpretation": "Known conditional variance and entropy lower bounds on this empirical training mixture; no claim of theoretical novelty, model attainability or subjective consciousness. The code/EOS loss bound assumes zero EOS loss as its most favorable case. It does not bound the changing-weight optimization trace, or the reserved V-only primary score. No reserved task outcome is read."
+}

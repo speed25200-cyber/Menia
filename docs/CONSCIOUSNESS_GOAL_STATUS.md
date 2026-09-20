@@ -1,5 +1,15 @@
 # État de l'objectif de conscience et de nouveauté
 
+**Analyse des seules données d'apprentissage, 20 septembre :** les
+[768 réponses reçues](READER_TRAINING_INFORMATION_FLOOR.md) comprennent
+254/256 réussites avec la mémoire réelle, 194/256 avec V permuté et
+253/256 avec K/V permutés. Le contrôle K/V change une réponse ; V change
+également deux réponses hors des clés sélectionnées. Ces exceptions restent
+dans l'étude. Le témoin textuel reçoit 124 entrées contradictoires sous les
+deux conventions, ce qui impose une borne sur un prédicteur fixe du mélange
+d'apprentissage. Cette borne ne concerne pas le score réservé V seul.
+L'apprentissage et l'évaluation finale continuent selon le plan figé.
+
 **Expérience lancée le 20 septembre à 07:45 UTC :** l'[apprentissage comparé
 du lecteur](PROSPECTIVE_READER_LEARNING_PROTOCOL.md) tourne sur l'A100 40 Go.
 La révision scientifique est `97ca234a2e4f2f37f24f78ee60fd8a925a0a7404` ;
