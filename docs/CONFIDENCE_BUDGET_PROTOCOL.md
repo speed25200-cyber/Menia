@@ -124,3 +124,14 @@ python -m unittest tests_research.test_confidence_budget_diagnostic tests_langua
 python -m research.confidence_budget_gpu JOURNAL DOSSIER_POIDS_COLAB24
 python -m research.confidence_budget_diagnostic --journal JOURNAL --output RAPPORT
 ```
+
+## Lancement observé
+
+Le [reçu de lancement](../artifacts/confidence-budget-pilot/launch.json),
+capturé à 04:05:41 UTC le 20 septembre, constate les douze tests réussis sur
+Colab en 19,071 secondes, une A100 40 Go active et 260 évaluations enregistrées
+dans la reproduction du point de départ. Aucune nouvelle mise à jour n'est
+encore enregistrée à cette capture. Le plan, les sources et l'ordre des appels
+correspondent à la préparation. La révision exécutée est
+`a9b1a27054056ec3f6c8300319036f5950ee4f32` ; les résultats de poursuite restent
+en attente. Ce reçu décrit une capture historique, pas un compteur en temps réel.
