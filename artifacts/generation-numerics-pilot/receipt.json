@@ -1,0 +1,126 @@
+{
+  "schema": "menia-generation-numerics-final-receipt-v1",
+  "archiveName": "menia-continuite-numerique-v1.zip",
+  "archiveBytes": 47962,
+  "archiveSHA256": "2ece760c8b199666064cb12c4540bcb8c9eda967473e303394ed7c336dc4a8fc",
+  "files": 4,
+  "journalSHA256": "a86626770dda28268fe710b1e150c51254baaded2cab7e83c39eac9577ff20fd",
+  "execution": {
+    "startedUTC": "2026-09-20T05:15:27.209789+00:00",
+    "revision": "361dc2cb45b43791dc200ee370366ae57e56aede",
+    "status": "completed",
+    "journal": "/content/menia-results/generation-numerics-v1/generation-numerics-20260920-v1.jsonl",
+    "hardware": "NVIDIA A100-SXM4-40GB, 0 MiB, 40960 MiB",
+    "updatedUTC": "2026-09-20T05:16:08.344630+00:00"
+  },
+  "model": {
+    "id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "planHash": "a76645b6649274837e4739f4592ecb75393167acf4dfa7a583b9b93034bba02a",
+  "sourceHash": "e9d3eff9f02444d96e42ce2e51404d269a01b360fa157b30ee547dd49b17500f",
+  "preflight": {
+    "tests": 9,
+    "passed": true,
+    "seconds": 0.436
+  },
+  "summary": {
+    "actualValidNativeResponses": 12,
+    "allStrictControlsPassed": true,
+    "branchComparisonsPerReference": 12,
+    "branchDecodes": 60,
+    "cases": 6,
+    "fullPrefillMaximumCacheDifference": 1.0,
+    "fullPrefillNativeTokenAgreements": 12,
+    "fullSequenceNativeTokenAgreements": 12,
+    "generations": 12,
+    "planHash": "a76645b6649274837e4739f4592ecb75393167acf4dfa7a583b9b93034bba02a",
+    "schema": "menia-generation-numerics-summary-v1",
+    "scope": "Technical equivalence and numerical floor on six fixed prompts. No accuracy, calibration, self-monitoring, utility, consciousness or novelty criterion.",
+    "sourceHash": "e9d3eff9f02444d96e42ce2e51404d269a01b360fa157b30ee547dd49b17500f"
+  },
+  "comparisonMaxima": {
+    "same_schedule_replay": {
+      "maximumCandidateLogitDifference": 0.0,
+      "conditionalProbabilityDifference": 0.0,
+      "candidateMassDifference": 0.0,
+      "nativeTokenAgreements": 12,
+      "bothValidNative": 12,
+      "comparisons": 12
+    },
+    "full_prefill_replay": {
+      "maximumCandidateLogitDifference": 0.5,
+      "conditionalProbabilityDifference": 1.0584552107035537e-06,
+      "candidateMassDifference": 3.742428589248448e-11,
+      "nativeTokenAgreements": 12,
+      "bothValidNative": 12,
+      "comparisons": 12
+    },
+    "full_sequence": {
+      "maximumCandidateLogitDifference": 0.75,
+      "conditionalProbabilityDifference": 8.222033971585873e-06,
+      "candidateMassDifference": 3.742428589248448e-11,
+      "nativeTokenAgreements": 12,
+      "bothValidNative": 12,
+      "comparisons": 12
+    }
+  },
+  "recordedCases": [
+    {
+      "id": 0,
+      "text": "17",
+      "prefixTokens": 51,
+      "generatedTokens": 3,
+      "report": "correct",
+      "action": "verify",
+      "fullPrefillMaximumCacheDifference": 1.0
+    },
+    {
+      "id": 1,
+      "text": "-3",
+      "prefixTokens": 50,
+      "generatedTokens": 3,
+      "report": "correct",
+      "action": "verify",
+      "fullPrefillMaximumCacheDifference": 1.0
+    },
+    {
+      "id": 2,
+      "text": "3",
+      "prefixTokens": 57,
+      "generatedTokens": 2,
+      "report": "correct",
+      "action": "verify",
+      "fullPrefillMaximumCacheDifference": 1.0
+    },
+    {
+      "id": 3,
+      "text": "-5",
+      "prefixTokens": 56,
+      "generatedTokens": 3,
+      "report": "correct",
+      "action": "verify",
+      "fullPrefillMaximumCacheDifference": 1.0
+    },
+    {
+      "id": 4,
+      "text": "5",
+      "prefixTokens": 68,
+      "generatedTokens": 2,
+      "report": "correct",
+      "action": "verify",
+      "fullPrefillMaximumCacheDifference": 0.5
+    },
+    {
+      "id": 5,
+      "text": "5",
+      "prefixTokens": 73,
+      "generatedTokens": 2,
+      "report": "correct",
+      "action": "verify",
+      "fullPrefillMaximumCacheDifference": 0.4296875
+    }
+  ],
+  "cacheTensorComparisonsIndependentlyRecomputed": false,
+  "scope": "Six fixed technical cases, not a capability benchmark. Hashes, tokens, parsing and recorded arithmetic verified locally; full cache tensors and repeated/reverse-order outputs are not exported."
+}

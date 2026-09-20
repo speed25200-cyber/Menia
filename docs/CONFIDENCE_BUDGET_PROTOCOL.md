@@ -5,6 +5,8 @@ montre un ajustement partiel jusque sur les exemples appris. Cette expérience
 demande si une poursuite d'optimisation améliore cet ajustement, à données,
 objectif et capacité constants. Elle ne recherche pas un meilleur checkpoint
 sur un nouveau jeu de test et n'introduit aucun critère de conscience.
+Le [bilan complet audité](CONFIDENCE_BUDGET_RESULTS.md) est désormais disponible ;
+les captures de lancement ci-dessous restent des constats historiques.
 
 ## Plan fixé avant cette collecte
 
@@ -133,26 +135,26 @@ Colab en 19,071 secondes, une A100 40 Go active et 260 évaluations enregistrée
 dans la reproduction du point de départ. Aucune nouvelle mise à jour n'est
 encore enregistrée à cette capture. Le plan, les sources et l'ordre des appels
 correspondent à la préparation. La révision exécutée est
-`a9b1a27054056ec3f6c8300319036f5950ee4f32` ; les résultats de poursuite restent
-en attente. Ce reçu décrit une capture historique, pas un compteur en temps réel.
+`a9b1a27054056ec3f6c8300319036f5950ee4f32` ; les résultats de poursuite étaient
+alors en attente. Ce reçu décrit une capture historique, pas un compteur en temps réel.
 
 Le [relevé de reproduction initiale](../artifacts/confidence-budget-pilot/baseline-reproduction.json),
 pris à 04:18:33 UTC, constate ensuite les 2 880 jugements initiaux terminés,
 une différence maximale déclarée de zéro et 208 mises à jour nouvelles.
 Le contrôle a donc autorisé la poursuite. Il s'agit du relevé du collecteur
-distant ; le journal complet et les nouveaux poids restent à recevoir et à
-auditer avant l'interprétation des performances de poursuite.
+distant ; le journal complet et les nouveaux poids ont depuis été reçus et
+audités dans le bilan final.
 
 ## Audit de réception préparé
 
-Un [auditeur local](../research/audit_confidence_budget.py) vérifiera le journal
+Un [auditeur local](../research/audit_confidence_budget.py) vérifie le journal
 complet, le préfixe arrêté à la troisième fin d'entraînement, les six fichiers
-de poids et les trois parents. Il recalculera le rapport avec le lecteur
-strict et les deux arithmétiques existantes, puis décrira les déplacements
+de poids et les trois parents. Il recalcule le rapport avec le lecteur
+strict et les deux arithmétiques existantes, puis décrit les déplacements
 réels entre les points sauvegardés. Deux contrôles de cette arithmétique des
 poids passent sur tenseurs construits. L'audit sur les fichiers de cette
 expérience a ensuite commencé par la sauvegarde d'entraînement ci-dessous.
-Le recalcul complet des nouveaux scores reste à effectuer après leur réception.
+Le recalcul complet des nouveaux scores est désormais consigné dans le bilan.
 Les tests logiciels ne sont pas un résultat d'apprentissage.
 
 ```sh
@@ -181,4 +183,5 @@ entre les passages 4 et 8 dans chacune des trois répétitions. Ce contrôle
 établit la réalité des fichiers et des changements, sans interpréter leur
 ampleur comme progrès cognitif. Les poids de base distants ne font pas l'objet
 d'une attestation indépendante. Aucun résultat après entraînement n'est
-inclus dans cette sauvegarde ni interprété ici ; la collecte se poursuit.
+inclus dans cette sauvegarde. Le bilan final utilise l'archive complète
+reçue après la fin de la collecte.

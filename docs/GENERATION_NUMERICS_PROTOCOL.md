@@ -1,7 +1,8 @@
 # Contrôle numérique de la continuité sur Qwen3-4B
 
-20 septembre 2026. Protocole technique préparé, **pas encore exécuté sur le
-modèle préentraîné**. Neuf tests CPU passent sur un petit Qwen aléatoire, en
+20 septembre 2026. Protocole technique fixé avant l'exécution. Le
+[bilan sur le modèle préentraîné](GENERATION_NUMERICS_RESULTS.md) est désormais
+disponible et audité. Neuf tests CPU passent sur un petit Qwen aléatoire, en
 0,585 seconde de temps de tests. Ce contrôle précède une expérience sur les
 conséquences d'un état propre ; il ne remplace pas cette expérience.
 

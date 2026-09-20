@@ -39,6 +39,9 @@ def plot(summary_path,verification_path,prefix):
         ha='center',fontsize=9,color='#444444')
     fig.tight_layout(rect=(0,.12,1,.94)); prefix=Path(prefix); prefix.parent.mkdir(parents=True,exist_ok=True)
     for suffix in ('.png','.svg'): fig.savefig(prefix.with_suffix(suffix),dpi=160,facecolor='white')
+    svg = prefix.with_suffix('.svg')
+    svg.write_text('\n'.join(line.rstrip() for line in svg.read_text(encoding='utf-8').splitlines())+'\n',
+        encoding='utf-8',newline='\n')
     plt.close(fig)
 
 

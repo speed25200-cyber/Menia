@@ -1,0 +1,122 @@
+{
+  "schema": "menia-confidence-budget-verification-v1",
+  "verified": true,
+  "journalSHA256": "ed5ec1aec33bc551603b851170832bd99956cf6bf40997f1c5bce16f541097cf",
+  "chainEnd": "335889fe37cc773c9e064266e7f78dc8a4febf1cbe8187d23bc0ac7bf3efa2a9",
+  "planHash": "208ce8f4ef7a2dd3600704f0f194fa31dc6d2a70424fb8416ee547920ca12b84",
+  "sourceHash": "dac15b5a552289f4b65239be08eabd108f10d8b4f093ed9aea64d274a012ae30",
+  "callPlanHash": "91bb87d1b9e0ff663eb61539b13b1aa6805cc6357743a41ba610672853cdcd56",
+  "recordedCalls": 8640,
+  "trainingSteps": 1296,
+  "checkpointFiles": {
+    "confidence-budget-20260920-v1.r0-e4.safetensors": {
+      "bytes": 11811296,
+      "sha256": "450538c00879256133702fb8531103fa38a5e750e510e6440406ae8f42850a69",
+      "key": "r0-e4",
+      "tensors": 144,
+      "parameters": 2949120,
+      "versusEpoch2": {
+        "changedTensors": 144,
+        "maximumAbsoluteDifference": 0.008353008888661861,
+        "l2": 1.75022812836871
+      }
+    },
+    "confidence-budget-20260920-v1.r0-e8.safetensors": {
+      "bytes": 11811296,
+      "sha256": "f53d6c1af08794637ac0f2909fd2dd3b5d02bee11a7daec073d3d6b35b3e6b07",
+      "key": "r0-e8",
+      "tensors": 144,
+      "parameters": 2949120,
+      "versusEpoch2": {
+        "changedTensors": 144,
+        "maximumAbsoluteDifference": 0.01787388464435935,
+        "l2": 4.099938697356004
+      }
+    },
+    "confidence-budget-20260920-v1.r1-e4.safetensors": {
+      "bytes": 11811296,
+      "sha256": "7fee1a4bec4d2edd18dd3c552a12a421be392161fe806fe1c91c9bb3c8e34030",
+      "key": "r1-e4",
+      "tensors": 144,
+      "parameters": 2949120,
+      "versusEpoch2": {
+        "changedTensors": 144,
+        "maximumAbsoluteDifference": 0.007653444306924939,
+        "l2": 1.879208598573028
+      }
+    },
+    "confidence-budget-20260920-v1.r1-e8.safetensors": {
+      "bytes": 11811296,
+      "sha256": "ead60e35cd6c134f31de271e87014be04ef4e7e0f309f019cd8fc38a59844161",
+      "key": "r1-e8",
+      "tensors": 144,
+      "parameters": 2949120,
+      "versusEpoch2": {
+        "changedTensors": 144,
+        "maximumAbsoluteDifference": 0.017754912318196148,
+        "l2": 3.8161738358768442
+      }
+    },
+    "confidence-budget-20260920-v1.r2-e4.safetensors": {
+      "bytes": 11811296,
+      "sha256": "0ccb375e8dfe4347312a513c682fe55d07de06af6f43dcda202dda6cbe33447c",
+      "key": "r2-e4",
+      "tensors": 144,
+      "parameters": 2949120,
+      "versusEpoch2": {
+        "changedTensors": 144,
+        "maximumAbsoluteDifference": 0.008317926898598671,
+        "l2": 2.020584477058102
+      }
+    },
+    "confidence-budget-20260920-v1.r2-e8.safetensors": {
+      "bytes": 11811296,
+      "sha256": "ab3931609e63c87dcc83c7cc42868d0be9ebe03d81ea332cda49d3a7edd83e6a",
+      "key": "r2-e8",
+      "tensors": 144,
+      "parameters": 2949120,
+      "versusEpoch2": {
+        "changedTensors": 144,
+        "maximumAbsoluteDifference": 0.017004683206323534,
+        "l2": 4.079778170976642
+      }
+    }
+  },
+  "unchangedParentFiles": {
+    "confidence-ranking-20260920-v1.r0-rank.safetensors": {
+      "bytes": 11811296,
+      "sha256": "d7919cd9b9ddb0ce2df4fff21e246020576fd4b8c68c5d0f81e61a2228483ed1"
+    },
+    "confidence-ranking-20260920-v1.r1-rank.safetensors": {
+      "bytes": 11811296,
+      "sha256": "ff15d693e24f67067dbab7a9f5fb81c475ad07a9892968abc6616a6b83f32525"
+    },
+    "confidence-ranking-20260920-v1.r2-rank.safetensors": {
+      "bytes": 11811296,
+      "sha256": "73a767db9436372ec8d8c76d5e9ccb7aa96a1cfabca5119220657621fe0fce51"
+    }
+  },
+  "epoch4To8Displacements": {
+    "r0": {
+      "changedTensors": 144,
+      "maximumAbsoluteDifference": 0.013194295694120228,
+      "l2": 3.001179070589213
+    },
+    "r1": {
+      "changedTensors": 144,
+      "maximumAbsoluteDifference": 0.013839994091540575,
+      "l2": 2.485004673474879
+    },
+    "r2": {
+      "changedTensors": 144,
+      "maximumAbsoluteDifference": 0.012105717323720455,
+      "l2": 2.728465459562452
+    }
+  },
+  "trainingPrefixSHA256": "c4fa1fe27f521acfea9d78a2761f6f3a44cdc4db8e5eef5098d180e9c2b9adda",
+  "baselineMaxAbsoluteDifference": 0.0,
+  "mainRecomputeMaxAbsoluteDifference": 0.0,
+  "separateArithmeticMaxDifference": 5.551115123125783e-17,
+  "auditorSourceHash": "06587cd610f7c5dcb372f330d11eb0c757c5040dab8cb8f5125a6452a2ec2401",
+  "scope": "Exact requests, update schedule, frozen prefix and actual local checkpoint tensors checked. Numerical implementations share the strict reader and labels; not an independent replication or an attestation of remote base weights."
+}

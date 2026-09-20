@@ -38,37 +38,37 @@ séparée concorde à 5,56 × 10⁻¹⁷ près et les neuf poids sont inchangés
 motive une étude de budget d'optimisation à capacité fixe, sans identifier
 encore la cause du plafond ni confirmer conscience ou nouveauté.
 
-Le [diagnostic de budget](CONFIDENCE_BUDGET_PROTOCOL.md) est lancé : trois
-adaptateurs de rang 8 conservés, six passages supplémentaires et mesures
-fixées après deux, quatre et huit passages totaux. Les 1 296 mises à jour
-supplémentaires emploient uniquement les anciennes données d'entraînement.
-Les 8 640 lectures incluent les anciennes réponses du lot 24, désormais
-déclarées consultées. Douze contrôles logiciels passent sur PC. Le point de
-départ doit reproduire les scores précédents avant toute mise à jour ;
-l'optimiseur redémarre faute de moments sauvegardés. Le reçu de lancement
-constate aussi les douze tests réussis sur Colab et 260 lectures du point
-de départ, avant toute nouvelle mise à jour. Aucun résultat réel de cette
-poursuite n'est encore revendiqué.
+Le [diagnostic de budget](CONFIDENCE_BUDGET_RESULTS.md) est terminé et audité :
+1 296 mises à jour, 8 640 lectures et six nouveaux adaptateurs vérifiés contre
+la sauvegarde prise avant revue des scores. Les trois parents sont inchangés ;
+les 2 880 scores de départ sont reproduits exactement. Le recalcul du rapport
+est exact et l'arithmétique séparée concorde à 5,56 × 10⁻¹⁷ près.
 
-Le [relevé initial suivant](../artifacts/confidence-budget-pilot/baseline-reproduction.json)
-constate la reproduction exacte des 2 880 scores et le début des mises à jour.
-Les nouveaux résultats restent en attente de réception et d'audit. En parallèle,
-la [conservation de la trajectoire de génération](GENERATION_STATE_CONTROLS.md)
-est implémentée : six tests CPU sur petit Qwen aléatoire et quatre cas du
-tokenizer réel passent. Elle distingue cache réellement produit et relecture
-des mêmes IDs, sans nouveau résultat de capacité sur Qwen3-4B. Elle conserve
-les marqueurs du prompt initial et le dernier token d'arrêt, au lieu de
-reconstruire l'historique à partir du seul texte décodé. Le lien avec un suivi
-appris de l'état propre, et plus encore avec le vécu, reste à établir.
+Après huit passages, les AUROC dans les catégories atteignent 0,9981, 0,9976
+et 1,0000 sur l'apprentissage. Le rang 8 permet donc cet ajustement. Sur les
+anciennes réponses du lot 24, le Brier augmente dans les trois répétitions :
+0,1012 → 0,1292 ; 0,0969 → 0,1709 ; 0,0996 → 0,1423. L'AUROC s'améliore dans
+deux répétitions et baisse légèrement dans la troisième entre deux et huit
+passages. Classement et qualité des probabilités doivent rester distincts.
+Le lot déjà consulté n'est pas une nouvelle confirmation, aucun checkpoint
+n'est sélectionné et aucune nouvelle réponse de tâche n'est évaluée.
 
-Le [contrôle numérique sur Qwen3-4B](GENERATION_NUMERICS_PROTOCOL.md) est préparé
-et figé, mais pas encore exécuté : six questions, douze générations répétées,
-soixante décodages de branches, aucun apprentissage ni intervention. Il sépare
-la reconstruction au même rythme d'appels de la relecture entière, dont les
-écarts BF16 pourraient sinon être confondus avec un effet d'état interne.
-Neuf tests CPU passent sur Qwen aléatoire. Le lanceur exige la fin du diagnostic
-de budget et un A100 libre. Ce contrôle technique ne constitue pas un nouveau
-résultat de suivi de soi.
+La [conservation de la trajectoire de génération](GENERATION_STATE_CONTROLS.md)
+est implémentée : tokens bruts, marqueurs du prompt et dernier token d'arrêt
+sont conservés. Le [contrôle numérique sur Qwen3-4B](GENERATION_NUMERICS_RESULTS.md)
+est désormais terminé : six cas, douze générations et soixante décodages,
+sans apprentissage ni intervention. Le collecteur constate six reconstructions
+exactes des caches au même rythme d'appels. La relecture entière donne un écart
+maximal absolu de cache de 1,0, mais les douze sorties natives restent identiques.
+Tous les rapports disent « correct » et toutes les actions « vérifier » :
+ce succès technique ne démontre aucune discrimination entre états.
+
+Le journal numérique et les quatre fichiers d'archive sont reçus. Les tokens,
+probabilités et comparaisons consignées sont audités localement. Les caches
+complets, secondes générations et sorties en ordre inverse ne sont pas
+exportés : leurs égalités ne peuvent pas être recalculées depuis l'archive.
+Les neuf tests du lanceur passent en 0,436 seconde sur Colab. Ces contrôles
+ne sont ni une attestation de conscience ni une réplication indépendante.
 
 La [conception du test prospectif](PROSPECTIVE_STATE_PREDICTION_DESIGN.md)
 précise la cible suivante : prévoir une conséquence future depuis l'état
@@ -76,14 +76,17 @@ conservé, puis exécuter la tâche dans une copie indépendante sans lui transm
 le rapport de confiance. Elle tient compte de RLMF et de CHIVE, avec contrôle
 par le texte seul et séparation entre cohérence des réponses et correction
 mesurée. Elle reste une note de conception, sans nouveau résultat ni protocole
-confirmatoire figé. L'audit local du diagnostic de budget est prêt ; sa
-vérification des scores attend le journal complet. Une
-[sauvegarde d'entraînement](../artifacts/confidence-budget-pilot/training-backup-receipt.json)
-est reçue et auditée : 1 296 mises à jour, six nouveaux adaptateurs de
-2 949 120 paramètres chacun, trois parents inchangés et aucun jugement après
-entraînement dans le préfixe exporté. Les poids changent entre les passages
-4 et 8, sans que cela établisse un progrès comportemental. La collecte des
-scores se poursuit.
+confirmatoire figé. Les résultats actuels justifient d'étudier des conséquences
+d'états modifiés à texte identique ; ils ne justifient pas de prolonger encore
+la même recette d'entraînement ou de déployer les nouveaux poids sur l'iPhone.
+
+Un opérateur de permutation réversible du cache est implémenté pour cette
+phase de découverte : V seul peut rompre les associations K/V ; la permutation
+conjointe sert de témoin algébrique pour les requêtes futures ayant accès à
+tout le préfixe. Trois tests sur petit Qwen aléatoire vérifient copie privée,
+restauration exacte, contrôle d'attention et refus des états incompatibles.
+Il n'est pas encore évalué sur le modèle préentraîné. Les sites, tâches et
+conditions d'un essai de découverte restent à fixer avant son lancement.
 
 Le [protocole du Colab 22](VALUE_ACTION_LEARNING_PROTOCOL.md) compare trois
 recettes d'apprentissage appariées : choix seuls, associations auxiliaires

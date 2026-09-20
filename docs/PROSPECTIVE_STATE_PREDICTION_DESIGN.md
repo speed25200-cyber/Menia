@@ -1,8 +1,11 @@
 # Prévoir une conséquence de son état avant d'agir
 
 20 septembre 2026. **Note de conception, pas un protocole confirmatoire figé
-ni un résultat expérimental.** Le diagnostic de budget reste en cours ; son
-issue et le contrôle numérique détermineront les essais réalisables. Cette
+ni un résultat expérimental.** Le [diagnostic de budget](CONFIDENCE_BUDGET_RESULTS.md)
+montre désormais un ajustement appris presque parfait, avec dégradation des
+probabilités sur le lot déjà examiné. Le [contrôle numérique](GENERATION_NUMERICS_RESULTS.md)
+retrouve les caches exactement au même rythme d'appels dans ses six cas. Ces
+résultats orientent les essais réalisables. Cette
 note ne remplace pas l'objectif de conscience par un score de prévision.
 
 ## Ce que les nouvelles sources changent
@@ -97,9 +100,42 @@ meilleure décision, notamment si les probabilités restent du même côté du
 seuil utile. Ce second essai ne devra pas recycler comme test réservé les
 épisodes ayant servi à sélectionner une stratégie.
 
+## Opérateur réversible préparé pour la découverte
+
+Le [module de permutation du cache](../research/prospective_cache_interventions.py)
+est implémenté, avec trois tests CPU sur un petit Qwen aléatoire. Il conserve
+les tokens et les poids, transforme une copie du cache et garde l'original
+inchangé. L'inverse de la permutation restaure les tenseurs bit pour bit.
+Il n'a pas encore été essayé sur le Qwen3-4B préentraîné et ne fournit encore
+aucune conséquence de tâche ni prévision de cette conséquence.
+
+Deux opérations sont distinctes. Permuter seulement les valeurs V rompt leur
+association aux clés K. Permuter conjointement les paires K/V laisse, en
+arithmétique exacte, la somme d'attention d'une future requête inchangée :
+
+```text
+softmax(q (P K)ᵀ) (P V) = softmax(q Kᵀ) V
+```
+
+Cela suppose que les positions permutées du préfixe sont toutes accessibles
+à la requête, sans masque ou biais distinct ajouté selon leur emplacement.
+Les clés du cache Qwen testé contiennent déjà leur rotation de position ;
+les tokens et positions des nouvelles requêtes restent inchangés. Le calcul
+flottant peut toutefois différer par l'ordre des réductions. Il faudra donc
+mesurer ce témoin sur le modèle préentraîné et les tâches effectives.
+
+Ce témoin offre une transformation visible dans les tenseurs qui devrait
+préserver le calcul pertinent, sous ces hypothèses. Il ne remplace pas le
+témoin de norme appariée : la permutation conjointe modifie aussi K et son
+déplacement n'a pas nécessairement la même norme que le déplacement de V seul.
+Cette propriété algébrique est un contrôle d'attention, pas une découverte de
+conscience. L'essai sur des rappels de liaisons clé/valeur devra d'abord établir
+un effet mesuré de l'altération de V et sa récupération par restauration,
+sans confondre sortie invalide et erreur de tâche ordinaire.
+
 ## Ce qui reste ouvert
 
-Cette note ne choisit pas de nouveau checkpoint sur les résultats en cours,
+Cette note ne choisit pas de nouveau checkpoint sur les résultats du diagnostic,
 ni d'intervention qui n'aurait encore aucun effet vérifié. Les volumes,
 seuils, formulations, lots réservés, intervalles et corrections multiples
 restent à fixer avant une collecte confirmatoire. Une collecte de découverte
