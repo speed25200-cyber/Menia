@@ -5,6 +5,8 @@ nouveau résultat de Qwen3-4B dans ces contrôles. Le Colab 23 est désormais
 [terminé et audité](NATIVE_ANSWER_CONFIDENCE_RESULTS.md) : le critère prédictif
 échoue. Ces fichiers ne modifient ni son entraînement, ni ses sources, ni ses
 critères ; ils restent une préparation à une éventuelle expérience ultérieure.
+Le [Colab 24](CONFIDENCE_RANKING_PROTOCOL.md) entraîne actuellement un objectif
+de classement dans les catégories. Son issue n'est pas encore connue.
 
 ## Blocage à traiter
 
@@ -84,6 +86,63 @@ python -m research.confidence_prefix_control --output artifacts/confidence-prefi
 ```
 
 ## Ce qui manque avant une expérience interprétable
+
+### Décoder une décision native sans lui fournir le jugement
+
+[`confidence_action_branches.py`](../research/confidence_action_branches.py)
+prépare une branche de jugement et huit branches de décision indépendantes à
+partir du même passé. Aucune réponse de la branche de jugement n'est ajoutée
+aux branches d'action. Deux paires de codes, `2/3` et `4/5`, sont utilisées ;
+leur signification accepter/vérifier et leur ordre d'affichage sont inversés
+indépendamment. Les prompts conservent la consigne système historique qui
+demande un entier. Des codes alphabétiques introduiraient un conflit avec
+cette consigne ; les codes `0/1` réutiliseraient ceux de la confiance. Ces
+choix sont faits avant tout essai de performance sur le modèle entraîné.
+
+La règle présentée coûte zéro pour une réponse validée correcte, cent pour
+une erreur validée et un montant certain pour demander une vérification.
+Ce sont des pénalités déclarées dans le problème, pas des coûts GPU ou des
+temps d'outil mesurés. Le contrôle du tokenizer utilise les coûts 20 et 80,
+sans constituer un choix définitif de coûts ou de formulations d'évaluation.
+
+[`confidence_action_decode.py`](../research/confidence_action_decode.py)
+effectue deux pas gloutons au maximum, sur **tout le vocabulaire**, sans
+cache. Le préfixe et l'intervention éventuelle sont recalculés à chaque pas.
+Une réponse conforme exige un code émis par le modèle suivi d'un token
+d'arrêt déclaré. La probabilité conditionnelle des deux codes est conservée
+comme mesure, mais ne sert jamais à choisir l'action à sa place.
+Les sorties hors codes, sans arrêt ou comportant des tokens supplémentaires
+restent invalides, sans repli. La signification du premier token est conservée
+séparément : un échec de format ne sera pas assimilé automatiquement à une
+absence d'information pour décider.
+
+La [configuration de génération exacte de Qwen](https://huggingface.co/Qwen/Qwen3-4B/blob/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json)
+déclare **deux** tokens d'arrêt, 151645 et 151643. Le décodeur accepte les
+deux, avec une vérification contre la génération native sur petit Qwen.
+Ne prendre en charge qu'un EOS aurait rejeté à tort cette configuration.
+
+Sept tests nouveaux passent sur CPU : deux sur les branches et cinq sur la
+génération d'un petit Qwen aléatoire. Les tokens générés correspondent à
+`model.generate`, avec un ou plusieurs EOS ; poids, RNG et entrées restent
+inchangés. Les tests vérifient aussi les budgets, la permutation sémantique,
+l'intervention à chaque pas et le témoin structurel du dernier bloc.
+La petite dérive numérique éventuelle de l'état du préfixe entre passages
+est enregistrée ; l'identité des tokens ne garantit pas l'égalité bit à bit
+de calculs matriciels de tailles différentes.
+
+Le [reçu du tokenizer réel](../artifacts/confidence-prefix-preparation/action-tokenizer-check.json)
+vérifie huit cas techniques, soit 72 branches : préfixe identique, codes à
+un seul token, codes d'action distincts des codes de jugement, budgets et
+tokens d'arrêt. Les empreintes des trois fichiers de configuration sont
+enregistrées. Aucun modèle préentraîné n'est chargé et aucune action de Menia
+n'est mesurée par ce contrôle. Le test complet devra encore fixer ses données
+réservées, ses contrôles de compréhension des coûts, ses directions causales,
+ses comparateurs et ses critères avant collecte.
+
+```sh
+python -m unittest tests_research.test_confidence_action_branches tests_language.test_confidence_action_decode -v
+python -m research.confidence_action_validation --output artifacts/confidence-prefix-preparation/action-tokenizer-check.json
+```
 
 ### Vérification de la frontière sur le tokenizer réel
 

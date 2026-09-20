@@ -127,6 +127,13 @@ pourquoi déplacer un score ne suffit pas à découvrir une auto-évaluation.
 Ces opérations sont vérifiées sur CPU ; aucune direction de confiance
 apprise ni effet utile sur une décision n'est encore identifié. Elles ne
 modifient pas la tentative Colab 23 désormais terminée.
+La [préparation du décodage d'action](CONFIDENCE_PREFIX_INTERVENTIONS.md#décoder-une-décision-native-sans-lui-fournir-le-jugement)
+ajoute ensuite sept contrôles logiciels. Elle sépare jugement et décision,
+inverse le sens et l'ordre des codes et décode réellement dans tout le
+vocabulaire, sans choisir l'action par un seuil externe. Les deux tokens
+d'arrêt de Qwen sont pris en charge. Le tokenizer réel valide 72 branches
+techniques ; aucun modèle préentraîné n'est chargé pour ce contrôle et aucun
+bénéfice décisionnel n'est encore établi. Le Colab 24 en cours reste inchangé.
 Six [contrôles de propagation](../artifacts/confidence-prefix-preparation/reachability-check.json)
 ajoutent un témoin nul architectural : modifier la sortie du dernier bloc sur
 un token du passé n'affecte pas les logits d'un token ultérieur. Les mêmes
