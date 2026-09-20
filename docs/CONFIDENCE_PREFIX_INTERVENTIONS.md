@@ -144,6 +144,47 @@ python -m unittest tests_research.test_confidence_action_branches tests_language
 python -m research.confidence_action_validation --output artifacts/confidence-prefix-preparation/action-tokenizer-check.json
 ```
 
+### Séparer compréhension des coûts et estimation de ses propres erreurs
+
+[`confidence_action_controls.py`](../research/confidence_action_controls.py)
+réutilise les 18 couples probabilité/coût du Colab 19 dans ce nouveau contexte
+question, réponse, puis choix. Les coûts sont ici exprimés sur cent points.
+Une condition fournit une probabilité de réussite stipulée ; l'autre fournit
+directement les deux coûts moyens calculés. Ces données sont annoncées comme
+hypothétiques et ne sont pas présentées comme des estimations mesurées de Menia.
+Elles sont ajoutées **après** le préfixe partagé. Les formulations d'action,
+codes, permutations et ordre d'options restent ceux des branches natives.
+L'ordre d'énoncé des coûts calculés suit celui des options.
+
+Cette comparaison sépare des explications possibles d'un échec : échouer avec
+les coûts calculés signale déjà un problème de choix, de consigne ou de format ;
+réussir avec les coûts mais échouer avec les probabilités pointe vers la
+conversion en coût moyen. Réussir les deux témoins est une condition utile
+pour interpréter un échec sans information fournie, sans suffire à en identifier
+la cause. L'information explicite peut aussi dominer une représentation interne :
+la sensibilité de ces témoins à une future perturbation devra être interprétée
+séparément. Aucune de ces issues n'a encore été mesurée dans ce contexte.
+
+Le corrigé arithmétique donne `100 − p` pour valider et `c` pour vérifier.
+Il accepte les deux actions en cas d'égalité. Une sortie native invalide
+compte comme échec pour l'exactitude du choix ; son coût et son regret restent
+indéfinis. Un futur tableau devra donc montrer le nombre de sorties invalides
+et le dénominateur des regrets valides, sans masquer les échecs de format.
+
+Trois tests logiciels passent : arithmétique comparée à un calcul rationnel,
+égalités et bornes, sorties invalides, permutations et absence de modification
+du préfixe. Le [contrôle du tokenizer réel](../artifacts/confidence-prefix-preparation/explicit-controls-tokenizer-check.json)
+vérifie les **288 branches** des 18 cas et deux conditions d'information.
+Il ne charge aucun poids préentraîné et ne génère aucune décision. La grille
+est une préparation réutilisée d'un diagnostic antérieur ; elle ne fixe pas
+encore un nouveau test global, ses répétitions, ses données ni ses seuils.
+Les expériences Colab 19 et 24 restent inchangées.
+
+```sh
+python -m unittest tests_research.test_confidence_action_controls -v
+python -m research.confidence_action_controls_validation --output artifacts/confidence-prefix-preparation/explicit-controls-tokenizer-check.json
+```
+
 ### Vérification de la frontière sur le tokenizer réel
 
 Le [format Qwen de la révision fixée](https://huggingface.co/Qwen/Qwen3-4B/blob/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json)

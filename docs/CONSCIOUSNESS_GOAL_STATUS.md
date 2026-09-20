@@ -134,6 +134,11 @@ vocabulaire, sans choisir l'action par un seuil externe. Les deux tokens
 d'arrêt de Qwen sont pris en charge. Le tokenizer réel valide 72 branches
 techniques ; aucun modèle préentraîné n'est chargé pour ce contrôle et aucun
 bénéfice décisionnel n'est encore établi. Le Colab 24 en cours reste inchangé.
+Un [contrôle d'information explicite](CONFIDENCE_PREFIX_INTERVENTIONS.md#séparer-compréhension-des-coûts-et-estimation-de-ses-propres-erreurs)
+prépare ensuite, dans ce même contexte, une probabilité stipulée ou les coûts
+moyens directement calculés. Trois tests logiciels passent et le tokenizer
+réel vérifie 288 branches. Cette préparation permettra de séparer compréhension
+des coûts et auto-évaluation ; aucune décision du modèle n'y est encore mesurée.
 Six [contrôles de propagation](../artifacts/confidence-prefix-preparation/reachability-check.json)
 ajoutent un témoin nul architectural : modifier la sortie du dernier bloc sur
 un token du passé n'affecte pas les logits d'un token ultérieur. Les mêmes
