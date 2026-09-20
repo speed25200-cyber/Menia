@@ -343,6 +343,16 @@ mécanisme. Il ne fait pas partie des sources du Colab 24.
 python -m unittest tests_language.test_confidence_cached_action_decode -v
 ```
 
+### Conserver la trajectoire effectivement générée
+
+Une [extension de continuité de génération](GENERATION_STATE_CONTROLS.md)
+conserve désormais le cache et les tokens réellement produits par le générateur,
+au lieu d'un préfixe reconstruit. Six tests sur petit Qwen aléatoire et un
+contrôle du tokenizer réel vérifient le dernier token non encore consommé,
+les branches indépendantes et la conservation de l'encadrement du dialogue.
+Ils ne mesurent aucune capacité de Qwen3-4B et ne modifient pas le diagnostic
+de budget actif.
+
 ### Capacité d'adaptation : une hypothèse distincte
 
 [Guo et al., annexe D.1](https://arxiv.org/html/2606.32038v1#A4.SS1)

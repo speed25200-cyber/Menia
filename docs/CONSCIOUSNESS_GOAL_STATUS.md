@@ -50,6 +50,17 @@ constate aussi les douze tests réussis sur Colab et 260 lectures du point
 de départ, avant toute nouvelle mise à jour. Aucun résultat réel de cette
 poursuite n'est encore revendiqué.
 
+Le [relevé initial suivant](../artifacts/confidence-budget-pilot/baseline-reproduction.json)
+constate la reproduction exacte des 2 880 scores et le début des mises à jour.
+Les nouveaux résultats restent en attente de réception et d'audit. En parallèle,
+la [conservation de la trajectoire de génération](GENERATION_STATE_CONTROLS.md)
+est implémentée : six tests CPU sur petit Qwen aléatoire et quatre cas du
+tokenizer réel passent. Elle distingue cache réellement produit et relecture
+des mêmes IDs, sans nouveau résultat de capacité sur Qwen3-4B. Elle conserve
+les marqueurs du prompt initial et le dernier token d'arrêt, au lieu de
+reconstruire l'historique à partir du seul texte décodé. Le lien avec un suivi
+appris de l'état propre, et plus encore avec le vécu, reste à établir.
+
 Le [protocole du Colab 22](VALUE_ACTION_LEARNING_PROTOCOL.md) compare trois
 recettes d'apprentissage appariées : choix seuls, associations auxiliaires
 correctes, associations auxiliaires mélangées. Neuf adaptateurs sont entraînés,

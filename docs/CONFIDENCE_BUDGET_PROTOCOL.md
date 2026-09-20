@@ -135,3 +135,10 @@ encore enregistrée à cette capture. Le plan, les sources et l'ordre des appels
 correspondent à la préparation. La révision exécutée est
 `a9b1a27054056ec3f6c8300319036f5950ee4f32` ; les résultats de poursuite restent
 en attente. Ce reçu décrit une capture historique, pas un compteur en temps réel.
+
+Le [relevé de reproduction initiale](../artifacts/confidence-budget-pilot/baseline-reproduction.json),
+pris à 04:18:33 UTC, constate ensuite les 2 880 jugements initiaux terminés,
+une différence maximale déclarée de zéro et 208 mises à jour nouvelles.
+Le contrôle a donc autorisé la poursuite. Il s'agit du relevé du collecteur
+distant ; le journal complet et les nouveaux poids restent à recevoir et à
+auditer avant l'interprétation des performances de poursuite.
