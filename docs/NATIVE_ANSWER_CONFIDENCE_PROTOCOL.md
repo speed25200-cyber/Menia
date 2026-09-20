@@ -186,3 +186,21 @@ totalisent 797 752 tokens et 1 758,944 s mesurées par le collecteur. Ce bilan
 documente le coût et l'appariement ; il ne mesure pas encore un gain de
 prévision. L'archive complète devra être reçue, les poids comparés à ce relevé
 et les deux recalculs exécutés avant l'interprétation des résultats.
+
+## Comparateurs figés avant les requêtes de test
+
+Le [relevé de calibration](../artifacts/native-answer-confidence-pilot/calibration-freeze.json)
+est capturé le 20 septembre à 00:15:20 UTC, après le début de la collecte de
+test et avant examen des résultats. Il vérifie le préfixe chaîné du journal
+qui précède sa première requête de test : 864 réponses de calibration,
+2 592 jugements, puis trois ensembles de comparateurs ajustés sur 96 questions
+chacun. Les trois ensembles apparaissent immédiatement avant la première
+requête de test, sans ajustement intercalé avec les tests.
+
+Le relevé conserve les empreintes des comparateurs et des données utilisées,
+sans exposer leurs coefficients, les réponses ou les scores. Son horodatage
+est celui de cette capture ultérieure, pas une attestation externe antérieure
+au premier test. À réception de l'archive, le préfixe et les trois ensembles
+devront correspondre exactement à ce relevé, et les ajustements seront
+reconstruits à partir de la calibration. Ce contrôle de provenance ne mesure
+pas encore la qualité des prédictions.

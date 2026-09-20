@@ -72,6 +72,11 @@ fichiers de poids avec empreintes concordantes. Les bras appariés reçoivent
 le même nombre de tokens ; le total est de 797 752 tokens et 1 758,944 s
 d'entraînement. Le relevé précède l'examen des résultats et ne contient aucun
 score prédictif.
+Le [relevé de calibration](../artifacts/native-answer-confidence-pilot/calibration-freeze.json)
+vérifie ensuite l'ordre du journal : 3 456 appels de calibration, trois
+ensembles de comparateurs figés, puis la première requête de test. Capturé
+après le début des tests et avant examen des résultats, il conserve les
+empreintes à comparer avec l'archive finale, sans réponse ni score.
 
 La [préparation d'interventions avant jugement et action](CONFIDENCE_PREFIX_INTERVENTIONS.md)
 ajoute cinq tests sur petit Qwen aléatoire. Un échange partiel cible le même

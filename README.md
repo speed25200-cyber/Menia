@@ -306,6 +306,9 @@ Le [relevé des poids figés](artifacts/native-answer-confidence-pilot/training-
 confirme ensuite les 864 mises à jour, neuf fichiers de poids et 797 752 tokens
 d'apprentissage. Les réponses nouvelles sont en cours de collecte ; aucun
 bilan de gain prédictif n'est encore disponible.
+Le [relevé de calibration](artifacts/native-answer-confidence-pilot/calibration-freeze.json)
+vérifie que les trois ensembles de comparateurs sont enregistrés dans le
+journal après les 3 456 appels de calibration et avant le premier test.
 
 Une [préparation d'interventions causales](docs/CONFIDENCE_PREFIX_INTERVENTIONS.md)
 ajoute ensuite un échange partiel au préfixe commun et un témoin de modification
