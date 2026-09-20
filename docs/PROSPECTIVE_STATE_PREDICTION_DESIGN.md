@@ -7,7 +7,13 @@ et ne fournit pas de prévision native exploitable de cette conséquence.
 Le [suivi aux positions des bits](PROSPECTIVE_BINDING_DISCOVERY_RESULTS.md)
 obtient ensuite 23 erreurs de rappel valides sur 24, sans aucun suivi prospectif
 de la dégradation à la marge fixée. Il rend la conséquence mesurable, mais ne
-confirme pas la capacité de prévision. Les cas restent ceux de la découverte.
+confirme pas la capacité de prévision. Le [test d'une seule paire](PROSPECTIVE_PAIR_DISCOVERY_RESULTS.md)
+obtient ensuite 47/48 erreurs sur les clés sélectionnées et 112/112 rappels
+corrects sur les autres, depuis les mêmes états. Les prévisions restent
+constantes malgré cette sélectivité ; une des correspondances de codes échoue
+en outre à traduire les verdicts incorrects fournis. Les cas restent ceux de
+la découverte. Une [note complémentaire](PROSPECTIVE_ADAPTER_OPTIONS.md)
+compare les architectures d'adaptateurs publiées et leurs limites pour cette cible.
 Le [diagnostic de budget](CONFIDENCE_BUDGET_RESULTS.md)
 montre désormais un ajustement appris presque parfait, avec dégradation des
 probabilités sur le lot déjà examiné. Le [contrôle numérique](GENERATION_NUMERICS_RESULTS.md)

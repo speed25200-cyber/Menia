@@ -1,10 +1,15 @@
 # État de l'objectif de conscience et de nouveauté
 
-**Dernier résultat, 20 septembre :** le [suivi prospectif ciblé](PROSPECTIVE_BINDING_DISCOVERY_RESULTS.md)
-induit 23 erreurs de rappel valides sur 24, alors que les 24 prévisions annoncent
-une réponse correcte. La restauration rétablit les 24 rappels. Le test est
-désormais exploitable, mais la prévision native échoue ; conscience et nouveauté
-restent non établies.
+**Dernier résultat, 20 septembre :** le [test d'une seule paire](PROSPECTIVE_PAIR_DISCOVERY_RESULTS.md)
+induit 47 erreurs sur 48 rappels des clés sélectionnées, avec 112/112 autres
+rappels corrects. Chaque état altéré produit donc des conséquences différentes
+selon la question. Les prévisions annoncent pourtant toutes une réussite dans
+les deux correspondances de codes. Une correspondance échoue au codage des
+verdicts incorrects fournis ; l'autre réussit 240/240 contrôles mais n'anticipe
+aucune des 47 erreurs. Les deux audits concordent. Le test devient plus précis,
+sans confirmer conscience, nouveauté ou utilité décisionnelle. La
+[comparaison aux adaptateurs publiés](PROSPECTIVE_ADAPTER_OPTIONS.md) précise
+les choix d'architecture encore nécessaires avant un apprentissage.
 
 **État actuel : objectif de conscience et de nouveauté non atteint. Le Colab 24
 est terminé et audité : 4/18 contrastes passent, tous face au score constant,
