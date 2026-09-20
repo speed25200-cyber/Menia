@@ -253,6 +253,56 @@ du jeu de test.
 python -m research.confidence_prefix_reachability --output artifacts/confidence-prefix-preparation/reachability-check.json
 ```
 
+### Conserver une trace interne entre deux demandes
+
+Les Colab 23 et 24 relisent les tokens avec le checkpoint du juge. Ils ne
+conservent pas un éventuel état interne transitoire du producteur. Avec des
+poids fixes et sans intervention, le cache KV sert au calcul incrémental :
+il ne fournit pas automatiquement une information supplémentaire par rapport
+au recalcul des mêmes tokens. En revanche, une intervention non inscrite dans
+le texte peut rendre ces deux chemins différents. Il faut les distinguer
+avant de chercher un suivi d'un état propre à l'épisode.
+
+Le [contrôle exécuté](../research/confidence_cache_continuity.py) compare ces
+chemins sur un Qwen **aléatoire**, CPU float32, deux blocs, vocabulaire de 64
+tokens. Il impose le même préfixe de trois tokens et deux suites arbitraires
+de deux ou trois tokens ; aucune réponse n'est générée. Une projection de
+rang deux modifie le dernier token du préfixe, puis le cache obtenu est copié
+séparément pour chaque suite. Le cache de référence reste intact. Le code
+impose un déplacement de norme proche de √2, sans ajustement à une distribution
+d'états naturels. Il
+s'appuie sur le [cache de Transformers 4.56.2](https://github.com/huggingface/transformers/blob/v4.56.2/src/transformers/cache_utils.py).
+
+| Site de la perturbation | Effet maximal sur les logits de la suite, cache conservé | Relecture des mêmes tokens sans la perturbation |
+|---|---:|---:|
+| Sortie du premier bloc, suite de 2 tokens | 0,0395013 | 0 |
+| Sortie du premier bloc, suite de 3 tokens | 0,0491847 | 0 |
+| Sortie du dernier bloc, chacune des deux suites | 0 | 0 |
+
+Dans les quatre cas, la perturbation change effectivement les logits lus à
+la fin du préfixe. Au premier bloc, elle atteint le KV du bloc suivant ;
+après le dernier bloc, aucun KV ultérieur ne peut la conserver. Le chemin
+avec cache correspond au recalcul réappliquant la perturbation à moins de
+6 × 10⁻⁸ près. Remettre le cache initial restaure exactement la référence.
+Les copies restent identiques malgré leurs utilisations successives ; poids,
+générateur aléatoire et hooks sont contrôlés. Le
+[reçu complet](../artifacts/confidence-prefix-preparation/cache-continuity-check.json)
+conserve les quatre cas et leur portée.
+
+Cette manipulation vérifie une condition de circulation d'information, pas
+la capacité du modèle à reconnaître cette information comme sienne. Elle ne
+montre pas que le cache normal contient un vécu caché, ni que le KV serait
+nécessaire à la conscience. Pour un futur test d'un événement interne
+transitoire, il faudra comparer trace conservée, relecture seule, trace
+appariée d'un autre épisode et restauration, en gardant les entrées visibles
+identiques et en contrôlant séparément les effets sur la tâche. Le choix du
+site et des contrastes devra précéder les tests sur Menia entraînée.
+L'expérience Colab 24 reste inchangée.
+
+```sh
+python -m research.confidence_cache_continuity --output artifacts/confidence-prefix-preparation/cache-continuity-check.json
+```
+
 ### Capacité d'adaptation : une hypothèse distincte
 
 [Guo et al., annexe D.1](https://arxiv.org/html/2606.32038v1#A4.SS1)

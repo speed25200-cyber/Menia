@@ -155,6 +155,15 @@ un token du passé n'affecte pas les logits d'un token ultérieur. Les mêmes
 échanges partiels affectent les sorties aux sites possédant encore un chemin.
 Ce contrôle sur poids aléatoires évite une interprétation invalide d'un futur
 résultat nul ; il ne découvre aucune représentation de soi dans Menia.
+Le [contrôle de continuité du cache](CONFIDENCE_PREFIX_INTERVENTIONS.md#conserver-une-trace-interne-entre-deux-demandes)
+ajoute quatre cas sur Qwen aléatoire : une trace perturbée dans le KV modifie
+les logits suivants, tandis que la relecture textuelle sans cette trace
+supprime son effet. La restauration et l'absence de modification des copies
+sont vérifiées. Ce contrôle prépare le suivi d'un état transitoire ; il ne
+mesure aucune auto-reconnaissance et n'introduit pas de mémoire nouvelle dans
+l'app iPhone. La [revue complétée](SELF_PREDICTION_CONTROLS.md#complément-du-20-septembre--domaine-et-état-effectivement-disponible)
+distingue aussi les tâches de rappel factuel des calculs déjà testés, sans
+modifier les critères du Colab 24.
 
 Le contrôle du tokenizer Qwen3-4B révèle ensuite une différence entre le
 rendu autonome du passé et son rendu suivi d'une nouvelle demande. Le

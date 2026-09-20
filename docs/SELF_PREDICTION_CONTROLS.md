@@ -231,6 +231,38 @@ reçue, trois manquantes**, et aucune moyenne de réplication. Les fréquences
 reproduisent le contrôle exploratoire initial ; les quatre AUC internes aux
 familles restent indéfinies. Ce n'est pas un nouveau résultat du modèle.
 
+## Complément du 20 septembre : domaine et état effectivement disponible
+
+[Ashuach et al., §§3.2–3.3, 4.3 et 7](https://arxiv.org/html/2604.12373v1)
+comparent des sondes propres et externes entraînées sur la même cible.
+Le sous-ensemble de désaccord est choisi à l'évaluation, sans réentraînement.
+Ils rapportent un avantage propre dans les tâches factuelles étudiées,
+pas dans les tâches mathématiques ; leurs sondes restent corrélationnelles.
+Le résultat concerne les modèles, domaines et observateurs comparés, pas
+une garantie d'inaccessibilité à tout observateur possible.
+
+**Conséquence pour Menia, par inférence :** comptage et sommes alternées ne
+couvrent pas tous les mécanismes de connaissance de soi. Une future étude de
+rappel factuel pourrait compléter ces tâches, avec comparateurs fixés et jeux
+séparés. Cela ne remplace aucun échec déjà observé, ne change pas le Colab 24
+en cours et n'établit pas un avantage d'introspection sur Qwen3-4B.
+
+[Naphade et al., §§2–3 et 5.2](https://arxiv.org/html/2603.20276v1)
+distinguent prédiction d'une politique et étude des états ou paramètres.
+Leur intervention sur l'attention explique une partie d'un déplacement de
+logits dans leur tâche de dilemmes. Ce précédent ne prouve ni l'accès aux
+états historiques d'une exécution, ni le transfert du mécanisme à Menia.
+La définition de la cible à prévoir et celle de l'état accessible doivent
+rester explicites.
+
+Notre [contrôle de continuité du cache](CONFIDENCE_PREFIX_INTERVENTIONS.md#conserver-une-trace-interne-entre-deux-demandes)
+teste justement cette frontière sur un petit Qwen aléatoire : une intervention
+interne peut continuer à agir via le KV conservé, alors que relire les mêmes
+tokens sans la réappliquer ne conserve pas cet effet. Il ne teste aucune
+reconnaissance de soi ; il prépare une comparaison causale d'états transitoires.
+Sans intervention et à poids fixes, conserver le KV n'ajoute pas, à lui seul,
+une nouvelle source d'information par rapport au recalcul déterministe.
+
 ## Spécification du test suivant, après les répétitions
 
 Cette partie conserve la **spécification de travail initiale**. Le volet
