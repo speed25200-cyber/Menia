@@ -117,7 +117,56 @@ python -m unittest tests_research.test_confidence_prompt_fork -v
 python -m research.confidence_prompt_fork_validation --output artifacts/confidence-prefix-preparation/tokenizer-check.json
 ```
 
-### Conditions scientifiques encore à remplir
+### Un site sans chemin vers les tokens suivants
+
+L'inspection de [Qwen dans Transformers 4.56.2](https://github.com/huggingface/transformers/blob/v4.56.2/src/transformers/models/qwen3/modeling_qwen3.py)
+fait apparaître un contrôle architectural : après la sortie du dernier bloc,
+la normalisation et la tête de sortie agissent séparément sur chaque token.
+Changer cette sortie sur un token antérieur ne peut donc pas atteindre les
+logits d'un token ultérieur dans ce calcul. Cette déduction concerne la sortie
+du bloc, pas ses entrées ni tous les sites possibles de sa couche d'attention.
+
+Le [contrôle de propagation](../artifacts/confidence-prefix-preparation/reachability-check.json)
+exécute six cas sur un Qwen aléatoire de deux blocs, en précision float32 sur
+CPU. L'échange partiel déplace bien le token ciblé dans tous les cas. Les
+témoins qui réinjectent l'état inchangé conservent exactement les logits.
+
+| Suite après le préfixe | Différence maximale des logits, bloc 0 | Bloc 1 (dernier) |
+|---|---:|---:|
+| Deux tokens | 0,025061 | 0 |
+| Trois tokens | 0,025379 | 0 |
+| Aucune suite : token ciblé également lu en sortie | 0,138896 | 0,172017 |
+
+Les poids et l'état du générateur aléatoire restent identiques. Le dernier
+bloc fournit donc un témoin nul structurel pour les branches comportant une
+suite ; son absence d'effet ne réfuterait pas une représentation prédictive.
+Le contraste sans suite vérifie que le remplacement peut bien agir sur la
+sortie du token ciblé. Ces six contrôles ne mesurent aucune capacité de Menia.
+Le futur protocole doit réserver les conclusions d'usage causal aux sites
+possédant un chemin vers la réponse, sans choisir ces sites sur les résultats
+du jeu de test.
+
+```sh
+python -m research.confidence_prefix_reachability --output artifacts/confidence-prefix-preparation/reachability-check.json
+```
+
+### Capacité d'adaptation : une hypothèse distincte
+
+[Guo et al., annexe D.1](https://arxiv.org/html/2606.32038v1#A4.SS1)
+comparent des rangs LoRA de 32 à 256 sur HINT-MMLU, avec régularisation KL.
+Leur avantage d'explication du comportement actuel sur celui du modèle initial
+apparaît à partir du rang 96 dans cette expérience. Ils ne donnent pas un
+seuil universel. Leur discussion signale également qu'une supervision presque
+constante peut conduire à prédire seulement la classe majoritaire.
+
+Menia emploie ici un rang 8 sur Q/V, une autre tâche et un autre objectif :
+ce précédent ne diagnostique pas notre résultat. Il motive, si nécessaire,
+une comparaison future de capacité avec données et budget contrôlés, ainsi
+qu'une lecture séparée de la diversité des labels. Augmenter le rang sans
+mesurer ces facteurs ne permettrait pas d'attribuer un gain à l'introspection.
+La tentative Colab 23 conserve ses paramètres et son critère global.
+
+### Sélection et interprétation à fixer avant un nouveau test
 
 Aucune direction de confiance n'est encore identifiée ou ajustée. Il faudra
 vérifier le résultat du Colab 23, puis utiliser des données de découverte

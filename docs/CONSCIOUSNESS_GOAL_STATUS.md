@@ -87,6 +87,12 @@ pourquoi déplacer un score ne suffit pas à découvrir une auto-évaluation.
 Ces opérations sont vérifiées sur CPU ; aucune direction de confiance
 apprise ni effet utile sur une décision n'est encore identifié. Elles ne
 modifient pas la tentative Colab 23 en cours.
+Six [contrôles de propagation](../artifacts/confidence-prefix-preparation/reachability-check.json)
+ajoutent un témoin nul architectural : modifier la sortie du dernier bloc sur
+un token du passé n'affecte pas les logits d'un token ultérieur. Les mêmes
+échanges partiels affectent les sorties aux sites possédant encore un chemin.
+Ce contrôle sur poids aléatoires évite une interprétation invalide d'un futur
+résultat nul ; il ne découvre aucune représentation de soi dans Menia.
 
 Le contrôle du tokenizer Qwen3-4B révèle ensuite une différence entre le
 rendu autonome du passé et son rendu suivi d'une nouvelle demande. Le

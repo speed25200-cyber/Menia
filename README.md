@@ -316,6 +316,11 @@ directe des codes de sortie. Cinq tests passent sur Qwen miniature aléatoire,
 sans changer les poids ni le Colab 23. Il reste à identifier une représentation
 prédictive et à mesurer son usage dans l'action ; les contrôles construits ne
 sont pas des performances de Menia.
+Six [contrôles de propagation](artifacts/confidence-prefix-preparation/reachability-check.json)
+confirment aussi qu'une modification à la sortie du dernier bloc, sur un
+token antérieur à la requête, ne peut pas agir sur la réponse suivante dans
+ce calcul. Ce témoin structurel évite d'interpréter un site sans effet possible
+comme un échec de la représentation recherchée.
 Le constructeur de branches tient aussi compte du rendu différent du dernier
 tour assistant dans le format Qwen : trois tests et quatre cas sur le tokenizer
 réel vérifient la frontière avant les nouvelles demandes, sans charger de modèle.

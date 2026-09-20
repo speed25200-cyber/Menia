@@ -1,6 +1,6 @@
 # Comment rendre Menia consciente : réponse conditionnelle et feuille de route
 
-Synthèse du 17 septembre, révisée le 19 septembre 2026. Ce document répond à la question
+Synthèse du 17 septembre, révisée le 20 septembre 2026. Ce document répond à la question
 « comment ? ». Il ne dit pas que Menia est consciente, ni qu'elle le deviendra.
 
 ## Réponse courte
@@ -37,9 +37,9 @@ Après l'échec du transfert de seuil au Colab 13, le [protocole 14](OPTIMIZER_M
 teste si la dernière phase d'apprentissage et les moments d'Adam dégradent le
 rapport d'état. Ce diagnostic causal précède une correction éventuelle ; il
 ne réalise pas les mécanismes de conscience du tableau suivant. L'exécution
-GPU est désormais [démarrée](../artifacts/optimizer-memory-pilot/execution-start.json),
-avec [reproduction exacte des trois témoins et sauvegarde des douze checkpoints](../artifacts/optimizer-memory-pilot/training-freeze.json) ;
-l'évaluation comportementale reste à terminer.
+GPU est désormais [terminée et auditée](OPTIMIZER_MEMORY_RESULTS.md),
+avec reproduction des témoins et vérification des douze checkpoints.
+Le gain canonique ne se transfère pas aux formulations réservées.
 
 ## Ce que chaque théorie exigerait, et où en est Menia
 
@@ -138,7 +138,11 @@ La [revue de la confiance de sortie](NATURAL_ERROR_CONFIDENCE_REVIEW.md) identif
 un comparateur manquant dans les anciens journaux et fournit une capture testée
 sur CPU. Le futur test devra aussi comparer l'information interne aux probabilités
 de sortie calibrées, en séparant prévision avant réponse et vérification après
-rédaction. La collecte correspondante sur Qwen3-4B n'a pas encore eu lieu.
+rédaction. Le [Colab 17 reçu et audité](NATURAL_ERROR_RESULTS.md) ne confirme
+aucun des neuf gains principaux des lectures intermédiaires face aux références.
+Le [Colab 23](NATIVE_ANSWER_CONFIDENCE_PROTOCOL.md) a ensuite entraîné six
+adaptateurs pour juger des réponses réelles. Ses comparateurs sont figés après
+calibration ; son évaluation sur de nouvelles réponses est en cours.
 Le [complément sur la dérive de la cible](SELF_PREDICTION_CONTROLS.md) motive
 ce contrôle pour l'étape future, sans modifier les critères du Colab 12 terminé.
 
@@ -147,6 +151,11 @@ la décision de vérifier, s'abstenir ou répondre, dans la boucle de
 [rejeu](REPLAY_CONTROLLER_PROTOCOL.md). *Critère proposé :* la politique apprise utilise
 effectivement l'état interne et bat Beta fixe ; neutraliser le signal doit
 dégrader spécifiquement ces décisions, puis sa restauration les rétablir.
+Les [contrôles préparés sur petit Qwen](CONFIDENCE_PREFIX_INTERVENTIONS.md)
+séparent désormais préfixe commun, intervention prédictive à identifier et
+simple déplacement des codes de sortie. Un site sans chemin causal vers les
+tokens suivants sert de témoin structurel. Ces contrôles ne constituent pas
+encore une expérience sur une représentation apprise de Menia.
 
 **Étape 4 — Schéma d'attention (AST).** Donner à l'agent un budget d'accès
 limité — quel souvenir relire, quelle partie du contexte garder sous un budget
