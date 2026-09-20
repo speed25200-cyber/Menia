@@ -172,6 +172,14 @@ l'app iPhone. La [revue complétée](SELF_PREDICTION_CONTROLS.md#complément-du-
 distingue aussi les tâches de rappel factuel des calculs déjà testés, sans
 modifier les critères du Colab 24.
 
+Le [décodage depuis une trace conservée](CONFIDENCE_PREFIX_INTERVENTIONS.md#décoder-plusieurs-suites-à-partir-de-la-trace-conservée)
+permet ensuite de générer des codes à partir de copies indépendantes du même
+cache, sans réinjecter l'intervention à chaque passage ni transmettre le
+jugement à la décision. Cinq tests sur Qwen aléatoire CPU vérifient la
+concordance avec la génération native, l'isolation des branches et le rejet
+d'états périmés. Aucune capacité supplémentaire du Qwen3-4B ni conscience de
+Menia n'est établie par cette instrumentation.
+
 Le contrôle du tokenizer Qwen3-4B révèle ensuite une différence entre le
 rendu autonome du passé et son rendu suivi d'une nouvelle demande. Le
 constructeur de branches corrige cette frontière et vérifie les IDs, avec

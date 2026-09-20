@@ -303,6 +303,46 @@ L'expérience Colab 24 reste inchangée.
 python -m research.confidence_cache_continuity --output artifacts/confidence-prefix-preparation/cache-continuity-check.json
 ```
 
+### Décoder plusieurs suites à partir de la trace conservée
+
+[`confidence_cached_action_decode.py`](../research/confidence_cached_action_decode.py)
+étend ce contrôle à la génération native de codes. Il calcule le préfixe une
+fois, avec une éventuelle intervention partielle, puis retire le hook. Chaque
+demande reçoit une copie privée du cache. Le premier passage traite seulement
+la suite de la demande ; le second traite seulement le code effectivement
+généré. Le jugement n'est jamais ajouté à la branche d'action. La même règle
+de format, code puis EOS, et le même argmax sur tout le vocabulaire sont
+conservés. Une variation de probabilité conditionnelle ne choisit pas l'action.
+
+Cinq tests passent sur petit Qwen aléatoire CPU avec Transformers 4.56.2.
+Sans intervention, les tokens concordent avec `model.generate` et avec le
+recalcul complet, y compris avec plusieurs EOS. Une perturbation historique
+conservée donne les mêmes tokens et des logits de codes à 10⁻⁶ près que sa
+réapplication lors des recalculs. Le dernier bloc conserve son rôle de témoin
+sans effet sur les tokens suivants. Deux branches exécutées successivement,
+puis répétées, donnent chacune le même résultat ; leurs caches, les entrées,
+les poids et le RNG restent inchangés. Les hooks sont retirés même si le
+préremplissage échoue. Cela ne prouve pas l'égalité numérique de ces chemins
+sur le Qwen3-4B en BF16, qui reste à mesurer.
+
+Le décodeur refuse un autre objet modèle, une identité de checkpoint déclarée
+différente, une modification ordinaire des paramètres enregistrés, un cache
+altéré, un préfixe différent ou un dépassement de budget. Il est limité à
+Qwen3, un seul appareil et l'attention complète. Le contrôle de version des
+paramètres n'est pas une attestation cryptographique des poids : les changements
+arbitraires via `.data`, des hooks externes ou une sélection d'adaptateur
+hors paramètres ne sont pas tous détectables. Le futur exécuteur doit donc
+figer explicitement poids, configuration et adaptateurs pour toutes les branches.
+
+Ce module rend exécutable le contraste entre trace conservée et texte relu,
+sans ajouter de mémoire apprise. Il ne sélectionne aucun donneur ou sous-espace
+et ne démontre ni auto-évaluation, ni utilité de décision, ni nouveauté du
+mécanisme. Il ne fait pas partie des sources du Colab 24.
+
+```sh
+python -m unittest tests_language.test_confidence_cached_action_decode -v
+```
+
 ### Capacité d'adaptation : une hypothèse distincte
 
 [Guo et al., annexe D.1](https://arxiv.org/html/2606.32038v1#A4.SS1)
