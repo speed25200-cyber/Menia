@@ -5,8 +5,9 @@ nouveau résultat de Qwen3-4B dans ces contrôles. Le Colab 23 est désormais
 [terminé et audité](NATIVE_ANSWER_CONFIDENCE_RESULTS.md) : le critère prédictif
 échoue. Ces fichiers ne modifient ni son entraînement, ni ses sources, ni ses
 critères ; ils restent une préparation à une éventuelle expérience ultérieure.
-Le [Colab 24](CONFIDENCE_RANKING_PROTOCOL.md) entraîne actuellement un objectif
-de classement dans les catégories. Son issue n'est pas encore connue.
+Le [Colab 24](CONFIDENCE_RANKING_PROTOCOL.md) a terminé les neuf entraînements
+sur l'objectif de classement dans les catégories. Son évaluation est en cours
+et son issue n'est pas encore connue.
 
 ## Blocage à traiter
 

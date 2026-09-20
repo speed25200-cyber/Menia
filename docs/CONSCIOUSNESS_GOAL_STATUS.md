@@ -117,6 +117,12 @@ valide ensuite 392 mises à jour et deux adaptateurs terminés, sans appel de
 test. Un [audit numérique distinct](CONFIDENCE_RANKING_PROTOCOL.md#audit-préparé-pendant-la-collecte)
 passe quatre contrôles sur données construites ; il sera appliqué aux vrais
 résultats après collecte, sans modification du protocole scientifique figé.
+Le [relevé complet de fin d'entraînement](../artifacts/confidence-ranking-pilot/training-freeze.json)
+à 02:06:58 UTC valide les neuf adaptateurs, leurs 1 296 mises à jour et les
+empreintes des douze fichiers de poids, états initiaux compris. La copie
+auditée s'arrête avant la première requête de test, alors que l'évaluation
+a déjà commencé. Aucun score de cette évaluation n'a été inspecté à ce relevé.
+La réception finale et l'audit des tenseurs restent à faire.
 
 La [préparation d'interventions avant jugement et action](CONFIDENCE_PREFIX_INTERVENTIONS.md)
 ajoute cinq tests sur petit Qwen aléatoire. Un échange partiel cible le même

@@ -212,6 +212,23 @@ leurs types, dimensions, finitude, initialisations et modifications. Ces
 contrôles ne constituent pas une attestation indépendante de l'intégrité de
 tous les poids de base. Le résultat scientifique reste en attente.
 
+## Fin de l'entraînement et évaluation en cours
+
+Le [relevé des poids figés](../artifacts/confidence-ranking-pilot/training-freeze.json)
+du 20 septembre à **02:06:58 UTC** vérifie les neuf entraînements terminés,
+soit 1 296 mises à jour et 144 par adaptateur. Le lecteur du protocole figé
+valide la chaîne du journal d'entraînement, l'exposition appariée et les pertes.
+Les empreintes des neuf adaptateurs terminés et des trois états initiaux
+correspondent aux fichiers présents sur Colab, chacun de 11 811 296 octets.
+
+Le relevé est pris après le début de l'évaluation, mais la copie du journal
+est arrêtée **avant sa première requête** : aucune réponse ni performance
+d'évaluation n'est lue par ce contrôle. L'empreinte du préfixe est
+`eb27907387de279f6dd98cb5c37f186125f4221ab2bf413e39d931c197187e5c`.
+Le processus reste actif. La réception locale de l'archive, l'audit des tenseurs
+et les comparaisons sur les 23 040 appels prévus restent à terminer.
+La fin de l'entraînement ne constitue pas un résultat prédictif positif.
+
 ```sh
 python -m unittest tests_research.test_audit_confidence_ranking -v
 python -m research.audit_confidence_ranking JOURNAL SUMMARY --output VERIFICATION
