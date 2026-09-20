@@ -1,6 +1,8 @@
 # Prévoir un rappel depuis un état modifié — essai exploratoire
 
-20 septembre 2026. Protocole fixé avant collecte, **pas encore de résultat**.
+20 septembre 2026. Protocole fixé avant collecte. Le
+[résultat complet audité](PROSPECTIVE_STATE_DISCOVERY_RESULTS.md) est désormais
+disponible : la permutation globale de V invalide tous les rappels et rapports.
 Les [constats de budget](CONFIDENCE_BUDGET_RESULTS.md) ne justifient pas de
 prolonger la même recette d'apprentissage. Le [contrôle numérique](GENERATION_NUMERICS_RESULTS.md)
 permet désormais de distinguer un cache réellement modifié de sa relecture.

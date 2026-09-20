@@ -75,18 +75,31 @@ précise la cible suivante : prévoir une conséquence future depuis l'état
 conservé, puis exécuter la tâche dans une copie indépendante sans lui transmettre
 le rapport de confiance. Elle tient compte de RLMF et de CHIVE, avec contrôle
 par le texte seul et séparation entre cohérence des réponses et correction
-mesurée. Elle reste une note de conception, sans nouveau résultat ni protocole
+mesurée. Elle reste une note de conception générale, sans protocole
 confirmatoire figé. Les résultats actuels justifient d'étudier des conséquences
 d'états modifiés à texte identique ; ils ne justifient pas de prolonger encore
 la même recette d'entraînement ou de déployer les nouveaux poids sur l'iPhone.
 
-Un opérateur de permutation réversible du cache est implémenté pour cette
-phase de découverte : V seul peut rompre les associations K/V ; la permutation
-conjointe sert de témoin algébrique pour les requêtes futures ayant accès à
-tout le préfixe. Trois tests sur petit Qwen aléatoire vérifient copie privée,
-restauration exacte, contrôle d'attention et refus des états incompatibles.
-Il n'est pas encore évalué sur le modèle préentraîné. Les sites, tâches et
-conditions d'un essai de découverte restent à fixer avant son lancement.
+Le [premier essai prospectif](PROSPECTIVE_STATE_DISCOVERY_RESULTS.md) est terminé
+et audité : 24 situations, cinq conditions, 120 prévisions figées avant les
+120 tâches. L'état réel, la relecture, le témoin K/V conjoint et la restauration
+réussissent chacun 24 rappels sur 24. La permutation globale de V produit
+zéro rappel et zéro prévision au format valide. Il n'y a donc aucune paire
+d'erreurs de rappel ordinaires sur laquelle mesurer un suivi natif exploitable.
+Le score conditionnel moyen de 0,8534 dans cet état est trompeur s'il est lu
+isolément : les deux codes ne reçoivent ensemble que 1,46 % de la probabilité.
+
+Les deux caches complets choisis avant collecte sont reçus : leurs permutations,
+empreintes et restaurations sont recalculées localement depuis les tenseurs.
+Les 17 tests du lanceur passent sur Colab. La restauration exacte montre un
+effet réversible, sans transformer la désorganisation du format en preuve
+d'une incapacité générale de suivi de soi.
+
+La prochaine altération proposée cible uniquement les positions des bits
+du tableau. Trois tests logiciels passent, et le tokenizer réel retrouve ces
+positions dans les 24 prompts observés : 160 positions déplacées, 2 144 fixes.
+Le modèle n'est pas exécuté sous cette altération : son essai reste à fixer
+et à réaliser, avec annonce explicite du réemploi de ces cas déjà consultés.
 
 Le [protocole du Colab 22](VALUE_ACTION_LEARNING_PROTOCOL.md) compare trois
 recettes d'apprentissage appariées : choix seuls, associations auxiliaires
