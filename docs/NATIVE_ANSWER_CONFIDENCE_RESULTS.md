@@ -129,6 +129,11 @@ réserver des tests frais, améliorer la variation des réussites au sein d'une
 même catégorie et préserver la capacité de résolution. La capacité de
 l'adaptateur est une hypothèse distincte à contrôler, pas une cause établie.
 
+Ce [diagnostic est désormais exécuté](CONFIDENCE_CALIBRATION_DIAGNOSTIC.md) :
+la contribution entre catégories domine les paires d'AUROC et le recalibrage
+externe améliore surtout la troisième répétition. Il ne change pas le
+classement des réponses ni le présent critère natif.
+
 La conscience subjective, l'usage causal d'un état de soi et une contribution
 inédite restent non établis. Ce résultat délimite une recette insuffisante.
 

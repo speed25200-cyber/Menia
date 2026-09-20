@@ -87,8 +87,15 @@ passent ; aucun des douze face aux labels mélangés et à Beta ne passe.
 Le format natif passe dans les trois répétitions, mais la conservation de
 précision échoue dans deux. Les AUROC globales proches de 0,9 coexistent avec
 une faible discrimination dans plusieurs catégories. Le diagnostic suivant
-doit distinguer calibration et information individuelle, avant d'attribuer
-un usage causal à une représentation de soi.
+a séparé calibration et information individuelle dans une
+[réanalyse exploratoire](CONFIDENCE_CALIBRATION_DIAGNOSTIC.md). Plus de 91 %
+des paires du score global comparent des catégories différentes. Sur ses
+réponses propres, le classement au sein d'une catégorie vaut 0,4932, 0,5994
+et 0,5997. Le recalibrage externe améliore surtout la troisième répétition
+et ne change aucun classement. Les 27 ajustements passent une vérification
+par profil de vraisemblance distincte du solveur initial. Le critère natif
+reste négatif ; un apprentissage distinguant mieux les cas individuels et
+une confirmation sur de nouvelles questions restent nécessaires.
 
 La [préparation d'interventions avant jugement et action](CONFIDENCE_PREFIX_INTERVENTIONS.md)
 ajoute cinq tests sur petit Qwen aléatoire. Un échange partiel cible le même

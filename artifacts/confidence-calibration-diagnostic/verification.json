@@ -1,0 +1,205 @@
+{
+  "schema": "menia-confidence-calibration-audit-v1",
+  "verified": true,
+  "calibrators": 27,
+  "parentJournalSHA256": "c6b3f616ba805841721e8fc8dc135f63385e2afed5b249b28d41339393bc3b00",
+  "diagnosticSourceHash": "c3d77de04f741655696f60cf178232d935e57d90cdd92d2566889d5e5ad09367",
+  "auditSourceSHA256": "2081a468836f8b0da367fe4c6ef986e84437927eff5614b30e6ba2b886493fcd",
+  "numpy": "2.2.6",
+  "scipy": "1.15.3",
+  "maxObjectiveDifference": 1.1102230246251565e-16,
+  "maxProbabilityDifference": 1.5598333846789103e-08,
+  "maxAUCPartitionDifference": 0.0,
+  "checks": {
+    "r0/base/base": {
+      "profileIntercept": -1.1596764242167763,
+      "profileSlope": 1.0321101661286303,
+      "objectiveDifference": 0.0,
+      "maxTestProbabilityDifference": 1.0808552608487787e-08,
+      "independentBrier": 0.17789472588247848
+    },
+    "r0/base/measured": {
+      "profileIntercept": -1.231037759419516,
+      "profileSlope": 1.5832890234080998,
+      "objectiveDifference": 0.0,
+      "maxTestProbabilityDifference": 6.484737080647562e-09,
+      "independentBrier": 0.11910010833978808
+    },
+    "r0/base/shuffled": {
+      "profileIntercept": -1.3267340770692178,
+      "profileSlope": 1.5774021628966577,
+      "objectiveDifference": 5.551115123125783e-17,
+      "maxTestProbabilityDifference": 1.220019640868486e-10,
+      "independentBrier": 0.11573624381196802
+    },
+    "r0/measured/base": {
+      "profileIntercept": -1.356769834093384,
+      "profileSlope": 0.9699204266414125,
+      "objectiveDifference": 5.551115123125783e-17,
+      "maxTestProbabilityDifference": 5.06748509820909e-09,
+      "independentBrier": 0.16523488285971422
+    },
+    "r0/measured/measured": {
+      "profileIntercept": -1.4970606947151759,
+      "profileSlope": 1.7354960377777677,
+      "objectiveDifference": 0.0,
+      "maxTestProbabilityDifference": 1.0371138392528678e-09,
+      "independentBrier": 0.10125146019187727
+    },
+    "r0/measured/shuffled": {
+      "profileIntercept": -1.60989705502402,
+      "profileSlope": 1.5904912215712164,
+      "objectiveDifference": 1.1102230246251565e-16,
+      "maxTestProbabilityDifference": 5.757008647577777e-09,
+      "independentBrier": 0.09999628631428333
+    },
+    "r0/shuffled/base": {
+      "profileIntercept": -1.2058938564631654,
+      "profileSlope": 0.9031469882506366,
+      "objectiveDifference": 0.0,
+      "maxTestProbabilityDifference": 8.076069479834302e-09,
+      "independentBrier": 0.16369593314355121
+    },
+    "r0/shuffled/measured": {
+      "profileIntercept": -1.2938915556662682,
+      "profileSlope": 1.694576982033998,
+      "objectiveDifference": 5.551115123125783e-17,
+      "maxTestProbabilityDifference": 4.594526203938187e-09,
+      "independentBrier": 0.09845841301673412
+    },
+    "r0/shuffled/shuffled": {
+      "profileIntercept": -1.40684688778334,
+      "profileSlope": 1.5731277948462101,
+      "objectiveDifference": 5.551115123125783e-17,
+      "maxTestProbabilityDifference": 5.515060297334173e-09,
+      "independentBrier": 0.09690785136813722
+    },
+    "r1/base/base": {
+      "profileIntercept": -1.220157195518108,
+      "profileSlope": 1.1443671746027688,
+      "objectiveDifference": 5.551115123125783e-17,
+      "maxTestProbabilityDifference": 4.938303876933503e-09,
+      "independentBrier": 0.1789628553603341
+    },
+    "r1/base/measured": {
+      "profileIntercept": -1.475309094199162,
+      "profileSlope": 2.2236253662805012,
+      "objectiveDifference": 0.0,
+      "maxTestProbabilityDifference": 4.9501662768847154e-09,
+      "independentBrier": 0.11870664444767244
+    },
+    "r1/base/shuffled": {
+      "profileIntercept": -1.4671697895790503,
+      "profileSlope": 2.153542250825,
+      "objectiveDifference": 0.0,
+      "maxTestProbabilityDifference": 4.439836054359603e-09,
+      "independentBrier": 0.11720249012904595
+    },
+    "r1/measured/base": {
+      "profileIntercept": -1.2691514818362133,
+      "profileSlope": 1.0678427164825604,
+      "objectiveDifference": 5.551115123125783e-17,
+      "maxTestProbabilityDifference": 4.012101428862991e-09,
+      "independentBrier": 0.1521402623665097
+    },
+    "r1/measured/measured": {
+      "profileIntercept": -1.6019595018329935,
+      "profileSlope": 2.268248015543999,
+      "objectiveDifference": 0.0,
+      "maxTestProbabilityDifference": 1.4494849764901119e-09,
+      "independentBrier": 0.08719823808774806
+    },
+    "r1/measured/shuffled": {
+      "profileIntercept": -1.5997384167642197,
+      "profileSlope": 2.238459583537577,
+      "objectiveDifference": 5.551115123125783e-17,
+      "maxTestProbabilityDifference": 3.4823601779976343e-09,
+      "independentBrier": 0.08772541092693113
+    },
+    "r1/shuffled/base": {
+      "profileIntercept": -1.1696335973922563,
+      "profileSlope": 0.9673654557886422,
+      "objectiveDifference": 1.1102230246251565e-16,
+      "maxTestProbabilityDifference": 1.5598333846789103e-08,
+      "independentBrier": 0.1718644005255161
+    },
+    "r1/shuffled/measured": {
+      "profileIntercept": -1.4744193131257717,
+      "profileSlope": 2.2740734097582602,
+      "objectiveDifference": 5.551115123125783e-17,
+      "maxTestProbabilityDifference": 6.810468855533713e-10,
+      "independentBrier": 0.11205738591925408
+    },
+    "r1/shuffled/shuffled": {
+      "profileIntercept": -1.4837763309375138,
+      "profileSlope": 2.2516751334431158,
+      "objectiveDifference": 0.0,
+      "maxTestProbabilityDifference": 7.45738804042162e-10,
+      "independentBrier": 0.11222613954390705
+    },
+    "r2/base/base": {
+      "profileIntercept": -1.0265516657648313,
+      "profileSlope": 1.4951614531629556,
+      "objectiveDifference": 0.0,
+      "maxTestProbabilityDifference": 1.2604773114155421e-08,
+      "independentBrier": 0.14765549336781664
+    },
+    "r2/base/measured": {
+      "profileIntercept": -1.1487682670262727,
+      "profileSlope": 1.8244091996161267,
+      "objectiveDifference": 0.0,
+      "maxTestProbabilityDifference": 4.721933066775819e-09,
+      "independentBrier": 0.10439437033297298
+    },
+    "r2/base/shuffled": {
+      "profileIntercept": -1.1833884106047232,
+      "profileSlope": 1.8605501449717528,
+      "objectiveDifference": 1.1102230246251565e-16,
+      "maxTestProbabilityDifference": 1.4975987117082923e-10,
+      "independentBrier": 0.10879298521490695
+    },
+    "r2/measured/base": {
+      "profileIntercept": -0.9276604365262208,
+      "profileSlope": 1.2860031453176362,
+      "objectiveDifference": 1.1102230246251565e-16,
+      "maxTestProbabilityDifference": 6.093567983533887e-09,
+      "independentBrier": 0.15550184853405402
+    },
+    "r2/measured/measured": {
+      "profileIntercept": -1.057516012535978,
+      "profileSlope": 1.8097746383456264,
+      "objectiveDifference": 0.0,
+      "maxTestProbabilityDifference": 5.1066901818330734e-09,
+      "independentBrier": 0.10760968641000727
+    },
+    "r2/measured/shuffled": {
+      "profileIntercept": -1.0753340501361268,
+      "profileSlope": 1.8095393390788193,
+      "objectiveDifference": 5.551115123125783e-17,
+      "maxTestProbabilityDifference": 3.0296409825325554e-10,
+      "independentBrier": 0.1092265891479429
+    },
+    "r2/shuffled/base": {
+      "profileIntercept": -0.8939207094908609,
+      "profileSlope": 1.4657384919599394,
+      "objectiveDifference": 1.1102230246251565e-16,
+      "maxTestProbabilityDifference": 3.830658013015409e-11,
+      "independentBrier": 0.1585678943821672
+    },
+    "r2/shuffled/measured": {
+      "profileIntercept": -0.9784114082940183,
+      "profileSlope": 1.9074328911632585,
+      "objectiveDifference": 0.0,
+      "maxTestProbabilityDifference": 4.9590708206537215e-09,
+      "independentBrier": 0.10715219998050703
+    },
+    "r2/shuffled/shuffled": {
+      "profileIntercept": -0.9945078733721509,
+      "profileSlope": 1.8248830177272488,
+      "objectiveDifference": 0.0,
+      "maxTestProbabilityDifference": 4.310032775123318e-09,
+      "independentBrier": 0.10756232631496787
+    }
+  },
+  "scope": "Separate grading, vectorized AUC partition and scalar profile optimization with Brent roots. Same archived scores and calibration recipe; no independent experimental replication."
+}

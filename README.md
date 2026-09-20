@@ -300,8 +300,13 @@ Le [protocole](docs/NATIVE_ANSWER_CONFIDENCE_PROTOCOL.md), la
 [préparation](docs/NATIVE_ANSWER_CONFIDENCE_PREPARATION.md), le
 [reçu complet](artifacts/native-answer-confidence-pilot/receipt.json) et le
 [Colab 23 épinglé](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/fe7731117f94a196d76fda2a964453c14dc49a8d/notebooks/23_native_answer_confidence_colab.ipynb)
-conservent l'expérience. Le prochain diagnostic doit distinguer calibration
-et information individuelle ; aucune conscience ni nouveauté n'est établie.
+conservent l'expérience. Le [diagnostic exploratoire](docs/CONFIDENCE_CALIBRATION_DIAGNOSTIC.md)
+sépare ensuite calibration et information individuelle : plus de 91 % des
+paires d'AUROC des ensembles principaux comparent des catégories différentes.
+Au sein d'une catégorie, les AUROC sur les réponses propres sont 0,4932,
+0,5994 et 0,5997. Le recalibrage externe améliore surtout la troisième
+répétition, sans changer aucun classement ; les 27 ajustements sont vérifiés
+par un second algorithme. Le critère natif reste négatif.
 
 Une [préparation d'interventions causales](docs/CONFIDENCE_PREFIX_INTERVENTIONS.md)
 ajoute ensuite un échange partiel au préfixe commun et un témoin de modification
