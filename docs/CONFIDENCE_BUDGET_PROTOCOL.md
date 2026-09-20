@@ -142,3 +142,18 @@ une différence maximale déclarée de zéro et 208 mises à jour nouvelles.
 Le contrôle a donc autorisé la poursuite. Il s'agit du relevé du collecteur
 distant ; le journal complet et les nouveaux poids restent à recevoir et à
 auditer avant l'interprétation des performances de poursuite.
+
+## Audit de réception préparé
+
+Un [auditeur local](../research/audit_confidence_budget.py) vérifiera le journal
+complet, le préfixe arrêté à la troisième fin d'entraînement, les six fichiers
+de poids et les trois parents. Il recalculera le rapport avec le lecteur
+strict et les deux arithmétiques existantes, puis décrira les déplacements
+réels entre les points sauvegardés. Deux contrôles de cette arithmétique des
+poids passent sur tenseurs construits. L'audit sur les fichiers de cette
+expérience reste à effectuer après réception ; ces tests logiciels ne sont
+pas un résultat d'apprentissage.
+
+```sh
+python -m research.audit_confidence_budget JOURNAL --summary RESUME_RECU --freeze RECU_GEL --parents DOSSIER_PARENTS --output AUDIT
+```

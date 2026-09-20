@@ -70,6 +70,15 @@ Neuf tests CPU passent sur Qwen aléatoire. Le lanceur exige la fin du diagnosti
 de budget et un A100 libre. Ce contrôle technique ne constitue pas un nouveau
 résultat de suivi de soi.
 
+La [conception du test prospectif](PROSPECTIVE_STATE_PREDICTION_DESIGN.md)
+précise la cible suivante : prévoir une conséquence future depuis l'état
+conservé, puis exécuter la tâche dans une copie indépendante sans lui transmettre
+le rapport de confiance. Elle tient compte de RLMF et de CHIVE, avec contrôle
+par le texte seul et séparation entre cohérence des réponses et correction
+mesurée. Elle reste une note de conception, sans nouveau résultat ni protocole
+confirmatoire figé. L'audit local du diagnostic de budget est prêt ; sa
+vérification sur les poids réels attend leur réception.
+
 Le [protocole du Colab 22](VALUE_ACTION_LEARNING_PROTOCOL.md) compare trois
 recettes d'apprentissage appariées : choix seuls, associations auxiliaires
 correctes, associations auxiliaires mélangées. Neuf adaptateurs sont entraînés,
