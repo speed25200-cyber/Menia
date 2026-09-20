@@ -24,6 +24,12 @@ précise les mécanismes candidats, les hypothèses théoriques et les expérien
 envisagées. Elle ne constitue pas une recette validée. La continuité repose sur un journal
 explicite et des sauvegardes, sans objectif de résistance à l'arrêt ou d'auto-réplication.
 
+**[Colab 24 : classement de confiance au sein d'une catégorie](docs/CONFIDENCE_RANKING_PROTOCOL.md).**
+Le nouveau protocole conserve chaque exemple d'apprentissage et compare trois
+objectifs à capacité identique. Neuf adaptateurs, 1 296 mises à jour et 23 040
+appels sur 1 152 nouvelles questions sont prévus. Treize tests logiciels
+passent ; aucun résultat du nouvel entraînement n'est encore revendiqué.
+
 **Résultat du [diagnostic de l'apprentissage interne](docs/LEARNING_DIAGNOSTIC_RESULTS.md).**
 Le Colab 08 est reçu et vérifié : 128 mises à jour et 1 792 évaluations. Sur les
 phrases nouvelles, le signal visible et la lecture du repère atteignent 100 %.

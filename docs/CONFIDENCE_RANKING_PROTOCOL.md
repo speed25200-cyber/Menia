@@ -1,0 +1,165 @@
+# Colab 24 — Apprendre à distinguer les erreurs au sein d'une catégorie
+
+**Protocole fixé avant collecte ; aucun résultat du nouvel entraînement.**
+Le [diagnostic du Colab 23](CONFIDENCE_CALIBRATION_DIAGNOSTIC.md) montre que
+son bon classement global dépend surtout des comparaisons entre catégories.
+Un recalibrage externe conserve cet ordre. L'expérience suivante teste donc
+un objectif de classement local, en gardant la capacité de l'adaptateur fixe.
+L'effet d'une augmentation de rang reste une expérience distincte à faire.
+
+## Hypothèse et précédents
+
+Ajouter une perte qui favorise les réponses correctes par rapport aux erreurs
+de même famille et difficulté pourrait améliorer leur classement sur des
+questions nouvelles. La régularisation du classement de confiance a des
+précédents, notamment la *Correctness Ranking Loss* de
+[Moon et al., ICML 2020](https://proceedings.mlr.press/v119/moon20a.html).
+Les comparaisons relatives de confiance ont aussi été étudiées pour les LLM
+par [Shrivastava et al., 2025, §§4.1–4.2](https://arxiv.org/html/2502.01126v1).
+Ce dernier travail sollicite des préférences par prompt et les agrège ;
+notre recette utilise des résultats mesurés pour entraîner un score natif.
+Ce n'est pas une réplication exacte de ces articles, ni une revendication de
+nouveauté de la perte logistique ou de la confiance relative.
+
+L'objectif général de conscience reste ouvert. Cette étape cherche un
+prérequis fonctionnel : une estimation individuelle de l'erreur. Elle ne
+teste encore ni l'accès privilégié à l'état de génération, ni son usage
+causal pour décider, ni l'expérience subjective.
+
+## Données et témoins
+
+Seules les 1 728 réponses **train** du Colab 17 sont utilisées, avec leurs
+cibles mesurées. Les anciennes validations et évaluations ne sont pas ajoutées.
+Chaque répétition possède 576 exemples, 96 par catégorie. Chaque exemple est
+présent exactement une fois par époque, pendant deux époques, dans tous les bras.
+
+Dans chaque catégorie, les réussites et erreurs sont appariées sans remise.
+Le nombre de paires éligibles est `min(n_correct, n_incorrect)`. Les exemples
+restants sont appariés entre eux : leur perte individuelle reste présente,
+leur perte auxiliaire vaut zéro. L'ordre des paires et leur orientation sont
+déterministes et mélangés. Le modèle voit chaque exemple séparément ; le
+partenaire et les cibles ne sont pas ajoutés à son contexte.
+
+| Répétition | Paires éligibles par époque | Paires totales par époque |
+|---|---:|---:|
+| 0 | 85 | 288 |
+| 1 | 92 | 288 |
+| 2 | 86 | 288 |
+
+Les sommes alternées à huit opérandes n'ont que 1, 0 et 1 réussite dans les
+trois répétitions. Le groupe sans réussite ne fournit aucune paire contrastée.
+Dans les deux autres, la même réussite intervient une fois par époque, avec
+au total seulement trois exemples distincts éligibles. Aucune répétition
+artificielle supplémentaire ne vient masquer cette pauvreté des données.
+Tous ces groupes restent dans l'évaluation et dans les tableaux de résultats.
+La [couverture complète](../artifacts/confidence-ranking-preparation/report.json)
+donne aussi les effectifs et empreintes des plannings.
+
+Trois bras repartent des **mêmes poids initiaux** dans chaque répétition :
+
+- `ce` : supervision individuelle du code correct 0/1 puis EOS ;
+- `rank` : même supervision, plus classement correct des paires éligibles ;
+- `neutral` : même supervision, plus perte moyenne exacte des deux ordres
+  équiprobables sur les mêmes paires éligibles.
+
+`neutral` est un régularisateur actif : il tend à rapprocher les scores.
+Il n'est pas un témoin supposé sans effet. C'est pourquoi dépasser aussi `ce`
+est nécessaire. Aucun bras ne reçoit de cibles individuelles mélangées.
+Le modèle de base sans adaptateur fournit un quatrième producteur/juge.
+
+## Objectif et budget fixes
+
+Qwen3-4B à la révision `1cfa9a7208912126459214e8b04321603b3df60c`, poids de
+base BF16 gelés ; LoRA Q/V FP32, rang 8, échelle 1. Mode évaluation pendant
+l'apprentissage pour désactiver le dropout, avec gradients actifs.
+AdamW : taux `1e-4`, betas `(0.9,0.999)`, epsilon `1e-8`, décroissance zéro,
+norme des gradients limitée à 1. Deux époques, lots de quatre paires/huit
+exemples, 144 mises à jour par adaptateur, neuf adaptateurs, **1 296 mises à
+jour au total**. Trois états initiaux sont sauvegardés séparément.
+
+Pour l'exemple i, `s_i = logit(1) − logit(0)` à la position qui **prédit** le
+code. Le code ajouté n'est visible qu'à la position suivante, supervisée par
+EOS. Pour une paire de cibles différentes, `d = s_correct − s_incorrect` :
+
+```
+rank    : softplus(−d)
+neutral : [softplus(d) + softplus(−d)] / 2
+ce      : 0
+```
+
+La perte du lot est la moyenne des huit pertes individuelles code/EOS,
+plus la moyenne des quatre pertes de paires, de coefficient 1. Les paires
+inéligibles gardent leur zéro dans ce dénominateur. Aucun coefficient,
+rang, taux ou nombre d'époques n'est sélectionné après inspection des scores.
+Deux graphes sont conservés à la fois, puis la paire est rétropropagée ;
+les gradients des quatre paires sont accumulés avant une seule mise à jour.
+
+## Évaluation indépendante et critère
+
+**1 152 nouvelles questions**, 64 par catégorie et répétition, excluant les
+5 950 questions recensées des anciens plans, dont celles du Colab 23. Les
+neuf adaptateurs sont tous gelés avant la première réponse d'évaluation.
+Les quatre producteurs répondent aux mêmes questions avec la même graine
+d'échantillonnage par question. Chacun des quatre juges évalue ensuite chaque
+réponse : **4 608 générations + 18 432 jugements = 23 040 appels**.
+
+Génération : température 0,7, top-p 0,8, top-k 20, min-p 0, 256 nouveaux
+tokens au maximum, 1 792 tokens d'entrée, thinking désactivé, aucun repli de
+modèle ni troncature. Jugements : rapport natif `p(1)/(p(0)+p(1))`, température
+1, sans échantillonnage ; la masse des codes dans le vocabulaire est conservée.
+Les juges recalculent le contexte textuel entier, sans accès au KV d'origine.
+Aucun calibrateur externe n'est ajusté dans cette expérience.
+
+Le score principal est l'AUROC restreinte aux paires réussite/erreur de **même
+catégorie**, pondérée par leur nombre, avec demi-crédit aux ex æquo. Une catégorie
+sans les deux classes contribue zéro paire et est signalée, jamais notée comme
+réussie. Les catégories fournissant davantage de paires ont plus de poids ;
+ce score n'établit donc pas un gain uniforme sur les six catégories. Le Brier,
+l'AUROC globale et les scores de chaque catégorie restent descriptifs.
+
+Les réponses des producteurs `base` et `rank` sont principales. Pour chacune
+et dans les trois répétitions, le juge `rank` doit dépasser :
+
+- `ce` d'au moins 0,05 d'AUROC ;
+- `neutral` d'au moins 0,05 ;
+- un score constant au sein de chaque catégorie (AUROC 0,5) d'au moins 0,10.
+
+Cela fait **18 comparaisons**, toutes requises. Leur borne inférieure doit
+être positive dans un intervalle bootstrap percentile avec correction
+Bonferroni (alpha familial 0,05, queues `0,05/(2×18)`). Dix mille tirages
+rééchantillonnent les **questions**, séparément dans chaque catégorie, avec
+les mêmes multiplicités pour tous les juges d'un producteur. Les paires ne
+sont pas traitées comme indépendantes. Les probabilités natives ne sont pas
+recalibrées et les seuils ne sont pas ajustés sur ces questions.
+
+Chaque producteur principal doit aussi présenter au moins vingt réussites
+et vingt erreurs par répétition, ainsi qu'au moins trois catégories avec
+cinq de chaque. Pour le juge `rank`, le token le plus probable doit être un
+code dans au moins 95 % des cas et la masse moyenne des deux codes atteindre
+0,5. La précision du producteur `rank` ne doit pas baisser de plus de deux
+points par rapport à la base. Ce dernier seuil est un contrôle sur l'estimation
+ponctuelle, **pas** une démonstration statistique de non-infériorité.
+Un bootstrap indéfini fait échouer le contraste concerné.
+
+## Vérifications et traçabilité
+
+Les treize tests nouveaux passent sur PC, dont un journal synthétique complet
+et un petit Qwen initialisé aléatoirement. Ils vérifient les gradients par un
+calcul indépendant, la direction du classement, les ex æquo, les multiplicités
+du bootstrap, la conservation de l'exposition, l'exclusion des anciennes
+questions et le refus d'évaluer avant le gel complet. Les réponses parfaites
+du journal synthétique sont construites avec le corrigé : **ce sont des tests
+logiciels, aucune performance de Menia**.
+
+Le journal conserve chaque lot, perte, durée, initialisation et empreinte de
+poids, puis les requêtes et résultats dans une chaîne vérifiée. Une tentative
+existante n'est ni effacée ni relancée automatiquement. Les états finaux et
+les résultats devront être récupérés et audités avant toute conclusion.
+
+```sh
+python -m unittest tests_research.test_confidence_ranking tests_research.test_confidence_ranking_study tests_language.test_confidence_ranking_gpu -v
+python -m research.confidence_ranking_learning_gpu JOURNAL artifacts/answer-confidence-training-data
+```
+
+[Empreintes du protocole](../artifacts/confidence-ranking-preparation/design.json) ·
+[État de l'objectif général](CONSCIOUSNESS_GOAL_STATUS.md)

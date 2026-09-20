@@ -97,6 +97,18 @@ par profil de vraisemblance distincte du solveur initial. Le critère natif
 reste négatif ; un apprentissage distinguant mieux les cas individuels et
 une confirmation sur de nouvelles questions restent nécessaires.
 
+Le [Colab 24](CONFIDENCE_RANKING_PROTOCOL.md) prépare cette confirmation :
+supervision individuelle seule, classement correct dans les catégories,
+et classement neutralisé, avec mêmes exemples, cibles individuelles,
+initialisation, rang 8 et budget. Les treize tests passent sur PC, dont un
+journal synthétique de 23 040 appels et un contrôle des gradients sur petit
+Qwen aléatoire. Cela valide le logiciel, pas une amélioration de Menia.
+Le protocole prévoit neuf adaptateurs et 1 152 questions nouvelles. Il rend
+explicites les groupes sans réussite suffisante et utilise un bootstrap
+des questions pour les 18 comparaisons principales. La variation de capacité
+reste à tester séparément. Ni la perte de classement ni la confiance relative
+ne sont présentées comme inédites ; aucun critère de conscience n'est atteint.
+
 La [préparation d'interventions avant jugement et action](CONFIDENCE_PREFIX_INTERVENTIONS.md)
 ajoute cinq tests sur petit Qwen aléatoire. Un échange partiel cible le même
 préfixe avant deux suites divergentes ; le témoin sans changement conserve
