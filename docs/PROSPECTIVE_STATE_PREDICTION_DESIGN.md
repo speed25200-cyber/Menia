@@ -4,6 +4,10 @@
 Un [premier essai exploratoire](PROSPECTIVE_STATE_DISCOVERY_RESULTS.md) est
 désormais réalisé ; il invalide tous les formats sous permutation globale de V
 et ne fournit pas de prévision native exploitable de cette conséquence.
+Le [suivi aux positions des bits](PROSPECTIVE_BINDING_DISCOVERY_RESULTS.md)
+obtient ensuite 23 erreurs de rappel valides sur 24, sans aucun suivi prospectif
+de la dégradation à la marge fixée. Il rend la conséquence mesurable, mais ne
+confirme pas la capacité de prévision. Les cas restent ceux de la découverte.
 Le [diagnostic de budget](CONFIDENCE_BUDGET_RESULTS.md)
 montre désormais un ajustement appris presque parfait, avec dégradation des
 probabilités sur le lot déjà examiné. Le [contrôle numérique](GENERATION_NUMERICS_RESULTS.md)
@@ -134,8 +138,10 @@ préserver le calcul pertinent, sous ces hypothèses. Il ne remplace pas le
 témoin de norme appariée : la permutation conjointe modifie aussi K et son
 déplacement n'a pas nécessairement la même norme que le déplacement de V seul.
 Cette propriété algébrique est un contrôle d'attention, pas une découverte de
-conscience. Le prochain essai de rappel devra obtenir des altérations plus
-sélectives, sans confondre sortie invalide et erreur de tâche ordinaire.
+conscience. Le suivi ciblé obtient désormais une altération avec erreurs de
+tâche ordinaires. Il faut ensuite séparer les conséquences selon la question
+posée depuis le même état, pour qu'un apprentissage ne puisse pas se limiter
+à reconnaître toute perturbation comme signe d'échec.
 
 ## Ce qui reste ouvert
 

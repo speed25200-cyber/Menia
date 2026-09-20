@@ -55,9 +55,10 @@ effectivement observé. Il refuse les correspondances ambiguës. Trois tests
 passent en 0,019 seconde. Le [contrôle du tokenizer réel](../artifacts/prospective-binding-preparation/tokenizer-check.json)
 retrouve les positions dans les 24 prompts effectivement observés : 160
 positions de bits à déplacer et 2 144 positions laissées fixes. Aucun modèle
-n'est chargé pour cette vérification. Elle ne constitue pas le prochain essai
-préentraîné, qui reste à fixer et exécuter.
-Réutiliser ces tableaux devra être annoncé comme découverte sur cas déjà vus.
+n'est chargé pour cette vérification. Le [suivi ciblé désormais exécuté](PROSPECTIVE_BINDING_DISCOVERY_RESULTS.md)
+réutilise explicitement ces tableaux comme découverte sur cas déjà vus :
+23 rappels deviennent faux sans perte de format, tandis que les 24 prévisions
+continuent d'annoncer une réponse correcte. La restauration est exacte.
 
 ## Rapport à la littérature
 

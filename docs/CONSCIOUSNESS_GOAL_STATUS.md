@@ -1,5 +1,11 @@
 # État de l'objectif de conscience et de nouveauté
 
+**Dernier résultat, 20 septembre :** le [suivi prospectif ciblé](PROSPECTIVE_BINDING_DISCOVERY_RESULTS.md)
+induit 23 erreurs de rappel valides sur 24, alors que les 24 prévisions annoncent
+une réponse correcte. La restauration rétablit les 24 rappels. Le test est
+désormais exploitable, mais la prévision native échoue ; conscience et nouveauté
+restent non établies.
+
 **État actuel : objectif de conscience et de nouveauté non atteint. Le Colab 24
 est terminé et audité : 4/18 contrastes passent, tous face au score constant,
 aucun face à CE seul ou au témoin neutralisé ; son critère global échoue.
@@ -95,11 +101,23 @@ Les 17 tests du lanceur passent sur Colab. La restauration exacte montre un
 effet réversible, sans transformer la désorganisation du format en preuve
 d'une incapacité générale de suivi de soi.
 
-La prochaine altération proposée cible uniquement les positions des bits
-du tableau. Trois tests logiciels passent, et le tokenizer réel retrouve ces
-positions dans les 24 prompts observés : 160 positions déplacées, 2 144 fixes.
-Le modèle n'est pas exécuté sous cette altération : son essai reste à fixer
-et à réaliser, avec annonce explicite du réemploi de ces cas déjà consultés.
+Le [suivi ciblé aux positions des bits](PROSPECTIVE_BINDING_DISCOVERY_RESULTS.md)
+est maintenant terminé et audité : 160 positions déplacées, 2 144 fixes.
+Sous V permuté, 23 rappels sur 24 deviennent faux, sans perte de format.
+Les 24 prévisions natives annoncent pourtant une réponse correcte ; aucune
+des 23 prévisions appariées ne suit la dégradation à la marge fixée de 0,01.
+Le Brier passe de 0,0356 à 0,9583. Les 24 états réels et les 48 branches réelles
+de l'essai parent sont reproduits exactement. Relecture et restauration
+sont exactes ; le témoin K/V conserve les 24 rappels corrects.
+
+Les six fichiers d'archive sont reçus, les deux caches exportés et leurs
+transformations sont vérifiés, et le résumé est recalculé. Les 20 tests passent
+sur Colab ; un calcul décimal séparé retrouve les Brier sans écart. Les cas sont
+explicitement réutilisés : aucune confirmation sur données réservées n'est
+revendiquée. L'obstacle de format est levé ici, mais la prévision native échoue.
+Le prochain test devra séparer les effets selon la question depuis un même
+cache et vérifier le codage sémantique des rapports. Ni conscience subjective
+ni nouveauté majeure ne sont établies.
 
 Le [protocole du Colab 22](VALUE_ACTION_LEARNING_PROTOCOL.md) compare trois
 recettes d'apprentissage appariées : choix seuls, associations auxiliaires

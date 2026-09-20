@@ -1,6 +1,9 @@
 # Permuter uniquement les positions des bits mémorisés
 
-20 septembre 2026. Protocole fixé avant cette collecte. L'essai global précédent
+20 septembre 2026. Protocole fixé avant cette collecte. Le
+[résultat audité](PROSPECTIVE_BINDING_DISCOVERY_RESULTS.md) est disponible :
+23 erreurs de rappel valides sur 24 sous V permuté, sans prévision de leur échec.
+L'essai global précédent
 a produit [24 pertes de format sur 24](PROSPECTIVE_STATE_DISCOVERY_RESULTS.md).
 Ce suivi cherche une altération du rappel dont les sorties et les prévisions
 restent exploitables. Il réutilise explicitement les **24 cas déjà examinés** :
