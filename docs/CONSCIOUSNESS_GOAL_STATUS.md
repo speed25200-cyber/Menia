@@ -1,6 +1,15 @@
 # État de l'objectif de conscience et de nouveauté
 
-**Dernier résultat, 20 septembre :** le [test d'une seule paire](PROSPECTIVE_PAIR_DISCOVERY_RESULTS.md)
+**Dernier contrôle technique, 20 septembre :** le [lecteur entraînable](RETAINED_READER_CONTROL_RESULTS.md)
+exécute une mise à jour sur la mémoire conservée de Qwen3-4B sans changer les
+huit rappels du producteur. La perte sur huit exemples baisse de 5,8672 à 5,7656,
+mais les prévisions restent constantes et seulement 4/8 sont correctes. Les poids
+exportés et les branches sont audités. Les 32 nouveaux tableaux d'apprentissage
+et les 16 réservés sont préparés, sans résultat de modèle ; l'apprentissage
+comparé et son évaluation restent à effectuer. Ce contrôle suit une frontière
+déjà publiée par Activated LoRA et ne confirme ni conscience ni nouveauté.
+
+**Dernier test comportemental, 20 septembre :** le [test d'une seule paire](PROSPECTIVE_PAIR_DISCOVERY_RESULTS.md)
 induit 47 erreurs sur 48 rappels des clés sélectionnées, avec 112/112 autres
 rappels corrects. Chaque état altéré produit donc des conséquences différentes
 selon la question. Les prévisions annoncent pourtant toutes une réussite dans
