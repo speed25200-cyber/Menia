@@ -38,6 +38,16 @@ séparée concorde à 5,56 × 10⁻¹⁷ près et les neuf poids sont inchangés
 motive une étude de budget d'optimisation à capacité fixe, sans identifier
 encore la cause du plafond ni confirmer conscience ou nouveauté.
 
+Le [diagnostic de budget](CONFIDENCE_BUDGET_PROTOCOL.md) est préparé : trois
+adaptateurs de rang 8 conservés, six passages supplémentaires et mesures
+fixées après deux, quatre et huit passages totaux. Les 1 296 mises à jour
+supplémentaires emploient uniquement les anciennes données d'entraînement.
+Les 8 640 lectures incluent les anciennes réponses du lot 24, désormais
+déclarées consultées. Douze contrôles logiciels passent sur PC. Le point de
+départ doit reproduire les scores précédents avant toute mise à jour ;
+l'optimiseur redémarre faute de moments sauvegardés. Aucun résultat réel
+de cette poursuite n'est encore revendiqué.
+
 Le [protocole du Colab 22](VALUE_ACTION_LEARNING_PROTOCOL.md) compare trois
 recettes d'apprentissage appariées : choix seuls, associations auxiliaires
 correctes, associations auxiliaires mélangées. Neuf adaptateurs sont entraînés,

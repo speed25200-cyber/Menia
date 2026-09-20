@@ -105,6 +105,10 @@ choisir le meilleur résultat après coup. Le redémarrage éventuel de
 l'optimiseur doit être déclaré : ce n'est pas la continuation exacte d'un
 état d'optimisation qui n'a pas été sauvegardé.
 
+Le [diagnostic de budget à capacité fixe](CONFIDENCE_BUDGET_PROTOCOL.md)
+met en place cette courbe, avec points fixés à deux, quatre et huit passages
+totaux et reproduction préalable des scores de départ.
+
 Les données du lot 24, déjà consultées, pourront seulement servir à décrire
 cette courbe exploratoire. Toute confirmation ultérieure exigera un nouveau
 jeu réservé. Cette expérience ne pourra pas, à elle seule, résoudre l'absence
