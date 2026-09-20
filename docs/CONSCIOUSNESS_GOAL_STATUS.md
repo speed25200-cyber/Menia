@@ -122,7 +122,11 @@ Le [relevé complet de fin d'entraînement](../artifacts/confidence-ranking-pilo
 empreintes des douze fichiers de poids, états initiaux compris. La copie
 auditée s'arrête avant la première requête de test, alors que l'évaluation
 a déjà commencé. Aucun score de cette évaluation n'a été inspecté à ce relevé.
-La réception finale et l'audit des tenseurs restent à faire.
+Une [sauvegarde d'entraînement](../artifacts/confidence-ranking-pilot/training-backup-receipt.json)
+est ensuite reçue localement : archive, treize fichiers et douze états de
+poids vérifiés. Les 144 tenseurs de chaque état sont finis, en FP32 et aux
+dimensions Q/V attendues ; les initialisations et modifications sont contrôlées.
+Aucun résultat de test n'est inclus. La réception de l'évaluation reste à faire.
 
 La [préparation d'interventions avant jugement et action](CONFIDENCE_PREFIX_INTERVENTIONS.md)
 ajoute cinq tests sur petit Qwen aléatoire. Un échange partiel cible le même

@@ -233,3 +233,28 @@ La fin de l'entraînement ne constitue pas un résultat prédictif positif.
 python -m unittest tests_research.test_audit_confidence_ranking -v
 python -m research.audit_confidence_ranking JOURNAL SUMMARY --output VERIFICATION
 ```
+
+## Sauvegarde locale et audit des tenseurs avant les résultats
+
+L'[archive d'entraînement reçue et vérifiée](../artifacts/confidence-ranking-pilot/training-backup-receipt.json)
+contient uniquement le préfixe du journal déjà figé et les douze fichiers de
+poids, soit treize fichiers. Ses 115 211 294 octets sont transférés par MCP en
+440 fragments dont les empreintes sont vérifiées, puis l'archive complète
+et chaque fichier sont vérifiés à nouveau. Le SHA-256 de l'archive est
+`1362bc856de6196b33408659d95c0b832b01cccc04e8b89ca91d8aedff72d4b3`.
+Une copie est conservée sur le PC dans `Downloads/menia-classement-poids-v1.zip`.
+
+Le lecteur local retrouve les 1 296 mises à jour et neuf fins d'entraînement,
+sans aucune requête ou réponse d'évaluation dans cette copie. L'audit existant
+lit réellement les douze fichiers safetensors : 144 tenseurs et 2 949 120
+paramètres FP32 par fichier, tous finis. Les noms et dimensions sont ceux des
+projections Q/V des 36 blocs de Qwen3-4B. Les trois initialisations sont distinctes,
+avec les facteurs B nuls ; chaque bras reprend l'initialisation de sa répétition
+et ses poids entraînés diffèrent de cet état initial. Les détails par fichier
+figurent dans le reçu.
+
+Cette sauvegarde protège les poids et vérifie leur contenu avant la lecture
+des performances. Elle ne remplace pas la réception du journal d'évaluation
+complet, le recalcul de ses statistiques ni une réplication extérieure. Elle
+n'atteste pas indépendamment l'intégrité des poids de base. L'évaluation reste
+en cours et aucun gain prédictif ou état conscient n'est conclu.
