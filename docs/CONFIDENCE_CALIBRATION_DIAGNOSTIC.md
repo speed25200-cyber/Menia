@@ -41,8 +41,13 @@ ex æquo. La méthode ne fournit pas d'information nouvelle au modèle.
   Aucun nouveau seuil de succès ou intervalle confirmatoire.
 
 Le fichier de données doit correspondre à l'empreinte du journal déjà audité.
-Le diagnostic vérifie que les métriques originales sont reconstruites à
-l'identique. Les données de test ne sont pas utilisées pour ajuster les
+Le diagnostic vérifie la reconstruction des métriques originales avec la
+tolérance de l'audit parent (10⁻¹⁰, relative aux valeurs supérieures à 1).
+Un premier passage s'est arrêté sur une égalité flottante exacte trop stricte :
+seul le comparateur de confiance de sortie différait, de 2,23 × 10⁻¹⁶ au plus.
+Le contrôle reprend la tolérance déjà utilisée pour l'archive, sans changer
+l'ajustement ni consulter de nouveaux scores recalibrés à cette étape.
+Les données de test ne sont pas utilisées pour ajuster les
 coefficients ; toutefois, leur résultat précédent a motivé cette analyse.
 Un gain restera donc exploratoire et externe au LLM.
 

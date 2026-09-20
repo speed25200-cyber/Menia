@@ -15,6 +15,7 @@ from research.answer_confidence_analysis import metrics,probabilities
 from research.answer_confidence_crossed import ARMS
 from research.answer_confidence_journal import read_journal
 from research.answer_confidence_study import evaluation_rows
+from research.audit_composition_diagnostic import compare
 from research.cross_model_prediction import CELLS,digest,grade
 from research.iphone_coupling_report import require
 
@@ -124,7 +125,7 @@ def run(journal):
     # Fit every calibrator before consulting test labels in this analysis.
     fits={f'r{rep}/{producer}/{judge}':fit_rows(calibration,rep,producer,judge)
           for rep in range(3) for producer in ARMS for judge in ARMS}
-    results={};max_difference=0.
+    results={};max_difference=0.;max_parent_difference=0.
     for rep in range(3):
         rows=[r for r in test if r['task']['replication']==rep]
         categories=[f"{r['task']['family']}/{r['task']['level']}" for r in rows]
@@ -135,7 +136,7 @@ def run(journal):
                 partition=auc_partition(truth,values,categories)
                 metrics_raw=metrics(truth,values)
                 old=original['replications'][str(rep)]['scores'][producer][judge]
-                require(metrics_raw==old,'Parent metrics changed')
+                max_parent_difference=max(max_parent_difference,compare(metrics_raw,old))
                 if partition['auc'] is not None:
                     delta=abs(partition['auc']-old['auc']);max_difference=max(max_difference,delta)
                     require(delta<1e-12,'Pair decomposition differs from parent AUC')
@@ -150,7 +151,7 @@ def run(journal):
                 exploratory=True,newLLMCalls=0,weightUpdates=0,sourceHash=digest(Path(__file__).read_text(encoding='utf-8')),
                 parentJournalSHA256=identity,parentPrimaryCriterion=original['nativeConfidenceCriterion'],
                 nativePrimaryCriterionUnchanged=True,calibrators=fits,results=results,
-                maxAUCReconstructionDifference=max_difference,fitUsesTestLabels=False,
+                maxAUCReconstructionDifference=max_difference,maxParentMetricDifference=max_parent_difference,fitUsesTestLabels=False,
                 method=dict(probabilityFloor=FLOOR,penalty='1 / calibration count, on standardized-logit slope only',
                             slopeConstraint='nonnegative',gradientTolerance=GRADIENT_TOLERANCE,maximumIterations=MAX_ITERATIONS,
                             trials=27,selection='No hyperparameter or model selection; all arms and producers reported'),
