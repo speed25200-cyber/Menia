@@ -176,3 +176,43 @@ et des empreintes de source et de plan conformes. Le processus est alors actif.
 Il ne s'agit pas d'un résultat final.
 
 [Notebook épinglé](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/65b571ad7368c0459ed33f164b05f1858ee7f30f/notebooks/24_confidence_ranking_colab.ipynb).
+
+## Audit préparé pendant la collecte
+
+Un [second calcul](../research/audit_confidence_ranking.py) reconstruit le
+classement par matrices de comparaisons réussite/erreur, sans appeler le tri
+du rapport principal. Il reconstitue les multiplicités de questions, les
+intervalles, la notation exacte des réponses, le Brier et les seuils de décision.
+Le lecteur du journal, le plan et le générateur aléatoire NumPy restent communs :
+il s'agit d'une vérification numérique, pas d'une réplication externe.
+
+Quatre contrôles locaux passent, avec des scores synthétiques imparfaits,
+des ex æquo et des intervalles non dégénérés. Les 480 000 AUROC de bootstrap
+sont recalculées ; l'écart maximal entre les champs des rapports est
+3,34 × 10⁻¹⁶. Les contrôles rejettent aussi un score, un intervalle ou un
+critère altéré, ainsi que des poids non finis, inchangés ou de forme incorrecte,
+même quand leur empreinte est recalculée. Le
+[reçu logiciel](../artifacts/confidence-ranking-preparation/audit-software-check.json)
+est explicitement marqué `synthetic_fixture` : il ne mesure pas Menia.
+Le premier essai du test de corruption rencontrait un verrou de fichier mappé
+sur Windows ; la copie des tenseurs avant remplacement corrige ce test.
+Cette correction n'affecte ni le collecteur ni l'expérience Colab en cours.
+
+Sur l'entraînement réel, un
+[contrôle du préfixe du journal](../artifacts/confidence-ranking-pilot/training-prefix-check.json)
+à 01:36:00 UTC valide 392 mises à jour, dont les deux premiers adaptateurs
+terminés. Il vérifie la chaîne, l'exposition appariée et l'arithmétique des
+pertes auxiliaires, ainsi que les empreintes des deux poids terminés et de
+leur initialisation commune. Aucune requête de test n'est encore présente.
+Les nombres sont un état intermédiaire daté ; ils ne constituent pas une
+évaluation de performance et ne préjugent pas de la fin de l'expérience.
+
+L'audit final devra lire les douze fichiers d'adaptateurs réels et vérifier
+leurs types, dimensions, finitude, initialisations et modifications. Ces
+contrôles ne constituent pas une attestation indépendante de l'intégrité de
+tous les poids de base. Le résultat scientifique reste en attente.
+
+```sh
+python -m unittest tests_research.test_audit_confidence_ranking -v
+python -m research.audit_confidence_ranking JOURNAL SUMMARY --output VERIFICATION
+```

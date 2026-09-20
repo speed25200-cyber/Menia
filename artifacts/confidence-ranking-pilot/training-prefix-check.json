@@ -1,0 +1,42 @@
+{
+  "schema": "menia-confidence-ranking-prefix-check-v1",
+  "verified": true,
+  "planHash": "83d81c430208ab1c4f0f970e232e190e19be22af43ee4c2a3f554586efbb9b9c",
+  "sourceHash": "12489c817466d98892b43e249fdd7a25d360522770af820c0bfefefda7d87129",
+  "prefixSHA256": "3ca127c16f3897d0a7b4850c7a3e4466fed0e4b3cb0db152e53d753b816bef75",
+  "prefixBytes": 4249392,
+  "chainEnd": "b9957efa0cd4ac09eacacfe33aceaf774d18646336972e22c89c9128f93a8708",
+  "trainingSteps": 392,
+  "units": {
+    "r0-ce": 144,
+    "r0-rank": 144,
+    "r0-neutral": 104
+  },
+  "completedAdapters": 2,
+  "activeTraining": {
+    "key": "r0-neutral",
+    "replication": 0,
+    "arm": "neutral",
+    "initializationSeed": 202610241
+  },
+  "checkpointFiles": {
+    "confidence-ranking-20260920-v1.r0-ce.safetensors": {
+      "bytes": 11811296,
+      "sha256": "9a0fef8e88cf93b464be5f53f9b482b9368df092133537c81e17234e32adb1c9"
+    },
+    "confidence-ranking-20260920-v1.r0-rank.safetensors": {
+      "bytes": 11811296,
+      "sha256": "d7919cd9b9ddb0ce2df4fff21e246020576fd4b8c68c5d0f81e61a2228483ed1"
+    },
+    "confidence-ranking-20260920-v1.r0-initial.safetensors": {
+      "bytes": 11811296,
+      "sha256": "2c24bb560ffb9cb2f26b2cd7eaae4f93d23856415af33c3642ad54626e4d2e18"
+    }
+  },
+  "scope": "Frozen-reader verification of the training-only journal prefix, pair-loss arithmetic, matched exposures and completed checkpoint hashes. No test responses or performance scores inspected.",
+  "capturedUTC": "2026-09-20T01:36:00.834849+00:00",
+  "pid": 231692,
+  "returnCode": null,
+  "cutBeforeFirstTestRequest": false,
+  "snapshotPath": "/content/menia-ranking-prefix-snapshots/20260920T013600834849Z/confidence-ranking-20260920-v1.jsonl"
+}

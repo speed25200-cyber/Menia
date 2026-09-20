@@ -112,6 +112,11 @@ Le [reçu de lancement](../artifacts/confidence-ranking-pilot/launch.json)
 confirme ensuite 17 contrôles préalables réussis sur Colab, puis six mises à
 jour du premier adaptateur, sans appel d'évaluation à cette observation.
 L'expérience est en cours ; sa réussite scientifique reste à déterminer.
+Un [contrôle intermédiaire](../artifacts/confidence-ranking-pilot/training-prefix-check.json)
+valide ensuite 392 mises à jour et deux adaptateurs terminés, sans appel de
+test. Un [audit numérique distinct](CONFIDENCE_RANKING_PROTOCOL.md#audit-préparé-pendant-la-collecte)
+passe quatre contrôles sur données construites ; il sera appliqué aux vrais
+résultats après collecte, sans modification du protocole scientifique figé.
 
 La [préparation d'interventions avant jugement et action](CONFIDENCE_PREFIX_INTERVENTIONS.md)
 ajoute cinq tests sur petit Qwen aléatoire. Un échange partiel cible le même
