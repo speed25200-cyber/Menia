@@ -258,3 +258,10 @@ des performances. Elle ne remplace pas la réception du journal d'évaluation
 complet, le recalcul de ses statistiques ni une réplication extérieure. Elle
 n'atteste pas indépendamment l'intégrité des poids de base. L'évaluation reste
 en cours et aucun gain prédictif ou état conscient n'est conclu.
+
+Le [diagnostic du journal d'entraînement](CONFIDENCE_RANKING_TRAINING_DIAGNOSTIC.md)
+décrit séparément les mesures avant mise à jour, sans lire les résultats de
+test ni modifier le critère principal. Le crédit de classement en ligne du
+bras correspondant atteint 55,88–69,02 % au deuxième passage, avec des cellules
+rares conservées. Ces observations à poids changeants ne constituent pas un
+score du checkpoint final ni une mesure de généralisation.

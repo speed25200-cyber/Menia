@@ -127,6 +127,13 @@ est ensuite reçue localement : archive, treize fichiers et douze états de
 poids vérifiés. Les 144 tenseurs de chaque état sont finis, en FP32 et aux
 dimensions Q/V attendues ; les initialisations et modifications sont contrôlées.
 Aucun résultat de test n'est inclus. La réception de l'évaluation reste à faire.
+Un [diagnostic des mesures d'entraînement](CONFIDENCE_RANKING_TRAINING_DIAGNOSTIC.md)
+montre un crédit de classement en ligne de 55,88–69,02 % au deuxième passage
+pour le bras dédié. La perte code/EOS baisse, mais l'ordre reste imparfait et
+certaines catégories manquent de paires réussite/erreur. Deux tests passent ;
+le recalcul de 126 groupes concorde à 4,45 × 10⁻¹⁶ près. Ce sont des observations
+avant mise à jour, sans score du checkpoint final ni nouvelle conclusion sur
+la généralisation. Le critère Colab 24 reste inchangé.
 
 La [préparation d'interventions avant jugement et action](CONFIDENCE_PREFIX_INTERVENTIONS.md)
 ajoute cinq tests sur petit Qwen aléatoire. Un échange partiel cible le même
