@@ -6,7 +6,9 @@ implémenté pour l'anomalie K/V du cas d'apprentissage 1008 : reproduction
 exacte, changement du mode SDPA, puis opérations suivantes en FP32 sur les
 mêmes valeurs de poids et de mémoire. Cinq tests locaux passent sur un petit
 modèle aléatoire ; les 192 décodages Qwen3-4B attendent la fin du processus
-principal. Aucun résultat de ce diagnostic n'est annoncé. La
+principal. Le lanceur refuse un parent actif ou une A100 occupée ; un auditeur
+séparé vérifie les exports, avec cinq tests supplémentaires sur journaux
+synthétiques. Aucun résultat de ce diagnostic n'est annoncé. La
 [revue des adaptateurs](PROSPECTIVE_ADAPTER_OPTIONS.md) ajoute IntroLM,
 précédent direct de prévision avant réponse avec canal adapté séparé.
 L'architecture générale ne constitue donc pas une nouveauté de Menia.

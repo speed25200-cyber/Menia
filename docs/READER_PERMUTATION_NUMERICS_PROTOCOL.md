@@ -69,3 +69,27 @@ il ne mesure pas la conscience. Les tests locaux utilisent un Qwen minuscule
 aléatoire et vérifient conversion, provenance, rejet des caches altérés,
 attention mathématique et conservation d'un échec de répétition. Leurs
 résultats ne sont pas ceux du modèle Menia entraîné.
+
+## Exécution et vérification des exports
+
+Le [lanceur Colab](../scripts/colab_reader_permutation_numerics_launcher.py)
+exige une révision Git immuable, l'absence du processus parent dans `/proc`,
+son statut terminé, son audit présent et une A100 libre. Il crée un dossier
+neuf, teste le code, exécute les 192 branches, puis lance l'audit. Il conserve
+aussi un journal et une archive lors d'un échec ; il ne relance pas le parent.
+Le contrôle du handle Python du parent doit précéder l'appel du lanceur.
+
+L'[auditeur séparé](../research/audit_reader_permutation_numerics.py)
+vérifie la chaîne du journal, l'ordre des demandes, les identités numériques,
+les décisions depuis les tokens et les probabilités depuis les logits. Il
+recalcule les contrastes et compare les décodages BF16 initiaux à ceux du
+préfixe d'apprentissage publié. Une réponse plus courte dans un autre mode
+reste une observation valide à auditer, même si elle échoue au format demandé.
+
+Cinq tests supplémentaires sur des journaux **synthétiques** couvrent un
+export complet, une probabilité falsifiée malgré une chaîne recalculée,
+l'ordre des requêtes, un résumé masquant une réponse modifiée et une tentative
+interrompue. Ils passent localement en 7,574 secondes. Les cinq tests du
+collecteur demeurent distincts. Ni ces tests ni l'auditeur ne reproduisent
+indépendamment la conversion des tenseurs : poids et caches convertis ne sont
+pas exportés par ce diagnostic. Cette limite figure dans chaque audit.
