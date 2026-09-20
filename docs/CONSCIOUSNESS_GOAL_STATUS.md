@@ -9,9 +9,9 @@ l'action par son nom reste faible (514/864). La traduction imposée réussit
 423/432. Le Colab 20 reste un échec global de généralisation. Le Colab 18 ne confirme
 aucun bénéfice de l'historique. Le Colab 17 ne confirme pas l'apport prédictif
 fixé pour les états intermédiaires ; le Colab 16 ne confirme pas un contenu
-général réutilisable. Le Colab 23 vient de démarrer sur A100 pour tester une
-confiance native après réponse ; aucun résultat de cette collecte n'est
-encore disponible.**
+général réutilisable. Le Colab 23 a terminé les six entraînements sur A100
+et collecte maintenant les nouvelles réponses et leurs évaluations ;
+aucun bilan prédictif de cette collecte n'est encore disponible.**
 
 Le [protocole du Colab 22](VALUE_ACTION_LEARNING_PROTOCOL.md) compare trois
 recettes d'apprentissage appariées : choix seuls, associations auxiliaires
@@ -44,7 +44,7 @@ dans le vocabulaire lors du calcul d'un score. Quatre tests logiciels passent.
 Les 525 réponses correctes et 1 203 incorrectes sont des données anciennes,
 pas une nouvelle performance. Certaines catégories ont presque zéro réussite,
 ce qui limite l'apprentissage d'une discrimination interne à ces catégories.
-L'apprentissage des nouveaux adaptateurs de confiance est maintenant en cours.
+Les six adaptateurs de confiance sont entraînés ; leur évaluation est en cours.
 La lecture de la tête de sortie et la comparaison croisée des trois producteurs
 avec les trois évaluateurs sont implémentées. Cinq tests supplémentaires
 passent, dont deux sur un petit Qwen aléatoire : ils vérifient le calcul et
@@ -66,6 +66,12 @@ sur Colab. Le [reçu de lancement](../artifacts/native-answer-confidence-pilot/l
 constate 19 mises à jour du premier adaptateur, sans appel de calibration
 ou de test à cet instant. Cette progression ne valide pas encore la prévision
 de ses erreurs ni son usage dans une décision.
+Le [relevé des poids figés](../artifacts/native-answer-confidence-pilot/training-freeze.json)
+confirme ensuite 864 mises à jour, 6 912 présentations d'exemples et neuf
+fichiers de poids avec empreintes concordantes. Les bras appariés reçoivent
+le même nombre de tokens ; le total est de 797 752 tokens et 1 758,944 s
+d'entraînement. Le relevé précède l'examen des résultats et ne contient aucun
+score prédictif.
 
 La [préparation d'interventions avant jugement et action](CONFIDENCE_PREFIX_INTERVENTIONS.md)
 ajoute cinq tests sur petit Qwen aléatoire. Un échange partiel cible le même

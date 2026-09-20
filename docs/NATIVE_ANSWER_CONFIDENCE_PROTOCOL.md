@@ -161,3 +161,28 @@ Code scientifique : `e9af0cf871268a7febb5695762b1fef0879f34ad`. Le
 [notebook Colab 23](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/fe7731117f94a196d76fda2a964453c14dc49a8d/notebooks/23_native_answer_confidence_colab.ipynb)
 est publié séparément et épinglé sur ce code. Ce reçu atteste le démarrage,
 pas l'achèvement ni une amélioration mesurée.
+
+## Poids figés avant examen des résultats
+
+Le [relevé des poids](../artifacts/native-answer-confidence-pilot/training-freeze.json)
+est capturé le 20 septembre à 00:04:12 UTC, pendant la première calibration.
+Les six adaptateurs ont terminé leurs 144 mises à jour chacun, soit 864
+mises à jour et 6 912 présentations d'exemples. Les trois initialisations
+et les six poids finaux sont présents ; leurs empreintes correspondent aux
+événements du journal. Les initialisations sont appariées dans chaque
+répétition. Le préfixe du journal arrêté avant la première requête conserve
+une chaîne valide et son empreinte est enregistrée. Aucun score de
+calibration ou de test n'est contenu dans ce relevé.
+
+| Répétition | Tokens d'entrée par bras | Temps `measured` | Temps `shuffled` |
+|---|---:|---:|---:|
+| 0 | 132 962 | 291,789 s | 292,091 s |
+| 1 | 133 094 | 292,903 s | 293,593 s |
+| 2 | 132 820 | 293,619 s | 294,949 s |
+
+Les comptes incluent le code fourni pour prédire EOS. Les deux bras de
+chaque répétition ont le même nombre de tokens d'entrée. Les six entraînements
+totalisent 797 752 tokens et 1 758,944 s mesurées par le collecteur. Ce bilan
+documente le coût et l'appariement ; il ne mesure pas encore un gain de
+prévision. L'archive complète devra être reçue, les poids comparés à ce relevé
+et les deux recalculs exécutés avant l'interprétation des résultats.

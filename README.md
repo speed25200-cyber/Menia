@@ -8,6 +8,7 @@ incertitude et évaluation. **Colab A100 40 ou 80 Go** pour l’adaptation ;
 associations correctes sur 576/576 tests dans la présentation évaluée,
 mais décision encore fragile et critère global non atteint.
 La v1 a été arrêtée avant évaluation pour un défaut de données documenté.
+Le Colab 23 a terminé ses six entraînements ; son évaluation est en cours.
 Le Colab 21 est terminé et audité :
 comparaison numérique réussie sur 864/864 appels, mais choix de l'action
 par son nom limité à 514/864. La traduction d'un nom imposé réussit 423/432.
@@ -283,7 +284,7 @@ Les budgets sont de 80 384 tokens d'entrée par entraînement de choix et
 La [préparation de confiance après réponse](docs/NATIVE_ANSWER_CONFIDENCE_PREPARATION.md)
 ajoute ensuite 1 728 exemples issus uniquement de l'ancien apprentissage,
 avec cibles exactes ou mélangées et sans corrigé dans l'entrée. Quatre tests
-logiciels passent. L'entraînement de confiance a maintenant démarré ;
+logiciels passent. Les six adaptateurs de confiance sont maintenant entraînés ;
 les limites des catégories presque toujours fausses restent explicites.
 La lecture native du score et une comparaison croisée entre producteurs de
 réponses et évaluateurs sont maintenant implémentées, avec cinq tests
@@ -301,6 +302,10 @@ Qwen3-4B n'est encore mesurée. Le
 est lancé sur A100 : 23 tests passent aussi dans Colab, et le
 [reçu de lancement](artifacts/native-answer-confidence-pilot/launch.json)
 confirme les premières mises à jour avec les empreintes attendues.
+Le [relevé des poids figés](artifacts/native-answer-confidence-pilot/training-freeze.json)
+confirme ensuite les 864 mises à jour, neuf fichiers de poids et 797 752 tokens
+d'apprentissage. Les réponses nouvelles sont en cours de collecte ; aucun
+bilan de gain prédictif n'est encore disponible.
 
 Une [préparation d'interventions causales](docs/CONFIDENCE_PREFIX_INTERVENTIONS.md)
 ajoute ensuite un échange partiel au préfixe commun et un témoin de modification
