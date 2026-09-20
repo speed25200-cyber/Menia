@@ -27,6 +27,14 @@ spécifique reste non confirmé. Aucun test causal d'action ou de vécu n'est
 réalisé par cette expérience. Les paragraphes de suivi ci-dessous conservent
 l'historique des captures, désormais complété par ce résultat.
 
+Le [diagnostic des poids finaux sur les exemples appris](FINAL_TRAINING_FIT_PROTOCOL.md)
+est ensuite lancé : 5 184 lectures prévues des anciens exemples d'entraînement,
+sans mise à jour, nouvelle réponse ou exemple de test en entrée. Le reçu
+constate six tests réussis sur Colab et 351 évaluations enregistrées. Il vise
+à mesurer l'ajustement final, que les observations en ligne ne donnaient pas.
+Ce n'est pas une nouvelle confirmation ni une comparaison de capacités ;
+les résultats restent en attente.
+
 Le [protocole du Colab 22](VALUE_ACTION_LEARNING_PROTOCOL.md) compare trois
 recettes d'apprentissage appariées : choix seuls, associations auxiliaires
 correctes, associations auxiliaires mélangées. Neuf adaptateurs sont entraînés,

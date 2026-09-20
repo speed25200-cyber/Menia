@@ -83,3 +83,13 @@ python -m unittest tests_research.test_confidence_final_training_fit tests_langu
 python -m research.confidence_final_training_fit_gpu JOURNAL DOSSIER_POIDS_COLAB24
 python -m research.confidence_final_training_fit --journal JOURNAL --output RAPPORT
 ```
+
+## Lancement observé
+
+Le [reçu de lancement](../artifacts/final-training-fit-pilot/launch.json), pris
+le 20 septembre à 03:34:07 UTC, constate les six tests réussis sur Colab et
+351 évaluations enregistrées sur A100 40 Go. Le processus est actif à cette
+capture ; les empreintes de plan, de sources et d'ordre des appels correspondent
+au plan préparé. Aucune performance n'est inspectée dans ce reçu. Le code
+scientifique exécuté est la révision
+`24b6345edbc1e88544ddf5e4da73b03870900d69`.

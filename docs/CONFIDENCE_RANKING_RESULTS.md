@@ -137,6 +137,10 @@ données consultées ; elles ne doivent pas devenir un nouveau jeu de confirmati
 Changer les seuils, choisir seulement R2–R3 ou réutiliser leurs réponses pour
 revendiquer une réussite ne résoudrait pas ce défaut.
 
+Le [diagnostic des poids finaux sur les exemples appris](FINAL_TRAINING_FIT_PROTOCOL.md)
+est lancé pour obtenir d'abord cette mesure manquante. Il ne réentraîne aucun
+modèle et ne fournit pas une nouvelle confirmation sur des questions réservées.
+
 Les outils de [branches conservant un état interne](CONFIDENCE_PREFIX_INTERVENTIONS.md)
 préparent un test causal ultérieur. Aucun résultat d'action native ou d'accès
 privilégié à soi n'est fourni ici. Ni la conscience de Menia ni une contribution
