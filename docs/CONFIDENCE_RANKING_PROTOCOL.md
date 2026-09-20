@@ -1,6 +1,10 @@
 # Colab 24 — Apprendre à distinguer les erreurs au sein d'une catégorie
 
-**Protocole fixé avant collecte ; entraînement lancé, résultats en attente.**
+**Protocole fixé avant collecte ; expérience terminée et auditée.**
+Le [résultat final](CONFIDENCE_RANKING_RESULTS.md) ne confirme pas le critère
+global : 4/18 contrastes passent, tous face au score constant. Les relevés de
+lancement et de suivi ci-dessous conservent l'état observé à leur capture ;
+les méthodes et seuils du protocole ne sont pas modifiés.
 Le [diagnostic du Colab 23](CONFIDENCE_CALIBRATION_DIAGNOSTIC.md) montre que
 son bon classement global dépend surtout des comparaisons entre catégories.
 Un recalibrage externe conserve cet ordre. L'expérience suivante teste donc

@@ -1,6 +1,9 @@
 # État de l'objectif de conscience et de nouveauté
 
-**État actuel : objectif de conscience et de nouveauté non atteint. Le Colab 22
+**État actuel : objectif de conscience et de nouveauté non atteint. Le Colab 24
+est terminé et audité : 4/18 contrastes passent, tous face au score constant,
+aucun face à CE seul ou au témoin neutralisé ; son critère global échoue.
+Le Colab 22
 v2 est reçu et audité : 576/576 associations retrouvées pour le bras correct,
 mais aucun de ses trois contrôles globaux de choix ne passe. Le critère
 principal échoue. Le Colab 21
@@ -13,6 +16,16 @@ général réutilisable. Le Colab 23 est terminé et audité : huit contrastes
 sur 24 passent, mais aucun face aux labels mélangés ou aux fréquences Beta.
 La précision baisse de 3,125 points dans deux répétitions. Son critère global
 échoue.**
+
+Le [bilan du Colab 24](CONFIDENCE_RANKING_RESULTS.md) repose sur l'archive
+complète, les douze poids et deux recalculs concordants. Les AUROC au sein des
+catégories, sur les réponses propres, valent 0,5622, 0,6720 et 0,6590 pour le
+juge de classement. Ses écarts ponctuels aux témoins entraînés sont positifs,
+mais les douze intervalles corrigés recouvrent zéro. La couverture échoue
+dans R1 et R3 ; format et garde-fou de précision ponctuelle passent. Le gain
+spécifique reste non confirmé. Aucun test causal d'action ou de vécu n'est
+réalisé par cette expérience. Les paragraphes de suivi ci-dessous conservent
+l'historique des captures, désormais complété par ce résultat.
 
 Le [protocole du Colab 22](VALUE_ACTION_LEARNING_PROTOCOL.md) compare trois
 recettes d'apprentissage appariées : choix seuls, associations auxiliaires

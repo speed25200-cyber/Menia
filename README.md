@@ -25,12 +25,13 @@ envisagées. Elle ne constitue pas une recette validée. La continuité repose s
 explicite et des sauvegardes, sans objectif de résistance à l'arrêt ou d'auto-réplication.
 
 **[Colab 24 : classement de confiance au sein d'une catégorie](docs/CONFIDENCE_RANKING_PROTOCOL.md).**
-Le nouveau protocole conserve chaque exemple d'apprentissage et compare trois
-objectifs à capacité identique. Neuf adaptateurs, 1 296 mises à jour et 23 040
-appels sur 1 152 nouvelles questions sont prévus. Treize tests logiciels
-passent sur PC ; les 17 contrôles préalables passent dans Colab.
-Le [lancement est confirmé](artifacts/confidence-ranking-pilot/launch.json)
-sur A100, sans résultat d'évaluation encore revendiqué.
+Le [résultat complet](docs/CONFIDENCE_RANKING_RESULTS.md) est reçu et audité :
+neuf adaptateurs, 1 296 mises à jour et 23 040 appels sur 1 152 questions nouvelles.
+**Le critère global échoue : 4/18 contrastes passent, tous face au score constant,
+aucun face à CE seul ou au témoin neutralisé.** La couverture est insuffisante
+dans deux répétitions. Les contrôles de format et de précision ponctuelle passent.
+Les deux recalculs concordent à 2,23 × 10⁻¹⁶ près ; les douze fichiers de poids
+correspondent à la sauvegarde prise avant lecture des résultats.
 [Notebook épinglé](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/65b571ad7368c0459ed33f164b05f1858ee7f30f/notebooks/24_confidence_ranking_colab.ipynb).
 
 **Résultat du [diagnostic de l'apprentissage interne](docs/LEARNING_DIAGNOSTIC_RESULTS.md).**
