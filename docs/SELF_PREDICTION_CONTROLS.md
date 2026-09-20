@@ -263,6 +263,23 @@ reconnaissance de soi ; il prépare une comparaison causale d'états transitoire
 Sans intervention et à poids fixes, conserver le KV n'ajoute pas, à lui seul,
 une nouvelle source d'information par rapport au recalcul déterministe.
 
+### Comparer le suivi d'état à une règle sur la sortie
+
+[Wu, Kawaharazuka et Okada, §§IV–VI](https://arxiv.org/html/2608.10824v1)
+utilisent la différence entre les deux probabilités d'action les plus élevées
+pour commander le recalcul du cache au pas suivant. Malgré son nom de
+« logit-margin », leur équation utilise les probabilités après softmax.
+Les seuils sont réglés sur LIBERO-Spatial, puis conservés pour les autres
+suites de chaque architecture. Les bénéfices varient selon les tâches. Les
+auteurs reconnaissent que ce signal ne distingue pas l'incertitude causée par
+le cache de l'ambiguïté propre au modèle. L'évaluation est en simulation.
+
+**Conséquence pour Menia, par inférence :** une amélioration produite par une
+règle externe sur la sortie ne suffit pas à identifier un suivi de l'état
+interne. Une future expérience de mémoire devrait comparer ce mécanisme à
+une règle simple sur la sortie et à des recalculs de fréquence comparable,
+avec seuils choisis hors test. Aucun tel contrôleur n'est ajouté au Colab 24.
+
 ## Spécification du test suivant, après les répétitions
 
 Cette partie conserve la **spécification de travail initiale**. Le volet
