@@ -28,7 +28,10 @@ explicite et des sauvegardes, sans objectif de résistance à l'arrêt ou d'auto
 Le nouveau protocole conserve chaque exemple d'apprentissage et compare trois
 objectifs à capacité identique. Neuf adaptateurs, 1 296 mises à jour et 23 040
 appels sur 1 152 nouvelles questions sont prévus. Treize tests logiciels
-passent ; aucun résultat du nouvel entraînement n'est encore revendiqué.
+passent sur PC ; les 17 contrôles préalables passent dans Colab.
+Le [lancement est confirmé](artifacts/confidence-ranking-pilot/launch.json)
+sur A100, sans résultat d'évaluation encore revendiqué.
+[Notebook épinglé](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/65b571ad7368c0459ed33f164b05f1858ee7f30f/notebooks/24_confidence_ranking_colab.ipynb).
 
 **Résultat du [diagnostic de l'apprentissage interne](docs/LEARNING_DIAGNOSTIC_RESULTS.md).**
 Le Colab 08 est reçu et vérifié : 128 mises à jour et 1 792 évaluations. Sur les

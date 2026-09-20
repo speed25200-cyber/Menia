@@ -1,6 +1,6 @@
 # Colab 24 — Apprendre à distinguer les erreurs au sein d'une catégorie
 
-**Protocole fixé avant collecte ; aucun résultat du nouvel entraînement.**
+**Protocole fixé avant collecte ; entraînement lancé, résultats en attente.**
 Le [diagnostic du Colab 23](CONFIDENCE_CALIBRATION_DIAGNOSTIC.md) montre que
 son bon classement global dépend surtout des comparaisons entre catégories.
 Un recalibrage externe conserve cet ordre. L'expérience suivante teste donc
@@ -163,3 +163,16 @@ python -m research.confidence_ranking_learning_gpu JOURNAL artifacts/answer-conf
 
 [Empreintes du protocole](../artifacts/confidence-ranking-preparation/design.json) ·
 [État de l'objectif général](CONSCIOUSNESS_GOAL_STATUS.md)
+
+## Lancement observé
+
+Le 20 septembre 2026 à 01:21:52 UTC, la version scientifique
+`4cbce2edea430cc7e4df52546d448e91a7c98629` a été lancée par MCP sur l'A100
+40 Go. Les treize tests nouveaux et quatre contrôles existants de la trace
+de génération passent dans Colab (17 tests, 27,003 secondes). Le
+[reçu de lancement](../artifacts/confidence-ranking-pilot/launch.json) constate
+six mises à jour du premier adaptateur à 01:22:52 UTC, aucune requête de test,
+et des empreintes de source et de plan conformes. Le processus est alors actif.
+Il ne s'agit pas d'un résultat final.
+
+[Notebook épinglé](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/65b571ad7368c0459ed33f164b05f1858ee7f30f/notebooks/24_confidence_ranking_colab.ipynb).

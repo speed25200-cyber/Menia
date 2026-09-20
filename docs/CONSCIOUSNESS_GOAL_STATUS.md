@@ -108,6 +108,10 @@ explicites les groupes sans réussite suffisante et utilise un bootstrap
 des questions pour les 18 comparaisons principales. La variation de capacité
 reste à tester séparément. Ni la perte de classement ni la confiance relative
 ne sont présentées comme inédites ; aucun critère de conscience n'est atteint.
+Le [reçu de lancement](../artifacts/confidence-ranking-pilot/launch.json)
+confirme ensuite 17 contrôles préalables réussis sur Colab, puis six mises à
+jour du premier adaptateur, sans appel d'évaluation à cette observation.
+L'expérience est en cours ; sa réussite scientifique reste à déterminer.
 
 La [préparation d'interventions avant jugement et action](CONFIDENCE_PREFIX_INTERVENTIONS.md)
 ajoute cinq tests sur petit Qwen aléatoire. Un échange partiel cible le même
