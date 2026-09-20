@@ -27,13 +27,16 @@ spécifique reste non confirmé. Aucun test causal d'action ou de vécu n'est
 réalisé par cette expérience. Les paragraphes de suivi ci-dessous conservent
 l'historique des captures, désormais complété par ce résultat.
 
-Le [diagnostic des poids finaux sur les exemples appris](FINAL_TRAINING_FIT_PROTOCOL.md)
-est ensuite lancé : 5 184 lectures prévues des anciens exemples d'entraînement,
-sans mise à jour, nouvelle réponse ou exemple de test en entrée. Le reçu
-constate six tests réussis sur Colab et 351 évaluations enregistrées. Il vise
-à mesurer l'ajustement final, que les observations en ligne ne donnaient pas.
-Ce n'est pas une nouvelle confirmation ni une comparaison de capacités ;
-les résultats restent en attente.
+Le [diagnostic des poids finaux sur les exemples appris](FINAL_TRAINING_FIT_RESULTS.md)
+est terminé et audité : 5 184 lectures, sans mise à jour, nouvelle réponse
+ou exemple de test en entrée. Les AUROC dans les catégories du bras classement
+valent 0,6542, 0,7262 et 0,7702 sur les exemples appris, contre 0,5041, 0,6887
+et 0,6654 sur les réponses nouvelles du producteur de base. L'ajustement reste
+partiel ; ces moyennes emploient des poids de catégories différents et ne
+mesurent pas un écart pur de généralisation. Le recalcul est exact, l'arithmétique
+séparée concorde à 5,56 × 10⁻¹⁷ près et les neuf poids sont inchangés. Ce constat
+motive une étude de budget d'optimisation à capacité fixe, sans identifier
+encore la cause du plafond ni confirmer conscience ou nouveauté.
 
 Le [protocole du Colab 22](VALUE_ACTION_LEARNING_PROTOCOL.md) compare trois
 recettes d'apprentissage appariées : choix seuls, associations auxiliaires

@@ -137,9 +137,11 @@ données consultées ; elles ne doivent pas devenir un nouveau jeu de confirmati
 Changer les seuils, choisir seulement R2–R3 ou réutiliser leurs réponses pour
 revendiquer une réussite ne résoudrait pas ce défaut.
 
-Le [diagnostic des poids finaux sur les exemples appris](FINAL_TRAINING_FIT_PROTOCOL.md)
-est lancé pour obtenir d'abord cette mesure manquante. Il ne réentraîne aucun
-modèle et ne fournit pas une nouvelle confirmation sur des questions réservées.
+Le [diagnostic des poids finaux sur les exemples appris](FINAL_TRAINING_FIT_RESULTS.md)
+est désormais terminé : ses 5 184 lectures donnent des AUROC dans les catégories
+de 0,6542, 0,7262 et 0,7702 pour le bras classement. L'ajustement reste partiel.
+Il ne réentraîne aucun modèle et ne fournit pas une nouvelle confirmation
+sur des questions réservées ; il motive une étude du budget à capacité fixe.
 
 Les outils de [branches conservant un état interne](CONFIDENCE_PREFIX_INTERVENTIONS.md)
 préparent un test causal ultérieur. Aucun résultat d'action native ou d'accès

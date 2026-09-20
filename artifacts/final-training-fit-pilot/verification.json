@@ -1,0 +1,56 @@
+{
+  "schema": "menia-final-training-fit-verification-v1",
+  "verified": true,
+  "journalSHA256": "8bcbcaa5f5a2ca8806c021f5b22bc7f7b63facdb2c2bcb508ebc2505b9152f5b",
+  "chainEnd": "c07dad7dd2ad5bc97aa70ef03072308e2a26b04e51a01f0f28be5865b2d362ce",
+  "recordedCalls": 5184,
+  "completedUnits": 9,
+  "newWeightUpdates": 0,
+  "planHash": "9b398d36651463af3da67aedd914c5c748438461a98ce335036b7a14cf1ff59a",
+  "sourceHash": "224b60af101bd275198093dbc3d98e71f442fbc1b4d85b55a0710b4c66a98f7b",
+  "callPlanHash": "dc63e337bcad1dad9b49da587acc4a7a71f5356d46ac7fcc9669306e9f9135ac",
+  "exactTrainingRequestsChecked": 5184,
+  "unchangedLocalCheckpointFiles": {
+    "confidence-ranking-20260920-v1.r0-ce.safetensors": {
+      "bytes": 11811296,
+      "sha256": "9a0fef8e88cf93b464be5f53f9b482b9368df092133537c81e17234e32adb1c9"
+    },
+    "confidence-ranking-20260920-v1.r0-rank.safetensors": {
+      "bytes": 11811296,
+      "sha256": "d7919cd9b9ddb0ce2df4fff21e246020576fd4b8c68c5d0f81e61a2228483ed1"
+    },
+    "confidence-ranking-20260920-v1.r0-neutral.safetensors": {
+      "bytes": 11811296,
+      "sha256": "f11a03af036dc9087c530c64ddcf21f7451c75ad01177d6120319756bdbcfdb0"
+    },
+    "confidence-ranking-20260920-v1.r1-ce.safetensors": {
+      "bytes": 11811296,
+      "sha256": "5dd0df59e9751e99204881b20ce064a7407a17624cc5abdb2969c0abcb01b225"
+    },
+    "confidence-ranking-20260920-v1.r1-rank.safetensors": {
+      "bytes": 11811296,
+      "sha256": "ff15d693e24f67067dbab7a9f5fb81c475ad07a9892968abc6616a6b83f32525"
+    },
+    "confidence-ranking-20260920-v1.r1-neutral.safetensors": {
+      "bytes": 11811296,
+      "sha256": "3dcb58c3f05cb147ddcb47d7ae24dd18f15d614737d7bb1b91c52dfc3d1bc156"
+    },
+    "confidence-ranking-20260920-v1.r2-ce.safetensors": {
+      "bytes": 11811296,
+      "sha256": "475cd49e82cf16e63e44ba03525b9f65208fd7020c43bf31051062a0fb9a3661"
+    },
+    "confidence-ranking-20260920-v1.r2-rank.safetensors": {
+      "bytes": 11811296,
+      "sha256": "73a767db9436372ec8d8c76d5e9ccb7aa96a1cfabca5119220657621fe0fce51"
+    },
+    "confidence-ranking-20260920-v1.r2-neutral.safetensors": {
+      "bytes": 11811296,
+      "sha256": "0d43e922f483bcdc0c98947474b291c87e5c033e66cd6667aef01e22ae95acb3"
+    }
+  },
+  "remoteTensorEqualityChecks": 9,
+  "remoteBaseParameterVersionChecks": 9,
+  "mainRecomputeMaxAbsoluteDifference": 0.0,
+  "separateArithmeticMaxDifference": 5.551115123125783e-17,
+  "scope": "Local journal, request, identity and arithmetic verification; shared reader and labels, not external replication or independent attestation of remote base weights."
+}

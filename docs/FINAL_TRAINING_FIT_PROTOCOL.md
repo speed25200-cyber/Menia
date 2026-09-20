@@ -1,5 +1,9 @@
 # Diagnostic des poids finaux sur les exemples appris
 
+**Terminé et audité :** les [résultats](FINAL_TRAINING_FIT_RESULTS.md)
+rapportent 5 184 évaluations et un ajustement partiel, sans nouveau critère
+de réussite. Le protocole ci-dessous conserve les décisions avant collecte.
+
 20 septembre 2026. Diagnostic décidé **après** lecture du
 [Colab 24](CONFIDENCE_RANKING_RESULTS.md). Il ne change pas ce résultat négatif
 et ne constitue pas une nouvelle confirmation. Il n'effectue aucune mise à
