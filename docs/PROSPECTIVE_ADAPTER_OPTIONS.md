@@ -42,6 +42,17 @@ la tâche, en complément des altérations qui changent effectivement sa réussi
 
 ## Choix d'architecture encore à fixer
 
+[Greenewald et al., *Activated LoRA*, version 2, §§3–4.1](https://arxiv.org/html/2504.12397v2)
+apportent un précédent directement applicable à la frontière du cache : les
+adaptations ne s'activent que sur les tokens suivant leur invocation. Le cache
+antérieur du modèle de base reste réutilisable. Leur application à l'incertitude
+évalue des réponses déjà produites et apprend des scores issus d'un estimateur
+préalablement calibré. Notre cible prospective reste différente : prévoir une
+conséquence qui n'a pas encore été exécutée sous l'état altéré. Le principe de
+lecture adaptée d'un cache de base, y compris pour l'incertitude, est donc déjà
+publié. Le [contrôle du lecteur](RETAINED_READER_CONTROL_PROTOCOL.md) reprend
+cette frontière explicitement, sans revendiquer une architecture nouvelle.
+
 Trois dispositifs doivent rester distingués : un prédicteur externe qui lit
 des caractéristiques internes, un adaptateur intégré qui produit une prévision,
 et un mécanisme qui utilise cette prévision pour choisir une action. Le premier
