@@ -9,9 +9,10 @@ l'action par son nom reste faible (514/864). La traduction imposée réussit
 423/432. Le Colab 20 reste un échec global de généralisation. Le Colab 18 ne confirme
 aucun bénéfice de l'historique. Le Colab 17 ne confirme pas l'apport prédictif
 fixé pour les états intermédiaires ; le Colab 16 ne confirme pas un contenu
-général réutilisable. Le Colab 23 a terminé les six entraînements sur A100
-et collecte maintenant les nouvelles réponses et leurs évaluations ;
-aucun bilan prédictif de cette collecte n'est encore disponible.**
+général réutilisable. Le Colab 23 est terminé et audité : huit contrastes
+sur 24 passent, mais aucun face aux labels mélangés ou aux fréquences Beta.
+La précision baisse de 3,125 points dans deux répétitions. Son critère global
+échoue.**
 
 Le [protocole du Colab 22](VALUE_ACTION_LEARNING_PROTOCOL.md) compare trois
 recettes d'apprentissage appariées : choix seuls, associations auxiliaires
@@ -44,19 +45,19 @@ dans le vocabulaire lors du calcul d'un score. Quatre tests logiciels passent.
 Les 525 réponses correctes et 1 203 incorrectes sont des données anciennes,
 pas une nouvelle performance. Certaines catégories ont presque zéro réussite,
 ce qui limite l'apprentissage d'une discrimination interne à ces catégories.
-Les six adaptateurs de confiance sont entraînés ; leur évaluation est en cours.
+Les six adaptateurs de confiance sont entraînés ; leur évaluation est terminée.
 La lecture de la tête de sortie et la comparaison croisée des trois producteurs
 avec les trois évaluateurs sont implémentées. Cinq tests supplémentaires
 passent, dont deux sur un petit Qwen aléatoire : ils vérifient le calcul et
 montrent, sur cas construits, pourquoi un gain apparent peut venir seulement
 d'un changement des réponses. Ces contrôles ne mesurent pas une amélioration
 réelle de Menia ni un accès privilégié à ses états.
-Le planning vérifié prépare maintenant deux passages sur les exemples réels,
+Le planning vérifié fixait deux passages sur les exemples réels,
 ainsi que 864 questions excluant les anciens jeux. Les entrées et leur ordre
 sont identiques entre bras supervisé et témoin mélangé. Six tests ciblés
 passent pour le planning et la tête native, dont une mise à jour sur petit
 Qwen aléatoire. Le [protocole complet du Colab 23](NATIVE_ANSWER_CONFIDENCE_PROTOCOL.md)
-fixe maintenant 10 368 appels et 24 comparaisons principales sur réponses
+fixe 10 368 appels et 24 comparaisons principales sur réponses
 identiques, face au modèle de base, au témoin mélangé et à deux comparateurs
 statistiques. Quatre tests supplémentaires du journal complet passent :
 ils détectent des scores altérés, un contexte incorrect, une calibration
@@ -78,6 +79,17 @@ ensembles de comparateurs figés, puis la première requête de test. Capturé
 après le début des tests et avant examen des résultats, il conserve les
 empreintes à comparer avec l'archive finale, sans réponse ni score.
 
+Le [bilan complet du Colab 23](NATIVE_ANSWER_CONFIDENCE_RESULTS.md) vérifie
+ensuite l'archive de 13 fichiers, les neuf poids, les comparateurs et les deux
+calculs (écart maximal 2,23 × 10⁻¹⁶). Les 10 368 appels réussissent techniquement.
+Six contrastes face au juge de base et deux face à la confiance de sortie
+passent ; aucun des douze face aux labels mélangés et à Beta ne passe.
+Le format natif passe dans les trois répétitions, mais la conservation de
+précision échoue dans deux. Les AUROC globales proches de 0,9 coexistent avec
+une faible discrimination dans plusieurs catégories. Le diagnostic suivant
+doit distinguer calibration et information individuelle, avant d'attribuer
+un usage causal à une représentation de soi.
+
 La [préparation d'interventions avant jugement et action](CONFIDENCE_PREFIX_INTERVENTIONS.md)
 ajoute cinq tests sur petit Qwen aléatoire. Un échange partiel cible le même
 préfixe avant deux suites divergentes ; le témoin sans changement conserve
@@ -86,7 +98,7 @@ de deux tokens de −1 ou +1 sans utiliser de labels d'exactitude. Il montre
 pourquoi déplacer un score ne suffit pas à découvrir une auto-évaluation.
 Ces opérations sont vérifiées sur CPU ; aucune direction de confiance
 apprise ni effet utile sur une décision n'est encore identifié. Elles ne
-modifient pas la tentative Colab 23 en cours.
+modifient pas la tentative Colab 23 désormais terminée.
 Six [contrôles de propagation](../artifacts/confidence-prefix-preparation/reachability-check.json)
 ajoutent un témoin nul architectural : modifier la sortie du dernier bloc sur
 un token du passé n'affecte pas les logits d'un token ultérieur. Les mêmes

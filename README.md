@@ -8,7 +8,8 @@ incertitude et évaluation. **Colab A100 40 ou 80 Go** pour l’adaptation ;
 associations correctes sur 576/576 tests dans la présentation évaluée,
 mais décision encore fragile et critère global non atteint.
 La v1 a été arrêtée avant évaluation pour un défaut de données documenté.
-Le Colab 23 a terminé ses six entraînements ; son évaluation est en cours.
+Le Colab 23 est terminé et audité : huit contrastes sur 24 passent, aucun
+face aux labels mélangés ou aux fréquences Beta. Son critère principal échoue.
 Le Colab 21 est terminé et audité :
 comparaison numérique réussie sur 864/864 appels, mais choix de l'action
 par son nom limité à 514/864. La traduction d'un nom imposé réussit 423/432.
@@ -281,34 +282,26 @@ les choix seuls. Mais seuls 3/24 contrôles globaux passent ; le critère fixé
 Les budgets sont de 80 384 tokens d'entrée par entraînement de choix et
 84 224 avec tâche auxiliaire.
 
-La [préparation de confiance après réponse](docs/NATIVE_ANSWER_CONFIDENCE_PREPARATION.md)
-ajoute ensuite 1 728 exemples issus uniquement de l'ancien apprentissage,
-avec cibles exactes ou mélangées et sans corrigé dans l'entrée. Quatre tests
-logiciels passent. Les six adaptateurs de confiance sont maintenant entraînés ;
-les limites des catégories presque toujours fausses restent explicites.
-La lecture native du score et une comparaison croisée entre producteurs de
-réponses et évaluateurs sont maintenant implémentées, avec cinq tests
-supplémentaires. Les contrôles synthétiques distinguent un meilleur jugement
-d'un simple changement des réponses ; aucune performance réelle de confiance
-n'est encore mesurée.
-Un planning vérifié prépare six adaptations appariées et 864 questions
-nouvelles. Six tests ciblés passent sur CPU, dont un apprentissage sur petit
-Qwen aléatoire. Le [protocole complet du Colab 23](docs/NATIVE_ANSWER_CONFIDENCE_PROTOCOL.md)
-fixe maintenant la collecte de 10 368 appels et 24 comparaisons principales
-sur réponses identiques. Le collecteur et l'audit passent quatre tests
-supplémentaires sur des sorties construites ; aucune nouvelle performance
-Qwen3-4B n'est encore mesurée. Le
-[Colab 23](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/fe7731117f94a196d76fda2a964453c14dc49a8d/notebooks/23_native_answer_confidence_colab.ipynb)
-est lancé sur A100 : 23 tests passent aussi dans Colab, et le
-[reçu de lancement](artifacts/native-answer-confidence-pilot/launch.json)
-confirme les premières mises à jour avec les empreintes attendues.
-Le [relevé des poids figés](artifacts/native-answer-confidence-pilot/training-freeze.json)
-confirme ensuite les 864 mises à jour, neuf fichiers de poids et 797 752 tokens
-d'apprentissage. Les réponses nouvelles sont en cours de collecte ; aucun
-bilan de gain prédictif n'est encore disponible.
-Le [relevé de calibration](artifacts/native-answer-confidence-pilot/calibration-freeze.json)
-vérifie que les trois ensembles de comparateurs sont enregistrés dans le
-journal après les 3 456 appels de calibration et avant le premier test.
+**Résultat du [Colab 23 : surconfiance réduite, gain spécifique non confirmé](docs/NATIVE_ANSWER_CONFIDENCE_RESULTS.md).**
+Six adaptateurs ont reçu 864 mises à jour sur des réponses anciennes avec
+cibles exactes ou mélangées. Les 10 368 appels sur 864 questions nouvelles
+sont terminés : chaque réponse est évaluée par les trois juges sur le même
+texte. Huit contrastes sur 24 passent, dont six face au juge de base fortement
+surconfiant et deux face à la confiance de sortie calibrée. Aucun ne passe
+face aux labels mélangés ou aux fréquences Beta par catégorie. La précision
+des réponses baisse de 3,125 points dans deux répétitions ; le critère global
+échoue. Une AUROC globale élevée ne suffit pas à établir une discrimination
+des erreurs à difficulté comparable.
+
+Les 23 tests passent sur PC et Colab. Les neuf poids et les trois ensembles
+de comparateurs correspondent aux relevés pris avant examen des résultats ;
+les deux recalculs s'accordent à 2,23 × 10⁻¹⁶ près.
+Le [protocole](docs/NATIVE_ANSWER_CONFIDENCE_PROTOCOL.md), la
+[préparation](docs/NATIVE_ANSWER_CONFIDENCE_PREPARATION.md), le
+[reçu complet](artifacts/native-answer-confidence-pilot/receipt.json) et le
+[Colab 23 épinglé](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/fe7731117f94a196d76fda2a964453c14dc49a8d/notebooks/23_native_answer_confidence_colab.ipynb)
+conservent l'expérience. Le prochain diagnostic doit distinguer calibration
+et information individuelle ; aucune conscience ni nouveauté n'est établie.
 
 Une [préparation d'interventions causales](docs/CONFIDENCE_PREFIX_INTERVENTIONS.md)
 ajoute ensuite un échange partiel au préfixe commun et un témoin de modification

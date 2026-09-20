@@ -142,7 +142,9 @@ rédaction. Le [Colab 17 reçu et audité](NATURAL_ERROR_RESULTS.md) ne confirme
 aucun des neuf gains principaux des lectures intermédiaires face aux références.
 Le [Colab 23](NATIVE_ANSWER_CONFIDENCE_PROTOCOL.md) a ensuite entraîné six
 adaptateurs pour juger des réponses réelles. Ses comparateurs sont figés après
-calibration ; son évaluation sur de nouvelles réponses est en cours.
+calibration. Son [évaluation terminée](NATIVE_ANSWER_CONFIDENCE_RESULTS.md)
+échoue au critère global : aucun avantage confirmé face au témoin mélangé
+et à Beta, et précision de résolution dégradée dans deux répétitions.
 Le [complément sur la dérive de la cible](SELF_PREDICTION_CONTROLS.md) motive
 ce contrôle pour l'étape future, sans modifier les critères du Colab 12 terminé.
 

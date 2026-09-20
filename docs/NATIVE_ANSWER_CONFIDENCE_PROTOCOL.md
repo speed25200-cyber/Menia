@@ -8,6 +8,10 @@ Le [plan exécutable](../research/answer_confidence_study.py) et le
 définissent cette tentative. Aucun résultat Qwen3-4B de cette expérience
 n'est encore disponible au moment de ce gel.
 
+**Mise à jour après exécution :** le [bilan reçu et audité](NATIVE_ANSWER_CONFIDENCE_RESULTS.md)
+rapporte les 10 368 appels terminés et l'échec du critère principal.
+Les critères et descriptions du protocole ci-dessous sont conservés.
+
 ## Question et portée
 
 Un adaptateur entraîné à prédire l'exactitude des réponses du modèle parent

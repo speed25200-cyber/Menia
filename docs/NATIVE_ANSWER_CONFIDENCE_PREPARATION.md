@@ -7,8 +7,8 @@ aucune nouvelle performance de prévision n'est annoncée.
 Cette préparation est désormais suivie du
 [protocole complet du Colab 23](NATIVE_ANSWER_CONFIDENCE_PROTOCOL.md), avec
 collecteur, comparaisons figées et audit. Les paragraphes ci-dessous conservent
-les étapes de préparation ; l'état d'exécution sera documenté dans le nouveau
-protocole et son reçu de lancement.
+les étapes de préparation. Le [bilan du Colab 23](NATIVE_ANSWER_CONFIDENCE_RESULTS.md)
+est désormais reçu et audité : le critère principal échoue.
 
 Le Colab 17 n'a pas confirmé le gain fixé pour un lecteur externe avant le
 premier token. Ce résultat ne teste pas un LLM entraîné à juger la réponse

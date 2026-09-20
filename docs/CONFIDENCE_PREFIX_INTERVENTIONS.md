@@ -1,8 +1,10 @@
 # Préparer une intervention avant le jugement et l'action
 
 20 septembre 2026. Instrumentation sur petit Qwen aléatoire et CPU. Aucun
-nouveau résultat de Qwen3-4B. Le Colab 23 continue son protocole figé ; ces
-fichiers ne modifient ni son entraînement, ni ses sources, ni ses critères.
+nouveau résultat de Qwen3-4B dans ces contrôles. Le Colab 23 est désormais
+[terminé et audité](NATIVE_ANSWER_CONFIDENCE_RESULTS.md) : le critère prédictif
+échoue. Ces fichiers ne modifient ni son entraînement, ni ses sources, ni ses
+critères ; ils restent une préparation à une éventuelle expérience ultérieure.
 
 ## Blocage à traiter
 
@@ -168,9 +170,10 @@ La tentative Colab 23 conserve ses paramètres et son critère global.
 
 ### Sélection et interprétation à fixer avant un nouveau test
 
-Aucune direction de confiance n'est encore identifiée ou ajustée. Il faudra
-vérifier le résultat du Colab 23, puis utiliser des données de découverte
-distinctes d'un nouveau test. Les couches, positions, rangs, donneurs,
+Aucune direction de confiance n'est encore identifiée ou ajustée. Le résultat
+du Colab 23 ne confirme pas le gain prédictif recherché. Il faudra d'abord
+résoudre ce défaut, puis utiliser des données de découverte distinctes d'un
+nouveau test. Les couches, positions, rangs, donneurs,
 amplitudes et critères devront être figés avant ce test. Une direction choisie
 pour augmenter le score ne sera pas automatiquement une direction prédictive.
 
