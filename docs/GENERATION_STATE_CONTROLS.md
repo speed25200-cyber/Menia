@@ -146,3 +146,10 @@ les interventions apprises ni un nouveau critère confirmatoire. Les outils
 restent séparés du diagnostic de budget actif et de l'application iPhone.
 Leur mécanisme n'est pas revendiqué comme inédit ; aucun lien avec une
 expérience subjective de sa propre existence n'est établi.
+
+Un [contrôle numérique préalable](GENERATION_NUMERICS_PROTOCOL.md) est désormais
+fixé sur six questions de Qwen3-4B : comparer le cache réel à une relecture des
+mêmes tokens au même rythme, puis à un traitement du préfixe entier. Neuf
+tests CPU passent ; cet essai reste à exécuter après le diagnostic de budget.
+Il doit mesurer l'écart numérique avant toute interprétation d'une différence
+entre cache réel et relecture comme effet d'un historique interne.

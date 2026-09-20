@@ -61,6 +61,15 @@ les marqueurs du prompt initial et le dernier token d'arrêt, au lieu de
 reconstruire l'historique à partir du seul texte décodé. Le lien avec un suivi
 appris de l'état propre, et plus encore avec le vécu, reste à établir.
 
+Le [contrôle numérique sur Qwen3-4B](GENERATION_NUMERICS_PROTOCOL.md) est préparé
+et figé, mais pas encore exécuté : six questions, douze générations répétées,
+soixante décodages de branches, aucun apprentissage ni intervention. Il sépare
+la reconstruction au même rythme d'appels de la relecture entière, dont les
+écarts BF16 pourraient sinon être confondus avec un effet d'état interne.
+Neuf tests CPU passent sur Qwen aléatoire. Le lanceur exige la fin du diagnostic
+de budget et un A100 libre. Ce contrôle technique ne constitue pas un nouveau
+résultat de suivi de soi.
+
 Le [protocole du Colab 22](VALUE_ACTION_LEARNING_PROTOCOL.md) compare trois
 recettes d'apprentissage appariées : choix seuls, associations auxiliaires
 correctes, associations auxiliaires mélangées. Neuf adaptateurs sont entraînés,
