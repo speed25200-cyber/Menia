@@ -82,7 +82,18 @@ leurs tenseurs depuis la seule archive. Les poids de base ne sont pas exportés.
 Une future étude causale demandera une provenance et des contrôles adaptés
 aux interventions effectives. Aucun chronométrage de performance n'est annoncé.
 
+L'[auditeur d'archive](../research/audit_generation_numerics.py), préparé avant
+cette exécution, reconstruit le journal et les entrées avec le tokenizer fixé.
+Il recalcule les décisions natives, les probabilités binaires et les comparaisons
+à partir des sorties conservées, y compris lorsque la tentative échoue. Trois
+tests sur sorties construites passent, notamment le refus de compter comme
+action valide un code sans EOS. Ces tests sont distincts des neuf contrôles du
+lanceur. L'auditeur indique explicitement ce qu'il ne peut pas refaire :
+comparaison des tenseurs de cache, seconde génération et décodages en ordre
+inverse, faute de leurs traces complètes dans l'archive.
+
 ```sh
 python -m unittest tests_language.test_confidence_generation_numerics tests_language.test_confidence_generation_continuity -v
 python -m research.confidence_generation_numerics_gpu --journal NOUVEAU_JOURNAL.jsonl
+python -m research.audit_generation_numerics JOURNAL_RECU.jsonl --output AUDIT.json
 ```
