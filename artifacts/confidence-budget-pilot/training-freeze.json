@@ -1,0 +1,64 @@
+{
+  "schema": "menia-confidence-budget-training-freeze-v1",
+  "capturedUTC": "2026-09-20T04:56:12.675217+00:00",
+  "snapshotDirectory": "/content/menia-budget-training-snapshots/20260920T045612675217Z",
+  "prefixBytes": 4940370,
+  "prefixSHA256": "c4fa1fe27f521acfea9d78a2761f6f3a44cdc4db8e5eef5098d180e9c2b9adda",
+  "chainEnd": "8ead4d6fdf239babd6970f07a439670e1202ef5f8ee57a1d7b3091e89abe788d",
+  "trainingSteps": 1296,
+  "completedReplications": 3,
+  "baselineJudgments": 2880,
+  "baselineMaxAbsoluteDifference": 0.0,
+  "checkpointFiles": {
+    "confidence-budget-20260920-v1.r0-e4.safetensors": {
+      "key": "r0-e4",
+      "bytes": 11811296,
+      "sha256": "450538c00879256133702fb8531103fa38a5e750e510e6440406ae8f42850a69"
+    },
+    "confidence-budget-20260920-v1.r0-e8.safetensors": {
+      "key": "r0-e8",
+      "bytes": 11811296,
+      "sha256": "f53d6c1af08794637ac0f2909fd2dd3b5d02bee11a7daec073d3d6b35b3e6b07"
+    },
+    "confidence-budget-20260920-v1.r1-e4.safetensors": {
+      "key": "r1-e4",
+      "bytes": 11811296,
+      "sha256": "7fee1a4bec4d2edd18dd3c552a12a421be392161fe806fe1c91c9bb3c8e34030"
+    },
+    "confidence-budget-20260920-v1.r1-e8.safetensors": {
+      "key": "r1-e8",
+      "bytes": 11811296,
+      "sha256": "ead60e35cd6c134f31de271e87014be04ef4e7e0f309f019cd8fc38a59844161"
+    },
+    "confidence-budget-20260920-v1.r2-e4.safetensors": {
+      "key": "r2-e4",
+      "bytes": 11811296,
+      "sha256": "0ccb375e8dfe4347312a513c682fe55d07de06af6f43dcda202dda6cbe33447c"
+    },
+    "confidence-budget-20260920-v1.r2-e8.safetensors": {
+      "key": "r2-e8",
+      "bytes": 11811296,
+      "sha256": "ab3931609e63c87dcc83c7cc42868d0be9ebe03d81ea332cda49d3a7edd83e6a"
+    }
+  },
+  "unchangedParents": {
+    "confidence-ranking-20260920-v1.r0-rank.safetensors": {
+      "bytes": 11811296,
+      "sha256": "d7919cd9b9ddb0ce2df4fff21e246020576fd4b8c68c5d0f81e61a2228483ed1"
+    },
+    "confidence-ranking-20260920-v1.r1-rank.safetensors": {
+      "bytes": 11811296,
+      "sha256": "ff15d693e24f67067dbab7a9f5fb81c475ad07a9892968abc6616a6b83f32525"
+    },
+    "confidence-ranking-20260920-v1.r2-rank.safetensors": {
+      "bytes": 11811296,
+      "sha256": "73a767db9436372ec8d8c76d5e9ccb7aa96a1cfabca5119220657621fe0fce51"
+    }
+  },
+  "planHash": "208ce8f4ef7a2dd3600704f0f194fa31dc6d2a70424fb8416ee547920ca12b84",
+  "sourceHash": "dac15b5a552289f4b65239be08eabd108f10d8b4f093ed9aea64d274a012ae30",
+  "callPlanHash": "91bb87d1b9e0ff663eb61539b13b1aa6805cc6357743a41ba610672853cdcd56",
+  "origin": "transformers_gpu",
+  "postTrainingJudgmentsInPrefix": 0,
+  "scope": "Training-complete prefix, six checkpoint file identities and original parent files. Captured time may follow assessment start; prefix excludes all post-training judgments. Tensor audit and local archive reception pending."
+}

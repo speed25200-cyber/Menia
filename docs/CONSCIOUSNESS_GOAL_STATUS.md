@@ -77,7 +77,13 @@ le rapport de confiance. Elle tient compte de RLMF et de CHIVE, avec contrôle
 par le texte seul et séparation entre cohérence des réponses et correction
 mesurée. Elle reste une note de conception, sans nouveau résultat ni protocole
 confirmatoire figé. L'audit local du diagnostic de budget est prêt ; sa
-vérification sur les poids réels attend leur réception.
+vérification des scores attend le journal complet. Une
+[sauvegarde d'entraînement](../artifacts/confidence-budget-pilot/training-backup-receipt.json)
+est reçue et auditée : 1 296 mises à jour, six nouveaux adaptateurs de
+2 949 120 paramètres chacun, trois parents inchangés et aucun jugement après
+entraînement dans le préfixe exporté. Les poids changent entre les passages
+4 et 8, sans que cela établisse un progrès comportemental. La collecte des
+scores se poursuit.
 
 Le [protocole du Colab 22](VALUE_ACTION_LEARNING_PROTOCOL.md) compare trois
 recettes d'apprentissage appariées : choix seuls, associations auxiliaires

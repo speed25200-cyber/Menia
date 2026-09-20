@@ -151,9 +151,34 @@ de poids et les trois parents. Il recalculera le rapport avec le lecteur
 strict et les deux arithmétiques existantes, puis décrira les déplacements
 réels entre les points sauvegardés. Deux contrôles de cette arithmétique des
 poids passent sur tenseurs construits. L'audit sur les fichiers de cette
-expérience reste à effectuer après réception ; ces tests logiciels ne sont
-pas un résultat d'apprentissage.
+expérience a ensuite commencé par la sauvegarde d'entraînement ci-dessous.
+Le recalcul complet des nouveaux scores reste à effectuer après leur réception.
+Les tests logiciels ne sont pas un résultat d'apprentissage.
 
 ```sh
 python -m research.audit_confidence_budget JOURNAL --summary RESUME_RECU --freeze RECU_GEL --parents DOSSIER_PARENTS --output AUDIT
 ```
+
+## Entraînement terminé, sauvegarde reçue avant revue des scores
+
+Le [reçu de gel](../artifacts/confidence-budget-pilot/training-freeze.json),
+capturé à 04:56:12 UTC, confirme les 1 296 mises à jour et six fichiers distincts.
+La capture a lieu après le début des évaluations, mais son préfixe s'arrête
+à la troisième fin d'entraînement et ne contient aucun nouveau jugement.
+Les 2 880 jugements du point de départ y sont conservés et reproduisent leurs
+références exactement.
+
+La [sauvegarde vérifiée](../artifacts/confidence-budget-pilot/training-backup-receipt.json)
+est reçue sur PC : 66 518 470 octets, 254 fragments contrôlés, sept fichiers
+vérifiés par CRC et SHA-256. Le lecteur strict retrouve le planning de toutes
+les mises à jour dans le préfixe de 4 940 370 octets. Chacun des six fichiers
+contient 144 tenseurs FP32, soit 2 949 120 paramètres, avec les formes de rang 8
+attendues et des valeurs finies. Leurs empreintes correspondent au gel.
+
+Les trois fichiers parents locaux correspondent aussi aux empreintes fixées.
+Les six points nouveaux diffèrent de leurs parents ; les 144 tenseurs changent
+entre les passages 4 et 8 dans chacune des trois répétitions. Ce contrôle
+établit la réalité des fichiers et des changements, sans interpréter leur
+ampleur comme progrès cognitif. Les poids de base distants ne font pas l'objet
+d'une attestation indépendante. Aucun résultat après entraînement n'est
+inclus dans cette sauvegarde ni interprété ici ; la collecte se poursuit.
