@@ -42,6 +42,17 @@ la tâche, en complément des altérations qui changent effectivement sa réussi
 
 ## Choix d'architecture encore à fixer
 
+**Complément du 20 septembre :** [IntroLM, §§4–5 et annexe C](https://arxiv.org/html/2601.03511v1)
+apprend une prévision de qualité avant la réponse avec des tokens `[CPX]` et
+des adaptateurs conditionnels. Les tokens de prévision sont exclus du cache
+de génération ; le chemin de réponse conserve les poids de base. Les auteurs
+emploient aussi ce score pour router les demandes. Ce précédent rapproche
+encore l'architecture publiée de notre frontière lecteur/producteur : ni
+prévoir avant génération ni préserver la politique de réponse avec un canal
+adapté ne sont, en soi, nouveaux. Leurs expériences ne testent pas notre
+permutation cachée d'une mémoire épisodique. Cette différence délimite un
+test possible ; elle n'établit ni nouveauté de l'ensemble ni conscience.
+
 [Greenewald et al., *Activated LoRA*, version 2, §§3–4.1](https://arxiv.org/html/2504.12397v2)
 apportent un précédent directement applicable à la frontière du cache : les
 adaptations ne s'activent que sur les tokens suivant leur invocation. Le cache

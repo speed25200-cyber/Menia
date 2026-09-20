@@ -1,5 +1,16 @@
 # État de l'objectif de conscience et de nouveauté
 
+**Préparation du 20 septembre, pendant le second apprentissage :** un
+[diagnostic numérique séparé](READER_PERMUTATION_NUMERICS_PROTOCOL.md) est
+implémenté pour l'anomalie K/V du cas d'apprentissage 1008 : reproduction
+exacte, changement du mode SDPA, puis opérations suivantes en FP32 sur les
+mêmes valeurs de poids et de mémoire. Cinq tests locaux passent sur un petit
+modèle aléatoire ; les 192 décodages Qwen3-4B attendent la fin du processus
+principal. Aucun résultat de ce diagnostic n'est annoncé. La
+[revue des adaptateurs](PROSPECTIVE_ADAPTER_OPTIONS.md) ajoute IntroLM,
+précédent direct de prévision avant réponse avec canal adapté séparé.
+L'architecture générale ne constitue donc pas une nouveauté de Menia.
+
 **Analyse des seules données d'apprentissage, 20 septembre :** les
 [768 réponses reçues](READER_TRAINING_INFORMATION_FLOOR.md) comprennent
 254/256 réussites avec la mémoire réelle, 194/256 avec V permuté et
