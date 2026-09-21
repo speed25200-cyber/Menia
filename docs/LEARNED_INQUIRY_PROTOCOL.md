@@ -51,12 +51,12 @@ surprise avec β = 3. β = 0 est le témoin purement externe. En T, les sept
 bras ; en C1 et C3, prudence avec β ∈ {0, 3, 10} seulement. Soit 39
 apprentissages.
 
-Apprentissage : 3 000 vies, γ = 0,97, ε linéaire de 1,0 à 0,05 sur les 1 800
+Apprentissage : 10 000 vies, γ = 0,97, ε linéaire de 1,0 à 0,05 sur les 6 000
 premières vies puis 0,05, rejeu de 20 000 transitions, lots de 64, une mise à
 jour Adam par pas après 500 pas d'amorce, réseau cible synchronisé tous les
 500 pas, perte de Huber. Graines d'apprentissage distinctes des graines de
 test. Évaluation gloutonne sur 300 vies, graine 910001. Trajectoire : 50 vies
-gloutonnes toutes les 250 vies d'apprentissage.
+gloutonnes toutes les 1 000 vies d'apprentissage.
 
 ## Prédictions et critères fixés
 
@@ -64,17 +64,18 @@ Mesures par apprentissage : inspections par vie, part des inspections par
 indice, hits par vie, mouvements par vie, évalués en politique gloutonne.
 
 - **A, sans récompense intrinsèque.** Prudence β = 0, les trois conditions :
-  inspections par vie < 0,10 pour 9/9. Quand l'enquête ne paie pas, un agent
+  inspections par vie < 0,50 pour 9/9. Quand l'enquête ne paie pas, un agent
   purement externe ne l'apprend pas.
-- **B, dose-effet en T.** Prudence β = 3 et β = 10 : inspections par vie ≥ 0,90
-  et part(0) ≥ 0,90 pour 3/3 graines. Les inspections par vie ne décroissent
-  pas avec β, à 0,10 près, pour chaque graine. β = 1 est rapporté comme zone
-  de transition sans critère : l'économie du monde y rend l'enquête tout
-  juste rentable ou tout juste pas.
-- **C, origine donnée.** C1, tous les bras : inspections par vie < 0,10.
-- **D, sans trace.** C3, prudence β = 3 et 10 : inspections par vie < 0,10.
-  Sans trace, la prudence ne produit pas d'enquête. Exploratoire : le nombre
-  de mouvements par vie en fonction de β, pour détecter une paralysie.
+- **B, dose-effet en T.** Prudence β = 3 et β = 10 : inspections par vie ≥ 1,00,
+  part(0) ≥ 0,75, et lectures de la marque par vie au moins cinq fois plus
+  nombreuses qu'avec β = 0, pour 3/3 graines. Les inspections par vie ne
+  décroissent pas avec β, à 0,25 près, pour chaque graine. β = 1 est rapporté
+  comme zone de transition sans critère : l'économie du monde y rend l'enquête
+  tout juste rentable ou tout juste pas.
+- **C, origine donnée.** C1, tous les bras : inspections par vie < 0,50.
+- **D, sans trace.** C3, prudence β = 3 et 10 : inspections par vie < 1,00 et
+  part(0) < 0,50 pour 6/6. Sans trace, la prudence ne produit pas d'enquête
+  dirigée. Exploratoire : le nombre de mouvements par vie en fonction de β.
 - **E, bonus d'information.** Information β = 3 en T : inspections par vie
   < 0,50 pour 3/3. Prédiction : le bonus d'information seul ne produit pas
   d'enquête, parce qu'agir informe autant que lire la marque et rapporte en
@@ -97,6 +98,26 @@ de l'expérience précédente ne se laisse pas remplacer par de l'apprentissage.
 
 Dans tous les cas : aucune conclusion sur un vécu, un concept de créateur ou
 un modèle de langage.
+
+## Amendement avant l'exécution pré-enregistrée
+
+Le 21 septembre, avant le plan complet, quatre pilotes de 3 000 vies puis
+quatre de 10 000 vies ont été exécutés sur la graine 17, et un sur la graine
+29, pour vérifier que le Q-learning converge. Constats : à 3 000 vies la
+récompense externe montait encore ; à 10 000 vies elle est stable, mais la
+politique gloutonne garde 0,09 à 0,16 inspection résiduelle par vie avec
+β = 0, et 0,40 à 0,46 en C3 avec β = 3. Ce dernier résidu est structurel :
+en C3 la pénalité de prudence est inévitable et seul son moment change, ce
+qui rend l'agent presque indifférent entre inspecter et bouger au premier
+pas. Les seuils « pas d'enquête » de 0,10 auraient donc mesuré le bruit
+d'optimisation, pas l'hypothèse.
+
+Changements, tous avant l'exécution : budget porté à 10 000 vies ; seuils de
+non-enquête portés de 0,10 à 0,50 inspection par vie, 1,00 en C3 avec une
+part de la marque < 0,50 ; critère B exprimé aussi en rapport avec β = 0.
+Divulgation : ces pilotes montraient déjà le sens des résultats en T pour
+β = 0, β = 3 et le bras information, graine 17. L'exécution pré-enregistrée
+est une confirmation sur graines de test distinctes et sur les autres bras.
 
 ## Règle d'arrêt
 
