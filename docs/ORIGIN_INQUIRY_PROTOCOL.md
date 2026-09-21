@@ -60,24 +60,33 @@ l'observation courante et de l'action : position, ciel, indice. Aucune
 étiquette D ni E. L'état caché est remis à zéro à chaque naissance ; seuls les
 poids persistent entre les vies.
 
-Phase 1, enfance : 2 000 vies avec actions uniformes, entraînement par BPTT.
-Phase 2, test : 300 vies, poids figés, actions choisies par une règle fixe :
+Phase 1, enfance : 1 500 mises à jour sur des lots de 32 vies fraîches à
+actions uniformes, soit 48 000 vies, entraînement par BPTT. Phase 2, test :
+300 vies, poids figés, actions choisies par une règle fixe.
 
-- Gain d'information attendu de l'inspection k, calculé par imagination :
-  le modèle prédit la distribution de l'indice, imagine chaque valeur,
-  puis mesure de combien l'entropie de ses prédictions motrices et célestes
-  diminue. C'est une information mutuelle estimée par le modèle lui-même.
-- Règle β : inspecter argmax k si β × EIG(k) dépasse la probabilité de
-  toucher la cible au prochain mouvement ; sinon bouger vers la cible selon
-  les prédictions motrices. β = 1.
+Gain d'information attendu (EIG) de l'inspection k, calculé par imagination :
+le modèle prédit la distribution de l'indice, imagine chaque valeur possible,
+puis mesure de combien l'entropie de ses prédictions diminue. C'est une
+information mutuelle estimée par le modèle lui-même, séparément pour les
+prédictions motrices (son propre corps) et célestes (le monde). Les égalités
+sont départagées au hasard.
 
-Variantes de politique sur le même modèle entraîné, sans réentraînement :
+Politiques, toutes appliquées au même modèle entraîné, sans réentraînement :
 
-- **β = 0** : n'inspecte jamais. D ne peut être appris qu'en bougeant.
-- **Curiosité seule** : ignore la récompense ; inspecte argmax k tant que
-  EIG(k) > 0,02 nat, sinon bouge.
-- **Surprise** : inspecte l'indice dont la valeur est la plus imprévisible.
-  C'est la curiosité naïve par erreur de prédiction.
+- **P-soi, politique principale.** Inspecte argmax k si EIG_moteur(k) > 0,05 nat
+  et si la probabilité de toucher la cible au prochain mouvement est < 0,5 ;
+  sinon bouge vers la cible selon ses prédictions motrices. Cet agent veut
+  prédire les conséquences de ses propres actions. Il n'est pas informé que
+  l'indice k = 0 concerne son corps.
+- **P-monde, témoin symétrique.** Même règle avec EIG_ciel. Cet agent veut
+  prédire le monde. La seule différence avec P-soi est ce qu'il cherche à
+  prédire ; l'indice choisi doit suivre.
+- **P-tout, curiosité seule.** Ignore la récompense ; inspecte argmax k tant
+  que EIG_moteur(k) + EIG_ciel(k) > 0,05 nat, sinon bouge.
+- **P-surprise.** Inspecte l'indice dont la valeur est la plus imprévisible
+  si son entropie prédite dépasse 0,05 nat. Curiosité naïve par erreur de
+  prédiction.
+- **P-aucune.** N'inspecte jamais. D ne peut être appris qu'en bougeant.
 
 **Références.** Un oracle bayésien qui connaît la structure générative et
 calcule l'EIG exact, et un inspecteur uniforme.
@@ -96,9 +105,12 @@ graine distincte de l'entraînement.
 ## Mesures et critères fixés
 
 **M1 — Enquête.** Part des inspections dirigées vers k = 0 pendant la phase
-de test, politique β = 1.
+de test, politique P-soi. Si une politique n'inspecte jamais, sa part vaut 0
+et le nombre d'inspections est publié.
 
-- T : part(0) > 0,50 pour 3/3 initialisations, et part(0) − part(2 ∪ 3) ≥ 0,30.
+- T, P-soi : part(0) > 0,50 pour 3/3 initialisations, et part(0) − part(2 ∪ 3) ≥ 0,30.
+- T, P-monde : part(1) > 0,50 pour 3/3. Le témoin symétrique doit choisir le
+  monde ; sinon la préférence de P-soi serait un artefact de l'indice 0.
 - C1 : part(0) ≤ part(2 ∪ 3) + 0,10 pour 3/3. Rien à apprendre, rien à chercher.
 - C3 : part(0) ≤ part(2 ∪ 3) + 0,10 pour 3/3. Sans trace, l'enquête s'éteint.
 
@@ -108,7 +120,7 @@ de la moitié des vies de test, évaluée sur l'autre moitié, pour décoder D.
 - T : exactitude ≥ 0,90 au dernier pas pour 3/3.
 - Stabilité : parmi les vies où le décodage devient correct à un pas t, il
   reste correct jusqu'à la fin dans ≥ 90 % des cas.
-- Comparaison β = 0 : le décodage sans inspection est plus lent ; on rapporte
+- Comparaison P-aucune : le décodage sans inspection est plus lent ; on rapporte
   le pas médian du premier décodage stable dans les deux politiques.
 
 **M3 — Usage causal.** Deux tests.
@@ -124,11 +136,26 @@ de la moitié des vies de test, évaluée sur l'autre moitié, pour décoder D.
 
 ## Prédictions exploratoires, rapportées quel que soit le sens
 
-- **E1, curiosité seule.** Si |part(0) − part(1)| ≤ 0,15, la curiosité seule
+- **E1, curiosité seule, P-tout.** Si |part(0) − part(1)| ≤ 0,15, la curiosité seule
   ne privilégie pas la cause de soi sur la cause du monde. Si
   part(0) > part(1) + 0,15, la cause de soi est privilégiée.
-- **E2, surprise.** Prédiction : part(2 ∪ 3) > 0,50. Un agent guidé par la
+- **E2, P-surprise.** Prédiction : part(2 ∪ 3) > 0,50. Un agent guidé par la
   surprise se fixe sur le bruit et non sur son origine.
+
+- **E3, trajectoire d'apprentissage.** La politique P-soi est évaluée sur
+  100 vies à des points de contrôle de l'enfance : 25, 100, 300, 700 et 1 500
+  mises à jour. Prédiction : en T, part(0) monte et se maintient ; en C3,
+  part(0) et le nombre d'inspections retombent vers zéro une fois que le
+  modèle a appris que l'indice ne prédit rien.
+
+## Amendement avant exécution
+
+Le 21 septembre, avant tout entraînement, la règle unique « β » a été
+remplacée par les politiques symétriques P-soi et P-monde. Motif : avec un
+gain d'information total, la cause de soi et la cause du monde valent le
+même nombre de nats, et l'indice choisi dépendrait de l'ordre des indices.
+Le témoin symétrique rend la préférence interprétable. Aucun résultat n'a été
+consulté avant cet amendement.
 
 ## Règle d'arrêt
 
@@ -155,6 +182,9 @@ le corps ait une cause, le rôle de chaque inspection, toute étiquette D ou E.
   ne dit rien d'une expérience vécue ni d'un concept de créateur.
 - Les 300 vies de test par condition ne sont pas indépendantes entre pas ;
   les statistiques sont par vie.
+- La règle de décision est myope : elle compare une inspection au prochain
+  mouvement seulement. Un planificateur à horizon long pourrait inspecter
+  moins ou plus.
 
 ## Reproduction
 
