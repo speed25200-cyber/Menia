@@ -1,0 +1,369 @@
+{
+  "schema": "reflexive-self-scope-v1",
+  "protocol": "docs/REFLEXIVE_SELF_PROTOCOL.md",
+  "source_doi": "10.1609/aaaiss.v8i1.42546",
+  "source_code_commit": "259e0ec398dbbd3b5b0a0312a0ea8de305d4bb2c",
+  "source_code_sha256": "f652f3bc484311bce51a974420811aa29fe6ba68a3eb327a17fe61380cad1ca4",
+  "external_code_executed": false,
+  "perfect_probe_truth_table": [
+    {
+      "message": 0,
+      "decoder": 0,
+      "probe_response": 0,
+      "signal": 0,
+      "delivered": 0
+    },
+    {
+      "message": 0,
+      "decoder": 1,
+      "probe_response": 1,
+      "signal": 1,
+      "delivered": 0
+    },
+    {
+      "message": 1,
+      "decoder": 0,
+      "probe_response": 0,
+      "signal": 1,
+      "delivered": 1
+    },
+    {
+      "message": 1,
+      "decoder": 1,
+      "probe_response": 1,
+      "signal": 0,
+      "delivered": 1
+    }
+  ],
+  "passive_policies": [
+    {
+      "signals_for_messages_0_1": [
+        0,
+        0
+      ],
+      "success": "1/2"
+    },
+    {
+      "signals_for_messages_0_1": [
+        0,
+        1
+      ],
+      "success": "1/2"
+    },
+    {
+      "signals_for_messages_0_1": [
+        1,
+        0
+      ],
+      "success": "1/2"
+    },
+    {
+      "signals_for_messages_0_1": [
+        1,
+        1
+      ],
+      "success": "1/2"
+    }
+  ],
+  "independent_bit_flip_cases": [
+    {
+      "probe_flip": "0",
+      "final_flip": "0",
+      "success": "1"
+    },
+    {
+      "probe_flip": "0",
+      "final_flip": "1/10",
+      "success": "9/10"
+    },
+    {
+      "probe_flip": "0",
+      "final_flip": "1/2",
+      "success": "1/2"
+    },
+    {
+      "probe_flip": "1/10",
+      "final_flip": "0",
+      "success": "9/10"
+    },
+    {
+      "probe_flip": "1/10",
+      "final_flip": "1/10",
+      "success": "41/50"
+    },
+    {
+      "probe_flip": "1/10",
+      "final_flip": "1/2",
+      "success": "1/2"
+    },
+    {
+      "probe_flip": "1/4",
+      "final_flip": "0",
+      "success": "3/4"
+    },
+    {
+      "probe_flip": "1/4",
+      "final_flip": "1/10",
+      "success": "7/10"
+    },
+    {
+      "probe_flip": "1/4",
+      "final_flip": "1/2",
+      "success": "1/2"
+    },
+    {
+      "probe_flip": "1/2",
+      "final_flip": "0",
+      "success": "1/2"
+    },
+    {
+      "probe_flip": "1/2",
+      "final_flip": "1/10",
+      "success": "1/2"
+    },
+    {
+      "probe_flip": "1/2",
+      "final_flip": "1/2",
+      "success": "1/2"
+    }
+  ],
+  "decoder_change_controls": {
+    "inverted_success": "0",
+    "resampled_success": "1/2"
+  },
+  "commitment_cases": [
+    {
+      "cost": "0",
+      "temptation": "1/10",
+      "bind": true,
+      "outcome": [
+        "1",
+        "1"
+      ],
+      "deviation_gains": {
+        "initial_binding_choice": "-1",
+        "trustor_after_binding": "-1",
+        "trustor_without_binding": "-1",
+        "trustee_honor_instead_of_exploit_when_unbound": "-1/10"
+      }
+    },
+    {
+      "cost": "0",
+      "temptation": "1",
+      "bind": true,
+      "outcome": [
+        "1",
+        "1"
+      ],
+      "deviation_gains": {
+        "initial_binding_choice": "-1",
+        "trustor_after_binding": "-1",
+        "trustor_without_binding": "-1",
+        "trustee_honor_instead_of_exploit_when_unbound": "-1"
+      }
+    },
+    {
+      "cost": "0",
+      "temptation": "2",
+      "bind": true,
+      "outcome": [
+        "1",
+        "1"
+      ],
+      "deviation_gains": {
+        "initial_binding_choice": "-1",
+        "trustor_after_binding": "-1",
+        "trustor_without_binding": "-1",
+        "trustee_honor_instead_of_exploit_when_unbound": "-2"
+      }
+    },
+    {
+      "cost": "1/4",
+      "temptation": "1/10",
+      "bind": true,
+      "outcome": [
+        "3/4",
+        "1"
+      ],
+      "deviation_gains": {
+        "initial_binding_choice": "-3/4",
+        "trustor_after_binding": "-1",
+        "trustor_without_binding": "-1",
+        "trustee_honor_instead_of_exploit_when_unbound": "-1/10"
+      }
+    },
+    {
+      "cost": "1/4",
+      "temptation": "1",
+      "bind": true,
+      "outcome": [
+        "3/4",
+        "1"
+      ],
+      "deviation_gains": {
+        "initial_binding_choice": "-3/4",
+        "trustor_after_binding": "-1",
+        "trustor_without_binding": "-1",
+        "trustee_honor_instead_of_exploit_when_unbound": "-1"
+      }
+    },
+    {
+      "cost": "1/4",
+      "temptation": "2",
+      "bind": true,
+      "outcome": [
+        "3/4",
+        "1"
+      ],
+      "deviation_gains": {
+        "initial_binding_choice": "-3/4",
+        "trustor_after_binding": "-1",
+        "trustor_without_binding": "-1",
+        "trustee_honor_instead_of_exploit_when_unbound": "-2"
+      }
+    },
+    {
+      "cost": "3/4",
+      "temptation": "1/10",
+      "bind": true,
+      "outcome": [
+        "1/4",
+        "1"
+      ],
+      "deviation_gains": {
+        "initial_binding_choice": "-1/4",
+        "trustor_after_binding": "-1",
+        "trustor_without_binding": "-1",
+        "trustee_honor_instead_of_exploit_when_unbound": "-1/10"
+      }
+    },
+    {
+      "cost": "3/4",
+      "temptation": "1",
+      "bind": true,
+      "outcome": [
+        "1/4",
+        "1"
+      ],
+      "deviation_gains": {
+        "initial_binding_choice": "-1/4",
+        "trustor_after_binding": "-1",
+        "trustor_without_binding": "-1",
+        "trustee_honor_instead_of_exploit_when_unbound": "-1"
+      }
+    },
+    {
+      "cost": "3/4",
+      "temptation": "2",
+      "bind": true,
+      "outcome": [
+        "1/4",
+        "1"
+      ],
+      "deviation_gains": {
+        "initial_binding_choice": "-1/4",
+        "trustor_after_binding": "-1",
+        "trustor_without_binding": "-1",
+        "trustee_honor_instead_of_exploit_when_unbound": "-2"
+      }
+    },
+    {
+      "cost": "1",
+      "temptation": "1/10",
+      "bind": false,
+      "outcome": [
+        "0",
+        "0"
+      ],
+      "deviation_gains": {
+        "initial_binding_choice": "0",
+        "trustor_after_binding": "-1",
+        "trustor_without_binding": "-1",
+        "trustee_honor_instead_of_exploit_when_unbound": "-1/10"
+      }
+    },
+    {
+      "cost": "1",
+      "temptation": "1",
+      "bind": false,
+      "outcome": [
+        "0",
+        "0"
+      ],
+      "deviation_gains": {
+        "initial_binding_choice": "0",
+        "trustor_after_binding": "-1",
+        "trustor_without_binding": "-1",
+        "trustee_honor_instead_of_exploit_when_unbound": "-1"
+      }
+    },
+    {
+      "cost": "1",
+      "temptation": "2",
+      "bind": false,
+      "outcome": [
+        "0",
+        "0"
+      ],
+      "deviation_gains": {
+        "initial_binding_choice": "0",
+        "trustor_after_binding": "-1",
+        "trustor_without_binding": "-1",
+        "trustee_honor_instead_of_exploit_when_unbound": "-2"
+      }
+    },
+    {
+      "cost": "5/4",
+      "temptation": "1/10",
+      "bind": false,
+      "outcome": [
+        "0",
+        "0"
+      ],
+      "deviation_gains": {
+        "initial_binding_choice": "-1/4",
+        "trustor_after_binding": "-1",
+        "trustor_without_binding": "-1",
+        "trustee_honor_instead_of_exploit_when_unbound": "-1/10"
+      }
+    },
+    {
+      "cost": "5/4",
+      "temptation": "1",
+      "bind": false,
+      "outcome": [
+        "0",
+        "0"
+      ],
+      "deviation_gains": {
+        "initial_binding_choice": "-1/4",
+        "trustor_after_binding": "-1",
+        "trustor_without_binding": "-1",
+        "trustee_honor_instead_of_exploit_when_unbound": "-1"
+      }
+    },
+    {
+      "cost": "5/4",
+      "temptation": "2",
+      "bind": false,
+      "outcome": [
+        "0",
+        "0"
+      ],
+      "deviation_gains": {
+        "initial_binding_choice": "-1/4",
+        "trustor_after_binding": "-1",
+        "trustor_without_binding": "-1",
+        "trustee_honor_instead_of_exploit_when_unbound": "-2"
+      }
+    }
+  ],
+  "scope": [
+    "Response information is necessary in the specified communication game",
+    "One stored bit and XOR implement the perfect-probe strategy",
+    "A direct strategy profile implements the specified trust equilibrium",
+    "A functional definition may call these implementations selves",
+    "No recursively explicit architecture or phenomenal state is identified by these outcomes",
+    "The published Monte-Carlo benchmarks were not reproduced"
+  ]
+}

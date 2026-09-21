@@ -1,0 +1,11 @@
+{
+  "schema": "menia-reader-training-prefix-export-v1",
+  "utc": "2026-09-20T07:58:21.194139+00:00",
+  "pid": 327308,
+  "returnCode": null,
+  "bytes": 1869285,
+  "sha256": "9dfd743dcaad85d333b7cdd51d807f513d8430bb43df6fdd1fe5af4a35c8a2d5",
+  "lines": 1601,
+  "scope": "Read-only snapshot ending before the first adapter operation; training states and tasks only.",
+  "localFile": "training-prefix/prospective-reader-learning-20260920-v1.jsonl"
+}

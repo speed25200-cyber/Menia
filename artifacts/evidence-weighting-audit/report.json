@@ -1,0 +1,43 @@
+{
+  "scope": "Literal unequal powers of raw evidence; not an audit of unpublished consortium results",
+  "base_evidence_A_B": [
+    "4/5",
+    "3/10"
+  ],
+  "powers_A_B": [
+    2,
+    1
+  ],
+  "examples": [
+    {
+      "common_factor": "1",
+      "ordinary_odds_A_B": "8/3",
+      "ordinary_share_A_equal_prior": "8/11",
+      "weighted_odds_A_B": "32/15",
+      "weighted_share_A": "32/47",
+      "weighted_winner": "A"
+    },
+    {
+      "common_factor": "1/10",
+      "ordinary_odds_A_B": "8/3",
+      "ordinary_share_A_equal_prior": "8/11",
+      "weighted_odds_A_B": "16/75",
+      "weighted_share_A": "16/91",
+      "weighted_winner": "B"
+    }
+  ],
+  "checks": {
+    "common_factors": 100,
+    "equal_power_controls": 300,
+    "proper_prior_neutral_factor_invariance": true
+  },
+  "interpretation": [
+    "An independent uniform draw with ten outcomes supplies common factor 1/10.",
+    "It supplies no likelihood-ratio evidence between the hypotheses.",
+    "Unequal exponents of raw evidence can nevertheless reverse their ranking.",
+    "Equal exponents preserve this invariance, but need not be ordinary Bayesian updating.",
+    "Proper prior precision and posterior evidence exponentiation are different operations.",
+    "No novelty, empirical consciousness finding, or actual INTREPID implementation error is claimed."
+  ],
+  "source_sha256": "7baa4c831c144a2548af9e6c7ae6fe15633dc00c79a2f556a223f017b55ba2c0"
+}

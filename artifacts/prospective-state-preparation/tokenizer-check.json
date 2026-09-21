@@ -1,0 +1,232 @@
+{
+  "schema": "menia-prospective-tokenizer-preflight-v1",
+  "model": {
+    "id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "modelLoaded": false,
+  "actualGenerations": 0,
+  "cases": [
+    {
+      "case": 0,
+      "promptTokens": 78,
+      "constructedPrefixTokens": 80,
+      "branchTokens": {
+        "forecast": 188,
+        "task": 123
+      }
+    },
+    {
+      "case": 1,
+      "promptTokens": 78,
+      "constructedPrefixTokens": 80,
+      "branchTokens": {
+        "forecast": 188,
+        "task": 123
+      }
+    },
+    {
+      "case": 2,
+      "promptTokens": 78,
+      "constructedPrefixTokens": 80,
+      "branchTokens": {
+        "forecast": 188,
+        "task": 123
+      }
+    },
+    {
+      "case": 3,
+      "promptTokens": 78,
+      "constructedPrefixTokens": 80,
+      "branchTokens": {
+        "forecast": 188,
+        "task": 123
+      }
+    },
+    {
+      "case": 4,
+      "promptTokens": 78,
+      "constructedPrefixTokens": 80,
+      "branchTokens": {
+        "forecast": 188,
+        "task": 123
+      }
+    },
+    {
+      "case": 5,
+      "promptTokens": 78,
+      "constructedPrefixTokens": 80,
+      "branchTokens": {
+        "forecast": 188,
+        "task": 123
+      }
+    },
+    {
+      "case": 6,
+      "promptTokens": 78,
+      "constructedPrefixTokens": 80,
+      "branchTokens": {
+        "forecast": 188,
+        "task": 123
+      }
+    },
+    {
+      "case": 7,
+      "promptTokens": 78,
+      "constructedPrefixTokens": 80,
+      "branchTokens": {
+        "forecast": 188,
+        "task": 123
+      }
+    },
+    {
+      "case": 8,
+      "promptTokens": 102,
+      "constructedPrefixTokens": 104,
+      "branchTokens": {
+        "forecast": 212,
+        "task": 147
+      }
+    },
+    {
+      "case": 9,
+      "promptTokens": 102,
+      "constructedPrefixTokens": 104,
+      "branchTokens": {
+        "forecast": 212,
+        "task": 147
+      }
+    },
+    {
+      "case": 10,
+      "promptTokens": 102,
+      "constructedPrefixTokens": 104,
+      "branchTokens": {
+        "forecast": 212,
+        "task": 147
+      }
+    },
+    {
+      "case": 11,
+      "promptTokens": 102,
+      "constructedPrefixTokens": 104,
+      "branchTokens": {
+        "forecast": 212,
+        "task": 147
+      }
+    },
+    {
+      "case": 12,
+      "promptTokens": 102,
+      "constructedPrefixTokens": 104,
+      "branchTokens": {
+        "forecast": 212,
+        "task": 147
+      }
+    },
+    {
+      "case": 13,
+      "promptTokens": 102,
+      "constructedPrefixTokens": 104,
+      "branchTokens": {
+        "forecast": 212,
+        "task": 147
+      }
+    },
+    {
+      "case": 14,
+      "promptTokens": 102,
+      "constructedPrefixTokens": 104,
+      "branchTokens": {
+        "forecast": 212,
+        "task": 147
+      }
+    },
+    {
+      "case": 15,
+      "promptTokens": 102,
+      "constructedPrefixTokens": 104,
+      "branchTokens": {
+        "forecast": 212,
+        "task": 147
+      }
+    },
+    {
+      "case": 16,
+      "promptTokens": 102,
+      "constructedPrefixTokens": 104,
+      "branchTokens": {
+        "forecast": 212,
+        "task": 147
+      }
+    },
+    {
+      "case": 17,
+      "promptTokens": 102,
+      "constructedPrefixTokens": 104,
+      "branchTokens": {
+        "forecast": 212,
+        "task": 147
+      }
+    },
+    {
+      "case": 18,
+      "promptTokens": 102,
+      "constructedPrefixTokens": 104,
+      "branchTokens": {
+        "forecast": 211,
+        "task": 146
+      }
+    },
+    {
+      "case": 19,
+      "promptTokens": 102,
+      "constructedPrefixTokens": 104,
+      "branchTokens": {
+        "forecast": 211,
+        "task": 146
+      }
+    },
+    {
+      "case": 20,
+      "promptTokens": 102,
+      "constructedPrefixTokens": 104,
+      "branchTokens": {
+        "forecast": 211,
+        "task": 146
+      }
+    },
+    {
+      "case": 21,
+      "promptTokens": 102,
+      "constructedPrefixTokens": 104,
+      "branchTokens": {
+        "forecast": 211,
+        "task": 146
+      }
+    },
+    {
+      "case": 22,
+      "promptTokens": 102,
+      "constructedPrefixTokens": 104,
+      "branchTokens": {
+        "forecast": 211,
+        "task": 146
+      }
+    },
+    {
+      "case": 23,
+      "promptTokens": 102,
+      "constructedPrefixTokens": 104,
+      "branchTokens": {
+        "forecast": 211,
+        "task": 146
+      }
+    }
+  ],
+  "codeTokenIds": [
+    15,
+    16
+  ],
+  "scope": "Pinned tokenizer only. Constructed OK prefixes verify framing and token budget; no model performance."
+}

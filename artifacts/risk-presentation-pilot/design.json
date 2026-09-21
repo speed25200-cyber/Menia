@@ -1,0 +1,8772 @@
+{
+  "plan": {
+    "schema": "menia-risk-presentation-plan-v1",
+    "seed": 202609199,
+    "model": {
+      "id": "Qwen/Qwen3-4B",
+      "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+    },
+    "settings": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "do_sample": true,
+      "max_new_tokens": 16,
+      "max_input_tokens": 1792,
+      "enable_thinking": false,
+      "dtype": "bfloat16",
+      "attention": "sdpa",
+      "quantization": "none",
+      "repetition_penalty": 1.0,
+      "renormalize_logits": true,
+      "use_cache": true
+    },
+    "cases": [
+      {
+        "id": 0,
+        "pPercent": 12,
+        "costCents": 18
+      },
+      {
+        "id": 1,
+        "pPercent": 12,
+        "costCents": 46
+      },
+      {
+        "id": 2,
+        "pPercent": 12,
+        "costCents": 74
+      },
+      {
+        "id": 3,
+        "pPercent": 27,
+        "costCents": 18
+      },
+      {
+        "id": 4,
+        "pPercent": 27,
+        "costCents": 46
+      },
+      {
+        "id": 5,
+        "pPercent": 27,
+        "costCents": 74
+      },
+      {
+        "id": 6,
+        "pPercent": 43,
+        "costCents": 18
+      },
+      {
+        "id": 7,
+        "pPercent": 43,
+        "costCents": 46
+      },
+      {
+        "id": 8,
+        "pPercent": 43,
+        "costCents": 74
+      },
+      {
+        "id": 9,
+        "pPercent": 61,
+        "costCents": 18
+      },
+      {
+        "id": 10,
+        "pPercent": 61,
+        "costCents": 46
+      },
+      {
+        "id": 11,
+        "pPercent": 61,
+        "costCents": 74
+      },
+      {
+        "id": 12,
+        "pPercent": 79,
+        "costCents": 18
+      },
+      {
+        "id": 13,
+        "pPercent": 79,
+        "costCents": 46
+      },
+      {
+        "id": 14,
+        "pPercent": 79,
+        "costCents": 74
+      },
+      {
+        "id": 15,
+        "pPercent": 93,
+        "costCents": 18
+      },
+      {
+        "id": 16,
+        "pPercent": 93,
+        "costCents": 46
+      },
+      {
+        "id": 17,
+        "pPercent": 93,
+        "costCents": 74
+      }
+    ],
+    "calls": [
+      {
+        "id": 0,
+        "case": 16,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2526903407
+      },
+      {
+        "id": 1,
+        "case": 10,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 3979190936
+      },
+      {
+        "id": 2,
+        "case": 3,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1214362775
+      },
+      {
+        "id": 3,
+        "case": 4,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2874512409
+      },
+      {
+        "id": 4,
+        "case": 15,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 1031544951
+      },
+      {
+        "id": 5,
+        "case": 9,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3514883393
+      },
+      {
+        "id": 6,
+        "case": 15,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2902413552
+      },
+      {
+        "id": 7,
+        "case": 9,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3949553539
+      },
+      {
+        "id": 8,
+        "case": 15,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 1031544951
+      },
+      {
+        "id": 9,
+        "case": 13,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 630428134
+      },
+      {
+        "id": 10,
+        "case": 14,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 4196957326
+      },
+      {
+        "id": 11,
+        "case": 3,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3390345140
+      },
+      {
+        "id": 12,
+        "case": 16,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2526903407
+      },
+      {
+        "id": 13,
+        "case": 5,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1491185751
+      },
+      {
+        "id": 14,
+        "case": 7,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3335916946
+      },
+      {
+        "id": 15,
+        "case": 4,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2874512409
+      },
+      {
+        "id": 16,
+        "case": 14,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 1613437735
+      },
+      {
+        "id": 17,
+        "case": 13,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 630428134
+      },
+      {
+        "id": 18,
+        "case": 12,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 1285441358
+      },
+      {
+        "id": 19,
+        "case": 6,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 83709465
+      },
+      {
+        "id": 20,
+        "case": 17,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2603767785
+      },
+      {
+        "id": 21,
+        "case": 14,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 4196957326
+      },
+      {
+        "id": 22,
+        "case": 11,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 851772207
+      },
+      {
+        "id": 23,
+        "case": 0,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 971956503
+      },
+      {
+        "id": 24,
+        "case": 4,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2874512409
+      },
+      {
+        "id": 25,
+        "case": 4,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1200968791
+      },
+      {
+        "id": 26,
+        "case": 12,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 1285441358
+      },
+      {
+        "id": 27,
+        "case": 10,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3891862128
+      },
+      {
+        "id": 28,
+        "case": 2,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2471333755
+      },
+      {
+        "id": 29,
+        "case": 10,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3891862128
+      },
+      {
+        "id": 30,
+        "case": 10,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 3979190936
+      },
+      {
+        "id": 31,
+        "case": 16,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 840789660
+      },
+      {
+        "id": 32,
+        "case": 13,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 630428134
+      },
+      {
+        "id": 33,
+        "case": 10,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 644364620
+      },
+      {
+        "id": 34,
+        "case": 6,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 83709465
+      },
+      {
+        "id": 35,
+        "case": 4,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1200968791
+      },
+      {
+        "id": 36,
+        "case": 12,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1969404063
+      },
+      {
+        "id": 37,
+        "case": 5,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 2402686847
+      },
+      {
+        "id": 38,
+        "case": 8,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 394519590
+      },
+      {
+        "id": 39,
+        "case": 10,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 3979190936
+      },
+      {
+        "id": 40,
+        "case": 4,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3699827869
+      },
+      {
+        "id": 41,
+        "case": 0,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 971956503
+      },
+      {
+        "id": 42,
+        "case": 13,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 630428134
+      },
+      {
+        "id": 43,
+        "case": 6,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2454313018
+      },
+      {
+        "id": 44,
+        "case": 5,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1491185751
+      },
+      {
+        "id": 45,
+        "case": 5,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 2402686847
+      },
+      {
+        "id": 46,
+        "case": 3,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3390345140
+      },
+      {
+        "id": 47,
+        "case": 15,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 1031544951
+      },
+      {
+        "id": 48,
+        "case": 16,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2526903407
+      },
+      {
+        "id": 49,
+        "case": 5,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 364804212
+      },
+      {
+        "id": 50,
+        "case": 4,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1200968791
+      },
+      {
+        "id": 51,
+        "case": 13,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 2742079585
+      },
+      {
+        "id": 52,
+        "case": 8,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 211057708
+      },
+      {
+        "id": 53,
+        "case": 14,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 13937841
+      },
+      {
+        "id": 54,
+        "case": 1,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 2813044254
+      },
+      {
+        "id": 55,
+        "case": 7,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2073067883
+      },
+      {
+        "id": 56,
+        "case": 10,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 644364620
+      },
+      {
+        "id": 57,
+        "case": 17,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3336118896
+      },
+      {
+        "id": 58,
+        "case": 4,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2874512409
+      },
+      {
+        "id": 59,
+        "case": 2,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2471333755
+      },
+      {
+        "id": 60,
+        "case": 4,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3699827869
+      },
+      {
+        "id": 61,
+        "case": 17,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3814285796
+      },
+      {
+        "id": 62,
+        "case": 6,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3908389408
+      },
+      {
+        "id": 63,
+        "case": 8,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 394519590
+      },
+      {
+        "id": 64,
+        "case": 1,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 523288128
+      },
+      {
+        "id": 65,
+        "case": 12,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 1285441358
+      },
+      {
+        "id": 66,
+        "case": 16,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3938137123
+      },
+      {
+        "id": 67,
+        "case": 4,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1200968791
+      },
+      {
+        "id": 68,
+        "case": 3,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3390345140
+      },
+      {
+        "id": 69,
+        "case": 9,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3514883393
+      },
+      {
+        "id": 70,
+        "case": 13,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 630428134
+      },
+      {
+        "id": 71,
+        "case": 3,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 177475529
+      },
+      {
+        "id": 72,
+        "case": 8,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 394519590
+      },
+      {
+        "id": 73,
+        "case": 12,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1969404063
+      },
+      {
+        "id": 74,
+        "case": 17,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3814285796
+      },
+      {
+        "id": 75,
+        "case": 12,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 1285441358
+      },
+      {
+        "id": 76,
+        "case": 5,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 364804212
+      },
+      {
+        "id": 77,
+        "case": 13,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 2742079585
+      },
+      {
+        "id": 78,
+        "case": 13,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 630428134
+      },
+      {
+        "id": 79,
+        "case": 13,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 16043898
+      },
+      {
+        "id": 80,
+        "case": 14,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 1613437735
+      },
+      {
+        "id": 81,
+        "case": 15,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 1031544951
+      },
+      {
+        "id": 82,
+        "case": 6,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2454313018
+      },
+      {
+        "id": 83,
+        "case": 11,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 860507845
+      },
+      {
+        "id": 84,
+        "case": 10,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3891862128
+      },
+      {
+        "id": 85,
+        "case": 1,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 523288128
+      },
+      {
+        "id": 86,
+        "case": 5,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 364804212
+      },
+      {
+        "id": 87,
+        "case": 3,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 177475529
+      },
+      {
+        "id": 88,
+        "case": 3,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1214362775
+      },
+      {
+        "id": 89,
+        "case": 0,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 971956503
+      },
+      {
+        "id": 90,
+        "case": 8,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 394519590
+      },
+      {
+        "id": 91,
+        "case": 14,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 13937841
+      },
+      {
+        "id": 92,
+        "case": 7,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1030826838
+      },
+      {
+        "id": 93,
+        "case": 0,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 1507441348
+      },
+      {
+        "id": 94,
+        "case": 9,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3949553539
+      },
+      {
+        "id": 95,
+        "case": 0,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 1507441348
+      },
+      {
+        "id": 96,
+        "case": 6,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2454313018
+      },
+      {
+        "id": 97,
+        "case": 9,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3514883393
+      },
+      {
+        "id": 98,
+        "case": 3,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 177475529
+      },
+      {
+        "id": 99,
+        "case": 0,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 336801908
+      },
+      {
+        "id": 100,
+        "case": 0,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 336801908
+      },
+      {
+        "id": 101,
+        "case": 8,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 394519590
+      },
+      {
+        "id": 102,
+        "case": 17,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3814285796
+      },
+      {
+        "id": 103,
+        "case": 15,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2902413552
+      },
+      {
+        "id": 104,
+        "case": 5,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 2402686847
+      },
+      {
+        "id": 105,
+        "case": 14,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 4196957326
+      },
+      {
+        "id": 106,
+        "case": 5,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 2402686847
+      },
+      {
+        "id": 107,
+        "case": 9,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1892876893
+      },
+      {
+        "id": 108,
+        "case": 15,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 1031544951
+      },
+      {
+        "id": 109,
+        "case": 3,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3390345140
+      },
+      {
+        "id": 110,
+        "case": 1,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 523288128
+      },
+      {
+        "id": 111,
+        "case": 11,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 851772207
+      },
+      {
+        "id": 112,
+        "case": 17,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3814285796
+      },
+      {
+        "id": 113,
+        "case": 5,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1491185751
+      },
+      {
+        "id": 114,
+        "case": 17,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3814285796
+      },
+      {
+        "id": 115,
+        "case": 6,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3908389408
+      },
+      {
+        "id": 116,
+        "case": 3,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3390345140
+      },
+      {
+        "id": 117,
+        "case": 8,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 394519590
+      },
+      {
+        "id": 118,
+        "case": 3,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1214362775
+      },
+      {
+        "id": 119,
+        "case": 15,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 1031544951
+      },
+      {
+        "id": 120,
+        "case": 1,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3912323078
+      },
+      {
+        "id": 121,
+        "case": 4,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2874512409
+      },
+      {
+        "id": 122,
+        "case": 10,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3891862128
+      },
+      {
+        "id": 123,
+        "case": 7,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3335916946
+      },
+      {
+        "id": 124,
+        "case": 1,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3912323078
+      },
+      {
+        "id": 125,
+        "case": 2,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2471333755
+      },
+      {
+        "id": 126,
+        "case": 16,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 840789660
+      },
+      {
+        "id": 127,
+        "case": 17,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3336118896
+      },
+      {
+        "id": 128,
+        "case": 9,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3514883393
+      },
+      {
+        "id": 129,
+        "case": 6,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3908389408
+      },
+      {
+        "id": 130,
+        "case": 12,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1969404063
+      },
+      {
+        "id": 131,
+        "case": 13,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 630428134
+      },
+      {
+        "id": 132,
+        "case": 9,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3949553539
+      },
+      {
+        "id": 133,
+        "case": 11,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 851772207
+      },
+      {
+        "id": 134,
+        "case": 3,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3390345140
+      },
+      {
+        "id": 135,
+        "case": 17,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3814285796
+      },
+      {
+        "id": 136,
+        "case": 1,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3912323078
+      },
+      {
+        "id": 137,
+        "case": 17,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3814285796
+      },
+      {
+        "id": 138,
+        "case": 3,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 177475529
+      },
+      {
+        "id": 139,
+        "case": 9,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1892876893
+      },
+      {
+        "id": 140,
+        "case": 5,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 364804212
+      },
+      {
+        "id": 141,
+        "case": 1,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 2813044254
+      },
+      {
+        "id": 142,
+        "case": 4,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2874512409
+      },
+      {
+        "id": 143,
+        "case": 3,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3390345140
+      },
+      {
+        "id": 144,
+        "case": 4,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3699827869
+      },
+      {
+        "id": 145,
+        "case": 8,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 211057708
+      },
+      {
+        "id": 146,
+        "case": 0,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 1507441348
+      },
+      {
+        "id": 147,
+        "case": 9,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1892876893
+      },
+      {
+        "id": 148,
+        "case": 9,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3949553539
+      },
+      {
+        "id": 149,
+        "case": 14,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 1613437735
+      },
+      {
+        "id": 150,
+        "case": 14,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 4196957326
+      },
+      {
+        "id": 151,
+        "case": 12,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 1285441358
+      },
+      {
+        "id": 152,
+        "case": 14,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 4196957326
+      },
+      {
+        "id": 153,
+        "case": 4,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2874512409
+      },
+      {
+        "id": 154,
+        "case": 7,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3335916946
+      },
+      {
+        "id": 155,
+        "case": 13,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 630428134
+      },
+      {
+        "id": 156,
+        "case": 11,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 851772207
+      },
+      {
+        "id": 157,
+        "case": 7,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2073067883
+      },
+      {
+        "id": 158,
+        "case": 12,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 1285441358
+      },
+      {
+        "id": 159,
+        "case": 9,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3949553539
+      },
+      {
+        "id": 160,
+        "case": 0,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 1507441348
+      },
+      {
+        "id": 161,
+        "case": 15,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2942553717
+      },
+      {
+        "id": 162,
+        "case": 13,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 16043898
+      },
+      {
+        "id": 163,
+        "case": 12,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3256190526
+      },
+      {
+        "id": 164,
+        "case": 13,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 2742079585
+      },
+      {
+        "id": 165,
+        "case": 17,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3336118896
+      },
+      {
+        "id": 166,
+        "case": 13,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 2742079585
+      },
+      {
+        "id": 167,
+        "case": 10,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 3979190936
+      },
+      {
+        "id": 168,
+        "case": 13,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 2742079585
+      },
+      {
+        "id": 169,
+        "case": 14,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 13937841
+      },
+      {
+        "id": 170,
+        "case": 10,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 644364620
+      },
+      {
+        "id": 171,
+        "case": 1,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3912323078
+      },
+      {
+        "id": 172,
+        "case": 9,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3949553539
+      },
+      {
+        "id": 173,
+        "case": 7,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3335916946
+      },
+      {
+        "id": 174,
+        "case": 8,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2928746290
+      },
+      {
+        "id": 175,
+        "case": 12,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1969404063
+      },
+      {
+        "id": 176,
+        "case": 14,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 13937841
+      },
+      {
+        "id": 177,
+        "case": 14,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 1613437735
+      },
+      {
+        "id": 178,
+        "case": 1,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 2813044254
+      },
+      {
+        "id": 179,
+        "case": 6,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3908389408
+      },
+      {
+        "id": 180,
+        "case": 13,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 16043898
+      },
+      {
+        "id": 181,
+        "case": 1,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 2813044254
+      },
+      {
+        "id": 182,
+        "case": 3,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 177475529
+      },
+      {
+        "id": 183,
+        "case": 7,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1030826838
+      },
+      {
+        "id": 184,
+        "case": 13,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 16043898
+      },
+      {
+        "id": 185,
+        "case": 17,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3814285796
+      },
+      {
+        "id": 186,
+        "case": 1,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3912323078
+      },
+      {
+        "id": 187,
+        "case": 9,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3949553539
+      },
+      {
+        "id": 188,
+        "case": 0,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 1507441348
+      },
+      {
+        "id": 189,
+        "case": 14,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 4196957326
+      },
+      {
+        "id": 190,
+        "case": 11,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3418568653
+      },
+      {
+        "id": 191,
+        "case": 12,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 1285441358
+      },
+      {
+        "id": 192,
+        "case": 2,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 1619788919
+      },
+      {
+        "id": 193,
+        "case": 7,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2073067883
+      },
+      {
+        "id": 194,
+        "case": 10,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 644364620
+      },
+      {
+        "id": 195,
+        "case": 1,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3912323078
+      },
+      {
+        "id": 196,
+        "case": 5,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 364804212
+      },
+      {
+        "id": 197,
+        "case": 17,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2603767785
+      },
+      {
+        "id": 198,
+        "case": 3,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 177475529
+      },
+      {
+        "id": 199,
+        "case": 0,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 971956503
+      },
+      {
+        "id": 200,
+        "case": 6,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2454313018
+      },
+      {
+        "id": 201,
+        "case": 6,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 83709465
+      },
+      {
+        "id": 202,
+        "case": 11,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3418568653
+      },
+      {
+        "id": 203,
+        "case": 2,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2471333755
+      },
+      {
+        "id": 204,
+        "case": 15,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2902413552
+      },
+      {
+        "id": 205,
+        "case": 15,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2942553717
+      },
+      {
+        "id": 206,
+        "case": 1,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 523288128
+      },
+      {
+        "id": 207,
+        "case": 2,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 1619788919
+      },
+      {
+        "id": 208,
+        "case": 2,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2471333755
+      },
+      {
+        "id": 209,
+        "case": 17,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3814285796
+      },
+      {
+        "id": 210,
+        "case": 10,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 3979190936
+      },
+      {
+        "id": 211,
+        "case": 2,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 1619788919
+      },
+      {
+        "id": 212,
+        "case": 1,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 2813044254
+      },
+      {
+        "id": 213,
+        "case": 9,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1892876893
+      },
+      {
+        "id": 214,
+        "case": 5,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 2402686847
+      },
+      {
+        "id": 215,
+        "case": 13,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 630428134
+      },
+      {
+        "id": 216,
+        "case": 5,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1491185751
+      },
+      {
+        "id": 217,
+        "case": 8,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 211057708
+      },
+      {
+        "id": 218,
+        "case": 2,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 1619788919
+      },
+      {
+        "id": 219,
+        "case": 16,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3938137123
+      },
+      {
+        "id": 220,
+        "case": 4,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2874512409
+      },
+      {
+        "id": 221,
+        "case": 4,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1200968791
+      },
+      {
+        "id": 222,
+        "case": 17,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3336118896
+      },
+      {
+        "id": 223,
+        "case": 17,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3814285796
+      },
+      {
+        "id": 224,
+        "case": 2,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 1619788919
+      },
+      {
+        "id": 225,
+        "case": 10,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3891862128
+      },
+      {
+        "id": 226,
+        "case": 1,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3912323078
+      },
+      {
+        "id": 227,
+        "case": 8,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 211057708
+      },
+      {
+        "id": 228,
+        "case": 10,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3891862128
+      },
+      {
+        "id": 229,
+        "case": 16,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2526903407
+      },
+      {
+        "id": 230,
+        "case": 10,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 644364620
+      },
+      {
+        "id": 231,
+        "case": 12,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3256190526
+      },
+      {
+        "id": 232,
+        "case": 15,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 1031544951
+      },
+      {
+        "id": 233,
+        "case": 1,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 2813044254
+      },
+      {
+        "id": 234,
+        "case": 2,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2952937325
+      },
+      {
+        "id": 235,
+        "case": 17,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2603767785
+      },
+      {
+        "id": 236,
+        "case": 2,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 1619788919
+      },
+      {
+        "id": 237,
+        "case": 1,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 523288128
+      },
+      {
+        "id": 238,
+        "case": 1,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 2813044254
+      },
+      {
+        "id": 239,
+        "case": 6,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 83709465
+      },
+      {
+        "id": 240,
+        "case": 11,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 860507845
+      },
+      {
+        "id": 241,
+        "case": 9,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3514883393
+      },
+      {
+        "id": 242,
+        "case": 6,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2454313018
+      },
+      {
+        "id": 243,
+        "case": 15,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2902413552
+      },
+      {
+        "id": 244,
+        "case": 13,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 2742079585
+      },
+      {
+        "id": 245,
+        "case": 1,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 523288128
+      },
+      {
+        "id": 246,
+        "case": 13,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 16043898
+      },
+      {
+        "id": 247,
+        "case": 7,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2073067883
+      },
+      {
+        "id": 248,
+        "case": 17,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3814285796
+      },
+      {
+        "id": 249,
+        "case": 12,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3256190526
+      },
+      {
+        "id": 250,
+        "case": 13,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 16043898
+      },
+      {
+        "id": 251,
+        "case": 10,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 3979190936
+      },
+      {
+        "id": 252,
+        "case": 8,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 211057708
+      },
+      {
+        "id": 253,
+        "case": 3,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1214362775
+      },
+      {
+        "id": 254,
+        "case": 3,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 177475529
+      },
+      {
+        "id": 255,
+        "case": 7,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2073067883
+      },
+      {
+        "id": 256,
+        "case": 8,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2928746290
+      },
+      {
+        "id": 257,
+        "case": 5,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1491185751
+      },
+      {
+        "id": 258,
+        "case": 12,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1969404063
+      },
+      {
+        "id": 259,
+        "case": 16,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2526903407
+      },
+      {
+        "id": 260,
+        "case": 7,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3335916946
+      },
+      {
+        "id": 261,
+        "case": 15,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2902413552
+      },
+      {
+        "id": 262,
+        "case": 13,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 2742079585
+      },
+      {
+        "id": 263,
+        "case": 8,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2928746290
+      },
+      {
+        "id": 264,
+        "case": 12,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3256190526
+      },
+      {
+        "id": 265,
+        "case": 16,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 840789660
+      },
+      {
+        "id": 266,
+        "case": 2,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2952937325
+      },
+      {
+        "id": 267,
+        "case": 3,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3390345140
+      },
+      {
+        "id": 268,
+        "case": 4,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3699827869
+      },
+      {
+        "id": 269,
+        "case": 17,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3336118896
+      },
+      {
+        "id": 270,
+        "case": 6,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2454313018
+      },
+      {
+        "id": 271,
+        "case": 7,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2073067883
+      },
+      {
+        "id": 272,
+        "case": 13,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 16043898
+      },
+      {
+        "id": 273,
+        "case": 3,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 177475529
+      },
+      {
+        "id": 274,
+        "case": 16,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2526903407
+      },
+      {
+        "id": 275,
+        "case": 6,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3908389408
+      },
+      {
+        "id": 276,
+        "case": 4,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1200968791
+      },
+      {
+        "id": 277,
+        "case": 12,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 1285441358
+      },
+      {
+        "id": 278,
+        "case": 9,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1892876893
+      },
+      {
+        "id": 279,
+        "case": 0,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 971956503
+      },
+      {
+        "id": 280,
+        "case": 15,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2902413552
+      },
+      {
+        "id": 281,
+        "case": 9,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3949553539
+      },
+      {
+        "id": 282,
+        "case": 9,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3514883393
+      },
+      {
+        "id": 283,
+        "case": 11,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3418568653
+      },
+      {
+        "id": 284,
+        "case": 11,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 851772207
+      },
+      {
+        "id": 285,
+        "case": 3,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1214362775
+      },
+      {
+        "id": 286,
+        "case": 5,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1491185751
+      },
+      {
+        "id": 287,
+        "case": 0,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 336801908
+      },
+      {
+        "id": 288,
+        "case": 11,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3418568653
+      },
+      {
+        "id": 289,
+        "case": 17,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2603767785
+      },
+      {
+        "id": 290,
+        "case": 16,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3938137123
+      },
+      {
+        "id": 291,
+        "case": 15,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 1031544951
+      },
+      {
+        "id": 292,
+        "case": 1,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3912323078
+      },
+      {
+        "id": 293,
+        "case": 6,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2454313018
+      },
+      {
+        "id": 294,
+        "case": 10,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3891862128
+      },
+      {
+        "id": 295,
+        "case": 4,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2874512409
+      },
+      {
+        "id": 296,
+        "case": 2,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 1619788919
+      },
+      {
+        "id": 297,
+        "case": 8,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 394519590
+      },
+      {
+        "id": 298,
+        "case": 16,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2526903407
+      },
+      {
+        "id": 299,
+        "case": 16,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 840789660
+      },
+      {
+        "id": 300,
+        "case": 8,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 394519590
+      },
+      {
+        "id": 301,
+        "case": 3,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 177475529
+      },
+      {
+        "id": 302,
+        "case": 9,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1892876893
+      },
+      {
+        "id": 303,
+        "case": 17,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2603767785
+      },
+      {
+        "id": 304,
+        "case": 10,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 644364620
+      },
+      {
+        "id": 305,
+        "case": 4,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3699827869
+      },
+      {
+        "id": 306,
+        "case": 17,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3814285796
+      },
+      {
+        "id": 307,
+        "case": 14,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 4196957326
+      },
+      {
+        "id": 308,
+        "case": 16,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3938137123
+      },
+      {
+        "id": 309,
+        "case": 14,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 1613437735
+      },
+      {
+        "id": 310,
+        "case": 11,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 851772207
+      },
+      {
+        "id": 311,
+        "case": 11,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 851772207
+      },
+      {
+        "id": 312,
+        "case": 7,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1030826838
+      },
+      {
+        "id": 313,
+        "case": 7,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2073067883
+      },
+      {
+        "id": 314,
+        "case": 2,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2471333755
+      },
+      {
+        "id": 315,
+        "case": 7,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2073067883
+      },
+      {
+        "id": 316,
+        "case": 5,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 364804212
+      },
+      {
+        "id": 317,
+        "case": 9,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3514883393
+      },
+      {
+        "id": 318,
+        "case": 1,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 2813044254
+      },
+      {
+        "id": 319,
+        "case": 0,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 1507441348
+      },
+      {
+        "id": 320,
+        "case": 15,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2942553717
+      },
+      {
+        "id": 321,
+        "case": 16,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3938137123
+      },
+      {
+        "id": 322,
+        "case": 2,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2952937325
+      },
+      {
+        "id": 323,
+        "case": 9,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1892876893
+      },
+      {
+        "id": 324,
+        "case": 11,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 851772207
+      },
+      {
+        "id": 325,
+        "case": 1,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 523288128
+      },
+      {
+        "id": 326,
+        "case": 6,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3908389408
+      },
+      {
+        "id": 327,
+        "case": 14,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 4196957326
+      },
+      {
+        "id": 328,
+        "case": 0,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 1507441348
+      },
+      {
+        "id": 329,
+        "case": 6,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 83709465
+      },
+      {
+        "id": 330,
+        "case": 0,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 336801908
+      },
+      {
+        "id": 331,
+        "case": 17,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2603767785
+      },
+      {
+        "id": 332,
+        "case": 17,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3336118896
+      },
+      {
+        "id": 333,
+        "case": 11,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 851772207
+      },
+      {
+        "id": 334,
+        "case": 9,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3514883393
+      },
+      {
+        "id": 335,
+        "case": 6,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3908389408
+      },
+      {
+        "id": 336,
+        "case": 0,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 1507441348
+      },
+      {
+        "id": 337,
+        "case": 3,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1214362775
+      },
+      {
+        "id": 338,
+        "case": 13,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 16043898
+      },
+      {
+        "id": 339,
+        "case": 12,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1969404063
+      },
+      {
+        "id": 340,
+        "case": 10,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 644364620
+      },
+      {
+        "id": 341,
+        "case": 5,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 364804212
+      },
+      {
+        "id": 342,
+        "case": 11,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 860507845
+      },
+      {
+        "id": 343,
+        "case": 16,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3938137123
+      },
+      {
+        "id": 344,
+        "case": 1,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3912323078
+      },
+      {
+        "id": 345,
+        "case": 6,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 83709465
+      },
+      {
+        "id": 346,
+        "case": 10,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 3979190936
+      },
+      {
+        "id": 347,
+        "case": 1,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3912323078
+      },
+      {
+        "id": 348,
+        "case": 12,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1969404063
+      },
+      {
+        "id": 349,
+        "case": 11,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 851772207
+      },
+      {
+        "id": 350,
+        "case": 5,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 2402686847
+      },
+      {
+        "id": 351,
+        "case": 4,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3699827869
+      },
+      {
+        "id": 352,
+        "case": 9,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3514883393
+      },
+      {
+        "id": 353,
+        "case": 16,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3938137123
+      },
+      {
+        "id": 354,
+        "case": 4,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1200968791
+      },
+      {
+        "id": 355,
+        "case": 4,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3699827869
+      },
+      {
+        "id": 356,
+        "case": 6,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3908389408
+      },
+      {
+        "id": 357,
+        "case": 11,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 860507845
+      },
+      {
+        "id": 358,
+        "case": 9,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1892876893
+      },
+      {
+        "id": 359,
+        "case": 3,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1214362775
+      },
+      {
+        "id": 360,
+        "case": 13,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 16043898
+      },
+      {
+        "id": 361,
+        "case": 11,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3418568653
+      },
+      {
+        "id": 362,
+        "case": 14,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 13937841
+      },
+      {
+        "id": 363,
+        "case": 12,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1969404063
+      },
+      {
+        "id": 364,
+        "case": 11,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 860507845
+      },
+      {
+        "id": 365,
+        "case": 1,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3912323078
+      },
+      {
+        "id": 366,
+        "case": 13,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 2742079585
+      },
+      {
+        "id": 367,
+        "case": 7,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2073067883
+      },
+      {
+        "id": 368,
+        "case": 2,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2952937325
+      },
+      {
+        "id": 369,
+        "case": 5,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 364804212
+      },
+      {
+        "id": 370,
+        "case": 17,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3336118896
+      },
+      {
+        "id": 371,
+        "case": 0,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 971956503
+      },
+      {
+        "id": 372,
+        "case": 8,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 211057708
+      },
+      {
+        "id": 373,
+        "case": 3,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1214362775
+      },
+      {
+        "id": 374,
+        "case": 5,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1491185751
+      },
+      {
+        "id": 375,
+        "case": 14,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 13937841
+      },
+      {
+        "id": 376,
+        "case": 14,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 13937841
+      },
+      {
+        "id": 377,
+        "case": 15,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2942553717
+      },
+      {
+        "id": 378,
+        "case": 6,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3908389408
+      },
+      {
+        "id": 379,
+        "case": 9,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3514883393
+      },
+      {
+        "id": 380,
+        "case": 10,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3891862128
+      },
+      {
+        "id": 381,
+        "case": 11,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 851772207
+      },
+      {
+        "id": 382,
+        "case": 12,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 1285441358
+      },
+      {
+        "id": 383,
+        "case": 5,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 2402686847
+      },
+      {
+        "id": 384,
+        "case": 5,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 364804212
+      },
+      {
+        "id": 385,
+        "case": 9,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3514883393
+      },
+      {
+        "id": 386,
+        "case": 11,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3418568653
+      },
+      {
+        "id": 387,
+        "case": 11,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 851772207
+      },
+      {
+        "id": 388,
+        "case": 16,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3938137123
+      },
+      {
+        "id": 389,
+        "case": 7,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1030826838
+      },
+      {
+        "id": 390,
+        "case": 9,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3949553539
+      },
+      {
+        "id": 391,
+        "case": 8,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 211057708
+      },
+      {
+        "id": 392,
+        "case": 13,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 630428134
+      },
+      {
+        "id": 393,
+        "case": 8,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2928746290
+      },
+      {
+        "id": 394,
+        "case": 15,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2902413552
+      },
+      {
+        "id": 395,
+        "case": 0,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 336801908
+      },
+      {
+        "id": 396,
+        "case": 2,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 1619788919
+      },
+      {
+        "id": 397,
+        "case": 14,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 1613437735
+      },
+      {
+        "id": 398,
+        "case": 0,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 971956503
+      },
+      {
+        "id": 399,
+        "case": 2,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 1619788919
+      },
+      {
+        "id": 400,
+        "case": 4,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2874512409
+      },
+      {
+        "id": 401,
+        "case": 1,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3912323078
+      },
+      {
+        "id": 402,
+        "case": 3,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3390345140
+      },
+      {
+        "id": 403,
+        "case": 2,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2952937325
+      },
+      {
+        "id": 404,
+        "case": 0,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 1507441348
+      },
+      {
+        "id": 405,
+        "case": 4,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1200968791
+      },
+      {
+        "id": 406,
+        "case": 12,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3256190526
+      },
+      {
+        "id": 407,
+        "case": 17,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2603767785
+      },
+      {
+        "id": 408,
+        "case": 17,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3814285796
+      },
+      {
+        "id": 409,
+        "case": 16,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3938137123
+      },
+      {
+        "id": 410,
+        "case": 10,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 644364620
+      },
+      {
+        "id": 411,
+        "case": 4,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2874512409
+      },
+      {
+        "id": 412,
+        "case": 16,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2526903407
+      },
+      {
+        "id": 413,
+        "case": 3,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3390345140
+      },
+      {
+        "id": 414,
+        "case": 11,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3418568653
+      },
+      {
+        "id": 415,
+        "case": 9,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1892876893
+      },
+      {
+        "id": 416,
+        "case": 3,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3390345140
+      },
+      {
+        "id": 417,
+        "case": 5,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 364804212
+      },
+      {
+        "id": 418,
+        "case": 15,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2942553717
+      },
+      {
+        "id": 419,
+        "case": 2,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2952937325
+      },
+      {
+        "id": 420,
+        "case": 8,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 211057708
+      },
+      {
+        "id": 421,
+        "case": 10,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 3979190936
+      },
+      {
+        "id": 422,
+        "case": 13,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 2742079585
+      },
+      {
+        "id": 423,
+        "case": 3,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3390345140
+      },
+      {
+        "id": 424,
+        "case": 5,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 2402686847
+      },
+      {
+        "id": 425,
+        "case": 8,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 394519590
+      },
+      {
+        "id": 426,
+        "case": 10,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3891862128
+      },
+      {
+        "id": 427,
+        "case": 7,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2073067883
+      },
+      {
+        "id": 428,
+        "case": 5,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 2402686847
+      },
+      {
+        "id": 429,
+        "case": 0,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 1507441348
+      },
+      {
+        "id": 430,
+        "case": 14,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 4196957326
+      },
+      {
+        "id": 431,
+        "case": 10,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3891862128
+      },
+      {
+        "id": 432,
+        "case": 4,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2874512409
+      },
+      {
+        "id": 433,
+        "case": 16,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3938137123
+      },
+      {
+        "id": 434,
+        "case": 5,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1491185751
+      },
+      {
+        "id": 435,
+        "case": 17,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2603767785
+      },
+      {
+        "id": 436,
+        "case": 17,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2603767785
+      },
+      {
+        "id": 437,
+        "case": 9,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3514883393
+      },
+      {
+        "id": 438,
+        "case": 5,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1491185751
+      },
+      {
+        "id": 439,
+        "case": 12,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 1285441358
+      },
+      {
+        "id": 440,
+        "case": 14,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 1613437735
+      },
+      {
+        "id": 441,
+        "case": 8,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2928746290
+      },
+      {
+        "id": 442,
+        "case": 14,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 4196957326
+      },
+      {
+        "id": 443,
+        "case": 10,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 644364620
+      },
+      {
+        "id": 444,
+        "case": 2,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2952937325
+      },
+      {
+        "id": 445,
+        "case": 14,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 4196957326
+      },
+      {
+        "id": 446,
+        "case": 6,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2454313018
+      },
+      {
+        "id": 447,
+        "case": 6,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2454313018
+      },
+      {
+        "id": 448,
+        "case": 9,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3949553539
+      },
+      {
+        "id": 449,
+        "case": 14,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 4196957326
+      },
+      {
+        "id": 450,
+        "case": 7,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3335916946
+      },
+      {
+        "id": 451,
+        "case": 7,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3335916946
+      },
+      {
+        "id": 452,
+        "case": 11,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 851772207
+      },
+      {
+        "id": 453,
+        "case": 6,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 83709465
+      },
+      {
+        "id": 454,
+        "case": 2,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2471333755
+      },
+      {
+        "id": 455,
+        "case": 16,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2526903407
+      },
+      {
+        "id": 456,
+        "case": 3,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 177475529
+      },
+      {
+        "id": 457,
+        "case": 7,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1030826838
+      },
+      {
+        "id": 458,
+        "case": 17,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2603767785
+      },
+      {
+        "id": 459,
+        "case": 8,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 394519590
+      },
+      {
+        "id": 460,
+        "case": 4,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2874512409
+      },
+      {
+        "id": 461,
+        "case": 2,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 1619788919
+      },
+      {
+        "id": 462,
+        "case": 9,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3949553539
+      },
+      {
+        "id": 463,
+        "case": 13,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 2742079585
+      },
+      {
+        "id": 464,
+        "case": 17,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3336118896
+      },
+      {
+        "id": 465,
+        "case": 16,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3938137123
+      },
+      {
+        "id": 466,
+        "case": 11,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 860507845
+      },
+      {
+        "id": 467,
+        "case": 1,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 523288128
+      },
+      {
+        "id": 468,
+        "case": 15,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2942553717
+      },
+      {
+        "id": 469,
+        "case": 11,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 860507845
+      },
+      {
+        "id": 470,
+        "case": 14,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 1613437735
+      },
+      {
+        "id": 471,
+        "case": 7,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2073067883
+      },
+      {
+        "id": 472,
+        "case": 5,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 364804212
+      },
+      {
+        "id": 473,
+        "case": 10,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 3979190936
+      },
+      {
+        "id": 474,
+        "case": 4,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1200968791
+      },
+      {
+        "id": 475,
+        "case": 10,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 3979190936
+      },
+      {
+        "id": 476,
+        "case": 7,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3335916946
+      },
+      {
+        "id": 477,
+        "case": 9,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1892876893
+      },
+      {
+        "id": 478,
+        "case": 8,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 211057708
+      },
+      {
+        "id": 479,
+        "case": 1,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 2813044254
+      },
+      {
+        "id": 480,
+        "case": 1,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 523288128
+      },
+      {
+        "id": 481,
+        "case": 16,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2526903407
+      },
+      {
+        "id": 482,
+        "case": 3,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1214362775
+      },
+      {
+        "id": 483,
+        "case": 6,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 83709465
+      },
+      {
+        "id": 484,
+        "case": 3,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1214362775
+      },
+      {
+        "id": 485,
+        "case": 10,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 644364620
+      },
+      {
+        "id": 486,
+        "case": 7,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1030826838
+      },
+      {
+        "id": 487,
+        "case": 12,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1969404063
+      },
+      {
+        "id": 488,
+        "case": 9,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1892876893
+      },
+      {
+        "id": 489,
+        "case": 16,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 840789660
+      },
+      {
+        "id": 490,
+        "case": 1,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 523288128
+      },
+      {
+        "id": 491,
+        "case": 2,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2471333755
+      },
+      {
+        "id": 492,
+        "case": 15,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2902413552
+      },
+      {
+        "id": 493,
+        "case": 13,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 16043898
+      },
+      {
+        "id": 494,
+        "case": 4,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1200968791
+      },
+      {
+        "id": 495,
+        "case": 6,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2454313018
+      },
+      {
+        "id": 496,
+        "case": 3,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1214362775
+      },
+      {
+        "id": 497,
+        "case": 9,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1892876893
+      },
+      {
+        "id": 498,
+        "case": 4,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3699827869
+      },
+      {
+        "id": 499,
+        "case": 1,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 2813044254
+      },
+      {
+        "id": 500,
+        "case": 3,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 177475529
+      },
+      {
+        "id": 501,
+        "case": 7,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3335916946
+      },
+      {
+        "id": 502,
+        "case": 11,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3418568653
+      },
+      {
+        "id": 503,
+        "case": 2,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 1619788919
+      },
+      {
+        "id": 504,
+        "case": 16,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3938137123
+      },
+      {
+        "id": 505,
+        "case": 4,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3699827869
+      },
+      {
+        "id": 506,
+        "case": 3,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 177475529
+      },
+      {
+        "id": 507,
+        "case": 7,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3335916946
+      },
+      {
+        "id": 508,
+        "case": 16,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2526903407
+      },
+      {
+        "id": 509,
+        "case": 7,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1030826838
+      },
+      {
+        "id": 510,
+        "case": 13,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 2742079585
+      },
+      {
+        "id": 511,
+        "case": 7,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3335916946
+      },
+      {
+        "id": 512,
+        "case": 4,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2874512409
+      },
+      {
+        "id": 513,
+        "case": 3,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1214362775
+      },
+      {
+        "id": 514,
+        "case": 14,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 1613437735
+      },
+      {
+        "id": 515,
+        "case": 0,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 971956503
+      },
+      {
+        "id": 516,
+        "case": 17,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2603767785
+      },
+      {
+        "id": 517,
+        "case": 5,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 364804212
+      },
+      {
+        "id": 518,
+        "case": 13,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 2742079585
+      },
+      {
+        "id": 519,
+        "case": 14,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 1613437735
+      },
+      {
+        "id": 520,
+        "case": 8,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 211057708
+      },
+      {
+        "id": 521,
+        "case": 6,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3908389408
+      },
+      {
+        "id": 522,
+        "case": 17,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3336118896
+      },
+      {
+        "id": 523,
+        "case": 0,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 971956503
+      },
+      {
+        "id": 524,
+        "case": 15,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2942553717
+      },
+      {
+        "id": 525,
+        "case": 13,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 16043898
+      },
+      {
+        "id": 526,
+        "case": 1,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 2813044254
+      },
+      {
+        "id": 527,
+        "case": 7,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2073067883
+      },
+      {
+        "id": 528,
+        "case": 16,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 840789660
+      },
+      {
+        "id": 529,
+        "case": 11,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 851772207
+      },
+      {
+        "id": 530,
+        "case": 8,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 211057708
+      },
+      {
+        "id": 531,
+        "case": 5,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 364804212
+      },
+      {
+        "id": 532,
+        "case": 16,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 840789660
+      },
+      {
+        "id": 533,
+        "case": 7,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1030826838
+      },
+      {
+        "id": 534,
+        "case": 3,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1214362775
+      },
+      {
+        "id": 535,
+        "case": 8,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2928746290
+      },
+      {
+        "id": 536,
+        "case": 2,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2952937325
+      },
+      {
+        "id": 537,
+        "case": 16,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 840789660
+      },
+      {
+        "id": 538,
+        "case": 4,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1200968791
+      },
+      {
+        "id": 539,
+        "case": 7,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1030826838
+      },
+      {
+        "id": 540,
+        "case": 12,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3256190526
+      },
+      {
+        "id": 541,
+        "case": 2,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 1619788919
+      },
+      {
+        "id": 542,
+        "case": 14,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 13937841
+      },
+      {
+        "id": 543,
+        "case": 12,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1969404063
+      },
+      {
+        "id": 544,
+        "case": 7,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3335916946
+      },
+      {
+        "id": 545,
+        "case": 16,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 840789660
+      },
+      {
+        "id": 546,
+        "case": 7,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1030826838
+      },
+      {
+        "id": 547,
+        "case": 6,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2454313018
+      },
+      {
+        "id": 548,
+        "case": 14,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 1613437735
+      },
+      {
+        "id": 549,
+        "case": 16,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3938137123
+      },
+      {
+        "id": 550,
+        "case": 8,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 394519590
+      },
+      {
+        "id": 551,
+        "case": 4,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3699827869
+      },
+      {
+        "id": 552,
+        "case": 11,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3418568653
+      },
+      {
+        "id": 553,
+        "case": 12,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3256190526
+      },
+      {
+        "id": 554,
+        "case": 11,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 851772207
+      },
+      {
+        "id": 555,
+        "case": 15,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 1031544951
+      },
+      {
+        "id": 556,
+        "case": 5,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 2402686847
+      },
+      {
+        "id": 557,
+        "case": 0,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 336801908
+      },
+      {
+        "id": 558,
+        "case": 3,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1214362775
+      },
+      {
+        "id": 559,
+        "case": 12,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3256190526
+      },
+      {
+        "id": 560,
+        "case": 11,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3418568653
+      },
+      {
+        "id": 561,
+        "case": 11,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 860507845
+      },
+      {
+        "id": 562,
+        "case": 8,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2928746290
+      },
+      {
+        "id": 563,
+        "case": 8,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2928746290
+      },
+      {
+        "id": 564,
+        "case": 6,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2454313018
+      },
+      {
+        "id": 565,
+        "case": 7,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1030826838
+      },
+      {
+        "id": 566,
+        "case": 16,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 840789660
+      },
+      {
+        "id": 567,
+        "case": 1,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 2813044254
+      },
+      {
+        "id": 568,
+        "case": 15,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2902413552
+      },
+      {
+        "id": 569,
+        "case": 13,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 2742079585
+      },
+      {
+        "id": 570,
+        "case": 11,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 860507845
+      },
+      {
+        "id": 571,
+        "case": 9,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1892876893
+      },
+      {
+        "id": 572,
+        "case": 17,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3814285796
+      },
+      {
+        "id": 573,
+        "case": 2,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2952937325
+      },
+      {
+        "id": 574,
+        "case": 8,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 394519590
+      },
+      {
+        "id": 575,
+        "case": 9,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3514883393
+      },
+      {
+        "id": 576,
+        "case": 17,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3814285796
+      },
+      {
+        "id": 577,
+        "case": 17,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2603767785
+      },
+      {
+        "id": 578,
+        "case": 15,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2942553717
+      },
+      {
+        "id": 579,
+        "case": 15,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 1031544951
+      },
+      {
+        "id": 580,
+        "case": 10,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 644364620
+      },
+      {
+        "id": 581,
+        "case": 4,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1200968791
+      },
+      {
+        "id": 582,
+        "case": 6,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3908389408
+      },
+      {
+        "id": 583,
+        "case": 15,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 1031544951
+      },
+      {
+        "id": 584,
+        "case": 5,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 2402686847
+      },
+      {
+        "id": 585,
+        "case": 8,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 394519590
+      },
+      {
+        "id": 586,
+        "case": 12,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 1285441358
+      },
+      {
+        "id": 587,
+        "case": 3,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 177475529
+      },
+      {
+        "id": 588,
+        "case": 11,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 860507845
+      },
+      {
+        "id": 589,
+        "case": 13,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 16043898
+      },
+      {
+        "id": 590,
+        "case": 12,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 1285441358
+      },
+      {
+        "id": 591,
+        "case": 16,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2526903407
+      },
+      {
+        "id": 592,
+        "case": 8,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2928746290
+      },
+      {
+        "id": 593,
+        "case": 10,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3891862128
+      },
+      {
+        "id": 594,
+        "case": 16,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 840789660
+      },
+      {
+        "id": 595,
+        "case": 15,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2902413552
+      },
+      {
+        "id": 596,
+        "case": 8,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2928746290
+      },
+      {
+        "id": 597,
+        "case": 15,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2902413552
+      },
+      {
+        "id": 598,
+        "case": 0,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 971956503
+      },
+      {
+        "id": 599,
+        "case": 13,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 630428134
+      },
+      {
+        "id": 600,
+        "case": 3,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3390345140
+      },
+      {
+        "id": 601,
+        "case": 3,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 177475529
+      },
+      {
+        "id": 602,
+        "case": 6,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2454313018
+      },
+      {
+        "id": 603,
+        "case": 16,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3938137123
+      },
+      {
+        "id": 604,
+        "case": 2,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2471333755
+      },
+      {
+        "id": 605,
+        "case": 5,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 2402686847
+      },
+      {
+        "id": 606,
+        "case": 10,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 644364620
+      },
+      {
+        "id": 607,
+        "case": 1,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3912323078
+      },
+      {
+        "id": 608,
+        "case": 6,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 83709465
+      },
+      {
+        "id": 609,
+        "case": 11,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 860507845
+      },
+      {
+        "id": 610,
+        "case": 0,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 1507441348
+      },
+      {
+        "id": 611,
+        "case": 6,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 83709465
+      },
+      {
+        "id": 612,
+        "case": 13,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 630428134
+      },
+      {
+        "id": 613,
+        "case": 13,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 16043898
+      },
+      {
+        "id": 614,
+        "case": 4,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3699827869
+      },
+      {
+        "id": 615,
+        "case": 17,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3336118896
+      },
+      {
+        "id": 616,
+        "case": 15,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2942553717
+      },
+      {
+        "id": 617,
+        "case": 2,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 1619788919
+      },
+      {
+        "id": 618,
+        "case": 7,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1030826838
+      },
+      {
+        "id": 619,
+        "case": 0,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 336801908
+      },
+      {
+        "id": 620,
+        "case": 13,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 16043898
+      },
+      {
+        "id": 621,
+        "case": 6,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2454313018
+      },
+      {
+        "id": 622,
+        "case": 2,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 1619788919
+      },
+      {
+        "id": 623,
+        "case": 2,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2471333755
+      },
+      {
+        "id": 624,
+        "case": 7,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3335916946
+      },
+      {
+        "id": 625,
+        "case": 17,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3336118896
+      },
+      {
+        "id": 626,
+        "case": 15,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2942553717
+      },
+      {
+        "id": 627,
+        "case": 10,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 3979190936
+      },
+      {
+        "id": 628,
+        "case": 12,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 1285441358
+      },
+      {
+        "id": 629,
+        "case": 10,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 644364620
+      },
+      {
+        "id": 630,
+        "case": 12,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1969404063
+      },
+      {
+        "id": 631,
+        "case": 8,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 394519590
+      },
+      {
+        "id": 632,
+        "case": 3,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3390345140
+      },
+      {
+        "id": 633,
+        "case": 2,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2471333755
+      },
+      {
+        "id": 634,
+        "case": 1,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 523288128
+      },
+      {
+        "id": 635,
+        "case": 8,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 394519590
+      },
+      {
+        "id": 636,
+        "case": 3,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3390345140
+      },
+      {
+        "id": 637,
+        "case": 0,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 971956503
+      },
+      {
+        "id": 638,
+        "case": 0,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 336801908
+      },
+      {
+        "id": 639,
+        "case": 7,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2073067883
+      },
+      {
+        "id": 640,
+        "case": 8,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 211057708
+      },
+      {
+        "id": 641,
+        "case": 14,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 13937841
+      },
+      {
+        "id": 642,
+        "case": 6,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3908389408
+      },
+      {
+        "id": 643,
+        "case": 2,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2471333755
+      },
+      {
+        "id": 644,
+        "case": 1,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 523288128
+      },
+      {
+        "id": 645,
+        "case": 10,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3891862128
+      },
+      {
+        "id": 646,
+        "case": 13,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 2742079585
+      },
+      {
+        "id": 647,
+        "case": 12,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1969404063
+      },
+      {
+        "id": 648,
+        "case": 9,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3514883393
+      },
+      {
+        "id": 649,
+        "case": 17,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3336118896
+      },
+      {
+        "id": 650,
+        "case": 16,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2526903407
+      },
+      {
+        "id": 651,
+        "case": 14,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 4196957326
+      },
+      {
+        "id": 652,
+        "case": 7,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2073067883
+      },
+      {
+        "id": 653,
+        "case": 0,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 971956503
+      },
+      {
+        "id": 654,
+        "case": 11,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 860507845
+      },
+      {
+        "id": 655,
+        "case": 0,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 336801908
+      },
+      {
+        "id": 656,
+        "case": 4,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2874512409
+      },
+      {
+        "id": 657,
+        "case": 3,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 177475529
+      },
+      {
+        "id": 658,
+        "case": 12,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3256190526
+      },
+      {
+        "id": 659,
+        "case": 12,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1969404063
+      },
+      {
+        "id": 660,
+        "case": 13,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 16043898
+      },
+      {
+        "id": 661,
+        "case": 5,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1491185751
+      },
+      {
+        "id": 662,
+        "case": 9,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3949553539
+      },
+      {
+        "id": 663,
+        "case": 9,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1892876893
+      },
+      {
+        "id": 664,
+        "case": 16,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 840789660
+      },
+      {
+        "id": 665,
+        "case": 15,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2942553717
+      },
+      {
+        "id": 666,
+        "case": 9,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3949553539
+      },
+      {
+        "id": 667,
+        "case": 14,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 13937841
+      },
+      {
+        "id": 668,
+        "case": 10,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 644364620
+      },
+      {
+        "id": 669,
+        "case": 6,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 83709465
+      },
+      {
+        "id": 670,
+        "case": 0,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 971956503
+      },
+      {
+        "id": 671,
+        "case": 16,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2526903407
+      },
+      {
+        "id": 672,
+        "case": 11,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 860507845
+      },
+      {
+        "id": 673,
+        "case": 14,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 1613437735
+      },
+      {
+        "id": 674,
+        "case": 13,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 630428134
+      },
+      {
+        "id": 675,
+        "case": 5,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1491185751
+      },
+      {
+        "id": 676,
+        "case": 15,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2942553717
+      },
+      {
+        "id": 677,
+        "case": 0,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 336801908
+      },
+      {
+        "id": 678,
+        "case": 10,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 644364620
+      },
+      {
+        "id": 679,
+        "case": 1,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3912323078
+      },
+      {
+        "id": 680,
+        "case": 9,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3514883393
+      },
+      {
+        "id": 681,
+        "case": 6,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3908389408
+      },
+      {
+        "id": 682,
+        "case": 6,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 83709465
+      },
+      {
+        "id": 683,
+        "case": 0,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 971956503
+      },
+      {
+        "id": 684,
+        "case": 1,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3912323078
+      },
+      {
+        "id": 685,
+        "case": 7,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3335916946
+      },
+      {
+        "id": 686,
+        "case": 17,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2603767785
+      },
+      {
+        "id": 687,
+        "case": 10,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 3979190936
+      },
+      {
+        "id": 688,
+        "case": 13,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 630428134
+      },
+      {
+        "id": 689,
+        "case": 8,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 211057708
+      },
+      {
+        "id": 690,
+        "case": 1,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 523288128
+      },
+      {
+        "id": 691,
+        "case": 11,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3418568653
+      },
+      {
+        "id": 692,
+        "case": 11,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3418568653
+      },
+      {
+        "id": 693,
+        "case": 4,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1200968791
+      },
+      {
+        "id": 694,
+        "case": 16,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 840789660
+      },
+      {
+        "id": 695,
+        "case": 14,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 4196957326
+      },
+      {
+        "id": 696,
+        "case": 5,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1491185751
+      },
+      {
+        "id": 697,
+        "case": 5,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 364804212
+      },
+      {
+        "id": 698,
+        "case": 2,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2952937325
+      },
+      {
+        "id": 699,
+        "case": 11,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 860507845
+      },
+      {
+        "id": 700,
+        "case": 14,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 1613437735
+      },
+      {
+        "id": 701,
+        "case": 16,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 840789660
+      },
+      {
+        "id": 702,
+        "case": 2,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2952937325
+      },
+      {
+        "id": 703,
+        "case": 4,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3699827869
+      },
+      {
+        "id": 704,
+        "case": 0,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 336801908
+      },
+      {
+        "id": 705,
+        "case": 0,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 1507441348
+      },
+      {
+        "id": 706,
+        "case": 0,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 971956503
+      },
+      {
+        "id": 707,
+        "case": 16,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2526903407
+      },
+      {
+        "id": 708,
+        "case": 12,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1969404063
+      },
+      {
+        "id": 709,
+        "case": 3,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3390345140
+      },
+      {
+        "id": 710,
+        "case": 15,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 1031544951
+      },
+      {
+        "id": 711,
+        "case": 0,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 336801908
+      },
+      {
+        "id": 712,
+        "case": 7,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1030826838
+      },
+      {
+        "id": 713,
+        "case": 8,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 211057708
+      },
+      {
+        "id": 714,
+        "case": 15,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 1031544951
+      },
+      {
+        "id": 715,
+        "case": 4,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1200968791
+      },
+      {
+        "id": 716,
+        "case": 2,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2471333755
+      },
+      {
+        "id": 717,
+        "case": 0,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 1507441348
+      },
+      {
+        "id": 718,
+        "case": 12,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3256190526
+      },
+      {
+        "id": 719,
+        "case": 5,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1491185751
+      },
+      {
+        "id": 720,
+        "case": 5,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1491185751
+      },
+      {
+        "id": 721,
+        "case": 10,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 3979190936
+      },
+      {
+        "id": 722,
+        "case": 15,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2902413552
+      },
+      {
+        "id": 723,
+        "case": 7,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1030826838
+      },
+      {
+        "id": 724,
+        "case": 17,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2603767785
+      },
+      {
+        "id": 725,
+        "case": 8,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2928746290
+      },
+      {
+        "id": 726,
+        "case": 6,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3908389408
+      },
+      {
+        "id": 727,
+        "case": 2,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2471333755
+      },
+      {
+        "id": 728,
+        "case": 0,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 336801908
+      },
+      {
+        "id": 729,
+        "case": 4,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2874512409
+      },
+      {
+        "id": 730,
+        "case": 4,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1200968791
+      },
+      {
+        "id": 731,
+        "case": 17,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2603767785
+      },
+      {
+        "id": 732,
+        "case": 16,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 840789660
+      },
+      {
+        "id": 733,
+        "case": 12,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 1285441358
+      },
+      {
+        "id": 734,
+        "case": 14,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 1613437735
+      },
+      {
+        "id": 735,
+        "case": 2,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2471333755
+      },
+      {
+        "id": 736,
+        "case": 10,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 3979190936
+      },
+      {
+        "id": 737,
+        "case": 0,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 1507441348
+      },
+      {
+        "id": 738,
+        "case": 14,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 13937841
+      },
+      {
+        "id": 739,
+        "case": 11,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3418568653
+      },
+      {
+        "id": 740,
+        "case": 12,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 1285441358
+      },
+      {
+        "id": 741,
+        "case": 0,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 971956503
+      },
+      {
+        "id": 742,
+        "case": 17,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3336118896
+      },
+      {
+        "id": 743,
+        "case": 14,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 4196957326
+      },
+      {
+        "id": 744,
+        "case": 5,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 2402686847
+      },
+      {
+        "id": 745,
+        "case": 12,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3256190526
+      },
+      {
+        "id": 746,
+        "case": 1,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 523288128
+      },
+      {
+        "id": 747,
+        "case": 15,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 1031544951
+      },
+      {
+        "id": 748,
+        "case": 8,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2928746290
+      },
+      {
+        "id": 749,
+        "case": 17,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3336118896
+      },
+      {
+        "id": 750,
+        "case": 2,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2952937325
+      },
+      {
+        "id": 751,
+        "case": 1,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 2813044254
+      },
+      {
+        "id": 752,
+        "case": 12,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3256190526
+      },
+      {
+        "id": 753,
+        "case": 2,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2952937325
+      },
+      {
+        "id": 754,
+        "case": 17,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3336118896
+      },
+      {
+        "id": 755,
+        "case": 15,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2942553717
+      },
+      {
+        "id": 756,
+        "case": 6,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 83709465
+      },
+      {
+        "id": 757,
+        "case": 8,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 394519590
+      },
+      {
+        "id": 758,
+        "case": 8,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 211057708
+      },
+      {
+        "id": 759,
+        "case": 4,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3699827869
+      },
+      {
+        "id": 760,
+        "case": 7,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2073067883
+      },
+      {
+        "id": 761,
+        "case": 10,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 3979190936
+      },
+      {
+        "id": 762,
+        "case": 5,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1491185751
+      },
+      {
+        "id": 763,
+        "case": 8,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2928746290
+      },
+      {
+        "id": 764,
+        "case": 0,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 336801908
+      },
+      {
+        "id": 765,
+        "case": 1,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 2813044254
+      },
+      {
+        "id": 766,
+        "case": 6,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 83709465
+      },
+      {
+        "id": 767,
+        "case": 1,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 2813044254
+      },
+      {
+        "id": 768,
+        "case": 12,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1969404063
+      },
+      {
+        "id": 769,
+        "case": 8,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2928746290
+      },
+      {
+        "id": 770,
+        "case": 0,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 1507441348
+      },
+      {
+        "id": 771,
+        "case": 14,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 13937841
+      },
+      {
+        "id": 772,
+        "case": 0,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 336801908
+      },
+      {
+        "id": 773,
+        "case": 1,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 523288128
+      },
+      {
+        "id": 774,
+        "case": 5,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 2402686847
+      },
+      {
+        "id": 775,
+        "case": 12,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1969404063
+      },
+      {
+        "id": 776,
+        "case": 12,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3256190526
+      },
+      {
+        "id": 777,
+        "case": 2,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2952937325
+      },
+      {
+        "id": 778,
+        "case": 8,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2928746290
+      },
+      {
+        "id": 779,
+        "case": 14,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 1613437735
+      },
+      {
+        "id": 780,
+        "case": 11,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 860507845
+      },
+      {
+        "id": 781,
+        "case": 2,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2471333755
+      },
+      {
+        "id": 782,
+        "case": 13,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 630428134
+      },
+      {
+        "id": 783,
+        "case": 2,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 1619788919
+      },
+      {
+        "id": 784,
+        "case": 7,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1030826838
+      },
+      {
+        "id": 785,
+        "case": 13,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 2742079585
+      },
+      {
+        "id": 786,
+        "case": 4,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3699827869
+      },
+      {
+        "id": 787,
+        "case": 10,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3891862128
+      },
+      {
+        "id": 788,
+        "case": 8,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2928746290
+      },
+      {
+        "id": 789,
+        "case": 6,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3908389408
+      },
+      {
+        "id": 790,
+        "case": 9,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3949553539
+      },
+      {
+        "id": 791,
+        "case": 1,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3912323078
+      },
+      {
+        "id": 792,
+        "case": 10,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3891862128
+      },
+      {
+        "id": 793,
+        "case": 9,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3949553539
+      },
+      {
+        "id": 794,
+        "case": 11,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3418568653
+      },
+      {
+        "id": 795,
+        "case": 10,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 3979190936
+      },
+      {
+        "id": 796,
+        "case": 11,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3418568653
+      },
+      {
+        "id": 797,
+        "case": 9,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3514883393
+      },
+      {
+        "id": 798,
+        "case": 15,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2902413552
+      },
+      {
+        "id": 799,
+        "case": 14,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 13937841
+      },
+      {
+        "id": 800,
+        "case": 2,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2952937325
+      },
+      {
+        "id": 801,
+        "case": 12,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3256190526
+      },
+      {
+        "id": 802,
+        "case": 9,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1892876893
+      },
+      {
+        "id": 803,
+        "case": 5,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 2402686847
+      },
+      {
+        "id": 804,
+        "case": 11,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 851772207
+      },
+      {
+        "id": 805,
+        "case": 7,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3335916946
+      },
+      {
+        "id": 806,
+        "case": 15,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2942553717
+      },
+      {
+        "id": 807,
+        "case": 4,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3699827869
+      },
+      {
+        "id": 808,
+        "case": 4,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3699827869
+      },
+      {
+        "id": 809,
+        "case": 0,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 1507441348
+      },
+      {
+        "id": 810,
+        "case": 15,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 1031544951
+      },
+      {
+        "id": 811,
+        "case": 5,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 364804212
+      },
+      {
+        "id": 812,
+        "case": 10,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 644364620
+      },
+      {
+        "id": 813,
+        "case": 12,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3256190526
+      },
+      {
+        "id": 814,
+        "case": 3,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 177475529
+      },
+      {
+        "id": 815,
+        "case": 8,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 211057708
+      },
+      {
+        "id": 816,
+        "case": 4,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1200968791
+      },
+      {
+        "id": 817,
+        "case": 2,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 2952937325
+      },
+      {
+        "id": 818,
+        "case": 15,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 1031544951
+      },
+      {
+        "id": 819,
+        "case": 17,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2603767785
+      },
+      {
+        "id": 820,
+        "case": 6,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2454313018
+      },
+      {
+        "id": 821,
+        "case": 9,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3949553539
+      },
+      {
+        "id": 822,
+        "case": 6,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3908389408
+      },
+      {
+        "id": 823,
+        "case": 14,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 1613437735
+      },
+      {
+        "id": 824,
+        "case": 6,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 83709465
+      },
+      {
+        "id": 825,
+        "case": 7,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2073067883
+      },
+      {
+        "id": 826,
+        "case": 7,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3335916946
+      },
+      {
+        "id": 827,
+        "case": 14,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 4196957326
+      },
+      {
+        "id": 828,
+        "case": 2,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 1619788919
+      },
+      {
+        "id": 829,
+        "case": 5,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 2402686847
+      },
+      {
+        "id": 830,
+        "case": 11,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3418568653
+      },
+      {
+        "id": 831,
+        "case": 15,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2902413552
+      },
+      {
+        "id": 832,
+        "case": 12,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 1285441358
+      },
+      {
+        "id": 833,
+        "case": 6,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2454313018
+      },
+      {
+        "id": 834,
+        "case": 15,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2942553717
+      },
+      {
+        "id": 835,
+        "case": 5,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1491185751
+      },
+      {
+        "id": 836,
+        "case": 14,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 13937841
+      },
+      {
+        "id": 837,
+        "case": 13,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 630428134
+      },
+      {
+        "id": 838,
+        "case": 11,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 860507845
+      },
+      {
+        "id": 839,
+        "case": 1,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 523288128
+      },
+      {
+        "id": 840,
+        "case": 16,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2526903407
+      },
+      {
+        "id": 841,
+        "case": 12,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 3256190526
+      },
+      {
+        "id": 842,
+        "case": 7,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1030826838
+      },
+      {
+        "id": 843,
+        "case": 17,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3336118896
+      },
+      {
+        "id": 844,
+        "case": 10,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 3891862128
+      },
+      {
+        "id": 845,
+        "case": 15,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 2902413552
+      },
+      {
+        "id": 846,
+        "case": 0,
+        "information": "probability",
+        "wording": 1,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 0,
+        "seed": 336801908
+      },
+      {
+        "id": 847,
+        "case": 16,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3938137123
+      },
+      {
+        "id": 848,
+        "case": 3,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1214362775
+      },
+      {
+        "id": 849,
+        "case": 17,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3814285796
+      },
+      {
+        "id": 850,
+        "case": 13,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 2742079585
+      },
+      {
+        "id": 851,
+        "case": 3,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 1,
+        "seed": 1214362775
+      },
+      {
+        "id": 852,
+        "case": 14,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 13937841
+      },
+      {
+        "id": 853,
+        "case": 1,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 2813044254
+      },
+      {
+        "id": 854,
+        "case": 5,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 364804212
+      },
+      {
+        "id": 855,
+        "case": 10,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 2,
+        "seed": 3891862128
+      },
+      {
+        "id": 856,
+        "case": 15,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 2942553717
+      },
+      {
+        "id": 857,
+        "case": 9,
+        "information": "probability",
+        "wording": 0,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 1892876893
+      },
+      {
+        "id": 858,
+        "case": 6,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 83709465
+      },
+      {
+        "id": 859,
+        "case": 14,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 13937841
+      },
+      {
+        "id": 860,
+        "case": 15,
+        "information": "expectedLoss",
+        "wording": 0,
+        "order": 0,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 2902413552
+      },
+      {
+        "id": 861,
+        "case": 16,
+        "information": "probability",
+        "wording": 1,
+        "order": 1,
+        "mapping": 0,
+        "repetition": 0,
+        "seed": 3938137123
+      },
+      {
+        "id": 862,
+        "case": 13,
+        "information": "expectedLoss",
+        "wording": 1,
+        "order": 1,
+        "mapping": 1,
+        "repetition": 1,
+        "seed": 16043898
+      },
+      {
+        "id": 863,
+        "case": 16,
+        "information": "probability",
+        "wording": 0,
+        "order": 0,
+        "mapping": 0,
+        "repetition": 2,
+        "seed": 840789660
+      }
+    ],
+    "planned": 864,
+    "minimumGroupAccuracy": 0.9,
+    "strictParser": "Stripped text is exactly 1 or 2",
+    "semanticParser": "Full match: optional Code and whitespace, then 1 or 2, then optional full stop; case insensitive",
+    "inferenceScope": "Complete finite diagnostic grid, no population confidence interval or consciousness criterion. No training or actual tool dispatch."
+  },
+  "planHash": "808de84d0eeb15d257b4b691f7ff65ac8b6cac1bbea9891a3bd9d1ef4e4dc224",
+  "sourceHash": "16b95cd62c6b4ce4cdb80557853215415d344e3a0a9813e306db2565527fca02",
+  "localTests": {
+    "passed": true,
+    "count": 5,
+    "seconds": 6.195
+  }
+}

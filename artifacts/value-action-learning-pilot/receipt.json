@@ -1,0 +1,78 @@
+{
+  "schema": "menia-value-action-learning-receipt-v2",
+  "archiveName": "menia-apprentissage-valeurs-actions-v2.zip",
+  "archiveBytes": 116437708,
+  "archiveSHA256": "2a3a2a7335e31b080ecb3dd8eec4fd4a620a07a59339ba1ce83eeaf1945349e1",
+  "files": 16,
+  "journalSHA256": "580a02917c21d96c6550515ed14845c4dea6447adf2b9978dbdb898a226554b1",
+  "scienceRevision": "ca80a90d04289bde1a5436587588caf6d797a538",
+  "notebookRevision": "1da6f7bd5421081ef244ed584a41c1b9f42e7133",
+  "execution": {
+    "startedUTC": "2026-09-19T22:06:48.605518+00:00",
+    "revision": "ca80a90d04289bde1a5436587588caf6d797a538",
+    "journal": "/content/menia-results/value-action-learning-v2/value-action-learning-20260920-v2.jsonl",
+    "status": "completed",
+    "hardware": "NVIDIA A100-SXM4-40GB, 40960 MiB",
+    "updatedUTC": "2026-09-19T22:55:32.464506+00:00"
+  },
+  "model": {
+    "id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "training": {
+    "replications": 3,
+    "rank": 8,
+    "scale": 1.0,
+    "learningRate": 0.0001,
+    "epochs": 2,
+    "batchSize": 8,
+    "steps": 64,
+    "clipNorm": 1.0,
+    "weightDecay": 0.0,
+    "maxTrainingTokens": 512,
+    "optimizer": "AdamW",
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "epsilon": 1e-08
+  },
+  "evaluation": {
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "min_p": 0.0,
+    "do_sample": true,
+    "max_new_tokens": 16,
+    "max_input_tokens": 1792,
+    "enable_thinking": false,
+    "dtype": "bfloat16",
+    "attention": "sdpa",
+    "quantization": "none",
+    "repetition_penalty": 1.0,
+    "renormalize_logits": true,
+    "use_cache": true
+  },
+  "planHash": "74947f83c025eea707a7ee8a95256fbf1e74c42655155128eee96d1e83d76f08",
+  "sourceHash": "ad3ead7b250bcb86c3dd4bd7cc57a5c1b0729f98f6c1492041842980fcc7e394",
+  "mainRecomputeMaxAbsoluteDifference": 0.0,
+  "independentMaxAbsoluteDifference": 0.0,
+  "localTests": {
+    "count": 6,
+    "seconds": 28.208,
+    "passed": true
+  },
+  "colabTests": {
+    "count": 6,
+    "seconds": 50.461,
+    "passed": true
+  },
+  "outcomeReview": "Complete archive reception, hashes, both calculations and twelve weights checked before outcome review.",
+  "trainingSnapshot": {
+    "capturedUTC": "2026-09-19T22:36:51.809886+00:00",
+    "prefixSHA256": "ed1c6a6a9b3e7c752e380560811e8f9af5fd08326000d6e939575fadd4be0697",
+    "unchangedWeights": 12,
+    "costsMatched": true
+  },
+  "scope": "Finite supervised public decision pilot. No private self-state or consciousness criterion; not a novelty claim."
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "menia-composition-diagnostic-verification-v1",
+  "verified": true,
+  "origin": "transformers_gpu",
+  "journalSHA256": "708d8eb27386a27b91e913506b859945d7cdcfe13a8792650e6b3a705746135d",
+  "planHash": "39c55fcaf21435ed5e62779356bbe8c745acffa608a86778556807feb877a98e",
+  "sourceHash": "69eff449243258ed18dda3c6946ee721dbbbb20e95a5a76bfe828cf60a6b9f30",
+  "tables": 144,
+  "contrasts": 108,
+  "shamPairs": 3456,
+  "maxAbsoluteDifference": 2.220446049250313e-16,
+  "scope": "Independent targets, probabilities, AUROC, class-balanced decisions, paired bootstrap and contrasts; shared strict reader and plan. Not an external replication."
+}

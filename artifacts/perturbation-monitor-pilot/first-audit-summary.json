@@ -1,0 +1,883 @@
+{
+  "schema": "menia-perturbation-report-v1",
+  "origin": "transformers_gpu",
+  "planHash": "3b94a18275070a053dd2aa3a41159a02b44b549699de96af2a848ff363252956",
+  "model": {
+    "id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "settings": {
+    "attention": "sdpa",
+    "do_sample": true,
+    "dtype": "bfloat16",
+    "enable_thinking": false,
+    "max_input_tokens": 1792,
+    "max_new_tokens": 256,
+    "min_p": 0.0,
+    "quantization": "none",
+    "renormalize_logits": true,
+    "repetition_penalty": 1.0,
+    "temperature": 0.7,
+    "top_k": 20,
+    "top_p": 0.8,
+    "use_cache": true
+  },
+  "recordedResults": 704,
+  "plannedResults": 704,
+  "complete": true,
+  "statuses": {
+    "ok": 704
+  },
+  "pendingRequest": false,
+  "gate": {
+    "passed": true,
+    "results": 32,
+    "shamExactMatches": 8,
+    "identicalInputs": 8,
+    "criterion": "Technical identity only; no accuracy or favorable-effect selection"
+  },
+  "fitChecked": true,
+  "selection": {
+    "inputOnly": [
+      {
+        "alpha": 0.001,
+        "validationBrier": 0.26616201264991274
+      },
+      {
+        "alpha": 0.01,
+        "validationBrier": 0.25567232473164253
+      },
+      {
+        "alpha": 0.1,
+        "validationBrier": 0.21758137153776635
+      },
+      {
+        "alpha": 1.0,
+        "validationBrier": 0.19647672039741174
+      }
+    ],
+    "internal": [
+      {
+        "alpha": 0.001,
+        "validationBrier": 0.48512279479343984
+      },
+      {
+        "alpha": 0.01,
+        "validationBrier": 0.3971432117632792
+      },
+      {
+        "alpha": 0.1,
+        "validationBrier": 0.29850507714210545
+      },
+      {
+        "alpha": 1.0,
+        "validationBrier": 0.2177166554292231
+      }
+    ],
+    "shuffledLabels": [
+      {
+        "alpha": 0.001,
+        "validationBrier": 0.3266954884937552
+      },
+      {
+        "alpha": 0.01,
+        "validationBrier": 0.29234921123491264
+      },
+      {
+        "alpha": 0.1,
+        "validationBrier": 0.23065992967319812
+      },
+      {
+        "alpha": 1.0,
+        "validationBrier": 0.20624407228464892
+      }
+    ]
+  },
+  "usedForFit": {
+    "train": 384,
+    "validation": 96
+  },
+  "availableTestTargets": 192,
+  "independentTestQuestions": 48,
+  "scores": {
+    "betaCell": {
+      "n": 192,
+      "rawCorrect": 125,
+      "brier": 0.14005539908598152,
+      "meanProbability": 0.6469072164948454,
+      "auc": 0.8266865671641791,
+      "finalCorrect": 187,
+      "verify": 96,
+      "pointLoss": 0.12604166666666666,
+      "routingSeconds": 0.002829248994203226
+    },
+    "oracleCondition": {
+      "n": 192,
+      "rawCorrect": 125,
+      "brier": 0.1365833333333333,
+      "meanProbability": 0.6425000000000001,
+      "auc": 0.851044776119403,
+      "finalCorrect": 187,
+      "verify": 96,
+      "pointLoss": 0.12604166666666666,
+      "routingSeconds": 0.000536616003500967
+    },
+    "inputOnly": {
+      "n": 192,
+      "rawCorrect": 125,
+      "brier": 0.1564647381098655,
+      "meanProbability": 0.6124380528797141,
+      "auc": 0.8321791044776119,
+      "finalCorrect": 187,
+      "verify": 120,
+      "pointLoss": 0.15104166666666666,
+      "routingSeconds": 0.001046588003191573
+    },
+    "internal": {
+      "n": 192,
+      "rawCorrect": 125,
+      "brier": 0.1577558198958818,
+      "meanProbability": 0.5919921548777621,
+      "auc": 0.8426268656716418,
+      "finalCorrect": 189,
+      "verify": 131,
+      "pointLoss": 0.15208333333333332,
+      "routingSeconds": 0.0007247750008900766
+    },
+    "shuffledLabels": {
+      "n": 192,
+      "rawCorrect": 125,
+      "brier": 0.15382981827426664,
+      "meanProbability": 0.6229063403624476,
+      "auc": 0.8189850746268657,
+      "finalCorrect": 189,
+      "verify": 113,
+      "pointLoss": 0.13333333333333333,
+      "routingSeconds": 0.0004897179969702847
+    },
+    "donorState": {
+      "n": 192,
+      "rawCorrect": 125,
+      "brier": 0.16620998238706422,
+      "meanProbability": 0.6076611358739091,
+      "auc": 0.8182686567164179,
+      "finalCorrect": 186,
+      "verify": 134,
+      "pointLoss": 0.1708333333333333,
+      "routingSeconds": 0.0005957840048722574
+    }
+  },
+  "contrasts": {
+    "betaCell:brier": {
+      "otherMinusInternal": -0.017700420809900298,
+      "descriptiveQuestionClusterBootstrap95": [
+        -0.05397737988088273,
+        0.01520172450641405
+      ]
+    },
+    "betaCell:pointLoss": {
+      "otherMinusInternal": -0.026041666666666668,
+      "descriptiveQuestionClusterBootstrap95": [
+        -0.04583333333333334,
+        -0.006250000000000002
+      ]
+    },
+    "oracleCondition:brier": {
+      "otherMinusInternal": -0.02117248656254848,
+      "descriptiveQuestionClusterBootstrap95": [
+        -0.057902406437065054,
+        0.012435810058151378
+      ]
+    },
+    "oracleCondition:pointLoss": {
+      "otherMinusInternal": -0.026041666666666668,
+      "descriptiveQuestionClusterBootstrap95": [
+        -0.04583333333333334,
+        -0.006250000000000002
+      ]
+    },
+    "inputOnly:brier": {
+      "otherMinusInternal": -0.0012910817860163082,
+      "descriptiveQuestionClusterBootstrap95": [
+        -0.023302367752905687,
+        0.020762595134540308
+      ]
+    },
+    "inputOnly:pointLoss": {
+      "otherMinusInternal": -0.001041666666666667,
+      "descriptiveQuestionClusterBootstrap95": [
+        -0.021875000000000002,
+        0.018750000000000003
+      ]
+    },
+    "shuffledLabels:brier": {
+      "otherMinusInternal": -0.003926001621615172,
+      "descriptiveQuestionClusterBootstrap95": [
+        -0.04193976449975172,
+        0.03270845334002833
+      ]
+    },
+    "shuffledLabels:pointLoss": {
+      "otherMinusInternal": -0.01875,
+      "descriptiveQuestionClusterBootstrap95": [
+        -0.03752604166666667,
+        0.0
+      ]
+    },
+    "donorState:brier": {
+      "otherMinusInternal": 0.008454162491182386,
+      "descriptiveQuestionClusterBootstrap95": [
+        -0.02102114036366512,
+        0.03892624043274903
+      ]
+    },
+    "donorState:pointLoss": {
+      "otherMinusInternal": 0.01875,
+      "descriptiveQuestionClusterBootstrap95": [
+        -0.004166666666666667,
+        0.04270833333333333
+      ]
+    }
+  },
+  "pairedInterventionEffects": {
+    "baseline": {
+      "completeQuestionPairs": 48,
+      "baselineCorrect": 33,
+      "conditionCorrect": 33,
+      "lost": 0,
+      "gained": 0,
+      "sameText": 48,
+      "baselineMinusConditionAccuracy": 0.0,
+      "descriptiveQuestionClusterBootstrap95": [
+        0.0,
+        0.0
+      ]
+    },
+    "sham": {
+      "completeQuestionPairs": 48,
+      "baselineCorrect": 33,
+      "conditionCorrect": 33,
+      "lost": 0,
+      "gained": 0,
+      "sameText": 48,
+      "baselineMinusConditionAccuracy": 0.0,
+      "descriptiveQuestionClusterBootstrap95": [
+        0.0,
+        0.0
+      ]
+    },
+    "rotateHalf": {
+      "completeQuestionPairs": 48,
+      "baselineCorrect": 33,
+      "conditionCorrect": 33,
+      "lost": 2,
+      "gained": 2,
+      "sameText": 44,
+      "baselineMinusConditionAccuracy": 0.0,
+      "descriptiveQuestionClusterBootstrap95": [
+        -0.08333333333333333,
+        0.08333333333333333
+      ]
+    },
+    "rotateOne": {
+      "completeQuestionPairs": 48,
+      "baselineCorrect": 33,
+      "conditionCorrect": 26,
+      "lost": 8,
+      "gained": 1,
+      "sameText": 31,
+      "baselineMinusConditionAccuracy": 0.14583333333333334,
+      "descriptiveQuestionClusterBootstrap95": [
+        0.020833333333333332,
+        0.2708333333333333
+      ]
+    }
+  },
+  "withinCondition": [
+    {
+      "family": "countA",
+      "level": 8,
+      "condition": "baseline",
+      "scores": {
+        "betaCell": {
+          "n": 24,
+          "rawCorrect": 9,
+          "brier": 0.23441651610160485,
+          "meanProbability": 0.38144329896907214,
+          "auc": 0.5,
+          "finalCorrect": 24,
+          "verify": 24,
+          "pointLoss": 0.20000000000000004,
+          "routingSeconds": 0.0006894269981785328
+        },
+        "oracleCondition": {
+          "n": 24,
+          "rawCorrect": 9,
+          "brier": 0.23860000000000003,
+          "meanProbability": 0.44,
+          "auc": 0.5,
+          "finalCorrect": 24,
+          "verify": 24,
+          "pointLoss": 0.20000000000000004,
+          "routingSeconds": 0.0001264850006919005
+        },
+        "inputOnly": {
+          "n": 24,
+          "rawCorrect": 9,
+          "brier": 0.24622432407021067,
+          "meanProbability": 0.3687373676271042,
+          "auc": 0.5333333333333333,
+          "finalCorrect": 24,
+          "verify": 24,
+          "pointLoss": 0.20000000000000004,
+          "routingSeconds": 8.300300032715313e-05
+        },
+        "internal": {
+          "n": 24,
+          "rawCorrect": 9,
+          "brier": 0.24448910815593264,
+          "meanProbability": 0.38472169187041266,
+          "auc": 0.5851851851851851,
+          "finalCorrect": 24,
+          "verify": 24,
+          "pointLoss": 0.20000000000000004,
+          "routingSeconds": 7.106499970177538e-05
+        },
+        "shuffledLabels": {
+          "n": 24,
+          "rawCorrect": 9,
+          "brier": 0.2641391935499467,
+          "meanProbability": 0.37664456362997595,
+          "auc": 0.34074074074074073,
+          "finalCorrect": 24,
+          "verify": 24,
+          "pointLoss": 0.20000000000000004,
+          "routingSeconds": 6.874799964862177e-05
+        },
+        "donorState": {
+          "n": 24,
+          "rawCorrect": 9,
+          "brier": 0.25820011855864816,
+          "meanProbability": 0.4635831655059308,
+          "auc": 0.5333333333333333,
+          "finalCorrect": 24,
+          "verify": 24,
+          "pointLoss": 0.20000000000000004,
+          "routingSeconds": 6.905200052642613e-05
+        }
+      }
+    },
+    {
+      "family": "countA",
+      "level": 8,
+      "condition": "sham",
+      "scores": {
+        "betaCell": {
+          "n": 24,
+          "rawCorrect": 9,
+          "brier": 0.23441651610160485,
+          "meanProbability": 0.38144329896907214,
+          "auc": 0.5,
+          "finalCorrect": 24,
+          "verify": 24,
+          "pointLoss": 0.20000000000000004,
+          "routingSeconds": 0.0007156709975788544
+        },
+        "oracleCondition": {
+          "n": 24,
+          "rawCorrect": 9,
+          "brier": 0.23860000000000003,
+          "meanProbability": 0.44,
+          "auc": 0.5,
+          "finalCorrect": 24,
+          "verify": 24,
+          "pointLoss": 0.20000000000000004,
+          "routingSeconds": 0.00012487000049077324
+        },
+        "inputOnly": {
+          "n": 24,
+          "rawCorrect": 9,
+          "brier": 0.24622432407021067,
+          "meanProbability": 0.3687373676271042,
+          "auc": 0.5333333333333333,
+          "finalCorrect": 24,
+          "verify": 24,
+          "pointLoss": 0.20000000000000004,
+          "routingSeconds": 8.305500023197965e-05
+        },
+        "internal": {
+          "n": 24,
+          "rawCorrect": 9,
+          "brier": 0.24448910815593264,
+          "meanProbability": 0.38472169187041266,
+          "auc": 0.5851851851851851,
+          "finalCorrect": 24,
+          "verify": 24,
+          "pointLoss": 0.20000000000000004,
+          "routingSeconds": 7.15049995960726e-05
+        },
+        "shuffledLabels": {
+          "n": 24,
+          "rawCorrect": 9,
+          "brier": 0.2641391935499467,
+          "meanProbability": 0.37664456362997595,
+          "auc": 0.34074074074074073,
+          "finalCorrect": 24,
+          "verify": 24,
+          "pointLoss": 0.20000000000000004,
+          "routingSeconds": 6.697299886582186e-05
+        },
+        "donorState": {
+          "n": 24,
+          "rawCorrect": 9,
+          "brier": 0.21968949831049103,
+          "meanProbability": 0.445193618012832,
+          "auc": 0.6666666666666666,
+          "finalCorrect": 24,
+          "verify": 24,
+          "pointLoss": 0.20000000000000004,
+          "routingSeconds": 6.73089994052134e-05
+        }
+      }
+    },
+    {
+      "family": "countA",
+      "level": 8,
+      "condition": "rotateHalf",
+      "scores": {
+        "betaCell": {
+          "n": 24,
+          "rawCorrect": 11,
+          "brier": 0.25417596627342615,
+          "meanProbability": 0.38144329896907214,
+          "auc": 0.5,
+          "finalCorrect": 24,
+          "verify": 24,
+          "pointLoss": 0.20000000000000004,
+          "routingSeconds": 0.0006981689989515871
+        },
+        "oracleCondition": {
+          "n": 24,
+          "rawCorrect": 11,
+          "brier": 0.24973333333333336,
+          "meanProbability": 0.42,
+          "auc": 0.5,
+          "finalCorrect": 24,
+          "verify": 24,
+          "pointLoss": 0.20000000000000004,
+          "routingSeconds": 0.0001265529995180259
+        },
+        "inputOnly": {
+          "n": 24,
+          "rawCorrect": 11,
+          "brier": 0.2646094392753105,
+          "meanProbability": 0.3687373676271042,
+          "auc": 0.5664335664335665,
+          "finalCorrect": 24,
+          "verify": 24,
+          "pointLoss": 0.20000000000000004,
+          "routingSeconds": 8.434400115220342e-05
+        },
+        "internal": {
+          "n": 24,
+          "rawCorrect": 11,
+          "brier": 0.267892631706193,
+          "meanProbability": 0.38029416086618867,
+          "auc": 0.5874125874125874,
+          "finalCorrect": 24,
+          "verify": 24,
+          "pointLoss": 0.20000000000000004,
+          "routingSeconds": 7.308200110855978e-05
+        },
+        "shuffledLabels": {
+          "n": 24,
+          "rawCorrect": 11,
+          "brier": 0.285076002846263,
+          "meanProbability": 0.358223876480613,
+          "auc": 0.45454545454545453,
+          "finalCorrect": 24,
+          "verify": 24,
+          "pointLoss": 0.20000000000000004,
+          "routingSeconds": 7.02619990988751e-05
+        },
+        "donorState": {
+          "n": 24,
+          "rawCorrect": 11,
+          "brier": 0.2565779547875084,
+          "meanProbability": 0.37351527355567943,
+          "auc": 0.6223776223776224,
+          "finalCorrect": 24,
+          "verify": 24,
+          "pointLoss": 0.20000000000000004,
+          "routingSeconds": 6.994800105530885e-05
+        }
+      }
+    },
+    {
+      "family": "countA",
+      "level": 8,
+      "condition": "rotateOne",
+      "scores": {
+        "betaCell": {
+          "n": 24,
+          "rawCorrect": 5,
+          "brier": 0.19489761575796224,
+          "meanProbability": 0.38144329896907214,
+          "auc": 0.5,
+          "finalCorrect": 24,
+          "verify": 24,
+          "pointLoss": 0.20000000000000004,
+          "routingSeconds": 0.0006667970010312274
+        },
+        "oracleCondition": {
+          "n": 24,
+          "rawCorrect": 5,
+          "brier": 0.16593333333333335,
+          "meanProbability": 0.24,
+          "auc": 0.5,
+          "finalCorrect": 24,
+          "verify": 24,
+          "pointLoss": 0.20000000000000004,
+          "routingSeconds": 0.00012597900104083237
+        },
+        "inputOnly": {
+          "n": 24,
+          "rawCorrect": 5,
+          "brier": 0.20981097520828365,
+          "meanProbability": 0.3687373676271042,
+          "auc": 0.5473684210526316,
+          "finalCorrect": 24,
+          "verify": 24,
+          "pointLoss": 0.20000000000000004,
+          "routingSeconds": 8.374499975616345e-05
+        },
+        "internal": {
+          "n": 24,
+          "rawCorrect": 5,
+          "brier": 0.16419001810146835,
+          "meanProbability": 0.24667207532486693,
+          "auc": 0.6210526315789474,
+          "finalCorrect": 24,
+          "verify": 24,
+          "pointLoss": 0.20000000000000004,
+          "routingSeconds": 7.115500147847342e-05
+        },
+        "shuffledLabels": {
+          "n": 24,
+          "rawCorrect": 5,
+          "brier": 0.189125871479111,
+          "meanProbability": 0.2719658756164905,
+          "auc": 0.5368421052631579,
+          "finalCorrect": 24,
+          "verify": 24,
+          "pointLoss": 0.20000000000000004,
+          "routingSeconds": 6.876500083308201e-05
+        },
+        "donorState": {
+          "n": 24,
+          "rawCorrect": 5,
+          "brier": 0.2220463904339817,
+          "meanProbability": 0.2626245590906088,
+          "auc": 0.48947368421052634,
+          "finalCorrect": 23,
+          "verify": 23,
+          "pointLoss": 0.23333333333333336,
+          "routingSeconds": 6.716000143569545e-05
+        }
+      }
+    },
+    {
+      "family": "alternatingSum",
+      "level": 2,
+      "condition": "baseline",
+      "scores": {
+        "betaCell": {
+          "n": 24,
+          "rawCorrect": 24,
+          "brier": 0.007678818152832399,
+          "meanProbability": 0.9123711340206185,
+          "auc": null,
+          "finalCorrect": 24,
+          "verify": 0,
+          "pointLoss": 0.0,
+          "routingSeconds": 1.5853999229875626e-05
+        },
+        "oracleCondition": {
+          "n": 24,
+          "rawCorrect": 24,
+          "brier": 0.006399999999999993,
+          "meanProbability": 0.92,
+          "auc": null,
+          "finalCorrect": 24,
+          "verify": 0,
+          "pointLoss": 0.0,
+          "routingSeconds": 8.445002094958909e-06
+        },
+        "inputOnly": {
+          "n": 24,
+          "rawCorrect": 24,
+          "brier": 0.03035053989542839,
+          "meanProbability": 0.8561387381323241,
+          "auc": null,
+          "finalCorrect": 24,
+          "verify": 6,
+          "pointLoss": 0.049999999999999996,
+          "routingSeconds": 0.0003853130001516547
+        },
+        "internal": {
+          "n": 24,
+          "rawCorrect": 24,
+          "brier": 0.036309331870621624,
+          "meanProbability": 0.8474865888932728,
+          "auc": null,
+          "finalCorrect": 24,
+          "verify": 9,
+          "pointLoss": 0.075,
+          "routingSeconds": 0.00011272299934717012
+        },
+        "shuffledLabels": {
+          "n": 24,
+          "rawCorrect": 24,
+          "brier": 0.009732867292686536,
+          "meanProbability": 0.9247750376517777,
+          "auc": null,
+          "finalCorrect": 24,
+          "verify": 1,
+          "pointLoss": 0.008333333333333333,
+          "routingSeconds": 2.1209000351518625e-05
+        },
+        "donorState": {
+          "n": 24,
+          "rawCorrect": 24,
+          "brier": 0.04068979228175356,
+          "meanProbability": 0.8577654623587355,
+          "auc": null,
+          "finalCorrect": 24,
+          "verify": 10,
+          "pointLoss": 0.08333333333333333,
+          "routingSeconds": 7.331200094995438e-05
+        }
+      }
+    },
+    {
+      "family": "alternatingSum",
+      "level": 2,
+      "condition": "sham",
+      "scores": {
+        "betaCell": {
+          "n": 24,
+          "rawCorrect": 24,
+          "brier": 0.007678818152832399,
+          "meanProbability": 0.9123711340206185,
+          "auc": null,
+          "finalCorrect": 24,
+          "verify": 0,
+          "pointLoss": 0.0,
+          "routingSeconds": 1.3739000678469893e-05
+        },
+        "oracleCondition": {
+          "n": 24,
+          "rawCorrect": 24,
+          "brier": 0.006399999999999993,
+          "meanProbability": 0.92,
+          "auc": null,
+          "finalCorrect": 24,
+          "verify": 0,
+          "pointLoss": 0.0,
+          "routingSeconds": 7.939000624901382e-06
+        },
+        "inputOnly": {
+          "n": 24,
+          "rawCorrect": 24,
+          "brier": 0.03035053989542839,
+          "meanProbability": 0.8561387381323241,
+          "auc": null,
+          "finalCorrect": 24,
+          "verify": 6,
+          "pointLoss": 0.049999999999999996,
+          "routingSeconds": 0.0001122160015256668
+        },
+        "internal": {
+          "n": 24,
+          "rawCorrect": 24,
+          "brier": 0.036309331870621624,
+          "meanProbability": 0.8474865888932728,
+          "auc": null,
+          "finalCorrect": 24,
+          "verify": 9,
+          "pointLoss": 0.075,
+          "routingSeconds": 0.00010718500061557279
+        },
+        "shuffledLabels": {
+          "n": 24,
+          "rawCorrect": 24,
+          "brier": 0.009732867292686536,
+          "meanProbability": 0.9247750376517777,
+          "auc": null,
+          "finalCorrect": 24,
+          "verify": 1,
+          "pointLoss": 0.008333333333333333,
+          "routingSeconds": 2.0434999441931723e-05
+        },
+        "donorState": {
+          "n": 24,
+          "rawCorrect": 24,
+          "brier": 0.057264344755443015,
+          "meanProbability": 0.8064840125648937,
+          "auc": null,
+          "finalCorrect": 24,
+          "verify": 13,
+          "pointLoss": 0.10833333333333335,
+          "routingSeconds": 0.00011694699924191809
+        }
+      }
+    },
+    {
+      "family": "alternatingSum",
+      "level": 2,
+      "condition": "rotateHalf",
+      "scores": {
+        "betaCell": {
+          "n": 24,
+          "rawCorrect": 22,
+          "brier": 0.07640734048960217,
+          "meanProbability": 0.9123711340206185,
+          "auc": 0.5,
+          "finalCorrect": 22,
+          "verify": 0,
+          "pointLoss": 0.08333333333333333,
+          "routingSeconds": 1.4873999134579208e-05
+        },
+        "oracleCondition": {
+          "n": 24,
+          "rawCorrect": 22,
+          "brier": 0.0764,
+          "meanProbability": 0.92,
+          "auc": 0.5,
+          "finalCorrect": 22,
+          "verify": 0,
+          "pointLoss": 0.08333333333333333,
+          "routingSeconds": 8.137000349961454e-06
+        },
+        "inputOnly": {
+          "n": 24,
+          "rawCorrect": 22,
+          "brier": 0.08847937412300981,
+          "meanProbability": 0.8561387381323241,
+          "auc": 0.6363636363636364,
+          "finalCorrect": 22,
+          "verify": 6,
+          "pointLoss": 0.13333333333333333,
+          "routingSeconds": 0.00010752500065791537
+        },
+        "internal": {
+          "n": 24,
+          "rawCorrect": 22,
+          "brier": 0.12419541260470372,
+          "meanProbability": 0.8420807452034399,
+          "auc": 0.2159090909090909,
+          "finalCorrect": 22,
+          "verify": 7,
+          "pointLoss": 0.14166666666666664,
+          "routingSeconds": 6.961999997656676e-05
+        },
+        "shuffledLabels": {
+          "n": 24,
+          "rawCorrect": 22,
+          "brier": 0.07958513787788135,
+          "meanProbability": 0.8915650338723279,
+          "auc": 0.6590909090909091,
+          "finalCorrect": 23,
+          "verify": 6,
+          "pointLoss": 0.09166666666666667,
+          "routingSeconds": 0.00010213699806627119
+        },
+        "donorState": {
+          "n": 24,
+          "rawCorrect": 22,
+          "brier": 0.10994745825733399,
+          "meanProbability": 0.8483654441712417,
+          "auc": 0.25,
+          "finalCorrect": 22,
+          "verify": 7,
+          "pointLoss": 0.14166666666666664,
+          "routingSeconds": 5.4134000492922496e-05
+        }
+      }
+    },
+    {
+      "family": "alternatingSum",
+      "level": 2,
+      "condition": "rotateOne",
+      "scores": {
+        "betaCell": {
+          "n": 24,
+          "rawCorrect": 21,
+          "brier": 0.11077160165798705,
+          "meanProbability": 0.9123711340206185,
+          "auc": 0.5,
+          "finalCorrect": 21,
+          "verify": 0,
+          "pointLoss": 0.125,
+          "routingSeconds": 1.4717999420099659e-05
+        },
+        "oracleCondition": {
+          "n": 24,
+          "rawCorrect": 21,
+          "brier": 0.11059999999999999,
+          "meanProbability": 0.84,
+          "auc": 0.5,
+          "finalCorrect": 21,
+          "verify": 0,
+          "pointLoss": 0.125,
+          "routingSeconds": 8.207998689613305e-06
+        },
+        "inputOnly": {
+          "n": 24,
+          "rawCorrect": 21,
+          "brier": 0.135668388341042,
+          "meanProbability": 0.8561387381323241,
+          "auc": 0.2222222222222222,
+          "finalCorrect": 21,
+          "verify": 6,
+          "pointLoss": 0.17500000000000002,
+          "routingSeconds": 0.00010738699938883656
+        },
+        "internal": {
+          "n": 24,
+          "rawCorrect": 21,
+          "brier": 0.14417161670158085,
+          "meanProbability": 0.8024736961002304,
+          "auc": 0.5158730158730159,
+          "finalCorrect": 23,
+          "verify": 10,
+          "pointLoss": 0.125,
+          "routingSeconds": 0.00014843999906588579
+        },
+        "shuffledLabels": {
+          "n": 24,
+          "rawCorrect": 21,
+          "brier": 0.12910741230561124,
+          "meanProbability": 0.858656734366642,
+          "auc": 0.4444444444444444,
+          "finalCorrect": 22,
+          "verify": 9,
+          "pointLoss": 0.15833333333333335,
+          "routingSeconds": 7.118900066416245e-05
+        },
+        "donorState": {
+          "n": 24,
+          "rawCorrect": 21,
+          "brier": 0.16526430171135373,
+          "meanProbability": 0.8037575517313508,
+          "auc": 0.3492063492063492,
+          "finalCorrect": 21,
+          "verify": 9,
+          "pointLoss": 0.19999999999999998,
+          "routingSeconds": 7.792200176481856e-05
+        }
+      }
+    }
+  ],
+  "interpretation": "External monitor and executed deterministic routes on shared candidates. Fixed point costs plus measured routing time. Question-cluster uncertainty conditional on one fit. No native introspection or consciousness claim."
+}

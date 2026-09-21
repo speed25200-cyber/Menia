@@ -1,0 +1,63 @@
+{
+  "schema": "menia-native-confidence-calibration-freeze-v1",
+  "capturedUTC": "2026-09-20T00:15:20.679520+00:00",
+  "pid": 204304,
+  "returnCode": null,
+  "prefixSHA256": "7bcf6684337dbb02c7c651b878e5e9b25090a21ed6b0c0f417d031f3f9baeb66",
+  "prefixBytes": 11121833,
+  "chainHead": "6b7ea334850db0134e46362f0034c3f4185ba666b1b48f45da83dd535551369f",
+  "events": {
+    "header": 1,
+    "training_start": 6,
+    "training_step": 864,
+    "training_complete": 6,
+    "request": 3456,
+    "answer": 864,
+    "judgment": 2592,
+    "baseline": 3
+  },
+  "baselines": [
+    {
+      "replication": 0,
+      "sequence": 7789,
+      "bundleSHA256": "de0846b52096103b2d1a14f513460cd621a9b7e2142b0164cf45113e728378e4",
+      "fitDataHash": "3d785b7a610f070ea48183a74e46f445a958b010724c2d2b297f22b4f293c52b",
+      "calibrationQuestions": 96,
+      "producers": [
+        "base",
+        "measured",
+        "shuffled"
+      ]
+    },
+    {
+      "replication": 1,
+      "sequence": 7790,
+      "bundleSHA256": "281c119c67d9c637ef1d84c6820ab3ebe2d3afc1010982929ca58ea81a494359",
+      "fitDataHash": "1ad3a769c243670d3e2efeb76d51cf7c95c53fcfe44d3506f9acd1786c1b8d4e",
+      "calibrationQuestions": 96,
+      "producers": [
+        "base",
+        "measured",
+        "shuffled"
+      ]
+    },
+    {
+      "replication": 2,
+      "sequence": 7791,
+      "bundleSHA256": "e282b4c59ca6b2330f25a9c26502b6d89d94f66ded1de18ec83c0016c9780273",
+      "fitDataHash": "eb1770a369cec01dff4c5f602c2f0e56573120809e5a49b7c38c947b54bc5b25",
+      "calibrationQuestions": 96,
+      "producers": [
+        "base",
+        "measured",
+        "shuffled"
+      ]
+    }
+  ],
+  "firstTest": {
+    "sequence": 7792,
+    "requestId": 3456,
+    "requestHash": "96a66e42020340c0b265aa9ecb4ac81d1001cea94318135f9fa31145e64f92c8"
+  },
+  "scope": "Read-only snapshot of the journal prefix ending before its first test request, captured after test collection began. No answers or performance scores disclosed. Full fit reconstruction and final-archive comparison remain required."
+}

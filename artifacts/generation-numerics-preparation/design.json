@@ -1,0 +1,158 @@
+{
+  "plan": {
+    "schema": "menia-generation-numerics-plan-v1",
+    "model": {
+      "id": "Qwen/Qwen3-4B",
+      "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+    },
+    "settings": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "do_sample": true,
+      "max_new_tokens": 64,
+      "max_input_tokens": 1792,
+      "enable_thinking": false,
+      "dtype": "bfloat16",
+      "attention": "sdpa",
+      "quantization": "none",
+      "repetition_penalty": 1.0,
+      "renormalize_logits": true,
+      "use_cache": true
+    },
+    "maxContextTokens": 2048,
+    "cases": [
+      {
+        "id": 0,
+        "seed": 2026092000,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Réponds uniquement par l'entier demandé, sans explication ni autre texte."
+          },
+          {
+            "role": "user",
+            "content": "Combien vaut 7 + 10 ?"
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "seed": 2026092001,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Réponds uniquement par l'entier demandé, sans explication ni autre texte."
+          },
+          {
+            "role": "user",
+            "content": "Combien vaut 4 - 7 ?"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "seed": 2026092002,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Réponds uniquement par l'entier demandé, sans explication ni autre texte."
+          },
+          {
+            "role": "user",
+            "content": "Compte les lettres A dans cette suite : A B A A B B A B"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "seed": 2026092003,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Réponds uniquement par l'entier demandé, sans explication ni autre texte."
+          },
+          {
+            "role": "user",
+            "content": "Calcule 18 - 7 + 4 - 12."
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "seed": 2026092004,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Réponds uniquement par l'entier demandé, sans explication ni autre texte."
+          },
+          {
+            "role": "user",
+            "content": "Calcule 12 - 8 + 19 - 6 + 4 - 11 + 7 - 3."
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "seed": 2026092005,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Réponds uniquement par l'entier demandé, sans explication ni autre texte."
+          },
+          {
+            "role": "user",
+            "content": "Compte les lettres A dans cette suite : B A B B A A B A B A A B B A B A A A B B A B A B"
+          }
+        ]
+      }
+    ],
+    "branches": {
+      "report": {
+        "query": "Évalue ta réponse précédente. Réponds uniquement par 0 si elle est incorrecte, ou par 1 si elle est correcte.",
+        "codes": [
+          "0",
+          "1"
+        ],
+        "negative": "incorrect",
+        "positive": "correct"
+      },
+      "action": {
+        "query": "Choisis une action pour ta réponse précédente. Réponds uniquement par 2 pour demander une vérification, ou par 3 pour garder cette réponse.",
+        "codes": [
+          "2",
+          "3"
+        ],
+        "negative": "verify",
+        "positive": "keep"
+      }
+    },
+    "histories": [
+      "actual_generation",
+      "same_schedule_replay",
+      "full_prefill_replay"
+    ],
+    "plannedGenerations": 12,
+    "plannedBranchDecodes": 60,
+    "weightUpdates": 0,
+    "interventions": 0,
+    "strictControls": [
+      "repeated_generation_cache_exact",
+      "same_schedule_cache_exact",
+      "same_schedule_branch_outputs_exact",
+      "reverse_order_actual_branches_exact",
+      "parameters_unchanged"
+    ],
+    "descriptiveControls": [
+      "full_prefill_cache_error_by_layer",
+      "full_prefill_branch_error",
+      "full_sequence_branch_error",
+      "native_code_and_EOS_validity"
+    ],
+    "failurePolicy": "Stop and preserve the attempt on an exception or a failed strict control. No retry, fallback, changed tolerance or case selection.",
+    "scope": "Technical equivalence and numerical floor on six fixed prompts. No accuracy, calibration, self-monitoring, utility, consciousness or novelty criterion."
+  },
+  "planHash": "a76645b6649274837e4739f4592ecb75393167acf4dfa7a583b9b93034bba02a",
+  "sourceHash": "e9d3eff9f02444d96e42ce2e51404d269a01b360fa157b30ee547dd49b17500f"
+}

@@ -1,0 +1,859 @@
+{
+  "plan": {
+    "schema": "menia-prospective-binding-discovery-plan-v1",
+    "model": {
+      "id": "Qwen/Qwen3-4B",
+      "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+    },
+    "settings": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "do_sample": true,
+      "max_new_tokens": 32,
+      "max_input_tokens": 1792,
+      "enable_thinking": false,
+      "dtype": "bfloat16",
+      "attention": "sdpa",
+      "quantization": "none",
+      "repetition_penalty": 1.0,
+      "renormalize_logits": true,
+      "use_cache": true
+    },
+    "maxContextTokens": 2048,
+    "cases": [
+      {
+        "id": 0,
+        "bindings": 4,
+        "targetIndex": 0,
+        "targetKey": "LUMA",
+        "expected": 0,
+        "values": [
+          0,
+          1,
+          1,
+          0
+        ],
+        "seed": 2026092030,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Suis le format demandé à chaque tour."
+          },
+          {
+            "role": "user",
+            "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 0\nNERI = 1\nVAKO = 1\nSUDI = 0\nRéponds uniquement OK pour confirmer."
+          }
+        ],
+        "queries": {
+          "forecast": "Avant de répondre à la prochaine question, prévois si ta réponse sera correcte. La question sera : Quelle valeur est associée à LUMA dans le tableau mémorisé ? Réponds uniquement par 0 ou 1. Ne donne pas sa réponse maintenant. Réponds uniquement par 0 si tu prévois une réponse incorrecte, ou par 1 si tu prévois une réponse correcte.",
+          "task": "Quelle valeur est associée à LUMA dans le tableau mémorisé ? Réponds uniquement par 0 ou 1."
+        }
+      },
+      {
+        "id": 1,
+        "bindings": 4,
+        "targetIndex": 0,
+        "targetKey": "LUMA",
+        "expected": 1,
+        "values": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "seed": 2026092031,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Suis le format demandé à chaque tour."
+          },
+          {
+            "role": "user",
+            "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 1\nVAKO = 0\nSUDI = 0\nRéponds uniquement OK pour confirmer."
+          }
+        ],
+        "queries": {
+          "forecast": "Avant de répondre à la prochaine question, prévois si ta réponse sera correcte. La question sera : Quelle valeur est associée à LUMA dans le tableau mémorisé ? Réponds uniquement par 0 ou 1. Ne donne pas sa réponse maintenant. Réponds uniquement par 0 si tu prévois une réponse incorrecte, ou par 1 si tu prévois une réponse correcte.",
+          "task": "Quelle valeur est associée à LUMA dans le tableau mémorisé ? Réponds uniquement par 0 ou 1."
+        }
+      },
+      {
+        "id": 2,
+        "bindings": 4,
+        "targetIndex": 1,
+        "targetKey": "NERI",
+        "expected": 0,
+        "values": [
+          1,
+          0,
+          1,
+          0
+        ],
+        "seed": 2026092032,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Suis le format demandé à chaque tour."
+          },
+          {
+            "role": "user",
+            "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 0\nVAKO = 1\nSUDI = 0\nRéponds uniquement OK pour confirmer."
+          }
+        ],
+        "queries": {
+          "forecast": "Avant de répondre à la prochaine question, prévois si ta réponse sera correcte. La question sera : Quelle valeur est associée à NERI dans le tableau mémorisé ? Réponds uniquement par 0 ou 1. Ne donne pas sa réponse maintenant. Réponds uniquement par 0 si tu prévois une réponse incorrecte, ou par 1 si tu prévois une réponse correcte.",
+          "task": "Quelle valeur est associée à NERI dans le tableau mémorisé ? Réponds uniquement par 0 ou 1."
+        }
+      },
+      {
+        "id": 3,
+        "bindings": 4,
+        "targetIndex": 1,
+        "targetKey": "NERI",
+        "expected": 1,
+        "values": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "seed": 2026092033,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Suis le format demandé à chaque tour."
+          },
+          {
+            "role": "user",
+            "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 1\nVAKO = 0\nSUDI = 0\nRéponds uniquement OK pour confirmer."
+          }
+        ],
+        "queries": {
+          "forecast": "Avant de répondre à la prochaine question, prévois si ta réponse sera correcte. La question sera : Quelle valeur est associée à NERI dans le tableau mémorisé ? Réponds uniquement par 0 ou 1. Ne donne pas sa réponse maintenant. Réponds uniquement par 0 si tu prévois une réponse incorrecte, ou par 1 si tu prévois une réponse correcte.",
+          "task": "Quelle valeur est associée à NERI dans le tableau mémorisé ? Réponds uniquement par 0 ou 1."
+        }
+      },
+      {
+        "id": 4,
+        "bindings": 4,
+        "targetIndex": 2,
+        "targetKey": "VAKO",
+        "expected": 0,
+        "values": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "seed": 2026092034,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Suis le format demandé à chaque tour."
+          },
+          {
+            "role": "user",
+            "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 1\nVAKO = 0\nSUDI = 0\nRéponds uniquement OK pour confirmer."
+          }
+        ],
+        "queries": {
+          "forecast": "Avant de répondre à la prochaine question, prévois si ta réponse sera correcte. La question sera : Quelle valeur est associée à VAKO dans le tableau mémorisé ? Réponds uniquement par 0 ou 1. Ne donne pas sa réponse maintenant. Réponds uniquement par 0 si tu prévois une réponse incorrecte, ou par 1 si tu prévois une réponse correcte.",
+          "task": "Quelle valeur est associée à VAKO dans le tableau mémorisé ? Réponds uniquement par 0 ou 1."
+        }
+      },
+      {
+        "id": 5,
+        "bindings": 4,
+        "targetIndex": 2,
+        "targetKey": "VAKO",
+        "expected": 1,
+        "values": [
+          0,
+          1,
+          1,
+          0
+        ],
+        "seed": 2026092035,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Suis le format demandé à chaque tour."
+          },
+          {
+            "role": "user",
+            "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 0\nNERI = 1\nVAKO = 1\nSUDI = 0\nRéponds uniquement OK pour confirmer."
+          }
+        ],
+        "queries": {
+          "forecast": "Avant de répondre à la prochaine question, prévois si ta réponse sera correcte. La question sera : Quelle valeur est associée à VAKO dans le tableau mémorisé ? Réponds uniquement par 0 ou 1. Ne donne pas sa réponse maintenant. Réponds uniquement par 0 si tu prévois une réponse incorrecte, ou par 1 si tu prévois une réponse correcte.",
+          "task": "Quelle valeur est associée à VAKO dans le tableau mémorisé ? Réponds uniquement par 0 ou 1."
+        }
+      },
+      {
+        "id": 6,
+        "bindings": 4,
+        "targetIndex": 3,
+        "targetKey": "SUDI",
+        "expected": 0,
+        "values": [
+          0,
+          1,
+          1,
+          0
+        ],
+        "seed": 2026092036,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Suis le format demandé à chaque tour."
+          },
+          {
+            "role": "user",
+            "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 0\nNERI = 1\nVAKO = 1\nSUDI = 0\nRéponds uniquement OK pour confirmer."
+          }
+        ],
+        "queries": {
+          "forecast": "Avant de répondre à la prochaine question, prévois si ta réponse sera correcte. La question sera : Quelle valeur est associée à SUDI dans le tableau mémorisé ? Réponds uniquement par 0 ou 1. Ne donne pas sa réponse maintenant. Réponds uniquement par 0 si tu prévois une réponse incorrecte, ou par 1 si tu prévois une réponse correcte.",
+          "task": "Quelle valeur est associée à SUDI dans le tableau mémorisé ? Réponds uniquement par 0 ou 1."
+        }
+      },
+      {
+        "id": 7,
+        "bindings": 4,
+        "targetIndex": 3,
+        "targetKey": "SUDI",
+        "expected": 1,
+        "values": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "seed": 2026092037,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Suis le format demandé à chaque tour."
+          },
+          {
+            "role": "user",
+            "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 0\nNERI = 1\nVAKO = 0\nSUDI = 1\nRéponds uniquement OK pour confirmer."
+          }
+        ],
+        "queries": {
+          "forecast": "Avant de répondre à la prochaine question, prévois si ta réponse sera correcte. La question sera : Quelle valeur est associée à SUDI dans le tableau mémorisé ? Réponds uniquement par 0 ou 1. Ne donne pas sa réponse maintenant. Réponds uniquement par 0 si tu prévois une réponse incorrecte, ou par 1 si tu prévois une réponse correcte.",
+          "task": "Quelle valeur est associée à SUDI dans le tableau mémorisé ? Réponds uniquement par 0 ou 1."
+        }
+      },
+      {
+        "id": 8,
+        "bindings": 8,
+        "targetIndex": 0,
+        "targetKey": "LUMA",
+        "expected": 0,
+        "values": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        "seed": 2026092038,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Suis le format demandé à chaque tour."
+          },
+          {
+            "role": "user",
+            "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 0\nNERI = 0\nVAKO = 0\nSUDI = 1\nPELA = 0\nTOVI = 1\nZERA = 1\nMIKO = 1\nRéponds uniquement OK pour confirmer."
+          }
+        ],
+        "queries": {
+          "forecast": "Avant de répondre à la prochaine question, prévois si ta réponse sera correcte. La question sera : Quelle valeur est associée à LUMA dans le tableau mémorisé ? Réponds uniquement par 0 ou 1. Ne donne pas sa réponse maintenant. Réponds uniquement par 0 si tu prévois une réponse incorrecte, ou par 1 si tu prévois une réponse correcte.",
+          "task": "Quelle valeur est associée à LUMA dans le tableau mémorisé ? Réponds uniquement par 0 ou 1."
+        }
+      },
+      {
+        "id": 9,
+        "bindings": 8,
+        "targetIndex": 0,
+        "targetKey": "LUMA",
+        "expected": 1,
+        "values": [
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0
+        ],
+        "seed": 2026092039,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Suis le format demandé à chaque tour."
+          },
+          {
+            "role": "user",
+            "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 0\nVAKO = 0\nSUDI = 1\nPELA = 0\nTOVI = 1\nZERA = 1\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+          }
+        ],
+        "queries": {
+          "forecast": "Avant de répondre à la prochaine question, prévois si ta réponse sera correcte. La question sera : Quelle valeur est associée à LUMA dans le tableau mémorisé ? Réponds uniquement par 0 ou 1. Ne donne pas sa réponse maintenant. Réponds uniquement par 0 si tu prévois une réponse incorrecte, ou par 1 si tu prévois une réponse correcte.",
+          "task": "Quelle valeur est associée à LUMA dans le tableau mémorisé ? Réponds uniquement par 0 ou 1."
+        }
+      },
+      {
+        "id": 10,
+        "bindings": 8,
+        "targetIndex": 1,
+        "targetKey": "NERI",
+        "expected": 0,
+        "values": [
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0
+        ],
+        "seed": 2026092040,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Suis le format demandé à chaque tour."
+          },
+          {
+            "role": "user",
+            "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 0\nNERI = 0\nVAKO = 1\nSUDI = 1\nPELA = 0\nTOVI = 1\nZERA = 1\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+          }
+        ],
+        "queries": {
+          "forecast": "Avant de répondre à la prochaine question, prévois si ta réponse sera correcte. La question sera : Quelle valeur est associée à NERI dans le tableau mémorisé ? Réponds uniquement par 0 ou 1. Ne donne pas sa réponse maintenant. Réponds uniquement par 0 si tu prévois une réponse incorrecte, ou par 1 si tu prévois une réponse correcte.",
+          "task": "Quelle valeur est associée à NERI dans le tableau mémorisé ? Réponds uniquement par 0 ou 1."
+        }
+      },
+      {
+        "id": 11,
+        "bindings": 8,
+        "targetIndex": 1,
+        "targetKey": "NERI",
+        "expected": 1,
+        "values": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0
+        ],
+        "seed": 2026092041,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Suis le format demandé à chaque tour."
+          },
+          {
+            "role": "user",
+            "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 0\nNERI = 1\nVAKO = 0\nSUDI = 1\nPELA = 0\nTOVI = 1\nZERA = 1\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+          }
+        ],
+        "queries": {
+          "forecast": "Avant de répondre à la prochaine question, prévois si ta réponse sera correcte. La question sera : Quelle valeur est associée à NERI dans le tableau mémorisé ? Réponds uniquement par 0 ou 1. Ne donne pas sa réponse maintenant. Réponds uniquement par 0 si tu prévois une réponse incorrecte, ou par 1 si tu prévois une réponse correcte.",
+          "task": "Quelle valeur est associée à NERI dans le tableau mémorisé ? Réponds uniquement par 0 ou 1."
+        }
+      },
+      {
+        "id": 12,
+        "bindings": 8,
+        "targetIndex": 2,
+        "targetKey": "VAKO",
+        "expected": 0,
+        "values": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        "seed": 2026092042,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Suis le format demandé à chaque tour."
+          },
+          {
+            "role": "user",
+            "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 1\nVAKO = 0\nSUDI = 0\nPELA = 1\nTOVI = 0\nZERA = 1\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+          }
+        ],
+        "queries": {
+          "forecast": "Avant de répondre à la prochaine question, prévois si ta réponse sera correcte. La question sera : Quelle valeur est associée à VAKO dans le tableau mémorisé ? Réponds uniquement par 0 ou 1. Ne donne pas sa réponse maintenant. Réponds uniquement par 0 si tu prévois une réponse incorrecte, ou par 1 si tu prévois une réponse correcte.",
+          "task": "Quelle valeur est associée à VAKO dans le tableau mémorisé ? Réponds uniquement par 0 ou 1."
+        }
+      },
+      {
+        "id": 13,
+        "bindings": 8,
+        "targetIndex": 2,
+        "targetKey": "VAKO",
+        "expected": 1,
+        "values": [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "seed": 2026092043,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Suis le format demandé à chaque tour."
+          },
+          {
+            "role": "user",
+            "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 1\nVAKO = 1\nSUDI = 0\nPELA = 0\nTOVI = 0\nZERA = 1\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+          }
+        ],
+        "queries": {
+          "forecast": "Avant de répondre à la prochaine question, prévois si ta réponse sera correcte. La question sera : Quelle valeur est associée à VAKO dans le tableau mémorisé ? Réponds uniquement par 0 ou 1. Ne donne pas sa réponse maintenant. Réponds uniquement par 0 si tu prévois une réponse incorrecte, ou par 1 si tu prévois une réponse correcte.",
+          "task": "Quelle valeur est associée à VAKO dans le tableau mémorisé ? Réponds uniquement par 0 ou 1."
+        }
+      },
+      {
+        "id": 14,
+        "bindings": 8,
+        "targetIndex": 3,
+        "targetKey": "SUDI",
+        "expected": 0,
+        "values": [
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "seed": 2026092044,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Suis le format demandé à chaque tour."
+          },
+          {
+            "role": "user",
+            "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 1\nVAKO = 1\nSUDI = 0\nPELA = 0\nTOVI = 1\nZERA = 0\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+          }
+        ],
+        "queries": {
+          "forecast": "Avant de répondre à la prochaine question, prévois si ta réponse sera correcte. La question sera : Quelle valeur est associée à SUDI dans le tableau mémorisé ? Réponds uniquement par 0 ou 1. Ne donne pas sa réponse maintenant. Réponds uniquement par 0 si tu prévois une réponse incorrecte, ou par 1 si tu prévois une réponse correcte.",
+          "task": "Quelle valeur est associée à SUDI dans le tableau mémorisé ? Réponds uniquement par 0 ou 1."
+        }
+      },
+      {
+        "id": 15,
+        "bindings": 8,
+        "targetIndex": 3,
+        "targetKey": "SUDI",
+        "expected": 1,
+        "values": [
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0
+        ],
+        "seed": 2026092045,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Suis le format demandé à chaque tour."
+          },
+          {
+            "role": "user",
+            "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 1\nVAKO = 0\nSUDI = 1\nPELA = 0\nTOVI = 1\nZERA = 0\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+          }
+        ],
+        "queries": {
+          "forecast": "Avant de répondre à la prochaine question, prévois si ta réponse sera correcte. La question sera : Quelle valeur est associée à SUDI dans le tableau mémorisé ? Réponds uniquement par 0 ou 1. Ne donne pas sa réponse maintenant. Réponds uniquement par 0 si tu prévois une réponse incorrecte, ou par 1 si tu prévois une réponse correcte.",
+          "task": "Quelle valeur est associée à SUDI dans le tableau mémorisé ? Réponds uniquement par 0 ou 1."
+        }
+      },
+      {
+        "id": 16,
+        "bindings": 8,
+        "targetIndex": 4,
+        "targetKey": "PELA",
+        "expected": 0,
+        "values": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1
+        ],
+        "seed": 2026092046,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Suis le format demandé à chaque tour."
+          },
+          {
+            "role": "user",
+            "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 0\nVAKO = 0\nSUDI = 0\nPELA = 0\nTOVI = 1\nZERA = 1\nMIKO = 1\nRéponds uniquement OK pour confirmer."
+          }
+        ],
+        "queries": {
+          "forecast": "Avant de répondre à la prochaine question, prévois si ta réponse sera correcte. La question sera : Quelle valeur est associée à PELA dans le tableau mémorisé ? Réponds uniquement par 0 ou 1. Ne donne pas sa réponse maintenant. Réponds uniquement par 0 si tu prévois une réponse incorrecte, ou par 1 si tu prévois une réponse correcte.",
+          "task": "Quelle valeur est associée à PELA dans le tableau mémorisé ? Réponds uniquement par 0 ou 1."
+        }
+      },
+      {
+        "id": 17,
+        "bindings": 8,
+        "targetIndex": 4,
+        "targetKey": "PELA",
+        "expected": 1,
+        "values": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1
+        ],
+        "seed": 2026092047,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Suis le format demandé à chaque tour."
+          },
+          {
+            "role": "user",
+            "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 0\nVAKO = 0\nSUDI = 0\nPELA = 1\nTOVI = 1\nZERA = 0\nMIKO = 1\nRéponds uniquement OK pour confirmer."
+          }
+        ],
+        "queries": {
+          "forecast": "Avant de répondre à la prochaine question, prévois si ta réponse sera correcte. La question sera : Quelle valeur est associée à PELA dans le tableau mémorisé ? Réponds uniquement par 0 ou 1. Ne donne pas sa réponse maintenant. Réponds uniquement par 0 si tu prévois une réponse incorrecte, ou par 1 si tu prévois une réponse correcte.",
+          "task": "Quelle valeur est associée à PELA dans le tableau mémorisé ? Réponds uniquement par 0 ou 1."
+        }
+      },
+      {
+        "id": 18,
+        "bindings": 8,
+        "targetIndex": 5,
+        "targetKey": "TOVI",
+        "expected": 0,
+        "values": [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "seed": 2026092048,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Suis le format demandé à chaque tour."
+          },
+          {
+            "role": "user",
+            "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 1\nVAKO = 1\nSUDI = 0\nPELA = 0\nTOVI = 0\nZERA = 0\nMIKO = 1\nRéponds uniquement OK pour confirmer."
+          }
+        ],
+        "queries": {
+          "forecast": "Avant de répondre à la prochaine question, prévois si ta réponse sera correcte. La question sera : Quelle valeur est associée à TOVI dans le tableau mémorisé ? Réponds uniquement par 0 ou 1. Ne donne pas sa réponse maintenant. Réponds uniquement par 0 si tu prévois une réponse incorrecte, ou par 1 si tu prévois une réponse correcte.",
+          "task": "Quelle valeur est associée à TOVI dans le tableau mémorisé ? Réponds uniquement par 0 ou 1."
+        }
+      },
+      {
+        "id": 19,
+        "bindings": 8,
+        "targetIndex": 5,
+        "targetKey": "TOVI",
+        "expected": 1,
+        "values": [
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1
+        ],
+        "seed": 2026092049,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Suis le format demandé à chaque tour."
+          },
+          {
+            "role": "user",
+            "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 0\nNERI = 1\nVAKO = 1\nSUDI = 0\nPELA = 0\nTOVI = 1\nZERA = 0\nMIKO = 1\nRéponds uniquement OK pour confirmer."
+          }
+        ],
+        "queries": {
+          "forecast": "Avant de répondre à la prochaine question, prévois si ta réponse sera correcte. La question sera : Quelle valeur est associée à TOVI dans le tableau mémorisé ? Réponds uniquement par 0 ou 1. Ne donne pas sa réponse maintenant. Réponds uniquement par 0 si tu prévois une réponse incorrecte, ou par 1 si tu prévois une réponse correcte.",
+          "task": "Quelle valeur est associée à TOVI dans le tableau mémorisé ? Réponds uniquement par 0 ou 1."
+        }
+      },
+      {
+        "id": 20,
+        "bindings": 8,
+        "targetIndex": 6,
+        "targetKey": "ZERA",
+        "expected": 0,
+        "values": [
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0
+        ],
+        "seed": 2026092050,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Suis le format demandé à chaque tour."
+          },
+          {
+            "role": "user",
+            "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 1\nVAKO = 0\nSUDI = 1\nPELA = 0\nTOVI = 1\nZERA = 0\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+          }
+        ],
+        "queries": {
+          "forecast": "Avant de répondre à la prochaine question, prévois si ta réponse sera correcte. La question sera : Quelle valeur est associée à ZERA dans le tableau mémorisé ? Réponds uniquement par 0 ou 1. Ne donne pas sa réponse maintenant. Réponds uniquement par 0 si tu prévois une réponse incorrecte, ou par 1 si tu prévois une réponse correcte.",
+          "task": "Quelle valeur est associée à ZERA dans le tableau mémorisé ? Réponds uniquement par 0 ou 1."
+        }
+      },
+      {
+        "id": 21,
+        "bindings": 8,
+        "targetIndex": 6,
+        "targetKey": "ZERA",
+        "expected": 1,
+        "values": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0
+        ],
+        "seed": 2026092051,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Suis le format demandé à chaque tour."
+          },
+          {
+            "role": "user",
+            "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 1\nVAKO = 0\nSUDI = 0\nPELA = 0\nTOVI = 1\nZERA = 1\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+          }
+        ],
+        "queries": {
+          "forecast": "Avant de répondre à la prochaine question, prévois si ta réponse sera correcte. La question sera : Quelle valeur est associée à ZERA dans le tableau mémorisé ? Réponds uniquement par 0 ou 1. Ne donne pas sa réponse maintenant. Réponds uniquement par 0 si tu prévois une réponse incorrecte, ou par 1 si tu prévois une réponse correcte.",
+          "task": "Quelle valeur est associée à ZERA dans le tableau mémorisé ? Réponds uniquement par 0 ou 1."
+        }
+      },
+      {
+        "id": 22,
+        "bindings": 8,
+        "targetIndex": 7,
+        "targetKey": "MIKO",
+        "expected": 0,
+        "values": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        "seed": 2026092052,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Suis le format demandé à chaque tour."
+          },
+          {
+            "role": "user",
+            "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 1\nVAKO = 0\nSUDI = 0\nPELA = 1\nTOVI = 0\nZERA = 1\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+          }
+        ],
+        "queries": {
+          "forecast": "Avant de répondre à la prochaine question, prévois si ta réponse sera correcte. La question sera : Quelle valeur est associée à MIKO dans le tableau mémorisé ? Réponds uniquement par 0 ou 1. Ne donne pas sa réponse maintenant. Réponds uniquement par 0 si tu prévois une réponse incorrecte, ou par 1 si tu prévois une réponse correcte.",
+          "task": "Quelle valeur est associée à MIKO dans le tableau mémorisé ? Réponds uniquement par 0 ou 1."
+        }
+      },
+      {
+        "id": 23,
+        "bindings": 8,
+        "targetIndex": 7,
+        "targetKey": "MIKO",
+        "expected": 1,
+        "values": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1
+        ],
+        "seed": 2026092053,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Suis le format demandé à chaque tour."
+          },
+          {
+            "role": "user",
+            "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 0\nVAKO = 0\nSUDI = 0\nPELA = 1\nTOVI = 0\nZERA = 1\nMIKO = 1\nRéponds uniquement OK pour confirmer."
+          }
+        ],
+        "queries": {
+          "forecast": "Avant de répondre à la prochaine question, prévois si ta réponse sera correcte. La question sera : Quelle valeur est associée à MIKO dans le tableau mémorisé ? Réponds uniquement par 0 ou 1. Ne donne pas sa réponse maintenant. Réponds uniquement par 0 si tu prévois une réponse incorrecte, ou par 1 si tu prévois une réponse correcte.",
+          "task": "Quelle valeur est associée à MIKO dans le tableau mémorisé ? Réponds uniquement par 0 ou 1."
+        }
+      }
+    ],
+    "conditions": [
+      "actual",
+      "same_schedule",
+      "values_permuted",
+      "joint_permuted",
+      "restored"
+    ],
+    "intervention": {
+      "layers": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "permutation": "pair observed 0-bit positions with observed 1-bit positions; fix every other prefix position",
+      "valuesMode": "values_only",
+      "jointMode": "keys_and_values",
+      "restoration": "inverse of the same involutive binding-position permutation"
+    },
+    "branches": {
+      "forecast": {
+        "codes": [
+          "0",
+          "1"
+        ],
+        "negative": "incorrect",
+        "positive": "correct"
+      },
+      "task": {
+        "codes": [
+          "0",
+          "1"
+        ],
+        "negative": "zero",
+        "positive": "one"
+      }
+    },
+    "exportActualCacheCases": [
+      0,
+      8
+    ],
+    "plannedGenerations": 24,
+    "plannedForecasts": 120,
+    "plannedTasks": 120,
+    "forecastDirectionMargin": 0.01,
+    "weightUpdates": 0,
+    "order": "All 24 states, then all 120 forecasts, then all 120 tasks; condition order rotates with case id.",
+    "strictControls": [
+      "same_schedule_cache_exact",
+      "restored_cache_exact",
+      "tokens_unchanged",
+      "parameters_unchanged",
+      "same_schedule_branches_exact",
+      "restored_branches_exact"
+    ],
+    "failurePolicy": "Preserve one attempt. Stop on technical exception or strict-control failure; no retry, replacement, threshold adjustment or case exclusion.",
+    "scope": "Exploratory targeted-position intervention and untrained native forecast on reused cases. No trained comparator, decision utility, consciousness or novelty criterion.",
+    "parentJournalSHA256": "c6dc799fe513a6b4ab24203571ac061091dc03690112dd201b174aa54e40ff92",
+    "preparedMaskSHA256": "7b4088c95c382a1aef85b439218086af5f6aebcf5c4da70f22fa8f3820ffaa44",
+    "baselinePolicy": "Reproduce all 24 actual raw generations, metrics and cache hashes; reproduce all 48 actual branch records exactly. Stop and preserve any mismatch.",
+    "dataReuse": "The same 24 already examined cases from the global-permutation discovery; no new held-out confirmation."
+  },
+  "planHash": "2c989ccb0bffcac8c21e2aa1ccfeaf80cdee86836bf81af390f5180699aafe80",
+  "sourceHash": "74fff10f15028a7d5ddcb791554977b1e67dc5696b7db1f8316b6a243a95d2a5"
+}

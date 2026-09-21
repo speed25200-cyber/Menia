@@ -1,0 +1,1694 @@
+{
+  "schema": "menia-ranking-training-diagnostic-v1",
+  "origin": "actual_training_preupdate_metrics",
+  "diagnosticOnly": true,
+  "journalSHA256": "eb27907387de279f6dd98cb5c37f186125f4221ab2bf413e39d931c197187e5c",
+  "scienceSourceHash": "12489c817466d98892b43e249fdd7a25d360522770af820c0bfefefda7d87129",
+  "planHash": "83d81c430208ab1c4f0f970e232e190e19be22af43ee4c2a3f554586efbb9b9c",
+  "trainingSteps": 1296,
+  "completedAdapters": 9,
+  "recordedEvaluationCalls": 0,
+  "matchedFirstForwardMetrics": [
+    true,
+    true,
+    true
+  ],
+  "units": {
+    "r0-ce": {
+      "replication": 0,
+      "arm": "ce",
+      "epochs": [
+        {
+          "eligiblePairs": 85,
+          "correctlyOrdered": 39,
+          "tied": 5,
+          "reversed": 41,
+          "orderingCredit": 0.48823529411764705,
+          "meanSignedMargin": 0.075,
+          "meanAbsoluteMargin": 1.0808823529411764,
+          "meanLogisticRankingLoss": 0.872083877019829,
+          "epoch": 1,
+          "steps": 72,
+          "examples": 576,
+          "allPairs": 288,
+          "meanPointwiseCodeEOSLoss": 0.8432802827680873,
+          "meanActualAuxiliaryLossAllPairs": 0.0,
+          "meanRecordedObjective": 0.8432802827680873,
+          "meanPreclipGradientNorm": 4.3615753754145565,
+          "clippingSteps": 44,
+          "withinCell": {
+            "countA/8": {
+              "eligiblePairs": 40,
+              "correctlyOrdered": 21,
+              "tied": 2,
+              "reversed": 17,
+              "orderingCredit": 0.55,
+              "meanSignedMargin": 0.175,
+              "meanAbsoluteMargin": 1.15625,
+              "meanLogisticRankingLoss": 0.8281395909864523,
+              "examples": 96
+            },
+            "countA/24": {
+              "eligiblePairs": 22,
+              "correctlyOrdered": 8,
+              "tied": 2,
+              "reversed": 12,
+              "orderingCredit": 0.4090909090909091,
+              "meanSignedMargin": 0.10795454545454546,
+              "meanAbsoluteMargin": 0.5738636363636364,
+              "meanLogisticRankingLoss": 0.7212263512629135,
+              "examples": 96
+            },
+            "countA/64": {
+              "eligiblePairs": 6,
+              "correctlyOrdered": 2,
+              "tied": 0,
+              "reversed": 4,
+              "orderingCredit": 0.3333333333333333,
+              "meanSignedMargin": -0.125,
+              "meanAbsoluteMargin": 0.5416666666666666,
+              "meanLogisticRankingLoss": 0.7953187307748273,
+              "examples": 96
+            },
+            "alternatingSum/2": {
+              "eligiblePairs": 6,
+              "correctlyOrdered": 5,
+              "tied": 0,
+              "reversed": 1,
+              "orderingCredit": 0.8333333333333334,
+              "meanSignedMargin": 1.5416666666666667,
+              "meanAbsoluteMargin": 2.375,
+              "meanLogisticRankingLoss": 0.5447696913255552,
+              "examples": 96
+            },
+            "alternatingSum/4": {
+              "eligiblePairs": 10,
+              "correctlyOrdered": 2,
+              "tied": 1,
+              "reversed": 7,
+              "orderingCredit": 0.25,
+              "meanSignedMargin": -1.2,
+              "meanAbsoluteMargin": 1.5,
+              "meanLogisticRankingLoss": 1.6619958662660885,
+              "examples": 96
+            },
+            "alternatingSum/8": {
+              "eligiblePairs": 1,
+              "correctlyOrdered": 1,
+              "tied": 0,
+              "reversed": 0,
+              "orderingCredit": 1.0,
+              "meanSignedMargin": 0.5,
+              "meanAbsoluteMargin": 0.5,
+              "meanLogisticRankingLoss": 0.4740769841801067,
+              "examples": 96
+            }
+          }
+        },
+        {
+          "eligiblePairs": 85,
+          "correctlyOrdered": 42,
+          "tied": 9,
+          "reversed": 34,
+          "orderingCredit": 0.5470588235294118,
+          "meanSignedMargin": 0.17941176470588235,
+          "meanAbsoluteMargin": 0.65,
+          "meanLogisticRankingLoss": 0.6912291927841556,
+          "epoch": 2,
+          "steps": 72,
+          "examples": 576,
+          "allPairs": 288,
+          "meanPointwiseCodeEOSLoss": 0.19204762313515605,
+          "meanActualAuxiliaryLossAllPairs": 0.0,
+          "meanRecordedObjective": 0.19204762313515605,
+          "meanPreclipGradientNorm": 0.9683981128036976,
+          "clippingSteps": 26,
+          "withinCell": {
+            "countA/8": {
+              "eligiblePairs": 40,
+              "correctlyOrdered": 22,
+              "tied": 3,
+              "reversed": 15,
+              "orderingCredit": 0.5875,
+              "meanSignedMargin": 0.15625,
+              "meanAbsoluteMargin": 0.70625,
+              "meanLogisticRankingLoss": 0.7047495268552739,
+              "examples": 96
+            },
+            "countA/24": {
+              "eligiblePairs": 22,
+              "correctlyOrdered": 6,
+              "tied": 5,
+              "reversed": 11,
+              "orderingCredit": 0.38636363636363635,
+              "meanSignedMargin": -0.03409090909090909,
+              "meanAbsoluteMargin": 0.3409090909090909,
+              "meanLogisticRankingLoss": 0.7473520219558687,
+              "examples": 96
+            },
+            "countA/64": {
+              "eligiblePairs": 6,
+              "correctlyOrdered": 4,
+              "tied": 0,
+              "reversed": 2,
+              "orderingCredit": 0.6666666666666666,
+              "meanSignedMargin": 0.125,
+              "meanAbsoluteMargin": 0.2916666666666667,
+              "meanLogisticRankingLoss": 0.6429362572122744,
+              "examples": 96
+            },
+            "alternatingSum/2": {
+              "eligiblePairs": 6,
+              "correctlyOrdered": 5,
+              "tied": 0,
+              "reversed": 1,
+              "orderingCredit": 0.8333333333333334,
+              "meanSignedMargin": 1.3125,
+              "meanAbsoluteMargin": 1.3958333333333333,
+              "meanLogisticRankingLoss": 0.29992430003098675,
+              "examples": 96
+            },
+            "alternatingSum/4": {
+              "eligiblePairs": 10,
+              "correctlyOrdered": 5,
+              "tied": 1,
+              "reversed": 4,
+              "orderingCredit": 0.55,
+              "meanSignedMargin": 0.175,
+              "meanAbsoluteMargin": 0.875,
+              "meanLogisticRankingLoss": 0.741189180767708,
+              "examples": 96
+            },
+            "alternatingSum/8": {
+              "eligiblePairs": 1,
+              "correctlyOrdered": 0,
+              "tied": 0,
+              "reversed": 1,
+              "orderingCredit": 0.0,
+              "meanSignedMargin": -0.625,
+              "meanAbsoluteMargin": 0.625,
+              "meanLogisticRankingLoss": 1.0537006782765186,
+              "examples": 96
+            }
+          }
+        }
+      ],
+      "epoch2MinusEpoch1": {
+        "meanPointwiseCodeEOSLoss": -0.6512326596329312,
+        "meanSignedMargin": 0.10441176470588236,
+        "orderingCredit": 0.058823529411764774,
+        "meanLogisticRankingLoss": -0.1808546842356734
+      }
+    },
+    "r0-rank": {
+      "replication": 0,
+      "arm": "rank",
+      "epochs": [
+        {
+          "eligiblePairs": 85,
+          "correctlyOrdered": 42,
+          "tied": 1,
+          "reversed": 42,
+          "orderingCredit": 0.5,
+          "meanSignedMargin": 0.11911764705882352,
+          "meanAbsoluteMargin": 1.1544117647058822,
+          "meanLogisticRankingLoss": 0.8997464674068422,
+          "epoch": 1,
+          "steps": 72,
+          "examples": 576,
+          "allPairs": 288,
+          "meanPointwiseCodeEOSLoss": 0.8826674391071619,
+          "meanActualAuxiliaryLossAllPairs": 0.2655501717975615,
+          "meanRecordedObjective": 1.1482176109047235,
+          "meanPreclipGradientNorm": 5.5854810525973635,
+          "clippingSteps": 59,
+          "withinCell": {
+            "countA/8": {
+              "eligiblePairs": 40,
+              "correctlyOrdered": 18,
+              "tied": 1,
+              "reversed": 21,
+              "orderingCredit": 0.4625,
+              "meanSignedMargin": 0.3375,
+              "meanAbsoluteMargin": 1.36875,
+              "meanLogisticRankingLoss": 0.8646039801613741,
+              "examples": 96
+            },
+            "countA/24": {
+              "eligiblePairs": 22,
+              "correctlyOrdered": 12,
+              "tied": 0,
+              "reversed": 10,
+              "orderingCredit": 0.5454545454545454,
+              "meanSignedMargin": 0.056818181818181816,
+              "meanAbsoluteMargin": 0.45454545454545453,
+              "meanLogisticRankingLoss": 0.7065853778101706,
+              "examples": 96
+            },
+            "countA/64": {
+              "eligiblePairs": 6,
+              "correctlyOrdered": 3,
+              "tied": 0,
+              "reversed": 3,
+              "orderingCredit": 0.5,
+              "meanSignedMargin": -0.0625,
+              "meanAbsoluteMargin": 0.4791666666666667,
+              "meanLogisticRankingLoss": 0.7633196128514692,
+              "examples": 96
+            },
+            "alternatingSum/2": {
+              "eligiblePairs": 6,
+              "correctlyOrdered": 5,
+              "tied": 0,
+              "reversed": 1,
+              "orderingCredit": 0.8333333333333334,
+              "meanSignedMargin": 1.25,
+              "meanAbsoluteMargin": 2.2916666666666665,
+              "meanLogisticRankingLoss": 0.6885591573609733,
+              "examples": 96
+            },
+            "alternatingSum/4": {
+              "eligiblePairs": 10,
+              "correctlyOrdered": 3,
+              "tied": 0,
+              "reversed": 7,
+              "orderingCredit": 0.3,
+              "meanSignedMargin": -1.25,
+              "meanAbsoluteMargin": 1.6,
+              "meanLogisticRankingLoss": 1.7251268583913315,
+              "examples": 96
+            },
+            "alternatingSum/8": {
+              "eligiblePairs": 1,
+              "correctlyOrdered": 1,
+              "tied": 0,
+              "reversed": 0,
+              "orderingCredit": 1.0,
+              "meanSignedMargin": 0.75,
+              "meanAbsoluteMargin": 0.75,
+              "meanLogisticRankingLoss": 0.38687100611489994,
+              "examples": 96
+            }
+          }
+        },
+        {
+          "eligiblePairs": 85,
+          "correctlyOrdered": 44,
+          "tied": 7,
+          "reversed": 34,
+          "orderingCredit": 0.5588235294117647,
+          "meanSignedMargin": 0.325,
+          "meanAbsoluteMargin": 0.9985294117647059,
+          "meanLogisticRankingLoss": 0.719309308430625,
+          "epoch": 2,
+          "steps": 72,
+          "examples": 576,
+          "allPairs": 288,
+          "meanPointwiseCodeEOSLoss": 0.19780605421490488,
+          "meanActualAuxiliaryLossAllPairs": 0.21229615284311068,
+          "meanRecordedObjective": 0.4101022070580156,
+          "meanPreclipGradientNorm": 2.318206357045306,
+          "clippingSteps": 57,
+          "withinCell": {
+            "countA/8": {
+              "eligiblePairs": 40,
+              "correctlyOrdered": 22,
+              "tied": 1,
+              "reversed": 17,
+              "orderingCredit": 0.5625,
+              "meanSignedMargin": 0.39375,
+              "meanAbsoluteMargin": 1.2875,
+              "meanLogisticRankingLoss": 0.7505362596179176,
+              "examples": 96
+            },
+            "countA/24": {
+              "eligiblePairs": 22,
+              "correctlyOrdered": 9,
+              "tied": 2,
+              "reversed": 11,
+              "orderingCredit": 0.45454545454545453,
+              "meanSignedMargin": -0.09659090909090909,
+              "meanAbsoluteMargin": 0.4034090909090909,
+              "meanLogisticRankingLoss": 0.7726800995761006,
+              "examples": 96
+            },
+            "countA/64": {
+              "eligiblePairs": 6,
+              "correctlyOrdered": 2,
+              "tied": 2,
+              "reversed": 2,
+              "orderingCredit": 0.5,
+              "meanSignedMargin": -0.041666666666666664,
+              "meanAbsoluteMargin": 0.20833333333333334,
+              "meanLogisticRankingLoss": 0.7230316008227547,
+              "examples": 96
+            },
+            "alternatingSum/2": {
+              "eligiblePairs": 6,
+              "correctlyOrdered": 5,
+              "tied": 1,
+              "reversed": 0,
+              "orderingCredit": 0.9166666666666666,
+              "meanSignedMargin": 2.0,
+              "meanAbsoluteMargin": 2.0,
+              "meanLogisticRankingLoss": 0.2062012311691053,
+              "examples": 96
+            },
+            "alternatingSum/4": {
+              "eligiblePairs": 10,
+              "correctlyOrdered": 6,
+              "tied": 1,
+              "reversed": 3,
+              "orderingCredit": 0.65,
+              "meanSignedMargin": 0.25,
+              "meanAbsoluteMargin": 1.1,
+              "meanLogisticRankingLoss": 0.7719542229382202,
+              "examples": 96
+            },
+            "alternatingSum/8": {
+              "eligiblePairs": 1,
+              "correctlyOrdered": 0,
+              "tied": 0,
+              "reversed": 1,
+              "orderingCredit": 0.0,
+              "meanSignedMargin": -0.25,
+              "meanAbsoluteMargin": 0.25,
+              "meanLogisticRankingLoss": 0.8259394198788436,
+              "examples": 96
+            }
+          }
+        }
+      ],
+      "epoch2MinusEpoch1": {
+        "meanPointwiseCodeEOSLoss": -0.6848613848922571,
+        "meanSignedMargin": 0.2058823529411765,
+        "orderingCredit": 0.05882352941176472,
+        "meanLogisticRankingLoss": -0.18043715897621715
+      }
+    },
+    "r0-neutral": {
+      "replication": 0,
+      "arm": "neutral",
+      "epochs": [
+        {
+          "eligiblePairs": 85,
+          "correctlyOrdered": 36,
+          "tied": 10,
+          "reversed": 39,
+          "orderingCredit": 0.4823529411764706,
+          "meanSignedMargin": -0.010294117647058823,
+          "meanAbsoluteMargin": 0.675,
+          "meanLogisticRankingLoss": 0.8259807677381301,
+          "epoch": 1,
+          "steps": 72,
+          "examples": 576,
+          "allPairs": 288,
+          "meanPointwiseCodeEOSLoss": 0.862014499527887,
+          "meanActualAuxiliaryLossAllPairs": 0.2422599477900399,
+          "meanRecordedObjective": 1.104274447317927,
+          "meanPreclipGradientNorm": 4.37755115951101,
+          "clippingSteps": 39,
+          "withinCell": {
+            "countA/8": {
+              "eligiblePairs": 40,
+              "correctlyOrdered": 15,
+              "tied": 4,
+              "reversed": 21,
+              "orderingCredit": 0.425,
+              "meanSignedMargin": 0.01875,
+              "meanAbsoluteMargin": 0.5625,
+              "meanLogisticRankingLoss": 0.7839065906538896,
+              "examples": 96
+            },
+            "countA/24": {
+              "eligiblePairs": 22,
+              "correctlyOrdered": 10,
+              "tied": 4,
+              "reversed": 8,
+              "orderingCredit": 0.5454545454545454,
+              "meanSignedMargin": 0.05113636363636364,
+              "meanAbsoluteMargin": 0.35795454545454547,
+              "meanLogisticRankingLoss": 0.7015284589928883,
+              "examples": 96
+            },
+            "countA/64": {
+              "eligiblePairs": 6,
+              "correctlyOrdered": 3,
+              "tied": 1,
+              "reversed": 2,
+              "orderingCredit": 0.5833333333333334,
+              "meanSignedMargin": -0.125,
+              "meanAbsoluteMargin": 0.375,
+              "meanLogisticRankingLoss": 0.7836590265295621,
+              "examples": 96
+            },
+            "alternatingSum/2": {
+              "eligiblePairs": 6,
+              "correctlyOrdered": 5,
+              "tied": 0,
+              "reversed": 1,
+              "orderingCredit": 0.8333333333333334,
+              "meanSignedMargin": 0.9375,
+              "meanAbsoluteMargin": 1.8958333333333333,
+              "meanLogisticRankingLoss": 0.7218678040336283,
+              "examples": 96
+            },
+            "alternatingSum/4": {
+              "eligiblePairs": 10,
+              "correctlyOrdered": 2,
+              "tied": 1,
+              "reversed": 7,
+              "orderingCredit": 0.25,
+              "meanSignedMargin": -0.8375,
+              "meanAbsoluteMargin": 1.2625,
+              "meanLogisticRankingLoss": 1.3998443544247907,
+              "examples": 96
+            },
+            "alternatingSum/8": {
+              "eligiblePairs": 1,
+              "correctlyOrdered": 1,
+              "tied": 0,
+              "reversed": 0,
+              "orderingCredit": 1.0,
+              "meanSignedMargin": 0.75,
+              "meanAbsoluteMargin": 0.75,
+              "meanLogisticRankingLoss": 0.38687100611489994,
+              "examples": 96
+            }
+          }
+        },
+        {
+          "eligiblePairs": 85,
+          "correctlyOrdered": 31,
+          "tied": 17,
+          "reversed": 37,
+          "orderingCredit": 0.4647058823529412,
+          "meanSignedMargin": 0.016176470588235296,
+          "meanAbsoluteMargin": 0.2897058823529412,
+          "meanLogisticRankingLoss": 0.7061215110008422,
+          "epoch": 2,
+          "steps": 72,
+          "examples": 576,
+          "allPairs": 288,
+          "meanPointwiseCodeEOSLoss": 0.19123814835873215,
+          "meanActualAuxiliaryLossAllPairs": 0.21079106856551436,
+          "meanRecordedObjective": 0.40202921692424654,
+          "meanPreclipGradientNorm": 0.7871573515650299,
+          "clippingSteps": 16,
+          "withinCell": {
+            "countA/8": {
+              "eligiblePairs": 40,
+              "correctlyOrdered": 18,
+              "tied": 4,
+              "reversed": 18,
+              "orderingCredit": 0.5,
+              "meanSignedMargin": -0.009375,
+              "meanAbsoluteMargin": 0.259375,
+              "meanLogisticRankingLoss": 0.7120764113337075,
+              "examples": 96
+            },
+            "countA/24": {
+              "eligiblePairs": 22,
+              "correctlyOrdered": 3,
+              "tied": 8,
+              "reversed": 11,
+              "orderingCredit": 0.3181818181818182,
+              "meanSignedMargin": -0.056818181818181816,
+              "meanAbsoluteMargin": 0.25,
+              "meanLogisticRankingLoss": 0.7422669555510498,
+              "examples": 96
+            },
+            "countA/64": {
+              "eligiblePairs": 6,
+              "correctlyOrdered": 2,
+              "tied": 2,
+              "reversed": 2,
+              "orderingCredit": 0.5,
+              "meanSignedMargin": -0.08333333333333333,
+              "meanAbsoluteMargin": 0.16666666666666666,
+              "meanLogisticRankingLoss": 0.7419181393021965,
+              "examples": 96
+            },
+            "alternatingSum/2": {
+              "eligiblePairs": 6,
+              "correctlyOrdered": 4,
+              "tied": 0,
+              "reversed": 2,
+              "orderingCredit": 0.6666666666666666,
+              "meanSignedMargin": 0.3333333333333333,
+              "meanAbsoluteMargin": 0.625,
+              "meanLogisticRankingLoss": 0.5823561443164676,
+              "examples": 96
+            },
+            "alternatingSum/4": {
+              "eligiblePairs": 10,
+              "correctlyOrdered": 4,
+              "tied": 2,
+              "reversed": 4,
+              "orderingCredit": 0.5,
+              "meanSignedMargin": 0.15,
+              "meanAbsoluteMargin": 0.4,
+              "meanLogisticRankingLoss": 0.6568606077328265,
+              "examples": 96
+            },
+            "alternatingSum/8": {
+              "eligiblePairs": 1,
+              "correctlyOrdered": 0,
+              "tied": 1,
+              "reversed": 0,
+              "orderingCredit": 0.5,
+              "meanSignedMargin": 0.0,
+              "meanAbsoluteMargin": 0.0,
+              "meanLogisticRankingLoss": 0.6931471805599453,
+              "examples": 96
+            }
+          }
+        }
+      ],
+      "epoch2MinusEpoch1": {
+        "meanPointwiseCodeEOSLoss": -0.6707763511691549,
+        "meanSignedMargin": 0.02647058823529412,
+        "orderingCredit": -0.017647058823529405,
+        "meanLogisticRankingLoss": -0.11985925673728792
+      }
+    },
+    "r1-ce": {
+      "replication": 1,
+      "arm": "ce",
+      "epochs": [
+        {
+          "eligiblePairs": 92,
+          "correctlyOrdered": 49,
+          "tied": 9,
+          "reversed": 34,
+          "orderingCredit": 0.5815217391304348,
+          "meanSignedMargin": -0.036684782608695655,
+          "meanAbsoluteMargin": 0.8573369565217391,
+          "meanLogisticRankingLoss": 0.8877632517755534,
+          "epoch": 1,
+          "steps": 72,
+          "examples": 576,
+          "allPairs": 288,
+          "meanPointwiseCodeEOSLoss": 0.7572884079626587,
+          "meanActualAuxiliaryLossAllPairs": 0.0,
+          "meanRecordedObjective": 0.7572884079626587,
+          "meanPreclipGradientNorm": 3.615637058392167,
+          "clippingSteps": 39,
+          "withinCell": {
+            "countA/8": {
+              "eligiblePairs": 48,
+              "correctlyOrdered": 26,
+              "tied": 3,
+              "reversed": 19,
+              "orderingCredit": 0.5729166666666666,
+              "meanSignedMargin": -0.20833333333333334,
+              "meanAbsoluteMargin": 1.015625,
+              "meanLogisticRankingLoss": 1.0228579598535388,
+              "examples": 96
+            },
+            "countA/24": {
+              "eligiblePairs": 29,
+              "correctlyOrdered": 18,
+              "tied": 3,
+              "reversed": 8,
+              "orderingCredit": 0.6724137931034483,
+              "meanSignedMargin": 0.03879310344827586,
+              "meanAbsoluteMargin": 0.36637931034482757,
+              "meanLogisticRankingLoss": 0.705531653663406,
+              "examples": 96
+            },
+            "countA/64": {
+              "eligiblePairs": 8,
+              "correctlyOrdered": 0,
+              "tied": 3,
+              "reversed": 5,
+              "orderingCredit": 0.1875,
+              "meanSignedMargin": -0.375,
+              "meanAbsoluteMargin": 0.375,
+              "meanLogisticRankingLoss": 0.9147905101481932,
+              "examples": 96
+            },
+            "alternatingSum/2": {
+              "eligiblePairs": 2,
+              "correctlyOrdered": 2,
+              "tied": 0,
+              "reversed": 0,
+              "orderingCredit": 1.0,
+              "meanSignedMargin": 2.375,
+              "meanAbsoluteMargin": 2.375,
+              "meanLogisticRankingLoss": 0.08954814660464841,
+              "examples": 96
+            },
+            "alternatingSum/4": {
+              "eligiblePairs": 5,
+              "correctlyOrdered": 3,
+              "tied": 0,
+              "reversed": 2,
+              "orderingCredit": 0.6,
+              "meanSignedMargin": 0.75,
+              "meanAbsoluteMargin": 2.35,
+              "meanLogisticRankingLoss": 0.9238397519494882,
+              "examples": 96
+            },
+            "alternatingSum/8": {
+              "eligiblePairs": 0,
+              "correctlyOrdered": 0,
+              "tied": 0,
+              "reversed": 0,
+              "orderingCredit": null,
+              "meanSignedMargin": null,
+              "meanAbsoluteMargin": null,
+              "meanLogisticRankingLoss": null,
+              "examples": 96
+            }
+          }
+        },
+        {
+          "eligiblePairs": 92,
+          "correctlyOrdered": 49,
+          "tied": 15,
+          "reversed": 28,
+          "orderingCredit": 0.6141304347826086,
+          "meanSignedMargin": 0.35054347826086957,
+          "meanAbsoluteMargin": 0.592391304347826,
+          "meanLogisticRankingLoss": 0.6027234987702833,
+          "epoch": 2,
+          "steps": 72,
+          "examples": 576,
+          "allPairs": 288,
+          "meanPointwiseCodeEOSLoss": 0.17072258131205822,
+          "meanActualAuxiliaryLossAllPairs": 0.0,
+          "meanRecordedObjective": 0.17072258131205822,
+          "meanPreclipGradientNorm": 0.8501933441730216,
+          "clippingSteps": 18,
+          "withinCell": {
+            "countA/8": {
+              "eligiblePairs": 48,
+              "correctlyOrdered": 28,
+              "tied": 7,
+              "reversed": 13,
+              "orderingCredit": 0.65625,
+              "meanSignedMargin": 0.5026041666666666,
+              "meanAbsoluteMargin": 0.6901041666666666,
+              "meanLogisticRankingLoss": 0.5504495733449394,
+              "examples": 96
+            },
+            "countA/24": {
+              "eligiblePairs": 29,
+              "correctlyOrdered": 15,
+              "tied": 6,
+              "reversed": 8,
+              "orderingCredit": 0.6206896551724138,
+              "meanSignedMargin": 0.14224137931034483,
+              "meanAbsoluteMargin": 0.30603448275862066,
+              "meanLogisticRankingLoss": 0.643634480128839,
+              "examples": 96
+            },
+            "countA/64": {
+              "eligiblePairs": 8,
+              "correctlyOrdered": 1,
+              "tied": 1,
+              "reversed": 6,
+              "orderingCredit": 0.1875,
+              "meanSignedMargin": -0.375,
+              "meanAbsoluteMargin": 0.4375,
+              "meanLogisticRankingLoss": 0.911374873135969,
+              "examples": 96
+            },
+            "alternatingSum/2": {
+              "eligiblePairs": 2,
+              "correctlyOrdered": 2,
+              "tied": 0,
+              "reversed": 0,
+              "orderingCredit": 1.0,
+              "meanSignedMargin": 1.75,
+              "meanAbsoluteMargin": 1.75,
+              "meanLogisticRankingLoss": 0.19607571090538625,
+              "examples": 96
+            },
+            "alternatingSum/4": {
+              "eligiblePairs": 5,
+              "correctlyOrdered": 3,
+              "tied": 1,
+              "reversed": 1,
+              "orderingCredit": 0.7,
+              "meanSignedMargin": 0.7,
+              "meanAbsoluteMargin": 1.1,
+              "meanLogisticRankingLoss": 0.5360864071348256,
+              "examples": 96
+            },
+            "alternatingSum/8": {
+              "eligiblePairs": 0,
+              "correctlyOrdered": 0,
+              "tied": 0,
+              "reversed": 0,
+              "orderingCredit": null,
+              "meanSignedMargin": null,
+              "meanAbsoluteMargin": null,
+              "meanLogisticRankingLoss": null,
+              "examples": 96
+            }
+          }
+        }
+      ],
+      "epoch2MinusEpoch1": {
+        "meanPointwiseCodeEOSLoss": -0.5865658266506005,
+        "meanSignedMargin": 0.38722826086956524,
+        "orderingCredit": 0.032608695652173836,
+        "meanLogisticRankingLoss": -0.28503975300527007
+      }
+    },
+    "r1-rank": {
+      "replication": 1,
+      "arm": "rank",
+      "epochs": [
+        {
+          "eligiblePairs": 92,
+          "correctlyOrdered": 46,
+          "tied": 9,
+          "reversed": 37,
+          "orderingCredit": 0.5489130434782609,
+          "meanSignedMargin": -0.025815217391304348,
+          "meanAbsoluteMargin": 0.8845108695652174,
+          "meanLogisticRankingLoss": 0.9007155602752538,
+          "epoch": 1,
+          "steps": 72,
+          "examples": 576,
+          "allPairs": 288,
+          "meanPointwiseCodeEOSLoss": 0.7868247097578798,
+          "meanActualAuxiliaryLossAllPairs": 0.28772857923629797,
+          "meanRecordedObjective": 1.0745532889941778,
+          "meanPreclipGradientNorm": 4.856556141542064,
+          "clippingSteps": 63,
+          "withinCell": {
+            "countA/8": {
+              "eligiblePairs": 48,
+              "correctlyOrdered": 25,
+              "tied": 2,
+              "reversed": 21,
+              "orderingCredit": 0.5416666666666666,
+              "meanSignedMargin": -0.17708333333333334,
+              "meanAbsoluteMargin": 1.046875,
+              "meanLogisticRankingLoss": 1.032577378477418,
+              "examples": 96
+            },
+            "countA/24": {
+              "eligiblePairs": 29,
+              "correctlyOrdered": 13,
+              "tied": 7,
+              "reversed": 9,
+              "orderingCredit": 0.5689655172413793,
+              "meanSignedMargin": 0.034482758620689655,
+              "meanAbsoluteMargin": 0.3448275862068966,
+              "meanLogisticRankingLoss": 0.7101239046576716,
+              "examples": 96
+            },
+            "countA/64": {
+              "eligiblePairs": 8,
+              "correctlyOrdered": 3,
+              "tied": 0,
+              "reversed": 5,
+              "orderingCredit": 0.375,
+              "meanSignedMargin": -0.421875,
+              "meanAbsoluteMargin": 0.578125,
+              "meanLogisticRankingLoss": 0.9641183419394531,
+              "examples": 96
+            },
+            "alternatingSum/2": {
+              "eligiblePairs": 2,
+              "correctlyOrdered": 2,
+              "tied": 0,
+              "reversed": 0,
+              "orderingCredit": 1.0,
+              "meanSignedMargin": 2.0,
+              "meanAbsoluteMargin": 2.0,
+              "meanLogisticRankingLoss": 0.13021535467741724,
+              "examples": 96
+            },
+            "alternatingSum/4": {
+              "eligiblePairs": 5,
+              "correctlyOrdered": 3,
+              "tied": 0,
+              "reversed": 2,
+              "orderingCredit": 0.6,
+              "meanSignedMargin": 0.9,
+              "meanAbsoluteMargin": 2.5,
+              "meanLogisticRankingLoss": 0.9470293396928715,
+              "examples": 96
+            },
+            "alternatingSum/8": {
+              "eligiblePairs": 0,
+              "correctlyOrdered": 0,
+              "tied": 0,
+              "reversed": 0,
+              "orderingCredit": null,
+              "meanSignedMargin": null,
+              "meanAbsoluteMargin": null,
+              "meanLogisticRankingLoss": null,
+              "examples": 96
+            }
+          }
+        },
+        {
+          "eligiblePairs": 92,
+          "correctlyOrdered": 57,
+          "tied": 13,
+          "reversed": 22,
+          "orderingCredit": 0.6902173913043478,
+          "meanSignedMargin": 0.6820652173913043,
+          "meanAbsoluteMargin": 1.046195652173913,
+          "meanLogisticRankingLoss": 0.5752123044466466,
+          "epoch": 2,
+          "steps": 72,
+          "examples": 576,
+          "allPairs": 288,
+          "meanPointwiseCodeEOSLoss": 0.18672997245389902,
+          "meanActualAuxiliaryLossAllPairs": 0.18374837786217946,
+          "meanRecordedObjective": 0.37047835031607845,
+          "meanPreclipGradientNorm": 2.1491417120366045,
+          "clippingSteps": 51,
+          "withinCell": {
+            "countA/8": {
+              "eligiblePairs": 48,
+              "correctlyOrdered": 33,
+              "tied": 6,
+              "reversed": 9,
+              "orderingCredit": 0.75,
+              "meanSignedMargin": 1.078125,
+              "meanAbsoluteMargin": 1.421875,
+              "meanLogisticRankingLoss": 0.5076998704181903,
+              "examples": 96
+            },
+            "countA/24": {
+              "eligiblePairs": 29,
+              "correctlyOrdered": 18,
+              "tied": 5,
+              "reversed": 6,
+              "orderingCredit": 0.7068965517241379,
+              "meanSignedMargin": 0.27586206896551724,
+              "meanAbsoluteMargin": 0.5344827586206896,
+              "meanLogisticRankingLoss": 0.6146999399029306,
+              "examples": 96
+            },
+            "countA/64": {
+              "eligiblePairs": 8,
+              "correctlyOrdered": 1,
+              "tied": 1,
+              "reversed": 6,
+              "orderingCredit": 0.1875,
+              "meanSignedMargin": -0.375,
+              "meanAbsoluteMargin": 0.5,
+              "meanLogisticRankingLoss": 0.9208233786196673,
+              "examples": 96
+            },
+            "alternatingSum/2": {
+              "eligiblePairs": 2,
+              "correctlyOrdered": 2,
+              "tied": 0,
+              "reversed": 0,
+              "orderingCredit": 1.0,
+              "meanSignedMargin": 1.25,
+              "meanAbsoluteMargin": 1.25,
+              "meanLogisticRankingLoss": 0.2573374827504876,
+              "examples": 96
+            },
+            "alternatingSum/4": {
+              "eligiblePairs": 5,
+              "correctlyOrdered": 3,
+              "tied": 1,
+              "reversed": 1,
+              "orderingCredit": 0.7,
+              "meanSignedMargin": 0.7,
+              "meanAbsoluteMargin": 1.2,
+              "meanLogisticRankingLoss": 0.5684755954750106,
+              "examples": 96
+            },
+            "alternatingSum/8": {
+              "eligiblePairs": 0,
+              "correctlyOrdered": 0,
+              "tied": 0,
+              "reversed": 0,
+              "orderingCredit": null,
+              "meanSignedMargin": null,
+              "meanAbsoluteMargin": null,
+              "meanLogisticRankingLoss": null,
+              "examples": 96
+            }
+          }
+        }
+      ],
+      "epoch2MinusEpoch1": {
+        "meanPointwiseCodeEOSLoss": -0.6000947373039808,
+        "meanSignedMargin": 0.7078804347826086,
+        "orderingCredit": 0.14130434782608692,
+        "meanLogisticRankingLoss": -0.3255032558286072
+      }
+    },
+    "r1-neutral": {
+      "replication": 1,
+      "arm": "neutral",
+      "epochs": [
+        {
+          "eligiblePairs": 92,
+          "correctlyOrdered": 40,
+          "tied": 11,
+          "reversed": 41,
+          "orderingCredit": 0.4945652173913043,
+          "meanSignedMargin": -0.13722826086956522,
+          "meanAbsoluteMargin": 0.688858695652174,
+          "meanLogisticRankingLoss": 0.9069091083398435,
+          "epoch": 1,
+          "steps": 72,
+          "examples": 576,
+          "allPairs": 288,
+          "meanPointwiseCodeEOSLoss": 0.7839835057704749,
+          "meanActualAuxiliaryLossAllPairs": 0.26778867261277306,
+          "meanRecordedObjective": 1.051772178383248,
+          "meanPreclipGradientNorm": 3.808129458584719,
+          "clippingSteps": 39,
+          "withinCell": {
+            "countA/8": {
+              "eligiblePairs": 48,
+              "correctlyOrdered": 23,
+              "tied": 5,
+              "reversed": 20,
+              "orderingCredit": 0.53125,
+              "meanSignedMargin": -0.3333333333333333,
+              "meanAbsoluteMargin": 0.8125,
+              "meanLogisticRankingLoss": 1.0619015839899761,
+              "examples": 96
+            },
+            "countA/24": {
+              "eligiblePairs": 29,
+              "correctlyOrdered": 11,
+              "tied": 6,
+              "reversed": 12,
+              "orderingCredit": 0.4827586206896552,
+              "meanSignedMargin": -0.07327586206896551,
+              "meanAbsoluteMargin": 0.33189655172413796,
+              "meanLogisticRankingLoss": 0.7620256384511137,
+              "examples": 96
+            },
+            "countA/64": {
+              "eligiblePairs": 8,
+              "correctlyOrdered": 1,
+              "tied": 0,
+              "reversed": 7,
+              "orderingCredit": 0.125,
+              "meanSignedMargin": -0.3125,
+              "meanAbsoluteMargin": 0.34375,
+              "meanLogisticRankingLoss": 0.8740939021282446,
+              "examples": 96
+            },
+            "alternatingSum/2": {
+              "eligiblePairs": 2,
+              "correctlyOrdered": 2,
+              "tied": 0,
+              "reversed": 0,
+              "orderingCredit": 1.0,
+              "meanSignedMargin": 1.875,
+              "meanAbsoluteMargin": 1.875,
+              "meanLogisticRankingLoss": 0.14357608074052985,
+              "examples": 96
+            },
+            "alternatingSum/4": {
+              "eligiblePairs": 5,
+              "correctlyOrdered": 3,
+              "tied": 0,
+              "reversed": 2,
+              "orderingCredit": 0.6,
+              "meanSignedMargin": 0.85,
+              "meanAbsoluteMargin": 1.65,
+              "meanLogisticRankingLoss": 0.6171430084314882,
+              "examples": 96
+            },
+            "alternatingSum/8": {
+              "eligiblePairs": 0,
+              "correctlyOrdered": 0,
+              "tied": 0,
+              "reversed": 0,
+              "orderingCredit": null,
+              "meanSignedMargin": null,
+              "meanAbsoluteMargin": null,
+              "meanLogisticRankingLoss": null,
+              "examples": 96
+            }
+          }
+        },
+        {
+          "eligiblePairs": 92,
+          "correctlyOrdered": 44,
+          "tied": 21,
+          "reversed": 27,
+          "orderingCredit": 0.592391304347826,
+          "meanSignedMargin": 0.10190217391304347,
+          "meanAbsoluteMargin": 0.264945652173913,
+          "meanLogisticRankingLoss": 0.6624424608669525,
+          "epoch": 2,
+          "steps": 72,
+          "examples": 576,
+          "allPairs": 288,
+          "meanPointwiseCodeEOSLoss": 0.16656903068628204,
+          "meanActualAuxiliaryLossAllPairs": 0.22788960383170181,
+          "meanRecordedObjective": 0.39445863451798385,
+          "meanPreclipGradientNorm": 0.6463581448317401,
+          "clippingSteps": 14,
+          "withinCell": {
+            "countA/8": {
+              "eligiblePairs": 48,
+              "correctlyOrdered": 24,
+              "tied": 11,
+              "reversed": 13,
+              "orderingCredit": 0.6145833333333334,
+              "meanSignedMargin": 0.12760416666666666,
+              "meanAbsoluteMargin": 0.22135416666666666,
+              "meanLogisticRankingLoss": 0.6411502737335949,
+              "examples": 96
+            },
+            "countA/24": {
+              "eligiblePairs": 29,
+              "correctlyOrdered": 15,
+              "tied": 8,
+              "reversed": 6,
+              "orderingCredit": 0.6551724137931034,
+              "meanSignedMargin": 0.11637931034482758,
+              "meanAbsoluteMargin": 0.2025862068965517,
+              "meanLogisticRankingLoss": 0.6465922077446213,
+              "examples": 96
+            },
+            "countA/64": {
+              "eligiblePairs": 8,
+              "correctlyOrdered": 1,
+              "tied": 1,
+              "reversed": 6,
+              "orderingCredit": 0.1875,
+              "meanSignedMargin": -0.359375,
+              "meanAbsoluteMargin": 0.390625,
+              "meanLogisticRankingLoss": 0.901350543219944,
+              "examples": 96
+            },
+            "alternatingSum/2": {
+              "eligiblePairs": 2,
+              "correctlyOrdered": 2,
+              "tied": 0,
+              "reversed": 0,
+              "orderingCredit": 1.0,
+              "meanSignedMargin": 1.3125,
+              "meanAbsoluteMargin": 1.3125,
+              "meanLogisticRankingLoss": 0.3116649115282936,
+              "examples": 96
+            },
+            "alternatingSum/4": {
+              "eligiblePairs": 5,
+              "correctlyOrdered": 2,
+              "tied": 1,
+              "reversed": 2,
+              "orderingCredit": 0.5,
+              "meanSignedMargin": 0.025,
+              "meanAbsoluteMargin": 0.425,
+              "meanLogisticRankingLoss": 0.716837013427382,
+              "examples": 96
+            },
+            "alternatingSum/8": {
+              "eligiblePairs": 0,
+              "correctlyOrdered": 0,
+              "tied": 0,
+              "reversed": 0,
+              "orderingCredit": null,
+              "meanSignedMargin": null,
+              "meanAbsoluteMargin": null,
+              "meanLogisticRankingLoss": null,
+              "examples": 96
+            }
+          }
+        }
+      ],
+      "epoch2MinusEpoch1": {
+        "meanPointwiseCodeEOSLoss": -0.6174144750841929,
+        "meanSignedMargin": 0.2391304347826087,
+        "orderingCredit": 0.09782608695652173,
+        "meanLogisticRankingLoss": -0.24446664747289104
+      }
+    },
+    "r2-ce": {
+      "replication": 2,
+      "arm": "ce",
+      "epochs": [
+        {
+          "eligiblePairs": 86,
+          "correctlyOrdered": 41,
+          "tied": 11,
+          "reversed": 34,
+          "orderingCredit": 0.5406976744186046,
+          "meanSignedMargin": 0.1686046511627907,
+          "meanAbsoluteMargin": 1.072674418604651,
+          "meanLogisticRankingLoss": 0.8708023441701651,
+          "epoch": 1,
+          "steps": 72,
+          "examples": 576,
+          "allPairs": 288,
+          "meanPointwiseCodeEOSLoss": 0.7135185935193261,
+          "meanActualAuxiliaryLossAllPairs": 0.0,
+          "meanRecordedObjective": 0.7135185935193261,
+          "meanPreclipGradientNorm": 3.521316584775276,
+          "clippingSteps": 40,
+          "withinCell": {
+            "countA/8": {
+              "eligiblePairs": 48,
+              "correctlyOrdered": 26,
+              "tied": 4,
+              "reversed": 18,
+              "orderingCredit": 0.5833333333333334,
+              "meanSignedMargin": 0.3697916666666667,
+              "meanAbsoluteMargin": 1.1770833333333333,
+              "meanLogisticRankingLoss": 0.8037609702510577,
+              "examples": 96
+            },
+            "countA/24": {
+              "eligiblePairs": 18,
+              "correctlyOrdered": 7,
+              "tied": 5,
+              "reversed": 6,
+              "orderingCredit": 0.5277777777777778,
+              "meanSignedMargin": -0.2222222222222222,
+              "meanAbsoluteMargin": 0.5,
+              "meanLogisticRankingLoss": 0.875972082783731,
+              "examples": 96
+            },
+            "countA/64": {
+              "eligiblePairs": 9,
+              "correctlyOrdered": 3,
+              "tied": 1,
+              "reversed": 5,
+              "orderingCredit": 0.3888888888888889,
+              "meanSignedMargin": -0.027777777777777776,
+              "meanAbsoluteMargin": 0.4166666666666667,
+              "meanLogisticRankingLoss": 0.7412294326623347,
+              "examples": 96
+            },
+            "alternatingSum/2": {
+              "eligiblePairs": 5,
+              "correctlyOrdered": 3,
+              "tied": 1,
+              "reversed": 1,
+              "orderingCredit": 0.7,
+              "meanSignedMargin": 1.2,
+              "meanAbsoluteMargin": 2.8,
+              "meanLogisticRankingLoss": 1.0415204927692483,
+              "examples": 96
+            },
+            "alternatingSum/4": {
+              "eligiblePairs": 5,
+              "correctlyOrdered": 1,
+              "tied": 0,
+              "reversed": 4,
+              "orderingCredit": 0.2,
+              "meanSignedMargin": -1.05,
+              "meanAbsoluteMargin": 1.75,
+              "meanLogisticRankingLoss": 1.6172741517580345,
+              "examples": 96
+            },
+            "alternatingSum/8": {
+              "eligiblePairs": 1,
+              "correctlyOrdered": 1,
+              "tied": 0,
+              "reversed": 0,
+              "orderingCredit": 1.0,
+              "meanSignedMargin": 0.25,
+              "meanAbsoluteMargin": 0.25,
+              "meanLogisticRankingLoss": 0.5759394198788436,
+              "examples": 96
+            }
+          }
+        },
+        {
+          "eligiblePairs": 86,
+          "correctlyOrdered": 46,
+          "tied": 10,
+          "reversed": 30,
+          "orderingCredit": 0.5930232558139535,
+          "meanSignedMargin": 0.27325581395348836,
+          "meanAbsoluteMargin": 0.5290697674418605,
+          "meanLogisticRankingLoss": 0.623860778293712,
+          "epoch": 2,
+          "steps": 72,
+          "examples": 576,
+          "allPairs": 288,
+          "meanPointwiseCodeEOSLoss": 0.16880839820805704,
+          "meanActualAuxiliaryLossAllPairs": 0.0,
+          "meanRecordedObjective": 0.16880839820805704,
+          "meanPreclipGradientNorm": 0.7437012561907371,
+          "clippingSteps": 18,
+          "withinCell": {
+            "countA/8": {
+              "eligiblePairs": 48,
+              "correctlyOrdered": 30,
+              "tied": 0,
+              "reversed": 18,
+              "orderingCredit": 0.625,
+              "meanSignedMargin": 0.4010416666666667,
+              "meanAbsoluteMargin": 0.6614583333333334,
+              "meanLogisticRankingLoss": 0.5784731404241812,
+              "examples": 96
+            },
+            "countA/24": {
+              "eligiblePairs": 18,
+              "correctlyOrdered": 6,
+              "tied": 3,
+              "reversed": 9,
+              "orderingCredit": 0.4166666666666667,
+              "meanSignedMargin": -0.0625,
+              "meanAbsoluteMargin": 0.2569444444444444,
+              "meanLogisticRankingLoss": 0.7369698055230803,
+              "examples": 96
+            },
+            "countA/64": {
+              "eligiblePairs": 9,
+              "correctlyOrdered": 5,
+              "tied": 3,
+              "reversed": 1,
+              "orderingCredit": 0.7222222222222222,
+              "meanSignedMargin": 0.1111111111111111,
+              "meanAbsoluteMargin": 0.1388888888888889,
+              "meanLogisticRankingLoss": 0.6427615652230514,
+              "examples": 96
+            },
+            "alternatingSum/2": {
+              "eligiblePairs": 5,
+              "correctlyOrdered": 4,
+              "tied": 1,
+              "reversed": 0,
+              "orderingCredit": 0.9,
+              "meanSignedMargin": 1.0,
+              "meanAbsoluteMargin": 1.0,
+              "meanLogisticRankingLoss": 0.4055049533074729,
+              "examples": 96
+            },
+            "alternatingSum/4": {
+              "eligiblePairs": 5,
+              "correctlyOrdered": 1,
+              "tied": 2,
+              "reversed": 2,
+              "orderingCredit": 0.4,
+              "meanSignedMargin": -0.125,
+              "meanAbsoluteMargin": 0.575,
+              "meanLogisticRankingLoss": 0.8228667318756633,
+              "examples": 96
+            },
+            "alternatingSum/8": {
+              "eligiblePairs": 1,
+              "correctlyOrdered": 0,
+              "tied": 1,
+              "reversed": 0,
+              "orderingCredit": 0.5,
+              "meanSignedMargin": 0.0,
+              "meanAbsoluteMargin": 0.0,
+              "meanLogisticRankingLoss": 0.6931471805599453,
+              "examples": 96
+            }
+          }
+        }
+      ],
+      "epoch2MinusEpoch1": {
+        "meanPointwiseCodeEOSLoss": -0.5447101953112691,
+        "meanSignedMargin": 0.10465116279069767,
+        "orderingCredit": 0.05232558139534893,
+        "meanLogisticRankingLoss": -0.2469415658764531
+      }
+    },
+    "r2-rank": {
+      "replication": 2,
+      "arm": "rank",
+      "epochs": [
+        {
+          "eligiblePairs": 86,
+          "correctlyOrdered": 39,
+          "tied": 9,
+          "reversed": 38,
+          "orderingCredit": 0.5058139534883721,
+          "meanSignedMargin": 0.16715116279069767,
+          "meanAbsoluteMargin": 1.251453488372093,
+          "meanLogisticRankingLoss": 0.9240202411010875,
+          "epoch": 1,
+          "steps": 72,
+          "examples": 576,
+          "allPairs": 288,
+          "meanPointwiseCodeEOSLoss": 0.7424944633479255,
+          "meanActualAuxiliaryLossAllPairs": 0.2759227131389884,
+          "meanRecordedObjective": 1.0184171764869139,
+          "meanPreclipGradientNorm": 5.599398128106259,
+          "clippingSteps": 62,
+          "withinCell": {
+            "countA/8": {
+              "eligiblePairs": 48,
+              "correctlyOrdered": 24,
+              "tied": 2,
+              "reversed": 22,
+              "orderingCredit": 0.5208333333333334,
+              "meanSignedMargin": 0.3385416666666667,
+              "meanAbsoluteMargin": 1.59375,
+              "meanLogisticRankingLoss": 0.9544481514990557,
+              "examples": 96
+            },
+            "countA/24": {
+              "eligiblePairs": 18,
+              "correctlyOrdered": 8,
+              "tied": 3,
+              "reversed": 7,
+              "orderingCredit": 0.5277777777777778,
+              "meanSignedMargin": -0.2013888888888889,
+              "meanAbsoluteMargin": 0.4791666666666667,
+              "meanLogisticRankingLoss": 0.8538452878510241,
+              "examples": 96
+            },
+            "countA/64": {
+              "eligiblePairs": 9,
+              "correctlyOrdered": 3,
+              "tied": 3,
+              "reversed": 3,
+              "orderingCredit": 0.5,
+              "meanSignedMargin": 0.125,
+              "meanAbsoluteMargin": 0.3472222222222222,
+              "meanLogisticRankingLoss": 0.6640884987105635,
+              "examples": 96
+            },
+            "alternatingSum/2": {
+              "eligiblePairs": 5,
+              "correctlyOrdered": 2,
+              "tied": 1,
+              "reversed": 2,
+              "orderingCredit": 0.5,
+              "meanSignedMargin": 0.875,
+              "meanAbsoluteMargin": 2.125,
+              "meanLogisticRankingLoss": 0.9091648992391412,
+              "examples": 96
+            },
+            "alternatingSum/4": {
+              "eligiblePairs": 5,
+              "correctlyOrdered": 1,
+              "tied": 0,
+              "reversed": 4,
+              "orderingCredit": 0.2,
+              "meanSignedMargin": -0.9,
+              "meanAbsoluteMargin": 1.6,
+              "meanLogisticRankingLoss": 1.4747044581429476,
+              "examples": 96
+            },
+            "alternatingSum/8": {
+              "eligiblePairs": 1,
+              "correctlyOrdered": 1,
+              "tied": 0,
+              "reversed": 0,
+              "orderingCredit": 1.0,
+              "meanSignedMargin": 0.75,
+              "meanAbsoluteMargin": 0.75,
+              "meanLogisticRankingLoss": 0.38687100611489994,
+              "examples": 96
+            }
+          }
+        },
+        {
+          "eligiblePairs": 86,
+          "correctlyOrdered": 52,
+          "tied": 8,
+          "reversed": 26,
+          "orderingCredit": 0.6511627906976745,
+          "meanSignedMargin": 0.36627906976744184,
+          "meanAbsoluteMargin": 0.7616279069767442,
+          "meanLogisticRankingLoss": 0.6298890013000328,
+          "epoch": 2,
+          "steps": 72,
+          "examples": 576,
+          "allPairs": 288,
+          "meanPointwiseCodeEOSLoss": 0.17264763476459344,
+          "meanActualAuxiliaryLossAllPairs": 0.18809185500463677,
+          "meanRecordedObjective": 0.3607394897692302,
+          "meanPreclipGradientNorm": 1.986068445775244,
+          "clippingSteps": 51,
+          "withinCell": {
+            "countA/8": {
+              "eligiblePairs": 48,
+              "correctlyOrdered": 31,
+              "tied": 3,
+              "reversed": 14,
+              "orderingCredit": 0.6770833333333334,
+              "meanSignedMargin": 0.59375,
+              "meanAbsoluteMargin": 0.984375,
+              "meanLogisticRankingLoss": 0.5676268360882869,
+              "examples": 96
+            },
+            "countA/24": {
+              "eligiblePairs": 18,
+              "correctlyOrdered": 8,
+              "tied": 3,
+              "reversed": 7,
+              "orderingCredit": 0.5277777777777778,
+              "meanSignedMargin": -0.09027777777777778,
+              "meanAbsoluteMargin": 0.3541666666666667,
+              "meanLogisticRankingLoss": 0.7630947205074436,
+              "examples": 96
+            },
+            "countA/64": {
+              "eligiblePairs": 9,
+              "correctlyOrdered": 6,
+              "tied": 1,
+              "reversed": 2,
+              "orderingCredit": 0.7222222222222222,
+              "meanSignedMargin": 0.18055555555555555,
+              "meanAbsoluteMargin": 0.2916666666666667,
+              "meanLogisticRankingLoss": 0.6197416239001196,
+              "examples": 96
+            },
+            "alternatingSum/2": {
+              "eligiblePairs": 5,
+              "correctlyOrdered": 4,
+              "tied": 0,
+              "reversed": 1,
+              "orderingCredit": 0.8,
+              "meanSignedMargin": 0.7,
+              "meanAbsoluteMargin": 0.8,
+              "meanLogisticRankingLoss": 0.47902599315416455,
+              "examples": 96
+            },
+            "alternatingSum/4": {
+              "eligiblePairs": 5,
+              "correctlyOrdered": 2,
+              "tied": 1,
+              "reversed": 2,
+              "orderingCredit": 0.5,
+              "meanSignedMargin": -0.125,
+              "meanAbsoluteMargin": 1.025,
+              "meanLogisticRankingLoss": 0.9166514788483996,
+              "examples": 96
+            },
+            "alternatingSum/8": {
+              "eligiblePairs": 1,
+              "correctlyOrdered": 1,
+              "tied": 0,
+              "reversed": 0,
+              "orderingCredit": 1.0,
+              "meanSignedMargin": 0.125,
+              "meanAbsoluteMargin": 0.125,
+              "meanLogisticRankingLoss": 0.6325990353171691,
+              "examples": 96
+            }
+          }
+        }
+      ],
+      "epoch2MinusEpoch1": {
+        "meanPointwiseCodeEOSLoss": -0.569846828583332,
+        "meanSignedMargin": 0.19912790697674418,
+        "orderingCredit": 0.14534883720930236,
+        "meanLogisticRankingLoss": -0.2941312398010547
+      }
+    },
+    "r2-neutral": {
+      "replication": 2,
+      "arm": "neutral",
+      "epochs": [
+        {
+          "eligiblePairs": 86,
+          "correctlyOrdered": 38,
+          "tied": 13,
+          "reversed": 35,
+          "orderingCredit": 0.5174418604651163,
+          "meanSignedMargin": 0.2180232558139535,
+          "meanAbsoluteMargin": 0.7848837209302325,
+          "meanLogisticRankingLoss": 0.7632931434541071,
+          "epoch": 1,
+          "steps": 72,
+          "examples": 576,
+          "allPairs": 288,
+          "meanPointwiseCodeEOSLoss": 0.7224112692778005,
+          "meanActualAuxiliaryLossAllPairs": 0.26047989746762645,
+          "meanRecordedObjective": 0.982891166745427,
+          "meanPreclipGradientNorm": 3.9445913016420997,
+          "clippingSteps": 37,
+          "withinCell": {
+            "countA/8": {
+              "eligiblePairs": 48,
+              "correctlyOrdered": 23,
+              "tied": 7,
+              "reversed": 18,
+              "orderingCredit": 0.5520833333333334,
+              "meanSignedMargin": 0.4244791666666667,
+              "meanAbsoluteMargin": 0.8567708333333334,
+              "meanLogisticRankingLoss": 0.70424521701786,
+              "examples": 96
+            },
+            "countA/24": {
+              "eligiblePairs": 18,
+              "correctlyOrdered": 7,
+              "tied": 4,
+              "reversed": 7,
+              "orderingCredit": 0.5,
+              "meanSignedMargin": -0.1736111111111111,
+              "meanAbsoluteMargin": 0.3958333333333333,
+              "meanLogisticRankingLoss": 0.8239945578301336,
+              "examples": 96
+            },
+            "countA/64": {
+              "eligiblePairs": 9,
+              "correctlyOrdered": 2,
+              "tied": 2,
+              "reversed": 5,
+              "orderingCredit": 0.3333333333333333,
+              "meanSignedMargin": -0.013888888888888888,
+              "meanAbsoluteMargin": 0.3472222222222222,
+              "meanLogisticRankingLoss": 0.7301994117532419,
+              "examples": 96
+            },
+            "alternatingSum/2": {
+              "eligiblePairs": 5,
+              "correctlyOrdered": 4,
+              "tied": 0,
+              "reversed": 1,
+              "orderingCredit": 0.8,
+              "meanSignedMargin": 1.075,
+              "meanAbsoluteMargin": 2.075,
+              "meanLogisticRankingLoss": 0.7101200663187823,
+              "examples": 96
+            },
+            "alternatingSum/4": {
+              "eligiblePairs": 5,
+              "correctlyOrdered": 1,
+              "tied": 0,
+              "reversed": 4,
+              "orderingCredit": 0.2,
+              "meanSignedMargin": -0.85,
+              "meanAbsoluteMargin": 1.05,
+              "meanLogisticRankingLoss": 1.2822131715400666,
+              "examples": 96
+            },
+            "alternatingSum/8": {
+              "eligiblePairs": 1,
+              "correctlyOrdered": 1,
+              "tied": 0,
+              "reversed": 0,
+              "orderingCredit": 1.0,
+              "meanSignedMargin": 0.5,
+              "meanAbsoluteMargin": 0.5,
+              "meanLogisticRankingLoss": 0.4740769841801067,
+              "examples": 96
+            }
+          }
+        },
+        {
+          "eligiblePairs": 86,
+          "correctlyOrdered": 43,
+          "tied": 19,
+          "reversed": 24,
+          "orderingCredit": 0.6104651162790697,
+          "meanSignedMargin": 0.1380813953488372,
+          "meanAbsoluteMargin": 0.27180232558139533,
+          "meanLogisticRankingLoss": 0.6416549623106281,
+          "epoch": 2,
+          "steps": 72,
+          "examples": 576,
+          "allPairs": 288,
+          "meanPointwiseCodeEOSLoss": 0.16994087554849102,
+          "meanActualAuxiliaryLossAllPairs": 0.21222161853479016,
+          "meanRecordedObjective": 0.3821624940832812,
+          "meanPreclipGradientNorm": 0.6463382608360715,
+          "clippingSteps": 14,
+          "withinCell": {
+            "countA/8": {
+              "eligiblePairs": 48,
+              "correctlyOrdered": 26,
+              "tied": 10,
+              "reversed": 12,
+              "orderingCredit": 0.6458333333333334,
+              "meanSignedMargin": 0.18229166666666666,
+              "meanAbsoluteMargin": 0.28125,
+              "meanLogisticRankingLoss": 0.619416811459565,
+              "examples": 96
+            },
+            "countA/24": {
+              "eligiblePairs": 18,
+              "correctlyOrdered": 5,
+              "tied": 6,
+              "reversed": 7,
+              "orderingCredit": 0.4444444444444444,
+              "meanSignedMargin": -0.034722222222222224,
+              "meanAbsoluteMargin": 0.1597222222222222,
+              "meanLogisticRankingLoss": 0.716019228691227,
+              "examples": 96
+            },
+            "countA/64": {
+              "eligiblePairs": 9,
+              "correctlyOrdered": 5,
+              "tied": 2,
+              "reversed": 2,
+              "orderingCredit": 0.6666666666666666,
+              "meanSignedMargin": 0.08333333333333333,
+              "meanAbsoluteMargin": 0.16666666666666666,
+              "meanLogisticRankingLoss": 0.6570973833941212,
+              "examples": 96
+            },
+            "alternatingSum/2": {
+              "eligiblePairs": 5,
+              "correctlyOrdered": 5,
+              "tied": 0,
+              "reversed": 0,
+              "orderingCredit": 1.0,
+              "meanSignedMargin": 0.65,
+              "meanAbsoluteMargin": 0.65,
+              "meanLogisticRankingLoss": 0.43996261130889947,
+              "examples": 96
+            },
+            "alternatingSum/4": {
+              "eligiblePairs": 5,
+              "correctlyOrdered": 2,
+              "tied": 1,
+              "reversed": 2,
+              "orderingCredit": 0.5,
+              "meanSignedMargin": 0.05,
+              "meanAbsoluteMargin": 0.35,
+              "meanLogisticRankingLoss": 0.6948414401882241,
+              "examples": 96
+            },
+            "alternatingSum/8": {
+              "eligiblePairs": 1,
+              "correctlyOrdered": 0,
+              "tied": 0,
+              "reversed": 1,
+              "orderingCredit": 0.0,
+              "meanSignedMargin": -0.5,
+              "meanAbsoluteMargin": 0.5,
+              "meanLogisticRankingLoss": 0.9740769841801067,
+              "examples": 96
+            }
+          }
+        }
+      ],
+      "epoch2MinusEpoch1": {
+        "meanPointwiseCodeEOSLoss": -0.5524703937293095,
+        "meanSignedMargin": -0.07994186046511628,
+        "orderingCredit": 0.09302325581395343,
+        "meanLogisticRankingLoss": -0.12163818114347902
+      }
+    }
+  },
+  "diagnosticSourceSHA256": "0d7a85013f0c6bdcbfa762639fccf27a7bfbdfb39d001c14af782d1b68840be7",
+  "scope": "Online pre-update observations on old training labels. Checkpoints and pairings change; epoch differences are descriptive, not paired frozen-model gains, independent replications, convergence proof, evaluation performance, native action or consciousness evidence. The frozen Colab24 primary criterion is unchanged."
+}

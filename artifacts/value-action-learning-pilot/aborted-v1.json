@@ -1,0 +1,39 @@
+{
+  "schema": "menia-value-action-learning-abort-v1",
+  "reason": "Auxiliary targets determined by wording alone: per adapter w0 always 2 (128/128), w1 always 1 (128/128).",
+  "scienceRevision": "7ab11c22317665f585bd045253834d02becb1cce",
+  "notebookRevision": "48cee12bdc5aecc798510256f12369a50b981b3d",
+  "planHash": "2cde989fe77d467e2671f28af7076a0c22f596dcc7858ddeee0f3280dc972bb0",
+  "sourceHash": "45e7e646062b88538325d69968a020e7c36de32a78f95a231f9a2477d1246103",
+  "pid": 181669,
+  "trainingPid": 181932,
+  "signal": "SIGINT",
+  "events": {
+    "header": 1,
+    "training_start": 1,
+    "training_step": 22,
+    "failure": 1
+  },
+  "evaluationRequests": 0,
+  "evaluationResults": 0,
+  "finishedUTC": "2026-09-19T22:00:48.111801+00:00",
+  "journalSHA256": "ab5651ca075daf4338a10c29ef01aa36575ebf262a54a14689c88797f87ff43b",
+  "journalChainVerified": true,
+  "archive": {
+    "bytes": 5549281,
+    "sha256": "592577f7e69d7269447d375f1228976af7cb0baddcd461e0af93cedc62f56849",
+    "files": 4,
+    "downloadName": "menia-apprentissage-valeurs-actions-v1-abandon.zip"
+  },
+  "localTests": {
+    "passed": true,
+    "count": 5,
+    "seconds": 28.867
+  },
+  "colabTests": {
+    "passed": true,
+    "count": 5,
+    "seconds": 50.695
+  },
+  "decision": "Correct the data construction before any evaluation; preserve attempt; reuse no weights. No scientific performance result from this attempt."
+}

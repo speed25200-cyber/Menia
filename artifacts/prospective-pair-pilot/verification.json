@@ -1,0 +1,72 @@
+{
+  "schema": "menia-prospective-pair-audit-v1",
+  "verified": true,
+  "journalSHA256": "088312d6683ce76c3a5e6c5cc6a515503dcdf1d9770debcd4763fdd701d6b0a1",
+  "planHash": "294e491f63229104a8722f66302fcaba23059b461cb8505efc7c7a39091c46f7",
+  "sourceHash": "e3f60ecf0dcb40a4fdc58b3d1f6eac6444e9a02cd47f27657281818529c6fc73",
+  "chainEnd": "7e4deafcd1128824ec53e2c0c76bc9ab2db58b3b9508f5102aa02c1a4fadf199",
+  "recomputedSummary": true,
+  "allForecastsPrecedeTasks": true,
+  "parentStatesExactlyReproduced": 24,
+  "parentTasksExactlyReproduced": 24,
+  "exportedCacheAudits": [
+    {
+      "case": 0,
+      "file": "prospective-pair-20260920-v1.case00.safetensors",
+      "sha256": "4f74f00bbb5166a7df12d1c47f849b61f86e2a6b71413b8fe61ec79d1a74acca",
+      "tensors": 72,
+      "transformationsRecomputed": true,
+      "restorationBitwiseExact": true,
+      "displacements": {
+        "values_permuted": {
+          "changedTensors": 36,
+          "maximumAbsoluteDisplacement": 29.34375,
+          "absoluteL2": 484.41437027820723,
+          "referenceL2": 6327.73014274002
+        },
+        "joint_permuted": {
+          "changedTensors": 72,
+          "maximumAbsoluteDisplacement": 29.34375,
+          "absoluteL2": 584.525666475976,
+          "referenceL2": 6327.73014274002
+        },
+        "restored": {
+          "changedTensors": 36,
+          "maximumAbsoluteDisplacement": 29.34375,
+          "absoluteL2": 484.41437027820723,
+          "referenceL2": 6327.73014274002
+        }
+      }
+    },
+    {
+      "case": 8,
+      "file": "prospective-pair-20260920-v1.case08.safetensors",
+      "sha256": "e56bc2088b97455870cd0ab9449cb8939f08867f7c7feefd3aa8703521790118",
+      "tensors": 72,
+      "transformationsRecomputed": true,
+      "restorationBitwiseExact": true,
+      "displacements": {
+        "values_permuted": {
+          "changedTensors": 36,
+          "maximumAbsoluteDisplacement": 30.34375,
+          "absoluteL2": 514.6909053266772,
+          "referenceL2": 7166.304618872169
+        },
+        "joint_permuted": {
+          "changedTensors": 72,
+          "maximumAbsoluteDisplacement": 30.34375,
+          "absoluteL2": 671.6304196381417,
+          "referenceL2": 7166.304618872169
+        },
+        "restored": {
+          "changedTensors": 36,
+          "maximumAbsoluteDisplacement": 30.34375,
+          "absoluteL2": 514.6909053266772,
+          "referenceL2": 7166.304618872169
+        }
+      }
+    }
+  ],
+  "auditorSourceHash": "ce788c0ced5ddb77c08c70e9e4af8f841bee47a29407d9b1b0790541a3c747d9",
+  "scope": "Recorded inputs, code meanings, outcomes, phase barriers and summary verified; transformations recomputed for two caches. No independent collection or remote weight attestation."
+}

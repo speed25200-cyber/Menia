@@ -1,0 +1,71 @@
+{
+  "schema": "menia-confidence-ranking-design-v1",
+  "status": "Fixed design; not yet launched",
+  "planHash": "83d81c430208ab1c4f0f970e232e190e19be22af43ee4c2a3f554586efbb9b9c",
+  "sourceHash": "12489c817466d98892b43e249fdd7a25d360522770af820c0bfefefda7d87129",
+  "questions": 1152,
+  "calls": 23040,
+  "trainingUpdates": 1296,
+  "criteria": {
+    "primaryProducers": [
+      "base",
+      "rank"
+    ],
+    "comparators": [
+      "ce",
+      "neutral",
+      "constant"
+    ],
+    "minimumAucGain": 0.05,
+    "minimumGainOverConstant": 0.1,
+    "bootstrapResamples": 10000,
+    "familyAlpha": 0.05,
+    "primaryComparisons": 18,
+    "minimumEachClass": 20,
+    "minimumCellsWithFiveEach": 3,
+    "minimumNativeTopCodeFraction": 0.95,
+    "minimumNativeMeanCodeMass": 0.5,
+    "minimumAnswerAccuracyChange": -0.02
+  },
+  "model": {
+    "id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "generation": {
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "min_p": 0.0,
+    "do_sample": true,
+    "max_new_tokens": 256,
+    "max_input_tokens": 1792,
+    "enable_thinking": false,
+    "dtype": "bfloat16",
+    "attention": "sdpa",
+    "quantization": "none",
+    "repetition_penalty": 1.0,
+    "renormalize_logits": true,
+    "use_cache": true
+  },
+  "training": {
+    "rank": 8,
+    "scale": 1.0,
+    "learningRate": 0.0001,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "epsilon": 1e-08,
+    "weightDecay": 0.0,
+    "clipNorm": 1.0,
+    "epochs": 2,
+    "batchSize": 8,
+    "updatesPerAdapter": 144,
+    "maxTrainingTokens": 1792,
+    "loss": "Mean code/EOS CE plus mean eligible logistic pair loss",
+    "pairWeight": 1.0,
+    "pairsPerBatch": 4
+  },
+  "excludedQuestions": 5950,
+  "excludedQuestionsHash": "38a273275d37dcb84dd8d0be31c361b6b18aeab0d94e4c93cffbe39ea77d525b"
+}

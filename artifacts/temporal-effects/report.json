@@ -1,0 +1,3953 @@
+{
+  "status": "completed",
+  "scope": "learned finite-window effects; no consciousness or novelty established",
+  "source_sha256": {
+    "research/temporal_effects.py": "ef1fe684778d87525acd795249d11139dc359b288596d9c3c82b0067679a5584",
+    "research/train_temporal_effects.py": "342c26233027711a4e7ed8686a35c1225a426066add9605edefd73f110df24cb",
+    "docs/TEMPORAL_SELF_MODEL_PROTOCOL.md": "f36c8df2ae046d6340ca85ac306d871f93e7489a4680b0d172db3c5cf10a97ea"
+  },
+  "versions": {
+    "torch": "2.4.1+cpu",
+    "numpy": "2.4.4"
+  },
+  "rows": [
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 11,
+      "world": {
+        "seed": 300,
+        "family": "affine",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-11-0.npz",
+      "checkpoint_sha256": "a12673ab69278f974d8e129e88e73268a7efe33590c0f45b8c16bc36e19c1cf0",
+      "metrics": {
+        "prediction_mse": 0.27078919802457824,
+        "causal_mse_all": 0.07138677573665936,
+        "causal_mse_nonzero": 0.9762656950204193,
+        "spurious_effect_rms": 0.16821802337981998,
+        "true_effect_rms": 0.3087388236285737
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 11,
+      "world": {
+        "seed": 300,
+        "family": "affine",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-11-1.npz",
+      "checkpoint_sha256": "3562d0511d28c2378fd14e3f2bfa3153265edc659a12f0312377de69ef533114",
+      "metrics": {
+        "prediction_mse": 0.0027970340830182827,
+        "causal_mse_all": 0.0011670092625116798,
+        "causal_mse_nonzero": 0.014237800821147556,
+        "spurious_effect_rms": 0.023336465389221916,
+        "true_effect_rms": 0.3087388236285737
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 11,
+      "world": {
+        "seed": 301,
+        "family": "affine",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-11-2.npz",
+      "checkpoint_sha256": "1808e27ec17fcbe5e9899398f2625b20b6b245c1b72c271b21e227129a6c6a6d",
+      "metrics": {
+        "prediction_mse": 0.20918225243132374,
+        "causal_mse_all": 0.05493453772326035,
+        "causal_mse_nonzero": 0.7861517323207569,
+        "spurious_effect_rms": 0.14182620108377633,
+        "true_effect_rms": 0.26536446271232605
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 11,
+      "world": {
+        "seed": 301,
+        "family": "affine",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-11-3.npz",
+      "checkpoint_sha256": "26b193bb6acb5a609f5e4750ce383f86b468858bbe5afbfd2314b2352043ca98",
+      "metrics": {
+        "prediction_mse": 0.002411381090078154,
+        "causal_mse_all": 0.0011149327731073313,
+        "causal_mse_nonzero": 0.007663360181798404,
+        "spurious_effect_rms": 0.028339070141820015,
+        "true_effect_rms": 0.26536446271232605
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 11,
+      "world": {
+        "seed": 302,
+        "family": "affine",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-11-4.npz",
+      "checkpoint_sha256": "8f3c384d02d28f7634fa6e4231fb3328c5596b131a41b2af8047d97e83d580ab",
+      "metrics": {
+        "prediction_mse": 0.17469233177033733,
+        "causal_mse_all": 0.05001607857187356,
+        "causal_mse_nonzero": 0.3243653879640085,
+        "spurious_effect_rms": 0.1922285768133257,
+        "true_effect_rms": 0.32635039843254393
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 11,
+      "world": {
+        "seed": 302,
+        "family": "affine",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-11-5.npz",
+      "checkpoint_sha256": "d03234abfd6e1c11e9684b7e8d3375a010c6aefdc561a63b0026b1d0e0beb34b",
+      "metrics": {
+        "prediction_mse": 0.002122010280773011,
+        "causal_mse_all": 0.0005939209974776534,
+        "causal_mse_nonzero": 0.004073288064798812,
+        "spurious_effect_rms": 0.020693884396476684,
+        "true_effect_rms": 0.32635039843254393
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 11,
+      "world": {
+        "seed": 300,
+        "family": "interaction",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-11-6.npz",
+      "checkpoint_sha256": "6d6bcd9f7e32bab8d7b7175cdca630186213e110aea3d8d8ee0314077275cb55",
+      "metrics": {
+        "prediction_mse": 0.17241551881504702,
+        "causal_mse_all": 0.052045296075806054,
+        "causal_mse_nonzero": 0.5340691340289432,
+        "spurious_effect_rms": 0.17056312609353616,
+        "true_effect_rms": 0.18542809220754097
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 11,
+      "world": {
+        "seed": 300,
+        "family": "interaction",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-11-7.npz",
+      "checkpoint_sha256": "0e941d0a86034549f7bafaf297a60c4840cced4eb14894e09ab4c0948f07603c",
+      "metrics": {
+        "prediction_mse": 0.0038266565868468605,
+        "causal_mse_all": 0.001931356986302478,
+        "causal_mse_nonzero": 0.02326435622028362,
+        "spurious_effect_rms": 0.030257228556535436,
+        "true_effect_rms": 0.18542809220754097
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 11,
+      "world": {
+        "seed": 301,
+        "family": "interaction",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-11-8.npz",
+      "checkpoint_sha256": "8bf032b0c3c2fccb55a709d52975af87974cb42168de6bc51472d667ebf323fb",
+      "metrics": {
+        "prediction_mse": 0.16608656260385712,
+        "causal_mse_all": 0.05211882092860262,
+        "causal_mse_nonzero": 0.5021575636529874,
+        "spurious_effect_rms": 0.17518106235661957,
+        "true_effect_rms": 0.18280324473124118
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 11,
+      "world": {
+        "seed": 301,
+        "family": "interaction",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-11-9.npz",
+      "checkpoint_sha256": "caed2e1190bcc811084ca0cca1b13b6f32267aa68bafe35786f9077e7b1535ea",
+      "metrics": {
+        "prediction_mse": 0.006534740743145442,
+        "causal_mse_all": 0.004381360083468869,
+        "causal_mse_nonzero": 0.058628513691774985,
+        "spurious_effect_rms": 0.042404743751108184,
+        "true_effect_rms": 0.18280324473124118
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 11,
+      "world": {
+        "seed": 302,
+        "family": "interaction",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-11-10.npz",
+      "checkpoint_sha256": "9f024f3d2358c97fdfc50f6b01af7b8d14bc94e33a7dcff4e6319d140c029280",
+      "metrics": {
+        "prediction_mse": 0.18321615739528604,
+        "causal_mse_all": 0.054358816034691185,
+        "causal_mse_nonzero": 0.46756672206161404,
+        "spurious_effect_rms": 0.1862317080441142,
+        "true_effect_rms": 0.16465348271149532
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 11,
+      "world": {
+        "seed": 302,
+        "family": "interaction",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-11-11.npz",
+      "checkpoint_sha256": "4f484f14a38bddb2b4cd7c602986824876acf7168cd0e93447553bf6120bd45a",
+      "metrics": {
+        "prediction_mse": 0.005926736016269595,
+        "causal_mse_all": 0.0023437143831875635,
+        "causal_mse_nonzero": 0.026591044797961424,
+        "spurious_effect_rms": 0.03448303353145813,
+        "true_effect_rms": 0.16465348271149532
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 11,
+      "world": {
+        "seed": 300,
+        "family": "null",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-11-12.npz",
+      "checkpoint_sha256": "a47129c0647b963c39cb407d2ab926054fad17d98920de01c7dff6cc5052f609",
+      "metrics": {
+        "prediction_mse": 0.1432434742709452,
+        "causal_mse_all": 0.03327449831602974,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.18241298834246902,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 11,
+      "world": {
+        "seed": 300,
+        "family": "null",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-11-13.npz",
+      "checkpoint_sha256": "32b6b0a1831c2598f526b432df369b2e2b570992f0108facd9a324cc5c191468",
+      "metrics": {
+        "prediction_mse": 0.0018890864489118976,
+        "causal_mse_all": 0.0003830789722976636,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.01957240333473801,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 11,
+      "world": {
+        "seed": 301,
+        "family": "null",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-11-14.npz",
+      "checkpoint_sha256": "86c83cd486ad33e5b1fe8458ac5d43afdd1949b2997669055bf22e865bf8fbf7",
+      "metrics": {
+        "prediction_mse": 0.09136044527262607,
+        "causal_mse_all": 0.02203850144052031,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.1484537013365457,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 11,
+      "world": {
+        "seed": 301,
+        "family": "null",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-11-15.npz",
+      "checkpoint_sha256": "1081273dd84b5c784ad8e680bef5c4b862873a18fc88db8d567498fa749c180f",
+      "metrics": {
+        "prediction_mse": 0.0017682785059157744,
+        "causal_mse_all": 0.0005917342597480512,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.02432558857968397,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 11,
+      "world": {
+        "seed": 302,
+        "family": "null",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-11-16.npz",
+      "checkpoint_sha256": "3a33a4e16386757da70d36f4eecc1b7283ded2b69c09c49fa3bc47cb089326e3",
+      "metrics": {
+        "prediction_mse": 0.05272548603782159,
+        "causal_mse_all": 0.014134464948801637,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.1188884559105788,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 11,
+      "world": {
+        "seed": 302,
+        "family": "null",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-11-17.npz",
+      "checkpoint_sha256": "7a9579e8c7a6d5534658ba22cb7e0f5d0261f81d64e48517ce25705146a6921f",
+      "metrics": {
+        "prediction_mse": 0.0018422601490065233,
+        "causal_mse_all": 0.00028952574770585866,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.01701545614157489,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 11,
+      "world": {
+        "seed": 300,
+        "family": "beyond_window",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 10
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-11-18.npz",
+      "checkpoint_sha256": "a6dbe0e574e5eba42fd883460484fd5c256ab93e13db7a571e7baac727d5b4fe",
+      "metrics": {
+        "prediction_mse": 0.32020693158574,
+        "causal_mse_all": 0.1394752675039214,
+        "causal_mse_nonzero": 2.0970325467422213,
+        "spurious_effect_rms": 0.21507732146104913,
+        "true_effect_rms": 0.30873882362857374
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 11,
+      "world": {
+        "seed": 300,
+        "family": "beyond_window",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 10
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-11-19.npz",
+      "checkpoint_sha256": "2637478637276fe81b6dd25afcab605066b98daa934be67ad8b850b134f2822a",
+      "metrics": {
+        "prediction_mse": 0.24417459840809502,
+        "causal_mse_all": 0.1264471747245441,
+        "causal_mse_nonzero": 2.0970325467422213,
+        "spurious_effect_rms": 0.18058177110947712,
+        "true_effect_rms": 0.30873882362857374
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 11,
+      "world": {
+        "seed": 301,
+        "family": "beyond_window",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 10
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-11-20.npz",
+      "checkpoint_sha256": "6e12714c0e466795403857a0acb1920036ac202677267ba090d9fa075b700c0c",
+      "metrics": {
+        "prediction_mse": 0.47614908637539355,
+        "causal_mse_all": 0.14859167144326543,
+        "causal_mse_nonzero": 1.5492025575532324,
+        "spurious_effect_rms": 0.28617462319681386,
+        "true_effect_rms": 0.26536446271232605
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 11,
+      "world": {
+        "seed": 301,
+        "family": "beyond_window",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 10
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-11-21.npz",
+      "checkpoint_sha256": "c2b328412f9f614e91c9011f6354c0bb68175d9cf53b7d4f475580ecf8df7ced",
+      "metrics": {
+        "prediction_mse": 0.1969516728865781,
+        "causal_mse_all": 0.09388183989974803,
+        "causal_mse_nonzero": 1.5492025575532324,
+        "spurious_effect_rms": 0.1567828222249497,
+        "true_effect_rms": 0.26536446271232605
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 11,
+      "world": {
+        "seed": 302,
+        "family": "beyond_window",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 10
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-11-22.npz",
+      "checkpoint_sha256": "81ca436ec0a740735919a9feec5a50c235b1754e3330316f6aaa30b116c61373",
+      "metrics": {
+        "prediction_mse": 0.35005548642032114,
+        "causal_mse_all": 0.1516248982277988,
+        "causal_mse_nonzero": 2.3431008162557636,
+        "spurious_effect_rms": 0.21741412587784867,
+        "true_effect_rms": 0.32635039843254393
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 11,
+      "world": {
+        "seed": 302,
+        "family": "beyond_window",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 10
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-11-23.npz",
+      "checkpoint_sha256": "805473b729304fefd569f66fda9dee60b6b68459d4a83acfee1486d39bb90609",
+      "metrics": {
+        "prediction_mse": 0.23471246243068347,
+        "causal_mse_all": 0.1405747260165913,
+        "causal_mse_nonzero": 2.3431008162557636,
+        "spurious_effect_rms": 0.1889246708169618,
+        "true_effect_rms": 0.32635039843254393
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 23,
+      "world": {
+        "seed": 300,
+        "family": "affine",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-23-0.npz",
+      "checkpoint_sha256": "9e69d9d1f2e5204dcd68a27e735d05d3383d369eb6400a594ce9aa7a0850f5e1",
+      "metrics": {
+        "prediction_mse": 0.31077727542618205,
+        "causal_mse_all": 0.08003633848603486,
+        "causal_mse_nonzero": 0.9558806540703753,
+        "spurious_effect_rms": 0.19577912635250977,
+        "true_effect_rms": 0.3087388236285737
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 23,
+      "world": {
+        "seed": 300,
+        "family": "affine",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-23-1.npz",
+      "checkpoint_sha256": "a5b67dc0fa70e7a19619c27425c7582a02fcb51e224962591e54cf3ac88722ec",
+      "metrics": {
+        "prediction_mse": 0.002750795309293929,
+        "causal_mse_all": 0.0009049749426703985,
+        "causal_mse_nonzero": 0.0056722841300553065,
+        "spurious_effect_rms": 0.026037669240191092,
+        "true_effect_rms": 0.3087388236285737
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 23,
+      "world": {
+        "seed": 301,
+        "family": "affine",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-23-2.npz",
+      "checkpoint_sha256": "1933b5ab2e5b1b5314709507b345805080fd61677fb57da8b35ba183999ce37b",
+      "metrics": {
+        "prediction_mse": 0.15762035847560435,
+        "causal_mse_all": 0.0373844182773741,
+        "causal_mse_nonzero": 0.1376886848054065,
+        "spurious_effect_rms": 0.18057692165163874,
+        "true_effect_rms": 0.26536446271232605
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 23,
+      "world": {
+        "seed": 301,
+        "family": "affine",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-23-3.npz",
+      "checkpoint_sha256": "70f7fecd970f882310c27cc9bf777e41026cab007150d90b3aa5fc003b4209f5",
+      "metrics": {
+        "prediction_mse": 0.0023486001544157286,
+        "causal_mse_all": 0.000982664203559401,
+        "causal_mse_nonzero": 0.008299793426861308,
+        "spurious_effect_rms": 0.0251839130922949,
+        "true_effect_rms": 0.26536446271232605
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 23,
+      "world": {
+        "seed": 302,
+        "family": "affine",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-23-4.npz",
+      "checkpoint_sha256": "05a576cb337876d88af39b20cc2117548b985ec2a3f2015c4460c84bcbf0fc68",
+      "metrics": {
+        "prediction_mse": 0.15274494093267743,
+        "causal_mse_all": 0.04411753633355284,
+        "causal_mse_nonzero": 0.3376985610623438,
+        "spurious_effect_rms": 0.1736015193969907,
+        "true_effect_rms": 0.32635039843254393
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 23,
+      "world": {
+        "seed": 302,
+        "family": "affine",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-23-5.npz",
+      "checkpoint_sha256": "8eaaae8c1e3d4a06d087992382244f8bd9673e1856681f1627589434bb33b738",
+      "metrics": {
+        "prediction_mse": 0.0027171460777495387,
+        "causal_mse_all": 0.0008307181655485592,
+        "causal_mse_nonzero": 0.002888045470645865,
+        "spurious_effect_rms": 0.027069359036356287,
+        "true_effect_rms": 0.32635039843254393
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 23,
+      "world": {
+        "seed": 300,
+        "family": "interaction",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-23-6.npz",
+      "checkpoint_sha256": "18fd225fb7ba0408254c521233dee5d85e859bff86edca45e7337abd69a7f57b",
+      "metrics": {
+        "prediction_mse": 0.12678037243144738,
+        "causal_mse_all": 0.0499842371940308,
+        "causal_mse_nonzero": 0.5427262179691973,
+        "spurious_effect_rms": 0.16285064736621194,
+        "true_effect_rms": 0.18542809220754097
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 23,
+      "world": {
+        "seed": 300,
+        "family": "interaction",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-23-7.npz",
+      "checkpoint_sha256": "8915f3777078464b9716acfd329e3d581106feaf2bf7653fa2d6eb87984460aa",
+      "metrics": {
+        "prediction_mse": 0.004091710147006217,
+        "causal_mse_all": 0.0016720588056365847,
+        "causal_mse_nonzero": 0.022509011697825033,
+        "spurious_effect_rms": 0.026073414690592614,
+        "true_effect_rms": 0.18542809220754097
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 23,
+      "world": {
+        "seed": 301,
+        "family": "interaction",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-23-8.npz",
+      "checkpoint_sha256": "ec2f77b05aa391e523879dcb417a0f118b5c1964652907862389d4b16071fa84",
+      "metrics": {
+        "prediction_mse": 0.14464907066673655,
+        "causal_mse_all": 0.04687688770150319,
+        "causal_mse_nonzero": 0.4421432248567365,
+        "spurious_effect_rms": 0.16749531686080538,
+        "true_effect_rms": 0.18280324473124118
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 23,
+      "world": {
+        "seed": 301,
+        "family": "interaction",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-23-9.npz",
+      "checkpoint_sha256": "f3348fddcbce31bcddeb008d5422452191c2bb8f85542221e7a40e62939fe04b",
+      "metrics": {
+        "prediction_mse": 0.006040983570636751,
+        "causal_mse_all": 0.004692214017478646,
+        "causal_mse_nonzero": 0.07609377350627257,
+        "spurious_effect_rms": 0.03594634551811225,
+        "true_effect_rms": 0.18280324473124118
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 23,
+      "world": {
+        "seed": 302,
+        "family": "interaction",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-23-10.npz",
+      "checkpoint_sha256": "572f6c5c59f271eb2d1786a61067c95a56dcc8bed4ed2875731a8aab8bc4aa9f",
+      "metrics": {
+        "prediction_mse": 0.22260595561912982,
+        "causal_mse_all": 0.060964399650196975,
+        "causal_mse_nonzero": 0.39697263796293375,
+        "spurious_effect_rms": 0.2120471818949511,
+        "true_effect_rms": 0.16465348271149532
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 23,
+      "world": {
+        "seed": 302,
+        "family": "interaction",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-23-11.npz",
+      "checkpoint_sha256": "6add4e907bc31f20a31a491bb7e936c23346cafbbd14ebeebcb1de2115953172",
+      "metrics": {
+        "prediction_mse": 0.004725008255364489,
+        "causal_mse_all": 0.002165266932199298,
+        "causal_mse_nonzero": 0.026292517447985376,
+        "spurious_effect_rms": 0.03188024844588557,
+        "true_effect_rms": 0.16465348271149532
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 23,
+      "world": {
+        "seed": 300,
+        "family": "null",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-23-12.npz",
+      "checkpoint_sha256": "0ca887c5d0d4687e50d129661d32be8806a80fd979f9c29cf37beaf6120c7176",
+      "metrics": {
+        "prediction_mse": 0.14860866481365465,
+        "causal_mse_all": 0.030868383910666514,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.1756940064733755,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 23,
+      "world": {
+        "seed": 300,
+        "family": "null",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-23-13.npz",
+      "checkpoint_sha256": "91da4843b7afa8298409e0e014aa56a6336519a645b3ca46d9b2242bcab63d99",
+      "metrics": {
+        "prediction_mse": 0.0023514085840126405,
+        "causal_mse_all": 0.0005472284036881843,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.023392913535688203,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 23,
+      "world": {
+        "seed": 301,
+        "family": "null",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-23-14.npz",
+      "checkpoint_sha256": "c2ccc0fa248998e7491660142bb5b6b7e9ec1a60fa937ec69941a7c8e8f8a7b0",
+      "metrics": {
+        "prediction_mse": 0.07404819959863868,
+        "causal_mse_all": 0.017528103142634307,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.13239374283792382,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 23,
+      "world": {
+        "seed": 301,
+        "family": "null",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-23-15.npz",
+      "checkpoint_sha256": "3a8c287fbd257641831ecb29942f75c308862b20b33eb751e59740df8f3a7e81",
+      "metrics": {
+        "prediction_mse": 0.0017408160482177484,
+        "causal_mse_all": 0.000440077071518138,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.02097801400319244,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 23,
+      "world": {
+        "seed": 302,
+        "family": "null",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-23-16.npz",
+      "checkpoint_sha256": "849045f3a8599828d1577764753f881136678635e4484c8551d542200a5fadfb",
+      "metrics": {
+        "prediction_mse": 0.130823727906007,
+        "causal_mse_all": 0.0324389924767092,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.18010827986716546,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 23,
+      "world": {
+        "seed": 302,
+        "family": "null",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-23-17.npz",
+      "checkpoint_sha256": "6775d9645176e2c2c8c65a264193402728f0601299b190d7b0251a5e8be7ecf8",
+      "metrics": {
+        "prediction_mse": 0.0019772049584802958,
+        "causal_mse_all": 0.0004623197787139147,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.021501622699552577,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 23,
+      "world": {
+        "seed": 300,
+        "family": "beyond_window",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 10
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-23-18.npz",
+      "checkpoint_sha256": "88250c38152621e1cdf524ff464cd97d792915d4d67df64967cd0f20e738eed7",
+      "metrics": {
+        "prediction_mse": 0.34088319956540547,
+        "causal_mse_all": 0.15492867979654257,
+        "causal_mse_nonzero": 2.0970325467422213,
+        "spurious_effect_rms": 0.24989506452773277,
+        "true_effect_rms": 0.30873882362857374
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 23,
+      "world": {
+        "seed": 300,
+        "family": "beyond_window",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 10
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-23-19.npz",
+      "checkpoint_sha256": "828b8b384bbecd46fd3ba7f00bd18ab517bd879f134e360d93f4aab66ed08aff",
+      "metrics": {
+        "prediction_mse": 0.23844217998864492,
+        "causal_mse_all": 0.12386382899138877,
+        "causal_mse_nonzero": 2.0970325467422213,
+        "spurious_effect_rms": 0.17292603580836724,
+        "true_effect_rms": 0.30873882362857374
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 23,
+      "world": {
+        "seed": 301,
+        "family": "beyond_window",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 10
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-23-20.npz",
+      "checkpoint_sha256": "1a0d4ca0cb19561b2a57608a5806a3d508cd93ccc36244cf8047891aeaed39fe",
+      "metrics": {
+        "prediction_mse": 0.22490356483498475,
+        "causal_mse_all": 0.09413292304311158,
+        "causal_mse_nonzero": 1.5492025575532324,
+        "spurious_effect_rms": 0.15761945574180844,
+        "true_effect_rms": 0.26536446271232605
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 23,
+      "world": {
+        "seed": 301,
+        "family": "beyond_window",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 10
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-23-21.npz",
+      "checkpoint_sha256": "3dc43699d2bcaca755e932e1bff7d1ea59a25ea68547c980e46041aee7cab644",
+      "metrics": {
+        "prediction_mse": 0.20840527901997097,
+        "causal_mse_all": 0.10237002567582697,
+        "causal_mse_nonzero": 1.5492025575532324,
+        "spurious_effect_rms": 0.18295693056992823,
+        "true_effect_rms": 0.26536446271232605
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 23,
+      "world": {
+        "seed": 302,
+        "family": "beyond_window",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 10
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-23-22.npz",
+      "checkpoint_sha256": "4951f8dbafbcbe7bf83885f3fc3ab5468d931f843507d0a4cecf8777442ccabb",
+      "metrics": {
+        "prediction_mse": 0.357861039059411,
+        "causal_mse_all": 0.1547433297718347,
+        "causal_mse_nonzero": 2.3431008162557636,
+        "spurious_effect_rms": 0.22480175803462285,
+        "true_effect_rms": 0.32635039843254393
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 23,
+      "world": {
+        "seed": 302,
+        "family": "beyond_window",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 10
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-23-23.npz",
+      "checkpoint_sha256": "7a9bd1bb29c16837b2cd8b893f5414b1e9d24440ed36d6eebff1a7ed20d162d7",
+      "metrics": {
+        "prediction_mse": 0.2529547039487783,
+        "causal_mse_all": 0.14217125371533354,
+        "causal_mse_nonzero": 2.3431008162557636,
+        "spurious_effect_rms": 0.1933005019924965,
+        "true_effect_rms": 0.32635039843254393
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 37,
+      "world": {
+        "seed": 300,
+        "family": "affine",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-37-0.npz",
+      "checkpoint_sha256": "a19c82fa23d3934a9714febdc5821479b335bee275e983ea26e9cb2d004b7138",
+      "metrics": {
+        "prediction_mse": 0.2041942985065905,
+        "causal_mse_all": 0.05142554309886738,
+        "causal_mse_nonzero": 0.5978007644929502,
+        "spurious_effect_rms": 0.15939785259982286,
+        "true_effect_rms": 0.3087388236285737
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 37,
+      "world": {
+        "seed": 300,
+        "family": "affine",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-37-1.npz",
+      "checkpoint_sha256": "c22e2715ebec230bc68133986c961b0be4bbad874e33241ccdf07059a7fed871",
+      "metrics": {
+        "prediction_mse": 0.003011398175287061,
+        "causal_mse_all": 0.0014633383896354814,
+        "causal_mse_nonzero": 0.010141804568017188,
+        "spurious_effect_rms": 0.032404908508231106,
+        "true_effect_rms": 0.3087388236285737
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 37,
+      "world": {
+        "seed": 301,
+        "family": "affine",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-37-2.npz",
+      "checkpoint_sha256": "777e9bbae2394bf9eb319caa35ee73bc29aaff0fbebb84559bd70c68aedb75da",
+      "metrics": {
+        "prediction_mse": 0.19256479700603404,
+        "causal_mse_all": 0.04949733556006608,
+        "causal_mse_nonzero": 0.4878754958069898,
+        "spurious_effect_rms": 0.16918092407868368,
+        "true_effect_rms": 0.26536446271232605
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 37,
+      "world": {
+        "seed": 301,
+        "family": "affine",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-37-3.npz",
+      "checkpoint_sha256": "421c972d866b07144e51a3df87e9cc2c5dd4666cc2c06f7c99754ccf5d488ff8",
+      "metrics": {
+        "prediction_mse": 0.0019589962478176424,
+        "causal_mse_all": 0.0008644411632028369,
+        "causal_mse_nonzero": 0.007034184072858211,
+        "spurious_effect_rms": 0.023888153586886455,
+        "true_effect_rms": 0.26536446271232605
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 37,
+      "world": {
+        "seed": 302,
+        "family": "affine",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-37-4.npz",
+      "checkpoint_sha256": "84741ca77841244c9e330f746fcb7c5df1264309b1220a0ee723664685fb46e9",
+      "metrics": {
+        "prediction_mse": 0.18003872320064376,
+        "causal_mse_all": 0.04807883065932554,
+        "causal_mse_nonzero": 0.14372520676652203,
+        "spurious_effect_rms": 0.2086246421707839,
+        "true_effect_rms": 0.32635039843254393
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 37,
+      "world": {
+        "seed": 302,
+        "family": "affine",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-37-5.npz",
+      "checkpoint_sha256": "2838281624bfe1e01f201b68e19b74f0ceb8da95456ab4ba2437001121368828",
+      "metrics": {
+        "prediction_mse": 0.0023286239801229083,
+        "causal_mse_all": 0.0006987565558205222,
+        "causal_mse_nonzero": 0.007534849235876613,
+        "spurious_effect_rms": 0.01931911832772677,
+        "true_effect_rms": 0.32635039843254393
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 37,
+      "world": {
+        "seed": 300,
+        "family": "interaction",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-37-6.npz",
+      "checkpoint_sha256": "460bffa6c65d460092d8dadf5a0ff4b19d35dcf6418adb1fa80486ee1935b60c",
+      "metrics": {
+        "prediction_mse": 0.2607593656699042,
+        "causal_mse_all": 0.07183407501017201,
+        "causal_mse_nonzero": 0.5200335741801,
+        "spurious_effect_rms": 0.2247025627721364,
+        "true_effect_rms": 0.18542809220754097
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 37,
+      "world": {
+        "seed": 300,
+        "family": "interaction",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-37-7.npz",
+      "checkpoint_sha256": "080b8dad97fc5ac96ad1138ac8ed0321ce5eeb2e14eb218e978799d44625e249",
+      "metrics": {
+        "prediction_mse": 0.007302374787331141,
+        "causal_mse_all": 0.004874186943671741,
+        "causal_mse_nonzero": 0.07400087436938663,
+        "spurious_effect_rms": 0.03977989345636316,
+        "true_effect_rms": 0.18542809220754097
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 37,
+      "world": {
+        "seed": 301,
+        "family": "interaction",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-37-8.npz",
+      "checkpoint_sha256": "ec024409e17bb414c74b71e84678beb99b836bb8054796e00e8cf404d67495b8",
+      "metrics": {
+        "prediction_mse": 0.12597737734834621,
+        "causal_mse_all": 0.046821412245716315,
+        "causal_mse_nonzero": 0.4487137237373189,
+        "spurious_effect_rms": 0.1663841432561065,
+        "true_effect_rms": 0.18280324473124118
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 37,
+      "world": {
+        "seed": 301,
+        "family": "interaction",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-37-9.npz",
+      "checkpoint_sha256": "60c36c6e911791b2b09a514452e22e99dc7d8bd835e1be0c67dd3745bba0e69d",
+      "metrics": {
+        "prediction_mse": 0.005974586995610923,
+        "causal_mse_all": 0.0051319446555021355,
+        "causal_mse_nonzero": 0.07336313535807419,
+        "spurious_effect_rms": 0.04339170815181211,
+        "true_effect_rms": 0.18280324473124118
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 37,
+      "world": {
+        "seed": 302,
+        "family": "interaction",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-37-10.npz",
+      "checkpoint_sha256": "31b93051899557b3d1866bdde8f9990da7c27ec61509ae190dc4ecaacd32d7c6",
+      "metrics": {
+        "prediction_mse": 0.17688059854270097,
+        "causal_mse_all": 0.058444338915367,
+        "causal_mse_nonzero": 0.4929547489908413,
+        "spurious_effect_rms": 0.19430225682428673,
+        "true_effect_rms": 0.16465348271149532
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 37,
+      "world": {
+        "seed": 302,
+        "family": "interaction",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-37-11.npz",
+      "checkpoint_sha256": "2f5ea3b270332ad24ae6e12841aec3c5c177ff23c2611513601f6527ea5b0527",
+      "metrics": {
+        "prediction_mse": 0.005117630214011111,
+        "causal_mse_all": 0.0023918489099903142,
+        "causal_mse_nonzero": 0.028903335117399353,
+        "spurious_effect_rms": 0.033606505111778276,
+        "true_effect_rms": 0.16465348271149532
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 37,
+      "world": {
+        "seed": 300,
+        "family": "null",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-37-12.npz",
+      "checkpoint_sha256": "8fc52caafdb1dc27bf89d744bdbaeeae3d550c0dd66ff848858226fdfc52f1dc",
+      "metrics": {
+        "prediction_mse": 0.17228062499650804,
+        "causal_mse_all": 0.038095830665521975,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.1951815325934346,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 37,
+      "world": {
+        "seed": 300,
+        "family": "null",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-37-13.npz",
+      "checkpoint_sha256": "1c74c2660eaf4fda8a8ef6224e21240b5faa3b5617e0ee99822c450cd68a2f46",
+      "metrics": {
+        "prediction_mse": 0.0021710262020664165,
+        "causal_mse_all": 0.000522147426232738,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.022850545425278975,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 37,
+      "world": {
+        "seed": 301,
+        "family": "null",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-37-14.npz",
+      "checkpoint_sha256": "a67ef7ae25c2d6b48526af1cc63920f684b187f67b9e3edd1f4c4ace9f1106a9",
+      "metrics": {
+        "prediction_mse": 0.09625200999353778,
+        "causal_mse_all": 0.022623374952979104,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.15041068762883542,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 37,
+      "world": {
+        "seed": 301,
+        "family": "null",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-37-15.npz",
+      "checkpoint_sha256": "b3b6d3d86558c4634ed7cedc031b6ec70bc8ff07aa956cfc2dfa5059b5a9594a",
+      "metrics": {
+        "prediction_mse": 0.0017404733654481806,
+        "causal_mse_all": 0.00039505817668896874,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.019876070453914395,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 37,
+      "world": {
+        "seed": 302,
+        "family": "null",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-37-16.npz",
+      "checkpoint_sha256": "5884f3eee6ed2d42d25c45e22909abf291734673320a4cc917d5f1b0c8445cb4",
+      "metrics": {
+        "prediction_mse": 0.09045087252869388,
+        "causal_mse_all": 0.024565721127316427,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.1567345562641386,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 37,
+      "world": {
+        "seed": 302,
+        "family": "null",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-37-17.npz",
+      "checkpoint_sha256": "afbc99c4dae0458ce217c5e1342630ad4e6bc6764726d7158fe678370168fda8",
+      "metrics": {
+        "prediction_mse": 0.002044160686706666,
+        "causal_mse_all": 0.0005334052601041486,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.02309556797535295,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 37,
+      "world": {
+        "seed": 300,
+        "family": "beyond_window",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 10
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-37-18.npz",
+      "checkpoint_sha256": "2fde75ffe5e186e998672c985b303e38b0181afeac0eefb5335083a23dfa2c70",
+      "metrics": {
+        "prediction_mse": 0.3832269372544044,
+        "causal_mse_all": 0.14758252783653203,
+        "causal_mse_nonzero": 2.0970325467422213,
+        "spurious_effect_rms": 0.23399054373052913,
+        "true_effect_rms": 0.30873882362857374
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 37,
+      "world": {
+        "seed": 300,
+        "family": "beyond_window",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 10
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-37-19.npz",
+      "checkpoint_sha256": "bc54adeffa037ad146f8f8fccb83c5c5a50ed88ff4c2f8f4293fc5bfb0258b1c",
+      "metrics": {
+        "prediction_mse": 0.2260506030983939,
+        "causal_mse_all": 0.12001909049756057,
+        "causal_mse_nonzero": 2.0970325467422213,
+        "spurious_effect_rms": 0.16085892136014127,
+        "true_effect_rms": 0.30873882362857374
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 37,
+      "world": {
+        "seed": 301,
+        "family": "beyond_window",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 10
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-37-20.npz",
+      "checkpoint_sha256": "8d91e266a0ed6cb4c90af2906cab4315d01f4b1b70a61244a0c5b53997120110",
+      "metrics": {
+        "prediction_mse": 0.24294068055628096,
+        "causal_mse_all": 0.09914612124041648,
+        "causal_mse_nonzero": 1.5492025575532324,
+        "spurious_effect_rms": 0.17348145361775705,
+        "true_effect_rms": 0.26536446271232605
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 37,
+      "world": {
+        "seed": 301,
+        "family": "beyond_window",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 10
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-37-21.npz",
+      "checkpoint_sha256": "45cb14b043f487ae0a36f66b98effee3adbaeb9d24d3ee6f0775cc268a733455",
+      "metrics": {
+        "prediction_mse": 0.19677985200317483,
+        "causal_mse_all": 0.09764638644164822,
+        "causal_mse_nonzero": 1.5492025575532324,
+        "spurious_effect_rms": 0.16889246285066495,
+        "true_effect_rms": 0.26536446271232605
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 37,
+      "world": {
+        "seed": 302,
+        "family": "beyond_window",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 10
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_mlp-37-22.npz",
+      "checkpoint_sha256": "56c5bb583ca775ac765945589f3b99e082f4577c37af7a4bf1adcb2cc1277cc9",
+      "metrics": {
+        "prediction_mse": 0.393221444746202,
+        "causal_mse_all": 0.1708733800786948,
+        "causal_mse_nonzero": 2.3431008162557636,
+        "spurious_effect_rms": 0.2596805313379831,
+        "true_effect_rms": 0.32635039843254393
+      }
+    },
+    {
+      "model": "temporal_mlp",
+      "features": "temporal",
+      "initial_seed": 37,
+      "world": {
+        "seed": 302,
+        "family": "beyond_window",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 10
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_mlp-37-23.npz",
+      "checkpoint_sha256": "c4fc02c76ddb70eb6f832b435a9a29d2c5413fd8fa4dc1cee9c562e931493c2e",
+      "metrics": {
+        "prediction_mse": 0.24768090946878552,
+        "causal_mse_all": 0.136630314414298,
+        "causal_mse_nonzero": 2.3431008162557636,
+        "spurious_effect_rms": 0.17765216158855293,
+        "true_effect_rms": 0.32635039843254393
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 11,
+      "world": {
+        "seed": 300,
+        "family": "affine",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-11-0.npz",
+      "checkpoint_sha256": "97a5c9ce2b7acf087b47624b40226ed0652a80c82b1c73e730fbe6aec491c608",
+      "metrics": {
+        "prediction_mse": 0.34061396403588684,
+        "causal_mse_all": 0.10099203310149074,
+        "causal_mse_nonzero": 2.0970325467422213,
+        "spurious_effect_rms": 0.07708751411794577,
+        "true_effect_rms": 0.3087388236285737
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 11,
+      "world": {
+        "seed": 300,
+        "family": "affine",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-11-1.npz",
+      "checkpoint_sha256": "8e85b5a08a8d46af4021a7ca01e18ff39efc92b9197e206fdef46e9265f8a3e6",
+      "metrics": {
+        "prediction_mse": 0.3506850285272751,
+        "causal_mse_all": 0.09591383099405486,
+        "causal_mse_nonzero": 2.0970325467422213,
+        "spurious_effect_rms": 0.02494921997729512,
+        "true_effect_rms": 0.3087388236285737
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 11,
+      "world": {
+        "seed": 301,
+        "family": "affine",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-11-2.npz",
+      "checkpoint_sha256": "0597e4df2b94fb97f7a0562a260c942cdf249b893f07feb97f75472bcbc66b14",
+      "metrics": {
+        "prediction_mse": 0.39700405213672924,
+        "causal_mse_all": 0.11585270279240543,
+        "causal_mse_nonzero": 1.5492025575532324,
+        "spurious_effect_rms": 0.21816953912907872,
+        "true_effect_rms": 0.26536446271232605
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 11,
+      "world": {
+        "seed": 301,
+        "family": "affine",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-11-3.npz",
+      "checkpoint_sha256": "efbc794e82d15f9dd349ea5071afd64aa5d8616517100b835df9f3a99a6c55bd",
+      "metrics": {
+        "prediction_mse": 0.2910142564013831,
+        "causal_mse_all": 0.07540126597222017,
+        "causal_mse_nonzero": 1.5492025575532324,
+        "spurious_effect_rms": 0.0722513120116863,
+        "true_effect_rms": 0.26536446271232605
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 11,
+      "world": {
+        "seed": 302,
+        "family": "affine",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-11-4.npz",
+      "checkpoint_sha256": "d6519a7a8e23c55ddc76dd0f098a9e62a6f8e4c7f5546571ca9fd4fc1a3c7a3d",
+      "metrics": {
+        "prediction_mse": 0.3808814371983346,
+        "causal_mse_all": 0.12112999089625227,
+        "causal_mse_nonzero": 2.3431008162557636,
+        "spurious_effect_rms": 0.12378148631892882,
+        "true_effect_rms": 0.32635039843254393
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 11,
+      "world": {
+        "seed": 302,
+        "family": "affine",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-11-5.npz",
+      "checkpoint_sha256": "67d7c95a73de99381000b6d3fdb559be1ffe1b36cf68674bcdba6470cd35b7b2",
+      "metrics": {
+        "prediction_mse": 0.340103639009906,
+        "causal_mse_all": 0.10721652853688735,
+        "causal_mse_nonzero": 2.3431008162557636,
+        "spurious_effect_rms": 0.02731022096801497,
+        "true_effect_rms": 0.32635039843254393
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 11,
+      "world": {
+        "seed": 300,
+        "family": "interaction",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-11-6.npz",
+      "checkpoint_sha256": "76f2e87159157bcbc180c1b4bad1f7c09ee156959b85a79ff69d3834e3f9e45c",
+      "metrics": {
+        "prediction_mse": 0.21925826368618112,
+        "causal_mse_all": 0.03595192731033712,
+        "causal_mse_nonzero": 0.756438702354023,
+        "spurious_effect_rms": 0.040534346678314584,
+        "true_effect_rms": 0.18542809220754097
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 11,
+      "world": {
+        "seed": 300,
+        "family": "interaction",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-11-7.npz",
+      "checkpoint_sha256": "551e46d4115e6ab43ca4ec399922e241127a13b029fe3b64b7ac6d456dfc3fa2",
+      "metrics": {
+        "prediction_mse": 0.2128461287750713,
+        "causal_mse_all": 0.035426964000206965,
+        "causal_mse_nonzero": 0.756438702354023,
+        "spurious_effect_rms": 0.03306163483018193,
+        "true_effect_rms": 0.18542809220754097
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 11,
+      "world": {
+        "seed": 301,
+        "family": "interaction",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-11-8.npz",
+      "checkpoint_sha256": "54865e72d95acc7167c2ae0f32b82c1ae841589cd1e6339c3f5728dc847b8c94",
+      "metrics": {
+        "prediction_mse": 0.21955685667258334,
+        "causal_mse_all": 0.04112070151852844,
+        "causal_mse_nonzero": 0.7351745782539414,
+        "spurious_effect_rms": 0.08983605574645517,
+        "true_effect_rms": 0.18280324473124118
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 11,
+      "world": {
+        "seed": 301,
+        "family": "interaction",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-11-9.npz",
+      "checkpoint_sha256": "2f8c13ac8f00bbb4d7e6fe622020e93c4152720c23a9edb8da6f98f7e2e30d6f",
+      "metrics": {
+        "prediction_mse": 0.19665716920518903,
+        "causal_mse_all": 0.033688039998726424,
+        "causal_mse_nonzero": 0.7351745782539414,
+        "spurious_effect_rms": 0.01684989998280342,
+        "true_effect_rms": 0.18280324473124118
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 11,
+      "world": {
+        "seed": 302,
+        "family": "interaction",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-11-10.npz",
+      "checkpoint_sha256": "2063bee146f799e08caaffa9616e98a528bb0b8f9703834f2b518758554cb3ea",
+      "metrics": {
+        "prediction_mse": 0.253747172291376,
+        "causal_mse_all": 0.042564584575934164,
+        "causal_mse_nonzero": 0.5964369261185433,
+        "spurious_effect_rms": 0.12723879584915623,
+        "true_effect_rms": 0.16465348271149532
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 11,
+      "world": {
+        "seed": 302,
+        "family": "interaction",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-11-11.npz",
+      "checkpoint_sha256": "b32fd7c673db7480a4cb5692a43691d0e635abc6cde8865c14d9ba2c86787f7f",
+      "metrics": {
+        "prediction_mse": 0.22026730741933037,
+        "causal_mse_all": 0.030583394172879166,
+        "causal_mse_nonzero": 0.5964369261185433,
+        "spurious_effect_rms": 0.060315735009633296,
+        "true_effect_rms": 0.16465348271149532
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 11,
+      "world": {
+        "seed": 300,
+        "family": "null",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-11-12.npz",
+      "checkpoint_sha256": "2f515fa6de186569c1a387cca21fb51baff5eca3849fe81ed27b92aa8dc88dae",
+      "metrics": {
+        "prediction_mse": 0.1767387582798245,
+        "causal_mse_all": 0.006927211702350181,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.08322987265609734,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 11,
+      "world": {
+        "seed": 300,
+        "family": "null",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-11-13.npz",
+      "checkpoint_sha256": "89eddedfb6cb55c0d49a669fac6e6816b54623e09d71a0c05a86973b4c2fbd4c",
+      "metrics": {
+        "prediction_mse": 0.1559867627419915,
+        "causal_mse_all": 0.001730324005180533,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.041597163427096,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 11,
+      "world": {
+        "seed": 301,
+        "family": "null",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-11-14.npz",
+      "checkpoint_sha256": "2381dc97f8e1cd7029b1ff7c85d4f1660e97088f573a4d89c566a15eaff3c264",
+      "metrics": {
+        "prediction_mse": 0.17259820109129165,
+        "causal_mse_all": 0.010786862193718385,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.1038598199195357,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 11,
+      "world": {
+        "seed": 301,
+        "family": "null",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-11-15.npz",
+      "checkpoint_sha256": "2d316e4acfff1694f9fed871449cff50898b70368fdc7234c9055d09baa930e3",
+      "metrics": {
+        "prediction_mse": 0.1497161959726293,
+        "causal_mse_all": 0.001575791138197061,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.039696235818992474,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 11,
+      "world": {
+        "seed": 302,
+        "family": "null",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-11-16.npz",
+      "checkpoint_sha256": "56abd2d7b517446e8e25875ed9a34d5b1d0d93fd98eec3bf2a2894824377cd2c",
+      "metrics": {
+        "prediction_mse": 0.28104745967385925,
+        "causal_mse_all": 0.04116741986646722,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.20289756003083728,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 11,
+      "world": {
+        "seed": 302,
+        "family": "null",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-11-17.npz",
+      "checkpoint_sha256": "6841cebfed0d020c27252d4e4ebd15e35e4596d97b5f979938035e746905cf15",
+      "metrics": {
+        "prediction_mse": 0.14843103257329135,
+        "causal_mse_all": 0.0008032296748784766,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.02834130686610052,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 11,
+      "world": {
+        "seed": 300,
+        "family": "beyond_window",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 10
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-11-18.npz",
+      "checkpoint_sha256": "a8080f24da83f6dfbe21398f216be0e12a905735604e7909c47107ac7e923b4a",
+      "metrics": {
+        "prediction_mse": 0.33570016221627863,
+        "causal_mse_all": 0.09763287129295728,
+        "causal_mse_nonzero": 2.0970325467422213,
+        "spurious_effect_rms": 0.04922766435887821,
+        "true_effect_rms": 0.30873882362857374
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 11,
+      "world": {
+        "seed": 300,
+        "family": "beyond_window",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 10
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-11-19.npz",
+      "checkpoint_sha256": "890c6286bddf958e76377fb8c211f756227a05e9485ca445719122073dc8f69b",
+      "metrics": {
+        "prediction_mse": 0.3536074331591752,
+        "causal_mse_all": 0.10673261977464238,
+        "causal_mse_nonzero": 2.0970325467422213,
+        "spurious_effect_rms": 0.10934547442023461,
+        "true_effect_rms": 0.30873882362857374
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 11,
+      "world": {
+        "seed": 301,
+        "family": "beyond_window",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 10
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-11-20.npz",
+      "checkpoint_sha256": "a73fb0bc8b9df5d848e5019fe75d8717633a86a097e2faee7280dac7528523f4",
+      "metrics": {
+        "prediction_mse": 0.3222760654271826,
+        "causal_mse_all": 0.08500223627739306,
+        "causal_mse_nonzero": 1.5492025575532324,
+        "spurious_effect_rms": 0.12360587144118206,
+        "true_effect_rms": 0.26536446271232605
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 11,
+      "world": {
+        "seed": 301,
+        "family": "beyond_window",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 10
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-11-21.npz",
+      "checkpoint_sha256": "08563fe64a899dba477aef7ce24c01da1876b1cfa22e53fb48854ceda2bbcbcc",
+      "metrics": {
+        "prediction_mse": 0.2999033706839951,
+        "causal_mse_all": 0.07440403739256997,
+        "causal_mse_nonzero": 1.5492025575532324,
+        "spurious_effect_rms": 0.06461839082287951,
+        "true_effect_rms": 0.26536446271232605
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 11,
+      "world": {
+        "seed": 302,
+        "family": "beyond_window",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 10
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-11-22.npz",
+      "checkpoint_sha256": "4dd406c2e50eb16f531d3112e3808c8294e00a7aab22420ff40e11ed40a793cf",
+      "metrics": {
+        "prediction_mse": 0.3560578376609189,
+        "causal_mse_all": 0.11385468654975037,
+        "causal_mse_nonzero": 2.3431008162557636,
+        "spurious_effect_rms": 0.08775026464177817,
+        "true_effect_rms": 0.32635039843254393
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 11,
+      "world": {
+        "seed": 302,
+        "family": "beyond_window",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 10
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-11-23.npz",
+      "checkpoint_sha256": "1446add418bdf0f549b0bf1ed681392881a4b0a782e6ae6995e357e4860d8e46",
+      "metrics": {
+        "prediction_mse": 0.3351745151798292,
+        "causal_mse_all": 0.10722536785240408,
+        "causal_mse_nonzero": 2.3431008162557636,
+        "spurious_effect_rms": 0.0274792358813897,
+        "true_effect_rms": 0.32635039843254393
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 23,
+      "world": {
+        "seed": 300,
+        "family": "affine",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-23-0.npz",
+      "checkpoint_sha256": "399472664141b70e11eed2df9ed3a018159955388a31146f0d41cee802e9c6db",
+      "metrics": {
+        "prediction_mse": 0.36909088561703624,
+        "causal_mse_all": 0.11125950958145026,
+        "causal_mse_nonzero": 2.0970325467422213,
+        "spurious_effect_rms": 0.1292241802615542,
+        "true_effect_rms": 0.3087388236285737
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 23,
+      "world": {
+        "seed": 300,
+        "family": "affine",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-23-1.npz",
+      "checkpoint_sha256": "f083f115092368be0917c3510c51d3fae072d7f33b1e4eba6e8e26b2f42e49c3",
+      "metrics": {
+        "prediction_mse": 0.36164935304875134,
+        "causal_mse_all": 0.1113163825717719,
+        "causal_mse_nonzero": 2.0970325467422213,
+        "spurious_effect_rms": 0.12945450935454766,
+        "true_effect_rms": 0.3087388236285737
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 23,
+      "world": {
+        "seed": 301,
+        "family": "affine",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-23-2.npz",
+      "checkpoint_sha256": "47de7a6a8f8f1335b3d09fb9c013c81f1d27146e3cf9d8fec856f562c357f108",
+      "metrics": {
+        "prediction_mse": 0.28574384750879267,
+        "causal_mse_all": 0.07157336918999244,
+        "causal_mse_nonzero": 1.5492025575532324,
+        "spurious_effect_rms": 0.034786125194229335,
+        "true_effect_rms": 0.26536446271232605
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 23,
+      "world": {
+        "seed": 301,
+        "family": "affine",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-23-3.npz",
+      "checkpoint_sha256": "37f1cdcbeda8ac0ca7b50297cc73d12eba153b81f0cbeb1e99176d065608dd47",
+      "metrics": {
+        "prediction_mse": 0.2940836921639353,
+        "causal_mse_all": 0.07696540927018666,
+        "causal_mse_nonzero": 1.5492025575532324,
+        "spurious_effect_rms": 0.08281834579104692,
+        "true_effect_rms": 0.26536446271232605
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 23,
+      "world": {
+        "seed": 302,
+        "family": "affine",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-23-4.npz",
+      "checkpoint_sha256": "cff7825459bbde80c49e6c7dd26de844439c0cf5cba1f2a5816d8a8a0fed42d1",
+      "metrics": {
+        "prediction_mse": 0.38662456626915176,
+        "causal_mse_all": 0.12025274128152134,
+        "causal_mse_nonzero": 2.3431008162557636,
+        "spurious_effect_rms": 0.12001180337539535,
+        "true_effect_rms": 0.32635039843254393
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 23,
+      "world": {
+        "seed": 302,
+        "family": "affine",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-23-5.npz",
+      "checkpoint_sha256": "0564f1dab28bfb56d32b9e616db02ba127ea919b6590b2d2c62db98336fa26eb",
+      "metrics": {
+        "prediction_mse": 0.34238488779159276,
+        "causal_mse_all": 0.10711384978117297,
+        "causal_mse_nonzero": 2.3431008162557636,
+        "spurious_effect_rms": 0.025264202917361082,
+        "true_effect_rms": 0.32635039843254393
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 23,
+      "world": {
+        "seed": 300,
+        "family": "interaction",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-23-6.npz",
+      "checkpoint_sha256": "1e07157d0dc0a5bec5fcce5ab5d680e750927e60cefcaab7bd310e93dbb9326c",
+      "metrics": {
+        "prediction_mse": 0.22375170381455903,
+        "causal_mse_all": 0.03603503621560918,
+        "causal_mse_nonzero": 0.756438702354023,
+        "spurious_effect_rms": 0.04159446757475778,
+        "true_effect_rms": 0.18542809220754097
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 23,
+      "world": {
+        "seed": 300,
+        "family": "interaction",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-23-7.npz",
+      "checkpoint_sha256": "e7b8fc3c75f1dd6e8db55a72a498fe7bfa0988c683662b6eaa2bbb859baaee6b",
+      "metrics": {
+        "prediction_mse": 0.22372467551921085,
+        "causal_mse_all": 0.03534208344852471,
+        "causal_mse_nonzero": 0.756438702354023,
+        "spurious_effect_rms": 0.03168831353874102,
+        "true_effect_rms": 0.18542809220754097
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 23,
+      "world": {
+        "seed": 301,
+        "family": "interaction",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-23-8.npz",
+      "checkpoint_sha256": "d7a896b1c69a3d157420dca8d01d1d5d23e31d0a485b3b22eedc56113802fa9a",
+      "metrics": {
+        "prediction_mse": 0.21393708337941308,
+        "causal_mse_all": 0.03976757934535563,
+        "causal_mse_nonzero": 0.7351745782539414,
+        "spurious_effect_rms": 0.08156568120054343,
+        "true_effect_rms": 0.18280324473124118
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 23,
+      "world": {
+        "seed": 301,
+        "family": "interaction",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-23-9.npz",
+      "checkpoint_sha256": "b11b624ebe835fbfd14cdc294d14ae326034b19d0f824b478fd6a8c917e8ba88",
+      "metrics": {
+        "prediction_mse": 0.20959175119617468,
+        "causal_mse_all": 0.03396610241002439,
+        "causal_mse_nonzero": 0.7351745782539414,
+        "spurious_effect_rms": 0.023983798863672558,
+        "true_effect_rms": 0.18280324473124118
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 23,
+      "world": {
+        "seed": 302,
+        "family": "interaction",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-23-10.npz",
+      "checkpoint_sha256": "ce9790f85dec47feef6f5b992317bbd088577761df2dc4ed56e5c9cbc580674f",
+      "metrics": {
+        "prediction_mse": 0.22014616800828737,
+        "causal_mse_all": 0.02996929109060444,
+        "causal_mse_nonzero": 0.5964369261185433,
+        "spurious_effect_rms": 0.054723320472717434,
+        "true_effect_rms": 0.16465348271149532
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 23,
+      "world": {
+        "seed": 302,
+        "family": "interaction",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-23-11.npz",
+      "checkpoint_sha256": "946bd8be0dbd149e1dcd5cfbb6039ece7ea8996926dc45e7d5d02d0e123f7231",
+      "metrics": {
+        "prediction_mse": 0.21087905261245268,
+        "causal_mse_all": 0.03167905896036383,
+        "causal_mse_nonzero": 0.5964369261185433,
+        "spurious_effect_rms": 0.0691796732496383,
+        "true_effect_rms": 0.16465348271149532
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 23,
+      "world": {
+        "seed": 300,
+        "family": "null",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-23-12.npz",
+      "checkpoint_sha256": "050003495e5df747bdba4ad238f505b8e20e4b3b684f3bd4ea5e39fc4b6adeaa",
+      "metrics": {
+        "prediction_mse": 0.16899540724079806,
+        "causal_mse_all": 0.01090167858930291,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.10441110376441248,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 23,
+      "world": {
+        "seed": 300,
+        "family": "null",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-23-13.npz",
+      "checkpoint_sha256": "ba53dd0372ffcdbe19c5cac38f4a24e7407ecbf998d2181a3cdb8cd984300a03",
+      "metrics": {
+        "prediction_mse": 0.14975935302779214,
+        "causal_mse_all": 0.0008238154426498869,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.028702185328819248,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 23,
+      "world": {
+        "seed": 301,
+        "family": "null",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-23-14.npz",
+      "checkpoint_sha256": "9ebd84491a4b90410699c9fb57d21be0186f8bf7ee11f92adc08d52c650b8033",
+      "metrics": {
+        "prediction_mse": 0.19629997133254498,
+        "causal_mse_all": 0.014395527475865586,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.1199813630355381,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 23,
+      "world": {
+        "seed": 301,
+        "family": "null",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-23-15.npz",
+      "checkpoint_sha256": "0fc354909cf2cd25784959b974ed4c207f0a3d2f9f4bf3558cdd296368c3b5da",
+      "metrics": {
+        "prediction_mse": 0.15303967587891065,
+        "causal_mse_all": 0.0008667155146600479,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.029440032517985572,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 23,
+      "world": {
+        "seed": 302,
+        "family": "null",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-23-16.npz",
+      "checkpoint_sha256": "5468d80c73692a0b18d6c766764339912ed76965628feaebe8b2cceff09b0af8",
+      "metrics": {
+        "prediction_mse": 0.1481109649928366,
+        "causal_mse_all": 0.00037661576425104424,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.019406590742607116,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 23,
+      "world": {
+        "seed": 302,
+        "family": "null",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-23-17.npz",
+      "checkpoint_sha256": "9cd0285a72254467689f84d19e4900b6078300981c1f4a7a20722c8438bd6e58",
+      "metrics": {
+        "prediction_mse": 0.1525411709362039,
+        "causal_mse_all": 0.0026194286743845357,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.05118035437923946,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 23,
+      "world": {
+        "seed": 300,
+        "family": "beyond_window",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 10
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-23-18.npz",
+      "checkpoint_sha256": "85aa60cb5e04269c3da66b3516c4528e08bb4cfe6fa53412168aec78a4fbe2c7",
+      "metrics": {
+        "prediction_mse": 0.3454721783696801,
+        "causal_mse_all": 0.0995662923259203,
+        "causal_mse_nonzero": 2.0970325467422213,
+        "spurious_effect_rms": 0.06669971243888333,
+        "true_effect_rms": 0.30873882362857374
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 23,
+      "world": {
+        "seed": 300,
+        "family": "beyond_window",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 10
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-23-19.npz",
+      "checkpoint_sha256": "2d5f5141abd91c5bf5c525f38e517902b2dbdc152418600892ad5420ef6923a9",
+      "metrics": {
+        "prediction_mse": 0.34748243354588043,
+        "causal_mse_all": 0.10128633871472643,
+        "causal_mse_nonzero": 2.0970325467422213,
+        "spurious_effect_rms": 0.07906203260182096,
+        "true_effect_rms": 0.30873882362857374
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 23,
+      "world": {
+        "seed": 301,
+        "family": "beyond_window",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 10
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-23-20.npz",
+      "checkpoint_sha256": "8d8ac5291cd636f0f2e79d22baee652f6ede5a94b36810b06c8a6368fd30a88d",
+      "metrics": {
+        "prediction_mse": 0.32375729597233494,
+        "causal_mse_all": 0.07815499905728986,
+        "causal_mse_nonzero": 1.5492025575532324,
+        "spurious_effect_rms": 0.09002841395574963,
+        "true_effect_rms": 0.26536446271232605
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 23,
+      "world": {
+        "seed": 301,
+        "family": "beyond_window",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 10
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-23-21.npz",
+      "checkpoint_sha256": "a8c531e766688ef5333c1ff6030aaed98bb3dce30e816f28ce5f7726bef5cccb",
+      "metrics": {
+        "prediction_mse": 0.3098130431949926,
+        "causal_mse_all": 0.07844692226273742,
+        "causal_mse_nonzero": 1.5492025575532324,
+        "spurious_effect_rms": 0.09171117505438847,
+        "true_effect_rms": 0.26536446271232605
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 23,
+      "world": {
+        "seed": 302,
+        "family": "beyond_window",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 10
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-23-22.npz",
+      "checkpoint_sha256": "b176c665000b07101dd9a44d1c29dd82e34569a21031884a537e910c87ec94bf",
+      "metrics": {
+        "prediction_mse": 0.3946515200341354,
+        "causal_mse_all": 0.11022375275417873,
+        "causal_mse_nonzero": 2.3431008162557636,
+        "spurious_effect_rms": 0.06242013729412598,
+        "true_effect_rms": 0.32635039843254393
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 23,
+      "world": {
+        "seed": 302,
+        "family": "beyond_window",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 10
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-23-23.npz",
+      "checkpoint_sha256": "bda5ee180faa638f132434b0a0c00f917135ffa8c5706029c6c53693b8f6e120",
+      "metrics": {
+        "prediction_mse": 0.33419599489367346,
+        "causal_mse_all": 0.10947878883960331,
+        "causal_mse_nonzero": 2.3431008162557636,
+        "spurious_effect_rms": 0.05581966636517522,
+        "true_effect_rms": 0.32635039843254393
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 37,
+      "world": {
+        "seed": 300,
+        "family": "affine",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-37-0.npz",
+      "checkpoint_sha256": "4b7a2771d50f4127ae2117b3a281998bc3940fe87b5a071b8b5632de917f42b8",
+      "metrics": {
+        "prediction_mse": 0.3278085656185832,
+        "causal_mse_all": 0.09728666251853146,
+        "causal_mse_nonzero": 2.0970325467422213,
+        "spurious_effect_rms": 0.04539458152344903,
+        "true_effect_rms": 0.3087388236285737
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 37,
+      "world": {
+        "seed": 300,
+        "family": "affine",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-37-1.npz",
+      "checkpoint_sha256": "49f75fbf445bea2fdaa58e85146c4f8ce7ea5773a818dea02373e29c9957c0e3",
+      "metrics": {
+        "prediction_mse": 0.3451928185994212,
+        "causal_mse_all": 0.09599205307222713,
+        "causal_mse_nonzero": 2.0970325467422213,
+        "spurious_effect_rms": 0.026540733157037977,
+        "true_effect_rms": 0.3087388236285737
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 37,
+      "world": {
+        "seed": 301,
+        "family": "affine",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-37-2.npz",
+      "checkpoint_sha256": "e77c20cc0841f9dac9f672d1327e72a1443eb436e43d00961f57661057e65b26",
+      "metrics": {
+        "prediction_mse": 0.30568041447506844,
+        "causal_mse_all": 0.07670113879501587,
+        "causal_mse_nonzero": 1.5492025575532324,
+        "spurious_effect_rms": 0.08112967161312291,
+        "true_effect_rms": 0.26536446271232605
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 37,
+      "world": {
+        "seed": 301,
+        "family": "affine",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-37-3.npz",
+      "checkpoint_sha256": "de61adc1853ad32f5c544985278a81bf0c6ab4dc9b925a4a9aad80b1ac148ec3",
+      "metrics": {
+        "prediction_mse": 0.2854698987420874,
+        "causal_mse_all": 0.07191869109633371,
+        "causal_mse_nonzero": 1.5492025575532324,
+        "spurious_effect_rms": 0.03964644136201698,
+        "true_effect_rms": 0.26536446271232605
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 37,
+      "world": {
+        "seed": 302,
+        "family": "affine",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-37-4.npz",
+      "checkpoint_sha256": "652c45f3d468c5c629f1ecd7ca74adc6498b9cd16588562a8720592858436ef5",
+      "metrics": {
+        "prediction_mse": 0.35047210995168776,
+        "causal_mse_all": 0.10890893230454886,
+        "causal_mse_nonzero": 2.3431008162557636,
+        "spurious_effect_rms": 0.050188072214284535,
+        "true_effect_rms": 0.32635039843254393
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 37,
+      "world": {
+        "seed": 302,
+        "family": "affine",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-37-5.npz",
+      "checkpoint_sha256": "97ccd9480fcce203769df14078210dc98adaf0b4af3d1f50aeb8722191ea707c",
+      "metrics": {
+        "prediction_mse": 0.369669802638277,
+        "causal_mse_all": 0.10719016894006468,
+        "causal_mse_nonzero": 2.3431008162557636,
+        "spurious_effect_rms": 0.026799875999765875,
+        "true_effect_rms": 0.32635039843254393
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 37,
+      "world": {
+        "seed": 300,
+        "family": "interaction",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-37-6.npz",
+      "checkpoint_sha256": "6caae9e597214e2648f9935190aefab34ca7605dc1f7de12741bb77d15bb6f6c",
+      "metrics": {
+        "prediction_mse": 0.24329710961147222,
+        "causal_mse_all": 0.03657487142813958,
+        "causal_mse_nonzero": 0.756438702354023,
+        "spurious_effect_rms": 0.047912851971573286,
+        "true_effect_rms": 0.18542809220754097
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 37,
+      "world": {
+        "seed": 300,
+        "family": "interaction",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-37-7.npz",
+      "checkpoint_sha256": "aaa7c33e80e5e719de94aecb5c1c0a961564152f5c6546a8fb1fbb7217eb9afa",
+      "metrics": {
+        "prediction_mse": 0.24398946215987674,
+        "causal_mse_all": 0.04169740122672379,
+        "causal_mse_nonzero": 0.756438702354023,
+        "spurious_effect_rms": 0.08753342888887004,
+        "true_effect_rms": 0.18542809220754097
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 37,
+      "world": {
+        "seed": 301,
+        "family": "interaction",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-37-8.npz",
+      "checkpoint_sha256": "23fe809a6057aaf7c1c3364fc3e297d317f3b28e375ceff8a61c0807ec1ec04f",
+      "metrics": {
+        "prediction_mse": 0.21718929553655897,
+        "causal_mse_all": 0.03515097405487601,
+        "causal_mse_nonzero": 0.7351745782539414,
+        "spurious_effect_rms": 0.042620613698812114,
+        "true_effect_rms": 0.18280324473124118
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 37,
+      "world": {
+        "seed": 301,
+        "family": "interaction",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-37-9.npz",
+      "checkpoint_sha256": "9abec16455c229b2dc7a8ef95fd6463edce52776dbcb657021d807fd45c0ea45",
+      "metrics": {
+        "prediction_mse": 0.21190238256118898,
+        "causal_mse_all": 0.03767313231672852,
+        "causal_mse_nonzero": 0.7351745782539414,
+        "spurious_effect_rms": 0.06677407991346503,
+        "true_effect_rms": 0.18280324473124118
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 37,
+      "world": {
+        "seed": 302,
+        "family": "interaction",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-37-10.npz",
+      "checkpoint_sha256": "8f962f8b394bd4f16c50a7ae74df7f92d0a9e7b66983b1811cee12e441c62158",
+      "metrics": {
+        "prediction_mse": 0.23838834495145111,
+        "causal_mse_all": 0.04278574833165699,
+        "causal_mse_nonzero": 0.5964369261185433,
+        "spurious_effect_rms": 0.12814603596007743,
+        "true_effect_rms": 0.16465348271149532
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 37,
+      "world": {
+        "seed": 302,
+        "family": "interaction",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-37-11.npz",
+      "checkpoint_sha256": "3978d007f5bf800b809094cd7fe2e2c32dc55586dc44768221f60bf76e4a2c3e",
+      "metrics": {
+        "prediction_mse": 0.2140457062821751,
+        "causal_mse_all": 0.03126617331143108,
+        "causal_mse_nonzero": 0.5964369261185433,
+        "spurious_effect_rms": 0.06597939315131818,
+        "true_effect_rms": 0.16465348271149532
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 37,
+      "world": {
+        "seed": 300,
+        "family": "null",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-37-12.npz",
+      "checkpoint_sha256": "05b4c3b070af9bd8451a622aaefe7e2b417b7ea001f770d02f37ed7d5c783dd7",
+      "metrics": {
+        "prediction_mse": 0.1595272948800734,
+        "causal_mse_all": 0.005793575831568101,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.07611554264122473,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 37,
+      "world": {
+        "seed": 300,
+        "family": "null",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-37-13.npz",
+      "checkpoint_sha256": "0e1a1341f013132e6ee69a73e172ba373d742b5d9e8b462127666ddb006b44f1",
+      "metrics": {
+        "prediction_mse": 0.15390442742106286,
+        "causal_mse_all": 0.002950030490847148,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.05431418314627541,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 37,
+      "world": {
+        "seed": 301,
+        "family": "null",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-37-14.npz",
+      "checkpoint_sha256": "79a07ede81ccd9c599a3a9fafd9ebf9e7443640336fddaa706aa1723f6fbd11a",
+      "metrics": {
+        "prediction_mse": 0.15440573325229812,
+        "causal_mse_all": 0.0024610760290578884,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.04960923330447557,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 37,
+      "world": {
+        "seed": 301,
+        "family": "null",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-37-15.npz",
+      "checkpoint_sha256": "9ada5f3449fc8b48ce19802e3b9d629388c3b248c09626ec4b1a693ac8a667b1",
+      "metrics": {
+        "prediction_mse": 0.15394517162469668,
+        "causal_mse_all": 0.002494342245360522,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.04994339040714519,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 37,
+      "world": {
+        "seed": 302,
+        "family": "null",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-37-16.npz",
+      "checkpoint_sha256": "72cdb65adc4f020d9820b305d7d0ae828a9eb7e7defbd218c6e2c65dca3d1603",
+      "metrics": {
+        "prediction_mse": 0.22127732266685227,
+        "causal_mse_all": 0.024331171228763163,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.1559845224013048,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 37,
+      "world": {
+        "seed": 302,
+        "family": "null",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-37-17.npz",
+      "checkpoint_sha256": "65f132226f73c19f4b406a965a3458a3d43d633ccd6c09331cbeb8e8d9c2beb0",
+      "metrics": {
+        "prediction_mse": 0.16664117301605388,
+        "causal_mse_all": 0.004126791154183386,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.0642401054963594,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 37,
+      "world": {
+        "seed": 300,
+        "family": "beyond_window",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 10
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-37-18.npz",
+      "checkpoint_sha256": "5010180676dce1a67e8f96df5d6f2d812f259bb091012b568c9735cbca47f478",
+      "metrics": {
+        "prediction_mse": 0.3619992664428559,
+        "causal_mse_all": 0.10146933296102181,
+        "causal_mse_nonzero": 2.0970325467422213,
+        "spurious_effect_rms": 0.08026526806256316,
+        "true_effect_rms": 0.30873882362857374
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 37,
+      "world": {
+        "seed": 300,
+        "family": "beyond_window",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 10
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-37-19.npz",
+      "checkpoint_sha256": "3ff58b25dfde42149a1e2aa76f31d791bf6a0df82185ffe56a4ab911b7bd0df1",
+      "metrics": {
+        "prediction_mse": 0.3310189492857192,
+        "causal_mse_all": 0.09592652704168311,
+        "causal_mse_nonzero": 2.0970325467422213,
+        "spurious_effect_rms": 0.025214364929545624,
+        "true_effect_rms": 0.30873882362857374
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 37,
+      "world": {
+        "seed": 301,
+        "family": "beyond_window",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 10
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-37-20.npz",
+      "checkpoint_sha256": "66f766de53abc38e0671c257385f5480b083d4a21d7840d8620066140e516da3",
+      "metrics": {
+        "prediction_mse": 0.30063231891603737,
+        "causal_mse_all": 0.07507953930188083,
+        "causal_mse_nonzero": 1.5492025575532324,
+        "spurious_effect_rms": 0.06987993345328461,
+        "true_effect_rms": 0.26536446271232605
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 37,
+      "world": {
+        "seed": 301,
+        "family": "beyond_window",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 10
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-37-21.npz",
+      "checkpoint_sha256": "95a70f2401c3417219ae9290b883d05be347d1c09c3affde180c564af38bb2be",
+      "metrics": {
+        "prediction_mse": 0.30601996852279356,
+        "causal_mse_all": 0.0765396089660205,
+        "causal_mse_nonzero": 1.5492025575532324,
+        "spurious_effect_rms": 0.08007997184339519,
+        "true_effect_rms": 0.26536446271232605
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 37,
+      "world": {
+        "seed": 302,
+        "family": "beyond_window",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 10
+      },
+      "policy": "coupled",
+      "checkpoint": "instant_mlp-37-22.npz",
+      "checkpoint_sha256": "6e417daba82db23f4663b84631f8f3b42fd1aca74877f0ac442c8a42844b0dd2",
+      "metrics": {
+        "prediction_mse": 0.3657674894198931,
+        "causal_mse_all": 0.1240419581315569,
+        "causal_mse_nonzero": 2.3431008162557636,
+        "spurious_effect_rms": 0.13554515372034093,
+        "true_effect_rms": 0.32635039843254393
+      }
+    },
+    {
+      "model": "instant_mlp",
+      "features": "instant",
+      "initial_seed": 37,
+      "world": {
+        "seed": 302,
+        "family": "beyond_window",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 10
+      },
+      "policy": "intervened",
+      "checkpoint": "instant_mlp-37-23.npz",
+      "checkpoint_sha256": "c57432316f1c4319685a08f1be1009e889eca8cc027501f560a2de1e52857f81",
+      "metrics": {
+        "prediction_mse": 0.3486218592594845,
+        "causal_mse_all": 0.11120534046557656,
+        "causal_mse_nonzero": 2.3431008162557636,
+        "spurious_effect_rms": 0.07017551940090436,
+        "true_effect_rms": 0.32635039843254393
+      }
+    },
+    {
+      "model": "temporal_ridge",
+      "features": "temporal",
+      "initial_seed": null,
+      "world": {
+        "seed": 300,
+        "family": "affine",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_ridge-0.npz",
+      "checkpoint_sha256": "aa0c6a13f5de6659a3a3d61267f7dd3fd6b657bd758278c70845d5ba239312ab",
+      "metrics": {
+        "prediction_mse": 0.17263970332479903,
+        "causal_mse_all": 0.042672304382250045,
+        "causal_mse_nonzero": 0.5224899655210037,
+        "spurious_effect_rms": 0.14079717443195972,
+        "true_effect_rms": 0.3087388236285737
+      }
+    },
+    {
+      "model": "temporal_ridge",
+      "features": "temporal",
+      "initial_seed": null,
+      "world": {
+        "seed": 300,
+        "family": "affine",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_ridge-1.npz",
+      "checkpoint_sha256": "93982acce96972c6b27f3dce766947aebf38b1411d917b1496329134b0c4cffd",
+      "metrics": {
+        "prediction_mse": 0.0009128868513557597,
+        "causal_mse_all": 1.1268094459098903e-05,
+        "causal_mse_nonzero": 8.63192635882346e-05,
+        "spurious_effect_rms": 0.002773847375482904,
+        "true_effect_rms": 0.3087388236285737
+      }
+    },
+    {
+      "model": "temporal_ridge",
+      "features": "temporal",
+      "initial_seed": null,
+      "world": {
+        "seed": 301,
+        "family": "affine",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_ridge-2.npz",
+      "checkpoint_sha256": "d608d766b9d1a7edbbf75ad6321b7943f024d601a0534743b7280c15dd0d8f5f",
+      "metrics": {
+        "prediction_mse": 0.14162114704772383,
+        "causal_mse_all": 0.03677488626059884,
+        "causal_mse_nonzero": 0.3843483392986558,
+        "spurious_effect_rms": 0.14221030008147367,
+        "true_effect_rms": 0.26536446271232605
+      }
+    },
+    {
+      "model": "temporal_ridge",
+      "features": "temporal",
+      "initial_seed": null,
+      "world": {
+        "seed": 301,
+        "family": "affine",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_ridge-3.npz",
+      "checkpoint_sha256": "c0dca16a41b2df5c4f02d920751b5a00fc06ba51cf294413dae839e56003e987",
+      "metrics": {
+        "prediction_mse": 0.0008903078907837894,
+        "causal_mse_all": 1.1785078441123925e-05,
+        "causal_mse_nonzero": 0.0001330933573984682,
+        "spurious_effect_rms": 0.0024512229047700734,
+        "true_effect_rms": 0.26536446271232605
+      }
+    },
+    {
+      "model": "temporal_ridge",
+      "features": "temporal",
+      "initial_seed": null,
+      "world": {
+        "seed": 302,
+        "family": "affine",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_ridge-4.npz",
+      "checkpoint_sha256": "da80900e1fa33e322774d34a3bab7dfd6a6413ae27320463f7a50fb1ea1e9e88",
+      "metrics": {
+        "prediction_mse": 0.09664984777844493,
+        "causal_mse_all": 0.026048690888625943,
+        "causal_mse_nonzero": 0.23402145316902714,
+        "spurious_effect_rms": 0.12706386590266583,
+        "true_effect_rms": 0.32635039843254393
+      }
+    },
+    {
+      "model": "temporal_ridge",
+      "features": "temporal",
+      "initial_seed": null,
+      "world": {
+        "seed": 302,
+        "family": "affine",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_ridge-5.npz",
+      "checkpoint_sha256": "5f5e9b511e7e353cfd55075258731ec760528c388aa9784872ae0a95b0ac622c",
+      "metrics": {
+        "prediction_mse": 0.000984869765430536,
+        "causal_mse_all": 9.915944704099105e-06,
+        "causal_mse_nonzero": 8.841019794379589e-07,
+        "spurious_effect_rms": 0.0032165249031979363,
+        "true_effect_rms": 0.32635039843254393
+      }
+    },
+    {
+      "model": "temporal_ridge",
+      "features": "temporal",
+      "initial_seed": null,
+      "world": {
+        "seed": 300,
+        "family": "interaction",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_ridge-6.npz",
+      "checkpoint_sha256": "8f12eed8fcc53274195cebd5db7925145f5ee50990fec1245f1a754b5983c47d",
+      "metrics": {
+        "prediction_mse": 0.13593911505068557,
+        "causal_mse_all": 0.0534510436820717,
+        "causal_mse_nonzero": 0.7580789377249882,
+        "spurious_effect_rms": 0.14105791166018597,
+        "true_effect_rms": 0.18542809220754097
+      }
+    },
+    {
+      "model": "temporal_ridge",
+      "features": "temporal",
+      "initial_seed": null,
+      "world": {
+        "seed": 300,
+        "family": "interaction",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_ridge-7.npz",
+      "checkpoint_sha256": "259a204e27b1920ed59c10b8c968d85f8af9b69562db210d0915040087b5d961",
+      "metrics": {
+        "prediction_mse": 0.06839658599440492,
+        "causal_mse_all": 0.03614495063984843,
+        "causal_mse_nonzero": 0.7557976823362956,
+        "spurious_effect_rms": 0.043310194412142886,
+        "true_effect_rms": 0.18542809220754097
+      }
+    },
+    {
+      "model": "temporal_ridge",
+      "features": "temporal",
+      "initial_seed": null,
+      "world": {
+        "seed": 301,
+        "family": "interaction",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_ridge-8.npz",
+      "checkpoint_sha256": "ef43d6c5f3f87ba976d792cbd54cd1422898da8475e04d9af8784c9817071fcf",
+      "metrics": {
+        "prediction_mse": 0.11890908701939132,
+        "causal_mse_all": 0.05270912981661483,
+        "causal_mse_nonzero": 0.7348442907655827,
+        "spurious_effect_rms": 0.14221991107000184,
+        "true_effect_rms": 0.18280324473124118
+      }
+    },
+    {
+      "model": "temporal_ridge",
+      "features": "temporal",
+      "initial_seed": null,
+      "world": {
+        "seed": 301,
+        "family": "interaction",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_ridge-9.npz",
+      "checkpoint_sha256": "845ab118067e2e359359be9d85e35791e074ac990ea2acf9a41bb3f87168672d",
+      "metrics": {
+        "prediction_mse": 0.05386655658949635,
+        "causal_mse_all": 0.03469623814925321,
+        "causal_mse_nonzero": 0.7387063092477028,
+        "spurious_effect_rms": 0.034233741386635375,
+        "true_effect_rms": 0.18280324473124118
+      }
+    },
+    {
+      "model": "temporal_ridge",
+      "features": "temporal",
+      "initial_seed": null,
+      "world": {
+        "seed": 302,
+        "family": "interaction",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_ridge-10.npz",
+      "checkpoint_sha256": "3cdb38d503acc9a7b69324e6cf1b8ee2b61feaa578fd452d9c59f1927a60484c",
+      "metrics": {
+        "prediction_mse": 0.1350836256216312,
+        "causal_mse_all": 0.045525906990954365,
+        "causal_mse_nonzero": 0.6589863822226698,
+        "spurious_effect_rms": 0.12772432582907503,
+        "true_effect_rms": 0.16465348271149532
+      }
+    },
+    {
+      "model": "temporal_ridge",
+      "features": "temporal",
+      "initial_seed": null,
+      "world": {
+        "seed": 302,
+        "family": "interaction",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_ridge-11.npz",
+      "checkpoint_sha256": "8e3320f895245bc58cee141a138388308c5d3ab9fd6a93f015399a9872436df9",
+      "metrics": {
+        "prediction_mse": 0.06725951292532667,
+        "causal_mse_all": 0.027439802440767623,
+        "causal_mse_nonzero": 0.5973459807605431,
+        "spurious_effect_rms": 0.017361249867702166,
+        "true_effect_rms": 0.16465348271149532
+      }
+    },
+    {
+      "model": "temporal_ridge",
+      "features": "temporal",
+      "initial_seed": null,
+      "world": {
+        "seed": 300,
+        "family": "null",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_ridge-12.npz",
+      "checkpoint_sha256": "f93ec1751a869fc62d59b4ba13337a852ddbf807b16c4b7214f5cb2a327eb220",
+      "metrics": {
+        "prediction_mse": 0.07749699721360047,
+        "causal_mse_all": 0.018922630102273057,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.13755955111250204,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "temporal_ridge",
+      "features": "temporal",
+      "initial_seed": null,
+      "world": {
+        "seed": 300,
+        "family": "null",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_ridge-13.npz",
+      "checkpoint_sha256": "8833a207ff30c26535227073bb0b05475844c77f93f90e78f1312be914edce6e",
+      "metrics": {
+        "prediction_mse": 0.00090947844069897,
+        "causal_mse_all": 1.0097206928538015e-05,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.0031776102543480712,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "temporal_ridge",
+      "features": "temporal",
+      "initial_seed": null,
+      "world": {
+        "seed": 301,
+        "family": "null",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_ridge-14.npz",
+      "checkpoint_sha256": "35810837ea43488d9715a96c0fd2b1d4d41937afaaad3c927a425c078bf5ebd6",
+      "metrics": {
+        "prediction_mse": 0.0702455123598774,
+        "causal_mse_all": 0.019305116150760637,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.13894285210387988,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "temporal_ridge",
+      "features": "temporal",
+      "initial_seed": null,
+      "world": {
+        "seed": 301,
+        "family": "null",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_ridge-15.npz",
+      "checkpoint_sha256": "f018564424680d31f0419cc3f13486742a1e3bb523f2c2c332feb968c5701fb0",
+      "metrics": {
+        "prediction_mse": 0.0008917529661690574,
+        "causal_mse_all": 1.3166448822268028e-05,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.0036285601582815223,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "temporal_ridge",
+      "features": "temporal",
+      "initial_seed": null,
+      "world": {
+        "seed": 302,
+        "family": "null",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_ridge-16.npz",
+      "checkpoint_sha256": "6bb9a93db4b71f9785c01f1d87e7b0d8a0ede4ad68ab4ecd2b60f2ed290dd7cb",
+      "metrics": {
+        "prediction_mse": 0.07092791145728819,
+        "causal_mse_all": 0.019022976090389252,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.13792380537959809,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "temporal_ridge",
+      "features": "temporal",
+      "initial_seed": null,
+      "world": {
+        "seed": 302,
+        "family": "null",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_ridge-17.npz",
+      "checkpoint_sha256": "5e886908a7c6a46114ea0e545fd409666523ad015b6fb0cfbeee79d9a9e83e2c",
+      "metrics": {
+        "prediction_mse": 0.0009841059525785916,
+        "causal_mse_all": 9.893020024097108e-06,
+        "causal_mse_nonzero": null,
+        "spurious_effect_rms": 0.0031453171579503884,
+        "true_effect_rms": 0.0
+      }
+    },
+    {
+      "model": "temporal_ridge",
+      "features": "temporal",
+      "initial_seed": null,
+      "world": {
+        "seed": 300,
+        "family": "beyond_window",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 10
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_ridge-18.npz",
+      "checkpoint_sha256": "036ce76f674fe29a9ea1160cb81f08a71e8cae201489dcd5f34b10384c834856",
+      "metrics": {
+        "prediction_mse": 0.26069489694825987,
+        "causal_mse_all": 0.11806157333033972,
+        "causal_mse_nonzero": 2.0970325467422213,
+        "spurious_effect_rms": 0.15435303790572527,
+        "true_effect_rms": 0.30873882362857374
+      }
+    },
+    {
+      "model": "temporal_ridge",
+      "features": "temporal",
+      "initial_seed": null,
+      "world": {
+        "seed": 300,
+        "family": "beyond_window",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 10
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_ridge-19.npz",
+      "checkpoint_sha256": "60992e57c863a05fbf5237500c6095ae814a5d525747eab7dacb863f8fd838be",
+      "metrics": {
+        "prediction_mse": 0.19052319750251023,
+        "causal_mse_all": 0.096316957909221,
+        "causal_mse_nonzero": 2.0970325467422213,
+        "spurious_effect_rms": 0.03232316525978566,
+        "true_effect_rms": 0.30873882362857374
+      }
+    },
+    {
+      "model": "temporal_ridge",
+      "features": "temporal",
+      "initial_seed": null,
+      "world": {
+        "seed": 301,
+        "family": "beyond_window",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 10
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_ridge-20.npz",
+      "checkpoint_sha256": "fc5cb8a02f52e9dfb1dff4b6d46c16064d29b1ace02f51a9afa0893a6bcf7d21",
+      "metrics": {
+        "prediction_mse": 0.2132921946263671,
+        "causal_mse_all": 0.08988810320354049,
+        "causal_mse_nonzero": 1.5492025575532324,
+        "spurious_effect_rms": 0.14281785151268028,
+        "true_effect_rms": 0.26536446271232605
+      }
+    },
+    {
+      "model": "temporal_ridge",
+      "features": "temporal",
+      "initial_seed": null,
+      "world": {
+        "seed": 301,
+        "family": "beyond_window",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 10
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_ridge-21.npz",
+      "checkpoint_sha256": "4c5b0b85f460c30e02aa050b01dd59a758b7eb1cb62d7e613fba0096d818b216",
+      "metrics": {
+        "prediction_mse": 0.14214970673345012,
+        "causal_mse_all": 0.07228021355914732,
+        "causal_mse_nonzero": 1.5492025575532324,
+        "spurious_effect_rms": 0.04416534988945003,
+        "true_effect_rms": 0.26536446271232605
+      }
+    },
+    {
+      "model": "temporal_ridge",
+      "features": "temporal",
+      "initial_seed": null,
+      "world": {
+        "seed": 302,
+        "family": "beyond_window",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 10
+      },
+      "policy": "coupled",
+      "checkpoint": "temporal_ridge-22.npz",
+      "checkpoint_sha256": "4b54f2afd8b025bc26543f65912d2040cf242e9e07257ddbf06fe3423893a328",
+      "metrics": {
+        "prediction_mse": 0.26464406871339363,
+        "causal_mse_all": 0.12455342844651801,
+        "causal_mse_nonzero": 2.3431008162557636,
+        "spurious_effect_rms": 0.1375075079452603,
+        "true_effect_rms": 0.32635039843254393
+      }
+    },
+    {
+      "model": "temporal_ridge",
+      "features": "temporal",
+      "initial_seed": null,
+      "world": {
+        "seed": 302,
+        "family": "beyond_window",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 10
+      },
+      "policy": "intervened",
+      "checkpoint": "temporal_ridge-23.npz",
+      "checkpoint_sha256": "871acb7545288b06c3ffcb9643f228896f697484184217d8fed47758d63254f4",
+      "metrics": {
+        "prediction_mse": 0.19717802294425626,
+        "causal_mse_all": 0.10806337935280441,
+        "causal_mse_nonzero": 2.3431008162557636,
+        "spurious_effect_rms": 0.04041070668236639,
+        "true_effect_rms": 0.32635039843254393
+      }
+    }
+  ],
+  "summary": [
+    {
+      "family": "affine",
+      "policy": "coupled",
+      "model": "temporal_mlp",
+      "n": 9,
+      "prediction_mse": 0.20584490841933015,
+      "causal_mse_all": 0.054097488271890454,
+      "causal_mse_nonzero": 0.5274946869233079,
+      "spurious_effect_rms": 0.17660375416970572
+    },
+    {
+      "family": "affine",
+      "policy": "coupled",
+      "model": "instant_mlp",
+      "n": 9,
+      "prediction_mse": 0.3493244269790301,
+      "causal_mse_all": 0.10266189782902319,
+      "causal_mse_nonzero": 1.9964453068504058,
+      "spurious_effect_rms": 0.0977525526386654
+    },
+    {
+      "family": "affine",
+      "policy": "coupled",
+      "model": "temporal_ridge",
+      "n": 3,
+      "prediction_mse": 0.13697023271698924,
+      "causal_mse_all": 0.03516529384382494,
+      "causal_mse_nonzero": 0.38028658599622894,
+      "spurious_effect_rms": 0.1366904468053664
+    },
+    {
+      "family": "affine",
+      "policy": "intervened",
+      "model": "temporal_mlp",
+      "n": 9,
+      "prediction_mse": 0.0024939983776173617,
+      "causal_mse_all": 0.0009578618281704293,
+      "causal_mse_nonzero": 0.0075050455524510295,
+      "spurious_effect_rms": 0.025141393524356136
+    },
+    {
+      "family": "affine",
+      "policy": "intervened",
+      "model": "instant_mlp",
+      "n": 9,
+      "prediction_mse": 0.3311392641025144,
+      "causal_mse_all": 0.09433646447054661,
+      "causal_mse_nonzero": 1.9964453068504058,
+      "spurious_effect_rms": 0.050559429059863645
+    },
+    {
+      "family": "affine",
+      "policy": "intervened",
+      "model": "temporal_ridge",
+      "n": 3,
+      "prediction_mse": 0.000929354835856695,
+      "causal_mse_all": 1.0989705868107311e-05,
+      "causal_mse_nonzero": 7.343224098871359e-05,
+      "spurious_effect_rms": 0.0028138650611503045
+    },
+    {
+      "family": "interaction",
+      "policy": "coupled",
+      "model": "temporal_mlp",
+      "n": 9,
+      "prediction_mse": 0.17548566434360613,
+      "causal_mse_all": 0.05482758708400957,
+      "causal_mse_nonzero": 0.4830375052711859,
+      "spurious_effect_rms": 0.18441755616319644
+    },
+    {
+      "family": "interaction",
+      "policy": "coupled",
+      "model": "instant_mlp",
+      "n": 9,
+      "prediction_mse": 0.22769688866132023,
+      "causal_mse_all": 0.03776896820789351,
+      "causal_mse_nonzero": 0.6960167355755026,
+      "spurious_effect_rms": 0.07268579657248972
+    },
+    {
+      "family": "interaction",
+      "policy": "coupled",
+      "model": "temporal_ridge",
+      "n": 3,
+      "prediction_mse": 0.12997727589723604,
+      "causal_mse_all": 0.05056202682988029,
+      "causal_mse_nonzero": 0.7173032035710802,
+      "spurious_effect_rms": 0.13700071618642096
+    },
+    {
+      "family": "interaction",
+      "policy": "intervened",
+      "model": "temporal_mlp",
+      "n": 9,
+      "prediction_mse": 0.005504491924024726,
+      "causal_mse_all": 0.003287105746381959,
+      "causal_mse_nonzero": 0.045516284689662574,
+      "spurious_effect_rms": 0.03531368013484952
+    },
+    {
+      "family": "interaction",
+      "policy": "intervened",
+      "model": "instant_mlp",
+      "n": 9,
+      "prediction_mse": 0.2159892928589633,
+      "causal_mse_all": 0.03459137220506765,
+      "causal_mse_nonzero": 0.6960167355755026,
+      "spurious_effect_rms": 0.05059621749203597
+    },
+    {
+      "family": "interaction",
+      "policy": "intervened",
+      "model": "temporal_ridge",
+      "n": 3,
+      "prediction_mse": 0.06317421850307597,
+      "causal_mse_all": 0.03276033040995643,
+      "causal_mse_nonzero": 0.6972833241148472,
+      "spurious_effect_rms": 0.03163506188882681
+    },
+    {
+      "family": "null",
+      "policy": "coupled",
+      "model": "temporal_mlp",
+      "n": 9,
+      "prediction_mse": 0.11108816726871476,
+      "causal_mse_all": 0.02617420788679769,
+      "causal_mse_nonzero": null,
+      "spurious_effect_rms": 0.16003088347271854
+    },
+    {
+      "family": "null",
+      "policy": "coupled",
+      "model": "instant_mlp",
+      "n": 9,
+      "prediction_mse": 0.18655567926781988,
+      "causal_mse_all": 0.013015682075704943,
+      "causal_mse_nonzero": null,
+      "spurious_effect_rms": 0.10172173427733701
+    },
+    {
+      "family": "null",
+      "policy": "coupled",
+      "model": "temporal_ridge",
+      "n": 3,
+      "prediction_mse": 0.07289014034358869,
+      "causal_mse_all": 0.019083574114474314,
+      "causal_mse_nonzero": null,
+      "spurious_effect_rms": 0.13814206953199334
+    },
+    {
+      "family": "null",
+      "policy": "intervened",
+      "model": "temporal_mlp",
+      "n": 9,
+      "prediction_mse": 0.0019471905498629047,
+      "causal_mse_all": 0.0004627305662997406,
+      "causal_mse_nonzero": null,
+      "spurious_effect_rms": 0.021400909127664045
+    },
+    {
+      "family": "null",
+      "policy": "intervened",
+      "model": "instant_mlp",
+      "n": 9,
+      "prediction_mse": 0.15377388479918136,
+      "causal_mse_all": 0.001998940926704622,
+      "causal_mse_nonzero": null,
+      "spurious_effect_rms": 0.04305055082089036
+    },
+    {
+      "family": "null",
+      "policy": "intervened",
+      "model": "temporal_ridge",
+      "n": 3,
+      "prediction_mse": 0.0009284457864822063,
+      "causal_mse_all": 1.105222525830105e-05,
+      "causal_mse_nonzero": null,
+      "spurious_effect_rms": 0.003317162523526661
+    },
+    {
+      "family": "beyond_window",
+      "policy": "coupled",
+      "model": "temporal_mlp",
+      "n": 9,
+      "prediction_mse": 0.34327204115534926,
+      "causal_mse_all": 0.1401220887713464,
+      "causal_mse_nonzero": 1.9964453068504058,
+      "spurious_effect_rms": 0.2242372086140161
+    },
+    {
+      "family": "beyond_window",
+      "policy": "coupled",
+      "model": "instant_mlp",
+      "n": 9,
+      "prediction_mse": 0.3451460149399241,
+      "causal_mse_all": 0.09833618540577213,
+      "causal_mse_nonzero": 1.9964453068504058,
+      "spurious_effect_rms": 0.08504693548519844
+    },
+    {
+      "family": "beyond_window",
+      "policy": "coupled",
+      "model": "temporal_ridge",
+      "n": 3,
+      "prediction_mse": 0.2462103867626735,
+      "causal_mse_all": 0.1108343683267994,
+      "causal_mse_nonzero": 1.996445306850406,
+      "spurious_effect_rms": 0.14489279912122194
+    },
+    {
+      "family": "beyond_window",
+      "policy": "intervened",
+      "model": "temporal_mlp",
+      "n": 9,
+      "prediction_mse": 0.22735025125034503,
+      "causal_mse_all": 0.12040051559743772,
+      "causal_mse_nonzero": 1.9964453068504058,
+      "spurious_effect_rms": 0.17587514203572663
+    },
+    {
+      "family": "beyond_window",
+      "policy": "intervened",
+      "model": "instant_mlp",
+      "n": 9,
+      "prediction_mse": 0.3295375075250604,
+      "causal_mse_all": 0.09569395014555153,
+      "causal_mse_nonzero": 1.9964453068504058,
+      "spurious_effect_rms": 0.0670562034799704
+    },
+    {
+      "family": "beyond_window",
+      "policy": "intervened",
+      "model": "temporal_ridge",
+      "n": 3,
+      "prediction_mse": 0.17661697572673887,
+      "causal_mse_all": 0.09222018360705758,
+      "causal_mse_nonzero": 1.996445306850406,
+      "spurious_effect_rms": 0.038966407277200694
+    }
+  ]
+}

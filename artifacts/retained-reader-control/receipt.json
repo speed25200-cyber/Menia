@@ -1,0 +1,29 @@
+{
+  "schema": "menia-retained-reader-control-receipt-v1",
+  "archiveName": "menia-lecteur-controle-v1.zip",
+  "archiveBytes": 36733648,
+  "archiveSHA256": "cb75499001926cfb2316c84dc27a200ae128c1be12c43dc467eeb33ae90dfa8a",
+  "files": 4,
+  "execution": {
+    "startedUTC": "2026-09-20T07:16:05.529524+00:00",
+    "revision": "7502c4f27eccfb5cbc78c3efc36b511283b9eda7",
+    "status": "completed",
+    "journal": "/content/menia-results/retained-reader-control-v1/retained-reader-control-20260920-v1.jsonl",
+    "hardware": "NVIDIA A100-SXM4-40GB, 0 MiB, 40960 MiB",
+    "updatedUTC": "2026-09-20T07:16:51.018844+00:00"
+  },
+  "journalSHA256": "72589d9ef7131ca5c54249b3937a9416886f223069a22dc660d6be3fab85c9db",
+  "adapter": {
+    "bytes": 47201088,
+    "file": "retained-reader-control-20260920-v1.adapter.safetensors",
+    "sha256": "d1bd1d74ffc96847b7a3b875e490a55fe3ef92b3679c6d49ca1211f9487167ff"
+  },
+  "planHash": "0fa586da5bfbb01b2b5503f09fa7a2516c16b385dab3c373d9adb7f3b368a0ae",
+  "sourceHash": "561e63f813df7fb49e7cdc5fcfdc69c6bc2baca0730da60e9989158c39e4254b",
+  "preflight": {
+    "tests": 15,
+    "passed": true,
+    "seconds": 0.734
+  },
+  "scope": "Technical backward/serialization/producer-preservation control on previously seen cases. One update is not a training-budget comparison, held-out result, calibrated self-model or consciousness result."
+}

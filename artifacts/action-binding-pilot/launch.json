@@ -1,0 +1,35 @@
+{
+  "schema": "menia-action-binding-launch-v1",
+  "statusAtObservation": "training",
+  "job": {
+    "pid": 156844,
+    "startedUTC": "2026-09-19T20:18:14.049469+00:00",
+    "scienceRevision": "6d9c1c6ff8b8f15fb7ea63c23c379d5d9f44f781",
+    "notebookRevision": "4b85eafc626da083ec6a5fb16919a63decc4bffe",
+    "notebookSHA256": "fda9d19e73beb94818979fc1237439deab0641b0a88957046537959a174eac91",
+    "gpuPreflight": "NVIDIA A100-SXM4-40GB, 0 MiB, 40960 MiB",
+    "directory": "/content/menia-action-binding-mcp-20260919"
+  },
+  "planHash": "197e0d836e12e08751262fba24d14e8dbc64032f1de3fb14a90a9981b512fb8e",
+  "sourceHash": "5400be41109d69b64864dbe1a7f13322fdb8570eb433785e6033ece5db80441f",
+  "lastObservedUTC": "2026-09-19T20:19:36.811303+00:00",
+  "events": {
+    "header": 1,
+    "training_start": 1,
+    "training_step": 14
+  },
+  "plannedTrainingUpdates": 384,
+  "plannedEvaluationCalls": 6912,
+  "localTests": {
+    "tests": 5,
+    "passed": true,
+    "seconds": 26.072,
+    "command": "python -m unittest tests_research.test_action_binding tests_language.test_action_binding_gpu -v"
+  },
+  "colabTests": {
+    "passed": true,
+    "tests": 5,
+    "seconds": 37.165
+  },
+  "scope": "Launch evidence only. No evaluation result or consciousness claim."
+}

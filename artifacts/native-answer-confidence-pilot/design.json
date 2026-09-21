@@ -1,0 +1,177 @@
+{
+  "schema": "menia-native-answer-confidence-design-v1",
+  "status": "Frozen before training and collection",
+  "planHash": "ece013eaeca2ed764fe56ed68d1b5c94f2cbf293e6fc75ad4eb3dd1708672847",
+  "sourceHash": "52e25ffda3a39c182369b4f9d4f3d8d71d3ec94a47e9683dec3e945737bcee38",
+  "sourceFiles": [
+    "action_binding.py",
+    "action_binding_gpu.py",
+    "action_binding_journal.py",
+    "activation_monitor.py",
+    "activation_monitor_gpu.py",
+    "answer_confidence_analysis.py",
+    "answer_confidence_baselines.py",
+    "answer_confidence_crossed.py",
+    "answer_confidence_data.py",
+    "answer_confidence_gpu.py",
+    "answer_confidence_journal.py",
+    "answer_confidence_learning_gpu.py",
+    "answer_confidence_plan.py",
+    "answer_confidence_study.py",
+    "audit_action_binding.py",
+    "audit_answer_confidence.py",
+    "audit_risk_presentation.py",
+    "audit_value_action_learning.py",
+    "cross_model_gpu.py",
+    "cross_model_prediction.py",
+    "iphone_capability_learning_report.py",
+    "iphone_coupling_report.py",
+    "joint_prediction_capture.py",
+    "native_choice_analysis.py",
+    "native_choice_gpu.py",
+    "native_choice_journal.py",
+    "native_choice_plan.py",
+    "native_localization.py",
+    "native_localization_gpu.py",
+    "natural_error_analysis.py",
+    "natural_error_gpu.py",
+    "natural_error_journal.py",
+    "natural_error_questions.py",
+    "natural_error_readouts.py",
+    "output_confidence_trace.py",
+    "output_confidence_validation.py",
+    "perturbation_monitor.py",
+    "prospective_confidence_features.py",
+    "replay_controller.py",
+    "risk_presentation.py",
+    "risk_presentation_gpu.py",
+    "risk_presentation_journal.py",
+    "value_action_learning.py",
+    "value_action_learning_gpu.py",
+    "value_action_learning_journal.py"
+  ],
+  "questionHash": "4d6aa2830add5dc34af15ee728262a59ccc975af63a1097f463dfa9ac745eaca",
+  "callScheduleHash": "2efaeb7883c6565f6e47a2f73c8802d5f0f94c7c804131bb99860dd0dd04885a",
+  "model": {
+    "id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "training": {
+    "rank": 8,
+    "scale": 1.0,
+    "learningRate": 0.0001,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "epsilon": 1e-08,
+    "weightDecay": 0.0,
+    "clipNorm": 1.0,
+    "epochs": 2,
+    "batchSize": 8,
+    "updatesPerAdapter": 144,
+    "maxTrainingTokens": 1792,
+    "loss": "Code 0/1 then EOS only; response tokens are context"
+  },
+  "trainingFiles": {
+    "measured": {
+      "path": "artifacts/answer-confidence-training-data/measured.jsonl",
+      "bytes": 928166,
+      "sha256": "c05a1ebf2cf72075c4ba6124b460e8b37f4bdc5d1a89b17c7df7ff10fe6959e0"
+    },
+    "shuffled": {
+      "path": "artifacts/answer-confidence-training-data/shuffled.jsonl",
+      "bytes": 928166,
+      "sha256": "90324205f8c8de187d599f909eb96dd929530fd90e187f88864f4a8952ee11ba"
+    }
+  },
+  "parentReportHash": "d70ac03eb906f2ef4fa18b69f55e68ea71fc65a6c5e6bfd32e501326aafce1e8",
+  "trainingUnits": [
+    {
+      "key": "r0-measured",
+      "replication": 0,
+      "arm": "measured",
+      "initializationSeed": 202610231,
+      "updates": 144,
+      "examplePresentations": 1152,
+      "inputScheduleHash": "5221cc182be61ecc91ab576c6ce5cc3e9245835ad385e02dcda626f308c02162",
+      "dataScheduleHash": "a39eacd2ffea538b93b1097e9b2a010e7a73df89ff546b4853bf66f4c292e3f6"
+    },
+    {
+      "key": "r0-shuffled",
+      "replication": 0,
+      "arm": "shuffled",
+      "initializationSeed": 202610231,
+      "updates": 144,
+      "examplePresentations": 1152,
+      "inputScheduleHash": "5221cc182be61ecc91ab576c6ce5cc3e9245835ad385e02dcda626f308c02162",
+      "dataScheduleHash": "0b5932d006c1eac98a235d4b45ba5a9b1a922249dcb9617c74f5d5bf28521b08"
+    },
+    {
+      "key": "r1-measured",
+      "replication": 1,
+      "arm": "measured",
+      "initializationSeed": 202610232,
+      "updates": 144,
+      "examplePresentations": 1152,
+      "inputScheduleHash": "dd293b40c3d7f81c3709db7d9de91daf2e985359f0dc18ae24abd6426903e700",
+      "dataScheduleHash": "b4e8da3c3f45027125aed12c2dc068abae2b2524709462cd5117536955bb11b8"
+    },
+    {
+      "key": "r1-shuffled",
+      "replication": 1,
+      "arm": "shuffled",
+      "initializationSeed": 202610232,
+      "updates": 144,
+      "examplePresentations": 1152,
+      "inputScheduleHash": "dd293b40c3d7f81c3709db7d9de91daf2e985359f0dc18ae24abd6426903e700",
+      "dataScheduleHash": "a118a869aedc99c24f9eb28b1182fe856ba55d86f3b85ce5a66b8f8673f562cf"
+    },
+    {
+      "key": "r2-measured",
+      "replication": 2,
+      "arm": "measured",
+      "initializationSeed": 202610233,
+      "updates": 144,
+      "examplePresentations": 1152,
+      "inputScheduleHash": "847009c8c0c93f26915cd5c3f17d32cb87b8e663d135609c71b7b953c5d13274",
+      "dataScheduleHash": "7475a3f65e3cefa02e51696df01f1d28fa47a66ff4b029005c180bdf9c9ecfdb"
+    },
+    {
+      "key": "r2-shuffled",
+      "replication": 2,
+      "arm": "shuffled",
+      "initializationSeed": 202610233,
+      "updates": 144,
+      "examplePresentations": 1152,
+      "inputScheduleHash": "847009c8c0c93f26915cd5c3f17d32cb87b8e663d135609c71b7b953c5d13274",
+      "dataScheduleHash": "86697573065261eb3be36a948414f6ea6d513ac85dda4f465477f711541d3c68"
+    }
+  ],
+  "questions": 864,
+  "generations": 2592,
+  "judgments": 7776,
+  "calls": 10368,
+  "calibrationCalls": 3456,
+  "criteria": {
+    "primaryProducers": [
+      "base",
+      "measured"
+    ],
+    "comparators": [
+      "base",
+      "shuffled",
+      "betaCell",
+      "outputConfidence"
+    ],
+    "minimumBrierGain": 0.005,
+    "bootstrapResamples": 10000,
+    "familyAlpha": 0.05,
+    "primaryComparisons": 24,
+    "minimumEachClass": 20,
+    "minimumNativeTopCodeFraction": 0.95,
+    "minimumNativeMeanCodeMass": 0.5,
+    "minimumAnswerAccuracyChange": -0.02
+  },
+  "scope": "Textual post-answer correctness. Fresh relative to listed Menia tasks, not pretraining. No privileged access or consciousness criterion."
+}

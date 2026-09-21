@@ -1,0 +1,17 @@
+{
+  "schema": "menia-reader-learning-arithmetic-preparation-v1",
+  "preparedUTC": "2026-09-20T07:55:24.792325+00:00",
+  "collectionRevision": "97ca234a2e4f2f37f24f78ee60fd8a925a0a7404",
+  "planHash": "d1266cdf7cb1a8a06eb04ff070a4a46c632496ce50e3fc5adb81aebdba35c915",
+  "sourceHash": "06644cec2fd5a000b9aaba231e744f8932ad3e90d4a2ca232a4e70006cbac55f",
+  "files": {
+    "research/audit_reader_learning_arithmetic.py": "415db2b2b1e656882956b01c0b32f00f78b32e3f737dda19e76a0450efc95303",
+    "tests_language/test_reader_learning_arithmetic.py": "87589a653813761abd1ccf517fcb4e096004f9db22d7aba3b0207590b8643952"
+  },
+  "tests": {
+    "command": "python -m unittest tests_language.test_reader_learning_arithmetic.SeparateArithmeticTests -v",
+    "passed": 4,
+    "seconds": 0.939
+  },
+  "scope": "Second arithmetic implementation prepared and tested on synthetic fixtures while the first arm is training. No reserved model outcome used; collection code and decision criteria unchanged."
+}

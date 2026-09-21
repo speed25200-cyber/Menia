@@ -1,0 +1,171 @@
+{
+  "schema": "menia-confidence-prefix-reachability-v1",
+  "origin": "random_miniature_qwen_cpu",
+  "seed": 20260924,
+  "torch": "2.8.0+cpu",
+  "transformers": "4.56.2",
+  "config": {
+    "hiddenSize": 32,
+    "layers": 2,
+    "vocabularySize": 64,
+    "attention": "sdpa",
+    "dtype": "float32",
+    "device": "cpu"
+  },
+  "sourceHash": "d529c57caf20668b591285165fccf0b19c3ba248c994762744a22094b531a0cb",
+  "qwenImplementationSHA256": "4b95c371fd26d40c69083dab36ac1eafd8cf82b415a0bb827275097c5ad2305b",
+  "originalWeightHashes": {
+    "model.embed_tokens.weight": "16849bb2b2b4844e755efe88c98ecad90bd8c462dd2002f126bc5bece2f06596",
+    "model.layers.0.self_attn.q_proj.weight": "974e5b9b4c2cafd22b20adcc2bfce30554518644f182ab6ab3d43d34f4c0a7f7",
+    "model.layers.0.self_attn.k_proj.weight": "79c1e03c42a0d082fa7214007302c17f5968046b40e45f02c99753d9aa6b3e9e",
+    "model.layers.0.self_attn.v_proj.weight": "53b2028a22aee965f40f58f2f7b150428d83cca2921e18540d638a18367cd785",
+    "model.layers.0.self_attn.o_proj.weight": "aa3798635e72a8ccefeae2ad20454d7e67072fded40b6ccec6d44bbe8dfaeb4f",
+    "model.layers.0.self_attn.q_norm.weight": "9a3874829667c666e8822192608e177680d792a4e1628ea21377f8e30b206983",
+    "model.layers.0.self_attn.k_norm.weight": "9a3874829667c666e8822192608e177680d792a4e1628ea21377f8e30b206983",
+    "model.layers.0.mlp.gate_proj.weight": "513114a6564582b2d4eebee784215b328c9e31c1d8373e551ca82bad69fde5aa",
+    "model.layers.0.mlp.up_proj.weight": "f74596deb48309e46d5ed2a01db448ba69e87b93a942c95e6bf25929414488fb",
+    "model.layers.0.mlp.down_proj.weight": "3edae149d5205b588a7bacfeb6167740af593c3d856fc0742f91841b515b8e8a",
+    "model.layers.0.input_layernorm.weight": "cfb7307d2cce627ebe48679bcc5f6d32e0a99315b98d8f6043d0765ba8de0b36",
+    "model.layers.0.post_attention_layernorm.weight": "cfb7307d2cce627ebe48679bcc5f6d32e0a99315b98d8f6043d0765ba8de0b36",
+    "model.layers.1.self_attn.q_proj.weight": "16f5d6abdb41bbe8c2ba38b3fb3643ba1446c4695eda060e14f1b5c91d72d14c",
+    "model.layers.1.self_attn.k_proj.weight": "d76c300e3055a3c022b924fc828bb169e9670a4e8f131d285be54d399496b95e",
+    "model.layers.1.self_attn.v_proj.weight": "2bbfff816560f591df4fbdcfd4b0a4434a604d79f42768e6e5e549507a53e94a",
+    "model.layers.1.self_attn.o_proj.weight": "ec046d15270e8fdf73187bf33628c9bac1a364162dd40bec0a058ca81eea2a43",
+    "model.layers.1.self_attn.q_norm.weight": "9a3874829667c666e8822192608e177680d792a4e1628ea21377f8e30b206983",
+    "model.layers.1.self_attn.k_norm.weight": "9a3874829667c666e8822192608e177680d792a4e1628ea21377f8e30b206983",
+    "model.layers.1.mlp.gate_proj.weight": "9102d93bab6b657e8db0dea207f8af21217f1eb8b1c3002bf61cabce483aa966",
+    "model.layers.1.mlp.up_proj.weight": "ea9ffc9090f333e42e2e0346c4cc8ac1d693777ae21ea8f17195565cf6c9096c",
+    "model.layers.1.mlp.down_proj.weight": "ad479a18672335ec5519c6f93feb0287228490d48d916d72386f2a00cb1d56e4",
+    "model.layers.1.input_layernorm.weight": "cfb7307d2cce627ebe48679bcc5f6d32e0a99315b98d8f6043d0765ba8de0b36",
+    "model.layers.1.post_attention_layernorm.weight": "cfb7307d2cce627ebe48679bcc5f6d32e0a99315b98d8f6043d0765ba8de0b36",
+    "model.norm.weight": "cfb7307d2cce627ebe48679bcc5f6d32e0a99315b98d8f6043d0765ba8de0b36",
+    "lm_head.weight": "baa81a9747bc7a33403b77e941961297040e044b883a395d924b912e9ac5ca99"
+  },
+  "weightsUnchanged": true,
+  "rngUnchanged": true,
+  "cases": [
+    {
+      "prefixTokenIds": [
+        1,
+        2,
+        3
+      ],
+      "suffixTokenIds": [
+        4,
+        5
+      ],
+      "layer": 0,
+      "position": 2,
+      "rank": 2,
+      "displacementNorm": 0.06202437224193007,
+      "logitMaxDifference": 0.02506064996123314,
+      "structurallyNoPath": false,
+      "shamLogitsIdentical": true,
+      "untouchedTokensEqual": true,
+      "beforeHash": "c73f78d2678a402c1e4fcbe51eb71c884d126d8e2807496481381af76863e2bb",
+      "afterHash": "bea71cc9ff574ac6af9e71719372172cf34eef89b5f473b3b0bb2f444a40fc93"
+    },
+    {
+      "prefixTokenIds": [
+        1,
+        2,
+        3
+      ],
+      "suffixTokenIds": [
+        4,
+        5
+      ],
+      "layer": 1,
+      "position": 2,
+      "rank": 2,
+      "displacementNorm": 0.07185464985057675,
+      "logitMaxDifference": 0.0,
+      "structurallyNoPath": true,
+      "shamLogitsIdentical": true,
+      "untouchedTokensEqual": true,
+      "beforeHash": "d6f8930b7d28af75b24697c42ebeb23168ea568f53076672d71634021d12f13d",
+      "afterHash": "e7e6ff7b07f5ed42a3c449c3f1763b3138bb95944046dd9acd70450c6cda59e9"
+    },
+    {
+      "prefixTokenIds": [
+        1,
+        2,
+        3
+      ],
+      "suffixTokenIds": [
+        6,
+        7,
+        8
+      ],
+      "layer": 0,
+      "position": 2,
+      "rank": 2,
+      "displacementNorm": 0.06202437224193007,
+      "logitMaxDifference": 0.02537875436246395,
+      "structurallyNoPath": false,
+      "shamLogitsIdentical": true,
+      "untouchedTokensEqual": true,
+      "beforeHash": "c73f78d2678a402c1e4fcbe51eb71c884d126d8e2807496481381af76863e2bb",
+      "afterHash": "bea71cc9ff574ac6af9e71719372172cf34eef89b5f473b3b0bb2f444a40fc93"
+    },
+    {
+      "prefixTokenIds": [
+        1,
+        2,
+        3
+      ],
+      "suffixTokenIds": [
+        6,
+        7,
+        8
+      ],
+      "layer": 1,
+      "position": 2,
+      "rank": 2,
+      "displacementNorm": 0.07185464985057675,
+      "logitMaxDifference": 0.0,
+      "structurallyNoPath": true,
+      "shamLogitsIdentical": true,
+      "untouchedTokensEqual": true,
+      "beforeHash": "d6f8930b7d28af75b24697c42ebeb23168ea568f53076672d71634021d12f13d",
+      "afterHash": "e7e6ff7b07f5ed42a3c449c3f1763b3138bb95944046dd9acd70450c6cda59e9"
+    },
+    {
+      "prefixTokenIds": [
+        1,
+        2,
+        3
+      ],
+      "suffixTokenIds": [],
+      "layer": 0,
+      "position": 2,
+      "rank": 2,
+      "displacementNorm": 0.06202436784054594,
+      "logitMaxDifference": 0.13889554142951965,
+      "structurallyNoPath": false,
+      "shamLogitsIdentical": true,
+      "untouchedTokensEqual": true,
+      "beforeHash": "a01c1ef119b472303a3fee20fd3060c646c133a713623b4c7313d6abb3a6eb40",
+      "afterHash": "44207ac9e7ad2a55bbcaafcd0b4c65fd3c93d7a2913cc59554a18405c60b9d3b"
+    },
+    {
+      "prefixTokenIds": [
+        1,
+        2,
+        3
+      ],
+      "suffixTokenIds": [],
+      "layer": 1,
+      "position": 2,
+      "rank": 2,
+      "displacementNorm": 0.07185465252924095,
+      "logitMaxDifference": 0.17201724648475647,
+      "structurallyNoPath": false,
+      "shamLogitsIdentical": true,
+      "untouchedTokensEqual": true,
+      "beforeHash": "b1e78e84f17ec5d9e8727b53cb8b2717b4076dce189355dbceeb88e2856b101a",
+      "afterHash": "96947179bcc8ba5d63c89df9b0dca19dd0b8187db8606b5f9802a108530dd6f4"
+    }
+  ],
+  "scope": "Arbitrary tokens and random weights. Full forward, no KV cache. Final block output only; not attention/MLP internals. A structural null is not evidence against learned confidence elsewhere. No trained Menia or action-performance result."
+}

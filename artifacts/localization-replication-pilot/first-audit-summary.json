@@ -1,0 +1,6742 @@
+{
+  "schema": "menia-localization-replication-report-v1",
+  "origin": "transformers_gpu",
+  "complete": true,
+  "planHash": "c2ec052f6c8ccf23ed28933a9c8d1d92960fa145bf884930c69dd78986b08164",
+  "sourceHash": "ff9abede3d3432dc3828e2c68b64840c6efcb73b1fc6faf6269ca598b9161526",
+  "recorded": 12480,
+  "planned": 12480,
+  "trained": {
+    "r0-visible": "81d2a3cd3eea0de09691a52b726a046a3b634d1e816204f1245408536d1a9f18",
+    "r0-strong": "8e3b8f96d0c183146c37a769959a0390d31b3c5df3fa0122aa4b30d1ded61922",
+    "r0-shuffled": "856bd385e46fa73cac144f620b2342f09ea137d95d7313f70a494c5a15e11b97",
+    "r1-visible": "81e0694eb47221a57fa99fbabc6ce5c733d2b9be232dffdaf20a4c96999108f5",
+    "r1-strong": "9ca95b0a37b60ef8641e92ba7bf03e987e9cf0595a9a31ae6643f52bb2172f19",
+    "r1-shuffled": "47a8cb148904e2004531de3172f6afb6b4e06799320f80749db541d66b3a001f",
+    "r2-visible": "c4d67b0d5d9677295b56273b47f3b0398462cbb37d7afc2a79017d035b8e139d",
+    "r2-strong": "bc9e02b4b72b66444718d1bf992d91b4051a0dc644c90b8b2d09adb887774f77",
+    "r2-shuffled": "038342c30a6af8fbdb944b69c29e7b073fbdbfb878c0c3a4db1d8a8b4e5ef259"
+  },
+  "pendingRequest": false,
+  "tables": {
+    "0/train/base/visible/canonical/primary": {
+      "n": 24,
+      "blocks": 8,
+      "correct": 0.7083333333333334,
+      "firstTokenCorrect": 0.7083333333333334,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999999130765597,
+      "brier": 0.5225557659882968,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 0.125,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.125,
+      "presenceBalancedAccuracy": 0.5625,
+      "trainingTargetAccuracy": 0.7083333333333334,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          1,
+          0,
+          7
+        ],
+        [
+          0,
+          8,
+          0
+        ],
+        [
+          0,
+          0,
+          8
+        ]
+      ],
+      "predictionCounts": [
+        1,
+        8,
+        15
+      ]
+    },
+    "0/train/base/visible/canonical/marker": {
+      "n": 24,
+      "blocks": 8,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.999997928738594,
+      "brier": 0.664087961891279,
+      "positionAccuracy": 0.75,
+      "absentAccuracy": 0.5,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          8,
+          4,
+          0
+        ],
+        [
+          0,
+          0,
+          12
+        ]
+      ],
+      "predictionCounts": [
+        8,
+        4,
+        12
+      ]
+    },
+    "0/test/base/visible/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6944444444444444,
+      "firstTokenCorrect": 0.6944444444444444,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999999536408318,
+      "brier": 0.5979205108867264,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 0.08333333333333333,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.08333333333333333,
+      "presenceBalancedAccuracy": 0.5416666666666666,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          2,
+          0,
+          22
+        ],
+        [
+          0,
+          24,
+          0
+        ],
+        [
+          0,
+          0,
+          24
+        ]
+      ],
+      "predictionCounts": [
+        2,
+        24,
+        46
+      ]
+    },
+    "0/test/base/visible/canonical/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999983501103189,
+      "brier": 0.6411859646322282,
+      "positionAccuracy": 0.75,
+      "absentAccuracy": 0.5,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          24,
+          12,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        24,
+        12,
+        36
+      ]
+    },
+    "0/test/base/visible/content_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999999677141508,
+      "brier": 0.6655249000833842,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 0.0,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          24
+        ],
+        [
+          0,
+          24,
+          0
+        ],
+        [
+          0,
+          0,
+          24
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        24,
+        48
+      ]
+    },
+    "0/test/base/visible/content_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999978426429961,
+      "brier": 0.6519422350666826,
+      "positionAccuracy": 0.75,
+      "absentAccuracy": 0.5,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          24,
+          12,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        24,
+        12,
+        36
+      ]
+    },
+    "0/test/base/visible/labels_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.4027777777777778,
+      "firstTokenCorrect": 0.4027777777777778,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.999997985859712,
+      "brier": 1.0740048632246908,
+      "positionAccuracy": 0.4583333333333333,
+      "absentAccuracy": 0.2916666666666667,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.2916666666666667,
+      "presenceBalancedAccuracy": 0.6458333333333334,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          7,
+          5,
+          12
+        ],
+        [
+          0,
+          10,
+          14
+        ],
+        [
+          0,
+          12,
+          12
+        ]
+      ],
+      "predictionCounts": [
+        7,
+        27,
+        38
+      ]
+    },
+    "0/test/base/visible/labels_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6805555555555556,
+      "firstTokenCorrect": 0.6805555555555556,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999995620714294,
+      "brier": 0.5243577876309498,
+      "positionAccuracy": 0.75,
+      "absentAccuracy": 0.5416666666666666,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          23,
+          13
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        59,
+        13
+      ]
+    },
+    "0/test/base/visible/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.4444444444444444,
+      "firstTokenCorrect": 0.4444444444444444,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999957821435399,
+      "brier": 1.0286152709878995,
+      "positionAccuracy": 0.5208333333333334,
+      "absentAccuracy": 0.2916666666666667,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.2916666666666667,
+      "presenceBalancedAccuracy": 0.6458333333333334,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          7,
+          5,
+          12
+        ],
+        [
+          0,
+          13,
+          11
+        ],
+        [
+          0,
+          12,
+          12
+        ]
+      ],
+      "predictionCounts": [
+        7,
+        30,
+        35
+      ]
+    },
+    "0/test/base/visible/both_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6944444444444444,
+      "firstTokenCorrect": 0.6944444444444444,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999995686941676,
+      "brier": 0.4781572922966728,
+      "positionAccuracy": 0.75,
+      "absentAccuracy": 0.5833333333333334,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          22,
+          14
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        58,
+        14
+      ]
+    },
+    "0/train/base/strong/canonical/primary": {
+      "n": 24,
+      "blocks": 8,
+      "correct": 0.3333333333333333,
+      "firstTokenCorrect": 0.3333333333333333,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999999850988388,
+      "brier": 1.3123218975399817,
+      "positionAccuracy": 0.5,
+      "absentAccuracy": 0.0,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": 0.3333333333333333,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          4,
+          4
+        ],
+        [
+          0,
+          4,
+          4
+        ],
+        [
+          0,
+          4,
+          4
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        12,
+        12
+      ]
+    },
+    "0/train/base/strong/canonical/marker": {
+      "n": 24,
+      "blocks": 8,
+      "correct": 0.5416666666666666,
+      "firstTokenCorrect": 0.5416666666666666,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999957780043284,
+      "brier": 0.9028008218313804,
+      "positionAccuracy": 0.5625,
+      "absentAccuracy": 0.5,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          11,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          12
+        ]
+      ],
+      "predictionCounts": [
+        11,
+        1,
+        12
+      ]
+    },
+    "0/test/base/strong/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.3333333333333333,
+      "firstTokenCorrect": 0.3333333333333333,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999999933772616,
+      "brier": 1.3206052576849503,
+      "positionAccuracy": 0.5,
+      "absentAccuracy": 0.0,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          12,
+          12
+        ],
+        [
+          0,
+          12,
+          12
+        ],
+        [
+          0,
+          12,
+          12
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "0/test/base/strong/canonical/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.5277777777777778,
+      "firstTokenCorrect": 0.5277777777777778,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999968815180991,
+      "brier": 0.8754920220651482,
+      "positionAccuracy": 0.5416666666666666,
+      "absentAccuracy": 0.5,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          34,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        34,
+        2,
+        36
+      ]
+    },
+    "0/test/base/strong/content_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.3333333333333333,
+      "firstTokenCorrect": 0.3333333333333333,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999999817874696,
+      "brier": 1.3122668390936099,
+      "positionAccuracy": 0.5,
+      "absentAccuracy": 0.0,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          12,
+          12
+        ],
+        [
+          0,
+          12,
+          12
+        ],
+        [
+          0,
+          12,
+          12
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "0/test/base/strong/content_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.5138888888888888,
+      "firstTokenCorrect": 0.5138888888888888,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999958814846145,
+      "brier": 0.8871143120283187,
+      "positionAccuracy": 0.5208333333333334,
+      "absentAccuracy": 0.5,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          35,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        35,
+        1,
+        36
+      ]
+    },
+    "0/test/base/strong/labels_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.3333333333333333,
+      "firstTokenCorrect": 0.3333333333333333,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999999577800432,
+      "brier": 1.268438730746599,
+      "positionAccuracy": 0.5,
+      "absentAccuracy": 0.0,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          24,
+          0
+        ],
+        [
+          0,
+          24,
+          0
+        ],
+        [
+          0,
+          24,
+          0
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        72,
+        0
+      ]
+    },
+    "0/test/base/strong/labels_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.5416666666666666,
+      "firstTokenCorrect": 0.5416666666666666,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999995471702682,
+      "brier": 0.8332005726921621,
+      "positionAccuracy": 0.5416666666666666,
+      "absentAccuracy": 0.5416666666666666,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          33,
+          3
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        69,
+        3
+      ]
+    },
+    "0/test/base/strong/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.3333333333333333,
+      "firstTokenCorrect": 0.3333333333333333,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.999999982615312,
+      "brier": 1.2811297674266824,
+      "positionAccuracy": 0.5,
+      "absentAccuracy": 0.0,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          24,
+          0
+        ],
+        [
+          0,
+          24,
+          0
+        ],
+        [
+          0,
+          24,
+          0
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        72,
+        0
+      ]
+    },
+    "0/test/base/strong/both_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.5555555555555556,
+      "firstTokenCorrect": 0.5555555555555556,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999994676974084,
+      "brier": 0.6835850398795604,
+      "positionAccuracy": 0.5416666666666666,
+      "absentAccuracy": 0.5833333333333334,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          32,
+          4
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        68,
+        4
+      ]
+    },
+    "0/train/visible/visible/canonical/primary": {
+      "n": 24,
+      "blocks": 8,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999991779526075,
+      "brier": 1.4730626730987284e-07,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 1.0,
+      "trainingTargetAccuracy": 1.0,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          8,
+          0,
+          0
+        ],
+        [
+          0,
+          8,
+          0
+        ],
+        [
+          0,
+          0,
+          8
+        ]
+      ],
+      "predictionCounts": [
+        8,
+        8,
+        8
+      ]
+    },
+    "0/train/visible/visible/canonical/marker": {
+      "n": 24,
+      "blocks": 8,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999842569231987,
+      "brier": 0.00044140036325208384,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          12,
+          0
+        ],
+        [
+          0,
+          0,
+          12
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        12,
+        12
+      ]
+    },
+    "0/test/visible/visible/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999991522894965,
+      "brier": 3.912892239284504e-05,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 1.0,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          24,
+          0,
+          0
+        ],
+        [
+          0,
+          24,
+          0
+        ],
+        [
+          0,
+          0,
+          24
+        ]
+      ],
+      "predictionCounts": [
+        24,
+        24,
+        24
+      ]
+    },
+    "0/test/visible/visible/canonical/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999878845281072,
+      "brier": 0.0006483540664025234,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "0/test/visible/visible/content_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.999998872478803,
+      "brier": 4.299825468605072e-06,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 1.0,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          24,
+          0,
+          0
+        ],
+        [
+          0,
+          24,
+          0
+        ],
+        [
+          0,
+          0,
+          24
+        ]
+      ],
+      "predictionCounts": [
+        24,
+        24,
+        24
+      ]
+    },
+    "0/test/visible/visible/content_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999903672271304,
+      "brier": 0.000457788273935761,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "0/test/visible/visible/labels_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.7083333333333334,
+      "firstTokenCorrect": 0.7083333333333334,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999801301293902,
+      "brier": 0.47458586425466287,
+      "positionAccuracy": 0.5625,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 1.0,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          24,
+          0,
+          0
+        ],
+        [
+          0,
+          24,
+          0
+        ],
+        [
+          0,
+          21,
+          3
+        ]
+      ],
+      "predictionCounts": [
+        24,
+        45,
+        3
+      ]
+    },
+    "0/test/visible/visible/labels_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.9166666666666666,
+      "firstTokenCorrect": 0.9166666666666666,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999801648987664,
+      "brier": 0.12001511264046509,
+      "positionAccuracy": 0.875,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          6,
+          30
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        42,
+        30
+      ]
+    },
+    "0/test/visible/visible/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6805555555555556,
+      "firstTokenCorrect": 0.6805555555555556,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.999976815448867,
+      "brier": 0.5164084844572133,
+      "positionAccuracy": 0.5208333333333334,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 1.0,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          24,
+          0,
+          0
+        ],
+        [
+          0,
+          24,
+          0
+        ],
+        [
+          0,
+          23,
+          1
+        ]
+      ],
+      "predictionCounts": [
+        24,
+        47,
+        1
+      ]
+    },
+    "0/test/visible/visible/both_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.9166666666666666,
+      "firstTokenCorrect": 0.9166666666666666,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999803652366003,
+      "brier": 0.13367154519899793,
+      "positionAccuracy": 0.8958333333333334,
+      "absentAccuracy": 0.9583333333333334,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          6,
+          30
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        42,
+        30
+      ]
+    },
+    "0/train/strong/strong/canonical/primary": {
+      "n": 24,
+      "blocks": 8,
+      "correct": 0.7916666666666666,
+      "firstTokenCorrect": 0.7916666666666666,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999058991670609,
+      "brier": 0.3725430828256511,
+      "positionAccuracy": 0.6875,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": 0.75,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 0.875,
+      "trainingTargetAccuracy": 0.7916666666666666,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          8,
+          0,
+          0
+        ],
+        [
+          3,
+          5,
+          0
+        ],
+        [
+          1,
+          1,
+          6
+        ]
+      ],
+      "predictionCounts": [
+        12,
+        6,
+        6
+      ]
+    },
+    "0/train/strong/strong/canonical/marker": {
+      "n": 24,
+      "blocks": 8,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999999751647314,
+      "brier": 1.0977120970618751e-10,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          12,
+          0
+        ],
+        [
+          0,
+          0,
+          12
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        12,
+        12
+      ]
+    },
+    "0/test/strong/strong/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.5138888888888888,
+      "firstTokenCorrect": 0.5138888888888888,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999143034219742,
+      "brier": 0.572925959135913,
+      "positionAccuracy": 0.3125,
+      "absentAccuracy": 0.9166666666666666,
+      "presenceSensitivity": 0.4583333333333333,
+      "presenceSpecificity": 0.9166666666666666,
+      "presenceBalancedAccuracy": 0.6875,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          22,
+          2,
+          0
+        ],
+        [
+          17,
+          6,
+          1
+        ],
+        [
+          9,
+          6,
+          9
+        ]
+      ],
+      "predictionCounts": [
+        48,
+        14,
+        10
+      ]
+    },
+    "0/test/strong/strong/canonical/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 1.0000000016556845,
+      "brier": 2.937822659587567e-10,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "0/test/strong/strong/content_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.625,
+      "firstTokenCorrect": 0.625,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999120227164693,
+      "brier": 0.5462318831173855,
+      "positionAccuracy": 0.4375,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": 0.5208333333333334,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 0.7604166666666667,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          24,
+          0,
+          0
+        ],
+        [
+          15,
+          9,
+          0
+        ],
+        [
+          8,
+          4,
+          12
+        ]
+      ],
+      "predictionCounts": [
+        47,
+        13,
+        12
+      ]
+    },
+    "0/test/strong/strong/content_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.999999988410208,
+      "brier": 3.31051187123934e-10,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "0/test/strong/strong/labels_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.4444444444444444,
+      "firstTokenCorrect": 0.4444444444444444,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.999839169283708,
+      "brier": 0.7026422298908265,
+      "positionAccuracy": 0.22916666666666666,
+      "absentAccuracy": 0.875,
+      "presenceSensitivity": 0.4791666666666667,
+      "presenceSpecificity": 0.875,
+      "presenceBalancedAccuracy": 0.6770833333333334,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          21,
+          2,
+          1
+        ],
+        [
+          9,
+          9,
+          6
+        ],
+        [
+          16,
+          6,
+          2
+        ]
+      ],
+      "predictionCounts": [
+        46,
+        17,
+        9
+      ]
+    },
+    "0/test/strong/strong/labels_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999994792872005,
+      "brier": 0.00013605738414197778,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "0/test/strong/strong/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.4166666666666667,
+      "firstTokenCorrect": 0.4166666666666667,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9998137255509695,
+      "brier": 0.6835376444001459,
+      "positionAccuracy": 0.1875,
+      "absentAccuracy": 0.875,
+      "presenceSensitivity": 0.5416666666666666,
+      "presenceSpecificity": 0.875,
+      "presenceBalancedAccuracy": 0.7083333333333333,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          21,
+          2,
+          1
+        ],
+        [
+          9,
+          6,
+          9
+        ],
+        [
+          13,
+          8,
+          3
+        ]
+      ],
+      "predictionCounts": [
+        43,
+        16,
+        13
+      ]
+    },
+    "0/test/strong/strong/both_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999993551108572,
+      "brier": 0.00023203216910864093,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "0/train/shuffled/shuffled/canonical/primary": {
+      "n": 24,
+      "blocks": 8,
+      "correct": 0.625,
+      "firstTokenCorrect": 0.625,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9992742960651716,
+      "brier": 0.5933122365297869,
+      "positionAccuracy": 0.5,
+      "absentAccuracy": 0.875,
+      "presenceSensitivity": 0.5625,
+      "presenceSpecificity": 0.875,
+      "presenceBalancedAccuracy": 0.71875,
+      "trainingTargetAccuracy": 0.5416666666666666,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          7,
+          1,
+          0
+        ],
+        [
+          4,
+          4,
+          0
+        ],
+        [
+          3,
+          1,
+          4
+        ]
+      ],
+      "predictionCounts": [
+        14,
+        6,
+        4
+      ]
+    },
+    "0/train/shuffled/shuffled/canonical/marker": {
+      "n": 24,
+      "blocks": 8,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999997839331627,
+      "brier": 6.223891051680272e-09,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          12,
+          0
+        ],
+        [
+          0,
+          0,
+          12
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        12,
+        12
+      ]
+    },
+    "0/test/shuffled/shuffled/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.4583333333333333,
+      "firstTokenCorrect": 0.4583333333333333,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9993799204627672,
+      "brier": 0.6331859200533754,
+      "positionAccuracy": 0.25,
+      "absentAccuracy": 0.875,
+      "presenceSensitivity": 0.375,
+      "presenceSpecificity": 0.875,
+      "presenceBalancedAccuracy": 0.625,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          21,
+          0,
+          3
+        ],
+        [
+          17,
+          2,
+          5
+        ],
+        [
+          13,
+          1,
+          10
+        ]
+      ],
+      "predictionCounts": [
+        51,
+        3,
+        18
+      ]
+    },
+    "0/test/shuffled/shuffled/canonical/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999998435378075,
+      "brier": 1.1667842912320088e-08,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "0/test/shuffled/shuffled/content_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.4722222222222222,
+      "firstTokenCorrect": 0.4722222222222222,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9993634753757052,
+      "brier": 0.6300165118716061,
+      "positionAccuracy": 0.2708333333333333,
+      "absentAccuracy": 0.875,
+      "presenceSensitivity": 0.3958333333333333,
+      "presenceSpecificity": 0.875,
+      "presenceBalancedAccuracy": 0.6354166666666666,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          21,
+          2,
+          1
+        ],
+        [
+          15,
+          4,
+          5
+        ],
+        [
+          14,
+          1,
+          9
+        ]
+      ],
+      "predictionCounts": [
+        50,
+        7,
+        15
+      ]
+    },
+    "0/test/shuffled/shuffled/content_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999997607535787,
+      "brier": 3.6651962846686925e-08,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "0/test/shuffled/shuffled/labels_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.4027777777777778,
+      "firstTokenCorrect": 0.4027777777777778,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9990686757696999,
+      "brier": 0.6724722123411584,
+      "positionAccuracy": 0.20833333333333334,
+      "absentAccuracy": 0.7916666666666666,
+      "presenceSensitivity": 0.3958333333333333,
+      "presenceSpecificity": 0.7916666666666666,
+      "presenceBalancedAccuracy": 0.59375,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          19,
+          0,
+          5
+        ],
+        [
+          12,
+          6,
+          6
+        ],
+        [
+          17,
+          3,
+          4
+        ]
+      ],
+      "predictionCounts": [
+        48,
+        9,
+        15
+      ]
+    },
+    "0/test/shuffled/shuffled/labels_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999950519866414,
+      "brier": 0.000302067036518585,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "0/test/shuffled/shuffled/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.3611111111111111,
+      "firstTokenCorrect": 0.3611111111111111,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9990582209494379,
+      "brier": 0.6752527904799899,
+      "positionAccuracy": 0.10416666666666667,
+      "absentAccuracy": 0.875,
+      "presenceSensitivity": 0.3125,
+      "presenceSpecificity": 0.875,
+      "presenceBalancedAccuracy": 0.59375,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          21,
+          1,
+          2
+        ],
+        [
+          18,
+          2,
+          4
+        ],
+        [
+          15,
+          6,
+          3
+        ]
+      ],
+      "predictionCounts": [
+        54,
+        9,
+        9
+      ]
+    },
+    "0/test/shuffled/shuffled/both_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999940122167269,
+      "brier": 0.00029775569134319425,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "1/train/base/visible/canonical/primary": {
+      "n": 24,
+      "blocks": 8,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.999999962747097,
+      "brier": 0.6642779862505205,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 0.0,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": 0.6666666666666666,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          8
+        ],
+        [
+          0,
+          8,
+          0
+        ],
+        [
+          0,
+          0,
+          8
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        8,
+        16
+      ]
+    },
+    "1/train/base/visible/canonical/marker": {
+      "n": 24,
+      "blocks": 8,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999978865186373,
+      "brier": 0.600247140566744,
+      "positionAccuracy": 0.75,
+      "absentAccuracy": 0.5,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          8,
+          4,
+          0
+        ],
+        [
+          0,
+          0,
+          12
+        ]
+      ],
+      "predictionCounts": [
+        8,
+        4,
+        12
+      ]
+    },
+    "1/test/base/visible/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6805555555555556,
+      "firstTokenCorrect": 0.6805555555555556,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999999114208751,
+      "brier": 0.6283694455383413,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 0.041666666666666664,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.041666666666666664,
+      "presenceBalancedAccuracy": 0.5208333333333334,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          1,
+          0,
+          23
+        ],
+        [
+          0,
+          24,
+          0
+        ],
+        [
+          0,
+          0,
+          24
+        ]
+      ],
+      "predictionCounts": [
+        1,
+        24,
+        47
+      ]
+    },
+    "1/test/base/visible/canonical/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999970520536104,
+      "brier": 0.6616955929008996,
+      "positionAccuracy": 0.75,
+      "absentAccuracy": 0.5,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          24,
+          12,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        24,
+        12,
+        36
+      ]
+    },
+    "1/test/base/visible/content_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6805555555555556,
+      "firstTokenCorrect": 0.6805555555555556,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999999586078856,
+      "brier": 0.6365539338130684,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 0.041666666666666664,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.041666666666666664,
+      "presenceBalancedAccuracy": 0.5208333333333334,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          1,
+          0,
+          23
+        ],
+        [
+          0,
+          24,
+          0
+        ],
+        [
+          0,
+          0,
+          24
+        ]
+      ],
+      "predictionCounts": [
+        1,
+        24,
+        47
+      ]
+    },
+    "1/test/base/visible/content_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999983236193657,
+      "brier": 0.651982278151257,
+      "positionAccuracy": 0.75,
+      "absentAccuracy": 0.5,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          24,
+          12,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        24,
+        12,
+        36
+      ]
+    },
+    "1/test/base/visible/labels_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.4305555555555556,
+      "firstTokenCorrect": 0.4305555555555556,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999983782569567,
+      "brier": 1.0588302262881342,
+      "positionAccuracy": 0.5,
+      "absentAccuracy": 0.2916666666666667,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.2916666666666667,
+      "presenceBalancedAccuracy": 0.6458333333333334,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          7,
+          6,
+          11
+        ],
+        [
+          0,
+          12,
+          12
+        ],
+        [
+          0,
+          12,
+          12
+        ]
+      ],
+      "predictionCounts": [
+        7,
+        30,
+        35
+      ]
+    },
+    "1/test/base/visible/labels_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.999999446173509,
+      "brier": 0.48477182690433296,
+      "positionAccuracy": 0.7083333333333334,
+      "absentAccuracy": 0.5833333333333334,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          24,
+          12
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        60,
+        12
+      ]
+    },
+    "1/test/base/visible/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.4305555555555556,
+      "firstTokenCorrect": 0.4305555555555556,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999975777334638,
+      "brier": 1.020314000639222,
+      "positionAccuracy": 0.5,
+      "absentAccuracy": 0.2916666666666667,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.2916666666666667,
+      "presenceBalancedAccuracy": 0.6458333333333334,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          7,
+          8,
+          9
+        ],
+        [
+          0,
+          12,
+          12
+        ],
+        [
+          0,
+          12,
+          12
+        ]
+      ],
+      "predictionCounts": [
+        7,
+        32,
+        33
+      ]
+    },
+    "1/test/base/visible/both_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6527777777777778,
+      "firstTokenCorrect": 0.6527777777777778,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999994676974084,
+      "brier": 0.5156663563129338,
+      "positionAccuracy": 0.7291666666666666,
+      "absentAccuracy": 0.5,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          25,
+          11
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        61,
+        11
+      ]
+    },
+    "1/train/base/strong/canonical/primary": {
+      "n": 24,
+      "blocks": 8,
+      "correct": 0.3333333333333333,
+      "firstTokenCorrect": 0.3333333333333333,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999999950329462,
+      "brier": 1.3288803329507823,
+      "positionAccuracy": 0.5,
+      "absentAccuracy": 0.0,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": 0.3333333333333333,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          4,
+          4
+        ],
+        [
+          0,
+          4,
+          4
+        ],
+        [
+          0,
+          4,
+          4
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        12,
+        12
+      ]
+    },
+    "1/train/base/strong/canonical/marker": {
+      "n": 24,
+      "blocks": 8,
+      "correct": 0.5416666666666666,
+      "firstTokenCorrect": 0.5416666666666666,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999929592013359,
+      "brier": 0.8244762451435018,
+      "positionAccuracy": 0.5625,
+      "absentAccuracy": 0.5,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          11,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          12
+        ]
+      ],
+      "predictionCounts": [
+        11,
+        1,
+        12
+      ]
+    },
+    "1/test/base/strong/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.3333333333333333,
+      "firstTokenCorrect": 0.3333333333333333,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.999999988410208,
+      "brier": 1.3117009437517853,
+      "positionAccuracy": 0.5,
+      "absentAccuracy": 0.0,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          12,
+          12
+        ],
+        [
+          0,
+          12,
+          12
+        ],
+        [
+          0,
+          12,
+          12
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "1/test/base/strong/canonical/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.5138888888888888,
+      "firstTokenCorrect": 0.5138888888888888,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999915328290727,
+      "brier": 0.954640308224143,
+      "positionAccuracy": 0.5208333333333334,
+      "absentAccuracy": 0.5,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          35,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        35,
+        1,
+        36
+      ]
+    },
+    "1/test/base/strong/content_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.3333333333333333,
+      "firstTokenCorrect": 0.3333333333333333,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999999908937348,
+      "brier": 1.3255336748078348,
+      "positionAccuracy": 0.5,
+      "absentAccuracy": 0.0,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          12,
+          12
+        ],
+        [
+          0,
+          12,
+          12
+        ],
+        [
+          0,
+          12,
+          12
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "1/test/base/strong/content_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.5277777777777778,
+      "firstTokenCorrect": 0.5277777777777778,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999967440962791,
+      "brier": 0.8962091484409821,
+      "positionAccuracy": 0.5416666666666666,
+      "absentAccuracy": 0.5,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          34,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        34,
+        2,
+        36
+      ]
+    },
+    "1/test/base/strong/labels_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.3333333333333333,
+      "firstTokenCorrect": 0.3333333333333333,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999999793039428,
+      "brier": 1.2503373374730633,
+      "positionAccuracy": 0.5,
+      "absentAccuracy": 0.0,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          24,
+          0
+        ],
+        [
+          0,
+          24,
+          0
+        ],
+        [
+          0,
+          24,
+          0
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        72,
+        0
+      ]
+    },
+    "1/test/base/strong/labels_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.5972222222222222,
+      "firstTokenCorrect": 0.5972222222222222,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999991771247652,
+      "brier": 0.6682187818397656,
+      "positionAccuracy": 0.6041666666666666,
+      "absentAccuracy": 0.5833333333333334,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          29,
+          7
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        65,
+        7
+      ]
+    },
+    "1/test/base/strong/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.3194444444444444,
+      "firstTokenCorrect": 0.3194444444444444,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999999710255199,
+      "brier": 1.246279797543892,
+      "positionAccuracy": 0.4791666666666667,
+      "absentAccuracy": 0.0,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          24,
+          0
+        ],
+        [
+          0,
+          23,
+          1
+        ],
+        [
+          0,
+          24,
+          0
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        71,
+        1
+      ]
+    },
+    "1/test/base/strong/both_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.5555555555555556,
+      "firstTokenCorrect": 0.5555555555555556,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.999999420510398,
+      "brier": 0.7611496224378602,
+      "positionAccuracy": 0.5833333333333334,
+      "absentAccuracy": 0.5,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          32,
+          4
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        68,
+        4
+      ]
+    },
+    "1/train/visible/visible/canonical/primary": {
+      "n": 24,
+      "blocks": 8,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999999950329462,
+      "brier": 3.897688785632225e-14,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 1.0,
+      "trainingTargetAccuracy": 1.0,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          8,
+          0,
+          0
+        ],
+        [
+          0,
+          8,
+          0
+        ],
+        [
+          0,
+          0,
+          8
+        ]
+      ],
+      "predictionCounts": [
+        8,
+        8,
+        8
+      ]
+    },
+    "1/train/visible/visible/canonical/marker": {
+      "n": 24,
+      "blocks": 8,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999993865688642,
+      "brier": 4.649787807347474e-05,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          12,
+          0
+        ],
+        [
+          0,
+          0,
+          12
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        12,
+        12
+      ]
+    },
+    "1/test/visible/visible/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999999983443154,
+      "brier": 8.377697994154484e-14,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 1.0,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          24,
+          0,
+          0
+        ],
+        [
+          0,
+          24,
+          0
+        ],
+        [
+          0,
+          0,
+          24
+        ]
+      ],
+      "predictionCounts": [
+        24,
+        24,
+        24
+      ]
+    },
+    "1/test/visible/visible/canonical/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999992723266283,
+      "brier": 0.00034748681607771006,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "1/test/visible/visible/content_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999999958607886,
+      "brier": 2.7189335414312078e-14,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 1.0,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          24,
+          0,
+          0
+        ],
+        [
+          0,
+          24,
+          0
+        ],
+        [
+          0,
+          0,
+          24
+        ]
+      ],
+      "predictionCounts": [
+        24,
+        24,
+        24
+      ]
+    },
+    "1/test/visible/visible/content_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999986497892274,
+      "brier": 0.005691961016944127,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "1/test/visible/visible/labels_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6805555555555556,
+      "firstTokenCorrect": 0.6805555555555556,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999999130765597,
+      "brier": 0.6106138577309174,
+      "positionAccuracy": 0.5208333333333334,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 1.0,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          24,
+          0,
+          0
+        ],
+        [
+          0,
+          24,
+          0
+        ],
+        [
+          0,
+          23,
+          1
+        ]
+      ],
+      "predictionCounts": [
+        24,
+        47,
+        1
+      ]
+    },
+    "1/test/visible/visible/labels_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.7916666666666666,
+      "firstTokenCorrect": 0.7916666666666666,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999980504314104,
+      "brier": 0.2913835167140794,
+      "positionAccuracy": 0.7291666666666666,
+      "absentAccuracy": 0.9166666666666666,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          15,
+          21
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        51,
+        21
+      ]
+    },
+    "1/test/visible/visible/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.999999937083986,
+      "brier": 0.6554809719767467,
+      "positionAccuracy": 0.5,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 1.0,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          24,
+          0,
+          0
+        ],
+        [
+          0,
+          24,
+          0
+        ],
+        [
+          0,
+          24,
+          0
+        ]
+      ],
+      "predictionCounts": [
+        24,
+        48,
+        0
+      ]
+    },
+    "1/test/visible/visible/both_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.8194444444444444,
+      "firstTokenCorrect": 0.8194444444444444,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999977697928747,
+      "brier": 0.3256341453609546,
+      "positionAccuracy": 0.75,
+      "absentAccuracy": 0.9583333333333334,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          13,
+          23
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        49,
+        23
+      ]
+    },
+    "1/train/strong/strong/canonical/primary": {
+      "n": 24,
+      "blocks": 8,
+      "correct": 0.7916666666666666,
+      "firstTokenCorrect": 0.7916666666666666,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9996593495210012,
+      "brier": 0.4181653661966103,
+      "positionAccuracy": 0.8125,
+      "absentAccuracy": 0.75,
+      "presenceSensitivity": 0.8125,
+      "presenceSpecificity": 0.75,
+      "presenceBalancedAccuracy": 0.78125,
+      "trainingTargetAccuracy": 0.7916666666666666,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          6,
+          1,
+          1
+        ],
+        [
+          2,
+          6,
+          0
+        ],
+        [
+          1,
+          0,
+          7
+        ]
+      ],
+      "predictionCounts": [
+        9,
+        7,
+        8
+      ]
+    },
+    "1/train/strong/strong/canonical/marker": {
+      "n": 24,
+      "blocks": 8,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999992226560911,
+      "brier": 1.9895643945595958e-08,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          12,
+          0
+        ],
+        [
+          0,
+          0,
+          12
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        12,
+        12
+      ]
+    },
+    "1/test/strong/strong/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.625,
+      "firstTokenCorrect": 0.625,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9995930029286278,
+      "brier": 0.5023565223659481,
+      "positionAccuracy": 0.5833333333333334,
+      "absentAccuracy": 0.7083333333333334,
+      "presenceSensitivity": 0.7916666666666666,
+      "presenceSpecificity": 0.7083333333333334,
+      "presenceBalancedAccuracy": 0.75,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          17,
+          0,
+          7
+        ],
+        [
+          8,
+          10,
+          6
+        ],
+        [
+          2,
+          4,
+          18
+        ]
+      ],
+      "predictionCounts": [
+        27,
+        14,
+        31
+      ]
+    },
+    "1/test/strong/strong/canonical/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999990223182572,
+      "brier": 5.608816556685899e-08,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "1/test/strong/strong/content_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6388888888888888,
+      "firstTokenCorrect": 0.6388888888888888,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.999595895409584,
+      "brier": 0.49366296733033443,
+      "positionAccuracy": 0.5833333333333334,
+      "absentAccuracy": 0.75,
+      "presenceSensitivity": 0.8541666666666666,
+      "presenceSpecificity": 0.75,
+      "presenceBalancedAccuracy": 0.8020833333333333,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          18,
+          1,
+          5
+        ],
+        [
+          7,
+          11,
+          6
+        ],
+        [
+          0,
+          7,
+          17
+        ]
+      ],
+      "predictionCounts": [
+        25,
+        19,
+        28
+      ]
+    },
+    "1/test/strong/strong/content_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999993724955453,
+      "brier": 2.5455889174183787e-08,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "1/test/strong/strong/labels_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.4861111111111111,
+      "firstTokenCorrect": 0.4861111111111111,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9993854968084229,
+      "brier": 0.6154011785526645,
+      "positionAccuracy": 0.4375,
+      "absentAccuracy": 0.5833333333333334,
+      "presenceSensitivity": 0.7708333333333334,
+      "presenceSpecificity": 0.5833333333333334,
+      "presenceBalancedAccuracy": 0.6770833333333334,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          14,
+          3,
+          7
+        ],
+        [
+          2,
+          13,
+          9
+        ],
+        [
+          9,
+          7,
+          8
+        ]
+      ],
+      "predictionCounts": [
+        25,
+        23,
+        24
+      ]
+    },
+    "1/test/strong/strong/labels_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999953574604459,
+      "brier": 0.002440526873551078,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "1/test/strong/strong/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.4722222222222222,
+      "firstTokenCorrect": 0.4722222222222222,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9993807416823175,
+      "brier": 0.6014931263486952,
+      "positionAccuracy": 0.375,
+      "absentAccuracy": 0.6666666666666666,
+      "presenceSensitivity": 0.8125,
+      "presenceSpecificity": 0.6666666666666666,
+      "presenceBalancedAccuracy": 0.7395833333333333,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          16,
+          2,
+          6
+        ],
+        [
+          1,
+          11,
+          12
+        ],
+        [
+          8,
+          9,
+          7
+        ]
+      ],
+      "predictionCounts": [
+        25,
+        22,
+        25
+      ]
+    },
+    "1/test/strong/strong/both_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999965926011404,
+      "brier": 0.0023700914674583094,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "1/train/shuffled/shuffled/canonical/primary": {
+      "n": 24,
+      "blocks": 8,
+      "correct": 0.625,
+      "firstTokenCorrect": 0.625,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9989388783772787,
+      "brier": 0.5862904983688407,
+      "positionAccuracy": 0.9375,
+      "absentAccuracy": 0.0,
+      "presenceSensitivity": 0.9375,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.46875,
+      "trainingTargetAccuracy": 0.5833333333333334,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          6,
+          2
+        ],
+        [
+          1,
+          7,
+          0
+        ],
+        [
+          0,
+          0,
+          8
+        ]
+      ],
+      "predictionCounts": [
+        1,
+        13,
+        10
+      ]
+    },
+    "1/train/shuffled/shuffled/canonical/marker": {
+      "n": 24,
+      "blocks": 8,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999974245826403,
+      "brier": 1.3792029710004732e-07,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          12,
+          0
+        ],
+        [
+          0,
+          0,
+          12
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        12,
+        12
+      ]
+    },
+    "1/test/shuffled/shuffled/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.5,
+      "firstTokenCorrect": 0.5,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9989101787408193,
+      "brier": 0.6192881565780053,
+      "positionAccuracy": 0.6666666666666666,
+      "absentAccuracy": 0.16666666666666666,
+      "presenceSensitivity": 0.9583333333333334,
+      "presenceSpecificity": 0.16666666666666666,
+      "presenceBalancedAccuracy": 0.5625,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          4,
+          13,
+          7
+        ],
+        [
+          1,
+          18,
+          5
+        ],
+        [
+          1,
+          9,
+          14
+        ]
+      ],
+      "predictionCounts": [
+        6,
+        40,
+        26
+      ]
+    },
+    "1/test/shuffled/shuffled/canonical/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999974055422677,
+      "brier": 3.673279497974427e-07,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "1/test/shuffled/shuffled/content_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.5555555555555556,
+      "firstTokenCorrect": 0.5555555555555556,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9989220276474953,
+      "brier": 0.6215597732941507,
+      "positionAccuracy": 0.7916666666666666,
+      "absentAccuracy": 0.08333333333333333,
+      "presenceSensitivity": 0.9791666666666666,
+      "presenceSpecificity": 0.08333333333333333,
+      "presenceBalancedAccuracy": 0.53125,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          2,
+          18,
+          4
+        ],
+        [
+          0,
+          20,
+          4
+        ],
+        [
+          1,
+          5,
+          18
+        ]
+      ],
+      "predictionCounts": [
+        3,
+        43,
+        26
+      ]
+    },
+    "1/test/shuffled/shuffled/content_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999979411562284,
+      "brier": 1.579160157382885e-07,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "1/test/shuffled/shuffled/labels_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.3472222222222222,
+      "firstTokenCorrect": 0.3472222222222222,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9983757212758064,
+      "brier": 0.6743339054306254,
+      "positionAccuracy": 0.2916666666666667,
+      "absentAccuracy": 0.4583333333333333,
+      "presenceSensitivity": 0.6666666666666666,
+      "presenceSpecificity": 0.4583333333333333,
+      "presenceBalancedAccuracy": 0.5625,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          11,
+          8,
+          5
+        ],
+        [
+          5,
+          11,
+          8
+        ],
+        [
+          11,
+          10,
+          3
+        ]
+      ],
+      "predictionCounts": [
+        27,
+        29,
+        16
+      ]
+    },
+    "1/test/shuffled/shuffled/labels_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999828628367848,
+      "brier": 0.03320255053695967,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "1/test/shuffled/shuffled/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.3472222222222222,
+      "firstTokenCorrect": 0.3472222222222222,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9983143972025977,
+      "brier": 0.6679650724650299,
+      "positionAccuracy": 0.2916666666666667,
+      "absentAccuracy": 0.4583333333333333,
+      "presenceSensitivity": 0.7708333333333334,
+      "presenceSpecificity": 0.4583333333333333,
+      "presenceBalancedAccuracy": 0.6145833333333334,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          11,
+          8,
+          5
+        ],
+        [
+          5,
+          10,
+          9
+        ],
+        [
+          6,
+          14,
+          4
+        ]
+      ],
+      "predictionCounts": [
+        22,
+        32,
+        18
+      ]
+    },
+    "1/test/shuffled/shuffled/both_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999861634439893,
+      "brier": 0.01982214667221092,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "2/train/base/visible/canonical/primary": {
+      "n": 24,
+      "blocks": 8,
+      "correct": 0.7083333333333334,
+      "firstTokenCorrect": 0.7083333333333334,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999999726812044,
+      "brier": 0.5832155998468697,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 0.125,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.125,
+      "presenceBalancedAccuracy": 0.5625,
+      "trainingTargetAccuracy": 0.7083333333333334,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          1,
+          0,
+          7
+        ],
+        [
+          0,
+          8,
+          0
+        ],
+        [
+          0,
+          0,
+          8
+        ]
+      ],
+      "predictionCounts": [
+        1,
+        8,
+        15
+      ]
+    },
+    "2/train/base/visible/canonical/marker": {
+      "n": 24,
+      "blocks": 8,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999982168277105,
+      "brier": 0.6597396199489997,
+      "positionAccuracy": 0.75,
+      "absentAccuracy": 0.5,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          8,
+          4,
+          0
+        ],
+        [
+          0,
+          0,
+          12
+        ]
+      ],
+      "predictionCounts": [
+        8,
+        4,
+        12
+      ]
+    },
+    "2/test/base/visible/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6944444444444444,
+      "firstTokenCorrect": 0.6944444444444444,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999999735090468,
+      "brier": 0.6088852226824034,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 0.08333333333333333,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.08333333333333333,
+      "presenceBalancedAccuracy": 0.5416666666666666,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          2,
+          0,
+          22
+        ],
+        [
+          0,
+          24,
+          0
+        ],
+        [
+          0,
+          0,
+          24
+        ]
+      ],
+      "predictionCounts": [
+        2,
+        24,
+        46
+      ]
+    },
+    "2/test/base/visible/canonical/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999976671404309,
+      "brier": 0.6486451486871267,
+      "positionAccuracy": 0.75,
+      "absentAccuracy": 0.5,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          24,
+          12,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        24,
+        12,
+        36
+      ]
+    },
+    "2/test/base/visible/content_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6805555555555556,
+      "firstTokenCorrect": 0.6805555555555556,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.999999888241291,
+      "brier": 0.5973932105945797,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 0.041666666666666664,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.041666666666666664,
+      "presenceBalancedAccuracy": 0.5208333333333334,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          1,
+          0,
+          23
+        ],
+        [
+          0,
+          24,
+          0
+        ],
+        [
+          0,
+          0,
+          24
+        ]
+      ],
+      "predictionCounts": [
+        1,
+        24,
+        47
+      ]
+    },
+    "2/test/base/visible/content_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999980479478836,
+      "brier": 0.6593362104947589,
+      "positionAccuracy": 0.75,
+      "absentAccuracy": 0.5,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          24,
+          12,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        24,
+        12,
+        36
+      ]
+    },
+    "2/test/base/visible/labels_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.4444444444444444,
+      "firstTokenCorrect": 0.4444444444444444,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999965346521802,
+      "brier": 1.030390585564066,
+      "positionAccuracy": 0.5208333333333334,
+      "absentAccuracy": 0.2916666666666667,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.2916666666666667,
+      "presenceBalancedAccuracy": 0.6458333333333334,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          7,
+          4,
+          13
+        ],
+        [
+          0,
+          13,
+          11
+        ],
+        [
+          0,
+          12,
+          12
+        ]
+      ],
+      "predictionCounts": [
+        7,
+        29,
+        36
+      ]
+    },
+    "2/test/base/visible/labels_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6388888888888888,
+      "firstTokenCorrect": 0.6388888888888888,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999995364083184,
+      "brier": 0.5513630095360741,
+      "positionAccuracy": 0.7083333333333334,
+      "absentAccuracy": 0.5,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          26,
+          10
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        62,
+        10
+      ]
+    },
+    "2/test/base/visible/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.4583333333333333,
+      "firstTokenCorrect": 0.4583333333333333,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999980885121558,
+      "brier": 1.0123886481194362,
+      "positionAccuracy": 0.5208333333333334,
+      "absentAccuracy": 0.3333333333333333,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.3333333333333333,
+      "presenceBalancedAccuracy": 0.6666666666666666,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          8,
+          5,
+          11
+        ],
+        [
+          0,
+          13,
+          11
+        ],
+        [
+          0,
+          12,
+          12
+        ]
+      ],
+      "predictionCounts": [
+        8,
+        30,
+        34
+      ]
+    },
+    "2/test/base/visible/both_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.6944444444444444,
+      "firstTokenCorrect": 0.6944444444444444,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.999999506605996,
+      "brier": 0.4826821636281756,
+      "positionAccuracy": 0.7916666666666666,
+      "absentAccuracy": 0.5,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          22,
+          14
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        58,
+        14
+      ]
+    },
+    "2/train/base/strong/canonical/primary": {
+      "n": 24,
+      "blocks": 8,
+      "correct": 0.3333333333333333,
+      "firstTokenCorrect": 0.3333333333333333,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999999701976776,
+      "brier": 1.3286786068411116,
+      "positionAccuracy": 0.5,
+      "absentAccuracy": 0.0,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": 0.3333333333333333,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          4,
+          4
+        ],
+        [
+          0,
+          4,
+          4
+        ],
+        [
+          0,
+          4,
+          4
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        12,
+        12
+      ]
+    },
+    "2/train/base/strong/canonical/marker": {
+      "n": 24,
+      "blocks": 8,
+      "correct": 0.5,
+      "firstTokenCorrect": 0.5,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999981398383776,
+      "brier": 0.9638510729213677,
+      "positionAccuracy": 0.5,
+      "absentAccuracy": 0.5,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          12,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          12
+        ]
+      ],
+      "predictionCounts": [
+        12,
+        0,
+        12
+      ]
+    },
+    "2/test/base/strong/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.3333333333333333,
+      "firstTokenCorrect": 0.3333333333333333,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999999842709966,
+      "brier": 1.3280328590635408,
+      "positionAccuracy": 0.5,
+      "absentAccuracy": 0.0,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          12,
+          12
+        ],
+        [
+          0,
+          12,
+          12
+        ],
+        [
+          0,
+          12,
+          12
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "2/test/base/strong/canonical/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.5555555555555556,
+      "firstTokenCorrect": 0.5555555555555556,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999911313255628,
+      "brier": 0.8377865682757589,
+      "positionAccuracy": 0.5833333333333334,
+      "absentAccuracy": 0.5,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          32,
+          4,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        32,
+        4,
+        36
+      ]
+    },
+    "2/test/base/strong/content_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.3333333333333333,
+      "firstTokenCorrect": 0.3333333333333333,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999999892380502,
+      "brier": 1.3229804630792201,
+      "positionAccuracy": 0.5,
+      "absentAccuracy": 0.0,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          12,
+          12
+        ],
+        [
+          0,
+          12,
+          12
+        ],
+        [
+          0,
+          12,
+          12
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "2/test/base/strong/content_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.5,
+      "firstTokenCorrect": 0.5,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999945296181573,
+      "brier": 0.9105568998374642,
+      "positionAccuracy": 0.5,
+      "absentAccuracy": 0.5,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          35,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          35
+        ]
+      ],
+      "predictionCounts": [
+        35,
+        2,
+        35
+      ]
+    },
+    "2/test/base/strong/labels_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.3333333333333333,
+      "firstTokenCorrect": 0.3333333333333333,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999999718533622,
+      "brier": 1.272846321158847,
+      "positionAccuracy": 0.5,
+      "absentAccuracy": 0.0,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          24,
+          0
+        ],
+        [
+          0,
+          24,
+          0
+        ],
+        [
+          0,
+          24,
+          0
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        72,
+        0
+      ]
+    },
+    "2/test/base/strong/labels_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.5138888888888888,
+      "firstTokenCorrect": 0.5138888888888888,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999995107452074,
+      "brier": 0.7880494675767102,
+      "positionAccuracy": 0.5208333333333334,
+      "absentAccuracy": 0.5,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          35,
+          1
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        71,
+        1
+      ]
+    },
+    "2/test/base/strong/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.3333333333333333,
+      "firstTokenCorrect": 0.3333333333333333,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999999461902512,
+      "brier": 1.2423593121438712,
+      "positionAccuracy": 0.5,
+      "absentAccuracy": 0.0,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          24,
+          0
+        ],
+        [
+          0,
+          24,
+          0
+        ],
+        [
+          0,
+          24,
+          0
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        72,
+        0
+      ]
+    },
+    "2/test/base/strong/both_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.5555555555555556,
+      "firstTokenCorrect": 0.5555555555555556,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999992648760477,
+      "brier": 0.7527658701660871,
+      "positionAccuracy": 0.5833333333333334,
+      "absentAccuracy": 0.5,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          32,
+          4
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        68,
+        4
+      ]
+    },
+    "2/train/visible/visible/canonical/primary": {
+      "n": 24,
+      "blocks": 8,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999999850988388,
+      "brier": 3.5232794564160038e-09,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 1.0,
+      "trainingTargetAccuracy": 1.0,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          8,
+          0,
+          0
+        ],
+        [
+          0,
+          8,
+          0
+        ],
+        [
+          0,
+          0,
+          8
+        ]
+      ],
+      "predictionCounts": [
+        8,
+        8,
+        8
+      ]
+    },
+    "2/train/visible/visible/canonical/marker": {
+      "n": 24,
+      "blocks": 8,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999995504816374,
+      "brier": 3.7183722664141025e-05,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          12,
+          0
+        ],
+        [
+          0,
+          0,
+          12
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        12,
+        12
+      ]
+    },
+    "2/test/visible/visible/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999999867545234,
+      "brier": 1.2093633334937659e-09,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 1.0,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          24,
+          0,
+          0
+        ],
+        [
+          0,
+          24,
+          0
+        ],
+        [
+          0,
+          0,
+          24
+        ]
+      ],
+      "predictionCounts": [
+        24,
+        24,
+        24
+      ]
+    },
+    "2/test/visible/visible/canonical/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999995645549562,
+      "brier": 8.877973652237487e-05,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "2/test/visible/visible/content_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999999892380502,
+      "brier": 6.263756180738928e-10,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 1.0,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          24,
+          0,
+          0
+        ],
+        [
+          0,
+          24,
+          0
+        ],
+        [
+          0,
+          0,
+          24
+        ]
+      ],
+      "predictionCounts": [
+        24,
+        24,
+        24
+      ]
+    },
+    "2/test/visible/visible/content_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999996233317587,
+      "brier": 3.3155534649571465e-05,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "2/test/visible/visible/labels_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.7083333333333334,
+      "firstTokenCorrect": 0.7083333333333334,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999996713466115,
+      "brier": 0.5271958416896779,
+      "positionAccuracy": 0.5625,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 1.0,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          24,
+          0,
+          0
+        ],
+        [
+          0,
+          24,
+          0
+        ],
+        [
+          0,
+          21,
+          3
+        ]
+      ],
+      "predictionCounts": [
+        24,
+        45,
+        3
+      ]
+    },
+    "2/test/visible/visible/labels_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999960271848573,
+      "brier": 0.002138553507493968,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "2/test/visible/visible/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.7222222222222222,
+      "firstTokenCorrect": 0.7222222222222222,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999995529651642,
+      "brier": 0.4870584242609083,
+      "positionAccuracy": 0.5833333333333334,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": 1.0,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 1.0,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          24,
+          0,
+          0
+        ],
+        [
+          0,
+          24,
+          0
+        ],
+        [
+          0,
+          20,
+          4
+        ]
+      ],
+      "predictionCounts": [
+        24,
+        44,
+        4
+      ]
+    },
+    "2/test/visible/visible/both_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999960329797533,
+      "brier": 0.005276006565648117,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "2/train/strong/strong/canonical/primary": {
+      "n": 24,
+      "blocks": 8,
+      "correct": 0.7916666666666666,
+      "firstTokenCorrect": 0.7916666666666666,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999713972210884,
+      "brier": 0.31366936973714415,
+      "positionAccuracy": 0.6875,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": 0.6875,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 0.84375,
+      "trainingTargetAccuracy": 0.7916666666666666,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          8,
+          0,
+          0
+        ],
+        [
+          4,
+          4,
+          0
+        ],
+        [
+          1,
+          0,
+          7
+        ]
+      ],
+      "predictionCounts": [
+        13,
+        4,
+        7
+      ]
+    },
+    "2/train/strong/strong/canonical/marker": {
+      "n": 24,
+      "blocks": 8,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999994039535522,
+      "brier": 1.1381582689735883e-09,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          12,
+          0
+        ],
+        [
+          0,
+          0,
+          12
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        12,
+        12
+      ]
+    },
+    "2/test/strong/strong/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.5416666666666666,
+      "firstTokenCorrect": 0.5416666666666666,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999737367033958,
+      "brier": 0.7745596331504073,
+      "positionAccuracy": 0.3125,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": 0.3958333333333333,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 0.6979166666666666,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          24,
+          0,
+          0
+        ],
+        [
+          17,
+          4,
+          3
+        ],
+        [
+          12,
+          1,
+          11
+        ]
+      ],
+      "predictionCounts": [
+        53,
+        5,
+        14
+      ]
+    },
+    "2/test/strong/strong/canonical/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.999999205271403,
+      "brier": 4.1912243178858934e-10,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "2/test/strong/strong/content_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.5555555555555556,
+      "firstTokenCorrect": 0.5555555555555556,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999711993667815,
+      "brier": 0.6992681548773186,
+      "positionAccuracy": 0.3333333333333333,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": 0.4583333333333333,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 0.7291666666666666,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          24,
+          0,
+          0
+        ],
+        [
+          17,
+          2,
+          5
+        ],
+        [
+          9,
+          1,
+          14
+        ]
+      ],
+      "predictionCounts": [
+        50,
+        3,
+        19
+      ]
+    },
+    "2/test/strong/strong/content_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999993956751294,
+      "brier": 2.9440423672775136e-10,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "2/test/strong/strong/labels_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.3888888888888889,
+      "firstTokenCorrect": 0.3888888888888889,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999605144063631,
+      "brier": 0.9480931653598006,
+      "positionAccuracy": 0.08333333333333333,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": 0.25,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 0.625,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          24,
+          0,
+          0
+        ],
+        [
+          18,
+          3,
+          3
+        ],
+        [
+          18,
+          5,
+          1
+        ]
+      ],
+      "predictionCounts": [
+        60,
+        8,
+        4
+      ]
+    },
+    "2/test/strong/strong/labels_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999986398551199,
+      "brier": 0.00020141163409268827,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "2/test/strong/strong/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.5,
+      "firstTokenCorrect": 0.5,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999606112639109,
+      "brier": 0.8279334775482308,
+      "positionAccuracy": 0.25,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": 0.3333333333333333,
+      "presenceSpecificity": 1.0,
+      "presenceBalancedAccuracy": 0.6666666666666666,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          24,
+          0,
+          0
+        ],
+        [
+          15,
+          6,
+          3
+        ],
+        [
+          17,
+          1,
+          6
+        ]
+      ],
+      "predictionCounts": [
+        56,
+        7,
+        9
+      ]
+    },
+    "2/test/strong/strong/both_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999991638792886,
+      "brier": 0.0002955338827004782,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "2/train/shuffled/shuffled/canonical/primary": {
+      "n": 24,
+      "blocks": 8,
+      "correct": 0.16666666666666666,
+      "firstTokenCorrect": 0.16666666666666666,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9970408802231153,
+      "brier": 0.9082782815119588,
+      "positionAccuracy": 0.25,
+      "absentAccuracy": 0.0,
+      "presenceSensitivity": 0.875,
+      "presenceSpecificity": 0.0,
+      "presenceBalancedAccuracy": 0.4375,
+      "trainingTargetAccuracy": 0.5416666666666666,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          8
+        ],
+        [
+          1,
+          0,
+          7
+        ],
+        [
+          1,
+          3,
+          4
+        ]
+      ],
+      "predictionCounts": [
+        2,
+        3,
+        19
+      ]
+    },
+    "2/train/shuffled/shuffled/canonical/marker": {
+      "n": 24,
+      "blocks": 8,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999993145465851,
+      "brier": 1.3061927174248694e-08,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          12,
+          0
+        ],
+        [
+          0,
+          0,
+          12
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        12,
+        12
+      ]
+    },
+    "2/test/shuffled/shuffled/canonical/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.2777777777777778,
+      "firstTokenCorrect": 0.2777777777777778,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.997301826874415,
+      "brier": 0.7795964652791091,
+      "positionAccuracy": 0.3958333333333333,
+      "absentAccuracy": 0.041666666666666664,
+      "presenceSensitivity": 0.9375,
+      "presenceSpecificity": 0.041666666666666664,
+      "presenceBalancedAccuracy": 0.4895833333333333,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          1,
+          0,
+          23
+        ],
+        [
+          1,
+          1,
+          22
+        ],
+        [
+          2,
+          4,
+          18
+        ]
+      ],
+      "predictionCounts": [
+        4,
+        5,
+        63
+      ]
+    },
+    "2/test/shuffled/shuffled/canonical/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999992450078329,
+      "brier": 8.7974639550581e-09,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "2/test/shuffled/shuffled/content_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.3055555555555556,
+      "firstTokenCorrect": 0.3055555555555556,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9971006818943553,
+      "brier": 0.7432594070259108,
+      "positionAccuracy": 0.4375,
+      "absentAccuracy": 0.041666666666666664,
+      "presenceSensitivity": 0.9583333333333334,
+      "presenceSpecificity": 0.041666666666666664,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          1,
+          0,
+          23
+        ],
+        [
+          1,
+          0,
+          23
+        ],
+        [
+          1,
+          2,
+          21
+        ]
+      ],
+      "predictionCounts": [
+        3,
+        2,
+        67
+      ]
+    },
+    "2/test/shuffled/shuffled/content_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999993915359179,
+      "brier": 5.696769350905295e-09,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "2/test/shuffled/shuffled/labels_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.3472222222222222,
+      "firstTokenCorrect": 0.3472222222222222,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9965320295757718,
+      "brier": 0.7268483981091565,
+      "positionAccuracy": 0.5,
+      "absentAccuracy": 0.041666666666666664,
+      "presenceSensitivity": 0.9583333333333334,
+      "presenceSpecificity": 0.041666666666666664,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          1,
+          1,
+          22
+        ],
+        [
+          1,
+          3,
+          20
+        ],
+        [
+          1,
+          2,
+          21
+        ]
+      ],
+      "predictionCounts": [
+        3,
+        6,
+        63
+      ]
+    },
+    "2/test/shuffled/shuffled/labels_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.999992847442627,
+      "brier": 0.0005053447071964997,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "2/test/shuffled/shuffled/both_reversed/primary": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 0.3611111111111111,
+      "firstTokenCorrect": 0.3611111111111111,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.99643458177646,
+      "brier": 0.7152832554817169,
+      "positionAccuracy": 0.4791666666666667,
+      "absentAccuracy": 0.125,
+      "presenceSensitivity": 0.875,
+      "presenceSpecificity": 0.125,
+      "presenceBalancedAccuracy": 0.5,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          3,
+          0,
+          21
+        ],
+        [
+          2,
+          3,
+          19
+        ],
+        [
+          4,
+          0,
+          20
+        ]
+      ],
+      "predictionCounts": [
+        9,
+        3,
+        60
+      ]
+    },
+    "2/test/shuffled/shuffled/both_reversed/marker": {
+      "n": 72,
+      "blocks": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999934915039275,
+      "brier": 0.000991221730778232,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "presenceSensitivity": null,
+      "presenceSpecificity": null,
+      "presenceBalancedAccuracy": null,
+      "trainingTargetAccuracy": null,
+      "confusionRowsTargetColumnsPrediction": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          0,
+          36
+        ]
+      ],
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    }
+  },
+  "primaryContrasts": [
+    {
+      "replication": 0,
+      "arm": "strong",
+      "other": "base",
+      "layout": "canonical",
+      "metric": "perturbedPositionAccuracy",
+      "difference": -0.1875,
+      "interval95": [
+        -0.3125,
+        -0.041666666666666664
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 0,
+      "arm": "strong",
+      "other": "shuffled",
+      "layout": "canonical",
+      "metric": "perturbedPositionAccuracy",
+      "difference": 0.0625,
+      "interval95": [
+        -0.020833333333333332,
+        0.14583333333333334
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 0,
+      "arm": "strong",
+      "other": "presence-informed-random",
+      "layout": "canonical",
+      "metric": "perturbedPositionAccuracy",
+      "difference": -0.1875,
+      "interval95": [
+        -0.3125,
+        -0.041666666666666664
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 1,
+      "arm": "strong",
+      "other": "base",
+      "layout": "canonical",
+      "metric": "perturbedPositionAccuracy",
+      "difference": 0.08333333333333333,
+      "interval95": [
+        -0.020833333333333332,
+        0.1875
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 1,
+      "arm": "strong",
+      "other": "shuffled",
+      "layout": "canonical",
+      "metric": "perturbedPositionAccuracy",
+      "difference": -0.08333333333333333,
+      "interval95": [
+        -0.1875,
+        0.020833333333333332
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 1,
+      "arm": "strong",
+      "other": "presence-informed-random",
+      "layout": "canonical",
+      "metric": "perturbedPositionAccuracy",
+      "difference": 0.08333333333333333,
+      "interval95": [
+        -0.020833333333333332,
+        0.1875
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 2,
+      "arm": "strong",
+      "other": "base",
+      "layout": "canonical",
+      "metric": "perturbedPositionAccuracy",
+      "difference": -0.1875,
+      "interval95": [
+        -0.3333333333333333,
+        -0.020833333333333332
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 2,
+      "arm": "strong",
+      "other": "shuffled",
+      "layout": "canonical",
+      "metric": "perturbedPositionAccuracy",
+      "difference": -0.08333333333333333,
+      "interval95": [
+        -0.22916666666666666,
+        0.0625
+      ],
+      "blocks": 24
+    },
+    {
+      "replication": 2,
+      "arm": "strong",
+      "other": "presence-informed-random",
+      "layout": "canonical",
+      "metric": "perturbedPositionAccuracy",
+      "difference": -0.1875,
+      "interval95": [
+        -0.3333333333333333,
+        -0.020833333333333332
+      ],
+      "blocks": 24
+    }
+  ],
+  "replicationMeansAndRanges": {
+    "test/base/visible/canonical/primary": {
+      "correct": {
+        "mean": 0.6898148148148149,
+        "minimum": 0.6805555555555556,
+        "maximum": 0.6944444444444444,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 0.06944444444444443,
+        "minimum": 0.041666666666666664,
+        "maximum": 0.08333333333333333,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.6117250597024904,
+        "minimum": 0.5979205108867264,
+        "maximum": 0.6283694455383413,
+        "replications": 3
+      }
+    },
+    "test/base/visible/canonical/marker": {
+      "correct": {
+        "mean": 0.6666666666666666,
+        "minimum": 0.6666666666666666,
+        "maximum": 0.6666666666666666,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 0.75,
+        "minimum": 0.75,
+        "maximum": 0.75,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 0.5,
+        "minimum": 0.5,
+        "maximum": 0.5,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.6505089020734182,
+        "minimum": 0.6411859646322282,
+        "maximum": 0.6616955929008996,
+        "replications": 3
+      }
+    },
+    "test/base/visible/content_reversed/primary": {
+      "correct": {
+        "mean": 0.6759259259259259,
+        "minimum": 0.6666666666666666,
+        "maximum": 0.6805555555555556,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 0.027777777777777776,
+        "minimum": 0.0,
+        "maximum": 0.041666666666666664,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.6331573481636775,
+        "minimum": 0.5973932105945797,
+        "maximum": 0.6655249000833842,
+        "replications": 3
+      }
+    },
+    "test/base/visible/content_reversed/marker": {
+      "correct": {
+        "mean": 0.6666666666666666,
+        "minimum": 0.6666666666666666,
+        "maximum": 0.6666666666666666,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 0.75,
+        "minimum": 0.75,
+        "maximum": 0.75,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 0.5,
+        "minimum": 0.5,
+        "maximum": 0.5,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.6544202412375661,
+        "minimum": 0.6519422350666826,
+        "maximum": 0.6593362104947589,
+        "replications": 3
+      }
+    },
+    "test/base/visible/labels_reversed/primary": {
+      "correct": {
+        "mean": 0.4259259259259259,
+        "minimum": 0.4027777777777778,
+        "maximum": 0.4444444444444444,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 0.4930555555555555,
+        "minimum": 0.4583333333333333,
+        "maximum": 0.5208333333333334,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 0.2916666666666667,
+        "minimum": 0.2916666666666667,
+        "maximum": 0.2916666666666667,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 1.0544085583589637,
+        "minimum": 1.030390585564066,
+        "maximum": 1.0740048632246908,
+        "replications": 3
+      }
+    },
+    "test/base/visible/labels_reversed/marker": {
+      "correct": {
+        "mean": 0.6620370370370371,
+        "minimum": 0.6388888888888888,
+        "maximum": 0.6805555555555556,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 0.7222222222222223,
+        "minimum": 0.7083333333333334,
+        "maximum": 0.75,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 0.5416666666666666,
+        "minimum": 0.5,
+        "maximum": 0.5833333333333334,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.5201642080237856,
+        "minimum": 0.48477182690433296,
+        "maximum": 0.5513630095360741,
+        "replications": 3
+      }
+    },
+    "test/base/visible/both_reversed/primary": {
+      "correct": {
+        "mean": 0.4444444444444444,
+        "minimum": 0.4305555555555556,
+        "maximum": 0.4583333333333333,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 0.513888888888889,
+        "minimum": 0.5,
+        "maximum": 0.5208333333333334,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 0.3055555555555556,
+        "minimum": 0.2916666666666667,
+        "maximum": 0.3333333333333333,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 1.020439306582186,
+        "minimum": 1.0123886481194362,
+        "maximum": 1.0286152709878995,
+        "replications": 3
+      }
+    },
+    "test/base/visible/both_reversed/marker": {
+      "correct": {
+        "mean": 0.6805555555555557,
+        "minimum": 0.6527777777777778,
+        "maximum": 0.6944444444444444,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 0.7569444444444443,
+        "minimum": 0.7291666666666666,
+        "maximum": 0.7916666666666666,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 0.5277777777777778,
+        "minimum": 0.5,
+        "maximum": 0.5833333333333334,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.4921686040792608,
+        "minimum": 0.4781572922966728,
+        "maximum": 0.5156663563129338,
+        "replications": 3
+      }
+    },
+    "test/base/strong/canonical/primary": {
+      "correct": {
+        "mean": 0.3333333333333333,
+        "minimum": 0.3333333333333333,
+        "maximum": 0.3333333333333333,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 0.5,
+        "minimum": 0.5,
+        "maximum": 0.5,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 0.0,
+        "minimum": 0.0,
+        "maximum": 0.0,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 1.3201130201667588,
+        "minimum": 1.3117009437517853,
+        "maximum": 1.3280328590635408,
+        "replications": 3
+      }
+    },
+    "test/base/strong/canonical/marker": {
+      "correct": {
+        "mean": 0.5324074074074073,
+        "minimum": 0.5138888888888888,
+        "maximum": 0.5555555555555556,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 0.5486111111111112,
+        "minimum": 0.5208333333333334,
+        "maximum": 0.5833333333333334,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 0.5,
+        "minimum": 0.5,
+        "maximum": 0.5,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.8893062995216834,
+        "minimum": 0.8377865682757589,
+        "maximum": 0.954640308224143,
+        "replications": 3
+      }
+    },
+    "test/base/strong/content_reversed/primary": {
+      "correct": {
+        "mean": 0.3333333333333333,
+        "minimum": 0.3333333333333333,
+        "maximum": 0.3333333333333333,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 0.5,
+        "minimum": 0.5,
+        "maximum": 0.5,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 0.0,
+        "minimum": 0.0,
+        "maximum": 0.0,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 1.3202603256602214,
+        "minimum": 1.3122668390936099,
+        "maximum": 1.3255336748078348,
+        "replications": 3
+      }
+    },
+    "test/base/strong/content_reversed/marker": {
+      "correct": {
+        "mean": 0.5138888888888888,
+        "minimum": 0.5,
+        "maximum": 0.5277777777777778,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 0.5208333333333334,
+        "minimum": 0.5,
+        "maximum": 0.5416666666666666,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 0.5,
+        "minimum": 0.5,
+        "maximum": 0.5,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.897960120102255,
+        "minimum": 0.8871143120283187,
+        "maximum": 0.9105568998374642,
+        "replications": 3
+      }
+    },
+    "test/base/strong/labels_reversed/primary": {
+      "correct": {
+        "mean": 0.3333333333333333,
+        "minimum": 0.3333333333333333,
+        "maximum": 0.3333333333333333,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 0.5,
+        "minimum": 0.5,
+        "maximum": 0.5,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 0.0,
+        "minimum": 0.0,
+        "maximum": 0.0,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 1.2638741297928364,
+        "minimum": 1.2503373374730633,
+        "maximum": 1.272846321158847,
+        "replications": 3
+      }
+    },
+    "test/base/strong/labels_reversed/marker": {
+      "correct": {
+        "mean": 0.5509259259259259,
+        "minimum": 0.5138888888888888,
+        "maximum": 0.5972222222222222,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 0.5555555555555555,
+        "minimum": 0.5208333333333334,
+        "maximum": 0.6041666666666666,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 0.5416666666666666,
+        "minimum": 0.5,
+        "maximum": 0.5833333333333334,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.7631562740362127,
+        "minimum": 0.6682187818397656,
+        "maximum": 0.8332005726921621,
+        "replications": 3
+      }
+    },
+    "test/base/strong/both_reversed/primary": {
+      "correct": {
+        "mean": 0.32870370370370366,
+        "minimum": 0.3194444444444444,
+        "maximum": 0.3333333333333333,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 0.4930555555555556,
+        "minimum": 0.4791666666666667,
+        "maximum": 0.5,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 0.0,
+        "minimum": 0.0,
+        "maximum": 0.0,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 1.2565896257048152,
+        "minimum": 1.2423593121438712,
+        "maximum": 1.2811297674266824,
+        "replications": 3
+      }
+    },
+    "test/base/strong/both_reversed/marker": {
+      "correct": {
+        "mean": 0.5555555555555556,
+        "minimum": 0.5555555555555556,
+        "maximum": 0.5555555555555556,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 0.5694444444444445,
+        "minimum": 0.5416666666666666,
+        "maximum": 0.5833333333333334,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 0.5277777777777778,
+        "minimum": 0.5,
+        "maximum": 0.5833333333333334,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.7325001774945026,
+        "minimum": 0.6835850398795604,
+        "maximum": 0.7611496224378602,
+        "replications": 3
+      }
+    },
+    "test/visible/visible/canonical/primary": {
+      "correct": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 1.3043377279985172e-05,
+        "minimum": 8.377697994154484e-14,
+        "maximum": 3.912892239284504e-05,
+        "replications": 3
+      }
+    },
+    "test/visible/visible/canonical/marker": {
+      "correct": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.0003615402063342028,
+        "minimum": 8.877973652237487e-05,
+        "maximum": 0.0006483540664025234,
+        "replications": 3
+      }
+    },
+    "test/visible/visible/content_reversed/primary": {
+      "correct": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 1.4334839571374938e-06,
+        "minimum": 2.7189335414312078e-14,
+        "maximum": 4.299825468605072e-06,
+        "replications": 3
+      }
+    },
+    "test/visible/visible/content_reversed/marker": {
+      "correct": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.0020609682751764865,
+        "minimum": 3.3155534649571465e-05,
+        "maximum": 0.005691961016944127,
+        "replications": 3
+      }
+    },
+    "test/visible/visible/labels_reversed/primary": {
+      "correct": {
+        "mean": 0.6990740740740741,
+        "minimum": 0.6805555555555556,
+        "maximum": 0.7083333333333334,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 0.5486111111111112,
+        "minimum": 0.5208333333333334,
+        "maximum": 0.5625,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.5374651878917528,
+        "minimum": 0.47458586425466287,
+        "maximum": 0.6106138577309174,
+        "replications": 3
+      }
+    },
+    "test/visible/visible/labels_reversed/marker": {
+      "correct": {
+        "mean": 0.9027777777777777,
+        "minimum": 0.7916666666666666,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 0.8680555555555555,
+        "minimum": 0.7291666666666666,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 0.9722222222222222,
+        "minimum": 0.9166666666666666,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.1378457276206795,
+        "minimum": 0.002138553507493968,
+        "maximum": 0.2913835167140794,
+        "replications": 3
+      }
+    },
+    "test/visible/visible/both_reversed/primary": {
+      "correct": {
+        "mean": 0.6898148148148149,
+        "minimum": 0.6666666666666666,
+        "maximum": 0.7222222222222222,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 0.5347222222222223,
+        "minimum": 0.5,
+        "maximum": 0.5833333333333334,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.5529826268982895,
+        "minimum": 0.4870584242609083,
+        "maximum": 0.6554809719767467,
+        "replications": 3
+      }
+    },
+    "test/visible/visible/both_reversed/marker": {
+      "correct": {
+        "mean": 0.9120370370370371,
+        "minimum": 0.8194444444444444,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 0.8819444444444445,
+        "minimum": 0.75,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 0.9722222222222223,
+        "minimum": 0.9583333333333334,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.15486056570853354,
+        "minimum": 0.005276006565648117,
+        "maximum": 0.3256341453609546,
+        "replications": 3
+      }
+    },
+    "test/strong/strong/canonical/primary": {
+      "correct": {
+        "mean": 0.5601851851851851,
+        "minimum": 0.5138888888888888,
+        "maximum": 0.625,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 0.40277777777777785,
+        "minimum": 0.3125,
+        "maximum": 0.5833333333333334,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 0.875,
+        "minimum": 0.7083333333333334,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.6166140382174228,
+        "minimum": 0.5023565223659481,
+        "maximum": 0.7745596331504073,
+        "replications": 3
+      }
+    },
+    "test/strong/strong/canonical/marker": {
+      "correct": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 1.893369008820211e-08,
+        "minimum": 2.937822659587567e-10,
+        "maximum": 5.608816556685899e-08,
+        "replications": 3
+      }
+    },
+    "test/strong/strong/content_reversed/primary": {
+      "correct": {
+        "mean": 0.6064814814814815,
+        "minimum": 0.5555555555555556,
+        "maximum": 0.6388888888888888,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 0.4513888888888889,
+        "minimum": 0.3333333333333333,
+        "maximum": 0.5833333333333334,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 0.9166666666666666,
+        "minimum": 0.75,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.5797210017750128,
+        "minimum": 0.49366296733033443,
+        "maximum": 0.6992681548773186,
+        "replications": 3
+      }
+    },
+    "test/strong/strong/content_reversed/marker": {
+      "correct": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 8.69378153267849e-09,
+        "minimum": 2.9440423672775136e-10,
+        "maximum": 2.5455889174183787e-08,
+        "replications": 3
+      }
+    },
+    "test/strong/strong/labels_reversed/primary": {
+      "correct": {
+        "mean": 0.4398148148148148,
+        "minimum": 0.3888888888888889,
+        "maximum": 0.4861111111111111,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 0.25,
+        "minimum": 0.08333333333333333,
+        "maximum": 0.4375,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 0.8194444444444445,
+        "minimum": 0.5833333333333334,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.7553788579344305,
+        "minimum": 0.6154011785526645,
+        "maximum": 0.9480931653598006,
+        "replications": 3
+      }
+    },
+    "test/strong/strong/labels_reversed/marker": {
+      "correct": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.0009259986305952481,
+        "minimum": 0.00013605738414197778,
+        "maximum": 0.002440526873551078,
+        "replications": 3
+      }
+    },
+    "test/strong/strong/both_reversed/primary": {
+      "correct": {
+        "mean": 0.46296296296296297,
+        "minimum": 0.4166666666666667,
+        "maximum": 0.5,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 0.2708333333333333,
+        "minimum": 0.1875,
+        "maximum": 0.375,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 0.8472222222222222,
+        "minimum": 0.6666666666666666,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.7043214160990239,
+        "minimum": 0.6014931263486952,
+        "maximum": 0.8279334775482308,
+        "replications": 3
+      }
+    },
+    "test/strong/strong/both_reversed/marker": {
+      "correct": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.0009658858397558094,
+        "minimum": 0.00023203216910864093,
+        "maximum": 0.0023700914674583094,
+        "replications": 3
+      }
+    },
+    "test/shuffled/shuffled/canonical/primary": {
+      "correct": {
+        "mean": 0.41203703703703703,
+        "minimum": 0.2777777777777778,
+        "maximum": 0.5,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 0.4375,
+        "minimum": 0.25,
+        "maximum": 0.6666666666666666,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 0.36111111111111116,
+        "minimum": 0.041666666666666664,
+        "maximum": 0.875,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.6773568473034967,
+        "minimum": 0.6192881565780053,
+        "maximum": 0.7795964652791091,
+        "replications": 3
+      }
+    },
+    "test/shuffled/shuffled/canonical/marker": {
+      "correct": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 1.2926441888827362e-07,
+        "minimum": 8.7974639550581e-09,
+        "maximum": 3.673279497974427e-07,
+        "replications": 3
+      }
+    },
+    "test/shuffled/shuffled/content_reversed/primary": {
+      "correct": {
+        "mean": 0.4444444444444444,
+        "minimum": 0.3055555555555556,
+        "maximum": 0.5555555555555556,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 0.5,
+        "minimum": 0.2708333333333333,
+        "maximum": 0.7916666666666666,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 0.3333333333333333,
+        "minimum": 0.041666666666666664,
+        "maximum": 0.875,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.6649452307305559,
+        "minimum": 0.6215597732941507,
+        "maximum": 0.7432594070259108,
+        "replications": 3
+      }
+    },
+    "test/shuffled/shuffled/content_reversed/marker": {
+      "correct": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 6.675491597862691e-08,
+        "minimum": 5.696769350905295e-09,
+        "maximum": 1.579160157382885e-07,
+        "replications": 3
+      }
+    },
+    "test/shuffled/shuffled/labels_reversed/primary": {
+      "correct": {
+        "mean": 0.36574074074074076,
+        "minimum": 0.3472222222222222,
+        "maximum": 0.4027777777777778,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 0.3333333333333333,
+        "minimum": 0.20833333333333334,
+        "maximum": 0.5,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 0.4305555555555556,
+        "minimum": 0.041666666666666664,
+        "maximum": 0.7916666666666666,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.6912181719603133,
+        "minimum": 0.6724722123411584,
+        "maximum": 0.7268483981091565,
+        "replications": 3
+      }
+    },
+    "test/shuffled/shuffled/labels_reversed/marker": {
+      "correct": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.011336654093558251,
+        "minimum": 0.000302067036518585,
+        "maximum": 0.03320255053695967,
+        "replications": 3
+      }
+    },
+    "test/shuffled/shuffled/both_reversed/primary": {
+      "correct": {
+        "mean": 0.35648148148148145,
+        "minimum": 0.3472222222222222,
+        "maximum": 0.3611111111111111,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 0.2916666666666667,
+        "minimum": 0.10416666666666667,
+        "maximum": 0.4791666666666667,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 0.4861111111111111,
+        "minimum": 0.125,
+        "maximum": 0.875,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.6861670394755789,
+        "minimum": 0.6679650724650299,
+        "maximum": 0.7152832554817169,
+        "replications": 3
+      }
+    },
+    "test/shuffled/shuffled/both_reversed/marker": {
+      "correct": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "positionAccuracy": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "absentAccuracy": {
+        "mean": 1.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "replications": 3
+      },
+      "brier": {
+        "mean": 0.0070370413647774495,
+        "minimum": 0.00029775569134319425,
+        "maximum": 0.01982214667221092,
+        "replications": 3
+      }
+    }
+  },
+  "shamPairs": 3120,
+  "trainingRestarts": 0,
+  "interruptedRequests": 0,
+  "errors": 0,
+  "trainingUpdateEvents": 288,
+  "trainingSeconds": 364.3142094000009,
+  "evaluationSeconds": 982.3606031110335,
+  "scope": "Three initialization/data replications; fixed layer and strength; crossed content/number controls. Descriptive intervals; no consciousness, natural-error or iPhone claim."
+}

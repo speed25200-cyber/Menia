@@ -1,0 +1,615 @@
+{
+  "status": "executed exploratory pilot; not a consciousness test",
+  "torch": "2.4.1+cpu",
+  "numpy": "2.4.4",
+  "training_episodes": 12288,
+  "validation_episodes": 2048,
+  "evaluation_episodes_per_family": 2048,
+  "steps": 1000,
+  "source_sha256": {
+    "research/self_model.py": "1ee6c342aeb86754875c48547bd37c25b127e70b5ab14f9906635585213287dd",
+    "research/train_self_model.py": "98cf95b85d9715bc74a227b8fa7c3564e1ed63070ccb97cd799bc3e644d33292",
+    "research/evaluate_self_model.py": "ff354d7afef6bbc8c2150e124c6a5777b4542618c00a05f225add7cfc6fa6c8a"
+  },
+  "runs": [
+    {
+      "seed": 17,
+      "data_seeds": {
+        "train": 170001,
+        "validation": 170002,
+        "evaluation": 170003
+      },
+      "own_fit": {
+        "selected_step": 900,
+        "validation_brier": 0.049945427742325084
+      },
+      "observer_fit": {
+        "selected_step": 900,
+        "validation_brier": 0.07279668755316329
+      },
+      "model_sha256": "a7939cbef8b963014c0c751810da85da4fad6384eb57196957fbc03736cdce73",
+      "families": {
+        "intact": {
+          "episodes": 2048,
+          "recall_accuracy": 0.970703125,
+          "own": {
+            "brier": 0.003389294363689521,
+            "mean_forecast": 0.9695455566302736,
+            "answer_fraction": 0.970703125,
+            "decision_cost": 0.005859375
+          },
+          "observer": {
+            "brier": 0.012562498437955165,
+            "mean_forecast": 0.9016117906983998,
+            "answer_fraction": 0.90478515625,
+            "decision_cost": 0.01904296875
+          },
+          "shuffled_own": {
+            "brier": 0.04469484095074147,
+            "mean_forecast": 0.9695455566302736,
+            "answer_fraction": 0.970703125,
+            "decision_cost": 0.03466796875
+          },
+          "raw_max_probability": {
+            "brier": 0.011822762760472212,
+            "mean_forecast": 0.9585550781008422,
+            "answer_fraction": 0.93408203125,
+            "decision_cost": 0.01318359375
+          },
+          "always_verify_cost": 0.2,
+          "brier_advantage": 0.009173204074265645,
+          "brier_advantage_ci95_descriptive": [
+            0.00865689632976493,
+            0.00974129394955019
+          ]
+        },
+        "noise": {
+          "episodes": 2048,
+          "recall_accuracy": 0.822265625,
+          "own": {
+            "brier": 0.09283521311418332,
+            "mean_forecast": 0.8122892461310246,
+            "answer_fraction": 0.7265625,
+            "decision_cost": 0.0849609375
+          },
+          "observer": {
+            "brier": 0.13269497100239888,
+            "mean_forecast": 0.9016117906983998,
+            "answer_fraction": 0.90478515625,
+            "decision_cost": 0.1455078125
+          },
+          "shuffled_own": {
+            "brier": 0.23626031747020212,
+            "mean_forecast": 0.8122892461310247,
+            "answer_fraction": 0.7265625,
+            "decision_cost": 0.185546875
+          },
+          "raw_max_probability": {
+            "brier": 0.12855311267107322,
+            "mean_forecast": 0.9114903322970042,
+            "answer_fraction": 0.82275390625,
+            "decision_cost": 0.12578125
+          },
+          "always_verify_cost": 0.2,
+          "brier_advantage": 0.03985975788821556,
+          "brier_advantage_ci95_descriptive": [
+            0.028192318540082507,
+            0.05283145924122016
+          ]
+        },
+        "dropout": {
+          "episodes": 2048,
+          "recall_accuracy": 0.95458984375,
+          "own": {
+            "brier": 0.02997686608485692,
+            "mean_forecast": 0.9251150710519728,
+            "answer_fraction": 0.88232421875,
+            "decision_cost": 0.030371093749999998
+          },
+          "observer": {
+            "brier": 0.03715480107124037,
+            "mean_forecast": 0.9016117906983998,
+            "answer_fraction": 0.90478515625,
+            "decision_cost": 0.0390625
+          },
+          "shuffled_own": {
+            "brier": 0.07064757234908187,
+            "mean_forecast": 0.9251150710519728,
+            "answer_fraction": 0.88232421875,
+            "decision_cost": 0.06455078125
+          },
+          "raw_max_probability": {
+            "brier": 0.0699613788041139,
+            "mean_forecast": 0.8027783886346311,
+            "answer_fraction": 0.6103515625,
+            "decision_cost": 0.0779296875
+          },
+          "always_verify_cost": 0.2,
+          "brier_advantage": 0.0071779349863834475,
+          "brier_advantage_ci95_descriptive": [
+            0.0038043758420282254,
+            0.010768352434265667
+          ]
+        },
+        "foreign": {
+          "episodes": 2048,
+          "recall_accuracy": 0.259765625,
+          "own": {
+            "brier": 0.7132559680534952,
+            "mean_forecast": 0.9681988980702876,
+            "answer_fraction": 0.96875,
+            "decision_cost": 0.725
+          },
+          "observer": {
+            "brier": 0.6131827035384714,
+            "mean_forecast": 0.9016117906983998,
+            "answer_fraction": 0.90478515625,
+            "decision_cost": 0.6923828125
+          },
+          "shuffled_own": {
+            "brier": 0.7101662951717423,
+            "mean_forecast": 0.9681988980702877,
+            "answer_fraction": 0.96875,
+            "decision_cost": 0.723046875
+          },
+          "raw_max_probability": {
+            "brier": 0.6908798361780019,
+            "mean_forecast": 0.9571419568689374,
+            "answer_fraction": 0.93408203125,
+            "decision_cost": 0.7060546875
+          },
+          "always_verify_cost": 0.2,
+          "brier_advantage": -0.100073264515024,
+          "brier_advantage_ci95_descriptive": [
+            -0.1075257176912193,
+            -0.09227198409073095
+          ]
+        },
+        "long_delay": {
+          "episodes": 2048,
+          "recall_accuracy": 0.74072265625,
+          "own": {
+            "brier": 0.1696483216779845,
+            "mean_forecast": 0.5910939126918956,
+            "answer_fraction": 0.51513671875,
+            "decision_cost": 0.09697265624999998
+          },
+          "observer": {
+            "brier": 0.13864720135428105,
+            "mean_forecast": 0.692279439190625,
+            "answer_fraction": 0.51513671875,
+            "decision_cost": 0.09697265624999998
+          },
+          "shuffled_own": {
+            "brier": 0.40540767137182937,
+            "mean_forecast": 0.5910939126918955,
+            "answer_fraction": 0.51513671875,
+            "decision_cost": 0.23662109375000004
+          },
+          "raw_max_probability": {
+            "brier": 0.12423014380013214,
+            "mean_forecast": 0.7474633731601557,
+            "answer_fraction": 0.51513671875,
+            "decision_cost": 0.09697265624999998
+          },
+          "always_verify_cost": 0.2,
+          "brier_advantage": -0.03100112032370344,
+          "brier_advantage_ci95_descriptive": [
+            -0.04236275055128712,
+            -0.02002467871416139
+          ]
+        }
+      },
+      "checkpoints": {
+        "own": {
+          "file": "own-17.json",
+          "sha256": "5ad2cc3ee73e604b60347718edc6f02f1616c62ea8ab6e123117abe420309111"
+        },
+        "observer": {
+          "file": "observer-17.json",
+          "sha256": "05b0c8f3027d39ee36a0ec66eb84bf98c2c2c1bb9fd48593c93b34009762aa98"
+        }
+      }
+    },
+    {
+      "seed": 29,
+      "data_seeds": {
+        "train": 290001,
+        "validation": 290002,
+        "evaluation": 290003
+      },
+      "own_fit": {
+        "selected_step": 900,
+        "validation_brier": 0.04723343399639508
+      },
+      "observer_fit": {
+        "selected_step": 700,
+        "validation_brier": 0.06599643065480365
+      },
+      "model_sha256": "51490ea6ebcd78bc151c5373b1eeb8368772a0edf06b2b69f4c4e8cd95c3a17b",
+      "families": {
+        "intact": {
+          "episodes": 2048,
+          "recall_accuracy": 0.92822265625,
+          "own": {
+            "brier": 0.0017786560455052853,
+            "mean_forecast": 0.9214828298070352,
+            "answer_fraction": 0.92822265625,
+            "decision_cost": 0.01435546875
+          },
+          "observer": {
+            "brier": 0.012701696654235012,
+            "mean_forecast": 0.8588183371517825,
+            "answer_fraction": 0.8583984375,
+            "decision_cost": 0.0283203125
+          },
+          "shuffled_own": {
+            "brier": 0.12340494420005446,
+            "mean_forecast": 0.9214828298070352,
+            "answer_fraction": 0.92822265625,
+            "decision_cost": 0.08027343749999999
+          },
+          "raw_max_probability": {
+            "brier": 0.07188667342783839,
+            "mean_forecast": 0.9542874700206301,
+            "answer_fraction": 0.93017578125,
+            "decision_cost": 0.0857421875
+          },
+          "always_verify_cost": 0.2,
+          "brier_advantage": 0.010923040608729725,
+          "brier_advantage_ci95_descriptive": [
+            0.00978507839647785,
+            0.01199323426475777
+          ]
+        },
+        "noise": {
+          "episodes": 2048,
+          "recall_accuracy": 0.7509765625,
+          "own": {
+            "brier": 0.11213538733917194,
+            "mean_forecast": 0.7621960222880237,
+            "answer_fraction": 0.681640625,
+            "decision_cost": 0.1095703125
+          },
+          "observer": {
+            "brier": 0.15264750158937285,
+            "mean_forecast": 0.8588183371517825,
+            "answer_fraction": 0.8583984375,
+            "decision_cost": 0.171875
+          },
+          "shuffled_own": {
+            "brier": 0.306327429312643,
+            "mean_forecast": 0.7621960222880239,
+            "answer_fraction": 0.681640625,
+            "decision_cost": 0.23261718750000004
+          },
+          "raw_max_probability": {
+            "brier": 0.17980228274809015,
+            "mean_forecast": 0.9058269158896388,
+            "answer_fraction": 0.80859375,
+            "decision_cost": 0.1779296875
+          },
+          "always_verify_cost": 0.2,
+          "brier_advantage": 0.04051211425020092,
+          "brier_advantage_ci95_descriptive": [
+            0.02852175833351991,
+            0.05287612204818129
+          ]
+        },
+        "dropout": {
+          "episodes": 2048,
+          "recall_accuracy": 0.87109375,
+          "own": {
+            "brier": 0.044945929574819216,
+            "mean_forecast": 0.8603948593920938,
+            "answer_fraction": 0.79345703125,
+            "decision_cost": 0.0515625
+          },
+          "observer": {
+            "brier": 0.048290415582123734,
+            "mean_forecast": 0.8588183371517825,
+            "answer_fraction": 0.8583984375,
+            "decision_cost": 0.05859375
+          },
+          "shuffled_own": {
+            "brier": 0.1712581896472487,
+            "mean_forecast": 0.8603948593920938,
+            "answer_fraction": 0.79345703125,
+            "decision_cost": 0.13994140625
+          },
+          "raw_max_probability": {
+            "brier": 0.10388311823592841,
+            "mean_forecast": 0.8023375712297784,
+            "answer_fraction": 0.611328125,
+            "decision_cost": 0.10458984375
+          },
+          "always_verify_cost": 0.2,
+          "brier_advantage": 0.0033444860073045166,
+          "brier_advantage_ci95_descriptive": [
+            -0.0012162768161453877,
+            0.007973609182833147
+          ]
+        },
+        "foreign": {
+          "episodes": 2048,
+          "recall_accuracy": 0.25927734375,
+          "own": {
+            "brier": 0.6906744818164879,
+            "mean_forecast": 0.9209111127565694,
+            "answer_fraction": 0.9267578125,
+            "decision_cost": 0.70166015625
+          },
+          "observer": {
+            "brier": 0.5775844234968712,
+            "mean_forecast": 0.8588183371517825,
+            "answer_fraction": 0.8583984375,
+            "decision_cost": 0.646484375
+          },
+          "shuffled_own": {
+            "brier": 0.6969908761693212,
+            "mean_forecast": 0.9209111127565694,
+            "answer_fraction": 0.9267578125,
+            "decision_cost": 0.7050781249999999
+          },
+          "raw_max_probability": {
+            "brier": 0.6876498138463502,
+            "mean_forecast": 0.9553957272577793,
+            "answer_fraction": 0.93505859375,
+            "decision_cost": 0.7078125
+          },
+          "always_verify_cost": 0.2,
+          "brier_advantage": -0.11309005831961674,
+          "brier_advantage_ci95_descriptive": [
+            -0.12466770503425177,
+            -0.10186630081719986
+          ]
+        },
+        "long_delay": {
+          "episodes": 2048,
+          "recall_accuracy": 0.501953125,
+          "own": {
+            "brier": 0.30583907313396774,
+            "mean_forecast": 0.7627838832046836,
+            "answer_fraction": 0.6123046875,
+            "decision_cost": 0.32216796875000003
+          },
+          "observer": {
+            "brier": 0.3187403501437295,
+            "mean_forecast": 0.800003245254969,
+            "answer_fraction": 0.6123046875,
+            "decision_cost": 0.32216796875000003
+          },
+          "shuffled_own": {
+            "brier": 0.3766729317651286,
+            "mean_forecast": 0.7627838832046836,
+            "answer_fraction": 0.6123046875,
+            "decision_cost": 0.3797851562500001
+          },
+          "raw_max_probability": {
+            "brier": 0.4808970203761246,
+            "mean_forecast": 0.976731802862598,
+            "answer_fraction": 1.0,
+            "decision_cost": 0.498046875
+          },
+          "always_verify_cost": 0.2,
+          "brier_advantage": 0.01290127700976174,
+          "brier_advantage_ci95_descriptive": [
+            0.005096899002567332,
+            0.020569948020272642
+          ]
+        }
+      },
+      "checkpoints": {
+        "own": {
+          "file": "own-29.json",
+          "sha256": "5d0fbb99605a0a49efa272377746f43c7c2697bb444c9048f1e511a8915691a9"
+        },
+        "observer": {
+          "file": "observer-29.json",
+          "sha256": "a81de8ccfd6aacea4ae021fdbe1018aae91cf1320603158edebb6d8082a93d46"
+        }
+      }
+    },
+    {
+      "seed": 43,
+      "data_seeds": {
+        "train": 430001,
+        "validation": 430002,
+        "evaluation": 430003
+      },
+      "own_fit": {
+        "selected_step": 900,
+        "validation_brier": 0.06649475045732271
+      },
+      "observer_fit": {
+        "selected_step": 900,
+        "validation_brier": 0.08736543082535031
+      },
+      "model_sha256": "f2511e3a3831bada6e1ba256ffdf0ca3975cd119fd623046fad2f754de8b5bd1",
+      "families": {
+        "intact": {
+          "episodes": 2048,
+          "recall_accuracy": 0.890625,
+          "own": {
+            "brier": 0.020133139600319757,
+            "mean_forecast": 0.9012105887161272,
+            "answer_fraction": 0.85693359375,
+            "decision_cost": 0.028613281250000004
+          },
+          "observer": {
+            "brier": 0.03048040556428678,
+            "mean_forecast": 0.8417066254477609,
+            "answer_fraction": 0.7841796875,
+            "decision_cost": 0.0431640625
+          },
+          "shuffled_own": {
+            "brier": 0.14959283223781195,
+            "mean_forecast": 0.9012105887161272,
+            "answer_fraction": 0.85693359375,
+            "decision_cost": 0.12041015625000001
+          },
+          "raw_max_probability": {
+            "brier": 0.05531047721562417,
+            "mean_forecast": 0.9253281350499369,
+            "answer_fraction": 0.8544921875,
+            "decision_cost": 0.05986328125
+          },
+          "always_verify_cost": 0.2,
+          "brier_advantage": 0.010347265963967024,
+          "brier_advantage_ci95_descriptive": [
+            0.009082220832576031,
+            0.011509049611214994
+          ]
+        },
+        "noise": {
+          "episodes": 2048,
+          "recall_accuracy": 0.75341796875,
+          "own": {
+            "brier": 0.12046298422803739,
+            "mean_forecast": 0.7586447704342012,
+            "answer_fraction": 0.6533203125,
+            "decision_cost": 0.109375
+          },
+          "observer": {
+            "brier": 0.1576266923105889,
+            "mean_forecast": 0.8417066254477609,
+            "answer_fraction": 0.7841796875,
+            "decision_cost": 0.16572265625000002
+          },
+          "shuffled_own": {
+            "brier": 0.29333991269383036,
+            "mean_forecast": 0.7586447704342012,
+            "answer_fraction": 0.6533203125,
+            "decision_cost": 0.22460937500000003
+          },
+          "raw_max_probability": {
+            "brier": 0.17987550628470372,
+            "mean_forecast": 0.8993674825107597,
+            "answer_fraction": 0.802734375,
+            "decision_cost": 0.18203125000000003
+          },
+          "always_verify_cost": 0.2,
+          "brier_advantage": 0.03716370808255151,
+          "brier_advantage_ci95_descriptive": [
+            0.02497484808809091,
+            0.04869800570776363
+          ]
+        },
+        "dropout": {
+          "episodes": 2048,
+          "recall_accuracy": 0.88427734375,
+          "own": {
+            "brier": 0.04953090378053761,
+            "mean_forecast": 0.8632819860482084,
+            "answer_fraction": 0.791015625,
+            "decision_cost": 0.04716796875
+          },
+          "observer": {
+            "brier": 0.05749113535994487,
+            "mean_forecast": 0.8417066254477609,
+            "answer_fraction": 0.7841796875,
+            "decision_cost": 0.06171875
+          },
+          "shuffled_own": {
+            "brier": 0.15755587429503942,
+            "mean_forecast": 0.8632819860482084,
+            "answer_fraction": 0.791015625,
+            "decision_cost": 0.13212890625
+          },
+          "raw_max_probability": {
+            "brier": 0.09609691537403234,
+            "mean_forecast": 0.767436997315063,
+            "answer_fraction": 0.5302734375,
+            "decision_cost": 0.09394531249999999
+          },
+          "always_verify_cost": 0.2,
+          "brier_advantage": 0.00796023157940726,
+          "brier_advantage_ci95_descriptive": [
+            0.004129390912463866,
+            0.011425019887319737
+          ]
+        },
+        "foreign": {
+          "episodes": 2048,
+          "recall_accuracy": 0.25,
+          "own": {
+            "brier": 0.6720119218299453,
+            "mean_forecast": 0.9047293211617331,
+            "answer_fraction": 0.8623046875,
+            "decision_cost": 0.6759765625
+          },
+          "observer": {
+            "brier": 0.5738647159247964,
+            "mean_forecast": 0.8417066254477609,
+            "answer_fraction": 0.7841796875,
+            "decision_cost": 0.63544921875
+          },
+          "shuffled_own": {
+            "brier": 0.667489840446948,
+            "mean_forecast": 0.9047293211617331,
+            "answer_fraction": 0.8623046875,
+            "decision_cost": 0.673046875
+          },
+          "raw_max_probability": {
+            "brier": 0.6605535175861267,
+            "mean_forecast": 0.9262713240939242,
+            "answer_fraction": 0.85888671875,
+            "decision_cost": 0.6756835937500001
+          },
+          "always_verify_cost": 0.2,
+          "brier_advantage": -0.09814720590514886,
+          "brier_advantage_ci95_descriptive": [
+            -0.10898821275886096,
+            -0.08817563875196781
+          ]
+        },
+        "long_delay": {
+          "episodes": 2048,
+          "recall_accuracy": 0.38818359375,
+          "own": {
+            "brier": 0.2469656666756102,
+            "mean_forecast": 0.1354862140434833,
+            "answer_fraction": 0.0,
+            "decision_cost": 0.20000000000000004
+          },
+          "observer": {
+            "brier": 0.2185924811870059,
+            "mean_forecast": 0.20943569454592378,
+            "answer_fraction": 0.0,
+            "decision_cost": 0.20000000000000004
+          },
+          "shuffled_own": {
+            "brier": 0.367404905676433,
+            "mean_forecast": 0.1354862140434833,
+            "answer_fraction": 0.0,
+            "decision_cost": 0.20000000000000004
+          },
+          "raw_max_probability": {
+            "brier": 0.4139312402390289,
+            "mean_forecast": 0.7199375143056347,
+            "answer_fraction": 0.0,
+            "decision_cost": 0.20000000000000004
+          },
+          "always_verify_cost": 0.2,
+          "brier_advantage": -0.02837318548860436,
+          "brier_advantage_ci95_descriptive": [
+            -0.03233398218276537,
+            -0.024612944397530378
+          ]
+        }
+      },
+      "checkpoints": {
+        "own": {
+          "file": "own-43.json",
+          "sha256": "4ac831074ae1cfcce790ef219166df31d97f1eba83f6738b27300cefd91faab8"
+        },
+        "observer": {
+          "file": "observer-43.json",
+          "sha256": "6977939a135ad9014720164d43d9809b3e0e1b98c5300e5db79eae53bd20c592"
+        }
+      }
+    }
+  ],
+  "plan_sha256": "d36ade7a0d8f1d7c9ac5e06edd9c883af50b7b8840a063f443f01a30f474e2a8",
+  "serialization_note": "LF normalization only after training; checkpoint numerical parameters and all evaluations unchanged."
+}

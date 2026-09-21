@@ -1,0 +1,134 @@
+{
+  "schema": "menia-presence-detection-first-verification-v1",
+  "writtenBeforeAnyPretrainedExport": true,
+  "archiveSHA256": "cfe1421adee6aa420f1a093253a23c3b3f71f0390ba92d01350a4bf80e125a88",
+  "journalSHA256": "fdbe7d9e764e509789e552591a8b13ef46ba3bf2efd3543eed08e63595acd526",
+  "origin": "transformers_gpu",
+  "codeRevision": "74bbaa04d4bd026260107e231af3cbfd7b1ed57e",
+  "planHash": "447f5d2c82fc23ea6eeba49b9bc984f423752c5a012be50fc89c3d018d635bd0",
+  "sourceHash": "a1beb0f2052d7f6e58df402dc1c5395abd5f1b966b5ed0d265a79b354fb5be2d",
+  "verification": {
+    "complete": true,
+    "summaryMaxDifference": 2.524354896707238e-29,
+    "independentMetricMaxDifference": 2.220446049250313e-16,
+    "independentContrastMaxDifference": 0.0,
+    "fixedReadingRuleMet": true,
+    "evaluationForwards": 12864,
+    "trainingUpdates": 576,
+    "checkpointCount": 9,
+    "shamExactPairs": 3216,
+    "unperturbedMismatches": 0,
+    "traceCount": 15744,
+    "maxNormRelativeError": 0.0011907730950042605,
+    "inputTokenRange": [
+      87,
+      118
+    ],
+    "firstTokenOutsideOptions": 0,
+    "errors": 0,
+    "trainingRestarts": 0,
+    "interruptedRequests": 0
+  },
+  "checkpointInspection": {
+    "r0-visible": {
+      "updates": 64,
+      "initializationSeed": 202609181,
+      "gradientNormRange": [
+        2.9128966616553953e-07,
+        20.030580520629883
+      ],
+      "sha256": "8f9984a3d027298e6b1ac8a56b6f1449c3b2525c767ef7576b923c4e6d4ba979",
+      "tensors": 144,
+      "parameters": 2949120
+    },
+    "r0-strong": {
+      "updates": 64,
+      "initializationSeed": 202609181,
+      "gradientNormRange": [
+        0.5321332812309265,
+        27.40964698791504
+      ],
+      "sha256": "e2069070e5e54206258ed466c8592714413610e316f419ae3c6a7f2abb18b219",
+      "tensors": 144,
+      "parameters": 2949120
+    },
+    "r0-shuffled": {
+      "updates": 64,
+      "initializationSeed": 202609181,
+      "gradientNormRange": [
+        0.103975810110569,
+        25.465328216552734
+      ],
+      "sha256": "b521dbd2363cef29739be13cb02dcebbe3269c48bcf73bc51d84259a59a7b739",
+      "tensors": 144,
+      "parameters": 2949120
+    },
+    "r1-visible": {
+      "updates": 64,
+      "initializationSeed": 202609182,
+      "gradientNormRange": [
+        2.4567125365138054e-06,
+        28.522319793701172
+      ],
+      "sha256": "ebd344fd27dc3354658f2deb823b6bae83e0c15758873fd45e2dc2d4a396013b",
+      "tensors": 144,
+      "parameters": 2949120
+    },
+    "r1-strong": {
+      "updates": 64,
+      "initializationSeed": 202609182,
+      "gradientNormRange": [
+        0.00040156481554731727,
+        17.39979362487793
+      ],
+      "sha256": "80f1805b05048ec363cf7c185def104c66b8141c97d26c38c68a9065a4728497",
+      "tensors": 144,
+      "parameters": 2949120
+    },
+    "r1-shuffled": {
+      "updates": 64,
+      "initializationSeed": 202609182,
+      "gradientNormRange": [
+        0.35658445954322815,
+        17.565048217773438
+      ],
+      "sha256": "e59a50cc39d924040667caffb586bfce39c6595cf5e4b81707fee2cc136f287f",
+      "tensors": 144,
+      "parameters": 2949120
+    },
+    "r2-visible": {
+      "updates": 64,
+      "initializationSeed": 202609183,
+      "gradientNormRange": [
+        1.2221109500387684e-05,
+        23.816974639892578
+      ],
+      "sha256": "4c6fc8ad2a63ad0a8d108db487ee591749c47c6c91a3430552dce04569e5d4cf",
+      "tensors": 144,
+      "parameters": 2949120
+    },
+    "r2-strong": {
+      "updates": 64,
+      "initializationSeed": 202609183,
+      "gradientNormRange": [
+        0.019660374149680138,
+        29.59202003479004
+      ],
+      "sha256": "4d693a7dc2fa19b33f94c0a325a01a8f7c4fdc96e43abcdae3fae88043ff3b9c",
+      "tensors": 144,
+      "parameters": 2949120
+    },
+    "r2-shuffled": {
+      "updates": 64,
+      "initializationSeed": 202609183,
+      "gradientNormRange": [
+        0.10540132969617844,
+        29.968137741088867
+      ],
+      "sha256": "b4d054c4c85571d65c136273b9d9eaedb233265a7b6c73e017dd9e68d5625ad1",
+      "tensors": 144,
+      "parameters": 2949120
+    }
+  },
+  "limits": "Shared pinned plan and received traces; independently enumerated targets, direct AUROC enumeration and count formulas. No new model calls, hardware attestation, pooled training-population CI, consciousness or iPhone claim."
+}

@@ -1,0 +1,43 @@
+{
+  "schema": "menia-confidence-budget-final-receipt-v1",
+  "archiveName": "menia-budget-apprentissage-v1.zip",
+  "archiveBytes": 67730762,
+  "archiveSHA256": "a1302c4fc18e0aea9a16b1d5d908627c896a37743c90f9149bfaa485b8c70f03",
+  "files": 10,
+  "journalSHA256": "ed5ec1aec33bc551603b851170832bd99956cf6bf40997f1c5bce16f541097cf",
+  "scienceRevision": "a9b1a27054056ec3f6c8300319036f5950ee4f32",
+  "execution": {
+    "startedUTC": "2026-09-20T04:04:29.605152+00:00",
+    "revision": "a9b1a27054056ec3f6c8300319036f5950ee4f32",
+    "status": "completed",
+    "journal": "/content/menia-results/confidence-budget-v1/confidence-budget-20260920-v1.jsonl",
+    "hardware": "NVIDIA A100-SXM4-40GB, 0 MiB, 40960 MiB",
+    "updatedUTC": "2026-09-20T05:08:54.799788+00:00"
+  },
+  "model": {
+    "id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "planHash": "208ce8f4ef7a2dd3600704f0f194fa31dc6d2a70424fb8416ee547920ca12b84",
+  "sourceHash": "dac15b5a552289f4b65239be08eabd108f10d8b4f093ed9aea64d274a012ae30",
+  "callPlanHash": "91bb87d1b9e0ff663eb61539b13b1aa6805cc6357743a41ba610672853cdcd56",
+  "recordedCalls": 8640,
+  "trainingSteps": 1296,
+  "newGenerations": 0,
+  "newLLMBaseWeightUpdates": 0,
+  "newCheckpoints": 6,
+  "unchangedParents": 3,
+  "trainingInputTokens": 1196628,
+  "trainingStepSeconds": 2641.366021999929,
+  "assessmentSeconds": 1125.2814538988387,
+  "trainingPrefixSHA256": "c4fa1fe27f521acfea9d78a2761f6f3a44cdc4db8e5eef5098d180e9c2b9adda",
+  "baselineMaxAbsoluteDifference": 0.0,
+  "mainRecomputeMaxAbsoluteDifference": 0.0,
+  "separateArithmeticMaxDifference": 5.551115123125783e-17,
+  "colabPreflight": {
+    "tests": 12,
+    "passed": true,
+    "seconds": 19.071
+  },
+  "scope": "Exploratory fixed-capacity optimization-budget diagnostic on old training and already-seen Colab24 base answers. No fresh confirmation, specific ranking advantage, privileged access, native action or consciousness criterion."
+}

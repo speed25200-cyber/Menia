@@ -6,38 +6,73 @@ def cell(kind,text):
     if kind=='code': value.update({'execution_count':None,'outputs':[]})
     return value
 cells=[
-cell('markdown','''# Menia v0.2 — mémoire récurrente
+cell('markdown','''# Menia — mémoire, fiabilité et espace partagé récurrent
 Ce notebook entraîne un **petit module neuronal de mémoire**, pas une conscience
 et pas le modèle de langage Qwen. L’expérience tourne sur CPU ; l’A100 n’est pas
 nécessaire pour ce module de 1 540 paramètres.
 
 Les poids d’un premier entraînement sont déjà dans le dépôt. Les cellules ci-dessous
-permettent de les vérifier et d’en entraîner de nouveaux.
+permettent de les vérifier et d’en entraîner de nouveaux, puis de calibrer une
+limite de rappel et de mesurer les erreurs sur des épisodes séparés.
+Une seconde expérience étudie un espace partagé de 13 000 paramètres : deux modules
+échangent des informations pour effectuer une composition en deux étapes.
 '''),
 cell('code','''from google.colab import drive
 drive.mount('/content/drive')
 from pathlib import Path
 import subprocess,sys,os,datetime,json
-REPO=Path('/content/Menia-recurrent')
+REVISION='61a0dd0b107c56d5acf6d3417534c1feff4153dd'
+REPO=Path('/content')/('Menia-recurrent-'+REVISION[:12])
 if not REPO.exists():
     subprocess.run(['git','clone','https://github.com/speed25200-cyber/Menia.git',str(REPO)],check=True)
+    subprocess.run(['git','-C',str(REPO),'checkout','--detach',REVISION],check=True)
+actual_revision=subprocess.check_output(['git','-C',str(REPO),'rev-parse','HEAD'],text=True).strip()
+if actual_revision != REVISION:
+    raise RuntimeError('Le dossier existant utilise une autre révision ; choisir un nouveau dossier REPO.')
+if subprocess.check_output(['git','-C',str(REPO),'status','--porcelain'],text=True).strip():
+    raise RuntimeError('Le dossier contient des modifications locales ; les conserver et choisir un nouveau dossier REPO.')
 os.chdir(REPO)
-print(subprocess.check_output(['git','rev-parse','HEAD'],text=True))
+print('Révision de recherche :',actual_revision)
 subprocess.run([sys.executable,'-m','pip','install','-r','requirements-research.txt'],check=True)
+RUN_ROOT=Path('/content/drive/MyDrive/Menia/recurrent')
 '''),
 cell('code','''subprocess.run([sys.executable,'-m','unittest','discover','-s','tests_research','-v'],check=True)
 subprocess.run([sys.executable,'scripts/check_recurrent_artifacts.py'],check=True)
+subprocess.run([sys.executable,'scripts/check_reliability_artifacts.py'],check=True)
 '''),
 cell('markdown','''## Nouvel entraînement avec trois initialisations
 300 updates par modèle, séquences de 12 pas. Test séparé : 256 épisodes de 32 pas.
 La référence déterministe mémorise le dernier symbole ; elle permet de situer les
 résultats sans attribuer de capacité spéciale au réseau.
 '''),
-cell('code','''OUT=Path('/content/drive/MyDrive/Menia/recurrent')/datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%SZ')
+cell('code','''OUT=RUN_ROOT/datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%S%fZ')
 subprocess.run([sys.executable,'-m','research.train_recurrent','--out',str(OUT),'--steps','300','--seeds','17','29','43'],check=True)
 report=json.loads((OUT/'report.json').read_text())
 for run in report['runs']:
     print(run['seed'],json.dumps(run['evaluation'],indent=2))
+'''),
+cell('markdown','''## Mesurer les limites avant de faire confiance au rappel
+La probabilité du symbole peut rester élevée alors que le souvenir est faux.
+Une calibration séparée choisit un délai de rappel maximal pour chaque modèle.
+Les tests utilisent de nouvelles histoires, jusqu’à 512 pas sans observation.
+Le rapport expose aussi l’effacement et le mélange des états internes : un état
+incorrect mais plausible peut tromper ce mécanisme.
+
+Ce contrôle empirique est une première fonction de suivi des limites de mémoire,
+pas une introspection générale ni la validation d’une théorie de la conscience.
+Les bornes statistiques concernent chaque groupe de calibration séparément ;
+elles ne garantissent pas une fiabilité universelle.
+'''),
+cell('code','''RELIABILITY=OUT/'reliability'
+subprocess.run([sys.executable,'-m','research.evaluate_reliability','--models',str(OUT),'--out',str(RELIABILITY)],check=True)
+reliability_report=json.loads((RELIABILITY/'report.json').read_text())
+for run in reliability_report['runs']:
+    print(run['checkpoint'], 'délai calibré :',run['calibrated_max_age'])
+    for row in run['test']:
+        if row['age'] in (1,8,32,128,512):
+            print('délai',row['age'],'précision brute',round(row['raw_accuracy'],3),
+                  'réponses acceptées',row['calibrated_policy']['answered'],
+                  'précision acceptée',row['calibrated_policy']['accuracy_when_answered'])
 '''),
 cell('markdown','''## Session interactive symbolique
 Fournir un symbole, puis ne plus l’observer. L’évaluation est calculée après la
@@ -45,19 +80,73 @@ prédiction. L’appareil ne perçoit pas le monde réel dans cette expérience.
 '''),
 cell('code','''from research.recurrent import RecurrentMemory
 from research.session import CognitiveSession
-session=CognitiveSession(RecurrentMemory.load(OUT/'memory-seed-17.json'))
+from research.reliability import RecallPolicy
+model=RecurrentMemory.load(OUT/'memory-seed-17.json')
+policy=RecallPolicy.load(RELIABILITY/'memory-seed-17-policy.json',model)
+session=CognitiveSession(model,policy=policy)
+print('Sans observation :',session.observe())
 print(session.observe(2))
 print(session.observe(None))
 print(session.assess(2))
+for _ in range(max(0,policy.max_age)+1):
+    event=session.observe(None)
+print('Au-delà du délai calibré :',event)
 print(session.context())
 session.stop()
 session.clear()
 print('Session arrêtée et état effacé.')
 '''),
+cell('markdown','''## Espace partagé récurrent : composition en deux étapes
+Deux modules reçoivent chacun une table privée. Ils doivent calculer B[A[requête]]
+après disparition des tables, via un espace partagé de huit dimensions.
+Les résultats publiés couvrent trois initialisations, un contrôle entraîné sans
+retour vers les modules et un réseau direct. Les combinaisons de tables du test
+sont exclues de l’entraînement pour toutes les requêtes.
+
+Cette expérience ajoute une circulation interne d’informations testable. Elle
+ne démontre ni conscience ni supériorité générale de cette architecture.
+L’installation suivante utilise PyTorch CPU ; Python 3.12 est l’environnement
+de reproduction vérifié. Aucun GPU n’est nécessaire.
+'''),
+cell('code','''subprocess.run([sys.executable,'-m','pip','install','torch==2.4.1','--index-url','https://download.pytorch.org/whl/cpu'],check=True)
+subprocess.run([sys.executable,'-m','unittest','discover','-s','tests_workspace','-v'],check=True)
+subprocess.run([sys.executable,'scripts/check_workspace_artifacts.py'],check=True)
+workspace_report=json.loads(Path('artifacts/shared-workspace/report.json').read_text())
+for run in workspace_report['runs']:
+    print(run['seed'],run['variant'],'précision',run['evaluation']['none']['accuracy'])
+    if run['variant']=='workspace':
+        print('  retour coupé :',run['evaluation']['no_broadcast']['accuracy'])
+'''),
+cell('code','''import torch
+from research.workspace import SharedWorkspace,lookup_test
+torch.set_num_threads(1)
+workspace_model=SharedWorkspace()
+workspace_model.load_state_dict(torch.load('artifacts/shared-workspace/workspace-17.pt',weights_only=True,map_location='cpu'))
+workspace_model.eval()
+tables,query,target=lookup_test()
+example=137
+with torch.no_grad():
+    output,trace=workspace_model(tables[example:example+1],query[example:example+1],return_trace=True)
+print('Requête :',query[example].argmax().item())
+print('Tables :',tables[example].reshape(2,4,4).argmax(-1).tolist())
+for step,item in enumerate(trace):
+    print('Tour',step+1,'attention vers A et B :',item['attention'][0].tolist())
+print('Réponse prédite :',output['answer'].argmax(-1).item())
+print('Référence externe :',target[example].item())
+
+# Facultatif : reproduire les neuf entraînements dans un nouveau dossier Drive.
+TRAIN_WORKSPACE=False
+if TRAIN_WORKSPACE:
+    subprocess.run([sys.executable,'-m','research.train_workspace','--out',str(OUT/'workspace'),
+                    '--steps','2000','--seeds','17','29','43'],check=True)
+'''),
 cell('markdown','''## Interprétation
 Comparer réseau complet, état effacé à chaque pas, observations masquées et règle
 du dernier symbole. Réussir ce rappel démontre un mécanisme sur cette tâche ;
 cela ne démontre ni conscience, ni ressenti, ni intelligence générale.
+Une abstention a une couverture nulle et une précision indéfinie, jamais 100 %.
+Le symbole vu est une observation ; le candidat brut du réseau reste un diagnostic.
+Seul answer_symbol est la réponse de session, avec sa source et son éventuelle abstention.
 
 Les poids JSON et le rapport sont sauvegardés dans OUT. Aucun upload automatique.
 Le runner Swift est fourni dans MeniaKit ; il reste à compiler et à tester sur iPhone.
@@ -65,4 +154,4 @@ Le notebook 01 est un autre parcours : adaptation LoRA du modèle de langage sur
 ''')]
 for i,c in enumerate(cells): c['id']=f'recurrent-{i:02d}'
 n={'cells':cells,'metadata':{'kernelspec':{'display_name':'Python 3','language':'python','name':'python3'},'language_info':{'name':'python'}},'nbformat':4,'nbformat_minor':5}
-Path('notebooks/02_recurrent_research.ipynb').write_text(json.dumps(n,ensure_ascii=False,indent=2)+'\n')
+Path('notebooks/02_recurrent_research.ipynb').write_text(json.dumps(n,ensure_ascii=False,indent=2)+'\n',encoding='utf-8',newline='\n')

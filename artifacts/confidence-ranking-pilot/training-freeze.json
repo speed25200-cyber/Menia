@@ -1,0 +1,83 @@
+{
+  "schema": "menia-confidence-ranking-prefix-check-v1",
+  "verified": true,
+  "planHash": "83d81c430208ab1c4f0f970e232e190e19be22af43ee4c2a3f554586efbb9b9c",
+  "sourceHash": "12489c817466d98892b43e249fdd7a25d360522770af820c0bfefefda7d87129",
+  "prefixSHA256": "eb27907387de279f6dd98cb5c37f186125f4221ab2bf413e39d931c197187e5c",
+  "prefixBytes": 4932749,
+  "chainEnd": "cb5a413f92f2b3d93ed21f452124d368d195a9f9a81a524d7ae2f0bf5f8163f7",
+  "trainingSteps": 1296,
+  "units": {
+    "r0-ce": 144,
+    "r0-rank": 144,
+    "r0-neutral": 144,
+    "r1-ce": 144,
+    "r1-rank": 144,
+    "r1-neutral": 144,
+    "r2-ce": 144,
+    "r2-rank": 144,
+    "r2-neutral": 144
+  },
+  "completedAdapters": 9,
+  "activeTraining": null,
+  "checkpointFiles": {
+    "confidence-ranking-20260920-v1.r0-ce.safetensors": {
+      "bytes": 11811296,
+      "sha256": "9a0fef8e88cf93b464be5f53f9b482b9368df092133537c81e17234e32adb1c9"
+    },
+    "confidence-ranking-20260920-v1.r0-rank.safetensors": {
+      "bytes": 11811296,
+      "sha256": "d7919cd9b9ddb0ce2df4fff21e246020576fd4b8c68c5d0f81e61a2228483ed1"
+    },
+    "confidence-ranking-20260920-v1.r0-neutral.safetensors": {
+      "bytes": 11811296,
+      "sha256": "f11a03af036dc9087c530c64ddcf21f7451c75ad01177d6120319756bdbcfdb0"
+    },
+    "confidence-ranking-20260920-v1.r1-ce.safetensors": {
+      "bytes": 11811296,
+      "sha256": "5dd0df59e9751e99204881b20ce064a7407a17624cc5abdb2969c0abcb01b225"
+    },
+    "confidence-ranking-20260920-v1.r1-rank.safetensors": {
+      "bytes": 11811296,
+      "sha256": "ff15d693e24f67067dbab7a9f5fb81c475ad07a9892968abc6616a6b83f32525"
+    },
+    "confidence-ranking-20260920-v1.r1-neutral.safetensors": {
+      "bytes": 11811296,
+      "sha256": "3dcb58c3f05cb147ddcb47d7ae24dd18f15d614737d7bb1b91c52dfc3d1bc156"
+    },
+    "confidence-ranking-20260920-v1.r2-ce.safetensors": {
+      "bytes": 11811296,
+      "sha256": "475cd49e82cf16e63e44ba03525b9f65208fd7020c43bf31051062a0fb9a3661"
+    },
+    "confidence-ranking-20260920-v1.r2-rank.safetensors": {
+      "bytes": 11811296,
+      "sha256": "73a767db9436372ec8d8c76d5e9ccb7aa96a1cfabca5119220657621fe0fce51"
+    },
+    "confidence-ranking-20260920-v1.r2-neutral.safetensors": {
+      "bytes": 11811296,
+      "sha256": "0d43e922f483bcdc0c98947474b291c87e5c033e66cd6667aef01e22ae95acb3"
+    },
+    "confidence-ranking-20260920-v1.r0-initial.safetensors": {
+      "bytes": 11811296,
+      "sha256": "2c24bb560ffb9cb2f26b2cd7eaae4f93d23856415af33c3642ad54626e4d2e18"
+    },
+    "confidence-ranking-20260920-v1.r1-initial.safetensors": {
+      "bytes": 11811296,
+      "sha256": "eef7ba9be1eaea303a2c855c1cb15ef591209d709f60793114691a1976b1299e"
+    },
+    "confidence-ranking-20260920-v1.r2-initial.safetensors": {
+      "bytes": 11811296,
+      "sha256": "8c0cf39ca6fe4254d9b0d80a18c9068568d0c89769308149285ae92582124ae0"
+    }
+  },
+  "scope": "Frozen-reader verification of the training-only journal prefix, pair-loss arithmetic, matched exposures and completed checkpoint hashes. No test responses or performance scores inspected.",
+  "capturedUTC": "2026-09-20T02:06:58.307514+00:00",
+  "pid": 231692,
+  "returnCode": null,
+  "cutBeforeFirstTestRequest": true,
+  "snapshotPath": "/content/menia-ranking-prefix-snapshots/20260920T020658307514Z/confidence-ranking-20260920-v1.jsonl",
+  "capturedResult": "ranking-training-freeze-001",
+  "outcomesReviewed": false,
+  "captureTiming": "After the first evaluation request; journal snapshot stops before it. No evaluation responses or scores inspected.",
+  "weightVerification": "Remote file hashes checked against completed training events. Tensor-level audit and local archive reception pending."
+}

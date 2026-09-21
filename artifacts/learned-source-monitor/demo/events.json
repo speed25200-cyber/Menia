@@ -1,0 +1,3320 @@
+[
+  {
+    "id": 1,
+    "episode": "source-61000",
+    "tick": 0,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-0",
+      "p_external": 0.5545809519421937,
+      "features": [
+        1.268917148052551,
+        0.7006276620950674,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.09835578378129688,
+        0.017290105476303278,
+        0.13586800502240898,
+        0.03252920861732834,
+        0.0649717705596804,
+        -0.10910477024341048,
+        0.006770407160951705,
+        -0.11019304050671144,
+        -0.14960710854387926,
+        -0.17162064745189498,
+        0.3531528691952835,
+        -0.15391068790220425,
+        0.07379934686645188,
+        -0.1361886264366757,
+        -0.08179529107219363,
+        -0.05547182763021461
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 2,
+    "episode": "source-61000",
+    "tick": 0,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 1,
+      "verify": true,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 3,
+    "episode": "source-61000",
+    "tick": 0,
+    "kind": "observation",
+    "source": "source_verifier",
+    "payload": {
+      "field": "source:0",
+      "value": false
+    }
+  },
+  {
+    "id": 4,
+    "episode": "source-61000",
+    "tick": 0,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-0",
+      "attributed_external": false,
+      "p_external": 0.0,
+      "verified": true,
+      "evidence_event": 3,
+      "decision_event": 2
+    }
+  },
+  {
+    "id": 5,
+    "episode": "source-61000",
+    "tick": 1,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-1",
+      "p_external": 0.4262554605249983,
+      "features": [
+        1.054480097671961,
+        0.7299265283641975,
+        1,
+        1.0,
+        0.0
+      ],
+      "state": [
+        -0.2246953949263209,
+        -0.16598200616253383,
+        0.13475096221276323,
+        0.25905065122462173,
+        0.311120771653023,
+        -0.06800119878866509,
+        0.021246889808193545,
+        -0.20884368308237655,
+        -0.24153527972435174,
+        -0.1427863416922133,
+        0.3794800820383649,
+        -0.13994935387556415,
+        0.1194531785630048,
+        -0.24554642332814067,
+        -0.1297637154647633,
+        -0.20786323555269087
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 6,
+    "episode": "source-61000",
+    "tick": 1,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 5,
+      "verify": true,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 7,
+    "episode": "source-61000",
+    "tick": 1,
+    "kind": "observation",
+    "source": "source_verifier",
+    "payload": {
+      "field": "source:1",
+      "value": false
+    }
+  },
+  {
+    "id": 8,
+    "episode": "source-61000",
+    "tick": 1,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-1",
+      "attributed_external": false,
+      "p_external": 0.0,
+      "verified": true,
+      "evidence_event": 7,
+      "decision_event": 6
+    }
+  },
+  {
+    "id": 9,
+    "episode": "source-61000",
+    "tick": 2,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-2",
+      "p_external": 0.14714045411344473,
+      "features": [
+        0.4786775315245435,
+        0.0546974882276372,
+        1,
+        1.0,
+        0.0
+      ],
+      "state": [
+        -0.3189290567654841,
+        -0.4603364159633446,
+        -0.14168916232943513,
+        0.41775984709176833,
+        0.47041748594608,
+        0.18583791378777353,
+        -0.16078225618090924,
+        -0.14448737426112954,
+        -0.0366792999405213,
+        0.10622067516858294,
+        0.10825137953121447,
+        0.01514328839775074,
+        0.04276257095647951,
+        -0.3759379699941482,
+        -0.12902170917454597,
+        -0.4019090969856149
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 10,
+    "episode": "source-61000",
+    "tick": 2,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 9,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 11,
+    "episode": "source-61000",
+    "tick": 2,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-2",
+      "attributed_external": false,
+      "p_external": 0.14714045411344473,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 10
+    }
+  },
+  {
+    "id": 12,
+    "episode": "source-61000",
+    "tick": 3,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-3",
+      "p_external": 0.46167175236771696,
+      "features": [
+        0.6147763393539724,
+        0.40533465240605454,
+        0,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.1480933338885656,
+        -0.23242047198793553,
+        0.08972915398289204,
+        0.07136667278045522,
+        0.14457335137008098,
+        -0.0009430560206210442,
+        0.09310306541368972,
+        -0.1541432801568117,
+        -0.018746745621087732,
+        -0.10473900363192411,
+        0.3043149756558362,
+        -0.08403190035709843,
+        0.07201595947355563,
+        -0.09789044816572966,
+        -0.21007153127250733,
+        -0.15687085087686753
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 13,
+    "episode": "source-61000",
+    "tick": 3,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 12,
+      "verify": true,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 14,
+    "episode": "source-61000",
+    "tick": 3,
+    "kind": "observation",
+    "source": "source_verifier",
+    "payload": {
+      "field": "source:3",
+      "value": true
+    }
+  },
+  {
+    "id": 15,
+    "episode": "source-61000",
+    "tick": 3,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-3",
+      "attributed_external": true,
+      "p_external": 1.0,
+      "verified": true,
+      "evidence_event": 14,
+      "decision_event": 13
+    }
+  },
+  {
+    "id": 16,
+    "episode": "source-61000",
+    "tick": 4,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-0",
+      "p_external": 0.9778642166562408,
+      "features": [
+        2.3320883715530614,
+        2.410501428751552,
+        0,
+        1.0,
+        1.0
+      ],
+      "state": [
+        0.18336223828806614,
+        0.3246718218784749,
+        0.7171071708454045,
+        -0.5573556844667744,
+        -0.2613597297027955,
+        -0.6157964379016407,
+        0.7270106603591833,
+        -0.3136363739743043,
+        -0.3627529282085514,
+        -0.58128113011592,
+        0.6597441491461227,
+        -0.34561366366221286,
+        0.22702528725923596,
+        0.5251004763201289,
+        -0.3870559420251389,
+        0.525609657052417
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 17,
+    "episode": "source-61000",
+    "tick": 4,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 16,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 18,
+    "episode": "source-61000",
+    "tick": 4,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-0",
+      "attributed_external": true,
+      "p_external": 0.9778642166562408,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 17
+    }
+  },
+  {
+    "id": 19,
+    "episode": "source-61000",
+    "tick": 5,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-1",
+      "p_external": 0.9712801561756014,
+      "features": [
+        3.483649196530481,
+        -0.6571634987734559,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.10882111007654449,
+        0.6381157477738942,
+        0.7846866400604887,
+        -0.5113439769910398,
+        0.16402234964367196,
+        -0.6118396780871127,
+        0.4975836295417482,
+        -0.37871403299159956,
+        -0.6095213720265329,
+        -0.6620961314973395,
+        0.8012946002639032,
+        -0.36916376681976193,
+        0.5201590041466577,
+        0.05813212459231913,
+        -0.4170174670487686,
+        0.4650695804660573
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 20,
+    "episode": "source-61000",
+    "tick": 5,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 19,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 21,
+    "episode": "source-61000",
+    "tick": 5,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-1",
+      "attributed_external": true,
+      "p_external": 0.9712801561756014,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 20
+    }
+  },
+  {
+    "id": 22,
+    "episode": "source-61000",
+    "tick": 6,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-2",
+      "p_external": 0.6998912510501175,
+      "features": [
+        1.0399587305983342,
+        0.7145128309821844,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.30334280088406473,
+        0.1338071385675919,
+        0.13234819040957996,
+        0.07263317063846794,
+        0.37390730507098935,
+        -0.4611043824916002,
+        0.04166154756201801,
+        -0.2529529106592329,
+        -0.723524736080077,
+        -0.3547178952135941,
+        0.5275214893397328,
+        -0.22492838295728598,
+        0.30513123700874856,
+        -0.2656834502695004,
+        -0.14846817226819414,
+        -0.03521310734001862
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 23,
+    "episode": "source-61000",
+    "tick": 6,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 22,
+      "verify": true,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 24,
+    "episode": "source-61000",
+    "tick": 6,
+    "kind": "observation",
+    "source": "source_verifier",
+    "payload": {
+      "field": "source:6",
+      "value": false
+    }
+  },
+  {
+    "id": 25,
+    "episode": "source-61000",
+    "tick": 6,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-2",
+      "attributed_external": false,
+      "p_external": 0.0,
+      "verified": true,
+      "evidence_event": 24,
+      "decision_event": 23
+    }
+  },
+  {
+    "id": 26,
+    "episode": "source-61000",
+    "tick": 7,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-3",
+      "p_external": 0.8161307574716055,
+      "features": [
+        1.2659991276364528,
+        -0.08051929722018625,
+        0,
+        1.0,
+        0.0
+      ],
+      "state": [
+        -0.304411805221877,
+        0.15271398937984776,
+        0.3944129192589752,
+        -0.009067971359558509,
+        0.285017713498266,
+        -0.4051433722527502,
+        0.3810003624081379,
+        -0.30525433064046315,
+        -0.5774276187615572,
+        -0.43678404708229474,
+        0.5346021688663251,
+        -0.06939248108051665,
+        0.40056816896824476,
+        0.017266831882774517,
+        -0.18690142637042378,
+        0.10306801153473483
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 27,
+    "episode": "source-61000",
+    "tick": 7,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 26,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 28,
+    "episode": "source-61000",
+    "tick": 7,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-3",
+      "attributed_external": true,
+      "p_external": 0.8161307574716055,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 27
+    }
+  },
+  {
+    "id": 29,
+    "episode": "source-61000",
+    "tick": 8,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-0",
+      "p_external": 0.8986796479955158,
+      "features": [
+        2.7399377295610443,
+        -0.31510782132504045,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.37476240934007965,
+        0.3884710796482334,
+        0.5791906429986375,
+        -0.18784216633371553,
+        0.20469698788100882,
+        -0.4413414468266073,
+        0.45024639410125283,
+        -0.3468943750709461,
+        -0.5657218609310617,
+        -0.5535729864569954,
+        0.7297695672217155,
+        -0.14450684997396596,
+        0.499090829350927,
+        -0.06608126952159468,
+        -0.26362839988959275,
+        0.21141714966976677
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 30,
+    "episode": "source-61000",
+    "tick": 8,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 29,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 31,
+    "episode": "source-61000",
+    "tick": 8,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-0",
+      "attributed_external": true,
+      "p_external": 0.8986796479955158,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 30
+    }
+  },
+  {
+    "id": 32,
+    "episode": "source-61000",
+    "tick": 9,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-1",
+      "p_external": 0.7080541110957221,
+      "features": [
+        0.46129048660018995,
+        0.3456182791364597,
+        0,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.3637424679392841,
+        0.141869008996044,
+        0.17426155319271155,
+        0.011090703502192531,
+        0.2196287816198573,
+        -0.40632322715830904,
+        0.26925931738991926,
+        -0.20229161868734286,
+        -0.6373504768175289,
+        -0.30512936902449544,
+        0.41859241880634235,
+        -0.021427752152932536,
+        0.3464900210030635,
+        -0.12813150880130883,
+        -0.00262262717216058,
+        0.041320941740483536
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 33,
+    "episode": "source-61000",
+    "tick": 9,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 32,
+      "verify": true,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 34,
+    "episode": "source-61000",
+    "tick": 9,
+    "kind": "observation",
+    "source": "source_verifier",
+    "payload": {
+      "field": "source:9",
+      "value": true
+    }
+  },
+  {
+    "id": 35,
+    "episode": "source-61000",
+    "tick": 9,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-1",
+      "attributed_external": true,
+      "p_external": 1.0,
+      "verified": true,
+      "evidence_event": 34,
+      "decision_event": 33
+    }
+  },
+  {
+    "id": 36,
+    "episode": "source-61000",
+    "tick": 10,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-2",
+      "p_external": 0.9819416976475465,
+      "features": [
+        2.5165987859279193,
+        0.8223963564495272,
+        0,
+        1.0,
+        1.0
+      ],
+      "state": [
+        -0.11302290905352394,
+        0.5917364433301816,
+        0.748482107332855,
+        -0.46635797248669336,
+        -0.09366197158179268,
+        -0.7170965157014934,
+        0.7737303096862589,
+        -0.4049747479396846,
+        -0.7643703210713101,
+        -0.6182180653896194,
+        0.7363681955681108,
+        -0.12673080123106126,
+        0.42124159828474766,
+        0.5172228314401667,
+        -0.2558537078526239,
+        0.5539614983295367
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 37,
+    "episode": "source-61000",
+    "tick": 10,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 36,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 38,
+    "episode": "source-61000",
+    "tick": 10,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-2",
+      "attributed_external": true,
+      "p_external": 0.9819416976475465,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 37
+    }
+  },
+  {
+    "id": 39,
+    "episode": "source-61000",
+    "tick": 11,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-3",
+      "p_external": 0.6238104612531844,
+      "features": [
+        1.1611459452028985,
+        -0.7047931172143701,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.3353209106231693,
+        -0.07864335851226914,
+        0.10552677215134065,
+        -0.0316286971188382,
+        0.29386875397137074,
+        -0.33122317794572326,
+        0.06735392141966484,
+        -0.0827917072742626,
+        -0.7155071582321089,
+        -0.35775049317186103,
+        0.4867481038496809,
+        0.08451543479776821,
+        0.36470687916920647,
+        -0.23084447674119063,
+        -0.06825634877951457,
+        0.028134802724322172
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 40,
+    "episode": "source-61000",
+    "tick": 11,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 39,
+      "verify": true,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 41,
+    "episode": "source-61000",
+    "tick": 11,
+    "kind": "observation",
+    "source": "source_verifier",
+    "payload": {
+      "field": "source:11",
+      "value": true
+    }
+  },
+  {
+    "id": 42,
+    "episode": "source-61000",
+    "tick": 11,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-3",
+      "attributed_external": true,
+      "p_external": 1.0,
+      "verified": true,
+      "evidence_event": 41,
+      "decision_event": 40
+    }
+  },
+  {
+    "id": 43,
+    "episode": "source-61000",
+    "tick": 12,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-0",
+      "p_external": 0.9701360348136953,
+      "features": [
+        2.6781532846107705,
+        1.2463402878235397,
+        1,
+        1.0,
+        1.0
+      ],
+      "state": [
+        -0.1587469860299223,
+        0.4157988131462373,
+        0.7522937602372701,
+        -0.32142659841680904,
+        0.052953803923117965,
+        -0.6951260721506812,
+        0.7538599465905037,
+        -0.33280815543726694,
+        -0.8132500110192651,
+        -0.6264379512706055,
+        0.8111695230615125,
+        -0.12370705568246432,
+        0.25408335808513804,
+        0.4022380208454176,
+        -0.2568651964862775,
+        0.4407248372183338
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 44,
+    "episode": "source-61000",
+    "tick": 12,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 43,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 45,
+    "episode": "source-61000",
+    "tick": 12,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-0",
+      "attributed_external": true,
+      "p_external": 0.9701360348136953,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 44
+    }
+  },
+  {
+    "id": 46,
+    "episode": "source-61000",
+    "tick": 13,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-1",
+      "p_external": 0.8994420313698425,
+      "features": [
+        2.0331838860791294,
+        0.19354437617515474,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.3113966382414595,
+        0.2719856719067755,
+        0.47432386786641334,
+        -0.11183001677029564,
+        0.24931292218636075,
+        -0.6013898534051114,
+        0.387065661389275,
+        -0.30706593305958346,
+        -0.8491325367875303,
+        -0.6104331940842442,
+        0.8210864275212506,
+        -0.15942202879046616,
+        0.3733968696530542,
+        -0.07680535833917523,
+        -0.20484091472785615,
+        0.21037659120629384
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 47,
+    "episode": "source-61000",
+    "tick": 13,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 46,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 48,
+    "episode": "source-61000",
+    "tick": 13,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-1",
+      "attributed_external": true,
+      "p_external": 0.8994420313698425,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 47
+    }
+  },
+  {
+    "id": 49,
+    "episode": "source-61000",
+    "tick": 14,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-2",
+      "p_external": 0.9350979647718459,
+      "features": [
+        1.7994191767060035,
+        -0.29593576782669295,
+        0,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.31433285310295356,
+        0.40350085150392184,
+        0.5299518816323043,
+        -0.23866079445487332,
+        0.12333238417640723,
+        -0.6055459622365995,
+        0.4928150422581201,
+        -0.2956845684471664,
+        -0.7995739259814072,
+        -0.657914345681172,
+        0.8283338923329059,
+        -0.10092429578855916,
+        0.46942937677622243,
+        0.059352241858838035,
+        -0.19184231911270552,
+        0.32186420538329397
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 50,
+    "episode": "source-61000",
+    "tick": 14,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 49,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 51,
+    "episode": "source-61000",
+    "tick": 14,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-2",
+      "attributed_external": true,
+      "p_external": 0.9350979647718459,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 50
+    }
+  },
+  {
+    "id": 52,
+    "episode": "source-61000",
+    "tick": 15,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-3",
+      "p_external": 0.9050525546008494,
+      "features": [
+        1.1032778367181617,
+        0.6528606205535168,
+        0,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.3102638281315684,
+        0.3337133934441651,
+        0.3571710418922367,
+        -0.13018972593443381,
+        0.08577200116759218,
+        -0.6390046535849911,
+        0.45820165403567503,
+        -0.28610117610554786,
+        -0.8375410961437777,
+        -0.5870371165513226,
+        0.7119746123364064,
+        -0.0997074718276848,
+        0.4174537545593485,
+        0.02718395182648906,
+        -0.04556117993242152,
+        0.26736173190176016
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 53,
+    "episode": "source-61000",
+    "tick": 15,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 52,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 54,
+    "episode": "source-61000",
+    "tick": 15,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-3",
+      "attributed_external": true,
+      "p_external": 0.9050525546008494,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 53
+    }
+  },
+  {
+    "id": 55,
+    "episode": "source-61000",
+    "tick": 16,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-0",
+      "p_external": 0.9383413709607477,
+      "features": [
+        1.4238779336356195,
+        0.9466529667304867,
+        0,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.285086598053974,
+        0.39956300294073327,
+        0.4038635262171454,
+        -0.1938323001171118,
+        -0.03974378350439741,
+        -0.7157644843852873,
+        0.5417559431989364,
+        -0.3399222810581108,
+        -0.869493279186891,
+        -0.6342396160265753,
+        0.721577589622417,
+        -0.19082848830277363,
+        0.4292059209212399,
+        0.0816594001030142,
+        -0.03976969103162006,
+        0.3395182557095851
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 56,
+    "episode": "source-61000",
+    "tick": 16,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 55,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 57,
+    "episode": "source-61000",
+    "tick": 16,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-0",
+      "attributed_external": true,
+      "p_external": 0.9383413709607477,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 56
+    }
+  },
+  {
+    "id": 58,
+    "episode": "source-61000",
+    "tick": 17,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-1",
+      "p_external": 0.2732937526521556,
+      "features": [
+        0.4545619888237349,
+        -1.5474964407967415,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.4526969566315236,
+        -0.3497476733350985,
+        -0.1730170951186126,
+        0.08838858855425435,
+        0.2914422219632341,
+        -0.18417613845401834,
+        -0.0736511136887868,
+        0.16029853573870026,
+        -0.37239163861921587,
+        -0.2394395600391796,
+        0.18295590788834626,
+        0.16012183551897868,
+        0.3263057912065347,
+        -0.4374089470790275,
+        0.08097666128272246,
+        -0.12125120533026298
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 59,
+    "episode": "source-61000",
+    "tick": 17,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 58,
+      "verify": true,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 60,
+    "episode": "source-61000",
+    "tick": 17,
+    "kind": "observation",
+    "source": "source_verifier",
+    "payload": {
+      "field": "source:17",
+      "value": false
+    }
+  },
+  {
+    "id": 61,
+    "episode": "source-61000",
+    "tick": 17,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-1",
+      "attributed_external": false,
+      "p_external": 0.0,
+      "verified": true,
+      "evidence_event": 60,
+      "decision_event": 59
+    }
+  },
+  {
+    "id": 62,
+    "episode": "source-61000",
+    "tick": 18,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-2",
+      "p_external": 0.6874588739111829,
+      "features": [
+        1.2300547581925452,
+        0.06457624325010469,
+        0,
+        1.0,
+        0.0
+      ],
+      "state": [
+        -0.25792767687688783,
+        -0.009839984640924199,
+        0.367487875406111,
+        -0.029485046604345845,
+        0.12595992488959534,
+        -0.19228176566561866,
+        0.3423206512606118,
+        -0.07128467954356173,
+        -0.1903375247554333,
+        -0.4396541154869108,
+        0.4339014140347681,
+        0.15044360729631734,
+        0.3487293719010903,
+        0.024954372539902486,
+        -0.14231483735406147,
+        0.08717334624151266
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 63,
+    "episode": "source-61000",
+    "tick": 18,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 62,
+      "verify": true,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 64,
+    "episode": "source-61000",
+    "tick": 18,
+    "kind": "observation",
+    "source": "source_verifier",
+    "payload": {
+      "field": "source:18",
+      "value": true
+    }
+  },
+  {
+    "id": 65,
+    "episode": "source-61000",
+    "tick": 18,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-2",
+      "attributed_external": true,
+      "p_external": 1.0,
+      "verified": true,
+      "evidence_event": 64,
+      "decision_event": 63
+    }
+  },
+  {
+    "id": 66,
+    "episode": "source-61000",
+    "tick": 19,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-3",
+      "p_external": 0.37182709217431126,
+      "features": [
+        0.3328732523066854,
+        -1.4661295107149064,
+        0,
+        1.0,
+        1.0
+      ],
+      "state": [
+        -0.22053456729976137,
+        -0.3677451322580042,
+        0.26475582949509524,
+        0.10063158921920644,
+        0.33058181352974886,
+        0.04290260177266039,
+        0.23511424661346783,
+        0.05760778372149693,
+        0.029127025190091027,
+        -0.0843191953494912,
+        0.4152335793430539,
+        0.38876663962382296,
+        0.09933495531303406,
+        0.04320131327060652,
+        -0.024900787274202918,
+        -0.10897158293502357
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 67,
+    "episode": "source-61000",
+    "tick": 19,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 66,
+      "verify": true,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 68,
+    "episode": "source-61000",
+    "tick": 19,
+    "kind": "observation",
+    "source": "source_verifier",
+    "payload": {
+      "field": "source:19",
+      "value": true
+    }
+  },
+  {
+    "id": 69,
+    "episode": "source-61000",
+    "tick": 19,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-3",
+      "attributed_external": true,
+      "p_external": 1.0,
+      "verified": true,
+      "evidence_event": 68,
+      "decision_event": 67
+    }
+  },
+  {
+    "id": 70,
+    "episode": "source-61000",
+    "tick": 20,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-0",
+      "p_external": 0.5939194852284739,
+      "features": [
+        0.09777120318537935,
+        1.0460216437312548,
+        0,
+        1.0,
+        1.0
+      ],
+      "state": [
+        0.07871895962135124,
+        -0.31217315302487825,
+        0.3215342389406545,
+        0.12444180340718516,
+        0.2131674521074607,
+        -0.24335378761920326,
+        0.4595855786591472,
+        -0.10744186990943597,
+        -0.2247330112684002,
+        -0.024541646814884244,
+        0.5061224732024908,
+        0.32476012160981477,
+        -0.2328638712513682,
+        0.2767080307370123,
+        -0.007986204788945758,
+        -0.008377412228174251
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 71,
+    "episode": "source-61000",
+    "tick": 20,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 70,
+      "verify": true,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 72,
+    "episode": "source-61000",
+    "tick": 20,
+    "kind": "observation",
+    "source": "source_verifier",
+    "payload": {
+      "field": "source:20",
+      "value": true
+    }
+  },
+  {
+    "id": 73,
+    "episode": "source-61000",
+    "tick": 20,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-0",
+      "attributed_external": true,
+      "p_external": 1.0,
+      "verified": true,
+      "evidence_event": 72,
+      "decision_event": 71
+    }
+  },
+  {
+    "id": 74,
+    "episode": "source-61000",
+    "tick": 21,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-1",
+      "p_external": 0.8627651031755438,
+      "features": [
+        0.7362723752555986,
+        0.29482612005838776,
+        0,
+        1.0,
+        1.0
+      ],
+      "state": [
+        0.16732694695473466,
+        -0.03936196444573771,
+        0.5416571227020684,
+        -0.0781936969845958,
+        0.1794760237417632,
+        -0.4355196579603342,
+        0.630783832272834,
+        -0.25074937548448567,
+        -0.42144599081018463,
+        -0.17210644561393254,
+        0.7058491155827662,
+        0.24540652014993392,
+        -0.07072912976771949,
+        0.4318205955781886,
+        -0.1703264724405173,
+        0.22813277671028567
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 75,
+    "episode": "source-61000",
+    "tick": 21,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 74,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 76,
+    "episode": "source-61000",
+    "tick": 21,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-1",
+      "attributed_external": true,
+      "p_external": 0.8627651031755438,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 75
+    }
+  },
+  {
+    "id": 77,
+    "episode": "source-61000",
+    "tick": 22,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-2",
+      "p_external": 0.8464907164921208,
+      "features": [
+        0.43138741971099176,
+        1.568511458988345,
+        0,
+        0.0,
+        0.0
+      ],
+      "state": [
+        0.12155856809847863,
+        0.006441737855987832,
+        0.22051862407582312,
+        -0.0059961427255534015,
+        0.06746672739730729,
+        -0.5738936896668895,
+        0.4793641506500521,
+        -0.2681988829205262,
+        -0.5756390404562024,
+        -0.15408608469473964,
+        0.5636429399311509,
+        -0.026174044127294294,
+        0.029152059733972044,
+        0.30304142995738603,
+        -0.03437124106795286,
+        0.22302518122581627
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 78,
+    "episode": "source-61000",
+    "tick": 22,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 77,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 79,
+    "episode": "source-61000",
+    "tick": 22,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-2",
+      "attributed_external": true,
+      "p_external": 0.8464907164921208,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 78
+    }
+  },
+  {
+    "id": 80,
+    "episode": "source-61000",
+    "tick": 23,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-3",
+      "p_external": 0.7601551222230377,
+      "features": [
+        1.056609090803837,
+        1.0485408844467448,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.07290600755162989,
+        -0.028038679632438345,
+        0.04619730219657554,
+        0.10695881664247203,
+        0.1482118477182121,
+        -0.5684249604491749,
+        0.270004743740708,
+        -0.27880161183997354,
+        -0.6846010356894461,
+        -0.15291767999074354,
+        0.5999052933927507,
+        -0.20782353143113333,
+        0.10149409735859148,
+        -0.02024048135749837,
+        -0.05705139341892036,
+        0.08338091149921367
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 81,
+    "episode": "source-61000",
+    "tick": 23,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 80,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 82,
+    "episode": "source-61000",
+    "tick": 23,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-3",
+      "attributed_external": true,
+      "p_external": 0.7601551222230377,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 81
+    }
+  },
+  {
+    "id": 83,
+    "episode": "source-61000",
+    "tick": 24,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-0",
+      "p_external": 0.7699387154180671,
+      "features": [
+        1.088611445280667,
+        -1.1577322128726313,
+        0,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.17265228361721688,
+        0.10272961233237356,
+        0.18730570347262512,
+        -0.04682737810449758,
+        0.13761206394844733,
+        -0.4157280257311692,
+        0.31535891407396627,
+        -0.09935597112345448,
+        -0.38707857153185465,
+        -0.22975842869677313,
+        0.6270304704023792,
+        -0.04971449240606335,
+        0.2513896977852189,
+        0.01243216887705055,
+        -0.15247912771846966,
+        0.17371876844260453
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 84,
+    "episode": "source-61000",
+    "tick": 24,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 83,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 85,
+    "episode": "source-61000",
+    "tick": 24,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-0",
+      "attributed_external": true,
+      "p_external": 0.7699387154180671,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 84
+    }
+  },
+  {
+    "id": 86,
+    "episode": "source-61000",
+    "tick": 25,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-1",
+      "p_external": 0.5211230438334294,
+      "features": [
+        0.4250373750788539,
+        -0.8653289534863947,
+        0,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.22542378629677798,
+        -0.0857034148293266,
+        0.008015336541277188,
+        -0.0017350913125958323,
+        0.1900143280113593,
+        -0.22262774002778246,
+        0.14154079805376404,
+        0.09345644873817163,
+        -0.23561431617028578,
+        -0.11725502470802435,
+        0.408197107597036,
+        0.12523970477474738,
+        0.25002046179479287,
+        -0.09179979897253157,
+        -0.030684700154133007,
+        0.05582088425301553
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 87,
+    "episode": "source-61000",
+    "tick": 25,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 86,
+      "verify": true,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 88,
+    "episode": "source-61000",
+    "tick": 25,
+    "kind": "observation",
+    "source": "source_verifier",
+    "payload": {
+      "field": "source:25",
+      "value": true
+    }
+  },
+  {
+    "id": 89,
+    "episode": "source-61000",
+    "tick": 25,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-1",
+      "attributed_external": true,
+      "p_external": 1.0,
+      "verified": true,
+      "evidence_event": 88,
+      "decision_event": 87
+    }
+  },
+  {
+    "id": 90,
+    "episode": "source-61000",
+    "tick": 26,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-2",
+      "p_external": 0.9612176741960816,
+      "features": [
+        1.8448927086173925,
+        1.2961425928447827,
+        0,
+        1.0,
+        1.0
+      ],
+      "state": [
+        0.06223266278597828,
+        0.3615604753613046,
+        0.6712529634375995,
+        -0.3888080825255994,
+        -0.10477396446190322,
+        -0.6169618704322384,
+        0.6996097978517611,
+        -0.16972569165478002,
+        -0.5006717190158094,
+        -0.5322127049313523,
+        0.7289998154445078,
+        -0.045012510184197704,
+        0.19759747376997527,
+        0.47401055451959584,
+        -0.2309902123382654,
+        0.47423939300342094
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 91,
+    "episode": "source-61000",
+    "tick": 26,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 90,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 92,
+    "episode": "source-61000",
+    "tick": 26,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-2",
+      "attributed_external": true,
+      "p_external": 0.9612176741960816,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 91
+    }
+  },
+  {
+    "id": 93,
+    "episode": "source-61000",
+    "tick": 27,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-3",
+      "p_external": 0.9819272424678253,
+      "features": [
+        2.478692158743504,
+        0.9207611219306424,
+        0,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.017409385456215357,
+        0.5848143216194145,
+        0.7296437221015859,
+        -0.4807198107904843,
+        -0.1529309937383343,
+        -0.7561749196255001,
+        0.704765511433526,
+        -0.2981918180087556,
+        -0.6864349488512724,
+        -0.6677796860175349,
+        0.8005579633004716,
+        -0.27799556964432515,
+        0.45835841328830795,
+        0.41019869710380963,
+        -0.2358556411397037,
+        0.5878829325838393
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 94,
+    "episode": "source-61000",
+    "tick": 27,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 93,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 95,
+    "episode": "source-61000",
+    "tick": 27,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-3",
+      "attributed_external": true,
+      "p_external": 0.9819272424678253,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 94
+    }
+  },
+  {
+    "id": 96,
+    "episode": "source-61000",
+    "tick": 28,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-0",
+      "p_external": 0.8036255986410747,
+      "features": [
+        1.917485299225987,
+        -0.8998937974375095,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.27183335617258936,
+        0.13389151365152113,
+        0.3537679474342357,
+        -0.17674888083323048,
+        0.26529207337268684,
+        -0.4226581754268425,
+        0.15693019320370713,
+        -0.12000032051395759,
+        -0.6634359211082075,
+        -0.5775235469785838,
+        0.7678461603921005,
+        -0.04477537918938988,
+        0.4838668224231434,
+        -0.23537466735497867,
+        -0.14107421651448632,
+        0.14830206579307745
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 97,
+    "episode": "source-61000",
+    "tick": 28,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 96,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 98,
+    "episode": "source-61000",
+    "tick": 28,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-0",
+      "attributed_external": true,
+      "p_external": 0.8036255986410747,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 97
+    }
+  },
+  {
+    "id": 99,
+    "episode": "source-61000",
+    "tick": 29,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-1",
+      "p_external": 0.8372655044071898,
+      "features": [
+        1.0135970714490097,
+        0.4723496757872765,
+        0,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.2349353604859164,
+        0.16604983340311905,
+        0.3132601844147943,
+        -0.1387527847496493,
+        0.11501607903940486,
+        -0.4825174397685074,
+        0.2933040692993891,
+        -0.16623676525579595,
+        -0.6965674853987452,
+        -0.551587506667947,
+        0.7023878184211471,
+        -0.04272664117121068,
+        0.3988761875585374,
+        -0.07468692417831595,
+        -0.04159584726492374,
+        0.18212208751523365
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 100,
+    "episode": "source-61000",
+    "tick": 29,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 99,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 101,
+    "episode": "source-61000",
+    "tick": 29,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-1",
+      "attributed_external": true,
+      "p_external": 0.8372655044071898,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 100
+    }
+  },
+  {
+    "id": 102,
+    "episode": "source-61000",
+    "tick": 30,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-2",
+      "p_external": 0.474070695232811,
+      "features": [
+        0.940774796429314,
+        -0.32192141396245255,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.35478256588111146,
+        -0.16744750207633574,
+        0.0027430972154072752,
+        0.10343460105856704,
+        0.28624835289658723,
+        -0.21158266836595752,
+        0.02481488907841116,
+        -0.051123099142034396,
+        -0.5397965208346321,
+        -0.33843981116823085,
+        0.5607495058483298,
+        0.08177307612309655,
+        0.28447496324171334,
+        -0.3342908850984168,
+        0.002692383797232571,
+        -0.08331554956848337
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 103,
+    "episode": "source-61000",
+    "tick": 30,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 102,
+      "verify": true,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 104,
+    "episode": "source-61000",
+    "tick": 30,
+    "kind": "observation",
+    "source": "source_verifier",
+    "payload": {
+      "field": "source:30",
+      "value": true
+    }
+  },
+  {
+    "id": 105,
+    "episode": "source-61000",
+    "tick": 30,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-2",
+      "attributed_external": true,
+      "p_external": 1.0,
+      "verified": true,
+      "evidence_event": 104,
+      "decision_event": 103
+    }
+  },
+  {
+    "id": 106,
+    "episode": "source-61000",
+    "tick": 31,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-3",
+      "p_external": 0.8985749376287878,
+      "features": [
+        0.8202011573977985,
+        1.5342563961709839,
+        0,
+        1.0,
+        1.0
+      ],
+      "state": [
+        -0.019918205617109996,
+        0.04362648031617701,
+        0.5352053649565642,
+        -0.10771588706922955,
+        0.04015350075107975,
+        -0.5552616691249291,
+        0.6103040716101065,
+        -0.2475678698218795,
+        -0.6659805507817731,
+        -0.4687899883123252,
+        0.732224503601135,
+        0.007369429029314187,
+        -0.028742831189582693,
+        0.26576864293254654,
+        -0.10950911557009468,
+        0.24208594761533475
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 107,
+    "episode": "source-61000",
+    "tick": 31,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 106,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 108,
+    "episode": "source-61000",
+    "tick": 31,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-3",
+      "attributed_external": true,
+      "p_external": 0.8985749376287878,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 107
+    }
+  },
+  {
+    "id": 109,
+    "episode": "source-61000",
+    "tick": 32,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-0",
+      "p_external": 0.2099107363460157,
+      "features": [
+        -0.13308249394490757,
+        -1.1337070746354652,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.23417307181719632,
+        -0.44839051409828073,
+        -0.17691056531203192,
+        0.1845351284329238,
+        0.3217929153881966,
+        -0.08765305781927746,
+        -0.08036146468830879,
+        0.1989484836461599,
+        -0.3323426281060113,
+        -0.019221582619539823,
+        0.030737682582419934,
+        0.22512980959607903,
+        -0.03101572195928424,
+        -0.30060718586511626,
+        0.05351842171709556,
+        -0.15731634695396407
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 110,
+    "episode": "source-61000",
+    "tick": 32,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 109,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 111,
+    "episode": "source-61000",
+    "tick": 32,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-0",
+      "attributed_external": false,
+      "p_external": 0.2099107363460157,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 110
+    }
+  },
+  {
+    "id": 112,
+    "episode": "source-61000",
+    "tick": 33,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-1",
+      "p_external": 0.6486535796179556,
+      "features": [
+        1.8567024848149971,
+        0.0704109914964769,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.1799635281616136,
+        0.013424026319585586,
+        0.28483289743405305,
+        -0.07671622145146641,
+        0.06587053327523038,
+        -0.1300316631028286,
+        0.21531401575447842,
+        -0.04644849289013668,
+        -0.1495711890281574,
+        -0.2682366609137967,
+        0.4635798925417124,
+        -0.01712828928972121,
+        0.1536918593521836,
+        -0.07237561550084393,
+        -0.13443991442889758,
+        0.05859266056218504
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 113,
+    "episode": "source-61000",
+    "tick": 33,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 112,
+      "verify": true,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 114,
+    "episode": "source-61000",
+    "tick": 33,
+    "kind": "observation",
+    "source": "source_verifier",
+    "payload": {
+      "field": "source:33",
+      "value": true
+    }
+  },
+  {
+    "id": 115,
+    "episode": "source-61000",
+    "tick": 33,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-1",
+      "attributed_external": true,
+      "p_external": 1.0,
+      "verified": true,
+      "evidence_event": 114,
+      "decision_event": 113
+    }
+  },
+  {
+    "id": 116,
+    "episode": "source-61000",
+    "tick": 34,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-2",
+      "p_external": 0.5839018743498464,
+      "features": [
+        1.0196193136456566,
+        0.3737892421171224,
+        1,
+        1.0,
+        1.0
+      ],
+      "state": [
+        -0.1761605444043502,
+        -0.2401481002324944,
+        0.3724656869615276,
+        0.16750961381461316,
+        0.319325090444048,
+        -0.1939227595196518,
+        0.3229721577171424,
+        -0.19600640652585136,
+        -0.35848495772735667,
+        -0.15316018120365912,
+        0.6983407956539316,
+        0.0905688944099746,
+        -0.11343611104897099,
+        -0.014361476901690925,
+        -0.14872465930425943,
+        -0.1425501820627668
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 117,
+    "episode": "source-61000",
+    "tick": 34,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 116,
+      "verify": true,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 118,
+    "episode": "source-61000",
+    "tick": 34,
+    "kind": "observation",
+    "source": "source_verifier",
+    "payload": {
+      "field": "source:34",
+      "value": true
+    }
+  },
+  {
+    "id": 119,
+    "episode": "source-61000",
+    "tick": 34,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-2",
+      "attributed_external": true,
+      "p_external": 1.0,
+      "verified": true,
+      "evidence_event": 118,
+      "decision_event": 117
+    }
+  },
+  {
+    "id": 120,
+    "episode": "source-61000",
+    "tick": 35,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-3",
+      "p_external": 0.921096551765614,
+      "features": [
+        1.1249918398638166,
+        0.3997215214432648,
+        0,
+        1.0,
+        1.0
+      ],
+      "state": [
+        0.041591917244685556,
+        0.09526085789153946,
+        0.6531044957335184,
+        -0.17846925560808188,
+        0.17486218502877515,
+        -0.46795175132467687,
+        0.6711992647011469,
+        -0.32997885684592165,
+        -0.5310799424787016,
+        -0.3525927139179576,
+        0.819604862058595,
+        0.0634224096104012,
+        0.03752906750853352,
+        0.4126757389792452,
+        -0.2749114918448255,
+        0.2556557453260312
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 121,
+    "episode": "source-61000",
+    "tick": 35,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 120,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 122,
+    "episode": "source-61000",
+    "tick": 35,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-3",
+      "attributed_external": true,
+      "p_external": 0.921096551765614,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 121
+    }
+  },
+  {
+    "id": 123,
+    "episode": "source-61000",
+    "tick": 36,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-0",
+      "p_external": 0.9635522184418582,
+      "features": [
+        2.49370676030739,
+        1.8683846000166109,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.055889122146586694,
+        0.3456221602362157,
+        0.6458641328923849,
+        -0.2628772923720322,
+        0.010548168296709688,
+        -0.7151720995024902,
+        0.636428644207296,
+        -0.4202010944762501,
+        -0.711053682920102,
+        -0.5355566690181606,
+        0.8749138223080329,
+        -0.30031445768707365,
+        0.3229869456535224,
+        0.22493584363997993,
+        -0.2907545975052016,
+        0.3851248847276058
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 124,
+    "episode": "source-61000",
+    "tick": 36,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 123,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 125,
+    "episode": "source-61000",
+    "tick": 36,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-0",
+      "attributed_external": true,
+      "p_external": 0.9635522184418582,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 124
+    }
+  },
+  {
+    "id": 126,
+    "episode": "source-61000",
+    "tick": 37,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-1",
+      "p_external": 0.9724828849286017,
+      "features": [
+        3.1868376581492575,
+        -0.012739709977318991,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.2449581294074098,
+        0.5835036250623938,
+        0.7238057234925008,
+        -0.37458074314425044,
+        0.14628552263344813,
+        -0.7332366214143575,
+        0.6102541243548893,
+        -0.4648356195580575,
+        -0.8020653054987061,
+        -0.634330837123728,
+        0.9188613215232442,
+        -0.38666730226693014,
+        0.5449260206596918,
+        0.04323150260877921,
+        -0.33632634131939576,
+        0.4326660447189362
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 127,
+    "episode": "source-61000",
+    "tick": 37,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 126,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 128,
+    "episode": "source-61000",
+    "tick": 37,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-1",
+      "attributed_external": true,
+      "p_external": 0.9724828849286017,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 127
+    }
+  },
+  {
+    "id": 129,
+    "episode": "source-61000",
+    "tick": 38,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-2",
+      "p_external": 0.9288975883383634,
+      "features": [
+        0.8689958429278479,
+        1.617559673381666,
+        0,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.2787397660584672,
+        0.4483486417834789,
+        0.3422048800683612,
+        -0.08147789048013765,
+        0.10960277768145898,
+        -0.7756016070314269,
+        0.5041285699542368,
+        -0.43446397970684325,
+        -0.8565478212646025,
+        -0.47768678212908133,
+        0.6846247309957114,
+        -0.3778494659737972,
+        0.3880422646635588,
+        0.01962746460380882,
+        -0.06213605204634462,
+        0.26367792375152366
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 130,
+    "episode": "source-61000",
+    "tick": 38,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 129,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 131,
+    "episode": "source-61000",
+    "tick": 38,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-2",
+      "attributed_external": true,
+      "p_external": 0.9288975883383634,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 130
+    }
+  },
+  {
+    "id": 132,
+    "episode": "source-61000",
+    "tick": 39,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-3",
+      "p_external": 0.36903226992518173,
+      "features": [
+        -1.2046479367193328,
+        -0.5928991151345931,
+        0,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.39397549944826993,
+        -0.03203987207092812,
+        -0.22138522535020547,
+        0.19812760182259956,
+        0.26408558876392524,
+        -0.4113899534406239,
+        0.07092175519320448,
+        0.07127030425273834,
+        -0.6785008035816238,
+        0.12757268536439198,
+        -0.1344326112850407,
+        -0.02592075235605068,
+        0.20834010815772352,
+        -0.2296771947239365,
+        0.29327625083057035,
+        -0.045119691638572795
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 133,
+    "episode": "source-61000",
+    "tick": 39,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 132,
+      "verify": true,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 134,
+    "episode": "source-61000",
+    "tick": 39,
+    "kind": "observation",
+    "source": "source_verifier",
+    "payload": {
+      "field": "source:39",
+      "value": false
+    }
+  },
+  {
+    "id": 135,
+    "episode": "source-61000",
+    "tick": 39,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-3",
+      "attributed_external": false,
+      "p_external": 0.0,
+      "verified": true,
+      "evidence_event": 134,
+      "decision_event": 133
+    }
+  },
+  {
+    "id": 136,
+    "episode": "source-61000",
+    "tick": 40,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-0",
+      "p_external": 0.5826286311951876,
+      "features": [
+        0.7801960967552487,
+        -0.12359782591512947,
+        0,
+        1.0,
+        0.0
+      ],
+      "state": [
+        -0.3134270206938605,
+        -0.015912140496161277,
+        0.2284256567387255,
+        0.09391513132275807,
+        0.1481636163280496,
+        -0.24929662737281624,
+        0.3191503513576905,
+        -0.08223543429431956,
+        -0.35319319214515593,
+        -0.15431038879732706,
+        0.10070668700485585,
+        0.07532307653474812,
+        0.2731302089516368,
+        -0.021407081466953415,
+        -0.012485544623346612,
+        0.03548859005046116
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 137,
+    "episode": "source-61000",
+    "tick": 40,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 136,
+      "verify": true,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 138,
+    "episode": "source-61000",
+    "tick": 40,
+    "kind": "observation",
+    "source": "source_verifier",
+    "payload": {
+      "field": "source:40",
+      "value": true
+    }
+  },
+  {
+    "id": 139,
+    "episode": "source-61000",
+    "tick": 40,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-0",
+      "attributed_external": true,
+      "p_external": 1.0,
+      "verified": true,
+      "evidence_event": 138,
+      "decision_event": 137
+    }
+  },
+  {
+    "id": 140,
+    "episode": "source-61000",
+    "tick": 41,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-1",
+      "p_external": 0.7755264027232337,
+      "features": [
+        1.526644239949845,
+        0.5324056892422079,
+        1,
+        1.0,
+        1.0
+      ],
+      "state": [
+        -0.2374016854464079,
+        -0.05482558866721912,
+        0.5877229775498053,
+        0.07433229847700305,
+        0.27207313665492394,
+        -0.37692751304693445,
+        0.5410864541969648,
+        -0.28769945060229607,
+        -0.5082213487536114,
+        -0.3283720570292169,
+        0.6655023697048947,
+        0.07559531734079104,
+        -0.008779436652792183,
+        0.09736362559031862,
+        -0.17388152237299134,
+        -0.01374157212337328
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 141,
+    "episode": "source-61000",
+    "tick": 41,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 140,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 142,
+    "episode": "source-61000",
+    "tick": 41,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-1",
+      "attributed_external": true,
+      "p_external": 0.7755264027232337,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 141
+    }
+  },
+  {
+    "id": 143,
+    "episode": "source-61000",
+    "tick": 42,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-2",
+      "p_external": 0.5104889190878534,
+      "features": [
+        -0.32323137797662593,
+        0.6596587345296057,
+        0,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.18639775647712992,
+        -0.1780391942923362,
+        0.053550055027830834,
+        0.19327123111381608,
+        0.2390317530455603,
+        -0.32387608848355054,
+        0.26931332013822584,
+        -0.13801693111278557,
+        -0.5785434456179855,
+        0.04364454996531883,
+        0.20232671450045192,
+        0.057219591361328724,
+        -0.03803066542670804,
+        -0.013218960124220469,
+        0.03724960828261131,
+        -0.09713473644241596
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 144,
+    "episode": "source-61000",
+    "tick": 42,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 143,
+      "verify": true,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 145,
+    "episode": "source-61000",
+    "tick": 42,
+    "kind": "observation",
+    "source": "source_verifier",
+    "payload": {
+      "field": "source:42",
+      "value": true
+    }
+  },
+  {
+    "id": 146,
+    "episode": "source-61000",
+    "tick": 42,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-2",
+      "attributed_external": true,
+      "p_external": 1.0,
+      "verified": true,
+      "evidence_event": 145,
+      "decision_event": 144
+    }
+  },
+  {
+    "id": 147,
+    "episode": "source-61000",
+    "tick": 43,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-3",
+      "p_external": 0.9738260264318702,
+      "features": [
+        2.645445904999653,
+        -0.6754305860593436,
+        0,
+        1.0,
+        1.0
+      ],
+      "state": [
+        -0.030011004320838766,
+        0.6130851529039576,
+        0.7336389943628358,
+        -0.36829136225593656,
+        -0.013548150682111057,
+        -0.5788648057966173,
+        0.7671011200633148,
+        -0.4011629543775722,
+        -0.5331497327417498,
+        -0.3713774644942695,
+        0.6757341947792527,
+        0.01420837364651099,
+        0.39382786460083025,
+        0.5999676146409677,
+        -0.32485206071930206,
+        0.5435640285172189
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 148,
+    "episode": "source-61000",
+    "tick": 43,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 147,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 149,
+    "episode": "source-61000",
+    "tick": 43,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-3",
+      "attributed_external": true,
+      "p_external": 0.9738260264318702,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 148
+    }
+  },
+  {
+    "id": 150,
+    "episode": "source-61000",
+    "tick": 44,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-0",
+      "p_external": 0.9712162970098217,
+      "features": [
+        2.5736320237981376,
+        -0.5434697110586629,
+        0,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.17324768104928964,
+        0.6684189148936008,
+        0.7393595201674861,
+        -0.41709601903567983,
+        0.061893101356900015,
+        -0.6395487539054089,
+        0.6499289513605311,
+        -0.36655940180162505,
+        -0.6777178740262915,
+        -0.5204902945249614,
+        0.7678425367033119,
+        -0.04188495673997675,
+        0.5488316812985876,
+        0.290889302212783,
+        -0.2734311871209556,
+        0.5405096038526876
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 151,
+    "episode": "source-61000",
+    "tick": 44,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 150,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 152,
+    "episode": "source-61000",
+    "tick": 44,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-0",
+      "attributed_external": true,
+      "p_external": 0.9712162970098217,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 151
+    }
+  },
+  {
+    "id": 153,
+    "episode": "source-61000",
+    "tick": 45,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-1",
+      "p_external": 0.8135914610173618,
+      "features": [
+        0.6361025756307161,
+        0.10344097367198984,
+        0,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.2803224382793609,
+        0.2877309183451123,
+        0.23423896265248406,
+        -0.08478859380290127,
+        0.20011514097793032,
+        -0.5389539275972545,
+        0.32524402854856366,
+        -0.18869385602776256,
+        -0.7400060841733248,
+        -0.30765125274364674,
+        0.44033003290660794,
+        0.07853909755311105,
+        0.4258000619944625,
+        0.011426363846361393,
+        0.03584783651552584,
+        0.22875401086923958
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 154,
+    "episode": "source-61000",
+    "tick": 45,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 153,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 155,
+    "episode": "source-61000",
+    "tick": 45,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-1",
+      "attributed_external": true,
+      "p_external": 0.8135914610173618,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 154
+    }
+  },
+  {
+    "id": 156,
+    "episode": "source-61000",
+    "tick": 46,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-2",
+      "p_external": 0.7669188611584352,
+      "features": [
+        0.9698934323360385,
+        -0.37348181220314514,
+        0,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.30267774802922076,
+        0.18973372075748116,
+        0.22626156450676202,
+        -0.07746290159439279,
+        0.1354328752781672,
+        -0.44932443037599173,
+        0.324324597258176,
+        -0.12877475991747916,
+        -0.6254724414611863,
+        -0.3586261986248488,
+        0.46505296078468294,
+        0.14207275320162308,
+        0.4007126398139494,
+        -0.03399326459382992,
+        0.03912105218303877,
+        0.18664497473125385
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 157,
+    "episode": "source-61000",
+    "tick": 46,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 156,
+      "verify": false,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 158,
+    "episode": "source-61000",
+    "tick": 46,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-2",
+      "attributed_external": true,
+      "p_external": 0.7669188611584352,
+      "verified": false,
+      "evidence_event": null,
+      "decision_event": 157
+    }
+  },
+  {
+    "id": 159,
+    "episode": "source-61000",
+    "tick": 47,
+    "kind": "prediction",
+    "source": "learned_source_monitor",
+    "payload": {
+      "content": "item-3",
+      "p_external": 0.48143930274373886,
+      "features": [
+        0.7368856390962057,
+        0.6852034473048212,
+        1,
+        0.0,
+        0.0
+      ],
+      "state": [
+        -0.3575892240718277,
+        -0.0815367904838171,
+        -0.054012782268063456,
+        0.20782606417628516,
+        0.21475544378763395,
+        -0.32438050551700737,
+        0.09214444159300338,
+        -0.12339077880765226,
+        -0.641949064948044,
+        -0.20986704333223044,
+        0.398884963538183,
+        0.07965100947637123,
+        0.18312159749938928,
+        -0.2735230689561532,
+        0.0717810425853975,
+        -0.08306280229093405
+      ],
+      "verified": false
+    }
+  },
+  {
+    "id": 160,
+    "episode": "source-61000",
+    "tick": 47,
+    "kind": "decision",
+    "source": "source_controller",
+    "payload": {
+      "prediction_event": 159,
+      "verify": true,
+      "cost": 0.25,
+      "rule": "verify if min(q,1-q) exceeds verification cost"
+    }
+  },
+  {
+    "id": 161,
+    "episode": "source-61000",
+    "tick": 47,
+    "kind": "observation",
+    "source": "source_verifier",
+    "payload": {
+      "field": "source:47",
+      "value": true
+    }
+  },
+  {
+    "id": 162,
+    "episode": "source-61000",
+    "tick": 47,
+    "kind": "report",
+    "source": "source_memory",
+    "payload": {
+      "content": "item-3",
+      "attributed_external": true,
+      "p_external": 1.0,
+      "verified": true,
+      "evidence_event": 161,
+      "decision_event": 160
+    }
+  }
+]

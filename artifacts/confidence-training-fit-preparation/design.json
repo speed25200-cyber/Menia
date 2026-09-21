@@ -1,0 +1,98 @@
+{
+  "plan": {
+    "schema": "menia-final-training-fit-plan-v1",
+    "model": {
+      "id": "Qwen/Qwen3-4B",
+      "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+    },
+    "trainingHash": "0694f42765731e3ab2031da214855468112c0bdfefe6ddd8019c769efcc403a8",
+    "units": [
+      {
+        "key": "r0-ce",
+        "replication": 0,
+        "arm": "ce",
+        "checkpoint": "confidence-ranking-20260920-v1.r0-ce.safetensors",
+        "bytes": 11811296,
+        "sha256": "9a0fef8e88cf93b464be5f53f9b482b9368df092133537c81e17234e32adb1c9"
+      },
+      {
+        "key": "r0-rank",
+        "replication": 0,
+        "arm": "rank",
+        "checkpoint": "confidence-ranking-20260920-v1.r0-rank.safetensors",
+        "bytes": 11811296,
+        "sha256": "d7919cd9b9ddb0ce2df4fff21e246020576fd4b8c68c5d0f81e61a2228483ed1"
+      },
+      {
+        "key": "r0-neutral",
+        "replication": 0,
+        "arm": "neutral",
+        "checkpoint": "confidence-ranking-20260920-v1.r0-neutral.safetensors",
+        "bytes": 11811296,
+        "sha256": "f11a03af036dc9087c530c64ddcf21f7451c75ad01177d6120319756bdbcfdb0"
+      },
+      {
+        "key": "r1-ce",
+        "replication": 1,
+        "arm": "ce",
+        "checkpoint": "confidence-ranking-20260920-v1.r1-ce.safetensors",
+        "bytes": 11811296,
+        "sha256": "5dd0df59e9751e99204881b20ce064a7407a17624cc5abdb2969c0abcb01b225"
+      },
+      {
+        "key": "r1-rank",
+        "replication": 1,
+        "arm": "rank",
+        "checkpoint": "confidence-ranking-20260920-v1.r1-rank.safetensors",
+        "bytes": 11811296,
+        "sha256": "ff15d693e24f67067dbab7a9f5fb81c475ad07a9892968abc6616a6b83f32525"
+      },
+      {
+        "key": "r1-neutral",
+        "replication": 1,
+        "arm": "neutral",
+        "checkpoint": "confidence-ranking-20260920-v1.r1-neutral.safetensors",
+        "bytes": 11811296,
+        "sha256": "3dcb58c3f05cb147ddcb47d7ae24dd18f15d614737d7bb1b91c52dfc3d1bc156"
+      },
+      {
+        "key": "r2-ce",
+        "replication": 2,
+        "arm": "ce",
+        "checkpoint": "confidence-ranking-20260920-v1.r2-ce.safetensors",
+        "bytes": 11811296,
+        "sha256": "475cd49e82cf16e63e44ba03525b9f65208fd7020c43bf31051062a0fb9a3661"
+      },
+      {
+        "key": "r2-rank",
+        "replication": 2,
+        "arm": "rank",
+        "checkpoint": "confidence-ranking-20260920-v1.r2-rank.safetensors",
+        "bytes": 11811296,
+        "sha256": "73a767db9436372ec8d8c76d5e9ccb7aa96a1cfabca5119220657621fe0fce51"
+      },
+      {
+        "key": "r2-neutral",
+        "replication": 2,
+        "arm": "neutral",
+        "checkpoint": "confidence-ranking-20260920-v1.r2-neutral.safetensors",
+        "bytes": 11811296,
+        "sha256": "0d43e922f483bcdc0c98947474b291c87e5c033e66cd6667aef01e22ae95acb3"
+      }
+    ],
+    "examplesPerUnit": 576,
+    "plannedCalls": 5184,
+    "maxInputTokens": 1792,
+    "rank": 8,
+    "scale": 1.0,
+    "newWeightUpdates": 0,
+    "newGenerations": 0,
+    "heldOutInputs": 0,
+    "selection": "All original measured training examples of each adapter; no outcome-based subsampling",
+    "statistics": "Descriptive Brier, within-category AUROC, binary-label agreement and vocabulary code mass; no significance threshold",
+    "scope": "Final training-set fit, decided after Colab24 test interpretation. Not new generalization, a causal capacity comparison, privileged self-access or consciousness evidence."
+  },
+  "planHash": "9b398d36651463af3da67aedd914c5c748438461a98ce335036b7a14cf1ff59a",
+  "sourceHash": "224b60af101bd275198093dbc3d98e71f442fbc1b4d85b55a0710b4c66a98f7b",
+  "callPlanHash": "dc63e337bcad1dad9b49da587acc4a7a71f5356d46ac7fcc9669306e9f9135ac"
+}

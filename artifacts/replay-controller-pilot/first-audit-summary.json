@@ -1,0 +1,442 @@
+{
+  "schema": "menia-replay-report-v1",
+  "origin": "transformers_gpu",
+  "planHash": "e2b3ca44a5adde9e95b66bb0517187924521752bd2f95fb30a459c0baebe4409",
+  "complete": true,
+  "recordedResults": 720,
+  "plannedResults": 720,
+  "pendingRequest": false,
+  "failures": [],
+  "updates": [
+    "round1",
+    "round2",
+    "round3"
+  ],
+  "frozenPolicies": {
+    "learned": {
+      "kind": "threshold",
+      "source": "betaCell",
+      "threshold": 0.8,
+      "below": "verify"
+    },
+    "public": {
+      "kind": "threshold",
+      "source": "betaCell",
+      "threshold": 0.8,
+      "below": "verify"
+    },
+    "shuffled": {
+      "kind": "threshold",
+      "source": "shuffledLabels",
+      "threshold": 0.7,
+      "below": "verify"
+    }
+  },
+  "byPhase": {
+    "calibration": {
+      "n": 240,
+      "numericCorrect": 74,
+      "strictCorrect": 74,
+      "unparseable": 1,
+      "routes": null
+    },
+    "round1": {
+      "n": 96,
+      "numericCorrect": 33,
+      "strictCorrect": 33,
+      "unparseable": 1,
+      "routes": {
+        "learned": {
+          "n": 96,
+          "meanPointLoss": 0.17708333333333334,
+          "finalCorrect": 95,
+          "actionCounts": {
+            "direct": 16,
+            "verify": 80,
+            "abstain": 0
+          }
+        },
+        "public": {
+          "n": 96,
+          "meanPointLoss": 0.17708333333333334,
+          "finalCorrect": 95,
+          "actionCounts": {
+            "direct": 16,
+            "verify": 80,
+            "abstain": 0
+          }
+        },
+        "shuffled": {
+          "n": 96,
+          "meanPointLoss": 0.17708333333333334,
+          "finalCorrect": 95,
+          "actionCounts": {
+            "direct": 16,
+            "verify": 80,
+            "abstain": 0
+          }
+        },
+        "fixedBeta": {
+          "n": 96,
+          "meanPointLoss": 0.17708333333333334,
+          "finalCorrect": 95,
+          "actionCounts": {
+            "direct": 16,
+            "verify": 80,
+            "abstain": 0
+          }
+        },
+        "fixedInternal": {
+          "n": 96,
+          "meanPointLoss": 0.18125,
+          "finalCorrect": 95,
+          "actionCounts": {
+            "direct": 14,
+            "verify": 82,
+            "abstain": 0
+          }
+        },
+        "alwaysDirect": {
+          "n": 96,
+          "meanPointLoss": 0.65625,
+          "finalCorrect": 33,
+          "actionCounts": {
+            "direct": 96,
+            "verify": 0,
+            "abstain": 0
+          }
+        },
+        "alwaysVerify": {
+          "n": 96,
+          "meanPointLoss": 0.19999999999999998,
+          "finalCorrect": 96,
+          "actionCounts": {
+            "direct": 0,
+            "verify": 96,
+            "abstain": 0
+          }
+        },
+        "alwaysAbstain": {
+          "n": 96,
+          "meanPointLoss": 0.35000000000000003,
+          "finalCorrect": 0,
+          "actionCounts": {
+            "direct": 0,
+            "verify": 0,
+            "abstain": 96
+          }
+        }
+      }
+    },
+    "round2": {
+      "n": 96,
+      "numericCorrect": 32,
+      "strictCorrect": 32,
+      "unparseable": 0,
+      "routes": {
+        "learned": {
+          "n": 96,
+          "meanPointLoss": 0.19166666666666665,
+          "finalCorrect": 93,
+          "actionCounts": {
+            "direct": 19,
+            "verify": 77,
+            "abstain": 0
+          }
+        },
+        "public": {
+          "n": 96,
+          "meanPointLoss": 0.19166666666666665,
+          "finalCorrect": 93,
+          "actionCounts": {
+            "direct": 19,
+            "verify": 77,
+            "abstain": 0
+          }
+        },
+        "shuffled": {
+          "n": 96,
+          "meanPointLoss": 0.19166666666666665,
+          "finalCorrect": 93,
+          "actionCounts": {
+            "direct": 19,
+            "verify": 77,
+            "abstain": 0
+          }
+        },
+        "fixedBeta": {
+          "n": 96,
+          "meanPointLoss": 0.1875,
+          "finalCorrect": 94,
+          "actionCounts": {
+            "direct": 16,
+            "verify": 80,
+            "abstain": 0
+          }
+        },
+        "fixedInternal": {
+          "n": 96,
+          "meanPointLoss": 0.19375,
+          "finalCorrect": 94,
+          "actionCounts": {
+            "direct": 13,
+            "verify": 83,
+            "abstain": 0
+          }
+        },
+        "alwaysDirect": {
+          "n": 96,
+          "meanPointLoss": 0.6666666666666666,
+          "finalCorrect": 32,
+          "actionCounts": {
+            "direct": 96,
+            "verify": 0,
+            "abstain": 0
+          }
+        },
+        "alwaysVerify": {
+          "n": 96,
+          "meanPointLoss": 0.19999999999999998,
+          "finalCorrect": 96,
+          "actionCounts": {
+            "direct": 0,
+            "verify": 96,
+            "abstain": 0
+          }
+        },
+        "alwaysAbstain": {
+          "n": 96,
+          "meanPointLoss": 0.35000000000000003,
+          "finalCorrect": 0,
+          "actionCounts": {
+            "direct": 0,
+            "verify": 0,
+            "abstain": 96
+          }
+        }
+      }
+    },
+    "round3": {
+      "n": 96,
+      "numericCorrect": 29,
+      "strictCorrect": 29,
+      "unparseable": 0,
+      "routes": {
+        "learned": {
+          "n": 96,
+          "meanPointLoss": 0.16666666666666666,
+          "finalCorrect": 96,
+          "actionCounts": {
+            "direct": 16,
+            "verify": 80,
+            "abstain": 0
+          }
+        },
+        "public": {
+          "n": 96,
+          "meanPointLoss": 0.16666666666666666,
+          "finalCorrect": 96,
+          "actionCounts": {
+            "direct": 16,
+            "verify": 80,
+            "abstain": 0
+          }
+        },
+        "shuffled": {
+          "n": 96,
+          "meanPointLoss": 0.1645833333333333,
+          "finalCorrect": 96,
+          "actionCounts": {
+            "direct": 17,
+            "verify": 79,
+            "abstain": 0
+          }
+        },
+        "fixedBeta": {
+          "n": 96,
+          "meanPointLoss": 0.16666666666666666,
+          "finalCorrect": 96,
+          "actionCounts": {
+            "direct": 16,
+            "verify": 80,
+            "abstain": 0
+          }
+        },
+        "fixedInternal": {
+          "n": 96,
+          "meanPointLoss": 0.16874999999999996,
+          "finalCorrect": 96,
+          "actionCounts": {
+            "direct": 15,
+            "verify": 81,
+            "abstain": 0
+          }
+        },
+        "alwaysDirect": {
+          "n": 96,
+          "meanPointLoss": 0.6979166666666666,
+          "finalCorrect": 29,
+          "actionCounts": {
+            "direct": 96,
+            "verify": 0,
+            "abstain": 0
+          }
+        },
+        "alwaysVerify": {
+          "n": 96,
+          "meanPointLoss": 0.19999999999999998,
+          "finalCorrect": 96,
+          "actionCounts": {
+            "direct": 0,
+            "verify": 96,
+            "abstain": 0
+          }
+        },
+        "alwaysAbstain": {
+          "n": 96,
+          "meanPointLoss": 0.35000000000000003,
+          "finalCorrect": 0,
+          "actionCounts": {
+            "direct": 0,
+            "verify": 0,
+            "abstain": 96
+          }
+        }
+      }
+    },
+    "test": {
+      "n": 192,
+      "numericCorrect": 47,
+      "strictCorrect": 47,
+      "unparseable": 0,
+      "routes": {
+        "learned": {
+          "n": 192,
+          "meanPointLoss": 0.17708333333333334,
+          "finalCorrect": 190,
+          "actionCounts": {
+            "direct": 32,
+            "verify": 160,
+            "abstain": 0
+          }
+        },
+        "public": {
+          "n": 192,
+          "meanPointLoss": 0.17708333333333334,
+          "finalCorrect": 190,
+          "actionCounts": {
+            "direct": 32,
+            "verify": 160,
+            "abstain": 0
+          }
+        },
+        "shuffled": {
+          "n": 192,
+          "meanPointLoss": 0.19166666666666665,
+          "finalCorrect": 186,
+          "actionCounts": {
+            "direct": 38,
+            "verify": 154,
+            "abstain": 0
+          }
+        },
+        "fixedBeta": {
+          "n": 192,
+          "meanPointLoss": 0.17708333333333334,
+          "finalCorrect": 190,
+          "actionCounts": {
+            "direct": 32,
+            "verify": 160,
+            "abstain": 0
+          }
+        },
+        "fixedInternal": {
+          "n": 192,
+          "meanPointLoss": 0.1791666666666667,
+          "finalCorrect": 190,
+          "actionCounts": {
+            "direct": 30,
+            "verify": 162,
+            "abstain": 0
+          }
+        },
+        "alwaysDirect": {
+          "n": 192,
+          "meanPointLoss": 0.7552083333333334,
+          "finalCorrect": 47,
+          "actionCounts": {
+            "direct": 192,
+            "verify": 0,
+            "abstain": 0
+          }
+        },
+        "alwaysVerify": {
+          "n": 192,
+          "meanPointLoss": 0.19999999999999998,
+          "finalCorrect": 192,
+          "actionCounts": {
+            "direct": 0,
+            "verify": 192,
+            "abstain": 0
+          }
+        },
+        "alwaysAbstain": {
+          "n": 192,
+          "meanPointLoss": 0.35000000000000003,
+          "finalCorrect": 0,
+          "actionCounts": {
+            "direct": 0,
+            "verify": 0,
+            "abstain": 192
+          }
+        }
+      }
+    }
+  },
+  "contrasts": {
+    "public": {
+      "learnedMinusOther": 0.0,
+      "descriptiveBlockBootstrap95": [
+        0.0,
+        0.0
+      ]
+    },
+    "shuffled": {
+      "learnedMinusOther": -0.014583333333333334,
+      "descriptiveBlockBootstrap95": [
+        -0.03229166666666666,
+        -8.673617379884035e-19
+      ]
+    },
+    "fixedBeta": {
+      "learnedMinusOther": 0.0,
+      "descriptiveBlockBootstrap95": [
+        0.0,
+        0.0
+      ]
+    },
+    "fixedInternal": {
+      "learnedMinusOther": -0.002083333333333333,
+      "descriptiveBlockBootstrap95": [
+        -0.005208333333333332,
+        0.0
+      ]
+    },
+    "alwaysVerify": {
+      "learnedMinusOther": -0.02291666666666666,
+      "descriptiveBlockBootstrap95": [
+        -0.033333333333333326,
+        -0.007291666666666661
+      ]
+    }
+  },
+  "actualCosts": {
+    "completedGenerationCalls": 720,
+    "failedOrInterruptedAttempts": 0,
+    "successfulGenerationSeconds": 173.26417547299638,
+    "selectedVerificationCalls": 397,
+    "additionalAuditVerificationCalls": 323,
+    "totalVerificationSeconds": 0.018055732000448188
+  },
+  "interpretation": "Primary learned routes executed; alternative routes replayed on identical candidates. Fixed point costs, not currency or latency. Fixed monitors; three policy updates. No consciousness inference."
+}

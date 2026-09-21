@@ -1,0 +1,46 @@
+{
+  "plan": {
+    "schema": "menia-retained-reader-control-plan-v1",
+    "model": {
+      "id": "Qwen/Qwen3-4B",
+      "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+    },
+    "parentJournalSHA256": "088312d6683ce76c3a5e6c5cc6a515503dcdf1d9770debcd4763fdd701d6b0a1",
+    "cases": [
+      0,
+      8
+    ],
+    "selection": "first selected row and first unselected row of each fixed parent mask",
+    "adapter": {
+      "rank": 32,
+      "scale": 1.0,
+      "seed": 2026092070
+    },
+    "optimizer": {
+      "type": "AdamW",
+      "lr": 5e-05,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "weight_decay": 0,
+      "steps": 1,
+      "clipNorm": 1.0
+    },
+    "order": "Reproduce two parent states, eight producer tasks and eight forecasts; compare zero reader; one update on the eight measured forecast labels; evaluate the same eight; reload saved weights; verify unchanged producer tasks.",
+    "counts": {
+      "states": 2,
+      "producerTasksBefore": 8,
+      "forecastsBefore": 8,
+      "trainingExamples": 8,
+      "updates": 1,
+      "forecastsAfter": 8,
+      "producerTasksAfter": 8
+    },
+    "controls": "Stop on state/parent reproduction or native-token disagreement of the zero reader. Measure score drift separately without asserting bitwise reader logits. Preserve any failed attempt.",
+    "scope": "Technical backward/serialization/producer-preservation control on previously seen cases. One update is not a training-budget comparison, held-out result, calibrated self-model or consciousness result."
+  },
+  "planHash": "0fa586da5bfbb01b2b5503f09fa7a2516c16b385dab3c373d9adb7f3b368a0ae",
+  "sourceHash": "561e63f813df7fb49e7cdc5fcfdc69c6bc2baca0730da60e9989158c39e4254b"
+}

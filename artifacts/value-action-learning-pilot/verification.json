@@ -1,0 +1,26 @@
+{
+  "schema": "menia-value-action-learning-verification-v1",
+  "verified": true,
+  "recorded": 9216,
+  "trainingSteps": 576,
+  "groups": 384,
+  "contrasts": 12,
+  "journalSHA256": "580a02917c21d96c6550515ed14845c4dea6447adf2b9978dbdb898a226554b1",
+  "maxAbsoluteDifference": 0.0,
+  "weightsChecked": true,
+  "weights": {
+    "value-action-learning-20260920-v2.r0-initial.safetensors": "cb6413506d7745bc5da869bc6349983182238130d442070d3cdb6911d63fcf25",
+    "value-action-learning-20260920-v2.r0-choice.safetensors": "8908c6aea25949d49404d8d191381914e3bd604f72689edf0c63d6f0de3addf0",
+    "value-action-learning-20260920-v2.r0-linked.safetensors": "3ca3f564fc29ff0d3a85180f6afb1d1fb69aebbbc6adbb80c23f1bae794f6a8a",
+    "value-action-learning-20260920-v2.r0-shuffled.safetensors": "f2057a3d0ebfefd8a15c763f99e3313f97ec93d13ce2cff378ca94d437c0946a",
+    "value-action-learning-20260920-v2.r1-initial.safetensors": "327dbf74726f33cb30d6177a3b8a310184241f3d39858c21666cf9b858e00177",
+    "value-action-learning-20260920-v2.r1-choice.safetensors": "518677850e5272adbf33570a2573a294cc1fbcf37a2fe5ed4261c4bc3c54d0f0",
+    "value-action-learning-20260920-v2.r1-linked.safetensors": "926cb15f57138f25153bc96afbcecdb66de72b162998f4ff8b351bc1d020c4af",
+    "value-action-learning-20260920-v2.r1-shuffled.safetensors": "065a7f52e64880ad4e54db7bcc363fb7091210c90e86b5b6797606416ef21b6c",
+    "value-action-learning-20260920-v2.r2-initial.safetensors": "cc235d60d049f8f89cce0ebe4e42045be193629050c78a405cb8f1e604fb5452",
+    "value-action-learning-20260920-v2.r2-choice.safetensors": "c21948fd1bfc86cf6a1fe6fc80b96caf0e6ff4e50e53ca579e84ab812c5d139e",
+    "value-action-learning-20260920-v2.r2-linked.safetensors": "154175fbf433c49b144ce252b16603a5ddf2eeda4a18d6b2123df283fe4c740c",
+    "value-action-learning-20260920-v2.r2-shuffled.safetensors": "a779919167cb9ba22b4dcc97bd12f7f75ed070d6c4a07e4e3a7a9566948a4b41"
+  },
+  "scope": "Separate arithmetic and weights; shared plan and integrity reader, not an external replication."
+}

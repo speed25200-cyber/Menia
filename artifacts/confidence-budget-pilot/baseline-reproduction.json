@@ -1,0 +1,31 @@
+{
+  "schema": "menia-confidence-budget-baseline-progress-v1",
+  "capturedUTC": "2026-09-20T04:18:33.888071+00:00",
+  "pid": 271765,
+  "revision": "a9b1a27054056ec3f6c8300319036f5950ee4f32",
+  "identities": {
+    "planHash": "208ce8f4ef7a2dd3600704f0f194fa31dc6d2a70424fb8416ee547920ca12b84",
+    "sourceHash": "dac15b5a552289f4b65239be08eabd108f10d8b4f093ed9aea64d274a012ae30",
+    "callPlanHash": "91bb87d1b9e0ff663eb61539b13b1aa6805cc6357743a41ba610672853cdcd56"
+  },
+  "events": {
+    "header": 1,
+    "unit_start": 3,
+    "request": 2880,
+    "judgment": 2880,
+    "unit_complete": 3,
+    "baseline_complete": 1,
+    "training_start": 1,
+    "training_step": 208,
+    "checkpoint": 1
+  },
+  "baseline": {
+    "event": "baseline_complete",
+    "maxAbsoluteDifference": 0.0
+  },
+  "latestTrainingStep": {
+    "replication": 0,
+    "step": 208
+  },
+  "scope": "Remote collector progress: all 2880 baseline scores passed before optimization. Full journal and new checkpoints not yet received or independently audited; no continuation outcome reviewed."
+}

@@ -1,0 +1,183 @@
+{
+  "schema": "menia-confidence-prefix-synthetic-control-v1",
+  "origin": "random_miniature_qwen_cpu",
+  "sourceHash": "19c914b5d6af23a044820a5902d79f7e730ec0a570194f92df0d15ebe539074c",
+  "seed": 20260920,
+  "torch": "2.8.0+cpu",
+  "transformers": "4.56.2",
+  "device": "cpu",
+  "dtype": "float32",
+  "config": {
+    "hiddenSize": 32,
+    "layers": 2,
+    "vocabularySize": 64,
+    "attention": "sdpa"
+  },
+  "originalWeightHashes": {
+    "model.embed_tokens.weight": "f560467e5edefa7cd06a3769c99974f220c483c126b3524116d6fa0f8a06a5c0",
+    "model.layers.0.self_attn.q_proj.weight": "7ded4072e2092e123f9b6e72ee16f1dd4afff44e2747e91cd2be11ca77c0ab66",
+    "model.layers.0.self_attn.k_proj.weight": "7dca6b0d4e8e8692fe204e39026e2f6cb456610e6e72b7ef4c8bad25bafd6a78",
+    "model.layers.0.self_attn.v_proj.weight": "b9be7af0fb510eda3c282bdb30eaf321cc6d0509796cc932395efaa626b7d7e3",
+    "model.layers.0.self_attn.o_proj.weight": "c070b1f07733f22f94e75e0004bb06c55d3e85890bdff60a7ad4b0e0695edad1",
+    "model.layers.0.self_attn.q_norm.weight": "9a3874829667c666e8822192608e177680d792a4e1628ea21377f8e30b206983",
+    "model.layers.0.self_attn.k_norm.weight": "9a3874829667c666e8822192608e177680d792a4e1628ea21377f8e30b206983",
+    "model.layers.0.mlp.gate_proj.weight": "77a2b991e2adbf9a468f6a8bfbc26ee9dec3938a1874a60ada4df8c376501bfe",
+    "model.layers.0.mlp.up_proj.weight": "d2cd085914aff2e3b9d566c8c3dfa28eeb76923df4a839efa640f7fceae89cf3",
+    "model.layers.0.mlp.down_proj.weight": "fb8f24f5ea8a4533dc19c310a6e8e9f100bdf05647f621e3cdf6d0ff827cedbc",
+    "model.layers.0.input_layernorm.weight": "cfb7307d2cce627ebe48679bcc5f6d32e0a99315b98d8f6043d0765ba8de0b36",
+    "model.layers.0.post_attention_layernorm.weight": "cfb7307d2cce627ebe48679bcc5f6d32e0a99315b98d8f6043d0765ba8de0b36",
+    "model.layers.1.self_attn.q_proj.weight": "311bec35b40c3d0d45c71b24432fa775e88a7e8e39c10295dffdc695da38faed",
+    "model.layers.1.self_attn.k_proj.weight": "2b0cb4f7268e3e857b8f3f4d8a408e531b81205294621061ae90f1841cbcabc8",
+    "model.layers.1.self_attn.v_proj.weight": "631ffcd51d1b55c4ac82fd1938502aed0073c9bb21f20e874d996c9f09871c1a",
+    "model.layers.1.self_attn.o_proj.weight": "27f0558342c73c6c036cce1e30f66847bd0d9c92f9446eb6bb5fd46744fffbac",
+    "model.layers.1.self_attn.q_norm.weight": "9a3874829667c666e8822192608e177680d792a4e1628ea21377f8e30b206983",
+    "model.layers.1.self_attn.k_norm.weight": "9a3874829667c666e8822192608e177680d792a4e1628ea21377f8e30b206983",
+    "model.layers.1.mlp.gate_proj.weight": "5e7655996e9aa0d83071596f954a78bdae5d8d54b741c5a9f0569fe75181d7ad",
+    "model.layers.1.mlp.up_proj.weight": "8560511c5045378147045b3c9f7b86472864341cdeeea578be48820b5c57af90",
+    "model.layers.1.mlp.down_proj.weight": "70978c011b5f78a1b53e186ad5b84838556196b10aec45ebf205d8dc3f136f05",
+    "model.layers.1.input_layernorm.weight": "cfb7307d2cce627ebe48679bcc5f6d32e0a99315b98d8f6043d0765ba8de0b36",
+    "model.layers.1.post_attention_layernorm.weight": "cfb7307d2cce627ebe48679bcc5f6d32e0a99315b98d8f6043d0765ba8de0b36",
+    "model.norm.weight": "cfb7307d2cce627ebe48679bcc5f6d32e0a99315b98d8f6043d0765ba8de0b36",
+    "lm_head.weight": "d19462833d14e1865235283773bd15aa25251954e207a9dc542d792bae5642c2"
+  },
+  "weightsUnchanged": true,
+  "rngUnchanged": true,
+  "prefix": {
+    "ids": [
+      1,
+      2,
+      3
+    ],
+    "layer": 0,
+    "position": 2,
+    "rank": 2,
+    "futureBranchStateMaxDifference": 0.0,
+    "shamLogitMaxDifference": 0.0,
+    "donorDisplacementNorm": 0.03397542095758705,
+    "untouchedTokensEqual": true,
+    "patchedLogitMaxDifference": 0.010151863098144531
+  },
+  "headControl": [
+    {
+      "inputTokenIds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "codeTokenIds": [
+        3,
+        4
+      ],
+      "expectedLogOddsShift": -1.0,
+      "realizedHeadProjection": -0.9999999863159212,
+      "displacementNorm": 5.195232823765471,
+      "site": "final norm output / last token",
+      "scope": "Output-direction control only; no error labels or learned self-state",
+      "actualLogOddsShift": -0.9999999981373549,
+      "conditionalBefore": 0.43494303511957605,
+      "conditionalAfter": 0.22067941147354897
+    },
+    {
+      "inputTokenIds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "codeTokenIds": [
+        3,
+        4
+      ],
+      "expectedLogOddsShift": 0.0,
+      "realizedHeadProjection": 0.0,
+      "displacementNorm": 0.0,
+      "site": "final norm output / last token",
+      "scope": "Output-direction control only; no error labels or learned self-state",
+      "actualLogOddsShift": 0.0,
+      "conditionalBefore": 0.43494303511957605,
+      "conditionalAfter": 0.43494303511957605
+    },
+    {
+      "inputTokenIds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "codeTokenIds": [
+        3,
+        4
+      ],
+      "expectedLogOddsShift": 1.0,
+      "realizedHeadProjection": 1.0000000057636693,
+      "displacementNorm": 5.195232924801052,
+      "site": "final norm output / last token",
+      "scope": "Output-direction control only; no error labels or learned self-state",
+      "actualLogOddsShift": 1.0000000316649675,
+      "conditionalBefore": 0.43494303511957605,
+      "conditionalAfter": 0.6766214962787117
+    },
+    {
+      "inputTokenIds": [
+        1,
+        5,
+        6,
+        7
+      ],
+      "codeTokenIds": [
+        3,
+        4
+      ],
+      "expectedLogOddsShift": -1.0,
+      "realizedHeadProjection": -0.9999999937031876,
+      "displacementNorm": 5.195232862144039,
+      "site": "final norm output / last token",
+      "scope": "Output-direction control only; no error labels or learned self-state",
+      "actualLogOddsShift": -1.0,
+      "conditionalBefore": 0.49414378363467776,
+      "conditionalAfter": 0.2643606070172477
+    },
+    {
+      "inputTokenIds": [
+        1,
+        5,
+        6,
+        7
+      ],
+      "codeTokenIds": [
+        3,
+        4
+      ],
+      "expectedLogOddsShift": 0.0,
+      "realizedHeadProjection": 0.0,
+      "displacementNorm": 0.0,
+      "site": "final norm output / last token",
+      "scope": "Output-direction control only; no error labels or learned self-state",
+      "actualLogOddsShift": 0.0,
+      "conditionalBefore": 0.49414378363467776,
+      "conditionalAfter": 0.49414378363467776
+    },
+    {
+      "inputTokenIds": [
+        1,
+        5,
+        6,
+        7
+      ],
+      "codeTokenIds": [
+        3,
+        4
+      ],
+      "expectedLogOddsShift": 1.0,
+      "realizedHeadProjection": 1.000000000432946,
+      "displacementNorm": 5.195232897106702,
+      "site": "final norm output / last token",
+      "scope": "Output-direction control only; no error labels or learned self-state",
+      "actualLogOddsShift": 1.0,
+      "conditionalBefore": 0.49414378363467776,
+      "conditionalAfter": 0.7264279069606916
+    }
+  ],
+  "scope": "Arbitrary token IDs and random weights. No trained Menia, error labels, learned confidence basis, action performance, private self-access or consciousness evidence."
+}

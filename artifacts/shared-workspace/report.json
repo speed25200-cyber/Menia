@@ -1,0 +1,967 @@
+{
+  "status": "executed CPU experiment",
+  "python": "3.12.10",
+  "torch": "2.4.1+cpu",
+  "wall_seconds": 133.98324169998523,
+  "steps": 2000,
+  "train_batch": 128,
+  "train_rounds": 4,
+  "test_split": "all pair IDs divisible by 5; 116 table pairs, all 4 queries",
+  "training_pairs": 460,
+  "test_pairs": 116,
+  "source_sha256": {
+    "research/workspace.py": "384b81d8d771ce9b1a2e6c8fe57aaf9d8954515dfa5085db61acc22573681720",
+    "research/train_workspace.py": "990749526e60b38aa260b7fc7daff9f820f0736b621903a551bac0efbf64e53c"
+  },
+  "limitations": [
+    "symbolic composition only; not consciousness evidence",
+    "small finite permutation world; not broad generalization",
+    "four queries within a table pair are dependent; pair counts reported",
+    "all models receive the same auxiliary intermediate supervision",
+    "baseline parameter counts differ and are reported",
+    "inference ablations measure dependence, not architectural necessity",
+    "latent dimension is a bottleneck, not a bound on bits of information",
+    "not integrated with symbolic session, language model or iPhone"
+  ],
+  "runs": [
+    {
+      "seed": 17,
+      "variant": "workspace",
+      "parameters": 13000,
+      "checkpoint": "workspace-17.pt",
+      "sha256": "2ee20b792c28a7122f5654440a9255217b0c0e0cd7de14efa9128cf09dc3bb8c",
+      "history": [
+        {
+          "step": 1,
+          "loss": 1.7675474882125854
+        },
+        {
+          "step": 250,
+          "loss": 1.4337350130081177
+        },
+        {
+          "step": 500,
+          "loss": 0.8607285618782043
+        },
+        {
+          "step": 750,
+          "loss": 0.4225838780403137
+        },
+        {
+          "step": 1000,
+          "loss": 0.37060803174972534
+        },
+        {
+          "step": 1250,
+          "loss": 0.20351053774356842
+        },
+        {
+          "step": 1500,
+          "loss": 0.13298480212688446
+        },
+        {
+          "step": 1750,
+          "loss": 0.060220181941986084
+        },
+        {
+          "step": 2000,
+          "loss": 0.03570641949772835
+        }
+      ],
+      "evaluation": {
+        "none": {
+          "episodes": 464,
+          "correct": 463,
+          "accuracy": 0.9978448152542114,
+          "all_four_queries_correct_pairs": 115,
+          "intermediate_accuracy": 0.9978448152542114,
+          "cross_entropy": 0.04723001644015312
+        },
+        "no_broadcast": {
+          "episodes": 464,
+          "correct": 117,
+          "accuracy": 0.2521551847457886,
+          "all_four_queries_correct_pairs": 0,
+          "intermediate_accuracy": 0.24568966031074524,
+          "cross_entropy": 4.153346538543701
+        },
+        "uniform_attention": {
+          "episodes": 464,
+          "correct": 210,
+          "accuracy": 0.45258620381355286,
+          "all_four_queries_correct_pairs": 1,
+          "intermediate_accuracy": 0.9719827771186829,
+          "cross_entropy": 1.761884331703186
+        },
+        "reset_specialists": {
+          "episodes": 464,
+          "correct": 109,
+          "accuracy": 0.23491379618644714,
+          "all_four_queries_correct_pairs": 0,
+          "intermediate_accuracy": 0.2586206793785095,
+          "cross_entropy": 2.257908821105957
+        },
+        "reset_workspace": {
+          "episodes": 464,
+          "correct": 275,
+          "accuracy": 0.5926724076271057,
+          "all_four_queries_correct_pairs": 11,
+          "intermediate_accuracy": 0.9741379022598267,
+          "cross_entropy": 0.9946038722991943
+        },
+        "no_table_a": {
+          "episodes": 464,
+          "correct": 115,
+          "accuracy": 0.24784483015537262,
+          "all_four_queries_correct_pairs": 0,
+          "intermediate_accuracy": 0.25,
+          "cross_entropy": 4.767939567565918
+        },
+        "no_table_b": {
+          "episodes": 464,
+          "correct": 113,
+          "accuracy": 0.24353447556495667,
+          "all_four_queries_correct_pairs": 0,
+          "intermediate_accuracy": 1.0,
+          "cross_entropy": 4.3239827156066895
+        },
+        "explicit_lookup_rule": {
+          "accuracy": 1.0
+        },
+        "constant_zero": {
+          "accuracy": 0.25
+        }
+      },
+      "rounds_transfer": {
+        "1": {
+          "episodes": 464,
+          "correct": 140,
+          "accuracy": 0.3017241358757019,
+          "all_four_queries_correct_pairs": 0,
+          "intermediate_accuracy": 0.30818966031074524,
+          "cross_entropy": 3.858058214187622
+        },
+        "2": {
+          "episodes": 464,
+          "correct": 172,
+          "accuracy": 0.37068966031074524,
+          "all_four_queries_correct_pairs": 0,
+          "intermediate_accuracy": 0.631465494632721,
+          "cross_entropy": 3.009614944458008
+        },
+        "6": {
+          "episodes": 464,
+          "correct": 330,
+          "accuracy": 0.7112069129943848,
+          "all_four_queries_correct_pairs": 25,
+          "intermediate_accuracy": 0.892241358757019,
+          "cross_entropy": 1.1332893371582031
+        },
+        "8": {
+          "episodes": 464,
+          "correct": 286,
+          "accuracy": 0.6163793206214905,
+          "all_four_queries_correct_pairs": 9,
+          "intermediate_accuracy": 0.7370689511299133,
+          "cross_entropy": 1.7319388389587402
+        }
+      }
+    },
+    {
+      "seed": 17,
+      "variant": "without_broadcast",
+      "parameters": 13000,
+      "checkpoint": "without_broadcast-17.pt",
+      "sha256": "409a00a74021ddd47e5b93cedf17f15a9e57fc8b896100a968e941a6ef005445",
+      "history": [
+        {
+          "step": 1,
+          "loss": 1.7670619487762451
+        },
+        {
+          "step": 250,
+          "loss": 1.7138445377349854
+        },
+        {
+          "step": 500,
+          "loss": 1.6213582754135132
+        },
+        {
+          "step": 750,
+          "loss": 1.5340882539749146
+        },
+        {
+          "step": 1000,
+          "loss": 1.3860862255096436
+        },
+        {
+          "step": 1250,
+          "loss": 1.3355162143707275
+        },
+        {
+          "step": 1500,
+          "loss": 1.3545211553573608
+        },
+        {
+          "step": 1750,
+          "loss": 1.3369415998458862
+        },
+        {
+          "step": 2000,
+          "loss": 1.3302960395812988
+        }
+      ],
+      "evaluation": {
+        "none": {
+          "episodes": 464,
+          "correct": 181,
+          "accuracy": 0.39008620381355286,
+          "all_four_queries_correct_pairs": 0,
+          "intermediate_accuracy": 0.5732758641242981,
+          "cross_entropy": 1.122342586517334
+        },
+        "no_broadcast": {
+          "episodes": 464,
+          "correct": 181,
+          "accuracy": 0.39008620381355286,
+          "all_four_queries_correct_pairs": 0,
+          "intermediate_accuracy": 0.5732758641242981,
+          "cross_entropy": 1.122342586517334
+        },
+        "uniform_attention": {
+          "episodes": 464,
+          "correct": 109,
+          "accuracy": 0.23491379618644714,
+          "all_four_queries_correct_pairs": 0,
+          "intermediate_accuracy": 0.43103447556495667,
+          "cross_entropy": 1.9462616443634033
+        },
+        "reset_specialists": {
+          "episodes": 464,
+          "correct": 108,
+          "accuracy": 0.23275862634181976,
+          "all_four_queries_correct_pairs": 0,
+          "intermediate_accuracy": 0.375,
+          "cross_entropy": 1.8063998222351074
+        },
+        "reset_workspace": {
+          "episodes": 464,
+          "correct": 122,
+          "accuracy": 0.26293104887008667,
+          "all_four_queries_correct_pairs": 0,
+          "intermediate_accuracy": 0.2780172526836395,
+          "cross_entropy": 1.7703187465667725
+        },
+        "no_table_a": {
+          "episodes": 464,
+          "correct": 104,
+          "accuracy": 0.22413793206214905,
+          "all_four_queries_correct_pairs": 1,
+          "intermediate_accuracy": 0.2392241358757019,
+          "cross_entropy": 1.7887886762619019
+        },
+        "no_table_b": {
+          "episodes": 464,
+          "correct": 100,
+          "accuracy": 0.21551723778247833,
+          "all_four_queries_correct_pairs": 1,
+          "intermediate_accuracy": 0.6034482717514038,
+          "cross_entropy": 1.958885908126831
+        },
+        "explicit_lookup_rule": {
+          "accuracy": 1.0
+        },
+        "constant_zero": {
+          "accuracy": 0.25
+        }
+      }
+    },
+    {
+      "seed": 17,
+      "variant": "direct",
+      "parameters": 13640,
+      "checkpoint": "direct-17.pt",
+      "sha256": "5668521f225bfa299a8fc408bea54e3f32e2142c50427e8c71f886fcd78bf290",
+      "history": [
+        {
+          "step": 1,
+          "loss": 1.7514210939407349
+        },
+        {
+          "step": 250,
+          "loss": 1.7302000522613525
+        },
+        {
+          "step": 500,
+          "loss": 1.655648112297058
+        },
+        {
+          "step": 750,
+          "loss": 1.3671625852584839
+        },
+        {
+          "step": 1000,
+          "loss": 0.26559093594551086
+        },
+        {
+          "step": 1250,
+          "loss": 0.013733281753957272
+        },
+        {
+          "step": 1500,
+          "loss": 0.0039990246295928955
+        },
+        {
+          "step": 1750,
+          "loss": 0.0021383969578891993
+        },
+        {
+          "step": 2000,
+          "loss": 0.0016123401001095772
+        }
+      ],
+      "evaluation": {
+        "none": {
+          "episodes": 464,
+          "correct": 464,
+          "accuracy": 1.0,
+          "all_four_queries_correct_pairs": 116,
+          "intermediate_accuracy": 1.0,
+          "cross_entropy": 0.0024572915863245726
+        },
+        "explicit_lookup_rule": {
+          "accuracy": 1.0
+        },
+        "constant_zero": {
+          "accuracy": 0.25
+        }
+      }
+    },
+    {
+      "seed": 29,
+      "variant": "workspace",
+      "parameters": 13000,
+      "checkpoint": "workspace-29.pt",
+      "sha256": "c46cbfeeae17ade910d89d05d1e929e23cc469a4bec11e312617c784495f72f5",
+      "history": [
+        {
+          "step": 1,
+          "loss": 1.820400595664978
+        },
+        {
+          "step": 250,
+          "loss": 1.4803712368011475
+        },
+        {
+          "step": 500,
+          "loss": 1.263446569442749
+        },
+        {
+          "step": 750,
+          "loss": 1.1299787759780884
+        },
+        {
+          "step": 1000,
+          "loss": 0.8982077240943909
+        },
+        {
+          "step": 1250,
+          "loss": 0.7923438549041748
+        },
+        {
+          "step": 1500,
+          "loss": 0.6846086978912354
+        },
+        {
+          "step": 1750,
+          "loss": 0.723651111125946
+        },
+        {
+          "step": 2000,
+          "loss": 0.7894859910011292
+        }
+      ],
+      "evaluation": {
+        "none": {
+          "episodes": 464,
+          "correct": 267,
+          "accuracy": 0.5754310488700867,
+          "all_four_queries_correct_pairs": 4,
+          "intermediate_accuracy": 1.0,
+          "cross_entropy": 0.7451207637786865
+        },
+        "no_broadcast": {
+          "episodes": 464,
+          "correct": 116,
+          "accuracy": 0.25,
+          "all_four_queries_correct_pairs": 0,
+          "intermediate_accuracy": 0.25,
+          "cross_entropy": 3.04099702835083
+        },
+        "uniform_attention": {
+          "episodes": 464,
+          "correct": 115,
+          "accuracy": 0.24784483015537262,
+          "all_four_queries_correct_pairs": 0,
+          "intermediate_accuracy": 0.37931033968925476,
+          "cross_entropy": 3.587827205657959
+        },
+        "reset_specialists": {
+          "episodes": 464,
+          "correct": 116,
+          "accuracy": 0.25,
+          "all_four_queries_correct_pairs": 0,
+          "intermediate_accuracy": 0.5,
+          "cross_entropy": 1.8654183149337769
+        },
+        "reset_workspace": {
+          "episodes": 464,
+          "correct": 227,
+          "accuracy": 0.4892241358757019,
+          "all_four_queries_correct_pairs": 8,
+          "intermediate_accuracy": 0.8512930870056152,
+          "cross_entropy": 1.0871468782424927
+        },
+        "no_table_a": {
+          "episodes": 464,
+          "correct": 95,
+          "accuracy": 0.20474137365818024,
+          "all_four_queries_correct_pairs": 0,
+          "intermediate_accuracy": 0.25,
+          "cross_entropy": 2.153186321258545
+        },
+        "no_table_b": {
+          "episodes": 464,
+          "correct": 93,
+          "accuracy": 0.20043103396892548,
+          "all_four_queries_correct_pairs": 0,
+          "intermediate_accuracy": 1.0,
+          "cross_entropy": 2.2047278881073
+        },
+        "explicit_lookup_rule": {
+          "accuracy": 1.0
+        },
+        "constant_zero": {
+          "accuracy": 0.25
+        }
+      },
+      "rounds_transfer": {
+        "1": {
+          "episodes": 464,
+          "correct": 108,
+          "accuracy": 0.23275862634181976,
+          "all_four_queries_correct_pairs": 0,
+          "intermediate_accuracy": 0.5409482717514038,
+          "cross_entropy": 2.559957504272461
+        },
+        "2": {
+          "episodes": 464,
+          "correct": 152,
+          "accuracy": 0.32758620381355286,
+          "all_four_queries_correct_pairs": 0,
+          "intermediate_accuracy": 0.9461206793785095,
+          "cross_entropy": 1.741562843322754
+        },
+        "6": {
+          "episodes": 464,
+          "correct": 228,
+          "accuracy": 0.4913793206214905,
+          "all_four_queries_correct_pairs": 6,
+          "intermediate_accuracy": 0.9698275923728943,
+          "cross_entropy": 1.0978809595108032
+        },
+        "8": {
+          "episodes": 464,
+          "correct": 226,
+          "accuracy": 0.48706895112991333,
+          "all_four_queries_correct_pairs": 7,
+          "intermediate_accuracy": 0.9159482717514038,
+          "cross_entropy": 1.2819945812225342
+        }
+      }
+    },
+    {
+      "seed": 29,
+      "variant": "without_broadcast",
+      "parameters": 13000,
+      "checkpoint": "without_broadcast-29.pt",
+      "sha256": "c62b6277d633e796926f783ee8cc1081ad8389dd039cc7c9881555f3e9204db9",
+      "history": [
+        {
+          "step": 1,
+          "loss": 1.820805549621582
+        },
+        {
+          "step": 250,
+          "loss": 1.7149869203567505
+        },
+        {
+          "step": 500,
+          "loss": 1.3880051374435425
+        },
+        {
+          "step": 750,
+          "loss": 1.2933595180511475
+        },
+        {
+          "step": 1000,
+          "loss": 1.2424514293670654
+        },
+        {
+          "step": 1250,
+          "loss": 1.0506689548492432
+        },
+        {
+          "step": 1500,
+          "loss": 1.0540748834609985
+        },
+        {
+          "step": 1750,
+          "loss": 1.0617221593856812
+        },
+        {
+          "step": 2000,
+          "loss": 1.0790529251098633
+        }
+      ],
+      "evaluation": {
+        "none": {
+          "episodes": 464,
+          "correct": 229,
+          "accuracy": 0.49353447556495667,
+          "all_four_queries_correct_pairs": 3,
+          "intermediate_accuracy": 0.681034505367279,
+          "cross_entropy": 1.0070809125900269
+        },
+        "no_broadcast": {
+          "episodes": 464,
+          "correct": 229,
+          "accuracy": 0.49353447556495667,
+          "all_four_queries_correct_pairs": 3,
+          "intermediate_accuracy": 0.681034505367279,
+          "cross_entropy": 1.0070809125900269
+        },
+        "uniform_attention": {
+          "episodes": 464,
+          "correct": 116,
+          "accuracy": 0.25,
+          "all_four_queries_correct_pairs": 0,
+          "intermediate_accuracy": 0.25,
+          "cross_entropy": 3.388356924057007
+        },
+        "reset_specialists": {
+          "episodes": 464,
+          "correct": 143,
+          "accuracy": 0.30818966031074524,
+          "all_four_queries_correct_pairs": 0,
+          "intermediate_accuracy": 0.4375,
+          "cross_entropy": 1.6685519218444824
+        },
+        "reset_workspace": {
+          "episodes": 464,
+          "correct": 137,
+          "accuracy": 0.29525861144065857,
+          "all_four_queries_correct_pairs": 0,
+          "intermediate_accuracy": 0.26508620381355286,
+          "cross_entropy": 1.7023471593856812
+        },
+        "no_table_a": {
+          "episodes": 464,
+          "correct": 103,
+          "accuracy": 0.22198276221752167,
+          "all_four_queries_correct_pairs": 0,
+          "intermediate_accuracy": 0.25,
+          "cross_entropy": 2.5941762924194336
+        },
+        "no_table_b": {
+          "episodes": 464,
+          "correct": 99,
+          "accuracy": 0.21336206793785095,
+          "all_four_queries_correct_pairs": 0,
+          "intermediate_accuracy": 0.6120689511299133,
+          "cross_entropy": 2.065727949142456
+        },
+        "explicit_lookup_rule": {
+          "accuracy": 1.0
+        },
+        "constant_zero": {
+          "accuracy": 0.25
+        }
+      }
+    },
+    {
+      "seed": 29,
+      "variant": "direct",
+      "parameters": 13640,
+      "checkpoint": "direct-29.pt",
+      "sha256": "dc44952b9e4515c18da9353987010e5c267fb9b55e0d9bf65efa794ff2b13fbc",
+      "history": [
+        {
+          "step": 1,
+          "loss": 1.7599228620529175
+        },
+        {
+          "step": 250,
+          "loss": 1.7356390953063965
+        },
+        {
+          "step": 500,
+          "loss": 1.3949183225631714
+        },
+        {
+          "step": 750,
+          "loss": 0.6743714213371277
+        },
+        {
+          "step": 1000,
+          "loss": 0.021090887486934662
+        },
+        {
+          "step": 1250,
+          "loss": 0.007069847080856562
+        },
+        {
+          "step": 1500,
+          "loss": 0.0028924671933054924
+        },
+        {
+          "step": 1750,
+          "loss": 0.0019068714464083314
+        },
+        {
+          "step": 2000,
+          "loss": 0.001343972864560783
+        }
+      ],
+      "evaluation": {
+        "none": {
+          "episodes": 464,
+          "correct": 464,
+          "accuracy": 1.0,
+          "all_four_queries_correct_pairs": 116,
+          "intermediate_accuracy": 1.0,
+          "cross_entropy": 0.0015674224123358727
+        },
+        "explicit_lookup_rule": {
+          "accuracy": 1.0
+        },
+        "constant_zero": {
+          "accuracy": 0.25
+        }
+      }
+    },
+    {
+      "seed": 43,
+      "variant": "workspace",
+      "parameters": 13000,
+      "checkpoint": "workspace-43.pt",
+      "sha256": "e4d5c7ff86abd0742afbe1bb2b570d0684e8a1c8326a9c03b75d4b635c48dad6",
+      "history": [
+        {
+          "step": 1,
+          "loss": 1.747911810874939
+        },
+        {
+          "step": 250,
+          "loss": 1.7124347686767578
+        },
+        {
+          "step": 500,
+          "loss": 1.2893661260604858
+        },
+        {
+          "step": 750,
+          "loss": 1.03045654296875
+        },
+        {
+          "step": 1000,
+          "loss": 0.6632201671600342
+        },
+        {
+          "step": 1250,
+          "loss": 0.46646183729171753
+        },
+        {
+          "step": 1500,
+          "loss": 0.2885758876800537
+        },
+        {
+          "step": 1750,
+          "loss": 0.16154995560646057
+        },
+        {
+          "step": 2000,
+          "loss": 0.10664558410644531
+        }
+      ],
+      "evaluation": {
+        "none": {
+          "episodes": 464,
+          "correct": 449,
+          "accuracy": 0.9676724076271057,
+          "all_four_queries_correct_pairs": 101,
+          "intermediate_accuracy": 0.9676724076271057,
+          "cross_entropy": 0.08477170020341873
+        },
+        "no_broadcast": {
+          "episodes": 464,
+          "correct": 113,
+          "accuracy": 0.24353447556495667,
+          "all_four_queries_correct_pairs": 0,
+          "intermediate_accuracy": 0.24784483015537262,
+          "cross_entropy": 3.7021474838256836
+        },
+        "uniform_attention": {
+          "episodes": 464,
+          "correct": 198,
+          "accuracy": 0.4267241358757019,
+          "all_four_queries_correct_pairs": 1,
+          "intermediate_accuracy": 0.5775862336158752,
+          "cross_entropy": 2.338711738586426
+        },
+        "reset_specialists": {
+          "episodes": 464,
+          "correct": 119,
+          "accuracy": 0.25646552443504333,
+          "all_four_queries_correct_pairs": 0,
+          "intermediate_accuracy": 0.2844827473163605,
+          "cross_entropy": 3.04055118560791
+        },
+        "reset_workspace": {
+          "episodes": 464,
+          "correct": 239,
+          "accuracy": 0.5150862336158752,
+          "all_four_queries_correct_pairs": 3,
+          "intermediate_accuracy": 0.6228448152542114,
+          "cross_entropy": 1.463059663772583
+        },
+        "no_table_a": {
+          "episodes": 464,
+          "correct": 103,
+          "accuracy": 0.22198276221752167,
+          "all_four_queries_correct_pairs": 0,
+          "intermediate_accuracy": 0.23706896603107452,
+          "cross_entropy": 4.5372161865234375
+        },
+        "no_table_b": {
+          "episodes": 464,
+          "correct": 114,
+          "accuracy": 0.24568966031074524,
+          "all_four_queries_correct_pairs": 1,
+          "intermediate_accuracy": 0.7715517282485962,
+          "cross_entropy": 3.1984872817993164
+        },
+        "explicit_lookup_rule": {
+          "accuracy": 1.0
+        },
+        "constant_zero": {
+          "accuracy": 0.25
+        }
+      },
+      "rounds_transfer": {
+        "1": {
+          "episodes": 464,
+          "correct": 114,
+          "accuracy": 0.24568966031074524,
+          "all_four_queries_correct_pairs": 0,
+          "intermediate_accuracy": 0.30603447556495667,
+          "cross_entropy": 2.9677469730377197
+        },
+        "2": {
+          "episodes": 464,
+          "correct": 182,
+          "accuracy": 0.39224138855934143,
+          "all_four_queries_correct_pairs": 0,
+          "intermediate_accuracy": 0.568965494632721,
+          "cross_entropy": 2.779698610305786
+        },
+        "6": {
+          "episodes": 464,
+          "correct": 275,
+          "accuracy": 0.5926724076271057,
+          "all_four_queries_correct_pairs": 9,
+          "intermediate_accuracy": 0.756465494632721,
+          "cross_entropy": 1.535595178604126
+        },
+        "8": {
+          "episodes": 464,
+          "correct": 262,
+          "accuracy": 0.5646551847457886,
+          "all_four_queries_correct_pairs": 2,
+          "intermediate_accuracy": 0.7025862336158752,
+          "cross_entropy": 2.8319013118743896
+        }
+      }
+    },
+    {
+      "seed": 43,
+      "variant": "without_broadcast",
+      "parameters": 13000,
+      "checkpoint": "without_broadcast-43.pt",
+      "sha256": "b9678462b0d5cd5f6ea84607798af70434dff92454f991395b8f501e2915e1e2",
+      "history": [
+        {
+          "step": 1,
+          "loss": 1.7479196786880493
+        },
+        {
+          "step": 250,
+          "loss": 1.7286403179168701
+        },
+        {
+          "step": 500,
+          "loss": 1.3582563400268555
+        },
+        {
+          "step": 750,
+          "loss": 1.2999719381332397
+        },
+        {
+          "step": 1000,
+          "loss": 1.4213392734527588
+        },
+        {
+          "step": 1250,
+          "loss": 1.2775145769119263
+        },
+        {
+          "step": 1500,
+          "loss": 1.4468777179718018
+        },
+        {
+          "step": 1750,
+          "loss": 1.4944791793823242
+        },
+        {
+          "step": 2000,
+          "loss": 1.3478556871414185
+        }
+      ],
+      "evaluation": {
+        "none": {
+          "episodes": 464,
+          "correct": 188,
+          "accuracy": 0.4051724076271057,
+          "all_four_queries_correct_pairs": 4,
+          "intermediate_accuracy": 0.39224138855934143,
+          "cross_entropy": 1.106967806816101
+        },
+        "no_broadcast": {
+          "episodes": 464,
+          "correct": 188,
+          "accuracy": 0.4051724076271057,
+          "all_four_queries_correct_pairs": 4,
+          "intermediate_accuracy": 0.39224138855934143,
+          "cross_entropy": 1.106967806816101
+        },
+        "uniform_attention": {
+          "episodes": 464,
+          "correct": 118,
+          "accuracy": 0.25431033968925476,
+          "all_four_queries_correct_pairs": 0,
+          "intermediate_accuracy": 0.26724138855934143,
+          "cross_entropy": 1.9277735948562622
+        },
+        "reset_specialists": {
+          "episodes": 464,
+          "correct": 134,
+          "accuracy": 0.2887931168079376,
+          "all_four_queries_correct_pairs": 0,
+          "intermediate_accuracy": 0.29525861144065857,
+          "cross_entropy": 1.7588938474655151
+        },
+        "reset_workspace": {
+          "episodes": 464,
+          "correct": 151,
+          "accuracy": 0.32543104887008667,
+          "all_four_queries_correct_pairs": 0,
+          "intermediate_accuracy": 0.3405172526836395,
+          "cross_entropy": 1.3719388246536255
+        },
+        "no_table_a": {
+          "episodes": 464,
+          "correct": 115,
+          "accuracy": 0.24784483015537262,
+          "all_four_queries_correct_pairs": 0,
+          "intermediate_accuracy": 0.2521551847457886,
+          "cross_entropy": 1.6375030279159546
+        },
+        "no_table_b": {
+          "episodes": 464,
+          "correct": 115,
+          "accuracy": 0.24784483015537262,
+          "all_four_queries_correct_pairs": 0,
+          "intermediate_accuracy": 0.4396551847457886,
+          "cross_entropy": 1.86323082447052
+        },
+        "explicit_lookup_rule": {
+          "accuracy": 1.0
+        },
+        "constant_zero": {
+          "accuracy": 0.25
+        }
+      }
+    },
+    {
+      "seed": 43,
+      "variant": "direct",
+      "parameters": 13640,
+      "checkpoint": "direct-43.pt",
+      "sha256": "43ec23f08c7a8e0b9004cf80075f464c837bf789ac5893b54b4bb2c0db51669a",
+      "history": [
+        {
+          "step": 1,
+          "loss": 1.734678864479065
+        },
+        {
+          "step": 250,
+          "loss": 1.728874921798706
+        },
+        {
+          "step": 500,
+          "loss": 1.5002059936523438
+        },
+        {
+          "step": 750,
+          "loss": 0.9164136648178101
+        },
+        {
+          "step": 1000,
+          "loss": 0.02560611255466938
+        },
+        {
+          "step": 1250,
+          "loss": 0.007149947807192802
+        },
+        {
+          "step": 1500,
+          "loss": 0.0031560061033815145
+        },
+        {
+          "step": 1750,
+          "loss": 0.0020634375978261232
+        },
+        {
+          "step": 2000,
+          "loss": 0.0013348443899303675
+        }
+      ],
+      "evaluation": {
+        "none": {
+          "episodes": 464,
+          "correct": 464,
+          "accuracy": 1.0,
+          "all_four_queries_correct_pairs": 116,
+          "intermediate_accuracy": 1.0,
+          "cross_entropy": 0.0016245199367403984
+        },
+        "explicit_lookup_rule": {
+          "accuracy": 1.0
+        },
+        "constant_zero": {
+          "accuracy": 0.25
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "schema": "menia-generated-boundary-tokenizer-check-v1",
+  "origin": "synthetic_raw_token_histories_with_pinned_tokenizer",
+  "model": {
+    "id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "transformers": "4.56.2",
+  "files": {
+    "tokenizer_config.json": {
+      "bytes": 9732,
+      "sha256": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101"
+    },
+    "tokenizer.json": {
+      "bytes": 11422654,
+      "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4"
+    },
+    "generation_config.json": {
+      "bytes": 239,
+      "sha256": "2325da0f15bb848e018c5ae071b7943332e9f871d6b60e2ed22ca97d4cb993d2"
+    }
+  },
+  "sourceHash": "682a3ef72d21a51e2219fdbc8b19fcd6eef3a6824755ef578495a5ebef290c08",
+  "modelLoaded": false,
+  "realGenerations": 0,
+  "weightUpdates": 0,
+  "cases": [
+    {
+      "answer": "17",
+      "promptTokens": 52,
+      "constructedCompletionTokens": 3,
+      "rawPrefixHash": "167a39821ed212dfd4db8e06ead31aff55c6d8a515bd502a1cbcf8d23c22fb03",
+      "rawPrefixTokens": 55,
+      "retainedExactlyInBothBranches": true,
+      "rebuiltTextBranchesDiffer": true,
+      "closedTurnFailuresRejected": {
+        "missing_stop": true,
+        "other_stop": true,
+        "role_marker": true
+      },
+      "branches": {
+        "report": {
+          "tokens": 108,
+          "hash": "d80099640faf0787630eddcfad0065cc7bd39ffd0dfd0658f00c97ad71bd4204"
+        },
+        "action": {
+          "tokens": 88,
+          "hash": "19be250a2c2206973449b69a801a08e0fc4bd28d24a2b88c7125717c723f370e"
+        }
+      }
+    },
+    {
+      "answer": "-3",
+      "promptTokens": 52,
+      "constructedCompletionTokens": 3,
+      "rawPrefixHash": "a21d8b949855ea49bda7f358e933bc0ae49e5038bb90cbf953b4cb167ea94751",
+      "rawPrefixTokens": 55,
+      "retainedExactlyInBothBranches": true,
+      "rebuiltTextBranchesDiffer": true,
+      "closedTurnFailuresRejected": {
+        "missing_stop": true,
+        "other_stop": true,
+        "role_marker": true
+      },
+      "branches": {
+        "report": {
+          "tokens": 108,
+          "hash": "4d155565f3789993e3fac052bafe88347d9411c7af879626856c4fa9892dd85b"
+        },
+        "action": {
+          "tokens": 88,
+          "hash": "ed4e95b6838e672fd09f117caa25f370c92acc0ca351236c1f2ec9e7934223f9"
+        }
+      }
+    },
+    {
+      "answer": "réponse technique\nsur deux lignes",
+      "promptTokens": 52,
+      "constructedCompletionTokens": 9,
+      "rawPrefixHash": "407cbf1ce094d4020899b6c08ab1264dfa5ae573c7424e6424eae9b405517167",
+      "rawPrefixTokens": 61,
+      "retainedExactlyInBothBranches": true,
+      "rebuiltTextBranchesDiffer": true,
+      "closedTurnFailuresRejected": {
+        "missing_stop": true,
+        "other_stop": true,
+        "role_marker": true
+      },
+      "branches": {
+        "report": {
+          "tokens": 114,
+          "hash": "30605500bcdd1794c9a83d748d9cbcd0b1925813adb3e970e1903bfd360a06af"
+        },
+        "action": {
+          "tokens": 94,
+          "hash": "24f637708182c3b78f8d230dbb3880f18be81137a66a637a506e9cd23dba9730"
+        }
+      }
+    },
+    {
+      "answer": "\n17",
+      "promptTokens": 52,
+      "constructedCompletionTokens": 4,
+      "rawPrefixHash": "13d607d3a01d83b23257f885dd730284cd2c265caa0c5fb49370536e2d9b788d",
+      "rawPrefixTokens": 56,
+      "retainedExactlyInBothBranches": true,
+      "rebuiltTextBranchesDiffer": true,
+      "closedTurnFailuresRejected": {
+        "missing_stop": true,
+        "other_stop": true,
+        "role_marker": true
+      },
+      "branches": {
+        "report": {
+          "tokens": 109,
+          "hash": "1774bb365c2c113fc5cca2e6a5c5ebf5664083bcde519eff43a481c291eb60d8"
+        },
+        "action": {
+          "tokens": 89,
+          "hash": "d1df18b1b6a8d5a569599fe2412b67401255162e2bdf64ecdddd7308ee65bec5"
+        }
+      }
+    }
+  ],
+  "scope": "Four constructed histories preserve the exact raw prompt and completion IDs, including empty thinking markers and im_end. No cache or pretrained model was evaluated; no task, self-monitoring or consciousness result."
+}

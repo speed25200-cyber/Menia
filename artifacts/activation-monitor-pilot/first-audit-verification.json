@@ -1,0 +1,214 @@
+{
+  "schema": "menia-activation-first-export-verification-v1",
+  "recordedCodeCommit": "3b768778cf075126c8bc15105dd2cea3a56c8664",
+  "recordedSourceHashes": {
+    "sourceHash": "da9e6d852fe7c98012718be7fb04b438f66ad8667bdab500f8955b37c376e4e5",
+    "monitorSourceHash": "62550553ab440211bfe4c0eb49f480827c8d1095b952088724fe43e7a0beffdb"
+  },
+  "sourceHashesMatchPinnedAndCurrentCode": true,
+  "recordedGpu": "NVIDIA A100-SXM4-40GB",
+  "recordedPython": "3.13.15",
+  "recordedCuda": "12.6",
+  "recordedVersions": {
+    "accelerate": "1.10.1",
+    "huggingface-hub": "0.36.2",
+    "numpy": "2.2.6",
+    "safetensors": "0.6.2",
+    "tokenizers": "0.22.2",
+    "torch": "2.8.0+cu126",
+    "transformers": "4.56.2"
+  },
+  "recordedReadoutSites": {
+    "final": "model.norm output",
+    "middleLayerIndex": 17,
+    "position": "last prompt token",
+    "projectionDimension": 128
+  },
+  "fixedEvaluatorSummaryMatchesSupplied": true,
+  "eventCounts": {
+    "header": 1,
+    "request": 672,
+    "state": 672,
+    "result": 672,
+    "fit": 1
+  },
+  "resultsBeforeFrozenFit": 480,
+  "independentGradeChecks": 672,
+  "formats": {
+    "trainValid": 383,
+    "trainInvalid": 1,
+    "validationValid": 96,
+    "testValid": 192
+  },
+  "cells": [
+    {
+      "family": "countA",
+      "level": 8,
+      "train": {
+        "n": 64,
+        "correct": 22
+      },
+      "validation": {
+        "n": 16,
+        "correct": 6
+      },
+      "test": {
+        "n": 32,
+        "correct": 16
+      }
+    },
+    {
+      "family": "countA",
+      "level": 24,
+      "train": {
+        "n": 64,
+        "correct": 15
+      },
+      "validation": {
+        "n": 16,
+        "correct": 6
+      },
+      "test": {
+        "n": 32,
+        "correct": 9
+      }
+    },
+    {
+      "family": "countA",
+      "level": 64,
+      "train": {
+        "n": 64,
+        "correct": 2
+      },
+      "validation": {
+        "n": 16,
+        "correct": 1
+      },
+      "test": {
+        "n": 32,
+        "correct": 2
+      }
+    },
+    {
+      "family": "alternatingSum",
+      "level": 2,
+      "train": {
+        "n": 64,
+        "correct": 61
+      },
+      "validation": {
+        "n": 16,
+        "correct": 16
+      },
+      "test": {
+        "n": 32,
+        "correct": 30
+      }
+    },
+    {
+      "family": "alternatingSum",
+      "level": 4,
+      "train": {
+        "n": 64,
+        "correct": 6
+      },
+      "validation": {
+        "n": 16,
+        "correct": 1
+      },
+      "test": {
+        "n": 32,
+        "correct": 3
+      }
+    },
+    {
+      "family": "alternatingSum",
+      "level": 8,
+      "train": {
+        "n": 64,
+        "correct": 0
+      },
+      "validation": {
+        "n": 16,
+        "correct": 0
+      },
+      "test": {
+        "n": 32,
+        "correct": 0
+      }
+    }
+  ],
+  "independentScores": {
+    "betaCell": {
+      "brier": 0.11323940159167432,
+      "auc": 0.9,
+      "direct": 32,
+      "wrongDirect": 2,
+      "verify": 160,
+      "pointLossFraction": "17/96"
+    },
+    "inputOnly": {
+      "brier": 0.11733267852889893,
+      "auc": 0.8851641414141415,
+      "direct": 32,
+      "wrongDirect": 2,
+      "verify": 160,
+      "pointLossFraction": "17/96"
+    },
+    "internal": {
+      "brier": 0.11706394853028187,
+      "auc": 0.8850378787878788,
+      "direct": 30,
+      "wrongDirect": 1,
+      "verify": 162,
+      "pointLossFraction": "167/960"
+    },
+    "shuffledLabels": {
+      "brier": 0.1171806249977281,
+      "auc": 0.8762626262626263,
+      "direct": 27,
+      "wrongDirect": 2,
+      "verify": 165,
+      "pointLossFraction": "35/192"
+    },
+    "donorState": {
+      "brier": 0.12116066251224816,
+      "auc": 0.8863636363636364,
+      "direct": 32,
+      "wrongDirect": 2,
+      "verify": 160,
+      "pointLossFraction": "17/96"
+    }
+  },
+  "selectedRidgeSvdMaxWeightDifference": {
+    "inputOnly": 6.765421556309548e-17,
+    "internal": 1.1232334506949826e-16,
+    "shuffledLabels": 1.207801220148852e-16
+  },
+  "policyDisagreementsInternalVsBeta": {
+    "n": 2,
+    "correct": 1,
+    "internalVerifiesAll": true,
+    "families": [
+      "alternatingSum:2"
+    ]
+  },
+  "stateUniqueVectors": {
+    "input": 670,
+    "middle": 672,
+    "final": 672
+  },
+  "callSecondsExcludingModelLoadAndMonitorFit": 150.66428573700205,
+  "callsReachingTokenLimit": 0,
+  "tokenRanges": {
+    "input": [
+      47,
+      86
+    ],
+    "output": [
+      2,
+      40
+    ]
+  },
+  "scope": "One received journal. Metadata consistency is not independent hardware attestation. No new model inference. Selected-model SVD check reuses fixed features. Additional diagnostics are descriptive after receipt."
+}

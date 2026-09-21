@@ -1,0 +1,11 @@
+{
+  "record": 15330862,
+  "archive_url": "https://zenodo.org/api/records/15330862/files/DATA.zip/content",
+  "archive_size": 18977519910,
+  "archive_md5_from_api_not_verified": "md5:167989a4a732342947d3859bcdb5a447",
+  "member": "DATA/metaTable.csv",
+  "member_crc32_verified_by_zipfile": "b3e8f1c9",
+  "member_bytes": 128178950,
+  "member_sha256": "fa9ce3fde46c677becc89a4fa8fd380ee467dbca6d231811f92ceebe4e716e76",
+  "bytes_transferred": 31848742
+}

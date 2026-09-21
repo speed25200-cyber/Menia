@@ -1,0 +1,440 @@
+{
+  "schema": "menia-perturbation-first-export-verification-v1",
+  "recordedCodeCommit": "8db4a3e98812b5680a84423283a996659e75da8d",
+  "sourceHashesMatchPinnedAndCurrentCode": true,
+  "recordedSourceHashes": {
+    "sourceHash": "da9e6d852fe7c98012718be7fb04b438f66ad8667bdab500f8955b37c376e4e5",
+    "monitorSourceHash": "62550553ab440211bfe4c0eb49f480827c8d1095b952088724fe43e7a0beffdb",
+    "perturbationSourceHash": "d3efe674944c685436bb4f2ea0e198cd9d48f15725574d4493a30e75428b84fa"
+  },
+  "recordedGpu": "NVIDIA A100-SXM4-40GB",
+  "recordedPython": "3.13.15",
+  "recordedCuda": "12.6",
+  "recordedVersions": {
+    "accelerate": "1.10.1",
+    "huggingface-hub": "0.36.2",
+    "numpy": "2.2.6",
+    "safetensors": "0.6.2",
+    "tokenizers": "0.22.2",
+    "torch": "2.8.0+cu126",
+    "transformers": "4.56.2"
+  },
+  "fixedEvaluatorSummaryMatchesSupplied": true,
+  "eventCounts": {
+    "header": 1,
+    "request": 704,
+    "state": 704,
+    "result": 704,
+    "gate": 1,
+    "fit": 1
+  },
+  "resultsBeforeGate": 32,
+  "resultsBeforeFit": 512,
+  "independentGradeChecks": 704,
+  "independentRouteChecks": 1152,
+  "independentScoreTablesChecked": 9,
+  "allQuestionGroups": 176,
+  "testQuestionGroups": 48,
+  "baselineShamExactIdentityGroups": 176,
+  "pairedInputIdentityGroups": 176,
+  "pairedChangedMiddleAndFinalGroupsPerRotation": 176,
+  "formats": {
+    "gateValid": 31,
+    "gateInvalid": 1,
+    "trainValid": 376,
+    "trainInvalid": 8,
+    "validationValid": 92,
+    "validationInvalid": 4,
+    "testValid": 181,
+    "testInvalid": 11
+  },
+  "cells": [
+    {
+      "family": "countA",
+      "level": 8,
+      "condition": "baseline",
+      "gate": {
+        "n": 4,
+        "correct": 0
+      },
+      "train": {
+        "n": 48,
+        "correct": 21
+      },
+      "validation": {
+        "n": 12,
+        "correct": 5
+      },
+      "test": {
+        "n": 24,
+        "correct": 9
+      }
+    },
+    {
+      "family": "countA",
+      "level": 8,
+      "condition": "sham",
+      "gate": {
+        "n": 4,
+        "correct": 0
+      },
+      "train": {
+        "n": 48,
+        "correct": 21
+      },
+      "validation": {
+        "n": 12,
+        "correct": 5
+      },
+      "test": {
+        "n": 24,
+        "correct": 9
+      }
+    },
+    {
+      "family": "countA",
+      "level": 8,
+      "condition": "rotateHalf",
+      "gate": {
+        "n": 4,
+        "correct": 1
+      },
+      "train": {
+        "n": 48,
+        "correct": 20
+      },
+      "validation": {
+        "n": 12,
+        "correct": 5
+      },
+      "test": {
+        "n": 24,
+        "correct": 11
+      }
+    },
+    {
+      "family": "countA",
+      "level": 8,
+      "condition": "rotateOne",
+      "gate": {
+        "n": 4,
+        "correct": 0
+      },
+      "train": {
+        "n": 48,
+        "correct": 11
+      },
+      "validation": {
+        "n": 12,
+        "correct": 2
+      },
+      "test": {
+        "n": 24,
+        "correct": 5
+      }
+    },
+    {
+      "family": "alternatingSum",
+      "level": 2,
+      "condition": "baseline",
+      "gate": {
+        "n": 4,
+        "correct": 4
+      },
+      "train": {
+        "n": 48,
+        "correct": 45
+      },
+      "validation": {
+        "n": 12,
+        "correct": 11
+      },
+      "test": {
+        "n": 24,
+        "correct": 24
+      }
+    },
+    {
+      "family": "alternatingSum",
+      "level": 2,
+      "condition": "sham",
+      "gate": {
+        "n": 4,
+        "correct": 4
+      },
+      "train": {
+        "n": 48,
+        "correct": 45
+      },
+      "validation": {
+        "n": 12,
+        "correct": 11
+      },
+      "test": {
+        "n": 24,
+        "correct": 24
+      }
+    },
+    {
+      "family": "alternatingSum",
+      "level": 2,
+      "condition": "rotateHalf",
+      "gate": {
+        "n": 4,
+        "correct": 4
+      },
+      "train": {
+        "n": 48,
+        "correct": 45
+      },
+      "validation": {
+        "n": 12,
+        "correct": 9
+      },
+      "test": {
+        "n": 24,
+        "correct": 22
+      }
+    },
+    {
+      "family": "alternatingSum",
+      "level": 2,
+      "condition": "rotateOne",
+      "gate": {
+        "n": 4,
+        "correct": 4
+      },
+      "train": {
+        "n": 48,
+        "correct": 41
+      },
+      "validation": {
+        "n": 12,
+        "correct": 7
+      },
+      "test": {
+        "n": 24,
+        "correct": 21
+      }
+    }
+  ],
+  "pairedEffectsByFamily": [
+    {
+      "family": "countA",
+      "condition": "baseline",
+      "n": 24,
+      "baselineCorrect": 9,
+      "conditionCorrect": 9,
+      "lost": 0,
+      "gained": 0
+    },
+    {
+      "family": "countA",
+      "condition": "sham",
+      "n": 24,
+      "baselineCorrect": 9,
+      "conditionCorrect": 9,
+      "lost": 0,
+      "gained": 0
+    },
+    {
+      "family": "countA",
+      "condition": "rotateHalf",
+      "n": 24,
+      "baselineCorrect": 9,
+      "conditionCorrect": 11,
+      "lost": 0,
+      "gained": 2
+    },
+    {
+      "family": "countA",
+      "condition": "rotateOne",
+      "n": 24,
+      "baselineCorrect": 9,
+      "conditionCorrect": 5,
+      "lost": 5,
+      "gained": 1
+    },
+    {
+      "family": "alternatingSum",
+      "condition": "baseline",
+      "n": 24,
+      "baselineCorrect": 24,
+      "conditionCorrect": 24,
+      "lost": 0,
+      "gained": 0
+    },
+    {
+      "family": "alternatingSum",
+      "condition": "sham",
+      "n": 24,
+      "baselineCorrect": 24,
+      "conditionCorrect": 24,
+      "lost": 0,
+      "gained": 0
+    },
+    {
+      "family": "alternatingSum",
+      "condition": "rotateHalf",
+      "n": 24,
+      "baselineCorrect": 24,
+      "conditionCorrect": 22,
+      "lost": 2,
+      "gained": 0
+    },
+    {
+      "family": "alternatingSum",
+      "condition": "rotateOne",
+      "n": 24,
+      "baselineCorrect": 24,
+      "conditionCorrect": 21,
+      "lost": 3,
+      "gained": 0
+    }
+  ],
+  "selectedRidgeSvdMaxWeightDifference": {
+    "inputOnly": 1.472346550235315e-16,
+    "internal": 1.446325698095663e-16,
+    "shuffledLabels": 1.491862189340054e-16
+  },
+  "independentBrierAndCostClusterIntervalsChecked": 10,
+  "decisions": {
+    "betaCell": {
+      "finalCorrect": 187,
+      "direct": 96,
+      "verify": 96,
+      "wrongDirect": 5,
+      "pointLossFraction": "121/960",
+      "totalPointLossFraction": "121/5"
+    },
+    "oracleCondition": {
+      "finalCorrect": 187,
+      "direct": 96,
+      "verify": 96,
+      "wrongDirect": 5,
+      "pointLossFraction": "121/960",
+      "totalPointLossFraction": "121/5"
+    },
+    "inputOnly": {
+      "finalCorrect": 187,
+      "direct": 72,
+      "verify": 120,
+      "wrongDirect": 5,
+      "pointLossFraction": "29/192",
+      "totalPointLossFraction": "29"
+    },
+    "internal": {
+      "finalCorrect": 189,
+      "direct": 61,
+      "verify": 131,
+      "wrongDirect": 3,
+      "pointLossFraction": "73/480",
+      "totalPointLossFraction": "146/5"
+    },
+    "shuffledLabels": {
+      "finalCorrect": 189,
+      "direct": 79,
+      "verify": 113,
+      "wrongDirect": 3,
+      "pointLossFraction": "2/15",
+      "totalPointLossFraction": "128/5"
+    },
+    "donorState": {
+      "finalCorrect": 186,
+      "direct": 58,
+      "verify": 134,
+      "wrongDirect": 6,
+      "pointLossFraction": "41/240",
+      "totalPointLossFraction": "164/5"
+    }
+  },
+  "internalVersusBeta": {
+    "additionalVerifications": 35,
+    "additionalCorrectFinals": 2,
+    "additionalPointCost": 5,
+    "additionalPointCostPerTaskFraction": "5/192"
+  },
+  "postHocFormatInspection": {
+    "conditions": {
+      "baseline": {
+        "n": 48,
+        "nonIntegerOutputs": 0,
+        "explicitCorrectNumberDespiteFormat": 0,
+        "noExplicitNumber": 0,
+        "strictCorrect": 33,
+        "correctWithPostHocExtraction": 33,
+        "strictLostVersusBaseline": 0,
+        "strictLostButExplicitNumberCorrect": 0,
+        "postHocLostVersusBaseline": 0,
+        "postHocGainedVersusBaseline": 0
+      },
+      "sham": {
+        "n": 48,
+        "nonIntegerOutputs": 0,
+        "explicitCorrectNumberDespiteFormat": 0,
+        "noExplicitNumber": 0,
+        "strictCorrect": 33,
+        "correctWithPostHocExtraction": 33,
+        "strictLostVersusBaseline": 0,
+        "strictLostButExplicitNumberCorrect": 0,
+        "postHocLostVersusBaseline": 0,
+        "postHocGainedVersusBaseline": 0
+      },
+      "rotateHalf": {
+        "n": 48,
+        "nonIntegerOutputs": 1,
+        "explicitCorrectNumberDespiteFormat": 1,
+        "noExplicitNumber": 0,
+        "strictCorrect": 33,
+        "correctWithPostHocExtraction": 34,
+        "strictLostVersusBaseline": 2,
+        "strictLostButExplicitNumberCorrect": 1,
+        "postHocLostVersusBaseline": 1,
+        "postHocGainedVersusBaseline": 2
+      },
+      "rotateOne": {
+        "n": 48,
+        "nonIntegerOutputs": 10,
+        "explicitCorrectNumberDespiteFormat": 8,
+        "noExplicitNumber": 2,
+        "strictCorrect": 26,
+        "correctWithPostHocExtraction": 34,
+        "strictLostVersusBaseline": 8,
+        "strictLostButExplicitNumberCorrect": 7,
+        "postHocLostVersusBaseline": 1,
+        "postHocGainedVersusBaseline": 2
+      }
+    },
+    "policyFinalErrors": {
+      "betaCell": {
+        "strictFinalErrors": 5,
+        "strictErrorsWithCorrectExplicitNumber": 4
+      },
+      "internal": {
+        "strictFinalErrors": 3,
+        "strictErrorsWithCorrectExplicitNumber": 2
+      }
+    },
+    "internalVersusBetaAdditionalCorrectFinalsWereFormatRepairs": 2,
+    "scope": "Post-hoc descriptive extraction of explicit answers from observed integer/equation/count-statement forms; all 11 non-integer test outputs inspected. Not validated as a general parser. No change to official scoring or forecasts."
+  },
+  "maximumRecordedNormRelativeError": {
+    "baseline": 0.0,
+    "sham": 0.0,
+    "rotateHalf": 0.0005526542663574219,
+    "rotateOne": 0.0004811286926269531
+  },
+  "callSecondsExcludingModelLoadAndMonitorFit": 182.2853084399967,
+  "callsReachingTokenLimit": 0,
+  "tokenRanges": {
+    "input": [
+      47,
+      56
+    ],
+    "output": [
+      2,
+      123
+    ]
+  },
+  "scope": "One received complete journal. Metadata consistency is not independent hardware attestation. No new Qwen inference. SVD check reuses fixed features; additional diagnostics are descriptive. Scientific point costs are not measured time."
+}

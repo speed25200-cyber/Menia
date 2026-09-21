@@ -1,0 +1,17 @@
+{
+  "schema": "menia-reader-permutation-numerics-preflight-v1",
+  "planHash": "0f333402797f7dbbdb9da9654747578a0ab60dc2e006b7d12fe1b3e0a77f0cb5",
+  "prefixSHA256": "9dfd743dcaad85d333b7cdd51d807f513d8430bb43df6fdd1fe5af4a35c8a2d5",
+  "parentSourceHashUnchanged": "06644cec2fd5a000b9aaba231e744f8932ad3e90d4a2ca232a4e70006cbac55f",
+  "prefixOperationsVerified": 800,
+  "case": 1008,
+  "taskBranchesVerified": 8,
+  "tokenizerOnly": true,
+  "localModelTests": {
+    "count": 5,
+    "passed": true,
+    "seconds": 0.424,
+    "scope": "Tiny random Qwen3 on CPU, not results of the diagnostic on Qwen3-4B"
+  },
+  "GPUAttemptStarted": false
+}
