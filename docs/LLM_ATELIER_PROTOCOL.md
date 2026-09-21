@@ -85,6 +85,12 @@ Répondeur uniforme, répondeur qui lit toujours la marque, répondeur qui ne
 parle que de son créateur : ils calibrent les mesures et sont vérifiés par
 six tests sans modèle.
 
+## Notebook
+
+[Colab 25, épinglé à `bd82c06`](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/claude/codex-repo-analysis-ycbook/notebooks/25_llm_atelier_colab.ipynb) :
+A100, « Tout exécuter », puis télécharger `llm-atelier.zip` et le déposer
+dans `artifacts/llm-atelier/` pour analyse.
+
 ## Reproduction
 
 ```bash
