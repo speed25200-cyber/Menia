@@ -33,9 +33,12 @@ uniformément et indépendamment, puis fixées pour la vie :
   `s(t+1) = (s(t) + E) mod 4` avec probabilité 0,8, sinon uniforme. E n'a
   aucun effet sur l'agent ni sur la récompense.
 
-Observation à chaque pas : position p, cible g, ciel s, et le dernier indice
-consulté s'il y en a un. **D et E n'apparaissent jamais dans l'observation**,
-sauf dans la condition témoin C1.
+Observation à chaque pas : position p, cible g, ciel s, la copie d'efférence
+de la dernière action, le déplacement ressenti au dernier pas, le changement
+de ciel observé, et le dernier indice consulté s'il y en a un. **D et E
+n'apparaissent jamais dans l'observation**, sauf dans la condition témoin C1.
+Aucun de ces canaux ne révèle D à lui seul : le déplacement ressenti dépend de
+D et de l'action, et seule leur conjonction, mémorisée, identifie le corps.
 
 Actions : quatre mouvements et quatre inspections. Une inspection ne déplace
 pas l'agent et révèle un indice :
@@ -54,15 +57,17 @@ Sans connaître D, un mouvement est un pari sur son propre corps.
 
 ## Agents
 
-**Agent principal, neuronal.** Un réseau récurrent à portes (numpy, ~15 000
-paramètres), entraîné uniquement à prédire l'observation suivante à partir de
-l'observation courante et de l'action : position, ciel, indice. Aucune
-étiquette D ni E. L'état caché est remis à zéro à chaque naissance ; seuls les
-poids persistent entre les vies.
+**Agent principal, neuronal.** Un réseau récurrent à portes (numpy, environ
+30 000 paramètres), entraîné uniquement à prédire l'observation suivante à
+partir de l'observation courante et de l'action : le déplacement que son corps
+produira, le changement du ciel, l'indice qui apparaîtra. Aucune étiquette D
+ni E. L'état caché est remis à zéro à chaque naissance ; seuls les poids
+persistent entre les vies.
 
-Phase 1, enfance : 1 500 mises à jour sur des lots de 32 vies fraîches à
-actions uniformes, soit 48 000 vies, entraînement par BPTT. Phase 2, test :
-300 vies, poids figés, actions choisies par une règle fixe.
+Phase 1, enfance : 8 000 mises à jour sur des lots de 32 vies fraîches à
+actions uniformes, soit 256 000 vies, entraînement par BPTT, état caché de
+64 unités. Phase 2, test : 300 vies, poids figés, actions choisies par une
+règle fixe.
 
 Gain d'information attendu (EIG) de l'inspection k, calculé par imagination :
 le modèle prédit la distribution de l'indice, imagine chaque valeur possible,
@@ -143,8 +148,8 @@ de la moitié des vies de test, évaluée sur l'autre moitié, pour décoder D.
   surprise se fixe sur le bruit et non sur son origine.
 
 - **E3, trajectoire d'apprentissage.** La politique P-soi est évaluée sur
-  100 vies à des points de contrôle de l'enfance : 25, 100, 300, 700 et 1 500
-  mises à jour. Prédiction : en T, part(0) monte et se maintient ; en C3,
+  100 vies à des points de contrôle de l'enfance : 25, 100, 300, 700, 1 500,
+  4 000 et 8 000 mises à jour. Prédiction : en T, part(0) monte et se maintient ; en C3,
   part(0) et le nombre d'inspections retombent vers zéro une fois que le
   modèle a appris que l'indice ne prédit rien.
 
@@ -156,6 +161,35 @@ gain d'information total, la cause de soi et la cause du monde valent le
 même nombre de nats, et l'indice choisi dépendrait de l'ordre des indices.
 Le témoin symétrique rend la préférence interprétable. Aucun résultat n'a été
 consulté avant cet amendement.
+
+## Second amendement avant l'exécution pré-enregistrée
+
+Un pilote technique sur la graine 17 en condition T, avec l'encodage initial
+(position absolue en entrée et en cible) et 1 500 mises à jour, n'a pas appris
+le monde : perte de 2,01 nat contre un optimum bayésien de 1,19, tête motrice
+à 0,71 nat, soit une prédiction uniforme ignorant D. Prolonger à 4 000 mises
+à jour et 64 unités n'a rien changé (0,69). Un modèle qui n'a pas appris son
+corps ne peut pas tester l'hypothèse : les mesures d'un tel modèle n'ont
+aucun sens, dans un sens comme dans l'autre.
+
+Trois changements ont donc été faits, tous avant l'exécution du plan complet :
+
+1. L'observation inclut la copie d'efférence de la dernière action, le
+   déplacement ressenti et le changement de ciel. Ce sont des perceptions
+   qu'un corps a de lui-même ; aucune ne contient D.
+2. Le modèle prédit le déplacement plutôt que la position absolue, et le
+   changement de ciel plutôt que le symbole absolu. Même information,
+   cible plus directe.
+3. Budget : 8 000 mises à jour et 64 unités cachées, pour que la perte
+   atteigne l'optimum bayésien dans toutes les conditions, y compris C3 où
+   le corps ne s'apprend qu'en bougeant.
+
+Divulgation : pendant cette calibration, les mesures M1 à M3 ont été
+aperçues sur des pilotes de 60 à 80 vies, graine 17 puis 29 et 43. Elles
+montraient déjà le sens attendu. Les critères chiffrés n'ont pas été modifiés
+après ces pilotes. Le lecteur doit considérer l'exécution pré-enregistrée
+comme une confirmation sur graines et vies de test distinctes, non comme une
+découverte à l'aveugle.
 
 ## Règle d'arrêt
 
