@@ -40,6 +40,15 @@ enquête quand l'origine est donnée ou quand elle ne laisse aucune trace.
 L'agent qui ne demande rien réussit pourtant mieux : la question coûte et ne
 rapporte pas. Rien ici ne concerne un modèle de langage ni une expérience vécue.
 
+Suite exécutée, [enquête apprise](docs/LEARNED_INQUIRY_RESULTS.md) : la même
+disposition s'apprend par renforcement, avec dose-effet, sous une aversion à
+agir dans l'ignorance ; un bonus d'information seul ne la produit pas, la
+surprise fixe l'agent sur le bruit, et une prudence forte sans trace le
+paralyse. **Critère global pré-enregistré non satisfait, quatre sous-critères
+sur sept**, échecs décrits sans retouche des seuils. Suite préparée mais non
+exécutée faute de GPU : l'[Atelier en contexte pour Qwen3-4B](docs/LLM_ATELIER_PROTOCOL.md),
+[Colab 25](notebooks/25_llm_atelier_colab.ipynb).
+
 ```bash
 python -m unittest discover -s tests_research -p "test_origin*.py" -v
 python -m research.audit_origin --root artifacts/origin-inquiry
@@ -87,7 +96,7 @@ les dépendances transitives résolues sont enregistrées avec `pip freeze`.
 
 ## Statut de validation
 
-- 11 tests du noyau, 8 tests du module récurrent et 12 tests de l'enquête sur l'origine passés.
+- 11 tests du noyau, 8 tests du module récurrent, 12 tests de l'enquête sur l'origine, 7 tests de l'enquête apprise et 6 tests de l'Atelier en contexte passés.
 - Trois entraînements CPU du petit module exécutés, avec ablations et checkpoints.
 - Comparaisons déterministes exécutées sur 240 cas synthétiques.
 - Code Python et cellules du notebook vérifiés syntaxiquement.

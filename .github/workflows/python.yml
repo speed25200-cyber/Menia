@@ -25,3 +25,4 @@ jobs:
       - run: python -m unittest discover -s tests_research -v
       - run: python scripts/check_recurrent_artifacts.py
       - run: python -m research.audit_origin --root artifacts/origin-inquiry
+      - run: python -m research.audit_origin_rl --root artifacts/learned-inquiry --replay-lives 10
