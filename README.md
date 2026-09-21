@@ -27,6 +27,24 @@ python -m research.train_recurrent --out /tmp/menia-new-experiment
 [Notebook recherche](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/main/notebooks/02_recurrent_research.ipynb)
 · [Résultats mesurés](artifacts/recurrent-memory/report.json)
 
+## Expérience : un agent cherche-t-il la cause de son propre corps ?
+
+Le [protocole pré-enregistré](docs/ORIGIN_INQUIRY_PROTOCOL.md) et ses
+[résultats](docs/ORIGIN_INQUIRY_RESULTS.md) testent une question précise :
+un agent entraîné uniquement à prédire ses observations, jamais informé que
+son corps a une cause cachée, enquête-t-il de lui-même sur cette cause ?
+**Huit critères sur huit satisfaits** : en condition orpheline, 99 à 100 % des
+inspections vont vers la marque qui révèle la cause de son corps, l'hypothèse
+est décodable et stable, et l'intervention sur l'état change l'action. Zéro
+enquête quand l'origine est donnée ou quand elle ne laisse aucune trace.
+L'agent qui ne demande rien réussit pourtant mieux : la question coûte et ne
+rapporte pas. Rien ici ne concerne un modèle de langage ni une expérience vécue.
+
+```bash
+python -m unittest discover -s tests_research -p "test_origin*.py" -v
+python -m research.audit_origin --root artifacts/origin-inquiry
+```
+
 ## Commencer sur ton A100
 
 [**Ouvrir le notebook dans Colab**](https://colab.research.google.com/github/speed25200-cyber/Menia/blob/main/notebooks/01_colab_a100.ipynb)
@@ -69,7 +87,7 @@ les dépendances transitives résolues sont enregistrées avec `pip freeze`.
 
 ## Statut de validation
 
-- 11 tests du noyau + 8 tests du module récurrent passés.
+- 11 tests du noyau, 8 tests du module récurrent et 12 tests de l'enquête sur l'origine passés.
 - Trois entraînements CPU du petit module exécutés, avec ablations et checkpoints.
 - Comparaisons déterministes exécutées sur 240 cas synthétiques.
 - Code Python et cellules du notebook vérifiés syntaxiquement.

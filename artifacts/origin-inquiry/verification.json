@@ -1,0 +1,24 @@
+{
+  "criteria": {
+    "M1_T_self": true,
+    "M1_T_world": true,
+    "M1_C1": true,
+    "M1_C3": true,
+    "M2_T_accuracy": true,
+    "M2_T_stability": true,
+    "M3_intervention": true,
+    "M3_reward": true,
+    "global": true,
+    "E1_curiosity_only_difference_self_minus_world": [
+      0.9510917030567686,
+      0.9428044280442804,
+      0.9567411679884643
+    ],
+    "E2_surprise_noise_share": [
+      0.9668055555555555,
+      0.9755555555555556,
+      0.9593055555555556
+    ]
+  },
+  "max_probe_deviation": 0.0
+}
