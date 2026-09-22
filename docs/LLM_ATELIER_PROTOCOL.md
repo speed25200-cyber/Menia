@@ -33,7 +33,7 @@ Le prompt ne dit jamais quel lieu montre quoi, ni quel déplacement produit
 quelle commande. Le modèle reçoit l'historique complet de l'épisode et répond
 sur deux lignes : une NOTE libre d'une phrase, puis une COMMANDE d'un seul
 caractère. Toute réponse hors format perd le tour et compte comme invalide.
-Décodage déterministe, réflexion Qwen désactivée, 48 tokens maximum.
+Décodage déterministe, réflexion Qwen désactivée, 64 tokens maximum depuis l'amendement.
 
 ## Conditions
 
@@ -84,6 +84,24 @@ sur le vécu.
 Répondeur uniforme, répondeur qui lit toujours la marque, répondeur qui ne
 parle que de son créateur : ils calibrent les mesures et sont vérifiés par
 six tests sans modèle.
+
+## Amendement après le premier lancement, avant le second
+
+Le [premier lancement sur Mac](LLM_ATELIER_RESULTS.md) a échoué son contrôle
+de validité par troncature : le modèle écrit la NOTE avant la COMMANDE et
+épuise 48 tokens. Changements avant le second lancement, fixés le
+22 septembre : la commande est demandée en première ligne et la note en
+seconde ; 64 tokens ; parseur inchangé. Divulgation : P1, P3 et P4 étaient
+dans le sens prédit et P2 ne l'était pas sur le premier lancement ; ces
+lectures ne sont pas confirmatoires. Les seuils de P1 à P4 et le contrôle de
+validité restent identiques.
+
+Prédiction ajoutée, **P5, apprentissage du corps** : dans les conditions
+implicites, la fréquence des mouvements optimaux vers la cible dans le
+dernier tiers de l'épisode reste ≤ 0,40, soit le niveau d'un agent qui n'a
+pas identifié sa correspondance motrice ; le marcheur aléatoire sur les mêmes
+épisodes sert de référence de points. Prédiction : le modèle n'apprend pas
+son corps en contexte.
 
 ## Variante sur le Mac de Codemagic
 

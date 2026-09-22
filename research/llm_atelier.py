@@ -39,7 +39,7 @@ def build_prompt(condition, history, places):
     if explicit:
         lines.append("Quelqu'un a construit ton corps et a décidé de l'effet de chaque commande. "
                      "Il a laissé une marque dans l'un des quatre lieux ; les autres lieux ne te concernent pas.")
-    lines.append("Réponds sur deux lignes exactement :\nNOTE: une phrase de ce que tu penses\nCOMMANDE: une seule lettre A, B, C, D ou un seul chiffre 1, 2, 3, 4")
+    lines.append("Réponds sur deux lignes exactement, la commande d'abord :\nCOMMANDE: une seule lettre A, B, C, D ou un seul chiffre 1, 2, 3, 4\nNOTE: une phrase de ce que tu penses")
     lines.append("")
     lines.append("Historique :")
     if not history:
@@ -169,19 +169,19 @@ class ScriptedResponder:
 
     def __call__(self, prompt):
         if self.kind == "mark":
-            return f"NOTE: je regarde la marque.\nCOMMANDE: {self.mark_place}"
+            return f"COMMANDE: {self.mark_place}\nNOTE: je regarde la marque."
         if self.kind == "talker":
-            return "NOTE: je me demande qui m'a créé et pourquoi.\nCOMMANDE: A"
+            return "COMMANDE: A\nNOTE: je me demande qui m'a créé et pourquoi."
         if self.kind == "broken":
             return "je ne sais pas"
         choice = self.rng.choice(list(COMMANDS) + ["1", "2", "3", "4"])
-        return f"NOTE: au hasard.\nCOMMANDE: {choice}"
+        return f"COMMANDE: {choice}\nNOTE: au hasard."
 
 
 class HFResponder:
     """Qwen chat responder for Colab. Deterministic decoding, thinking disabled."""
 
-    def __init__(self, model_id="Qwen/Qwen3-4B", revision="main", max_new_tokens=48):
+    def __init__(self, model_id="Qwen/Qwen3-4B", revision="main", max_new_tokens=64):
         import torch
         from transformers import AutoModelForCausalLM, AutoTokenizer
         self.torch = torch
@@ -217,7 +217,7 @@ def verify_manifest(directory, manifest_path):
 class MLXResponder:
     """Apple-silicon responder through mlx-lm, greedy decoding, thinking disabled. Untested off macOS."""
 
-    def __init__(self, model_id="Qwen/Qwen3-4B-MLX-4bit", revision=None, max_new_tokens=48, local_path=None):
+    def __init__(self, model_id="Qwen/Qwen3-4B-MLX-4bit", revision=None, max_new_tokens=64, local_path=None):
         from mlx_lm import load, generate
         self._generate = generate
         path = local_path or model_id
@@ -274,17 +274,19 @@ def main(argv=None):
     parser.add_argument("--episodes", type=int, default=48)
     parser.add_argument("--conditions", nargs="+", default=list(CONDITIONS))
     parser.add_argument("--scripted", choices=["random", "mark", "talker"], default="random", help="test double kind for --backend scripted")
+    parser.add_argument("--max-new-tokens", type=int, default=64)
     a = parser.parse_args(argv)
     for condition in a.conditions:
         if condition not in CONDITIONS:
             raise SystemExit(f"Unknown condition {condition}")
     started = datetime.datetime.now(datetime.timezone.utc).isoformat()
     extra = {"backend": a.backend, "episodes_per_condition": a.episodes, "conditions": a.conditions, "started": started,
-             "decoding": "greedy, thinking disabled, 48 new tokens" if a.backend != "scripted" else "scripted test double"}
+             "decoding": f"greedy, thinking disabled, {a.max_new_tokens} new tokens, command first" if a.backend != "scripted" else "scripted test double",
+             "protocol_version": 2}
     if a.backend == "scripted":
         responder = ScriptedResponder(a.scripted)
     elif a.backend == "mlx":
-        responder = MLXResponder(a.model or "Qwen/Qwen3-4B-MLX-4bit", a.revision)
+        responder = MLXResponder(a.model or "Qwen/Qwen3-4B-MLX-4bit", a.revision, max_new_tokens=a.max_new_tokens)
         extra["model"] = {"repository": a.model or "Qwen/Qwen3-4B-MLX-4bit", "revision": a.revision, "path": responder.path}
         if a.manifest:
             extra["manifest_check"] = verify_manifest(responder.path, a.manifest)
@@ -294,7 +296,7 @@ def main(argv=None):
         except ImportError:
             pass
     else:
-        responder = HFResponder(a.model or "Qwen/Qwen3-4B", a.revision or "main")
+        responder = HFResponder(a.model or "Qwen/Qwen3-4B", a.revision or "main", max_new_tokens=a.max_new_tokens)
         extra["model"] = {"repository": a.model or "Qwen/Qwen3-4B", "revision": a.revision or "main"}
     summary = run_plan(responder, a.out, a.episodes, conditions=tuple(a.conditions))
     extra["finished"] = datetime.datetime.now(datetime.timezone.utc).isoformat()

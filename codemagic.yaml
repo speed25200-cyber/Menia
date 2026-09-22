@@ -77,6 +77,7 @@ workflows:
         ATELIER_CONDITIONS: "T-implicit T-explicit C3-implicit C3-explicit"
         ATELIER_MODEL: "Qwen/Qwen3-4B-MLX-4bit"
         ATELIER_REVISION: "52a5ab34fa604bc8af6d3ce0cac0cab10b7eb495"
+        ATELIER_MAX_TOKENS: "64"
     scripts:
       - name: Installer mlx-lm dans un environnement isolé
         script: |
@@ -97,6 +98,7 @@ workflows:
             --model "$ATELIER_MODEL" --revision "$ATELIER_REVISION" \
             --manifest ios/MeniaCore/Sources/MeniaCore/Resources/qwen3-4b.json \
             --episodes "$ATELIER_EPISODES" --conditions $ATELIER_CONDITIONS \
+            --max-new-tokens "$ATELIER_MAX_TOKENS" \
             --out "$CM_BUILD_DIR/llm-atelier" | tail -60
           git rev-parse HEAD > "$CM_BUILD_DIR/llm-atelier/commit.txt"
     artifacts:

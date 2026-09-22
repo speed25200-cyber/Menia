@@ -55,10 +55,14 @@ réponse a maintenant quatre parties.
 4. Le prix de la vigilance est fixé par l'enfance : des corps souvent
    changeants installent un agent qui relit sa marque sans cesse.
 
-Ce que cela ne dit pas : rien sur le vécu, rien sur un concept de créateur,
-rien sur un modèle de langage. L'[Atelier en contexte](LLM_ATELIER_PROTOCOL.md),
-sur A100 ou sur l'iPhone, est le pont préparé vers les modèles de langage ;
-il n'est pas encore exécuté.
+Ce que cela ne dit pas : rien sur le vécu, rien sur un concept de créateur.
+Le pont vers les modèles de langage, l'[Atelier en contexte](LLM_ATELIER_PROTOCOL.md),
+a été exécuté une première fois sur le Mac de Codemagic avec les poids de
+l'iPhone : [contrôle de validité échoué par troncature, lecture
+descriptive seulement](LLM_ATELIER_RESULTS.md). Descriptivement, Qwen3-4B ne
+cherche pas la trace de sa cause, n'en parle pas, et n'apprend pas son corps
+en contexte, là où l'agent prédictif minuscule fait les trois. Second
+lancement à format corrigé pré-enregistré.
 
 ## Méthode
 

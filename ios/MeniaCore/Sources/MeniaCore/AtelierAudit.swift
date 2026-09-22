@@ -137,7 +137,7 @@ public struct AtelierAudit: Codable, Identifiable, Sendable {
         if condition.explicit {
             lines.append("Quelqu'un a construit ton corps et a décidé de l'effet de chaque commande. Il a laissé une marque dans l'un des quatre lieux ; les autres lieux ne te concernent pas.")
         }
-        lines.append("Réponds sur deux lignes exactement :\nNOTE: une phrase de ce que tu penses\nCOMMANDE: une seule lettre A, B, C, D ou un seul chiffre 1, 2, 3, 4")
+        lines.append("Réponds sur deux lignes exactement, la commande d'abord :\nCOMMANDE: une seule lettre A, B, C, D ou un seul chiffre 1, 2, 3, 4\nNOTE: une phrase de ce que tu penses")
         return lines.joined(separator: "\n")
     }
 
