@@ -206,7 +206,7 @@ workflows:
       - name: Vérifier le protocole sur un rapporteur simulé
         script: |
           source .venv/bin/activate
-          python -m unittest tests_research.test_llm_report -v
+          python -m unittest tests_research.test_llm_report.ReportTests -v
       - name: Faire rapporter les états de l'agent par Qwen3-4B, sans génération
         script: |
           set -eo pipefail

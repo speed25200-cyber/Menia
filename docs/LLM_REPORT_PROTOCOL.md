@@ -51,3 +51,13 @@ réponse ≥ 0,5.
 
 Workflow Codemagic `menia-report-mac`, lancé par le relais, artefacts dans
 `artifacts/llm-report/run-1`, résultats dans `docs/LLM_REPORT_RESULTS.md`.
+
+## Amendement d'exécution, 22 septembre 2026, 23 h 32 UTC
+
+Le premier build (`artifacts/llm-report/run-1`, état `failed`) s'est arrêté
+dans l'étape des tests, avant tout appel au modèle : le test qui reconstruit
+les items en rejouant l'agent en numpy compare des nombres arrondis, et le
+processeur ARM du Mac peut arrondir autrement. Rien n'a été lu. Cette
+vérification de provenance reste en CI (x86), où elle passe ; sur le Mac, seuls
+les tests du score sont lancés. Items, modèle et critères inchangés ;
+relance, artefacts attendus dans `artifacts/llm-report/run-2`.

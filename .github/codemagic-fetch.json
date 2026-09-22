@@ -1,11 +1,9 @@
 {
- "request": 7,
+ "request": 8,
  "app": "Menia",
  "wait_minutes": 345,
  "builds": [
-  {"launch": {"workflow": "menia-lora-f-mac", "branch": "claude/causal-self-model-llm-results-mauabk"},
-   "dest": "artifacts/llm-lora-mac/run-3-f"},
-  {"launch": {"workflow": "menia-lora-vm-mac", "branch": "claude/causal-self-model-llm-results-mauabk"},
-   "dest": "artifacts/llm-lora-mac/run-3-vm"}
+  {"launch": {"workflow": "menia-report-mac", "branch": "claude/causal-self-model-llm-results-mauabk"},
+   "dest": "artifacts/llm-report/run-2"}
  ]
 }

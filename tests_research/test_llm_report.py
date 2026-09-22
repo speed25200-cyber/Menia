@@ -38,10 +38,16 @@ class ReportTests(unittest.TestCase):
         items = [json.loads(line) for line in path.read_text().splitlines()]
         self.assertEqual(len(items), 1854)
         self.assertEqual({i["variant"] for i in items}, {"real", "counterfactual", "distractor"})
-        self.assertEqual(build_items(agent_states("artifacts/indicator-agent", 17)), items)
         with tempfile.TemporaryDirectory() as tmp:
             main(["score", "--items", str(path), "--out", tmp])
             self.assertTrue(json.loads(Path(tmp, "summary.json").read_text())["global"])
+
+
+class ReportProvenanceTests(unittest.TestCase):
+    def test_items_rebuild_from_the_published_agent(self):
+        """Replays the published agent in numpy: run in CI (x86), not on the Mac, where float rounding may differ."""
+        items = [json.loads(line) for line in Path("artifacts/llm-report/items.jsonl").read_text().splitlines()]
+        self.assertEqual(build_items(agent_states("artifacts/indicator-agent", 17)), items)
 
 
 if __name__ == "__main__":
