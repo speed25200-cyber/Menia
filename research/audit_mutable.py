@@ -37,10 +37,43 @@ def criteria(runs):
     return out
 
 
+def confirmation_criteria(runs):
+    """H1-H5 of docs/MUTABLE_BODY_CONFIRMATION_PROTOCOL.md on regimes SN, MS, MS10."""
+    by = {}
+    for r in runs:
+        by[(r["regime"], r["seed"])] = r
+    seeds = sorted({r["seed"] for r in runs})
+    def control_reads(regime, seed): return by[(regime, seed)]["M3_control_mark_reads_after_step12"]
+    def control_hits_after(regime, seed): return by[(regime, seed)]["lives"]["control-self"]["hits"]["hits_after_per_life"]
+    def change_hits_after(regime, seed): return by[(regime, seed)]["lives"]["change-self"]["hits"]["hits_after_per_life"]
+    out = {"seeds": seeds, "values": {}}
+    complete = all((regime, seed) in by for regime in ("SN", "MS", "MS10") for seed in seeds) and len(seeds) == 3
+    for seed in seeds:
+        out["values"][str(seed)] = {regime: {"M1": by[(regime, seed)]["M1_update"]["new_body_accuracy"],
+                                             "reads_after_change": by[(regime, seed)]["M3_mark_reads_after_change"],
+                                             "reads_control": control_reads(regime, seed),
+                                             "control_hits_after": control_hits_after(regime, seed),
+                                             "change_hits_after": change_hits_after(regime, seed),
+                                             "own_policy_reads_after_change": by[(regime, seed)]["lives"].get("change-own-policy", {}).get("mark_reads_after_change_step")}
+                                    for regime in ("SN", "MS", "MS10") if (regime, seed) in by}
+    if not complete:
+        out["global"] = False
+        return out
+    out["H1_no_developmental_precondition"] = all(by[("SN", s)]["M1_update"]["new_body_accuracy"] >= 0.85 and by[("SN", s)]["M3_mark_reads_after_change"] >= 1.0 for s in seeds)
+    out["H2_hypervigilance"] = all(control_reads("MS", s) >= 2.0 and control_reads("SN", s) < 0.5 and control_reads("MS", s) >= 10 * max(control_reads("SN", s), 1e-9) for s in seeds)
+    out["H3_dose"] = all(control_reads("SN", s) < control_reads("MS10", s) < control_reads("MS", s) for s in seeds)
+    out["H4_tradeoff"] = all(control_hits_after("MS", s) <= control_hits_after("SN", s) - 2.0 and change_hits_after("MS", s) >= change_hits_after("SN", s) + 0.5 for s in seeds)
+    own = [by[("SN", s)]["lives"].get("change-own-policy", {}).get("mark_reads_after_change_step") for s in seeds]
+    out["H5_habit_does_not_transfer"] = all(v is not None and v <= 0.2 and by[("SN", s)]["M3_mark_reads_after_change"] >= 1.0 for v, s in zip(own, seeds))
+    out["global"] = all(out[k] for k in ("H1_no_developmental_precondition", "H2_hypervigilance", "H3_dose", "H4_tradeoff", "H5_habit_does_not_transfer"))
+    return out
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", default="artifacts/mutable-body")
     parser.add_argument("--check", action="store_true")
+    parser.add_argument("--confirmation", action="store_true", help="evaluate H1-H5 instead of M1-M4")
     args = parser.parse_args()
     root = Path(args.root)
     parts = sorted(root.glob("report-mutable-*.json"))
@@ -68,7 +101,7 @@ def main():
                 data[name] = (lives, np.asarray([replay_states(model, life) for life in lives]))
         probe = update_probe(data["control-none"][1], data["control-none"][0], data["change-none"][1], data["change-none"][0])
         np.testing.assert_allclose(probe["new_body_accuracy"], r["M1_update"]["new_body_accuracy"], atol=1e-9)
-    verdict = criteria(runs)
+    verdict = confirmation_criteria(runs) if args.confirmation else criteria(runs)
     print(json.dumps(verdict, indent=2))
     print(f"Mutable-body audit reproduced for {len(runs)} runs: hashes, mark reads, hits, entropy jumps, replayed states and probes.")
     if args.check:
