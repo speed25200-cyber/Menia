@@ -277,6 +277,21 @@ il sera déclaré ; **après lui, plus aucune modification** du monde, de
 l'agent ou des mesures, quel qu'en soit le résultat, et l'exécution
 confirmatoire sur les graines 17, 29 et 43 suit.
 
+### Troisième essai de développement (graine 5), déclaré
+
+Le 22 septembre à 21 h 05 UTC, code du commit `eb368e8` : 6 propriétés sur
+14 (RPT-2, GWT-2, HOT-1, HOT-2, AST-1, PP-1). Le corps est désormais inféré
+(0,996) ; l'écart de GWT-3 pendant les pannes atteint 0,25 ; Corps écrit
+dans l'espace de travail après le changement dans 0,66 des vies. Restent
+sous leurs seuils : l'écart de choix sans récurrence (0,06), l'écart d'AUROC
+sans diffusion (0,035), l'attention à l'intéroception selon l'énergie (0,08
+contre 0,11), le gain constant (0,03), le choix sur la bande (0,68),
+l'arbitrage des buts (0,58 et 0,71), la croyance sur le corps après le
+changement (0,47) ; la lésion de l'intéroception ne change rien, l'agent
+gérant son énergie par des recharges fréquentes. **Conformément à
+l'engagement, rien n'est plus modifié** : l'exécution confirmatoire sur les
+graines 17, 29 et 43 est lancée avec ce code.
+
 ## Exécution et audit
 
 `python -m research.indicator_experiment`, sur CPU, artefacts dans
