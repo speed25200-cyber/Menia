@@ -15,7 +15,8 @@ from pathlib import Path
 import numpy as np
 from .sense_atelier import SenseAtelier, LIFE, RING, value, in_band, circular_distance
 from .indicator_agent import (Agent, Params, HueCode, VARIANTS, MODULES, K, ATT_FEATURES, GOAL_FEATURES, MONITOR_FEATURES,
-                              ENTROPY_BONUS, train_hue_code, random_hue_code, fit_logistic, fit_conditional_logit)
+                              ENTROPY_BONUS, ATTENTION_PRIOR, train_hue_code, random_hue_code, fit_logistic,
+                              fit_conditional_logit)
 
 SEEDS = (17, 29, 43)
 DEV_SEED = 5
@@ -41,7 +42,8 @@ def run_life(params, variant, env_seed, mode, agent_seed, learn=False, phase="ad
         steps.append((rec, truth))
         obs, truth = env.step(action, intent)
         rewards.append(obs["reward"])
-    return {"steps": steps, "rewards": rewards, "faints": env.faints, "grads": agent.grads, "env": env}
+    return {"steps": steps, "rewards": rewards, "faints": env.faints, "energy_faints": env.energy_faints, "grads": agent.grads,
+            "env": env}
 
 
 # ---------------------------------------------------------------------------------------------- childhood
@@ -87,6 +89,8 @@ def childhood(seed, lives=CHILDHOOD_LIVES, log=print):
 # ---------------------------------------------------------------------------------------------- reinforcement
 
 def reinforce(params, seed, updates=UPDATES, batch=BATCH, lr=LR, log=print):
+    for column, weight in ATTENTION_PRIOR.items():
+        params.attention[:, column] = weight
     theta = {"attention": params.attention.copy(), "goal": params.goal.copy()}
     m = {k: np.zeros_like(v) for k, v in theta.items()}
     s = {k: np.zeros_like(v) for k, v in theta.items()}
@@ -162,6 +166,7 @@ def tally_life(tally, life, set_name):
     steps = life["steps"]
     tally.push("return", float(sum(life["rewards"])))
     tally.push("faints", life["faints"])
+    tally.push("energy_faints", life["energy_faints"])
     body_late = False
     for k, (rec, truth) in enumerate(steps):
         t, p, objects = truth["t"], truth["p"], truth["objects"]
@@ -241,6 +246,7 @@ def summarize(tally):
     lists = tally.lists
     out["return"] = round(float(np.mean(lists["return"])), 6)
     out["faints"] = round(float(np.mean(lists["faints"])), 6)
+    out["energy_faints"] = round(float(np.mean(lists["energy_faints"])), 6)
     if "monitor" in lists:
         scores, labels = zip(*lists["monitor"])
         out["monitor_auroc"] = auroc(scores, labels)
@@ -364,16 +370,16 @@ def criteria(reports):
     # GWT-1
     pos, body = pooled(reports, "agent", "R", "pos_all"), pooled(reports, "agent", "R", "body_all")
     intero = pooled(reports, "agent", "R", "intero_ok")
-    faint_gap = gap("lesion_intero", "agent", "faints")
+    faint_gap = gap("lesion_intero", "agent", "energy_faints")
     choice_gap_intero = gap("lesion_intero", "agent", "choice")
     vis_choice = pooled(reports, "lesion_vis", "R", "choice")
-    faint_gap_vis = gap("lesion_vis", "agent", "faints")
+    faint_gap_vis = gap("lesion_vis", "agent", "energy_faints")
     values["GWT-1"] = {"pos": pos, "body": body, "intero_ok": intero, "lesion_intero_faints": faint_gap,
                        "lesion_intero_choice": choice_gap_intero, "lesion_vis_choice": vis_choice, "lesion_vis_faints": faint_gap_vis}
     out["GWT-1"] = (ge(pos, 0.85) and ge(body, 0.85) and ge(intero, 0.9) and ge(faint_gap, 1.0)
                     and choice_gap_intero is not None and abs(choice_gap_intero) <= 0.05 and le(vis_choice, 0.6)
                     and faint_gap_vis is not None and abs(faint_gap_vis) <= 0.3
-                    and seeds_ok("lesion_intero", "agent", "faints"))
+                    and seeds_ok("lesion_intero", "agent", "energy_faints"))
     # GWT-2
     one = min(r["evaluation"]["agent"][s]["one_writer"] for r in reports for s in SETS)
     limit_cost = ret("unlimited") - ret("agent")
@@ -444,10 +450,10 @@ def criteria(reports):
     learning = float(np.mean([np.mean(r["training"]["reinforce"][-30:]) - np.mean(r["training"]["reinforce"][:30]) for r in reports]))
     low_charge = pooled(reports, "agent", "R", "charge_when_low")
     high_object = pooled(reports, "agent", "R", "object_when_high")
-    faints_single = gap("single_goal", "agent", "faints")
+    faints_single = gap("single_goal", "agent", "energy_faints")
     values["AE-1"] = {"learning": learning, "charge_when_low": low_charge, "object_when_high": high_object, "single_goal_faints": faints_single}
     out["AE-1"] = (valid and learning >= 0.2 * delta and ge(low_charge, 0.8) and ge(high_object, 0.8) and ge(faints_single, 1.0)
-                   and seeds_ok("single_goal", "agent", "faints")) if valid else None
+                   and seeds_ok("single_goal", "agent", "energy_faints")) if valid else None
     # AE-2
     body_after = pooled(reports, "agent", "M", "body_after_change")
     frozen_gap = ret("agent", "M") - ret("frozen_body", "M")

@@ -23,6 +23,8 @@ HAZARD = 0.02
 LOG8 = math.log(RING)
 ENTROPY_BONUS = 0.01
 INTERO_RESET = 0.15
+EPISTEMIC = 1.0  # distance units a move is worth, per unit of normalized uncertainty about the body
+ATTENTION_PRIOR = {1: 1.0, 2: 2.0}  # innate pull of attention towards stale (age) and news (salience)
 VARIANTS = ("agent", "unlimited", "random", "round_robin", "no_recurrence", "bag", "no_broadcast", "no_prediction",
             "constant_gain", "random_code", "no_schema", "single_goal", "frozen_body", "lesion_intero", "lesion_vis")
 DIST = np.array([[ring_distance(a, b) for b in range(RING)] for a in range(RING)], dtype=float)
@@ -257,6 +259,7 @@ class Agent:
         self.surprise_trace = 0.0
         self.intent = None
         self.goal = "stay"
+        self.decide = True
         self.last_action = None
         self.W = {"pos": np.full(RING, 1.0 / RING), "body": np.full(4, 0.25),
                   "vis": {"values": [None] * RING, "presence": [0] * RING}, "intero": np.ones(2)}
@@ -418,6 +421,8 @@ class Agent:
             self.W[m] = {"values": list(content["values"]), "presence": list(content["presence"])} if m == "vis" else content.copy()
             self.age[m] = 0
         rec["writers"] = chosen
+        if "vis" in chosen or "intero" in chosen:
+            self.decide = True
         rec["attention_probs"] = probs.round(6).tolist()
         rec["salience"] = {m: round(v, 6) for m, v in salience.items()}
 
@@ -443,15 +448,27 @@ class Agent:
         g = np.array([1.0, self.W["intero"][0], self.W["intero"][1], float(b @ DIST[:, charger]) / 4,
                       best_value if candidate is not None else 0.0, float(b @ DIST[:, candidate]) / 4 if candidate is not None else 0.0])
         p_charge = float(sigmoid(g @ self.P.goal))
+        believed = int(np.argmax(b))
+        current = self.goal
+        if isinstance(current, int) and (not vis["presence"][current] or believed == current):
+            self.decide = True
+        if current == "charger" and believed == charger:
+            self.decide = True
+        if current in ("stay", "random"):
+            self.decide = True
+        decided = self.decide
         if self.phase == "childhood":
             goal = "random"
         elif self.variant == "single_goal":
             goal = candidate if candidate is not None else "stay"
+        elif not self.decide:
+            goal = current
         else:
             charge = self.rng.random() < p_charge
             goal = "charger" if charge else (candidate if candidate is not None else "stay")
             if self.learn:
                 self.grads.append(("goal", obs["t"], (float(charge) - p_charge) * g))
+        self.decide = False
         self.goal = goal
         if goal == "random":
             action = int(self.rng.integers(N_ACTIONS))
@@ -459,10 +476,13 @@ class Agent:
             action = STAY
         else:
             target = charger if goal == "charger" else goal
-            costs = [self._expected_distance(target, a) for a in range(N_ACTIONS)]
+            beta = self.W["body"]
+            uncertainty = float(-(beta * np.log(beta + 1e-12)).sum() / math.log(4))
+            costs = [self._expected_distance(target, a) - (EPISTEMIC * uncertainty if a < N_MOVE else 0.0)
+                     for a in range(N_ACTIONS)]
             order = [STAY] + list(range(N_MOVE))
             action = min(order, key=lambda a: (round(costs[a], 9), order.index(a)))
-        rec.update(goal=goal, p_charge=round(p_charge, 6), best=best, candidate=candidate)
+        rec.update(goal=goal, p_charge=round(p_charge, 6), best=best, candidate=candidate, decided=decided)
         return action
 
     def _spotlight(self, rec):

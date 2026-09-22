@@ -228,6 +228,55 @@ graines 17, 29 et 43. **Aucun seuil n'est modifié.**
 Un second essai de développement sur la graine 5 suit ces amendements ; il
 sera déclaré de même.
 
+### Second essai de développement (graine 5), déclaré
+
+Le 22 septembre à 20 h 50 UTC : 6 propriétés sur 14 (RPT-2, GWT-2, HOT-1,
+HOT-2, AST-1, PP-1). Le schéma d'attention est désormais utilisé
+(redirection 0,94 contre 0,19 sans schéma, erreurs de liaison 2 % contre
+14 %, choix correct −0,13 sans schéma). Le code de teinte passe ses tests
+de présence (Spearman 0,91, 25 % d'unités actives, erreur 0,17 sur la bande
+contre 1,22). Trois défauts de conception restent :
+
+- **Le planificateur ne bouge pas quand il ne connaît pas son corps** : avec
+  une croyance uniforme sur le corps, tout mouvement a la même distance
+  attendue au but que l'immobilité, et l'égalité favorise l'immobilité ;
+  l'agent reste alors sur place et n'apprend jamais son corps (croyance
+  0,25 dans les traces, 17 % de mouvements après le pas 24 du jeu M).
+- **Le but est tiré au sort à chaque pas** : il change dans 44 % des pas.
+- **L'intéroception n'est presque jamais écrite** (11 écritures sur 1 440
+  pas) ; le choix du but ne peut pas suivre les besoins.
+- Avec la satiété (amendement 3), la vision sert aussi à se nourrir : la
+  lésion de la vision change les malaises de faim (−1,13), ce qui rend
+  impossible la dissociation de GWT-1 telle qu'écrite pour un monde où les
+  malaises n'étaient qu'énergétiques.
+
+### Amendements 8 à 11, datés du 22 septembre 2026, 20 h 55 UTC
+
+Avant toute exécution sur les graines 17, 29 et 43. **Aucun seuil n'est
+modifié.**
+
+8. **Valeur épistémique du corps** : le planificateur retranche à la
+   distance attendue d'un mouvement l'incertitude normalisée sur le corps
+   lue dans l'espace de travail (entropie / log 4, poids 1 case). Incertain
+   sur son corps, l'agent préfère agir, ce qui l'informe ; c'est la règle
+   d'enquête sur soi du projet appliquée au corps.
+9. **Engagement du but** : le but n'est remis en jeu qu'à l'arrivée
+   (atteinte crue du but), quand l'objet visé disparaît de l'espace de
+   travail, ou quand la vision ou l'intéroception viennent d'écrire dans
+   l'espace de travail. Le gradient du choix du but n'est pris qu'à ces
+   décisions.
+10. **Attention innée vers la nouveauté** : avant le renforcement, les poids
+    du contrôleur valent 1 sur l'âge et 2 sur la saillance pour chaque
+    module, les autres 0 ; le renforcement part de là.
+11. **Malaises** : dans GWT-1 (dissociation) et AE-1 (but unique), les
+    malaises comptés sont ceux d'**énergie**, seul besoin que sert la
+    recharge et que la vision ne sert pas.
+
+**Engagement** : un troisième essai de développement sur la graine 5 suit ;
+il sera déclaré ; **après lui, plus aucune modification** du monde, de
+l'agent ou des mesures, quel qu'en soit le résultat, et l'exécution
+confirmatoire sur les graines 17, 29 et 43 suit.
+
 ## Exécution et audit
 
 `python -m research.indicator_experiment`, sur CPU, artefacts dans
