@@ -107,7 +107,7 @@ modification.**
 
 ## Troisième essai de développement (graine 7), déclaré
 
-Le 22 septembre à 21 h 52 UTC, code du commit `ca4e78b` : 5 propriétés sur
+Le 22 septembre à 21 h 47 UTC, code du commit `ca4e78b` : 5 propriétés sur
 14 (RPT-2, HOT-1, HOT-2, AST-1, PP-1). L'attention à l'intéroception suit
 maintenant le besoin (0,54 quand l'énergie est basse contre 0,32), mais
 **l'apprentissage des valeurs est instable** : d'un tour à l'autre, le
