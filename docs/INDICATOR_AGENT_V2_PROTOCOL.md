@@ -105,6 +105,18 @@ l'attention à mesure qu'il se creuse, comme la faim. Aucun seuil n'est
 modifié. **Après le troisième essai de développement, plus aucune
 modification.**
 
+## Troisième essai de développement (graine 7), déclaré
+
+Le 22 septembre à 21 h 52 UTC, code du commit `ca4e78b` : 5 propriétés sur
+14 (RPT-2, HOT-1, HOT-2, AST-1, PP-1). L'attention à l'intéroception suit
+maintenant le besoin (0,54 quand l'énergie est basse contre 0,32), mais
+**l'apprentissage des valeurs est instable** : d'un tour à l'autre, le
+retour moyen oscille entre −3,3 et −1,5 selon que l'ajustement conserve ou
+non la recharge, et les valeurs du dernier tour donnent un agent qui ne se
+recharge plus (0,0 quand l'énergie est basse, 4,2 malaises d'énergie par
+vie). **Conformément à l'engagement, rien n'est plus modifié** : l'exécution
+confirmatoire sur les graines 53, 67 et 79 est lancée avec ce code.
+
 ## Exécution
 
 `python -m research.indicator_experiment --version 2`, artefacts dans
