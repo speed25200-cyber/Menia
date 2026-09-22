@@ -1,0 +1,64 @@
+{
+ "id": "6ab2e844a3ab77ccb2c69a34",
+ "tag": null,
+ "branch": "claude/causal-self-model-llm-results-mauabk",
+ "workflow": "menia-latent-completion-mac",
+ "status": "finished",
+ "createdAt": "2026-09-22T20:42:44.505000+00:00",
+ "startedAt": "2026-09-22T22:43:23.834000+00:00",
+ "finishedAt": "2026-09-22T23:23:07.755000+00:00",
+ "commit": "2d1f5d2ba72b58091909d5543e6b47fbba68b8a6",
+ "message": null,
+ "steps": [
+  {
+   "name": "Preparing build machine",
+   "status": "success",
+   "startedAt": "2026-09-22T22:43:24.109000+00:00",
+   "finishedAt": "2026-09-22T22:43:51.703000+00:00"
+  },
+  {
+   "name": "Fetching app sources",
+   "status": "success",
+   "startedAt": "2026-09-22T22:43:51.703000+00:00",
+   "finishedAt": "2026-09-22T22:43:59.747000+00:00"
+  },
+  {
+   "name": "Installer mlx-lm dans un environnement isolé",
+   "status": "success",
+   "startedAt": "2026-09-22T22:43:59.747000+00:00",
+   "finishedAt": "2026-09-22T22:44:17.607000+00:00"
+  },
+  {
+   "name": "Vérifier le protocole sur scoreurs simulés",
+   "status": "success",
+   "startedAt": "2026-09-22T22:44:17.607000+00:00",
+   "finishedAt": "2026-09-22T22:44:18.242000+00:00"
+  },
+  {
+   "name": "Interroger Qwen3-4B en complétion brute sur les mêmes vies, sans génération",
+   "status": "success",
+   "startedAt": "2026-09-22T22:44:18.242000+00:00",
+   "finishedAt": "2026-09-22T23:23:05.973000+00:00"
+  },
+  {
+   "name": "Publishing",
+   "status": "success",
+   "startedAt": "2026-09-22T23:23:05.973000+00:00",
+   "finishedAt": "2026-09-22T23:23:07.668000+00:00"
+  },
+  {
+   "name": "Cleaning up",
+   "status": "success",
+   "startedAt": "2026-09-22T23:23:07.668000+00:00",
+   "finishedAt": "2026-09-22T23:23:07.755000+00:00"
+  }
+ ],
+ "artefacts": [
+  {
+   "name": "Menia_1_artifacts.zip",
+   "size": 76851,
+   "md5": null,
+   "type": "bundle"
+  }
+ ]
+}

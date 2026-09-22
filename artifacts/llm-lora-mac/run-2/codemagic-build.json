@@ -1,0 +1,63 @@
+{
+ "id": "6ab2e844a3ab77ccb2c69a32",
+ "tag": null,
+ "branch": "claude/causal-self-model-llm-results-mauabk",
+ "workflow": "menia-lora-mac",
+ "status": "timeout",
+ "createdAt": "2026-09-22T20:42:44.438000+00:00",
+ "startedAt": "2026-09-22T20:42:53.797000+00:00",
+ "finishedAt": "2026-09-22T22:43:17.388000+00:00",
+ "commit": "2d1f5d2ba72b58091909d5543e6b47fbba68b8a6",
+ "message": "Build timeout",
+ "steps": [
+  {
+   "name": "Preparing build machine",
+   "status": "success",
+   "startedAt": "2026-09-22T20:42:54.116000+00:00",
+   "finishedAt": "2026-09-22T20:43:16.810000+00:00"
+  },
+  {
+   "name": "Fetching app sources",
+   "status": "success",
+   "startedAt": "2026-09-22T20:43:16.810000+00:00",
+   "finishedAt": "2026-09-22T20:43:24.842000+00:00"
+  },
+  {
+   "name": "Installer mlx-lm dans un environnement isolé",
+   "status": "success",
+   "startedAt": "2026-09-22T20:43:24.842000+00:00",
+   "finishedAt": "2026-09-22T20:43:45.023000+00:00"
+  },
+  {
+   "name": "Vérifier le protocole sur scoreurs simulés",
+   "status": "success",
+   "startedAt": "2026-09-22T20:43:45.023000+00:00",
+   "finishedAt": "2026-09-22T20:43:45.718000+00:00"
+  },
+  {
+   "name": "Exporter les vies, ajuster par LoRA et évaluer chaque régime",
+   "status": "canceled",
+   "startedAt": "2026-09-22T20:43:45.718000+00:00",
+   "finishedAt": "2026-09-22T22:43:17.388000+00:00"
+  },
+  {
+   "name": "Publier les résultats sur la branche de recherche (au mieux)",
+   "status": null,
+   "startedAt": null,
+   "finishedAt": null
+  },
+  {
+   "name": "Publishing",
+   "status": null,
+   "startedAt": null,
+   "finishedAt": null
+  },
+  {
+   "name": "Cleaning up",
+   "status": null,
+   "startedAt": null,
+   "finishedAt": null
+  }
+ ],
+ "artefacts": []
+}
