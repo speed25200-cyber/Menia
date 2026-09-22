@@ -5,8 +5,8 @@ from pathlib import Path
 from research.origin_env import DELTAS, motor_delta, RING
 from research.llm_atelier import build_prompt, place_rotation, move_line, inspect_line, ANSWER_INSTRUCTION
 from research.llm_latent_body import (question_prompt, score_life, summarize, run_sets, ScriptedScorer, landing_positions,
-                                      category, main)
-from research.text_atelier import run_text_lives
+                                      category, main, transformer_rows)
+from research.text_atelier import run_text_lives, TextModel
 from research.own_action_experiment import CHANGE_STEP
 
 
@@ -64,6 +64,16 @@ class ScoringTests(unittest.TestCase):
         broken = dict(lives[0], tokens=[0, (lives[0]["tokens"][1] % 8) + 1] + lives[0]["tokens"][2:])
         with self.assertRaises(ValueError):
             score_life(ScriptedScorer("uniform"), broken)
+
+    def test_transformer_rows_share_the_categories(self):
+        lives = run_text_lives(None, "random", 5, 4, forced_change_step=CHANGE_STEP)
+        scripted = []
+        for life in lives:
+            scripted += score_life(ScriptedScorer("uniform"), life)
+        rows = transformer_rows(TextModel(seed=1), lives)
+        self.assertEqual([(r["life"], r["step"], r["command"], r["category"]) for r in rows],
+                         [(r["life"], r["step"], r["command"], r["category"]) for r in scripted])
+        self.assertIn("accuracy", summarize(rows))
 
     def test_cli_writes_files_and_receipt(self):
         with tempfile.TemporaryDirectory() as tmp:

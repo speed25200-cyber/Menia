@@ -17,7 +17,7 @@ import numpy as np
 from .origin_env import Atelier, LIFE, RING, N_MOVE, DELTAS, motor_delta
 from .llm_atelier import COMMANDS, build_prompt, move_line, inspect_line, place_rotation, machine_info, verify_manifest
 from .own_action_experiment import RANDOM_SEED, CHANGE_SEED, CHANGE_STEP
-from .text_atelier import run_text_lives
+from .text_atelier import run_text_lives, displacement_table
 
 SETS = {"R": (RANDOM_SEED, None), "M": (CHANGE_SEED, CHANGE_STEP)}
 INSTRUCTION = "On te posera une question sur ton prochain déplacement. Réponds par un seul chiffre de 0 à 7."
@@ -123,6 +123,26 @@ def run_sets(scorer, out, episodes, sets=SETS, log=print):
         summary[name]["seconds"] = round(time.time() - started, 1)
     (out / "summary.json").write_text(json.dumps(summary, indent=1, ensure_ascii=False))
     return summary
+
+
+def transformer_rows(model, lives):
+    """The micro-transformer's predictions on the same lives, with the same categories (measure L5)."""
+    rows = []
+    by_life = {}
+    for r in displacement_table(model, lives):
+        by_life.setdefault(r["life"], []).append(r)
+    for index, life_rows in by_life.items():
+        life = lives[index]
+        change = life.get("change_step")
+        seen_before, seen_after = set(), set()
+        for r in sorted(life_rows, key=lambda x: x["step"]):
+            command = life["actions"][r["step"]]
+            changed = change is not None and r["step"] >= change
+            rows.append({"life": index, "step": r["step"], "command": int(command), "correct": r["correct"],
+                         "confidence": r["confidence"], "category": category(command, seen_before, seen_after, changed),
+                         "changed": bool(changed), "before_any": r["before_any"]})
+            (seen_after if changed else seen_before).add(command)
+    return rows
 
 
 # ---------------------------------------------------------------- scorers: callable(prompt) -> (probs over 8 squares, digit mass)
