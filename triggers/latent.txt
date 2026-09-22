@@ -1,0 +1,1 @@
+Lancement 1 — corps latent de Qwen3-4B, protocole docs/LATENT_BODY_PROTOCOL.md, 2026-09-22T16:50Z

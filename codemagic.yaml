@@ -109,11 +109,17 @@ workflows:
     instance_type: mac_mini_m2
     max_build_duration: 110
     triggering:
+      # Starts when triggers/latent.txt changes on the research branch (a tag push is refused by the session proxy).
       events:
-        - tag
-      tag_patterns:
-        - pattern: 'latent-*'
+        - push
+      branch_patterns:
+        - pattern: 'claude/codex-repo-analysis-ycbook'
           include: true
+          source: true
+      when:
+        changeset:
+          includes:
+            - 'triggers/latent.txt'
     environment:
       vars:
         LATENT_EPISODES: "48"
@@ -149,11 +155,17 @@ workflows:
     instance_type: mac_mini_m2
     max_build_duration: 120
     triggering:
+      # Starts when triggers/lora.txt changes on the research branch.
       events:
-        - tag
-      tag_patterns:
-        - pattern: 'lora-*'
+        - push
+      branch_patterns:
+        - pattern: 'claude/codex-repo-analysis-ycbook'
           include: true
+          source: true
+      when:
+        changeset:
+          includes:
+            - 'triggers/lora.txt'
     environment:
       vars:
         LORA_MODEL: "Qwen/Qwen3-0.6B"
