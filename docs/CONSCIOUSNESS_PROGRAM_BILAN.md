@@ -39,6 +39,10 @@ version sur trois.
   (RPT-1, GWT-3, HOT-3, HOT-4) : leur effet existe mais reste sous les
   seuils ; le goulot de l'espace de travail l'atténue en partie, sans
   l'expliquer entièrement.
+- **L'incarnation** (AE-2) : l'agent révise son corps en deux mouvements
+  après un changement, et figer ce corps lui coûte ; mais il bouge trop peu
+  après le changement pour que sa croyance soit à jour aussi souvent que le
+  critère le demande.
 - **Le vrai LLM.** Qwen3-4B copie en partie l'effet de ses commandes (0,64)
   mais n'en a pas la structure (0,16 sur une commande nouvelle), et reste
   sûr de lui quand il se trompe. Le test décisif, un Qwen ajusté sur des vies
