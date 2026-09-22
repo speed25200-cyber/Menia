@@ -31,6 +31,10 @@ class FakeClient:
         return {"build": next(b for b in self.builds if b["_id"] == path.rsplit("/", 1)[-1])}
 
     def request(self, url, data=None):
+        if url == "/builds" and data is not None:
+            self.launched = data
+            self.builds.append({"_id": "new", "status": "queued", "workflowId": data["workflowId"]})
+            return json.dumps({"buildId": "new"}).encode()
         return self.blobs[url]
 
     def download(self, url):
@@ -91,6 +95,27 @@ class WaitTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             report = codemagic_fetch.fetch(client, {"wait_minutes": 3, "builds": [{"tag": "t", "dest": "d"}]}, Path(tmp), sleep=lambda s: None)
         self.assertEqual(report["t"], "en cours (queued)")
+
+
+class LaunchTests(unittest.TestCase):
+    def test_launch_then_wait_then_fetch(self):
+        client = FakeClient([], {"z": zipped({"llm-lora/F/rows-R.jsonl": "{}\n"})})
+        naps = []
+
+        def nap(seconds):
+            naps.append(seconds)
+            build = client.builds[0]
+            build.update(status="finished", artefacts=[{"name": "llm-lora.zip", "url": "z"}])
+
+        request = {"wait_minutes": 5, "builds": [{"launch": {"workflow": "menia-lora-mac", "branch": "b", "variables": {"X": "1"}},
+                                                  "dest": "out"}]}
+        with tempfile.TemporaryDirectory() as tmp:
+            report = codemagic_fetch.fetch(client, request, Path(tmp), sleep=nap)
+            self.assertTrue((Path(tmp) / "out/F/rows-R.jsonl").exists())
+        self.assertEqual(client.launched, {"appId": "app1", "workflowId": "menia-lora-mac", "branch": "b",
+                                           "environment": {"variables": {"X": "1"}}})
+        self.assertEqual(len(naps), 1)
+        self.assertEqual(report["menia-lora-mac"]["status"], "finished")
 
 
 if __name__ == "__main__":

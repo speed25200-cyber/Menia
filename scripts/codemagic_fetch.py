@@ -4,10 +4,14 @@ Run by .github/workflows/codemagic-fetch.yml, whose runner can reach
 api.codemagic.io when the research session cannot. The request file names the
 tags to fetch and where to put each build's artefacts:
 
-    {"request": 1, "app": "Menia",
-     "builds": [{"tag": "latent-1", "dest": "artifacts/llm-latent-mac/run-1"}]}
+    {"request": 1, "app": "Menia", "wait_minutes": 90,
+     "builds": [{"tag": "latent-1", "dest": "artifacts/llm-latent-mac/run-1"},
+                {"launch": {"workflow": "menia-lora-mac", "branch": "<branche>", "variables": {}},
+                 "dest": "artifacts/llm-lora-mac/run-2"}]}
 
-Nothing is written for a build that is not finished. Each fetched build leaves
+An entry with "launch" starts a new build of that codemagic.yaml workflow
+through the API; the relay then waits up to wait_minutes for every build to
+end. Nothing is written for a build that is not finished. Each fetched build leaves
 codemagic-build.json (status, steps, artefact list with md5) and the tail of
 every step's log, with webhook paths and credentials scrubbed. Standard library
 only; the token comes from the CODEMAGIC_API_TOKEN environment variable.
@@ -151,42 +155,62 @@ def save_logs(client, build, dest):
         (logs / f"{n:02d}-{name}.log").write_text(scrub("\n".join(text.splitlines()[-LOG_TAIL:])) + "\n")
 
 
-def current_status(client, build):
+def current_status(client, build_id):
     """The listing can lag behind a build; its own record is authoritative."""
-    if build is None:
+    if build_id is None:
         return None
-    return client.get_json(f"/builds/{build['_id']}").get("build", build).get("status")
+    return client.get_json(f"/builds/{build_id}").get("build", {}).get("status")
 
 
-def wait_for(client, app_id, tags, minutes, sleep=time.sleep, log=print):
-    """Poll until every requested tag has an ended build, or the time runs out; returns the last listing."""
+def launch(client, app_id, spec):
+    """Start a build of a codemagic.yaml workflow on a branch; returns its id."""
+    body = {"appId": app_id, "workflowId": spec["workflow"], "branch": spec["branch"]}
+    if spec.get("variables"):
+        body["environment"] = {"variables": spec["variables"]}
+    return json.loads(client.request("/builds", body))["buildId"]
+
+
+def label_of(wanted):
+    return wanted.get("tag") or wanted["launch"]["workflow"]
+
+
+def wait_for(client, ids, minutes, sleep=time.sleep, log=print):
+    """Poll until every build id has ended, or the time runs out."""
     for minute in range(int(minutes) + 1):
-        builds = builds_of(client, app_id)
-        waiting = {t: current_status(client, latest_for_tag(builds, t)) for t in tags}
-        waiting = {t: s for t, s in waiting.items() if s is not None and s not in ENDED}
+        waiting = {label: current_status(client, i) for label, i in ids.items()}
+        waiting = {label: s for label, s in waiting.items() if s is not None and s not in ENDED}
         if not waiting or minute == int(minutes):
-            return builds
+            return
         log(f"minute {minute}: en attente de {waiting}", flush=True)
         sleep(60)
 
 
 def fetch(client, request, root=Path("."), sleep=time.sleep):
     app = find_app(client, request.get("app", "Menia"))
-    builds = wait_for(client, app["_id"], [b["tag"] for b in request["builds"]], request.get("wait_minutes", 0), sleep)
+    builds = builds_of(client, app["_id"])
     print("application:", app.get("appName"))
     for b in sorted(builds, key=lambda b: b.get("startedAt") or b.get("createdAt") or "", reverse=True)[:10]:
         print(f"  {b.get('tag') or b.get('branch')} {b.get('fileWorkflowId') or b.get('workflowId')} {b.get('status')} "
               f"{b.get('startedAt')} -> {b.get('finishedAt')}")
+    ids = {}
+    for wanted in request["builds"]:
+        if "launch" in wanted:
+            ids[label_of(wanted)] = launch(client, app["_id"], wanted["launch"])
+            print(f"lancé {label_of(wanted)} sur {wanted['launch']['branch']} : build {ids[label_of(wanted)]}", flush=True)
+        else:
+            found = latest_for_tag(builds, wanted["tag"])
+            ids[label_of(wanted)] = found["_id"] if found else None
+    wait_for(client, ids, request.get("wait_minutes", 0), sleep)
     report = {}
     for wanted in request["builds"]:
-        build = latest_for_tag(builds, wanted["tag"])
-        if build is None:
-            report[wanted["tag"]] = "introuvable"
+        label = label_of(wanted)
+        if ids[label] is None:
+            report[label] = "introuvable"
             continue
-        build = client.get_json(f"/builds/{build['_id']}").get("build", build)
+        build = client.get_json(f"/builds/{ids[label]}").get("build", {"_id": ids[label]})
         status = build.get("status")
         if status not in ENDED:
-            report[wanted["tag"]] = f"en cours ({status})"
+            report[label] = f"en cours ({status})"
             continue
         dest = root / wanted["dest"]
         dest.mkdir(parents=True, exist_ok=True)
@@ -195,8 +219,8 @@ def fetch(client, request, root=Path("."), sleep=time.sleep):
         saved = []
         for artefact in build.get("artefacts") or []:
             saved += save_artefact(client, artefact, dest)
-        report[wanted["tag"]] = {"status": status, "dest": wanted["dest"], "files": len(saved),
-                                 "ignored": [s for s in saved if s.startswith("ignoré")]}
+        report[label] = {"status": status, "dest": wanted["dest"], "files": len(saved),
+                         "ignored": [s for s in saved if s.startswith("ignoré")]}
     print(json.dumps(report, indent=1, ensure_ascii=False))
     return report
 
