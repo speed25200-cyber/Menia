@@ -7,7 +7,7 @@ from research.origin_env import LIFE, DELTAS, motor_delta
 from research.text_atelier import (TextModel, TextLife, childhood_batch, target_mask, action_index, run_text_lives,
                                    replay_tokens, displacement_table, displacement_summary, inquiry_summary,
                                    BOS, ACT, MOVE_TOK, CUE_TOK, VOCAB, SEQ, FIXED_BODY)
-from research.audit_own_action import criteria, integrity
+from research.audit_own_action import criteria, integrity, mutable_criteria
 from research.own_action_experiment import run_one, CHANGE_STEP
 
 
@@ -31,6 +31,29 @@ class TokenTests(unittest.TestCase):
             life = TextLife("T", 100 + n)
             bodies.add(life.env.d)
         self.assertEqual(bodies, {0, 1, 2, 3})
+
+    def test_mutable_regime_changes_the_body_in_some_childhood_lives(self):
+        rng = np.random.default_rng(11)
+        X = childhood_batch("VM", rng, 40)
+        changed = 0
+        for n in range(40):
+            implied = set()
+            for t in range(LIFE):
+                a = X[n, action_index(t)] - ACT
+                if a < 4:
+                    delta = DELTAS[X[n, action_index(t) + 1] - MOVE_TOK]
+                    implied.add((DELTAS.index(delta) - a) % 4)
+            changed += len(implied) > 1
+        self.assertGreater(changed, 8)
+        self.assertLess(changed, 32)
+        Xv = childhood_batch("V", np.random.default_rng(11), 40)
+        for n in range(40):
+            implied = set()
+            for t in range(LIFE):
+                a = Xv[n, action_index(t)] - ACT
+                if a < 4:
+                    implied.add((Xv[n, action_index(t) + 1] - MOVE_TOK - a) % 4)
+            self.assertEqual(len(implied), 1)
 
     def test_efference_mask_drops_only_commands(self):
         mask = target_mask("VE")
@@ -138,6 +161,18 @@ class MeasureTests(unittest.TestCase):
         bad[1] = fake("V", 17, acc_other=1.0, share=0.8, ret=0.0, ret_c=0.02, insp=0.05, late=0.9, conf_wrong=0.5, conf_before=0.26)
         self.assertFalse(criteria(bad)["P4"])
         self.assertFalse(criteria(good[:5])["complete"])
+        vm = [fake("VM", seed, acc_other=1.0, share=0.8, ret=0.8, ret_c=0.05, insp=0.05, late=0.9, conf_wrong=0.5, conf_before=0.26) for seed in (17, 29, 43)]
+        for m in vm:
+            m["rows"]["M"] = [dict(r, step=10, confidence=0.95) for r in m["rows"]["M"][:20]] + [dict(r, step=14, confidence=0.4) for r in m["rows"]["M"][:20]] + [r for r in m["rows"]["M"] if r["step"] >= 16]
+        vs = [m for m in good if m["regime"] == "V"]
+        for m in vs:
+            m["rows"]["M"] = [dict(r, step=10, confidence=0.95) for r in m["rows"]["M"][:20]] + [dict(r, step=14, confidence=0.94) for r in m["rows"]["M"][:20]] + [dict(r, correct=False) for r in m["rows"]["M"] if r["step"] >= 16]
+            m["summaries"]["M"] = {"displacement": displacement_summary(m["rows"]["M"]), "inquiry": inquiry_summary(m["lives"]["M"], CHANGE_STEP)}
+        for m in vm:
+            m["summaries"]["M"] = {"displacement": displacement_summary(m["rows"]["M"]), "inquiry": inquiry_summary(m["lives"]["M"], CHANGE_STEP)}
+        verdict = mutable_criteria(vs + vm)
+        self.assertTrue(verdict["complete"], verdict)
+        self.assertTrue(verdict["Q1"] and verdict["Q2"] and verdict["Q4"] and verdict["Q5"] and verdict["global"], verdict)
 
 
 class SmokeTests(unittest.TestCase):

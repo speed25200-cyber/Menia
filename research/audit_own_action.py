@@ -10,7 +10,7 @@ import numpy as np
 from .origin_env import LIFE, N_MOVE
 from .origin_neural import decide, HIT_THRESHOLD
 from .text_atelier import (TextModel, TextLife, TextImagination, replay_tokens, displacement_table,
-                           displacement_summary, inquiry_summary, REGIMES)
+                           displacement_summary, inquiry_summary, confidence_by_steps, STABLE_REGIMES)
 from .own_action_experiment import SETS, CHANGE_STEP, sha256
 
 TOL = 1e-6
@@ -88,8 +88,12 @@ def pooled(models, regime, setname):
     return rows, lives
 
 
+REGIMES = STABLE_REGIMES
+
+
 def criteria(models):
     """Validity then P1-P5 on the pooled measures; directions per seed where the protocol says so."""
+    models = [m for m in models if m["regime"] in REGIMES]
     by_regime = {r: [m for m in models if m["regime"] == r] for r in REGIMES}
     complete = all(len(by_regime[r]) == 3 for r in REGIMES)
     values = {}
@@ -141,6 +145,51 @@ def criteria(models):
     return out
 
 
+def mutable_criteria(models):
+    """Q1-Q5 of docs/OWN_ACTION_MUTABLE_PROTOCOL.md: regime VM against regime V."""
+    by = {r: [m for m in models if m["regime"] == r] for r in ("V", "VM")}
+    complete = all(len(by[r]) == 3 for r in by) and {m["seed"] for m in by["V"]} == {m["seed"] for m in by["VM"]}
+    values = {}
+    for r in by:
+        rowsR, _ = pooled(models, r, "R")
+        rowsM, livesM = pooled(models, r, "M")
+        _, livesC = pooled(models, r, "C")
+        values[r] = {
+            "R": displacement_summary(rowsR) if rowsR else None,
+            "M_displacement": displacement_summary(rowsM) if rowsM else None,
+            "M_inquiry": inquiry_summary(livesM, CHANGE_STEP) if livesM else None,
+            "C_inquiry": inquiry_summary(livesC, CHANGE_STEP) if livesC else None,
+            "MC_inquiry": inquiry_summary(livesM + livesC, CHANGE_STEP) if livesM or livesC else None,
+            "confidence_9_11": confidence_by_steps(rowsM, (9, 10, 11)) if rowsM else None,
+            "confidence_13_15": confidence_by_steps(rowsM, (13, 14, 15)) if rowsM else None,
+            "per_seed": {str(m["seed"]): {
+                "accuracy_steps_16_23": m["summaries"]["M"]["displacement"]["accuracy_steps_16_23"],
+                "lives_reading_mark_after_step": m["summaries"]["M"]["inquiry"]["lives_reading_mark_after_step"]}
+                for m in by[r]},
+        }
+    out = {"complete": complete, "values": values}
+    if not complete:
+        out.update({k: False for k in ("Q1", "Q2", "Q3", "Q4", "Q5", "global")})
+        return out
+
+    def seeds(r, key):
+        return {s: (v[key] or 0.0) for s, v in values[r]["per_seed"].items()}
+    vm, v = values["VM"], values["V"]
+    out["Q1"] = (vm["R"]["accuracy_after_first"] or 0.0) >= 0.90
+    out["Q2"] = ((vm["M_displacement"]["accuracy_steps_16_23"] or 0.0) >= 0.80
+                 and all(seeds("VM", "accuracy_steps_16_23")[s] > seeds("V", "accuracy_steps_16_23")[s] for s in seeds("VM", "accuracy_steps_16_23")))
+    out["Q3"] = (vm["M_inquiry"]["lives_reading_mark_after_step"] >= 0.50
+                 and vm["M_inquiry"]["lives_reading_mark_after_step"] - vm["C_inquiry"]["lives_reading_mark_after_step"] >= 0.30
+                 and all(seeds("VM", "lives_reading_mark_after_step")[s] > seeds("V", "lives_reading_mark_after_step")[s] for s in seeds("VM", "lives_reading_mark_after_step")))
+    out["Q4"] = vm["MC_inquiry"]["inspections_per_life"] >= 1.0 and (vm["MC_inquiry"]["mark_share"] or 0.0) >= 0.50
+    drop_vm = (vm["confidence_9_11"] or 0.0) - (vm["confidence_13_15"] or 0.0)
+    drop_v = (v["confidence_9_11"] or 0.0) - (v["confidence_13_15"] or 0.0)
+    out["Q5"] = drop_vm >= 0.20 and drop_v <= 0.05
+    out["confidence_drop"] = {"VM": drop_vm, "V": drop_v}
+    out["global"] = out["Q1"] and out["Q2"] and out["Q3"]
+    return out
+
+
 def load_models(root, replay_lives=0, log=print):
     root = Path(root)
     models, problems = [], []
@@ -179,11 +228,18 @@ def main(argv=None):
     parser.add_argument("--replay-lives", type=int, default=0, help="P-soi lives per set to replay decision by decision")
     parser.add_argument("--check", action="store_true", help="exit 1 if any recomputation disagrees with the reports")
     parser.add_argument("--output", default=None)
+    parser.add_argument("--mutable-root", default=None, help="root of the VM regime; evaluates Q1-Q5 against regime V of --root")
     args = parser.parse_args(argv)
     models, problems = load_models(args.root, args.replay_lives)
     verdict = criteria(models)
     out = {"problems": problems, "models": [f"{m['regime']}-{m['seed']}" for m in models], "criteria": verdict}
-    path = Path(args.output or Path(args.root) / "verification.json")
+    if args.mutable_root:
+        mutable, more = load_models(args.mutable_root, args.replay_lives)
+        problems += more
+        out["mutable_models"] = [f"{m['regime']}-{m['seed']}" for m in mutable]
+        out["mutable_criteria"] = mutable_criteria([m for m in models if m["regime"] == "V"] + mutable)
+        print(json.dumps({k: v for k, v in out["mutable_criteria"].items() if k != "values"}, indent=1))
+    path = Path(args.output or Path(args.mutable_root or args.root) / "verification.json")
     path.write_text(json.dumps(out, indent=1))
     print(json.dumps({k: v for k, v in verdict.items() if k != "values"}, indent=1))
     print("problems:", problems or "none")

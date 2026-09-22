@@ -26,8 +26,10 @@ PREFIX = 4                    # BOS P S G
 STEP_TOKENS = 5               # A O P S G
 SEQ = PREFIX + STEP_TOKENS * LIFE  # 124
 MAX_LEN = SEQ + 8
-REGIMES = ("F", "V", "VE")
+REGIMES = ("F", "V", "VE", "VM")
+STABLE_REGIMES = ("F", "V", "VE")
 FIXED_BODY = 0
+MUTATION_PROBABILITY = 0.5
 
 
 def observation_tokens(obs):
@@ -49,8 +51,9 @@ def action_index(t):
 class TextLife:
     """One life of the Atelier, written as tokens while it is lived."""
 
-    def __init__(self, condition, seed, body=None, forced_change_step=None):
-        self.env = Atelier(condition, seed, forced_change_step=forced_change_step)
+    def __init__(self, condition, seed, body=None, forced_change_step=None, mutate=None, mutation_probability=MUTATION_PROBABILITY):
+        self.env = Atelier(condition, seed, forced_change_step=forced_change_step, mutate=mutate,
+                           mutation_probability=mutation_probability)
         self.obs = self.env.reset()
         if body is not None:
             self.env.d = self.env.d_initial = int(body)
@@ -67,12 +70,14 @@ class TextLife:
 
 
 def childhood_batch(regime, rng, count, condition="T"):
-    """Uniform random actions. Regime F lives all have the same body; V and VE draw it per life."""
+    """Uniform random actions. Regime F lives all have the same body; V and VE draw it per life;
+    VM draws it per life and redraws it mid-life in half of the lives (the mark follows)."""
     if regime not in REGIMES:
         raise ValueError("Unknown regime")
     X = np.zeros((count, SEQ), dtype=np.int64)
     for n in range(count):
-        life = TextLife(condition, int(rng.integers(2 ** 31)), body=FIXED_BODY if regime == "F" else None)
+        life = TextLife(condition, int(rng.integers(2 ** 31)), body=FIXED_BODY if regime == "F" else None,
+                        mutate="self" if regime == "VM" else None)
         for _ in range(LIFE):
             life.step(int(rng.integers(N_ACTIONS)))
         X[n] = life.tokens
@@ -443,6 +448,12 @@ def displacement_summary(rows):
         "counts": {"after_first": len(after), "before_any": len(before), "wrong_after_first": len(wrong_after),
                    "fixed_body_after_first": len(zero), "steps_16_23": len(late)},
     }
+
+
+def confidence_by_steps(rows, steps):
+    """Mean confidence of the predicted displacement over the given life steps (move steps only)."""
+    sub = [r["confidence"] for r in rows if r["step"] in steps]
+    return float(np.mean(sub)) if sub else None
 
 
 def inquiry_summary(lives, after_step=12):
