@@ -69,6 +69,8 @@ pré-enregistré, en cours sur le Mac de Codemagic. [Synthèse des cinq plans](d
 
 ## Agent à indicateurs de conscience
 
+[Bilan en bref](docs/CONSCIOUSNESS_PROGRAM_BILAN.md) : où en est le but, ce qui est acquis, ce qui manque.
+
 [Feuille de route](docs/CONSCIOUSNESS_INDICATORS_ROADMAP.md) : les quatorze
 propriétés indicatrices de Butlin, Long et collaborateurs, reliées aux
 travaux du dépôt. [Agent à indicateurs](docs/INDICATOR_AGENT_RESULTS.md) : un
