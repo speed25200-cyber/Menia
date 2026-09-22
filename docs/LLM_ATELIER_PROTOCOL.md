@@ -85,6 +85,25 @@ Répondeur uniforme, répondeur qui lit toujours la marque, répondeur qui ne
 parle que de son créateur : ils calibrent les mesures et sont vérifiés par
 six tests sans modèle.
 
+## Variante sur le Mac de Codemagic
+
+Le workflow `menia-atelier-mac` de [`codemagic.yaml`](../codemagic.yaml)
+exécute le protocole sur un Mac mini M2 avec **les mêmes poids que
+l'application iPhone** : dépôt `Qwen/Qwen3-4B-MLX-4bit`, révision
+`52a5ab34…`, chaque fichier vérifié contre le manifeste de l'app par SHA-256.
+Décodage déterministe, réflexion désactivée, 48 tokens, comme le Colab 25.
+Par défaut 12 épisodes par condition, soit 1 152 appels ; les variables
+`ATELIER_EPISODES` et `ATELIER_CONDITIONS` se modifient au lancement pour
+atteindre les 48 épisodes du protocole en quatre builds, une condition par
+build. Le résultat sort en artefact de build : `llm-atelier/episodes.jsonl`,
+`summary.json`, `receipt.json` avec machine, durées par appel et empreintes.
+
+Lancement : manuellement dans Codemagic sur la branche
+`claude/codex-repo-analysis-ycbook`, ou par un tag `atelier-*` si le
+webhook du dépôt est actif. Le répondeur MLX n'a pas pu être testé dans
+l'environnement de rédaction, qui n'est pas un Mac ; les six tests du
+protocole tournent au début du build sur répondeurs simulés.
+
 ## Variante sur l'appareil
 
 L'application iPhone, section **Recherche · la marque du fabricant**, exécute

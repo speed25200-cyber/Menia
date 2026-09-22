@@ -31,6 +31,10 @@ Pour livrer cette version sur TestFlight :
    `atelier-menia.json` contient tous les lancements, sans note ni échange privé.
 5. Analyse indépendante sur PC : `python -m research.iphone_atelier_report atelier-menia.json`.
 
+Pour le protocole complet sans mobiliser le téléphone, le workflow Codemagic
+`menia-atelier-mac` exécute la même expérience sur le Mac mini M2 avec les
+mêmes poids, en décodage déterministe ; voir le [protocole](LLM_ATELIER_PROTOCOL.md).
+
 Différences avec le Colab 25 : décodage à température 0,7 au lieu d'un décodage
 déterministe, quatre épisodes par condition au lieu de 48, consignes envoyées
 comme message système. Les prédictions P1 à P4 du protocole s'appliquent avec

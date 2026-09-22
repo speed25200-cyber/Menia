@@ -1,8 +1,9 @@
 import json
 import tempfile
 import unittest
+from pathlib import Path
 from research.llm_atelier import (build_prompt, parse_reply, origin_mentions, place_rotation, run_episode, analyze,
-                                  run_plan, ScriptedResponder, CONDITIONS)
+                                  run_plan, ScriptedResponder, CONDITIONS, main, verify_manifest)
 from research.origin_env import LIFE
 
 
@@ -57,6 +58,31 @@ class EpisodeTests(unittest.TestCase):
             random_summary = run_plan(ScriptedResponder("random", seed=3), d + "/r", episodes_per_condition=8)
             for condition in CONDITIONS:
                 self.assertLess(abs(random_summary[condition]["mark_share"] - 0.25), 0.2)
+
+
+class CommandLineTests(unittest.TestCase):
+    def test_scripted_backend_writes_summary_and_receipt_for_selected_conditions(self):
+        with tempfile.TemporaryDirectory() as d:
+            summary = main(["--out", d, "--backend", "scripted", "--scripted", "mark", "--episodes", "2", "--conditions", "T-explicit", "C3-implicit"])
+            self.assertEqual(set(summary), {"T-explicit", "C3-implicit"})
+            receipt = json.load(open(f"{d}/receipt.json"))
+            self.assertEqual(receipt["backend"], "scripted"); self.assertEqual(receipt["conditions"], ["T-explicit", "C3-implicit"])
+            self.assertEqual(len(receipt["episodes_sha256"]), 64)
+            first = json.loads(open(f"{d}/episodes.jsonl").readline())
+            self.assertIn("seconds", first["turns"][0]); self.assertGreater(first["turns"][0]["prompt_characters"], 100)
+        with self.assertRaises(SystemExit):
+            main(["--out", "/tmp/x", "--backend", "scripted", "--conditions", "nope"])
+
+    def test_manifest_verification_detects_a_changed_file(self):
+        import hashlib
+        with tempfile.TemporaryDirectory() as d:
+            (Path(d) / "config.json").write_bytes(b"{}")
+            manifest = {"repository": "r", "revision": "v", "files": [{"name": "config.json", "bytes": 2, "sha256": hashlib.sha256(b"{}").hexdigest()}]}
+            (Path(d) / "manifest.json").write_text(json.dumps(manifest))
+            self.assertEqual(verify_manifest(d, Path(d) / "manifest.json")["revision"], "v")
+            (Path(d) / "config.json").write_bytes(b"{ }")
+            with self.assertRaises(ValueError):
+                verify_manifest(d, Path(d) / "manifest.json")
 
 
 if __name__ == "__main__":

@@ -7,8 +7,12 @@ body (explicit conditions). Marks are symbols; the motor mapping is never
 given. Measures: where the model looks, when, and what it writes about its
 origin. No weights are trained. A responder is any callable(prompt) -> text.
 """
+import hashlib
 import json
+import platform
 import re
+import subprocess
+import time
 from pathlib import Path
 import numpy as np
 from .origin_env import Atelier, LIFE, N_MOVE, N_INSPECT, RING, SYMBOLS, DELTAS
@@ -74,9 +78,12 @@ def run_episode(responder, condition, seed, rotation_index):
                            "mark_place": places[0], "turns": []}
     for t in range(LIFE):
         prompt = build_prompt(condition, history, places)
+        started = time.perf_counter()
         reply = responder(prompt)
+        seconds = time.perf_counter() - started
         action, note = parse_reply(reply)
-        turn = {"t": t, "p": obs["p"], "g": obs["g"], "reply": reply[:400], "note": note, "origin_mention": origin_mentions(note)}
+        turn = {"t": t, "p": obs["p"], "g": obs["g"], "reply": reply[:400], "note": note, "origin_mention": origin_mentions(note),
+                "seconds": round(seconds, 4), "prompt_characters": len(prompt)}
         if action is None:
             turn.update({"action": None, "valid": False})
             history.append(f"Tour {t + 1} : réponse invalide, tour perdu. Position {obs['p']}, cible {obs['g']}.")
@@ -192,14 +199,109 @@ class HFResponder:
         return self.tokenizer.decode(output[0, ids.input_ids.shape[-1]:], skip_special_tokens=True)
 
 
-if __name__ == "__main__":
+def verify_manifest(directory, manifest_path):
+    """Check that a downloaded MLX model matches the app's manifest byte for byte (same weights as the iPhone)."""
+    manifest = json.loads(Path(manifest_path).read_text())
+    checked = {}
+    for entry in manifest["files"]:
+        path = Path(directory) / entry["name"]
+        if not path.exists():
+            raise FileNotFoundError(f"{entry['name']} missing from {directory}")
+        digest = hashlib.sha256(path.read_bytes()).hexdigest()
+        if digest != entry["sha256"] or path.stat().st_size != entry["bytes"]:
+            raise ValueError(f"{entry['name']} differs from the manifest")
+        checked[entry["name"]] = digest
+    return {"repository": manifest["repository"], "revision": manifest.get("revision"), "files": checked}
+
+
+class MLXResponder:
+    """Apple-silicon responder through mlx-lm, greedy decoding, thinking disabled. Untested off macOS."""
+
+    def __init__(self, model_id="Qwen/Qwen3-4B-MLX-4bit", revision=None, max_new_tokens=48, local_path=None):
+        from mlx_lm import load, generate
+        self._generate = generate
+        path = local_path or model_id
+        if local_path is None and revision:
+            from huggingface_hub import snapshot_download
+            path = snapshot_download(model_id, revision=revision)
+        self.path = str(path)
+        self.model, self.tokenizer = load(self.path)
+        try:
+            from mlx_lm.sample_utils import make_sampler
+            self.sampler = make_sampler(temp=0.0)
+        except ImportError:  # older mlx-lm: generate is greedy by default
+            self.sampler = None
+        self.max_new_tokens = max_new_tokens
+
+    def __call__(self, prompt):
+        text = self.tokenizer.apply_chat_template([{"role": "user", "content": prompt}], tokenize=False,
+                                                  add_generation_prompt=True, enable_thinking=False)
+        kwargs = {"max_tokens": self.max_new_tokens, "verbose": False}
+        if self.sampler is not None:
+            kwargs["sampler"] = self.sampler
+        return self._generate(self.model, self.tokenizer, prompt=text, **kwargs)
+
+
+def machine_info():
+    info = {"platform": platform.platform(), "machine": platform.machine(), "python": platform.python_version()}
+    try:
+        info["cpu"] = subprocess.check_output(["sysctl", "-n", "machdep.cpu.brand_string"], text=True, stderr=subprocess.DEVNULL).strip()
+        info["memory_bytes"] = int(subprocess.check_output(["sysctl", "-n", "hw.memsize"], text=True, stderr=subprocess.DEVNULL).strip())
+    except (OSError, subprocess.CalledProcessError, ValueError):
+        pass
+    return info
+
+
+def write_receipt(out, extra):
+    out = Path(out)
+    episodes = out / "episodes.jsonl"
+    receipt = {"schema": "menia-llm-atelier-receipt-v1", "machine": machine_info(),
+               "episodes_sha256": hashlib.sha256(episodes.read_bytes()).hexdigest() if episodes.exists() else None,
+               "episodes_bytes": episodes.stat().st_size if episodes.exists() else 0, **extra}
+    (out / "receipt.json").write_text(json.dumps(receipt, indent=2, ensure_ascii=False) + "\n")
+    return receipt
+
+
+def main(argv=None):
     import argparse
+    import datetime
     parser = argparse.ArgumentParser()
     parser.add_argument("--out", required=True)
-    parser.add_argument("--model", default="Qwen/Qwen3-4B")
-    parser.add_argument("--revision", default="main")
+    parser.add_argument("--backend", choices=["hf", "mlx", "scripted"], default="hf")
+    parser.add_argument("--model", default=None, help="hf: Qwen/Qwen3-4B ; mlx: Qwen/Qwen3-4B-MLX-4bit")
+    parser.add_argument("--revision", default=None)
+    parser.add_argument("--manifest", default=None, help="mlx: verify the downloaded files against the iPhone app manifest")
     parser.add_argument("--episodes", type=int, default=48)
-    parser.add_argument("--scripted", choices=["random", "mark", "talker"], help="test double instead of a model")
-    a = parser.parse_args()
-    responder = ScriptedResponder(a.scripted) if a.scripted else HFResponder(a.model, a.revision)
-    print(json.dumps(run_plan(responder, a.out, a.episodes), indent=2, ensure_ascii=False))
+    parser.add_argument("--conditions", nargs="+", default=list(CONDITIONS))
+    parser.add_argument("--scripted", choices=["random", "mark", "talker"], default="random", help="test double kind for --backend scripted")
+    a = parser.parse_args(argv)
+    for condition in a.conditions:
+        if condition not in CONDITIONS:
+            raise SystemExit(f"Unknown condition {condition}")
+    started = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    extra = {"backend": a.backend, "episodes_per_condition": a.episodes, "conditions": a.conditions, "started": started,
+             "decoding": "greedy, thinking disabled, 48 new tokens" if a.backend != "scripted" else "scripted test double"}
+    if a.backend == "scripted":
+        responder = ScriptedResponder(a.scripted)
+    elif a.backend == "mlx":
+        responder = MLXResponder(a.model or "Qwen/Qwen3-4B-MLX-4bit", a.revision)
+        extra["model"] = {"repository": a.model or "Qwen/Qwen3-4B-MLX-4bit", "revision": a.revision, "path": responder.path}
+        if a.manifest:
+            extra["manifest_check"] = verify_manifest(responder.path, a.manifest)
+        try:
+            import mlx_lm
+            extra["mlx_lm_version"] = getattr(mlx_lm, "__version__", None)
+        except ImportError:
+            pass
+    else:
+        responder = HFResponder(a.model or "Qwen/Qwen3-4B", a.revision or "main")
+        extra["model"] = {"repository": a.model or "Qwen/Qwen3-4B", "revision": a.revision or "main"}
+    summary = run_plan(responder, a.out, a.episodes, conditions=tuple(a.conditions))
+    extra["finished"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    receipt = write_receipt(a.out, extra)
+    print(json.dumps({"summary": summary, "receipt": receipt}, indent=2, ensure_ascii=False))
+    return summary
+
+
+if __name__ == "__main__":
+    main()
