@@ -39,6 +39,14 @@ sept, échecs décrits sans retouche. [Atelier en contexte](docs/LLM_ATELIER_PRO
 la même situation posée à Qwen3-4B, sur A100 via le [Colab 25](notebooks/25_llm_atelier_colab.ipynb)
 ou directement sur l'iPhone via la section « Recherche · la marque du fabricant »
 de l'application, protocole figé, non encore exécutée.
+[Corps mutable](docs/MUTABLE_BODY_RESULTS.md), [confirmation](docs/MUTABLE_BODY_CONFIRMATION_RESULTS.md)
+et [confirmation directionnelle](docs/MUTABLE_BODY_DIRECTIONAL_RESULTS.md) :
+après un changement de corps jamais vécu, l'agent à l'enfance stable met à
+jour son modèle de soi et retourne lire la marque ; son habitude apprise ne le
+fait pas ; une enfance au corps changeant installe une vigilance persistante
+qui coûte dans un monde stable et rapporte dans un monde qui change. Neuf
+graines ; quatre critères directionnels pré-enregistrés sur cinq passés.
+[Synthèse des cinq plans](docs/SELF_INQUIRY_SYNTHESIS.md).
 
 **[Colab 24 : classement de confiance au sein d'une catégorie](docs/CONFIDENCE_RANKING_PROTOCOL.md).**
 Le [résultat complet](docs/CONFIDENCE_RANKING_RESULTS.md) est reçu et audité :

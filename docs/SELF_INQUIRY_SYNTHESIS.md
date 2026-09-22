@@ -15,14 +15,26 @@ D, la marque ni la notion de cause de soi.
 | L'agent dirige la totalité de ses inspections vers la marque de sa cause, la décode et agit d'après elle ; rien quand l'origine est donnée ou sans trace. | [Origine](ORIGIN_INQUIRY_RESULTS.md) | 3 | 8 critères sur 8 |
 | Cette enquête n'est pas rentable ; l'agent qui n'enquête jamais réussit mieux. | Origine | 3 | mesuré, non prédit |
 | La disposition s'apprend par renforcement, avec dose-effet, sous une aversion à agir dans l'ignorance ; le bonus d'information seul et la surprise ne la produisent pas. | [Apprise](LEARNED_INQUIRY_RESULTS.md) | 3 | 4 sous-critères sur 7 ; les échecs sont une habitude tardive et une paralysie sans trace |
-| Après un changement de corps jamais vécu, le modèle stable met à jour son modèle de soi et retourne lire la marque : aucune condition développementale. | [Corps mutable](MUTABLE_BODY_RESULTS.md), [confirmation](MUTABLE_BODY_CONFIRMATION_RESULTS.md) | 6 | direction 6/6, seuils chiffrés non atteints |
-| L'habitude apprise dans une enfance stable ne retourne pas à la marque ; l'habitude apprise dans une enfance mutable y retourne. | Corps mutable, confirmation | 6 et 3 | direction 6/6 et 3/3, exploratoire |
-| Une enfance au corps souvent changeant installe une vigilance persistante qui coûte dans un monde stable et rapporte dans un monde qui change ; une exposition rare n'installe rien. | Corps mutable, confirmation | 6 | direction 6/6, amplitude variable |
+| Après un changement de corps jamais vécu, le modèle stable met à jour son modèle de soi et retourne lire la marque : aucune condition développementale. | [Corps mutable](MUTABLE_BODY_RESULTS.md), [confirmation](MUTABLE_BODY_CONFIRMATION_RESULTS.md), [directionnelle](MUTABLE_BODY_DIRECTIONAL_RESULTS.md) | 9 | direction 9/9 ; critère directionnel pré-enregistré D1 passé 3/3 |
+| L'habitude apprise dans une enfance stable ne retourne pas à la marque, alors que le calcul depuis le même modèle y retourne. | Corps mutable, confirmation, directionnelle | 9 | direction 9/9 ; critère D4 passé 3/3 |
+| L'habitude apprise dans une enfance mutable retourne à la marque. | Confirmation, directionnelle | 6 | direction 6/6 ; critère D5 passé 2/3, une graine à 0,26 pour 0,30 |
+| Une enfance au corps souvent changeant installe une vigilance persistante qui coûte dans un monde stable et rapporte dans un monde qui change ; une exposition rare, une vie sur dix, n'installe rien. | Corps mutable, confirmation, directionnelle | 9 | direction 9/9 ; critères D2 et D3 passés 3/3 |
 
 ## La confirmation directionnelle
 
-Voir la section finale, remplie après l'exécution du
-[protocole directionnel](MUTABLE_BODY_DIRECTIONAL_PROTOCOL.md).
+Le [protocole directionnel](MUTABLE_BODY_DIRECTIONAL_PROTOCOL.md), fixé
+avant les graines 83, 97 et 101, passe quatre critères sur cinq trois fois
+sur trois et manque le cinquième sur une graine, 0,26 pour 0,30. Son critère
+global n'est pas satisfait ; les quatre premiers résultats du tableau sont
+établis à l'échelle de ce monde, le troisième reste une direction reproduite
+six fois sans critère atteint. La ligne s'arrête là, comme prévu.
+
+Observation exploratoire supplémentaire, non testée : le régime à
+changements rares, une vie sur dix, détecte le changement plus vite et plus
+nettement que le régime stable, avec un pic d'incertitude à 0,45 nat au pas
+14 contre 0,22 aux pas 15 et 16, sans la vigilance chronique du régime
+fréquent. Une exposition rare rend alerte sans rendre anxieux. Ce serait le
+prochain critère à pré-enregistrer si quelqu'un reprend la ligne.
 
 ## Ce que cela dit de la question de départ
 

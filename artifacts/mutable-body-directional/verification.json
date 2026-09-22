@@ -1,0 +1,71 @@
+{
+  "criteria": {
+    "seeds": [
+      83,
+      97,
+      101
+    ],
+    "values": {
+      "83": {
+        "SN": {
+          "M1": 0.9183333333333333,
+          "reads_after_change": 1.4066666666666667,
+          "reads_control": 0.19666666666666666,
+          "control_hits_after": 8.226666666666667,
+          "change_hits_after": 5.053333333333334,
+          "own_policy_reads_after_change": 0.016666666666666666
+        },
+        "MS": {
+          "M1": 0.9983333333333333,
+          "reads_after_change": 3.0,
+          "reads_control": 2.3966666666666665,
+          "control_hits_after": 6.56,
+          "change_hits_after": 5.533333333333333,
+          "own_policy_reads_after_change": 0.5466666666666666
+        }
+      },
+      "97": {
+        "SN": {
+          "M1": 0.9829166666666667,
+          "reads_after_change": 1.4566666666666668,
+          "reads_control": 0.0,
+          "control_hits_after": 8.406666666666666,
+          "change_hits_after": 5.67,
+          "own_policy_reads_after_change": 0.05333333333333334
+        },
+        "MS": {
+          "M1": 0.9991666666666666,
+          "reads_after_change": 1.3066666666666666,
+          "reads_control": 1.6233333333333333,
+          "control_hits_after": 7.153333333333333,
+          "change_hits_after": 6.66,
+          "own_policy_reads_after_change": 0.26
+        }
+      },
+      "101": {
+        "SN": {
+          "M1": 0.9883333333333333,
+          "reads_after_change": 0.6033333333333334,
+          "reads_control": 0.0,
+          "control_hits_after": 8.41,
+          "change_hits_after": 5.816666666666666,
+          "own_policy_reads_after_change": 0.01
+        },
+        "MS": {
+          "M1": 0.9941666666666666,
+          "reads_after_change": 1.45,
+          "reads_control": 0.63,
+          "control_hits_after": 7.913333333333333,
+          "change_hits_after": 6.523333333333333,
+          "own_policy_reads_after_change": 0.49666666666666665
+        }
+      }
+    },
+    "D1_stable_updates_and_returns": true,
+    "D2_hypervigilance_direction": true,
+    "D3_tradeoff_direction": true,
+    "D4_stable_habit_does_not_return": true,
+    "D5_mutable_habit_returns": false,
+    "global": false
+  }
+}
