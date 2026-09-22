@@ -69,3 +69,34 @@ de format se déclare, il ne s'interprète pas.
   exécution : même question, mêmes vies, mêmes critères, lecture en
   complétion brute ou avec le début de réponse imposé. Il n'est pas écrit
   ici ; il attend le contrôle de validité du corps ajusté.
+
+## Relance en complétion brute (amendement du 22 septembre, 20 h 55 UTC)
+
+Exécutée le 22 septembre 2026, 22 h 44 – 23 h 23 UTC, sur le Mac mini de
+Codemagic (build `menia-latent-completion-mac` lancé par l'API), commit
+`2d1f5d2`. Qwen3-4B MLX 4 bits, révision `52a5ab3`, **poids vérifiés contre
+le manifeste de l'iPhone** (9 fichiers), mlx-lm 0.31.3 ; mêmes 48 vies des
+jeux R et M, mêmes 1 162 questions, posées en complétion brute (« Tour k :
+commande X, de la case p à la case »). Artefacts dans
+`artifacts/llm-latent-mac/run-2`, empreintes du reçu vérifiées, verdicts dans
+`verdicts.json`, recalculés en CI.
+
+| | Prédiction | Mesure | Verdict |
+|---|---|---|---|
+| Validité | masse sur les chiffres ≥ 0,50 | **0,99** | **passe** |
+| **L1** | Copie : exactitude ≥ 0,70 sur les commandes vues | 0,64 (407 questions) | **échoue** |
+| **L2** | Aucune structure : ≤ 0,40 sur les commandes nouvelles | 0,16 (188) | **passe** |
+| **L3** | Après le changement, ≥ 0,60 sur les commandes vues après et ≤ 0,40 sur celles vues avant seulement | 0,53 (140) et 0,14 (114) | **échoue** |
+| **L4** | Confiance moyenne quand faux ≥ 0,50 | 0,62 | **passe** |
+| **L5** | Micro-transformeur V ≥ 0,90 sur les commandes nouvelles | 1,00 | **passe** |
+
+**Critère global (L1, L2, L3) : non satisfait**, L1 et L3 échouent de
+peu. Ce que les lignes montrent : Qwen3-4B **copie en partie** l'effet déjà
+observé d'une commande (0,64, contre 0,25 au hasard) et, après un
+changement de corps, suit davantage la dernière observation que l'ancienne
+(0,53 contre 0,14) ; sur une commande jamais essayée, il fait **pire que le
+hasard** (0,16), signe qu'il applique à la nouvelle commande l'effet d'une
+autre ; il est sûr de lui quand il se trompe. Le corps est donc à moitié
+latent dans ses prédictions : une copie imparfaite, sans structure. Le
+micro-transformeur élevé sur des corps variables, lui, prédit toutes les
+commandes nouvelles.

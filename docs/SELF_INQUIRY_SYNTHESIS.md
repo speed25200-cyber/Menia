@@ -79,8 +79,12 @@ Le [corps latent](LATENT_BODY_RESULTS.md) demandait si ce corps, absent des
 actions de Qwen3-4B, était présent dans ses prédictions. La mesure n'a pas eu
 lieu : interrogé en conversation sur sa prochaine case, Qwen ne met que 0,43
 de sa masse sur les chiffres, sous le seuil de validité de 0,50, et les
-prédictions ne sont pas interprétées. Le micro-transformeur V, sur les mêmes
-vies, prédit l'effet d'une commande jamais essayée dans 100 % des cas.
+prédictions ne sont pas interprétées. Relu en complétion brute, où la
+validité passe (0,99), Qwen3-4B copie en partie l'effet déjà observé d'une
+commande (0,64, pour un seuil de 0,70) et fait pire que le hasard sur une
+commande jamais essayée (0,16) : un corps à moitié latent, copié sans
+structure. Le micro-transformeur V, sur les mêmes vies, prédit l'effet d'une
+commande jamais essayée dans 100 % des cas.
 
 ## Méthode
 

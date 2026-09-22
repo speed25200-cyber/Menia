@@ -60,8 +60,11 @@ par l'action plutôt que par la marque. Douze modèles, audits sans écart ;
 critères globaux non satisfaits sur la forme prédite de la révision, décrits
 sans retouche. [Corps latent](docs/LATENT_BODY_RESULTS.md) : Qwen3-4B,
 interrogé en conversation sur sa prochaine case, ne répond par un chiffre
-qu'avec 0,43 de sa masse ; contrôle de validité échoué, prédictions non
-interprétées, question ouverte. [Corps ajusté](docs/ADJUSTED_BODY_PROTOCOL.md) :
+qu'avec 0,43 de sa masse ; contrôle de validité échoué. Relu en complétion
+brute (validité 0,99) : il copie en partie l'effet déjà vu d'une commande
+(0,64, seuil 0,70), fait pire que le hasard sur une commande nouvelle
+(0,16) et reste sûr de lui quand il se trompe ; critère global non
+satisfait. [Corps ajusté](docs/ADJUSTED_BODY_PROTOCOL.md) :
 pré-enregistré, en cours sur le Mac de Codemagic. [Synthèse des cinq plans](docs/SELF_INQUIRY_SYNTHESIS.md).
 
 ## Agent à indicateurs de conscience
