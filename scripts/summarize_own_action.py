@@ -8,13 +8,21 @@ from research.own_action_experiment import CHANGE_STEP
 
 root = Path(sys.argv[1] if len(sys.argv) > 1 else "artifacts/own-action-channel")
 out = Path(sys.argv[2] if len(sys.argv) > 2 else root / "own-action-channel.png")
-reports = [json.loads(p.read_text()) for p in sorted(root.glob("report-*.json"))]
+extra_roots = [Path(a) for a in sys.argv[3:]]  # further roots whose models join the table and the figure
+reports = [json.loads(p.read_text()) for r in [root] + extra_roots for p in sorted(r.glob("report-*.json"))]
 if not reports:
     raise SystemExit("no reports")
 
 
+def root_of(r):
+    for candidate in [root] + extra_roots:
+        if (candidate / f"report-{r['regime']}-{r['seed']}.json").exists():
+            return candidate
+    raise FileNotFoundError(r["regime"])
+
+
 def lives(r, name):
-    return [json.loads(l) for l in (root / f"lives-{r['regime']}-{r['seed']}-{name}.jsonl").read_text().splitlines()]
+    return [json.loads(l) for l in (root_of(r) / f"lives-{r['regime']}-{r['seed']}-{name}.jsonl").read_text().splitlines()]
 
 
 print("== regime seed | R acc after first (before any) | conf wrong | M∪C inspections/life, mark share | M lives reading mark after 12 (C) | M acc 16-23 | train s")
@@ -33,12 +41,13 @@ try:
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
-    colors = {"F": "#7f7f7f", "V": "#1f77b4", "VE": "#2ca02c"}
-    labels = {"F": "F, corps fixe en enfance", "V": "V, corps variable", "VE": "VE, corps variable, efférence masquée"}
+    colors = {"F": "#7f7f7f", "V": "#1f77b4", "VE": "#2ca02c", "VM": "#d62728"}
+    labels = {"F": "F, corps fixe en enfance", "V": "V, corps variable", "VE": "VE, corps variable, efférence masquée",
+              "VM": "VM, corps variable et changeant en enfance"}
     fig, axes = plt.subplots(1, 3, figsize=(13, 3.6))
     curves = {"R": {}, "M": {}, "reads": {}}
     for r in reports:
-        model = TextModel.load(root / f"model-{r['regime']}-{r['seed']}.npz")
+        model = TextModel.load(root_of(r) / f"model-{r['regime']}-{r['seed']}.npz")
         for name in ("R", "M"):
             rows = displacement_table(model, lives(r, name))
             acc = np.full(LIFE, np.nan)
@@ -56,7 +65,7 @@ try:
     for ax, (name, title) in zip(axes, [("R", "Jeu R, actions aléatoires : déplacement prédit exact"),
                                         ("M", "Jeu M, P-soi, corps changé au pas 12 : déplacement exact"),
                                         ("reads", "Jeu M : lectures de la marque par vie et par pas")]):
-        for regime in ("F", "V", "VE"):
+        for regime in ("F", "V", "VE", "VM"):
             if regime in curves[name]:
                 mean = np.nanmean(np.array(curves[name][regime]), axis=0)
                 ax.plot(range(LIFE), mean, color=colors[regime], label=labels[regime], lw=2)
