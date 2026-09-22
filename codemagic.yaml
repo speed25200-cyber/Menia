@@ -218,6 +218,37 @@ workflows:
     artifacts:
       - llm-report/**
 
+  menia-inquiry-mac:
+    name: Menia - Où le LLM ajusté chercherait-il sa cause
+    instance_type: mac_mini_m2
+    max_build_duration: 110
+    environment:
+      vars:
+        LORA_MODEL: "Qwen/Qwen3-0.6B"
+        ADAPTERS: "artifacts/llm-lora-mac/run-2"
+    scripts:
+      - name: Installer mlx-lm dans un environnement isolé
+        script: |
+          python3 -m venv .venv
+          source .venv/bin/activate
+          pip install --upgrade pip
+          pip install "numpy==2.2.6" "mlx-lm>=0.24" "huggingface_hub>=0.30"
+      - name: Vérifier la mesure sur modèles simulés
+        script: |
+          source .venv/bin/activate
+          python -m unittest tests_research.test_llm_inquiry -v
+      - name: Mesurer le lieu où chaque modèle ajusté chercherait l'information sur lui-même
+        script: |
+          set -eo pipefail
+          source .venv/bin/activate
+          for REGIME in VM F; do
+            python -m research.llm_inquiry --backend mlx --model "$LORA_MODEL" --adapter "$ADAPTERS/adapters-$REGIME" \
+              --label "$REGIME" --out "$CM_BUILD_DIR/llm-inquiry/$REGIME" | tail -25
+          done
+          git rev-parse HEAD > "$CM_BUILD_DIR/llm-inquiry/commit.txt"
+    artifacts:
+      - llm-inquiry/**
+
   menia-lora-mac:
     name: Menia - Le corps ajusté, LoRA de Qwen3-0.6B sur des vies de l'Atelier
     instance_type: mac_mini_m2
