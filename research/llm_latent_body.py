@@ -87,9 +87,11 @@ def score_life(scorer, life, on_row=None):
 def summarize(rows):
     def acc(sub):
         return float(np.mean([r["correct"] for r in sub])) if sub else None
-    out = {"rows": len(rows), "accuracy": acc(rows),
-           "valid_mass_mean": float(np.mean([r["valid_mass"] for r in rows])) if rows else None,
-           "digit_mass_mean": float(np.mean([r["digit_mass"] for r in rows])) if rows else None,
+    def mean_of(key):
+        values = [r[key] for r in rows if key in r]
+        return float(np.mean(values)) if values else None
+    out = {"rows": len(rows), "accuracy": acc(rows), "valid_mass_mean": mean_of("valid_mass"),
+           "digit_mass_mean": mean_of("digit_mass"),
            "by_category": {}, "confidence_when_wrong": None, "confidence_when_right": None}
     for cat in sorted({r["category"] for r in rows}):
         sub = [r for r in rows if r["category"] == cat]
