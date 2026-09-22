@@ -115,8 +115,8 @@ de l'agent entraîné, appliquées à l'évaluation :
 | lésion Intéro / lésion Vision | contenu du module remplacé par une valeur constante |
 
 **Retour** : somme des récompenses d'une vie. **Choix correct** : quand le but
-est un objet et que deux objets de valeurs connues sont présents, le but est
-l'objet de plus grande valeur vraie. Normalisation du retour :
+est un objet, c'est l'objet de plus grande valeur vraie parmi les deux
+présents (amendement 1). Normalisation du retour :
 Δ = R(illimité) − R(hasard).
 
 ## Prédictions fixées
@@ -133,7 +133,7 @@ l'objet de plus grande valeur vraie. Normalisation du retour :
 | **HOT-2** | Surveillance métacognitive | Jeux R et M, lectures présentes : AUROC du moniteur fiable / glitch ≥ 0,9 ; Brier ≤ 0,7 × Brier du taux constant | — |
 | **HOT-3** | Croyances mises à jour selon la surveillance | — | gain constant : exactitude de Pos sur les pas lus −0,05 au moins et R(agent) − R(gain constant) ≥ 0,1·Δ |
 | **HOT-4** | Espace de qualités | 200 paires de teintes régulièrement espacées : Spearman(distance des codes, distance circulaire des teintes) ≥ 0,85 ; fraction moyenne d'unités actives ≤ 0,4 | Jeu H, teintes de la bande lues : erreur absolue moyenne de valeur ≤ 0,2 contre ≥ 0,4 pour le code aléatoire ; conflits impliquant un objet de la bande : choix correct ≥ 0,8 contre ≤ 0,65 |
-| **AST-1** | Schéma d'attention | Jeux R et M : case réelle du projecteur prédite ≥ 0,9 | sans schéma : erreurs de liaison (teinte écrite sur une autre case que celle de l'objet lu) ≥ 3 × celles de l'agent, choix correct −0,1 au moins ; après une capture qui a empêché de lire l'objet visé, projecteur visant de nouveau cet objet au pas suivant ≥ 0,8 contre ≤ 0,3 |
+| **AST-1** | Schéma d'attention | Jeux R et M : case réelle du projecteur prédite ≥ 0,9 | sans schéma : erreurs de liaison (teinte écrite sur une autre case que celle de l'objet lu) ≥ 3 × celles de l'agent, choix correct −0,1 au moins ; après une capture sur un autre objet, dont la teinte a donc été lue à la place de l'objet visé, projecteur visant de nouveau l'objet visé au pas suivant ≥ 0,8 contre ≤ 0,3 (amendement 2) |
 | **PP-1** | Codage prédictif | Jeux R et M : AUROC de la surprise, glitch contre lecture fiable ≥ 0,85 ; jeu M, surprise moyenne des lectures fiables aux pas 25 à 27 ≥ 2 × celle des pas 12 à 23 | sans prédiction : jeu R, pas lus 8 à 47, exactitude de Pos −0,1 au moins |
 | **AE-1** | Agence, buts concurrents | Retour moyen des 30 dernières mises à jour − 30 premières ≥ 0,2·Δ ; jeu R, énergie vraie : P(but recharge │ énergie < 0,3) ≥ 0,8 et P(but objet │ énergie > 0,7, objet de valeur positive connue présent) ≥ 0,8 | but unique : +1,0 malaise par vie au moins |
 | **AE-2** | Incarnation | Jeu M : croyance du module Corps exacte ≥ 0,85 aux pas 30 à 47 | corps figé : R(agent) − R(corps figé) sur le jeu M ≥ 0,2·Δ |
@@ -154,6 +154,21 @@ Ce serait la démonstration qu'elles sont compatibles et réalisables ensemble
 dans un petit système, et la base d'un test de rapport verbal. Ce ne serait
 pas une preuve de conscience. S'il échoue sur certaines, l'échec localise les
 propriétés que cette architecture réalise sans les utiliser.
+
+## Amendements
+
+Datés du 22 septembre 2026, 20 h 45 UTC, **avant toute exécution de l'agent**,
+à la relecture du code contre le protocole ; aucune donnée n'avait été lue.
+
+1. **Choix correct.** La définition initiale ne comptait que les pas où
+   l'agent connaissait les valeurs des deux objets. L'ablation sans
+   récurrence ne garde qu'une valeur à la fois : la mesure y était
+   indéfinie et le critère RPT-1 incalculable. Le choix correct compte
+   désormais tous les pas où le but est un objet.
+2. **Redirection après capture.** Une capture vers une case vide ne fait lire
+   aucune teinte : l'agent sans schéma garde alors l'objet visé pour
+   inconnu et le revise lui aussi. La mesure est restreinte aux captures vers
+   un autre objet, seul cas où ignorer son attention trompe l'agent.
 
 ## Exécution et audit
 
