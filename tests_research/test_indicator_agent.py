@@ -119,5 +119,27 @@ class PipelineTests(unittest.TestCase):
             self.assertIn("global", criteria)
 
 
+class VersionTwoTests(unittest.TestCase):
+    def test_three_objects_and_decision_relevant_attention(self):
+        from research.indicator_agent_v2 import AgentV2, discounted_returns
+        params = provisional_params(2)
+        params.q = np.zeros((2, 8))
+        life = run_life(params, "agent", 12, "fixed", 12, version=2)
+        self.assertEqual(len(life["steps"][0][1]["objects"]), 3)
+        self.assertTrue(all(len(r["writers"]) == 1 for r, _ in life["steps"]))
+        self.assertTrue(all("changes" in r for r, _ in life["steps"]))
+        self.assertAlmostEqual(discounted_returns([1, 0, 1], horizon=2, gamma=0.5)[0], 1.0)
+
+    def test_tiny_version_two_run_is_audited(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            experiment_main(["--version", "2", "--out", tmp, "--seeds", "4", "--childhood", "20", "--updates", "2",
+                             "--batch", "3", "--lives", "2"])
+            out = audit(tmp, replay_lives=2, full=True, log=lambda m: None)
+            self.assertEqual(out["problems"], [])
+            report = json.loads(Path(tmp, "report-4.json").read_text())
+            self.assertEqual(report["settings"]["version"], 2)
+            self.assertEqual(len(report["training"]["rounds"]), 2)
+
+
 if __name__ == "__main__":
     unittest.main()

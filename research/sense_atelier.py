@@ -71,10 +71,11 @@ class SenseAtelier:
 
     MODES = ("childhood", "fixed", "change", "band")
 
-    def __init__(self, seed, mode="fixed", change_step=24):
+    def __init__(self, seed, mode="fixed", change_step=24, n_objects=N_OBJECTS):
         if mode not in self.MODES:
             raise ValueError("unknown mode")
         self.seed, self.mode, self.forced_step = int(seed), mode, change_step
+        self.n_objects = int(n_objects)
         rng = np.random.default_rng(self.seed)
         streams = [np.random.default_rng(s) for s in rng.integers(2 ** 63, size=14)]
         (start, body, flash, reading, felt, energy, capture, cue, hue_noise, spawn_square, spawn_hue, change, fault,
@@ -104,7 +105,7 @@ class SenseAtelier:
         self.felt_random = felt.integers(4, size=T)
         self.energy_noise = energy.normal(0, ENERGY_NOISE, T)
         self.satiety_noise = energy.normal(0, ENERGY_NOISE, T)
-        self.expire_u = expire.random((T, N_OBJECTS))
+        self.expire_u = expire.random((T, self.n_objects))
         self.capture_u = capture.random(T)
         self.capture_pick = capture.random(T)
         self.cue_u = cue.random(T)
@@ -144,7 +145,7 @@ class SenseAtelier:
         self.faints = 0
         self.energy_faints = 0
         self.food_faints = 0
-        for _ in range(N_OBJECTS):
+        for _ in range(self.n_objects):
             self._spawn()
         self.last_action = None
         self.eaten = None

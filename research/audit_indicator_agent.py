@@ -21,9 +21,10 @@ def read_jsonl(path):
     return [json.loads(line) for line in Path(path).read_text().splitlines() if line.strip()]
 
 
-def replay(params, seed, set_index, name, record):
+def replay(params, seed, set_index, name, record, version=1):
     base, mode = SETS[name]
-    life = run_life(params, "agent", life_seed(base, record["life"]), mode, seed * 1_000_000 + set_index * 10_000 + record["life"])
+    life = run_life(params, "agent", life_seed(base, record["life"]), mode, seed * 1_000_000 + set_index * 10_000 + record["life"],
+                    version=version)
     steps = life["steps"]
     return ([r["action"] for r, _ in steps] == record["actions"]
             and [r["next_intent"] for r, _ in steps] == record["intents"]
@@ -41,16 +42,17 @@ def audit(root, replay_lives=2, full=False, log=print):
             if sha256(root / name) != digest:
                 problems.append(f"{seed}: hash of {name}")
         params = Params.load(root / f"params-{seed}.json")
+        version = report["settings"].get("version", 1)
         space = quality_space(params.hue_code)
         if space != report["quality_space"]:
             problems.append(f"{seed}: quality space differs")
         for set_index, name in enumerate(SETS):
             records = read_jsonl(root / f"lives-{seed}-{name}.jsonl")
             for record in records[:replay_lives]:
-                if not replay(params, seed, set_index, name, record):
+                if not replay(params, seed, set_index, name, record, version):
                     problems.append(f"{seed}: replay of set {name} life {record['life']}")
         if full:
-            evaluation, _ = evaluate(params, seed, lives=report["settings"]["test_lives"], log=lambda m: None)
+            evaluation, _ = evaluate(params, seed, lives=report["settings"]["test_lives"], log=lambda m: None, version=version)
             for variant in VARIANTS:
                 for name in SETS:
                     if evaluation[variant][name] != report["evaluation"][variant][name]:

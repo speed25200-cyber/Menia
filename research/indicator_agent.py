@@ -203,7 +203,7 @@ GOAL_FEATURES = 6
 class Params:
     """Everything the agent learns."""
 
-    def __init__(self, hue_code, monitor, base_rate, schema, attention=None, goal=None, random_code=None):
+    def __init__(self, hue_code, monitor, base_rate, schema, attention=None, goal=None, random_code=None, q=None):
         self.hue_code = hue_code
         self.monitor = np.asarray(monitor, dtype=float)
         self.base_rate = float(base_rate)
@@ -211,19 +211,22 @@ class Params:
         self.attention = np.zeros((len(MODULES), ATT_FEATURES)) if attention is None else np.asarray(attention, dtype=float)
         self.goal = np.zeros(GOAL_FEATURES) if goal is None else np.asarray(goal, dtype=float)
         self.random_code = random_code
+        self.q = None if q is None else np.asarray(q, dtype=float)
 
     def to_json(self):
         return {"format": "menia-indicator-agent", "version": 1, "hue_code": self.hue_code.to_json(),
                 "random_code": self.random_code.to_json() if self.random_code else None,
                 "monitor": self.monitor.tolist(), "base_rate": self.base_rate, "schema": self.schema.tolist(),
-                "attention": self.attention.tolist(), "goal": self.goal.tolist()}
+                "attention": self.attention.tolist(), "goal": self.goal.tolist(),
+                **({"q": self.q.tolist()} if self.q is not None else {})}
 
     @classmethod
     def from_json(cls, value):
         if value.get("format") != "menia-indicator-agent":
             raise ValueError("unknown format")
         return cls(load_hue_code(value["hue_code"]), value["monitor"], value["base_rate"], value["schema"],
-                   value["attention"], value["goal"], load_hue_code(value["random_code"]) if value["random_code"] else None)
+                   value["attention"], value["goal"], load_hue_code(value["random_code"]) if value["random_code"] else None,
+                   value.get("q"))
 
     def save(self, path):
         Path(path).write_text(json.dumps(self.to_json()) + "\n")

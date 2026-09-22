@@ -20,6 +20,10 @@ from .indicator_agent import (Agent, Params, HueCode, VARIANTS, MODULES, K, ATT_
 
 SEEDS = (17, 29, 43)
 DEV_SEED = 5
+SEEDS_V2 = (53, 67, 79)
+DEV_SEED_V2 = 7
+ROUNDS_V2 = 25
+ROUND_LIVES_V2 = 160
 SETS = {"R": (930001, "fixed"), "M": (930002, "change"), "H": (930003, "band")}
 CHILDHOOD_LIVES = 2000
 UPDATES = 800
@@ -32,10 +36,15 @@ def life_seed(base, i):
     return int(base) * 1000 + int(i)
 
 
-def run_life(params, variant, env_seed, mode, agent_seed, learn=False, phase="adult"):
-    env = SenseAtelier(env_seed, mode)
+def run_life(params, variant, env_seed, mode, agent_seed, learn=False, phase="adult", version=1, epsilon=0.0):
+    if version == 1:
+        env = SenseAtelier(env_seed, mode)
+        agent = Agent(params, variant, seed=agent_seed, learn=learn, phase=phase)
+    else:
+        from .indicator_agent_v2 import AgentV2
+        env = SenseAtelier(env_seed, mode, n_objects=3)
+        agent = AgentV2(params, variant, seed=agent_seed, learn=learn, phase=phase, epsilon=epsilon)
     obs, truth = env.reset()
-    agent = Agent(params, variant, seed=agent_seed, learn=learn, phase=phase)
     steps, rewards = [], []
     for _ in range(LIFE):
         action, intent, rec = agent.step(obs)
@@ -43,7 +52,7 @@ def run_life(params, variant, env_seed, mode, agent_seed, learn=False, phase="ad
         obs, truth = env.step(action, intent)
         rewards.append(obs["reward"])
     return {"steps": steps, "rewards": rewards, "faints": env.faints, "energy_faints": env.energy_faints, "grads": agent.grads,
-            "env": env}
+            "samples": getattr(agent, "samples", []), "env": env}
 
 
 # ---------------------------------------------------------------------------------------------- childhood
@@ -54,11 +63,12 @@ def provisional_params(seed):
     return Params(code, np.zeros(MONITOR_FEATURES), 0.8, np.zeros(6))
 
 
-def childhood(seed, lives=CHILDHOOD_LIVES, log=print):
+def childhood(seed, lives=CHILDHOOD_LIVES, log=print, version=1):
     params = provisional_params(seed)
     hues, mon_X, mon_y, groups, labels = [], [], [], [], []
     for i in range(lives):
-        life = run_life(params, "agent", 10_000_000 + seed * 100_000 + i, "childhood", seed * 7919 + i, phase="childhood")
+        life = run_life(params, "agent", 10_000_000 + seed * 100_000 + i, "childhood", seed * 7919 + i, phase="childhood",
+                        version=version)
         steps = life["steps"]
         for k, (rec, truth) in enumerate(steps):
             if k + 1 < len(steps) and steps[k + 1][1]["eaten"] is not None:
@@ -115,6 +125,29 @@ def reinforce(params, seed, updates=UPDATES, batch=BATCH, lr=LR, log=print):
         history.append(round(float(togo[:, 0].mean()), 6))
         if u % 25 == 0:
             log(f"[{seed}] update {u} return {np.mean(history[-25:]):.3f}")
+    return params, history
+
+
+def fit_goal_values(params, seed, rounds=25, lives=160, epsilon=0.2, log=print):
+    """Version 2: fitted Monte-Carlo values of the two goals, epsilon-greedy while learning."""
+    from .indicator_agent_v2 import Q_FEATURES, discounted_returns, fit_values
+    params.q = np.zeros((2, Q_FEATURES))
+    history = []
+    for r in range(1, rounds + 1):
+        X, y, returns = {0: [], 1: []}, {0: [], 1: []}, []
+        for j in range(lives):
+            life = run_life(params, "agent", 30_000_000 + seed * 100_000 + r * lives + j, "childhood",
+                            seed * 104729 + r * lives + j, learn=True, version=2, epsilon=epsilon)
+            G = discounted_returns(life["rewards"])
+            for t, k, phi in life["samples"]:
+                X[k].append(phi)
+                y[k].append(G[t])
+            returns.append(float(sum(life["rewards"])))
+        for k in (0, 1):
+            if len(y[k]) > 10:
+                params.q[k] = fit_values(X[k], y[k])
+        history.append(round(float(np.mean(returns)), 6))
+        log(f"[{seed}] round {r} return {history[-1]:.3f} samples {len(y[0])}/{len(y[1])}")
     return params, history
 
 
@@ -296,7 +329,7 @@ def spearman(a, b):
     return float(np.corrcoef(ra, rb)[0, 1])
 
 
-def evaluate(params, seed, variants=VARIANTS, lives=TEST_LIVES, log=print):
+def evaluate(params, seed, variants=VARIANTS, lives=TEST_LIVES, log=print, version=1):
     results, records = {}, {}
     for variant in variants:
         results[variant] = {}
@@ -305,7 +338,8 @@ def evaluate(params, seed, variants=VARIANTS, lives=TEST_LIVES, log=print):
             digest = hashlib.sha256()
             compact = []
             for i in range(lives):
-                life = run_life(params, variant, life_seed(base, i), mode, seed * 1_000_000 + set_index * 10_000 + i)
+                life = run_life(params, variant, life_seed(base, i), mode, seed * 1_000_000 + set_index * 10_000 + i,
+                                version=version)
                 tally_life(tally, life, name)
                 record = {"life": i, "actions": [r["action"] for r, _ in life["steps"]],
                           "intents": [r["next_intent"] for r, _ in life["steps"]],
@@ -447,7 +481,12 @@ def criteria(reports):
     out["PP-1"] = (s_auroc >= 0.85 and after is not None and before is not None and after >= 2 * before and ge(pred_gap, 0.1)
                    and seeds_ok("agent", "no_prediction", "pos_read"))
     # AE-1
-    learning = float(np.mean([np.mean(r["training"]["reinforce"][-30:]) - np.mean(r["training"]["reinforce"][:30]) for r in reports]))
+    def learning_gain(training):
+        if "rounds" in training:
+            return np.mean(training["rounds"][-3:]) - np.mean(training["rounds"][:3])
+        return np.mean(training["reinforce"][-30:]) - np.mean(training["reinforce"][:30])
+
+    learning = float(np.mean([learning_gain(r["training"]) for r in reports]))
     low_charge = pooled(reports, "agent", "R", "charge_when_low")
     high_object = pooled(reports, "agent", "R", "object_when_high")
     faints_single = gap("single_goal", "agent", "energy_faints")
@@ -468,22 +507,28 @@ def criteria(reports):
 
 # ---------------------------------------------------------------------------------------------- driver
 
-def run_seed(seed, root, childhood_lives=CHILDHOOD_LIVES, updates=UPDATES, batch=BATCH, lives=TEST_LIVES):
+def run_seed(seed, root, childhood_lives=CHILDHOOD_LIVES, updates=UPDATES, batch=BATCH, lives=TEST_LIVES, version=1):
     root = Path(root)
     root.mkdir(parents=True, exist_ok=True)
     started = time.time()
     log = lambda msg: print(msg, flush=True)
-    params, info = childhood(seed, childhood_lives, log)
+    params, info = childhood(seed, childhood_lives, log, version)
     t_child = time.time()
-    params, history = reinforce(params, seed, updates, batch, log=log)
+    if version == 1:
+        params, history = reinforce(params, seed, updates, batch, log=log)
+        learned = {"reinforce": history}
+    else:
+        params, history = fit_goal_values(params, seed, rounds=updates, lives=batch, log=log)
+        learned = {"rounds": history}
     t_rl = time.time()
     params.save(root / f"params-{seed}.json")
-    evaluation, records = evaluate(params, seed, lives=lives, log=log)
+    evaluation, records = evaluate(params, seed, lives=lives, log=log, version=version)
     for name, recs in records.items():
         (root / f"lives-{seed}-{name}.jsonl").write_text("".join(json.dumps(r) + "\n" for r in recs))
     report = {"seed": seed, "protocol": "docs/INDICATOR_AGENT_PROTOCOL.md",
-              "settings": {"childhood_lives": childhood_lives, "updates": updates, "batch": batch, "test_lives": lives},
-              "training": {**info, "reinforce": history}, "quality_space": quality_space(params.hue_code),
+              "settings": {"childhood_lives": childhood_lives, "updates": updates, "batch": batch, "test_lives": lives,
+                           "version": version},
+              "training": {**info, **learned}, "quality_space": quality_space(params.hue_code),
               "evaluation": evaluation,
               "files": {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(root.glob(f"*-{seed}*"))},
               "timing": {"childhood": round(t_child - started, 1), "reinforce": round(t_rl - t_child, 1),
@@ -495,20 +540,29 @@ def run_seed(seed, root, childhood_lives=CHILDHOOD_LIVES, updates=UPDATES, batch
 
 def main(argv=None):
     parser = argparse.ArgumentParser()
-    parser.add_argument("--out", default="artifacts/indicator-agent")
-    parser.add_argument("--seeds", type=int, nargs="+", default=list(SEEDS))
+    parser.add_argument("--version", type=int, choices=[1, 2], default=1)
+    parser.add_argument("--out", default=None)
+    parser.add_argument("--seeds", type=int, nargs="+", default=None)
     parser.add_argument("--childhood", type=int, default=CHILDHOOD_LIVES)
-    parser.add_argument("--updates", type=int, default=UPDATES)
-    parser.add_argument("--batch", type=int, default=BATCH)
+    parser.add_argument("--updates", type=int, default=None, help="REINFORCE updates (v1) or Monte-Carlo rounds (v2)")
+    parser.add_argument("--batch", type=int, default=None, help="lives per update (v1) or per round (v2)")
     parser.add_argument("--lives", type=int, default=TEST_LIVES)
     parser.add_argument("--jobs", type=int, default=1)
     a = parser.parse_args(argv)
+    v2 = a.version == 2
+    out = a.out or ("artifacts/indicator-agent-v2" if v2 else "artifacts/indicator-agent")
+    seeds = a.seeds or (list(SEEDS_V2) if v2 else list(SEEDS))
+    updates = a.updates or (ROUNDS_V2 if v2 else UPDATES)
+    batch = a.batch or (ROUND_LIVES_V2 if v2 else BATCH)
+    a.out = out
     if a.jobs > 1:
         with ProcessPoolExecutor(a.jobs) as pool:
-            reports = list(pool.map(run_seed, a.seeds, [a.out] * len(a.seeds), [a.childhood] * len(a.seeds),
-                                    [a.updates] * len(a.seeds), [a.batch] * len(a.seeds), [a.lives] * len(a.seeds)))
+            reports = list(pool.map(run_seed, seeds, [out] * len(seeds), [a.childhood] * len(seeds),
+                                    [updates] * len(seeds), [batch] * len(seeds), [a.lives] * len(seeds),
+                                    [a.version] * len(seeds)))
     else:
-        reports = [run_seed(s, a.out, a.childhood, a.updates, a.batch, a.lives) for s in a.seeds]
+        reports = [run_seed(s, out, a.childhood, updates, batch, a.lives, a.version) for s in seeds]
+    a.seeds = seeds
     verdict, values = criteria(reports)
     summary = {"seeds": a.seeds, "criteria": verdict, "values": values}
     Path(a.out, "criteria.json").write_text(json.dumps(summary, indent=1) + "\n")
