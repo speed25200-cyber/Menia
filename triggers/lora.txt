@@ -1,1 +1,0 @@
-Lancement 1 — corps ajusté, LoRA de Qwen3-0.6B, protocole docs/ADJUSTED_BODY_PROTOCOL.md, 2026-09-22T16:50Z

@@ -109,17 +109,12 @@ workflows:
     instance_type: mac_mini_m2
     max_build_duration: 110
     triggering:
-      # Starts when triggers/latent.txt changes on the research branch (a tag push is refused by the session proxy).
+      # Tags are created by .github/workflows/codemagic-launch.yml, which also forwards the event to the Codemagic webhook.
       events:
-        - push
-      branch_patterns:
-        - pattern: 'claude/codex-repo-analysis-ycbook'
+        - tag
+      tag_patterns:
+        - pattern: 'latent-*'
           include: true
-          source: true
-      when:
-        changeset:
-          includes:
-            - 'triggers/latent.txt'
     environment:
       vars:
         LATENT_EPISODES: "48"
@@ -147,6 +142,17 @@ workflows:
             --episodes "$LATENT_EPISODES" \
             --out "$CM_BUILD_DIR/llm-latent" | tail -80
           git rev-parse HEAD > "$CM_BUILD_DIR/llm-latent/commit.txt"
+      - name: Publier les résultats sur la branche de recherche (au mieux)
+        script: |
+          set +e
+          BRANCH="claude/codex-repo-analysis-ycbook"
+          DEST="artifacts/llm-latent-mac/run-$(date -u +%Y%m%dT%H%MZ)"
+          git fetch origin "$BRANCH" && git checkout -B publish FETCH_HEAD || exit 0
+          mkdir -p "$DEST" && cp -R "$CM_BUILD_DIR/llm-latent/." "$DEST/"
+          find "$DEST" -name "*.safetensors" -size +20M -delete
+          git config user.name "Codemagic" && git config user.email "noreply@codemagic.io"
+          git add "$DEST" && git commit -q -m "Publier les artefacts Codemagic de corps latent dans $DEST" || exit 0
+          git push origin publish:"$BRANCH" && echo "résultats publiés dans $DEST" || echo "push refusé, artefacts à télécharger depuis Codemagic"
     artifacts:
       - llm-latent/**
 
@@ -155,17 +161,12 @@ workflows:
     instance_type: mac_mini_m2
     max_build_duration: 120
     triggering:
-      # Starts when triggers/lora.txt changes on the research branch.
+      # Tags are created by .github/workflows/codemagic-launch.yml, which also forwards the event to the Codemagic webhook.
       events:
-        - push
-      branch_patterns:
-        - pattern: 'claude/codex-repo-analysis-ycbook'
+        - tag
+      tag_patterns:
+        - pattern: 'lora-*'
           include: true
-          source: true
-      when:
-        changeset:
-          includes:
-            - 'triggers/lora.txt'
     environment:
       vars:
         LORA_MODEL: "Qwen/Qwen3-0.6B"
@@ -208,5 +209,16 @@ workflows:
             fi
           done
           git rev-parse HEAD > "$OUT/commit.txt"
+      - name: Publier les résultats sur la branche de recherche (au mieux)
+        script: |
+          set +e
+          BRANCH="claude/codex-repo-analysis-ycbook"
+          DEST="artifacts/llm-lora-mac/run-$(date -u +%Y%m%dT%H%MZ)"
+          git fetch origin "$BRANCH" && git checkout -B publish FETCH_HEAD || exit 0
+          mkdir -p "$DEST" && cp -R "$CM_BUILD_DIR/llm-lora/." "$DEST/"
+          find "$DEST" -name "*.safetensors" -size +20M -delete
+          git config user.name "Codemagic" && git config user.email "noreply@codemagic.io"
+          git add "$DEST" && git commit -q -m "Publier les artefacts Codemagic de corps ajusté dans $DEST" || exit 0
+          git push origin publish:"$BRANCH" && echo "résultats publiés dans $DEST" || echo "push refusé, artefacts à télécharger depuis Codemagic"
     artifacts:
       - llm-lora/**

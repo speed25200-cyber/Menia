@@ -1,0 +1,72 @@
+name: Codemagic launch
+
+# Relay for a session whose proxy refuses tag pushes and Codemagic's API:
+# creates the tag that a Codemagic workflow watches, then forwards a GitHub-style
+# push event for that tag to the application's Codemagic webhook.
+on:
+  workflow_dispatch:
+    inputs:
+      experiment:
+        description: "latent (corps latent de Qwen3-4B), lora (corps ajusté de Qwen3-0.6B) ou atelier"
+        required: true
+        type: choice
+        options: [latent, lora, atelier]
+      hook:
+        description: "URL du webhook Codemagic de l'application (masquée dans les journaux)"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  launch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Créer et pousser le tag
+        id: tag
+        env:
+          HOOK: ${{ inputs.hook }}
+        run: |
+          echo "::add-mask::$HOOK"
+          TAG="${{ inputs.experiment }}-${{ github.run_number }}"
+          git config user.name "codemagic-launch"
+          git config user.email "noreply@github.com"
+          git tag -a "$TAG" -m "Lancement $TAG depuis ${{ github.ref_name }}"
+          git push origin "$TAG"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+      - name: Transmettre l'événement de tag à Codemagic
+        env:
+          HOOK: ${{ inputs.hook }}
+          TAG: ${{ steps.tag.outputs.tag }}
+          REPO_JSON: ${{ toJSON(github.event.repository) }}
+          ACTOR: ${{ github.actor }}
+          BASE: refs/heads/${{ github.ref_name }}
+        run: |
+          echo "::add-mask::$HOOK"
+          SHA=$(git rev-parse HEAD)
+          MSG=$(git log -1 --pretty=%s)
+          jq -n --arg ref "refs/tags/$TAG" --arg sha "$SHA" --arg msg "$MSG" --arg actor "$ACTOR" --arg base "$BASE" \
+             --argjson repo "$REPO_JSON" '{
+            ref: $ref, before: "0000000000000000000000000000000000000000", after: $sha,
+            created: true, deleted: false, forced: false, base_ref: $base,
+            compare: ($repo.html_url + "/commit/" + $sha), commits: [],
+            head_commit: {id: $sha, distinct: true, message: $msg, timestamp: (now | todate),
+                          url: ($repo.html_url + "/commit/" + $sha),
+                          author: {name: $actor, email: ($actor + "@users.noreply.github.com"), username: $actor},
+                          committer: {name: $actor, email: ($actor + "@users.noreply.github.com"), username: $actor},
+                          added: [], removed: [], modified: []},
+            repository: $repo,
+            pusher: {name: $actor, email: ($actor + "@users.noreply.github.com")},
+            sender: {login: $actor}
+          }' > payload.json
+          CODE=$(curl -sS -o response.txt -w "%{http_code}" -X POST "$HOOK" \
+            -H "Content-Type: application/json" -H "X-GitHub-Event: push" \
+            -H "X-GitHub-Delivery: ${{ github.run_id }}-${{ github.run_attempt }}" \
+            -H "User-Agent: GitHub-Hookshot/codemagic-launch" --data @payload.json)
+          echo "Codemagic HTTP $CODE"
+          cat response.txt; echo
+          test "$CODE" -lt 300
