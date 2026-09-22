@@ -131,13 +131,18 @@ def validation_losses(log_path):
 
 
 def lora_verdicts(run):
-    run = Path(run)
+    """run: one directory, or several (one build per regime); each model and log is taken from the first that has it."""
+    runs = [Path(r) for r in (run if isinstance(run, (list, tuple)) else [run])]
+
+    def find(relative):
+        return next((r / relative for r in runs if (r / relative).exists()), runs[0] / relative)
+
     models, valid = {}, {}
     for label in ("base", "F", "VM"):
-        if (run / label / "rows-R.jsonl").exists():
-            models[label] = cells(read_rows(run / label / "rows-R.jsonl"), read_rows(run / label / "rows-M.jsonl"))
+        if find(f"{label}/rows-R.jsonl").exists():
+            models[label] = cells(read_rows(find(f"{label}/rows-R.jsonl")), read_rows(find(f"{label}/rows-M.jsonl")))
             valid[label] = at_least(models[label]["digit_mass"], VALIDITY_MASS)
-    losses = {label: validation_losses(run / f"lora-{label}.log") for label in ("F", "VM")}
+    losses = {label: validation_losses(find(f"lora-{label}.log")) for label in ("F", "VM")}
     out = {"valid": valid, "cells": models, "validation_losses": losses}
     final = {k: v[-1][1] for k, v in losses.items() if v}
     out["budget_sufficient"] = final["VM"] < final["F"] if len(final) == 2 else None
@@ -167,7 +172,8 @@ def lora_verdicts(run):
 def main(argv=None):
     parser = argparse.ArgumentParser()
     parser.add_argument("--latent", default=None, help="run directory of menia-latent-mac (rows-R.jsonl, rows-M.jsonl)")
-    parser.add_argument("--lora", default=None, help="run directory of menia-lora-mac (base/, F/, VM/, lora-*.log)")
+    parser.add_argument("--lora", default=None, nargs="+",
+                        help="run directory or directories of the adjusted body (base/, F/, VM/, lora-*.log)")
     parser.add_argument("--own-action-root", default="artifacts/own-action-channel")
     parser.add_argument("--episodes", type=int, default=48)
     parser.add_argument("--output", default=None)
