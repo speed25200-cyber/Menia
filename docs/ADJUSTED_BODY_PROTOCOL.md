@@ -94,3 +94,15 @@ mêmes réglages LoRA, avec la rétropropagation à points de contrôle
 la mémoire. Un échec de l'ajustement arrête désormais le build. Le modèle de
 base est réévalué dans le même build. Artefacts attendus dans
 `artifacts/llm-lora-mac/run-2`.
+
+## Second amendement d'exécution, 22 septembre 2026, 23 h 30 UTC
+
+**La relance avec points de contrôle a dépassé la durée maximale d'un build
+(120 minutes)** : l'étape d'ajustement a été annulée à 22 h 43, sans
+artefact ni journal d'ajustement (`artifacts/llm-lora-mac/run-2`, état
+`timeout`). Rien n'a été lu. Un premier build `lora-2`, lancé en double par
+le tag, avait déjà dépassé ce temps plus tôt (18 h 26 – 20 h 26). **Relance
+en deux builds**, `menia-lora-f-mac` (base et F) et `menia-lora-vm-mac` (VM),
+chacun avec les mêmes données, les mêmes réglages LoRA et les points de
+contrôle ; résultats attendus dans `artifacts/llm-lora-mac/run-3-f` et
+`run-3-vm`, verdicts calculés sur les deux répertoires réunis.
