@@ -8,13 +8,13 @@ import time
 import numpy as np
 from .origin_env import LIFE, N_MOVE
 from .origin_neural import (WorldModel, train_world_model, run_lives, fit_probe, probe_predict)
-from .origin_rl import QNetwork, greedy_lives, feature_size
+from .origin_rl import QNetwork, greedy_lives, feature_size, train_policy
 
 SEEDS = (17, 29, 43)
 TEST_SEED = 910001
 CONTROL_SEED = 910002
 CHANGE_STEP = 12
-REGIMES = {"S": (None, 0.0), "MS": ("self", 0.5), "MW": ("world", 0.5), "MS10": ("self", 0.1)}
+REGIMES = {"S": (None, 0.0), "SN": (None, 0.0), "MS": ("self", 0.5), "MW": ("world", 0.5), "MS10": ("self", 0.1)}
 
 
 def mark_reads_after(lives, step=CHANGE_STEP):
@@ -63,6 +63,8 @@ def main():
     parser.add_argument("--updates", type=int, default=8000)
     parser.add_argument("--hidden", type=int, default=64)
     parser.add_argument("--lives", type=int, default=300)
+    parser.add_argument("--train-policy", action="store_true", help="also learn a prudence β=3 policy on this regime's own model")
+    parser.add_argument("--policy-episodes", type=int, default=10000)
     args = parser.parse_args()
     root = Path(args.out)
     root.mkdir(parents=True, exist_ok=True)
@@ -116,13 +118,25 @@ def main():
                 run["lives"]["change-learned"] = {"log_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
                                                   "mark_reads_after_change_step": mark_reads_after(lives), "hits": hits_ratio(lives),
                                                   "policy_sha256": hashlib.sha256(policy_path.read_bytes()).hexdigest()}
+            if args.train_policy:
+                q, _, _ = train_policy(model, "T", seed, "prudence", 3.0, episodes=args.policy_episodes)
+                q_path = root / f"policy-{regime}-{seed}-prudence-3.json"
+                q.save(q_path, {"regime": regime, "seed": seed, "reward": "prudence", "beta": 3.0, "episodes": args.policy_episodes})
+                for name, change in (("change-own-policy", CHANGE_STEP), ("control-own-policy", None)):
+                    lives = greedy_lives(model, QNetwork.load(q_path), "T", TEST_SEED if change else CONTROL_SEED, args.lives, forced_change_step=change)
+                    path = root / f"lives-{regime}-{seed}-{name}.jsonl"
+                    write_jsonl(path, lives)
+                    run["lives"][name] = {"log_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+                                          "mark_reads_after_change_step": mark_reads_after(lives), "hits": hits_ratio(lives),
+                                          "policy_sha256": hashlib.sha256(q_path.read_bytes()).hexdigest()}
             run["seconds"] = time.perf_counter() - t0
             report["runs"].append(run)
             print(json.dumps({"regime": regime, "seed": seed, "M1": round(run["M1_update"]["new_body_accuracy"], 3),
                               "M2": round(run["M2_detection"]["jump"], 3), "M3": round(run["M3_mark_reads_after_change"], 3),
                               "M3_control": round(run["M3_control_mark_reads_after_step12"], 3),
                               "M4": run["M4_recovery"]["ratio"] and round(run["M4_recovery"]["ratio"], 3),
-                              "learned": run["lives"].get("change-learned", {}).get("mark_reads_after_change_step")}), flush=True)
+                              "learned": run["lives"].get("change-learned", {}).get("mark_reads_after_change_step"),
+                              "own_policy": run["lives"].get("change-own-policy", {}).get("mark_reads_after_change_step")}), flush=True)
         report["wall_seconds"] = time.perf_counter() - start
         report["source_sha256"] = {name: hashlib.sha256(Path(name).read_bytes()).hexdigest() for name in
                                    ("research/origin_env.py", "research/origin_neural.py", "research/mutable_experiment.py")}
