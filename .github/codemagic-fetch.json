@@ -1,7 +1,7 @@
 {
- "request": 2,
+ "request": 3,
  "app": "Menia",
- "wait_minutes": 90,
+ "wait_minutes": 0,
  "builds": [
   {"tag": "lora-2", "dest": "artifacts/llm-lora-mac/run-1"}
  ]
