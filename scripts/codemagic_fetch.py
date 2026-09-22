@@ -19,6 +19,7 @@ import json
 import os
 import re
 import sys
+import time
 import urllib.request
 import zipfile
 from pathlib import Path
@@ -150,9 +151,28 @@ def save_logs(client, build, dest):
         (logs / f"{n:02d}-{name}.log").write_text(scrub("\n".join(text.splitlines()[-LOG_TAIL:])) + "\n")
 
 
-def fetch(client, request, root=Path(".")):
+def current_status(client, build):
+    """The listing can lag behind a build; its own record is authoritative."""
+    if build is None:
+        return None
+    return client.get_json(f"/builds/{build['_id']}").get("build", build).get("status")
+
+
+def wait_for(client, app_id, tags, minutes, sleep=time.sleep, log=print):
+    """Poll until every requested tag has an ended build, or the time runs out; returns the last listing."""
+    for minute in range(int(minutes) + 1):
+        builds = builds_of(client, app_id)
+        waiting = {t: current_status(client, latest_for_tag(builds, t)) for t in tags}
+        waiting = {t: s for t, s in waiting.items() if s is not None and s not in ENDED}
+        if not waiting or minute == int(minutes):
+            return builds
+        log(f"minute {minute}: en attente de {waiting}", flush=True)
+        sleep(60)
+
+
+def fetch(client, request, root=Path("."), sleep=time.sleep):
     app = find_app(client, request.get("app", "Menia"))
-    builds = builds_of(client, app["_id"])
+    builds = wait_for(client, app["_id"], [b["tag"] for b in request["builds"]], request.get("wait_minutes", 0), sleep)
     print("application:", app.get("appName"))
     for b in sorted(builds, key=lambda b: b.get("startedAt") or b.get("createdAt") or "", reverse=True)[:10]:
         print(f"  {b.get('tag') or b.get('branch')} {b.get('fileWorkflowId') or b.get('workflowId')} {b.get('status')} "

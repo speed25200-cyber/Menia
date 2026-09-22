@@ -1,8 +1,8 @@
 {
- "request": 1,
+ "request": 2,
  "app": "Menia",
+ "wait_minutes": 90,
  "builds": [
-  {"tag": "latent-1", "dest": "artifacts/llm-latent-mac/run-1"},
   {"tag": "lora-2", "dest": "artifacts/llm-lora-mac/run-1"}
  ]
 }

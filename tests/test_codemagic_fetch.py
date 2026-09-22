@@ -70,5 +70,28 @@ class FetchTests(unittest.TestCase):
             self.assertEqual((Path(tmp) / "d/rows-R.jsonl.1").read_text(), "2")
 
 
+class WaitTests(unittest.TestCase):
+    def test_waits_until_the_build_ends(self):
+        builds = [{"_id": "b1", "tag": "t", "status": "building"}]
+        client = FakeClient(builds, {})
+        naps = []
+
+        def nap(seconds):
+            naps.append(seconds)
+            if len(naps) == 2:
+                builds[0]["status"] = "finished"
+
+        with tempfile.TemporaryDirectory() as tmp:
+            report = codemagic_fetch.fetch(client, {"wait_minutes": 10, "builds": [{"tag": "t", "dest": "d"}]}, Path(tmp), sleep=nap)
+        self.assertEqual(len(naps), 2)
+        self.assertEqual(report["t"]["status"], "finished")
+
+    def test_gives_up_after_the_wait(self):
+        client = FakeClient([{"_id": "b1", "tag": "t", "status": "queued"}], {})
+        with tempfile.TemporaryDirectory() as tmp:
+            report = codemagic_fetch.fetch(client, {"wait_minutes": 3, "builds": [{"tag": "t", "dest": "d"}]}, Path(tmp), sleep=lambda s: None)
+        self.assertEqual(report["t"], "en cours (queued)")
+
+
 if __name__ == "__main__":
     unittest.main()
