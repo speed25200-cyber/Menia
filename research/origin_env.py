@@ -39,12 +39,27 @@ def ring_distance(a, b):
     return min(diff, RING - diff)
 
 
+MUTATIONS = (None, "self", "world")
+
+
 class Atelier:
-    def __init__(self, condition, seed):
-        if condition not in CONDITIONS:
-            raise ValueError("Unknown condition")
+    """mutate: None, "self" (D redrawn) or "world" (E redrawn) at a uniform step in
+    mutation_steps with mutation_probability per life. forced_change_step: replace D
+    by a different value at that step (test lives). Neither consumes random numbers
+    unless enabled, so earlier published logs replay unchanged."""
+
+    def __init__(self, condition, seed, mutate=None, mutation_probability=0.5, mutation_steps=(6, 17),
+                 forced_change_step=None):
+        if condition not in CONDITIONS or mutate not in MUTATIONS:
+            raise ValueError("Unknown condition or mutation")
         self.condition = condition
         self.rng = np.random.default_rng(seed)
+        self.mutate = mutate
+        self.mutation_probability = mutation_probability
+        self.mutation_steps = mutation_steps
+        self.forced_change_step = forced_change_step
+        self.change_step = None
+        self.d_initial = self.e_initial = None
         self.d = self.e = None
         self.p = self.g = self.s = None
         self.t = 0
@@ -64,6 +79,12 @@ class Atelier:
         self.p = int(self.rng.integers(RING))
         self.g = self._new_target()
         self.s = int(self.rng.integers(SYMBOLS))
+        self.d_initial, self.e_initial = self.d, self.e
+        self.change_step = None
+        if self.forced_change_step is not None:
+            self.change_step = int(self.forced_change_step)
+        elif self.mutate is not None and self.rng.random() < self.mutation_probability:
+            self.change_step = int(self.rng.integers(self.mutation_steps[0], self.mutation_steps[1] + 1))
         self.t = 0
         self.cue_channel = -1
         self.cue_value = -1
@@ -94,6 +115,13 @@ class Atelier:
             raise RuntimeError("reset first")
         if not 0 <= action < N_ACTIONS:
             raise ValueError("Invalid action")
+        if self.change_step is not None and self.t == self.change_step:
+            if self.forced_change_step is not None:
+                self.d = (self.d + int(self.rng.integers(1, 4))) % 4
+            elif self.mutate == "self":
+                self.d = int(self.rng.integers(4))
+            else:
+                self.e = int(self.rng.integers(4))
         reward = 0
         self.last_action = action
         if action < N_MOVE:
@@ -143,14 +171,14 @@ def targets(next_obs):
     return {"motion": next_obs["last_delta"] + 1, "shift": next_obs["last_shift"], "cue": next_obs["cue_value"] + 1}
 
 
-def random_lives(condition, seed, count, rng_actions=None):
-    """Childhood data: uniform random actions. Returns X [T,count,INPUT], Y dict [T,count], hidden (d,e)."""
+def random_lives(condition, seed, count, rng_actions=None, mutate=None, mutation_probability=0.5):
+    """Childhood data: uniform random actions. Returns X [T,count,INPUT], Y dict [T,count], hidden (d,e) at birth."""
     rng_actions = rng_actions or np.random.default_rng(seed + 1)
     X = np.zeros((LIFE, count, INPUT))
     Y = {k: np.zeros((LIFE, count), dtype=int) for k in HEADS}
     hidden = np.zeros((count, 2), dtype=int)
     for n in range(count):
-        env = Atelier(condition, seed * 1000003 + n)
+        env = Atelier(condition, seed * 1000003 + n, mutate=mutate, mutation_probability=mutation_probability)
         obs = env.reset()
         hidden[n] = (env.d, env.e)
         for t in range(LIFE):

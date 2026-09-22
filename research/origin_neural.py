@@ -148,14 +148,15 @@ class WorldModel:
 
 
 def train_world_model(condition, seed, updates=1500, batch=32, hidden=48, lr=3e-3, on_checkpoint=None,
-                      checkpoints=()):
+                      checkpoints=(), mutate=None, mutation_probability=0.5):
     model = WorldModel(hidden=hidden, seed=seed)
     m = {k: np.zeros_like(v) for k, v in model.p.items()}
     v = {k: np.zeros_like(x) for k, x in model.p.items()}
     log = []
     rng_actions = np.random.default_rng(seed * 7 + 3)
     for n in range(1, updates + 1):
-        X, Y, _ = random_lives(condition, seed * 100000 + n, batch, rng_actions)
+        X, Y, _ = random_lives(condition, seed * 100000 + n, batch, rng_actions, mutate=mutate,
+                               mutation_probability=mutation_probability)
         loss, grads = model.loss_and_grad(X, Y)
         norm = np.sqrt(sum((g * g).sum() for g in grads.values()))
         scale = min(1.0, 1.0 / max(float(norm), 1e-12))
@@ -187,6 +188,12 @@ class Imagination:
         dist = np.array([[ring_distance(x, obs["g"]) for x in landing]])
         expected_distance = (motion * dist).sum(axis=1)
         return hit, expected_distance
+
+    def motion_entropy(self, h, obs):
+        """Mean entropy, over the four moves, of the model's predicted displacement: its uncertainty about its body."""
+        X = np.stack([encode(obs, a) for a in range(N_MOVE)])
+        h2, _ = self.model.step(X, np.repeat(h, N_MOVE, axis=0))
+        return float(entropy_rows(self.heads_motor(h2)).mean())
 
     def heads_motor(self, h):
         """Distribution over the four displacements, for move actions (the 'none' class is dropped)."""
@@ -264,20 +271,29 @@ def decide(policy, gains, hit, expected_distance, rng):
     return choose_move(hit, expected_distance, rng)
 
 
-def run_lives(model, condition, policy, seed, count, keep_states=False):
-    """Frozen model, fixed rule. Returns per-life logs (and hidden states if requested)."""
+def run_lives(model, condition, policy, seed, count, keep_states=False, forced_change_step=None, record_entropy=False):
+    """Frozen model, fixed rule. Returns per-life logs (and hidden states if requested).
+
+    forced_change_step replaces the body by a different one at that step (the mark follows).
+    record_entropy stores the model's mean uncertainty about its own next displacement at each step."""
     imagination = Imagination(model)
     rng = np.random.default_rng(seed * 31 + 7)
     lives, states = [], []
     for n in range(count):
-        env = Atelier(condition, seed * 1000003 + n)
+        env = Atelier(condition, seed * 1000003 + n, forced_change_step=forced_change_step)
         obs = env.reset()
         h = model.zero()
         record = {"d": env.d, "e": env.e, "obs": [], "actions": [], "rewards": [], "gains": []}
+        if forced_change_step is not None:
+            record["change_step"] = int(forced_change_step)
+        if record_entropy:
+            record["motion_entropy"] = []
         hs = []
         for t in range(LIFE):
             gains = imagination.inspection_gains(h, obs)
             hit, expected_distance = imagination.move_predictions(h, obs)
+            if record_entropy:
+                record["motion_entropy"].append(round(imagination.motion_entropy(h, obs), 6))
             action = decide(policy, gains, hit, expected_distance, rng)
             record["obs"].append([obs["p"], obs["g"], obs["s"], obs["last_action"], obs["last_delta"], obs["last_shift"],
                                   obs["cue_channel"], obs["cue_value"], obs["d_shown"]])
@@ -287,6 +303,8 @@ def run_lives(model, condition, policy, seed, count, keep_states=False):
             hs.append(h[0].copy())
             obs, reward, _ = env.step(action)
             record["rewards"].append(int(reward))
+        if forced_change_step is not None:
+            record["d_final"] = int(env.d)
         lives.append(record)
         if keep_states:
             states.append(np.asarray(hs))

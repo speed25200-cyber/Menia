@@ -136,14 +136,16 @@ def intrinsic_reward(kind, beta, internal, h, obs, action, h_next, obs_next, bef
     return beta * (before - after), after
 
 
-def greedy_lives(model, q, condition, seed, count):
+def greedy_lives(model, q, condition, seed, count, forced_change_step=None):
     internal = Internal(model)
     lives = []
     for n in range(count):
-        env = Atelier(condition, seed * 1000003 + n)
+        env = Atelier(condition, seed * 1000003 + n, forced_change_step=forced_change_step)
         obs = env.reset()
         h = model.zero()
         record = {"d": env.d, "e": env.e, "obs": [], "actions": [], "rewards": []}
+        if forced_change_step is not None:
+            record["change_step"] = int(forced_change_step)
         for t in range(LIFE):
             values, _ = q.forward(features(h, obs, t))
             action = int(np.argmax(values[0]))
