@@ -76,7 +76,12 @@ des traits, espace de travail limité à sélection apprise, perception
 générative, surveillance métacognitive, schéma d'attention, codage
 prédictif). Huit échouent, surtout parce que l'arbitrage des buts appris
 par renforcement ne lit pas l'intéroception. Audit sans écart en CI. Ce
-n'est pas une preuve de conscience.
+n'est pas une preuve de conscience. [Version 2](docs/INDICATOR_AGENT_V2_RESULTS.md),
+pré-enregistrée pour viser cette cause, avec une attention guidée par la
+pertinence pour la décision et un arbitrage des besoins appris par valeur :
+**sept propriétés sur quatorze**, la spécialisation des modules (GWT-1)
+s'ajoute, sa prédiction est confirmée pour GWT-1 et réfutée pour GWT-4 et
+AE-1 ; l'apprentissage des valeurs reste instable.
 
 **[Colab 24 : classement de confiance au sein d'une catégorie](docs/CONFIDENCE_RANKING_PROTOCOL.md).**
 Le [résultat complet](docs/CONFIDENCE_RANKING_RESULTS.md) est reçu et audité :

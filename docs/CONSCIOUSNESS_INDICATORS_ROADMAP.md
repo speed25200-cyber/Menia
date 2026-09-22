@@ -68,3 +68,7 @@ l'agent éprouve quelque chose.
 PP-1. **Présentes par construction, non démontrées par leur test** :
 RPT-1, GWT-1, GWT-3, GWT-4, HOT-3, HOT-4, AE-1, AE-2 ; cause principale,
 l'arbitrage des buts appris qui ne lit pas l'intéroception.
+
+[Version 2](INDICATOR_AGENT_V2_RESULTS.md) : **GWT-1 s'ajoute**, sept
+propriétés démontrées ; l'arbitrage par valeur lit désormais les besoins
+mais reste instable, et l'attention suit la décision plutôt que le besoin.
