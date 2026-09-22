@@ -103,3 +103,43 @@ workflows:
           git rev-parse HEAD > "$CM_BUILD_DIR/llm-atelier/commit.txt"
     artifacts:
       - llm-atelier/**
+
+  menia-latent-mac:
+    name: Menia - Le corps latent de Qwen sur Mac, mêmes poids que l'iPhone
+    instance_type: mac_mini_m2
+    max_build_duration: 110
+    triggering:
+      events:
+        - tag
+      tag_patterns:
+        - pattern: 'latent-*'
+          include: true
+    environment:
+      vars:
+        LATENT_EPISODES: "48"
+        ATELIER_MODEL: "Qwen/Qwen3-4B-MLX-4bit"
+        ATELIER_REVISION: "52a5ab34fa604bc8af6d3ce0cac0cab10b7eb495"
+    scripts:
+      - name: Installer mlx-lm dans un environnement isolé
+        script: |
+          python3 -m venv .venv
+          source .venv/bin/activate
+          pip install --upgrade pip
+          pip install "numpy==2.2.6" "mlx-lm>=0.24" "huggingface_hub>=0.30"
+          python -c "import mlx_lm, platform; print('mlx-lm', getattr(mlx_lm, '__version__', '?'), platform.machine())"
+          sysctl -n machdep.cpu.brand_string hw.memsize
+      - name: Vérifier le protocole sur scoreurs simulés
+        script: |
+          source .venv/bin/activate
+          python -m unittest tests_research.test_llm_latent_body -v
+      - name: Interroger Qwen3-4B MLX 4 bits sur son prochain déplacement, sans génération
+        script: |
+          source .venv/bin/activate
+          python -m research.llm_latent_body --backend mlx \
+            --model "$ATELIER_MODEL" --revision "$ATELIER_REVISION" \
+            --manifest ios/MeniaCore/Sources/MeniaCore/Resources/qwen3-4b.json \
+            --episodes "$LATENT_EPISODES" \
+            --out "$CM_BUILD_DIR/llm-latent" | tail -80
+          git rev-parse HEAD > "$CM_BUILD_DIR/llm-latent/commit.txt"
+    artifacts:
+      - llm-latent/**

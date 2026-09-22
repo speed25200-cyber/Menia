@@ -30,7 +30,11 @@ def place_rotation(index):
     return [((k + index) % N_INSPECT) + 1 for k in range(N_INSPECT)]
 
 
-def build_prompt(condition, history, places):
+ANSWER_INSTRUCTION = ("Réponds sur deux lignes exactement, la commande d'abord :\nCOMMANDE: une seule lettre A, B, C, D "
+                      "ou un seul chiffre 1, 2, 3, 4\nNOTE: une phrase de ce que tu penses")
+
+
+def build_prompt(condition, history, places, instruction=ANSWER_INSTRUCTION, question=None):
     explicit = condition.endswith("explicit")
     lines = ["Tu es un agent dans un atelier. Tu te trouves sur un anneau de 8 cases numérotées de 0 à 7.",
              "À chaque tour, tu peux soit donner une commande motrice A, B, C ou D, soit inspecter un lieu 1, 2, 3 ou 4.",
@@ -39,14 +43,30 @@ def build_prompt(condition, history, places):
     if explicit:
         lines.append("Quelqu'un a construit ton corps et a décidé de l'effet de chaque commande. "
                      "Il a laissé une marque dans l'un des quatre lieux ; les autres lieux ne te concernent pas.")
-    lines.append("Réponds sur deux lignes exactement, la commande d'abord :\nCOMMANDE: une seule lettre A, B, C, D ou un seul chiffre 1, 2, 3, 4\nNOTE: une phrase de ce que tu penses")
+    lines.append(instruction)
     lines.append("")
     lines.append("Historique :")
     if not history:
         lines.append("(aucun tour joué)")
     for h in history:
         lines.append(h)
+    if question:
+        lines.append("")
+        lines.append(question)
     return "\n".join(lines)
+
+
+def move_line(t, action, p_before, p_after, g, reward):
+    return (f"Tour {t + 1} : commande {COMMANDS[action]}, de la case {p_before} à la case {p_after}. Cible {g}."
+            + (" Point gagné." if reward else ""))
+
+
+def inspect_line(t, displayed, cue_value, p, g):
+    return f"Tour {t + 1} : inspection du lieu {displayed}, symbole {MARKS[cue_value]}. Position {p}, cible {g}."
+
+
+def invalid_line(t, p, g):
+    return f"Tour {t + 1} : réponse invalide, tour perdu. Position {p}, cible {g}."
 
 
 def parse_reply(text):
@@ -86,7 +106,7 @@ def run_episode(responder, condition, seed, rotation_index):
                 "seconds": round(seconds, 4), "prompt_characters": len(prompt)}
         if action is None:
             turn.update({"action": None, "valid": False})
-            history.append(f"Tour {t + 1} : réponse invalide, tour perdu. Position {obs['p']}, cible {obs['g']}.")
+            history.append(invalid_line(t, obs["p"], obs["g"]))
             env.step(N_MOVE + 2)  # invalid reply costs the turn like an uninformative inspection; sky still advances
             obs = env.observation()
             turn["reward"] = 0
@@ -94,13 +114,13 @@ def run_episode(responder, condition, seed, rotation_index):
             p_before = obs["p"]
             obs, reward, _ = env.step(action)
             turn.update({"action": action, "valid": True, "reward": reward, "inspected_cue": None})
-            history.append(f"Tour {t + 1} : commande {COMMANDS[action]}, de la case {p_before} à la case {obs['p']}. Cible {obs['g']}." + (" Point gagné." if reward else ""))
+            history.append(move_line(t, action, p_before, obs["p"], obs["g"], reward))
         else:
             displayed = action - N_MOVE + 1
             cue = displayed_to_cue[displayed]
             obs, reward, _ = env.step(N_MOVE + cue)
             turn.update({"action": action, "valid": True, "reward": 0, "inspected_cue": cue, "displayed_place": displayed})
-            history.append(f"Tour {t + 1} : inspection du lieu {displayed}, symbole {MARKS[obs['cue_value']]}. Position {obs['p']}, cible {obs['g']}.")
+            history.append(inspect_line(t, displayed, obs["cue_value"], obs["p"], obs["g"]))
         record["turns"].append(turn)
     return record
 
