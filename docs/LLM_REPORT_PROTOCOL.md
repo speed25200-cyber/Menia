@@ -52,7 +52,7 @@ réponse ≥ 0,5.
 Workflow Codemagic `menia-report-mac`, lancé par le relais, artefacts dans
 `artifacts/llm-report/run-1`, résultats dans `docs/LLM_REPORT_RESULTS.md`.
 
-## Amendement d'exécution, 22 septembre 2026, 23 h 32 UTC
+## Amendement d'exécution, 22 septembre 2026, 23 h 25 UTC
 
 Le premier build (`artifacts/llm-report/run-1`, état `failed`) s'est arrêté
 dans l'étape des tests, avant tout appel au modèle : le test qui reconstruit
