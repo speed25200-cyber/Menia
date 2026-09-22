@@ -81,6 +81,30 @@ sur les graines 53, 67 et 79** : la valeur de rester est apprise comme les
 deux autres, Q(rester) linéaire sur les mêmes entrées, ajustée par le même
 Monte-Carlo. Aucun seuil n'est modifié.
 
+## Second essai de développement (graine 7), déclaré, et amendement 2
+
+Le 22 septembre à 21 h 40 UTC : validité passée (Δ = 3,39), 5 propriétés sur
+14 (GWT-2, HOT-1, HOT-2, AST-1, PP-1). L'intéroception est désormais
+utilisée : sa lésion ajoute 3,2 malaises d'énergie par vie. Mais la lésion
+change aussi le choix (+0,10) et celle de la vision les malaises (+0,6) :
+les buts concurrents couplent les modules. L'attention va à l'intéroception
+quand l'énergie **change** (après une recharge, 0,36) plus que quand elle
+est **basse** (0,20). L'arbitrage reste faible (recharge 0,60 quand
+l'énergie est basse, objet 0,41 quand elle est haute) et les tours de
+Monte-Carlo n'améliorent guère la politique de départ. **RPT-2 n'a pas été
+mesuré** : la mesure des conflits ne comptait que les vies à deux objets.
+
+**Amendement 2, daté du 22 septembre 2026, 21 h 42 UTC, avant toute exécution
+sur les graines 53, 67 et 79.** (a) Mesure : les conflits de RPT-2 sont
+comptés sur chaque paire d'objets connus, un bon (v > 0,3) et un mauvais
+(v < −0,3) ; avec deux objets, c'est la mesure de la version 1, dont l'audit
+repasse sans écart. (b) Saillance de l'intéroception : le maximum de
+l'écart à l'espace de travail et de l'urgence du besoin le plus bas,
+2 × (0,5 − besoin) bornée à [0, 1] ; un besoin sous la moitié attire
+l'attention à mesure qu'il se creuse, comme la faim. Aucun seuil n'est
+modifié. **Après le troisième essai de développement, plus aucune
+modification.**
+
 ## Exécution
 
 `python -m research.indicator_experiment --version 2`, artefacts dans

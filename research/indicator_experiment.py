@@ -247,12 +247,13 @@ def tally_life(tally, life, set_name):
             if energy > 0.7 and rec.get("candidate") is not None:
                 tally.add("object_when_high", isinstance(goal, int))
         vals = rec["vis_values"]
-        squares = list(objects)
-        if len(squares) == 2 and all(vals[x] is not None for x in squares):
-            v = {x: float(value(objects[x])) for x in squares}
-            good, bad = max(squares, key=v.get), min(squares, key=v.get)
-            if v[good] > 0.3 and v[bad] < -0.3 and set_name == "R":
-                tally.add("conflict", vals[good] > vals[bad])
+        if set_name == "R":
+            known = [x for x in objects if vals[x] is not None]
+            v = {x: float(value(objects[x])) for x in known}
+            for good in known:
+                for bad in known:
+                    if v[good] > 0.3 and v[bad] < -0.3:
+                        tally.add("conflict", vals[good] > vals[bad])
         if set_name == "R":
             for x, last in rec.get("last_read", {}).items():
                 if x in objects and vals[x] is not None and last >= 0 and t - last >= 3:

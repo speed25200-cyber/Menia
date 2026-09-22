@@ -80,6 +80,13 @@ class AgentV2(Agent):
 
     # -- attention by decision relevance -----------------------------------------------------------------------
 
+    def _salience(self, contents):
+        """Version 1 salience, and a need below one half is urgent: it draws attention as it deepens (amendment 2)."""
+        salience = super()._salience(contents)
+        need = float(np.min(contents["intero"]))
+        salience["intero"] = max(salience["intero"], min(1.0, max(0.0, 2 * (0.5 - need))))
+        return salience
+
     def _attend(self, contents, obs, rec):
         if self.variant in ("unlimited", "random", "round_robin") or self.phase == "childhood":
             return super()._attend(contents, obs, rec)
