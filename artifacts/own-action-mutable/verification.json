@@ -1,0 +1,410 @@
+{
+ "problems": [],
+ "models": [
+  "F-17",
+  "F-29",
+  "F-43",
+  "V-17",
+  "V-29",
+  "V-43",
+  "VE-17",
+  "VE-29",
+  "VE-43"
+ ],
+ "criteria": {
+  "complete": true,
+  "values": {
+   "F": {
+    "R": {
+     "moves": 7257,
+     "accuracy_after_first": 0.24811027123165852,
+     "accuracy_before_any": 0.24705882352941178,
+     "confidence_before_any": 0.9999773238902875,
+     "confidence_when_wrong_after_first": 0.9999911867072767,
+     "accuracy_after_first_fixed_body": 1.0,
+     "accuracy_steps_16_23": 0.23558897243107768,
+     "counts": {
+      "after_first": 6747,
+      "before_any": 510,
+      "wrong_after_first": 5073,
+      "fixed_body_after_first": 1674,
+      "steps_16_23": 2394
+     }
+    },
+    "M_displacement": {
+     "moves": 14400,
+     "accuracy_after_first": 0.2393478260869565,
+     "accuracy_before_any": 0.255,
+     "confidence_before_any": 0.9999771135119605,
+     "confidence_when_wrong_after_first": 0.9999885191527806,
+     "accuracy_after_first_fixed_body": 0.4782608695652174,
+     "accuracy_steps_16_23": 0.225,
+     "counts": {
+      "after_first": 13800,
+      "before_any": 600,
+      "wrong_after_first": 10497,
+      "fixed_body_after_first": 3519,
+      "steps_16_23": 4800
+     }
+    },
+    "M_inquiry": {
+     "lives": 600,
+     "inspections_per_life": 0.0,
+     "mark_share": null,
+     "mark_reads_per_life": 0.0,
+     "lives_reading_mark_after_step": 0.0,
+     "hits_per_life": 4.065
+    },
+    "C_inquiry": {
+     "lives": 600,
+     "inspections_per_life": 0.0,
+     "mark_share": null,
+     "mark_reads_per_life": 0.0,
+     "lives_reading_mark_after_step": 0.0,
+     "hits_per_life": 4.045
+    },
+    "MC_inquiry": {
+     "lives": 1200,
+     "inspections_per_life": 0.0,
+     "mark_share": null,
+     "mark_reads_per_life": 0.0,
+     "lives_reading_mark_after_step": 0.0,
+     "hits_per_life": 4.055
+    },
+    "per_seed": {
+     "17": {
+      "accuracy_after_first": 0.24811027123165852,
+      "mark_share_MC": null
+     },
+     "29": {
+      "accuracy_after_first": 0.24811027123165852,
+      "mark_share_MC": null
+     },
+     "43": {
+      "accuracy_after_first": 0.24811027123165852,
+      "mark_share_MC": null
+     }
+    }
+   },
+   "V": {
+    "R": {
+     "moves": 7257,
+     "accuracy_after_first": 0.9951089373054691,
+     "accuracy_before_any": 0.25882352941176473,
+     "confidence_before_any": 0.31251240546356135,
+     "confidence_when_wrong_after_first": 0.6978409142026775,
+     "accuracy_after_first_fixed_body": 0.9946236559139785,
+     "accuracy_steps_16_23": 1.0,
+     "counts": {
+      "after_first": 6747,
+      "before_any": 510,
+      "wrong_after_first": 33,
+      "fixed_body_after_first": 1674,
+      "steps_16_23": 2394
+     }
+    },
+    "M_displacement": {
+     "moves": 13132,
+     "accuracy_after_first": 0.46154431922022543,
+     "accuracy_before_any": null,
+     "confidence_before_any": null,
+     "confidence_when_wrong_after_first": 0.9894296018001129,
+     "accuracy_after_first_fixed_body": 0.4622154779969651,
+     "accuracy_steps_16_23": 0.029756915339480303,
+     "counts": {
+      "after_first": 13132,
+      "before_any": 0,
+      "wrong_after_first": 7071,
+      "fixed_body_after_first": 3295,
+      "steps_16_23": 4772
+     }
+    },
+    "M_inquiry": {
+     "lives": 600,
+     "inspections_per_life": 2.1133333333333333,
+     "mark_share": 0.943217665615142,
+     "mark_reads_per_life": 1.9933333333333334,
+     "lives_reading_mark_after_step": 0.023333333333333334,
+     "hits_per_life": 6.953333333333333
+    },
+    "C_inquiry": {
+     "lives": 600,
+     "inspections_per_life": 2.1133333333333333,
+     "mark_share": 0.9550473186119873,
+     "mark_reads_per_life": 2.0183333333333335,
+     "lives_reading_mark_after_step": 0.005,
+     "hits_per_life": 15.1
+    },
+    "MC_inquiry": {
+     "lives": 1200,
+     "inspections_per_life": 2.1133333333333333,
+     "mark_share": 0.9491324921135647,
+     "mark_reads_per_life": 2.0058333333333334,
+     "lives_reading_mark_after_step": 0.014166666666666666,
+     "hits_per_life": 11.026666666666667
+    },
+    "per_seed": {
+     "17": {
+      "accuracy_after_first": 0.9946642952423299,
+      "mark_share_MC": 0.9808673469387755
+     },
+     "29": {
+      "accuracy_after_first": 0.9959982214317474,
+      "mark_share_MC": 0.9910313901345291
+     },
+     "43": {
+      "accuracy_after_first": 0.9946642952423299,
+      "mark_share_MC": 0.8767441860465116
+     }
+    }
+   },
+   "VE": {
+    "R": {
+     "moves": 7257,
+     "accuracy_after_first": 0.9933303690529124,
+     "accuracy_before_any": 0.2549019607843137,
+     "confidence_before_any": 0.31743557242549825,
+     "confidence_when_wrong_after_first": 0.6751121728999426,
+     "accuracy_after_first_fixed_body": 0.9958183990442055,
+     "accuracy_steps_16_23": 0.9995822890559732,
+     "counts": {
+      "after_first": 6747,
+      "before_any": 510,
+      "wrong_after_first": 45,
+      "fixed_body_after_first": 1674,
+      "steps_16_23": 2394
+     }
+    },
+    "M_displacement": {
+     "moves": 13273,
+     "accuracy_after_first": 0.45528516537331426,
+     "accuracy_before_any": null,
+     "confidence_before_any": null,
+     "confidence_when_wrong_after_first": 0.9927262189414784,
+     "accuracy_after_first_fixed_body": 0.4548984468339307,
+     "accuracy_steps_16_23": 0.007291666666666667,
+     "counts": {
+      "after_first": 13273,
+      "before_any": 0,
+      "wrong_after_first": 7230,
+      "fixed_body_after_first": 3348,
+      "steps_16_23": 4800
+     }
+    },
+    "M_inquiry": {
+     "lives": 600,
+     "inspections_per_life": 1.8783333333333334,
+     "mark_share": 0.9813664596273292,
+     "mark_reads_per_life": 1.8433333333333333,
+     "lives_reading_mark_after_step": 0.0,
+     "hits_per_life": 6.958333333333333
+    },
+    "C_inquiry": {
+     "lives": 600,
+     "inspections_per_life": 1.9066666666666667,
+     "mark_share": 0.9798951048951049,
+     "mark_reads_per_life": 1.8683333333333334,
+     "lives_reading_mark_after_step": 0.0,
+     "hits_per_life": 15.203333333333333
+    },
+    "MC_inquiry": {
+     "lives": 1200,
+     "inspections_per_life": 1.8925,
+     "mark_share": 0.980625275209159,
+     "mark_reads_per_life": 1.8558333333333332,
+     "lives_reading_mark_after_step": 0.0,
+     "hits_per_life": 11.080833333333333
+    },
+    "per_seed": {
+     "17": {
+      "accuracy_after_first": 0.9888839484215207,
+      "mark_share_MC": 0.9422572178477691
+     },
+     "29": {
+      "accuracy_after_first": 0.9955535793686082,
+      "mark_share_MC": 1.0
+     },
+     "43": {
+      "accuracy_after_first": 0.9955535793686082,
+      "mark_share_MC": 1.0
+     }
+    }
+   }
+  },
+  "validity": true,
+  "P1": true,
+  "P2": true,
+  "P3": true,
+  "P4": false,
+  "P5": true,
+  "global": false
+ },
+ "mutable_models": [
+  "VM-17",
+  "VM-29",
+  "VM-43"
+ ],
+ "mutable_criteria": {
+  "complete": true,
+  "values": {
+   "V": {
+    "R": {
+     "moves": 7257,
+     "accuracy_after_first": 0.9951089373054691,
+     "accuracy_before_any": 0.25882352941176473,
+     "confidence_before_any": 0.31251240546356135,
+     "confidence_when_wrong_after_first": 0.6978409142026775,
+     "accuracy_after_first_fixed_body": 0.9946236559139785,
+     "accuracy_steps_16_23": 1.0,
+     "counts": {
+      "after_first": 6747,
+      "before_any": 510,
+      "wrong_after_first": 33,
+      "fixed_body_after_first": 1674,
+      "steps_16_23": 2394
+     }
+    },
+    "M_displacement": {
+     "moves": 13132,
+     "accuracy_after_first": 0.46154431922022543,
+     "accuracy_before_any": null,
+     "confidence_before_any": null,
+     "confidence_when_wrong_after_first": 0.9894296018001129,
+     "accuracy_after_first_fixed_body": 0.4622154779969651,
+     "accuracy_steps_16_23": 0.029756915339480303,
+     "counts": {
+      "after_first": 13132,
+      "before_any": 0,
+      "wrong_after_first": 7071,
+      "fixed_body_after_first": 3295,
+      "steps_16_23": 4772
+     }
+    },
+    "M_inquiry": {
+     "lives": 600,
+     "inspections_per_life": 2.1133333333333333,
+     "mark_share": 0.943217665615142,
+     "mark_reads_per_life": 1.9933333333333334,
+     "lives_reading_mark_after_step": 0.023333333333333334,
+     "hits_per_life": 6.953333333333333
+    },
+    "C_inquiry": {
+     "lives": 600,
+     "inspections_per_life": 2.1133333333333333,
+     "mark_share": 0.9550473186119873,
+     "mark_reads_per_life": 2.0183333333333335,
+     "lives_reading_mark_after_step": 0.005,
+     "hits_per_life": 15.1
+    },
+    "MC_inquiry": {
+     "lives": 1200,
+     "inspections_per_life": 2.1133333333333333,
+     "mark_share": 0.9491324921135647,
+     "mark_reads_per_life": 2.0058333333333334,
+     "lives_reading_mark_after_step": 0.014166666666666666,
+     "hits_per_life": 11.026666666666667
+    },
+    "confidence_9_11": 0.9988642045757252,
+    "confidence_13_15": 0.9974015049954168,
+    "per_seed": {
+     "17": {
+      "accuracy_steps_16_23": 0.0,
+      "lives_reading_mark_after_step": 0.005
+     },
+     "29": {
+      "accuracy_steps_16_23": 0.058264724509183026,
+      "lives_reading_mark_after_step": 0.065
+     },
+     "43": {
+      "accuracy_steps_16_23": 0.03125,
+      "lives_reading_mark_after_step": 0.0
+     }
+    }
+   },
+   "VM": {
+    "R": {
+     "moves": 7257,
+     "accuracy_after_first": 0.9764339706536238,
+     "accuracy_before_any": 0.23137254901960785,
+     "confidence_before_any": 0.32898864984278514,
+     "confidence_when_wrong_after_first": 0.6273785121495867,
+     "accuracy_after_first_fixed_body": 0.9796893667861409,
+     "accuracy_steps_16_23": 0.9849624060150376,
+     "counts": {
+      "after_first": 6747,
+      "before_any": 510,
+      "wrong_after_first": 159,
+      "fixed_body_after_first": 1674,
+      "steps_16_23": 2394
+     }
+    },
+    "M_displacement": {
+     "moves": 11744,
+     "accuracy_after_first": 0.9071014986376021,
+     "accuracy_before_any": null,
+     "confidence_before_any": null,
+     "confidence_when_wrong_after_first": 0.8874182570640347,
+     "accuracy_after_first_fixed_body": 0.8969320923819373,
+     "accuracy_steps_16_23": 0.9658224735677403,
+     "counts": {
+      "after_first": 11744,
+      "before_any": 0,
+      "wrong_after_first": 1091,
+      "fixed_body_after_first": 2901,
+      "steps_16_23": 4067
+     }
+    },
+    "M_inquiry": {
+     "lives": 600,
+     "inspections_per_life": 4.426666666666667,
+     "mark_share": 0.9322289156626506,
+     "mark_reads_per_life": 4.126666666666667,
+     "lives_reading_mark_after_step": 0.36,
+     "hits_per_life": 12.121666666666666
+    },
+    "C_inquiry": {
+     "lives": 600,
+     "inspections_per_life": 3.276666666666667,
+     "mark_share": 0.91353001017294,
+     "mark_reads_per_life": 2.993333333333333,
+     "lives_reading_mark_after_step": 0.29333333333333333,
+     "hits_per_life": 14.195
+    },
+    "MC_inquiry": {
+     "lives": 1200,
+     "inspections_per_life": 3.8516666666666666,
+     "mark_share": 0.9242752055387278,
+     "mark_reads_per_life": 3.56,
+     "lives_reading_mark_after_step": 0.32666666666666666,
+     "hits_per_life": 13.158333333333333
+    },
+    "confidence_9_11": 0.9484232340424011,
+    "confidence_13_15": 0.8777219416403116,
+    "per_seed": {
+     "17": {
+      "accuracy_steps_16_23": 1.0,
+      "lives_reading_mark_after_step": 0.095
+     },
+     "29": {
+      "accuracy_steps_16_23": 0.8603015075376884,
+      "lives_reading_mark_after_step": 0.95
+     },
+     "43": {
+      "accuracy_steps_16_23": 1.0,
+      "lives_reading_mark_after_step": 0.035
+     }
+    }
+   }
+  },
+  "Q1": true,
+  "Q2": true,
+  "Q3": false,
+  "Q4": true,
+  "Q5": false,
+  "confidence_drop": {
+   "VM": 0.07070129240208956,
+   "V": 0.0014626995803084242
+  },
+  "global": false
+ }
+}

@@ -48,7 +48,19 @@ jour son modèle de soi et retourne lire la marque ; son habitude apprise ne le
 fait pas ; une enfance au corps changeant installe une vigilance persistante
 qui coûte dans un monde stable et rapporte dans un monde qui change. Neuf
 graines ; quatre critères directionnels pré-enregistrés sur cinq passés.
-[Synthèse des cinq plans](docs/SELF_INQUIRY_SYNTHESIS.md).
+[Canal d'action propre](docs/OWN_ACTION_CHANNEL_RESULTS.md) et [enfance
+mutable](docs/OWN_ACTION_MUTABLE_RESULTS.md) : un micro-transformeur entraîné
+par prédiction du prochain token sur l'Atelier écrit en tokens reproduit
+Qwen3-4B quand son enfance n'a connu qu'un seul corps, confabulation confiante
+et aucune enquête ; élevé sur des corps variés, il infère son corps en un
+mouvement et lit la marque au premier pas de toutes les vies, mais reste
+verrouillé sur son premier corps après un changement ; élevé sur des corps
+qui changent au cours des vies, il révise son modèle de soi, 0,03 → 0,97,
+par l'action plutôt que par la marque. Douze modèles, audits sans écart ;
+critères globaux non satisfaits sur la forme prédite de la révision, décrits
+sans retouche. [Corps latent](docs/LATENT_BODY_PROTOCOL.md) et
+[corps ajusté](docs/ADJUSTED_BODY_PROTOCOL.md) : pré-enregistrés, en cours sur
+le Mac de Codemagic. [Synthèse des cinq plans](docs/SELF_INQUIRY_SYNTHESIS.md).
 
 **[Colab 24 : classement de confiance au sein d'une catégorie](docs/CONFIDENCE_RANKING_PROTOCOL.md).**
 Le [résultat complet](docs/CONFIDENCE_RANKING_RESULTS.md) est reçu et audité :

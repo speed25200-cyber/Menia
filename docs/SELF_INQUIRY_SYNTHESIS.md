@@ -1,7 +1,9 @@
 # Synthèse — Un agent et la cause cachée de son propre corps
 
-Cinq plans pré-enregistrés, exécutés sur CPU entre le 21 et le 22 septembre
-2026, avec audits indépendants et journaux publiés. Tous partagent le monde
+Sept plans pré-enregistrés, exécutés sur CPU entre le 21 et le 22 septembre
+2026, avec audits indépendants et journaux publiés ; les deux derniers
+remplacent l'agent récurrent par un transformeur entraîné sur l'Atelier écrit
+en tokens, pour relier les résultats aux modèles de langage. Tous partagent le monde
 Atelier : un agent sur un anneau de huit cases, quatre commandes dont l'effet
 est fixé par une cause cachée D, quatre lieux inspectables dont un porte une
 marque qui révèle D. L'agent est un modèle du monde récurrent de 30 000
@@ -19,6 +21,8 @@ D, la marque ni la notion de cause de soi.
 | L'habitude apprise dans une enfance stable ne retourne pas à la marque, alors que le calcul depuis le même modèle y retourne. | Corps mutable, confirmation, directionnelle | 9 | direction 9/9 ; critère D4 passé 3/3 |
 | L'habitude apprise dans une enfance mutable retourne à la marque. | Confirmation, directionnelle | 6 | direction 6/6 ; critère D5 passé 2/3, une graine à 0,26 pour 0,30 |
 | Une enfance au corps souvent changeant installe une vigilance persistante qui coûte dans un monde stable et rapporte dans un monde qui change ; une exposition rare, une vie sur dix, n'installe rien. | Corps mutable, confirmation, directionnelle | 9 | direction 9/9 ; critères D2 et D3 passés 3/3 |
+| Un prédicteur de texte, entraîné par prédiction du prochain token sur l'Atelier écrit en tokens, forme un modèle de soi en contexte et enquête vers la marque si et seulement si ses données d'enfance contiennent une variable cachée de soi ; élevé sur un seul corps, il confabule avec assurance et n'enquête pas, trait pour trait comme Qwen3-4B. Le masque d'efférence ne change rien. | [Canal d'action propre](OWN_ACTION_CHANNEL_RESULTS.md) | 9 modèles | validité passée ; P1, P2, P3, P5 passés ; P4 échoué |
+| Chez ce prédicteur, inférer son corps et le réviser sont deux dispositions séparées : des corps variés entre les vies donnent la première (0,995), des corps qui changent au cours des vies donnent la seconde (0,03 → 0,97 contre le nouveau corps). La révision passe par l'action chez deux modèles sur trois, par une vigilance à la marque chez le troisième. | [Enfance mutable](OWN_ACTION_MUTABLE_RESULTS.md) | 3 + 3 modèles | Q1, Q2, Q4 passés ; Q3 et Q5 échoués sur la forme prédite de la révision |
 
 ## La confirmation directionnelle
 
