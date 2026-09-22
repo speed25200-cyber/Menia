@@ -1,0 +1,78 @@
+{
+ "status": "exploratoire, non pr\u00e9-enregistr\u00e9",
+ "threshold": 0.35,
+ "per_seed": {
+  "89": {
+   "rule": {
+    "return": -1.085767,
+    "energy_faints": 0.275,
+    "faints": 1.83,
+    "charge_when_low": 0.631027,
+    "object_when_high": 0.931034,
+    "choice": 0.710946
+   },
+   "learned": {
+    "return": -1.165772,
+    "energy_faints": 0.04,
+    "faints": 1.595,
+    "charge_when_low": 0.698276,
+    "object_when_high": 0.490721,
+    "choice": 0.712177
+   }
+  },
+  "97": {
+   "rule": {
+    "return": -1.23704,
+    "energy_faints": 0.305,
+    "faints": 1.835,
+    "charge_when_low": 0.614,
+    "object_when_high": 0.932403,
+    "choice": 0.693959
+   },
+   "learned": {
+    "return": -1.202496,
+    "energy_faints": 0.06,
+    "faints": 1.645,
+    "charge_when_low": 0.681481,
+    "object_when_high": 0.611902,
+    "choice": 0.708988
+   }
+  },
+  "101": {
+   "rule": {
+    "return": -1.161871,
+    "energy_faints": 0.28,
+    "faints": 1.8,
+    "charge_when_low": 0.619,
+    "object_when_high": 0.922909,
+    "choice": 0.70069
+   },
+   "learned": {
+    "return": -1.204339,
+    "energy_faints": 0.1,
+    "faints": 1.655,
+    "charge_when_low": 0.656958,
+    "object_when_high": 0.539535,
+    "choice": 0.741999
+   }
+  }
+ },
+ "summary": {
+  "rule": {
+   "return": -1.1615593333333334,
+   "energy_faints": 0.2866666666666667,
+   "faints": 1.8216666666666665,
+   "charge_when_low": 0.6213423333333333,
+   "object_when_high": 0.928782,
+   "choice": 0.7018650000000001
+  },
+  "learned": {
+   "return": -1.190869,
+   "energy_faints": 0.06666666666666667,
+   "faints": 1.6316666666666668,
+   "charge_when_low": 0.678905,
+   "object_when_high": 0.5473859999999999,
+   "choice": 0.7210546666666665
+  }
+ }
+}

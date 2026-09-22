@@ -49,6 +49,29 @@ principale (AE-1) est réfutée, et GWT-1, acquis en version 2, est perdu.**
   trois versions**, sur neuf graines confirmatoires au total : RPT-2,
   GWT-2, HOT-1, HOT-2, AST-1 et PP-1.
 
+## Analyse exploratoire : une règle fixe atteindrait-elle AE-1 ?
+
+Non pré-enregistrée, déclarée comme telle (`research/indicator_rule_arbitration.py`,
+`artifacts/indicator-agent-v3/rule-arbitration.json`). Les agents de la
+version 3 gardent tout ce qu'ils ont appris, sauf le choix du but, remplacé
+par une règle fixe : se recharger dès que l'énergie lue dans l'espace de
+travail passe sous 0,35, sinon aller vers le meilleur bon objet connu.
+
+| Jeu R, trois graines | Règle fixe | Valeurs apprises |
+|---|---:|---:|
+| Retour | −1,16 | −1,19 |
+| Malaises d'énergie par vie | 0,29 | 0,07 |
+| Objet quand l'énergie est haute (seuil 0,8) | **0,93** | 0,55 |
+| Recharge quand l'énergie vraie est basse (seuil 0,8) | **0,62** | 0,68 |
+
+La règle passe la moitié « objet » d'AE-1, mais même elle ne se recharge que
+dans 0,62 des pas où l'énergie vraie est sous 0,3 : l'agent lit son énergie
+dans l'espace de travail, où elle est souvent périmée, et garde son but
+jusqu'à la prochaine décision. **Le point faible d'AE-1 tient donc autant au
+goulot de l'espace de travail qu'à l'apprentissage** : deux indicateurs,
+l'accès limité (GWT-2) et l'arbitrage selon les besoins (AE-1), se gênent
+dans cet agent.
+
 ## Bilan des trois versions
 
 Les propriétés qui dépendent de mécanismes perceptifs appris hors
