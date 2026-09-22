@@ -163,13 +163,22 @@ def fit_logistic(X, y, l2=1e-3, iterations=60):
     return w
 
 
-def fit_conditional_logit(groups, labels, dims, lr=0.2, steps=400, l2=1e-3):
+def fit_conditional_logit(groups, labels, dims, lr=0.5, steps=600, l2=1e-3):
+    """Softmax over the candidates of each group, shared weights; groups padded and masked."""
+    width = max(len(rows) for rows in groups)
+    R = np.zeros((len(groups), width, dims))
+    mask = np.zeros((len(groups), width), dtype=bool)
+    for n, rows in enumerate(groups):
+        R[n, :len(rows)] = rows
+        mask[n, :len(rows)] = True
+    target = R[np.arange(len(groups)), np.asarray(labels)]
     w = np.zeros(dims)
     for _ in range(steps):
-        g = l2 * w
-        for rows, label in zip(groups, labels):
-            p = softmax(rows @ w)
-            g += (rows.T @ p - rows[label]) / len(groups)
+        z = np.where(mask, R @ w, -np.inf)
+        z -= z.max(1, keepdims=True)
+        e = np.exp(z)
+        prob = e / e.sum(1, keepdims=True)
+        g = ((prob[:, :, None] * R).sum(1) - target).mean(0) + l2 * w
         w -= lr * g
     return w
 
@@ -292,6 +301,8 @@ class Agent:
             return None
         squares, rows = schema_candidates(intent, obs["onsets"], obs["presence"], obs["hue"] is not None, obs["cue"])
         rec["schema_squares"] = squares
+        if self.phase == "childhood":
+            rec["schema_rows"] = rows.tolist()
         if self.variant == "no_schema" or self.phase == "childhood":
             rec["schema_estimate"] = intent
             return intent
@@ -325,7 +336,7 @@ class Agent:
             self.map = {}
         values = [None] * RING
         if self.variant == "lesion_vis":
-            values = [0.0 if presence[x] else None for x in range(RING)]
+            values = [0.5 if presence[x] else None for x in range(RING)]
         elif self.variant == "bag":
             mean = float(np.mean(self.code.value(np.array(self.bag)))) if self.bag else None
             values = [mean if presence[x] else None for x in range(RING)]
@@ -333,6 +344,8 @@ class Agent:
             for square, code in self.map.items():
                 values[square] = float(self.code.value(code)[0])
         rec["vis_values"] = [None if v is None else round(v, 6) for v in values]
+        rec["last_read"] = {int(x): int(self.last_read.get(x, -1)) for x in self.map}
+        rec["hue_read"] = obs["hue"] is not None
         return {"values": values, "presence": list(presence)}
 
     def _intero(self, obs):
@@ -427,16 +440,16 @@ class Agent:
         return action
 
     def _spotlight(self, rec):
-        unknown = [x for x in range(RING) if self.presence[x] and x not in self.map]
+        present = [x for x in range(RING) if self.presence[x]]
         if self.variant == "bag":
-            unknown = [x for x in range(RING) if self.presence[x]]
+            return int(present[int(self.rng.integers(len(present)))]) if present else None
+        unknown = [x for x in present if x not in self.map]
         if self.intent is not None and self.intent in unknown:
             return self.intent
         if unknown:
             return int(unknown[int(self.rng.integers(len(unknown)))])
         if isinstance(self.goal, int):
             return self.goal
-        present = [x for x in range(RING) if self.presence[x]]
         return int(present[int(self.rng.integers(len(present)))]) if present else None
 
     # -- one step ------------------------------------------------------------------------------------------------
