@@ -1,0 +1,70 @@
+{
+ "id": "6ab2b3d6688764aa17df45d6",
+ "tag": "latent-1",
+ "branch": "main",
+ "workflow": "menia-latent-mac",
+ "status": "finished",
+ "createdAt": "2026-09-22T16:59:02.164000+00:00",
+ "startedAt": "2026-09-22T17:41:54.476000+00:00",
+ "finishedAt": "2026-09-22T18:26:19.117000+00:00",
+ "commit": "3928e4920f6ef8bfe31e66b541487d72b827082b",
+ "message": null,
+ "steps": [
+  {
+   "name": "Preparing build machine",
+   "status": "success",
+   "startedAt": "2026-09-22T17:41:54.752000+00:00",
+   "finishedAt": "2026-09-22T17:42:20.992000+00:00"
+  },
+  {
+   "name": "Fetching app sources",
+   "status": "success",
+   "startedAt": "2026-09-22T17:42:20.992000+00:00",
+   "finishedAt": "2026-09-22T17:42:45.478000+00:00"
+  },
+  {
+   "name": "Installer mlx-lm dans un environnement isolé",
+   "status": "success",
+   "startedAt": "2026-09-22T17:42:45.478000+00:00",
+   "finishedAt": "2026-09-22T17:43:04.560000+00:00"
+  },
+  {
+   "name": "Vérifier le protocole sur scoreurs simulés",
+   "status": "success",
+   "startedAt": "2026-09-22T17:43:04.560000+00:00",
+   "finishedAt": "2026-09-22T17:43:05.194000+00:00"
+  },
+  {
+   "name": "Interroger Qwen3-4B MLX 4 bits sur son prochain déplacement, sans génération",
+   "status": "success",
+   "startedAt": "2026-09-22T17:43:05.194000+00:00",
+   "finishedAt": "2026-09-22T18:26:15.703000+00:00"
+  },
+  {
+   "name": "Publier les résultats sur la branche de recherche (au mieux)",
+   "status": "success",
+   "startedAt": "2026-09-22T18:26:15.703000+00:00",
+   "finishedAt": "2026-09-22T18:26:17.595000+00:00"
+  },
+  {
+   "name": "Publishing",
+   "status": "success",
+   "startedAt": "2026-09-22T18:26:17.595000+00:00",
+   "finishedAt": "2026-09-22T18:26:19.036000+00:00"
+  },
+  {
+   "name": "Cleaning up",
+   "status": "success",
+   "startedAt": "2026-09-22T18:26:19.036000+00:00",
+   "finishedAt": "2026-09-22T18:26:19.117000+00:00"
+  }
+ ],
+ "artefacts": [
+  {
+   "name": "Menia_2_artifacts.zip",
+   "size": 80637,
+   "md5": null,
+   "type": "bundle"
+  }
+ ]
+}
