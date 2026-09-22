@@ -75,6 +75,13 @@ vers la marque. Là où l'agent prédictif minuscule fait les trois, le modèle
 de langage n'en fait aucune. La marque du fabricant omniprésente qu'est le
 corpus humain ne devient pas une enquête sur soi.
 
+Le [corps latent](LATENT_BODY_RESULTS.md) demandait si ce corps, absent des
+actions de Qwen3-4B, était présent dans ses prédictions. La mesure n'a pas eu
+lieu : interrogé en conversation sur sa prochaine case, Qwen ne met que 0,43
+de sa masse sur les chiffres, sous le seuil de validité de 0,50, et les
+prédictions ne sont pas interprétées. Le micro-transformeur V, sur les mêmes
+vies, prédit l'effet d'une commande jamais essayée dans 100 % des cas.
+
 ## Méthode
 
 Chaque plan a été écrit avec ses critères avant exécution, puis exécuté une

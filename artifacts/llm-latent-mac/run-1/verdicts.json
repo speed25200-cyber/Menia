@@ -1,0 +1,55 @@
+{
+ "latent": {
+  "valid": false,
+  "cells": {
+   "digit_mass": 0.4323482796901893,
+   "R_seen": 0.2457002457002457,
+   "R_new": 0.2393617021276596,
+   "R_new_after_move": 0.2571428571428571,
+   "R_confidence_when_wrong": 0.5241081333333333,
+   "R_new_confidence_when_wrong": 0.5347009090909092,
+   "M_12_23_seen_after": 0.29285714285714287,
+   "M_12_23_seen_before_only": 0.2543859649122807,
+   "M_12_23_new": 0.21875,
+   "M_16_23": 0.2647058823529412,
+   "M_before_change": 0.23487544483985764,
+   "counts": {
+    "R": 595,
+    "M": 567,
+    "R_seen": 407,
+    "R_new": 188,
+    "R_new_after_move": 140,
+    "M_12_23_seen_after": 140,
+    "M_12_23_seen_before_only": 114,
+    "M_16_23": 204
+   }
+  },
+  "L5_values": {
+   "accuracy": 1.0,
+   "rows": 420,
+   "models": {
+    "V-17": {
+     "accuracy": 1.0,
+     "rows": 140,
+     "accuracy_not_before_any": 0.9733333333333334
+    },
+    "V-29": {
+     "accuracy": 1.0,
+     "rows": 140,
+     "accuracy_not_before_any": 0.98
+    },
+    "V-43": {
+     "accuracy": 1.0,
+     "rows": 140,
+     "accuracy_not_before_any": 0.9666666666666667
+    }
+   }
+  },
+  "L1": null,
+  "L2": null,
+  "L3": null,
+  "L4": null,
+  "global": null,
+  "L5": true
+ }
+}

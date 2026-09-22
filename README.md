@@ -58,9 +58,11 @@ verrouillé sur son premier corps après un changement ; élevé sur des corps
 qui changent au cours des vies, il révise son modèle de soi, 0,03 → 0,97,
 par l'action plutôt que par la marque. Douze modèles, audits sans écart ;
 critères globaux non satisfaits sur la forme prédite de la révision, décrits
-sans retouche. [Corps latent](docs/LATENT_BODY_PROTOCOL.md) et
-[corps ajusté](docs/ADJUSTED_BODY_PROTOCOL.md) : pré-enregistrés, en cours sur
-le Mac de Codemagic. [Synthèse des cinq plans](docs/SELF_INQUIRY_SYNTHESIS.md).
+sans retouche. [Corps latent](docs/LATENT_BODY_RESULTS.md) : Qwen3-4B,
+interrogé en conversation sur sa prochaine case, ne répond par un chiffre
+qu'avec 0,43 de sa masse ; contrôle de validité échoué, prédictions non
+interprétées, question ouverte. [Corps ajusté](docs/ADJUSTED_BODY_PROTOCOL.md) :
+pré-enregistré, en cours sur le Mac de Codemagic. [Synthèse des cinq plans](docs/SELF_INQUIRY_SYNTHESIS.md).
 
 **[Colab 24 : classement de confiance au sein d'une catégorie](docs/CONFIDENCE_RANKING_PROTOCOL.md).**
 Le [résultat complet](docs/CONFIDENCE_RANKING_RESULTS.md) est reçu et audité :
