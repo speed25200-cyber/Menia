@@ -45,6 +45,19 @@ Graines d'agent : **89, 97, 101** ; graine de développement **11**. Au plus
 trois essais de développement, déclarés ; après eux, plus aucune
 modification.
 
+## Premier essai de développement (graine 11), déclaré
+
+Le 22 septembre à 22 h 20 UTC, code du commit `fddc79b` : 6 propriétés sur
+14 (RPT-2, GWT-2, HOT-1, HOT-2, AST-1, PP-1). L'apprentissage des valeurs
+est maintenant régulier (retour −1,97 au premier tour, autour de −1,6 aux
+derniers) et l'agent obtient le meilleur retour des trois versions (−1,22).
+AE-1 reste sous ses seuils : recharge 0,68 quand l'énergie est basse (0,78
+quand l'énergie est aussi le besoin le plus bas), objet 0,53 quand
+l'énergie est haute et qu'un bon objet est connu ; apprentissage 0,29
+(seuil 0,73). GWT-1 échoue sur la dissociation (lésion de la vision, +0,59
+malaise). **Aucune modification n'est faite** ; l'exécution confirmatoire
+sur les graines 89, 97 et 101 est lancée avec ce code.
+
 ## Exécution
 
 `python -m research.indicator_experiment --version 3`, artefacts dans
