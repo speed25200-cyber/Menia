@@ -73,3 +73,24 @@ Workflow Codemagic `menia-lora-mac`. Artefacts `llm-lora/**` : données,
 journaux d'ajustement, adaptateurs, évaluations `base/`, `F/`, `VM/` avec
 reçus. Rangés ensuite dans `artifacts/llm-lora-mac/run-1`. Résultats dans
 `docs/ADJUSTED_BODY_RESULTS.md`.
+
+## Amendement d'exécution, 22 septembre 2026, 20 h 55 UTC
+
+**Le premier lancement (tag `lora-2`) a échoué techniquement.** Les deux
+ajustements, F puis VM, se sont arrêtés à l'itération 100 sur une « GPU Hang
+Error » du Mac virtuel, avec un pic mémoire de 9,5 Go ; aucun adaptateur n'a
+été produit, aucun modèle F ou VM n'a été évalué. Le script ne s'arrêtait pas
+sur un échec de l'ajustement, et le build s'est terminé « réussi ». Artefacts
+conservés dans `artifacts/llm-lora-mac/run-1`.
+
+**Lecture déclarée du seul modèle de base**, faite avant la relance :
+validité passée (masse sur les chiffres 0,99) ; A1 passe (commandes
+nouvelles 0,13) ; copie des commandes vues 0,45, sous le seuil de 0,60 de A5
+pour la base. L'ajustement de F et de VM ne dépend pas de ces lectures.
+
+**Relance identique** par l'API de Codemagic : même modèle, mêmes données,
+mêmes réglages LoRA, avec la rétropropagation à points de contrôle
+(`--grad-checkpoint`), qui ne change pas le calcul du gradient mais seulement
+la mémoire. Un échec de l'ajustement arrête désormais le build. Le modèle de
+base est réévalué dans le même build. Artefacts attendus dans
+`artifacts/llm-lora-mac/run-2`.

@@ -82,3 +82,17 @@ des vies à corps variable devient la seule voie.
 Workflow Codemagic `menia-latent-mac`, `python -m research.llm_latent_body
 --backend mlx`, artefacts `llm-latent/**`, rangés ensuite dans
 `artifacts/llm-latent-mac/run-1`. Résultats dans `docs/LATENT_BODY_RESULTS.md`.
+
+## Amendement, 22 septembre 2026, 20 h 55 UTC : lecture en complétion brute
+
+Le premier lancement a échoué son contrôle de validité : en conversation,
+Qwen3-4B ne met que 0,43 de sa masse sur les chiffres
+(`docs/LATENT_BODY_RESULTS.md`). Au corps ajusté, la même question posée en
+**complétion brute** au modèle de base Qwen3-0.6B (en-tête du monde,
+historique, puis « Tour k : commande X, de la case p à la case ») reçoit
+0,99 de la masse sur les chiffres. La relance pose donc la question à
+Qwen3-4B, mêmes poids que l'iPhone vérifiés par le manifeste, dans ce format
+de complétion, sans gabarit de conversation, sur les mêmes 48 vies des jeux
+R et M. **Critères L1 à L5, contrôle de validité et critère global
+inchangés.** Workflow `menia-latent-completion-mac`, artefacts attendus dans
+`artifacts/llm-latent-mac/run-2`.

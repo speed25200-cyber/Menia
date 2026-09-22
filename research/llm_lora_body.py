@@ -93,16 +93,21 @@ def main(argv=None):
     ev.add_argument("--label", default="base")
     ev.add_argument("--episodes", type=int, default=48)
     ev.add_argument("--scripted", choices=["copier", "fixed", "uniform"], default="uniform")
+    ev.add_argument("--manifest", default=None, help="check the weights against the iPhone manifest")
+    ev.add_argument("--protocol", default="docs/ADJUSTED_BODY_PROTOCOL.md")
     a = parser.parse_args(argv)
     if a.command == "export":
         export_dataset(a.regime, a.out, a.train, a.valid, a.seed)
         print("exported", a.regime, a.out)
         return
     extra = {"backend": a.backend, "label": a.label, "episodes_per_set": a.episodes, "mode": "completion",
-             "started": datetime.datetime.now(datetime.timezone.utc).isoformat(), "protocol": "docs/ADJUSTED_BODY_PROTOCOL.md"}
+             "started": datetime.datetime.now(datetime.timezone.utc).isoformat(), "protocol": a.protocol}
     if a.backend == "mlx":
         scorer = MLXScorer(a.model, a.revision, adapter_path=a.adapter, chat=False)
         extra["model"] = {"repository": a.model, "revision": a.revision, "path": scorer.path, "adapter": a.adapter}
+        if a.manifest:
+            from .llm_atelier import verify_manifest
+            extra["manifest_check"] = verify_manifest(scorer.path, a.manifest)
         try:
             import mlx_lm
             extra["mlx_lm_version"] = getattr(mlx_lm, "__version__", None)
