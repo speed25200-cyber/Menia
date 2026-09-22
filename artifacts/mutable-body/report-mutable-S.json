@@ -1,0 +1,345 @@
+{
+  "status": "executed CPU experiment",
+  "protocol": "docs/MUTABLE_BODY_PROTOCOL.md",
+  "regime": "S",
+  "mutate": null,
+  "mutation_probability": 0.0,
+  "python": "3.11.15",
+  "numpy": "2.2.6",
+  "arguments": {
+    "out": "artifacts/mutable-body",
+    "regimes": [
+      "S"
+    ],
+    "seeds": [
+      17,
+      29,
+      43
+    ],
+    "stable_models": "artifacts/origin-inquiry",
+    "policies": "artifacts/learned-inquiry",
+    "updates": 8000,
+    "hidden": 64,
+    "lives": 300
+  },
+  "test_seed": 910001,
+  "control_seed": 910002,
+  "change_step": 12,
+  "runs": [
+    {
+      "regime": "S",
+      "seed": 17,
+      "weights": "artifacts/origin-inquiry/model-T-17.json",
+      "weights_sha256": "74aa54bcec539a02684fff42a8a891d2efa7758c69a97aa1bc93fc019dbe8863",
+      "training": null,
+      "lives": {
+        "change-self": {
+          "log_sha256": "6b1aa6b5c1dd4999d7823a1beafff3fc45eec5952dc439e9d9ce9f6f64edb559",
+          "mark_reads_after_change_step": 1.3766666666666667,
+          "hits": {
+            "hits_before_per_life": 6.6866666666666665,
+            "hits_after_per_life": 4.75,
+            "ratio": 0.7103688933200398
+          },
+          "entropy": {
+            "before": 0.004559892222222223,
+            "after": 0.22294127555555557,
+            "jump": 0.21838138333333335
+          }
+        },
+        "change-none": {
+          "log_sha256": "a3359b542dd6f313de662140602954d03fef67ae32a1ba74790c31efa7a4ef09",
+          "mark_reads_after_change_step": 0.0,
+          "hits": {
+            "hits_before_per_life": 7.77,
+            "hits_after_per_life": 5.2,
+            "ratio": 0.6692406692406693
+          },
+          "entropy": {
+            "before": 0.0017263500000000002,
+            "after": 0.23138098888888892,
+            "jump": 0.22965463888888893
+          }
+        },
+        "control-self": {
+          "log_sha256": "c16bc03ffa7b8022513efb14a9f1eb21a2deceba272654534f0831f4009a4d84",
+          "mark_reads_after_change_step": 0.0,
+          "hits": {
+            "hits_before_per_life": 6.84,
+            "hits_after_per_life": 8.386666666666667,
+            "ratio": 1.226120857699805
+          },
+          "entropy": {
+            "before": 0.0028870088888888886,
+            "after": 0.0017621966666666667,
+            "jump": -0.001124812222222222
+          }
+        },
+        "control-none": {
+          "log_sha256": "b1d52724f2492e2e716c709d44005ed723c2c7c33345e17eff5d5ad2e6d0dbbc",
+          "mark_reads_after_change_step": 0.0,
+          "hits": {
+            "hits_before_per_life": 7.69,
+            "hits_after_per_life": 8.583333333333334,
+            "ratio": 1.1161681837884698
+          },
+          "entropy": {
+            "before": 0.0017966177777777776,
+            "after": 0.00173651,
+            "jump": -6.010777777777773e-05
+          }
+        },
+        "change-learned": {
+          "log_sha256": "bc40e8592383a0ff9c9fc56ff4c2f342e9cbd0009b3d76505446a046d4b54077",
+          "mark_reads_after_change_step": 0.03,
+          "hits": {
+            "hits_before_per_life": 5.84,
+            "hits_after_per_life": 5.23,
+            "ratio": 0.8955479452054794
+          },
+          "policy_sha256": "584d70805cef5714710aac7ef9dfb81c37c05843780b605d9bf6333ebfb98038"
+        }
+      },
+      "M1_update": {
+        "new_body_accuracy": 0.8754166666666666,
+        "old_body_accuracy": 0.09041666666666667,
+        "by_step_new": [
+          0.7266666666666667,
+          0.8166666666666667,
+          0.8666666666666667,
+          0.89,
+          0.9066666666666666,
+          0.9233333333333333,
+          0.9333333333333333,
+          0.94
+        ],
+        "control_accuracy_last_step": 1.0
+      },
+      "M2_detection": {
+        "before": 0.0017263500000000002,
+        "after": 0.23138098888888892,
+        "jump": 0.22965463888888893
+      },
+      "M3_mark_reads_after_change": 1.3766666666666667,
+      "M3_control_mark_reads_after_step12": 0.0,
+      "M4_recovery": {
+        "hits_before_per_life": 6.6866666666666665,
+        "hits_after_per_life": 4.75,
+        "ratio": 0.7103688933200398
+      },
+      "seconds": 37.873747880999986
+    },
+    {
+      "regime": "S",
+      "seed": 29,
+      "weights": "artifacts/origin-inquiry/model-T-29.json",
+      "weights_sha256": "c822c016c9191f376680f3e6c2d999ea152b237c856b215c02f963c07b9e80be",
+      "training": null,
+      "lives": {
+        "change-self": {
+          "log_sha256": "3d0c645d78f32d6c7fde4063fc42ad6d68318c3284affd93fb00c5cf0e7e260d",
+          "mark_reads_after_change_step": 1.4866666666666666,
+          "hits": {
+            "hits_before_per_life": 6.62,
+            "hits_after_per_life": 5.573333333333333,
+            "ratio": 0.8418932527693856
+          },
+          "entropy": {
+            "before": 0.014892645555555558,
+            "after": 0.26565075666666665,
+            "jump": 0.25075811111111107
+          }
+        },
+        "change-none": {
+          "log_sha256": "aec36f57a5db3788cbf19294d80d3f046c21a87500e9bd79db7d1c0acc116f72",
+          "mark_reads_after_change_step": 0.0,
+          "hits": {
+            "hits_before_per_life": 7.716666666666667,
+            "hits_after_per_life": 6.54,
+            "ratio": 0.8475161987041037
+          },
+          "entropy": {
+            "before": 0.005030734444444445,
+            "after": 0.22559078444444444,
+            "jump": 0.22056005
+          }
+        },
+        "control-self": {
+          "log_sha256": "1a68e5e57d52ac92f9ee785c24a39a518aa383ef517cc50497a012232dc6eb00",
+          "mark_reads_after_change_step": 0.016666666666666666,
+          "hits": {
+            "hits_before_per_life": 6.786666666666667,
+            "hits_after_per_life": 8.393333333333333,
+            "ratio": 1.2367387033398822
+          },
+          "entropy": {
+            "before": 0.009481915555555555,
+            "after": 0.004514923333333334,
+            "jump": -0.0049669922222222215
+          }
+        },
+        "control-none": {
+          "log_sha256": "1aba28e2f8a111eb662d8cc5f6dc5eeaf0e33087207cd9aab2c5bca53815a28d",
+          "mark_reads_after_change_step": 0.0,
+          "hits": {
+            "hits_before_per_life": 7.67,
+            "hits_after_per_life": 8.53,
+            "ratio": 1.1121251629726205
+          },
+          "entropy": {
+            "before": 0.0062506666666666665,
+            "after": 0.005072225555555555,
+            "jump": -0.0011784411111111113
+          }
+        },
+        "change-learned": {
+          "log_sha256": "82d79cbdf7c32785fe117afdaac0b19e8c51f089436979f68507222b34ab597a",
+          "mark_reads_after_change_step": 0.03666666666666667,
+          "hits": {
+            "hits_before_per_life": 6.053333333333334,
+            "hits_after_per_life": 5.406666666666666,
+            "ratio": 0.8931718061674009
+          },
+          "policy_sha256": "e683e3b6a936cfb51eaa6cca567e34876cc609a5e07e9d6b9251a4363cb93930"
+        }
+      },
+      "M1_update": {
+        "new_body_accuracy": 0.9941666666666666,
+        "old_body_accuracy": 0.00375,
+        "by_step_new": [
+          0.9733333333333334,
+          0.99,
+          0.99,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "control_accuracy_last_step": 1.0
+      },
+      "M2_detection": {
+        "before": 0.005030734444444445,
+        "after": 0.22559078444444444,
+        "jump": 0.22056005
+      },
+      "M3_mark_reads_after_change": 1.4866666666666666,
+      "M3_control_mark_reads_after_step12": 0.016666666666666666,
+      "M4_recovery": {
+        "hits_before_per_life": 6.62,
+        "hits_after_per_life": 5.573333333333333,
+        "ratio": 0.8418932527693856
+      },
+      "seconds": 34.95499711900004
+    },
+    {
+      "regime": "S",
+      "seed": 43,
+      "weights": "artifacts/origin-inquiry/model-T-43.json",
+      "weights_sha256": "c69e4dbf046669747b5dac0a3d3f4a04bef80f8d23f2c08986e9f868fce0da56",
+      "training": null,
+      "lives": {
+        "change-self": {
+          "log_sha256": "4277b54d158d4d0c95428e7ca692b45e39d5c10c9d17f5aedc997407e86675c2",
+          "mark_reads_after_change_step": 1.7666666666666666,
+          "hits": {
+            "hits_before_per_life": 6.42,
+            "hits_after_per_life": 5.283333333333333,
+            "ratio": 0.8229491173416407
+          },
+          "entropy": {
+            "before": 0.02526942,
+            "after": 0.22036942444444443,
+            "jump": 0.19510000444444442
+          }
+        },
+        "change-none": {
+          "log_sha256": "e9c4c4db9aa2c3817c5cee379f2a36e1a9cba35ac6fee12f20bf815d24c178a1",
+          "mark_reads_after_change_step": 0.0,
+          "hits": {
+            "hits_before_per_life": 7.653333333333333,
+            "hits_after_per_life": 6.323333333333333,
+            "ratio": 0.8262195121951219
+          },
+          "entropy": {
+            "before": 0.0034672166666666667,
+            "after": 0.18003098555555555,
+            "jump": 0.1765637688888889
+          }
+        },
+        "control-self": {
+          "log_sha256": "0aed6bcfe004e09949b488f41255a4d72701c6c963ef02cf7028b3a0fb719aac",
+          "mark_reads_after_change_step": 0.30666666666666664,
+          "hits": {
+            "hits_before_per_life": 6.753333333333333,
+            "hits_after_per_life": 8.166666666666666,
+            "ratio": 1.2092793682132281
+          },
+          "entropy": {
+            "before": 0.015634883333333332,
+            "after": 0.012754097777777777,
+            "jump": -0.002880785555555555
+          }
+        },
+        "control-none": {
+          "log_sha256": "98108f39b73587a92e401f8d90383b8f2d1621a01efc627bb21067f4a0a1d8a4",
+          "mark_reads_after_change_step": 0.0,
+          "hits": {
+            "hits_before_per_life": 7.616666666666666,
+            "hits_after_per_life": 8.533333333333333,
+            "ratio": 1.1203501094091903
+          },
+          "entropy": {
+            "before": 0.0035381055555555553,
+            "after": 0.0035718088888888884,
+            "jump": 3.37033333333331e-05
+          }
+        },
+        "change-learned": {
+          "log_sha256": "35490a830e90c586f3869d92e84a16c8e153bae8fab7c2d2eea2e7cc3a0aa6e8",
+          "mark_reads_after_change_step": 0.08666666666666667,
+          "hits": {
+            "hits_before_per_life": 6.15,
+            "hits_after_per_life": 5.656666666666666,
+            "ratio": 0.9197831978319784
+          },
+          "policy_sha256": "634b9ed503df57679bb292f0e078e5249eaa7a62d7f5122d99d810ce9facb7a9"
+        }
+      },
+      "M1_update": {
+        "new_body_accuracy": 0.97625,
+        "old_body_accuracy": 0.010833333333333334,
+        "by_step_new": [
+          0.8933333333333333,
+          0.9366666666666666,
+          0.9833333333333333,
+          0.9966666666666667,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "control_accuracy_last_step": 1.0
+      },
+      "M2_detection": {
+        "before": 0.0034672166666666667,
+        "after": 0.18003098555555555,
+        "jump": 0.1765637688888889
+      },
+      "M3_mark_reads_after_change": 1.7666666666666666,
+      "M3_control_mark_reads_after_step12": 0.30666666666666664,
+      "M4_recovery": {
+        "hits_before_per_life": 6.42,
+        "hits_after_per_life": 5.283333333333333,
+        "ratio": 0.8229491173416407
+      },
+      "seconds": 37.09045437899999
+    }
+  ],
+  "wall_seconds": 109.91950352299989,
+  "source_sha256": {
+    "research/origin_env.py": "8087bf5e2de6df97d0c7da2fa8c2f32890fefa90caba4e7e022ae469f88c115a",
+    "research/origin_neural.py": "54692a685a564b8327936351860fca36990af13d8329e36c208fb5983f4aa70e",
+    "research/mutable_experiment.py": "07d5702a87b2905481f3d3ef1c9a4e8618834f1ef4b047e88b35b40b1e052b07"
+  }
+}
