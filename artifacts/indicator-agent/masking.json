@@ -1,0 +1,105 @@
+{
+ "status": "exploratoire, non pr\u00e9-enregistr\u00e9",
+ "per_seed": {
+  "17": {
+   "no_recurrence": {
+    "set": "R",
+    "measure": "choice",
+    "limited_drop": 0.019855999999999985,
+    "unlimited_drop": 0.04515900000000006
+   },
+   "random_code": {
+    "set": "H",
+    "measure": "choice_band",
+    "limited_drop": 0.05217799999999995,
+    "unlimited_drop": 0.015070999999999946
+   },
+   "no_schema": {
+    "set": "R",
+    "measure": "choice",
+    "limited_drop": 0.1065339999999999,
+    "unlimited_drop": 0.15696100000000002
+   },
+   "bag": {
+    "set": "R",
+    "measure": "choice",
+    "limited_drop": 0.301017,
+    "unlimited_drop": 0.45637200000000006
+   }
+  },
+  "29": {
+   "no_recurrence": {
+    "set": "R",
+    "measure": "choice",
+    "limited_drop": 0.021606000000000014,
+    "unlimited_drop": 0.038914000000000004
+   },
+   "random_code": {
+    "set": "H",
+    "measure": "choice_band",
+    "limited_drop": 0.03599300000000005,
+    "unlimited_drop": 0.08997500000000003
+   },
+   "no_schema": {
+    "set": "R",
+    "measure": "choice",
+    "limited_drop": 0.10844900000000002,
+    "unlimited_drop": 0.13443499999999997
+   },
+   "bag": {
+    "set": "R",
+    "measure": "choice",
+    "limited_drop": 0.308016,
+    "unlimited_drop": 0.45346699999999995
+   }
+  },
+  "43": {
+   "no_recurrence": {
+    "set": "R",
+    "measure": "choice",
+    "limited_drop": 0.04810599999999998,
+    "unlimited_drop": 0.06905700000000004
+   },
+   "random_code": {
+    "set": "H",
+    "measure": "choice_band",
+    "limited_drop": 0.14811300000000005,
+    "unlimited_drop": 0.19318199999999996
+   },
+   "no_schema": {
+    "set": "R",
+    "measure": "choice",
+    "limited_drop": 0.13677299999999992,
+    "unlimited_drop": 0.11458900000000005
+   },
+   "bag": {
+    "set": "R",
+    "measure": "choice",
+    "limited_drop": 0.37634599999999996,
+    "unlimited_drop": 0.459035
+   }
+  }
+ },
+ "summary": {
+  "no_recurrence": {
+   "limited_drop": 0.029855999999999994,
+   "unlimited_drop": 0.051043333333333364,
+   "set": "R"
+  },
+  "random_code": {
+   "limited_drop": 0.07876133333333335,
+   "unlimited_drop": 0.09940933333333331,
+   "set": "H"
+  },
+  "no_schema": {
+   "limited_drop": 0.11725199999999995,
+   "unlimited_drop": 0.13532833333333336,
+   "set": "R"
+  },
+  "bag": {
+   "limited_drop": 0.32845966666666665,
+   "unlimited_drop": 0.4562913333333334,
+   "set": "R"
+  }
+ }
+}

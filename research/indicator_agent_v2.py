@@ -66,7 +66,7 @@ class AgentV2(Agent):
     def _values(self, phi, candidate):
         q = self.P.q if self.P.q is not None else np.zeros((3, self.q_features))
         q_charge = float(phi @ q[0])
-        if self.variant == "single_goal":
+        if self._is("single_goal"):
             q_charge = -math.inf
         q_food = float(phi @ q[1]) if candidate is not None else -math.inf
         return q_charge, q_food, float(phi @ q[2])
@@ -93,7 +93,7 @@ class AgentV2(Agent):
         return salience
 
     def _attend(self, contents, obs, rec):
-        if self.variant in ("unlimited", "random", "round_robin") or self.phase == "childhood":
+        if any(self._is(v) for v in ("unlimited", "random", "round_robin")) or self.phase == "childhood":
             return super()._attend(contents, obs, rec)
         salience = self._salience(contents)
         base = self._decision(self.W, obs["charger"])
@@ -137,7 +137,7 @@ class AgentV2(Agent):
         else:
             if self.learn and self.rng.random() < self.epsilon:
                 options = ["charger", "stay"] + ([candidate] if candidate is not None else [])
-                if self.variant == "single_goal":
+                if self._is("single_goal"):
                     options.remove("charger")
                 goal = options[int(self.rng.integers(len(options)))]
             else:

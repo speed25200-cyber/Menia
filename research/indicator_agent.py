@@ -245,11 +245,12 @@ class Agent:
     phase="childhood": random actions and attention, spotlight bound to the intent, gain = base rate."""
 
     def __init__(self, params, variant="agent", seed=0, learn=False, phase="adult"):
-        if variant not in VARIANTS:
+        if any(part not in VARIANTS for part in variant.split("+")):
             raise ValueError("unknown variant")
         self.P, self.variant, self.learn, self.phase = params, variant, learn, phase
+        self.flags = set(variant.split("+"))  # a lesion, or several joined by "+" (exploratory analyses only)
         self.rng = np.random.default_rng(seed)
-        self.code = params.random_code if variant == "random_code" else params.hue_code
+        self.code = params.random_code if "random_code" in self.flags else params.hue_code
         self.b = np.full(RING, 1.0 / RING)
         self.beta = np.full(4, 0.25)
         self.map = {}
@@ -269,10 +270,13 @@ class Agent:
         self.age = {m: 8 for m in MODULES}
         self.grads = []
 
+    def _is(self, lesion):
+        return lesion in self.flags
+
     # -- modules ------------------------------------------------------------------------------------------------
 
     def _body(self, obs):
-        frozen = self.variant == "frozen_body" and obs["t"] > 8
+        frozen = self._is("frozen_body") and obs["t"] > 8
         if frozen:
             return
         a = self.last_action
@@ -285,8 +289,8 @@ class Agent:
 
     def _pos(self, obs, rec):
         a = self.last_action
-        body = np.full(4, 0.25) if self.variant == "no_broadcast" else self.W["body"]
-        if self.variant == "no_prediction":
+        body = np.full(4, 0.25) if self._is("no_broadcast") else self.W["body"]
+        if self._is("no_prediction"):
             prior = np.full(RING, 1.0 / RING)
         elif a is not None and a < N_MOVE:
             prior = np.zeros(RING)
@@ -304,7 +308,7 @@ class Agent:
         features, surprise = monitor_features(prior, read, self.previous_surprise, self.surprise_trace)
         self.previous_surprise = surprise / LOG8
         self.surprise_trace = 0.5 * self.surprise_trace + 0.5 * surprise / LOG8
-        if self.variant == "constant_gain" or self.phase == "childhood":
+        if self._is("constant_gain") or self.phase == "childhood":
             rho = self.P.base_rate
         else:
             rho = float(sigmoid(features @ self.P.monitor))
@@ -323,7 +327,7 @@ class Agent:
         rec["schema_squares"] = squares
         if self.phase == "childhood":
             rec["schema_rows"] = rows.tolist()
-        if self.variant == "no_schema" or self.phase == "childhood":
+        if self._is("no_schema") or self.phase == "childhood":
             rec["schema_estimate"] = intent
             return intent
         probs = softmax(rows @ self.P.schema)
@@ -345,20 +349,20 @@ class Agent:
         rec["bound"] = None
         if obs["hue"] is not None and bound_to is not None:
             code = self.code.code(obs["hue"])[0]
-            if self.variant == "bag":
+            if self._is("bag"):
                 self.bag = (self.bag + [code])[-2:]
             elif presence[bound_to]:
-                if self.variant == "no_recurrence":
+                if self._is("no_recurrence"):
                     self.map = {}
                 self.map[bound_to] = code
                 self.last_read[bound_to] = obs["t"]
                 rec["bound"] = bound_to
-        elif self.variant == "no_recurrence":
+        elif self._is("no_recurrence"):
             self.map = {}
         values = [None] * RING
-        if self.variant == "lesion_vis":
+        if self._is("lesion_vis"):
             values = [0.5 if presence[x] else None for x in range(RING)]
-        elif self.variant == "bag":
+        elif self._is("bag"):
             mean = float(np.mean(self.code.value(np.array(self.bag)))) if self.bag else None
             values = [mean if presence[x] else None for x in range(RING)]
         else:
@@ -380,7 +384,7 @@ class Agent:
     def _intero(self, obs):
         self.e_hat = self._track(self.e_hat, ENERGY_STEP, obs["energy"])
         self.f_hat = self._track(self.f_hat, SATIETY_STEP, obs["satiety"])
-        return np.ones(2) if self.variant == "lesion_intero" else np.array([self.e_hat, self.f_hat])
+        return np.ones(2) if self._is("lesion_intero") else np.array([self.e_hat, self.f_hat])
 
     # -- workspace ----------------------------------------------------------------------------------------------
 
@@ -401,11 +405,11 @@ class Agent:
         X = np.array([[1.0, self.age[m] / 8, salience[m], float(self.W["intero"].min()), float(self.goal == "charger")]
                       for m in MODULES])
         probs = softmax((self.P.attention * X).sum(1))
-        if self.variant == "unlimited":
+        if self._is("unlimited"):
             chosen = list(MODULES)
-        elif self.variant == "random" or self.phase == "childhood":
+        elif self._is("random") or self.phase == "childhood":
             chosen = [MODULES[int(self.rng.integers(len(MODULES)))]]
-        elif self.variant == "round_robin":
+        elif self._is("round_robin"):
             chosen = [MODULES[obs["t"] % len(MODULES)]]
         else:
             k = int(self.rng.choice(len(MODULES), p=probs))
@@ -462,7 +466,7 @@ class Agent:
         decided = self.decide
         if self.phase == "childhood":
             goal = "random"
-        elif self.variant == "single_goal":
+        elif self._is("single_goal"):
             goal = candidate if candidate is not None else "stay"
         elif not self.decide:
             goal = current
@@ -490,7 +494,7 @@ class Agent:
 
     def _spotlight(self, rec):
         present = [x for x in range(RING) if self.presence[x]]
-        if self.variant == "bag":
+        if self._is("bag"):
             return int(present[int(self.rng.integers(len(present)))]) if present else None
         unknown = [x for x in present if x not in self.map]
         if self.intent is not None and self.intent in unknown:

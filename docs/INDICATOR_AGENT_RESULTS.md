@@ -56,11 +56,17 @@ Les huit échecs se regroupent en trois causes, lues dans les journaux :
    lésion de l'intéroception ne change rien. La propriété d'agence à buts
    concurrents n'est pas réalisée par ce que l'agent a appris, bien que
    l'architecture la permette.
-2. **Le goulot masque l'usage de certaines propriétés** (RPT-1, HOT-4). La
+2. **Le goulot atténue l'usage de certaines propriétés** (RPT-1, HOT-4). La
    mémoire visuelle est là (0,96) et le code de teinte généralise (erreur
    0,13 contre 0,75), mais le choix correct de l'agent plafonne à 0,68 parce
    que la politique lit une vision souvent périmée dans l'espace de travail
-   (0,94 sans goulot). Les écarts de choix restent alors petits.
+   (0,94 sans goulot). Une **analyse exploratoire, non pré-enregistrée**
+   (`research/indicator_masking.py`, `artifacts/indicator-agent/masking.json`),
+   refait les lésions avec un espace de travail illimité : chaque effet
+   grandit (récurrence 0,03 → 0,05, code de teinte 0,08 → 0,10, schéma
+   0,12 → 0,14, liaison 0,33 → 0,46), mais celui de la récurrence reste loin
+   du seuil de 0,15. Le goulot n'explique donc qu'une part de l'échec de
+   RPT-1 : dans ce monde, la mémoire visuelle sert moins que prévu.
 3. **Des effets réels mais sous les seuils** (GWT-3, HOT-3, AE-2). Sans
    diffusion, le moniteur perd peu (0,97 contre 1,00) : son histoire des
    surprises compense. Le gain métacognitif aide (Pos +0,03, retour
