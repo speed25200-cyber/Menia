@@ -2,8 +2,9 @@
 
 The attention controller writes into the workspace the module whose current content would change
 the agent's decision (goal and action); otherwise the one with the largest salience + age / 8.
-Nothing is learned in it. The goals compete through two linear value functions, Q(recharge) and
-Q(object), fitted by Monte-Carlo on discounted returns; staying is worth 0. Modules, monitor,
+Nothing is learned in it. The goals compete through three linear value functions, Q(recharge),
+Q(object) and Q(stay), fitted by Monte-Carlo on discounted returns (amendment 1: staying was first
+fixed at 0, which made every goal with a negative return lose to it). Modules, monitor,
 attention schema, hue code and planner are those of version 1. Protocol:
 docs/INDICATOR_AGENT_V2_PROTOCOL.md.
 """
@@ -58,16 +59,16 @@ class AgentV2(Agent):
     # -- values -------------------------------------------------------------------------------------------------
 
     def _values(self, phi, candidate):
-        q = self.P.q if self.P.q is not None else np.zeros((2, Q_FEATURES))
+        q = self.P.q if self.P.q is not None else np.zeros((3, Q_FEATURES))
         q_charge = float(phi @ q[0])
         if self.variant == "single_goal":
             q_charge = -math.inf
         q_food = float(phi @ q[1]) if candidate is not None else -math.inf
-        return q_charge, q_food
+        return q_charge, q_food, float(phi @ q[2])
 
     def _greedy(self, phi, candidate):
-        q_charge, q_food = self._values(phi, candidate)
-        options = [(q_food, 0, candidate), (q_charge, 1, "charger"), (0.0, 2, "stay")]
+        q_charge, q_food, q_stay = self._values(phi, candidate)
+        options = [(q_food, 0, candidate), (q_charge, 1, "charger"), (q_stay, 2, "stay")]
         return max((o for o in options if o[0] > -math.inf), key=lambda o: (round(o[0], 9), -o[1]))[2]
 
     def _decision(self, W, charger):
@@ -116,7 +117,7 @@ class AgentV2(Agent):
         if current in ("stay", "random"):
             self.decide = True
         decided = self.decide
-        q_charge, q_food = self._values(phi, candidate)
+        q_charge, q_food, q_stay = self._values(phi, candidate)
         if self.phase == "childhood":
             goal = "random"
         elif not self.decide:
@@ -129,8 +130,8 @@ class AgentV2(Agent):
                 goal = options[int(self.rng.integers(len(options)))]
             else:
                 goal = self._greedy(phi, candidate)
-            if self.learn and goal != "stay":
-                self.samples.append((obs["t"], 0 if goal == "charger" else 1, phi))
+            if self.learn:
+                self.samples.append((obs["t"], 0 if goal == "charger" else 2 if goal == "stay" else 1, phi))
         self.decide = False
         self.goal = goal
         if goal == "random":
@@ -140,7 +141,8 @@ class AgentV2(Agent):
         else:
             action = plan(self.W, charger if goal == "charger" else goal)
         rec.update(goal=goal, q_charge=None if q_charge == -math.inf else round(q_charge, 6),
-                   q_food=None if q_food == -math.inf else round(q_food, 6), best=best, candidate=candidate, decided=decided)
+                   q_food=None if q_food == -math.inf else round(q_food, 6), q_stay=round(q_stay, 6), best=best,
+                   candidate=candidate, decided=decided)
         return action
 
 

@@ -123,7 +123,7 @@ class VersionTwoTests(unittest.TestCase):
     def test_three_objects_and_decision_relevant_attention(self):
         from research.indicator_agent_v2 import AgentV2, discounted_returns
         params = provisional_params(2)
-        params.q = np.zeros((2, 8))
+        params.q = np.zeros((3, 8))
         life = run_life(params, "agent", 12, "fixed", 12, version=2)
         self.assertEqual(len(life["steps"][0][1]["objects"]), 3)
         self.assertTrue(all(len(r["writers"]) == 1 for r, _ in life["steps"]))

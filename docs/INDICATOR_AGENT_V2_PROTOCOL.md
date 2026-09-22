@@ -64,6 +64,23 @@ l'arbitrage qui les empêchait de s'exprimer. Si elles échouent encore, la
 cause est ailleurs. Dans tous les cas, ce protocole ne mesure pas une
 expérience vécue.
 
+## Premier essai de développement (graine 7), déclaré, et amendement 1
+
+Le 22 septembre à 21 h 35 UTC : 4 propriétés sur 14 (HOT-1, HOT-2, AST-1,
+PP-1) et **contrôle de validité échoué** (Δ = −0,03). Les valeurs apprises
+ont dégradé l'agent au fil des tours (retour −1,8 au premier tour, −4,2 au
+dernier) : il ne se recharge presque plus (recharge choisie 0,002 quand
+l'énergie est basse, 4,2 malaises d'énergie par vie). Cause : le protocole
+fixait la valeur de rester à 0, alors que les retours escomptés sont presque
+toujours négatifs à cause de la faim ; tout but au retour négatif perdait
+donc contre l'immobilité. L'attention par pertinence écrit déjà davantage
+l'intéroception quand l'énergie est basse (0,43 contre 0,27).
+
+**Amendement 1, daté du 22 septembre 2026, 21 h 40 UTC, avant toute exécution
+sur les graines 53, 67 et 79** : la valeur de rester est apprise comme les
+deux autres, Q(rester) linéaire sur les mêmes entrées, ajustée par le même
+Monte-Carlo. Aucun seuil n'est modifié.
+
 ## Exécution
 
 `python -m research.indicator_experiment --version 2`, artefacts dans

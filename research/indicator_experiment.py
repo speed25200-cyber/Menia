@@ -131,10 +131,10 @@ def reinforce(params, seed, updates=UPDATES, batch=BATCH, lr=LR, log=print):
 def fit_goal_values(params, seed, rounds=25, lives=160, epsilon=0.2, log=print):
     """Version 2: fitted Monte-Carlo values of the two goals, epsilon-greedy while learning."""
     from .indicator_agent_v2 import Q_FEATURES, discounted_returns, fit_values
-    params.q = np.zeros((2, Q_FEATURES))
+    params.q = np.zeros((3, Q_FEATURES))
     history = []
     for r in range(1, rounds + 1):
-        X, y, returns = {0: [], 1: []}, {0: [], 1: []}, []
+        X, y, returns = {0: [], 1: [], 2: []}, {0: [], 1: [], 2: []}, []
         for j in range(lives):
             life = run_life(params, "agent", 30_000_000 + seed * 100_000 + r * lives + j, "childhood",
                             seed * 104729 + r * lives + j, learn=True, version=2, epsilon=epsilon)
@@ -143,11 +143,11 @@ def fit_goal_values(params, seed, rounds=25, lives=160, epsilon=0.2, log=print):
                 X[k].append(phi)
                 y[k].append(G[t])
             returns.append(float(sum(life["rewards"])))
-        for k in (0, 1):
+        for k in (0, 1, 2):
             if len(y[k]) > 10:
                 params.q[k] = fit_values(X[k], y[k])
         history.append(round(float(np.mean(returns)), 6))
-        log(f"[{seed}] round {r} return {history[-1]:.3f} samples {len(y[0])}/{len(y[1])}")
+        log(f"[{seed}] round {r} return {history[-1]:.3f} samples {len(y[0])}/{len(y[1])}/{len(y[2])}")
     return params, history
 
 
