@@ -69,11 +69,38 @@ def confirmation_criteria(runs):
     return out
 
 
+def directional_criteria(runs):
+    """D1-D5 of docs/MUTABLE_BODY_DIRECTIONAL_PROTOCOL.md on regimes SN and MS, directions only."""
+    by = {(r["regime"], r["seed"]): r for r in runs}
+    seeds = sorted({r["seed"] for r in runs})
+    def reads_change(regime, s): return by[(regime, s)]["M3_mark_reads_after_change"]
+    def reads_control(regime, s): return by[(regime, s)]["M3_control_mark_reads_after_step12"]
+    def hits(regime, s, name): return by[(regime, s)]["lives"][name]["hits"]["hits_after_per_life"]
+    def own(regime, s): return by[(regime, s)]["lives"].get("change-own-policy", {}).get("mark_reads_after_change_step")
+    out = {"seeds": seeds, "values": {str(s): {regime: {"M1": by[(regime, s)]["M1_update"]["new_body_accuracy"], "reads_after_change": reads_change(regime, s),
+                                                        "reads_control": reads_control(regime, s), "control_hits_after": hits(regime, s, "control-self"),
+                                                        "change_hits_after": hits(regime, s, "change-self"), "own_policy_reads_after_change": own(regime, s)}
+                                               for regime in ("SN", "MS") if (regime, s) in by} for s in seeds}}
+    if len(seeds) != 3 or not all((regime, s) in by for regime in ("SN", "MS") for s in seeds):
+        out["global"] = False
+        return out
+    out["D1_stable_updates_and_returns"] = all(by[("SN", s)]["M1_update"]["new_body_accuracy"] >= 0.85 and reads_change("SN", s) > 0.5
+                                              and reads_change("SN", s) > 3 * max(reads_control("SN", s), 1e-9) for s in seeds)
+    out["D2_hypervigilance_direction"] = all(reads_control("MS", s) > 2 * max(reads_control("SN", s), 1e-9) and reads_control("MS", s) > 0.5 for s in seeds)
+    out["D3_tradeoff_direction"] = all(hits("MS", s, "control-self") < hits("SN", s, "control-self") and hits("MS", s, "change-self") > hits("SN", s, "change-self") for s in seeds)
+    out["D4_stable_habit_does_not_return"] = all(own("SN", s) is not None and own("SN", s) < 0.2 and own("SN", s) < 0.25 * reads_change("SN", s) for s in seeds)
+    out["D5_mutable_habit_returns"] = all(own("MS", s) is not None and own("MS", s) > 0.3 and own("MS", s) > 5 * max(own("SN", s), 1e-9) for s in seeds)
+    out["global"] = all(out[k] for k in ("D1_stable_updates_and_returns", "D2_hypervigilance_direction", "D3_tradeoff_direction",
+                                         "D4_stable_habit_does_not_return", "D5_mutable_habit_returns"))
+    return out
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", default="artifacts/mutable-body")
     parser.add_argument("--check", action="store_true")
     parser.add_argument("--confirmation", action="store_true", help="evaluate H1-H5 instead of M1-M4")
+    parser.add_argument("--directional", action="store_true", help="evaluate D1-D5 instead of M1-M4")
     args = parser.parse_args()
     root = Path(args.root)
     parts = sorted(root.glob("report-mutable-*.json"))
@@ -101,7 +128,7 @@ def main():
                 data[name] = (lives, np.asarray([replay_states(model, life) for life in lives]))
         probe = update_probe(data["control-none"][1], data["control-none"][0], data["change-none"][1], data["change-none"][0])
         np.testing.assert_allclose(probe["new_body_accuracy"], r["M1_update"]["new_body_accuracy"], atol=1e-9)
-    verdict = confirmation_criteria(runs) if args.confirmation else criteria(runs)
+    verdict = directional_criteria(runs) if args.directional else (confirmation_criteria(runs) if args.confirmation else criteria(runs))
     print(json.dumps(verdict, indent=2))
     print(f"Mutable-body audit reproduced for {len(runs)} runs: hashes, mark reads, hits, entropy jumps, replayed states and probes.")
     if args.check:
