@@ -60,3 +60,11 @@ montrent), et ne modélise pas son corps en contexte (Atelier sur Mac).
 
 Ce qui restera hors de portée, quel que soit le résultat : établir que
 l'agent éprouve quelque chose.
+
+## État au 22 septembre 2026, 21 h 30 UTC
+
+[Résultats de l'agent à indicateurs](INDICATOR_AGENT_RESULTS.md) :
+**démontrées présentes et utilisées** : RPT-2, GWT-2, HOT-1, HOT-2, AST-1,
+PP-1. **Présentes par construction, non démontrées par leur test** :
+RPT-1, GWT-1, GWT-3, GWT-4, HOT-3, HOT-4, AE-1, AE-2 ; cause principale,
+l'arbitrage des buts appris qui ne lit pas l'intéroception.

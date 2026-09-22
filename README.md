@@ -64,6 +64,20 @@ qu'avec 0,43 de sa masse ; contrôle de validité échoué, prédictions non
 interprétées, question ouverte. [Corps ajusté](docs/ADJUSTED_BODY_PROTOCOL.md) :
 pré-enregistré, en cours sur le Mac de Codemagic. [Synthèse des cinq plans](docs/SELF_INQUIRY_SYNTHESIS.md).
 
+## Agent à indicateurs de conscience
+
+[Feuille de route](docs/CONSCIOUSNESS_INDICATORS_ROADMAP.md) : les quatorze
+propriétés indicatrices de Butlin, Long et collaborateurs, reliées aux
+travaux du dépôt. [Agent à indicateurs](docs/INDICATOR_AGENT_RESULTS.md) : un
+seul agent, dans l'Atelier des sens, réunit par construction les quatorze
+propriétés ; des tests pré-enregistrés avec ablations, sur trois graines et
+27 000 vies de test, en démontrent **six présentes et utilisées** (liaison
+des traits, espace de travail limité à sélection apprise, perception
+générative, surveillance métacognitive, schéma d'attention, codage
+prédictif). Huit échouent, surtout parce que l'arbitrage des buts appris
+par renforcement ne lit pas l'intéroception. Audit sans écart en CI. Ce
+n'est pas une preuve de conscience.
+
 **[Colab 24 : classement de confiance au sein d'une catégorie](docs/CONFIDENCE_RANKING_PROTOCOL.md).**
 Le [résultat complet](docs/CONFIDENCE_RANKING_RESULTS.md) est reçu et audité :
 neuf adaptateurs, 1 296 mises à jour et 23 040 appels sur 1 152 questions nouvelles.
