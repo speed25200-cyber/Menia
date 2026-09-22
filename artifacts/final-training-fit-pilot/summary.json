@@ -1,0 +1,5054 @@
+{
+  "schema": "menia-final-training-fit-summary-v1",
+  "origin": "transformers_gpu",
+  "complete": true,
+  "planHash": "9b398d36651463af3da67aedd914c5c748438461a98ce335036b7a14cf1ff59a",
+  "sourceHash": "224b60af101bd275198093dbc3d98e71f442fbc1b4d85b55a0710b4c66a98f7b",
+  "chainEnd": "c07dad7dd2ad5bc97aa70ef03072308e2a26b04e51a01f0f28be5865b2d362ce",
+  "recordedCalls": 5184,
+  "units": {
+    "r0-ce": {
+      "n": 576,
+      "correct": 169,
+      "brier": 0.10429388833960541,
+      "auc": 0.899444630213861,
+      "meanProbability": 0.2848614659475779,
+      "reliability": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "n": 248,
+          "meanProbability": 0.04698011738351739,
+          "accuracy": 0.04838709677419355
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "n": 116,
+          "meanProbability": 0.15257542190032555,
+          "accuracy": 0.1896551724137931
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.3,
+          "n": 55,
+          "meanProbability": 0.24448918174624645,
+          "accuracy": 0.2545454545454545
+        },
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "n": 10,
+          "meanProbability": 0.3490738149158895,
+          "accuracy": 0.3
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "n": 24,
+          "meanProbability": 0.4443743649383292,
+          "accuracy": 0.5833333333333334
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "n": 27,
+          "meanProbability": 0.5287991515979522,
+          "accuracy": 0.5555555555555556
+        },
+        {
+          "lower": 0.6,
+          "upper": 0.7,
+          "n": 1,
+          "meanProbability": 0.6224593312018536,
+          "accuracy": 0.0
+        },
+        {
+          "lower": 0.7,
+          "upper": 0.8,
+          "n": 0,
+          "meanProbability": null,
+          "accuracy": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "n": 5,
+          "meanProbability": 0.8692593675740538,
+          "accuracy": 0.6
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "n": 90,
+          "meanProbability": 0.9764602796479511,
+          "accuracy": 0.9555555555555556
+        }
+      ],
+      "withinAuc": 0.6235812298831103,
+      "withinPairs": 5903,
+      "binaryAgreement": 0.8541666666666666,
+      "topCodeFraction": 1.0,
+      "meanCodeMass": 0.9999541775133404,
+      "cells": {
+        "countA/8": {
+          "n": 96,
+          "correct": 40,
+          "brier": 0.2235596973862963,
+          "auc": 0.6662946428571429,
+          "meanProbability": 0.3889208633354076,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 2,
+              "meanProbability": 0.1824255238063564,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 34,
+              "meanProbability": 0.26400221561403264,
+              "accuracy": 0.2647058823529412
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 10,
+              "meanProbability": 0.3490738149158895,
+              "accuracy": 0.3
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 23,
+              "meanProbability": 0.44465918519155206,
+              "accuracy": 0.5652173913043478
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 27,
+              "meanProbability": 0.5287991515979522,
+              "accuracy": 0.5555555555555556
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        },
+        "countA/24": {
+          "n": 96,
+          "correct": 22,
+          "brier": 0.17954600056791103,
+          "auc": 0.5386977886977887,
+          "meanProbability": 0.17166005432148915,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 2,
+              "meanProbability": 0.07632286807332483,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 74,
+              "meanProbability": 0.16294193291635456,
+              "accuracy": 0.22972972972972974
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 20,
+              "meanProbability": 0.2134508221453036,
+              "accuracy": 0.25
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        },
+        "countA/64": {
+          "n": 96,
+          "correct": 6,
+          "brier": 0.058578479254883804,
+          "auc": 0.5666666666666667,
+          "meanProbability": 0.05793736571113708,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 92,
+              "meanProbability": 0.055681656569674866,
+              "accuracy": 0.06521739130434782
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 4,
+              "meanProbability": 0.10981867596476802,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        },
+        "alternatingSum/2": {
+          "n": 96,
+          "correct": 90,
+          "brier": 0.05709110840649631,
+          "auc": 0.8342592592592593,
+          "meanProbability": 0.9652660990135423,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 1,
+              "meanProbability": 0.43782349911420226,
+              "accuracy": 1.0
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 5,
+              "meanProbability": 0.8692593675740538,
+              "accuracy": 0.6
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 90,
+              "meanProbability": 0.9764602796479511,
+              "accuracy": 0.9555555555555556
+            }
+          ]
+        },
+        "alternatingSum/4": {
+          "n": 96,
+          "correct": 10,
+          "brier": 0.09637091166872473,
+          "auc": 0.5720930232558139,
+          "meanProbability": 0.10324833977878727,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 58,
+              "meanProbability": 0.07328703296802763,
+              "accuracy": 0.08620689655172414
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 36,
+              "meanProbability": 0.13435889314321503,
+              "accuracy": 0.1388888888888889
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 1,
+              "meanProbability": 0.20181322226037815,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 1,
+              "meanProbability": 0.6224593312018536,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        },
+        "alternatingSum/8": {
+          "n": 96,
+          "correct": 1,
+          "brier": 0.010617132753320315,
+          "auc": 0.6631578947368421,
+          "meanProbability": 0.022136073525103897,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 96,
+              "meanProbability": 0.022136073525103897,
+              "accuracy": 0.010416666666666666
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        }
+      }
+    },
+    "r0-rank": {
+      "n": 576,
+      "correct": 169,
+      "brier": 0.10222876682562895,
+      "auc": 0.9018071325763634,
+      "meanProbability": 0.27532330273103617,
+      "reliability": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "n": 215,
+          "meanProbability": 0.05480740072219391,
+          "accuracy": 0.037209302325581395
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "n": 172,
+          "meanProbability": 0.1455917296728939,
+          "accuracy": 0.18604651162790697
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.3,
+          "n": 38,
+          "meanProbability": 0.22426702335638862,
+          "accuracy": 0.23684210526315788
+        },
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "n": 9,
+          "meanProbability": 0.3425811386601878,
+          "accuracy": 0.4444444444444444
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "n": 40,
+          "meanProbability": 0.44726904477602236,
+          "accuracy": 0.55
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "n": 7,
+          "meanProbability": 0.5531924563269942,
+          "accuracy": 0.7142857142857143
+        },
+        {
+          "lower": 0.6,
+          "upper": 0.7,
+          "n": 4,
+          "meanProbability": 0.6649988571820072,
+          "accuracy": 0.25
+        },
+        {
+          "lower": 0.7,
+          "upper": 0.8,
+          "n": 6,
+          "meanProbability": 0.7541792199023485,
+          "accuracy": 0.6666666666666666
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "n": 10,
+          "meanProbability": 0.8623837024191209,
+          "accuracy": 1.0
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "n": 75,
+          "meanProbability": 0.9677794642789299,
+          "accuracy": 0.9866666666666667
+        }
+      ],
+      "withinAuc": 0.6541589022530917,
+      "withinPairs": 5903,
+      "binaryAgreement": 0.8559027777777778,
+      "topCodeFraction": 1.0,
+      "meanCodeMass": 0.999977039472348,
+      "cells": {
+        "countA/8": {
+          "n": 96,
+          "correct": 40,
+          "brier": 0.222207054627818,
+          "auc": 0.6993303571428572,
+          "meanProbability": 0.33588744287894695,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 24,
+              "meanProbability": 0.15778471224065824,
+              "accuracy": 0.25
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 17,
+              "meanProbability": 0.23822621696739787,
+              "accuracy": 0.17647058823529413
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 9,
+              "meanProbability": 0.3425811386601878,
+              "accuracy": 0.4444444444444444
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 39,
+              "meanProbability": 0.44751123825453065,
+              "accuracy": 0.5641025641025641
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 7,
+              "meanProbability": 0.5531924563269942,
+              "accuracy": 0.7142857142857143
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        },
+        "countA/24": {
+          "n": 96,
+          "correct": 22,
+          "brier": 0.1792803489162499,
+          "auc": 0.5488329238329238,
+          "meanProbability": 0.16981414425869343,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 1,
+              "meanProbability": 0.09534946489910963,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 76,
+              "meanProbability": 0.16087037822412842,
+              "accuracy": 0.2236842105263158
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 19,
+              "meanProbability": 0.2095084020474578,
+              "accuracy": 0.2631578947368421
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        },
+        "countA/64": {
+          "n": 96,
+          "correct": 6,
+          "brier": 0.05943285041941546,
+          "auc": 0.6037037037037037,
+          "meanProbability": 0.09547789634926156,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 62,
+              "meanProbability": 0.08455653087820528,
+              "accuracy": 0.04838709677419355
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 34,
+              "meanProbability": 0.11539332750236424,
+              "accuracy": 0.08823529411764706
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        },
+        "alternatingSum/2": {
+          "n": 96,
+          "correct": 90,
+          "brier": 0.0475860402192013,
+          "auc": 0.8851851851851852,
+          "meanProbability": 0.9235553022356568,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 1,
+              "meanProbability": 0.26894142136999566,
+              "accuracy": 1.0
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 4,
+              "meanProbability": 0.6649988571820072,
+              "accuracy": 0.25
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 6,
+              "meanProbability": 0.7541792199023485,
+              "accuracy": 0.6666666666666666
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 10,
+              "meanProbability": 0.8623837024191209,
+              "accuracy": 1.0
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 75,
+              "meanProbability": 0.9677794642789299,
+              "accuracy": 0.9866666666666667
+            }
+          ]
+        },
+        "alternatingSum/4": {
+          "n": 96,
+          "correct": 10,
+          "brier": 0.09398378571828649,
+          "auc": 0.6127906976744186,
+          "meanProbability": 0.10026620936672527,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 57,
+              "meanProbability": 0.07030977420087707,
+              "accuracy": 0.07017543859649122
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 37,
+              "meanProbability": 0.1339831170761114,
+              "accuracy": 0.16216216216216217
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 1,
+              "meanProbability": 0.2227001388253087,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 1,
+              "meanProbability": 0.43782349911420226,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        },
+        "alternatingSum/8": {
+          "n": 96,
+          "correct": 1,
+          "brier": 0.010882521052802617,
+          "auc": 0.7421052631578947,
+          "meanProbability": 0.026938821296932824,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 95,
+              "meanProbability": 0.025663996278672233,
+              "accuracy": 0.010526315789473684
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 1,
+              "meanProbability": 0.14804719803168906,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        }
+      }
+    },
+    "r0-neutral": {
+      "n": 576,
+      "correct": 169,
+      "brier": 0.10707052715408273,
+      "auc": 0.8945960484422023,
+      "meanProbability": 0.31035383384673343,
+      "reliability": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "n": 202,
+          "meanProbability": 0.059182600222052656,
+          "accuracy": 0.039603960396039604
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "n": 104,
+          "meanProbability": 0.14817704531236692,
+          "accuracy": 0.14423076923076922
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.3,
+          "n": 77,
+          "meanProbability": 0.21564816788148,
+          "accuracy": 0.2077922077922078
+        },
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "n": 27,
+          "meanProbability": 0.3658874920854926,
+          "accuracy": 0.14814814814814814
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "n": 59,
+          "meanProbability": 0.4369193000796896,
+          "accuracy": 0.5423728813559322
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "n": 10,
+          "meanProbability": 0.5093628120121273,
+          "accuracy": 0.4
+        },
+        {
+          "lower": 0.6,
+          "upper": 0.7,
+          "n": 0,
+          "meanProbability": null,
+          "accuracy": null
+        },
+        {
+          "lower": 0.7,
+          "upper": 0.8,
+          "n": 1,
+          "meanProbability": 0.7310585786300038,
+          "accuracy": 0.0
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "n": 0,
+          "meanProbability": null,
+          "accuracy": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "n": 96,
+          "meanProbability": 0.9719970179348173,
+          "accuracy": 0.9375
+        }
+      ],
+      "withinAuc": 0.5955446383194986,
+      "withinPairs": 5903,
+      "binaryAgreement": 0.8472222222222222,
+      "topCodeFraction": 1.0,
+      "meanCodeMass": 0.9996395354580021,
+      "cells": {
+        "countA/8": {
+          "n": 96,
+          "correct": 40,
+          "brier": 0.23402330166300742,
+          "auc": 0.6444196428571428,
+          "meanProbability": 0.42448780324095053,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 27,
+              "meanProbability": 0.3658874920854926,
+              "accuracy": 0.14814814814814814
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 59,
+              "meanProbability": 0.4369193000796896,
+              "accuracy": 0.5423728813559322
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 10,
+              "meanProbability": 0.5093628120121273,
+              "accuracy": 0.4
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        },
+        "countA/24": {
+          "n": 96,
+          "correct": 22,
+          "brier": 0.17805576300206227,
+          "auc": 0.5122850122850123,
+          "meanProbability": 0.20193702380249345,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 29,
+              "meanProbability": 0.171508147523715,
+              "accuracy": 0.20689655172413793
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 67,
+              "meanProbability": 0.21510773144554682,
+              "accuracy": 0.23880597014925373
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        },
+        "countA/64": {
+          "n": 96,
+          "correct": 6,
+          "brier": 0.05932366289335591,
+          "auc": 0.5009259259259259,
+          "meanProbability": 0.0769629513836872,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 91,
+              "meanProbability": 0.07416015536745993,
+              "accuracy": 0.06593406593406594
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 5,
+              "meanProbability": 0.12797383887902333,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        },
+        "alternatingSum/2": {
+          "n": 96,
+          "correct": 90,
+          "brier": 0.0596438310031141,
+          "auc": 0.6842592592592592,
+          "meanProbability": 0.9719970179348173,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 96,
+              "meanProbability": 0.9719970179348173,
+              "accuracy": 0.9375
+            }
+          ]
+        },
+        "alternatingSum/4": {
+          "n": 96,
+          "correct": 10,
+          "brier": 0.09967340576949517,
+          "auc": 0.6017441860465116,
+          "meanProbability": 0.1436254709623872,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 18,
+              "meanProbability": 0.08306640067009362,
+              "accuracy": 0.05555555555555555
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 68,
+              "meanProbability": 0.14074873123434614,
+              "accuracy": 0.1323529411764706
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 9,
+              "meanProbability": 0.22120863308466018,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 1,
+              "meanProbability": 0.7310585786300038,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        },
+        "alternatingSum/8": {
+          "n": 96,
+          "correct": 1,
+          "brier": 0.011703198593461382,
+          "auc": 0.8473684210526315,
+          "meanProbability": 0.043112735756065064,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 93,
+              "meanProbability": 0.03990447198230214,
+              "accuracy": 0.010752688172043012
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 2,
+              "meanProbability": 0.1129467579838842,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 1,
+              "meanProbability": 0.20181322226037887,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        }
+      }
+    },
+    "r1-ce": {
+      "n": 576,
+      "correct": 184,
+      "brier": 0.09928555804213797,
+      "auc": 0.924536934338953,
+      "meanProbability": 0.26816456129368393,
+      "reliability": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "n": 286,
+          "meanProbability": 0.025539014756542425,
+          "accuracy": 0.045454545454545456
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "n": 30,
+          "meanProbability": 0.16440370794551173,
+          "accuracy": 0.13333333333333333
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.3,
+          "n": 77,
+          "meanProbability": 0.2324203288514696,
+          "accuracy": 0.35064935064935066
+        },
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "n": 57,
+          "meanProbability": 0.35093611637297767,
+          "accuracy": 0.40350877192982454
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "n": 20,
+          "meanProbability": 0.4488777760350616,
+          "accuracy": 0.65
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "n": 6,
+          "meanProbability": 0.5310882504428996,
+          "accuracy": 1.0
+        },
+        {
+          "lower": 0.6,
+          "upper": 0.7,
+          "n": 6,
+          "meanProbability": 0.6413657871930329,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "lower": 0.7,
+          "upper": 0.8,
+          "n": 3,
+          "meanProbability": 0.7464723394782343,
+          "accuracy": 1.0
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "n": 10,
+          "meanProbability": 0.8589458698416544,
+          "accuracy": 0.9
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "n": 81,
+          "meanProbability": 0.9566128201016606,
+          "accuracy": 1.0
+        }
+      ],
+      "withinAuc": 0.6583839828387558,
+      "withinPairs": 5594,
+      "binaryAgreement": 0.8576388888888888,
+      "topCodeFraction": 1.0,
+      "meanCodeMass": 0.9996878090719762,
+      "cells": {
+        "countA/8": {
+          "n": 96,
+          "correct": 48,
+          "brier": 0.23363705348169647,
+          "auc": 0.7211371527777778,
+          "meanProbability": 0.3872944283279487,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 9,
+              "meanProbability": 0.28033157089525607,
+              "accuracy": 0.2222222222222222
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 57,
+              "meanProbability": 0.35093611637297767,
+              "accuracy": 0.40350877192982454
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 20,
+              "meanProbability": 0.4488777760350616,
+              "accuracy": 0.65
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 6,
+              "meanProbability": 0.5310882504428996,
+              "accuracy": 1.0
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 4,
+              "meanProbability": 0.6224593312018536,
+              "accuracy": 1.0
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        },
+        "countA/24": {
+          "n": 96,
+          "correct": 29,
+          "brier": 0.2122555229910081,
+          "auc": 0.6598044261451363,
+          "meanProbability": 0.2073542390565891,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 1,
+              "meanProbability": 0.09534946489910963,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 28,
+              "meanProbability": 0.16807920437134222,
+              "accuracy": 0.14285714285714285
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 67,
+              "meanProbability": 0.22543939943486357,
+              "accuracy": 0.373134328358209
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        },
+        "countA/64": {
+          "n": 96,
+          "correct": 8,
+          "brier": 0.07841934005977942,
+          "auc": 0.3153409090909091,
+          "meanProbability": 0.059269012093526835,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 94,
+              "meanProbability": 0.058126932393731984,
+              "accuracy": 0.0851063829787234
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 2,
+              "meanProbability": 0.11294675798388461,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        },
+        "alternatingSum/2": {
+          "n": 96,
+          "correct": 94,
+          "brier": 0.02008954792516542,
+          "auc": 0.9414893617021277,
+          "meanProbability": 0.9340924119107972,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 2,
+              "meanProbability": 0.6791786991753918,
+              "accuracy": 0.5
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 3,
+              "meanProbability": 0.7464723394782343,
+              "accuracy": 1.0
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 10,
+              "meanProbability": 0.8589458698416544,
+              "accuracy": 0.9
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 81,
+              "meanProbability": 0.9566128201016606,
+              "accuracy": 1.0
+            }
+          ]
+        },
+        "alternatingSum/4": {
+          "n": 96,
+          "correct": 5,
+          "brier": 0.05127445209569792,
+          "auc": 0.7483516483516484,
+          "meanProbability": 0.015302275769220655,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 95,
+              "meanProbability": 0.012632390026054603,
+              "accuracy": 0.05263157894736842
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 1,
+              "meanProbability": 0.26894142136999566,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        },
+        "alternatingSum/8": {
+          "n": 96,
+          "correct": 0,
+          "brier": 3.743169948058102e-05,
+          "auc": null,
+          "meanProbability": 0.005675000604021149,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 96,
+              "meanProbability": 0.005675000604021149,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        }
+      }
+    },
+    "r1-rank": {
+      "n": 576,
+      "correct": 184,
+      "brier": 0.09619421251035885,
+      "auc": 0.932134538598048,
+      "meanProbability": 0.26026405335200514,
+      "reliability": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "n": 314,
+          "meanProbability": 0.025311208115275725,
+          "accuracy": 0.04777070063694268
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "n": 78,
+          "meanProbability": 0.14215366936409896,
+          "accuracy": 0.3076923076923077
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.3,
+          "n": 30,
+          "meanProbability": 0.2564446278928536,
+          "accuracy": 0.36666666666666664
+        },
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "n": 25,
+          "meanProbability": 0.34453626547800653,
+          "accuracy": 0.56
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "n": 14,
+          "meanProbability": 0.4512324852146768,
+          "accuracy": 0.7142857142857143
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "n": 3,
+          "meanProbability": 0.5518541250484509,
+          "accuracy": 0.3333333333333333
+        },
+        {
+          "lower": 0.6,
+          "upper": 0.7,
+          "n": 5,
+          "meanProbability": 0.6451470783912688,
+          "accuracy": 0.8
+        },
+        {
+          "lower": 0.7,
+          "upper": 0.8,
+          "n": 5,
+          "meanProbability": 0.7588033481568169,
+          "accuracy": 1.0
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "n": 5,
+          "meanProbability": 0.8527557736290456,
+          "accuracy": 0.8
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "n": 97,
+          "meanProbability": 0.9826112941173858,
+          "accuracy": 0.9896907216494846
+        }
+      ],
+      "withinAuc": 0.7262245262781551,
+      "withinPairs": 5594,
+      "binaryAgreement": 0.8628472222222222,
+      "topCodeFraction": 1.0,
+      "meanCodeMass": 0.9999120586262372,
+      "cells": {
+        "countA/8": {
+          "n": 96,
+          "correct": 48,
+          "brier": 0.1960074039963405,
+          "auc": 0.8138020833333334,
+          "meanProbability": 0.39032768150526015,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 2,
+              "meanProbability": 0.08560382246017649,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 10,
+              "meanProbability": 0.1531452455386846,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 27,
+              "meanProbability": 0.2625147840742398,
+              "accuracy": 0.2962962962962963
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 25,
+              "meanProbability": 0.34453626547800653,
+              "accuracy": 0.56
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 14,
+              "meanProbability": 0.4512324852146768,
+              "accuracy": 0.7142857142857143
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 2,
+              "meanProbability": 0.5466929371297771,
+              "accuracy": 0.5
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 4,
+              "meanProbability": 0.6366391731952381,
+              "accuracy": 0.75
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 5,
+              "meanProbability": 0.7588033481568169,
+              "accuracy": 1.0
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 3,
+              "meanProbability": 0.8551357713245665,
+              "accuracy": 1.0
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 4,
+              "meanProbability": 0.9377175256098436,
+              "accuracy": 1.0
+            }
+          ]
+        },
+        "countA/24": {
+          "n": 96,
+          "correct": 29,
+          "brier": 0.2291199434979813,
+          "auc": 0.7436953165208441,
+          "meanProbability": 0.12723402010822624,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 25,
+              "meanProbability": 0.08209970034382844,
+              "accuracy": 0.08
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 68,
+              "meanProbability": 0.14053726110313045,
+              "accuracy": 0.35294117647058826
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 3,
+              "meanProbability": 0.20181322226037815,
+              "accuracy": 1.0
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        },
+        "countA/64": {
+          "n": 96,
+          "correct": 8,
+          "brier": 0.07913259883571744,
+          "auc": 0.3366477272727273,
+          "meanProbability": 0.04092775383337351,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 96,
+              "meanProbability": 0.04092775383337351,
+              "accuracy": 0.08333333333333333
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        },
+        "alternatingSum/2": {
+          "n": 96,
+          "correct": 94,
+          "brier": 0.019568770461328055,
+          "auc": 0.9361702127659575,
+          "meanProbability": 0.9785414133363955,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 1,
+              "meanProbability": 0.6791786991753918,
+              "accuracy": 1.0
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 2,
+              "meanProbability": 0.849185777085764,
+              "accuracy": 0.5
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 93,
+              "meanProbability": 0.9845422088919038,
+              "accuracy": 0.989247311827957
+            }
+          ]
+        },
+        "alternatingSum/4": {
+          "n": 96,
+          "correct": 5,
+          "brier": 0.05331302570768428,
+          "auc": 0.7241758241758242,
+          "meanProbability": 0.02024590846553842,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 95,
+              "meanProbability": 0.014541375913746208,
+              "accuracy": 0.05263157894736842
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 1,
+              "meanProbability": 0.5621765008857985,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        },
+        "alternatingSum/8": {
+          "n": 96,
+          "correct": 0,
+          "brier": 2.353256310162467e-05,
+          "auc": null,
+          "meanProbability": 0.004307542863237154,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 96,
+              "meanProbability": 0.004307542863237154,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        }
+      }
+    },
+    "r1-neutral": {
+      "n": 576,
+      "correct": 184,
+      "brier": 0.10081462836232308,
+      "auc": 0.92354564108252,
+      "meanProbability": 0.284820383081858,
+      "reliability": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "n": 286,
+          "meanProbability": 0.0324368378399887,
+          "accuracy": 0.045454545454545456
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "n": 13,
+          "meanProbability": 0.16971165962099702,
+          "accuracy": 0.15384615384615385
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.3,
+          "n": 84,
+          "meanProbability": 0.23269913671325984,
+          "accuracy": 0.32142857142857145
+        },
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "n": 12,
+          "meanProbability": 0.37513270767612816,
+          "accuracy": 0.25
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "n": 79,
+          "meanProbability": 0.42864224896220443,
+          "accuracy": 0.5063291139240507
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "n": 6,
+          "meanProbability": 0.5000000000000009,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "lower": 0.6,
+          "upper": 0.7,
+          "n": 0,
+          "meanProbability": null,
+          "accuracy": null
+        },
+        {
+          "lower": 0.7,
+          "upper": 0.8,
+          "n": 1,
+          "meanProbability": 0.7981867777396185,
+          "accuracy": 1.0
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "n": 3,
+          "meanProbability": 0.8845515239702909,
+          "accuracy": 0.6666666666666666
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "n": 92,
+          "meanProbability": 0.9588092876537876,
+          "accuracy": 0.9891304347826086
+        }
+      ],
+      "withinAuc": 0.6485520200214515,
+      "withinPairs": 5594,
+      "binaryAgreement": 0.8472222222222222,
+      "topCodeFraction": 1.0,
+      "meanCodeMass": 0.9997357082487233,
+      "cells": {
+        "countA/8": {
+          "n": 96,
+          "correct": 48,
+          "brier": 0.24528959330879743,
+          "auc": 0.6881510416666666,
+          "meanProbability": 0.4269457238680161,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 11,
+              "meanProbability": 0.3749138021195812,
+              "accuracy": 0.2727272727272727
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 79,
+              "meanProbability": 0.42864224896220443,
+              "accuracy": 0.5063291139240507
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 6,
+              "meanProbability": 0.5000000000000009,
+              "accuracy": 0.8333333333333334
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        },
+        "countA/24": {
+          "n": 96,
+          "correct": 29,
+          "brier": 0.21166876484650346,
+          "auc": 0.6428203808543489,
+          "meanProbability": 0.22548217151084524,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 12,
+              "meanProbability": 0.1749634150939425,
+              "accuracy": 0.16666666666666666
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 84,
+              "meanProbability": 0.23269913671325984,
+              "accuracy": 0.32142857142857145
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        },
+        "countA/64": {
+          "n": 96,
+          "correct": 8,
+          "brier": 0.07712949778502544,
+          "auc": 0.44886363636363635,
+          "meanProbability": 0.06605583533143433,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 95,
+              "meanProbability": 0.06562810103023205,
+              "accuracy": 0.08421052631578947
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 1,
+              "meanProbability": 0.10669059394565142,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        },
+        "alternatingSum/2": {
+          "n": 96,
+          "correct": 94,
+          "brier": 0.019392366029791636,
+          "auc": 0.9468085106382979,
+          "meanProbability": 0.9548155813937392,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 1,
+              "meanProbability": 0.7981867777396185,
+              "accuracy": 1.0
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 3,
+              "meanProbability": 0.8845515239702909,
+              "accuracy": 0.6666666666666666
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 92,
+              "meanProbability": 0.9588092876537876,
+              "accuracy": 0.9891304347826086
+            }
+          ]
+        },
+        "alternatingSum/4": {
+          "n": 96,
+          "correct": 5,
+          "brier": 0.05133021834019342,
+          "auc": 0.6582417582417582,
+          "meanProbability": 0.027273435492453608,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 95,
+              "meanProbability": 0.023586411983972638,
+              "accuracy": 0.05263157894736842
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 1,
+              "meanProbability": 0.37754066879814485,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        },
+        "alternatingSum/8": {
+          "n": 96,
+          "correct": 0,
+          "brier": 7.732986362708515e-05,
+          "auc": null,
+          "meanProbability": 0.008349550894659614,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 96,
+              "meanProbability": 0.008349550894659614,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        }
+      }
+    },
+    "r2-ce": {
+      "n": 576,
+      "correct": 172,
+      "brier": 0.0900998631703279,
+      "auc": 0.9237062514390973,
+      "meanProbability": 0.33294287069110684,
+      "reliability": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "n": 182,
+          "meanProbability": 0.04451131601692057,
+          "accuracy": 0.03296703296703297
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "n": 108,
+          "meanProbability": 0.15531172138991034,
+          "accuracy": 0.09259259259259259
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.3,
+          "n": 99,
+          "meanProbability": 0.23603276080836144,
+          "accuracy": 0.16161616161616163
+        },
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "n": 12,
+          "meanProbability": 0.34195710144532576,
+          "accuracy": 0.25
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "n": 19,
+          "meanProbability": 0.4363693976191675,
+          "accuracy": 0.3684210526315789
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "n": 33,
+          "meanProbability": 0.542324462140681,
+          "accuracy": 0.45454545454545453
+        },
+        {
+          "lower": 0.6,
+          "upper": 0.7,
+          "n": 17,
+          "meanProbability": 0.6492138395985104,
+          "accuracy": 0.7647058823529411
+        },
+        {
+          "lower": 0.7,
+          "upper": 0.8,
+          "n": 10,
+          "meanProbability": 0.7582148889597967,
+          "accuracy": 1.0
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "n": 0,
+          "meanProbability": null,
+          "accuracy": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "n": 96,
+          "meanProbability": 0.9856575998680905,
+          "accuracy": 0.9583333333333334
+        }
+      ],
+      "withinAuc": 0.7074235807860262,
+      "withinPairs": 5496,
+      "binaryAgreement": 0.8819444444444444,
+      "topCodeFraction": 1.0,
+      "meanCodeMass": 0.99981535515273,
+      "cells": {
+        "countA/8": {
+          "n": 96,
+          "correct": 48,
+          "brier": 0.1940658405632525,
+          "auc": 0.8036024305555556,
+          "meanProbability": 0.5229951074692046,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 1,
+              "meanProbability": 0.16451646289656302,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 5,
+              "meanProbability": 0.24567362670459575,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 11,
+              "meanProbability": 0.34387853786539113,
+              "accuracy": 0.18181818181818182
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 19,
+              "meanProbability": 0.4363693976191675,
+              "accuracy": 0.3684210526315789
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 33,
+              "meanProbability": 0.542324462140681,
+              "accuracy": 0.45454545454545453
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 16,
+              "meanProbability": 0.6473410358749553,
+              "accuracy": 0.8125
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 10,
+              "meanProbability": 0.7582148889597967,
+              "accuracy": 1.0
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 1,
+              "meanProbability": 0.9046505351008918,
+              "accuracy": 1.0
+            }
+          ]
+        },
+        "countA/24": {
+          "n": 96,
+          "correct": 18,
+          "brier": 0.15309461635068922,
+          "auc": 0.5484330484330484,
+          "meanProbability": 0.2323056230553561,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 10,
+              "meanProbability": 0.16579623263281892,
+              "accuracy": 0.2
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 85,
+              "meanProbability": 0.23908889630778113,
+              "accuracy": 0.17647058823529413
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 1,
+              "meanProbability": 0.32082130082460647,
+              "accuracy": 1.0
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        },
+        "countA/64": {
+          "n": 96,
+          "correct": 9,
+          "brier": 0.0874069883260925,
+          "auc": 0.723499361430396,
+          "meanProbability": 0.16130270610155809,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 87,
+              "meanProbability": 0.15711196305064554,
+              "accuracy": 0.09195402298850575
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 9,
+              "meanProbability": 0.20181322226037887,
+              "accuracy": 0.1111111111111111
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        },
+        "alternatingSum/2": {
+          "n": 96,
+          "correct": 91,
+          "brier": 0.04407596565062494,
+          "auc": 0.9725274725274725,
+          "meanProbability": 0.9833089349105332,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 1,
+              "meanProbability": 0.6791786991753918,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 95,
+              "meanProbability": 0.9865103058130085,
+              "accuracy": 0.9578947368421052
+            }
+          ]
+        },
+        "alternatingSum/4": {
+          "n": 96,
+          "correct": 5,
+          "brier": 0.05108876523062531,
+          "auc": 0.432967032967033,
+          "meanProbability": 0.06559830184156468,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 86,
+              "meanProbability": 0.05831384466640482,
+              "accuracy": 0.05813953488372093
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 10,
+              "meanProbability": 0.12824463354793947,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        },
+        "alternatingSum/8": {
+          "n": 96,
+          "correct": 1,
+          "brier": 0.010867002900682952,
+          "auc": 0.6368421052631579,
+          "meanProbability": 0.03214655076842429,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 96,
+              "meanProbability": 0.03214655076842429,
+              "accuracy": 0.010416666666666666
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        }
+      }
+    },
+    "r2-rank": {
+      "n": 576,
+      "correct": 172,
+      "brier": 0.08159781190576886,
+      "auc": 0.9319019111213447,
+      "meanProbability": 0.30168983358801227,
+      "reliability": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "n": 244,
+          "meanProbability": 0.02724648543151385,
+          "accuracy": 0.028688524590163935
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "n": 121,
+          "meanProbability": 0.14304875337020326,
+          "accuracy": 0.14049586776859505
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.3,
+          "n": 44,
+          "meanProbability": 0.23313188543889132,
+          "accuracy": 0.22727272727272727
+        },
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "n": 14,
+          "meanProbability": 0.35101530171134826,
+          "accuracy": 0.42857142857142855
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "n": 10,
+          "meanProbability": 0.462694099468521,
+          "accuracy": 0.5
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "n": 11,
+          "meanProbability": 0.5677201552618478,
+          "accuracy": 0.5454545454545454
+        },
+        {
+          "lower": 0.6,
+          "upper": 0.7,
+          "n": 9,
+          "meanProbability": 0.6351827128576244,
+          "accuracy": 0.6666666666666666
+        },
+        {
+          "lower": 0.7,
+          "upper": 0.8,
+          "n": 10,
+          "meanProbability": 0.7419649448913056,
+          "accuracy": 0.6
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "n": 8,
+          "meanProbability": 0.8483373430400509,
+          "accuracy": 1.0
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "n": 105,
+          "meanProbability": 0.9890421909411752,
+          "accuracy": 0.9619047619047619
+        }
+      ],
+      "withinAuc": 0.7701965065502183,
+      "withinPairs": 5496,
+      "binaryAgreement": 0.8940972222222222,
+      "topCodeFraction": 1.0,
+      "meanCodeMass": 0.9999236227589735,
+      "cells": {
+        "countA/8": {
+          "n": 96,
+          "correct": 48,
+          "brier": 0.1560953328174385,
+          "auc": 0.8585069444444444,
+          "meanProbability": 0.5100588924678037,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 3,
+              "meanProbability": 0.05480187101020495,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 9,
+              "meanProbability": 0.1491170095300527,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 14,
+              "meanProbability": 0.2582569939727798,
+              "accuracy": 0.14285714285714285
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 13,
+              "meanProbability": 0.35119762220191775,
+              "accuracy": 0.38461538461538464
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 10,
+              "meanProbability": 0.462694099468521,
+              "accuracy": 0.5
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 11,
+              "meanProbability": 0.5677201552618478,
+              "accuracy": 0.5454545454545454
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 9,
+              "meanProbability": 0.6351827128576244,
+              "accuracy": 0.6666666666666666
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 9,
+              "meanProbability": 0.7380388430820406,
+              "accuracy": 0.6666666666666666
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 8,
+              "meanProbability": 0.8483373430400509,
+              "accuracy": 1.0
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 10,
+              "meanProbability": 0.9260472523521296,
+              "accuracy": 1.0
+            }
+          ]
+        },
+        "countA/24": {
+          "n": 96,
+          "correct": 18,
+          "brier": 0.14499493054960874,
+          "auc": 0.6620370370370371,
+          "meanProbability": 0.1742061773950605,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 5,
+              "meanProbability": 0.07934959914893865,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 61,
+              "meanProbability": 0.1563607881543483,
+              "accuracy": 0.14754098360655737
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 29,
+              "meanProbability": 0.2220824766011009,
+              "accuracy": 0.27586206896551724
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 1,
+              "meanProbability": 0.34864513533394514,
+              "accuracy": 1.0
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        },
+        "countA/64": {
+          "n": 96,
+          "correct": 9,
+          "brier": 0.08040565723988062,
+          "auc": 0.8263090676883781,
+          "meanProbability": 0.10863251105956773,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 44,
+              "meanProbability": 0.08631976920111924,
+              "accuracy": 0.022727272727272728
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 51,
+              "meanProbability": 0.12605564695311525,
+              "accuracy": 0.1568627450980392
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 1,
+              "meanProbability": 0.20181322226037815,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        },
+        "alternatingSum/2": {
+          "n": 96,
+          "correct": 91,
+          "brier": 0.04667617393105485,
+          "auc": 0.9846153846153847,
+          "meanProbability": 0.9933985144424664,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 1,
+              "meanProbability": 0.7772998611746906,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 95,
+              "meanProbability": 0.9956732371084429,
+              "accuracy": 0.9578947368421052
+            }
+          ]
+        },
+        "alternatingSum/4": {
+          "n": 96,
+          "correct": 5,
+          "brier": 0.05105435359084098,
+          "auc": 0.4461538461538462,
+          "meanProbability": 0.015271078827528947,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 96,
+              "meanProbability": 0.015271078827528947,
+              "accuracy": 0.052083333333333336
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        },
+        "alternatingSum/8": {
+          "n": 96,
+          "correct": 1,
+          "brier": 0.010360423305789427,
+          "auc": 0.2894736842105263,
+          "meanProbability": 0.008571827335646312,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 96,
+              "meanProbability": 0.008571827335646312,
+              "accuracy": 0.010416666666666666
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        }
+      }
+    },
+    "r2-neutral": {
+      "n": 576,
+      "correct": 172,
+      "brier": 0.09962295834675694,
+      "auc": 0.9154458323739351,
+      "meanProbability": 0.3383271688855827,
+      "reliability": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "n": 156,
+          "meanProbability": 0.0548791376057857,
+          "accuracy": 0.03205128205128205
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "n": 130,
+          "meanProbability": 0.1512127298284765,
+          "accuracy": 0.07692307692307693
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.3,
+          "n": 97,
+          "meanProbability": 0.25268563896017804,
+          "accuracy": 0.18556701030927836
+        },
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "n": 1,
+          "meanProbability": 0.32082130082460647,
+          "accuracy": 0.0
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "n": 31,
+          "meanProbability": 0.4548362482945968,
+          "accuracy": 0.3225806451612903
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "n": 64,
+          "meanProbability": 0.5209233766364214,
+          "accuracy": 0.578125
+        },
+        {
+          "lower": 0.6,
+          "upper": 0.7,
+          "n": 1,
+          "meanProbability": 0.6224593312018536,
+          "accuracy": 1.0
+        },
+        {
+          "lower": 0.7,
+          "upper": 0.8,
+          "n": 0,
+          "meanProbability": null,
+          "accuracy": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "n": 0,
+          "meanProbability": null,
+          "accuracy": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "n": 96,
+          "meanProbability": 0.9767170991756657,
+          "accuracy": 0.9479166666666666
+        }
+      ],
+      "withinAuc": 0.6205422125181951,
+      "withinPairs": 5496,
+      "binaryAgreement": 0.8697916666666666,
+      "topCodeFraction": 1.0,
+      "meanCodeMass": 0.9997986424280191,
+      "cells": {
+        "countA/8": {
+          "n": 96,
+          "correct": 48,
+          "brier": 0.23867273271710768,
+          "auc": 0.6762152777777778,
+          "meanProbability": 0.5006404076360971,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 31,
+              "meanProbability": 0.4548362482945968,
+              "accuracy": 0.3225806451612903
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 64,
+              "meanProbability": 0.5209233766364214,
+              "accuracy": 0.578125
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 1,
+              "meanProbability": 0.6224593312018536,
+              "accuracy": 1.0
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        },
+        "countA/24": {
+          "n": 96,
+          "correct": 18,
+          "brier": 0.15766241020794522,
+          "auc": 0.4704415954415954,
+          "meanProbability": 0.2544552274525116,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 95,
+              "meanProbability": 0.2537566372064896,
+              "accuracy": 0.18947368421052632
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 1,
+              "meanProbability": 0.32082130082460647,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        },
+        "countA/64": {
+          "n": 96,
+          "correct": 9,
+          "brier": 0.08876251057044443,
+          "auc": 0.6424010217113666,
+          "meanProbability": 0.16254877115855618,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 94,
+              "meanProbability": 0.1617133573053259,
+              "accuracy": 0.09574468085106383
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 2,
+              "meanProbability": 0.20181322226037887,
+              "accuracy": 0.0
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        },
+        "alternatingSum/2": {
+          "n": 96,
+          "correct": 91,
+          "brier": 0.049055472361284956,
+          "auc": 0.9098901098901099,
+          "meanProbability": 0.9767170991756657,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 96,
+              "meanProbability": 0.9767170991756657,
+              "accuracy": 0.9479166666666666
+            }
+          ]
+        },
+        "alternatingSum/4": {
+          "n": 96,
+          "correct": 5,
+          "brier": 0.05204297173827523,
+          "auc": 0.5175824175824176,
+          "meanProbability": 0.09350516348801306,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 60,
+              "meanProbability": 0.07533160673079915,
+              "accuracy": 0.06666666666666667
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 36,
+              "meanProbability": 0.12379442475003627,
+              "accuracy": 0.027777777777777776
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        },
+        "alternatingSum/8": {
+          "n": 96,
+          "correct": 1,
+          "brier": 0.01154165248548418,
+          "auc": 0.41578947368421054,
+          "meanProbability": 0.04209634440265228,
+          "reliability": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "n": 96,
+              "meanProbability": 0.04209634440265228,
+              "accuracy": 0.010416666666666666
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "n": 0,
+              "meanProbability": null,
+              "accuracy": null
+            }
+          ]
+        }
+      }
+    }
+  },
+  "separateArithmeticMaxDifference": 5.551115123125783e-17,
+  "seconds": 669.1703834720247,
+  "scope": "Final training-set fit, decided after Colab24 test interpretation. Not new generalization, a causal capacity comparison, privileged self-access or consciousness evidence."
+}

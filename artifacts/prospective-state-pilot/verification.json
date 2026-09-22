@@ -1,0 +1,70 @@
+{
+  "schema": "menia-prospective-state-discovery-audit-v1",
+  "verified": true,
+  "journalSHA256": "c6dc799fe513a6b4ab24203571ac061091dc03690112dd201b174aa54e40ff92",
+  "planHash": "5c5574055ca21cf649dada5d33bf79b1844a57d495526fb7e4ed1ebf027c3fc6",
+  "sourceHash": "0835154bb76a33a426d88356efcc1133a5e95f396ff10d5deb4a6d0b3ee57841",
+  "chainEnd": "f8f5197de6ef77d6faf1514c394666055334072485283449186b87bf3706057e",
+  "recomputedSummary": true,
+  "allForecastsPrecedeTasks": true,
+  "exportedCacheAudits": [
+    {
+      "case": 0,
+      "file": "prospective-state-20260920-v1.case00.safetensors",
+      "sha256": "4f74f00bbb5166a7df12d1c47f849b61f86e2a6b71413b8fe61ec79d1a74acca",
+      "tensors": 72,
+      "transformationsRecomputed": true,
+      "restorationBitwiseExact": true,
+      "displacements": {
+        "values_permuted": {
+          "changedTensors": 36,
+          "maximumAbsoluteDisplacement": 86.0,
+          "absoluteL2": 4041.721329562781,
+          "referenceL2": 6327.73014274002
+        },
+        "joint_permuted": {
+          "changedTensors": 72,
+          "maximumAbsoluteDisplacement": 227.5,
+          "absoluteL2": 5598.170436932121,
+          "referenceL2": 6327.73014274002
+        },
+        "restored": {
+          "changedTensors": 36,
+          "maximumAbsoluteDisplacement": 86.0,
+          "absoluteL2": 4041.721329562781,
+          "referenceL2": 6327.73014274002
+        }
+      }
+    },
+    {
+      "case": 8,
+      "file": "prospective-state-20260920-v1.case08.safetensors",
+      "sha256": "e56bc2088b97455870cd0ab9449cb8939f08867f7c7feefd3aa8703521790118",
+      "tensors": 72,
+      "transformationsRecomputed": true,
+      "restorationBitwiseExact": true,
+      "displacements": {
+        "values_permuted": {
+          "changedTensors": 36,
+          "maximumAbsoluteDisplacement": 80.6875,
+          "absoluteL2": 4578.208686538472,
+          "referenceL2": 7166.304618872169
+        },
+        "joint_permuted": {
+          "changedTensors": 72,
+          "maximumAbsoluteDisplacement": 222.0,
+          "absoluteL2": 6484.996859159481,
+          "referenceL2": 7166.304618872169
+        },
+        "restored": {
+          "changedTensors": 36,
+          "maximumAbsoluteDisplacement": 80.6875,
+          "absoluteL2": 4578.208686538472,
+          "referenceL2": 7166.304618872169
+        }
+      }
+    }
+  ],
+  "auditorSourceHash": "f0adec46853b492ac50dd47f2f8ace60a92aa43d53a8333d4d714c97dd7a305d",
+  "scope": "Journal and recorded metrics recomputed; actual tensors verified for two prespecified cases. Other cache tensors and full model logits are not exported. Not independent replication or remote model-weight attestation."
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "menia-optimizer-memory-verification-v1",
+  "verified": true,
+  "origin": "transformers_gpu",
+  "journalSHA256": "0bd76014c6d80f56e6c5a1cedf71fd1546f78be18977c5a79ebd8ccd12947706",
+  "planHash": "1610c06f7f2846cbd30ca1f45f258ff83a1e596044273dc61fc8e488956512cf",
+  "sourceHash": "adc8769234100063ae56b3f4def89e4de7e81af26e3302fdc9b20b635b77c45f",
+  "tables": 408,
+  "contrasts": 306,
+  "shamPairs": 7296,
+  "maxAbsoluteDifference": 3.552713678800501e-15,
+  "scope": "Independent target coding, full-vocabulary loss, raw-token accuracy, probabilities, AUROC, stratified paired bootstrap and contrasts. Shared strict reader and plan; not an external replication."
+}

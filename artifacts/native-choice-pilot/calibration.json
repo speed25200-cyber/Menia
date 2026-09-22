@@ -1,0 +1,57 @@
+{
+  "schema": "menia-native-choice-calibration-v1",
+  "parentJournalSHA256": "8a36aceb7773201c5f06f35352a9e7344c2a30d6c182fdc103115f117ce00e4a",
+  "sourceSplit": "train only, all three Colab17 partitions",
+  "model": {
+    "id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "settings": {
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "min_p": 0.0,
+    "do_sample": true,
+    "max_new_tokens": 256,
+    "max_input_tokens": 1792,
+    "enable_thinking": false,
+    "dtype": "bfloat16",
+    "attention": "sdpa",
+    "quantization": "none",
+    "repetition_penalty": 1.0,
+    "renormalize_logits": true,
+    "use_cache": true
+  },
+  "counts": {
+    "countA/8": {
+      "n": 288,
+      "correct": 136,
+      "p": 0.4724137931034483
+    },
+    "countA/24": {
+      "n": 288,
+      "correct": 69,
+      "p": 0.2413793103448276
+    },
+    "countA/64": {
+      "n": 288,
+      "correct": 23,
+      "p": 0.08275862068965517
+    },
+    "alternatingSum/2": {
+      "n": 288,
+      "correct": 275,
+      "p": 0.9517241379310345
+    },
+    "alternatingSum/4": {
+      "n": 288,
+      "correct": 20,
+      "p": 0.07241379310344828
+    },
+    "alternatingSum/8": {
+      "n": 288,
+      "correct": 2,
+      "p": 0.010344827586206896
+    }
+  }
+}

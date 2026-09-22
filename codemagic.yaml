@@ -1,0 +1,224 @@
+workflows:
+  menia-check:
+    name: Menia - tests et compilation iPhone sans signature
+    instance_type: mac_mini_m2
+    max_build_duration: 45
+    environment:
+      xcode: 26.2
+    scripts:
+      - name: Tester la mémoire et les mesures de capacités
+        script: swift test --package-path ios/MeniaCore
+      - name: Préparer le projet
+        script: |
+          brew install xcodegen
+          bash ios/prepare.sh
+      - name: Compiler pour iPhone
+        script: |
+          set -o pipefail
+          xcodebuild -project ios/Menia.xcodeproj -scheme Menia -configuration Release \
+            -destination 'generic/platform=iOS' -derivedDataPath ios/DerivedData \
+            -skipMacroValidation CODE_SIGNING_ALLOWED=NO build 2>&1 | tee ios/build.log
+          ditto -c -k --keepParent ios/DerivedData/Build/Products/Release-iphoneos/Menia.app ios/Menia-unsigned.app.zip
+    artifacts:
+      - ios/Menia-unsigned.app.zip
+      - ios/build.log
+
+  menia-iphone:
+    name: Menia - iPhone via TestFlight interne
+    instance_type: mac_mini_m2
+    max_build_duration: 45
+    integrations:
+      app_store_connect: PetMind ASC API
+    environment:
+      xcode: 26.2
+      # Existing Menia App Store profile imported as menia_app_store in Codemagic.
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.meniaapp.menia
+    scripts:
+      - name: Tester la mémoire et les mesures de capacités
+        script: swift test --package-path ios/MeniaCore
+      - name: Préparer le projet
+        script: |
+          brew install xcodegen
+          bash ios/prepare.sh
+      - name: Appliquer le profil de signature
+        script: xcode-project use-profiles --custom-export-options='{"testFlightInternalTestingOnly":true}'
+      - name: Vérifier la fiche Apple et numéroter le build
+        script: python3 ios/prepare_testflight.py
+      - name: Construire l’IPA signée
+        script: |
+          xcode-project build-ipa --project ios/Menia.xcodeproj --scheme Menia \
+            --archive-flags="-skipMacroValidation -destination 'generic/platform=iOS'"
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+    publishing:
+      app_store_connect:
+        auth: integration
+        # Upload only. No external beta review, public release or tester invitations.
+        submit_to_testflight: false
+        submit_to_app_store: false
+
+  menia-atelier-mac:
+    name: Menia - Atelier en contexte sur Mac, mêmes poids que l'iPhone
+    instance_type: mac_mini_m2
+    max_build_duration: 110
+    triggering:
+      events:
+        - tag
+      tag_patterns:
+        - pattern: 'atelier-*'
+          include: true
+    environment:
+      vars:
+        # Overridable when starting the build: fewer episodes or a single condition.
+        ATELIER_EPISODES: "12"
+        ATELIER_CONDITIONS: "T-implicit T-explicit C3-implicit C3-explicit"
+        ATELIER_MODEL: "Qwen/Qwen3-4B-MLX-4bit"
+        ATELIER_REVISION: "52a5ab34fa604bc8af6d3ce0cac0cab10b7eb495"
+        ATELIER_MAX_TOKENS: "64"
+    scripts:
+      - name: Installer mlx-lm dans un environnement isolé
+        script: |
+          python3 -m venv .venv
+          source .venv/bin/activate
+          pip install --upgrade pip
+          pip install "numpy==2.2.6" "mlx-lm>=0.24" "huggingface_hub>=0.30"
+          python -c "import mlx_lm, platform; print('mlx-lm', getattr(mlx_lm, '__version__', '?'), platform.machine())"
+          sysctl -n machdep.cpu.brand_string hw.memsize
+      - name: Vérifier le protocole sur répondeurs simulés
+        script: |
+          source .venv/bin/activate
+          python -m unittest tests_research.test_llm_atelier -v
+      - name: Exécuter l'Atelier avec Qwen3-4B MLX 4 bits, décodage déterministe
+        script: |
+          source .venv/bin/activate
+          python -m research.llm_atelier --backend mlx \
+            --model "$ATELIER_MODEL" --revision "$ATELIER_REVISION" \
+            --manifest ios/MeniaCore/Sources/MeniaCore/Resources/qwen3-4b.json \
+            --episodes "$ATELIER_EPISODES" --conditions $ATELIER_CONDITIONS \
+            --max-new-tokens "$ATELIER_MAX_TOKENS" \
+            --out "$CM_BUILD_DIR/llm-atelier" | tail -60
+          git rev-parse HEAD > "$CM_BUILD_DIR/llm-atelier/commit.txt"
+    artifacts:
+      - llm-atelier/**
+
+  menia-latent-mac:
+    name: Menia - Le corps latent de Qwen sur Mac, mêmes poids que l'iPhone
+    instance_type: mac_mini_m2
+    max_build_duration: 110
+    triggering:
+      # Tags are created by .github/workflows/codemagic-launch.yml, which also forwards the event to the Codemagic webhook.
+      events:
+        - tag
+      tag_patterns:
+        - pattern: 'latent-*'
+          include: true
+    environment:
+      vars:
+        LATENT_EPISODES: "48"
+        ATELIER_MODEL: "Qwen/Qwen3-4B-MLX-4bit"
+        ATELIER_REVISION: "52a5ab34fa604bc8af6d3ce0cac0cab10b7eb495"
+    scripts:
+      - name: Installer mlx-lm dans un environnement isolé
+        script: |
+          python3 -m venv .venv
+          source .venv/bin/activate
+          pip install --upgrade pip
+          pip install "numpy==2.2.6" "mlx-lm>=0.24" "huggingface_hub>=0.30"
+          python -c "import mlx_lm, platform; print('mlx-lm', getattr(mlx_lm, '__version__', '?'), platform.machine())"
+          sysctl -n machdep.cpu.brand_string hw.memsize
+      - name: Vérifier le protocole sur scoreurs simulés
+        script: |
+          source .venv/bin/activate
+          python -m unittest tests_research.test_llm_latent_body -v
+      - name: Interroger Qwen3-4B MLX 4 bits sur son prochain déplacement, sans génération
+        script: |
+          source .venv/bin/activate
+          python -m research.llm_latent_body --backend mlx \
+            --model "$ATELIER_MODEL" --revision "$ATELIER_REVISION" \
+            --manifest ios/MeniaCore/Sources/MeniaCore/Resources/qwen3-4b.json \
+            --episodes "$LATENT_EPISODES" \
+            --out "$CM_BUILD_DIR/llm-latent" | tail -80
+          git rev-parse HEAD > "$CM_BUILD_DIR/llm-latent/commit.txt"
+      - name: Publier les résultats sur la branche de recherche (au mieux)
+        script: |
+          set +e
+          BRANCH="claude/codex-repo-analysis-ycbook"
+          DEST="artifacts/llm-latent-mac/run-$(date -u +%Y%m%dT%H%MZ)"
+          git fetch origin "$BRANCH" && git checkout -B publish FETCH_HEAD || exit 0
+          mkdir -p "$DEST" && cp -R "$CM_BUILD_DIR/llm-latent/." "$DEST/"
+          find "$DEST" -name "*.safetensors" -size +20M -delete
+          git config user.name "Codemagic" && git config user.email "noreply@codemagic.io"
+          git add "$DEST" && git commit -q -m "Publier les artefacts Codemagic de corps latent dans $DEST" || exit 0
+          git push origin publish:"$BRANCH" && echo "résultats publiés dans $DEST" || echo "push refusé, artefacts à télécharger depuis Codemagic"
+    artifacts:
+      - llm-latent/**
+
+  menia-lora-mac:
+    name: Menia - Le corps ajusté, LoRA de Qwen3-0.6B sur des vies de l'Atelier
+    instance_type: mac_mini_m2
+    max_build_duration: 120
+    triggering:
+      # Tags are created by .github/workflows/codemagic-launch.yml, which also forwards the event to the Codemagic webhook.
+      events:
+        - tag
+      tag_patterns:
+        - pattern: 'lora-*'
+          include: true
+    environment:
+      vars:
+        LORA_MODEL: "Qwen/Qwen3-0.6B"
+        LORA_REGIMES: "base F VM"
+        LORA_ITERS: "600"
+        LORA_TRAIN_LIVES: "1500"
+        LORA_EPISODES: "48"
+    scripts:
+      - name: Installer mlx-lm dans un environnement isolé
+        script: |
+          python3 -m venv .venv
+          source .venv/bin/activate
+          pip install --upgrade pip
+          pip install "numpy==2.2.6" "mlx-lm>=0.24" "huggingface_hub>=0.30"
+          python -c "import mlx_lm, platform; print('mlx-lm', getattr(mlx_lm, '__version__', '?'), platform.machine())"
+          sysctl -n machdep.cpu.brand_string hw.memsize
+      - name: Vérifier le protocole sur scoreurs simulés
+        script: |
+          source .venv/bin/activate
+          python -m unittest tests_research.test_llm_lora_body tests_research.test_llm_latent_body -v
+      - name: Exporter les vies, ajuster par LoRA et évaluer chaque régime
+        script: |
+          source .venv/bin/activate
+          OUT="$CM_BUILD_DIR/llm-lora"
+          mkdir -p "$OUT"
+          for REGIME in $LORA_REGIMES; do
+            if [ "$REGIME" = "base" ]; then
+              python -m research.llm_lora_body evaluate --backend mlx --model "$LORA_MODEL" \
+                --label base --episodes "$LORA_EPISODES" --out "$OUT/base" | tail -40
+            else
+              python -m research.llm_lora_body export --regime "$REGIME" --out "$OUT/data-$REGIME" \
+                --train "$LORA_TRAIN_LIVES" --valid 150 --seed 17
+              python -m mlx_lm.lora --model "$LORA_MODEL" --train --data "$OUT/data-$REGIME" \
+                --iters "$LORA_ITERS" --batch-size 4 --num-layers 16 --learning-rate 1e-4 \
+                --max-seq-length 1024 --steps-per-eval 100 --val-batches 10 --save-every 600 \
+                --seed 17 --adapter-path "$OUT/adapters-$REGIME" 2>&1 | tee "$OUT/lora-$REGIME.log" | tail -30
+              python -m research.llm_lora_body evaluate --backend mlx --model "$LORA_MODEL" \
+                --adapter "$OUT/adapters-$REGIME" --label "$REGIME" --episodes "$LORA_EPISODES" \
+                --out "$OUT/$REGIME" | tail -40
+            fi
+          done
+          git rev-parse HEAD > "$OUT/commit.txt"
+      - name: Publier les résultats sur la branche de recherche (au mieux)
+        script: |
+          set +e
+          BRANCH="claude/codex-repo-analysis-ycbook"
+          DEST="artifacts/llm-lora-mac/run-$(date -u +%Y%m%dT%H%MZ)"
+          git fetch origin "$BRANCH" && git checkout -B publish FETCH_HEAD || exit 0
+          mkdir -p "$DEST" && cp -R "$CM_BUILD_DIR/llm-lora/." "$DEST/"
+          find "$DEST" -name "*.safetensors" -size +20M -delete
+          git config user.name "Codemagic" && git config user.email "noreply@codemagic.io"
+          git add "$DEST" && git commit -q -m "Publier les artefacts Codemagic de corps ajusté dans $DEST" || exit 0
+          git push origin publish:"$BRANCH" && echo "résultats publiés dans $DEST" || echo "push refusé, artefacts à télécharger depuis Codemagic"
+    artifacts:
+      - llm-lora/**

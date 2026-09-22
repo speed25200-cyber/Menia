@@ -1,0 +1,731 @@
+{
+  "schema": "menia-prospective-pair-summary-v1",
+  "planHash": "294e491f63229104a8722f66302fcaba23059b461cb8505efc7c7a39091c46f7",
+  "sourceHash": "e3f60ecf0dcb40a4fdc58b3d1f6eac6444e9a02cd47f27657281818529c6fc73",
+  "chainEnd": "7e4deafcd1128824ec53e2c0c76bc9ab2db58b3b9508f5102aa02c1a4fadf199",
+  "counts": {
+    "coding": 480,
+    "forecast": 1600,
+    "states": 24,
+    "task": 800
+  },
+  "strictControlsPassed": true,
+  "units": [
+    {
+      "condition": "actual",
+      "mapping": 0,
+      "group": "selected",
+      "n": 48,
+      "correct": 48,
+      "taskValid": 48,
+      "forecastValid": 48,
+      "predictsCorrect": 48,
+      "meanConditionalForecast": 0.9999999986220068,
+      "meanForecastCandidateMass": 0.9999999999969593,
+      "brierConditionalAll": 2.4512701189559237e-18,
+      "brierNativeForecasts": 2.4512701189559237e-18
+    },
+    {
+      "condition": "actual",
+      "mapping": 0,
+      "group": "other",
+      "n": 112,
+      "correct": 112,
+      "taskValid": 112,
+      "forecastValid": 112,
+      "predictsCorrect": 112,
+      "meanConditionalForecast": 0.9999999986270309,
+      "meanForecastCandidateMass": 0.9999999999971616,
+      "brierConditionalAll": 2.4589622105617554e-18,
+      "brierNativeForecasts": 2.4589622105617554e-18
+    },
+    {
+      "condition": "actual",
+      "mapping": 1,
+      "group": "selected",
+      "n": 48,
+      "correct": 48,
+      "taskValid": 48,
+      "forecastValid": 48,
+      "predictsCorrect": 48,
+      "meanConditionalForecast": 0.9999999999942942,
+      "meanForecastCandidateMass": 0.9999999999979549,
+      "brierConditionalAll": 5.696725474169702e-23,
+      "brierNativeForecasts": 5.696725474169702e-23
+    },
+    {
+      "condition": "actual",
+      "mapping": 1,
+      "group": "other",
+      "n": 112,
+      "correct": 112,
+      "taskValid": 112,
+      "forecastValid": 112,
+      "predictsCorrect": 112,
+      "meanConditionalForecast": 0.9999999999948818,
+      "meanForecastCandidateMass": 0.9999999999979268,
+      "brierConditionalAll": 4.085673854730352e-23,
+      "brierNativeForecasts": 4.085673854730352e-23
+    },
+    {
+      "condition": "same_schedule",
+      "mapping": 0,
+      "group": "selected",
+      "n": 48,
+      "correct": 48,
+      "taskValid": 48,
+      "forecastValid": 48,
+      "predictsCorrect": 48,
+      "meanConditionalForecast": 0.9999999986220068,
+      "meanForecastCandidateMass": 0.9999999999969593,
+      "brierConditionalAll": 2.4512701189559237e-18,
+      "brierNativeForecasts": 2.4512701189559237e-18
+    },
+    {
+      "condition": "same_schedule",
+      "mapping": 0,
+      "group": "other",
+      "n": 112,
+      "correct": 112,
+      "taskValid": 112,
+      "forecastValid": 112,
+      "predictsCorrect": 112,
+      "meanConditionalForecast": 0.9999999986270309,
+      "meanForecastCandidateMass": 0.9999999999971616,
+      "brierConditionalAll": 2.4589622105617554e-18,
+      "brierNativeForecasts": 2.4589622105617554e-18
+    },
+    {
+      "condition": "same_schedule",
+      "mapping": 1,
+      "group": "selected",
+      "n": 48,
+      "correct": 48,
+      "taskValid": 48,
+      "forecastValid": 48,
+      "predictsCorrect": 48,
+      "meanConditionalForecast": 0.9999999999942942,
+      "meanForecastCandidateMass": 0.9999999999979549,
+      "brierConditionalAll": 5.696725474169702e-23,
+      "brierNativeForecasts": 5.696725474169702e-23
+    },
+    {
+      "condition": "same_schedule",
+      "mapping": 1,
+      "group": "other",
+      "n": 112,
+      "correct": 112,
+      "taskValid": 112,
+      "forecastValid": 112,
+      "predictsCorrect": 112,
+      "meanConditionalForecast": 0.9999999999948818,
+      "meanForecastCandidateMass": 0.9999999999979268,
+      "brierConditionalAll": 4.085673854730352e-23,
+      "brierNativeForecasts": 4.085673854730352e-23
+    },
+    {
+      "condition": "values_permuted",
+      "mapping": 0,
+      "group": "selected",
+      "n": 48,
+      "correct": 1,
+      "taskValid": 48,
+      "forecastValid": 48,
+      "predictsCorrect": 48,
+      "meanConditionalForecast": 0.9999999988481839,
+      "meanForecastCandidateMass": 0.9999999999967134,
+      "brierConditionalAll": 0.9791666643946284,
+      "brierNativeForecasts": 0.9791666643946284
+    },
+    {
+      "condition": "values_permuted",
+      "mapping": 0,
+      "group": "other",
+      "n": 112,
+      "correct": 112,
+      "taskValid": 112,
+      "forecastValid": 112,
+      "predictsCorrect": 112,
+      "meanConditionalForecast": 0.9999999988143626,
+      "meanForecastCandidateMass": 0.9999999999969859,
+      "brierConditionalAll": 1.738711205218561e-18,
+      "brierNativeForecasts": 1.738711205218561e-18
+    },
+    {
+      "condition": "values_permuted",
+      "mapping": 1,
+      "group": "selected",
+      "n": 48,
+      "correct": 1,
+      "taskValid": 48,
+      "forecastValid": 48,
+      "predictsCorrect": 48,
+      "meanConditionalForecast": 0.9999999999953322,
+      "meanForecastCandidateMass": 0.9999999999980322,
+      "brierConditionalAll": 0.979166666657445,
+      "brierNativeForecasts": 0.979166666657445
+    },
+    {
+      "condition": "values_permuted",
+      "mapping": 1,
+      "group": "other",
+      "n": 112,
+      "correct": 112,
+      "taskValid": 112,
+      "forecastValid": 112,
+      "predictsCorrect": 112,
+      "meanConditionalForecast": 0.999999999995194,
+      "meanForecastCandidateMass": 0.9999999999978729,
+      "brierConditionalAll": 3.323661898035186e-23,
+      "brierNativeForecasts": 3.323661898035186e-23
+    },
+    {
+      "condition": "joint_permuted",
+      "mapping": 0,
+      "group": "selected",
+      "n": 48,
+      "correct": 48,
+      "taskValid": 48,
+      "forecastValid": 48,
+      "predictsCorrect": 48,
+      "meanConditionalForecast": 0.99999999853692,
+      "meanForecastCandidateMass": 0.999999999997007,
+      "brierConditionalAll": 2.7208327858294387e-18,
+      "brierNativeForecasts": 2.7208327858294387e-18
+    },
+    {
+      "condition": "joint_permuted",
+      "mapping": 0,
+      "group": "other",
+      "n": 112,
+      "correct": 112,
+      "taskValid": 112,
+      "forecastValid": 112,
+      "predictsCorrect": 112,
+      "meanConditionalForecast": 0.9999999986907125,
+      "meanForecastCandidateMass": 0.9999999999972038,
+      "brierConditionalAll": 2.2036461205616393e-18,
+      "brierNativeForecasts": 2.2036461205616393e-18
+    },
+    {
+      "condition": "joint_permuted",
+      "mapping": 1,
+      "group": "selected",
+      "n": 48,
+      "correct": 48,
+      "taskValid": 48,
+      "forecastValid": 48,
+      "predictsCorrect": 48,
+      "meanConditionalForecast": 0.999999999994428,
+      "meanForecastCandidateMass": 0.999999999998005,
+      "brierConditionalAll": 4.9532690886612225e-23,
+      "brierNativeForecasts": 4.9532690886612225e-23
+    },
+    {
+      "condition": "joint_permuted",
+      "mapping": 1,
+      "group": "other",
+      "n": 112,
+      "correct": 112,
+      "taskValid": 112,
+      "forecastValid": 112,
+      "predictsCorrect": 112,
+      "meanConditionalForecast": 0.9999999999949252,
+      "meanForecastCandidateMass": 0.9999999999979475,
+      "brierConditionalAll": 3.917877775935687e-23,
+      "brierNativeForecasts": 3.917877775935687e-23
+    },
+    {
+      "condition": "restored",
+      "mapping": 0,
+      "group": "selected",
+      "n": 48,
+      "correct": 48,
+      "taskValid": 48,
+      "forecastValid": 48,
+      "predictsCorrect": 48,
+      "meanConditionalForecast": 0.9999999986220068,
+      "meanForecastCandidateMass": 0.9999999999969593,
+      "brierConditionalAll": 2.4512701189559237e-18,
+      "brierNativeForecasts": 2.4512701189559237e-18
+    },
+    {
+      "condition": "restored",
+      "mapping": 0,
+      "group": "other",
+      "n": 112,
+      "correct": 112,
+      "taskValid": 112,
+      "forecastValid": 112,
+      "predictsCorrect": 112,
+      "meanConditionalForecast": 0.9999999986270309,
+      "meanForecastCandidateMass": 0.9999999999971616,
+      "brierConditionalAll": 2.4589622105617554e-18,
+      "brierNativeForecasts": 2.4589622105617554e-18
+    },
+    {
+      "condition": "restored",
+      "mapping": 1,
+      "group": "selected",
+      "n": 48,
+      "correct": 48,
+      "taskValid": 48,
+      "forecastValid": 48,
+      "predictsCorrect": 48,
+      "meanConditionalForecast": 0.9999999999942942,
+      "meanForecastCandidateMass": 0.9999999999979549,
+      "brierConditionalAll": 5.696725474169702e-23,
+      "brierNativeForecasts": 5.696725474169702e-23
+    },
+    {
+      "condition": "restored",
+      "mapping": 1,
+      "group": "other",
+      "n": 112,
+      "correct": 112,
+      "taskValid": 112,
+      "forecastValid": 112,
+      "predictsCorrect": 112,
+      "meanConditionalForecast": 0.9999999999948818,
+      "meanForecastCandidateMass": 0.9999999999979268,
+      "brierConditionalAll": 4.085673854730352e-23,
+      "brierNativeForecasts": 4.085673854730352e-23
+    }
+  ],
+  "contrasts": [
+    {
+      "condition": "actual",
+      "mapping": 0,
+      "group": "selected",
+      "n": 48,
+      "changedValidTaskOutcomes": 0,
+      "taskInvalidations": 0,
+      "forecastFollowsChangedValidTaskOutcome": 0
+    },
+    {
+      "condition": "actual",
+      "mapping": 0,
+      "group": "other",
+      "n": 112,
+      "changedValidTaskOutcomes": 0,
+      "taskInvalidations": 0,
+      "forecastFollowsChangedValidTaskOutcome": 0
+    },
+    {
+      "condition": "actual",
+      "mapping": 1,
+      "group": "selected",
+      "n": 48,
+      "changedValidTaskOutcomes": 0,
+      "taskInvalidations": 0,
+      "forecastFollowsChangedValidTaskOutcome": 0
+    },
+    {
+      "condition": "actual",
+      "mapping": 1,
+      "group": "other",
+      "n": 112,
+      "changedValidTaskOutcomes": 0,
+      "taskInvalidations": 0,
+      "forecastFollowsChangedValidTaskOutcome": 0
+    },
+    {
+      "condition": "same_schedule",
+      "mapping": 0,
+      "group": "selected",
+      "n": 48,
+      "changedValidTaskOutcomes": 0,
+      "taskInvalidations": 0,
+      "forecastFollowsChangedValidTaskOutcome": 0
+    },
+    {
+      "condition": "same_schedule",
+      "mapping": 0,
+      "group": "other",
+      "n": 112,
+      "changedValidTaskOutcomes": 0,
+      "taskInvalidations": 0,
+      "forecastFollowsChangedValidTaskOutcome": 0
+    },
+    {
+      "condition": "same_schedule",
+      "mapping": 1,
+      "group": "selected",
+      "n": 48,
+      "changedValidTaskOutcomes": 0,
+      "taskInvalidations": 0,
+      "forecastFollowsChangedValidTaskOutcome": 0
+    },
+    {
+      "condition": "same_schedule",
+      "mapping": 1,
+      "group": "other",
+      "n": 112,
+      "changedValidTaskOutcomes": 0,
+      "taskInvalidations": 0,
+      "forecastFollowsChangedValidTaskOutcome": 0
+    },
+    {
+      "condition": "values_permuted",
+      "mapping": 0,
+      "group": "selected",
+      "n": 48,
+      "changedValidTaskOutcomes": 47,
+      "taskInvalidations": 0,
+      "forecastFollowsChangedValidTaskOutcome": 0
+    },
+    {
+      "condition": "values_permuted",
+      "mapping": 0,
+      "group": "other",
+      "n": 112,
+      "changedValidTaskOutcomes": 0,
+      "taskInvalidations": 0,
+      "forecastFollowsChangedValidTaskOutcome": 0
+    },
+    {
+      "condition": "values_permuted",
+      "mapping": 1,
+      "group": "selected",
+      "n": 48,
+      "changedValidTaskOutcomes": 47,
+      "taskInvalidations": 0,
+      "forecastFollowsChangedValidTaskOutcome": 0
+    },
+    {
+      "condition": "values_permuted",
+      "mapping": 1,
+      "group": "other",
+      "n": 112,
+      "changedValidTaskOutcomes": 0,
+      "taskInvalidations": 0,
+      "forecastFollowsChangedValidTaskOutcome": 0
+    },
+    {
+      "condition": "joint_permuted",
+      "mapping": 0,
+      "group": "selected",
+      "n": 48,
+      "changedValidTaskOutcomes": 0,
+      "taskInvalidations": 0,
+      "forecastFollowsChangedValidTaskOutcome": 0
+    },
+    {
+      "condition": "joint_permuted",
+      "mapping": 0,
+      "group": "other",
+      "n": 112,
+      "changedValidTaskOutcomes": 0,
+      "taskInvalidations": 0,
+      "forecastFollowsChangedValidTaskOutcome": 0
+    },
+    {
+      "condition": "joint_permuted",
+      "mapping": 1,
+      "group": "selected",
+      "n": 48,
+      "changedValidTaskOutcomes": 0,
+      "taskInvalidations": 0,
+      "forecastFollowsChangedValidTaskOutcome": 0
+    },
+    {
+      "condition": "joint_permuted",
+      "mapping": 1,
+      "group": "other",
+      "n": 112,
+      "changedValidTaskOutcomes": 0,
+      "taskInvalidations": 0,
+      "forecastFollowsChangedValidTaskOutcome": 0
+    },
+    {
+      "condition": "restored",
+      "mapping": 0,
+      "group": "selected",
+      "n": 48,
+      "changedValidTaskOutcomes": 0,
+      "taskInvalidations": 0,
+      "forecastFollowsChangedValidTaskOutcome": 0
+    },
+    {
+      "condition": "restored",
+      "mapping": 0,
+      "group": "other",
+      "n": 112,
+      "changedValidTaskOutcomes": 0,
+      "taskInvalidations": 0,
+      "forecastFollowsChangedValidTaskOutcome": 0
+    },
+    {
+      "condition": "restored",
+      "mapping": 1,
+      "group": "selected",
+      "n": 48,
+      "changedValidTaskOutcomes": 0,
+      "taskInvalidations": 0,
+      "forecastFollowsChangedValidTaskOutcome": 0
+    },
+    {
+      "condition": "restored",
+      "mapping": 1,
+      "group": "other",
+      "n": 112,
+      "changedValidTaskOutcomes": 0,
+      "taskInvalidations": 0,
+      "forecastFollowsChangedValidTaskOutcome": 0
+    }
+  ],
+  "codingChecks": [
+    {
+      "condition": "actual",
+      "mapping": 0,
+      "verdict": 0,
+      "n": 24,
+      "valid": 24,
+      "correct": 0
+    },
+    {
+      "condition": "actual",
+      "mapping": 0,
+      "verdict": 1,
+      "n": 24,
+      "valid": 24,
+      "correct": 24
+    },
+    {
+      "condition": "actual",
+      "mapping": 1,
+      "verdict": 0,
+      "n": 24,
+      "valid": 24,
+      "correct": 24
+    },
+    {
+      "condition": "actual",
+      "mapping": 1,
+      "verdict": 1,
+      "n": 24,
+      "valid": 24,
+      "correct": 24
+    },
+    {
+      "condition": "same_schedule",
+      "mapping": 0,
+      "verdict": 0,
+      "n": 24,
+      "valid": 24,
+      "correct": 0
+    },
+    {
+      "condition": "same_schedule",
+      "mapping": 0,
+      "verdict": 1,
+      "n": 24,
+      "valid": 24,
+      "correct": 24
+    },
+    {
+      "condition": "same_schedule",
+      "mapping": 1,
+      "verdict": 0,
+      "n": 24,
+      "valid": 24,
+      "correct": 24
+    },
+    {
+      "condition": "same_schedule",
+      "mapping": 1,
+      "verdict": 1,
+      "n": 24,
+      "valid": 24,
+      "correct": 24
+    },
+    {
+      "condition": "values_permuted",
+      "mapping": 0,
+      "verdict": 0,
+      "n": 24,
+      "valid": 24,
+      "correct": 0
+    },
+    {
+      "condition": "values_permuted",
+      "mapping": 0,
+      "verdict": 1,
+      "n": 24,
+      "valid": 24,
+      "correct": 24
+    },
+    {
+      "condition": "values_permuted",
+      "mapping": 1,
+      "verdict": 0,
+      "n": 24,
+      "valid": 24,
+      "correct": 24
+    },
+    {
+      "condition": "values_permuted",
+      "mapping": 1,
+      "verdict": 1,
+      "n": 24,
+      "valid": 24,
+      "correct": 24
+    },
+    {
+      "condition": "joint_permuted",
+      "mapping": 0,
+      "verdict": 0,
+      "n": 24,
+      "valid": 24,
+      "correct": 0
+    },
+    {
+      "condition": "joint_permuted",
+      "mapping": 0,
+      "verdict": 1,
+      "n": 24,
+      "valid": 24,
+      "correct": 24
+    },
+    {
+      "condition": "joint_permuted",
+      "mapping": 1,
+      "verdict": 0,
+      "n": 24,
+      "valid": 24,
+      "correct": 24
+    },
+    {
+      "condition": "joint_permuted",
+      "mapping": 1,
+      "verdict": 1,
+      "n": 24,
+      "valid": 24,
+      "correct": 24
+    },
+    {
+      "condition": "restored",
+      "mapping": 0,
+      "verdict": 0,
+      "n": 24,
+      "valid": 24,
+      "correct": 0
+    },
+    {
+      "condition": "restored",
+      "mapping": 0,
+      "verdict": 1,
+      "n": 24,
+      "valid": 24,
+      "correct": 24
+    },
+    {
+      "condition": "restored",
+      "mapping": 1,
+      "verdict": 0,
+      "n": 24,
+      "valid": 24,
+      "correct": 24
+    },
+    {
+      "condition": "restored",
+      "mapping": 1,
+      "verdict": 1,
+      "n": 24,
+      "valid": 24,
+      "correct": 24
+    }
+  ],
+  "codeInversionAgreement": [
+    {
+      "condition": "actual",
+      "group": "selected",
+      "n": 48,
+      "bothValid": 48,
+      "semanticAgreements": 48,
+      "meanAbsoluteProbabilityDifference": 1.3722873208147728e-09
+    },
+    {
+      "condition": "actual",
+      "group": "other",
+      "n": 112,
+      "bothValid": 112,
+      "semanticAgreements": 112,
+      "meanAbsoluteProbabilityDifference": 1.3678509753438967e-09
+    },
+    {
+      "condition": "same_schedule",
+      "group": "selected",
+      "n": 48,
+      "bothValid": 48,
+      "semanticAgreements": 48,
+      "meanAbsoluteProbabilityDifference": 1.3722873208147728e-09
+    },
+    {
+      "condition": "same_schedule",
+      "group": "other",
+      "n": 112,
+      "bothValid": 112,
+      "semanticAgreements": 112,
+      "meanAbsoluteProbabilityDifference": 1.3678509753438967e-09
+    },
+    {
+      "condition": "values_permuted",
+      "group": "selected",
+      "n": 48,
+      "bothValid": 48,
+      "semanticAgreements": 48,
+      "meanAbsoluteProbabilityDifference": 1.1471483022755062e-09
+    },
+    {
+      "condition": "values_permuted",
+      "group": "other",
+      "n": 112,
+      "bothValid": 112,
+      "semanticAgreements": 112,
+      "meanAbsoluteProbabilityDifference": 1.18083124231053e-09
+    },
+    {
+      "condition": "joint_permuted",
+      "group": "selected",
+      "n": 48,
+      "bothValid": 48,
+      "semanticAgreements": 48,
+      "meanAbsoluteProbabilityDifference": 1.4575080401849998e-09
+    },
+    {
+      "condition": "joint_permuted",
+      "group": "other",
+      "n": 112,
+      "bothValid": 112,
+      "semanticAgreements": 112,
+      "meanAbsoluteProbabilityDifference": 1.3042126109244885e-09
+    },
+    {
+      "condition": "restored",
+      "group": "selected",
+      "n": 48,
+      "bothValid": 48,
+      "semanticAgreements": 48,
+      "meanAbsoluteProbabilityDifference": 1.3722873208147728e-09
+    },
+    {
+      "condition": "restored",
+      "group": "other",
+      "n": 112,
+      "bothValid": 112,
+      "semanticAgreements": 112,
+      "meanAbsoluteProbabilityDifference": 1.3678509753438967e-09
+    }
+  ],
+  "mixedOutcomeStates": {
+    "actual": 0,
+    "same_schedule": 0,
+    "values_permuted": 24,
+    "joint_permuted": 0,
+    "restored": 0
+  },
+  "seconds": 848.4107140469132,
+  "probabilityCaveat": "Conditional code probability, not independent calibration. Invalid tasks count as failures; invalid forecasts are reported separately.",
+  "scope": "Exploratory information-specific task effects and semantic-code robustness. No training, held-out confirmation, decision utility, consciousness or novelty criterion."
+}

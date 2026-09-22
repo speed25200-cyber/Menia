@@ -1,0 +1,74 @@
+{
+  "schema": "menia-native-answer-confidence-receipt-v1",
+  "archiveName": "menia-confiance-native-v1.zip",
+  "archiveBytes": 84780844,
+  "archiveSHA256": "691c107993975eae2b496a829c3c01814ca99bf938b6af1f76f0ad7fc57344bf",
+  "files": 13,
+  "journalSHA256": "c6b3f616ba805841721e8fc8dc135f63385e2afed5b249b28d41339393bc3b00",
+  "scienceRevision": "e9af0cf871268a7febb5695762b1fef0879f34ad",
+  "notebookRevision": "fe7731117f94a196d76fda2a964453c14dc49a8d",
+  "execution": {
+    "startedUTC": "2026-09-19T23:30:36.578902+00:00",
+    "revision": "e9af0cf871268a7febb5695762b1fef0879f34ad",
+    "journal": "/content/menia-results/native-answer-confidence-v1/native-answer-confidence-20260920-v1.jsonl",
+    "status": "completed",
+    "hardware": "NVIDIA A100-SXM4-40GB, 0 MiB, 40960 MiB",
+    "updatedUTC": "2026-09-20T00:33:26.951383+00:00"
+  },
+  "model": {
+    "id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "training": {
+    "rank": 8,
+    "scale": 1.0,
+    "learningRate": 0.0001,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "epsilon": 1e-08,
+    "weightDecay": 0.0,
+    "clipNorm": 1.0,
+    "epochs": 2,
+    "batchSize": 8,
+    "updatesPerAdapter": 144,
+    "maxTrainingTokens": 1792,
+    "loss": "Code 0/1 then EOS only; response tokens are context"
+  },
+  "planHash": "ece013eaeca2ed764fe56ed68d1b5c94f2cbf293e6fc75ad4eb3dd1708672847",
+  "sourceHash": "52e25ffda3a39c182369b4f9d4f3d8d71d3ec94a47e9683dec3e945737bcee38",
+  "mainRecomputeMaxAbsoluteDifference": 2.220446049250313e-16,
+  "independentMaxAbsoluteDifference": 2.220446049250313e-16,
+  "localTests": {
+    "total": 23,
+    "separateRuns": [
+      {
+        "count": 4,
+        "seconds": 115.481
+      },
+      {
+        "count": 19,
+        "seconds": 1.432
+      }
+    ]
+  },
+  "colabTests": {
+    "count": 23,
+    "seconds": 216.117
+  },
+  "outcomeReview": "Complete archive, file hashes, full recalculation, separate core arithmetic and nine weights checked before interpretation.",
+  "trainingSnapshot": {
+    "capturedUTC": "2026-09-20T00:04:12.241298+00:00",
+    "prefixSHA256": "0479cf01052139770bd576259b58d2183413b268f4d6767c5189973787f6c648",
+    "unchangedWeights": 9,
+    "costsMatched": true
+  },
+  "calibrationSnapshot": {
+    "capturedUTC": "2026-09-20T00:15:20.679520+00:00",
+    "prefixSHA256": "7bcf6684337dbb02c7c651b878e5e9b25090a21ed6b0c0f417d031f3f9baeb66",
+    "unchangedBundles": 3,
+    "fullFitReconstructed": true
+  },
+  "scope": "Post-answer textual assessment on fixed finite tasks. No privileged access, native action, consciousness or novelty conclusion."
+}

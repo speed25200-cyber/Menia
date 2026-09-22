@@ -1,0 +1,125 @@
+{
+  "schema": "menia-action-binding-receipt-v1",
+  "archiveName": "menia-liaison-actions.zip",
+  "archiveBytes": 83190026,
+  "archiveSHA256": "c1b178387ac5275594dc48791bd7f2110a21c69086e51af4649456324307f550",
+  "files": {
+    "action-binding/action-binding-20260919-v1.jsonl": {
+      "bytes": 23708607,
+      "sha256": "002a351f462b8b7b386437780c5fa737f7306e24556ce845df5dd371310a8ab7"
+    },
+    "action-binding/action-binding-20260919-v1.r0-fixed.safetensors": {
+      "bytes": 11811296,
+      "sha256": "9d47f24cdf2fef1becd0bc0cf3b174662528827cb2c69f98163150f6d14f78e9"
+    },
+    "action-binding/action-binding-20260919-v1.r0-initial.safetensors": {
+      "bytes": 11811296,
+      "sha256": "712f8e18f51c3df9a96475d2f87273917ab39e47244015dbda797ffd217067de"
+    },
+    "action-binding/action-binding-20260919-v1.r0-permuted.safetensors": {
+      "bytes": 11811296,
+      "sha256": "1131ba8ef6daf77b26d932bc048fdc854c17ad9531b2c5fa6e90eae60ecd7e4a"
+    },
+    "action-binding/action-binding-20260919-v1.r1-fixed.safetensors": {
+      "bytes": 11811296,
+      "sha256": "22012d5ac85a63f216bab0f6ebfef3c29a3d918c5f59fd15a397aaebe01b07d0"
+    },
+    "action-binding/action-binding-20260919-v1.r1-initial.safetensors": {
+      "bytes": 11811296,
+      "sha256": "bf41330ecb8a85a7bf1501c12f1d97fcf158d09d8c7925fd15a85ce9913eae86"
+    },
+    "action-binding/action-binding-20260919-v1.r1-permuted.safetensors": {
+      "bytes": 11811296,
+      "sha256": "5e54cde127f3cf874ca6118217de7f87666e8a8287b17eaf4fb403900ca19a34"
+    },
+    "action-binding/action-binding-20260919-v1.r2-fixed.safetensors": {
+      "bytes": 11811296,
+      "sha256": "91642fa02e311a18c0d77093794ad6fae6369c3387b2b6bdea93ab6cdd2db388"
+    },
+    "action-binding/action-binding-20260919-v1.r2-initial.safetensors": {
+      "bytes": 11811296,
+      "sha256": "19824fb8be9642587b75b3dd81418a1a9ff6d28e33192558bf5122428bf9cd8c"
+    },
+    "action-binding/action-binding-20260919-v1.r2-permuted.safetensors": {
+      "bytes": 11811296,
+      "sha256": "a33aa66847e7a0526f7d4a6094ccc4f50c08f11e558388913d823ad3e004ae70"
+    },
+    "action-binding/action-binding-20260919-v1.summary.json": {
+      "bytes": 142463,
+      "sha256": "b101ec486c8ef23756d4915945123e4087039c54eaacf22ce442923837325c22"
+    },
+    "action-binding/execution.json": {
+      "bytes": 330,
+      "sha256": "471c192d7785a307cb1b995f8a1af753de13ac5371ffbbd10727238c53356859"
+    },
+    "action-binding/execution.log": {
+      "bytes": 6996,
+      "sha256": "f1b615680a1811628d8e797bbb861896edd266131cea91e9b6032673256f5191"
+    }
+  },
+  "journalSHA256": "002a351f462b8b7b386437780c5fa737f7306e24556ce845df5dd371310a8ab7",
+  "scienceRevision": "6d9c1c6ff8b8f15fb7ea63c23c379d5d9f44f781",
+  "notebookRevision": "4b85eafc626da083ec6a5fb16919a63decc4bffe",
+  "execution": {
+    "startedUTC": "2026-09-19T20:18:14.412703+00:00",
+    "revision": "6d9c1c6ff8b8f15fb7ea63c23c379d5d9f44f781",
+    "journal": "/content/menia-results/action-binding-v1/action-binding-20260919-v1.jsonl",
+    "status": "completed",
+    "hardware": "NVIDIA A100-SXM4-40GB, 40960 MiB",
+    "updatedUTC": "2026-09-19T20:52:42.166047+00:00"
+  },
+  "model": {
+    "id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "training": {
+    "replications": 3,
+    "rank": 8,
+    "scale": 1.0,
+    "learningRate": 0.0001,
+    "epochs": 2,
+    "batchSize": 8,
+    "steps": 64,
+    "clipNorm": 1.0,
+    "weightDecay": 0.0,
+    "maxTrainingTokens": 512,
+    "optimizer": "AdamW",
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "epsilon": 1e-08
+  },
+  "evaluation": {
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "min_p": 0.0,
+    "do_sample": true,
+    "max_new_tokens": 16,
+    "max_input_tokens": 1792,
+    "enable_thinking": false,
+    "dtype": "bfloat16",
+    "attention": "sdpa",
+    "quantization": "none",
+    "repetition_penalty": 1.0,
+    "renormalize_logits": true,
+    "use_cache": true
+  },
+  "planHash": "197e0d836e12e08751262fba24d14e8dbc64032f1de3fb14a90a9981b512fb8e",
+  "sourceHash": "5400be41109d69b64864dbe1a7f13322fdb8570eb433785e6033ece5db80441f",
+  "mainRecomputeMaxAbsoluteDifference": 0.0,
+  "independentMaxAbsoluteDifference": 0.0,
+  "localTests": {
+    "count": 5,
+    "seconds": 26.072,
+    "passed": true
+  },
+  "colabTests": {
+    "count": 5,
+    "seconds": 37.165,
+    "passed": true
+  },
+  "outcomeReview": "Complete archive reception, hashes, both calculations and nine weights checked before outcome review.",
+  "scope": "Finite supervised public decision pilot. No private self-state or consciousness criterion; not a novelty claim."
+}

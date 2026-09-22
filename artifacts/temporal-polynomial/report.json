@@ -1,0 +1,371 @@
+{
+  "scope": "post-pilot degree-two polynomial control on the same worlds",
+  "source_sha256": {
+    "research/temporal_effects.py": "ef1fe684778d87525acd795249d11139dc359b288596d9c3c82b0067679a5584",
+    "research/evaluate_temporal_polynomial.py": "444010436b7bc8794bc0a93fe0e69ef4cd3f1015ec6175b1171d3b10f0f570e8",
+    "docs/TEMPORAL_POLYNOMIAL_ADDENDUM.md": "37f131420194af299f6870e05fb75e629fc26dd1bc97a86ff44731ee100d5e84"
+  },
+  "checkpoint_sha256": "61c8a6c92e97a100d32b9db5883406a9cbb5e6a24d2fd1e3a892652458f9d749",
+  "rows": [
+    {
+      "world": {
+        "seed": 300,
+        "family": "affine",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "coupled",
+      "checkpoint_key": "affine-300-coupled",
+      "prediction_mse": 0.172575432676499,
+      "causal_mse_all": 0.042714304402222535,
+      "causal_mse_nonzero": 0.5230347455627414,
+      "spurious_effect_rms": 0.14086128794739108
+    },
+    {
+      "world": {
+        "seed": 300,
+        "family": "affine",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "intervened",
+      "checkpoint_key": "affine-300-intervened",
+      "prediction_mse": 0.0018061123453883541,
+      "causal_mse_all": 0.00041023466409884237,
+      "causal_mse_nonzero": 0.0014370502234912657,
+      "spurious_effect_rms": 0.019008910675789803
+    },
+    {
+      "world": {
+        "seed": 301,
+        "family": "affine",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "coupled",
+      "checkpoint_key": "affine-301-coupled",
+      "prediction_mse": 0.14165708165284085,
+      "causal_mse_all": 0.036832444934558346,
+      "causal_mse_nonzero": 0.38404113921666666,
+      "spurious_effect_rms": 0.14247349784360347
+    },
+    {
+      "world": {
+        "seed": 301,
+        "family": "affine",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "intervened",
+      "checkpoint_key": "affine-301-intervened",
+      "prediction_mse": 0.0014433935357960573,
+      "causal_mse_all": 0.00039147729992302933,
+      "causal_mse_nonzero": 0.0007898262456687391,
+      "spurious_effect_rms": 0.019300474152376852
+    },
+    {
+      "world": {
+        "seed": 302,
+        "family": "affine",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "coupled",
+      "checkpoint_key": "affine-302-coupled",
+      "prediction_mse": 0.09654409207248549,
+      "causal_mse_all": 0.02611094814201489,
+      "causal_mse_nonzero": 0.23558403345710674,
+      "spurious_effect_rms": 0.12702771082518455
+    },
+    {
+      "world": {
+        "seed": 302,
+        "family": "affine",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "intervened",
+      "checkpoint_key": "affine-302-intervened",
+      "prediction_mse": 0.0014741717156555737,
+      "causal_mse_all": 0.00026437113292266014,
+      "causal_mse_nonzero": 0.00019873447283146072,
+      "spurious_effect_rms": 0.01635532598773556
+    },
+    {
+      "world": {
+        "seed": 300,
+        "family": "interaction",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "coupled",
+      "checkpoint_key": "interaction-300-coupled",
+      "prediction_mse": 0.12038882443728624,
+      "causal_mse_all": 0.04510564123063568,
+      "causal_mse_nonzero": 0.4986168297240365,
+      "spurious_effect_rms": 0.15332928731979925
+    },
+    {
+      "world": {
+        "seed": 300,
+        "family": "interaction",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "intervened",
+      "checkpoint_key": "interaction-300-intervened",
+      "prediction_mse": 0.0018365390178749943,
+      "causal_mse_all": 0.0004197177324980778,
+      "causal_mse_nonzero": 0.0015133711165638524,
+      "spurious_effect_rms": 0.01917391456963124
+    },
+    {
+      "world": {
+        "seed": 301,
+        "family": "interaction",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "coupled",
+      "checkpoint_key": "interaction-301-coupled",
+      "prediction_mse": 0.10776826139750026,
+      "causal_mse_all": 0.04347366786918233,
+      "causal_mse_nonzero": 0.4436423868890857,
+      "spurious_effect_rms": 0.1562626461523043
+    },
+    {
+      "world": {
+        "seed": 301,
+        "family": "interaction",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "intervened",
+      "checkpoint_key": "interaction-301-intervened",
+      "prediction_mse": 0.0014526798246216228,
+      "causal_mse_all": 0.00040204441175025135,
+      "causal_mse_nonzero": 0.0009790794046014367,
+      "spurious_effect_rms": 0.019353721992108233
+    },
+    {
+      "world": {
+        "seed": 302,
+        "family": "interaction",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "coupled",
+      "checkpoint_key": "interaction-302-coupled",
+      "prediction_mse": 0.11951610457681063,
+      "causal_mse_all": 0.03951561719613981,
+      "causal_mse_nonzero": 0.4302697763085744,
+      "spurious_effect_rms": 0.14459694424856934
+    },
+    {
+      "world": {
+        "seed": 302,
+        "family": "interaction",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "intervened",
+      "checkpoint_key": "interaction-302-intervened",
+      "prediction_mse": 0.0014749900089878198,
+      "causal_mse_all": 0.0002618872165129468,
+      "causal_mse_nonzero": 0.0001918737571230507,
+      "spurious_effect_rms": 0.016285612999503842
+    },
+    {
+      "world": {
+        "seed": 300,
+        "family": "null",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "coupled",
+      "checkpoint_key": "null-300-coupled",
+      "prediction_mse": 0.07747252493827513,
+      "causal_mse_all": 0.01894016958282967,
+      "causal_mse_nonzero": null,
+      "spurious_effect_rms": 0.13762328866449047
+    },
+    {
+      "world": {
+        "seed": 300,
+        "family": "null",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 5
+      },
+      "policy": "intervened",
+      "checkpoint_key": "null-300-intervened",
+      "prediction_mse": 0.0018044441436030293,
+      "causal_mse_all": 0.00040471562238746496,
+      "causal_mse_nonzero": null,
+      "spurious_effect_rms": 0.02011754513819877
+    },
+    {
+      "world": {
+        "seed": 301,
+        "family": "null",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "coupled",
+      "checkpoint_key": "null-301-coupled",
+      "prediction_mse": 0.07031118440191422,
+      "causal_mse_all": 0.019377102199578323,
+      "causal_mse_nonzero": null,
+      "spurious_effect_rms": 0.13920166018973454
+    },
+    {
+      "world": {
+        "seed": 301,
+        "family": "null",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 3
+      },
+      "policy": "intervened",
+      "checkpoint_key": "null-301-intervened",
+      "prediction_mse": 0.0014456039285336256,
+      "causal_mse_all": 0.000394617756863405,
+      "causal_mse_nonzero": null,
+      "spurious_effect_rms": 0.01986498821704672
+    },
+    {
+      "world": {
+        "seed": 302,
+        "family": "null",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "coupled",
+      "checkpoint_key": "null-302-coupled",
+      "prediction_mse": 0.07109498609298029,
+      "causal_mse_all": 0.01897527314694641,
+      "causal_mse_nonzero": null,
+      "spurious_effect_rms": 0.13775076459659458
+    },
+    {
+      "world": {
+        "seed": 302,
+        "family": "null",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 2
+      },
+      "policy": "intervened",
+      "checkpoint_key": "null-302-intervened",
+      "prediction_mse": 0.0014797718174063296,
+      "causal_mse_all": 0.0002653064146843392,
+      "causal_mse_nonzero": null,
+      "spurious_effect_rms": 0.01628822932931444
+    },
+    {
+      "world": {
+        "seed": 300,
+        "family": "beyond_window",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 10
+      },
+      "policy": "coupled",
+      "checkpoint_key": "beyond_window-300-coupled",
+      "prediction_mse": 0.2682447302377762,
+      "causal_mse_all": 0.12016301495433292,
+      "causal_mse_nonzero": 2.0970325467422213,
+      "spurious_effect_rms": 0.1613269059502507
+    },
+    {
+      "world": {
+        "seed": 300,
+        "family": "beyond_window",
+        "channel": 0,
+        "gain": 1.023970836191691,
+        "delay": 10
+      },
+      "policy": "intervened",
+      "checkpoint_key": "beyond_window-300-intervened",
+      "prediction_mse": 0.38459807009427294,
+      "causal_mse_all": 0.2123808894664098,
+      "causal_mse_nonzero": 2.0970325467422213,
+      "spurious_effect_rms": 0.35019362137719734
+    },
+    {
+      "world": {
+        "seed": 301,
+        "family": "beyond_window",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 10
+      },
+      "policy": "coupled",
+      "checkpoint_key": "beyond_window-301-coupled",
+      "prediction_mse": 0.21758278252532776,
+      "causal_mse_all": 0.09144528991429747,
+      "causal_mse_nonzero": 1.5492025575532324,
+      "spurious_effect_rms": 0.14841926145075063
+    },
+    {
+      "world": {
+        "seed": 301,
+        "family": "beyond_window",
+        "channel": 0,
+        "gain": -0.8801143555110418,
+        "delay": 10
+      },
+      "policy": "intervened",
+      "checkpoint_key": "beyond_window-301-intervened",
+      "prediction_mse": 0.2539280717728903,
+      "causal_mse_all": 0.13713434978008593,
+      "causal_mse_nonzero": 1.5492025575532324,
+      "spurious_effect_rms": 0.26437285517388737
+    },
+    {
+      "world": {
+        "seed": 302,
+        "family": "beyond_window",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 10
+      },
+      "policy": "coupled",
+      "checkpoint_key": "beyond_window-302-coupled",
+      "prediction_mse": 0.26667464260847407,
+      "causal_mse_all": 0.12646657307270626,
+      "causal_mse_nonzero": 2.3431008162557636,
+      "spurious_effect_rms": 0.14461176125253664
+    },
+    {
+      "world": {
+        "seed": 302,
+        "family": "beyond_window",
+        "channel": 1,
+        "gain": 1.0823818217837373,
+        "delay": 10
+      },
+      "policy": "intervened",
+      "checkpoint_key": "beyond_window-302-intervened",
+      "prediction_mse": 0.3053703441540029,
+      "causal_mse_all": 0.16786358868909587,
+      "causal_mse_nonzero": 2.3431008162557636,
+      "spurious_effect_rms": 0.2535367104915452
+    }
+  ]
+}

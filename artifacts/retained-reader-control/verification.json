@@ -1,0 +1,37 @@
+{
+  "schema": "menia-retained-reader-control-audit-v1",
+  "verified": true,
+  "journalSHA256": "72589d9ef7131ca5c54249b3937a9416886f223069a22dc660d6be3fab85c9db",
+  "planHash": "0fa586da5bfbb01b2b5503f09fa7a2516c16b385dab3c373d9adb7f3b368a0ae",
+  "sourceHash": "561e63f813df7fb49e7cdc5fcfdc69c6bc2baca0730da60e9989158c39e4254b",
+  "weights": {
+    "bytes": 47201088,
+    "file": "retained-reader-control-20260920-v1.adapter.safetensors",
+    "sha256": "d1bd1d74ffc96847b7a3b875e490a55fe3ef92b3679c6d49ca1211f9487167ff"
+  },
+  "parameters": 11796480,
+  "nonzeroUpdateMatrices": 72,
+  "zeroReaderNativeMatches": 8,
+  "maximumZeroReaderCandidateLogitDrift": 0.0,
+  "producerTasksUnchanged": 8,
+  "meanLossBefore": 5.867189586161345,
+  "meanLossAfter": 5.7656269222487,
+  "gradientNorm": 11.736733436584473,
+  "updateSeconds": 3.692255378002301,
+  "peakGPUBytes": 17237570048,
+  "forecasts": {
+    "zero_reader": {
+      "n": 8,
+      "valid": 8,
+      "correct": 4,
+      "brierConditional": 0.49999999923961447
+    },
+    "trained_reader": {
+      "n": 8,
+      "valid": 8,
+      "correct": 4,
+      "brierConditional": 0.4999999990227497
+    }
+  },
+  "scope": "Tokens, code semantics, phases, parent records, arithmetic and exported adapter audited. No independent training replay, initial-weight export, held-out test, calibration or consciousness result."
+}

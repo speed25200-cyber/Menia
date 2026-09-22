@@ -1,0 +1,446 @@
+{
+  "schema": "menia-reader-learning-tokenizer-preflight-v1",
+  "model": {
+    "id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "planHash": "d1266cdf7cb1a8a06eb04ff070a4a46c632496ce50e3fc5adb81aebdba35c915",
+  "cases": [
+    {
+      "case": 1000,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        0,
+        4
+      ]
+    },
+    {
+      "case": 1001,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        2,
+        4
+      ]
+    },
+    {
+      "case": 1002,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        6,
+        4
+      ]
+    },
+    {
+      "case": 1003,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        7,
+        4
+      ]
+    },
+    {
+      "case": 1004,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        1,
+        7
+      ]
+    },
+    {
+      "case": 1005,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        1,
+        7
+      ]
+    },
+    {
+      "case": 1006,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        5,
+        6
+      ]
+    },
+    {
+      "case": 1007,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        7,
+        6
+      ]
+    },
+    {
+      "case": 1008,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        4,
+        0
+      ]
+    },
+    {
+      "case": 1009,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        3,
+        0
+      ]
+    },
+    {
+      "case": 1010,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        3,
+        0
+      ]
+    },
+    {
+      "case": 1011,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        7,
+        0
+      ]
+    },
+    {
+      "case": 1012,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        1,
+        2
+      ]
+    },
+    {
+      "case": 1013,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        2,
+        4
+      ]
+    },
+    {
+      "case": 1014,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        5,
+        2
+      ]
+    },
+    {
+      "case": 1015,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        7,
+        4
+      ]
+    },
+    {
+      "case": 1016,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        0,
+        3
+      ]
+    },
+    {
+      "case": 1017,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        1,
+        5
+      ]
+    },
+    {
+      "case": 1018,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        5,
+        3
+      ]
+    },
+    {
+      "case": 1019,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        7,
+        2
+      ]
+    },
+    {
+      "case": 1020,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        0,
+        7
+      ]
+    },
+    {
+      "case": 1021,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        3,
+        5
+      ]
+    },
+    {
+      "case": 1022,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        6,
+        5
+      ]
+    },
+    {
+      "case": 1023,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        6,
+        7
+      ]
+    },
+    {
+      "case": 1024,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        1,
+        0
+      ]
+    },
+    {
+      "case": 1025,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        3,
+        0
+      ]
+    },
+    {
+      "case": 1026,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        6,
+        1
+      ]
+    },
+    {
+      "case": 1027,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        7,
+        0
+      ]
+    },
+    {
+      "case": 1028,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        0,
+        5
+      ]
+    },
+    {
+      "case": 1029,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        2,
+        3
+      ]
+    },
+    {
+      "case": 1030,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        3,
+        4
+      ]
+    },
+    {
+      "case": 1031,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        6,
+        4
+      ]
+    },
+    {
+      "case": 1032,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        0,
+        4
+      ]
+    },
+    {
+      "case": 1033,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        3,
+        4
+      ]
+    },
+    {
+      "case": 1034,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        4,
+        5
+      ]
+    },
+    {
+      "case": 1035,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        3,
+        6
+      ]
+    },
+    {
+      "case": 1036,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        0,
+        7
+      ]
+    },
+    {
+      "case": 1037,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        4,
+        7
+      ]
+    },
+    {
+      "case": 1038,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        4,
+        7
+      ]
+    },
+    {
+      "case": 1039,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        7,
+        4
+      ]
+    },
+    {
+      "case": 1040,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        1,
+        0
+      ]
+    },
+    {
+      "case": 1041,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        3,
+        0
+      ]
+    },
+    {
+      "case": 1042,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        4,
+        1
+      ]
+    },
+    {
+      "case": 1043,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        5,
+        2
+      ]
+    },
+    {
+      "case": 1044,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        1,
+        3
+      ]
+    },
+    {
+      "case": 1045,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        1,
+        3
+      ]
+    },
+    {
+      "case": 1046,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        5,
+        2
+      ]
+    },
+    {
+      "case": 1047,
+      "promptTokens": 102,
+      "maximumInputIncludingTrainingTarget": 254,
+      "selectedRows": [
+        7,
+        2
+      ]
+    }
+  ],
+  "maximumInputIncludingTrainingTarget": 254,
+  "queriesPerCase": 28,
+  "modelGenerations": 0,
+  "scope": "Tokenizer and framing only; worst-case completion budget, no model outcomes"
+}

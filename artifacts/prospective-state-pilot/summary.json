@@ -1,0 +1,1086 @@
+{
+  "schema": "menia-prospective-state-discovery-summary-v1",
+  "planHash": "5c5574055ca21cf649dada5d33bf79b1844a57d495526fb7e4ed1ebf027c3fc6",
+  "sourceHash": "0835154bb76a33a426d88356efcc1133a5e95f396ff10d5deb4a6d0b3ee57841",
+  "chainEnd": "f8f5197de6ef77d6faf1514c394666055334072485283449186b87bf3706057e",
+  "cases": 24,
+  "forecasts": 120,
+  "tasks": 120,
+  "strictControlsPassed": true,
+  "units": {
+    "actual": {
+      "n": 24,
+      "correct": 24,
+      "taskValid": 24,
+      "forecastValid": 24,
+      "meanConditionalForecast": 0.9614816089529504,
+      "meanForecastCandidateMass": 0.999999999995417,
+      "brierConditionalAll": 0.035584923085494144,
+      "brierNativeForecasts": 0.035584923085494144,
+      "cases": [
+        {
+          "case": 0,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999991118,
+          "forecastMass": 0.9999999999997087
+        },
+        {
+          "case": 1,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999787,
+          "forecastMass": 0.9999999999997158
+        },
+        {
+          "case": 2,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999998308127,
+          "forecastMass": 0.9999999999994174
+        },
+        {
+          "case": 3,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999998792,
+          "forecastMass": 0.9999999999997939
+        },
+        {
+          "case": 4,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999973534273,
+          "forecastMass": 0.9999999999992113
+        },
+        {
+          "case": 5,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.999999999999936,
+          "forecastMass": 0.9999999999986713
+        },
+        {
+          "case": 6,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999666827,
+          "forecastMass": 0.99999999999892
+        },
+        {
+          "case": 7,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999998792,
+          "forecastMass": 0.9999999999990052
+        },
+        {
+          "case": 8,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999377565,
+          "forecastMass": 0.9999999999998082
+        },
+        {
+          "case": 9,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999858,
+          "forecastMass": 0.99999999999973
+        },
+        {
+          "case": 10,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999948912,
+          "forecastMass": 0.9999999999998366
+        },
+        {
+          "case": 11,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999503,
+          "forecastMass": 0.9999999999997158
+        },
+        {
+          "case": 12,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999677581363,
+          "forecastMass": 0.9999999999992752
+        },
+        {
+          "case": 13,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999787,
+          "forecastMass": 0.9999999999994102
+        },
+        {
+          "case": 14,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999994094679,
+          "forecastMass": 0.9999999999995595
+        },
+        {
+          "case": 15,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999574,
+          "forecastMass": 0.999999999999801
+        },
+        {
+          "case": 16,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9997965730219465,
+          "forecastMass": 0.999999999995083
+        },
+        {
+          "case": 17,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999929,
+          "forecastMass": 0.999999999999801
+        },
+        {
+          "case": 18,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.07585818002124335,
+          "forecastMass": 0.9999999999136975
+        },
+        {
+          "case": 19,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999503,
+          "forecastMass": 0.9999999999996376
+        },
+        {
+          "case": 20,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999038975844985,
+          "forecastMass": 0.9999999999919638
+        },
+        {
+          "case": 21,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999147,
+          "forecastMass": 0.9999999999989555
+        },
+        {
+          "case": 22,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999934417,
+          "forecastMass": 0.9999999999995381
+        },
+        {
+          "case": 23,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999929,
+          "forecastMass": 0.9999999999997513
+        }
+      ]
+    },
+    "same_schedule": {
+      "n": 24,
+      "correct": 24,
+      "taskValid": 24,
+      "forecastValid": 24,
+      "meanConditionalForecast": 0.9614816089529504,
+      "meanForecastCandidateMass": 0.999999999995417,
+      "brierConditionalAll": 0.035584923085494144,
+      "brierNativeForecasts": 0.035584923085494144,
+      "cases": [
+        {
+          "case": 0,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999991118,
+          "forecastMass": 0.9999999999997087
+        },
+        {
+          "case": 1,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999787,
+          "forecastMass": 0.9999999999997158
+        },
+        {
+          "case": 2,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999998308127,
+          "forecastMass": 0.9999999999994174
+        },
+        {
+          "case": 3,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999998792,
+          "forecastMass": 0.9999999999997939
+        },
+        {
+          "case": 4,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999973534273,
+          "forecastMass": 0.9999999999992113
+        },
+        {
+          "case": 5,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.999999999999936,
+          "forecastMass": 0.9999999999986713
+        },
+        {
+          "case": 6,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999666827,
+          "forecastMass": 0.99999999999892
+        },
+        {
+          "case": 7,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999998792,
+          "forecastMass": 0.9999999999990052
+        },
+        {
+          "case": 8,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999377565,
+          "forecastMass": 0.9999999999998082
+        },
+        {
+          "case": 9,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999858,
+          "forecastMass": 0.99999999999973
+        },
+        {
+          "case": 10,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999948912,
+          "forecastMass": 0.9999999999998366
+        },
+        {
+          "case": 11,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999503,
+          "forecastMass": 0.9999999999997158
+        },
+        {
+          "case": 12,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999677581363,
+          "forecastMass": 0.9999999999992752
+        },
+        {
+          "case": 13,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999787,
+          "forecastMass": 0.9999999999994102
+        },
+        {
+          "case": 14,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999994094679,
+          "forecastMass": 0.9999999999995595
+        },
+        {
+          "case": 15,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999574,
+          "forecastMass": 0.999999999999801
+        },
+        {
+          "case": 16,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9997965730219465,
+          "forecastMass": 0.999999999995083
+        },
+        {
+          "case": 17,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999929,
+          "forecastMass": 0.999999999999801
+        },
+        {
+          "case": 18,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.07585818002124335,
+          "forecastMass": 0.9999999999136975
+        },
+        {
+          "case": 19,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999503,
+          "forecastMass": 0.9999999999996376
+        },
+        {
+          "case": 20,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999038975844985,
+          "forecastMass": 0.9999999999919638
+        },
+        {
+          "case": 21,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999147,
+          "forecastMass": 0.9999999999989555
+        },
+        {
+          "case": 22,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999934417,
+          "forecastMass": 0.9999999999995381
+        },
+        {
+          "case": 23,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999929,
+          "forecastMass": 0.9999999999997513
+        }
+      ]
+    },
+    "values_permuted": {
+      "n": 24,
+      "correct": 0,
+      "taskValid": 0,
+      "forecastValid": 0,
+      "meanConditionalForecast": 0.8533666691547649,
+      "meanForecastCandidateMass": 0.014607934406592337,
+      "brierConditionalAll": 0.7522570401680091,
+      "brierNativeForecasts": null,
+      "cases": [
+        {
+          "case": 0,
+          "correct": false,
+          "taskValid": false,
+          "forecastValid": false,
+          "probability": 0.5000000000000009,
+          "forecastMass": 0.07013846241222989
+        },
+        {
+          "case": 1,
+          "correct": false,
+          "taskValid": false,
+          "forecastValid": false,
+          "probability": 0.9433475746920272,
+          "forecastMass": 0.014196646988215671
+        },
+        {
+          "case": 2,
+          "correct": false,
+          "taskValid": false,
+          "forecastValid": false,
+          "probability": 0.9241418199787572,
+          "forecastMass": 0.015364425641454972
+        },
+        {
+          "case": 3,
+          "correct": false,
+          "taskValid": false,
+          "forecastValid": false,
+          "probability": 0.9399133498259918,
+          "forecastMass": 0.01313543172921991
+        },
+        {
+          "case": 4,
+          "correct": false,
+          "taskValid": false,
+          "forecastValid": false,
+          "probability": 0.9399133498259918,
+          "forecastMass": 0.013134477166276123
+        },
+        {
+          "case": 5,
+          "correct": false,
+          "taskValid": false,
+          "forecastValid": false,
+          "probability": 0.5312093733737555,
+          "forecastMass": 0.07435311878851196
+        },
+        {
+          "case": 6,
+          "correct": false,
+          "taskValid": false,
+          "forecastValid": false,
+          "probability": 0.5000000000000009,
+          "forecastMass": 0.07852294865469432
+        },
+        {
+          "case": 7,
+          "correct": false,
+          "taskValid": false,
+          "forecastValid": false,
+          "probability": 0.5000000000000009,
+          "forecastMass": 0.07031448213883605
+        },
+        {
+          "case": 8,
+          "correct": false,
+          "taskValid": false,
+          "forecastValid": false,
+          "probability": 0.928408800555448,
+          "forecastMass": 0.00011741180455377003
+        },
+        {
+          "case": 9,
+          "correct": false,
+          "taskValid": false,
+          "forecastValid": false,
+          "probability": 0.9263037302939521,
+          "forecastMass": 7.824137077916814e-05
+        },
+        {
+          "case": 10,
+          "correct": false,
+          "taskValid": false,
+          "forecastValid": false,
+          "probability": 0.9241418199787572,
+          "forecastMass": 6.246346999398994e-05
+        },
+        {
+          "case": 11,
+          "correct": false,
+          "taskValid": false,
+          "forecastValid": false,
+          "probability": 0.9099070060380486,
+          "forecastMass": 4.733564714779575e-05
+        },
+        {
+          "case": 12,
+          "correct": false,
+          "taskValid": false,
+          "forecastValid": false,
+          "probability": 0.9046505351008902,
+          "forecastMass": 7.27619700486755e-05
+        },
+        {
+          "case": 13,
+          "correct": false,
+          "taskValid": false,
+          "forecastValid": false,
+          "probability": 0.91490095499298,
+          "forecastMass": 0.00010929298716583467
+        },
+        {
+          "case": 14,
+          "correct": false,
+          "taskValid": false,
+          "forecastValid": false,
+          "probability": 0.9241418199787572,
+          "forecastMass": 0.00013796361924030504
+        },
+        {
+          "case": 15,
+          "correct": false,
+          "taskValid": false,
+          "forecastValid": false,
+          "probability": 0.8991213772699435,
+          "forecastMass": 5.8501771678238285e-05
+        },
+        {
+          "case": 16,
+          "correct": false,
+          "taskValid": false,
+          "forecastValid": false,
+          "probability": 0.928408800555448,
+          "forecastMass": 8.37286720699182e-05
+        },
+        {
+          "case": 17,
+          "correct": false,
+          "taskValid": false,
+          "forecastValid": false,
+          "probability": 0.9263037302939521,
+          "forecastMass": 7.308470108169059e-05
+        },
+        {
+          "case": 18,
+          "correct": false,
+          "taskValid": false,
+          "forecastValid": false,
+          "probability": 0.9241418199787572,
+          "forecastMass": 0.00015294843935743382
+        },
+        {
+          "case": 19,
+          "correct": false,
+          "taskValid": false,
+          "forecastValid": false,
+          "probability": 0.9241418199787572,
+          "forecastMass": 6.87043899261124e-05
+        },
+        {
+          "case": 20,
+          "correct": false,
+          "taskValid": false,
+          "forecastValid": false,
+          "probability": 0.9099070060380486,
+          "forecastMass": 8.026261693846631e-05
+        },
+        {
+          "case": 21,
+          "correct": false,
+          "taskValid": false,
+          "forecastValid": false,
+          "probability": 0.9124361604769406,
+          "forecastMass": 0.00010260294709533699
+        },
+        {
+          "case": 22,
+          "correct": false,
+          "taskValid": false,
+          "forecastValid": false,
+          "probability": 0.91490095499298,
+          "forecastMass": 0.00010141019331068139
+        },
+        {
+          "case": 23,
+          "correct": false,
+          "taskValid": false,
+          "forecastValid": false,
+          "probability": 0.9304582554941716,
+          "forecastMass": 8.371763838976715e-05
+        }
+      ]
+    },
+    "joint_permuted": {
+      "n": 24,
+      "correct": 24,
+      "taskValid": 24,
+      "forecastValid": 24,
+      "meanConditionalForecast": 0.9598872687938439,
+      "meanForecastCandidateMass": 0.9999999999960328,
+      "brierConditionalAll": 0.0386141467754861,
+      "brierNativeForecasts": 0.0386141467754861,
+      "cases": [
+        {
+          "case": 0,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.999999999998991,
+          "forecastMass": 0.999999999999595
+        },
+        {
+          "case": 1,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999787,
+          "forecastMass": 0.9999999999997939
+        },
+        {
+          "case": 2,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999997210551,
+          "forecastMass": 0.9999999999994174
+        },
+        {
+          "case": 3,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999076,
+          "forecastMass": 0.9999999999998437
+        },
+        {
+          "case": 4,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999979388434,
+          "forecastMass": 0.9999999999993108
+        },
+        {
+          "case": 5,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999147,
+          "forecastMass": 0.9999999999983231
+        },
+        {
+          "case": 6,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999622489,
+          "forecastMass": 0.9999999999989626
+        },
+        {
+          "case": 7,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999998934,
+          "forecastMass": 0.9999999999990905
+        },
+        {
+          "case": 8,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999996418225,
+          "forecastMass": 0.9999999999997797
+        },
+        {
+          "case": 9,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999858,
+          "forecastMass": 0.9999999999997584
+        },
+        {
+          "case": 10,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.999999999996021,
+          "forecastMass": 0.9999999999998366
+        },
+        {
+          "case": 11,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999574,
+          "forecastMass": 0.99999999999973
+        },
+        {
+          "case": 12,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999998874648376,
+          "forecastMass": 0.9999999999991047
+        },
+        {
+          "case": 13,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999787,
+          "forecastMass": 0.9999999999993534
+        },
+        {
+          "case": 14,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999997827587,
+          "forecastMass": 0.9999999999996092
+        },
+        {
+          "case": 15,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999574,
+          "forecastMass": 0.9999999999997939
+        },
+        {
+          "case": 16,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999724643088865,
+          "forecastMass": 0.999999999996831
+        },
+        {
+          "case": 17,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999929,
+          "forecastMass": 0.999999999999801
+        },
+        {
+          "case": 18,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.037326887344129485,
+          "forecastMass": 0.9999999999231264
+        },
+        {
+          "case": 19,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999432,
+          "forecastMass": 0.9999999999997016
+        },
+        {
+          "case": 20,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999952149055051,
+          "forecastMass": 0.9999999999958078
+        },
+        {
+          "case": 21,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999147,
+          "forecastMass": 0.9999999999990763
+        },
+        {
+          "case": 22,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999877431,
+          "forecastMass": 0.9999999999994529
+        },
+        {
+          "case": 23,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999858,
+          "forecastMass": 0.9999999999996874
+        }
+      ]
+    },
+    "restored": {
+      "n": 24,
+      "correct": 24,
+      "taskValid": 24,
+      "forecastValid": 24,
+      "meanConditionalForecast": 0.9614816089529504,
+      "meanForecastCandidateMass": 0.999999999995417,
+      "brierConditionalAll": 0.035584923085494144,
+      "brierNativeForecasts": 0.035584923085494144,
+      "cases": [
+        {
+          "case": 0,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999991118,
+          "forecastMass": 0.9999999999997087
+        },
+        {
+          "case": 1,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999787,
+          "forecastMass": 0.9999999999997158
+        },
+        {
+          "case": 2,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999998308127,
+          "forecastMass": 0.9999999999994174
+        },
+        {
+          "case": 3,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999998792,
+          "forecastMass": 0.9999999999997939
+        },
+        {
+          "case": 4,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999973534273,
+          "forecastMass": 0.9999999999992113
+        },
+        {
+          "case": 5,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.999999999999936,
+          "forecastMass": 0.9999999999986713
+        },
+        {
+          "case": 6,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999666827,
+          "forecastMass": 0.99999999999892
+        },
+        {
+          "case": 7,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999998792,
+          "forecastMass": 0.9999999999990052
+        },
+        {
+          "case": 8,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999377565,
+          "forecastMass": 0.9999999999998082
+        },
+        {
+          "case": 9,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999858,
+          "forecastMass": 0.99999999999973
+        },
+        {
+          "case": 10,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999948912,
+          "forecastMass": 0.9999999999998366
+        },
+        {
+          "case": 11,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999503,
+          "forecastMass": 0.9999999999997158
+        },
+        {
+          "case": 12,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999677581363,
+          "forecastMass": 0.9999999999992752
+        },
+        {
+          "case": 13,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999787,
+          "forecastMass": 0.9999999999994102
+        },
+        {
+          "case": 14,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999994094679,
+          "forecastMass": 0.9999999999995595
+        },
+        {
+          "case": 15,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999574,
+          "forecastMass": 0.999999999999801
+        },
+        {
+          "case": 16,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9997965730219465,
+          "forecastMass": 0.999999999995083
+        },
+        {
+          "case": 17,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999929,
+          "forecastMass": 0.999999999999801
+        },
+        {
+          "case": 18,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.07585818002124335,
+          "forecastMass": 0.9999999999136975
+        },
+        {
+          "case": 19,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999503,
+          "forecastMass": 0.9999999999996376
+        },
+        {
+          "case": 20,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999038975844985,
+          "forecastMass": 0.9999999999919638
+        },
+        {
+          "case": 21,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999147,
+          "forecastMass": 0.9999999999989555
+        },
+        {
+          "case": 22,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999934417,
+          "forecastMass": 0.9999999999995381
+        },
+        {
+          "case": 23,
+          "correct": true,
+          "taskValid": true,
+          "forecastValid": true,
+          "probability": 0.9999999999999929,
+          "forecastMass": 0.9999999999997513
+        }
+      ]
+    }
+  },
+  "pairedContrasts": {
+    "same_schedule": {
+      "correctToFailure": 0,
+      "failureToCorrect": 0,
+      "taskSuccessChange": 0.0,
+      "meanConditionalForecastChange": 0.0,
+      "changedOutcomes": 0,
+      "nativeForecastsOnChangedOutcomes": 0,
+      "taskInvalidations": 0,
+      "changedValidTaskOutcomes": 0,
+      "forecastFollowsChangedValidTaskOutcome": 0,
+      "forecastFollowsChangedOutcome": 0
+    },
+    "values_permuted": {
+      "correctToFailure": 24,
+      "failureToCorrect": 0,
+      "taskSuccessChange": -1.0,
+      "meanConditionalForecastChange": -0.10811493979818558,
+      "changedOutcomes": 24,
+      "nativeForecastsOnChangedOutcomes": 0,
+      "taskInvalidations": 24,
+      "changedValidTaskOutcomes": 0,
+      "forecastFollowsChangedValidTaskOutcome": 0,
+      "forecastFollowsChangedOutcome": 0
+    },
+    "joint_permuted": {
+      "correctToFailure": 0,
+      "failureToCorrect": 0,
+      "taskSuccessChange": 0.0,
+      "meanConditionalForecastChange": -0.0015943401591066492,
+      "changedOutcomes": 0,
+      "nativeForecastsOnChangedOutcomes": 0,
+      "taskInvalidations": 0,
+      "changedValidTaskOutcomes": 0,
+      "forecastFollowsChangedValidTaskOutcome": 0,
+      "forecastFollowsChangedOutcome": 0
+    },
+    "restored": {
+      "correctToFailure": 0,
+      "failureToCorrect": 0,
+      "taskSuccessChange": 0.0,
+      "meanConditionalForecastChange": 0.0,
+      "changedOutcomes": 0,
+      "nativeForecastsOnChangedOutcomes": 0,
+      "taskInvalidations": 0,
+      "changedValidTaskOutcomes": 0,
+      "forecastFollowsChangedValidTaskOutcome": 0,
+      "forecastFollowsChangedOutcome": 0
+    }
+  },
+  "outcomeDefinition": "One future deterministic native code/EOS recall. Invalid task output counts as failure; task validity is reported separately.",
+  "probabilityCaveat": "Conditional first-token code probability, not an independently calibrated probability of success. All-format Brier remains descriptive if native format or candidate mass collapses.",
+  "seconds": 70.40659353516821,
+  "scope": "Exploratory feasibility of reversible task consequences and untrained native forecasts. Not a confirmatory test, trained text-only comparison, utility trial, consciousness criterion or novelty claim."
+}

@@ -1,0 +1,34 @@
+{
+  "schema": "menia-prospective-binding-final-receipt-v1",
+  "archiveName": "menia-prevision-liaisons-v1.zip",
+  "archiveBytes": 21768184,
+  "archiveSHA256": "313391b61777c49f850b80f6c6bb57efd1cb9ee41be189ec4ca278f82be6f59d",
+  "files": 6,
+  "journalSHA256": "b5d02024c4c81b5267fda829e9d0be2d97b44be935e917e9e84784b9fa41a0ec",
+  "execution": {
+    "startedUTC": "2026-09-20T06:12:56.988180+00:00",
+    "revision": "f982580c22cc8fcf8b96f11a32c5490e677f838a",
+    "status": "completed",
+    "journal": "/content/menia-results/prospective-binding-v1/prospective-binding-20260920-v1.jsonl",
+    "hardware": "NVIDIA A100-SXM4-40GB, 0 MiB, 40960 MiB",
+    "updatedUTC": "2026-09-20T06:15:01.323943+00:00"
+  },
+  "model": {
+    "id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "planHash": "2c989ccb0bffcac8c21e2aa1ccfeaf80cdee86836bf81af390f5180699aafe80",
+  "sourceHash": "74fff10f15028a7d5ddcb791554977b1e67dc5696b7db1f8316b6a243a95d2a5",
+  "preflight": {
+    "tests": 20,
+    "passed": true,
+    "seconds": 2.28
+  },
+  "cases": 24,
+  "forecasts": 120,
+  "tasks": 120,
+  "weightUpdates": 0,
+  "actualCacheFilesVerified": 2,
+  "allForecastsPrecedeTasks": true,
+  "scope": "Exploratory targeted-position intervention and untrained native forecast on reused cases. No trained comparator, decision utility, consciousness or novelty criterion."
+}

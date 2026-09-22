@@ -1,0 +1,1632 @@
+{
+  "schema": "menia-learning-diagnostic-first-audit-verification-v1",
+  "journalSHA256": "053674303a0e8a3e106fc594a027998edc5d689e8d4eae5e967787aa433e18ff",
+  "archiveSHA256": "c1d6f3b2a6c8aa06cbb241d474f6304da11aedb352c78d3c5ade7d7a68ed2762",
+  "codeRevision": "ae59aff7b823f0e0f6bf21b6774e9e65284d56ea",
+  "sourceHash": "cddff299f044900e2b656e19643655868f7a51cff6221e1ff361445e1138942c",
+  "planHash": "9aedb18333f7b76f26d41e6f65465559449c54a5e5833c7719bb73a1baa11b44",
+  "verification": {
+    "complete": true,
+    "summaryExactMatch": true,
+    "independentMetricMaxDifference": 1.1102230246251565e-16,
+    "independentContrastMaxDifference": 0.0,
+    "evaluationForwards": 1792,
+    "trainingUpdates": 128,
+    "trainingForwardBackwardPasses": 640,
+    "shamExactPairs": 448,
+    "traceCount": 2432,
+    "maxNormRelativeError": 0.001227584551088512,
+    "inputTokenRange": [
+      91,
+      113
+    ],
+    "trainingSeconds": 169.93064598200021,
+    "evaluationSeconds": 147.31672974600167,
+    "errors": 0,
+    "trainingRestarts": 0,
+    "interruptedRequests": 0
+  },
+  "diagnosticAfterReceipt": {
+    "training": {
+      "visible": {
+        "sha256": "9d9cf8721bd2ad8419a57ade40bece230fb6ed06d7fce8379861e03236963c93",
+        "updates": 32,
+        "tensors": 144,
+        "parameters": 2949120,
+        "nonzeroBTensors": 72,
+        "gradientNormRange": [
+          0.00039463717257604003,
+          24.17400360107422
+        ],
+        "epochs": [
+          {
+            "epoch": 1,
+            "updates": 8,
+            "meanPrimaryLoss": 2.7319516090767233,
+            "meanReadingLoss": 0.4659622619385342
+          },
+          {
+            "epoch": 2,
+            "updates": 8,
+            "meanPrimaryLoss": 0.00010195541794052095,
+            "meanReadingLoss": 0.0004073034807561271
+          },
+          {
+            "epoch": 3,
+            "updates": 8,
+            "meanPrimaryLoss": 0.00023528454045163016,
+            "meanReadingLoss": 3.9799614057756116e-05
+          },
+          {
+            "epoch": 4,
+            "updates": 8,
+            "meanPrimaryLoss": 0.0002888272487856132,
+            "meanReadingLoss": 5.222832903939434e-06
+          }
+        ]
+      },
+      "weak": {
+        "sha256": "89038f70162a63e6f64f80440dd68d75676da98a04c324004d070f3ac7582ef2",
+        "updates": 32,
+        "tensors": 144,
+        "parameters": 2949120,
+        "nonzeroBTensors": 72,
+        "gradientNormRange": [
+          0.2177347093820572,
+          30.49135971069336
+        ],
+        "epochs": [
+          {
+            "epoch": 1,
+            "updates": 8,
+            "meanPrimaryLoss": 6.429789656578578,
+            "meanReadingLoss": 0.4177090166991597
+          },
+          {
+            "epoch": 2,
+            "updates": 8,
+            "meanPrimaryLoss": 1.3646224013840158,
+            "meanReadingLoss": 0.015179283329416648
+          },
+          {
+            "epoch": 3,
+            "updates": 8,
+            "meanPrimaryLoss": 1.11107986420393,
+            "meanReadingLoss": 0.00622944020324212
+          },
+          {
+            "epoch": 4,
+            "updates": 8,
+            "meanPrimaryLoss": 1.071859061717987,
+            "meanReadingLoss": 0.00034975889991528675
+          }
+        ]
+      },
+      "strong": {
+        "sha256": "76d7dc1a3c807c5b27b381b510d9a947171917adf77a8981db72e1dc3cae8ae2",
+        "updates": 32,
+        "tensors": 144,
+        "parameters": 2949120,
+        "nonzeroBTensors": 72,
+        "gradientNormRange": [
+          0.44245168566703796,
+          27.70827865600586
+        ],
+        "epochs": [
+          {
+            "epoch": 1,
+            "updates": 8,
+            "meanPrimaryLoss": 6.098524248298115,
+            "meanReadingLoss": 0.4082747174140753
+          },
+          {
+            "epoch": 2,
+            "updates": 8,
+            "meanPrimaryLoss": 1.3800553051987663,
+            "meanReadingLoss": 0.027053337147663115
+          },
+          {
+            "epoch": 3,
+            "updates": 8,
+            "meanPrimaryLoss": 1.0160032908121746,
+            "meanReadingLoss": 0.006941752973943949
+          },
+          {
+            "epoch": 4,
+            "updates": 8,
+            "meanPrimaryLoss": 0.8483954397961497,
+            "meanReadingLoss": 0.0003887388917149792
+          }
+        ]
+      },
+      "shuffled": {
+        "sha256": "d879a53d6d86dac828fdf2b924bbfd2d5e687df457edc221537b798dfc7b783d",
+        "updates": 32,
+        "tensors": 144,
+        "parameters": 2949120,
+        "nonzeroBTensors": 72,
+        "gradientNormRange": [
+          0.32019737362861633,
+          27.339534759521484
+        ],
+        "epochs": [
+          {
+            "epoch": 1,
+            "updates": 8,
+            "meanPrimaryLoss": 6.447155311884444,
+            "meanReadingLoss": 0.4124919208264899
+          },
+          {
+            "epoch": 2,
+            "updates": 8,
+            "meanPrimaryLoss": 1.411999319990476,
+            "meanReadingLoss": 0.032278097284688556
+          },
+          {
+            "epoch": 3,
+            "updates": 8,
+            "meanPrimaryLoss": 1.108880653977394,
+            "meanReadingLoss": 0.014163458326947875
+          },
+          {
+            "epoch": 4,
+            "updates": 8,
+            "meanPrimaryLoss": 1.0337075218558311,
+            "meanReadingLoss": 0.00036004573223635816
+          }
+        ]
+      }
+    },
+    "behavior": {
+      "train/base/visible/primary": {
+        "blocks": 8,
+        "confusionRowsTargetColumnsPrediction": [
+          [
+            1,
+            0,
+            7
+          ],
+          [
+            0,
+            8,
+            0
+          ],
+          [
+            0,
+            0,
+            8
+          ]
+        ],
+        "triples": [
+          {
+            "predictions": [
+              0,
+              1,
+              2
+            ],
+            "count": 1
+          },
+          {
+            "predictions": [
+              2,
+              1,
+              2
+            ],
+            "count": 7
+          }
+        ],
+        "allThreeCorrectBlocks": 1,
+        "position1Versus2DifferentChoiceBlocks": 8,
+        "perturbedLogitsDifferFromAbsent": 16,
+        "perturbedChoiceDiffersFromAbsent": 9,
+        "maxConditionalProbabilityChange": 0.9999898697970676,
+        "presenceDiagnostic": {
+          "trueNegative": 1,
+          "falsePositive": 7,
+          "falseNegative": 0,
+          "truePositive": 16
+        }
+      },
+      "test/base/visible/primary": {
+        "blocks": 24,
+        "confusionRowsTargetColumnsPrediction": [
+          [
+            2,
+            0,
+            22
+          ],
+          [
+            0,
+            24,
+            0
+          ],
+          [
+            0,
+            0,
+            24
+          ]
+        ],
+        "triples": [
+          {
+            "predictions": [
+              0,
+              1,
+              2
+            ],
+            "count": 2
+          },
+          {
+            "predictions": [
+              2,
+              1,
+              2
+            ],
+            "count": 22
+          }
+        ],
+        "allThreeCorrectBlocks": 2,
+        "position1Versus2DifferentChoiceBlocks": 24,
+        "perturbedLogitsDifferFromAbsent": 48,
+        "perturbedChoiceDiffersFromAbsent": 26,
+        "maxConditionalProbabilityChange": 0.999993855670762,
+        "presenceDiagnostic": {
+          "trueNegative": 2,
+          "falsePositive": 22,
+          "falseNegative": 0,
+          "truePositive": 48
+        }
+      },
+      "train/base/visible/marker": {
+        "blocks": 8,
+        "confusionRowsTargetColumnsPrediction": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            8,
+            4,
+            0
+          ],
+          [
+            0,
+            0,
+            12
+          ]
+        ],
+        "triples": [
+          {
+            "predictions": [
+              0,
+              1,
+              0
+            ],
+            "count": 4
+          },
+          {
+            "predictions": [
+              2,
+              2,
+              2
+            ],
+            "count": 4
+          }
+        ],
+        "allThreeCorrectBlocks": 4,
+        "position1Versus2DifferentChoiceBlocks": 4,
+        "perturbedLogitsDifferFromAbsent": 16,
+        "perturbedChoiceDiffersFromAbsent": 4,
+        "maxConditionalProbabilityChange": 0.9973293162290569
+      },
+      "test/base/visible/marker": {
+        "blocks": 24,
+        "confusionRowsTargetColumnsPrediction": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            24,
+            12,
+            0
+          ],
+          [
+            0,
+            0,
+            36
+          ]
+        ],
+        "triples": [
+          {
+            "predictions": [
+              0,
+              1,
+              0
+            ],
+            "count": 12
+          },
+          {
+            "predictions": [
+              2,
+              2,
+              2
+            ],
+            "count": 12
+          }
+        ],
+        "allThreeCorrectBlocks": 12,
+        "position1Versus2DifferentChoiceBlocks": 12,
+        "perturbedLogitsDifferFromAbsent": 48,
+        "perturbedChoiceDiffersFromAbsent": 12,
+        "maxConditionalProbabilityChange": 0.9975877695362809
+      },
+      "train/base/weak/primary": {
+        "blocks": 8,
+        "confusionRowsTargetColumnsPrediction": [
+          [
+            0,
+            4,
+            4
+          ],
+          [
+            0,
+            4,
+            4
+          ],
+          [
+            0,
+            4,
+            4
+          ]
+        ],
+        "triples": [
+          {
+            "predictions": [
+              1,
+              1,
+              1
+            ],
+            "count": 4
+          },
+          {
+            "predictions": [
+              2,
+              2,
+              2
+            ],
+            "count": 4
+          }
+        ],
+        "allThreeCorrectBlocks": 0,
+        "position1Versus2DifferentChoiceBlocks": 0,
+        "perturbedLogitsDifferFromAbsent": 16,
+        "perturbedChoiceDiffersFromAbsent": 0,
+        "maxConditionalProbabilityChange": 0.0007915132446495443,
+        "presenceDiagnostic": {
+          "trueNegative": 0,
+          "falsePositive": 8,
+          "falseNegative": 0,
+          "truePositive": 16
+        }
+      },
+      "test/base/weak/primary": {
+        "blocks": 24,
+        "confusionRowsTargetColumnsPrediction": [
+          [
+            0,
+            12,
+            12
+          ],
+          [
+            0,
+            12,
+            12
+          ],
+          [
+            0,
+            12,
+            12
+          ]
+        ],
+        "triples": [
+          {
+            "predictions": [
+              1,
+              1,
+              1
+            ],
+            "count": 12
+          },
+          {
+            "predictions": [
+              2,
+              2,
+              2
+            ],
+            "count": 12
+          }
+        ],
+        "allThreeCorrectBlocks": 0,
+        "position1Versus2DifferentChoiceBlocks": 0,
+        "perturbedLogitsDifferFromAbsent": 47,
+        "perturbedChoiceDiffersFromAbsent": 0,
+        "maxConditionalProbabilityChange": 0.0015615737365568538,
+        "presenceDiagnostic": {
+          "trueNegative": 0,
+          "falsePositive": 24,
+          "falseNegative": 0,
+          "truePositive": 48
+        }
+      },
+      "train/base/weak/marker": {
+        "blocks": 8,
+        "confusionRowsTargetColumnsPrediction": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            12,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            12
+          ]
+        ],
+        "triples": [
+          {
+            "predictions": [
+              0,
+              0,
+              0
+            ],
+            "count": 4
+          },
+          {
+            "predictions": [
+              2,
+              2,
+              2
+            ],
+            "count": 4
+          }
+        ],
+        "allThreeCorrectBlocks": 4,
+        "position1Versus2DifferentChoiceBlocks": 0,
+        "perturbedLogitsDifferFromAbsent": 16,
+        "perturbedChoiceDiffersFromAbsent": 0,
+        "maxConditionalProbabilityChange": 0.10062133749327917
+      },
+      "test/base/weak/marker": {
+        "blocks": 24,
+        "confusionRowsTargetColumnsPrediction": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            36,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            36
+          ]
+        ],
+        "triples": [
+          {
+            "predictions": [
+              0,
+              0,
+              0
+            ],
+            "count": 12
+          },
+          {
+            "predictions": [
+              2,
+              2,
+              2
+            ],
+            "count": 12
+          }
+        ],
+        "allThreeCorrectBlocks": 12,
+        "position1Versus2DifferentChoiceBlocks": 0,
+        "perturbedLogitsDifferFromAbsent": 46,
+        "perturbedChoiceDiffersFromAbsent": 0,
+        "maxConditionalProbabilityChange": 0.0981211623304219
+      },
+      "train/base/strong/primary": {
+        "blocks": 8,
+        "confusionRowsTargetColumnsPrediction": [
+          [
+            0,
+            4,
+            4
+          ],
+          [
+            0,
+            4,
+            4
+          ],
+          [
+            0,
+            4,
+            4
+          ]
+        ],
+        "triples": [
+          {
+            "predictions": [
+              1,
+              1,
+              1
+            ],
+            "count": 4
+          },
+          {
+            "predictions": [
+              2,
+              2,
+              2
+            ],
+            "count": 4
+          }
+        ],
+        "allThreeCorrectBlocks": 0,
+        "position1Versus2DifferentChoiceBlocks": 0,
+        "perturbedLogitsDifferFromAbsent": 16,
+        "perturbedChoiceDiffersFromAbsent": 0,
+        "maxConditionalProbabilityChange": 0.07581281533807993,
+        "presenceDiagnostic": {
+          "trueNegative": 0,
+          "falsePositive": 8,
+          "falseNegative": 0,
+          "truePositive": 16
+        }
+      },
+      "test/base/strong/primary": {
+        "blocks": 24,
+        "confusionRowsTargetColumnsPrediction": [
+          [
+            0,
+            12,
+            12
+          ],
+          [
+            0,
+            12,
+            12
+          ],
+          [
+            0,
+            12,
+            12
+          ]
+        ],
+        "triples": [
+          {
+            "predictions": [
+              1,
+              1,
+              1
+            ],
+            "count": 12
+          },
+          {
+            "predictions": [
+              2,
+              2,
+              2
+            ],
+            "count": 12
+          }
+        ],
+        "allThreeCorrectBlocks": 0,
+        "position1Versus2DifferentChoiceBlocks": 0,
+        "perturbedLogitsDifferFromAbsent": 48,
+        "perturbedChoiceDiffersFromAbsent": 0,
+        "maxConditionalProbabilityChange": 0.02814272373183646,
+        "presenceDiagnostic": {
+          "trueNegative": 0,
+          "falsePositive": 24,
+          "falseNegative": 0,
+          "truePositive": 48
+        }
+      },
+      "train/base/strong/marker": {
+        "blocks": 8,
+        "confusionRowsTargetColumnsPrediction": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            12,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            12
+          ]
+        ],
+        "triples": [
+          {
+            "predictions": [
+              0,
+              0,
+              0
+            ],
+            "count": 4
+          },
+          {
+            "predictions": [
+              2,
+              2,
+              2
+            ],
+            "count": 4
+          }
+        ],
+        "allThreeCorrectBlocks": 4,
+        "position1Versus2DifferentChoiceBlocks": 0,
+        "perturbedLogitsDifferFromAbsent": 16,
+        "perturbedChoiceDiffersFromAbsent": 0,
+        "maxConditionalProbabilityChange": 0.13499965665026092
+      },
+      "test/base/strong/marker": {
+        "blocks": 24,
+        "confusionRowsTargetColumnsPrediction": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            35,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            36
+          ]
+        ],
+        "triples": [
+          {
+            "predictions": [
+              0,
+              0,
+              0
+            ],
+            "count": 11
+          },
+          {
+            "predictions": [
+              0,
+              1,
+              0
+            ],
+            "count": 1
+          },
+          {
+            "predictions": [
+              2,
+              2,
+              2
+            ],
+            "count": 12
+          }
+        ],
+        "allThreeCorrectBlocks": 12,
+        "position1Versus2DifferentChoiceBlocks": 1,
+        "perturbedLogitsDifferFromAbsent": 48,
+        "perturbedChoiceDiffersFromAbsent": 1,
+        "maxConditionalProbabilityChange": 0.3665537831585688
+      },
+      "train/visible/visible/primary": {
+        "blocks": 8,
+        "confusionRowsTargetColumnsPrediction": [
+          [
+            8,
+            0,
+            0
+          ],
+          [
+            0,
+            8,
+            0
+          ],
+          [
+            0,
+            0,
+            8
+          ]
+        ],
+        "triples": [
+          {
+            "predictions": [
+              0,
+              1,
+              2
+            ],
+            "count": 8
+          }
+        ],
+        "allThreeCorrectBlocks": 8,
+        "position1Versus2DifferentChoiceBlocks": 8,
+        "perturbedLogitsDifferFromAbsent": 16,
+        "perturbedChoiceDiffersFromAbsent": 16,
+        "maxConditionalProbabilityChange": 0.9999998288102881,
+        "presenceDiagnostic": {
+          "trueNegative": 8,
+          "falsePositive": 0,
+          "falseNegative": 0,
+          "truePositive": 16
+        }
+      },
+      "test/visible/visible/primary": {
+        "blocks": 24,
+        "confusionRowsTargetColumnsPrediction": [
+          [
+            24,
+            0,
+            0
+          ],
+          [
+            0,
+            24,
+            0
+          ],
+          [
+            0,
+            0,
+            24
+          ]
+        ],
+        "triples": [
+          {
+            "predictions": [
+              0,
+              1,
+              2
+            ],
+            "count": 24
+          }
+        ],
+        "allThreeCorrectBlocks": 24,
+        "position1Versus2DifferentChoiceBlocks": 24,
+        "perturbedLogitsDifferFromAbsent": 48,
+        "perturbedChoiceDiffersFromAbsent": 48,
+        "maxConditionalProbabilityChange": 0.999999856979458,
+        "presenceDiagnostic": {
+          "trueNegative": 24,
+          "falsePositive": 0,
+          "falseNegative": 0,
+          "truePositive": 48
+        }
+      },
+      "train/visible/visible/marker": {
+        "blocks": 8,
+        "confusionRowsTargetColumnsPrediction": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            12,
+            0
+          ],
+          [
+            0,
+            0,
+            12
+          ]
+        ],
+        "triples": [
+          {
+            "predictions": [
+              1,
+              1,
+              1
+            ],
+            "count": 4
+          },
+          {
+            "predictions": [
+              2,
+              2,
+              2
+            ],
+            "count": 4
+          }
+        ],
+        "allThreeCorrectBlocks": 8,
+        "position1Versus2DifferentChoiceBlocks": 0,
+        "perturbedLogitsDifferFromAbsent": 16,
+        "perturbedChoiceDiffersFromAbsent": 0,
+        "maxConditionalProbabilityChange": 0.18892545270784522
+      },
+      "test/visible/visible/marker": {
+        "blocks": 24,
+        "confusionRowsTargetColumnsPrediction": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            36,
+            0
+          ],
+          [
+            0,
+            0,
+            36
+          ]
+        ],
+        "triples": [
+          {
+            "predictions": [
+              1,
+              1,
+              1
+            ],
+            "count": 12
+          },
+          {
+            "predictions": [
+              2,
+              2,
+              2
+            ],
+            "count": 12
+          }
+        ],
+        "allThreeCorrectBlocks": 24,
+        "position1Versus2DifferentChoiceBlocks": 0,
+        "perturbedLogitsDifferFromAbsent": 48,
+        "perturbedChoiceDiffersFromAbsent": 0,
+        "maxConditionalProbabilityChange": 0.08157685220298283
+      },
+      "train/weak/weak/primary": {
+        "blocks": 8,
+        "confusionRowsTargetColumnsPrediction": [
+          [
+            8,
+            0,
+            0
+          ],
+          [
+            8,
+            0,
+            0
+          ],
+          [
+            8,
+            0,
+            0
+          ]
+        ],
+        "triples": [
+          {
+            "predictions": [
+              0,
+              0,
+              0
+            ],
+            "count": 8
+          }
+        ],
+        "allThreeCorrectBlocks": 0,
+        "position1Versus2DifferentChoiceBlocks": 0,
+        "perturbedLogitsDifferFromAbsent": 13,
+        "perturbedChoiceDiffersFromAbsent": 0,
+        "maxConditionalProbabilityChange": 0.12115679593003703,
+        "presenceDiagnostic": {
+          "trueNegative": 8,
+          "falsePositive": 0,
+          "falseNegative": 16,
+          "truePositive": 0
+        }
+      },
+      "test/weak/weak/primary": {
+        "blocks": 24,
+        "confusionRowsTargetColumnsPrediction": [
+          [
+            21,
+            2,
+            1
+          ],
+          [
+            21,
+            2,
+            1
+          ],
+          [
+            20,
+            3,
+            1
+          ]
+        ],
+        "triples": [
+          {
+            "predictions": [
+              0,
+              0,
+              0
+            ],
+            "count": 20
+          },
+          {
+            "predictions": [
+              0,
+              1,
+              1
+            ],
+            "count": 1
+          },
+          {
+            "predictions": [
+              1,
+              0,
+              1
+            ],
+            "count": 1
+          },
+          {
+            "predictions": [
+              1,
+              1,
+              2
+            ],
+            "count": 1
+          },
+          {
+            "predictions": [
+              2,
+              2,
+              1
+            ],
+            "count": 1
+          }
+        ],
+        "allThreeCorrectBlocks": 0,
+        "position1Versus2DifferentChoiceBlocks": 3,
+        "perturbedLogitsDifferFromAbsent": 40,
+        "perturbedChoiceDiffersFromAbsent": 5,
+        "maxConditionalProbabilityChange": 0.12425412288822307,
+        "presenceDiagnostic": {
+          "trueNegative": 21,
+          "falsePositive": 3,
+          "falseNegative": 41,
+          "truePositive": 7
+        }
+      },
+      "train/weak/weak/marker": {
+        "blocks": 8,
+        "confusionRowsTargetColumnsPrediction": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            12,
+            0
+          ],
+          [
+            0,
+            0,
+            12
+          ]
+        ],
+        "triples": [
+          {
+            "predictions": [
+              1,
+              1,
+              1
+            ],
+            "count": 4
+          },
+          {
+            "predictions": [
+              2,
+              2,
+              2
+            ],
+            "count": 4
+          }
+        ],
+        "allThreeCorrectBlocks": 8,
+        "position1Versus2DifferentChoiceBlocks": 0,
+        "perturbedLogitsDifferFromAbsent": 16,
+        "perturbedChoiceDiffersFromAbsent": 0,
+        "maxConditionalProbabilityChange": 5.983741114301555e-05
+      },
+      "test/weak/weak/marker": {
+        "blocks": 24,
+        "confusionRowsTargetColumnsPrediction": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            36,
+            0
+          ],
+          [
+            0,
+            0,
+            36
+          ]
+        ],
+        "triples": [
+          {
+            "predictions": [
+              1,
+              1,
+              1
+            ],
+            "count": 12
+          },
+          {
+            "predictions": [
+              2,
+              2,
+              2
+            ],
+            "count": 12
+          }
+        ],
+        "allThreeCorrectBlocks": 24,
+        "position1Versus2DifferentChoiceBlocks": 0,
+        "perturbedLogitsDifferFromAbsent": 45,
+        "perturbedChoiceDiffersFromAbsent": 0,
+        "maxConditionalProbabilityChange": 4.909159507826555e-05
+      },
+      "train/strong/strong/primary": {
+        "blocks": 8,
+        "confusionRowsTargetColumnsPrediction": [
+          [
+            7,
+            1,
+            0
+          ],
+          [
+            1,
+            7,
+            0
+          ],
+          [
+            0,
+            3,
+            5
+          ]
+        ],
+        "triples": [
+          {
+            "predictions": [
+              0,
+              0,
+              1
+            ],
+            "count": 1
+          },
+          {
+            "predictions": [
+              0,
+              1,
+              1
+            ],
+            "count": 1
+          },
+          {
+            "predictions": [
+              0,
+              1,
+              2
+            ],
+            "count": 5
+          },
+          {
+            "predictions": [
+              1,
+              1,
+              1
+            ],
+            "count": 1
+          }
+        ],
+        "allThreeCorrectBlocks": 5,
+        "position1Versus2DifferentChoiceBlocks": 6,
+        "perturbedLogitsDifferFromAbsent": 16,
+        "perturbedChoiceDiffersFromAbsent": 13,
+        "maxConditionalProbabilityChange": 0.9858131547744468,
+        "presenceDiagnostic": {
+          "trueNegative": 7,
+          "falsePositive": 1,
+          "falseNegative": 1,
+          "truePositive": 15
+        }
+      },
+      "test/strong/strong/primary": {
+        "blocks": 24,
+        "confusionRowsTargetColumnsPrediction": [
+          [
+            19,
+            5,
+            0
+          ],
+          [
+            11,
+            13,
+            0
+          ],
+          [
+            5,
+            9,
+            10
+          ]
+        ],
+        "triples": [
+          {
+            "predictions": [
+              0,
+              0,
+              0
+            ],
+            "count": 5
+          },
+          {
+            "predictions": [
+              0,
+              0,
+              1
+            ],
+            "count": 3
+          },
+          {
+            "predictions": [
+              0,
+              0,
+              2
+            ],
+            "count": 3
+          },
+          {
+            "predictions": [
+              0,
+              1,
+              1
+            ],
+            "count": 4
+          },
+          {
+            "predictions": [
+              0,
+              1,
+              2
+            ],
+            "count": 4
+          },
+          {
+            "predictions": [
+              1,
+              1,
+              1
+            ],
+            "count": 2
+          },
+          {
+            "predictions": [
+              1,
+              1,
+              2
+            ],
+            "count": 3
+          }
+        ],
+        "allThreeCorrectBlocks": 4,
+        "position1Versus2DifferentChoiceBlocks": 13,
+        "perturbedLogitsDifferFromAbsent": 48,
+        "perturbedChoiceDiffersFromAbsent": 25,
+        "maxConditionalProbabilityChange": 0.9534141078336513,
+        "presenceDiagnostic": {
+          "trueNegative": 19,
+          "falsePositive": 5,
+          "falseNegative": 16,
+          "truePositive": 32
+        }
+      },
+      "train/strong/strong/marker": {
+        "blocks": 8,
+        "confusionRowsTargetColumnsPrediction": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            12,
+            0
+          ],
+          [
+            0,
+            0,
+            12
+          ]
+        ],
+        "triples": [
+          {
+            "predictions": [
+              1,
+              1,
+              1
+            ],
+            "count": 4
+          },
+          {
+            "predictions": [
+              2,
+              2,
+              2
+            ],
+            "count": 4
+          }
+        ],
+        "allThreeCorrectBlocks": 8,
+        "position1Versus2DifferentChoiceBlocks": 0,
+        "perturbedLogitsDifferFromAbsent": 16,
+        "perturbedChoiceDiffersFromAbsent": 0,
+        "maxConditionalProbabilityChange": 8.839161760310077e-05
+      },
+      "test/strong/strong/marker": {
+        "blocks": 24,
+        "confusionRowsTargetColumnsPrediction": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            36,
+            0
+          ],
+          [
+            0,
+            0,
+            36
+          ]
+        ],
+        "triples": [
+          {
+            "predictions": [
+              1,
+              1,
+              1
+            ],
+            "count": 12
+          },
+          {
+            "predictions": [
+              2,
+              2,
+              2
+            ],
+            "count": 12
+          }
+        ],
+        "allThreeCorrectBlocks": 24,
+        "position1Versus2DifferentChoiceBlocks": 0,
+        "perturbedLogitsDifferFromAbsent": 48,
+        "perturbedChoiceDiffersFromAbsent": 0,
+        "maxConditionalProbabilityChange": 0.00017327090093877118
+      },
+      "train/shuffled/shuffled/primary": {
+        "blocks": 8,
+        "confusionRowsTargetColumnsPrediction": [
+          [
+            7,
+            1,
+            0
+          ],
+          [
+            5,
+            1,
+            2
+          ],
+          [
+            2,
+            3,
+            3
+          ]
+        ],
+        "triples": [
+          {
+            "predictions": [
+              0,
+              0,
+              0
+            ],
+            "count": 1
+          },
+          {
+            "predictions": [
+              0,
+              0,
+              1
+            ],
+            "count": 1
+          },
+          {
+            "predictions": [
+              0,
+              0,
+              2
+            ],
+            "count": 3
+          },
+          {
+            "predictions": [
+              0,
+              2,
+              0
+            ],
+            "count": 1
+          },
+          {
+            "predictions": [
+              0,
+              2,
+              1
+            ],
+            "count": 1
+          },
+          {
+            "predictions": [
+              1,
+              1,
+              1
+            ],
+            "count": 1
+          }
+        ],
+        "allThreeCorrectBlocks": 0,
+        "position1Versus2DifferentChoiceBlocks": 6,
+        "perturbedLogitsDifferFromAbsent": 16,
+        "perturbedChoiceDiffersFromAbsent": 7,
+        "maxConditionalProbabilityChange": 0.6051706368155709,
+        "presenceDiagnostic": {
+          "trueNegative": 7,
+          "falsePositive": 1,
+          "falseNegative": 7,
+          "truePositive": 9
+        }
+      },
+      "test/shuffled/shuffled/primary": {
+        "blocks": 24,
+        "confusionRowsTargetColumnsPrediction": [
+          [
+            20,
+            1,
+            3
+          ],
+          [
+            15,
+            1,
+            8
+          ],
+          [
+            8,
+            8,
+            8
+          ]
+        ],
+        "triples": [
+          {
+            "predictions": [
+              0,
+              0,
+              0
+            ],
+            "count": 8
+          },
+          {
+            "predictions": [
+              0,
+              0,
+              1
+            ],
+            "count": 4
+          },
+          {
+            "predictions": [
+              0,
+              0,
+              2
+            ],
+            "count": 2
+          },
+          {
+            "predictions": [
+              0,
+              1,
+              2
+            ],
+            "count": 1
+          },
+          {
+            "predictions": [
+              0,
+              2,
+              1
+            ],
+            "count": 3
+          },
+          {
+            "predictions": [
+              0,
+              2,
+              2
+            ],
+            "count": 2
+          },
+          {
+            "predictions": [
+              1,
+              2,
+              2
+            ],
+            "count": 1
+          },
+          {
+            "predictions": [
+              2,
+              0,
+              2
+            ],
+            "count": 1
+          },
+          {
+            "predictions": [
+              2,
+              2,
+              1
+            ],
+            "count": 1
+          },
+          {
+            "predictions": [
+              2,
+              2,
+              2
+            ],
+            "count": 1
+          }
+        ],
+        "allThreeCorrectBlocks": 1,
+        "position1Versus2DifferentChoiceBlocks": 12,
+        "perturbedLogitsDifferFromAbsent": 48,
+        "perturbedChoiceDiffersFromAbsent": 22,
+        "maxConditionalProbabilityChange": 0.5428801662882664,
+        "presenceDiagnostic": {
+          "trueNegative": 20,
+          "falsePositive": 4,
+          "falseNegative": 23,
+          "truePositive": 25
+        }
+      },
+      "train/shuffled/shuffled/marker": {
+        "blocks": 8,
+        "confusionRowsTargetColumnsPrediction": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            12,
+            0
+          ],
+          [
+            0,
+            0,
+            12
+          ]
+        ],
+        "triples": [
+          {
+            "predictions": [
+              1,
+              1,
+              1
+            ],
+            "count": 4
+          },
+          {
+            "predictions": [
+              2,
+              2,
+              2
+            ],
+            "count": 4
+          }
+        ],
+        "allThreeCorrectBlocks": 8,
+        "position1Versus2DifferentChoiceBlocks": 0,
+        "perturbedLogitsDifferFromAbsent": 16,
+        "perturbedChoiceDiffersFromAbsent": 0,
+        "maxConditionalProbabilityChange": 7.125977914224091e-05
+      },
+      "test/shuffled/shuffled/marker": {
+        "blocks": 24,
+        "confusionRowsTargetColumnsPrediction": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            36,
+            0
+          ],
+          [
+            0,
+            0,
+            36
+          ]
+        ],
+        "triples": [
+          {
+            "predictions": [
+              1,
+              1,
+              1
+            ],
+            "count": 12
+          },
+          {
+            "predictions": [
+              2,
+              2,
+              2
+            ],
+            "count": 12
+          }
+        ],
+        "allThreeCorrectBlocks": 24,
+        "position1Versus2DifferentChoiceBlocks": 0,
+        "perturbedLogitsDifferFromAbsent": 48,
+        "perturbedChoiceDiffersFromAbsent": 0,
+        "maxConditionalProbabilityChange": 0.00015569438755669296
+      }
+    }
+  },
+  "limits": "Shared pinned plan and received traces; independent scalar metrics and integer-count contrasts, checkpoint inspection. No new model calls or independent hardware attestation. Confusion, presence and paired-response diagnostics added after receipt; no change to primary criteria. One training seed, one layer; no consciousness or iPhone result."
+}

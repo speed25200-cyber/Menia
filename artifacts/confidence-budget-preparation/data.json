@@ -1,0 +1,11 @@
+{
+  "schema": "menia-confidence-budget-data-v1",
+  "rowsHash": "a261b9fae7677b40a984667dc0da6edd001288f49ca279bb7fde60c46f3d1604",
+  "rows": 2880,
+  "parentJournals": {
+    "ranking": "5597a32eb6417e13651732e1445a20c6e8ce3ce26cc70f784a778eac6e242e61",
+    "fit": "8bcbcaa5f5a2ca8806c021f5b22bc7f7b63facdb2c2bcb508ebc2505b9152f5b"
+  },
+  "trainingHash": "0694f42765731e3ab2031da214855468112c0bdfefe6ddd8019c769efcc403a8",
+  "scope": "1728 original training rows and 1152 already-reviewed Colab24 base answers. The latter never enter optimization and are no longer a reserved confirmation set."
+}

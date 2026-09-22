@@ -1,0 +1,87 @@
+{
+  "schema": "menia-native-choice-receipt-v1",
+  "archiveName": "menia-choix-natifs.zip",
+  "archiveBytes": 824478,
+  "archiveSHA256": "94aa38aec094a63698799509f1360de1aca3155c308c0e2f222e1ef6b64ecb8f",
+  "files": {
+    "native-choice/execution.json": {
+      "bytes": 328,
+      "sha256": "e9ceaa5ac03c6328aa8f04df50278028436794711c5265758f61a470817c083a"
+    },
+    "native-choice/execution.log": {
+      "bytes": 7677,
+      "sha256": "a688506525fc52f1e66e23b3aa769154368fa01264fbc94e5617e76c90c6234a"
+    },
+    "native-choice/native-choice-20260919-v1.jsonl": {
+      "bytes": 14286674,
+      "sha256": "d469753914339cfaddb0b49cbcdd10b966c8ea6874d51fa791ebe490f7d7d785"
+    },
+    "native-choice/native-choice-20260919-v1.summary.json": {
+      "bytes": 19887,
+      "sha256": "783189e28b72c759a95356545dfdb75fd7c53b18f88b857c9959959bd4838657"
+    }
+  },
+  "journalSHA256": "d469753914339cfaddb0b49cbcdd10b966c8ea6874d51fa791ebe490f7d7d785",
+  "planHash": "04c2b51abaee6bf57950b7b9e820a395715dbb6b0536135e31f884cd609e9499",
+  "sourceHash": "473f12cc9623f9639f85e3d0dde71bd0f52e5e744c2deb82643d07d05ec82705",
+  "scienceRevision": "37710ce42d530a19fd1fbd15b763e49465fc327a",
+  "notebookRevision": "8c12825080515632cc858035b79a5a96dcb7b5af",
+  "independentAuditorRevision": "37710ce42d530a19fd1fbd15b763e49465fc327a",
+  "presentationRevision": "f5d6e86dadf6c065797ce7853af741ad3ceb2024",
+  "verifiedCalibrationParentSHA256": "8a36aceb7773201c5f06f35352a9e7344c2a30d6c182fdc103115f117ce00e4a",
+  "execution": {
+    "startedUTC": "2026-09-19T19:13:12.471843+00:00",
+    "revision": "37710ce42d530a19fd1fbd15b763e49465fc327a",
+    "journal": "/content/menia-results/native-choice-v1/native-choice-20260919-v1.jsonl",
+    "status": "completed",
+    "hardware": "NVIDIA A100-SXM4-40GB, 40960 MiB",
+    "updatedUTC": "2026-09-19T19:31:52.458893+00:00"
+  },
+  "planned": 4884,
+  "recorded": 4884,
+  "statuses": {
+    "ok": 4884
+  },
+  "model": {
+    "id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "settings": {
+    "answer": {
+      "attention": "sdpa",
+      "do_sample": true,
+      "dtype": "bfloat16",
+      "enable_thinking": false,
+      "max_input_tokens": 1792,
+      "max_new_tokens": 256,
+      "min_p": 0.0,
+      "quantization": "none",
+      "renormalize_logits": true,
+      "repetition_penalty": 1.0,
+      "temperature": 0.7,
+      "top_k": 20,
+      "top_p": 0.8,
+      "use_cache": true
+    },
+    "choice": {
+      "attention": "sdpa",
+      "do_sample": true,
+      "dtype": "bfloat16",
+      "enable_thinking": false,
+      "max_input_tokens": 1792,
+      "max_new_tokens": 16,
+      "min_p": 0.0,
+      "quantization": "none",
+      "renormalize_logits": true,
+      "repetition_penalty": 1.0,
+      "temperature": 0.7,
+      "top_k": 20,
+      "top_p": 0.8,
+      "use_cache": true
+    }
+  },
+  "mainRecomputeMaxAbsoluteDifference": 0.0,
+  "independentMaxAbsoluteDifference": 2.220446049250313e-16,
+  "outcomeReview": "Only after complete collection, exact ZIP/file hashes, reconstruction of all requests and actual actions, and both arithmetic calculations.",
+  "scope": "Native decision/action diagnostic with external category frequency, no changed weights or identified private-state representation. No consciousness/novelty conclusion."
+}

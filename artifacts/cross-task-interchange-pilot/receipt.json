@@ -1,0 +1,57 @@
+{
+  "schema": "menia-cross-task-interchange-receipt-v1",
+  "archiveName": "menia-transfert-entre-taches.zip",
+  "archiveBytes": 3197115,
+  "archiveSHA256": "a500855ddd5d891acc6d39d334e3c7911473d98174b5c3d5211c154ef1f07a82",
+  "files": {
+    "cross-task/cross-task-20260919-v1.jsonl": {
+      "bytes": 39682785,
+      "sha256": "38659cc9b6cb37f8b3d1eb05666d64d9439e4f2c150e13a6feb318124b5cab8f"
+    },
+    "cross-task/cross-task-20260919-v1.summary.json": {
+      "bytes": 419481,
+      "sha256": "df409da2c4a1d0bdc4b52386af04ba913675dc9878b23d40dbad7f04703a8fd2"
+    },
+    "cross-task/execution.json": {
+      "bytes": 525,
+      "sha256": "4aaaa52049e259dbde579709c070187654b84da62d28657595eb1b2d6dd1f92e"
+    },
+    "cross-task/execution.log": {
+      "bytes": 11267,
+      "sha256": "c47f462e1c8e3ce1ab6065d4e3a192e966db3f3ea58e5741aad38cbfe8a61c4a"
+    }
+  },
+  "journalSHA256": "38659cc9b6cb37f8b3d1eb05666d64d9439e4f2c150e13a6feb318124b5cab8f",
+  "planHash": "cde74f7f1a8e2fd2f6ae583111e18b09e164c188ee19f193662e5e8488d57696",
+  "sourceHash": "19dd28bb182f6fa86b145b3e7767bee0e83cc428080a85a1b756b23ff3bdc308",
+  "scienceRevision": "b97753c1cca1f936e7319f971e1c1a4058df0a01",
+  "notebookRevision": "1b384c4d355df85b66f2b51d146dd4b8fc9a3dbb",
+  "independentAuditorRevision": "ea1ac0d40aa9396d95900c88de4be27f5a08ebff",
+  "presentationRevision": "7a925c7cbed3ff1f8704385bc1498ab430ef5661",
+  "execution": {
+    "startedUTC": "2026-09-19T16:51:51.779500+00:00",
+    "revision": "b97753c1cca1f936e7319f971e1c1a4058df0a01",
+    "parentJournal": "/content/menia-results/optimizer-memory-v1/memory-20260919-v1.jsonl",
+    "interchangeJournal": "/content/menia-results/state-interchange-v1/interchange-20260919-v1.jsonl",
+    "journal": "/content/menia-results/cross-task-interchange-v1/cross-task-20260919-v1.jsonl",
+    "hardware": "NVIDIA A100-SXM4-40GB, 40960 MiB",
+    "status": "completed",
+    "updatedUTC": "2026-09-19T17:50:42.427095+00:00"
+  },
+  "planned": 44544,
+  "recorded": 44544,
+  "selfShams": 4608,
+  "finalLayerCopies": 12288,
+  "parentJournalSHA256": "0bd76014c6d80f56e6c5a1cedf71fd1546f78be18977c5a79ebd8ccd12947706",
+  "priorInterchangeJournalSHA256": "f0a225287d58bc3bb3639a7c4051d24e1a43b1e7394ff2b2449d3921a3e16ad5",
+  "parentCheckpoints": {
+    "r0-prefix": "add5ed756ea6ff158d59e0780684808a2d21055e2a18a2c4f77c7fb143e8f495",
+    "r1-prefix": "7954ba00216b591cda6c7a0a3d0f30bd7d42bc56b90fd03ba4b8eec15d16e5ac",
+    "r2-prefix": "5b8d614fa3f141d5c54a326a8aeec37e8d99ed99acd551440faa9b1b18978ebd"
+  },
+  "crossTaskTransfers": 18432,
+  "mainRecomputeMaxAbsoluteDifference": 0.0,
+  "independentMaxAbsoluteDifference": 1.7763568394002505e-15,
+  "outcomeReview": "Only after completed collection, archive SHA-256 and both full numerical recalculations.",
+  "scope": "Fixed cross-task whole-vector interchange pilot with four hypotheses, all three prefixes and base retained. Canonical wording, no learned alignment, no consciousness or novelty criterion."
+}

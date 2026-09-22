@@ -1,0 +1,16 @@
+{
+  "schema": "menia-natural-error-verification-v1",
+  "verified": true,
+  "origin": "transformers_gpu",
+  "journalSHA256": "8a36aceb7773201c5f06f35352a9e7344c2a30d6c182fdc103115f117ce00e4a",
+  "planHash": "6bc3a6939bb735415014a18d14a51875fff3a9b433a687aed26c0a176b2e0128",
+  "sourceHash": "a171d491a18db3ff874dbf36f0057960e91414cfa136839488519d975b739aa5",
+  "recorded": 3456,
+  "frozenFits": 3,
+  "overallTables": 24,
+  "withinCellTables": 144,
+  "contrasts": 21,
+  "primaryContrasts": 9,
+  "maxAbsoluteDifference": 2.220446049250313e-16,
+  "scope": "Separate exact-answer grading, scalar Brier and reliability, rank-count AUROC, paired stratified bootstrap, interpolated quantiles and gates. Shared plan, strict reader, fit/forecast reconstruction and numerical libraries; not an external replication."
+}

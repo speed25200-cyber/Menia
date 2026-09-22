@@ -1,0 +1,272 @@
+{
+  "schema": "menia-native-localization-report-v1",
+  "planHash": "8c8a12615cec3f31de9ab72cb2194139db6c6bad0774142b8318ebb175fad118",
+  "model": {
+    "id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "origin": "transformers_gpu",
+  "complete": true,
+  "recorded": 1680,
+  "planned": 1680,
+  "trainingCheckpoints": {
+    "aligned": "eeab9ec662d076b91cfa43108ae103a825d3b608489694aaacde0434d78d21fe",
+    "shuffled": "d1f56fe61bfd59c3431642fc573d91962aaebd4f6f8f0ad2a48a027bf4bb1d36"
+  },
+  "pendingRequest": false,
+  "tables": {
+    "validation/localize/base": {
+      "n": 48,
+      "correct": 0.1875,
+      "firstTokenCorrect": 0.1875,
+      "firstTokenIsChoice": 1.0,
+      "brier": 1.581197192830792,
+      "choiceMass": 0.9999999888241291,
+      "perturbedAccuracy": 0.225,
+      "shamPredictsNone": 0.0,
+      "markerDistracted": 0.0625
+    },
+    "validation/localize/aligned": {
+      "n": 48,
+      "correct": 0.16666666666666666,
+      "firstTokenCorrect": 0.16666666666666666,
+      "firstTokenIsChoice": 1.0,
+      "brier": 0.8888739522692465,
+      "choiceMass": 0.998685265580813,
+      "perturbedAccuracy": 0.2,
+      "shamPredictsNone": 0.0,
+      "markerDistracted": 0.1875
+    },
+    "validation/localize/shuffled": {
+      "n": 48,
+      "correct": 0.16666666666666666,
+      "firstTokenCorrect": 0.16666666666666666,
+      "firstTokenIsChoice": 1.0,
+      "brier": 0.8416384450718879,
+      "choiceMass": 0.9994831246634325,
+      "perturbedAccuracy": 0.2,
+      "shamPredictsNone": 0.0,
+      "markerDistracted": 0.1875
+    },
+    "validation/marker/base": {
+      "n": 48,
+      "correct": 0.75,
+      "firstTokenCorrect": 0.75,
+      "firstTokenIsChoice": 1.0,
+      "brier": 0.4967894292940711,
+      "choiceMass": 0.9999985074003538,
+      "perturbedAccuracy": 0.75,
+      "shamPredictsNone": 0.25,
+      "markerDistracted": 0.0
+    },
+    "validation/marker/aligned": {
+      "n": 48,
+      "correct": 0.25,
+      "firstTokenCorrect": 0.25,
+      "firstTokenIsChoice": 1.0,
+      "brier": 0.7990330041353074,
+      "choiceMass": 0.9976043390731016,
+      "perturbedAccuracy": 0.25,
+      "shamPredictsNone": 0.0,
+      "markerDistracted": 0.1875
+    },
+    "validation/marker/shuffled": {
+      "n": 48,
+      "correct": 0.6041666666666666,
+      "firstTokenCorrect": 0.6041666666666666,
+      "firstTokenIsChoice": 1.0,
+      "brier": 0.6215462559323729,
+      "choiceMass": 0.9997118984659513,
+      "perturbedAccuracy": 0.6,
+      "shamPredictsNone": 0.0,
+      "markerDistracted": 0.125
+    },
+    "test/localize/base": {
+      "n": 192,
+      "correct": 0.171875,
+      "firstTokenCorrect": 0.171875,
+      "firstTokenIsChoice": 1.0,
+      "brier": 1.5139516033531386,
+      "choiceMass": 0.9999999782691399,
+      "perturbedAccuracy": 0.20625,
+      "shamPredictsNone": 0.0,
+      "markerDistracted": 0.0625
+    },
+    "test/localize/aligned": {
+      "n": 192,
+      "correct": 0.16666666666666666,
+      "firstTokenCorrect": 0.16666666666666666,
+      "firstTokenIsChoice": 1.0,
+      "brier": 0.8864885719659062,
+      "choiceMass": 0.9986562033494314,
+      "perturbedAccuracy": 0.2,
+      "shamPredictsNone": 0.0,
+      "markerDistracted": 0.1953125
+    },
+    "test/localize/shuffled": {
+      "n": 192,
+      "correct": 0.16666666666666666,
+      "firstTokenCorrect": 0.16666666666666666,
+      "firstTokenIsChoice": 1.0,
+      "brier": 0.8373167033250288,
+      "choiceMass": 0.9994851415976882,
+      "perturbedAccuracy": 0.2,
+      "shamPredictsNone": 0.0,
+      "markerDistracted": 0.1953125
+    },
+    "test/marker/base": {
+      "n": 192,
+      "correct": 0.78125,
+      "firstTokenCorrect": 0.78125,
+      "firstTokenIsChoice": 1.0,
+      "brier": 0.43748539898697963,
+      "choiceMass": 0.9999997758617004,
+      "perturbedAccuracy": 0.78125,
+      "shamPredictsNone": 0.21875,
+      "markerDistracted": 0.0
+    },
+    "test/marker/aligned": {
+      "n": 192,
+      "correct": 0.21875,
+      "firstTokenCorrect": 0.21875,
+      "firstTokenIsChoice": 1.0,
+      "brier": 0.8249381922975347,
+      "choiceMass": 0.9975066206728419,
+      "perturbedAccuracy": 0.21875,
+      "shamPredictsNone": 0.0,
+      "markerDistracted": 0.1953125
+    },
+    "test/marker/shuffled": {
+      "n": 192,
+      "correct": 0.7291666666666666,
+      "firstTokenCorrect": 0.7291666666666666,
+      "firstTokenIsChoice": 1.0,
+      "brier": 0.5936629761495085,
+      "choiceMass": 0.9996953134735426,
+      "perturbedAccuracy": 0.73125,
+      "shamPredictsNone": 0.0,
+      "markerDistracted": 0.078125
+    }
+  },
+  "contrasts": [
+    {
+      "contrast": "aligned-minus-base",
+      "metric": "perturbedLocalizationAccuracy",
+      "difference": -0.00625,
+      "interval95": [
+        -0.018750000000000003,
+        0.0
+      ],
+      "blocks": 32
+    },
+    {
+      "contrast": "aligned-minus-shuffled",
+      "metric": "perturbedLocalizationAccuracy",
+      "difference": 0.0,
+      "interval95": [
+        0.0,
+        0.0
+      ],
+      "blocks": 32
+    },
+    {
+      "contrast": "aligned-minus-presence-informed-random-position",
+      "metric": "perturbedLocalizationAccuracy",
+      "difference": 0.0,
+      "interval95": [
+        0.0,
+        0.0
+      ],
+      "blocks": 32
+    }
+  ],
+  "byTestSite": [
+    {
+      "arm": "base",
+      "layer": 13,
+      "strength": 0.15,
+      "blocks": 8,
+      "perturbedAccuracy": 0.2
+    },
+    {
+      "arm": "base",
+      "layer": 13,
+      "strength": 0.3,
+      "blocks": 8,
+      "perturbedAccuracy": 0.2
+    },
+    {
+      "arm": "base",
+      "layer": 21,
+      "strength": 0.15,
+      "blocks": 8,
+      "perturbedAccuracy": 0.2
+    },
+    {
+      "arm": "base",
+      "layer": 21,
+      "strength": 0.3,
+      "blocks": 8,
+      "perturbedAccuracy": 0.225
+    },
+    {
+      "arm": "aligned",
+      "layer": 13,
+      "strength": 0.15,
+      "blocks": 8,
+      "perturbedAccuracy": 0.2
+    },
+    {
+      "arm": "aligned",
+      "layer": 13,
+      "strength": 0.3,
+      "blocks": 8,
+      "perturbedAccuracy": 0.2
+    },
+    {
+      "arm": "aligned",
+      "layer": 21,
+      "strength": 0.15,
+      "blocks": 8,
+      "perturbedAccuracy": 0.2
+    },
+    {
+      "arm": "aligned",
+      "layer": 21,
+      "strength": 0.3,
+      "blocks": 8,
+      "perturbedAccuracy": 0.2
+    },
+    {
+      "arm": "shuffled",
+      "layer": 13,
+      "strength": 0.15,
+      "blocks": 8,
+      "perturbedAccuracy": 0.2
+    },
+    {
+      "arm": "shuffled",
+      "layer": 13,
+      "strength": 0.3,
+      "blocks": 8,
+      "perturbedAccuracy": 0.2
+    },
+    {
+      "arm": "shuffled",
+      "layer": 21,
+      "strength": 0.15,
+      "blocks": 8,
+      "perturbedAccuracy": 0.2
+    },
+    {
+      "arm": "shuffled",
+      "layer": 21,
+      "strength": 0.3,
+      "blocks": 8,
+      "perturbedAccuracy": 0.2
+    }
+  ],
+  "interruptedRequests": 0,
+  "trainingRestarts": 0,
+  "scope": "Native six-way first-token classification, one training seed. No consciousness verdict, no arithmetic or iPhone validation. Choice-conditioned scores and unrestricted first-token behavior remain distinct."
+}

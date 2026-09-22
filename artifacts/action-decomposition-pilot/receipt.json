@@ -1,0 +1,71 @@
+{
+  "schema": "menia-action-decomposition-receipt-v1",
+  "archiveName": "menia-decomposition-actions.zip",
+  "archiveBytes": 413387,
+  "archiveSHA256": "b68e331ba393b9f8b814353f85a8bb3ac67a164afac5b408198d8916524b60eb",
+  "files": {
+    "action-decomposition/action-decomposition-20260919-v1.jsonl": {
+      "bytes": 7770495,
+      "sha256": "577c01da9fbe8ea4c3c9afb568526e4eee1dc32452df51be68ce886258681e78"
+    },
+    "action-decomposition/action-decomposition-20260919-v1.summary.json": {
+      "bytes": 262304,
+      "sha256": "8974153eb70c3002d72ed61612dd9b0ba8c1482c6b51619d74987487b2517923"
+    },
+    "action-decomposition/execution.json": {
+      "bytes": 342,
+      "sha256": "cf2102c72a9ba4a68e3506b4b63d8ab3f3d2a4ade7257d786ed3e11d878cbe06"
+    },
+    "action-decomposition/execution.log": {
+      "bytes": 3241,
+      "sha256": "bf6e07fe901c5f1c6d2fc9cc4455b7acc447dbe70899d539f2df458298422d8a"
+    }
+  },
+  "journalSHA256": "577c01da9fbe8ea4c3c9afb568526e4eee1dc32452df51be68ce886258681e78",
+  "scienceRevision": "5a9b27b67ed3f8687b52b310ee2f5ccd3f503a59",
+  "notebookRevision": "f8562d8b95e1fe83e9f29b6a21da1f29d66fa8e2",
+  "execution": {
+    "startedUTC": "2026-09-19T21:21:19.273694+00:00",
+    "revision": "5a9b27b67ed3f8687b52b310ee2f5ccd3f503a59",
+    "journal": "/content/menia-results/action-decomposition-v1/action-decomposition-20260919-v1.jsonl",
+    "status": "completed",
+    "hardware": "NVIDIA A100-SXM4-40GB, 40960 MiB",
+    "updatedUTC": "2026-09-19T21:32:54.667923+00:00"
+  },
+  "model": {
+    "id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "planHash": "6a48ba382fecf2319909045bc64aed901f4ce34f7139e7800843fdf506cb7377",
+  "sourceHash": "f852a47d6fb92913f69d53bc9d39980c075df58f2fd0b3d2ae26f42be254a59f",
+  "parentJournalSHA256": "002a351f462b8b7b386437780c5fa737f7306e24556ce845df5dd371310a8ab7",
+  "parentWeightFilesChecked": {
+    "action-binding-20260919-v1.r0-fixed.safetensors": "9d47f24cdf2fef1becd0bc0cf3b174662528827cb2c69f98163150f6d14f78e9",
+    "action-binding-20260919-v1.r0-initial.safetensors": "712f8e18f51c3df9a96475d2f87273917ab39e47244015dbda797ffd217067de",
+    "action-binding-20260919-v1.r0-permuted.safetensors": "1131ba8ef6daf77b26d932bc048fdc854c17ad9531b2c5fa6e90eae60ecd7e4a",
+    "action-binding-20260919-v1.r1-fixed.safetensors": "22012d5ac85a63f216bab0f6ebfef3c29a3d918c5f59fd15a397aaebe01b07d0",
+    "action-binding-20260919-v1.r1-initial.safetensors": "bf41330ecb8a85a7bf1501c12f1d97fcf158d09d8c7925fd15a85ce9913eae86",
+    "action-binding-20260919-v1.r1-permuted.safetensors": "5e54cde127f3cf874ca6118217de7f87666e8a8287b17eaf4fb403900ca19a34",
+    "action-binding-20260919-v1.r2-fixed.safetensors": "91642fa02e311a18c0d77093794ad6fae6369c3387b2b6bdea93ab6cdd2db388",
+    "action-binding-20260919-v1.r2-initial.safetensors": "19824fb8be9642587b75b3dd81418a1a9ff6d28e33192558bf5122428bf9cd8c",
+    "action-binding-20260919-v1.r2-permuted.safetensors": "a33aa66847e7a0526f7d4a6094ccc4f50c08f11e558388913d823ad3e004ae70"
+  },
+  "localTests": {
+    "passed": true,
+    "count": 5,
+    "seconds": 0.492
+  },
+  "colabTests": {
+    "passed": true,
+    "count": 5,
+    "seconds": 0.618
+  },
+  "mainRecomputeExact": true,
+  "independentMaxAbsoluteDifference": 0.0,
+  "replayMatched": 288,
+  "newWeightUpdates": 0,
+  "totalOutputTokens": 7858,
+  "measuredInferenceSeconds": 664.6804864311198,
+  "outcomeReview": "Archive bytes and files, original parent, nine checkpoints, both recalculations verified before outcome interpretation.",
+  "scope": "Finite post-result diagnostic on the same 16 cases and six frozen adapters. External recombination is not a native model action or introspection. No consciousness or novelty criterion."
+}

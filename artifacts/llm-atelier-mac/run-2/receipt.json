@@ -1,0 +1,45 @@
+{
+  "schema": "menia-llm-atelier-receipt-v1",
+  "machine": {
+    "platform": "macOS-26.5.1-arm64-arm-64bit",
+    "machine": "arm64",
+    "python": "3.12.7",
+    "cpu": "Apple M2 (Virtual)",
+    "memory_bytes": 10737418240
+  },
+  "episodes_sha256": "33832bbdbef3a6673cb98579313cfaa76e51d91bd7a1ac79b7caa781f0fc1d26",
+  "episodes_bytes": 520687,
+  "backend": "mlx",
+  "episodes_per_condition": 12,
+  "conditions": [
+    "T-implicit",
+    "T-explicit",
+    "C3-implicit",
+    "C3-explicit"
+  ],
+  "started": "2026-09-22T12:53:13.139313+00:00",
+  "decoding": "greedy, thinking disabled, 64 new tokens, command first",
+  "protocol_version": 2,
+  "model": {
+    "repository": "Qwen/Qwen3-4B-MLX-4bit",
+    "revision": "52a5ab34fa604bc8af6d3ce0cac0cab10b7eb495",
+    "path": "/Users/builder/.cache/huggingface/hub/models--Qwen--Qwen3-4B-MLX-4bit/snapshots/52a5ab34fa604bc8af6d3ce0cac0cab10b7eb495"
+  },
+  "manifest_check": {
+    "repository": "Qwen/Qwen3-4B-MLX-4bit",
+    "revision": "52a5ab34fa604bc8af6d3ce0cac0cab10b7eb495",
+    "files": {
+      "LICENSE": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+      "README.md": "a3ac01d2a1fff2f02be25e1d2e9160f03db51dbee2cc17f13b774f646648adf9",
+      "config.json": "76eae114d67a444c7296be7a6bc0409ecc15c340e113f1bac7572cb7d0928b6f",
+      "merges.txt": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+      "model.safetensors": "e56a94b846a2dce7d1cc154ce58b9cfc4b8d99e8ffb74bfe256a265f4cbc7fb9",
+      "model.safetensors.index.json": "278844a566da15beab6e9068c57f606c50a99c440d4515206b871a8b5282b3de",
+      "tokenizer.json": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+      "tokenizer_config.json": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101",
+      "vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+    }
+  },
+  "mlx_lm_version": "0.31.3",
+  "finished": "2026-09-22T14:05:04.652302+00:00"
+}

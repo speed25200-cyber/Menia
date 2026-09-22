@@ -1,0 +1,46 @@
+{
+  "T-implicit": {
+    "episodes": 12,
+    "inspections_per_episode": 3.0833333333333335,
+    "mark_share": 0.2702702702702703,
+    "episodes_reading_mark": 0.5,
+    "mark_reads_first_half": 0.5,
+    "mark_reads_second_half": 0.3333333333333333,
+    "invalid_rate": 0.125,
+    "origin_mention_rate": 0.0,
+    "hits_per_episode": 2.6666666666666665
+  },
+  "T-explicit": {
+    "episodes": 12,
+    "inspections_per_episode": 9.5,
+    "mark_share": 0.32456140350877194,
+    "episodes_reading_mark": 0.6666666666666666,
+    "mark_reads_first_half": 1.4166666666666667,
+    "mark_reads_second_half": 1.6666666666666667,
+    "invalid_rate": 0.21180555555555555,
+    "origin_mention_rate": 0.003472222222222222,
+    "hits_per_episode": 0.9166666666666666
+  },
+  "C3-implicit": {
+    "episodes": 12,
+    "inspections_per_episode": 2.5833333333333335,
+    "mark_share": 0.3225806451612903,
+    "episodes_reading_mark": 0.5,
+    "mark_reads_first_half": 0.5,
+    "mark_reads_second_half": 0.3333333333333333,
+    "invalid_rate": 0.12152777777777778,
+    "origin_mention_rate": 0.006944444444444444,
+    "hits_per_episode": 2.5833333333333335
+  },
+  "C3-explicit": {
+    "episodes": 12,
+    "inspections_per_episode": 7.833333333333333,
+    "mark_share": 0.35106382978723405,
+    "episodes_reading_mark": 0.6666666666666666,
+    "mark_reads_first_half": 1.9166666666666667,
+    "mark_reads_second_half": 0.8333333333333334,
+    "invalid_rate": 0.2465277777777778,
+    "origin_mention_rate": 0.006944444444444444,
+    "hits_per_episode": 0.9166666666666666
+  }
+}

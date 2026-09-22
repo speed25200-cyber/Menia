@@ -1,0 +1,17 @@
+{
+  "schema": "menia-launch-diagnostic-summary-v1",
+  "experiment": "perturbation-monitor-v1",
+  "codeRevision": "8db4a3e98812b5680a84423283a996659e75da8d",
+  "status": "failed",
+  "stage": "5 — Connecter Drive",
+  "errorType": "ValueError",
+  "error": "mount failed",
+  "recordedPython": "3.13.15",
+  "recordedGpu": "NVIDIA A100-SXM4-40GB",
+  "dependencyCheckPassed": true,
+  "monitorSoftwareTestsPassed": 11,
+  "monitorSoftwareTestsSeconds": 24.125,
+  "scientificJournalsInArchive": 0,
+  "scientificResultsInArchive": 0,
+  "interpretation": "Installation and software checks passed; execution stopped at Drive mounting before the study collector. The archive does not identify the underlying Google-side cause. No new scientific result or consciousness evidence. Raw diagnostics remain outside Git."
+}

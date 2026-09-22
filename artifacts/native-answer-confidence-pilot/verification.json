@@ -1,0 +1,20 @@
+{
+  "schema": "menia-native-confidence-core-audit-v1",
+  "verified": true,
+  "weightsChecked": true,
+  "weights": {
+    "native-answer-confidence-20260920-v1.r0-initial.safetensors": "9fdfb9604eeebb59678a6edf509cbfe21b998b475e1350402cd51903fbf9be1d",
+    "native-answer-confidence-20260920-v1.r0-measured.safetensors": "e9ba672af32950f9e3f34d4e481aa35cd1f2401ddc371244b511be7aa97fe5f9",
+    "native-answer-confidence-20260920-v1.r0-shuffled.safetensors": "70202d85e11da064c219c10d09a05e5099278a064922ad93509c97719e691e07",
+    "native-answer-confidence-20260920-v1.r1-initial.safetensors": "06b4fdc325fafe4e1d0e277dcd8037273c235c9eabcfaa446982201ec6ef2750",
+    "native-answer-confidence-20260920-v1.r1-measured.safetensors": "e3657630708bbe71209b816aabf7c61bff3048efbf013535af27d3a082371dc7",
+    "native-answer-confidence-20260920-v1.r1-shuffled.safetensors": "3c41c3587b70870c0be8356b97bc329d2aecdac75717e1ed5e17960fc8ac6c10",
+    "native-answer-confidence-20260920-v1.r2-initial.safetensors": "bfd0a22aa01b22d2ddb23870fe4ddbd14efa6ed001718ab21ed3319205c08428",
+    "native-answer-confidence-20260920-v1.r2-measured.safetensors": "09d6c46c516f02f65f73515a4cc004b5521b0b98c6bfbb2d3342f77cd1727e6b",
+    "native-answer-confidence-20260920-v1.r2-shuffled.safetensors": "160299cdad7a21e293c783dff48ef9fe267d98507efef67e91ac49fbbc8bdc2c"
+  },
+  "journalSHA256": "c6b3f616ba805841721e8fc8dc135f63385e2afed5b249b28d41339393bc3b00",
+  "maxAbsoluteDifference": 2.220446049250313e-16,
+  "comparisonsChecked": 24,
+  "scope": "Separate core Brier, accuracy, AUROC, bootstrap and gate arithmetic. Shared integrity reader, task references and baseline fitter; not an external replication. Full summary also requires main reconstruction."
+}

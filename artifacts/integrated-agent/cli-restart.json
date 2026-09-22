@@ -1,0 +1,7 @@
+{
+  "first_launch": "Commandes : /step, /run N (1–500), /observe position|target|landmark, /report CHAMP X Y, /why, /state, /history, /stop, /resume, /quit. Les questions en français utilisent Qwen si le modèle est chargé.\nVous > Menia > Je sélectionne target : je n'ai pas d'observation utilisable de cette information. Références : .\nVous > Menia > Je sélectionne position : je n'ai pas d'observation utilisable de cette information. Références : .\nVous > Menia > Je teste la commande a pour apprendre son effet (0 transitions récentes observées). Références : 5, 2.\nVous > ",
+  "second_launch": "Commandes : /step, /run N (1–500), /observe position|target|landmark, /report CHAMP X Y, /why, /state, /history, /stop, /resume, /quit. Les questions en français utilisent Qwen si le modèle est chargé.\nSession restaurée à l’arrêt ; /resume permet de continuer.\nVous > Menia > Reprise demandée par l’utilisateur.\nVous > Menia > Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 8.\nVous > Menia > Je vérifie ma position pour comparer le résultat de ma commande à ma prédiction. Références : 8.\nVous > ",
+  "same_episode": true,
+  "single_assessment_after_restart": true,
+  "position_preserved": true
+}

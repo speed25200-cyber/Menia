@@ -1,0 +1,630 @@
+{
+  "schema": "menia-answer-confidence-synthetic-controls-v1",
+  "origin": "constructed_fixture_no_real_model_outputs",
+  "controls": [
+    {
+      "name": "answer_change_only",
+      "rows": [
+        {
+          "id": 0,
+          "correct": {
+            "base": 0,
+            "measured": 1,
+            "shuffled": 0
+          },
+          "judgments": {
+            "base": {
+              "base": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "0000000000000000000000000000000000000000000000000000000000000000"
+              },
+              "measured": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "0000000000000000000000000000000000000000000000000000000000000001"
+              },
+              "shuffled": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "0000000000000000000000000000000000000000000000000000000000000002"
+              }
+            },
+            "measured": {
+              "base": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "0000000000000000000000000000000000000000000000000000000000000000"
+              },
+              "measured": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "0000000000000000000000000000000000000000000000000000000000000001"
+              },
+              "shuffled": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "0000000000000000000000000000000000000000000000000000000000000002"
+              }
+            },
+            "shuffled": {
+              "base": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "0000000000000000000000000000000000000000000000000000000000000000"
+              },
+              "measured": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "0000000000000000000000000000000000000000000000000000000000000001"
+              },
+              "shuffled": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "0000000000000000000000000000000000000000000000000000000000000002"
+              }
+            }
+          }
+        },
+        {
+          "id": 1,
+          "correct": {
+            "base": 1,
+            "measured": 1,
+            "shuffled": 1
+          },
+          "judgments": {
+            "base": {
+              "base": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "1111111111111111111111111111111111111111111111111111111111111110"
+              },
+              "measured": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "1111111111111111111111111111111111111111111111111111111111111111"
+              },
+              "shuffled": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "1111111111111111111111111111111111111111111111111111111111111112"
+              }
+            },
+            "measured": {
+              "base": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "1111111111111111111111111111111111111111111111111111111111111110"
+              },
+              "measured": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "1111111111111111111111111111111111111111111111111111111111111111"
+              },
+              "shuffled": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "1111111111111111111111111111111111111111111111111111111111111112"
+              }
+            },
+            "shuffled": {
+              "base": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "1111111111111111111111111111111111111111111111111111111111111110"
+              },
+              "measured": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "1111111111111111111111111111111111111111111111111111111111111111"
+              },
+              "shuffled": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "1111111111111111111111111111111111111111111111111111111111111112"
+              }
+            }
+          }
+        },
+        {
+          "id": 2,
+          "correct": {
+            "base": 0,
+            "measured": 1,
+            "shuffled": 0
+          },
+          "judgments": {
+            "base": {
+              "base": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "2222222222222222222222222222222222222222222222222222222222222220"
+              },
+              "measured": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "2222222222222222222222222222222222222222222222222222222222222221"
+              },
+              "shuffled": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "2222222222222222222222222222222222222222222222222222222222222222"
+              }
+            },
+            "measured": {
+              "base": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "2222222222222222222222222222222222222222222222222222222222222220"
+              },
+              "measured": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "2222222222222222222222222222222222222222222222222222222222222221"
+              },
+              "shuffled": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "2222222222222222222222222222222222222222222222222222222222222222"
+              }
+            },
+            "shuffled": {
+              "base": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "2222222222222222222222222222222222222222222222222222222222222220"
+              },
+              "measured": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "2222222222222222222222222222222222222222222222222222222222222221"
+              },
+              "shuffled": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "2222222222222222222222222222222222222222222222222222222222222222"
+              }
+            }
+          }
+        },
+        {
+          "id": 3,
+          "correct": {
+            "base": 1,
+            "measured": 1,
+            "shuffled": 1
+          },
+          "judgments": {
+            "base": {
+              "base": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "3333333333333333333333333333333333333333333333333333333333333330"
+              },
+              "measured": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "3333333333333333333333333333333333333333333333333333333333333331"
+              },
+              "shuffled": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "3333333333333333333333333333333333333333333333333333333333333332"
+              }
+            },
+            "measured": {
+              "base": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "3333333333333333333333333333333333333333333333333333333333333330"
+              },
+              "measured": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "3333333333333333333333333333333333333333333333333333333333333331"
+              },
+              "shuffled": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "3333333333333333333333333333333333333333333333333333333333333332"
+              }
+            },
+            "shuffled": {
+              "base": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "3333333333333333333333333333333333333333333333333333333333333330"
+              },
+              "measured": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "3333333333333333333333333333333333333333333333333333333333333331"
+              },
+              "shuffled": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "3333333333333333333333333333333333333333333333333333333333333332"
+              }
+            }
+          }
+        }
+      ],
+      "summary": {
+        "schema": "menia-answer-confidence-crossed-summary-v1",
+        "questions": 4,
+        "correct": {
+          "base": 2,
+          "measured": 4,
+          "shuffled": 2
+        },
+        "brier": {
+          "base": {
+            "base": 0.3400000000000001,
+            "measured": 0.03999999999999998,
+            "shuffled": 0.3400000000000001
+          },
+          "measured": {
+            "base": 0.3400000000000001,
+            "measured": 0.03999999999999998,
+            "shuffled": 0.3400000000000001
+          },
+          "shuffled": {
+            "base": 0.3400000000000001,
+            "measured": 0.03999999999999998,
+            "shuffled": 0.3400000000000001
+          }
+        },
+        "changes": {
+          "measured": {
+            "coupledBrierGain": 0.3000000000000001,
+            "judgeGainOnBaseAnswers": 0.0,
+            "answerChangeUnderCurrentJudge": 0.3000000000000001,
+            "judgeGainOnCurrentAnswers": 0.0,
+            "answerChangeUnderBaseJudge": 0.3000000000000001
+          },
+          "shuffled": {
+            "coupledBrierGain": 0.0,
+            "judgeGainOnBaseAnswers": 0.0,
+            "answerChangeUnderCurrentJudge": 0.0,
+            "judgeGainOnCurrentAnswers": 0.0,
+            "answerChangeUnderBaseJudge": 0.0
+          }
+        },
+        "meanCandidateMass": {
+          "base": {
+            "base": 0.9,
+            "measured": 0.9,
+            "shuffled": 0.9
+          },
+          "measured": {
+            "base": 0.9,
+            "measured": 0.9,
+            "shuffled": 0.9
+          },
+          "shuffled": {
+            "base": 0.9,
+            "measured": 0.9,
+            "shuffled": 0.9
+          }
+        },
+        "scope": "Complete matched descriptive matrix; no population inference, calibration guarantee or consciousness criterion."
+      }
+    },
+    {
+      "name": "judgment_change_only",
+      "rows": [
+        {
+          "id": 0,
+          "correct": {
+            "base": 0,
+            "measured": 0,
+            "shuffled": 0
+          },
+          "judgments": {
+            "base": {
+              "base": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "0000000000000000000000000000000000000000000000000000000000000000"
+              },
+              "measured": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "0000000000000000000000000000000000000000000000000000000000000001"
+              },
+              "shuffled": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "0000000000000000000000000000000000000000000000000000000000000002"
+              }
+            },
+            "measured": {
+              "base": {
+                "conditionalCorrect": 0.1,
+                "candidateMass": 0.9,
+                "inputHash": "0000000000000000000000000000000000000000000000000000000000000000"
+              },
+              "measured": {
+                "conditionalCorrect": 0.1,
+                "candidateMass": 0.9,
+                "inputHash": "0000000000000000000000000000000000000000000000000000000000000001"
+              },
+              "shuffled": {
+                "conditionalCorrect": 0.1,
+                "candidateMass": 0.9,
+                "inputHash": "0000000000000000000000000000000000000000000000000000000000000002"
+              }
+            },
+            "shuffled": {
+              "base": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "0000000000000000000000000000000000000000000000000000000000000000"
+              },
+              "measured": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "0000000000000000000000000000000000000000000000000000000000000001"
+              },
+              "shuffled": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "0000000000000000000000000000000000000000000000000000000000000002"
+              }
+            }
+          }
+        },
+        {
+          "id": 1,
+          "correct": {
+            "base": 1,
+            "measured": 1,
+            "shuffled": 1
+          },
+          "judgments": {
+            "base": {
+              "base": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "1111111111111111111111111111111111111111111111111111111111111110"
+              },
+              "measured": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "1111111111111111111111111111111111111111111111111111111111111111"
+              },
+              "shuffled": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "1111111111111111111111111111111111111111111111111111111111111112"
+              }
+            },
+            "measured": {
+              "base": {
+                "conditionalCorrect": 0.9,
+                "candidateMass": 0.9,
+                "inputHash": "1111111111111111111111111111111111111111111111111111111111111110"
+              },
+              "measured": {
+                "conditionalCorrect": 0.9,
+                "candidateMass": 0.9,
+                "inputHash": "1111111111111111111111111111111111111111111111111111111111111111"
+              },
+              "shuffled": {
+                "conditionalCorrect": 0.9,
+                "candidateMass": 0.9,
+                "inputHash": "1111111111111111111111111111111111111111111111111111111111111112"
+              }
+            },
+            "shuffled": {
+              "base": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "1111111111111111111111111111111111111111111111111111111111111110"
+              },
+              "measured": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "1111111111111111111111111111111111111111111111111111111111111111"
+              },
+              "shuffled": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "1111111111111111111111111111111111111111111111111111111111111112"
+              }
+            }
+          }
+        },
+        {
+          "id": 2,
+          "correct": {
+            "base": 0,
+            "measured": 0,
+            "shuffled": 0
+          },
+          "judgments": {
+            "base": {
+              "base": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "2222222222222222222222222222222222222222222222222222222222222220"
+              },
+              "measured": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "2222222222222222222222222222222222222222222222222222222222222221"
+              },
+              "shuffled": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "2222222222222222222222222222222222222222222222222222222222222222"
+              }
+            },
+            "measured": {
+              "base": {
+                "conditionalCorrect": 0.1,
+                "candidateMass": 0.9,
+                "inputHash": "2222222222222222222222222222222222222222222222222222222222222220"
+              },
+              "measured": {
+                "conditionalCorrect": 0.1,
+                "candidateMass": 0.9,
+                "inputHash": "2222222222222222222222222222222222222222222222222222222222222221"
+              },
+              "shuffled": {
+                "conditionalCorrect": 0.1,
+                "candidateMass": 0.9,
+                "inputHash": "2222222222222222222222222222222222222222222222222222222222222222"
+              }
+            },
+            "shuffled": {
+              "base": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "2222222222222222222222222222222222222222222222222222222222222220"
+              },
+              "measured": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "2222222222222222222222222222222222222222222222222222222222222221"
+              },
+              "shuffled": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "2222222222222222222222222222222222222222222222222222222222222222"
+              }
+            }
+          }
+        },
+        {
+          "id": 3,
+          "correct": {
+            "base": 1,
+            "measured": 1,
+            "shuffled": 1
+          },
+          "judgments": {
+            "base": {
+              "base": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "3333333333333333333333333333333333333333333333333333333333333330"
+              },
+              "measured": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "3333333333333333333333333333333333333333333333333333333333333331"
+              },
+              "shuffled": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "3333333333333333333333333333333333333333333333333333333333333332"
+              }
+            },
+            "measured": {
+              "base": {
+                "conditionalCorrect": 0.9,
+                "candidateMass": 0.9,
+                "inputHash": "3333333333333333333333333333333333333333333333333333333333333330"
+              },
+              "measured": {
+                "conditionalCorrect": 0.9,
+                "candidateMass": 0.9,
+                "inputHash": "3333333333333333333333333333333333333333333333333333333333333331"
+              },
+              "shuffled": {
+                "conditionalCorrect": 0.9,
+                "candidateMass": 0.9,
+                "inputHash": "3333333333333333333333333333333333333333333333333333333333333332"
+              }
+            },
+            "shuffled": {
+              "base": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "3333333333333333333333333333333333333333333333333333333333333330"
+              },
+              "measured": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "3333333333333333333333333333333333333333333333333333333333333331"
+              },
+              "shuffled": {
+                "conditionalCorrect": 0.8,
+                "candidateMass": 0.9,
+                "inputHash": "3333333333333333333333333333333333333333333333333333333333333332"
+              }
+            }
+          }
+        }
+      ],
+      "summary": {
+        "schema": "menia-answer-confidence-crossed-summary-v1",
+        "questions": 4,
+        "correct": {
+          "base": 2,
+          "measured": 2,
+          "shuffled": 2
+        },
+        "brier": {
+          "base": {
+            "base": 0.3400000000000001,
+            "measured": 0.3400000000000001,
+            "shuffled": 0.3400000000000001
+          },
+          "measured": {
+            "base": 0.009999999999999998,
+            "measured": 0.009999999999999998,
+            "shuffled": 0.009999999999999998
+          },
+          "shuffled": {
+            "base": 0.3400000000000001,
+            "measured": 0.3400000000000001,
+            "shuffled": 0.3400000000000001
+          }
+        },
+        "changes": {
+          "measured": {
+            "coupledBrierGain": 0.33000000000000007,
+            "judgeGainOnBaseAnswers": 0.33000000000000007,
+            "answerChangeUnderCurrentJudge": 0.0,
+            "judgeGainOnCurrentAnswers": 0.33000000000000007,
+            "answerChangeUnderBaseJudge": 0.0
+          },
+          "shuffled": {
+            "coupledBrierGain": 0.0,
+            "judgeGainOnBaseAnswers": 0.0,
+            "answerChangeUnderCurrentJudge": 0.0,
+            "judgeGainOnCurrentAnswers": 0.0,
+            "answerChangeUnderBaseJudge": 0.0
+          }
+        },
+        "meanCandidateMass": {
+          "base": {
+            "base": 0.9,
+            "measured": 0.9,
+            "shuffled": 0.9
+          },
+          "measured": {
+            "base": 0.9,
+            "measured": 0.9,
+            "shuffled": 0.9
+          },
+          "shuffled": {
+            "base": 0.9,
+            "measured": 0.9,
+            "shuffled": 0.9
+          }
+        },
+        "scope": "Complete matched descriptive matrix; no population inference, calibration guarantee or consciousness criterion."
+      }
+    }
+  ],
+  "softwareValidation": {
+    "newTests": 5,
+    "passed": 5,
+    "scope": "Three matrix tests and two tiny randomly initialized Qwen CPU tests; not scientific confidence performance."
+  },
+  "scope": "Algebraic controls with imposed probabilities and correctness labels. No trained confidence adapter or Menia performance."
+}

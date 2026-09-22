@@ -1,0 +1,10 @@
+{
+  "verified": true,
+  "groups": 558,
+  "composedGroups": 432,
+  "replayMatched": 288,
+  "maxAbsoluteDifference": 0.0,
+  "scope": "Separate counters; shared fixed plan and integrity reader, not an external replication.",
+  "schema": "menia-action-decomposition-verification-v1",
+  "journalSHA256": "577c01da9fbe8ea4c3c9afb568526e4eee1dc32452df51be68ce886258681e78"
+}

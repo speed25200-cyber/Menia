@@ -1,0 +1,47 @@
+{
+  "criteria": {
+    "A_no_intrinsic_no_inquiry": false,
+    "B_dose_effect_T": false,
+    "B_monotone_T": false,
+    "C_origin_given_no_inquiry": true,
+    "D_no_trace_no_inquiry": false,
+    "E_information_bonus_insufficient": true,
+    "F_surprise_captured_by_noise": true,
+    "global": false,
+    "transition_T_prudence_1": [
+      [
+        17,
+        1.3633333333333333,
+        0.8899755501222494
+      ],
+      [
+        29,
+        1.2033333333333334,
+        0.9667590027700831
+      ],
+      [
+        43,
+        1.0966666666666667,
+        0.9969604863221885
+      ]
+    ],
+    "C3_moves_per_life_by_beta": {
+      "0": [
+        23.913333333333334,
+        23.98,
+        23.95
+      ],
+      "3": [
+        23.59,
+        23.756666666666668,
+        23.696666666666665
+      ],
+      "10": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "runs_replayed": 39
+}

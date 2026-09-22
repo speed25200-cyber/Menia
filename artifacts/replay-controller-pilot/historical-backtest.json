@@ -1,0 +1,116 @@
+{
+  "schema": "menia-historical-replay-v1",
+  "origin": "transformers_gpu",
+  "sourceJournalSha256": "1807c7c92a7aff4c846a5648ef264a9787944c5205f0e410d4c7f3ed9991f249",
+  "exploratory": true,
+  "prospectiveValidation": false,
+  "newLLMCalls": 0,
+  "verificationAuditCallsNow": 288,
+  "selectionExamples": 96,
+  "diagnosticExamples": 192,
+  "independentDiagnosticQuestions": 48,
+  "policies": {
+    "learned": {
+      "policy": {
+        "kind": "threshold",
+        "source": "internal",
+        "threshold": 1.0,
+        "below": "verify"
+      },
+      "candidateCount": 75,
+      "selectionLoss": 0.1625,
+      "diagnosticTest": {
+        "meanPointLoss": 0.18229166666666666,
+        "actionCounts": {
+          "direct": 22,
+          "verify": 170,
+          "abstain": 0
+        }
+      }
+    },
+    "public": {
+      "policy": {
+        "kind": "threshold",
+        "source": "inputOnly",
+        "threshold": 0.8,
+        "below": "verify"
+      },
+      "candidateCount": 51,
+      "selectionLoss": 0.16874999999999998,
+      "diagnosticTest": {
+        "meanPointLoss": 0.13020833333333334,
+        "actionCounts": {
+          "direct": 72,
+          "verify": 120,
+          "abstain": 0
+        }
+      }
+    },
+    "shuffled": {
+      "policy": {
+        "kind": "threshold",
+        "source": "inputOnly",
+        "threshold": 0.8,
+        "below": "verify"
+      },
+      "candidateCount": 75,
+      "selectionLoss": 0.16874999999999998,
+      "diagnosticTest": {
+        "meanPointLoss": 0.13020833333333334,
+        "actionCounts": {
+          "direct": 72,
+          "verify": 120,
+          "abstain": 0
+        }
+      }
+    }
+  },
+  "baselines": {
+    "fixedBeta": {
+      "meanPointLoss": 0.10520833333333335,
+      "actionCounts": {
+        "direct": 96,
+        "verify": 96,
+        "abstain": 0
+      }
+    },
+    "fixedInternal": {
+      "meanPointLoss": 0.1416666666666667,
+      "actionCounts": {
+        "direct": 61,
+        "verify": 131,
+        "abstain": 0
+      }
+    },
+    "alwaysDirect": {
+      "meanPointLoss": 0.328125,
+      "actionCounts": {
+        "direct": 192,
+        "verify": 0,
+        "abstain": 0
+      }
+    },
+    "alwaysVerify": {
+      "meanPointLoss": 0.20000000000000004,
+      "actionCounts": {
+        "direct": 0,
+        "verify": 192,
+        "abstain": 0
+      }
+    },
+    "alwaysAbstain": {
+      "meanPointLoss": 0.3499999999999999,
+      "actionCounts": {
+        "direct": 0,
+        "verify": 0,
+        "abstain": 192
+      }
+    }
+  },
+  "limitations": [
+    "Test answers were inspected before this method was designed.",
+    "Historical monitors were fit on strict correctness; new labels use the restricted numeric parser.",
+    "Verification is re-executed now; alternative online outcomes beyond these actions are unavailable.",
+    "Four variants per question are dependent; no new consciousness or performance claim."
+  ]
+}

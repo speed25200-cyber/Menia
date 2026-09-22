@@ -1,0 +1,3303 @@
+{
+  "schema": "intrinsic-semantics-audit-v1",
+  "protocol": "docs/INTRINSIC_SEMANTICS_PROTOCOL.md",
+  "source_doi": "10.1098/rsfs.2018.0041",
+  "source_commit": "bc56a371130a4073062c766654ca4796110d5c8e",
+  "source_sha256": {
+    "model.ipynb": "55b33ca1e23468f925a04f4b6f6dc90bbfb590bdc6f032bb4ceb8744a580613c",
+    "utils.py": "2d369987fb87e822989c79ff5a51c02eca59b2bdccb51651c8646f6eece656e6"
+  },
+  "external_code_executed": false,
+  "intervention_counts": {
+    "full_6_states": 203,
+    "contiguous_6_states": 32,
+    "distinct_on_initial_support_full": 52,
+    "distinct_on_initial_support_contiguous": 16
+  },
+  "parameters": {
+    "locations": 5,
+    "levels_in_code": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "eat_radius": 1,
+    "food_disappearance_rate": 0.1,
+    "dead_internal_entropy_bits": 100,
+    "horizons": [
+      0,
+      1,
+      2,
+      3,
+      5,
+      8,
+      10
+    ],
+    "source_rounding_decimals": 5
+  },
+  "dynamics": [
+    {
+      "mode": "towards_food",
+      "joint_states": 900,
+      "transition_entries": 3216
+    },
+    {
+      "mode": "away_from_food",
+      "joint_states": 900,
+      "transition_entries": 3216
+    }
+  ],
+  "results": [
+    {
+      "mode": "towards_food",
+      "horizon": 0,
+      "initial_information_bits": 2.321928094887362,
+      "semantic_bits_all_partitions": 0.0,
+      "semantic_bits_contiguous_partitions": 0.0,
+      "upper_curve_readout_contiguous_bits": 0.0,
+      "upper_curve_readout_all_bits": 0.0,
+      "viability_value_bits": 0.0,
+      "actual_viability_bits": -2.321928094887362,
+      "scrambled_viability_bits": -2.321928094887362,
+      "actual_alive_probability": 1.0,
+      "scrambled_alive_probability": 1.0,
+      "macro_entropy_only_value_bits": 0.0,
+      "max_curve_improvement_bits": 0.0,
+      "curve_improvement_witness": {
+        "information_bits_rounded": 0.0,
+        "contiguous_best_viability_bits_rounded": -2.32193,
+        "all_best_viability_bits_rounded": -2.32193,
+        "partition": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "minimum_information_equal_viability_partitions": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "mode": "towards_food",
+      "horizon": 1,
+      "initial_information_bits": 2.321928094887362,
+      "semantic_bits_all_partitions": 0.97095,
+      "semantic_bits_contiguous_partitions": 1.37095,
+      "upper_curve_readout_contiguous_bits": 1.37095,
+      "upper_curve_readout_all_bits": 0.97095,
+      "viability_value_bits": 0.5286992292313268,
+      "actual_viability_bits": -1.3730254189875462,
+      "scrambled_viability_bits": -1.901724648218873,
+      "actual_alive_probability": 1.0,
+      "scrambled_alive_probability": 1.0,
+      "macro_entropy_only_value_bits": 0.5286992292313268,
+      "max_curve_improvement_bits": 0.51692,
+      "curve_improvement_witness": {
+        "information_bits_rounded": 0.97095,
+        "contiguous_best_viability_bits_rounded": -1.88995,
+        "all_best_viability_bits_rounded": -1.37303,
+        "partition": [
+          0,
+          1,
+          1,
+          1,
+          0
+        ]
+      },
+      "minimum_information_equal_viability_partitions": [
+        [
+          0,
+          1,
+          1,
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "mode": "towards_food",
+      "horizon": 2,
+      "initial_information_bits": 2.321928094887362,
+      "semantic_bits_all_partitions": 1.37095,
+      "semantic_bits_contiguous_partitions": 1.37095,
+      "upper_curve_readout_contiguous_bits": 1.37095,
+      "upper_curve_readout_all_bits": 1.37095,
+      "viability_value_bits": 0.5149153437770351,
+      "actual_viability_bits": -1.5621828607859611,
+      "scrambled_viability_bits": -2.077098204562996,
+      "actual_alive_probability": 1.0,
+      "scrambled_alive_probability": 1.0,
+      "macro_entropy_only_value_bits": 0.5149153437770351,
+      "max_curve_improvement_bits": 0.0,
+      "curve_improvement_witness": {
+        "information_bits_rounded": 0.0,
+        "contiguous_best_viability_bits_rounded": -2.0771,
+        "all_best_viability_bits_rounded": -2.0771,
+        "partition": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "minimum_information_equal_viability_partitions": [
+        [
+          0,
+          1,
+          1,
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "mode": "towards_food",
+      "horizon": 3,
+      "initial_information_bits": 2.321928094887362,
+      "semantic_bits_all_partitions": 1.37095,
+      "semantic_bits_contiguous_partitions": 1.37095,
+      "upper_curve_readout_contiguous_bits": 1.37095,
+      "upper_curve_readout_all_bits": 1.37095,
+      "viability_value_bits": 0.5149512587221421,
+      "actual_viability_bits": -1.5639359287395498,
+      "scrambled_viability_bits": -2.078887187461692,
+      "actual_alive_probability": 1.0,
+      "scrambled_alive_probability": 1.0,
+      "macro_entropy_only_value_bits": 0.5149512587221421,
+      "max_curve_improvement_bits": 0.0,
+      "curve_improvement_witness": {
+        "information_bits_rounded": 0.0,
+        "contiguous_best_viability_bits_rounded": -2.07889,
+        "all_best_viability_bits_rounded": -2.07889,
+        "partition": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "minimum_information_equal_viability_partitions": [
+        [
+          0,
+          1,
+          1,
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "mode": "towards_food",
+      "horizon": 5,
+      "initial_information_bits": 2.321928094887362,
+      "semantic_bits_all_partitions": 1.37095,
+      "semantic_bits_contiguous_partitions": 1.37095,
+      "upper_curve_readout_contiguous_bits": 1.37095,
+      "upper_curve_readout_all_bits": 1.37095,
+      "viability_value_bits": 22.107363164728483,
+      "actual_viability_bits": -65.52521092537236,
+      "scrambled_viability_bits": -87.63257409010085,
+      "actual_alive_probability": 0.36041751368859154,
+      "scrambled_alive_probability": 0.14448231783743193,
+      "macro_entropy_only_value_bits": 0.5138435796125373,
+      "max_curve_improvement_bits": 0.0,
+      "curve_improvement_witness": {
+        "information_bits_rounded": 0.0,
+        "contiguous_best_viability_bits_rounded": -87.63257,
+        "all_best_viability_bits_rounded": -87.63257,
+        "partition": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "minimum_information_equal_viability_partitions": [
+        [
+          0,
+          1,
+          1,
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "mode": "towards_food",
+      "horizon": 8,
+      "initial_information_bits": 2.321928094887362,
+      "semantic_bits_all_partitions": 1.37095,
+      "semantic_bits_contiguous_partitions": 1.37095,
+      "upper_curve_readout_contiguous_bits": 1.37095,
+      "upper_curve_readout_all_bits": 1.37095,
+      "viability_value_bits": 0.5148593333240825,
+      "actual_viability_bits": -101.55854818528563,
+      "scrambled_viability_bits": -102.07340751860971,
+      "actual_alive_probability": 7.070277141529857e-08,
+      "scrambled_alive_probability": 3.42440963363444e-08,
+      "macro_entropy_only_value_bits": 0.5148556874565855,
+      "max_curve_improvement_bits": 0.0,
+      "curve_improvement_witness": {
+        "information_bits_rounded": 0.0,
+        "contiguous_best_viability_bits_rounded": -102.07341,
+        "all_best_viability_bits_rounded": -102.07341,
+        "partition": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "minimum_information_equal_viability_partitions": [
+        [
+          0,
+          1,
+          1,
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "mode": "towards_food",
+      "horizon": 10,
+      "initial_information_bits": 2.321928094887362,
+      "semantic_bits_all_partitions": 1.37095,
+      "semantic_bits_contiguous_partitions": 1.37095,
+      "upper_curve_readout_contiguous_bits": 1.37095,
+      "upper_curve_readout_all_bits": 1.37095,
+      "viability_value_bits": 0.5148565814318715,
+      "actual_viability_bits": -101.55855349397882,
+      "scrambled_viability_bits": -102.07341007541069,
+      "actual_alive_probability": 1.0782708059764445e-11,
+      "scrambled_alive_probability": 5.026534743990396e-12,
+      "macro_entropy_only_value_bits": 0.5148565808562431,
+      "max_curve_improvement_bits": 0.0,
+      "curve_improvement_witness": {
+        "information_bits_rounded": 0.0,
+        "contiguous_best_viability_bits_rounded": -102.07341,
+        "all_best_viability_bits_rounded": -102.07341,
+        "partition": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "minimum_information_equal_viability_partitions": [
+        [
+          0,
+          1,
+          1,
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "mode": "away_from_food",
+      "horizon": 0,
+      "initial_information_bits": 2.321928094887362,
+      "semantic_bits_all_partitions": 0.0,
+      "semantic_bits_contiguous_partitions": 0.0,
+      "upper_curve_readout_contiguous_bits": 0.0,
+      "upper_curve_readout_all_bits": 0.0,
+      "viability_value_bits": 0.0,
+      "actual_viability_bits": -2.321928094887362,
+      "scrambled_viability_bits": -2.321928094887362,
+      "actual_alive_probability": 1.0,
+      "scrambled_alive_probability": 1.0,
+      "macro_entropy_only_value_bits": 0.0,
+      "max_curve_improvement_bits": 0.0,
+      "curve_improvement_witness": {
+        "information_bits_rounded": 0.0,
+        "contiguous_best_viability_bits_rounded": -2.32193,
+        "all_best_viability_bits_rounded": -2.32193,
+        "partition": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "minimum_information_equal_viability_partitions": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "mode": "away_from_food",
+      "horizon": 1,
+      "initial_information_bits": 2.321928094887362,
+      "semantic_bits_all_partitions": 0.97095,
+      "semantic_bits_contiguous_partitions": 1.37095,
+      "upper_curve_readout_contiguous_bits": 1.37095,
+      "upper_curve_readout_all_bits": 0.97095,
+      "viability_value_bits": 0.5287232299599371,
+      "actual_viability_bits": -1.3723869803195634,
+      "scrambled_viability_bits": -1.9011102102795006,
+      "actual_alive_probability": 1.0,
+      "scrambled_alive_probability": 1.0,
+      "macro_entropy_only_value_bits": 0.5287232299599371,
+      "max_curve_improvement_bits": 0.51694,
+      "curve_improvement_witness": {
+        "information_bits_rounded": 0.97095,
+        "contiguous_best_viability_bits_rounded": -1.88933,
+        "all_best_viability_bits_rounded": -1.37239,
+        "partition": [
+          0,
+          1,
+          1,
+          1,
+          0
+        ]
+      },
+      "minimum_information_equal_viability_partitions": [
+        [
+          0,
+          1,
+          1,
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "mode": "away_from_food",
+      "horizon": 2,
+      "initial_information_bits": 2.321928094887362,
+      "semantic_bits_all_partitions": 1.37095,
+      "semantic_bits_contiguous_partitions": 1.37095,
+      "upper_curve_readout_contiguous_bits": 1.37095,
+      "upper_curve_readout_all_bits": 1.37095,
+      "viability_value_bits": 0.702427464477285,
+      "actual_viability_bits": -1.3735252664542774,
+      "scrambled_viability_bits": -2.0759527309315624,
+      "actual_alive_probability": 1.0,
+      "scrambled_alive_probability": 1.0,
+      "macro_entropy_only_value_bits": 0.702427464477285,
+      "max_curve_improvement_bits": 0.11996000000000007,
+      "curve_improvement_witness": {
+        "information_bits_rounded": 0.97095,
+        "contiguous_best_viability_bits_rounded": -1.89052,
+        "all_best_viability_bits_rounded": -1.77056,
+        "partition": [
+          0,
+          1,
+          1,
+          1,
+          0
+        ]
+      },
+      "minimum_information_equal_viability_partitions": [
+        [
+          0,
+          1,
+          1,
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "mode": "away_from_food",
+      "horizon": 3,
+      "initial_information_bits": 2.321928094887362,
+      "semantic_bits_all_partitions": 1.37095,
+      "semantic_bits_contiguous_partitions": 1.37095,
+      "upper_curve_readout_contiguous_bits": 1.37095,
+      "upper_curve_readout_all_bits": 1.37095,
+      "viability_value_bits": 0.7024042328631448,
+      "actual_viability_bits": -1.3748292617377427,
+      "scrambled_viability_bits": -2.0772334946008875,
+      "actual_alive_probability": 1.0,
+      "scrambled_alive_probability": 1.0,
+      "macro_entropy_only_value_bits": 0.7024042328631448,
+      "max_curve_improvement_bits": 0.11993000000000009,
+      "curve_improvement_witness": {
+        "information_bits_rounded": 0.97095,
+        "contiguous_best_viability_bits_rounded": -1.89181,
+        "all_best_viability_bits_rounded": -1.77188,
+        "partition": [
+          0,
+          1,
+          1,
+          1,
+          0
+        ]
+      },
+      "minimum_information_equal_viability_partitions": [
+        [
+          0,
+          1,
+          1,
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "mode": "away_from_food",
+      "horizon": 5,
+      "initial_information_bits": 2.321928094887362,
+      "semantic_bits_all_partitions": 1.37095,
+      "semantic_bits_contiguous_partitions": 1.37095,
+      "upper_curve_readout_contiguous_bits": 1.37095,
+      "upper_curve_readout_all_bits": 2.32193,
+      "viability_value_bits": -13.693506136950134,
+      "actual_viability_bits": -101.34016095534807,
+      "scrambled_viability_bits": -87.64665481839793,
+      "actual_alive_probability": 0.0003558962489154105,
+      "scrambled_alive_probability": 0.14431939758944157,
+      "macro_entropy_only_value_bits": 0.7028439971024769,
+      "max_curve_improvement_bits": 18.116060000000004,
+      "curve_improvement_witness": {
+        "information_bits_rounded": 0.97095,
+        "contiguous_best_viability_bits_rounded": -101.85764,
+        "all_best_viability_bits_rounded": -83.74158,
+        "partition": [
+          0,
+          1,
+          1,
+          1,
+          0
+        ]
+      },
+      "minimum_information_equal_viability_partitions": [
+        [
+          0,
+          1,
+          1,
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "mode": "away_from_food",
+      "horizon": 8,
+      "initial_information_bits": 2.321928094887362,
+      "semantic_bits_all_partitions": 1.37095,
+      "semantic_bits_contiguous_partitions": 1.37095,
+      "upper_curve_readout_contiguous_bits": 1.37095,
+      "upper_curve_readout_all_bits": 1.37095,
+      "viability_value_bits": 0.7024583419536441,
+      "actual_viability_bits": -101.37094987427317,
+      "scrambled_viability_bits": -102.07340821622681,
+      "actual_alive_probability": 9.907705766920571e-09,
+      "scrambled_alive_probability": 2.517225194953454e-08,
+      "macro_entropy_only_value_bits": 0.7024598684082639,
+      "max_curve_improvement_bits": 0.11987999999999488,
+      "curve_improvement_witness": {
+        "information_bits_rounded": 0.97095,
+        "contiguous_best_viability_bits_rounded": -101.88794,
+        "all_best_viability_bits_rounded": -101.76806,
+        "partition": [
+          0,
+          1,
+          1,
+          1,
+          0
+        ]
+      },
+      "minimum_information_equal_viability_partitions": [
+        [
+          0,
+          1,
+          1,
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "mode": "away_from_food",
+      "horizon": 10,
+      "initial_information_bits": 2.321928094887362,
+      "semantic_bits_all_partitions": 1.37095,
+      "semantic_bits_contiguous_partitions": 1.37095,
+      "upper_curve_readout_contiguous_bits": 1.37095,
+      "upper_curve_readout_all_bits": 1.37095,
+      "viability_value_bits": 0.7024594811229861,
+      "actual_viability_bits": -101.37095059438417,
+      "scrambled_viability_bits": -102.07341007550716,
+      "actual_alive_probability": 1.1819434320159417e-12,
+      "scrambled_alive_probability": 3.5259573039070347e-12,
+      "macro_entropy_only_value_bits": 0.7024594813573999,
+      "max_curve_improvement_bits": 0.11987999999999488,
+      "curve_improvement_witness": {
+        "information_bits_rounded": 0.97095,
+        "contiguous_best_viability_bits_rounded": -101.88794,
+        "all_best_viability_bits_rounded": -101.76806,
+        "partition": [
+          0,
+          1,
+          1,
+          1,
+          0
+        ]
+      },
+      "minimum_information_equal_viability_partitions": [
+        [
+          0,
+          1,
+          1,
+          1,
+          2
+        ]
+      ]
+    }
+  ],
+  "selected_horizons_all_partition_points": [
+    {
+      "mode": "towards_food",
+      "horizon": 1,
+      "points": [
+        {
+          "partition": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "information_bits": 8.881784197001252e-16,
+          "viability_bits": -1.901724648218873,
+          "alive_probability": 1.0,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "information_bits": 0.7219280948873616,
+          "viability_bits": -1.772970946490974,
+          "alive_probability": 1.0,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          "information_bits": 0.7219280948873621,
+          "viability_bits": -1.7729709464909735,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            0,
+            0,
+            1,
+            1
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -1.889947514451297,
+          "alive_probability": 1.0,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            0,
+            0,
+            1,
+            2
+          ],
+          "information_bits": 1.3709505944546683,
+          "viability_bits": -1.6899747506995833,
+          "alive_probability": 1.0,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          "information_bits": 0.7219280948873621,
+          "viability_bits": -1.7729709464909735,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            0,
+            1
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -1.889947514451297,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            0,
+            2
+          ],
+          "information_bits": 1.3709505944546683,
+          "viability_bits": -1.6899747506995833,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            1,
+            0
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -1.606978554908193,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            1,
+            1
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -1.889947514451297,
+          "alive_probability": 1.0,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            1,
+            2
+          ],
+          "information_bits": 1.521928094887362,
+          "viability_bits": -1.5729981827392598,
+          "alive_probability": 1.0,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            2,
+            0
+          ],
+          "information_bits": 1.3709505944546683,
+          "viability_bits": -1.606978554908193,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            2,
+            1
+          ],
+          "information_bits": 1.521928094887362,
+          "viability_bits": -1.7729709464909735,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            2,
+            2
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -1.7729709464909735,
+          "alive_probability": 1.0,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            2,
+            3
+          ],
+          "information_bits": 1.9219280948873618,
+          "viability_bits": -1.5729981827392598,
+          "alive_probability": 1.0,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          "information_bits": 0.7219280948873621,
+          "viability_bits": -1.7729709464909735,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            0,
+            1
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -1.889947514451297,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            0,
+            2
+          ],
+          "information_bits": 1.3709505944546687,
+          "viability_bits": -1.6899747506995833,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            1,
+            0
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -1.606978554908193,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            1,
+            1
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -1.889947514451297,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            1,
+            2
+          ],
+          "information_bits": 1.521928094887362,
+          "viability_bits": -1.5729981827392598,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            2,
+            0
+          ],
+          "information_bits": 1.3709505944546687,
+          "viability_bits": -1.606978554908193,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            2,
+            1
+          ],
+          "information_bits": 1.521928094887362,
+          "viability_bits": -1.7729709464909735,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            2,
+            2
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -1.7729709464909735,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            2,
+            3
+          ],
+          "information_bits": 1.9219280948873618,
+          "viability_bits": -1.5729981827392598,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -1.606978554908193,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            0,
+            1
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -1.889947514451297,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            0,
+            2
+          ],
+          "information_bits": 1.521928094887362,
+          "viability_bits": -1.5729981827392598,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            1,
+            0
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -1.3730254189875462,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            1,
+            1
+          ],
+          "information_bits": 0.7219280948873621,
+          "viability_bits": -1.7729709464909738,
+          "alive_probability": 1.0,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            1,
+            2
+          ],
+          "information_bits": 1.3709505944546683,
+          "viability_bits": -1.3730254189875462,
+          "alive_probability": 1.0,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            2,
+            0
+          ],
+          "information_bits": 1.521928094887362,
+          "viability_bits": -1.3730254189875462,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            2,
+            1
+          ],
+          "information_bits": 1.3709505944546683,
+          "viability_bits": -1.6899747506995833,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            2,
+            2
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -1.5729981827392598,
+          "alive_probability": 1.0,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            2,
+            3
+          ],
+          "information_bits": 1.9219280948873618,
+          "viability_bits": -1.3730254189875462,
+          "alive_probability": 1.0,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            0,
+            0
+          ],
+          "information_bits": 1.3709505944546687,
+          "viability_bits": -1.606978554908193,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            0,
+            1
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -1.7729709464909735,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            0,
+            2
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -1.7729709464909735,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            0,
+            3
+          ],
+          "information_bits": 1.9219280948873618,
+          "viability_bits": -1.5729981827392598,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            1,
+            0
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -1.3730254189875462,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            1,
+            1
+          ],
+          "information_bits": 1.3709505944546687,
+          "viability_bits": -1.6899747506995833,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            1,
+            2
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -1.5729981827392598,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            1,
+            3
+          ],
+          "information_bits": 1.9219280948873618,
+          "viability_bits": -1.3730254189875462,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            2,
+            0
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -1.3730254189875462,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            2,
+            1
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -1.5729981827392598,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            2,
+            2
+          ],
+          "information_bits": 1.3709505944546687,
+          "viability_bits": -1.6899747506995833,
+          "alive_probability": 1.0,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            2,
+            3
+          ],
+          "information_bits": 1.9219280948873618,
+          "viability_bits": -1.3730254189875462,
+          "alive_probability": 1.0,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            3,
+            0
+          ],
+          "information_bits": 1.9219280948873623,
+          "viability_bits": -1.3730254189875462,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            3,
+            1
+          ],
+          "information_bits": 1.9219280948873623,
+          "viability_bits": -1.5729981827392598,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            3,
+            2
+          ],
+          "information_bits": 1.9219280948873623,
+          "viability_bits": -1.5729981827392598,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            3,
+            3
+          ],
+          "information_bits": 1.9219280948873623,
+          "viability_bits": -1.5729981827392598,
+          "alive_probability": 1.0,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "information_bits": 2.321928094887362,
+          "viability_bits": -1.3730254189875462,
+          "alive_probability": 1.0,
+          "in_source_search": true
+        }
+      ]
+    },
+    {
+      "mode": "towards_food",
+      "horizon": 5,
+      "points": [
+        {
+          "partition": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "information_bits": 8.881784197001252e-16,
+          "viability_bits": -87.63257409010085,
+          "alive_probability": 0.14448231783743193,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "information_bits": 0.7219280948873616,
+          "viability_bits": -74.78481902630048,
+          "alive_probability": 0.2704487022977552,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          "information_bits": 0.7219280948873621,
+          "viability_bits": -88.43807979574827,
+          "alive_probability": 0.13547998114113502,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            0,
+            0,
+            1,
+            1
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -71.70868909637625,
+          "alive_probability": 0.3004374061244731,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            0,
+            0,
+            1,
+            2
+          ],
+          "information_bits": 1.3709505944546683,
+          "viability_bits": -71.6888489998144,
+          "alive_probability": 0.30043559136346965,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          "information_bits": 0.7219280948873621,
+          "viability_bits": -83.94832256804412,
+          "alive_probability": 0.18047321712332853,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            0,
+            1
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -80.83839031504904,
+          "alive_probability": 0.21046753241791438,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            0,
+            2
+          ],
+          "information_bits": 1.3709505944546683,
+          "viability_bits": -71.68826205016416,
+          "alive_probability": 0.3004422306666008,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            1,
+            0
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -83.84285006510177,
+          "alive_probability": 0.18046706795689837,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            1,
+            1
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -71.70868909637625,
+          "alive_probability": 0.3004374061244731,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            1,
+            2
+          ],
+          "information_bits": 1.521928094887362,
+          "viability_bits": -65.54505102193419,
+          "alive_probability": 0.3604193284495951,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            2,
+            0
+          ],
+          "information_bits": 1.3709505944546683,
+          "viability_bits": -83.84285006510177,
+          "alive_probability": 0.18046706795689837,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            2,
+            1
+          ],
+          "information_bits": 1.521928094887362,
+          "viability_bits": -74.6951792868191,
+          "alive_probability": 0.2704446302009085,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            2,
+            2
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -65.56489111849604,
+          "alive_probability": 0.3604211432105986,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            2,
+            3
+          ],
+          "information_bits": 1.9219280948873618,
+          "viability_bits": -65.54505102193419,
+          "alive_probability": 0.3604193284495951,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          "information_bits": 0.7219280948873621,
+          "viability_bits": -88.43807979574825,
+          "alive_probability": 0.13547998114113513,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            0,
+            1
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -86.92436866945573,
+          "alive_probability": 0.1504931493661511,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            0,
+            2
+          ],
+          "information_bits": 1.3709505944546687,
+          "viability_bits": -77.7751208290462,
+          "alive_probability": 0.24045788866014073,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            1,
+            0
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -89.82919303537393,
+          "alive_probability": 0.12047608664730702,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            1,
+            1
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -80.83839031504905,
+          "alive_probability": 0.21046753241791427,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            1,
+            2
+          ],
+          "information_bits": 1.521928094887362,
+          "viability_bits": -74.67533919025725,
+          "alive_probability": 0.270442815439905,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            2,
+            0
+          ],
+          "information_bits": 1.3709505944546687,
+          "viability_bits": -89.82919303537393,
+          "alive_probability": 0.12047608664730702,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            2,
+            1
+          ],
+          "information_bits": 1.521928094887362,
+          "viability_bits": -83.82458703066678,
+          "alive_probability": 0.18047807614591527,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            2,
+            2
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -74.6951792868191,
+          "alive_probability": 0.2704446302009085,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            2,
+            3
+          ],
+          "information_bits": 1.9219280948873618,
+          "viability_bits": -74.67533919025725,
+          "alive_probability": 0.270442815439905,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -83.84285006510177,
+          "alive_probability": 0.18046706795689837,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            0,
+            1
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -86.92436866945573,
+          "alive_probability": 0.150493149366151,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            0,
+            2
+          ],
+          "information_bits": 1.521928094887362,
+          "viability_bits": -74.67445876578189,
+          "alive_probability": 0.2704527743946018,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            1,
+            0
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -83.72995005835169,
+          "alive_probability": 0.18045476962403784,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            1,
+            1
+          ],
+          "information_bits": 0.7219280948873621,
+          "viability_bits": -74.78481902630047,
+          "alive_probability": 0.2704487022977554,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            1,
+            2
+          ],
+          "information_bits": 1.3709505944546683,
+          "viability_bits": -65.52521092537236,
+          "alive_probability": 0.36041751368859154,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            2,
+            0
+          ],
+          "information_bits": 1.521928094887362,
+          "viability_bits": -83.72995005835169,
+          "alive_probability": 0.18045476962403784,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            2,
+            1
+          ],
+          "information_bits": 1.3709505944546683,
+          "viability_bits": -77.7751208290462,
+          "alive_probability": 0.24045788866014084,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            2,
+            2
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -65.5450510219342,
+          "alive_probability": 0.360419328449595,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            2,
+            3
+          ],
+          "information_bits": 1.9219280948873618,
+          "viability_bits": -65.52521092537236,
+          "alive_probability": 0.36041751368859154,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            0,
+            0
+          ],
+          "information_bits": 1.3709505944546687,
+          "viability_bits": -83.84285006510177,
+          "alive_probability": 0.18046706795689837,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            0,
+            1
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -83.82370660619141,
+          "alive_probability": 0.18048803510061218,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            0,
+            2
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -83.82458703066678,
+          "alive_probability": 0.18047807614591527,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            0,
+            3
+          ],
+          "information_bits": 1.9219280948873618,
+          "viability_bits": -74.67445876578189,
+          "alive_probability": 0.2704527743946018,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            1,
+            0
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -83.72995005835169,
+          "alive_probability": 0.18045476962403784,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            1,
+            1
+          ],
+          "information_bits": 1.3709505944546687,
+          "viability_bits": -71.68826205016416,
+          "alive_probability": 0.3004422306666008,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            1,
+            2
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -74.67533919025725,
+          "alive_probability": 0.270442815439905,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            1,
+            3
+          ],
+          "information_bits": 1.9219280948873618,
+          "viability_bits": -65.52521092537236,
+          "alive_probability": 0.36041751368859154,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            2,
+            0
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -83.72995005835169,
+          "alive_probability": 0.18045476962403784,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            2,
+            1
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -74.67445876578188,
+          "alive_probability": 0.2704527743946019,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            2,
+            2
+          ],
+          "information_bits": 1.3709505944546687,
+          "viability_bits": -71.68884899981438,
+          "alive_probability": 0.30043559136346965,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            2,
+            3
+          ],
+          "information_bits": 1.9219280948873618,
+          "viability_bits": -65.52521092537236,
+          "alive_probability": 0.36041751368859154,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            3,
+            0
+          ],
+          "information_bits": 1.9219280948873623,
+          "viability_bits": -83.72995005835169,
+          "alive_probability": 0.18045476962403784,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            3,
+            1
+          ],
+          "information_bits": 1.9219280948873623,
+          "viability_bits": -74.67445876578188,
+          "alive_probability": 0.2704527743946019,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            3,
+            2
+          ],
+          "information_bits": 1.9219280948873623,
+          "viability_bits": -74.67533919025725,
+          "alive_probability": 0.270442815439905,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            3,
+            3
+          ],
+          "information_bits": 1.9219280948873623,
+          "viability_bits": -65.5450510219342,
+          "alive_probability": 0.360419328449595,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "information_bits": 2.321928094887362,
+          "viability_bits": -65.52521092537236,
+          "alive_probability": 0.36041751368859154,
+          "in_source_search": true
+        }
+      ]
+    },
+    {
+      "mode": "away_from_food",
+      "horizon": 1,
+      "points": [
+        {
+          "partition": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "information_bits": 8.881784197001252e-16,
+          "viability_bits": -1.9011102102795006,
+          "alive_probability": 1.0,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "information_bits": 0.7219280948873616,
+          "viability_bits": -1.7723506636732997,
+          "alive_probability": 1.0,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          "information_bits": 0.7219280948873621,
+          "viability_bits": -1.7723506636732997,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            0,
+            0,
+            1,
+            1
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -1.8893325418794231,
+          "alive_probability": 1.0,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            0,
+            0,
+            1,
+            2
+          ],
+          "information_bits": 1.3709505944546683,
+          "viability_bits": -1.6893507002025547,
+          "alive_probability": 1.0,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          "information_bits": 0.7219280948873621,
+          "viability_bits": -1.7723506636732997,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            0,
+            1
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -1.8893325418794231,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            0,
+            2
+          ],
+          "information_bits": 1.3709505944546683,
+          "viability_bits": -1.6893507002025547,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            1,
+            0
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -1.6063507367318097,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            1,
+            1
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -1.8893325418794231,
+          "alive_probability": 1.0,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            1,
+            2
+          ],
+          "information_bits": 1.521928094887362,
+          "viability_bits": -1.5723688219964316,
+          "alive_probability": 1.0,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            2,
+            0
+          ],
+          "information_bits": 1.3709505944546683,
+          "viability_bits": -1.6063507367318097,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            2,
+            1
+          ],
+          "information_bits": 1.521928094887362,
+          "viability_bits": -1.7723506636732997,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            2,
+            2
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -1.7723506636732997,
+          "alive_probability": 1.0,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            2,
+            3
+          ],
+          "information_bits": 1.9219280948873618,
+          "viability_bits": -1.5723688219964316,
+          "alive_probability": 1.0,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          "information_bits": 0.7219280948873621,
+          "viability_bits": -1.7723506636732997,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            0,
+            1
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -1.8893325418794231,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            0,
+            2
+          ],
+          "information_bits": 1.3709505944546687,
+          "viability_bits": -1.689350700202555,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            1,
+            0
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -1.6063507367318097,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            1,
+            1
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -1.8893325418794231,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            1,
+            2
+          ],
+          "information_bits": 1.521928094887362,
+          "viability_bits": -1.5723688219964316,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            2,
+            0
+          ],
+          "information_bits": 1.3709505944546687,
+          "viability_bits": -1.6063507367318097,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            2,
+            1
+          ],
+          "information_bits": 1.521928094887362,
+          "viability_bits": -1.7723506636732997,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            2,
+            2
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -1.7723506636732997,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            2,
+            3
+          ],
+          "information_bits": 1.9219280948873618,
+          "viability_bits": -1.5723688219964316,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -1.6063507367318097,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            0,
+            1
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -1.8893325418794231,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            0,
+            2
+          ],
+          "information_bits": 1.521928094887362,
+          "viability_bits": -1.5723688219964316,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            1,
+            0
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -1.3723869803195634,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            1,
+            1
+          ],
+          "information_bits": 0.7219280948873621,
+          "viability_bits": -1.7723506636732997,
+          "alive_probability": 1.0,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            1,
+            2
+          ],
+          "information_bits": 1.3709505944546683,
+          "viability_bits": -1.3723869803195634,
+          "alive_probability": 1.0,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            2,
+            0
+          ],
+          "information_bits": 1.521928094887362,
+          "viability_bits": -1.3723869803195634,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            2,
+            1
+          ],
+          "information_bits": 1.3709505944546683,
+          "viability_bits": -1.6893507002025547,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            2,
+            2
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -1.5723688219964316,
+          "alive_probability": 1.0,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            2,
+            3
+          ],
+          "information_bits": 1.9219280948873618,
+          "viability_bits": -1.3723869803195634,
+          "alive_probability": 1.0,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            0,
+            0
+          ],
+          "information_bits": 1.3709505944546687,
+          "viability_bits": -1.6063507367318097,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            0,
+            1
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -1.7723506636732997,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            0,
+            2
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -1.7723506636732997,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            0,
+            3
+          ],
+          "information_bits": 1.9219280948873618,
+          "viability_bits": -1.5723688219964316,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            1,
+            0
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -1.3723869803195634,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            1,
+            1
+          ],
+          "information_bits": 1.3709505944546687,
+          "viability_bits": -1.6893507002025547,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            1,
+            2
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -1.5723688219964316,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            1,
+            3
+          ],
+          "information_bits": 1.9219280948873618,
+          "viability_bits": -1.3723869803195634,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            2,
+            0
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -1.3723869803195634,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            2,
+            1
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -1.5723688219964316,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            2,
+            2
+          ],
+          "information_bits": 1.3709505944546687,
+          "viability_bits": -1.689350700202555,
+          "alive_probability": 1.0,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            2,
+            3
+          ],
+          "information_bits": 1.9219280948873618,
+          "viability_bits": -1.3723869803195634,
+          "alive_probability": 1.0,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            3,
+            0
+          ],
+          "information_bits": 1.9219280948873623,
+          "viability_bits": -1.3723869803195634,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            3,
+            1
+          ],
+          "information_bits": 1.9219280948873623,
+          "viability_bits": -1.5723688219964316,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            3,
+            2
+          ],
+          "information_bits": 1.9219280948873623,
+          "viability_bits": -1.5723688219964316,
+          "alive_probability": 1.0,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            3,
+            3
+          ],
+          "information_bits": 1.9219280948873623,
+          "viability_bits": -1.5723688219964316,
+          "alive_probability": 1.0,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "information_bits": 2.321928094887362,
+          "viability_bits": -1.3723869803195634,
+          "alive_probability": 1.0,
+          "in_source_search": true
+        }
+      ]
+    },
+    {
+      "mode": "away_from_food",
+      "horizon": 5,
+      "points": [
+        {
+          "partition": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "information_bits": 8.881784197001252e-16,
+          "viability_bits": -87.64665481839793,
+          "alive_probability": 0.14431939758944157,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "information_bits": 0.7219280948873616,
+          "viability_bits": -97.26505513643578,
+          "alive_probability": 0.045342396048586364,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          "information_bits": 0.7219280948873621,
+          "viability_bits": -88.4519588497993,
+          "alive_probability": 0.13531958438641511,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            0,
+            0,
+            1,
+            1
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -101.85764176843799,
+          "alive_probability": 0.00035031126426610104,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            0,
+            0,
+            1,
+            2
+          ],
+          "information_bits": 1.3709505944546683,
+          "viability_bits": -101.65764176843798,
+          "alive_probability": 0.00035031126426610104,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          "information_bits": 0.7219280948873621,
+          "viability_bits": -83.96158176729818,
+          "alive_probability": 0.18031865040154715,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            0,
+            1
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -95.89058985341545,
+          "alive_probability": 0.06033510348948523,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            0,
+            2
+          ],
+          "information_bits": 1.3709505944546683,
+          "viability_bits": -95.6898573839969,
+          "alive_probability": 0.06034348096645936,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            1,
+            0
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -83.85556652234678,
+          "alive_probability": 0.18031865040154715,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            1,
+            1
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -101.85764176843799,
+          "alive_probability": 0.00035031126426610104,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            1,
+            2
+          ],
+          "information_bits": 1.521928094887362,
+          "viability_bits": -101.54016095534809,
+          "alive_probability": 0.0003558962489152995,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            2,
+            0
+          ],
+          "information_bits": 1.3709505944546683,
+          "viability_bits": -83.85556652234678,
+          "alive_probability": 0.18031865040154715,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            2,
+            1
+          ],
+          "information_bits": 1.521928094887362,
+          "viability_bits": -101.74089342476663,
+          "alive_probability": 0.0003475187719412798,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            2,
+            2
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -101.74016095534809,
+          "alive_probability": 0.0003558962489152995,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            0,
+            1,
+            2,
+            3
+          ],
+          "information_bits": 1.9219280948873618,
+          "viability_bits": -101.54016095534809,
+          "alive_probability": 0.0003558962489152995,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          "information_bits": 0.7219280948873621,
+          "viability_bits": -88.45195884979928,
+          "alive_probability": 0.13531958438641523,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            0,
+            1
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -86.93940158969947,
+          "alive_probability": 0.15031927305812598,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            0,
+            2
+          ],
+          "information_bits": 1.3709505944546687,
+          "viability_bits": -95.69034569694259,
+          "alive_probability": 0.06033789598181005,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            1,
+            0
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -89.84273596568157,
+          "alive_probability": 0.1203198957147047,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            1,
+            1
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -95.89058985341543,
+          "alive_probability": 0.06033510348948534,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            1,
+            2
+          ],
+          "information_bits": 1.521928094887362,
+          "viability_bits": -101.54089342476661,
+          "alive_probability": 0.0003475187719413908,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            2,
+            0
+          ],
+          "information_bits": 1.3709505944546687,
+          "viability_bits": -89.84273596568157,
+          "alive_probability": 0.1203198957147047,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            2,
+            1
+          ],
+          "information_bits": 1.521928094887362,
+          "viability_bits": -92.78994931752351,
+          "alive_probability": 0.0903288958482572,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            2,
+            2
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -101.74089342476661,
+          "alive_probability": 0.0003475187719413908,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            0,
+            2,
+            3
+          ],
+          "information_bits": 1.9219280948873618,
+          "viability_bits": -101.54089342476661,
+          "alive_probability": 0.0003475187719413908,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -83.85556652234676,
+          "alive_probability": 0.18031865040154726,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            0,
+            1
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -86.93940158969949,
+          "alive_probability": 0.15031927305812587,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            0,
+            2
+          ],
+          "information_bits": 1.521928094887362,
+          "viability_bits": -92.58921684810498,
+          "alive_probability": 0.09033727332523112,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            1,
+            0
+          ],
+          "information_bits": 0.9709505944546688,
+          "viability_bits": -83.74158103157859,
+          "alive_probability": 0.18031865040154715,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            1,
+            1
+          ],
+          "information_bits": 0.7219280948873621,
+          "viability_bits": -97.26505513643578,
+          "alive_probability": 0.045342396048586364,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            1,
+            2
+          ],
+          "information_bits": 1.3709505944546683,
+          "viability_bits": -101.34016095534805,
+          "alive_probability": 0.0003558962489155215,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            2,
+            0
+          ],
+          "information_bits": 1.521928094887362,
+          "viability_bits": -83.7415810315786,
+          "alive_probability": 0.18031865040154704,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            2,
+            1
+          ],
+          "information_bits": 1.3709505944546683,
+          "viability_bits": -95.69034569694257,
+          "alive_probability": 0.06033789598181016,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            2,
+            2
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -101.54016095534807,
+          "alive_probability": 0.0003558962489154105,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            1,
+            1,
+            2,
+            3
+          ],
+          "information_bits": 1.9219280948873618,
+          "viability_bits": -101.34016095534807,
+          "alive_probability": 0.0003558962489154105,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            0,
+            0
+          ],
+          "information_bits": 1.3709505944546687,
+          "viability_bits": -83.85556652234676,
+          "alive_probability": 0.18031865040154726,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            0,
+            1
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -83.83827274086188,
+          "alive_probability": 0.18031865040154704,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            0,
+            2
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -92.78994931752351,
+          "alive_probability": 0.0903288958482572,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            0,
+            3
+          ],
+          "information_bits": 1.9219280948873618,
+          "viability_bits": -92.58921684810498,
+          "alive_probability": 0.09033727332523112,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            1,
+            0
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -83.7415810315786,
+          "alive_probability": 0.18031865040154704,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            1,
+            1
+          ],
+          "information_bits": 1.3709505944546687,
+          "viability_bits": -95.6898573839969,
+          "alive_probability": 0.06034348096645947,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            1,
+            2
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -101.54089342476661,
+          "alive_probability": 0.0003475187719413908,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            1,
+            3
+          ],
+          "information_bits": 1.9219280948873618,
+          "viability_bits": -101.34016095534807,
+          "alive_probability": 0.0003558962489154105,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            2,
+            0
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -83.7415810315786,
+          "alive_probability": 0.18031865040154704,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            2,
+            1
+          ],
+          "information_bits": 1.5219280948873624,
+          "viability_bits": -92.58921684810497,
+          "alive_probability": 0.09033727332523134,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            2,
+            2
+          ],
+          "information_bits": 1.3709505944546687,
+          "viability_bits": -101.65764176843798,
+          "alive_probability": 0.00035031126426621206,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            2,
+            3
+          ],
+          "information_bits": 1.9219280948873618,
+          "viability_bits": -101.34016095534807,
+          "alive_probability": 0.0003558962489154105,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            3,
+            0
+          ],
+          "information_bits": 1.9219280948873623,
+          "viability_bits": -83.7415810315786,
+          "alive_probability": 0.18031865040154704,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            3,
+            1
+          ],
+          "information_bits": 1.9219280948873623,
+          "viability_bits": -92.58921684810497,
+          "alive_probability": 0.09033727332523134,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            3,
+            2
+          ],
+          "information_bits": 1.9219280948873623,
+          "viability_bits": -101.54089342476661,
+          "alive_probability": 0.0003475187719413908,
+          "in_source_search": false
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            3,
+            3
+          ],
+          "information_bits": 1.9219280948873623,
+          "viability_bits": -101.54016095534807,
+          "alive_probability": 0.0003558962489154105,
+          "in_source_search": true
+        },
+        {
+          "partition": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "information_bits": 2.321928094887362,
+          "viability_bits": -101.34016095534807,
+          "alive_probability": 0.0003558962489154105,
+          "in_source_search": true
+        }
+      ]
+    }
+  ],
+  "scope": "Finite model and deterministic coarse-grainings only; no subjective experience or novelty established."
+}

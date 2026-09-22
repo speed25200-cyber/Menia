@@ -1,0 +1,58 @@
+name: iPhone build
+on:
+  push:
+    paths: ['ios/**', '.github/workflows/ios.yml', 'codemagic.yaml']
+  pull_request:
+    paths: ['ios/**', '.github/workflows/ios.yml', 'codemagic.yaml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ios-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 45
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_26.2.app/Contents/Developer
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test persistent memory and capability measurement
+        env:
+          MENIA_LEARNING_FIXTURE: ${{ runner.temp }}/learning-fixture.json
+          MENIA_ATELIER_FIXTURE: ${{ runner.temp }}/atelier-fixture.json
+        run: swift test --package-path ios/MeniaCore
+      - name: Independently reconstruct the synthetic Swift learning export
+        run: python3 -m research.iphone_capability_learning_report "$RUNNER_TEMP/learning-fixture.json" --output "$RUNNER_TEMP/learning-fixture-analysis.json"
+      - name: Independently reconstruct the synthetic Swift Atelier export
+        run: python3 -m research.iphone_atelier_report "$RUNNER_TEMP/atelier-fixture.json" --output "$RUNNER_TEMP/atelier-fixture-analysis.json"
+      - name: Prepare Xcode project
+        run: |
+          brew install xcodegen
+          bash ios/prepare.sh
+      - uses: actions/cache@v4
+        with:
+          path: ios/SourcePackages
+          key: ios-spm-26.2-${{ hashFiles('ios/**/Package.swift') }}
+      - name: Build unsigned iPhone application
+        run: |
+          set -o pipefail
+          xcodebuild -project ios/Menia.xcodeproj -scheme Menia -configuration Release \
+            -destination 'generic/platform=iOS' -derivedDataPath ios/DerivedData \
+            -clonedSourcePackagesDirPath ios/SourcePackages -skipMacroValidation \
+            CODE_SIGNING_ALLOWED=NO build 2>&1 | tee ios/build.log
+      - name: Package unsigned build
+        run: ditto -c -k --keepParent ios/DerivedData/Build/Products/Release-iphoneos/Menia.app ios/Menia-unsigned.app.zip
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Menia-iPhone-build
+          path: |
+            ios/Menia-unsigned.app.zip
+            ios/build.log
+            ${{ runner.temp }}/learning-fixture.json
+            ${{ runner.temp }}/learning-fixture-analysis.json
+            ${{ runner.temp }}/atelier-fixture.json
+            ${{ runner.temp }}/atelier-fixture-analysis.json
+            ios/Menia.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved

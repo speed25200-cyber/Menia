@@ -1,0 +1,545 @@
+{
+  "scope": "Independent mathematical controls; no replication, consciousness attribution or novelty claim",
+  "information_design": {
+    "points": [
+      [
+        -0.4,
+        0.2,
+        0.2
+      ],
+      [
+        0.3,
+        -0.1,
+        0.5
+      ],
+      [
+        0.0,
+        0.4,
+        1.0
+      ],
+      [
+        0.5,
+        0.1,
+        1.5
+      ],
+      [
+        -0.2,
+        -0.3,
+        2.0
+      ]
+    ],
+    "priors": [
+      [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ],
+      [
+        0.1,
+        0.15,
+        0.2,
+        0.25,
+        0.3
+      ],
+      [
+        0.4,
+        0.1,
+        0.1,
+        0.1,
+        0.3
+      ]
+    ],
+    "sigmas": [
+      0.2,
+      0.6,
+      1.5
+    ],
+    "gammas": [
+      0.0,
+      0.1,
+      0.5,
+      1.0
+    ]
+  },
+  "information_results": [
+    {
+      "prior_index": 0,
+      "sigma": 0.2,
+      "gamma": 0.0,
+      "reference_information_nats": 1.6041804299157387,
+      "transported_information_nats": 1.6041804299157387,
+      "rebuilt_sensor_information_nats": 1.6041804299157387,
+      "rebuilt_minus_reference_nats": 0.0,
+      "maximum_sensor_probability_change": 0.0,
+      "inverse_coordinate_error": 0.0
+    },
+    {
+      "prior_index": 0,
+      "sigma": 0.2,
+      "gamma": 0.1,
+      "reference_information_nats": 1.6041804299157387,
+      "transported_information_nats": 1.6041804299157387,
+      "rebuilt_sensor_information_nats": 1.585409181627134,
+      "rebuilt_minus_reference_nats": -0.01877124828860466,
+      "maximum_sensor_probability_change": 0.006464994538584734,
+      "inverse_coordinate_error": 4.484050470211362e-16
+    },
+    {
+      "prior_index": 0,
+      "sigma": 0.2,
+      "gamma": 0.5,
+      "reference_information_nats": 1.6041804299157387,
+      "transported_information_nats": 1.6041804299157387,
+      "rebuilt_sensor_information_nats": 1.1711501629983525,
+      "rebuilt_minus_reference_nats": -0.4330302669173862,
+      "maximum_sensor_probability_change": 0.205322742814517,
+      "inverse_coordinate_error": 1.2412670766236366e-16
+    },
+    {
+      "prior_index": 0,
+      "sigma": 0.2,
+      "gamma": 1.0,
+      "reference_information_nats": 1.6041804299157387,
+      "transported_information_nats": 1.6041804299157387,
+      "rebuilt_sensor_information_nats": 0.6095829988704565,
+      "rebuilt_minus_reference_nats": -0.9945974310452822,
+      "maximum_sensor_probability_change": 0.5120098746057797,
+      "inverse_coordinate_error": 2.3055512673781017e-16
+    },
+    {
+      "prior_index": 0,
+      "sigma": 0.6,
+      "gamma": 0.0,
+      "reference_information_nats": 0.42092784473935246,
+      "transported_information_nats": 0.42092784473935246,
+      "rebuilt_sensor_information_nats": 0.42092784473935246,
+      "rebuilt_minus_reference_nats": 0.0,
+      "maximum_sensor_probability_change": 0.0,
+      "inverse_coordinate_error": 0.0
+    },
+    {
+      "prior_index": 0,
+      "sigma": 0.6,
+      "gamma": 0.1,
+      "reference_information_nats": 0.42092784473935246,
+      "transported_information_nats": 0.42092784473935246,
+      "rebuilt_sensor_information_nats": 0.2654191467285009,
+      "rebuilt_minus_reference_nats": -0.15550869801085154,
+      "maximum_sensor_probability_change": 0.1450048480521664,
+      "inverse_coordinate_error": 4.484050470211362e-16
+    },
+    {
+      "prior_index": 0,
+      "sigma": 0.6,
+      "gamma": 0.5,
+      "reference_information_nats": 0.42092784473935246,
+      "transported_information_nats": 0.42092784473935246,
+      "rebuilt_sensor_information_nats": 0.05277679133700951,
+      "rebuilt_minus_reference_nats": -0.36815105340234294,
+      "maximum_sensor_probability_change": 0.3834854376507106,
+      "inverse_coordinate_error": 1.2412670766236366e-16
+    },
+    {
+      "prior_index": 0,
+      "sigma": 0.6,
+      "gamma": 1.0,
+      "reference_information_nats": 0.42092784473935246,
+      "transported_information_nats": 0.42092784473935246,
+      "rebuilt_sensor_information_nats": 0.015099429387562192,
+      "rebuilt_minus_reference_nats": -0.40582841535179026,
+      "maximum_sensor_probability_change": 0.44774556437991686,
+      "inverse_coordinate_error": 2.3055512673781017e-16
+    },
+    {
+      "prior_index": 0,
+      "sigma": 1.5,
+      "gamma": 0.0,
+      "reference_information_nats": 0.020034478244493042,
+      "transported_information_nats": 0.020034478244493042,
+      "rebuilt_sensor_information_nats": 0.020034478244493042,
+      "rebuilt_minus_reference_nats": 0.0,
+      "maximum_sensor_probability_change": 0.0,
+      "inverse_coordinate_error": 0.0
+    },
+    {
+      "prior_index": 0,
+      "sigma": 1.5,
+      "gamma": 0.1,
+      "reference_information_nats": 0.020034478244493042,
+      "transported_information_nats": 0.020034478244493042,
+      "rebuilt_sensor_information_nats": 0.009688642663731388,
+      "rebuilt_minus_reference_nats": -0.010345835580761653,
+      "maximum_sensor_probability_change": 0.028547961083363993,
+      "inverse_coordinate_error": 4.484050470211362e-16
+    },
+    {
+      "prior_index": 0,
+      "sigma": 1.5,
+      "gamma": 0.5,
+      "reference_information_nats": 0.020034478244493042,
+      "transported_information_nats": 0.020034478244493042,
+      "rebuilt_sensor_information_nats": 0.0013913872909839073,
+      "rebuilt_minus_reference_nats": -0.018643090953509134,
+      "maximum_sensor_probability_change": 0.06467594478820587,
+      "inverse_coordinate_error": 1.2412670766236366e-16
+    },
+    {
+      "prior_index": 0,
+      "sigma": 1.5,
+      "gamma": 1.0,
+      "reference_information_nats": 0.020034478244493042,
+      "transported_information_nats": 0.020034478244493042,
+      "rebuilt_sensor_information_nats": 0.0003814819765501014,
+      "rebuilt_minus_reference_nats": -0.01965299626794294,
+      "maximum_sensor_probability_change": 0.07416346396433227,
+      "inverse_coordinate_error": 2.3055512673781017e-16
+    },
+    {
+      "prior_index": 1,
+      "sigma": 0.2,
+      "gamma": 0.0,
+      "reference_information_nats": 1.5395765739617115,
+      "transported_information_nats": 1.5395765739617115,
+      "rebuilt_sensor_information_nats": 1.5395765739617115,
+      "rebuilt_minus_reference_nats": 0.0,
+      "maximum_sensor_probability_change": 0.0,
+      "inverse_coordinate_error": 0.0
+    },
+    {
+      "prior_index": 1,
+      "sigma": 0.2,
+      "gamma": 0.1,
+      "reference_information_nats": 1.5395765739617115,
+      "transported_information_nats": 1.5395765739617115,
+      "rebuilt_sensor_information_nats": 1.5199002428534767,
+      "rebuilt_minus_reference_nats": -0.019676331108234857,
+      "maximum_sensor_probability_change": 0.006464994538584734,
+      "inverse_coordinate_error": 4.484050470211362e-16
+    },
+    {
+      "prior_index": 1,
+      "sigma": 0.2,
+      "gamma": 0.5,
+      "reference_information_nats": 1.5395765739617115,
+      "transported_information_nats": 1.5395765739617115,
+      "rebuilt_sensor_information_nats": 1.0666084286867048,
+      "rebuilt_minus_reference_nats": -0.47296814527500675,
+      "maximum_sensor_probability_change": 0.205322742814517,
+      "inverse_coordinate_error": 1.2412670766236366e-16
+    },
+    {
+      "prior_index": 1,
+      "sigma": 0.2,
+      "gamma": 1.0,
+      "reference_information_nats": 1.5395765739617115,
+      "transported_information_nats": 1.5395765739617115,
+      "rebuilt_sensor_information_nats": 0.4815038151421206,
+      "rebuilt_minus_reference_nats": -1.0580727588195908,
+      "maximum_sensor_probability_change": 0.5120098746057797,
+      "inverse_coordinate_error": 2.3055512673781017e-16
+    },
+    {
+      "prior_index": 1,
+      "sigma": 0.6,
+      "gamma": 0.0,
+      "reference_information_nats": 0.4075536675874688,
+      "transported_information_nats": 0.4075536675874688,
+      "rebuilt_sensor_information_nats": 0.4075536675874688,
+      "rebuilt_minus_reference_nats": 0.0,
+      "maximum_sensor_probability_change": 0.0,
+      "inverse_coordinate_error": 0.0
+    },
+    {
+      "prior_index": 1,
+      "sigma": 0.6,
+      "gamma": 0.1,
+      "reference_information_nats": 0.4075536675874688,
+      "transported_information_nats": 0.4075536675874688,
+      "rebuilt_sensor_information_nats": 0.2434505235917787,
+      "rebuilt_minus_reference_nats": -0.1641031439956901,
+      "maximum_sensor_probability_change": 0.1450048480521664,
+      "inverse_coordinate_error": 4.484050470211362e-16
+    },
+    {
+      "prior_index": 1,
+      "sigma": 0.6,
+      "gamma": 0.5,
+      "reference_information_nats": 0.4075536675874688,
+      "transported_information_nats": 0.4075536675874688,
+      "rebuilt_sensor_information_nats": 0.040938825438822754,
+      "rebuilt_minus_reference_nats": -0.36661484214864604,
+      "maximum_sensor_probability_change": 0.3834854376507106,
+      "inverse_coordinate_error": 1.2412670766236366e-16
+    },
+    {
+      "prior_index": 1,
+      "sigma": 0.6,
+      "gamma": 1.0,
+      "reference_information_nats": 0.4075536675874688,
+      "transported_information_nats": 0.4075536675874688,
+      "rebuilt_sensor_information_nats": 0.010402699916732374,
+      "rebuilt_minus_reference_nats": -0.39715096767073643,
+      "maximum_sensor_probability_change": 0.44774556437991686,
+      "inverse_coordinate_error": 2.3055512673781017e-16
+    },
+    {
+      "prior_index": 1,
+      "sigma": 1.5,
+      "gamma": 0.0,
+      "reference_information_nats": 0.018513615123386166,
+      "transported_information_nats": 0.018513615123386166,
+      "rebuilt_sensor_information_nats": 0.018513615123386166,
+      "rebuilt_minus_reference_nats": 0.0,
+      "maximum_sensor_probability_change": 0.0,
+      "inverse_coordinate_error": 0.0
+    },
+    {
+      "prior_index": 1,
+      "sigma": 1.5,
+      "gamma": 0.1,
+      "reference_information_nats": 0.018513615123386166,
+      "transported_information_nats": 0.018513615123386166,
+      "rebuilt_sensor_information_nats": 0.008577669845032325,
+      "rebuilt_minus_reference_nats": -0.009935945278353842,
+      "maximum_sensor_probability_change": 0.028547961083363993,
+      "inverse_coordinate_error": 4.484050470211362e-16
+    },
+    {
+      "prior_index": 1,
+      "sigma": 1.5,
+      "gamma": 0.5,
+      "reference_information_nats": 0.018513615123386166,
+      "transported_information_nats": 0.018513615123386166,
+      "rebuilt_sensor_information_nats": 0.001071565230485135,
+      "rebuilt_minus_reference_nats": -0.017442049892901032,
+      "maximum_sensor_probability_change": 0.06467594478820587,
+      "inverse_coordinate_error": 1.2412670766236366e-16
+    },
+    {
+      "prior_index": 1,
+      "sigma": 1.5,
+      "gamma": 1.0,
+      "reference_information_nats": 0.018513615123386166,
+      "transported_information_nats": 0.018513615123386166,
+      "rebuilt_sensor_information_nats": 0.0002624802852429439,
+      "rebuilt_minus_reference_nats": -0.018251134838143224,
+      "maximum_sensor_probability_change": 0.07416346396433227,
+      "inverse_coordinate_error": 2.3055512673781017e-16
+    },
+    {
+      "prior_index": 2,
+      "sigma": 0.2,
+      "gamma": 0.0,
+      "reference_information_nats": 1.4151899275488777,
+      "transported_information_nats": 1.4151899275488777,
+      "rebuilt_sensor_information_nats": 1.4151899275488777,
+      "rebuilt_minus_reference_nats": 0.0,
+      "maximum_sensor_probability_change": 0.0,
+      "inverse_coordinate_error": 0.0
+    },
+    {
+      "prior_index": 2,
+      "sigma": 0.2,
+      "gamma": 0.1,
+      "reference_information_nats": 1.4151899275488777,
+      "transported_information_nats": 1.4151899275488777,
+      "rebuilt_sensor_information_nats": 1.4043308995148187,
+      "rebuilt_minus_reference_nats": -0.010859028034059026,
+      "maximum_sensor_probability_change": 0.006464994538584734,
+      "inverse_coordinate_error": 4.484050470211362e-16
+    },
+    {
+      "prior_index": 2,
+      "sigma": 0.2,
+      "gamma": 0.5,
+      "reference_information_nats": 1.4151899275488777,
+      "transported_information_nats": 1.4151899275488777,
+      "rebuilt_sensor_information_nats": 1.1299866157768297,
+      "rebuilt_minus_reference_nats": -0.28520331177204805,
+      "maximum_sensor_probability_change": 0.205322742814517,
+      "inverse_coordinate_error": 1.2412670766236366e-16
+    },
+    {
+      "prior_index": 2,
+      "sigma": 0.2,
+      "gamma": 1.0,
+      "reference_information_nats": 1.4151899275488777,
+      "transported_information_nats": 1.4151899275488777,
+      "rebuilt_sensor_information_nats": 0.6956171682346488,
+      "rebuilt_minus_reference_nats": -0.7195727593142289,
+      "maximum_sensor_probability_change": 0.5120098746057797,
+      "inverse_coordinate_error": 2.3055512673781017e-16
+    },
+    {
+      "prior_index": 2,
+      "sigma": 0.6,
+      "gamma": 0.0,
+      "reference_information_nats": 0.5002054044991859,
+      "transported_information_nats": 0.5002054044991859,
+      "rebuilt_sensor_information_nats": 0.5002054044991859,
+      "rebuilt_minus_reference_nats": 0.0,
+      "maximum_sensor_probability_change": 0.0,
+      "inverse_coordinate_error": 0.0
+    },
+    {
+      "prior_index": 2,
+      "sigma": 0.6,
+      "gamma": 0.1,
+      "reference_information_nats": 0.5002054044991859,
+      "transported_information_nats": 0.5002054044991859,
+      "rebuilt_sensor_information_nats": 0.33634686613992265,
+      "rebuilt_minus_reference_nats": -0.16385853835926328,
+      "maximum_sensor_probability_change": 0.1450048480521664,
+      "inverse_coordinate_error": 4.484050470211362e-16
+    },
+    {
+      "prior_index": 2,
+      "sigma": 0.6,
+      "gamma": 0.5,
+      "reference_information_nats": 0.5002054044991859,
+      "transported_information_nats": 0.5002054044991859,
+      "rebuilt_sensor_information_nats": 0.07124727040264747,
+      "rebuilt_minus_reference_nats": -0.4289581340965385,
+      "maximum_sensor_probability_change": 0.3834854376507106,
+      "inverse_coordinate_error": 1.2412670766236366e-16
+    },
+    {
+      "prior_index": 2,
+      "sigma": 0.6,
+      "gamma": 1.0,
+      "reference_information_nats": 0.5002054044991859,
+      "transported_information_nats": 0.5002054044991859,
+      "rebuilt_sensor_information_nats": 0.020006218963357855,
+      "rebuilt_minus_reference_nats": -0.4801991855358281,
+      "maximum_sensor_probability_change": 0.44774556437991686,
+      "inverse_coordinate_error": 2.3055512673781017e-16
+    },
+    {
+      "prior_index": 2,
+      "sigma": 1.5,
+      "gamma": 0.0,
+      "reference_information_nats": 0.028103396050694437,
+      "transported_information_nats": 0.028103396050694437,
+      "rebuilt_sensor_information_nats": 0.028103396050694437,
+      "rebuilt_minus_reference_nats": 0.0,
+      "maximum_sensor_probability_change": 0.0,
+      "inverse_coordinate_error": 0.0
+    },
+    {
+      "prior_index": 2,
+      "sigma": 1.5,
+      "gamma": 0.1,
+      "reference_information_nats": 0.028103396050694437,
+      "transported_information_nats": 0.028103396050694437,
+      "rebuilt_sensor_information_nats": 0.013624852139365451,
+      "rebuilt_minus_reference_nats": -0.014478543911328986,
+      "maximum_sensor_probability_change": 0.028547961083363993,
+      "inverse_coordinate_error": 4.484050470211362e-16
+    },
+    {
+      "prior_index": 2,
+      "sigma": 1.5,
+      "gamma": 0.5,
+      "reference_information_nats": 0.028103396050694437,
+      "transported_information_nats": 0.028103396050694437,
+      "rebuilt_sensor_information_nats": 0.0019279291269495105,
+      "rebuilt_minus_reference_nats": -0.026175466923744926,
+      "maximum_sensor_probability_change": 0.06467594478820587,
+      "inverse_coordinate_error": 1.2412670766236366e-16
+    },
+    {
+      "prior_index": 2,
+      "sigma": 1.5,
+      "gamma": 1.0,
+      "reference_information_nats": 0.028103396050694437,
+      "transported_information_nats": 0.028103396050694437,
+      "rebuilt_sensor_information_nats": 0.0005115736084053741,
+      "rebuilt_minus_reference_nats": -0.027591822442289065,
+      "maximum_sensor_probability_change": 0.07416346396433227,
+      "inverse_coordinate_error": 2.3055512673781017e-16
+    }
+  ],
+  "pole_design": {
+    "distribution": "Standard normal",
+    "map": "z/(1+z)",
+    "pole": -1,
+    "outer_radius": 0.5,
+    "integration": "Simpson in log distance from pole, 4096 and 8192 intervals"
+  },
+  "pole_results": [
+    {
+      "epsilon": 0.1,
+      "absolute_first_cutoff_integral": 0.7226532839601437,
+      "second_cutoff_integral": 3.6891504339596524,
+      "absolute_first_analytic_lower_bound": 0.2084505287919967,
+      "second_analytic_lower_bound": 0.518070382663567,
+      "maximum_quadrature_relative_change": 0.0
+    },
+    {
+      "epsilon": 0.01,
+      "absolute_first_cutoff_integral": 1.8345771623164477,
+      "second_cutoff_integral": 47.200419966869056,
+      "absolute_first_analytic_lower_bound": 0.5066758138527092,
+      "second_analytic_lower_bound": 6.346362187628696,
+      "maximum_quadrature_relative_change": 4.215046521884266e-15
+    },
+    {
+      "epsilon": 0.001,
+      "absolute_first_cutoff_integral": 2.9488695739546475,
+      "second_cutoff_integral": 482.74336872229065,
+      "absolute_first_analytic_lower_bound": 0.8049010989134218,
+      "second_analytic_lower_bound": 64.62928023727999,
+      "maximum_quadrature_relative_change": 2.755368768427556e-14
+    },
+    {
+      "epsilon": 0.0001,
+      "absolute_first_cutoff_integral": 4.063185700841155,
+      "second_cutoff_integral": 4838.215974519687,
+      "absolute_first_analytic_lower_bound": 1.1031263839741345,
+      "second_analytic_lower_bound": 647.4584607337928,
+      "maximum_quadrature_relative_change": 9.756235618791496e-14
+    },
+    {
+      "epsilon": 1e-05,
+      "absolute_first_cutoff_integral": 5.177502064883137,
+      "second_cutoff_integral": 48392.94634441156,
+      "absolute_first_analytic_lower_bound": 1.4013516690348469,
+      "second_analytic_lower_bound": 6475.75026569892,
+      "maximum_quadrature_relative_change": 2.537935253070189e-13
+    },
+    {
+      "epsilon": 1e-06,
+      "absolute_first_cutoff_integral": 6.291818431296668,
+      "second_cutoff_integral": 483940.2504745308,
+      "absolute_first_analytic_lower_bound": 1.6995769540955594,
+      "second_analytic_lower_bound": 64758.66831535021,
+      "maximum_quadrature_relative_change": 5.484704640813515e-13
+    }
+  ],
+  "bounded_support_control": {
+    "distribution": "Uniform[0,1]",
+    "minimum_denominator": 1,
+    "mean": 0.3068528194400547,
+    "second_moment": 0.11370563888010943,
+    "variance": 0.019546986081798612,
+    "maximum_quadrature_absolute_error": 1.8041124150158794e-16
+  },
+  "checks": {
+    "bijective_coordinate_conditions": 36,
+    "identity_sensor_controls": 9,
+    "changed_sensor_conditions": 27,
+    "maximum_transported_information_error": 0.0,
+    "pole_cutoffs": 6,
+    "bounded_support_control_passed": true
+  },
+  "limits": [
+    "The divergence proof is analytic; finite quadrature alone does not prove an infinite moment.",
+    "Full Gaussian moments differ from local approximations, truncated laws and principal values.",
+    "The discrete sensor is our constructed example, not the published PCM implementation.",
+    "Sensor changes can be legitimate physical changes, not numerical errors.",
+    "No inference about the presence or absence of subjective experience follows from these checks."
+  ],
+  "source_sha256": "8f1162616212a1d8f4cd0cbb79be43e83ff245ffb022473cde8d31cab5cacb06"
+}

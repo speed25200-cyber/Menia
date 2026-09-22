@@ -1,0 +1,39 @@
+{
+  "schema": "menia-final-training-fit-final-receipt-v1",
+  "archiveName": "menia-ajustement-final-v1.zip",
+  "archiveBytes": 1084925,
+  "archiveSHA256": "7c0907655f68f31a88d6607ad596970ad06e8a5de14581509f5173e0f8d01e54",
+  "files": 4,
+  "journalSHA256": "8bcbcaa5f5a2ca8806c021f5b22bc7f7b63facdb2c2bcb508ebc2505b9152f5b",
+  "scienceRevision": "24b6345edbc1e88544ddf5e4da73b03870900d69",
+  "execution": {
+    "startedUTC": "2026-09-20T03:33:01.126452+00:00",
+    "revision": "24b6345edbc1e88544ddf5e4da73b03870900d69",
+    "status": "completed",
+    "journal": "/content/menia-results/final-training-fit-v1/final-training-fit-20260920-v1.jsonl",
+    "hardware": "NVIDIA A100-SXM4-40GB, 0 MiB, 40960 MiB",
+    "updatedUTC": "2026-09-20T03:45:00.839220+00:00"
+  },
+  "model": {
+    "id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "planHash": "9b398d36651463af3da67aedd914c5c748438461a98ce335036b7a14cf1ff59a",
+  "sourceHash": "224b60af101bd275198093dbc3d98e71f442fbc1b4d85b55a0710b4c66a98f7b",
+  "callPlanHash": "dc63e337bcad1dad9b49da587acc4a7a71f5356d46ac7fcc9669306e9f9135ac",
+  "recordedCalls": 5184,
+  "completedUnits": 9,
+  "newWeightUpdates": 0,
+  "newGenerations": 0,
+  "heldOutInputs": 0,
+  "unchangedCheckpointFiles": 9,
+  "assessmentSeconds": 669.1703834720247,
+  "mainRecomputeMaxAbsoluteDifference": 0.0,
+  "separateArithmeticMaxDifference": 5.551115123125783e-17,
+  "colabPreflight": {
+    "tests": 6,
+    "passed": true,
+    "seconds": 2.496
+  },
+  "scope": "Final training-set fit, decided after Colab24 test interpretation. Not new generalization, a causal capacity comparison, privileged self-access or consciousness evidence."
+}

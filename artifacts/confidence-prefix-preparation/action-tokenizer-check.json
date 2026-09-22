@@ -1,0 +1,1459 @@
+{
+  "schema": "menia-native-action-tokenizer-check-v1",
+  "origin": "pinned_qwen_tokenizer_only",
+  "model": {
+    "id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "transformers": "4.56.2",
+  "files": {
+    "tokenizer_config.json": {
+      "bytes": 9732,
+      "sha256": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101"
+    },
+    "tokenizer.json": {
+      "bytes": 11422654,
+      "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4"
+    },
+    "generation_config.json": {
+      "bytes": 239,
+      "sha256": "2325da0f15bb848e018c5ae071b7943332e9f871d6b60e2ed22ca97d4cb993d2"
+    }
+  },
+  "sourceHash": "e3301e39a50d0bea0443b72e81344b462bb52199b5fe3841e9be9bcd0a1754f1",
+  "eosTokenIds": [
+    151645,
+    151643
+  ],
+  "cases": [
+    {
+      "question": "Exemple technique pour contrôler les branches de décision.",
+      "answer": "17",
+      "verificationCost": 20,
+      "prefixTokens": 49,
+      "prefixHash": "683c44a68fb2fd8c7d321d140be1b3076e37799fec310ca0983388c1c96d8085",
+      "position": 48,
+      "branches": {
+        "judgment": {
+          "kind": "judgment",
+          "inputHash": "a4899d2274d9ee177d3ca9b5524f74b40f84f77b0d60b4aa2e8525c3e48f4b98",
+          "codeToMeaning": {
+            "0": "incorrect",
+            "1": "correct"
+          },
+          "candidateTokenIds": [
+            15,
+            16
+          ],
+          "inputTokens": 101,
+          "sharedPrefixExact": true,
+          "optionOrder": null,
+          "verificationCost": null
+        },
+        "action-23-m0-o0": {
+          "kind": "action",
+          "inputHash": "2cbdc1897b27f6a73eb293ba3ffa34a5e3a53b57bdcf3d2b81fe3a78eaffed7e",
+          "codeToMeaning": {
+            "2": "accept",
+            "3": "verify"
+          },
+          "candidateTokenIds": [
+            18,
+            17
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "2",
+            "3"
+          ],
+          "verificationCost": 20
+        },
+        "action-23-m0-o1": {
+          "kind": "action",
+          "inputHash": "804829550c68caf32e549989d55a211e188be4376224cee8d13010d5a61e62a5",
+          "codeToMeaning": {
+            "2": "accept",
+            "3": "verify"
+          },
+          "candidateTokenIds": [
+            18,
+            17
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "3",
+            "2"
+          ],
+          "verificationCost": 20
+        },
+        "action-23-m1-o0": {
+          "kind": "action",
+          "inputHash": "3039eb6bf85b364c3801f92b621d72e10c81598090c1135aa109b58506fb6fec",
+          "codeToMeaning": {
+            "2": "verify",
+            "3": "accept"
+          },
+          "candidateTokenIds": [
+            17,
+            18
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "2",
+            "3"
+          ],
+          "verificationCost": 20
+        },
+        "action-23-m1-o1": {
+          "kind": "action",
+          "inputHash": "d86e9d4e047904e5859f92a6b92a2db98eae5663de71c18b9c8fd8f172b6c853",
+          "codeToMeaning": {
+            "2": "verify",
+            "3": "accept"
+          },
+          "candidateTokenIds": [
+            17,
+            18
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "3",
+            "2"
+          ],
+          "verificationCost": 20
+        },
+        "action-45-m0-o0": {
+          "kind": "action",
+          "inputHash": "5c17d14762fc13b82767db0eb06ade86a293112ad7ce3c7f8699802dd7a85787",
+          "codeToMeaning": {
+            "4": "accept",
+            "5": "verify"
+          },
+          "candidateTokenIds": [
+            20,
+            19
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "4",
+            "5"
+          ],
+          "verificationCost": 20
+        },
+        "action-45-m0-o1": {
+          "kind": "action",
+          "inputHash": "bff0420bed1b01136511ee0fcef62f2ccf84b4793b6a155f50b85bd7ea048dad",
+          "codeToMeaning": {
+            "4": "accept",
+            "5": "verify"
+          },
+          "candidateTokenIds": [
+            20,
+            19
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "5",
+            "4"
+          ],
+          "verificationCost": 20
+        },
+        "action-45-m1-o0": {
+          "kind": "action",
+          "inputHash": "590e908e021ea8a93b17c224c9026315072e74153f7981f1503512be38e4b6ae",
+          "codeToMeaning": {
+            "4": "verify",
+            "5": "accept"
+          },
+          "candidateTokenIds": [
+            19,
+            20
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "4",
+            "5"
+          ],
+          "verificationCost": 20
+        },
+        "action-45-m1-o1": {
+          "kind": "action",
+          "inputHash": "dff1112f06c0821d9220b2ab35508ea94072954b000206347863ff65d3a992d4",
+          "codeToMeaning": {
+            "4": "verify",
+            "5": "accept"
+          },
+          "candidateTokenIds": [
+            19,
+            20
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "5",
+            "4"
+          ],
+          "verificationCost": 20
+        }
+      }
+    },
+    {
+      "question": "Exemple technique pour contrôler les branches de décision.",
+      "answer": "17",
+      "verificationCost": 80,
+      "prefixTokens": 49,
+      "prefixHash": "683c44a68fb2fd8c7d321d140be1b3076e37799fec310ca0983388c1c96d8085",
+      "position": 48,
+      "branches": {
+        "judgment": {
+          "kind": "judgment",
+          "inputHash": "a4899d2274d9ee177d3ca9b5524f74b40f84f77b0d60b4aa2e8525c3e48f4b98",
+          "codeToMeaning": {
+            "0": "incorrect",
+            "1": "correct"
+          },
+          "candidateTokenIds": [
+            15,
+            16
+          ],
+          "inputTokens": 101,
+          "sharedPrefixExact": true,
+          "optionOrder": null,
+          "verificationCost": null
+        },
+        "action-23-m0-o0": {
+          "kind": "action",
+          "inputHash": "bfe31ef892ad8482fa1403b38c7820c76cd455be538459361832d2117961ff57",
+          "codeToMeaning": {
+            "2": "accept",
+            "3": "verify"
+          },
+          "candidateTokenIds": [
+            18,
+            17
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "2",
+            "3"
+          ],
+          "verificationCost": 80
+        },
+        "action-23-m0-o1": {
+          "kind": "action",
+          "inputHash": "4f69f271aa6f3ffc7d4b1b2da7f833bed2860b16faca72cd0b7adead797bf585",
+          "codeToMeaning": {
+            "2": "accept",
+            "3": "verify"
+          },
+          "candidateTokenIds": [
+            18,
+            17
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "3",
+            "2"
+          ],
+          "verificationCost": 80
+        },
+        "action-23-m1-o0": {
+          "kind": "action",
+          "inputHash": "a60c3bbbac8914fe4acff78b0c5fcb2942fce04adb695eb8e36a87715e29c9d5",
+          "codeToMeaning": {
+            "2": "verify",
+            "3": "accept"
+          },
+          "candidateTokenIds": [
+            17,
+            18
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "2",
+            "3"
+          ],
+          "verificationCost": 80
+        },
+        "action-23-m1-o1": {
+          "kind": "action",
+          "inputHash": "3498075f7dbb7459891dc8938439a278db5ac313cb80cecabf2fdfeec6909804",
+          "codeToMeaning": {
+            "2": "verify",
+            "3": "accept"
+          },
+          "candidateTokenIds": [
+            17,
+            18
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "3",
+            "2"
+          ],
+          "verificationCost": 80
+        },
+        "action-45-m0-o0": {
+          "kind": "action",
+          "inputHash": "f3fbdeb13071f8fa0ca2399f48cddecd42cf681dd0fdc85d9fedd0a1423d8b3f",
+          "codeToMeaning": {
+            "4": "accept",
+            "5": "verify"
+          },
+          "candidateTokenIds": [
+            20,
+            19
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "4",
+            "5"
+          ],
+          "verificationCost": 80
+        },
+        "action-45-m0-o1": {
+          "kind": "action",
+          "inputHash": "8651eea79aa478fe9e6ad6ab1a59242baf3a544b77dbc3bcaaed7fa0a9ce091c",
+          "codeToMeaning": {
+            "4": "accept",
+            "5": "verify"
+          },
+          "candidateTokenIds": [
+            20,
+            19
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "5",
+            "4"
+          ],
+          "verificationCost": 80
+        },
+        "action-45-m1-o0": {
+          "kind": "action",
+          "inputHash": "dd0f944b32655aa91c8c181342a5808f74514b7bbacbf2991008dd3c8e0badb6",
+          "codeToMeaning": {
+            "4": "verify",
+            "5": "accept"
+          },
+          "candidateTokenIds": [
+            19,
+            20
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "4",
+            "5"
+          ],
+          "verificationCost": 80
+        },
+        "action-45-m1-o1": {
+          "kind": "action",
+          "inputHash": "d12fb51b869d30a4c2c77c33ec3deb9f9da65fe5ceaa96768fe05c732cb9d76d",
+          "codeToMeaning": {
+            "4": "verify",
+            "5": "accept"
+          },
+          "candidateTokenIds": [
+            19,
+            20
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "5",
+            "4"
+          ],
+          "verificationCost": 80
+        }
+      }
+    },
+    {
+      "question": "Exemple technique pour contrôler les branches de décision.",
+      "answer": "-3",
+      "verificationCost": 20,
+      "prefixTokens": 49,
+      "prefixHash": "abda0e48b741c4aa99816ba9ecc049a78941389f13fc0006eb53d8bc1b3c0c2e",
+      "position": 48,
+      "branches": {
+        "judgment": {
+          "kind": "judgment",
+          "inputHash": "0cba6c578bb912e237415d5b52813af620e991b2015f20767dbbee65c0581107",
+          "codeToMeaning": {
+            "0": "incorrect",
+            "1": "correct"
+          },
+          "candidateTokenIds": [
+            15,
+            16
+          ],
+          "inputTokens": 101,
+          "sharedPrefixExact": true,
+          "optionOrder": null,
+          "verificationCost": null
+        },
+        "action-23-m0-o0": {
+          "kind": "action",
+          "inputHash": "6a282df3c4b9740d1b84451fd0622d0e25a470bec0d6ba831302277a19efe341",
+          "codeToMeaning": {
+            "2": "accept",
+            "3": "verify"
+          },
+          "candidateTokenIds": [
+            18,
+            17
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "2",
+            "3"
+          ],
+          "verificationCost": 20
+        },
+        "action-23-m0-o1": {
+          "kind": "action",
+          "inputHash": "8c815b60c360bebe57bf85e2e0a17d319132b94b753603a3e95c238c546d1035",
+          "codeToMeaning": {
+            "2": "accept",
+            "3": "verify"
+          },
+          "candidateTokenIds": [
+            18,
+            17
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "3",
+            "2"
+          ],
+          "verificationCost": 20
+        },
+        "action-23-m1-o0": {
+          "kind": "action",
+          "inputHash": "dd715987696f59ec0e84c45c737d46573b4704365a1fa42fa9706b034e733411",
+          "codeToMeaning": {
+            "2": "verify",
+            "3": "accept"
+          },
+          "candidateTokenIds": [
+            17,
+            18
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "2",
+            "3"
+          ],
+          "verificationCost": 20
+        },
+        "action-23-m1-o1": {
+          "kind": "action",
+          "inputHash": "9a4862fc702c0859de60c2f6b44ae08c75dfe3554200e98c6ff53d73548dfda9",
+          "codeToMeaning": {
+            "2": "verify",
+            "3": "accept"
+          },
+          "candidateTokenIds": [
+            17,
+            18
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "3",
+            "2"
+          ],
+          "verificationCost": 20
+        },
+        "action-45-m0-o0": {
+          "kind": "action",
+          "inputHash": "4f07d5eb987856a63d6ed2be25f5d2400769443e09c82a7825966b38c482a059",
+          "codeToMeaning": {
+            "4": "accept",
+            "5": "verify"
+          },
+          "candidateTokenIds": [
+            20,
+            19
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "4",
+            "5"
+          ],
+          "verificationCost": 20
+        },
+        "action-45-m0-o1": {
+          "kind": "action",
+          "inputHash": "daeb9e4228bc36ab98d08adc2494474d7bf9c7170488515222fbe9032ba71042",
+          "codeToMeaning": {
+            "4": "accept",
+            "5": "verify"
+          },
+          "candidateTokenIds": [
+            20,
+            19
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "5",
+            "4"
+          ],
+          "verificationCost": 20
+        },
+        "action-45-m1-o0": {
+          "kind": "action",
+          "inputHash": "29447cb55570ad024cee0ca317f2d93b74ec17989f5b1eba68be5903a912d28c",
+          "codeToMeaning": {
+            "4": "verify",
+            "5": "accept"
+          },
+          "candidateTokenIds": [
+            19,
+            20
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "4",
+            "5"
+          ],
+          "verificationCost": 20
+        },
+        "action-45-m1-o1": {
+          "kind": "action",
+          "inputHash": "4b61373f238c181d80128922ef257106db2e71b5e756cc994c0fb76e33db6d0a",
+          "codeToMeaning": {
+            "4": "verify",
+            "5": "accept"
+          },
+          "candidateTokenIds": [
+            19,
+            20
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "5",
+            "4"
+          ],
+          "verificationCost": 20
+        }
+      }
+    },
+    {
+      "question": "Exemple technique pour contrôler les branches de décision.",
+      "answer": "-3",
+      "verificationCost": 80,
+      "prefixTokens": 49,
+      "prefixHash": "abda0e48b741c4aa99816ba9ecc049a78941389f13fc0006eb53d8bc1b3c0c2e",
+      "position": 48,
+      "branches": {
+        "judgment": {
+          "kind": "judgment",
+          "inputHash": "0cba6c578bb912e237415d5b52813af620e991b2015f20767dbbee65c0581107",
+          "codeToMeaning": {
+            "0": "incorrect",
+            "1": "correct"
+          },
+          "candidateTokenIds": [
+            15,
+            16
+          ],
+          "inputTokens": 101,
+          "sharedPrefixExact": true,
+          "optionOrder": null,
+          "verificationCost": null
+        },
+        "action-23-m0-o0": {
+          "kind": "action",
+          "inputHash": "7ab8d893c5a0506be561e584fbc71ff5e15c1d1a9e9d4aa8162a31d8e82a12fb",
+          "codeToMeaning": {
+            "2": "accept",
+            "3": "verify"
+          },
+          "candidateTokenIds": [
+            18,
+            17
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "2",
+            "3"
+          ],
+          "verificationCost": 80
+        },
+        "action-23-m0-o1": {
+          "kind": "action",
+          "inputHash": "55409310b2bf626b33e32cf65a4fca0b6850db8fab606eaab4bebb56bd56b0d7",
+          "codeToMeaning": {
+            "2": "accept",
+            "3": "verify"
+          },
+          "candidateTokenIds": [
+            18,
+            17
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "3",
+            "2"
+          ],
+          "verificationCost": 80
+        },
+        "action-23-m1-o0": {
+          "kind": "action",
+          "inputHash": "ff4a1c6f699e529786e0a94813d16a0915e5b6fa00653ac44e056757286f21d3",
+          "codeToMeaning": {
+            "2": "verify",
+            "3": "accept"
+          },
+          "candidateTokenIds": [
+            17,
+            18
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "2",
+            "3"
+          ],
+          "verificationCost": 80
+        },
+        "action-23-m1-o1": {
+          "kind": "action",
+          "inputHash": "63cc8575b13583cc50d5c26270ec49308537f5b5f06050550b023509017d1cfa",
+          "codeToMeaning": {
+            "2": "verify",
+            "3": "accept"
+          },
+          "candidateTokenIds": [
+            17,
+            18
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "3",
+            "2"
+          ],
+          "verificationCost": 80
+        },
+        "action-45-m0-o0": {
+          "kind": "action",
+          "inputHash": "b10ce7c633d8d3c67cebfa205a44fb83ba0340ae1a7b04f3fd6167fc66f69ec1",
+          "codeToMeaning": {
+            "4": "accept",
+            "5": "verify"
+          },
+          "candidateTokenIds": [
+            20,
+            19
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "4",
+            "5"
+          ],
+          "verificationCost": 80
+        },
+        "action-45-m0-o1": {
+          "kind": "action",
+          "inputHash": "cbf3851780572b0fc033a82d2a298bb4473b124e8cb2a448d75f227d1ea7ce0d",
+          "codeToMeaning": {
+            "4": "accept",
+            "5": "verify"
+          },
+          "candidateTokenIds": [
+            20,
+            19
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "5",
+            "4"
+          ],
+          "verificationCost": 80
+        },
+        "action-45-m1-o0": {
+          "kind": "action",
+          "inputHash": "2cd0eb0d3ea221c49cc1f49ac37a6b502d525e444814a6a6c028d5d2b2967a53",
+          "codeToMeaning": {
+            "4": "verify",
+            "5": "accept"
+          },
+          "candidateTokenIds": [
+            19,
+            20
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "4",
+            "5"
+          ],
+          "verificationCost": 80
+        },
+        "action-45-m1-o1": {
+          "kind": "action",
+          "inputHash": "df9d113469c7de685f23cf3f87fcf0a3dc9c710578ee58174bfa6f442b78bdb0",
+          "codeToMeaning": {
+            "4": "verify",
+            "5": "accept"
+          },
+          "candidateTokenIds": [
+            19,
+            20
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "5",
+            "4"
+          ],
+          "verificationCost": 80
+        }
+      }
+    },
+    {
+      "question": "Exemple technique pour contrôler les branches de décision.",
+      "answer": "réponse technique\nsur deux lignes",
+      "verificationCost": 20,
+      "prefixTokens": 55,
+      "prefixHash": "dda71328c34d90b0e84230e3f28e0d747ba9b16bb3ad9d4546fb61be2e9b8cc0",
+      "position": 54,
+      "branches": {
+        "judgment": {
+          "kind": "judgment",
+          "inputHash": "b6b061ddc94159cd92bdaa2176f9c2ae6aa4d86f9e2111371d77fe0d860b9e14",
+          "codeToMeaning": {
+            "0": "incorrect",
+            "1": "correct"
+          },
+          "candidateTokenIds": [
+            15,
+            16
+          ],
+          "inputTokens": 107,
+          "sharedPrefixExact": true,
+          "optionOrder": null,
+          "verificationCost": null
+        },
+        "action-23-m0-o0": {
+          "kind": "action",
+          "inputHash": "6b7ab5cfb6ca713194d6d90d64bb1b917c139621798ade52f2aa40714b827078",
+          "codeToMeaning": {
+            "2": "accept",
+            "3": "verify"
+          },
+          "candidateTokenIds": [
+            18,
+            17
+          ],
+          "inputTokens": 168,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "2",
+            "3"
+          ],
+          "verificationCost": 20
+        },
+        "action-23-m0-o1": {
+          "kind": "action",
+          "inputHash": "1fe9ce7d2b4eddd7808fbc86e62bd5f248c2e4d4718195ba10b7156d61e5c5b0",
+          "codeToMeaning": {
+            "2": "accept",
+            "3": "verify"
+          },
+          "candidateTokenIds": [
+            18,
+            17
+          ],
+          "inputTokens": 168,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "3",
+            "2"
+          ],
+          "verificationCost": 20
+        },
+        "action-23-m1-o0": {
+          "kind": "action",
+          "inputHash": "b7d5294dd7486fb7d531ddec06dd8773b3a5ec6ab43a5a2b5323b2bef1669477",
+          "codeToMeaning": {
+            "2": "verify",
+            "3": "accept"
+          },
+          "candidateTokenIds": [
+            17,
+            18
+          ],
+          "inputTokens": 168,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "2",
+            "3"
+          ],
+          "verificationCost": 20
+        },
+        "action-23-m1-o1": {
+          "kind": "action",
+          "inputHash": "afa08dd04c14288dc96bdaed3a2985ffa3cc99e37074933c3541ae5f5d25d094",
+          "codeToMeaning": {
+            "2": "verify",
+            "3": "accept"
+          },
+          "candidateTokenIds": [
+            17,
+            18
+          ],
+          "inputTokens": 168,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "3",
+            "2"
+          ],
+          "verificationCost": 20
+        },
+        "action-45-m0-o0": {
+          "kind": "action",
+          "inputHash": "70e014c046b7d2aa87c4fbd04f33cc9b70c099c17b592fb39f80085338d535d8",
+          "codeToMeaning": {
+            "4": "accept",
+            "5": "verify"
+          },
+          "candidateTokenIds": [
+            20,
+            19
+          ],
+          "inputTokens": 168,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "4",
+            "5"
+          ],
+          "verificationCost": 20
+        },
+        "action-45-m0-o1": {
+          "kind": "action",
+          "inputHash": "ca18aa36f7643f4162e76fa0c36baebca0be5d4cd5c4c175a80d5fa62c0c7cfa",
+          "codeToMeaning": {
+            "4": "accept",
+            "5": "verify"
+          },
+          "candidateTokenIds": [
+            20,
+            19
+          ],
+          "inputTokens": 168,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "5",
+            "4"
+          ],
+          "verificationCost": 20
+        },
+        "action-45-m1-o0": {
+          "kind": "action",
+          "inputHash": "4fe8d3ece4182e7cb93a47b43d04c513e5780b7899590ad4e205dc7a52feac3f",
+          "codeToMeaning": {
+            "4": "verify",
+            "5": "accept"
+          },
+          "candidateTokenIds": [
+            19,
+            20
+          ],
+          "inputTokens": 168,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "4",
+            "5"
+          ],
+          "verificationCost": 20
+        },
+        "action-45-m1-o1": {
+          "kind": "action",
+          "inputHash": "17ff3f0b7bd339f4309588ab07581654bdf34b74ce001aaa9c572c5cd8c2876d",
+          "codeToMeaning": {
+            "4": "verify",
+            "5": "accept"
+          },
+          "candidateTokenIds": [
+            19,
+            20
+          ],
+          "inputTokens": 168,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "5",
+            "4"
+          ],
+          "verificationCost": 20
+        }
+      }
+    },
+    {
+      "question": "Exemple technique pour contrôler les branches de décision.",
+      "answer": "réponse technique\nsur deux lignes",
+      "verificationCost": 80,
+      "prefixTokens": 55,
+      "prefixHash": "dda71328c34d90b0e84230e3f28e0d747ba9b16bb3ad9d4546fb61be2e9b8cc0",
+      "position": 54,
+      "branches": {
+        "judgment": {
+          "kind": "judgment",
+          "inputHash": "b6b061ddc94159cd92bdaa2176f9c2ae6aa4d86f9e2111371d77fe0d860b9e14",
+          "codeToMeaning": {
+            "0": "incorrect",
+            "1": "correct"
+          },
+          "candidateTokenIds": [
+            15,
+            16
+          ],
+          "inputTokens": 107,
+          "sharedPrefixExact": true,
+          "optionOrder": null,
+          "verificationCost": null
+        },
+        "action-23-m0-o0": {
+          "kind": "action",
+          "inputHash": "4e305139aede02baba1624c64ef74fdaa902e1c5b76553cfe0a2d754588ad357",
+          "codeToMeaning": {
+            "2": "accept",
+            "3": "verify"
+          },
+          "candidateTokenIds": [
+            18,
+            17
+          ],
+          "inputTokens": 168,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "2",
+            "3"
+          ],
+          "verificationCost": 80
+        },
+        "action-23-m0-o1": {
+          "kind": "action",
+          "inputHash": "5b288d055ce420a7f30dd1bf989ae47726ffdb824cdc69646cbce795336b7465",
+          "codeToMeaning": {
+            "2": "accept",
+            "3": "verify"
+          },
+          "candidateTokenIds": [
+            18,
+            17
+          ],
+          "inputTokens": 168,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "3",
+            "2"
+          ],
+          "verificationCost": 80
+        },
+        "action-23-m1-o0": {
+          "kind": "action",
+          "inputHash": "fb138d069db80fd72a7a8fb2874dddbd7123337caf7d7f986b3cb564f5b959c9",
+          "codeToMeaning": {
+            "2": "verify",
+            "3": "accept"
+          },
+          "candidateTokenIds": [
+            17,
+            18
+          ],
+          "inputTokens": 168,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "2",
+            "3"
+          ],
+          "verificationCost": 80
+        },
+        "action-23-m1-o1": {
+          "kind": "action",
+          "inputHash": "469927518411e2eec566fa0236e9227941bcc0cb2dd003fc1d9ab3dccfa6deeb",
+          "codeToMeaning": {
+            "2": "verify",
+            "3": "accept"
+          },
+          "candidateTokenIds": [
+            17,
+            18
+          ],
+          "inputTokens": 168,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "3",
+            "2"
+          ],
+          "verificationCost": 80
+        },
+        "action-45-m0-o0": {
+          "kind": "action",
+          "inputHash": "10c4ce3ec333de1158924a78c2e7b23815cd684f0be41c1aa77b1ed32b4de764",
+          "codeToMeaning": {
+            "4": "accept",
+            "5": "verify"
+          },
+          "candidateTokenIds": [
+            20,
+            19
+          ],
+          "inputTokens": 168,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "4",
+            "5"
+          ],
+          "verificationCost": 80
+        },
+        "action-45-m0-o1": {
+          "kind": "action",
+          "inputHash": "8e2fa6b51c16e1cd7496959ea0b7abb3ed58901eb518b8bf04595b48d42ee4f5",
+          "codeToMeaning": {
+            "4": "accept",
+            "5": "verify"
+          },
+          "candidateTokenIds": [
+            20,
+            19
+          ],
+          "inputTokens": 168,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "5",
+            "4"
+          ],
+          "verificationCost": 80
+        },
+        "action-45-m1-o0": {
+          "kind": "action",
+          "inputHash": "a644f0829f90c30ee4a050667b150b74703df5df5605c32fb27a0244f32ed087",
+          "codeToMeaning": {
+            "4": "verify",
+            "5": "accept"
+          },
+          "candidateTokenIds": [
+            19,
+            20
+          ],
+          "inputTokens": 168,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "4",
+            "5"
+          ],
+          "verificationCost": 80
+        },
+        "action-45-m1-o1": {
+          "kind": "action",
+          "inputHash": "0de7b5459d2641081d9a7f8ca39893bc0cdc5dfe9959f8bd8c8f6c42ed48ab84",
+          "codeToMeaning": {
+            "4": "verify",
+            "5": "accept"
+          },
+          "candidateTokenIds": [
+            19,
+            20
+          ],
+          "inputTokens": 168,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "5",
+            "4"
+          ],
+          "verificationCost": 80
+        }
+      }
+    },
+    {
+      "question": "Exemple technique pour contrôler les branches de décision.",
+      "answer": "\n17",
+      "verificationCost": 20,
+      "prefixTokens": 49,
+      "prefixHash": "cdcb1b708f77b29ca98e11a24e9febb08392948875519bc22ef2a19e7fe3a3fa",
+      "position": 48,
+      "branches": {
+        "judgment": {
+          "kind": "judgment",
+          "inputHash": "f34d0b5c637def3971c8053a16518d12549d4e91c3d7dde3cbe6bd581f9fe002",
+          "codeToMeaning": {
+            "0": "incorrect",
+            "1": "correct"
+          },
+          "candidateTokenIds": [
+            15,
+            16
+          ],
+          "inputTokens": 101,
+          "sharedPrefixExact": true,
+          "optionOrder": null,
+          "verificationCost": null
+        },
+        "action-23-m0-o0": {
+          "kind": "action",
+          "inputHash": "9ba196075ca120960d87fc1b93b0158d6cc06627ffce6eb26cb4fc672dce3614",
+          "codeToMeaning": {
+            "2": "accept",
+            "3": "verify"
+          },
+          "candidateTokenIds": [
+            18,
+            17
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "2",
+            "3"
+          ],
+          "verificationCost": 20
+        },
+        "action-23-m0-o1": {
+          "kind": "action",
+          "inputHash": "c4fbb6b7cef3cc0b784fdd8211309dc78175c6e4c058a2541362586687d8c270",
+          "codeToMeaning": {
+            "2": "accept",
+            "3": "verify"
+          },
+          "candidateTokenIds": [
+            18,
+            17
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "3",
+            "2"
+          ],
+          "verificationCost": 20
+        },
+        "action-23-m1-o0": {
+          "kind": "action",
+          "inputHash": "f9fbcac798a644adb9c02059402f7cb479af59a23a8709105768c02ddee0e90d",
+          "codeToMeaning": {
+            "2": "verify",
+            "3": "accept"
+          },
+          "candidateTokenIds": [
+            17,
+            18
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "2",
+            "3"
+          ],
+          "verificationCost": 20
+        },
+        "action-23-m1-o1": {
+          "kind": "action",
+          "inputHash": "11cc3d831431ff6137d796464384f3f70188856288bf3663752376151ec9ace0",
+          "codeToMeaning": {
+            "2": "verify",
+            "3": "accept"
+          },
+          "candidateTokenIds": [
+            17,
+            18
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "3",
+            "2"
+          ],
+          "verificationCost": 20
+        },
+        "action-45-m0-o0": {
+          "kind": "action",
+          "inputHash": "bf4be7ce474ea18906275dcfb83ca5f513eb0be8d7b95adb5e7e96df0fcc49e4",
+          "codeToMeaning": {
+            "4": "accept",
+            "5": "verify"
+          },
+          "candidateTokenIds": [
+            20,
+            19
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "4",
+            "5"
+          ],
+          "verificationCost": 20
+        },
+        "action-45-m0-o1": {
+          "kind": "action",
+          "inputHash": "4c2b59f236a6fedb7882d50a2b5510d409848c72f937bd2c1102939be2a8a22c",
+          "codeToMeaning": {
+            "4": "accept",
+            "5": "verify"
+          },
+          "candidateTokenIds": [
+            20,
+            19
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "5",
+            "4"
+          ],
+          "verificationCost": 20
+        },
+        "action-45-m1-o0": {
+          "kind": "action",
+          "inputHash": "3e5ad5a8ed576710de42a6cfb3140b940d8870f9659a8a8b4b1706cee0be44cb",
+          "codeToMeaning": {
+            "4": "verify",
+            "5": "accept"
+          },
+          "candidateTokenIds": [
+            19,
+            20
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "4",
+            "5"
+          ],
+          "verificationCost": 20
+        },
+        "action-45-m1-o1": {
+          "kind": "action",
+          "inputHash": "b1489601e5099b5880e85db8177881467b149190cdc9f666793f5ae55199e9fa",
+          "codeToMeaning": {
+            "4": "verify",
+            "5": "accept"
+          },
+          "candidateTokenIds": [
+            19,
+            20
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "5",
+            "4"
+          ],
+          "verificationCost": 20
+        }
+      }
+    },
+    {
+      "question": "Exemple technique pour contrôler les branches de décision.",
+      "answer": "\n17",
+      "verificationCost": 80,
+      "prefixTokens": 49,
+      "prefixHash": "cdcb1b708f77b29ca98e11a24e9febb08392948875519bc22ef2a19e7fe3a3fa",
+      "position": 48,
+      "branches": {
+        "judgment": {
+          "kind": "judgment",
+          "inputHash": "f34d0b5c637def3971c8053a16518d12549d4e91c3d7dde3cbe6bd581f9fe002",
+          "codeToMeaning": {
+            "0": "incorrect",
+            "1": "correct"
+          },
+          "candidateTokenIds": [
+            15,
+            16
+          ],
+          "inputTokens": 101,
+          "sharedPrefixExact": true,
+          "optionOrder": null,
+          "verificationCost": null
+        },
+        "action-23-m0-o0": {
+          "kind": "action",
+          "inputHash": "668774fd18f3f904cb3beb3acdde127a8fef6a98f1716a69faf1051591130fc5",
+          "codeToMeaning": {
+            "2": "accept",
+            "3": "verify"
+          },
+          "candidateTokenIds": [
+            18,
+            17
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "2",
+            "3"
+          ],
+          "verificationCost": 80
+        },
+        "action-23-m0-o1": {
+          "kind": "action",
+          "inputHash": "a474b5bd36ef8f60b644b3bf70f26da98fa5551aef1644759733a7b039240a98",
+          "codeToMeaning": {
+            "2": "accept",
+            "3": "verify"
+          },
+          "candidateTokenIds": [
+            18,
+            17
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "3",
+            "2"
+          ],
+          "verificationCost": 80
+        },
+        "action-23-m1-o0": {
+          "kind": "action",
+          "inputHash": "a04fb31537ae1e5b284f23228e986584a0b6e67fc29a25ce2216855ffebb4bcf",
+          "codeToMeaning": {
+            "2": "verify",
+            "3": "accept"
+          },
+          "candidateTokenIds": [
+            17,
+            18
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "2",
+            "3"
+          ],
+          "verificationCost": 80
+        },
+        "action-23-m1-o1": {
+          "kind": "action",
+          "inputHash": "1f3284df1cce038e64fb312804877f83e5a797fc4cdbb9262df3c7427cadd2c0",
+          "codeToMeaning": {
+            "2": "verify",
+            "3": "accept"
+          },
+          "candidateTokenIds": [
+            17,
+            18
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "3",
+            "2"
+          ],
+          "verificationCost": 80
+        },
+        "action-45-m0-o0": {
+          "kind": "action",
+          "inputHash": "955cf6f3b0b12262b95f2e0cfacf8a6136f0ac107f03f75c8aa46d3b80c5d98f",
+          "codeToMeaning": {
+            "4": "accept",
+            "5": "verify"
+          },
+          "candidateTokenIds": [
+            20,
+            19
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "4",
+            "5"
+          ],
+          "verificationCost": 80
+        },
+        "action-45-m0-o1": {
+          "kind": "action",
+          "inputHash": "0b534725c025055113b5d593452db9a8ca1066943bc2b82680a33e2da10ed700",
+          "codeToMeaning": {
+            "4": "accept",
+            "5": "verify"
+          },
+          "candidateTokenIds": [
+            20,
+            19
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "5",
+            "4"
+          ],
+          "verificationCost": 80
+        },
+        "action-45-m1-o0": {
+          "kind": "action",
+          "inputHash": "5520ee54eebd90404beb5a56c2211700b8464538cf8d6ebff43a17eda560d338",
+          "codeToMeaning": {
+            "4": "verify",
+            "5": "accept"
+          },
+          "candidateTokenIds": [
+            19,
+            20
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "4",
+            "5"
+          ],
+          "verificationCost": 80
+        },
+        "action-45-m1-o1": {
+          "kind": "action",
+          "inputHash": "eeb15c23d81b6b32e77011a69330f8c4ba4d68dc45e5d41615ee166e2babab1a",
+          "codeToMeaning": {
+            "4": "verify",
+            "5": "accept"
+          },
+          "candidateTokenIds": [
+            19,
+            20
+          ],
+          "inputTokens": 162,
+          "sharedPrefixExact": true,
+          "optionOrder": [
+            "5",
+            "4"
+          ],
+          "verificationCost": 80
+        }
+      }
+    }
+  ],
+  "branchesChecked": 72,
+  "pretrainedModelLoaded": false,
+  "generations": 0,
+  "trainingUpdates": 0,
+  "scope": "Token framing, code mapping, input budget and declared stop tokens only. Synthetic token sequences validate parsing; no Menia decision or consciousness result."
+}

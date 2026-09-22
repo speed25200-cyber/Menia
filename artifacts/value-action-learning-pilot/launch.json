@@ -1,0 +1,34 @@
+{
+  "schema": "menia-value-action-learning-launch-v2",
+  "pid": 183649,
+  "startedUTC": "2026-09-19T22:06:48.326231+00:00",
+  "scienceRevision": "ca80a90d04289bde1a5436587588caf6d797a538",
+  "notebookRevision": "1da6f7bd5421081ef244ed584a41c1b9f42e7133",
+  "notebookSHA256": "bcc321cb2180c515953a38919bb9b4b31033332372a5d419cd7214e69e2c8626",
+  "gpuPreflight": "NVIDIA A100-SXM4-40GB, 0 MiB, 40960 MiB",
+  "directory": "/content/menia-value-action-mcp-20260920-v2",
+  "observedUTC": "2026-09-19T22:08:01.329330+00:00",
+  "planHash": "74947f83c025eea707a7ee8a95256fbf1e74c42655155128eee96d1e83d76f08",
+  "sourceHash": "ad3ead7b250bcb86c3dd4bd7cc57a5c1b0729f98f6c1492041842980fcc7e394",
+  "initialEvents": {
+    "header": 1,
+    "training_start": 1,
+    "training_step": 2
+  },
+  "initialTrainingUnits": {
+    "r0-choice": 2
+  },
+  "colabTests": {
+    "passed": true,
+    "count": 6,
+    "seconds": 50.461
+  },
+  "localTests": {
+    "tests": 6,
+    "seconds": 28.208,
+    "passed": true,
+    "command": "python -m unittest tests_research.test_value_action_learning tests_language.test_action_binding_gpu -v"
+  },
+  "previousAttempt": "aborted-v1.json",
+  "scope": "Live process and frozen source verified. No evaluation outcome yet. Original v1 retained; corrected v2 has no reused trained weights."
+}

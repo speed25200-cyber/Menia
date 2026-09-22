@@ -1,0 +1,95 @@
+{
+  "criteria": {
+    "seeds": [
+      53,
+      61,
+      71
+    ],
+    "values": {
+      "53": {
+        "SN": {
+          "M1": 0.9583333333333334,
+          "reads_after_change": 1.4666666666666666,
+          "reads_control": 0.36,
+          "control_hits_after": 8.17,
+          "change_hits_after": 4.85,
+          "own_policy_reads_after_change": 0.023333333333333334
+        },
+        "MS": {
+          "M1": 1.0,
+          "reads_after_change": 1.4133333333333333,
+          "reads_control": 0.9866666666666667,
+          "control_hits_after": 7.73,
+          "change_hits_after": 6.5,
+          "own_policy_reads_after_change": 0.51
+        },
+        "MS10": {
+          "M1": 0.9983333333333333,
+          "reads_after_change": 0.5933333333333334,
+          "reads_control": 0.0,
+          "control_hits_after": 8.433333333333334,
+          "change_hits_after": 7.026666666666666,
+          "own_policy_reads_after_change": 0.06666666666666667
+        }
+      },
+      "61": {
+        "SN": {
+          "M1": 0.94375,
+          "reads_after_change": 1.7366666666666666,
+          "reads_control": 0.19,
+          "control_hits_after": 8.276666666666667,
+          "change_hits_after": 4.86,
+          "own_policy_reads_after_change": 0.043333333333333335
+        },
+        "MS": {
+          "M1": 0.9995833333333334,
+          "reads_after_change": 2.3466666666666667,
+          "reads_control": 2.0233333333333334,
+          "control_hits_after": 7.0633333333333335,
+          "change_hits_after": 5.95,
+          "own_policy_reads_after_change": 0.7333333333333333
+        },
+        "MS10": {
+          "M1": 1.0,
+          "reads_after_change": 1.0466666666666666,
+          "reads_control": 0.12666666666666668,
+          "control_hits_after": 8.31,
+          "change_hits_after": 6.823333333333333,
+          "own_policy_reads_after_change": 0.016666666666666666
+        }
+      },
+      "71": {
+        "SN": {
+          "M1": 0.9879166666666667,
+          "reads_after_change": 0.7,
+          "reads_control": 0.056666666666666664,
+          "control_hits_after": 8.406666666666666,
+          "change_hits_after": 5.533333333333333,
+          "own_policy_reads_after_change": 0.04
+        },
+        "MS": {
+          "M1": 0.9995833333333334,
+          "reads_after_change": 1.6666666666666667,
+          "reads_control": 1.3766666666666667,
+          "control_hits_after": 7.473333333333334,
+          "change_hits_after": 6.3533333333333335,
+          "own_policy_reads_after_change": 0.8466666666666667
+        },
+        "MS10": {
+          "M1": 0.995,
+          "reads_after_change": 0.4633333333333333,
+          "reads_control": 0.006666666666666667,
+          "control_hits_after": 8.4,
+          "change_hits_after": 7.096666666666667,
+          "own_policy_reads_after_change": 0.03
+        }
+      }
+    },
+    "H1_no_developmental_precondition": false,
+    "H2_hypervigilance": false,
+    "H3_dose": false,
+    "H4_tradeoff": false,
+    "H5_habit_does_not_transfer": false,
+    "global": false
+  }
+}

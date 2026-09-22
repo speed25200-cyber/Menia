@@ -1,0 +1,32 @@
+{
+  "schema": "menia-action-decomposition-launch-v1",
+  "pid": 172402,
+  "startedUTC": "2026-09-19T21:21:19.021587+00:00",
+  "scienceRevision": "5a9b27b67ed3f8687b52b310ee2f5ccd3f503a59",
+  "notebookRevision": "f8562d8b95e1fe83e9f29b6a21da1f29d66fa8e2",
+  "notebookSHA256": "f4eab1b51859427396ba77c403453edc342336e9893effbf45be675b31b2f729",
+  "gpuPreflight": "NVIDIA A100-SXM4-40GB, 0 MiB, 40960 MiB",
+  "directory": "/content/menia-action-decomposition-mcp-20260919",
+  "observedUTC": "2026-09-19T21:21:34.288386+00:00",
+  "planHash": "6a48ba382fecf2319909045bc64aed901f4ce34f7139e7800843fdf506cb7377",
+  "sourceHash": "f852a47d6fb92913f69d53bc9d39980c075df58f2fd0b3d2ae26f42be254a59f",
+  "initialEvents": {
+    "header": 1,
+    "request": 14,
+    "result": 13
+  },
+  "initialStages": {
+    "replay": 14
+  },
+  "colabTests": {
+    "passed": true,
+    "count": 5,
+    "seconds": 0.618
+  },
+  "localTests": {
+    "passed": true,
+    "count": 5,
+    "seconds": 0.492
+  },
+  "scope": "Live process verified; original attempt only. No diagnostic outcome read."
+}

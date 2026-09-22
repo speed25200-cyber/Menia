@@ -1,0 +1,159 @@
+{
+  "schema": "menia-ranking-training-backup-receipt-v1",
+  "origin": "actual_colab_training_weights",
+  "archiveName": "menia-classement-poids-v1.zip",
+  "archiveBytes": 115211294,
+  "archiveSHA256": "1362bc856de6196b33408659d95c0b832b01cccc04e8b89ca91d8aedff72d4b3",
+  "files": 13,
+  "capturedFreezeUTC": "2026-09-20T02:06:58.307514+00:00",
+  "trainingPrefixSHA256": "eb27907387de279f6dd98cb5c37f186125f4221ab2bf413e39d931c197187e5c",
+  "trainingPrefixBytes": 4932749,
+  "chainEnd": "cb5a413f92f2b3d93ed21f452124d368d195a9f9a81a524d7ae2f0bf5f8163f7",
+  "planHash": "83d81c430208ab1c4f0f970e232e190e19be22af43ee4c2a3f554586efbb9b9c",
+  "sourceHash": "12489c817466d98892b43e249fdd7a25d360522770af820c0bfefefda7d87129",
+  "completedAdapters": 9,
+  "trainingSteps": 1296,
+  "outcomesIncluded": false,
+  "recordedEvaluationCalls": 0,
+  "weightsChecked": {
+    "confidence-ranking-20260920-v1.r0-initial.safetensors": {
+      "sha256": "2c24bb560ffb9cb2f26b2cd7eaae4f93d23856415af33c3642ad54626e4d2e18",
+      "tensors": 144,
+      "parameters": 2949120,
+      "bytes": 11811296,
+      "initial": true,
+      "dtype": "float32",
+      "finite": true,
+      "exactQwenProjectionShapes": true
+    },
+    "confidence-ranking-20260920-v1.r0-ce.safetensors": {
+      "sha256": "9a0fef8e88cf93b464be5f53f9b482b9368df092133537c81e17234e32adb1c9",
+      "tensors": 144,
+      "parameters": 2949120,
+      "bytes": 11811296,
+      "initial": false,
+      "dtype": "float32",
+      "finite": true,
+      "exactQwenProjectionShapes": true,
+      "changedTensors": 144
+    },
+    "confidence-ranking-20260920-v1.r0-rank.safetensors": {
+      "sha256": "d7919cd9b9ddb0ce2df4fff21e246020576fd4b8c68c5d0f81e61a2228483ed1",
+      "tensors": 144,
+      "parameters": 2949120,
+      "bytes": 11811296,
+      "initial": false,
+      "dtype": "float32",
+      "finite": true,
+      "exactQwenProjectionShapes": true,
+      "changedTensors": 144
+    },
+    "confidence-ranking-20260920-v1.r0-neutral.safetensors": {
+      "sha256": "f11a03af036dc9087c530c64ddcf21f7451c75ad01177d6120319756bdbcfdb0",
+      "tensors": 144,
+      "parameters": 2949120,
+      "bytes": 11811296,
+      "initial": false,
+      "dtype": "float32",
+      "finite": true,
+      "exactQwenProjectionShapes": true,
+      "changedTensors": 144
+    },
+    "confidence-ranking-20260920-v1.r1-initial.safetensors": {
+      "sha256": "eef7ba9be1eaea303a2c855c1cb15ef591209d709f60793114691a1976b1299e",
+      "tensors": 144,
+      "parameters": 2949120,
+      "bytes": 11811296,
+      "initial": true,
+      "dtype": "float32",
+      "finite": true,
+      "exactQwenProjectionShapes": true
+    },
+    "confidence-ranking-20260920-v1.r1-ce.safetensors": {
+      "sha256": "5dd0df59e9751e99204881b20ce064a7407a17624cc5abdb2969c0abcb01b225",
+      "tensors": 144,
+      "parameters": 2949120,
+      "bytes": 11811296,
+      "initial": false,
+      "dtype": "float32",
+      "finite": true,
+      "exactQwenProjectionShapes": true,
+      "changedTensors": 144
+    },
+    "confidence-ranking-20260920-v1.r1-rank.safetensors": {
+      "sha256": "ff15d693e24f67067dbab7a9f5fb81c475ad07a9892968abc6616a6b83f32525",
+      "tensors": 144,
+      "parameters": 2949120,
+      "bytes": 11811296,
+      "initial": false,
+      "dtype": "float32",
+      "finite": true,
+      "exactQwenProjectionShapes": true,
+      "changedTensors": 144
+    },
+    "confidence-ranking-20260920-v1.r1-neutral.safetensors": {
+      "sha256": "3dcb58c3f05cb147ddcb47d7ae24dd18f15d614737d7bb1b91c52dfc3d1bc156",
+      "tensors": 144,
+      "parameters": 2949120,
+      "bytes": 11811296,
+      "initial": false,
+      "dtype": "float32",
+      "finite": true,
+      "exactQwenProjectionShapes": true,
+      "changedTensors": 144
+    },
+    "confidence-ranking-20260920-v1.r2-initial.safetensors": {
+      "sha256": "8c0cf39ca6fe4254d9b0d80a18c9068568d0c89769308149285ae92582124ae0",
+      "tensors": 144,
+      "parameters": 2949120,
+      "bytes": 11811296,
+      "initial": true,
+      "dtype": "float32",
+      "finite": true,
+      "exactQwenProjectionShapes": true
+    },
+    "confidence-ranking-20260920-v1.r2-ce.safetensors": {
+      "sha256": "475cd49e82cf16e63e44ba03525b9f65208fd7020c43bf31051062a0fb9a3661",
+      "tensors": 144,
+      "parameters": 2949120,
+      "bytes": 11811296,
+      "initial": false,
+      "dtype": "float32",
+      "finite": true,
+      "exactQwenProjectionShapes": true,
+      "changedTensors": 144
+    },
+    "confidence-ranking-20260920-v1.r2-rank.safetensors": {
+      "sha256": "73a767db9436372ec8d8c76d5e9ccb7aa96a1cfabca5119220657621fe0fce51",
+      "tensors": 144,
+      "parameters": 2949120,
+      "bytes": 11811296,
+      "initial": false,
+      "dtype": "float32",
+      "finite": true,
+      "exactQwenProjectionShapes": true,
+      "changedTensors": 144
+    },
+    "confidence-ranking-20260920-v1.r2-neutral.safetensors": {
+      "sha256": "0d43e922f483bcdc0c98947474b291c87e5c033e66cd6667aef01e22ae95acb3",
+      "tensors": 144,
+      "parameters": 2949120,
+      "bytes": 11811296,
+      "initial": false,
+      "dtype": "float32",
+      "finite": true,
+      "exactQwenProjectionShapes": true,
+      "changedTensors": 144
+    }
+  },
+  "checks": {
+    "fileHashes": true,
+    "journalChain": true,
+    "pairedExposure": true,
+    "pairLossArithmetic": true,
+    "exactProjectionShapes": true,
+    "dtypeAndFiniteness": true,
+    "initializationAndUpdates": true
+  },
+  "scope": "Local backup and tensor audit of real training state only. Shared frozen journal reader; no evaluation outcome inspected, no independent base-model integrity attestation and no performance or consciousness claim."
+}

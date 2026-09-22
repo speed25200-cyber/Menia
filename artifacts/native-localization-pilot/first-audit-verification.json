@@ -1,0 +1,493 @@
+{
+  "schema": "menia-native-first-audit-verification-v1",
+  "journalSHA256": "dfe2b58ea365002b9ef5948ac1c7c28b226dc68926f3857fa403cd01ae386f8e",
+  "codeRevision": "9fc95269297854d5ac5b910904a13b033fd8be38",
+  "sourceHash": "f8cb9b8be4f04e0084f5d7ce703300fcc4350f4f06abb8d0ba2aafe5d7cabc13",
+  "planHash": "8c8a12615cec3f31de9ab72cb2194139db6c6bad0774142b8318ebb175fad118",
+  "verification": {
+    "complete": true,
+    "summaryExactMatch": true,
+    "independentMetricMaxDifference": 2.220446049250313e-16,
+    "independentContrastMaxDifference": 0.0,
+    "independentSiteMaxDifference": 0.0,
+    "scoredForwards": 1680,
+    "trainingSteps": 576,
+    "shamExactPairs": 240,
+    "traceCount": 2256,
+    "maxNormRelativeError": 0.0018236517207697034,
+    "inputTokenRange": [
+      151,
+      180
+    ],
+    "evaluationSeconds": 137.54117828500216,
+    "errors": 0,
+    "trainingRestarts": 0,
+    "interruptedRequests": 0
+  },
+  "diagnosticAfterReceipt": {
+    "training": {
+      "aligned": {
+        "steps": 288,
+        "parameters": 2949120,
+        "sha256": "eeab9ec662d076b91cfa43108ae103a825d3b608489694aaacde0434d78d21fe",
+        "tensors": 144,
+        "nonzeroBTensors": 72,
+        "first24MeanLoss": 4.118051891525586,
+        "last24MeanLoss": 2.474439173936844,
+        "gradientNormRange": [
+          0.705594539642334,
+          69.82330322265625
+        ]
+      },
+      "shuffled": {
+        "steps": 288,
+        "parameters": 2949120,
+        "sha256": "d1f56fe61bfd59c3431642fc573d91962aaebd4f6f8f0ad2a48a027bf4bb1d36",
+        "tensors": 144,
+        "nonzeroBTensors": 72,
+        "first24MeanLoss": 3.397635564673692,
+        "last24MeanLoss": 2.181806802749634,
+        "gradientNormRange": [
+          0.2607177793979645,
+          85.56721496582031
+        ]
+      }
+    },
+    "behavior": {
+      "base": {
+        "localize": {
+          "testPredictedCounts": {
+            "0": 0,
+            "1": 6,
+            "2": 38,
+            "3": 71,
+            "4": 42,
+            "5": 35
+          },
+          "confusionRowsTargetColumnsPrediction": [
+            [
+              0,
+              1,
+              6,
+              12,
+              7,
+              6
+            ],
+            [
+              0,
+              1,
+              6,
+              12,
+              7,
+              6
+            ],
+            [
+              0,
+              1,
+              7,
+              12,
+              7,
+              5
+            ],
+            [
+              0,
+              1,
+              6,
+              12,
+              7,
+              6
+            ],
+            [
+              0,
+              1,
+              6,
+              12,
+              7,
+              6
+            ],
+            [
+              0,
+              1,
+              7,
+              11,
+              7,
+              6
+            ]
+          ],
+          "perturbedLogitsDifferFromUnperturbed": 156,
+          "perturbedArgmaxDiffersFromUnperturbed": 2,
+          "maxConditionalProbabilityChange": 0.3104900296142009,
+          "allEvaluationPredictedCounts": {
+            "0": 0,
+            "1": 9,
+            "2": 58,
+            "3": 104,
+            "4": 61,
+            "5": 48
+          }
+        },
+        "marker": {
+          "testPredictedCounts": {
+            "0": 42,
+            "1": 0,
+            "2": 42,
+            "3": 36,
+            "4": 36,
+            "5": 36
+          },
+          "confusionRowsTargetColumnsPrediction": [
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              42,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              42,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              36,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              36,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              36
+            ]
+          ],
+          "perturbedLogitsDifferFromUnperturbed": 157,
+          "perturbedArgmaxDiffersFromUnperturbed": 0,
+          "maxConditionalProbabilityChange": 0.005404839114403703,
+          "allEvaluationPredictedCounts": {
+            "0": 63,
+            "1": 0,
+            "2": 63,
+            "3": 56,
+            "4": 49,
+            "5": 49
+          }
+        }
+      },
+      "aligned": {
+        "localize": {
+          "testPredictedCounts": {
+            "0": 0,
+            "1": 0,
+            "2": 192,
+            "3": 0,
+            "4": 0,
+            "5": 0
+          },
+          "confusionRowsTargetColumnsPrediction": [
+            [
+              0,
+              0,
+              32,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              32,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              32,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              32,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              32,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              32,
+              0,
+              0,
+              0
+            ]
+          ],
+          "perturbedLogitsDifferFromUnperturbed": 142,
+          "perturbedArgmaxDiffersFromUnperturbed": 0,
+          "maxConditionalProbabilityChange": 0.027838977294507683,
+          "allEvaluationPredictedCounts": {
+            "0": 0,
+            "1": 0,
+            "2": 280,
+            "3": 0,
+            "4": 0,
+            "5": 0
+          }
+        },
+        "marker": {
+          "testPredictedCounts": {
+            "0": 0,
+            "1": 0,
+            "2": 192,
+            "3": 0,
+            "4": 0,
+            "5": 0
+          },
+          "confusionRowsTargetColumnsPrediction": [
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              42,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              42,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              36,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              36,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              36,
+              0,
+              0,
+              0
+            ]
+          ],
+          "perturbedLogitsDifferFromUnperturbed": 130,
+          "perturbedArgmaxDiffersFromUnperturbed": 0,
+          "maxConditionalProbabilityChange": 0.015430445176872365,
+          "allEvaluationPredictedCounts": {
+            "0": 0,
+            "1": 0,
+            "2": 280,
+            "3": 0,
+            "4": 0,
+            "5": 0
+          }
+        }
+      },
+      "shuffled": {
+        "localize": {
+          "testPredictedCounts": {
+            "0": 0,
+            "1": 0,
+            "2": 192,
+            "3": 0,
+            "4": 0,
+            "5": 0
+          },
+          "confusionRowsTargetColumnsPrediction": [
+            [
+              0,
+              0,
+              32,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              32,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              32,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              32,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              32,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              32,
+              0,
+              0,
+              0
+            ]
+          ],
+          "perturbedLogitsDifferFromUnperturbed": 125,
+          "perturbedArgmaxDiffersFromUnperturbed": 0,
+          "maxConditionalProbabilityChange": 0.02100600851014872,
+          "allEvaluationPredictedCounts": {
+            "0": 0,
+            "1": 0,
+            "2": 280,
+            "3": 0,
+            "4": 0,
+            "5": 0
+          }
+        },
+        "marker": {
+          "testPredictedCounts": {
+            "0": 0,
+            "1": 42,
+            "2": 82,
+            "3": 22,
+            "4": 23,
+            "5": 23
+          },
+          "confusionRowsTargetColumnsPrediction": [
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              42,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              42,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              26,
+              10,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              12,
+              23,
+              0
+            ],
+            [
+              0,
+              0,
+              13,
+              0,
+              0,
+              23
+            ]
+          ],
+          "perturbedLogitsDifferFromUnperturbed": 144,
+          "perturbedArgmaxDiffersFromUnperturbed": 13,
+          "maxConditionalProbabilityChange": 0.042817858675509024,
+          "allEvaluationPredictedCounts": {
+            "0": 0,
+            "1": 59,
+            "2": 125,
+            "3": 38,
+            "4": 27,
+            "5": 31
+          }
+        }
+      }
+    }
+  },
+  "limits": "Shared pinned plan; independent scalar metrics, integer-count contrasts and checkpoint inspection. No new model calls or independent hardware attestation. Descriptive diagnostics do not change the primary grading.",
+  "archiveSHA256": "d202f9c7f4654dba0e21bc1e4a1415a3a3e9a40e04394ea3c80a2e3e6a7ac206"
+}

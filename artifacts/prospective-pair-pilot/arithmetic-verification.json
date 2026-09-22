@@ -1,0 +1,18 @@
+{
+  "schema": "menia-pair-separate-arithmetic-v1",
+  "verified": true,
+  "journalSHA256": "088312d6683ce76c3a5e6c5cc6a515503dcdf1d9770debcd4763fdd701d6b0a1",
+  "summarySHA256": "8acc05f227bcdaaa203146bcda3bf4d20d1402c64d9a416c5baa1fb26e1d5853",
+  "auditorSourceHash": "3b55b5084de241b4a4dd5b5de4f797d02323252a2dc986820f357d53bf32761a",
+  "branchRecords": 2880,
+  "numericComparisons": 91,
+  "maximumAbsoluteDifference": 5.551115123125783e-16,
+  "mixedOutcomeStates": {
+    "actual": 0,
+    "same_schedule": 0,
+    "values_permuted": 24,
+    "joint_permuted": 0,
+    "restored": 0
+  },
+  "scope": "Separate decimal probability and score calculations on the same journal. No independent collection or model-weight attestation."
+}
