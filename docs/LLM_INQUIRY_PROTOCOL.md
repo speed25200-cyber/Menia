@@ -1,6 +1,6 @@
 # Protocole pré-enregistré — Où le LLM ajusté chercherait-il sa cause ?
 
-Rédigé le 22 septembre 2026 à 23 h 15 UTC, **avant la lecture de tout
+Rédigé le 22 septembre 2026 à 23 h 05 UTC, **avant la lecture de tout
 résultat du corps ajusté relancé** et avant toute exécution de ce test.
 Seuils fixés, un échec est un résultat.
 
