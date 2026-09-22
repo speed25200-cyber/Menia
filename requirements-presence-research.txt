@@ -1,0 +1,4 @@
+# Optional presence/ownership XLSX analyses, isolated from the language model.
+# Versions used for the presence-causality and ownership-inference reports.
+numpy==2.3.5
+openpyxl==3.1.5

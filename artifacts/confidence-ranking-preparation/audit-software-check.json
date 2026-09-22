@@ -1,0 +1,25 @@
+{
+  "schema": "menia-confidence-ranking-audit-software-check-v1",
+  "origin": "synthetic_fixture",
+  "capturedUTC": "2026-09-20T01:33:31.043268+00:00",
+  "tests": 4,
+  "passed": true,
+  "numericalAudit": {
+    "schema": "menia-confidence-ranking-core-audit-v1",
+    "origin": "synthetic_fixture",
+    "verified": true,
+    "weightsChecked": false,
+    "weights": {},
+    "journalSHA256": "80082e5437498361c7d96465af4758a7355d80439010190286e58f4256b02076",
+    "planHash": "83d81c430208ab1c4f0f970e232e190e19be22af43ee4c2a3f554586efbb9b9c",
+    "sourceHash": "12489c817466d98892b43e249fdd7a25d360522770af820c0bfefefda7d87129",
+    "auditSourceSHA256": "c163cc39551655d2e75b05ed3788f3ac914d5475e792b1a15d248324fe7330b2",
+    "maxAbsoluteDifference": 3.3306690738754696e-16,
+    "comparisonsChecked": 18,
+    "bootstrapAucsRecomputed": 480000,
+    "scope": "Separate grading, pair-matrix AUROC, Brier, reliability, bootstrap intervals and gate arithmetic. Shared journal reader, fixed plan and NumPy random generator. Not an external replication; adapter file checks do not independently attest the unchanged base weights."
+  },
+  "frozenScientificSourceHash": "12489c817466d98892b43e249fdd7a25d360522770af820c0bfefefda7d87129",
+  "testSourceSHA256": "9c8033b3c1a1657ac3f140a0128ce7e0465a5386a875f5b1a03b2544f3e7ac34",
+  "scope": "Software validation on constructed scores with overlap and ties, not new Menia results. Tiny synthetic adapter files only. The actual Colab24 training and evaluation remain separate."
+}

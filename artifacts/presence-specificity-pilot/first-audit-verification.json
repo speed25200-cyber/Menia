@@ -1,0 +1,29 @@
+{
+  "schema": "menia-presence-specificity-verification-v1",
+  "origin": "transformers_gpu",
+  "complete": true,
+  "journalSHA256": "8c9243e99917981cb721f2215a73367e6265addfadf956fdbf89de4288e4d740",
+  "planHash": "0d59ec577260a857acaa25acf0ddca295f8b3a7c877196084371828b448a8981",
+  "sourceHash": "71e4980951d9bd323ecaf4c6445e80ab3c87566fadac82b6e05faedaf22cf643",
+  "independentMaxDifference": 2.220446049250313e-16,
+  "summaryMaxDifference": 3.3881317890172014e-21,
+  "evaluations": 9216,
+  "shamPairs": 2304,
+  "trainingEvents": 0,
+  "errors": 0,
+  "interruptedRequests": 0,
+  "maxNormRelativeError": 0.0009085651836358011,
+  "inputTokenRange": [
+    92,
+    119
+  ],
+  "firstTokenOutsideOptions": 0,
+  "mappingSignalRuleMet": false,
+  "visibleInstructionGateMet": false,
+  "fixedReadingRuleMet": false,
+  "limitations": "Shares strict lineage/order reader and fixed plan; independently recomputes targets, metrics, bootstrap and decision. Not an external replication, hardware attestation, or consciousness test.",
+  "archiveSHA256": "0848b4a63b9d690d3c85722c75fb386c785481f3cd4d204f15fac6a4a0f9e300",
+  "archiveBytes": 841097,
+  "parentCheckpointsVerifiedLocally": 9,
+  "codeCommit": "e783e117f2d59c89bcf4be467506ae115e5aaeff"
+}

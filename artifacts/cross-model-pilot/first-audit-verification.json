@@ -1,0 +1,265 @@
+{
+  "schema": "menia-cross-model-first-export-verification-v1",
+  "recordedCodeCommit": "9070e92d26e0d3e17556268cad7ba2b676937278",
+  "recordedSourceHashMatchesPinnedCode": true,
+  "recordedGpu": "NVIDIA A100-SXM4-40GB",
+  "recordedPython": "3.13.15",
+  "recordedCuda": "12.6",
+  "recordedVersions": {
+    "accelerate": "1.10.1",
+    "huggingface-hub": "0.36.2",
+    "numpy": "2.2.6",
+    "safetensors": "0.6.2",
+    "tokenizers": "0.22.2",
+    "torch": "2.8.0+cu126",
+    "transformers": "4.56.2"
+  },
+  "fixedEvaluatorSummaryMatchesSupplied": true,
+  "independentGradeChecks": 120,
+  "independentValidForecasts": 288,
+  "formats": {
+    "calibration_valid_answer": 46,
+    "calibration_invalid_answer": 2,
+    "evaluation_valid_answer": 72,
+    "evaluation_invalid_answer": 0
+  },
+  "cells": [
+    {
+      "family": "countA",
+      "level": 8,
+      "calibration": {
+        "A": {
+          "n": 4,
+          "correct": 1
+        },
+        "B": {
+          "n": 4,
+          "correct": 2
+        }
+      },
+      "evaluation": {
+        "A": {
+          "n": 6,
+          "correct": 3
+        },
+        "B": {
+          "n": 6,
+          "correct": 4
+        }
+      }
+    },
+    {
+      "family": "countA",
+      "level": 24,
+      "calibration": {
+        "A": {
+          "n": 4,
+          "correct": 1
+        },
+        "B": {
+          "n": 4,
+          "correct": 1
+        }
+      },
+      "evaluation": {
+        "A": {
+          "n": 6,
+          "correct": 1
+        },
+        "B": {
+          "n": 6,
+          "correct": 1
+        }
+      }
+    },
+    {
+      "family": "countA",
+      "level": 64,
+      "calibration": {
+        "A": {
+          "n": 4,
+          "correct": 0
+        },
+        "B": {
+          "n": 4,
+          "correct": 0
+        }
+      },
+      "evaluation": {
+        "A": {
+          "n": 6,
+          "correct": 1
+        },
+        "B": {
+          "n": 6,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "family": "alternatingSum",
+      "level": 2,
+      "calibration": {
+        "A": {
+          "n": 4,
+          "correct": 4
+        },
+        "B": {
+          "n": 4,
+          "correct": 4
+        }
+      },
+      "evaluation": {
+        "A": {
+          "n": 6,
+          "correct": 6
+        },
+        "B": {
+          "n": 6,
+          "correct": 6
+        }
+      }
+    },
+    {
+      "family": "alternatingSum",
+      "level": 4,
+      "calibration": {
+        "A": {
+          "n": 4,
+          "correct": 0
+        },
+        "B": {
+          "n": 4,
+          "correct": 0
+        }
+      },
+      "evaluation": {
+        "A": {
+          "n": 6,
+          "correct": 2
+        },
+        "B": {
+          "n": 6,
+          "correct": 2
+        }
+      }
+    },
+    {
+      "family": "alternatingSum",
+      "level": 8,
+      "calibration": {
+        "A": {
+          "n": 4,
+          "correct": 0
+        },
+        "B": {
+          "n": 4,
+          "correct": 0
+        }
+      },
+      "evaluation": {
+        "A": {
+          "n": 6,
+          "correct": 0
+        },
+        "B": {
+          "n": 6,
+          "correct": 0
+        }
+      }
+    }
+  ],
+  "exactBrierFractions": {
+    "normal": {
+      "A->A": "667/2880",
+      "A->B": "283/1440",
+      "B->A": "3233/14400",
+      "B->B": "3233/14400",
+      "diagonalAdvantage": "-101/5760"
+    },
+    "swapped": {
+      "A->A": "1699/7200",
+      "A->B": "461/2400",
+      "B->A": "3233/14400",
+      "B->B": "791/3600",
+      "diagonalAdvantage": "-563/28800"
+    }
+  },
+  "meanForecasts": {
+    "normal:A->A": 0.6180555555555556,
+    "normal:A->B": 0.5833333333333334,
+    "normal:B->A": 0.6041666666666666,
+    "normal:B->B": 0.6041666666666666,
+    "swapped:A->A": 0.6222222222222222,
+    "swapped:A->B": 0.5777777777777777,
+    "swapped:B->A": 0.6041666666666666,
+    "swapped:B->B": 0.6
+  },
+  "counterfactualDecisions": {
+    "normal:A->A": {
+      "direct": 6,
+      "wrongDirect": 0,
+      "verify": 30
+    },
+    "normal:A->B": {
+      "direct": 6,
+      "wrongDirect": 0,
+      "verify": 30
+    },
+    "normal:B->A": {
+      "direct": 7,
+      "wrongDirect": 1,
+      "verify": 29
+    },
+    "normal:B->B": {
+      "direct": 6,
+      "wrongDirect": 0,
+      "verify": 30
+    },
+    "swapped:A->A": {
+      "direct": 6,
+      "wrongDirect": 0,
+      "verify": 30
+    },
+    "swapped:A->B": {
+      "direct": 6,
+      "wrongDirect": 0,
+      "verify": 30
+    },
+    "swapped:B->A": {
+      "direct": 7,
+      "wrongDirect": 1,
+      "verify": 29
+    },
+    "swapped:B->B": {
+      "direct": 6,
+      "wrongDirect": 0,
+      "verify": 30
+    }
+  },
+  "callSecondsIncludingModelLoads": 283.73506122499975,
+  "callsReachingTokenLimit": 0,
+  "tokenRanges": {
+    "solve": {
+      "input": [
+        47,
+        83
+      ],
+      "output": [
+        2,
+        36
+      ]
+    },
+    "forecast": {
+      "input": [
+        441,
+        627
+      ],
+      "output": [
+        8,
+        9
+      ]
+    }
+  },
+  "scope": "One received journal. Metadata consistency is not independent hardware attestation. No new model inference. The two name views share outcomes."
+}

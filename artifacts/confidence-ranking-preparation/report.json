@@ -1,0 +1,201 @@
+{
+  "schema": "menia-confidence-ranking-preparation-v1",
+  "status": "Software and data preparation; no new learned result",
+  "trainingHash": "0694f42765731e3ab2031da214855468112c0bdfefe6ddd8019c769efcc403a8",
+  "config": {
+    "rank": 8,
+    "scale": 1.0,
+    "learningRate": 0.0001,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "epsilon": 1e-08,
+    "weightDecay": 0.0,
+    "clipNorm": 1.0,
+    "epochs": 2,
+    "batchSize": 8,
+    "updatesPerAdapter": 144,
+    "maxTrainingTokens": 1792,
+    "loss": "Mean code/EOS CE plus mean eligible logistic pair loss",
+    "pairWeight": 1.0,
+    "pairsPerBatch": 4
+  },
+  "arms": [
+    "ce",
+    "rank",
+    "neutral"
+  ],
+  "groups": {
+    "r0/countA/8": {
+      "correct": 40,
+      "incorrect": 56,
+      "eligiblePairsPerEpoch": 40,
+      "eligibleExamplesPerEpoch": 80,
+      "uniqueEligibleExamplesAcrossEpochs": 91,
+      "rareClass": false
+    },
+    "r0/countA/24": {
+      "correct": 22,
+      "incorrect": 74,
+      "eligiblePairsPerEpoch": 22,
+      "eligibleExamplesPerEpoch": 44,
+      "uniqueEligibleExamplesAcrossEpochs": 61,
+      "rareClass": false
+    },
+    "r0/countA/64": {
+      "correct": 6,
+      "incorrect": 90,
+      "eligiblePairsPerEpoch": 6,
+      "eligibleExamplesPerEpoch": 12,
+      "uniqueEligibleExamplesAcrossEpochs": 18,
+      "rareClass": false
+    },
+    "r0/alternatingSum/2": {
+      "correct": 90,
+      "incorrect": 6,
+      "eligiblePairsPerEpoch": 6,
+      "eligibleExamplesPerEpoch": 12,
+      "uniqueEligibleExamplesAcrossEpochs": 17,
+      "rareClass": false
+    },
+    "r0/alternatingSum/4": {
+      "correct": 10,
+      "incorrect": 86,
+      "eligiblePairsPerEpoch": 10,
+      "eligibleExamplesPerEpoch": 20,
+      "uniqueEligibleExamplesAcrossEpochs": 29,
+      "rareClass": false
+    },
+    "r0/alternatingSum/8": {
+      "correct": 1,
+      "incorrect": 95,
+      "eligiblePairsPerEpoch": 1,
+      "eligibleExamplesPerEpoch": 2,
+      "uniqueEligibleExamplesAcrossEpochs": 3,
+      "rareClass": true
+    },
+    "r1/countA/8": {
+      "correct": 48,
+      "incorrect": 48,
+      "eligiblePairsPerEpoch": 48,
+      "eligibleExamplesPerEpoch": 96,
+      "uniqueEligibleExamplesAcrossEpochs": 96,
+      "rareClass": false
+    },
+    "r1/countA/24": {
+      "correct": 29,
+      "incorrect": 67,
+      "eligiblePairsPerEpoch": 29,
+      "eligibleExamplesPerEpoch": 58,
+      "uniqueEligibleExamplesAcrossEpochs": 76,
+      "rareClass": false
+    },
+    "r1/countA/64": {
+      "correct": 8,
+      "incorrect": 88,
+      "eligiblePairsPerEpoch": 8,
+      "eligibleExamplesPerEpoch": 16,
+      "uniqueEligibleExamplesAcrossEpochs": 24,
+      "rareClass": false
+    },
+    "r1/alternatingSum/2": {
+      "correct": 94,
+      "incorrect": 2,
+      "eligiblePairsPerEpoch": 2,
+      "eligibleExamplesPerEpoch": 4,
+      "uniqueEligibleExamplesAcrossEpochs": 6,
+      "rareClass": false
+    },
+    "r1/alternatingSum/4": {
+      "correct": 5,
+      "incorrect": 91,
+      "eligiblePairsPerEpoch": 5,
+      "eligibleExamplesPerEpoch": 10,
+      "uniqueEligibleExamplesAcrossEpochs": 14,
+      "rareClass": false
+    },
+    "r1/alternatingSum/8": {
+      "correct": 0,
+      "incorrect": 96,
+      "eligiblePairsPerEpoch": 0,
+      "eligibleExamplesPerEpoch": 0,
+      "uniqueEligibleExamplesAcrossEpochs": 0,
+      "rareClass": true
+    },
+    "r2/countA/8": {
+      "correct": 48,
+      "incorrect": 48,
+      "eligiblePairsPerEpoch": 48,
+      "eligibleExamplesPerEpoch": 96,
+      "uniqueEligibleExamplesAcrossEpochs": 96,
+      "rareClass": false
+    },
+    "r2/countA/24": {
+      "correct": 18,
+      "incorrect": 78,
+      "eligiblePairsPerEpoch": 18,
+      "eligibleExamplesPerEpoch": 36,
+      "uniqueEligibleExamplesAcrossEpochs": 49,
+      "rareClass": false
+    },
+    "r2/countA/64": {
+      "correct": 9,
+      "incorrect": 87,
+      "eligiblePairsPerEpoch": 9,
+      "eligibleExamplesPerEpoch": 18,
+      "uniqueEligibleExamplesAcrossEpochs": 27,
+      "rareClass": false
+    },
+    "r2/alternatingSum/2": {
+      "correct": 91,
+      "incorrect": 5,
+      "eligiblePairsPerEpoch": 5,
+      "eligibleExamplesPerEpoch": 10,
+      "uniqueEligibleExamplesAcrossEpochs": 15,
+      "rareClass": false
+    },
+    "r2/alternatingSum/4": {
+      "correct": 5,
+      "incorrect": 91,
+      "eligiblePairsPerEpoch": 5,
+      "eligibleExamplesPerEpoch": 10,
+      "uniqueEligibleExamplesAcrossEpochs": 14,
+      "rareClass": false
+    },
+    "r2/alternatingSum/8": {
+      "correct": 1,
+      "incorrect": 95,
+      "eligiblePairsPerEpoch": 1,
+      "eligibleExamplesPerEpoch": 2,
+      "uniqueEligibleExamplesAcrossEpochs": 3,
+      "rareClass": true
+    }
+  },
+  "schedules": {
+    "0": {
+      "hash": "b83b345c96dc4eea5d6d59d77ca0057128d85d2e12e3f37b79772fc3555d3e9c",
+      "batches": 144,
+      "examplesPerEpoch": 576,
+      "pairsPerEpoch": 288
+    },
+    "1": {
+      "hash": "25519fc7e2eba811879fa3013572b33cc97cdfbb65f286a317cc366cf8f4f784",
+      "batches": 144,
+      "examplesPerEpoch": 576,
+      "pairsPerEpoch": 288
+    },
+    "2": {
+      "hash": "b69ee7d0f7ad3b8bc5060e88be381a18a328db6df3842fc65ede64c76875b34e",
+      "batches": 144,
+      "examplesPerEpoch": 576,
+      "pairsPerEpoch": 288
+    }
+  },
+  "uniqueTrainingExamples": 1728,
+  "adapterUpdatesPlanned": 1296,
+  "trainedAdaptersPlanned": 9,
+  "initialAdaptersPlanned": 3,
+  "scope": "Rank 8 held fixed to isolate the loss. No capacity comparison, privileged self-access, action benefit or consciousness conclusion.",
+  "parentTrainingReportHash": "d70ac03eb906f2ef4fa18b69f55e68ea71fc65a6c5e6bfd32e501326aafce1e8"
+}

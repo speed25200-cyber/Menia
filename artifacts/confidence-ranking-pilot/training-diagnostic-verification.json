@@ -1,0 +1,13 @@
+{
+  "schema": "menia-ranking-training-diagnostic-verification-v1",
+  "verified": true,
+  "origin": "actual_training_preupdate_metrics",
+  "journalSHA256": "eb27907387de279f6dd98cb5c37f186125f4221ab2bf413e39d931c197187e5c",
+  "reportSHA256": "c54eb1100d2ce22cb800b602e8a48bbd12a332de8f5533f6cdbfa3fcd65d488f",
+  "metricGroups": 126,
+  "numericFields": 1074,
+  "maxAbsoluteDifference": 4.440892098500626e-16,
+  "implementation": "NumPy arrays, explicit target-dependent sign and logaddexp; main diagnostic uses scalar fsum and log1p.",
+  "shared": "Frozen journal reader, paired-batch recipe, raw training observations and NumPy dependency.",
+  "scope": "Numerical cross-check of online training metrics only. No independent experiment, frozen-checkpoint or held-out score."
+}

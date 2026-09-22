@@ -1,0 +1,115 @@
+{
+  "schema": "menia-optimizer-memory-training-freeze-v1",
+  "origin": "transformers_gpu",
+  "planHash": "1610c06f7f2846cbd30ca1f45f258ff83a1e596044273dc61fc8e488956512cf",
+  "sourceHash": "adc8769234100063ae56b3f4def89e4de7e81af26e3302fdc9b20b635b77c45f",
+  "trainingSnapshotSHA256": "27c41bed0e47900a7de72df80d3ff8569fd09f3230b57817624a9bf577680239",
+  "trainingSteps": 288,
+  "gradientSteps": 240,
+  "zeroGradientSteps": 48,
+  "allTwelveCompleteBeforeFirstEvaluation": true,
+  "exactCarryMatches": 3,
+  "checkpoints": {
+    "r0-prefix": {
+      "sha256": "add5ed756ea6ff158d59e0780684808a2d21055e2a18a2c4f77c7fb143e8f495",
+      "tensors": 144,
+      "parameters": 2949120,
+      "bytes": 11811296
+    },
+    "r0-carry": {
+      "sha256": "b8ec86fbd6eebabf6edc39e004096a4f2e3d3f9dcc4e4a95d741923f48e156c8",
+      "tensors": 144,
+      "parameters": 2949120,
+      "bytes": 11811296
+    },
+    "r0-reset_m": {
+      "sha256": "f00d1766e1b5dcc017d62e9982429d54d4f4909f450ed74688f37b6499f14ad8",
+      "tensors": 144,
+      "parameters": 2949120,
+      "bytes": 11811296
+    },
+    "r0-zero_grad": {
+      "sha256": "58a63d7963dd913c5595b12f786bb0c9de97fb8ff1e8e6844fbaae9b3eb27634",
+      "tensors": 144,
+      "parameters": 2949120,
+      "bytes": 11811296
+    },
+    "r1-prefix": {
+      "sha256": "7954ba00216b591cda6c7a0a3d0f30bd7d42bc56b90fd03ba4b8eec15d16e5ac",
+      "tensors": 144,
+      "parameters": 2949120,
+      "bytes": 11811296
+    },
+    "r1-carry": {
+      "sha256": "3cfb6db56399f0e11318fa7a98d517d9c01682321be4309ba173f283272cbe5d",
+      "tensors": 144,
+      "parameters": 2949120,
+      "bytes": 11811296
+    },
+    "r1-reset_m": {
+      "sha256": "6d62ca3d8425e53538017e8c5a0d619aac89697a874d1db975e451121746c6f2",
+      "tensors": 144,
+      "parameters": 2949120,
+      "bytes": 11811296
+    },
+    "r1-zero_grad": {
+      "sha256": "0f0233de571c36ebde8a7ecdb684ff2215b9d3744e0700abd79f4b8bc4009735",
+      "tensors": 144,
+      "parameters": 2949120,
+      "bytes": 11811296
+    },
+    "r2-prefix": {
+      "sha256": "5b8d614fa3f141d5c54a326a8aeec37e8d99ed99acd551440faa9b1b18978ebd",
+      "tensors": 144,
+      "parameters": 2949120,
+      "bytes": 11811296
+    },
+    "r2-carry": {
+      "sha256": "177090b5b99dec10db335bee992ea7a5c86f5d97ba5ef3ecaddb9b01893b18ce",
+      "tensors": 144,
+      "parameters": 2949120,
+      "bytes": 11811296
+    },
+    "r2-reset_m": {
+      "sha256": "1cc8d015d8fd6974c743504850ab62ce1c2cf4c8bfffce09b1d16858c97e0d53",
+      "tensors": 144,
+      "parameters": 2949120,
+      "bytes": 11811296
+    },
+    "r2-zero_grad": {
+      "sha256": "da5779faac57388ca2d069fe45b8ae1adef8630d31fd230bce1f6e9b727245f3",
+      "tensors": 144,
+      "parameters": 2949120,
+      "bytes": 11811296
+    }
+  },
+  "optimizerStates": {
+    "r0-prefix": {
+      "fileSHA256": "d9a949e4195a1911421ad3c95e4058a3c394b4dea5cbc3edb2e727c4079e2419",
+      "stateSHA256": "e9038f9aabb182e6879096f799ae43f92afecd17b0d768835ed2d1bb7606c04c",
+      "parameterStates": 144,
+      "step": 48
+    },
+    "r1-prefix": {
+      "fileSHA256": "eaafb7eb05756b1bbdd1077e32a8babfcd75529cf7ef48800894eea999564fe1",
+      "stateSHA256": "5739c8443b27eb7b8f3b8264f7b47d1be31964a0a2df7f2b172352ee6cf6868c",
+      "parameterStates": 144,
+      "step": 48
+    },
+    "r2-prefix": {
+      "fileSHA256": "44d2ffb764104af090f075a61e7d1c690b94dba54071be31adf40dde6044ba7c",
+      "stateSHA256": "ff7d160d7baff1c2a18b905a7c60d05847a25bb73d0347cd787beb84dcb7007e",
+      "parameterStates": 144,
+      "step": 48
+    }
+  },
+  "archiveSHA256": "827b3be797d085a81f3abb9ad9be5fd1d9fadf0ecf6788d1b2123485f25f50b6",
+  "archiveBytes": 164203943,
+  "transfer": {
+    "chunks": 627,
+    "chunkBytes": 262144,
+    "connectionRecovery": "One 512-KiB fragment disconnected MCP. Reconnected the same notebook and used 256-KiB fragments. No experiment restart.",
+    "carryDeduplication": "Three carry checkpoints reconstructed from byte-identical local Colab-12 backups; nine new adapters and three optimizer states transferred."
+  },
+  "scope": "Local hash/tensor/state verification of the full frozen training prefix. No behavioral outcome inspected or claimed. Independent of later evaluation completion."
+}

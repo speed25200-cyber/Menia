@@ -1,0 +1,41 @@
+{
+  "schema": "menia-state-composition-verification-v1",
+  "origin": "transformers_gpu",
+  "complete": true,
+  "journalSHA256": "a8dc7d8b018f34ea7c07fe80b08a3775e9ea0b7e132f05b64357c4ff122b8a7c",
+  "planHash": "bef98c408309d43ed7e15784b18628ae56065583ead44afaaff8872e57694224",
+  "sourceHash": "f3646182a3a6420fa108ff98d5ca58a7d8612de0c2eac14c19f388394b0ce1e9",
+  "independentMaxDifference": 3.3306690738754696e-16,
+  "summaryMaxDifference": 2.220446049250313e-16,
+  "evaluations": 25920,
+  "shamPairs": 6480,
+  "tables": 288,
+  "contrasts": 42,
+  "primaryContrasts": 24,
+  "controlGates": 72,
+  "checkpointsVerified": {
+    "r0-composed": "b8ec86fbd6eebabf6edc39e004096a4f2e3d3f9dcc4e4a95d741923f48e156c8",
+    "r0-shuffled": "d8159b4be83db4fa60125f4d1e027d7e9477ea7a2064f3b24c31122e47de9dbc",
+    "r0-grammar": "48cd946460f5e591117bed0d4247c7c0c38e358e718b31b206ed08ea332af572",
+    "r1-composed": "3cfb6db56399f0e11318fa7a98d517d9c01682321be4309ba173f283272cbe5d",
+    "r1-shuffled": "26a69ff1217e049ad76084868d6a0824dd1cdea23a54cd41cbb5920df39e8943",
+    "r1-grammar": "fcb753637dd83514d7e23048a3fe70741d60cbc1fa77593e2877efd88cbcb908",
+    "r2-composed": "177090b5b99dec10db335bee992ea7a5c86f5d97ba5ef3ecaddb9b01893b18ce",
+    "r2-shuffled": "dd9188dfdb5e71053d0a14f9322a468b925550810e3d06bb2fb10c7394bda4ee",
+    "r2-grammar": "2b4f07e2290ac311998fa3b16f5373de7d507c21ffc87933777258312a47e01d"
+  },
+  "trainingUpdates": 576,
+  "errors": 0,
+  "trainingRestarts": 0,
+  "interruptedRequests": 0,
+  "inputTokenRange": [
+    91,
+    138
+  ],
+  "maxNormRelativeError": 0.0009063276229426265,
+  "firstTokenOutsideOptions": 0,
+  "signalRuleMet": false,
+  "controlRuleMet": false,
+  "fixedReadingRuleMet": false,
+  "limitations": "Shares strict reader and fixed plan; independently recomputes arithmetic and criteria. Missing checkpoint files are explicitly unverified. Not an external replication, proof of novelty, or consciousness test."
+}

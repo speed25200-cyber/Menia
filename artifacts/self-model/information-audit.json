@@ -1,0 +1,1003 @@
+{
+  "scope": "Exhaustive within four donor symbols, four original targets and nine delays; no consciousness inference",
+  "source_sha256": "569952b50c8ded4ea006333473e37fdee407067d0b9dc1632c86a84647441a49",
+  "groups": 108,
+  "counterfactual_worlds": 432,
+  "minimum_balanced_brier_from_these_features": 0.1875,
+  "optimal_balanced_success_forecast": 0.25,
+  "runs": [
+    {
+      "memory_seed": 17,
+      "model_sha256": "a7939cbef8b963014c0c751810da85da4fad6384eb57196957fbc03736cdce73",
+      "monitor_sha256": "5ad2cc3ee73e604b60347718edc6f02f1616c62ea8ab6e123117abe420309111",
+      "groups": [
+        {
+          "age": 1,
+          "donor_symbol": 0,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 0,
+          "monitor_forecast": 0.9983276141815997,
+          "balanced_brier": 0.7474942181467251
+        },
+        {
+          "age": 1,
+          "donor_symbol": 1,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 1,
+          "monitor_forecast": 0.9998212064453702,
+          "balanced_brier": 0.7497318416351905
+        },
+        {
+          "age": 1,
+          "donor_symbol": 2,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 2,
+          "monitor_forecast": 0.999366506862154,
+          "balanced_brier": 0.7490501616067867
+        },
+        {
+          "age": 1,
+          "donor_symbol": 3,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 3,
+          "monitor_forecast": 0.9991155000621534,
+          "balanced_brier": 0.7486740324333703
+        },
+        {
+          "age": 2,
+          "donor_symbol": 0,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 0,
+          "monitor_forecast": 0.9996649040283235,
+          "balanced_brier": 0.7494974683317954
+        },
+        {
+          "age": 2,
+          "donor_symbol": 1,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 1,
+          "monitor_forecast": 0.9999151752026246,
+          "balanced_brier": 0.7498727699991833
+        },
+        {
+          "age": 2,
+          "donor_symbol": 2,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 2,
+          "monitor_forecast": 0.9998887377393751,
+          "balanced_brier": 0.7498331189883534
+        },
+        {
+          "age": 2,
+          "donor_symbol": 3,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 3,
+          "monitor_forecast": 0.9997949625274938,
+          "balanced_brier": 0.7496924858316057
+        },
+        {
+          "age": 4,
+          "donor_symbol": 0,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 0,
+          "monitor_forecast": 0.9997622885996199,
+          "balanced_brier": 0.7496434894061397
+        },
+        {
+          "age": 4,
+          "donor_symbol": 1,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 1,
+          "monitor_forecast": 0.9998586617759798,
+          "balanced_brier": 0.7497880126404632
+        },
+        {
+          "age": 4,
+          "donor_symbol": 2,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 2,
+          "monitor_forecast": 0.9998577973697856,
+          "balanced_brier": 0.7497867162762665
+        },
+        {
+          "age": 4,
+          "donor_symbol": 3,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 3,
+          "monitor_forecast": 0.9998064368418239,
+          "balanced_brier": 0.7497096927294321
+        },
+        {
+          "age": 8,
+          "donor_symbol": 0,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 0,
+          "monitor_forecast": 0.9993720095874397,
+          "balanced_brier": 0.7490584087531178
+        },
+        {
+          "age": 8,
+          "donor_symbol": 1,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 1,
+          "monitor_forecast": 0.9994446350675104,
+          "balanced_brier": 0.7491672610314738
+        },
+        {
+          "age": 8,
+          "donor_symbol": 2,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 2,
+          "monitor_forecast": 0.9996280247794415,
+          "balanced_brier": 0.7494421755347269
+        },
+        {
+          "age": 8,
+          "donor_symbol": 3,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 3,
+          "monitor_forecast": 0.9993766370668284,
+          "balanced_brier": 0.7490653441815891
+        },
+        {
+          "age": 16,
+          "donor_symbol": 0,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 0,
+          "monitor_forecast": 0.9990903617820717,
+          "balanced_brier": 0.748636370114795
+        },
+        {
+          "age": 16,
+          "donor_symbol": 1,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 1,
+          "monitor_forecast": 0.9974229891280417,
+          "balanced_brier": 0.7461411246770968
+        },
+        {
+          "age": 16,
+          "donor_symbol": 2,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 2,
+          "monitor_forecast": 0.9993909404021671,
+          "balanced_brier": 0.7490867815568444
+        },
+        {
+          "age": 16,
+          "donor_symbol": 3,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 3,
+          "monitor_forecast": 0.9972276994811297,
+          "balanced_brier": 0.7458492348718615
+        },
+        {
+          "age": 32,
+          "donor_symbol": 0,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 0,
+          "monitor_forecast": 0.9989192531125695,
+          "balanced_brier": 0.7483800476826888
+        },
+        {
+          "age": 32,
+          "donor_symbol": 1,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 1,
+          "monitor_forecast": 0.9842681047795865,
+          "balanced_brier": 0.7266496496966058
+        },
+        {
+          "age": 32,
+          "donor_symbol": 2,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 2,
+          "monitor_forecast": 0.9988325825345002,
+          "balanced_brier": 0.7482502366652891
+        },
+        {
+          "age": 32,
+          "donor_symbol": 3,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 3,
+          "monitor_forecast": 0.9597367511892291,
+          "balanced_brier": 0.6912262559886417
+        },
+        {
+          "age": 64,
+          "donor_symbol": 0,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 0,
+          "monitor_forecast": 0.9986801811554676,
+          "balanced_brier": 0.7480220136549838
+        },
+        {
+          "age": 64,
+          "donor_symbol": 1,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 1,
+          "monitor_forecast": 0.8200554950121353,
+          "balanced_brier": 0.5124632673935305
+        },
+        {
+          "age": 64,
+          "donor_symbol": 2,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 2,
+          "monitor_forecast": 0.9975509990019545,
+          "balanced_brier": 0.7463324961088202
+        },
+        {
+          "age": 64,
+          "donor_symbol": 3,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 1,
+          "monitor_forecast": 0.27061378862963537,
+          "balanced_brier": 0.1879249282816673
+        },
+        {
+          "age": 128,
+          "donor_symbol": 0,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 0,
+          "monitor_forecast": 0.9985532654843388,
+          "balanced_brier": 0.747831991267267
+        },
+        {
+          "age": 128,
+          "donor_symbol": 1,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 3,
+          "monitor_forecast": 0.29063006825202814,
+          "balanced_brier": 0.18915080244616445
+        },
+        {
+          "age": 128,
+          "donor_symbol": 2,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 2,
+          "monitor_forecast": 0.9955103590579528,
+          "balanced_brier": 0.7432856954627177
+        },
+        {
+          "age": 128,
+          "donor_symbol": 3,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 3,
+          "monitor_forecast": 0.2873921732484115,
+          "balanced_brier": 0.18889817462023922
+        },
+        {
+          "age": 512,
+          "donor_symbol": 0,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 0,
+          "monitor_forecast": 0.9972766042124281,
+          "balanced_brier": 0.745922323203258
+        },
+        {
+          "age": 512,
+          "donor_symbol": 1,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 3,
+          "monitor_forecast": 0.03795683515556195,
+          "balanced_brier": 0.23246230375724553
+        },
+        {
+          "age": 512,
+          "donor_symbol": 2,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 2,
+          "monitor_forecast": 0.9829474392296234,
+          "balanced_brier": 0.7247119486732624
+        },
+        {
+          "age": 512,
+          "donor_symbol": 3,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 3,
+          "monitor_forecast": 0.03795683515556169,
+          "balanced_brier": 0.23246230375724564
+        }
+      ]
+    },
+    {
+      "memory_seed": 29,
+      "model_sha256": "51490ea6ebcd78bc151c5373b1eeb8368772a0edf06b2b69f4c4e8cd95c3a17b",
+      "monitor_sha256": "5d0fbb99605a0a49efa272377746f43c7c2697bb444c9048f1e511a8915691a9",
+      "groups": [
+        {
+          "age": 1,
+          "donor_symbol": 0,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 0,
+          "monitor_forecast": 0.9993546471848738,
+          "balanced_brier": 0.7490323872575666
+        },
+        {
+          "age": 1,
+          "donor_symbol": 1,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 1,
+          "monitor_forecast": 0.9997967051870764,
+          "balanced_brier": 0.7496950991093956
+        },
+        {
+          "age": 1,
+          "donor_symbol": 2,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 2,
+          "monitor_forecast": 0.9993365028515565,
+          "balanced_brier": 0.7490051945058007
+        },
+        {
+          "age": 1,
+          "donor_symbol": 3,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 3,
+          "monitor_forecast": 0.9984039561644061,
+          "balanced_brier": 0.7476084816025343
+        },
+        {
+          "age": 2,
+          "donor_symbol": 0,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 0,
+          "monitor_forecast": 0.9997147247680138,
+          "balanced_brier": 0.7495721685339787
+        },
+        {
+          "age": 2,
+          "donor_symbol": 1,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 1,
+          "monitor_forecast": 0.9999013642811526,
+          "balanced_brier": 0.7498520561507339
+        },
+        {
+          "age": 2,
+          "donor_symbol": 2,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 2,
+          "monitor_forecast": 0.9995154307132004,
+          "balanced_brier": 0.7492733808771943
+        },
+        {
+          "age": 2,
+          "donor_symbol": 3,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 3,
+          "monitor_forecast": 0.9984895084407992,
+          "balanced_brier": 0.7477365442459493
+        },
+        {
+          "age": 4,
+          "donor_symbol": 0,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 0,
+          "monitor_forecast": 0.9992282770789432,
+          "balanced_brier": 0.7488430111746817
+        },
+        {
+          "age": 4,
+          "donor_symbol": 1,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 1,
+          "monitor_forecast": 0.9996742735926192,
+          "balanced_brier": 0.7495115164866213
+        },
+        {
+          "age": 4,
+          "donor_symbol": 2,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 2,
+          "monitor_forecast": 0.9996092764806526,
+          "balanced_brier": 0.7494140673858474
+        },
+        {
+          "age": 4,
+          "donor_symbol": 3,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 3,
+          "monitor_forecast": 0.9983566359346869,
+          "balanced_brier": 0.7475376545474816
+        },
+        {
+          "age": 8,
+          "donor_symbol": 0,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 0,
+          "monitor_forecast": 0.9982885028711221,
+          "balanced_brier": 0.7474356835291054
+        },
+        {
+          "age": 8,
+          "donor_symbol": 1,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 1,
+          "monitor_forecast": 0.9990926381965055,
+          "balanced_brier": 0.7486397806002008
+        },
+        {
+          "age": 8,
+          "donor_symbol": 2,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 2,
+          "monitor_forecast": 0.9995428170580518,
+          "balanced_brier": 0.7493144346033201
+        },
+        {
+          "age": 8,
+          "donor_symbol": 3,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 3,
+          "monitor_forecast": 0.9976303154000646,
+          "balanced_brier": 0.7464510885052001
+        },
+        {
+          "age": 16,
+          "donor_symbol": 0,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 0,
+          "monitor_forecast": 0.9955850231754021,
+          "balanced_brier": 0.7433970267834649
+        },
+        {
+          "age": 16,
+          "donor_symbol": 1,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 1,
+          "monitor_forecast": 0.9979990279456712,
+          "balanced_brier": 0.747002545807669
+        },
+        {
+          "age": 16,
+          "donor_symbol": 2,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 2,
+          "monitor_forecast": 0.9993701022926934,
+          "balanced_brier": 0.7490555502101618
+        },
+        {
+          "age": 16,
+          "donor_symbol": 3,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 3,
+          "monitor_forecast": 0.9937403858355716,
+          "balanced_brier": 0.7406497615228449
+        },
+        {
+          "age": 32,
+          "donor_symbol": 0,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 0,
+          "monitor_forecast": 0.8458977991101625,
+          "balanced_brier": 0.5425941869843356
+        },
+        {
+          "age": 32,
+          "donor_symbol": 1,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 1,
+          "monitor_forecast": 0.9943537458017996,
+          "balanced_brier": 0.74156249888917
+        },
+        {
+          "age": 32,
+          "donor_symbol": 2,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 2,
+          "monitor_forecast": 0.9990820674268025,
+          "balanced_brier": 0.7486239437404127
+        },
+        {
+          "age": 32,
+          "donor_symbol": 3,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 3,
+          "monitor_forecast": 0.8856081587645577,
+          "balanced_brier": 0.5914977314880712
+        },
+        {
+          "age": 64,
+          "donor_symbol": 0,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 1,
+          "monitor_forecast": 0.0018470076101336091,
+          "balanced_brier": 0.24907990763204513
+        },
+        {
+          "age": 64,
+          "donor_symbol": 1,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 1,
+          "monitor_forecast": 0.9827135767317068,
+          "balanced_brier": 0.7243691855269707
+        },
+        {
+          "age": 64,
+          "donor_symbol": 2,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 2,
+          "monitor_forecast": 0.9990443890091549,
+          "balanced_brier": 0.7485674967060982
+        },
+        {
+          "age": 64,
+          "donor_symbol": 3,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 1,
+          "monitor_forecast": 0.12148033000837954,
+          "balanced_brier": 0.20401730557475506
+        },
+        {
+          "age": 128,
+          "donor_symbol": 0,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 1,
+          "monitor_forecast": 0.9313438740278429,
+          "balanced_brier": 0.651729474675269
+        },
+        {
+          "age": 128,
+          "donor_symbol": 1,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 1,
+          "monitor_forecast": 0.9387934588161874,
+          "balanced_brier": 0.6619364289079668
+        },
+        {
+          "age": 128,
+          "donor_symbol": 2,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 2,
+          "monitor_forecast": 0.9989712131526786,
+          "balanced_brier": 0.7484578781313951
+        },
+        {
+          "age": 128,
+          "donor_symbol": 3,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 1,
+          "monitor_forecast": 0.935782733371751,
+          "balanced_brier": 0.6577979573908301
+        },
+        {
+          "age": 512,
+          "donor_symbol": 0,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 1,
+          "monitor_forecast": 0.45261737236231997,
+          "balanced_brier": 0.22855379958301103
+        },
+        {
+          "age": 512,
+          "donor_symbol": 1,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 1,
+          "monitor_forecast": 0.4526173723644573,
+          "balanced_brier": 0.22855379958387714
+        },
+        {
+          "age": 512,
+          "donor_symbol": 2,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 2,
+          "monitor_forecast": 0.9975725576028651,
+          "balanced_brier": 0.7463647288808891
+        },
+        {
+          "age": 512,
+          "donor_symbol": 3,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 1,
+          "monitor_forecast": 0.45261737236355926,
+          "balanced_brier": 0.22855379958351324
+        }
+      ]
+    },
+    {
+      "memory_seed": 43,
+      "model_sha256": "f2511e3a3831bada6e1ba256ffdf0ca3975cd119fd623046fad2f754de8b5bd1",
+      "monitor_sha256": "4ac831074ae1cfcce790ef219166df31d97f1eba83f6738b27300cefd91faab8",
+      "groups": [
+        {
+          "age": 1,
+          "donor_symbol": 0,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 0,
+          "monitor_forecast": 0.9998267578847436,
+          "balanced_brier": 0.7497401668399459
+        },
+        {
+          "age": 1,
+          "donor_symbol": 1,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 1,
+          "monitor_forecast": 0.9993587547755383,
+          "balanced_brier": 0.7490385433587453
+        },
+        {
+          "age": 1,
+          "donor_symbol": 2,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 2,
+          "monitor_forecast": 0.9980527410905471,
+          "balanced_brier": 0.747082903453081
+        },
+        {
+          "age": 1,
+          "donor_symbol": 3,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 3,
+          "monitor_forecast": 0.9991153236075987,
+          "balanced_brier": 0.7486737680637173
+        },
+        {
+          "age": 2,
+          "donor_symbol": 0,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 0,
+          "monitor_forecast": 0.9998767351679869,
+          "balanced_brier": 0.7498151179461992
+        },
+        {
+          "age": 2,
+          "donor_symbol": 1,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 1,
+          "monitor_forecast": 0.9996511774521839,
+          "balanced_brier": 0.7494768878554458
+        },
+        {
+          "age": 2,
+          "donor_symbol": 2,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 2,
+          "monitor_forecast": 0.9995877958196233,
+          "balanced_brier": 0.7493818636417213
+        },
+        {
+          "age": 2,
+          "donor_symbol": 3,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 3,
+          "monitor_forecast": 0.9995552165048794,
+          "balanced_brier": 0.7493330225896767
+        },
+        {
+          "age": 4,
+          "donor_symbol": 0,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 0,
+          "monitor_forecast": 0.9997130480596242,
+          "balanced_brier": 0.7495696544308525
+        },
+        {
+          "age": 4,
+          "donor_symbol": 1,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 1,
+          "monitor_forecast": 0.9993345931404597,
+          "balanced_brier": 0.7490023324769783
+        },
+        {
+          "age": 4,
+          "donor_symbol": 2,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 2,
+          "monitor_forecast": 0.9995654189597297,
+          "balanced_brier": 0.7493483173002752
+        },
+        {
+          "age": 4,
+          "donor_symbol": 3,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 3,
+          "monitor_forecast": 0.9996368677368032,
+          "balanced_brier": 0.7494554334702453
+        },
+        {
+          "age": 8,
+          "donor_symbol": 0,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 0,
+          "monitor_forecast": 0.9992659643730117,
+          "balanced_brier": 0.7488994853678193
+        },
+        {
+          "age": 8,
+          "donor_symbol": 1,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 1,
+          "monitor_forecast": 0.9982909984026059,
+          "balanced_brier": 0.7474394182903689
+        },
+        {
+          "age": 8,
+          "donor_symbol": 2,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 2,
+          "monitor_forecast": 0.9988734674048235,
+          "balanced_brier": 0.7483114701829233
+        },
+        {
+          "age": 8,
+          "donor_symbol": 3,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 3,
+          "monitor_forecast": 0.9995779142359691,
+          "balanced_brier": 0.7493670495103458
+        },
+        {
+          "age": 16,
+          "donor_symbol": 0,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 0,
+          "monitor_forecast": 0.9968026829910486,
+          "balanced_brier": 0.7452142473226286
+        },
+        {
+          "age": 16,
+          "donor_symbol": 1,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 1,
+          "monitor_forecast": 0.9904528810165251,
+          "balanced_brier": 0.7357704690056723
+        },
+        {
+          "age": 16,
+          "donor_symbol": 2,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 2,
+          "monitor_forecast": 0.9970661263852361,
+          "balanced_brier": 0.7456077971922415
+        },
+        {
+          "age": 16,
+          "donor_symbol": 3,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 3,
+          "monitor_forecast": 0.9993135682985607,
+          "balanced_brier": 0.7489708236363217
+        },
+        {
+          "age": 32,
+          "donor_symbol": 0,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 0,
+          "monitor_forecast": 0.9552299152477983,
+          "balanced_brier": 0.6848492333604168
+        },
+        {
+          "age": 32,
+          "donor_symbol": 1,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 0,
+          "monitor_forecast": 0.2155379272228802,
+          "balanced_brier": 0.18868763446009545
+        },
+        {
+          "age": 32,
+          "donor_symbol": 2,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 2,
+          "monitor_forecast": 0.972221305577178,
+          "balanced_brier": 0.7091036142296036
+        },
+        {
+          "age": 32,
+          "donor_symbol": 3,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 3,
+          "monitor_forecast": 0.998557722984743,
+          "balanced_brier": 0.7478386646401032
+        },
+        {
+          "age": 64,
+          "donor_symbol": 0,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 0,
+          "monitor_forecast": 0.46504933529943027,
+          "balanced_brier": 0.23374621661272676
+        },
+        {
+          "age": 64,
+          "donor_symbol": 1,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 0,
+          "monitor_forecast": 0.4203214066684618,
+          "balanced_brier": 0.21650938156952357
+        },
+        {
+          "age": 64,
+          "donor_symbol": 2,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 0,
+          "monitor_forecast": 0.27865470822978045,
+          "balanced_brier": 0.1883210923037339
+        },
+        {
+          "age": 64,
+          "donor_symbol": 3,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 3,
+          "monitor_forecast": 0.994952807242269,
+          "balanced_brier": 0.7424546850181372
+        },
+        {
+          "age": 128,
+          "donor_symbol": 0,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 0,
+          "monitor_forecast": 0.10211020450350462,
+          "balanced_brier": 0.2093713916119952
+        },
+        {
+          "age": 128,
+          "donor_symbol": 1,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 0,
+          "monitor_forecast": 0.10298105059976724,
+          "balanced_brier": 0.20911457148274815
+        },
+        {
+          "age": 128,
+          "donor_symbol": 2,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 0,
+          "monitor_forecast": 0.10172620762303095,
+          "balanced_brier": 0.20948511750584853
+        },
+        {
+          "age": 128,
+          "donor_symbol": 3,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 3,
+          "monitor_forecast": 0.7650395726811094,
+          "balanced_brier": 0.45276576142753977
+        },
+        {
+          "age": 512,
+          "donor_symbol": 0,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 0,
+          "monitor_forecast": 0.005407290689605144,
+          "balanced_brier": 0.2473255934477993
+        },
+        {
+          "age": 512,
+          "donor_symbol": 1,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 0,
+          "monitor_forecast": 0.005407290689863419,
+          "balanced_brier": 0.2473255934476729
+        },
+        {
+          "age": 512,
+          "donor_symbol": 2,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 0,
+          "monitor_forecast": 0.0054072906892801776,
+          "balanced_brier": 0.24732559344795835
+        },
+        {
+          "age": 512,
+          "donor_symbol": 3,
+          "identical_feature_rows": 4,
+          "correct_outcomes": 1,
+          "candidate": 0,
+          "monitor_forecast": 0.005407290044132769,
+          "balanced_brier": 0.24732559376355495
+        }
+      ]
+    }
+  ]
+}

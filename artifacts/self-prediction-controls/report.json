@@ -1,0 +1,104 @@
+{
+  "schema": "menia-self-prediction-controls-v1",
+  "llmExecuted": false,
+  "origin": "Analytic counterexamples; not Menia measurements or a new empirical discovery",
+  "cases": [
+    {
+      "name": "visible_rule_similarity",
+      "origin": "exact synthetic enumeration, public rules only",
+      "secondOrderMechanism": "none: fixed input rule",
+      "items": 2,
+      "brierByPredictorAndTarget": {
+        "A": {
+          "A": 0.009999999999999998,
+          "B": 0.81
+        },
+        "B": {
+          "A": 0.81,
+          "B": 0.009999999999999998
+        }
+      },
+      "inputObserverBrier": {
+        "A": 0.009999999999999998,
+        "B": 0.009999999999999998
+      },
+      "otherMinusSelfByTarget": {
+        "A": 0.8,
+        "B": 0.8
+      },
+      "diagonalAdvantage": 0.8,
+      "inputObserverMinusSelfByTarget": {
+        "A": 0.0,
+        "B": 0.0
+      },
+      "bothTargetsBeatOther": true,
+      "bothTargetsBeatInputObserver": false,
+      "interpretation": "A diagonal advantage occurs without privileged information; a matched input observer ties the diagonal."
+    },
+    {
+      "name": "general_predictor_strength",
+      "origin": "exact synthetic enumeration, public rules only",
+      "secondOrderMechanism": "none: A is a better external predictor for both targets",
+      "items": 2,
+      "brierByPredictorAndTarget": {
+        "A": {
+          "A": 0.009999999999999998,
+          "B": 0.009999999999999998
+        },
+        "B": {
+          "A": 0.25,
+          "B": 0.25
+        }
+      },
+      "inputObserverBrier": {
+        "A": 0.009999999999999998,
+        "B": 0.009999999999999998
+      },
+      "otherMinusSelfByTarget": {
+        "A": 0.24,
+        "B": -0.24
+      },
+      "diagonalAdvantage": 0.0,
+      "inputObserverMinusSelfByTarget": {
+        "A": 0.0,
+        "B": -0.24
+      },
+      "bothTargetsBeatOther": false,
+      "bothTargetsBeatInputObserver": false,
+      "interpretation": "A-only evaluation has a self advantage; the reversed comparison and full matrix reveal general predictor strength."
+    },
+    {
+      "name": "direct_private_signal",
+      "origin": "exact synthetic enumeration, direct private bit readout",
+      "secondOrderMechanism": "not modeled: parallel first-order readouts of the same bit",
+      "items": 4,
+      "brierByPredictorAndTarget": {
+        "A": {
+          "A": 0.009999999999999998,
+          "B": 0.25
+        },
+        "B": {
+          "A": 0.25,
+          "B": 0.009999999999999998
+        }
+      },
+      "inputObserverBrier": {
+        "A": 0.25,
+        "B": 0.25
+      },
+      "otherMinusSelfByTarget": {
+        "A": 0.24,
+        "B": 0.24
+      },
+      "diagonalAdvantage": 0.24,
+      "inputObserverMinusSelfByTarget": {
+        "A": 0.24,
+        "B": 0.24
+      },
+      "bothTargetsBeatOther": true,
+      "bothTargetsBeatInputObserver": true,
+      "interpretation": "Both behavioral comparisons favor self, yet the construction uses a direct signal readout. These scores alone do not identify second-order monitoring."
+    }
+  ],
+  "conclusion": "Behavioral screens constrain explanations; none is a consciousness classifier."
+}

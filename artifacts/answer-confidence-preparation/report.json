@@ -1,0 +1,133 @@
+{
+  "schema": "menia-answer-confidence-data-v1",
+  "parentJournalSHA256": "8a36aceb7773201c5f06f35352a9e7344c2a30d6c182fdc103115f117ce00e4a",
+  "parentPlanHash": "6bc3a6939bb735415014a18d14a51875fff3a9b433a687aed26c0a176b2e0128",
+  "parentSourceHash": "a171d491a18db3ff874dbf36f0057960e91414cfa136839488519d975b739aa5",
+  "parentModel": {
+    "id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "examplesPerArm": 1728,
+  "groups": {
+    "r0/countA/8": {
+      "n": 96,
+      "correct": 40,
+      "shuffledAgreements": 40
+    },
+    "r0/alternatingSum/8": {
+      "n": 96,
+      "correct": 1,
+      "shuffledAgreements": 94
+    },
+    "r0/alternatingSum/2": {
+      "n": 96,
+      "correct": 90,
+      "shuffledAgreements": 84
+    },
+    "r0/countA/64": {
+      "n": 96,
+      "correct": 6,
+      "shuffledAgreements": 84
+    },
+    "r0/countA/24": {
+      "n": 96,
+      "correct": 22,
+      "shuffledAgreements": 68
+    },
+    "r0/alternatingSum/4": {
+      "n": 96,
+      "correct": 10,
+      "shuffledAgreements": 78
+    },
+    "r1/countA/24": {
+      "n": 96,
+      "correct": 29,
+      "shuffledAgreements": 56
+    },
+    "r1/alternatingSum/8": {
+      "n": 96,
+      "correct": 0,
+      "shuffledAgreements": 96
+    },
+    "r1/countA/8": {
+      "n": 96,
+      "correct": 48,
+      "shuffledAgreements": 50
+    },
+    "r1/alternatingSum/2": {
+      "n": 96,
+      "correct": 94,
+      "shuffledAgreements": 92
+    },
+    "r1/alternatingSum/4": {
+      "n": 96,
+      "correct": 5,
+      "shuffledAgreements": 86
+    },
+    "r1/countA/64": {
+      "n": 96,
+      "correct": 8,
+      "shuffledAgreements": 82
+    },
+    "r2/alternatingSum/2": {
+      "n": 96,
+      "correct": 91,
+      "shuffledAgreements": 86
+    },
+    "r2/countA/8": {
+      "n": 96,
+      "correct": 48,
+      "shuffledAgreements": 50
+    },
+    "r2/alternatingSum/8": {
+      "n": 96,
+      "correct": 1,
+      "shuffledAgreements": 94
+    },
+    "r2/alternatingSum/4": {
+      "n": 96,
+      "correct": 5,
+      "shuffledAgreements": 86
+    },
+    "r2/countA/64": {
+      "n": 96,
+      "correct": 9,
+      "shuffledAgreements": 78
+    },
+    "r2/countA/24": {
+      "n": 96,
+      "correct": 18,
+      "shuffledAgreements": 66
+    }
+  },
+  "inputHash": "ff8d7349b63502faf5628a4e00800b8e74b2281c63fd46f7ab70f9acfe459980",
+  "exampleHashes": {
+    "measured": "0694f42765731e3ab2031da214855468112c0bdfefe6ddd8019c769efcc403a8",
+    "shuffled": "b3cbb2ad42e76d7dee8b419d82b90f5c47fdbb510053a79e83b88c1c882037fe"
+  },
+  "excludedSplits": {
+    "validation": 576,
+    "test": 1152
+  },
+  "status": "Data prepared only; no new model trained or evaluated.",
+  "scope": "Archived parent answers, not current adapted-model correctness. Fresh current-model evaluation and calibration remain required.",
+  "correctLabels": 525,
+  "incorrectLabels": 1203,
+  "shuffledAgreements": 1370,
+  "localValidation": {
+    "tests": 4,
+    "passed": true,
+    "seconds": 0.003,
+    "command": "python -m unittest tests_research.test_answer_confidence_data -v"
+  },
+  "preparedFiles": {
+    "measured.jsonl": {
+      "bytes": 929894,
+      "sha256": "4705f7dd60ff7674a87e6cfbff8a665133e1086fa905698d0634964bc9a5feef"
+    },
+    "shuffled.jsonl": {
+      "bytes": 929894,
+      "sha256": "7a71dfd7cc0df1eb30fed36089a3fa0ffcd89f4b3c441317746a1e8795359c7f"
+    }
+  }
+}

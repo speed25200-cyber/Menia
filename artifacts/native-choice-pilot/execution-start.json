@@ -1,0 +1,285 @@
+{
+  "schema": "menia-native-choice-start-v1",
+  "job": {
+    "pid": 140808,
+    "startedUTC": "2026-09-19T19:13:12.031820+00:00",
+    "scienceRevision": "37710ce42d530a19fd1fbd15b763e49465fc327a",
+    "notebookRevision": "8c12825080515632cc858035b79a5a96dcb7b5af",
+    "notebookSHA256": "9cffc1156cfa4d17627e6df91f26c572c1d67f1e287cea30b93e480434631d1c",
+    "directory": "/content/menia-native-choice-mcp-20260919",
+    "archive": "/content/menia-choix-natifs.zip"
+  },
+  "observedUTC": "2026-09-19T19:17:20.344615+00:00",
+  "events": {
+    "header": 1,
+    "request": 738,
+    "result": 737
+  },
+  "statuses": {
+    "ok": 737
+  },
+  "stages": {
+    "publicRisk": 180,
+    "choice": 282,
+    "baseline": 11,
+    "execute": 264
+  },
+  "identity": {
+    "planHash": "04c2b51abaee6bf57950b7b9e820a395715dbb6b0536135e31f884cd609e9499",
+    "sourceHash": "473f12cc9623f9639f85e3d0dde71bd0f52e5e744c2deb82643d07d05ec82705",
+    "origin": "transformers_gpu",
+    "metadata": {
+      "codeCommit": "37710ce42d530a19fd1fbd15b763e49465fc327a",
+      "cublasWorkspace": ":4096:8",
+      "cuda": "12.6",
+      "deterministicAlgorithms": true,
+      "gpu": "NVIDIA A100-SXM4-40GB",
+      "gpuBytes": 42405855232,
+      "models": {
+        "A": {
+          "id": "Qwen/Qwen3-4B",
+          "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+        }
+      },
+      "nativeChoiceSourceHash": "473f12cc9623f9639f85e3d0dde71bd0f52e5e744c2deb82643d07d05ec82705",
+      "newWeightUpdates": 0,
+      "packages": [
+        [
+          "Jinja2",
+          "3.1.6"
+        ],
+        [
+          "MarkupSafe",
+          "3.0.3"
+        ],
+        [
+          "PyYAML",
+          "6.0.3"
+        ],
+        [
+          "accelerate",
+          "1.10.1"
+        ],
+        [
+          "certifi",
+          "2026.7.22"
+        ],
+        [
+          "charset-normalizer",
+          "3.5.1"
+        ],
+        [
+          "filelock",
+          "3.32.3"
+        ],
+        [
+          "fsspec",
+          "2026.7.0"
+        ],
+        [
+          "hf-xet",
+          "1.6.0"
+        ],
+        [
+          "huggingface_hub",
+          "0.36.2"
+        ],
+        [
+          "idna",
+          "3.20"
+        ],
+        [
+          "mpmath",
+          "1.3.0"
+        ],
+        [
+          "networkx",
+          "3.6.1"
+        ],
+        [
+          "numpy",
+          "2.2.6"
+        ],
+        [
+          "nvidia-cublas-cu12",
+          "12.6.4.1"
+        ],
+        [
+          "nvidia-cuda-cupti-cu12",
+          "12.6.80"
+        ],
+        [
+          "nvidia-cuda-nvrtc-cu12",
+          "12.6.77"
+        ],
+        [
+          "nvidia-cuda-runtime-cu12",
+          "12.6.77"
+        ],
+        [
+          "nvidia-cudnn-cu12",
+          "9.10.2.21"
+        ],
+        [
+          "nvidia-cufft-cu12",
+          "11.3.0.4"
+        ],
+        [
+          "nvidia-cufile-cu12",
+          "1.11.1.6"
+        ],
+        [
+          "nvidia-curand-cu12",
+          "10.3.7.77"
+        ],
+        [
+          "nvidia-cusolver-cu12",
+          "11.7.1.2"
+        ],
+        [
+          "nvidia-cusparse-cu12",
+          "12.5.4.2"
+        ],
+        [
+          "nvidia-cusparselt-cu12",
+          "0.7.1"
+        ],
+        [
+          "nvidia-nccl-cu12",
+          "2.27.3"
+        ],
+        [
+          "nvidia-nvjitlink-cu12",
+          "12.6.85"
+        ],
+        [
+          "nvidia-nvtx-cu12",
+          "12.6.77"
+        ],
+        [
+          "packaging",
+          "26.3"
+        ],
+        [
+          "pip",
+          "25.2"
+        ],
+        [
+          "psutil",
+          "7.2.2"
+        ],
+        [
+          "regex",
+          "2026.9.10"
+        ],
+        [
+          "requests",
+          "2.34.2"
+        ],
+        [
+          "safetensors",
+          "0.6.2"
+        ],
+        [
+          "setuptools",
+          "78.1.0"
+        ],
+        [
+          "sympy",
+          "1.14.0"
+        ],
+        [
+          "tokenizers",
+          "0.22.2"
+        ],
+        [
+          "torch",
+          "2.8.0+cu126"
+        ],
+        [
+          "tqdm",
+          "4.70.1"
+        ],
+        [
+          "transformers",
+          "4.56.2"
+        ],
+        [
+          "triton",
+          "3.4.0"
+        ],
+        [
+          "typing_extensions",
+          "4.16.0"
+        ],
+        [
+          "urllib3",
+          "2.8.0"
+        ]
+      ],
+      "python": "3.13.15",
+      "requiredVersions": {
+        "accelerate": "1.10.1",
+        "huggingface-hub": "0.36.2",
+        "numpy": "2.2.6",
+        "safetensors": "0.6.2",
+        "tokenizers": "0.22.2",
+        "torch": "2.8.0+cu126",
+        "transformers": "4.56.2"
+      },
+      "settings": {
+        "answer": {
+          "attention": "sdpa",
+          "do_sample": true,
+          "dtype": "bfloat16",
+          "enable_thinking": false,
+          "max_input_tokens": 1792,
+          "max_new_tokens": 256,
+          "min_p": 0.0,
+          "quantization": "none",
+          "renormalize_logits": true,
+          "repetition_penalty": 1.0,
+          "temperature": 0.7,
+          "top_k": 20,
+          "top_p": 0.8,
+          "use_cache": true
+        },
+        "choice": {
+          "attention": "sdpa",
+          "do_sample": true,
+          "dtype": "bfloat16",
+          "enable_thinking": false,
+          "max_input_tokens": 1792,
+          "max_new_tokens": 16,
+          "min_p": 0.0,
+          "quantization": "none",
+          "renormalize_logits": true,
+          "repetition_penalty": 1.0,
+          "temperature": 0.7,
+          "top_k": 20,
+          "top_p": 0.8,
+          "use_cache": true
+        }
+      },
+      "sourceHash": "da9e6d852fe7c98012718be7fb04b438f66ad8667bdab500f8955b37c376e4e5",
+      "tf32": false,
+      "verifiedCalibrationParentSHA256": "8a36aceb7773201c5f06f35352a9e7344c2a30d6c182fdc103115f117ce00e4a"
+    },
+    "planned": 4884
+  },
+  "localTests": {
+    "collectionGeneration": 6,
+    "seconds": 16.752,
+    "additionalAudit": 1,
+    "auditSeconds": 16.471,
+    "passed": true
+  },
+  "colabTests": {
+    "count": 7,
+    "seconds": 33.563,
+    "passed": true
+  },
+  "observation": "Existing PID140808 confirmed live with737recorded slots, no behavioral score review. No second launch.",
+  "validation": "Main and separate arithmetic checked on a heterogeneous synthetic journal; maximum difference5.551115123125783e-17. Fixed figure inspected on synthetic data only.",
+  "scope": "Start receipt, not a complete result or consciousness/novelty claim."
+}

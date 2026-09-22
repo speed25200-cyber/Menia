@@ -1,0 +1,587 @@
+{
+  "schema": "menia-learning-diagnostic-report-v1",
+  "origin": "transformers_gpu",
+  "complete": true,
+  "planHash": "9aedb18333f7b76f26d41e6f65465559449c54a5e5833c7719bb73a1baa11b44",
+  "sourceHash": "cddff299f044900e2b656e19643655868f7a51cff6221e1ff361445e1138942c",
+  "recorded": 1792,
+  "planned": 1792,
+  "trained": {
+    "visible": "9d9cf8721bd2ad8419a57ade40bece230fb6ed06d7fce8379861e03236963c93",
+    "weak": "89038f70162a63e6f64f80440dd68d75676da98a04c324004d070f3ac7582ef2",
+    "strong": "76d7dc1a3c807c5b27b381b510d9a947171917adf77a8981db72e1dc3cae8ae2",
+    "shuffled": "d879a53d6d86dac828fdf2b924bbfd2d5e687df457edc221537b798dfc7b783d"
+  },
+  "pendingRequest": false,
+  "tables": {
+    "train/base/visible/primary": {
+      "n": 24,
+      "correct": 0.7083333333333334,
+      "firstTokenCorrect": 0.7083333333333334,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999999528129896,
+      "brier": 0.5873692418879549,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 0.125,
+      "trainingTargetAccuracy": 0.7083333333333334,
+      "predictionCounts": [
+        1,
+        8,
+        15
+      ]
+    },
+    "train/base/visible/marker": {
+      "n": 24,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.999997744957606,
+      "brier": 0.6556971758583944,
+      "positionAccuracy": 0.75,
+      "absentAccuracy": 0.5,
+      "trainingTargetAccuracy": null,
+      "predictionCounts": [
+        8,
+        4,
+        12
+      ]
+    },
+    "test/base/visible/primary": {
+      "n": 72,
+      "correct": 0.6944444444444444,
+      "firstTokenCorrect": 0.6944444444444444,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999999337726169,
+      "brier": 0.6154417156024052,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 0.08333333333333333,
+      "trainingTargetAccuracy": null,
+      "predictionCounts": [
+        2,
+        24,
+        46
+      ]
+    },
+    "test/base/visible/marker": {
+      "n": 72,
+      "correct": 0.6666666666666666,
+      "firstTokenCorrect": 0.6666666666666666,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999978550606303,
+      "brier": 0.6456659325911434,
+      "positionAccuracy": 0.75,
+      "absentAccuracy": 0.5,
+      "trainingTargetAccuracy": null,
+      "predictionCounts": [
+        24,
+        12,
+        36
+      ]
+    },
+    "train/base/weak/primary": {
+      "n": 24,
+      "correct": 0.3333333333333333,
+      "firstTokenCorrect": 0.3333333333333333,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999999975164732,
+      "brier": 1.33265892700864,
+      "positionAccuracy": 0.5,
+      "absentAccuracy": 0.0,
+      "trainingTargetAccuracy": 0.3333333333333333,
+      "predictionCounts": [
+        0,
+        12,
+        12
+      ]
+    },
+    "train/base/weak/marker": {
+      "n": 24,
+      "correct": 0.5,
+      "firstTokenCorrect": 0.5,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999953582882881,
+      "brier": 0.9611203795622917,
+      "positionAccuracy": 0.5,
+      "absentAccuracy": 0.5,
+      "trainingTargetAccuracy": null,
+      "predictionCounts": [
+        12,
+        0,
+        12
+      ]
+    },
+    "test/base/weak/primary": {
+      "n": 72,
+      "correct": 0.3333333333333333,
+      "firstTokenCorrect": 0.3333333333333333,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999999892380502,
+      "brier": 1.332004083504903,
+      "positionAccuracy": 0.5,
+      "absentAccuracy": 0.0,
+      "trainingTargetAccuracy": null,
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "test/base/weak/marker": {
+      "n": 72,
+      "correct": 0.5,
+      "firstTokenCorrect": 0.5,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999954278270403,
+      "brier": 0.9443685152240096,
+      "positionAccuracy": 0.5,
+      "absentAccuracy": 0.5,
+      "trainingTargetAccuracy": null,
+      "predictionCounts": [
+        36,
+        0,
+        36
+      ]
+    },
+    "train/base/strong/primary": {
+      "n": 24,
+      "correct": 0.3333333333333333,
+      "firstTokenCorrect": 0.3333333333333333,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999999975164732,
+      "brier": 1.3192985697240622,
+      "positionAccuracy": 0.5,
+      "absentAccuracy": 0.0,
+      "trainingTargetAccuracy": 0.3333333333333333,
+      "predictionCounts": [
+        0,
+        12,
+        12
+      ]
+    },
+    "train/base/strong/marker": {
+      "n": 24,
+      "correct": 0.5,
+      "firstTokenCorrect": 0.5,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.999992902080218,
+      "brier": 0.9539116376992648,
+      "positionAccuracy": 0.5,
+      "absentAccuracy": 0.5,
+      "trainingTargetAccuracy": null,
+      "predictionCounts": [
+        12,
+        0,
+        12
+      ]
+    },
+    "test/base/strong/primary": {
+      "n": 72,
+      "correct": 0.3333333333333333,
+      "firstTokenCorrect": 0.3333333333333333,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999999917215772,
+      "brier": 1.3276964186898805,
+      "positionAccuracy": 0.5,
+      "absentAccuracy": 0.0,
+      "trainingTargetAccuracy": null,
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "test/base/strong/marker": {
+      "n": 72,
+      "correct": 0.5138888888888888,
+      "firstTokenCorrect": 0.5138888888888888,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999905692206489,
+      "brier": 0.8745096372160037,
+      "positionAccuracy": 0.5208333333333334,
+      "absentAccuracy": 0.5,
+      "trainingTargetAccuracy": null,
+      "predictionCounts": [
+        35,
+        1,
+        36
+      ]
+    },
+    "train/visible/visible/primary": {
+      "n": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999990314245224,
+      "brier": 1.9888568278088273e-08,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "trainingTargetAccuracy": 1.0,
+      "predictionCounts": [
+        8,
+        8,
+        8
+      ]
+    },
+    "train/visible/visible/marker": {
+      "n": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999480297168096,
+      "brier": 0.004368803573222378,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "trainingTargetAccuracy": null,
+      "predictionCounts": [
+        0,
+        12,
+        12
+      ]
+    },
+    "test/visible/visible/primary": {
+      "n": 72,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999990728166368,
+      "brier": 1.0005893831150257e-06,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "trainingTargetAccuracy": null,
+      "predictionCounts": [
+        24,
+        24,
+        24
+      ]
+    },
+    "test/visible/visible/marker": {
+      "n": 72,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999558611048592,
+      "brier": 0.0012543590791120702,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "trainingTargetAccuracy": null,
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "train/weak/weak/primary": {
+      "n": 24,
+      "correct": 0.3333333333333333,
+      "firstTokenCorrect": 0.3333333333333333,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9995205452044805,
+      "brier": 0.6429206105618879,
+      "positionAccuracy": 0.0,
+      "absentAccuracy": 1.0,
+      "trainingTargetAccuracy": 0.3333333333333333,
+      "predictionCounts": [
+        24,
+        0,
+        0
+      ]
+    },
+    "train/weak/weak/marker": {
+      "n": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999994337558746,
+      "brier": 1.2036155728846835e-08,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "trainingTargetAccuracy": null,
+      "predictionCounts": [
+        0,
+        12,
+        12
+      ]
+    },
+    "test/weak/weak/primary": {
+      "n": 72,
+      "correct": 0.3333333333333333,
+      "firstTokenCorrect": 0.3333333333333333,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9995577484369278,
+      "brier": 0.6929621999880489,
+      "positionAccuracy": 0.0625,
+      "absentAccuracy": 0.875,
+      "trainingTargetAccuracy": null,
+      "predictionCounts": [
+        62,
+        7,
+        3
+      ]
+    },
+    "test/weak/weak/marker": {
+      "n": 72,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999996887312995,
+      "brier": 1.072223887521515e-08,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "trainingTargetAccuracy": null,
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "train/strong/strong/primary": {
+      "n": 24,
+      "correct": 0.7916666666666666,
+      "firstTokenCorrect": 0.7916666666666666,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999274611473083,
+      "brier": 0.3671909986981469,
+      "positionAccuracy": 0.75,
+      "absentAccuracy": 0.875,
+      "trainingTargetAccuracy": 0.7916666666666666,
+      "predictionCounts": [
+        8,
+        11,
+        5
+      ]
+    },
+    "train/strong/strong/marker": {
+      "n": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999994958440462,
+      "brier": 1.956206306222972e-09,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "trainingTargetAccuracy": null,
+      "predictionCounts": [
+        0,
+        12,
+        12
+      ]
+    },
+    "test/strong/strong/primary": {
+      "n": 72,
+      "correct": 0.5833333333333334,
+      "firstTokenCorrect": 0.5833333333333334,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999191967977418,
+      "brier": 0.5858832396334359,
+      "positionAccuracy": 0.4791666666666667,
+      "absentAccuracy": 0.7916666666666666,
+      "trainingTargetAccuracy": null,
+      "predictionCounts": [
+        35,
+        27,
+        10
+      ]
+    },
+    "test/strong/strong/marker": {
+      "n": 72,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999995827674866,
+      "brier": 2.3432951318961275e-09,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "trainingTargetAccuracy": null,
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    },
+    "train/shuffled/shuffled/primary": {
+      "n": 24,
+      "correct": 0.4583333333333333,
+      "firstTokenCorrect": 0.4583333333333333,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9992200136184692,
+      "brier": 0.6348315654335792,
+      "positionAccuracy": 0.25,
+      "absentAccuracy": 0.875,
+      "trainingTargetAccuracy": 0.4166666666666667,
+      "predictionCounts": [
+        14,
+        5,
+        5
+      ]
+    },
+    "train/shuffled/shuffled/marker": {
+      "n": 24,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999975884954134,
+      "brier": 3.966504186656137e-09,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "trainingTargetAccuracy": null,
+      "predictionCounts": [
+        0,
+        12,
+        12
+      ]
+    },
+    "test/shuffled/shuffled/primary": {
+      "n": 72,
+      "correct": 0.4027777777777778,
+      "firstTokenCorrect": 0.4027777777777778,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9991426120201746,
+      "brier": 0.6232760621145343,
+      "positionAccuracy": 0.1875,
+      "absentAccuracy": 0.8333333333333334,
+      "trainingTargetAccuracy": null,
+      "predictionCounts": [
+        43,
+        10,
+        19
+      ]
+    },
+    "test/shuffled/shuffled/marker": {
+      "n": 72,
+      "correct": 1.0,
+      "firstTokenCorrect": 1.0,
+      "firstTokenIsChoice": 1.0,
+      "choiceMass": 0.9999981166587936,
+      "brier": 3.747624628738498e-09,
+      "positionAccuracy": 1.0,
+      "absentAccuracy": 1.0,
+      "trainingTargetAccuracy": null,
+      "predictionCounts": [
+        0,
+        36,
+        36
+      ]
+    }
+  },
+  "contrasts": [
+    {
+      "arm": "weak",
+      "other": "base",
+      "task": "primary",
+      "metric": "perturbedPositionAccuracy",
+      "difference": -0.4375,
+      "interval95": [
+        -0.5,
+        -0.3333333333333333
+      ],
+      "blocks": 24
+    },
+    {
+      "arm": "weak",
+      "other": "base",
+      "task": "marker",
+      "metric": "perturbedPositionAccuracy",
+      "difference": 0.5,
+      "interval95": [
+        0.2916666666666667,
+        0.7083333333333334
+      ],
+      "blocks": 24
+    },
+    {
+      "arm": "strong",
+      "other": "base",
+      "task": "primary",
+      "metric": "perturbedPositionAccuracy",
+      "difference": -0.020833333333333332,
+      "interval95": [
+        -0.16666666666666666,
+        0.14583333333333334
+      ],
+      "blocks": 24
+    },
+    {
+      "arm": "strong",
+      "other": "base",
+      "task": "marker",
+      "metric": "perturbedPositionAccuracy",
+      "difference": 0.4791666666666667,
+      "interval95": [
+        0.2916666666666667,
+        0.6875
+      ],
+      "blocks": 24
+    },
+    {
+      "arm": "strong",
+      "other": "shuffled",
+      "task": "primary",
+      "metric": "perturbedPositionAccuracy",
+      "difference": 0.2916666666666667,
+      "interval95": [
+        0.16666666666666666,
+        0.4166666666666667
+      ],
+      "blocks": 24
+    },
+    {
+      "arm": "strong",
+      "other": "shuffled",
+      "task": "marker",
+      "metric": "perturbedPositionAccuracy",
+      "difference": 0.0,
+      "interval95": [
+        0.0,
+        0.0
+      ],
+      "blocks": 24
+    },
+    {
+      "arm": "weak",
+      "other": "presence-informed-random",
+      "task": "primary",
+      "metric": "perturbedPositionAccuracy",
+      "difference": -0.4375,
+      "interval95": [
+        -0.5,
+        -0.3333333333333333
+      ],
+      "blocks": 24
+    },
+    {
+      "arm": "strong",
+      "other": "presence-informed-random",
+      "task": "primary",
+      "metric": "perturbedPositionAccuracy",
+      "difference": -0.020833333333333332,
+      "interval95": [
+        -0.16666666666666666,
+        0.14583333333333334
+      ],
+      "blocks": 24
+    }
+  ],
+  "diagnostic": {
+    "visibleTrainingAtLeast90Percent": true,
+    "weak": {
+      "trainingAtLeast90Percent": false,
+      "testReadingChangeFromBase": 0.5
+    },
+    "strong": {
+      "trainingAtLeast90Percent": false,
+      "testReadingChangeFromBase": 0.48611111111111116
+    },
+    "shuffled": {
+      "trainingAtLeast90Percent": false,
+      "testReadingChangeFromBase": 0.48611111111111116
+    }
+  },
+  "shamPairs": 448,
+  "trainingRestarts": 0,
+  "interruptedRequests": 0,
+  "errors": 0,
+  "trainingUpdateEvents": 128,
+  "trainingSeconds": 169.93064598200021,
+  "evaluationSeconds": 147.31672974600167,
+  "scope": "Diagnostic of training fit and new-sentence transfer at one layer. One initialization; no consciousness or iPhone claim."
+}

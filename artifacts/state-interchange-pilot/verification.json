@@ -1,0 +1,16 @@
+{
+  "schema": "menia-state-interchange-verification-v1",
+  "verified": true,
+  "origin": "transformers_gpu",
+  "journalSHA256": "f0a225287d58bc3bb3639a7c4051d24e1a43b1e7394ff2b2449d3921a3e16ad5",
+  "planHash": "fee156fac3ba04bf90c3686bc55b0fc5943adad7467ff75ac795fa9731a0d14c",
+  "sourceHash": "69227c29fa78eb3b5184bf10bb505be78a385357bf14c9cea5d1d1efdc8e8bbb",
+  "tables": 72,
+  "baselineTables": 48,
+  "contrasts": 144,
+  "primaryContrasts": 6,
+  "selfShams": 3456,
+  "finalLayerCopies": 4608,
+  "maxAbsoluteDifference": 2.6645352591003757e-15,
+  "scope": "Independent semantic targets, full-vocabulary losses, actual-token copy/retention, option rate, patch norms, stratified paired bootstrap, contrasts and baseline prerequisites. Shared strict reader, frozen plan and numerical libraries; not an external replication or a consciousness test."
+}

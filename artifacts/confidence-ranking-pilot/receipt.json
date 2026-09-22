@@ -1,0 +1,63 @@
+{
+  "schema": "menia-confidence-ranking-final-receipt-v1",
+  "archiveName": "menia-classement-confiance-v1.zip",
+  "archiveBytes": 120651629,
+  "archiveSHA256": "00e1d7e6aa825cb953fe27fe87fad2888b4f48f15cb226421ca6b6964f214f35",
+  "files": 16,
+  "journalSHA256": "5597a32eb6417e13651732e1445a20c6e8ce3ce26cc70f784a778eac6e242e61",
+  "scienceRevision": "4cbce2edea430cc7e4df52546d448e91a7c98629",
+  "notebookRevision": "65b571ad7368c0459ed33f164b05f1858ee7f30f",
+  "execution": {
+    "startedUTC": "2026-09-20T01:21:53.240082+00:00",
+    "revision": "4cbce2edea430cc7e4df52546d448e91a7c98629",
+    "journal": "/content/menia-results/confidence-ranking-v1/confidence-ranking-20260920-v1.jsonl",
+    "status": "completed",
+    "hardware": "NVIDIA A100-SXM4-40GB, 0 MiB, 40960 MiB",
+    "updatedUTC": "2026-09-20T03:11:06.684156+00:00"
+  },
+  "model": {
+    "id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "training": {
+    "rank": 8,
+    "scale": 1.0,
+    "learningRate": 0.0001,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "epsilon": 1e-08,
+    "weightDecay": 0.0,
+    "clipNorm": 1.0,
+    "epochs": 2,
+    "batchSize": 8,
+    "updatesPerAdapter": 144,
+    "maxTrainingTokens": 1792,
+    "loss": "Mean code/EOS CE plus mean eligible logistic pair loss",
+    "pairWeight": 1.0,
+    "pairsPerBatch": 4
+  },
+  "planHash": "83d81c430208ab1c4f0f970e232e190e19be22af43ee4c2a3f554586efbb9b9c",
+  "sourceHash": "12489c817466d98892b43e249fdd7a25d360522770af820c0bfefefda7d87129",
+  "mainRecomputeMaxAbsoluteDifference": 0.0,
+  "independentMaxAbsoluteDifference": 2.220446049250313e-16,
+  "colabPreflight": {
+    "count": 17,
+    "passed": true,
+    "seconds": 27.003
+  },
+  "unchangedWeightFiles": 12,
+  "trainingPrefixSHA256": "eb27907387de279f6dd98cb5c37f186125f4221ab2bf413e39d931c197187e5c",
+  "trainingBackupSHA256": "1362bc856de6196b33408659d95c0b832b01cccc04e8b89ca91d8aedff72d4b3",
+  "costs": {
+    "trainingInputTokens": 1196628,
+    "trainingSeconds": 2656.2958292620024,
+    "answerSeconds": 1391.3326429388617,
+    "judgmentSeconds": 2316.6234476005993,
+    "answerTokens": 15242,
+    "answerTokenLimits": 0
+  },
+  "outcomeReview": "Complete archive, frozen training prefix, weights, full report recalculation and separate arithmetic checked before interpretation.",
+  "scope": "Fixed within-category textual correctness prediction. No privileged state access, native decision, consciousness or novelty conclusion."
+}

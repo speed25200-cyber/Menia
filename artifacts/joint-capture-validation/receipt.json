@@ -1,0 +1,19 @@
+{
+  "schema": "menia-joint-capture-validation-receipt-v1",
+  "resultBytes": 65797,
+  "resultSHA256": "17de150327c42562045f95b5a271aa44525eb1bc14f7aad268a792853105aeaa",
+  "sourceRevision": "125e060de9148ec63c673e89a029891416d0b955",
+  "sourceHash": "75f0d530114110be380567bc1b11835536da38fe918ba2c96d5e0b078689bc09",
+  "startedUTC": "2026-09-19T17:41:26.942858+00:00",
+  "completedUTC": "2026-09-19T17:41:37.269694+00:00",
+  "hardware": "NVIDIA A100-SXM4-40GB",
+  "model": {
+    "id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "cases": 4,
+  "perCaseChecks": 48,
+  "seedInvarianceChecks": 2,
+  "passed": true,
+  "scope": "Four short technical cases, no natural-error predictive score. Model, projections and standalone capture routines are shared. No general equivalence guarantee or consciousness result."
+}

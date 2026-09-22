@@ -1,0 +1,45 @@
+{
+  "schema": "menia-natural-error-start-receipt-v1",
+  "status": "collection-observed-live",
+  "job": {
+    "pid": 125994,
+    "startedUTC": "2026-09-19T18:13:01.676110+00:00",
+    "scienceRevision": "7997c23a417abfde194c3b7281e854ea1173d64c",
+    "notebookRevision": "a6e8ee683573995de69f9e861e9903d465d4538a",
+    "notebookSHA256": "08eb1e114c6277d160de9eb095aebaa78673691e7ba31b63e1b6cd4849d2b95f",
+    "directory": "/content/menia-natural-error-mcp-20260919",
+    "archive": "/content/menia-erreurs-naturelles.zip"
+  },
+  "observationUTC": "2026-09-19T18:13:55.574935+00:00",
+  "recorded": 76,
+  "planned": 3456,
+  "events": {
+    "header": 1,
+    "request": 77,
+    "capture": 77,
+    "result": 76
+  },
+  "statuses": {
+    "ok": 76
+  },
+  "hardware": "NVIDIA A100-SXM4-40GB, 28 %, 8304 MiB, 40960 MiB",
+  "planHash": "6bc3a6939bb735415014a18d14a51875fff3a9b433a687aed26c0a176b2e0128",
+  "sourceHash": "a171d491a18db3ff874dbf36f0057960e91414cfa136839488519d975b739aa5",
+  "model": {
+    "id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "localTests": {
+    "count": 8,
+    "seconds": 11.063,
+    "passed": true
+  },
+  "colabTests": {
+    "count": 8,
+    "seconds": 13.219,
+    "passed": true
+  },
+  "returnCode": null,
+  "outcomeScoresReviewed": false,
+  "scope": "Dated launch evidence, not live status or completed behavioral result. Full collection, refit reconstruction and second arithmetic required before interpretation."
+}

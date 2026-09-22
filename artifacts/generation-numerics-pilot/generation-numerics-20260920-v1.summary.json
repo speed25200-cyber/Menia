@@ -1,0 +1,15 @@
+{
+  "schema": "menia-generation-numerics-summary-v1",
+  "planHash": "a76645b6649274837e4739f4592ecb75393167acf4dfa7a583b9b93034bba02a",
+  "sourceHash": "e9d3eff9f02444d96e42ce2e51404d269a01b360fa157b30ee547dd49b17500f",
+  "cases": 6,
+  "generations": 12,
+  "branchDecodes": 60,
+  "allStrictControlsPassed": true,
+  "fullPrefillMaximumCacheDifference": 1.0,
+  "fullPrefillNativeTokenAgreements": 12,
+  "fullSequenceNativeTokenAgreements": 12,
+  "actualValidNativeResponses": 12,
+  "branchComparisonsPerReference": 12,
+  "scope": "Technical equivalence and numerical floor on six fixed prompts. No accuracy, calibration, self-monitoring, utility, consciousness or novelty criterion."
+}

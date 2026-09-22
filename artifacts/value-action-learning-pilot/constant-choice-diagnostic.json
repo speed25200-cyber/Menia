@@ -1,0 +1,982 @@
+{
+  "schema": "menia-value-action-constant-choice-diagnostic-v1",
+  "journalSHA256": "580a02917c21d96c6550515ed14845c4dea6447adf2b9978dbdb898a226554b1",
+  "examinedChoiceGroups": 288,
+  "constantGroupsByArm": {
+    "base": 33,
+    "choice": 18,
+    "linked": 19,
+    "shuffled": 18
+  },
+  "groups": {
+    "r0/base/choice/w1/digits/o1/m0": {
+      "outputs": {
+        "2": 24
+      },
+      "expected": {
+        "1": 12,
+        "2": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r0/base/choice/w1/letters/o0/m1": {
+      "outputs": {
+        "B": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r0/base/choice/w1/letters/o1/m1": {
+      "outputs": {
+        "B": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r0/base/choice/w2/digits/o0/m0": {
+      "outputs": {
+        "2": 24
+      },
+      "expected": {
+        "2": 12,
+        "1": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r0/base/choice/w2/digits/o0/m1": {
+      "outputs": {
+        "1": 24
+      },
+      "expected": {
+        "1": 12,
+        "2": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r0/base/choice/w2/digits/o1/m0": {
+      "outputs": {
+        "2": 24
+      },
+      "expected": {
+        "2": 12,
+        "1": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r0/base/choice/w2/digits/o1/m1": {
+      "outputs": {
+        "1": 24
+      },
+      "expected": {
+        "1": 12,
+        "2": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r0/base/choice/w2/letters/o0/m1": {
+      "outputs": {
+        "A": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r0/base/choice/w2/letters/o1/m0": {
+      "outputs": {
+        "B": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r0/base/choice/w2/letters/o1/m1": {
+      "outputs": {
+        "A": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r0/base/choice/w3/letters/o0/m1": {
+      "outputs": {
+        "B": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r0/choice/choice/w1/letters/o0/m1": {
+      "outputs": {
+        "B": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r0/choice/choice/w2/digits/o0/m1": {
+      "outputs": {
+        "1": 24
+      },
+      "expected": {
+        "1": 12,
+        "2": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r0/choice/choice/w2/digits/o1/m1": {
+      "outputs": {
+        "1": 24
+      },
+      "expected": {
+        "1": 12,
+        "2": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r0/choice/choice/w2/letters/o0/m1": {
+      "outputs": {
+        "A": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r0/choice/choice/w2/letters/o1/m0": {
+      "outputs": {
+        "B": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r0/choice/choice/w2/letters/o1/m1": {
+      "outputs": {
+        "A": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r0/linked/choice/w1/letters/o0/m1": {
+      "outputs": {
+        "B": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r0/linked/choice/w2/digits/o0/m1": {
+      "outputs": {
+        "1": 24
+      },
+      "expected": {
+        "1": 12,
+        "2": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r0/linked/choice/w2/digits/o1/m1": {
+      "outputs": {
+        "1": 24
+      },
+      "expected": {
+        "1": 12,
+        "2": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r0/linked/choice/w2/letters/o0/m0": {
+      "outputs": {
+        "B": 24
+      },
+      "expected": {
+        "A": 12,
+        "B": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r0/linked/choice/w2/letters/o0/m1": {
+      "outputs": {
+        "A": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r0/linked/choice/w2/letters/o1/m0": {
+      "outputs": {
+        "B": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r0/linked/choice/w2/letters/o1/m1": {
+      "outputs": {
+        "A": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r0/shuffled/choice/w1/letters/o0/m1": {
+      "outputs": {
+        "B": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r0/shuffled/choice/w2/letters/o1/m0": {
+      "outputs": {
+        "B": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r0/shuffled/choice/w3/letters/o1/m0": {
+      "outputs": {
+        "B": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r1/base/choice/w1/digits/o1/m0": {
+      "outputs": {
+        "2": 24
+      },
+      "expected": {
+        "1": 12,
+        "2": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r1/base/choice/w1/letters/o0/m1": {
+      "outputs": {
+        "B": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r1/base/choice/w1/letters/o1/m1": {
+      "outputs": {
+        "B": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r1/base/choice/w2/digits/o0/m0": {
+      "outputs": {
+        "2": 24
+      },
+      "expected": {
+        "2": 12,
+        "1": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r1/base/choice/w2/digits/o0/m1": {
+      "outputs": {
+        "1": 24
+      },
+      "expected": {
+        "1": 12,
+        "2": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r1/base/choice/w2/digits/o1/m0": {
+      "outputs": {
+        "2": 24
+      },
+      "expected": {
+        "2": 12,
+        "1": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r1/base/choice/w2/digits/o1/m1": {
+      "outputs": {
+        "1": 24
+      },
+      "expected": {
+        "1": 12,
+        "2": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r1/base/choice/w2/letters/o0/m1": {
+      "outputs": {
+        "A": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r1/base/choice/w2/letters/o1/m0": {
+      "outputs": {
+        "B": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r1/base/choice/w2/letters/o1/m1": {
+      "outputs": {
+        "A": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r1/base/choice/w3/letters/o0/m1": {
+      "outputs": {
+        "B": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r1/choice/choice/w1/letters/o0/m1": {
+      "outputs": {
+        "B": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r1/choice/choice/w2/digits/o0/m1": {
+      "outputs": {
+        "1": 24
+      },
+      "expected": {
+        "1": 12,
+        "2": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r1/choice/choice/w2/digits/o1/m1": {
+      "outputs": {
+        "1": 24
+      },
+      "expected": {
+        "1": 12,
+        "2": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r1/choice/choice/w2/letters/o0/m1": {
+      "outputs": {
+        "A": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r1/choice/choice/w2/letters/o1/m0": {
+      "outputs": {
+        "B": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r1/choice/choice/w2/letters/o1/m1": {
+      "outputs": {
+        "A": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r1/linked/choice/w1/letters/o0/m1": {
+      "outputs": {
+        "B": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r1/linked/choice/w2/digits/o0/m1": {
+      "outputs": {
+        "1": 24
+      },
+      "expected": {
+        "1": 12,
+        "2": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r1/linked/choice/w2/digits/o1/m1": {
+      "outputs": {
+        "1": 24
+      },
+      "expected": {
+        "1": 12,
+        "2": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r1/linked/choice/w2/letters/o0/m1": {
+      "outputs": {
+        "A": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r1/linked/choice/w2/letters/o1/m0": {
+      "outputs": {
+        "B": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r1/linked/choice/w2/letters/o1/m1": {
+      "outputs": {
+        "A": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r1/shuffled/choice/w1/letters/o0/m1": {
+      "outputs": {
+        "B": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r1/shuffled/choice/w2/digits/o0/m1": {
+      "outputs": {
+        "1": 24
+      },
+      "expected": {
+        "1": 12,
+        "2": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r1/shuffled/choice/w2/digits/o1/m1": {
+      "outputs": {
+        "1": 24
+      },
+      "expected": {
+        "1": 12,
+        "2": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r1/shuffled/choice/w2/letters/o1/m0": {
+      "outputs": {
+        "B": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r1/shuffled/choice/w3/digits/o1/m0": {
+      "outputs": {
+        "2": 24
+      },
+      "expected": {
+        "1": 12,
+        "2": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r1/shuffled/choice/w3/digits/o1/m1": {
+      "outputs": {
+        "1": 24
+      },
+      "expected": {
+        "1": 12,
+        "2": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r1/shuffled/choice/w3/letters/o1/m0": {
+      "outputs": {
+        "B": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r2/base/choice/w1/digits/o1/m0": {
+      "outputs": {
+        "2": 24
+      },
+      "expected": {
+        "1": 12,
+        "2": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r2/base/choice/w1/letters/o0/m1": {
+      "outputs": {
+        "B": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r2/base/choice/w1/letters/o1/m1": {
+      "outputs": {
+        "B": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r2/base/choice/w2/digits/o0/m0": {
+      "outputs": {
+        "2": 24
+      },
+      "expected": {
+        "2": 12,
+        "1": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r2/base/choice/w2/digits/o0/m1": {
+      "outputs": {
+        "1": 24
+      },
+      "expected": {
+        "1": 12,
+        "2": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r2/base/choice/w2/digits/o1/m0": {
+      "outputs": {
+        "2": 24
+      },
+      "expected": {
+        "2": 12,
+        "1": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r2/base/choice/w2/digits/o1/m1": {
+      "outputs": {
+        "1": 24
+      },
+      "expected": {
+        "1": 12,
+        "2": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r2/base/choice/w2/letters/o0/m1": {
+      "outputs": {
+        "A": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r2/base/choice/w2/letters/o1/m0": {
+      "outputs": {
+        "B": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r2/base/choice/w2/letters/o1/m1": {
+      "outputs": {
+        "A": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r2/base/choice/w3/letters/o0/m1": {
+      "outputs": {
+        "B": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r2/choice/choice/w1/letters/o0/m1": {
+      "outputs": {
+        "B": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r2/choice/choice/w2/digits/o0/m1": {
+      "outputs": {
+        "1": 24
+      },
+      "expected": {
+        "1": 12,
+        "2": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r2/choice/choice/w2/digits/o1/m1": {
+      "outputs": {
+        "1": 24
+      },
+      "expected": {
+        "1": 12,
+        "2": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r2/choice/choice/w2/letters/o0/m1": {
+      "outputs": {
+        "A": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r2/choice/choice/w2/letters/o1/m0": {
+      "outputs": {
+        "B": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r2/choice/choice/w2/letters/o1/m1": {
+      "outputs": {
+        "A": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r2/linked/choice/w1/letters/o0/m1": {
+      "outputs": {
+        "B": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r2/linked/choice/w2/digits/o0/m1": {
+      "outputs": {
+        "1": 24
+      },
+      "expected": {
+        "1": 12,
+        "2": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r2/linked/choice/w2/digits/o1/m1": {
+      "outputs": {
+        "1": 24
+      },
+      "expected": {
+        "1": 12,
+        "2": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r2/linked/choice/w2/letters/o0/m1": {
+      "outputs": {
+        "A": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r2/linked/choice/w2/letters/o1/m0": {
+      "outputs": {
+        "B": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r2/linked/choice/w2/letters/o1/m1": {
+      "outputs": {
+        "A": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r2/shuffled/choice/w1/letters/o0/m1": {
+      "outputs": {
+        "B": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r2/shuffled/choice/w2/digits/o0/m1": {
+      "outputs": {
+        "1": 24
+      },
+      "expected": {
+        "1": 12,
+        "2": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r2/shuffled/choice/w2/digits/o1/m1": {
+      "outputs": {
+        "1": 24
+      },
+      "expected": {
+        "1": 12,
+        "2": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r2/shuffled/choice/w2/letters/o0/m1": {
+      "outputs": {
+        "A": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r2/shuffled/choice/w2/letters/o1/m0": {
+      "outputs": {
+        "B": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r2/shuffled/choice/w2/letters/o1/m1": {
+      "outputs": {
+        "A": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r2/shuffled/choice/w3/digits/o1/m1": {
+      "outputs": {
+        "1": 24
+      },
+      "expected": {
+        "1": 12,
+        "2": 12
+      },
+      "correct": 12,
+      "n": 24
+    },
+    "r2/shuffled/choice/w3/letters/o1/m0": {
+      "outputs": {
+        "B": 24
+      },
+      "expected": {
+        "B": 12,
+        "A": 12
+      },
+      "correct": 12,
+      "n": 24
+    }
+  },
+  "scope": "Post-hoc output description on all choice groups, after fixed analysis. Constants give 12/24 because every group is balanced. No circuit explanation, revised criterion, or consciousness inference."
+}

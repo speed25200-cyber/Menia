@@ -1,0 +1,227 @@
+{
+  "schema": "menia-iphone-coupling-analysis-v1",
+  "auditCount": 1,
+  "deviceExecutionAttested": false,
+  "tokensPerSecondMeasurable": false,
+  "completeCollectionHistoryAttested": false,
+  "totals": {
+    "planned": 36,
+    "completed": 36,
+    "statuses": {
+      "completed": 36
+    },
+    "validFormat": 36,
+    "matchesProvidedSummary": 24,
+    "matchesDecisionRule": 24,
+    "agreesWithMeasuredSummary": 12,
+    "disagreesWithMeasuredSummary": 24,
+    "measuredAgreementUnavailable": 0,
+    "actions": {
+      "repondre": 15,
+      "verifier": 21
+    }
+  },
+  "audits": [
+    {
+      "appVersion": "0.2.0 (2)",
+      "generationSettings": "context=2048; output<=256; temperature=0.7; topP=0.8; topK=20; thinking=false; no fixed RNG seed",
+      "sourceSummary": {
+        "observations": 10,
+        "successes": 10,
+        "predictedSuccess": 0.9166666666666666,
+        "observedAccuracy": 1.0,
+        "prequentialBrier": 0.055803219397645806,
+        "forecastsMatchAvailablePrefix": true,
+        "completeForecastHistoryAttested": false,
+        "reportedIdentityMatchesPinnedManifest": true
+      },
+      "fullPlanConforms": true,
+      "storedGradesMatch": true,
+      "gradeDiscrepancyTrials": [],
+      "totals": {
+        "planned": 36,
+        "completed": 36,
+        "statuses": {
+          "completed": 36
+        },
+        "validFormat": 36,
+        "matchesProvidedSummary": 24,
+        "matchesDecisionRule": 24,
+        "agreesWithMeasuredSummary": 12,
+        "disagreesWithMeasuredSummary": 24,
+        "measuredAgreementUnavailable": 0,
+        "actions": {
+          "repondre": 15,
+          "verifier": 21
+        }
+      },
+      "cells": [
+        {
+          "referent": "selfReport",
+          "condition": "measured",
+          "planned": 6,
+          "completed": 6,
+          "statuses": {
+            "completed": 6
+          },
+          "validFormat": 6,
+          "matchesProvidedSummary": 6,
+          "matchesDecisionRule": 6,
+          "agreesWithMeasuredSummary": 6,
+          "disagreesWithMeasuredSummary": 0,
+          "measuredAgreementUnavailable": 0,
+          "actions": {
+            "repondre": 6
+          }
+        },
+        {
+          "referent": "selfReport",
+          "condition": "absent",
+          "planned": 6,
+          "completed": 6,
+          "statuses": {
+            "completed": 6
+          },
+          "validFormat": 6,
+          "matchesProvidedSummary": 0,
+          "matchesDecisionRule": 0,
+          "agreesWithMeasuredSummary": 0,
+          "disagreesWithMeasuredSummary": 6,
+          "measuredAgreementUnavailable": 0,
+          "actions": {
+            "repondre": 3,
+            "verifier": 3
+          }
+        },
+        {
+          "referent": "selfReport",
+          "condition": "fictional",
+          "planned": 6,
+          "completed": 6,
+          "statuses": {
+            "completed": 6
+          },
+          "validFormat": 6,
+          "matchesProvidedSummary": 6,
+          "matchesDecisionRule": 6,
+          "agreesWithMeasuredSummary": 0,
+          "disagreesWithMeasuredSummary": 6,
+          "measuredAgreementUnavailable": 0,
+          "actions": {
+            "verifier": 6
+          }
+        },
+        {
+          "referent": "otherAgent",
+          "condition": "measured",
+          "planned": 6,
+          "completed": 6,
+          "statuses": {
+            "completed": 6
+          },
+          "validFormat": 6,
+          "matchesProvidedSummary": 6,
+          "matchesDecisionRule": 6,
+          "agreesWithMeasuredSummary": 6,
+          "disagreesWithMeasuredSummary": 0,
+          "measuredAgreementUnavailable": 0,
+          "actions": {
+            "repondre": 6
+          }
+        },
+        {
+          "referent": "otherAgent",
+          "condition": "absent",
+          "planned": 6,
+          "completed": 6,
+          "statuses": {
+            "completed": 6
+          },
+          "validFormat": 6,
+          "matchesProvidedSummary": 0,
+          "matchesDecisionRule": 0,
+          "agreesWithMeasuredSummary": 0,
+          "disagreesWithMeasuredSummary": 6,
+          "measuredAgreementUnavailable": 0,
+          "actions": {
+            "verifier": 6
+          }
+        },
+        {
+          "referent": "otherAgent",
+          "condition": "fictional",
+          "planned": 6,
+          "completed": 6,
+          "statuses": {
+            "completed": 6
+          },
+          "validFormat": 6,
+          "matchesProvidedSummary": 6,
+          "matchesDecisionRule": 6,
+          "agreesWithMeasuredSummary": 0,
+          "disagreesWithMeasuredSummary": 6,
+          "measuredAgreementUnavailable": 0,
+          "actions": {
+            "verifier": 6
+          }
+        }
+      ],
+      "absentOutputPatterns": [
+        {
+          "referent": "otherAgent",
+          "reply": {
+            "action": "verifier",
+            "observations": 12,
+            "predictedSuccess": 0.75,
+            "successes": 8
+          },
+          "count": 2
+        },
+        {
+          "referent": "otherAgent",
+          "reply": {
+            "action": "verifier",
+            "observations": 123,
+            "predictedSuccess": 0.75,
+            "successes": 45
+          },
+          "count": 4
+        },
+        {
+          "referent": "selfReport",
+          "reply": {
+            "action": "repondre",
+            "observations": 12,
+            "predictedSuccess": 0.85,
+            "successes": 8
+          },
+          "count": 3
+        },
+        {
+          "referent": "selfReport",
+          "reply": {
+            "action": "verifier",
+            "observations": 12,
+            "predictedSuccess": 0.75,
+            "successes": 8
+          },
+          "count": 3
+        }
+      ],
+      "callDuration": {
+        "n": 36,
+        "minSeconds": 1.531003833282739,
+        "medianSeconds": 1.9402455416275188,
+        "maxSeconds": 2.2065468332730234,
+        "totalSeconds": 68.04294479149394
+      },
+      "firstTextDelay": {
+        "n": 36,
+        "minSeconds": 0.41902116674464196,
+        "medianSeconds": 0.5336158958380111,
+        "maxSeconds": 0.6664879999589175,
+        "totalSeconds": 19.618585166637786
+      }
+    }
+  ]
+}

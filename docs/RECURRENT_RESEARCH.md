@@ -1,5 +1,8 @@
 # Menia v0.2 — module récurrent expérimental
 
+Extension : [limites de rappel calibrées et abstention](RECALL_RELIABILITY.md),
+avec mesures des erreurs à longs délais et des interventions sur l'état interne.
+
 ## Ce qui a réellement été construit
 
 Un petit réseau neuronal de 1 540 paramètres, entraîné par rétropropagation à

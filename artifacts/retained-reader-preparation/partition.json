@@ -1,0 +1,1324 @@
+{
+  "schema": "menia-prospective-reader-partition-v1",
+  "cases": [
+    {
+      "id": 1000,
+      "split": "train",
+      "bindings": 8,
+      "values": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "seed": 2026092100,
+      "tableHash": "c83c18ba413ce8ebaf6fb1dcbb3d8bd09afaf0d72fa40786c51aca848cf42396",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 0\nNERI = 1\nVAKO = 1\nSUDI = 0\nPELA = 1\nTOVI = 0\nZERA = 0\nMIKO = 1\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1001,
+      "split": "train",
+      "bindings": 8,
+      "values": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1
+      ],
+      "seed": 2026092101,
+      "tableHash": "89d25f24ad42717338a770a70b259e9eb88afb1858bd79d8b8cd4789a5413c2a",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 0\nNERI = 1\nVAKO = 0\nSUDI = 1\nPELA = 1\nTOVI = 0\nZERA = 0\nMIKO = 1\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1002,
+      "split": "train",
+      "bindings": 8,
+      "values": [
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "seed": 2026092102,
+      "tableHash": "431217ed6218ff256fde4f7bf308f0208a3bcde08546fb8851b8ac1c5638fa3e",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 1\nVAKO = 0\nSUDI = 0\nPELA = 1\nTOVI = 1\nZERA = 0\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1003,
+      "split": "train",
+      "bindings": 8,
+      "values": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "seed": 2026092103,
+      "tableHash": "be2ac9e3fef0471c06f84aa6161aafa3714b5bf080b02d1534250a72674db497",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 0\nVAKO = 0\nSUDI = 1\nPELA = 1\nTOVI = 0\nZERA = 1\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1004,
+      "split": "train",
+      "bindings": 8,
+      "values": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1
+      ],
+      "seed": 2026092104,
+      "tableHash": "0f9447c580ea66421d2ad4f504cca5b8f17da93c8e04668b5e3f69bec65ffbda",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 0\nVAKO = 0\nSUDI = 1\nPELA = 1\nTOVI = 0\nZERA = 0\nMIKO = 1\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1005,
+      "split": "train",
+      "bindings": 8,
+      "values": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "seed": 2026092105,
+      "tableHash": "0b149b4cb6245358cddf67d6f56c578a4ad8fc93dcb9d5b12a29c4d1e6feb96d",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 0\nNERI = 0\nVAKO = 1\nSUDI = 0\nPELA = 0\nTOVI = 1\nZERA = 1\nMIKO = 1\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1006,
+      "split": "train",
+      "bindings": 8,
+      "values": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "seed": 2026092106,
+      "tableHash": "b8fa4fa28b07b20c2e6cb1feb32275bb07e225e3e7c632253ccdaddb54e8f05c",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 1\nVAKO = 0\nSUDI = 1\nPELA = 0\nTOVI = 0\nZERA = 1\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1007,
+      "split": "train",
+      "bindings": 8,
+      "values": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "seed": 2026092107,
+      "tableHash": "84ffb81abeb0e9f9be23137bf7aff7f80a8ab6311dd3e512074ebb5a85c93ad2",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 0\nNERI = 1\nVAKO = 0\nSUDI = 1\nPELA = 1\nTOVI = 0\nZERA = 1\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1008,
+      "split": "train",
+      "bindings": 8,
+      "values": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "seed": 2026092108,
+      "tableHash": "72031f1119b449f5cdc3ef96124146c15406047cf8d19ecec4aa2525ddf2674d",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 1\nVAKO = 1\nSUDI = 1\nPELA = 0\nTOVI = 0\nZERA = 0\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1009,
+      "split": "train",
+      "bindings": 8,
+      "values": [
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "seed": 2026092109,
+      "tableHash": "8883e89642d6787051199a9b1dc210be4ddd28d32c7051f284a952f58ec4f744",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 0\nVAKO = 1\nSUDI = 0\nPELA = 1\nTOVI = 0\nZERA = 1\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1010,
+      "split": "train",
+      "bindings": 8,
+      "values": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "seed": 2026092110,
+      "tableHash": "74354f628bac0a2cb2ef98b565f94b1a5e1054194f2b55834bfa42ce4a6c9c6b",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 0\nVAKO = 0\nSUDI = 0\nPELA = 1\nTOVI = 1\nZERA = 1\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1011,
+      "split": "train",
+      "bindings": 8,
+      "values": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "seed": 2026092111,
+      "tableHash": "f9711d9c9eabe21de25786c8c8128f48a09e448355efc41761f1220c1a471cc0",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 1\nVAKO = 0\nSUDI = 1\nPELA = 1\nTOVI = 0\nZERA = 0\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1012,
+      "split": "train",
+      "bindings": 8,
+      "values": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "seed": 2026092112,
+      "tableHash": "20008a9da5d43843acda5e9b01ff9eaef1efc27da9d785959227e241d23c4ff7",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 0\nVAKO = 1\nSUDI = 1\nPELA = 0\nTOVI = 1\nZERA = 0\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1013,
+      "split": "train",
+      "bindings": 8,
+      "values": [
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "seed": 2026092113,
+      "tableHash": "735a8009a077c440dfaf2a1cb48479dd4b59995d3360c7c93400b7836a765075",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 0\nNERI = 1\nVAKO = 0\nSUDI = 0\nPELA = 1\nTOVI = 1\nZERA = 1\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1014,
+      "split": "train",
+      "bindings": 8,
+      "values": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "seed": 2026092114,
+      "tableHash": "bf853b2f549a152fc6cee462d8213cc9e1db1d4937563238af0b6d0d57b0e792",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 0\nVAKO = 1\nSUDI = 1\nPELA = 0\nTOVI = 0\nZERA = 0\nMIKO = 1\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1015,
+      "split": "train",
+      "bindings": 8,
+      "values": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "seed": 2026092115,
+      "tableHash": "fc96836d7f7c344b9a22bf4989ded82d6d2a416c215c47540da3744797690d43",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 0\nNERI = 0\nVAKO = 0\nSUDI = 1\nPELA = 1\nTOVI = 1\nZERA = 1\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1016,
+      "split": "train",
+      "bindings": 8,
+      "values": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "seed": 2026092116,
+      "tableHash": "bb9eceddfdbc7cfaaa05867b0ccde6e40f68e92f2ae5532b8f9c87f00b3a19eb",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 0\nNERI = 1\nVAKO = 1\nSUDI = 1\nPELA = 1\nTOVI = 0\nZERA = 0\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1017,
+      "split": "train",
+      "bindings": 8,
+      "values": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "seed": 2026092117,
+      "tableHash": "5987ea870a2f42049aec08183d0899e157400610e38e4d71b70956ab06a64a40",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 0\nNERI = 0\nVAKO = 1\nSUDI = 0\nPELA = 1\nTOVI = 1\nZERA = 1\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1018,
+      "split": "train",
+      "bindings": 8,
+      "values": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "seed": 2026092118,
+      "tableHash": "4bf495a52f327442580ae765c720f1337a858fd221649685a511baa251cc2c3e",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 0\nVAKO = 1\nSUDI = 1\nPELA = 0\nTOVI = 0\nZERA = 1\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1019,
+      "split": "train",
+      "bindings": 8,
+      "values": [
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "seed": 2026092119,
+      "tableHash": "fc3f191bd15c4bdb3330ff46b2dd08792c06660dbc644d9a256a184471c066d6",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 1\nVAKO = 1\nSUDI = 0\nPELA = 1\nTOVI = 0\nZERA = 0\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1020,
+      "split": "train",
+      "bindings": 8,
+      "values": [
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "seed": 2026092120,
+      "tableHash": "02d71c901281b2b8d1e8c4835a86838e0384b682cebf522085c26bfe8bae93b7",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 0\nNERI = 1\nVAKO = 0\nSUDI = 0\nPELA = 1\nTOVI = 1\nZERA = 0\nMIKO = 1\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1021,
+      "split": "train",
+      "bindings": 8,
+      "values": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "seed": 2026092121,
+      "tableHash": "e7ec71464bd6e0bfb22162d2166afe13211178200712c1b6be04c4765b5823b0",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 0\nNERI = 1\nVAKO = 1\nSUDI = 0\nPELA = 1\nTOVI = 1\nZERA = 0\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1022,
+      "split": "train",
+      "bindings": 8,
+      "values": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "seed": 2026092122,
+      "tableHash": "1251f5a5d955c6906d2894f510531bff704282513b69f4cc5efbabe00ba95137",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 0\nNERI = 1\nVAKO = 0\nSUDI = 1\nPELA = 1\nTOVI = 1\nZERA = 0\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1023,
+      "split": "train",
+      "bindings": 8,
+      "values": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "seed": 2026092123,
+      "tableHash": "1b2138d8228a527b58f11d2f08e03c00dbdca637d536c4ceb85c7a034084ee85",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 0\nNERI = 0\nVAKO = 1\nSUDI = 0\nPELA = 1\nTOVI = 1\nZERA = 0\nMIKO = 1\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1024,
+      "split": "train",
+      "bindings": 8,
+      "values": [
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      "seed": 2026092124,
+      "tableHash": "ebc6e37bce57593f1aaf6b8db09d54576d67b306112a0a7a12a0ecfdcca9309e",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 0\nVAKO = 1\nSUDI = 0\nPELA = 0\nTOVI = 1\nZERA = 0\nMIKO = 1\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1025,
+      "split": "train",
+      "bindings": 8,
+      "values": [
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "seed": 2026092125,
+      "tableHash": "2e5c318e28f529b4c4da49ec313d3cf5fe9c6d94da3486c59a0a8a049ae83fd3",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 0\nVAKO = 1\nSUDI = 0\nPELA = 1\nTOVI = 0\nZERA = 0\nMIKO = 1\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1026,
+      "split": "train",
+      "bindings": 8,
+      "values": [
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "seed": 2026092126,
+      "tableHash": "275ca98ac7ce3e8ec597f11a5afe06c11f50c588d5277787e2e7f11729a6d460",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 0\nNERI = 1\nVAKO = 1\nSUDI = 1\nPELA = 0\nTOVI = 1\nZERA = 0\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1027,
+      "split": "train",
+      "bindings": 8,
+      "values": [
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "seed": 2026092127,
+      "tableHash": "86363025940c70eadfe4753478f18cc863c13c32097614679f52cb2fe8ff5e9f",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 0\nVAKO = 1\nSUDI = 0\nPELA = 1\nTOVI = 1\nZERA = 0\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1028,
+      "split": "train",
+      "bindings": 8,
+      "values": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "seed": 2026092128,
+      "tableHash": "3dbbdcc62d126acdb964f54d580b8d601012466c7cd0ace5015890b5724a3243",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 0\nNERI = 1\nVAKO = 0\nSUDI = 0\nPELA = 0\nTOVI = 1\nZERA = 1\nMIKO = 1\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1029,
+      "split": "train",
+      "bindings": 8,
+      "values": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "seed": 2026092129,
+      "tableHash": "3d0a9e24af8b2ef597e369e897dbce9a5a1def8f63dee1946c40c4d868adeda7",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 0\nNERI = 1\nVAKO = 0\nSUDI = 1\nPELA = 0\nTOVI = 1\nZERA = 0\nMIKO = 1\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1030,
+      "split": "train",
+      "bindings": 8,
+      "values": [
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "seed": 2026092130,
+      "tableHash": "6be2f2fab82fa8d21ec6b44e6b1904703d882b04ef8218b2e7776b5ca84ad5d9",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 0\nNERI = 1\nVAKO = 0\nSUDI = 0\nPELA = 1\nTOVI = 0\nZERA = 1\nMIKO = 1\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1031,
+      "split": "train",
+      "bindings": 8,
+      "values": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1
+      ],
+      "seed": 2026092131,
+      "tableHash": "3fcda2ff25bcf923a51e520a68b3b1d2ff6253940a5358af23b839899eece5b4",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 0\nNERI = 0\nVAKO = 0\nSUDI = 1\nPELA = 1\nTOVI = 1\nZERA = 0\nMIKO = 1\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1032,
+      "split": "reserved",
+      "bindings": 8,
+      "values": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "seed": 2026092132,
+      "tableHash": "5ff1e205a1d40aee33c83df29e7650be3063df36af4cb57dc90d126ec4940ec4",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 0\nNERI = 0\nVAKO = 1\nSUDI = 1\nPELA = 1\nTOVI = 0\nZERA = 1\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1033,
+      "split": "reserved",
+      "bindings": 8,
+      "values": [
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "seed": 2026092133,
+      "tableHash": "4a2086539014f5e1e0737a7dc0d649e436ae4449aa6bbbf0eab5eab444ea9025",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 1\nVAKO = 0\nSUDI = 0\nPELA = 1\nTOVI = 0\nZERA = 0\nMIKO = 1\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1034,
+      "split": "reserved",
+      "bindings": 8,
+      "values": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      "seed": 2026092134,
+      "tableHash": "bb6eacb5dc61b382d84779255ba90b012122e4938f598a93c3f0f5dc13a8d2ff",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 1\nVAKO = 0\nSUDI = 0\nPELA = 0\nTOVI = 1\nZERA = 0\nMIKO = 1\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1035,
+      "split": "reserved",
+      "bindings": 8,
+      "values": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "seed": 2026092135,
+      "tableHash": "222a557df55d51f586bde359838e591dee2fc045584cd459182ed65acf4e78bc",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 0\nNERI = 0\nVAKO = 0\nSUDI = 0\nPELA = 1\nTOVI = 1\nZERA = 1\nMIKO = 1\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1036,
+      "split": "reserved",
+      "bindings": 8,
+      "values": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "seed": 2026092136,
+      "tableHash": "d042687a34608596c0a28f0aaf6a2671081bda0a9f43d1aa7d45366f64930400",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 0\nNERI = 1\nVAKO = 1\nSUDI = 0\nPELA = 0\nTOVI = 0\nZERA = 1\nMIKO = 1\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1037,
+      "split": "reserved",
+      "bindings": 8,
+      "values": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "seed": 2026092137,
+      "tableHash": "015108379b2a05b9c03fc946288c36ecdd4f62f567274bc6dd2b3a97bc3acdc6",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 1\nVAKO = 0\nSUDI = 1\nPELA = 0\nTOVI = 0\nZERA = 0\nMIKO = 1\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1038,
+      "split": "reserved",
+      "bindings": 8,
+      "values": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "seed": 2026092138,
+      "tableHash": "beb860ec72b4c5e7f581652faab92e813fd25b9f5b094377aafaf45561557fe4",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 0\nVAKO = 0\nSUDI = 1\nPELA = 0\nTOVI = 1\nZERA = 0\nMIKO = 1\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1039,
+      "split": "reserved",
+      "bindings": 8,
+      "values": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "seed": 2026092139,
+      "tableHash": "99c93d39c76674d5abae74ec93246f25ba1b0ba32f669cbb9b4767d2b15688a9",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 0\nVAKO = 1\nSUDI = 1\nPELA = 1\nTOVI = 0\nZERA = 0\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1040,
+      "split": "reserved",
+      "bindings": 8,
+      "values": [
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "seed": 2026092140,
+      "tableHash": "49e51a76d1b6686915d2e708a24f5a079bd0c46473c41f4312831a541a6d3293",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 0\nVAKO = 1\nSUDI = 0\nPELA = 0\nTOVI = 0\nZERA = 1\nMIKO = 1\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1041,
+      "split": "reserved",
+      "bindings": 8,
+      "values": [
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "seed": 2026092141,
+      "tableHash": "ab97348e155e3a5f66378d645eae38fc6580c1cabf9126be216276c6c2596c4d",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 0\nVAKO = 1\nSUDI = 0\nPELA = 0\nTOVI = 1\nZERA = 1\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1042,
+      "split": "reserved",
+      "bindings": 8,
+      "values": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "seed": 2026092142,
+      "tableHash": "63fd621e13fc7e4cc4332afb48352f60ddd3658a841341eb9571524c50b0b245",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 0\nNERI = 1\nVAKO = 1\nSUDI = 0\nPELA = 0\nTOVI = 1\nZERA = 1\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1043,
+      "split": "reserved",
+      "bindings": 8,
+      "values": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "seed": 2026092143,
+      "tableHash": "1a702bd972449d5aa9e742a202b66d85570034dfcc962f9c762cec05e795ea24",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 0\nNERI = 0\nVAKO = 1\nSUDI = 0\nPELA = 1\nTOVI = 0\nZERA = 1\nMIKO = 1\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1044,
+      "split": "reserved",
+      "bindings": 8,
+      "values": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "seed": 2026092144,
+      "tableHash": "fa5667846eb4e007188b7da9ccdf03331ca185f96a87bdeda85c79a0c0d5c54d",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 1\nNERI = 0\nVAKO = 0\nSUDI = 1\nPELA = 1\nTOVI = 1\nZERA = 0\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1045,
+      "split": "reserved",
+      "bindings": 8,
+      "values": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1
+      ],
+      "seed": 2026092145,
+      "tableHash": "1372c2e8af03b550f5f763bc89a7ef57e3ccc824fe289a4df036d929036a990d",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 0\nNERI = 0\nVAKO = 1\nSUDI = 1\nPELA = 1\nTOVI = 0\nZERA = 0\nMIKO = 1\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1046,
+      "split": "reserved",
+      "bindings": 8,
+      "values": [
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "seed": 2026092146,
+      "tableHash": "6f7853abb8c8a0e548348af204b9d67015df5d15d6aa6432c0b85fa7046d8929",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 0\nNERI = 1\nVAKO = 1\nSUDI = 1\nPELA = 0\nTOVI = 0\nZERA = 0\nMIKO = 1\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    },
+    {
+      "id": 1047,
+      "split": "reserved",
+      "bindings": 8,
+      "values": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "seed": 2026092147,
+      "tableHash": "410f4b6efb5bf249aa0fe71ade65350cd445212828c011380e3df4d764a5d294",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Suis le format demandé à chaque tour."
+        },
+        {
+          "role": "user",
+          "content": "Mémorise ce tableau pour une question ultérieure :\nLUMA = 0\nNERI = 1\nVAKO = 1\nSUDI = 0\nPELA = 1\nTOVI = 0\nZERA = 1\nMIKO = 0\nRéponds uniquement OK pour confirmer."
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "previousEightKeyTables": 14,
+    "train": 32,
+    "reserved": 16,
+    "remainingUnused": 8
+  },
+  "exclusions": [
+    "04dc1ac336ecffce27c1fe3e985f02e674db4831cd3967bb24f6d3d032bcf3ea",
+    "05873f8b93c225a02ed5a142f03387909ca9b36ce16fa9fd5e2828b040934ab6",
+    "0ae2836e320440df6786f7ea1165c9c0f386d091b5098e9ab34ba160a13969ea",
+    "1e2fef5f360a85f80b9db3cae8b24f24a3ba32d42e3cf89a32fa2ba166eb1fe0",
+    "1f60733ec6acf1defe695ce71fb6810d3b2dedf815d053e9cb16db6d059e9fd0",
+    "2426ba7268e5606fe1c3f6e10e0a130b2e60f408491f08d43690ecd6c03802fb",
+    "3469dad7d118217f37d7a5f3d063aa9c7277ea2a5bd56cda2196c2c10498bc87",
+    "53ec4eba5203dd88f9de967e9958e93189bd78b934c94af69ced207d0a5e5630",
+    "568f9648326b7883ac0a5e998dc10b427e94d3cd06bb1db65ac0833bef20825f",
+    "5bc0bba80e589fbd4b5d62ce577f31be333d7053dd62ad232cbdb61e2177cfc8",
+    "5eec9e02f408cd71c6cb67bb2add775b84a9849dfc89d8c4d4874425b3cd52bd",
+    "6aef2fe218f9798cd5d641e49213075c907bbc6268b1bf0833c02b77f93fee2b",
+    "7ccf83c672be8dabdf13ed61774f26380f22abd0a59ef79f588417a350fdfb1b",
+    "ae2d8341cbbcc5f730b6ca7babb047740dac1ce461feb0fda05cd8c9af706711"
+  ],
+  "scope": "Disjoint new eight-key assignments within the same synthetic task; no new keys, task-family transfer, model calls, outcome labels or consciousness criterion. Reserved tables must not inform optimization."
+}

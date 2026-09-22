@@ -1,0 +1,21 @@
+{
+  "schema": "menia-reader-permutation-numerics-launch-readiness-v1",
+  "createdUTC": "2026-09-20T08:38:01.609988+00:00",
+  "diagnosticPlanHash": "0f333402797f7dbbdb9da9654747578a0ab60dc2e006b7d12fe1b3e0a77f0cb5",
+  "diagnosticPreparationUnchanged": true,
+  "parentCollectionSourceHash": "06644cec2fd5a000b9aaba231e744f8932ad3e90d4a2ca232a4e70006cbac55f",
+  "filesSHA256": {
+    "scripts/colab_reader_permutation_numerics_launcher.py": "bdf651aaf755f7292edaa7bdb16780bc8c0c59370599bc4aff1b716ae095f5ef",
+    "research/audit_reader_permutation_numerics.py": "a7395c9fde9d256007c84eec96accb2701f31d6a670af3d12c5be382b717df3d",
+    "tests_language/test_audit_reader_permutation_numerics.py": "675db6b788758c02a6ba6bf7df904b9916fb7479ac0e9551b7c9ed2401ab9272"
+  },
+  "auditTests": {
+    "count": 5,
+    "passed": true,
+    "seconds": 7.574,
+    "scope": "Synthetic journals; no new model observation"
+  },
+  "launcherSyntaxChecked": true,
+  "GPUAttemptStarted": false,
+  "evidenceLimit": "No independent reconstruction of weight/cache widening from this diagnostic archive"
+}

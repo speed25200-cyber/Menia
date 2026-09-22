@@ -1,0 +1,50 @@
+{
+  "plan": {
+    "schema": "menia-reader-permutation-numerics-plan-v1",
+    "case": 1008,
+    "selection": "Post-hoc: the only joint K/V native change in the 768 observed training tasks",
+    "sourcePrefixSHA256": "9dfd743dcaad85d333b7cdd51d807f513d8430bb43df6fdd1fe5af4a35c8a2d5",
+    "parentPlanHash": "d1266cdf7cb1a8a06eb04ff070a4a46c632496ce50e3fc5adb81aebdba35c915",
+    "parentSourceHash": "06644cec2fd5a000b9aaba231e744f8932ad3e90d4a2ca232a4e70006cbac55f",
+    "model": {
+      "id": "Qwen/Qwen3-4B",
+      "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+    },
+    "conditions": [
+      "actual",
+      "joint_permuted",
+      "values_permuted",
+      "restored"
+    ],
+    "modes": [
+      "bf16-default",
+      "bf16-math",
+      "fp32-math"
+    ],
+    "targets": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "repeats": 2,
+    "decodes": 192,
+    "scope": "Numerical diagnosis of one selected training case, not an independent replication or consciousness evidence",
+    "precision": "FP32 suffix computation on exactly widened BF16 parameters and retained cache; no new FP32 prefill",
+    "gates": [
+      "Parent execution completed and original process terminal before launch",
+      "Exact BF16 generation/cache reproduction before interpreting the diagnostic",
+      "All default BF16 native decodes must reproduce the original training journal",
+      "No replacement of parent labels or primary criteria"
+    ]
+  },
+  "planHash": "0f333402797f7dbbdb9da9654747578a0ab60dc2e006b7d12fe1b3e0a77f0cb5",
+  "sourceSHA256": {
+    "research/reader_permutation_numerics.py": "ee9dfed6359a2040b7de12b117a8e944b7bee6b90513e41008b5c174a555c5ad",
+    "tests_language/test_reader_permutation_numerics.py": "3f66dad17b7848cd783c97a4779028696cb8486d7dff080588dfee0ca4f34838"
+  }
+}

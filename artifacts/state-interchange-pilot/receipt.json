@@ -1,0 +1,55 @@
+{
+  "schema": "menia-state-interchange-receipt-v1",
+  "archiveName": "menia-transfert-etat.zip",
+  "archiveBytes": 1420975,
+  "archiveSHA256": "94b9e7836169025a435d7a2e2d9a86657bfbb876d7e6b701c91a7e81298733fd",
+  "files": {
+    "state-interchange/execution.json": {
+      "bytes": 420,
+      "sha256": "3a15b34a91129c3c81db233ad30c1a1883156da28502d8666d22db1e5d4d14a4"
+    },
+    "state-interchange/execution.log": {
+      "bytes": 8654,
+      "sha256": "1721589669a427d23ac3a9a27439474dac7aac3f316650ea212215e7420462a3"
+    },
+    "state-interchange/interchange-20260919-v1.jsonl": {
+      "bytes": 16971076,
+      "sha256": "f0a225287d58bc3bb3639a7c4051d24e1a43b1e7394ff2b2449d3921a3e16ad5"
+    },
+    "state-interchange/interchange-20260919-v1.summary.json": {
+      "bytes": 159112,
+      "sha256": "6ec315a184d35b771b17d9d29cf6dfb84519c4607eb86461571849f242913d4b"
+    }
+  },
+  "journalSHA256": "f0a225287d58bc3bb3639a7c4051d24e1a43b1e7394ff2b2449d3921a3e16ad5",
+  "planHash": "fee156fac3ba04bf90c3686bc55b0fc5943adad7467ff75ac795fa9731a0d14c",
+  "sourceHash": "69227c29fa78eb3b5184bf10bb505be78a385357bf14c9cea5d1d1efdc8e8bbb",
+  "scienceRevision": "0a86c18796c788400492f0c45036595057760e60",
+  "notebookRevision": "2465b90921b1b7436b6e67aca9bd921c5378d7b8",
+  "independentAuditorRevision": "4f36da8fbf9ee4ba7f654ac632fe48564132cd30",
+  "presentationRevision": "0910a02442efab6fea7af50239680a077efe1164",
+  "execution": {
+    "startedUTC": "2026-09-19T16:03:24.181237+00:00",
+    "revision": "0a86c18796c788400492f0c45036595057760e60",
+    "parentJournal": "/content/menia-results/optimizer-memory-v1/memory-20260919-v1.jsonl",
+    "journal": "/content/menia-results/state-interchange-v1/interchange-20260919-v1.jsonl",
+    "hardware": "NVIDIA A100-SXM4-40GB, 40960 MiB",
+    "status": "completed",
+    "updatedUTC": "2026-09-19T16:29:31.639487+00:00"
+  },
+  "planned": 19584,
+  "recorded": 19584,
+  "selfShams": 3456,
+  "finalLayerCopies": 4608,
+  "parentJournalSHA256": "0bd76014c6d80f56e6c5a1cedf71fd1546f78be18977c5a79ebd8ccd12947706",
+  "parentCheckpoints": {
+    "r0-prefix": "add5ed756ea6ff158d59e0780684808a2d21055e2a18a2c4f77c7fb143e8f495",
+    "r1-prefix": "7954ba00216b591cda6c7a0a3d0f30bd7d42bc56b90fd03ba4b8eec15d16e5ac",
+    "r2-prefix": "5b8d614fa3f141d5c54a326a8aeec37e8d99ed99acd551440faa9b1b18978ebd"
+  },
+  "mainRecomputeMaxAbsoluteDifference": 0.0,
+  "independentMaxAbsoluteDifference": 2.6645352591003757e-15,
+  "outcomeReview": "Only after completed collection, archive SHA-256 and both full numerical recalculations.",
+  "scope": "Fixed whole-vector interchange pilot, all three prefixes and base retained. Canonical wording, no learned alignment, no consciousness or novelty criterion.",
+  "stateBlindIntactPromptPairs": 1152
+}

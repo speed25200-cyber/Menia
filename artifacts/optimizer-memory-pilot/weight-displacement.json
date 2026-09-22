@@ -1,0 +1,72 @@
+{
+  "schema": "menia-optimizer-displacement-audit-v1",
+  "origin": "transformers_gpu",
+  "planHash": "1610c06f7f2846cbd30ca1f45f258ff83a1e596044273dc61fc8e488956512cf",
+  "sourceHash": "adc8769234100063ae56b3f4def89e4de7e81af26e3302fdc9b20b635b77c45f",
+  "replications": [
+    {
+      "replication": 0,
+      "parameters": 2949120,
+      "prefixNorm": 14.689475645340893,
+      "displacementNorm": {
+        "carry": 0.3670008321241942,
+        "reset_m": 0.0008554266471976451,
+        "zero_grad": 0.36686354111022457
+      },
+      "cosines": {
+        "carryVsZeroGradient": 0.9999989719816876,
+        "carryVsReset": 0.25214296818327436
+      },
+      "zeroGradientFormula": {
+        "predictedNorm": 0.3668635636010936,
+        "residualNorm": 1.5369915863020319e-06,
+        "maxAbsoluteResidual": 9.276769929958287e-09,
+        "relativeResidual": 4.189545484471356e-06,
+        "cosine": 0.99999999999138
+      }
+    },
+    {
+      "replication": 1,
+      "parameters": 2949120,
+      "prefixNorm": 14.66282144747925,
+      "displacementNorm": {
+        "carry": 0.48311985746649677,
+        "reset_m": 0.0033959751647561994,
+        "zero_grad": 0.4866963819406131
+      },
+      "cosines": {
+        "carryVsZeroGradient": 0.9998043081859628,
+        "carryVsReset": -0.32305999547264497
+      },
+      "zeroGradientFormula": {
+        "predictedNorm": 0.4866964120356768,
+        "residualNorm": 1.5342019259349443e-06,
+        "maxAbsoluteResidual": 9.903834731836295e-09,
+        "relativeResidual": 3.1522770416940757e-06,
+        "cosine": 0.9999999999952557
+      }
+    },
+    {
+      "replication": 2,
+      "parameters": 2949120,
+      "prefixNorm": 14.622479063131264,
+      "displacementNorm": {
+        "carry": 0.40238288818446594,
+        "reset_m": 0.0019095272402190576,
+        "zero_grad": 0.40210342130501625
+      },
+      "cosines": {
+        "carryVsZeroGradient": 0.9999891635284138,
+        "carryVsReset": 0.15200479785911888
+      },
+      "zeroGradientFormula": {
+        "predictedNorm": 0.4021034482849627,
+        "residualNorm": 1.53087896864196e-06,
+        "maxAbsoluteResidual": 9.42500859966327e-09,
+        "relativeResidual": 3.8071769221860953e-06,
+        "cosine": 0.9999999999929992
+      }
+    }
+  ],
+  "scope": "All twelve saved adapters and three optimizer states hash-checked. Float64 closed Adam formula compared with actual FP32 zero-gradient checkpoints; residuals include rounding. Descriptive parameter geometry only, no behavioral or causal-mediation conclusion."
+}
