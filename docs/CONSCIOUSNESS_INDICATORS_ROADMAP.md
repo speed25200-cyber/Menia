@@ -72,3 +72,9 @@ l'arbitrage des buts appris qui ne lit pas l'intéroception.
 [Version 2](INDICATOR_AGENT_V2_RESULTS.md) : **GWT-1 s'ajoute**, sept
 propriétés démontrées ; l'arbitrage par valeur lit désormais les besoins
 mais reste instable, et l'attention suit la décision plutôt que le besoin.
+
+[Version 3](INDICATOR_AGENT_V3_RESULTS.md) : valeurs stabilisées, six
+propriétés, GWT-1 reperdu de peu. **Bilan des trois versions** : six
+propriétés robustes (RPT-2, GWT-2, HOT-1, HOT-2, AST-1, PP-1) ; GWT-1
+fragile ; RPT-1, GWT-3, GWT-4, HOT-3, HOT-4, AE-1 et AE-2 jamais démontrées
+par leur test, bien que présentes par construction.

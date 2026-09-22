@@ -81,7 +81,11 @@ pré-enregistrée pour viser cette cause, avec une attention guidée par la
 pertinence pour la décision et un arbitrage des besoins appris par valeur :
 **sept propriétés sur quatorze**, la spécialisation des modules (GWT-1)
 s'ajoute, sa prédiction est confirmée pour GWT-1 et réfutée pour GWT-4 et
-AE-1 ; l'apprentissage des valeurs reste instable.
+AE-1 ; l'apprentissage des valeurs reste instable. [Version 3](docs/INDICATOR_AGENT_V3_RESULTS.md),
+valeurs stabilisées : meilleur retour des trois versions mais **six
+propriétés**, prédiction réfutée. Robustes dans les trois versions, sur neuf
+graines : RPT-2, GWT-2, HOT-1, HOT-2, AST-1, PP-1 ; le point faible est
+l'arbitrage des buts appris.
 
 **[Colab 24 : classement de confiance au sein d'une catégorie](docs/CONFIDENCE_RANKING_PROTOCOL.md).**
 Le [résultat complet](docs/CONFIDENCE_RANKING_RESULTS.md) est reçu et audité :
