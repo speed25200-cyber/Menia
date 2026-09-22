@@ -1,6 +1,6 @@
 # Protocole pré-enregistré — L'agent à indicateurs, version 2
 
-Rédigé le 22 septembre 2026 à 21 h 35 UTC, après la publication de la
+Rédigé le 22 septembre 2026 à 21 h 20 UTC, après la publication de la
 version 1 (`docs/INDICATOR_AGENT_RESULTS.md`), **avant l'écriture du code de
 la version 2 et avant toute exécution**. Mêmes règles : seuils fixés, tout
 amendement daté avant l'exécution confirmatoire, toute lecture de
@@ -66,7 +66,7 @@ expérience vécue.
 
 ## Premier essai de développement (graine 7), déclaré, et amendement 1
 
-Le 22 septembre à 21 h 35 UTC : 4 propriétés sur 14 (HOT-1, HOT-2, AST-1,
+Le 22 septembre à 21 h 31 UTC : 4 propriétés sur 14 (HOT-1, HOT-2, AST-1,
 PP-1) et **contrôle de validité échoué** (Δ = −0,03). Les valeurs apprises
 ont dégradé l'agent au fil des tours (retour −1,8 au premier tour, −4,2 au
 dernier) : il ne se recharge presque plus (recharge choisie 0,002 quand
@@ -76,7 +76,7 @@ toujours négatifs à cause de la faim ; tout but au retour négatif perdait
 donc contre l'immobilité. L'attention par pertinence écrit déjà davantage
 l'intéroception quand l'énergie est basse (0,43 contre 0,27).
 
-**Amendement 1, daté du 22 septembre 2026, 21 h 40 UTC, avant toute exécution
+**Amendement 1, daté du 22 septembre 2026, 21 h 32 UTC, avant toute exécution
 sur les graines 53, 67 et 79** : la valeur de rester est apprise comme les
 deux autres, Q(rester) linéaire sur les mêmes entrées, ajustée par le même
 Monte-Carlo. Aucun seuil n'est modifié.
