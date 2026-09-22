@@ -26,7 +26,7 @@ class WorldTests(unittest.TestCase):
 
     def test_value_and_band(self):
         self.assertAlmostEqual(float(value(0.1)), 1.0)
-        self.assertLess(float(value(0.6)), -0.99)
+        self.assertLess(float(value(0.6)), -0.9)
         child = SenseAtelier(3, "childhood")
         self.assertFalse(any(in_band(h) for h in child.spawn_hues))
         band = SenseAtelier(3, "band")

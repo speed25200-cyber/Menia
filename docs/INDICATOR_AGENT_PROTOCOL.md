@@ -170,6 +170,64 @@ Datés du 22 septembre 2026, 20 h 45 UTC, **avant toute exécution de l'agent**,
    inconnu et le revise lui aussi. La mesure est restreinte aux captures vers
    un autre objet, seul cas où ignorer son attention trompe l'agent.
 
+### Premier essai de développement (graine 5), déclaré
+
+Le 22 septembre à 20 h 25 UTC, l'agent entraîné sur la seule graine de
+développement a passé 5 propriétés sur 14 (RPT-2, GWT-2, HOT-1, HOT-2,
+PP-1). Le diagnostic montre des défauts de conception, pas des mesures des
+propriétés :
+
+- **L'agent campe sur la recharge** : 75 % de ses buts sont la recharge,
+  4 % de mouvements après le pas 24 du jeu M. Sans mouvement, le corps n'est
+  pas inféré (0,79 ; 0,29 après le changement) ; sans besoin concurrent,
+  l'intéroception n'est jamais consultée (0,3 % des écritures) et le choix du
+  but ne dépend pas de l'énergie.
+- **La fiabilité du capteur est constante** : un filtre bayésien au taux
+  moyen est alors déjà optimal, et le moniteur, excellent (AUROC 0,99), ne
+  peut rien apporter (écart de gain constant 0,007).
+- **Les captures sont rares** : erreurs de liaison 0,8 % contre 4,2 % sans
+  schéma, sans effet sur les choix.
+- **Le filtre d'énergie retarde les recharges** : erreur ≤ 0,1 dans 76 % des
+  pas seulement.
+- **Le code de teinte**, appris aussi sur la valeur, concentre ses unités
+  près du pic de valeur : Spearman 0,76.
+- **La redirection** comptait aussi les captures survenues quand l'objet visé
+  était déjà connu, où revisiter n'a pas lieu d'être.
+
+### Amendements 3 à 7, datés du 22 septembre 2026, 20 h 40 UTC
+
+Écrits après ce seul essai de développement, avant toute exécution sur les
+graines 17, 29 et 43. **Aucun seuil n'est modifié.**
+
+3. **Monde.** (a) Un second besoin, la **satiété** : 1 au départ, −1/20 par
+   pas, un objet de valeur positive la remonte de sa valeur ; à 0, malaise
+   (−1, satiété remise à 0,5). Le capteur de satiété a le même bruit que
+   celui d'énergie. (b) Chaque objet **expire** avec probabilité 0,05 par pas
+   et réapparaît ailleurs. (c) Valeur plus large : v(θ) =
+   2·exp(1,5·(cos 2π(θ − 0,1) − 1)) − 1, un tiers des teintes sont bonnes.
+   (d) Le capteur de position a un **état de panne caché** : entrée 0,08 par
+   pas, sortie 0,25 ; glitch 0,05 hors panne, 0,7 en panne ; la panne de
+   lecture (0,15) est inchangée. (e) Éclairs 0,5 par pas, capture 0,8.
+4. **Intéro** suit l'énergie et la satiété par prédiction, et adopte la
+   lecture seule quand elle contredit la prédiction de plus de 0,15.
+5. **Moniteur** : deux entrées de plus, la surprise de la lecture précédente
+   et une trace décroissante des surprises (demi-poids par pas). **Code de
+   teinte** : appris sans la récompense, par reconstruction de la teinte et
+   pénalité L1 de 0,01, unités initialisées en éventail régulier ; la tête de
+   valeur est ensuite ajustée par régression ridge sur les teintes goûtées.
+   Choisi sur les graines de développement 5 à 10, pour le code seul
+   (Spearman 0,86 à 0,94). **Choix du but** : la satiété de l'espace de
+   travail s'ajoute à ses entrées ; le contexte du contrôleur d'attention est
+   le plus bas des deux besoins.
+6. **Renforcement** : 800 mises à jour de 16 vies au lieu de 300, bonus
+   d'entropie de 0,01 sur le choix du module, pour que l'intéroception ne
+   soit pas abandonnée avant que le choix du but n'apprenne à s'en servir.
+7. **Redirection** (AST-1) : comptée seulement quand l'objet visé était
+   inconnu de l'agent avant la capture.
+
+Un second essai de développement sur la graine 5 suit ces amendements ; il
+sera déclaré de même.
+
 ## Exécution et audit
 
 `python -m research.indicator_experiment`, sur CPU, artefacts dans

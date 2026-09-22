@@ -14,14 +14,14 @@ from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 import numpy as np
 from .sense_atelier import SenseAtelier, LIFE, RING, value, in_band, circular_distance
-from .indicator_agent import (Agent, Params, HueCode, VARIANTS, MODULES, K, ATT_FEATURES, GOAL_FEATURES, train_hue_code,
-                              random_hue_code, fit_logistic, fit_conditional_logit)
+from .indicator_agent import (Agent, Params, HueCode, VARIANTS, MODULES, K, ATT_FEATURES, GOAL_FEATURES, MONITOR_FEATURES,
+                              ENTROPY_BONUS, train_hue_code, random_hue_code, fit_logistic, fit_conditional_logit)
 
 SEEDS = (17, 29, 43)
 DEV_SEED = 5
 SETS = {"R": (930001, "fixed"), "M": (930002, "change"), "H": (930003, "band")}
 CHILDHOOD_LIVES = 2000
-UPDATES = 300
+UPDATES = 800
 BATCH = 16
 TEST_LIVES = 200
 LR = 0.05
@@ -49,7 +49,7 @@ def run_life(params, variant, env_seed, mode, agent_seed, learn=False, phase="ad
 def provisional_params(seed):
     rng = np.random.default_rng(seed)
     code = HueCode(rng.normal(0, 1, (3, K)), np.zeros((K, 2)), np.zeros(2), np.zeros(K), np.zeros(1))
-    return Params(code, np.zeros(5), 0.8, np.zeros(6))
+    return Params(code, np.zeros(MONITOR_FEATURES), 0.8, np.zeros(6))
 
 
 def childhood(seed, lives=CHILDHOOD_LIVES, log=print):
@@ -99,7 +99,10 @@ def reinforce(params, seed, updates=UPDATES, batch=BATCH, lr=LR, log=print):
         grad = {k: np.zeros_like(v) for k, v in theta.items()}
         for j, life in enumerate(lives):
             for kind, t, g in life["grads"]:
-                grad[kind] += (togo[j, t] - baseline[t]) * g / batch
+                if kind == "attention_entropy":
+                    grad["attention"] += ENTROPY_BONUS * g / batch
+                else:
+                    grad[kind] += (togo[j, t] - baseline[t]) * g / batch
         for k in theta:
             m[k] = 0.9 * m[k] + 0.1 * grad[k]
             s[k] = 0.999 * s[k] + 0.001 * grad[k] ** 2
@@ -221,7 +224,8 @@ def tally_life(tally, life, set_name):
                 tally.add("schema", rec["schema_estimate"] == truth["spot"])
             if rec["bound"] is not None:
                 tally.add("misbinding", rec["bound"] != truth["spot"])
-            if truth["captured"] and truth["spot"] != rec["intent"] and rec["hue_read"] and rec["intent"] in objects:
+            if (truth["captured"] and truth["spot"] != rec["intent"] and rec["hue_read"] and rec["intent"] in objects
+                    and rec["intent_unknown"]):
                 tally.add("redirect", rec["next_intent"] == rec["intent"])
         if set_name == "H" and rec["bound"] is not None and rec["bound"] == truth["spot"] and rec["bound"] in objects:
             hue = objects[rec["bound"]]

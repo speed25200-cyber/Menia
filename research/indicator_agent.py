@@ -14,13 +14,15 @@ import json
 import math
 from pathlib import Path
 import numpy as np
-from .sense_atelier import (RING, DELTAS, N_MOVE, STAY, N_ACTIONS, FELT_OK, ENERGY_STEP, BAND, value, motor_delta,
-                            ring_distance)
+from .sense_atelier import (RING, DELTAS, N_MOVE, STAY, N_ACTIONS, FELT_OK, ENERGY_STEP, SATIETY_STEP, BAND, value,
+                            motor_delta, ring_distance)
 
 MODULES = ("pos", "body", "vis", "intero")
 K = 12
 HAZARD = 0.02
 LOG8 = math.log(RING)
+ENTROPY_BONUS = 0.01
+INTERO_RESET = 0.15
 VARIANTS = ("agent", "unlimited", "random", "round_robin", "no_recurrence", "bag", "no_broadcast", "no_prediction",
             "constant_gain", "random_code", "no_schema", "single_goal", "frozen_body", "lesion_intero", "lesion_vis")
 DIST = np.array([[ring_distance(a, b) for b in range(RING)] for a in range(RING)], dtype=float)
@@ -44,7 +46,8 @@ def hue_features(theta):
 # ---------------------------------------------------------------------------------------------- hue codes (HOT-4)
 
 class HueCode:
-    """code(θ) = relu([cos, sin, 1] W1); the code must rebuild (cos, sin) and predict the tasted value."""
+    """code(θ) = relu([cos, sin, 1] W1), learned without reward to rebuild (cos, sin) under an L1 penalty;
+    a value head is then fitted on the tasted values."""
 
     def __init__(self, W1, W2, b2, wv, bv):
         self.W1, self.W2, self.b2, self.wv, self.bv = (np.asarray(a, dtype=float) for a in (W1, W2, b2, wv, bv))
@@ -59,36 +62,39 @@ class HueCode:
         return {"kind": "learned", **{k: getattr(self, k).tolist() for k in ("W1", "W2", "b2", "wv", "bv")}}
 
 
+def ridge(C, values, l2=1e-3):
+    A = np.hstack([C, np.ones((len(C), 1))])
+    sol = np.linalg.solve(A.T @ A + l2 * np.eye(A.shape[1]), A.T @ np.asarray(values, dtype=float))
+    return sol[:-1], sol[-1:]
+
+
 def train_hue_code(thetas, values, seed, steps=3000, lr=0.01, l1=0.01):
+    """Sparse autoencoder of the seen hues (units initialised as an evenly spaced fan), then a ridge value head."""
     rng = np.random.default_rng(seed)
     X = hue_features(thetas)
     Y = X[:, :2]
-    v = np.asarray(values, dtype=float)
-    p = {"W1": rng.normal(0, 1.0, (3, K)), "W2": rng.normal(0, 0.1, (K, 2)), "b2": np.zeros(2),
-         "wv": rng.normal(0, 0.1, K), "bv": np.zeros(1)}
-    p["W1"][2] = -0.3
+    phi = 2 * np.pi * (np.arange(K) + rng.random()) / K
+    p = {"W1": np.stack([np.cos(phi), np.sin(phi), np.full(K, -0.3)]) + rng.normal(0, 0.1, (3, K)),
+         "W2": rng.normal(0, 0.1, (K, 2)), "b2": np.zeros(2)}
     m = {k: np.zeros_like(a) for k, a in p.items()}
     s = {k: np.zeros_like(a) for k, a in p.items()}
-    n = len(v)
+    n = len(X)
     history = []
     for it in range(1, steps + 1):
         pre = X @ p["W1"]
         h = np.maximum(pre, 0.0)
-        rec = h @ p["W2"] + p["b2"]
-        val = h @ p["wv"] + p["bv"][0]
-        er, ev = rec - Y, val - v
-        loss = (er ** 2).sum() / n + (ev ** 2).sum() / n + l1 * h.sum() / n
-        dh = (2 * er @ p["W2"].T + 2 * np.outer(ev, p["wv"]) + l1) / n
-        dpre = dh * (pre > 0)
-        g = {"W1": X.T @ dpre, "W2": 2 * h.T @ er / n, "b2": 2 * er.sum(0) / n, "wv": 2 * h.T @ ev / n,
-             "bv": np.array([2 * ev.sum() / n])}
+        er = h @ p["W2"] + p["b2"] - Y
+        loss = (er ** 2).sum() / n + l1 * h.sum() / n
+        dpre = ((2 * er @ p["W2"].T + l1) / n) * (pre > 0)
+        g = {"W1": X.T @ dpre, "W2": 2 * h.T @ er / n, "b2": 2 * er.sum(0) / n}
         for k in p:
             m[k] = 0.9 * m[k] + 0.1 * g[k]
             s[k] = 0.999 * s[k] + 0.001 * g[k] ** 2
             p[k] -= lr * (m[k] / (1 - 0.9 ** it)) / (np.sqrt(s[k] / (1 - 0.999 ** it)) + 1e-8)
         if it == 1 or it % 500 == 0:
             history.append({"step": it, "loss": round(float(loss), 6)})
-    return HueCode(p["W1"], p["W2"], p["b2"], p["wv"], p["bv"]), history
+    wv, bv = ridge(np.maximum(X @ p["W1"], 0.0), values)
+    return HueCode(p["W1"], p["W2"], p["b2"], wv, bv), history
 
 
 class RandomHueCode:
@@ -118,10 +124,8 @@ def random_hue_code(active, thetas, values, seed):
         units = rng.choice(K, n_active, replace=False)
         table[b, units] = rng.uniform(0.5, 1.5, n_active)
     code = RandomHueCode(table, np.zeros(K), np.zeros(1))
-    C = code.code(thetas)
-    A = np.hstack([C, np.ones((len(C), 1))])
-    sol = np.linalg.lstsq(A.T @ A + 1e-3 * np.eye(K + 1), A.T @ np.asarray(values, dtype=float), rcond=None)[0]
-    return RandomHueCode(table, sol[:K], sol[K:])
+    wv, bv = ridge(code.code(thetas), values)
+    return RandomHueCode(table, wv, bv)
 
 
 def load_hue_code(value):
@@ -132,10 +136,15 @@ def load_hue_code(value):
 
 # ---------------------------------------------------------------------------------------------- learned readers
 
-def monitor_features(prior, read):
+MONITOR_FEATURES = 7
+
+
+def monitor_features(prior, read, previous, trace):
+    """Surprise, prediction entropy, agreement and peak, then the previous surprise and a decaying trace of surprises."""
     entropy = -(prior * np.log(prior + 1e-12)).sum() / LOG8
     surprise = -math.log(prior[read] + 1e-9)
-    return np.array([1.0, surprise / LOG8, entropy, float(read == int(np.argmax(prior))), float(prior.max())]), surprise
+    return np.array([1.0, surprise / LOG8, entropy, float(read == int(np.argmax(prior))), float(prior.max()),
+                     previous, trace]), surprise
 
 
 def schema_candidates(intent, onsets, presence, hue_seen, cue):
@@ -186,7 +195,7 @@ def fit_conditional_logit(groups, labels, dims, lr=0.5, steps=600, l2=1e-3):
 # ---------------------------------------------------------------------------------------------- the agent
 
 ATT_FEATURES = 5
-GOAL_FEATURES = 5
+GOAL_FEATURES = 6
 
 
 class Params:
@@ -243,11 +252,14 @@ class Agent:
         self.bag = []
         self.presence = [0] * RING
         self.e_hat = 1.0
+        self.f_hat = 1.0
+        self.previous_surprise = 0.0
+        self.surprise_trace = 0.0
         self.intent = None
         self.goal = "stay"
         self.last_action = None
         self.W = {"pos": np.full(RING, 1.0 / RING), "body": np.full(4, 0.25),
-                  "vis": {"values": [None] * RING, "presence": [0] * RING}, "intero": 1.0}
+                  "vis": {"values": [None] * RING, "presence": [0] * RING}, "intero": np.ones(2)}
         self.age = {m: 8 for m in MODULES}
         self.grads = []
 
@@ -283,7 +295,9 @@ class Agent:
             self.b = prior
             rec.update(surprise=None, reliability=None)
             return
-        features, surprise = monitor_features(prior, read)
+        features, surprise = monitor_features(prior, read, self.previous_surprise, self.surprise_trace)
+        self.previous_surprise = surprise / LOG8
+        self.surprise_trace = 0.5 * self.surprise_trace + 0.5 * surprise / LOG8
         if self.variant == "constant_gain" or self.phase == "childhood":
             rho = self.P.base_rate
         else:
@@ -321,6 +335,7 @@ class Agent:
             if presence[square] and not self.presence[square]:
                 self.map.pop(square, None)
         self.presence = list(presence)
+        rec["intent_unknown"] = self.intent is not None and self.intent not in self.map
         rec["bound"] = None
         if obs["hue"] is not None and bound_to is not None:
             code = self.code.code(obs["hue"])[0]
@@ -348,10 +363,18 @@ class Agent:
         rec["hue_read"] = obs["hue"] is not None
         return {"values": values, "presence": list(presence)}
 
+    @staticmethod
+    def _track(estimate, step, reading):
+        """Predict the level, then trust the reading alone when it contradicts the prediction."""
+        predicted = max(estimate - step, 0.0)
+        if abs(reading - predicted) > INTERO_RESET:
+            return float(np.clip(reading, 0.0, 1.0))
+        return float(np.clip(0.5 * predicted + 0.5 * reading, 0.0, 1.0))
+
     def _intero(self, obs):
-        predicted = max(self.e_hat - ENERGY_STEP, 0.0)
-        self.e_hat = float(np.clip(0.5 * predicted + 0.5 * obs["energy"], 0.0, 1.0))
-        return 1.0 if self.variant == "lesion_intero" else self.e_hat
+        self.e_hat = self._track(self.e_hat, ENERGY_STEP, obs["energy"])
+        self.f_hat = self._track(self.f_hat, SATIETY_STEP, obs["satiety"])
+        return np.ones(2) if self.variant == "lesion_intero" else np.array([self.e_hat, self.f_hat])
 
     # -- workspace ----------------------------------------------------------------------------------------------
 
@@ -365,11 +388,12 @@ class Agent:
             elif a is not None and abs(a - b) > 0.2:
                 news += 1
         return {"pos": total_variation(contents["pos"], self.W["pos"]), "body": total_variation(contents["body"], self.W["body"]),
-                "vis": min(1.0, news / 2), "intero": min(1.0, 4 * abs(contents["intero"] - self.W["intero"]))}
+                "vis": min(1.0, news / 2), "intero": min(1.0, 4 * float(np.abs(contents["intero"] - self.W["intero"]).max()))}
 
     def _attend(self, contents, obs, rec):
         salience = self._salience(contents)
-        X = np.array([[1.0, self.age[m] / 8, salience[m], self.W["intero"], float(self.goal == "charger")] for m in MODULES])
+        X = np.array([[1.0, self.age[m] / 8, salience[m], float(self.W["intero"].min()), float(self.goal == "charger")]
+                      for m in MODULES])
         probs = softmax((self.P.attention * X).sum(1))
         if self.variant == "unlimited":
             chosen = list(MODULES)
@@ -384,12 +408,14 @@ class Agent:
                 grad = -probs[:, None] * X
                 grad[k] += X[k]
                 self.grads.append(("attention", obs["t"], grad))
+                logp = np.log(probs + 1e-12)
+                entropy = -(probs * logp).sum()
+                self.grads.append(("attention_entropy", obs["t"], (-probs * (logp + entropy))[:, None] * X))
         for m in MODULES:
             self.age[m] = min(self.age[m] + 1, 8)
         for m in chosen:
             content = contents[m]
-            self.W[m] = {"values": list(content["values"]), "presence": list(content["presence"])} if m == "vis" else (
-                content.copy() if isinstance(content, np.ndarray) else content)
+            self.W[m] = {"values": list(content["values"]), "presence": list(content["presence"])} if m == "vis" else content.copy()
             self.age[m] = 0
         rec["writers"] = chosen
         rec["attention_probs"] = probs.round(6).tolist()
@@ -414,8 +440,8 @@ class Agent:
         candidate = best if best is not None and best_value > 0 else None
         charger = obs["charger"]
         b = self.W["pos"]
-        g = np.array([1.0, self.W["intero"], float(b @ DIST[:, charger]) / 4, best_value if candidate is not None else 0.0,
-                      float(b @ DIST[:, candidate]) / 4 if candidate is not None else 0.0])
+        g = np.array([1.0, self.W["intero"][0], self.W["intero"][1], float(b @ DIST[:, charger]) / 4,
+                      best_value if candidate is not None else 0.0, float(b @ DIST[:, candidate]) / 4 if candidate is not None else 0.0])
         p_charge = float(sigmoid(g @ self.P.goal))
         if self.phase == "childhood":
             goal = "random"
@@ -466,7 +492,8 @@ class Agent:
         intent = self._spotlight(rec)
         rec.update(action=action, next_intent=intent, pos_belief=int(np.argmax(self.b)), pos_confidence=round(float(self.b.max()), 6),
                    body_belief=int(np.argmax(self.beta)), body_confidence=round(float(self.beta.max()), 6),
-                   workspace_body=int(np.argmax(self.W["body"])), energy_estimate=round(self.e_hat, 6))
+                   workspace_body=int(np.argmax(self.W["body"])), energy_estimate=round(self.e_hat, 6),
+                   satiety_estimate=round(self.f_hat, 6))
         self.intent = intent
         self.last_action = action
         return action, intent, rec
