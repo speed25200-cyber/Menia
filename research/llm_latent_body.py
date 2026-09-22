@@ -42,8 +42,11 @@ def category(command, seen_before, seen_after, changed):
     return "vu" if command in seen_before else "nouveau"
 
 
-def score_life(scorer, life, on_row=None):
-    """Replay a logged random-action life, ask the model at every move step, return the rows."""
+def score_life(scorer, life, on_row=None, builder=None):
+    """Replay a logged random-action life, ask the model at every move step, return the rows.
+
+    builder(history, p, command, t) -> prompt; the default asks the question of the latent-body protocol."""
+    builder = builder or (lambda history, p, command, t: question_prompt(history, p, command))
     env = Atelier("T", life["seed"] * 1000003 + life["index"], forced_change_step=life.get("change_step"))
     obs = env.reset()
     if obs["p"] != life["tokens"][1] - 1:
@@ -55,7 +58,7 @@ def score_life(scorer, life, on_row=None):
         p_before, g = obs["p"], obs["g"]
         changed = change is not None and t >= change
         if action < N_MOVE:
-            prompt = question_prompt(history, p_before, action)
+            prompt = builder(history, p_before, action, t)
             started = time.perf_counter()
             probs, digit_mass = scorer(prompt)
             seconds = time.perf_counter() - started
@@ -108,7 +111,7 @@ def summarize(rows):
     return out
 
 
-def run_sets(scorer, out, episodes, sets=SETS, log=print):
+def run_sets(scorer, out, episodes, sets=SETS, log=print, builder=None):
     out = Path(out)
     out.mkdir(parents=True, exist_ok=True)
     summary = {}
@@ -117,7 +120,7 @@ def run_sets(scorer, out, episodes, sets=SETS, log=print):
         rows = []
         started = time.time()
         for life in lives:
-            rows += score_life(scorer, life)
+            rows += score_life(scorer, life, builder=builder)
             log(f"[{name}] life {life['index']} rows {len(rows)} {round(time.time() - started, 1)} s")
         (out / f"lives-{name}.jsonl").write_text("".join(json.dumps(l) + "\n" for l in lives))
         (out / f"rows-{name}.jsonl").write_text("".join(json.dumps(r) + "\n" for r in rows))
@@ -153,12 +156,17 @@ class ScriptedScorer:
     """Test doubles. 'copier' repeats the last seen effect of the command; 'fixed' assumes body 0; 'uniform'."""
     LINE = re.compile(r"commande ([ABCD]), de la case (\d) à la case (\d)")
     ASK = re.compile(r"tu es sur la case (\d)\. Si tu donnes maintenant la commande ([ABCD])")
+    TAIL = re.compile(r"commande ([ABCD]), de la case (\d) à la case $")
 
     def __init__(self, kind):
         self.kind = kind
 
     def __call__(self, prompt):
-        p, command = self.ASK.search(prompt).groups()
+        asked = self.ASK.search(prompt)
+        if asked:
+            p, command = asked.groups()
+        else:
+            command, p = self.TAIL.search(prompt).groups()
         p, command = int(p), COMMANDS.index(command)
         probs = np.full(RING, 1.0 / RING)
         if self.kind == "copier":
@@ -176,7 +184,7 @@ class ScriptedScorer:
 class MLXScorer:
     """Apple-silicon scorer through mlx-lm: the next-token distribution over the digits 0..7. Untested off macOS."""
 
-    def __init__(self, model_id="Qwen/Qwen3-4B-MLX-4bit", revision=None, local_path=None):
+    def __init__(self, model_id="Qwen/Qwen3-4B-MLX-4bit", revision=None, local_path=None, adapter_path=None, chat=True):
         from mlx_lm import load
         import mlx.core as mx
         self.mx = mx
@@ -185,7 +193,9 @@ class MLXScorer:
             from huggingface_hub import snapshot_download
             path = snapshot_download(model_id, revision=revision)
         self.path = str(path)
-        self.model, self.tokenizer = load(self.path)
+        self.adapter_path = adapter_path
+        self.chat = chat
+        self.model, self.tokenizer = load(self.path, adapter_path=adapter_path) if adapter_path else load(self.path)
         self.inner = getattr(self.tokenizer, "_tokenizer", self.tokenizer)
         self.digit_ids = []
         for d in range(RING):
@@ -195,8 +205,11 @@ class MLXScorer:
             self.digit_ids.append(ids[0])
 
     def __call__(self, prompt):
-        text = self.tokenizer.apply_chat_template([{"role": "user", "content": prompt}], tokenize=False,
-                                                  add_generation_prompt=True, enable_thinking=False)
+        if self.chat:
+            text = self.tokenizer.apply_chat_template([{"role": "user", "content": prompt}], tokenize=False,
+                                                      add_generation_prompt=True, enable_thinking=False)
+        else:
+            text = prompt
         ids = self.inner.encode(text, add_special_tokens=False)
         logits = self.model(self.mx.array([ids]))[0, -1]
         probs = self.mx.softmax(logits.astype(self.mx.float32), axis=-1)

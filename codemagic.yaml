@@ -143,3 +143,58 @@ workflows:
           git rev-parse HEAD > "$CM_BUILD_DIR/llm-latent/commit.txt"
     artifacts:
       - llm-latent/**
+
+  menia-lora-mac:
+    name: Menia - Le corps ajusté, LoRA de Qwen3-0.6B sur des vies de l'Atelier
+    instance_type: mac_mini_m2
+    max_build_duration: 120
+    triggering:
+      events:
+        - tag
+      tag_patterns:
+        - pattern: 'lora-*'
+          include: true
+    environment:
+      vars:
+        LORA_MODEL: "Qwen/Qwen3-0.6B"
+        LORA_REGIMES: "base F VM"
+        LORA_ITERS: "600"
+        LORA_TRAIN_LIVES: "1500"
+        LORA_EPISODES: "48"
+    scripts:
+      - name: Installer mlx-lm dans un environnement isolé
+        script: |
+          python3 -m venv .venv
+          source .venv/bin/activate
+          pip install --upgrade pip
+          pip install "numpy==2.2.6" "mlx-lm>=0.24" "huggingface_hub>=0.30"
+          python -c "import mlx_lm, platform; print('mlx-lm', getattr(mlx_lm, '__version__', '?'), platform.machine())"
+          sysctl -n machdep.cpu.brand_string hw.memsize
+      - name: Vérifier le protocole sur scoreurs simulés
+        script: |
+          source .venv/bin/activate
+          python -m unittest tests_research.test_llm_lora_body tests_research.test_llm_latent_body -v
+      - name: Exporter les vies, ajuster par LoRA et évaluer chaque régime
+        script: |
+          source .venv/bin/activate
+          OUT="$CM_BUILD_DIR/llm-lora"
+          mkdir -p "$OUT"
+          for REGIME in $LORA_REGIMES; do
+            if [ "$REGIME" = "base" ]; then
+              python -m research.llm_lora_body evaluate --backend mlx --model "$LORA_MODEL" \
+                --label base --episodes "$LORA_EPISODES" --out "$OUT/base" | tail -40
+            else
+              python -m research.llm_lora_body export --regime "$REGIME" --out "$OUT/data-$REGIME" \
+                --train "$LORA_TRAIN_LIVES" --valid 150 --seed 17
+              python -m mlx_lm.lora --model "$LORA_MODEL" --train --data "$OUT/data-$REGIME" \
+                --iters "$LORA_ITERS" --batch-size 4 --num-layers 16 --learning-rate 1e-4 \
+                --max-seq-length 1024 --steps-per-eval 100 --val-batches 10 --save-every 600 \
+                --seed 17 --adapter-path "$OUT/adapters-$REGIME" 2>&1 | tee "$OUT/lora-$REGIME.log" | tail -30
+              python -m research.llm_lora_body evaluate --backend mlx --model "$LORA_MODEL" \
+                --adapter "$OUT/adapters-$REGIME" --label "$REGIME" --episodes "$LORA_EPISODES" \
+                --out "$OUT/$REGIME" | tail -40
+            fi
+          done
+          git rev-parse HEAD > "$OUT/commit.txt"
+    artifacts:
+      - llm-lora/**
