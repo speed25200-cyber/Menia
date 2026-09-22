@@ -21,9 +21,12 @@ jobs:
       - name: Test persistent memory and capability measurement
         env:
           MENIA_LEARNING_FIXTURE: ${{ runner.temp }}/learning-fixture.json
+          MENIA_ATELIER_FIXTURE: ${{ runner.temp }}/atelier-fixture.json
         run: swift test --package-path ios/MeniaCore
       - name: Independently reconstruct the synthetic Swift learning export
         run: python3 -m research.iphone_capability_learning_report "$RUNNER_TEMP/learning-fixture.json" --output "$RUNNER_TEMP/learning-fixture-analysis.json"
+      - name: Independently reconstruct the synthetic Swift Atelier export
+        run: python3 -m research.iphone_atelier_report "$RUNNER_TEMP/atelier-fixture.json" --output "$RUNNER_TEMP/atelier-fixture-analysis.json"
       - name: Prepare Xcode project
         run: |
           brew install xcodegen
@@ -50,4 +53,6 @@ jobs:
             ios/build.log
             ${{ runner.temp }}/learning-fixture.json
             ${{ runner.temp }}/learning-fixture-analysis.json
+            ${{ runner.temp }}/atelier-fixture.json
+            ${{ runner.temp }}/atelier-fixture-analysis.json
             ios/Menia.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved

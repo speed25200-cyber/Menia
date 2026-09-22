@@ -5,6 +5,38 @@ module qui mesure ses réponses à de petits tests de calcul. Aucun entraînemen
 sur Colab n’est nécessaire pour démarrer. La construction d’une application ne
 démontre ni conscience subjective ni nouveauté scientifique.
 
+## Expérience suivante : la marque du fabricant, sur l'iPhone
+
+La branche **`claude/codex-repo-analysis-ycbook`** ajoute la section
+**Recherche · la marque du fabricant** : l'[Atelier en contexte](LLM_ATELIER_PROTOCOL.md)
+exécuté par le Qwen3-4B local plutôt que sur A100. Menia devient l'agent d'un
+petit monde décrit en texte ; l'effet de ses commandes dépend d'une cause
+cachée ; un lieu porte une marque qui la révèle, sauf dans les conditions sans
+trace ; le prompt ne dit jamais quel lieu montre quoi. Quatre conditions,
+quatre épisodes chacune, 24 tours par épisode, soit 384 réponses locales,
+environ 30 à 60 minutes selon la chauffe. Le numéro du lieu de la marque tourne
+d'un épisode à l'autre.
+
+Pour livrer cette version sur TestFlight :
+
+1. Dans Codemagic, sélectionner la branche **`claude/codex-repo-analysis-ycbook`**
+   et lancer le workflow **`menia-iphone`**. Le script `ios/prepare_testflight.py`
+   lit le dernier numéro de build Apple pour la version 0.2.0 et l'incrémente.
+2. Attendre le traitement Apple, puis installer la mise à jour depuis TestFlight.
+3. Dans l'app : **Charger**, puis **Explorer l'atelier · 16 épisodes**. Garder
+   l'app ouverte. Une interruption conserve les tours joués ; le bouton
+   **Reprendre l'atelier** continue un plan sans tour annulé, sinon un plan neuf
+   est figé.
+4. **Préparer le rapport de l'atelier**, puis **Partager l'atelier** : le fichier
+   `atelier-menia.json` contient tous les lancements, sans note ni échange privé.
+5. Analyse indépendante sur PC : `python -m research.iphone_atelier_report atelier-menia.json`.
+
+Différences avec le Colab 25 : décodage à température 0,7 au lieu d'un décodage
+déterministe, quatre épisodes par condition au lieu de 48, consignes envoyées
+comme message système. Les prédictions P1 à P4 du protocole s'appliquent avec
+ces réserves ; quatre épisodes ne permettent qu'une lecture descriptive.
+La compilation et les 39 tests Swift passent en CI GitHub avant tout envoi.
+
 ## Expérience suivante : apprendre ses limites
 
 Le [protocole prospectif](IPHONE_CAPABILITY_LEARNING_PROTOCOL.md) ajoute une

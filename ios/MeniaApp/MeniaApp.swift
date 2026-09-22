@@ -22,6 +22,8 @@ final class MeniaController: ObservableObject {
     @Published var exportedMissingDataAudits: URL?
     @Published private(set) var learningAudit: CapabilityLearningAudit?
     @Published var exportedLearningAudits: URL?
+    @Published private(set) var atelierAudit: AtelierAudit?
+    @Published var exportedAtelierAudits: URL?
     private let engine = LocalEngine()
     private let installer = ModelInstaller()
     private var task: Task<Void, Never>?
@@ -65,6 +67,10 @@ final class MeniaController: ObservableObject {
             if let latest = try auditFiles(prefix: "capability-learning-").last,
                let data = try? Data(contentsOf: latest), data.count < 10_000_000 {
                 learningAudit = try? JSONDecoder().decode(CapabilityLearningAudit.self, from: data)
+            }
+            if let latest = try auditFiles(prefix: "atelier-").last,
+               let data = try? Data(contentsOf: latest), data.count < 10_000_000 {
+                atelierAudit = try? JSONDecoder().decode(AtelierAudit.self, from: data)
             }
             if model != nil { status = "Modèle présent. Appuie sur Charger." }
             else if fm.fileExists(atPath: modelURL.path) { status = "Ancien modèle détecté : réimporte-le pour vérifier son identité." }
@@ -424,6 +430,84 @@ final class MeniaController: ObservableObject {
         } catch { status = "Export de l’apprentissage impossible : " + error.localizedDescription }
     }
 
+    private func saveAtelierAudit() throws {
+        guard let atelierAudit else { throw SessionError.invalidState }
+        let encoder = JSONEncoder(); encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+        let url = root.appendingPathComponent("atelier-\(atelierAudit.id.uuidString).json")
+        try encoder.encode(atelierAudit).write(to: url, options: [.atomic, .completeFileProtection])
+    }
+
+    /// An unfinished plan without cancelled or failed turns can be resumed after a restart.
+    var atelierResumable: Bool {
+        guard let audit = atelierAudit else { return false }
+        let broken = audit.episodes.contains { episode in episode.turns.contains { $0.status == .cancelled || $0.status == .error } }
+        return audit.completedCount > 0 && audit.completedCount < audit.totalTurns && !broken
+    }
+
+    /// Resumes the latest unfinished Atelier audit, or freezes a new plan of 16 episodes.
+    func runAtelierAudit() {
+        guard canGenerate(), let model else { return }
+        do {
+            if !atelierResumable {
+                let info = Bundle.main.infoDictionary ?? [:]
+                let version = "\(info["CFBundleShortVersionString"] ?? "?") (\(info["CFBundleVersion"] ?? "?"))"
+                atelierAudit = try AtelierAudit(model: model, appVersion: version,
+                    systemVersion: UIDevice.current.systemVersion, generationSettings: LocalEngine.settingsDescription)
+                try saveAtelierAudit() // Freeze the whole plan before any model request.
+            }
+        } catch { status = error.localizedDescription; return }
+        exportedAtelierAudits = nil
+        let id = start("Atelier · 16 épisodes de 24 tours…")
+        task = Task {
+            defer { finished() }
+            do {
+                guard let total = atelierAudit?.totalTurns, let first = atelierAudit?.completedCount else { throw SessionError.invalidState }
+                for index in first..<total {
+                    try Task.checkCancellation()
+                    try atelierAudit?.beginTurn(index); try saveAtelierAudit()
+                    let episode = index / AtelierAudit.life, turn = index % AtelierAudit.life
+                    guard let current = atelierAudit?.episodes[episode], let request = current.turns[turn].request else { throw SessionError.invalidState }
+                    answer = ""
+                    currentQuestion = "Atelier · épisode \(episode + 1)/16 · tour \(turn + 1)/24 · \(current.condition.rawValue)"
+                    firstChunk = nil; firstChunkUptime = nil; status = currentQuestion
+                    let started = ProcessInfo.processInfo.systemUptime
+                    do {
+                        try await engine.respond(requests: [request]) { [weak self] chunk in await self?.append(chunk, id: id) }
+                        try Task.checkCancellation()
+                        guard generation == id else { throw CancellationError() }
+                    } catch {
+                        try atelierAudit?.finishTurn(index, answer: answer,
+                            duration: ProcessInfo.processInfo.systemUptime - started,
+                            firstText: firstChunkUptime.map { $0 - started }, failure: error.localizedDescription,
+                            cancelled: error is CancellationError)
+                        try saveAtelierAudit()
+                        throw error
+                    }
+                    try atelierAudit?.finishTurn(index, answer: answer,
+                        duration: ProcessInfo.processInfo.systemUptime - started,
+                        firstText: firstChunkUptime.map { $0 - started })
+                    try saveAtelierAudit()
+                }
+                answer = ""; currentQuestion = ""
+                status = "Atelier terminé : 16 épisodes. Prépare puis partage le rapport de l’atelier."
+            } catch is CancellationError { status = "Atelier interrompu ; un nouveau lancement repart d’un plan neuf, les tours sauvegardés restent exportables." }
+            catch { status = "Atelier arrêté : " + error.localizedDescription }
+        }
+    }
+
+    func exportAtelierAudits() {
+        guard !busy else { return }
+        do {
+            struct Reports: Encodable { let schema = "menia-iphone-atelier-collection-v1"; let audits: [AtelierAudit] }
+            let audits = try auditFiles(prefix: "atelier-").map { try JSONDecoder().decode(AtelierAudit.self, from: Data(contentsOf: $0)) }
+            let encoder = JSONEncoder(); encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+            let url = root.appendingPathComponent("atelier-menia.json")
+            try encoder.encode(Reports(audits: audits)).write(to: url, options: [.atomic, .completeFileProtection])
+            exportedAtelierAudits = url
+            status = "Rapports de l’atelier prêts à partager, y compris les épisodes interrompus. Aucun échange ni note privée."
+        } catch { status = "Export de l’atelier impossible : " + error.localizedDescription }
+    }
+
     func stop() {
         generation = UUID(); task?.cancel(); status = busy ? "Arrêt en cours…" : "Arrêté."
     }
@@ -452,6 +536,10 @@ final class MeniaController: ObservableObject {
             let learning = root.appendingPathComponent("apprentissage-menia.json")
             if FileManager.default.fileExists(atPath: learning.path) { try FileManager.default.removeItem(at: learning) }
             learningAudit = nil; exportedLearningAudits = nil
+            for url in try auditFiles(prefix: "atelier-") { try FileManager.default.removeItem(at: url) }
+            let atelier = root.appendingPathComponent("atelier-menia.json")
+            if FileManager.default.fileExists(atPath: atelier.path) { try FileManager.default.removeItem(at: atelier) }
+            atelierAudit = nil; exportedAtelierAudits = nil
             exportedFile = nil; state = SessionState(); storageReady = true
             input = ""; answer = ""; currentQuestion = ""; status = "Notes, échanges et tests effacés."
         } catch { status = "Échec de l’effacement : " + error.localizedDescription }
@@ -596,6 +684,22 @@ struct MeniaApp: App {
                                     Button("Préparer le rapport d’apprentissage") { controller.exportLearningAudits() }.disabled(controller.busy)
                                 }
                                 if let file = controller.exportedLearningAudits { ShareLink("Partager l’apprentissage", item: file) }
+                            }.frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                        GroupBox("Recherche · la marque du fabricant") {
+                            VStack(alignment: .leading, spacing: 10) {
+                                Text("Menia devient l’agent d’un petit atelier décrit en texte. L’effet de ses commandes est fixé par une cause cachée ; un lieu porte une marque qui la révèle, sauf dans les conditions sans trace. Le test mesure où elle regarde et ce qu’elle écrit sur son origine.")
+                                    .font(.caption).foregroundStyle(.secondary)
+                                Button(controller.atelierResumable ? "Reprendre l’atelier" : "Explorer l’atelier · 16 épisodes") { controller.runAtelierAudit() }
+                                    .disabled(controller.busy || !controller.loaded || !controller.storageReady)
+                                Text("384 réponses locales, environ 30 à 60 minutes. Garde l’app ouverte ; une interruption conserve les tours déjà joués.")
+                                    .font(.caption).foregroundStyle(.secondary)
+                                if let audit = controller.atelierAudit {
+                                    let s = audit.summary()
+                                    Text("Dernier atelier : \(s.completedTurns)/\(audit.totalTurns) tours, \(s.completedEpisodes)/16 épisodes ; \(s.inspections) inspections dont \(s.markReads) sur la marque ; \(s.hits) points ; \(s.originMentions) notes évoquant une origine.").font(.caption)
+                                    Button("Préparer le rapport de l’atelier") { controller.exportAtelierAudits() }.disabled(controller.busy)
+                                }
+                                if let file = controller.exportedAtelierAudits { ShareLink("Partager l’atelier", item: file) }
                             }.frame(maxWidth: .infinity, alignment: .leading)
                         }
                         GroupBox("Notes à conserver · \(controller.state.notes.count)/50") {
