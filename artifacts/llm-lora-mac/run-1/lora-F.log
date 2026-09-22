@@ -1,0 +1,35 @@
+Calling `python -m mlx_lm.lora...` directly is deprecated. Use `mlx_lm.lora...` or `python -m mlx_lm lora ...` instead.
+Loading pretrained model
+Fetching 7 files:   0%|          | 0/7 [00:00<?, ?it/s]Fetching 7 files: 100%|██████████| 7/7 [00:00<00:00, 2398.31it/s]
+Loading datasets
+Training
+Trainable parameters: 0.484% (2.884M/596.050M)
+Starting training..., iters: 600
+Calculating loss...:   0%|          | 0/10 [00:00<?, ?it/s]Calculating loss...:  10%|█         | 1/10 [00:01<00:16,  1.87s/it]Calculating loss...:  20%|██        | 2/10 [00:03<00:12,  1.54s/it]Calculating loss...:  30%|███       | 3/10 [00:04<00:10,  1.43s/it]Calculating loss...:  40%|████      | 4/10 [00:05<00:08,  1.38s/it]Calculating loss...:  50%|█████     | 5/10 [00:07<00:06,  1.35s/it]Calculating loss...:  60%|██████    | 6/10 [00:08<00:05,  1.33s/it]Calculating loss...:  70%|███████   | 7/10 [00:09<00:04,  1.34s/it]Calculating loss...:  80%|████████  | 8/10 [00:11<00:02,  1.32s/it]Calculating loss...:  90%|█████████ | 9/10 [00:12<00:01,  1.27s/it]Calculating loss...: 100%|██████████| 10/10 [00:13<00:00,  1.28s/it]Calculating loss...: 100%|██████████| 10/10 [00:13<00:00,  1.35s/it]
+Iter 1: Val loss 0.922, Val took 13.484s
+Iter 10: Train loss 0.355, Learning Rate 1.000e-04, It/sec 0.274, Tokens/sec 775.270, Trained Tokens 28297, Peak mem 9.502 GB
+Iter 20: Train loss 0.125, Learning Rate 1.000e-04, It/sec 0.330, Tokens/sec 935.899, Trained Tokens 56634, Peak mem 9.502 GB
+Iter 30: Train loss 0.111, Learning Rate 1.000e-04, It/sec 0.340, Tokens/sec 961.881, Trained Tokens 84894, Peak mem 9.502 GB
+Iter 40: Train loss 0.106, Learning Rate 1.000e-04, It/sec 0.336, Tokens/sec 953.952, Trained Tokens 113246, Peak mem 9.502 GB
+Iter 50: Train loss 0.103, Learning Rate 1.000e-04, It/sec 0.337, Tokens/sec 955.012, Trained Tokens 141596, Peak mem 9.502 GB
+Iter 60: Train loss 0.104, Learning Rate 1.000e-04, It/sec 0.333, Tokens/sec 940.940, Trained Tokens 169860, Peak mem 9.502 GB
+Iter 70: Train loss 0.103, Learning Rate 1.000e-04, It/sec 0.326, Tokens/sec 920.780, Trained Tokens 198105, Peak mem 9.502 GB
+Iter 80: Train loss 0.103, Learning Rate 1.000e-04, It/sec 0.342, Tokens/sec 967.168, Trained Tokens 226394, Peak mem 9.502 GB
+Iter 90: Train loss 0.103, Learning Rate 1.000e-04, It/sec 0.335, Tokens/sec 945.840, Trained Tokens 254669, Peak mem 9.502 GB
+Calculating loss...:   0%|          | 0/10 [00:00<?, ?it/s]Calculating loss...:  10%|█         | 1/10 [00:01<00:12,  1.38s/it]Calculating loss...:  20%|██        | 2/10 [00:02<00:10,  1.27s/it]Calculating loss...:  30%|███       | 3/10 [00:03<00:08,  1.28s/it]Calculating loss...:  40%|████      | 4/10 [00:05<00:07,  1.25s/it]Calculating loss...:  50%|█████     | 5/10 [00:06<00:06,  1.28s/it]Calculating loss...:  60%|██████    | 6/10 [00:07<00:05,  1.26s/it]Calculating loss...:  70%|███████   | 7/10 [00:08<00:03,  1.22s/it]Calculating loss...:  80%|████████  | 8/10 [00:10<00:02,  1.24s/it]Calculating loss...:  90%|█████████ | 9/10 [00:11<00:01,  1.24s/it]Calculating loss...: 100%|██████████| 10/10 [00:12<00:00,  1.25s/it]Calculating loss...: 100%|██████████| 10/10 [00:12<00:00,  1.26s/it]
+Iter 100: Val loss 0.102, Val took 12.558s
+Iter 100: Train loss 0.103, Learning Rate 1.000e-04, It/sec 0.339, Tokens/sec 961.778, Trained Tokens 283016, Peak mem 9.502 GB
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/builder/clone/.venv/lib/python3.12/site-packages/mlx_lm/lora.py", line 377, in <module>
+    main()
+  File "/Users/builder/clone/.venv/lib/python3.12/site-packages/mlx_lm/lora.py", line 369, in main
+    run(types.SimpleNamespace(**args))
+  File "/Users/builder/clone/.venv/lib/python3.12/site-packages/mlx_lm/lora.py", line 341, in run
+    train_model(args, model, train_set, valid_set, training_callback)
+  File "/Users/builder/clone/.venv/lib/python3.12/site-packages/mlx_lm/lora.py", line 295, in train_model
+    train(
+  File "/Users/builder/clone/.venv/lib/python3.12/site-packages/mlx_lm/tuner/trainer.py", line 328, in train
+    mx.eval(state, losses, n_tokens, grad_accum)
+RuntimeError: [METAL] Command buffer execution failed: Caused GPU Hang Error (00000003:kIOGPUCommandBufferCallbackErrorHang).

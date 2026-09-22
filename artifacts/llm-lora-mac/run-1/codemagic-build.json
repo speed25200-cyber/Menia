@@ -1,0 +1,70 @@
+{
+ "id": "6ab2b3f6688764aa17df4643",
+ "tag": "lora-2",
+ "branch": "main",
+ "workflow": "menia-lora-mac",
+ "status": "finished",
+ "createdAt": "2026-09-22T16:59:34.439000+00:00",
+ "startedAt": "2026-09-22T20:26:33.575000+00:00",
+ "finishedAt": "2026-09-22T20:38:08.193000+00:00",
+ "commit": "3928e4920f6ef8bfe31e66b541487d72b827082b",
+ "message": null,
+ "steps": [
+  {
+   "name": "Preparing build machine",
+   "status": "success",
+   "startedAt": "2026-09-22T20:26:33.964000+00:00",
+   "finishedAt": "2026-09-22T20:26:52.916000+00:00"
+  },
+  {
+   "name": "Fetching app sources",
+   "status": "success",
+   "startedAt": "2026-09-22T20:26:52.916000+00:00",
+   "finishedAt": "2026-09-22T20:27:01.704000+00:00"
+  },
+  {
+   "name": "Installer mlx-lm dans un environnement isolé",
+   "status": "success",
+   "startedAt": "2026-09-22T20:27:01.704000+00:00",
+   "finishedAt": "2026-09-22T20:27:21.047000+00:00"
+  },
+  {
+   "name": "Vérifier le protocole sur scoreurs simulés",
+   "status": "success",
+   "startedAt": "2026-09-22T20:27:21.047000+00:00",
+   "finishedAt": "2026-09-22T20:27:21.619000+00:00"
+  },
+  {
+   "name": "Exporter les vies, ajuster par LoRA et évaluer chaque régime",
+   "status": "success",
+   "startedAt": "2026-09-22T20:27:21.619000+00:00",
+   "finishedAt": "2026-09-22T20:38:03.542000+00:00"
+  },
+  {
+   "name": "Publier les résultats sur la branche de recherche (au mieux)",
+   "status": "success",
+   "startedAt": "2026-09-22T20:38:03.542000+00:00",
+   "finishedAt": "2026-09-22T20:38:06.185000+00:00"
+  },
+  {
+   "name": "Publishing",
+   "status": "success",
+   "startedAt": "2026-09-22T20:38:06.185000+00:00",
+   "finishedAt": "2026-09-22T20:38:08.086000+00:00"
+  },
+  {
+   "name": "Cleaning up",
+   "status": "success",
+   "startedAt": "2026-09-22T20:38:08.086000+00:00",
+   "finishedAt": "2026-09-22T20:38:08.193000+00:00"
+  }
+ ],
+ "artefacts": [
+  {
+   "name": "Menia_2_artifacts.zip",
+   "size": 510298,
+   "md5": null,
+   "type": "bundle"
+  }
+ ]
+}
