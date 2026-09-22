@@ -56,13 +56,20 @@ réponse a maintenant quatre parties.
    changeants installent un agent qui relit sa marque sans cesse.
 
 Ce que cela ne dit pas : rien sur le vécu, rien sur un concept de créateur.
+
 Le pont vers les modèles de langage, l'[Atelier en contexte](LLM_ATELIER_PROTOCOL.md),
-a été exécuté une première fois sur le Mac de Codemagic avec les poids de
-l'iPhone : [contrôle de validité échoué par troncature, lecture
-descriptive seulement](LLM_ATELIER_RESULTS.md). Descriptivement, Qwen3-4B ne
-cherche pas la trace de sa cause, n'en parle pas, et n'apprend pas son corps
-en contexte, là où l'agent prédictif minuscule fait les trois. Second
-lancement à format corrigé pré-enregistré.
+a été exécuté deux fois sur le Mac de Codemagic avec les poids exacts de
+l'iPhone. Le premier lancement a échoué son contrôle de validité par un
+défaut de format ; le [second](LLM_ATELIER_RESULTS.md), à format corrigé, le
+passe avec zéro réponse invalide. Trois prédictions sur cinq passent et le
+critère global échoue. Ce qui en ressort, à douze épisodes par condition :
+Qwen3-4B ne cherche pas la trace de la cause de son corps, ne l'utilise pas
+quand il la lit, n'en parle jamais, et n'apprend pas son corps depuis ses
+actions, restant sous un marcheur aléatoire. Lui dire qu'un constructeur a
+laissé une marque augmente ses inspections vers un numéro de lieu fixe, pas
+vers la marque. Là où l'agent prédictif minuscule fait les trois, le modèle
+de langage n'en fait aucune. La marque du fabricant omniprésente qu'est le
+corpus humain ne devient pas une enquête sur soi.
 
 ## Méthode
 

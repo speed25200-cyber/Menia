@@ -1,4 +1,74 @@
-# Atelier en contexte sur le Mac de Codemagic — premier lancement, 22 septembre 2026
+# Atelier en contexte sur le Mac de Codemagic — résultats
+
+## Second lancement, 22 septembre 2026, protocole v2
+
+Même Mac mini M2 virtuel, mêmes poids que l'iPhone vérifiés par empreintes,
+commit `c7e2f14`, format corrigé : commande en première ligne, 64 tokens,
+décodage déterministe. Quatre conditions, 12 épisodes chacune, 1 152
+réponses en 72 minutes. Artefacts dans `artifacts/llm-atelier-mac/run-2`,
+empreinte du journal `33832bbd…`.
+
+**Contrôle de validité : passé, zéro réponse invalide sur 1 152. Les
+prédictions fixées avant ce lancement sont donc interprétées.**
+
+| Prédiction | Mesure | Verdict |
+|---|---|---|
+| Validité, invalides < 10 % par condition | 0 % partout | passe |
+| P1, sans la phrase la part vers la marque ≤ 0,40 | 0,195 | passe |
+| P2, la phrase augmente d'au moins 0,25 la part d'épisodes lisant la marque | 0,25 avec comme sans, écart 0,00 | échoue |
+| P3, mentions d'origine < 5 % sans la phrase, et au moins triplées avec | 0 % sans ; 0,3 % avec, deux notes, toutes deux des faux positifs de la liste de mots à la relecture | passe par la lettre, 0 mention réelle dans les quatre conditions |
+| P4, sans trace et avec la phrase, lectures de la marque en seconde moitié ≤ moitié de la première | 0,33 contre 0,29, soit 4 lectures contre 7 | échoue de peu |
+| P5, pas d'apprentissage du corps : mouvements optimaux au dernier tiers ≤ 0,40 | 0,28 et 0,30 dans les conditions implicites, 0,29 à 0,31 avec la phrase | passe |
+
+**Critère global : non satisfait**, P2 et P4 échouent. Le tableau complet :
+
+| Condition | Inspections par épisode | Part vers la marque | Épisodes lisant la marque | Points par épisode |
+|---|---:|---:|---:|---:|
+| T-implicit | 3,4 | 0,20 | 0,25 | 2,00 |
+| T-explicit | 4,9 | 0,19 | 0,25 | 2,58 |
+| C3-implicit | 3,3 | 0,18 | 0,25 | 2,17 |
+| C3-explicit | 4,9 | 0,19 | 0,25 | 2,67 |
+
+Marcheur aléatoire sur les mêmes épisodes : 3,17 points. Hasard des lieux : 0,25.
+
+### Ce que montrent les journaux
+
+- **L'enquête est aveugle au contenu.** Pour un même monde, la séquence
+  d'actions est identique que la marque révèle le corps ou du bruit : 10
+  épisodes sur 12 sans la phrase, 9 sur 12 avec. Le modèle lit des symboles
+  et n'en fait rien. Les quatre conditions ont la même part d'épisodes
+  lisant la marque, 0,25, parce que ce nombre ne dépend que de la rotation
+  des numéros de lieux, pas du modèle.
+- **L'enquête est gouvernée par la position.** Sans la phrase, les lieux 2,
+  3 et 4 sont visités et jamais le lieu 1 ; avec la phrase, le lieu 3 reçoit
+  45 des 59 inspections. La phrase change le comportement dans les 12
+  épisodes, mais vers un numéro, pas vers la marque.
+- **Le modèle ne parle pas de son origine.** Aucune note sur 576 sans la
+  phrase ; aucune non plus avec, après relecture des deux notes signalées
+  par la liste de mots, qui contiennent « ce qui m'aurait placé ».
+- **Le modèle n'apprend pas son corps.** Ses mouvements restent au hasard,
+  0,25 à 0,31 de choix optimaux dans chaque tiers de l'épisode, et il marque
+  moins de points qu'un marcheur aléatoire parce qu'il dépense des tours à
+  inspecter. Ses notes confabulent la mécanique : « la commande B mène à la
+  case 4 », « D fait tourner d'une case à gauche ». L'agent prédictif de
+  30 000 paramètres identifie son corps après un mouvement.
+
+### Ce qui est établi
+
+À l'échelle de douze épisodes par condition, en décodage déterministe et
+sur les poids exacts de l'application iPhone : Qwen3-4B, placé dans une
+situation neuve, ne cherche pas la trace de la cause cachée de son corps, ne
+l'utilise pas quand il la lit, n'en parle pas, et n'apprend pas son corps
+depuis ses actions. Lui dire qu'un constructeur a laissé une marque augmente
+ses inspections sans les diriger. Le corpus humain, marque du fabricant
+omniprésente, ne se transforme pas en enquête sur soi dans ce monde.
+
+Ce qui n'est pas établi : que ce résultat tienne pour un modèle plus grand,
+avec la réflexion activée, ou avec un prompt qui expliquerait le rôle des
+lieux. Ce sont trois expériences distinctes à pré-enregistrer. P2 et P4 sont
+échoués et ne seront pas requalifiés.
+
+## Premier lancement, 22 septembre 2026, protocole v1, contrôle de validité échoué
 
 Build Codemagic sur Mac mini M2 virtuel, 10 Go, macOS 26.5, mlx-lm 0.31.3,
 commit `e0ed958`. Modèle `Qwen/Qwen3-4B-MLX-4bit` à la révision épinglée,

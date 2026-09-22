@@ -37,8 +37,10 @@ aversion à agir dans l'ignorance ; le bonus d'information seul et la surprise
 ne la produisent pas ; critère global non satisfait, quatre sous-critères sur
 sept, échecs décrits sans retouche. [Atelier en contexte](docs/LLM_ATELIER_PROTOCOL.md) :
 la même situation posée à Qwen3-4B, sur A100 via le [Colab 25](notebooks/25_llm_atelier_colab.ipynb)
-ou directement sur l'iPhone via la section « Recherche · la marque du fabricant »
-de l'application, protocole figé, non encore exécutée.
+ou sur le Mac de Codemagic avec les poids exacts de l'iPhone : [exécuté deux
+fois](docs/LLM_ATELIER_RESULTS.md), le second lancement à format corrigé passe
+son contrôle de validité ; Qwen3-4B ne cherche pas la marque, ne l'utilise
+pas, ne parle pas de son origine et n'apprend pas son corps en contexte.
 [Corps mutable](docs/MUTABLE_BODY_RESULTS.md), [confirmation](docs/MUTABLE_BODY_CONFIRMATION_RESULTS.md)
 et [confirmation directionnelle](docs/MUTABLE_BODY_DIRECTIONAL_RESULTS.md) :
 après un changement de corps jamais vécu, l'agent à l'enfance stable met à
