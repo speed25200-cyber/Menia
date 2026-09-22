@@ -141,5 +141,20 @@ class VersionTwoTests(unittest.TestCase):
             self.assertEqual(len(report["training"]["rounds"]), 2)
 
 
+class VersionThreeTests(unittest.TestCase):
+    def test_binned_needs_and_replayed_values(self):
+        from research.indicator_agent_v2 import binned_features
+        W = {"vis": {"values": [None] * 8, "presence": [0] * 8}, "pos": np.eye(8)[2], "intero": np.array([0.1, 0.9])}
+        phi, candidate, _ = binned_features(W, 5)
+        self.assertEqual(len(phi), 19)
+        self.assertEqual(phi[:16].sum(), 1.0)
+        self.assertEqual(int(np.argmax(phi[:16])), 3)
+        self.assertIsNone(candidate)
+        with tempfile.TemporaryDirectory() as tmp:
+            experiment_main(["--version", "3", "--out", tmp, "--seeds", "6", "--childhood", "20", "--updates", "2",
+                             "--batch", "3", "--lives", "2"])
+            self.assertEqual(audit(tmp, replay_lives=2, full=True, log=lambda m: None)["problems"], [])
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -22,6 +22,8 @@ SEEDS = (17, 29, 43)
 DEV_SEED = 5
 SEEDS_V2 = (53, 67, 79)
 DEV_SEED_V2 = 7
+SEEDS_V3 = (89, 97, 101)
+DEV_SEED_V3 = 11
 ROUNDS_V2 = 25
 ROUND_LIVES_V2 = 160
 SETS = {"R": (930001, "fixed"), "M": (930002, "change"), "H": (930003, "band")}
@@ -41,9 +43,9 @@ def run_life(params, variant, env_seed, mode, agent_seed, learn=False, phase="ad
         env = SenseAtelier(env_seed, mode)
         agent = Agent(params, variant, seed=agent_seed, learn=learn, phase=phase)
     else:
-        from .indicator_agent_v2 import AgentV2
+        from .indicator_agent_v2 import AgentV2, AgentV3
         env = SenseAtelier(env_seed, mode, n_objects=3)
-        agent = AgentV2(params, variant, seed=agent_seed, learn=learn, phase=phase, epsilon=epsilon)
+        agent = (AgentV2 if version == 2 else AgentV3)(params, variant, seed=agent_seed, learn=learn, phase=phase, epsilon=epsilon)
     obs, truth = env.reset()
     steps, rewards = [], []
     for _ in range(LIFE):
@@ -128,16 +130,20 @@ def reinforce(params, seed, updates=UPDATES, batch=BATCH, lr=LR, log=print):
     return params, history
 
 
-def fit_goal_values(params, seed, rounds=25, lives=160, epsilon=0.2, log=print):
-    """Version 2: fitted Monte-Carlo values of the two goals, epsilon-greedy while learning."""
-    from .indicator_agent_v2 import Q_FEATURES, discounted_returns, fit_values
-    params.q = np.zeros((3, Q_FEATURES))
+def fit_goal_values(params, seed, rounds=25, lives=160, epsilon=0.2, log=print, version=2):
+    """Versions 2 and 3: fitted Monte-Carlo values of the goals, epsilon-greedy while learning. Version 2 refits on
+    the lives of the round only; version 3 on all the lives lived so far (replay)."""
+    from .indicator_agent_v2 import Q_FEATURES, Q_FEATURES_V3, discounted_returns, fit_values
+    params.q = np.zeros((3, Q_FEATURES if version == 2 else Q_FEATURES_V3))
     history = []
+    X, y = {0: [], 1: [], 2: []}, {0: [], 1: [], 2: []}
     for r in range(1, rounds + 1):
-        X, y, returns = {0: [], 1: [], 2: []}, {0: [], 1: [], 2: []}, []
+        if version == 2:
+            X, y = {0: [], 1: [], 2: []}, {0: [], 1: [], 2: []}
+        returns = []
         for j in range(lives):
             life = run_life(params, "agent", 30_000_000 + seed * 100_000 + r * lives + j, "childhood",
-                            seed * 104729 + r * lives + j, learn=True, version=2, epsilon=epsilon)
+                            seed * 104729 + r * lives + j, learn=True, version=version, epsilon=epsilon)
             G = discounted_returns(life["rewards"])
             for t, k, phi in life["samples"]:
                 X[k].append(phi)
@@ -519,7 +525,7 @@ def run_seed(seed, root, childhood_lives=CHILDHOOD_LIVES, updates=UPDATES, batch
         params, history = reinforce(params, seed, updates, batch, log=log)
         learned = {"reinforce": history}
     else:
-        params, history = fit_goal_values(params, seed, rounds=updates, lives=batch, log=log)
+        params, history = fit_goal_values(params, seed, rounds=updates, lives=batch, log=log, version=version)
         learned = {"rounds": history}
     t_rl = time.time()
     params.save(root / f"params-{seed}.json")
@@ -541,7 +547,7 @@ def run_seed(seed, root, childhood_lives=CHILDHOOD_LIVES, updates=UPDATES, batch
 
 def main(argv=None):
     parser = argparse.ArgumentParser()
-    parser.add_argument("--version", type=int, choices=[1, 2], default=1)
+    parser.add_argument("--version", type=int, choices=[1, 2, 3], default=1)
     parser.add_argument("--out", default=None)
     parser.add_argument("--seeds", type=int, nargs="+", default=None)
     parser.add_argument("--childhood", type=int, default=CHILDHOOD_LIVES)
@@ -550,9 +556,9 @@ def main(argv=None):
     parser.add_argument("--lives", type=int, default=TEST_LIVES)
     parser.add_argument("--jobs", type=int, default=1)
     a = parser.parse_args(argv)
-    v2 = a.version == 2
-    out = a.out or ("artifacts/indicator-agent-v2" if v2 else "artifacts/indicator-agent")
-    seeds = a.seeds or (list(SEEDS_V2) if v2 else list(SEEDS))
+    v2 = a.version >= 2
+    out = a.out or {1: "artifacts/indicator-agent", 2: "artifacts/indicator-agent-v2", 3: "artifacts/indicator-agent-v3"}[a.version]
+    seeds = a.seeds or {1: list(SEEDS), 2: list(SEEDS_V2), 3: list(SEEDS_V3)}[a.version]
     updates = a.updates or (ROUNDS_V2 if v2 else UPDATES)
     batch = a.batch or (ROUND_LIVES_V2 if v2 else BATCH)
     a.out = out

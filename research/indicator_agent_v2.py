@@ -51,15 +51,20 @@ def plan(W, target):
 
 
 class AgentV2(Agent):
+    q_features = Q_FEATURES
+
     def __init__(self, params, variant="agent", seed=0, learn=False, phase="adult", epsilon=0.0):
         super().__init__(params, variant, seed, learn, phase)
         self.epsilon = epsilon
         self.samples = []
 
+    def _features(self, W, charger):
+        return goal_features(W, charger)
+
     # -- values -------------------------------------------------------------------------------------------------
 
     def _values(self, phi, candidate):
-        q = self.P.q if self.P.q is not None else np.zeros((3, Q_FEATURES))
+        q = self.P.q if self.P.q is not None else np.zeros((3, self.q_features))
         q_charge = float(phi @ q[0])
         if self.variant == "single_goal":
             q_charge = -math.inf
@@ -72,7 +77,7 @@ class AgentV2(Agent):
         return max((o for o in options if o[0] > -math.inf), key=lambda o: (round(o[0], 9), -o[1]))[2]
 
     def _decision(self, W, charger):
-        phi, candidate, _ = goal_features(W, charger)
+        phi, candidate, _ = self._features(W, charger)
         goal = self._greedy(phi, candidate)
         if goal == "stay":
             return goal, STAY
@@ -114,7 +119,7 @@ class AgentV2(Agent):
 
     def _policy(self, obs, rec):
         charger = obs["charger"]
-        phi, candidate, best = goal_features(self.W, charger)
+        phi, candidate, best = self._features(self.W, charger)
         believed = int(np.argmax(self.W["pos"]))
         current = self.goal
         if isinstance(current, int) and (not self.W["vis"]["presence"][current] or believed == current):
@@ -165,3 +170,25 @@ def discounted_returns(rewards, horizon=HORIZON, gamma=GAMMA):
 def fit_values(X, y, l2=1e-2):
     X, y = np.asarray(X, dtype=float), np.asarray(y, dtype=float)
     return np.linalg.solve(X.T @ X + l2 * np.eye(X.shape[1]), X.T @ y)
+
+
+# ---------------------------------------------------------------------------------------------- version 3
+
+Q_FEATURES_V3 = 19
+
+
+def binned_features(W, charger):
+    """Version 3: needs as 16 indicator cells (energy x satiety quarters), then distances and object value."""
+    phi, candidate, best = goal_features(W, charger)
+    e, f = float(W["intero"][0]), float(W["intero"][1])
+    cells = np.zeros(16)
+    cells[min(int(e * 4), 3) * 4 + min(int(f * 4), 3)] = 1.0
+    return np.concatenate([cells, phi[5:8]]), candidate, best
+
+
+class AgentV3(AgentV2):
+    """Version 3: version 2 with values over binned needs, fitted on all accumulated experience."""
+    q_features = Q_FEATURES_V3
+
+    def _features(self, W, charger):
+        return binned_features(W, charger)
