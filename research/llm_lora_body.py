@@ -10,6 +10,7 @@ is read. Protocol: docs/ADJUSTED_BODY_PROTOCOL.md.
 import argparse
 import datetime
 import json
+import re
 from pathlib import Path
 import numpy as np
 from .origin_env import Atelier, LIFE, N_MOVE, N_ACTIONS
@@ -68,12 +69,29 @@ def childhood_text_lives(regime, seed, count):
     return docs
 
 
-def export_dataset(regime, out, train=1500, valid=150, seed=17):
+MOVE = re.compile(r"^(Tour \d+ : commande \w, de la case \d à la case )(\d)")
+
+
+def motor_examples(doc):
+    """One example per move of a life: the life up to the landing square, and the landing digit
+    (docs/LLM_MOTOR_OBJECTIVE_PROTOCOL.md). The prompt is the one completion_prompt builds for the tests."""
+    lines = doc["text"].split("Historique :\n", 1)[1].splitlines()
+    examples = []
+    for i, line in enumerate(lines):
+        match = MOVE.match(line)
+        if match:
+            examples.append({"prompt": "\n".join(HEADER + lines[:i] + [match.group(1)]), "completion": match.group(2)})
+    return examples
+
+
+def export_dataset(regime, out, train=1500, valid=150, seed=17, objective="text"):
+    """objective "text": each life is one document; "motor": one prompt and completion per move."""
     out = Path(out)
     out.mkdir(parents=True, exist_ok=True)
     for name, count, offset in (("train", train, 0), ("valid", valid, 1)):
         docs = childhood_text_lives(regime, seed * 10 + offset, count)
-        (out / f"{name}.jsonl").write_text("".join(json.dumps({"text": d["text"]}, ensure_ascii=False) + "\n" for d in docs))
+        rows = [{"text": d["text"]} for d in docs] if objective == "text" else [e for d in docs for e in motor_examples(d)]
+        (out / f"{name}.jsonl").write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows))
     return out
 
 
@@ -91,6 +109,7 @@ def main(argv=None):
     ex.add_argument("--train", type=int, default=1500)
     ex.add_argument("--valid", type=int, default=150)
     ex.add_argument("--seed", type=int, default=17)
+    ex.add_argument("--objective", choices=["text", "motor"], default="text")
     ev = sub.add_parser("evaluate")
     ev.add_argument("--out", required=True)
     ev.add_argument("--backend", choices=["mlx", "scripted"], default="scripted")
@@ -104,8 +123,8 @@ def main(argv=None):
     ev.add_argument("--protocol", default="docs/ADJUSTED_BODY_PROTOCOL.md")
     a = parser.parse_args(argv)
     if a.command == "export":
-        export_dataset(a.regime, a.out, a.train, a.valid, a.seed)
-        print("exported", a.regime, a.out)
+        export_dataset(a.regime, a.out, a.train, a.valid, a.seed, a.objective)
+        print("exported", a.regime, a.objective, a.out)
         return
     extra = {"backend": a.backend, "label": a.label, "episodes_per_set": a.episodes, "mode": "completion",
              "started": datetime.datetime.now(datetime.timezone.utc).isoformat(), "protocol": a.protocol}

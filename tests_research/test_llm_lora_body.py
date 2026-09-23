@@ -3,7 +3,8 @@ import tempfile
 import unittest
 from pathlib import Path
 from research.origin_env import DELTAS, motor_delta, LIFE
-from research.llm_lora_body import (childhood_text_lives, export_dataset, completion_prompt, life_text, HEADER, main)
+from research.llm_lora_body import (childhood_text_lives, export_dataset, completion_prompt, life_text, HEADER, main,
+                                    motor_examples)
 from research.llm_latent_body import ScriptedScorer, score_life
 from research.text_atelier import run_text_lives
 from research.own_action_experiment import CHANGE_STEP
@@ -51,6 +52,36 @@ class DataTests(unittest.TestCase):
             self.assertTrue(all("inspection du lieu" in line for line in lines[:first_move]))
             read_first += any("lieu 1," in line for line in lines[:first_move])
         self.assertGreater(read_first / len(vmi), 0.6)
+
+    def test_motor_examples_are_the_test_prompts_with_the_landing_digit(self):
+        doc = childhood_text_lives("VMI", 5, 1)[0]
+        lines = doc["text"].split("Historique :\n", 1)[1].splitlines()
+        examples = motor_examples(doc)
+        moves = [(i, line) for i, line in enumerate(lines) if " : commande " in line]
+        self.assertEqual(len(examples), len(moves))
+        for (i, line), example in zip(moves, examples):
+            m = re.match(r"Tour (\d+) : commande (\w), de la case (\d) à la case (\d)", line)
+            prompt = completion_prompt(lines[:i], int(m.group(3)), "ABCD".index(m.group(2)), int(m.group(1)) - 1)
+            self.assertEqual(example, {"prompt": prompt, "completion": m.group(4)})
+        with tempfile.TemporaryDirectory() as tmp:
+            export_dataset("VMI", tmp, train=3, valid=2, objective="motor")
+            row = json.loads(Path(tmp, "train.jsonl").read_text().splitlines()[0])
+            self.assertEqual(set(row), {"prompt", "completion"})
+            self.assertTrue(row["prompt"].endswith("à la case "))
+
+    def test_raw_completion_masks_the_prompt(self):
+        from research.llm_motor_lora import raw_process
+
+        class Tokenizer:
+            def encode(self, text, add_special_tokens=True):
+                return [ord(c) for c in text]
+
+        class Dataset:
+            tokenizer, prompt_key, completion_key = Tokenizer(), "prompt", "completion"
+
+        tokens, offset = raw_process(Dataset(), {"prompt": "à la case ", "completion": "7"})
+        self.assertEqual(tokens[offset:], [ord("7")])
+        self.assertEqual(offset, len("à la case "))
 
     def test_export_writes_train_and_valid(self):
         with tempfile.TemporaryDirectory() as tmp:

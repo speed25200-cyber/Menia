@@ -74,3 +74,14 @@ cible) ; workflow Codemagic `menia-lora-motor-mac`, lancé par le relais,
 artefacts dans `artifacts/llm-lora-mac/run-6-vmm`, verdicts par
 `research/llm_inquiry_verdicts.py`, résultats dans
 `docs/LLM_INQUIRY_RESULTS.md`.
+
+## Précisions fixées avant l'exécution
+
+Écrites avec le code, avant tout lancement. 1 500 vies VMI donnent 14 942
+exemples d'entraînement (1 560 de validation) ; chaque entrée est
+exactement l'invite que construisent les tests (`completion_prompt`), et la
+cible le chiffre de la case d'arrivée. L'emballage `research/llm_motor_lora.py`
+remplace seulement le codage des exemples de mlx-lm (texte brut au lieu du
+gabarit de conversation, invite masquée dans la perte) et appelle
+`mlx_lm.lora` avec les réglages du protocole. Le relais retire le préfixe
+`llm-lora` : l'enquête arrive dans `run-6-vmm/inquiry-VMM`.
