@@ -1,4 +1,4 @@
-"""Second reading of the version 5 indicator agent (docs/INDICATOR_AGENT_SECOND_READING_PROTOCOL.md).
+"""Second reading of the indicator agent, versions 5 and 6 (docs/INDICATOR_AGENT_SECOND_READING_PROTOCOL.md).
 
 The primary reading is the fourteen criteria of version 1, computed by indicator_experiment.criteria. The
 second reading replaces four usage tests, thresholds unchanged: RPT-1 by the return lost without
@@ -19,7 +19,7 @@ NAMES = ["RPT-1", "RPT-2", "GWT-1", "GWT-2", "GWT-3", "GWT-4", "HOT-1", "HOT-2",
          "AE-1", "AE-2"]
 
 
-def refined_counts(params, seed, lives):
+def refined_counts(params, seed, lives, version=5):
     """Counts for the four refined measures, from lives replayed exactly as in the evaluation."""
     out = {"intero_low": [0, 0], "intero_high": [0, 0], "fault_read": {"agent": [0, 0], "constant_gain": [0, 0]},
            "band_conflict": {"agent": [0, 0], "random_code": [0, 0]}}
@@ -29,7 +29,8 @@ def refined_counts(params, seed, lives):
         for variant in variants:
             low, high = [0, 0], [0, 0]
             for i in range(lives):
-                life = run_life(params, variant, life_seed(base, i), mode, seed * 1_000_000 + set_index * 10_000 + i, version=5)
+                life = run_life(params, variant, life_seed(base, i), mode, seed * 1_000_000 + set_index * 10_000 + i,
+                               version=version)
                 for rec, truth in life["steps"]:
                     if variant == "agent" and name in ("R", "M") and len(rec["writers"]) == 1:
                         need = min(truth["energy"], truth["satiety"])
@@ -121,7 +122,7 @@ def main(argv=None):
     refined = []
     for report in reports:
         params = Params.load(root / f"params-{report['seed']}.json")
-        refined.append(refined_counts(params, report["seed"], report["settings"]["test_lives"]))
+        refined.append(refined_counts(params, report["seed"], report["settings"]["test_lives"], report["settings"]["version"]))
         print(f"replayed seed {report['seed']}", flush=True)
     result = second_reading(reports, refined)
     result = json.loads(json.dumps(result))

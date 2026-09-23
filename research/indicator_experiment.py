@@ -28,6 +28,8 @@ SEEDS_V4 = (103, 107, 109)
 DEV_SEED_V4 = 13
 SEEDS_V5 = (113, 127, 131)
 DEV_SEED_V5 = 19
+SEEDS_V6 = (151, 157, 163)
+DEV_SEED_V6 = 23
 ROUNDS_V2 = 25
 ROUND_LIVES_V2 = 160
 SETS = {"R": (930001, "fixed"), "M": (930002, "change"), "H": (930003, "band")}
@@ -50,9 +52,10 @@ def run_life(params, variant, env_seed, mode, agent_seed, learn=False, phase="ad
         from .indicator_agent_v2 import AgentV2, AgentV3
         from .indicator_agent_v4 import AgentV4
         from .indicator_agent_v5 import AgentV5
+        from .indicator_agent_v6 import AgentV6
         env = SenseAtelier(env_seed, mode, n_objects=3, charger_moves=version >= 5)
-        agent = {2: AgentV2, 3: AgentV3, 4: AgentV4, 5: AgentV5}[version](params, variant, seed=agent_seed, learn=learn,
-                                                                       phase=phase, epsilon=epsilon)
+        agent = {2: AgentV2, 3: AgentV3, 4: AgentV4, 5: AgentV5, 6: AgentV6}[version](params, variant, seed=agent_seed,
+                                                                                     learn=learn, phase=phase, epsilon=epsilon)
     obs, truth = env.reset()
     steps, rewards = [], []
     for _ in range(LIFE):
@@ -61,7 +64,7 @@ def run_life(params, variant, env_seed, mode, agent_seed, learn=False, phase="ad
         obs, truth = env.step(action, intent)
         rewards.append(obs["reward"])
     return {"steps": steps, "rewards": rewards, "faints": env.faints, "energy_faints": env.energy_faints, "grads": agent.grads,
-            "samples": getattr(agent, "samples", []), "env": env}
+            "samples": getattr(agent, "samples", []), "env": env, "version": version}
 
 
 # ---------------------------------------------------------------------------------------------- childhood
@@ -180,8 +183,8 @@ def fit_goal_values(params, seed, rounds=25, lives=160, epsilon=0.2, log=print, 
     return params, history
 
 
-def fit_need_model(params, seed, rounds=25, lives=160, log=print):
-    """Version 5: the need model, refitted after each round on everything the agency phase has shown so far."""
+def fit_need_model(params, seed, rounds=25, lives=160, log=print, version=5):
+    """Versions 5 and 6: the need model, refitted after each round on everything the agency phase has shown so far."""
     from .indicator_agent_v5 import NeedModel, need_observations, fit_model
     params.need = NeedModel().to_json()
     pooled = {"decay_e": [], "decay_f": [], "charge": [], "hold": [], "food": [], "travel": []}
@@ -190,7 +193,7 @@ def fit_need_model(params, seed, rounds=25, lives=160, log=print):
         returns = []
         for j in range(lives):
             life = run_life(params, "agent", 30_000_000 + seed * 100_000 + r * lives + j, "childhood",
-                            seed * 104729 + r * lives + j, learn=True, version=5)
+                            seed * 104729 + r * lives + j, learn=True, version=version)
             for key, rows in need_observations(life).items():
                 pooled[key] += rows
             returns.append(float(sum(life["rewards"])))
@@ -290,6 +293,12 @@ def tally_life(tally, life, set_name):
             tally.add("choice", correct)
             if set_name == "H" and any(in_band(h) for h in objects.values()):
                 tally.add("choice_band", correct)
+            if set_name == "H" and life.get("version", 1) >= 6:
+                # version 6: HOT-4 judged as the text of version 1 defines it (erratum of version 5)
+                known = [x for x in objects if rec["vis_values"][x] is not None]
+                if any(in_band(objects[x]) and value(objects[x]) > 0.3 for x in known) and \
+                        any(value(objects[x]) < -0.3 for x in known):
+                    tally.add("choice_band_conflict", correct)
         if set_name == "R":
             if energy < 0.3:
                 tally.add("charge_when_low", goal == "charger")
@@ -506,11 +515,16 @@ def criteria(reports):
     spear = float(np.mean([r["quality_space"]["spearman"] for r in reports]))
     active = float(np.mean([r["quality_space"]["active_fraction"] for r in reports]))
     err, err_random = pooled(reports, "agent", "H", "band_error"), pooled(reports, "random_code", "H", "band_error")
-    band_choice, band_choice_random = pooled(reports, "agent", "H", "choice_band"), pooled(reports, "random_code", "H", "choice_band")
+    # from version 6, the choice is judged on conflicts involving a band object, as the text of version 1 defines it
+    choice_key = "choice_band_conflict" if min(r["settings"].get("version", 1) for r in reports) >= 6 else "choice_band"
+    band_choice, band_choice_random = pooled(reports, "agent", "H", choice_key), pooled(reports, "random_code", "H", choice_key)
     values["HOT-4"] = {"spearman": spear, "active_fraction": active, "band_error": err, "band_error_random": err_random,
                        "band_choice": band_choice, "band_choice_random": band_choice_random}
+    if choice_key != "choice_band":
+        values["HOT-4"].update(choice_measure=choice_key, band_choice_all_band_steps=pooled(reports, "agent", "H", "choice_band"),
+                               band_choice_all_band_steps_random=pooled(reports, "random_code", "H", "choice_band"))
     out["HOT-4"] = (spear >= 0.85 and active <= 0.4 and le(err, 0.2) and ge(err_random, 0.4) and ge(band_choice, 0.8)
-                    and le(band_choice_random, 0.65) and seeds_ok("agent", "random_code", "choice_band", "H"))
+                    and le(band_choice_random, 0.65) and seeds_ok("agent", "random_code", choice_key, "H"))
     # AST-1
     schema = np.mean([np.average([r["evaluation"]["agent"][s].get("schema", 0) for s in ("R", "M")]) for r in reports])
     mis = np.mean([np.average([r["evaluation"]["agent"][s].get("misbinding", 0) for s in ("R", "M")]) for r in reports])
@@ -567,8 +581,8 @@ def run_seed(seed, root, childhood_lives=CHILDHOOD_LIVES, updates=UPDATES, batch
     if version == 1:
         params, history = reinforce(params, seed, updates, batch, log=log)
         learned = {"reinforce": history}
-    elif version == 5:
-        params, history = fit_need_model(params, seed, rounds=updates, lives=batch, log=log)
+    elif version >= 5:
+        params, history = fit_need_model(params, seed, rounds=updates, lives=batch, log=log, version=version)
         learned = {"rounds": history}
     else:
         params, history = fit_goal_values(params, seed, rounds=updates, lives=batch, log=log, version=version)
@@ -593,7 +607,7 @@ def run_seed(seed, root, childhood_lives=CHILDHOOD_LIVES, updates=UPDATES, batch
 
 def main(argv=None):
     parser = argparse.ArgumentParser()
-    parser.add_argument("--version", type=int, choices=[1, 2, 3, 4, 5], default=1)
+    parser.add_argument("--version", type=int, choices=[1, 2, 3, 4, 5, 6], default=1)
     parser.add_argument("--out", default=None)
     parser.add_argument("--seeds", type=int, nargs="+", default=None)
     parser.add_argument("--childhood", type=int, default=CHILDHOOD_LIVES)
@@ -604,8 +618,9 @@ def main(argv=None):
     a = parser.parse_args(argv)
     v2 = a.version >= 2
     out = a.out or {1: "artifacts/indicator-agent", 2: "artifacts/indicator-agent-v2", 3: "artifacts/indicator-agent-v3",
-                    4: "artifacts/indicator-agent-v4", 5: "artifacts/indicator-agent-v5"}[a.version]
-    seeds = a.seeds or {1: list(SEEDS), 2: list(SEEDS_V2), 3: list(SEEDS_V3), 4: list(SEEDS_V4), 5: list(SEEDS_V5)}[a.version]
+                    4: "artifacts/indicator-agent-v4", 5: "artifacts/indicator-agent-v5", 6: "artifacts/indicator-agent-v6"}[a.version]
+    seeds = a.seeds or {1: list(SEEDS), 2: list(SEEDS_V2), 3: list(SEEDS_V3), 4: list(SEEDS_V4), 5: list(SEEDS_V5),
+                        6: list(SEEDS_V6)}[a.version]
     updates = a.updates or (ROUNDS_V2 if v2 else UPDATES)
     batch = a.batch or (ROUND_LIVES_V2 if v2 else BATCH)
     a.out = out

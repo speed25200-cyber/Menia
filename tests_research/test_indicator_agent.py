@@ -220,6 +220,54 @@ class VersionFiveTests(unittest.TestCase):
             self.assertIn("need", json.loads(Path(tmp, "params-9.json").read_text()))
 
 
+class VersionSixTests(unittest.TestCase):
+    def test_a_belief_that_missed_its_recharge_is_revised(self):
+        from research.indicator_agent_v5 import NeedModel
+        from research.indicator_agent_v6 import AgentV6, KEEP
+        params = Params.load("artifacts/indicator-agent-v5/params-113.json")
+        agent = AgentV6(params, "agent", seed=1)
+        agent.model = NeedModel(decay=(0.07, 0.05), charge=0.94, reward=(1.0, 0.0))
+        obs = {"t": 5, "pos": None, "felt": None, "energy": 0.4, "satiety": 0.6, "charger": 3, "reward": 0.0,
+               "presence": [0] * 8, "onsets": [], "hue": None, "cue": None}
+        agent.b = np.full(8, 1 / 8)
+        agent.acted_on = (3, 3, False)
+        rec = {}
+        agent._pos(obs, rec)
+        self.assertEqual(rec["violation"], "charge")
+        self.assertAlmostEqual(agent.b[3] / agent.b[2], KEEP)
+        agent.b, agent.acted_on, rec = np.full(8, 1 / 8), (3, 3, False), {}
+        agent._pos(dict(obs, energy=0.95), rec)
+        self.assertIsNone(rec["violation"])
+        blind = AgentV6(params, "constant_gain", seed=1)
+        blind.model, blind.b, blind.acted_on, rec = agent.model, np.full(8, 1 / 8), (3, 3, False), {}
+        blind._pos(obs, rec)
+        self.assertIsNone(rec["violation"])
+        self.assertAlmostEqual(float(blind.b[3]), 1 / 8)
+
+    def test_hues_are_bound_only_when_the_schema_is_confident(self):
+        from research.indicator_agent_v6 import BIND
+        params = Params.load("artifacts/indicator-agent-v5/params-113.json")
+        life = run_life(params, "agent", 930003000, "band", 113 * 1_000_000 + 20_000, version=6)
+        bound = [r for r, _ in life["steps"] if r["bound"] is not None]
+        self.assertTrue(bound)
+        self.assertTrue(all(r["schema_confidence"] >= BIND for r in bound))
+        self.assertTrue(any(r.get("unbound") for r, _ in life["steps"]))
+        blind = run_life(params, "no_schema", 930003000, "band", 113 * 1_000_000 + 20_000, version=6)
+        self.assertFalse(any(r.get("unbound") for r, _ in blind["steps"]))
+
+    def test_version_six_runs_and_is_audited(self):
+        from research.indicator_second_reading import main as second_main
+        with tempfile.TemporaryDirectory() as tmp:
+            experiment_main(["--version", "6", "--out", tmp, "--seeds", "9", "--childhood", "20", "--updates", "2",
+                             "--batch", "3", "--lives", "2"])
+            report = json.loads(Path(tmp, "report-9.json").read_text())
+            self.assertEqual(report["settings"]["version"], 6)
+            self.assertIn("choice_measure", json.loads(Path(tmp, "criteria.json").read_text())["values"]["HOT-4"])
+            self.assertEqual(audit(tmp, replay_lives=2, full=True, log=lambda m: None)["problems"], [])
+            second_main(["--root", tmp])
+            second_main(["--root", tmp, "--check"])
+
+
 class SecondReadingTests(unittest.TestCase):
     def test_second_reading_recomputes_the_primary_and_replaces_four_tests(self):
         from research.indicator_second_reading import main as second_main
