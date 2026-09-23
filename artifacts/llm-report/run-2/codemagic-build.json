@@ -1,0 +1,64 @@
+{
+ "id": "6ab30e96956478f7c2a3ede4",
+ "tag": null,
+ "branch": "claude/causal-self-model-llm-results-mauabk",
+ "workflow": "menia-report-mac",
+ "status": "finished",
+ "createdAt": "2026-09-22T23:26:14.144000+00:00",
+ "startedAt": "2026-09-23T01:49:36.584000+00:00",
+ "finishedAt": "2026-09-23T02:18:39.827000+00:00",
+ "commit": "fd8d5a42b53695739b7bfe2cfa8b70477439db4f",
+ "message": null,
+ "steps": [
+  {
+   "name": "Preparing build machine",
+   "status": "success",
+   "startedAt": "2026-09-23T01:49:36.853000+00:00",
+   "finishedAt": "2026-09-23T01:49:58.892000+00:00"
+  },
+  {
+   "name": "Fetching app sources",
+   "status": "success",
+   "startedAt": "2026-09-23T01:49:58.892000+00:00",
+   "finishedAt": "2026-09-23T01:50:05.835000+00:00"
+  },
+  {
+   "name": "Installer mlx-lm dans un environnement isolé",
+   "status": "success",
+   "startedAt": "2026-09-23T01:50:05.835000+00:00",
+   "finishedAt": "2026-09-23T01:50:23.431000+00:00"
+  },
+  {
+   "name": "Vérifier le protocole sur un rapporteur simulé",
+   "status": "success",
+   "startedAt": "2026-09-23T01:50:23.431000+00:00",
+   "finishedAt": "2026-09-23T01:50:24.093000+00:00"
+  },
+  {
+   "name": "Faire rapporter les états de l'agent par Qwen3-4B, sans génération",
+   "status": "success",
+   "startedAt": "2026-09-23T01:50:24.093000+00:00",
+   "finishedAt": "2026-09-23T02:18:38.225000+00:00"
+  },
+  {
+   "name": "Publishing",
+   "status": "success",
+   "startedAt": "2026-09-23T02:18:38.225000+00:00",
+   "finishedAt": "2026-09-23T02:18:39.744000+00:00"
+  },
+  {
+   "name": "Cleaning up",
+   "status": "success",
+   "startedAt": "2026-09-23T02:18:39.744000+00:00",
+   "finishedAt": "2026-09-23T02:18:39.827000+00:00"
+  }
+ ],
+ "artefacts": [
+  {
+   "name": "Menia_2_artifacts.zip",
+   "size": 20717,
+   "md5": null,
+   "type": "bundle"
+  }
+ ]
+}

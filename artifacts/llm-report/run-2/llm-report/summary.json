@@ -1,0 +1,26 @@
+{
+ "validity_mass": 0.9986297335490831,
+ "real": 0.8106796116504854,
+ "real_by_kind": {
+  "pos": 0.23300970873786409,
+  "body": 1.0,
+  "spot": 1.0,
+  "trust": 0.7961165048543689,
+  "need": 0.8349514563106796,
+  "module": 1.0
+ },
+ "counterfactual": 0.6796116504854369,
+ "distractor": 0.7864077669902912,
+ "distractor_agreement": 0.9563106796116505,
+ "hard_spot": 1.0,
+ "counts": {
+  "items": 1854,
+  "hard_spot": 35
+ },
+ "valid": true,
+ "R1": false,
+ "R2": false,
+ "R3": false,
+ "R4": true,
+ "global": false
+}
