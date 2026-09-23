@@ -44,7 +44,7 @@ arrivent sous `dest/<nom du dossier>`. Les builds passent un par un.
 | Demande | Workflow | Destination | Suite |
 |---|---|---|---|
 | 11 | `menia-inquiry-mac` | `artifacts/llm-inquiry/run-1` | **fait** : invalide (masse sur les symboles 0,014 et 0,007), `docs/LLM_INQUIRY_RESULTS.md` |
-| 12 | `menia-lora-vm-rank-mac` | `artifacts/llm-lora-mac/run-4-vm` | A3 et la part VM de A4 ; verdict global avec A1 et A2 de run-3 ; ajouter à `docs/ADJUSTED_BODY_RESULTS.md` ; si A3 passe, pré-enregistrer la boucle P-soi |
+| 12 | `menia-lora-vm-rank-mac` | `artifacts/llm-lora-mac/run-4-vm` | **fait** : A3 0,793 (échoue encore), A4 passe, global non satisfait ; pas de boucle P-soi |
 | 13 | `menia-menia-report-mac` | `artifacts/menia-report/run-1/menia-report` | `python -m research.llm_menia_report verdicts --rows …/rows.jsonl --check …/summary.json`, puis `docs/MENIA_REPORT_RESULTS.md` et un contrôle CI |
 | 14 | `menia-inquiry-mac` (amendement 2) | `artifacts/llm-inquiry/run-2/llm-inquiry` | `python -m research.llm_inquiry_verdicts --vm …/VM --f …/F --output artifacts/llm-inquiry/verdicts-run-2.json`, puis compléter `docs/LLM_INQUIRY_RESULTS.md` et un contrôle CI ; dernière relance prévue |
 

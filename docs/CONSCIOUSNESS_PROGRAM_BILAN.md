@@ -57,8 +57,9 @@ seconde lecture**.
   des vies à corps variable et changeant, Qwen3-0.6B en acquiert l'essentiel :
   copie 0,995, commande nouvelle après un mouvement 0,793 (seuil 0,80, raté
   d'une question), révision après un changement 0,86 ; ajusté sur un corps
-  fixe, il confabule avec une confiance de 1,00. Une relance au rang 16
-  tourne sur le Mac. Le test d'enquête (où le LLM ajusté chercherait
+  fixe, il confabule avec une confiance de 1,00. La relance au rang 16, sur
+  toutes les couches, donne la même chose (0,793) : la capacité n'est pas ce
+  qui manque. Le test d'enquête (où le LLM ajusté chercherait
   l'information sur lui-même) a été invalide par un défaut de mesure (les
   symboles lus sans leur espace) ; relance corrigée déclarée et lancée.
 - **Le rapport verbal.** Qwen3-4B rapporte fidèlement les états de l'agent
@@ -75,9 +76,8 @@ l'information intégrée, juge même le logiciel insuffisant.
 
 ## La suite
 
-1. Lire la relance au rang 16 du corps ajusté et le test d'enquête corrigé :
-   le LLM ajusté a-t-il la structure de son corps, et sait-il où chercher
-   la cause de son corps ?
+1. Lire le test d'enquête corrigé : le LLM ajusté sait-il où chercher la
+   cause de son corps ?
 2. Lire le rapport de Menia (pré-enregistré, 2 160 questions) : quand
    l'agent lui donne son espace de travail en conclusions explicites,
    Qwen3-4B le rapporte-t-il fidèlement ?
