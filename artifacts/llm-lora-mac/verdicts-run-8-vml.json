@@ -1,0 +1,91 @@
+{
+ "verdicts": {
+  "valid_F": true,
+  "valid_VM": true,
+  "valid_VMI": true,
+  "valid_VMW": true,
+  "valid_VML": true,
+  "L0": true,
+  "L1": false,
+  "valid_inquiry_VML": true,
+  "valid_inquiry_F": true,
+  "L2": false,
+  "L3": true,
+  "global": false
+ },
+ "summaries_match_published": true,
+ "reading": {
+  "F": {
+   "points": 256,
+   "digit_mass": 0.99978738671875,
+   "P1": 0.25000028125,
+   "P0": 0.2500000625,
+   "accuracy_1": 0.25,
+   "accuracy_0": 0.25
+  },
+  "VM": {
+   "points": 256,
+   "digit_mass": 0.99952634375,
+   "P1": 0.248088125,
+   "P0": 0.25008594270833334,
+   "accuracy_1": 0.234375,
+   "accuracy_0": 0.24479166666666666
+  },
+  "VMI": {
+   "points": 256,
+   "digit_mass": 0.99936765234375,
+   "P1": 0.251830921875,
+   "P0": 0.2509736927083333,
+   "accuracy_1": 0.265625,
+   "accuracy_0": 0.25
+  },
+  "VMW": {
+   "points": 256,
+   "digit_mass": 0.998741296875,
+   "P1": 0.25418546875000003,
+   "P0": 0.2523601354166667,
+   "accuracy_1": 0.234375,
+   "accuracy_0": 0.25
+  },
+  "VML": {
+   "points": 256,
+   "digit_mass": 0.9994084375000001,
+   "P1": 0.25112304687500003,
+   "P0": 0.24952489062499997,
+   "accuracy_1": 0.25,
+   "accuracy_0": 0.25
+  }
+ },
+ "inquiry": {
+  "VM": {
+   "points": 96,
+   "digit_mass": 0.9992089999999999,
+   "symbol_mass": 0.9968771666666667,
+   "start_mark_best": 0.14583333333333334,
+   "start_mean_gain": {
+    "1": -0.0011811875,
+    "2": -0.0011232083333333333,
+    "3": -0.0008005208333333333,
+    "4": -0.000573125
+   },
+   "start_h0": 0.9924447083333333,
+   "mark_gain_before_change": -0.0006635,
+   "mark_gain_after_first_move": 0.00012333333333333329
+  },
+  "F": {
+   "points": 96,
+   "digit_mass": 0.9995237916666667,
+   "symbol_mass": 0.9962437291666667,
+   "start_mark_best": 0.0625,
+   "start_mean_gain": {
+    "1": 8.99375e-05,
+    "2": 9.69375e-05,
+    "3": 9.141666666666668e-05,
+    "4": 0.00011706249999999999
+   },
+   "start_h0": 0.0004358125,
+   "mark_gain_before_change": 0.0011514583333333335,
+   "mark_gain_after_first_move": 3.3333333333333354e-06
+  }
+ }
+}

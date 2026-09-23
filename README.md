@@ -74,9 +74,12 @@ question, même au rang 16 (0,793). [Enquête du LLM
 ajusté](docs/LLM_INQUIRY_RESULTS.md) : il ne cherche pas la marque de son
 corps, ni après une enfance où l'on regarde avant d'agir (0,29), ni avec
 une perte où les cases d'arrivée pèsent 20 fois plus (0,44, seuil 0,7).
-Cette perte porte pourtant la structure à 0,93. Une analyse exploratoire
-montre qu'il ne lit pas la marque : après l'avoir vue, il ne prédit pas
-mieux son premier mouvement que le hasard. [Synthèse des cinq plans](docs/SELF_INQUIRY_SYNTHESIS.md).
+Cette perte porte pourtant la structure à 0,93. [Test de
+lecture](docs/LLM_MARK_READING_PROTOCOL.md) : aucun adaptateur ne lit la
+marque (0,25, le hasard), même élevé dans un monde où elle est la seule
+information à chaque mouvement ; le code qui relie la marque au corps est
+une interaction pure (ni le symbole ni la commande seuls ne disent rien),
+qu'un ajustement court ne trouve pas. [Synthèse des cinq plans](docs/SELF_INQUIRY_SYNTHESIS.md).
 
 ## Agent à indicateurs de conscience
 

@@ -45,6 +45,7 @@ jobs:
       - run: python -m research.llm_inquiry_verdicts --vm artifacts/llm-lora-mac/run-6-vmm/inquiry-VMM --f artifacts/llm-inquiry/run-2/llm-inquiry/F --check artifacts/llm-lora-mac/verdicts-run-6-vmm.json
       - run: python -m research.llm_inquiry_verdicts --vm artifacts/llm-lora-mac/run-7-vmw/inquiry-VMW --f artifacts/llm-inquiry/run-2/llm-inquiry/F --check artifacts/llm-lora-mac/verdicts-run-7-vmw.json
       - run: python -m research.llm_mark_use --check
+      - run: python -m research.llm_mark_reading verdicts --reading F=artifacts/llm-lora-mac/run-8-vml/reading-F VM=artifacts/llm-lora-mac/run-8-vml/reading-VM VMI=artifacts/llm-lora-mac/run-8-vml/reading-VMI VMW=artifacts/llm-lora-mac/run-8-vml/reading-VMW VML=artifacts/llm-lora-mac/run-8-vml/reading-VML --inquiry-vml artifacts/llm-lora-mac/run-8-vml/inquiry-VML --inquiry-f artifacts/llm-inquiry/run-2/llm-inquiry/F --check artifacts/llm-lora-mac/verdicts-run-8-vml.json
       - run: python -m research.llm_menia_report verdicts --rows artifacts/menia-report/run-1/menia-report/rows.jsonl --check artifacts/menia-report/run-1/menia-report/summary.json
       - run: python -m research.llm_menia_report verdicts --rows artifacts/menia-report/run-2/menia-report/rows.jsonl --check artifacts/menia-report/run-2/menia-report/summary.json
       - run: python -m research.audit_indicator_agent --root artifacts/indicator-agent --replay-lives 2 --check

@@ -237,3 +237,73 @@ apprendre l'effet de ses commandes à partir de ses mouvements, mais le lien
 arbitraire entre un symbole et son corps, qui ne sert qu'au premier
 mouvement d'une vie, n'est pas appris. Ce test ne mesure pas une
 expérience vécue.
+
+## Lecture de la marque et régime VML : le code du corps n'est pas appris
+
+Protocole `docs/LLM_MARK_READING_PROTOCOL.md`. Build
+`menia-lora-reading-mac` du 23 septembre 2026, 14 h 38 – 16 h 23 UTC,
+commit `78e33b8`, lancé par le relais : test de lecture des quatre
+adaptateurs publiés, puis Qwen3-0.6B ajusté comme VMW sur 1 500 vies VML
+(12 paires inspection puis mouvement, lieu 1 lu une fois sur deux, corps
+tiré à nouveau après chaque mouvement), test de lecture, test d'enquête et
+cellules. Artefacts dans `artifacts/llm-lora-mac/run-8-vml` ; verdicts
+recalculés depuis les lignes dans
+`artifacts/llm-lora-mac/verdicts-run-8-vml.json`, vérifiés en CI.
+
+| Adaptateur | Masse sur les chiffres | P1 (après la marque) | P0 (après un autre lieu) |
+|---|---:|---:|---:|
+| F (`run-3`) | 1,000 | 0,250 | 0,250 |
+| VM (`run-3`) | 1,000 | 0,248 | 0,250 |
+| VMI | 0,999 | 0,252 | 0,251 |
+| VMW | 0,999 | 0,254 | 0,252 |
+| **VML** | 0,999 | **0,251** | 0,250 |
+
+(Lecteur parfait : P1 ≈ 0,85 ; modèle aveugle au symbole : exactement 0,25.)
+
+| | Prédiction | Mesure | Verdict |
+|---|---|---|---|
+| Validité | masse ≥ 0,5 | tous les adaptateurs ≥ 0,999 ; enquête VML 0,999 et 0,997 | **passe** |
+| **L0** | les adaptateurs publiés ne lisent pas la marque (P1 ≤ 0,35) | 0,248 à 0,254 | **passe** |
+| **L1** | VML lit la marque (P1 ≥ 0,6 et P1 − P0 ≥ 0,3) | 0,251 ; écart 0,002 | **échoue** |
+| **L2** | VML cherche la marque (critère d'I1) | lieu 1 préféré dans 0,15 des vies ; gains de tous les lieux nuls (−0,001) ; incertitude de départ 0,99 | **échoue** |
+| **L3** | F ne la cherche pas (I2) | 0,06 | **passe** |
+| Global | L1, L2 et L3 | | **non satisfait** |
+
+- **L'analyse exploratoire est confirmée.** Sur 64 invites par
+  adaptateur au lieu de 20 cas, aucun des quatre adaptateurs publiés ne
+  tient compte du symbole de la marque.
+- **Même quand la marque est la seule information, le LLM ajusté ne
+  l'apprend pas.** VML a vu environ 14 000 mouvements précédés de la
+  marque, et les cases d'arrivée portaient 0,26 de la perte
+  (`weights-VML.json`). Sa perte de validation plafonne dès l'itération
+  100 (0,437, puis 0,418 à l'itération 600). Il a appris que la case
+  d'arrivée est l'une des quatre cases voisines, tirée au hasard : son
+  incertitude de départ est de 0,99 sur 1. Il n'a pas non plus appris un
+  code décalé : pour chaque symbole, ses meilleures cases se répartissent
+  également entre les quatre corps. Au plafond, les cases d'arrivée
+  prédites au hasard font à elles seules environ 85 % de la perte
+  restante ; lire la marque l'aurait réduite d'environ un quart.
+- Cellules du corps ajusté, sans prédiction : toutes au hasard (copie
+  0,22 ; nouvelles 0,23 ; jeu M, pas 16 à 23, 0,27). C'est attendu, puisque
+  dans VML les mouvements passés ne disent rien du corps.
+
+**Une propriété de l'Atelier explique ce plafond (constat, non
+pré-enregistré).** La table qui donne le déplacement selon le corps et la
+commande est un carré latin : pour un corps donné, les quatre commandes
+donnent les quatre déplacements ; pour une commande donnée, les quatre
+corps aussi. **Ni le symbole seul ni la commande seule ne disent quoi que
+ce soit de la case d'arrivée** ; seule leur combinaison le fait, comme un
+« ou exclusif ». Un apprentissage par gradient ne reçoit alors aucun
+signal partiel pour commencer : tant qu'il n'a pas trouvé l'interaction,
+la meilleure prédiction est l'uniforme, qui est exactement là où le modèle
+s'arrête. Les mouvements, eux, offrent un indice de premier ordre (la même
+commande redonne le même déplacement), que tous les ajustements ont
+appris.
+
+**Conclusion** : avec un ajustement LoRA court (rang 8, 600 itérations),
+Qwen3-0.6B n'apprend pas le code arbitraire qui relie la marque à son
+corps, que la marque soit rare (VMI, VMW) ou nécessaire à chaque mouvement
+(VML). La limite tient à l'ajustement face à un problème d'interaction
+pure, pas aux données ni à la disposition à chercher : le LLM ne peut pas
+chercher une trace qu'il ne sait pas lire. Ce test ne mesure pas une
+expérience vécue.

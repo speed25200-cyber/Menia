@@ -101,10 +101,15 @@ l'information intégrée, juge même le logiciel insuffisant.
    les cases d'arrivée pèsent 20 fois plus (VMW), la structure est
    nettement mieux apprise (**0,93** sur les commandes jamais essayées),
    mais l'enquête toujours pas (0,44). Une analyse exploratoire montre
-   pourquoi : le LLM ajusté **ne lit pas la marque**. Après l'avoir vue, il
-   ne prédit pas mieux son premier mouvement (0,26 ; hasard 0,25). Le lien
-   arbitraire entre un symbole et son corps ne sert qu'au premier mouvement
-   d'une vie, et un ajustement LoRA court ne l'apprend pas
-   (`docs/LLM_INQUIRY_RESULTS.md`). La suite, à pré-enregistrer : un
-   monde où la marque sert à chaque tour (corps qui change souvent), un
-   ajustement plus long, ou un modèle plus grand.
+   pourquoi : le LLM ajusté **ne lit pas la marque**. Le test de lecture
+   pré-enregistré le confirme sur les quatre adaptateurs publiés (0,25,
+   exactement le hasard), et **même un LLM élevé dans un monde où la marque
+   est la seule information à chaque mouvement (VML) ne l'apprend pas**
+   (0,25). Raison probable : dans l'Atelier, ni le symbole seul ni la
+   commande seule ne disent rien du déplacement ; seule leur combinaison
+   le fait (un « ou exclusif »), et un ajustement court par gradient ne
+   trouve pas cette interaction pure (`docs/LLM_INQUIRY_RESULTS.md`). Le
+   LLM ne peut pas chercher une trace qu'il ne sait pas lire. La suite, à
+   pré-enregistrer : une enfance par étapes (d'abord une seule commande,
+   où le symbole suffit), un ajustement bien plus long, ou un modèle plus
+   grand.
