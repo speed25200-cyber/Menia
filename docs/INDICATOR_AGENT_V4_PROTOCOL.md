@@ -103,7 +103,7 @@ ne mesure pas une expérience vécue.
 
 ## Premier essai de développement (graine 13), déclaré
 
-Le 23 septembre à 0 h 27 UTC, code du commit `e2b1a1c` : 6 propriétés sur
+Le 23 septembre, de 0 h 08 à 0 h 19 UTC, code du commit `e2b1a1c` : 6 propriétés sur
 14 (RPT-2, GWT-2, HOT-1, HOT-2, AST-1, PP-1). Les alarmes font leur effet :
 l'intéroception écrit dans 0,51 des pas où l'énergie est basse contre 0,34
 où elle est haute (écart 0,17, seuil 0,2) ; sans diffusion, l'AUROC du
@@ -124,7 +124,7 @@ Conséquences : la lésion de l'intéroception ne change plus les malaises
 d'énergie (−0,005), l'arbitrage reste sous ses seuils (0,68 et 0,53), la
 croyance sur le corps après le changement aussi (0,63).
 
-### Amendements 1 à 3, datés du 23 septembre 2026, 0 h 35 UTC
+### Amendements 1 à 3, datés du 23 septembre 2026, 0 h 20 UTC (commit `72df11f`)
 
 Avant toute exécution sur les graines 103, 107 et 109. **Aucun seuil n'est
 modifié.**
