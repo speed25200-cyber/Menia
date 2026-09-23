@@ -7,7 +7,9 @@ def messages_for_runtime(runtime, question):
     if not isinstance(question, str) or not question.strip():
         raise ValueError("A question is required")
     state = runtime.context(question)
-    if "agent" in state:
+    if "agent" in state and "workspace" in state["agent"]:
+        pass  # the indicator agent bridge already gives only its broadcast contents and its last decision
+    elif "agent" in state:
         agent = state["agent"]
         # Keep exact evidence links while omitting verbose probability vectors.
         decision = agent["decision"]
