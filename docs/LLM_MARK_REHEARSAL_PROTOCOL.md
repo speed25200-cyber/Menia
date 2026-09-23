@@ -66,3 +66,15 @@ workflow `menia-lora-stage-mac` (`STAGE_REGIME=VMLAB`,
 `STAGE_BASE=2850`), lancé par le relais ; artefacts dans
 `artifacts/llm-lora-mac/run-15-rehearsal` ; verdicts vérifiés en CI ;
 résultats dans `docs/LLM_INQUIRY_RESULTS.md`.
+
+## Précisions fixées avant l'exécution
+
+Écrites avec le code, avant tout lancement. Dans les 1 500 vies VMLAB
+d'entraînement, A est jouée dans 0,41 des mouvements, B dans 0,39, C et D
+dans 0,10 chacune ; les lieux inspectés sont ceux de VML. Les vies VML,
+VMLA et VMLB exportées restent identiques octet pour octet à celles de
+`run-8-vml`, `run-9-vmla` et `run-14-stage-b`. L'adaptateur final
+s'appelle `adapters-VMLAB-3600`. Verdicts :
+`python -m research.llm_mark_reading stage --preferred A --learned B
+--reading 3100=… 3350=… 3600=…` (E1 y est P1(A) ≥ 0,6 et E2 P1(B) ≥ 0,6 :
+leur conjonction est R1).

@@ -85,6 +85,11 @@ class DataTests(unittest.TestCase):
             self.assertEqual([l.split(",")[0] for l in looks(vml)], [l.split(",")[0] for l in looks(docs)])
             commands = re.findall(r"commande (\w),", "".join(d["text"] for d in docs))
             self.assertGreater(commands.count(regime[3]) / len(commands), 0.6)
+        docs = childhood_text_lives("VMLAB", 5, 40)
+        self.assertEqual([l.split(",")[0] for l in looks(vml)], [l.split(",")[0] for l in looks(docs)])
+        tops = [max("ABCD", key=re.findall(r"commande (\w),", d["text"]).count) for d in docs]
+        self.assertEqual(set(tops), {"A", "B"})
+        self.assertTrue(10 < tops.count("A") < 30)
 
     def test_motor_examples_are_the_test_prompts_with_the_landing_digit(self):
         doc = childhood_text_lives("VMI", 5, 1)[0]

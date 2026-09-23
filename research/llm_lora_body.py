@@ -18,7 +18,7 @@ from .llm_atelier import COMMANDS, move_line, inspect_line
 from .llm_latent_body import ScriptedScorer, MLXScorer, run_sets, write_receipt
 from .text_atelier import MUTATION_PROBABILITY, FIXED_BODY
 
-DATA_REGIMES = ("F", "V", "VM", "VMI", "VML", "VMLA", "VMLB", "VMLC", "VMLD")
+DATA_REGIMES = ("F", "V", "VM", "VMI", "VML", "VMLA", "VMLB", "VMLC", "VMLD", "VMLAB")
 LOOK_FIRST = (2, 6)  # VMI: the first k turns of a life are inspections, k uniform in this range (docs/LLM_INQUIRY_DATA_PROTOCOL.md)
 READ_MARK = 0.5  # VML: probability that the inspection before a move is of place 1 (docs/LLM_MARK_READING_PROTOCOL.md)
 PREFERRED = 0.7  # VMLA to VMLD: probability of the preferred command, the others sharing the rest
@@ -76,7 +76,8 @@ def childhood_text_lives(regime, seed, count):
     """Random-action lives of one childhood regime, as text documents, with their hidden values.
 
     VMI is VM where the agent looks before it acts: the first k turns inspect a random place. In VML every move is
-    preceded by an inspection and made by a newly drawn body; VMLA to VMLD are VML with command A to D preferred."""
+    preceded by an inspection and made by a newly drawn body; VMLA to VMLD are VML with command A to D preferred, and
+    VMLAB draws for each life whether A or B is preferred."""
     if regime not in DATA_REGIMES:
         raise ValueError("Unknown regime")
     rng = np.random.default_rng(seed)
@@ -89,7 +90,10 @@ def childhood_text_lives(regime, seed, count):
         env.reset()
         if regime.startswith("VML"):
             d0 = env.d
-            lines = reading_life_lines(env, rng, look, hand if regime != "VML" else None, "ABCD".find(regime[3:]))
+            preferred = regime[3:]
+            if len(preferred) > 1:  # VMLAB: the preferred command of each life (docs/LLM_MARK_REHEARSAL_PROTOCOL.md)
+                preferred = preferred[int(hand.integers(len(preferred)))]
+            lines = reading_life_lines(env, rng, look, hand if regime != "VML" else None, "ABCD".find(preferred))
             docs.append({"text": life_text(lines), "d": d0, "d_final": env.d, "e": env.e, "change_step": None})
             continue
         if regime == "F":
