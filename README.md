@@ -86,7 +86,10 @@ apprend à lire la marque** pour cette commande (0,81 ; lecteur parfait
 ([prolongation](docs/LLM_MARK_HAND_LONG_PROTOCOL.md)), **et il la
 cherche** : dans les 48 vies, ses propres prédictions désignent le lieu de
 la marque, et lui seul, comme le lieu à inspecter
-([enquête](docs/LLM_MARK_SEEK_PROTOCOL.md)). [Synthèse des cinq plans](docs/SELF_INQUIRY_SYNTHESIS.md).
+([enquête](docs/LLM_MARK_SEEK_PROTOCOL.md)). Mais cette lecture reste une
+seule association entre la marque et le déplacement de la commande
+habituelle : apprise pour une autre commande, elle remplace la première
+([enfance par étapes](docs/LLM_MARK_STAGES_PROTOCOL.md)). [Synthèse des cinq plans](docs/SELF_INQUIRY_SYNTHESIS.md).
 
 ## Agent à indicateurs de conscience
 

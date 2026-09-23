@@ -126,6 +126,8 @@ l'information intégrée, juge même le logiciel insuffisant.
    qui change à chaque mouvement) et pour une commande sur quatre.
    Repris sur des vies à commandes égales, il lit A encore mieux (0,89) et
    la cherche toujours (48 vies sur 48), mais la lecture ne s'étend pas
-   aux autres commandes (0,26). La suite : une enfance par étapes (une
-   commande préférée après l'autre), puis faire agir le LLM d'après ce
-   qu'il sait de lui-même.
+   aux autres commandes (0,26). Une enfance par étapes (B préférée après
+   A) fait naître la lecture de B (0,79) mais efface celle de A : le LLM
+   ajusté ne garde qu'**une association entre la marque et le déplacement
+   de sa commande habituelle**, pas un code de son corps. C'est la limite
+   atteinte dans ce dispositif (`docs/LLM_INQUIRY_RESULTS.md`).

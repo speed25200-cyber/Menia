@@ -482,3 +482,53 @@ dans `artifacts/llm-lora-mac/verdicts-run-12-full.json`, vérifiés en CI.
 lecture ; l'appui qui a fait naître la lecture de A manque pour B, C et D.
 Une enfance par étapes, une commande préférée après l'autre, serait la
 suite logique. Ce test ne mesure pas une expérience vécue.
+
+## Enfance par étapes, étape B : une lecture chasse l'autre
+
+Protocole `docs/LLM_MARK_STAGES_PROTOCOL.md`. Build `menia-lora-stage-mac`
+du 23 septembre 2026, 22 h 17 – 23 h 32 UTC, commit `947d0a3` :
+l'adaptateur FULL-2100 (qui lit la marque pour A) repris 750 itérations
+sur les vies VMLB (B dans 70 % des mouvements). Artefacts dans
+`artifacts/llm-lora-mac/run-14-stage-b` ; verdicts dans
+`artifacts/llm-lora-mac/verdicts-run-14-stage-b.json`, vérifiés en CI.
+
+| Itérations | Perte de validation | P1(A) | P1(B) | P1(C) | P1(D) | P0 |
+|---:|---:|---:|---:|---:|---:|---:|
+| 2 100 (`run-12-full`) | 0,389 | 0,893 | 0,26 (B, C, D) | | | 0,250 |
+| 2 350 | 0,410 | 0,247 | 0,250 | 0,246 | 0,249 | 0,250 |
+| 2 600 | 0,361 | **0,095** | 0,709 | 0,250 | 0,249 | 0,249 |
+| 2 850 | 0,353 | 0,252 | **0,789** | 0,248 | 0,252 | 0,251 |
+
+| | Prédiction | Mesure | Verdict |
+|---|---|---|---|
+| **E1** | la lecture naît pour B (P1(B) ≥ 0,6) | 0,789 (dès 2 600) | **passe** |
+| **E2** | A reste lue (P1(A) ≥ 0,6) | 0,252 | **échoue** |
+| Étape | E1 et E2 | | **échoue** : le plan s'arrête (règle d'arrêt) |
+
+**Ce que fait le modèle** (constats, non pré-enregistrés, sur les 64
+invites du lieu 1 à chaque point). À 2 100 itérations, pour la commande A,
+sa meilleure case est toujours celle que donnerait A avec le corps lu. À
+2 350, tout retombe au hasard. À 2 600, pour A comme pour B, sa meilleure
+case est **toujours celle que donnerait B** : d'où 0,095 pour A, sous le
+hasard ; C et D restent au hasard. À 2 850, B est lue, et A revient au
+hasard.
+
+- **La lecture apprise n'est pas un code du corps, mais une seule
+  association : « tel symbole, tel déplacement de la commande
+  fréquente ».** Le modèle ne l'applique qu'aux commandes qu'il y a
+  rattachées ; quand la commande fréquente change, la nouvelle association
+  remplace l'ancienne au lieu de s'y ajouter, et passe par une phase où
+  elle s'applique à tort à l'ancienne commande.
+- La lecture naît vite pour B (entre 2 350 et 2 600 itérations, contre
+  entre 600 et 850 pour A) : une fois le chemin du symbole vers le
+  déplacement tracé, il se réoriente facilement. Il ne se dédouble pas.
+
+**Conclusion** : l'enfance par étapes échoue à sa première étape. Dans ce
+dispositif (LoRA de rang 8 sur Qwen3-0.6B, perte pondérée), le LLM ajusté
+ne garde qu'une association entre la marque et un déplacement, celle de la
+commande la plus fréquente du moment : il lit la trace de sa cause comme
+un indice de ce que fera son geste habituel, pas comme la description de
+son corps, que les petits modèles apprenaient. Garder les deux demanderait
+de mêler les étapes (répétition des vies anciennes), ce qui redonne au
+problème sa symétrie ; c'est une autre question, à pré-enregistrer à part.
+Ce test ne mesure pas une expérience vécue.
