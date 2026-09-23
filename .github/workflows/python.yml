@@ -37,6 +37,7 @@ jobs:
       - run: python -m research.llm_body_verdicts --latent artifacts/llm-latent-mac/run-1 --check artifacts/llm-latent-mac/run-1/verdicts.json
       - run: python -m research.llm_body_verdicts --latent artifacts/llm-latent-mac/run-2 --check artifacts/llm-latent-mac/run-2/verdicts.json
       - run: python -m research.llm_body_verdicts --lora artifacts/llm-lora-mac/run-3-f artifacts/llm-lora-mac/run-3-vm --check artifacts/llm-lora-mac/verdicts-run-3.json
+      - run: python -m research.llm_report verdicts --rows artifacts/llm-report/run-2/llm-report/rows.jsonl --check artifacts/llm-report/run-2/llm-report/summary.json
       - run: python -m research.audit_indicator_agent --root artifacts/indicator-agent --replay-lives 2 --check
       - run: python -m research.audit_indicator_agent --root artifacts/indicator-agent-v2 --replay-lives 2 --check
       - run: python -m research.audit_indicator_agent --root artifacts/indicator-agent-v3 --replay-lives 2 --check

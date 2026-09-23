@@ -196,6 +196,9 @@ def main(argv=None):
     b.add_argument("--root", default="artifacts/indicator-agent")
     b.add_argument("--seed", type=int, default=17)
     b.add_argument("--out", required=True)
+    v = sub.add_parser("verdicts")
+    v.add_argument("--rows", required=True)
+    v.add_argument("--check", default=None, help="published summary to compare with; exit 1 if the recomputation differs")
     s = sub.add_parser("score")
     s.add_argument("--items", required=True)
     s.add_argument("--out", required=True)
@@ -204,6 +207,16 @@ def main(argv=None):
     s.add_argument("--revision", default=None)
     s.add_argument("--manifest", default=None)
     a = parser.parse_args(argv)
+    if a.command == "verdicts":
+        rows = [json.loads(line) for line in Path(a.rows).read_text().splitlines() if line.strip()]
+        summary = json.loads(json.dumps(verdicts(rows)))
+        print(json.dumps(summary, indent=1))
+        if a.check:
+            differs = json.loads(Path(a.check).read_text()) != summary
+            print("differs:", "yes" if differs else "none")
+            if differs:
+                raise SystemExit(1)
+        return
     if a.command == "build":
         items = build_items(agent_states(a.root, a.seed))
         Path(a.out).write_text("".join(json.dumps(i, ensure_ascii=False) + "\n" for i in items))
