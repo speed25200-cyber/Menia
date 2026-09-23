@@ -2,7 +2,7 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
-from research.llm_mark_reading import items, prompt, score, summarize, verdicts, main, by_command, hand_verdicts, long_verdicts, full_verdicts
+from research.llm_mark_reading import items, prompt, score, summarize, verdicts, main, by_command, hand_verdicts, long_verdicts, full_verdicts, per_command, stage_verdicts
 from research.llm_inquiry import ScriptedDigits
 
 
@@ -67,6 +67,19 @@ class ReadingTests(unittest.TestCase):
         self.assertEqual((v["C3"], v["C4"], v["global"]), (True, True, True))
         v = full_verdicts({"2100": point(0.5, 0.3)}, "2100")
         self.assertEqual((v["C1"], v["C2"]), (False, False))
+
+    def test_stage_verdicts(self):
+        rows = score(ScriptedDigits("mark"))
+        commands = per_command(rows)
+        self.assertEqual(sorted(commands), ["P1_A", "P1_B", "P1_C", "P1_D"])
+        self.assertTrue(all(v > 0.99 for v in commands.values()))
+        point = lambda **p1: dict({"digit_mass": 0.99, "P1": 0.4, "P0": 0.25, "P1_A": 0.25, "P1_B": 0.25,
+                                    "P1_C": 0.25, "P1_D": 0.25}, **p1)
+        curve = {"2350": point(P1_A=0.9), "2600": point(P1_A=0.9, P1_B=0.65), "2850": point(P1_A=0.88, P1_B=0.8)}
+        v = stage_verdicts(curve, "2850", "B", ["A"])
+        self.assertEqual((v["E1"], v["E2"], v["first_point_reading"], v["stage"]), (True, True, "2600", True))
+        v = stage_verdicts(dict(curve, **{"2850": point(P1_A=0.5, P1_B=0.8)}), "2850", "B", ["A"])
+        self.assertEqual((v["E1"], v["E2"], v["stage"]), (True, False, False))
 
     def test_cli_scores_and_checks(self):
         with tempfile.TemporaryDirectory() as tmp:

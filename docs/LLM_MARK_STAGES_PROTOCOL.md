@@ -87,3 +87,18 @@ régime et l'adaptateur de départ en variables ; artefacts dans
 `artifacts/llm-lora-mac/run-14-stage-b`, `run-15-stage-c`,
 `run-16-stage-d` ; verdicts vérifiés en CI ; résultats dans
 `docs/LLM_INQUIRY_RESULTS.md`.
+
+## Précisions fixées avant l'exécution
+
+Écrites avec le code, avant tout lancement. Les régimes VMLB à VMLD tirent
+leurs commandes comme VMLA (générateur à part, la commande de VML tirée
+quand même) : mêmes vies, mêmes corps, mêmes lieux inspectés que VML ; la
+commande préférée est dans 0,70 des mouvements, chacune des autres dans
+0,10. Les vies VML et VMLA exportées restent identiques octet pour octet à
+celles de `run-8-vml` et de `run-9-vmla`. Un seul workflow sert aux trois
+étapes, le régime (`STAGE_REGIME`), l'adaptateur de départ
+(`STAGE_START`) et le nombre d'itérations déjà faites (`STAGE_BASE`) étant
+passés en variables par le relais. Points de l'étape B : 2 350, 2 600 et
+2 850 itérations au total. Verdicts :
+`python -m research.llm_mark_reading stage --preferred B --learned A
+--reading 2350=… 2600=… 2850=…`.

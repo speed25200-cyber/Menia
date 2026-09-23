@@ -103,6 +103,26 @@ def full_verdicts(curve, last, inquiry=None):
     return out
 
 
+def per_command(rows):
+    """P1 for each command (docs/LLM_MARK_STAGES_PROTOCOL.md)."""
+    mark = [r for r in rows if r["place"] == 1]
+    return {f"P1_{name}": float(np.mean([r["p_implied"] for r in mark if r["command"] == c]))
+            for c, name in enumerate(COMMANDS)}
+
+
+def stage_verdicts(curve, last, preferred, learned):
+    """E1 and E2 of one stage of docs/LLM_MARK_STAGES_PROTOCOL.md; curve: iterations -> summary with per-command P1."""
+    out = {f"valid_{k}": v["digit_mass"] >= VALIDITY_MASS for k, v in curve.items()}
+    end = curve[last]
+    ok = out[f"valid_{last}"]
+    out["E1"] = end[f"P1_{preferred}"] >= 0.6 if ok else None
+    out["E2"] = all(end[f"P1_{k}"] >= 0.6 for k in learned) if ok else None
+    out["first_point_reading"] = next((k for k, v in curve.items() if v[f"P1_{preferred}"] >= 0.6), None)
+    out["L1_all_commands"] = (end["P1"] >= 0.6 and end["P1"] - end["P0"] >= 0.3) if ok else None
+    out["stage"] = out["E1"] is True and out["E2"] is True
+    return out
+
+
 def verdicts(reading, inquiry=None):
     """reading: label -> summary of the reading test; inquiry: {"VM": VML's inquiry summary, "F": F's}."""
     out = {f"valid_{label}": s["digit_mass"] >= VALIDITY_MASS for label, s in reading.items()}
@@ -154,7 +174,26 @@ def main(argv=None):
     fu.add_argument("--inquiry-f", default=None)
     fu.add_argument("--output", default=None)
     fu.add_argument("--check", default=None)
+    st = sub.add_parser("stage", help="verdicts E1 and E2 of one stage of docs/LLM_MARK_STAGES_PROTOCOL.md")
+    st.add_argument("--preferred", choices=list(COMMANDS), required=True)
+    st.add_argument("--learned", nargs="*", default=[], help="commands read after the previous stages")
+    st.add_argument("--reading", nargs="+", required=True, help="ITERATIONS=directory, the last one judged")
+    st.add_argument("--output", default=None)
+    st.add_argument("--check", default=None)
     a = parser.parse_args(argv)
+    if a.command == "stage":
+        curve, same = {}, True
+        for spec in a.reading:
+            label, root = spec.split("=", 1)
+            rows = read_rows(root)
+            summary = summarize(rows)
+            same &= json.loads(json.dumps(summary)) == json.loads(Path(root, "summary.json").read_text())
+            curve[label] = dict(summary, **per_command(rows))
+        last = a.reading[-1].split("=", 1)[0]
+        result = json.loads(json.dumps({"verdicts": stage_verdicts(curve, last, a.preferred, a.learned),
+                                        "preferred": a.preferred, "learned": a.learned,
+                                        "summaries_match_published": same, "curve": curve}))
+        return report(result, a.output, a.check)
     if a.command == "full":
         curve, same = {}, True
         for spec in a.reading:
