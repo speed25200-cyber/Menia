@@ -83,6 +83,35 @@ class DataTests(unittest.TestCase):
         self.assertEqual(tokens[offset:], [ord("7")])
         self.assertEqual(offset, len("à la case "))
 
+    def test_weighted_text_weighs_each_landing_digit(self):
+        from research.llm_weighted_lora import WEIGHT, WeightedText, pad_batch, summary
+
+        class Tokenizer:
+            eos_token_id = 0
+
+            def encode(self, text, add_special_tokens=True):
+                return [ord(c) for c in text]
+
+        doc = childhood_text_lives("VMI", 5, 1)[0]
+        tokens, weights = WeightedText([doc], Tokenizer()).process(doc)
+        self.assertEqual(tokens, [ord(c) for c in doc["text"]] + [0])
+        heavy = [chr(t) for t, w in zip(tokens, weights) if w == WEIGHT]
+        self.assertEqual(heavy, [m.group(4) for m in MOVE.finditer(doc["text"])])
+        self.assertEqual(sum(w == 1.0 for w in weights), len(tokens) - len(heavy))
+        self.assertEqual(summary([doc], Tokenizer())["landing_targets"], len(heavy))
+        batch, targets = pad_batch([(tokens, weights), ([1, 2, 3], [1.0, WEIGHT, 1.0])], 4096)
+        self.assertEqual(batch.shape[1], targets.shape[1] + 1)
+        self.assertEqual(list(batch[1, :4]), [1, 2, 3, 0])
+        self.assertEqual(list(targets[1, :3]), [WEIGHT, 1.0, 0.0])
+        self.assertEqual(targets[0].sum(), sum(weights[1:]))
+
+        class Merging(Tokenizer):
+            def encode(self, text, add_special_tokens=True):
+                return [ord(c) for c in text.replace(" 5", "5")]
+
+        with self.assertRaises(RuntimeError):
+            WeightedText([], Merging()).process({"text": "de la case 3 à la case 5."})
+
     def test_export_writes_train_and_valid(self):
         with tempfile.TemporaryDirectory() as tmp:
             export_dataset("F", tmp, train=5, valid=2, seed=4)

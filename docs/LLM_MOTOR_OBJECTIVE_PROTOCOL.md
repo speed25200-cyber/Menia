@@ -107,3 +107,15 @@ validité et prédiction (K1 passe) inchangés. Code
 artefacts dans `artifacts/llm-lora-mac/run-7-vmw` (adaptateur « VMW »). Si
 cette relance échoue elle aussi pour une raison technique, le test est
 déclaré non mesurable avec ce dispositif.
+
+**Précisions de l'amendement 1, fixées avec le code, avant tout
+lancement.** L'emballage remplace le jeu de textes, les lots et la perte
+de mlx-lm, rien d'autre : les documents sont les mêmes que ceux de VMI, et
+les lots sont formés et tirés comme dans `run-5-vmi` (même ordre, même
+graine), seul le poids des cibles change. Chaque vie est découpée avant et
+après chaque chiffre d'arrivée ; si ce découpage changeait les jetons, le
+build s'arrête. Sur les 1 650 vies, le découpage du pré-tokeniseur de Qwen
+est conservé partout (10 chiffres d'arrivée par vie en moyenne). Avant
+l'entraînement, le build tokenise toutes les vies et publie la part de la
+perte portée par les cases d'arrivée (`weights-VMW.json`), sans
+prédiction.
