@@ -106,7 +106,13 @@ plus ([seconde lecture](docs/INDICATOR_AGENT_SECOND_READING_RESULTS.md)) :
 **neuf propriétés robustes**, AE-1 à la limite ; en seconde lecture
 pré-enregistrée, RPT-1 et GWT-4 passent aussi (onze sur quatorze). HOT-3 et
 HOT-4 ne sont démontrées dans aucune lecture ([explorations](docs/INDICATOR_AGENT_V5_EXPLORATIONS.md)).
-L'agent est branché dans Menia (`menia/indicator_bridge.py`). [Rapport verbal](docs/LLM_REPORT_RESULTS.md) :
+[Version 6](docs/INDICATOR_AGENT_V6_RESULTS.md) : l'agent **juge ses croyances
+par leurs conséquences** (une recharge prévue qui ne vient pas révise sa
+position) et son **schéma d'attention contrôle la liaison** des teintes ;
+l'agence à buts concurrents devient robuste (recharge 0,86 sur chaque
+graine) ; **dix sur quatorze** en lecture principale, **douze sur quatorze**
+en seconde lecture. HOT-3 et HOT-4 restent non démontrées.
+L'agent est branché dans Menia (`menia/indicator_bridge.py`, versions 5 et 6). [Rapport verbal](docs/LLM_REPORT_RESULTS.md) :
 Qwen3-4B rapporte fidèlement les états donnés comme des étiquettes, pas ceux
 qui demandent un calcul.
 

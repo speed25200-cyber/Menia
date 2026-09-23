@@ -1,4 +1,4 @@
-# Bilan — Où en est le but, 23 septembre 2026
+# Bilan — Où en est le but, 23 septembre 2026 (4 h 20 UTC)
 
 Pour le propriétaire du dépôt, en bref.
 
@@ -36,20 +36,31 @@ l'agent apprend un modèle de ses besoins et les simule avant de choisir
 l'attention selon l'état (GWT-4) quand on les mesure là où elles agissent :
 **onze propriétés sur quatorze**.
 
+**Version 6.** L'agent juge maintenant ses croyances par leurs
+conséquences : s'il se croit sur la recharge et que la recharge ne vient
+pas, il révise sa position. Et son schéma d'attention décide si une
+perception peut être liée à un objet. Sur trois graines nouvelles,
+**l'agence à buts concurrents devient robuste** (recharge 0,86 sur chaque
+graine) : **dix propriétés en lecture principale, douze sur quatorze en
+seconde lecture**.
+
 ## Ce qui manque
 
-- **Deux indicateurs** ne sont démontrés dans aucune lecture : les croyances
-  réglées par le moniteur (HOT-3 : il rend la position plus juste pendant
-  les pannes, mais sans effet sur le retour) et l'espace de qualités (HOT-4 :
-  les teintes jamais vues sont bien évaluées, mais le choix reste sous le
-  seuil). **AE-1 est fragile.**
+- **Deux indicateurs** ne sont démontrés dans aucune lecture, même en
+  version 6 : les croyances réglées par le moniteur (HOT-3 : il rend la
+  position plus juste et corrige les croyances fausses, mais le retour en
+  dépend trop peu) et l'espace de qualités (HOT-4 : les teintes jamais vues
+  sont bien évaluées, mais un code aléatoire choisit presque aussi bien sur
+  le test de choix).
 - **Le vrai LLM.** Qwen3-4B copie en partie l'effet de ses commandes (0,64)
   mais n'en a pas la structure (0,16 sur une commande nouvelle). Ajusté sur
   des vies à corps variable et changeant, Qwen3-0.6B en acquiert l'essentiel :
   copie 0,995, commande nouvelle après un mouvement 0,793 (seuil 0,80, raté
   d'une question), révision après un changement 0,86 ; ajusté sur un corps
-  fixe, il confabule avec une confiance de 1,00. Une relance au rang 16 et
-  le test d'enquête tournent sur le Mac.
+  fixe, il confabule avec une confiance de 1,00. Une relance au rang 16
+  tourne sur le Mac. Le test d'enquête (où le LLM ajusté chercherait
+  l'information sur lui-même) a été invalide par un défaut de mesure (les
+  symboles lus sans leur espace) ; relance corrigée déclarée et lancée.
 - **Le rapport verbal.** Qwen3-4B rapporte fidèlement les états de l'agent
   donnés comme des étiquettes (corps, attention, module : 1,00 même quand
   l'état change), mais pas ceux qui demandent un calcul (se fier ou non à une
@@ -64,11 +75,11 @@ l'information intégrée, juge même le logiciel insuffisant.
 
 ## La suite
 
-1. Lire le corps ajusté et le test d'enquête : le LLM ajusté sait-il où
-   chercher la cause de son corps ?
-2. Lire le rapport verbal : Qwen3-4B rapporte-t-il fidèlement les états
-   intérieurs de l'agent ?
-3. L'agent de la version 5 est branché dans Menia (`menia/indicator_bridge.py`) :
-   le langage reçoit l'espace de travail et la décision enregistrée. Reste à
-   mesurer, par un rapport pré-enregistré, si Qwen3-4B le dit fidèlement
-   quand les états lui sont donnés comme des étiquettes.
+1. Lire la relance au rang 16 du corps ajusté et le test d'enquête corrigé :
+   le LLM ajusté a-t-il la structure de son corps, et sait-il où chercher
+   la cause de son corps ?
+2. Lire le rapport de Menia (pré-enregistré, 2 160 questions) : quand
+   l'agent lui donne son espace de travail en conclusions explicites,
+   Qwen3-4B le rapporte-t-il fidèlement ?
+3. HOT-3 et HOT-4 : chercher un monde ou un test où le moniteur et l'espace
+   de qualités sont indispensables, sans viser les seuils.

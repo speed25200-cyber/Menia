@@ -106,3 +106,16 @@ jeu, pas sur l'autre). En seconde lecture pré-enregistrée, qui mesure la
 récurrence par le retour perdu et l'attention selon le besoin le plus bas,
 RPT-1 et GWT-4 passent : **onze sur quatorze**. HOT-3 et HOT-4 ne sont
 démontrées dans aucune lecture.
+
+## État au 23 septembre 2026, 4 h 20 UTC
+
+[Version 6](INDICATOR_AGENT_V6_RESULTS.md), graines 151, 157 et 163 : le
+moniteur juge la position diffusée par la conséquence que prévoit le modèle
+des besoins, et le schéma d'attention ne laisse lier une teinte que s'il
+sait où le projecteur a atterri. **AE-1 est robuste** (recharge 0,86 sur
+chaque graine). **Dix propriétés sur quatorze en lecture principale, douze
+en seconde lecture** (RPT-1 et GWT-4 en plus). Restent non démontrées dans
+toutes les lectures : **HOT-3** (sans le moniteur, la position est moins
+juste mais le retour ne perd que 0,055·Δ) et **HOT-4** (l'espace de
+qualités évalue bien les teintes jamais vues, mais un code aléatoire choisit
+presque aussi bien sur les conflits de bande, 0,71 pour un plafond de 0,65).
