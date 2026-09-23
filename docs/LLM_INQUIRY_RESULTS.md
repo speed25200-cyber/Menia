@@ -462,7 +462,8 @@ dans `artifacts/llm-lora-mac/verdicts-run-12-full.json`, vérifiés en CI.
 |---|---|---|---|
 | **C1** | la lecture s'étend aux autres commandes (P1(BCD) ≥ 0,6) | 0,262 | **échoue** |
 | **C2** | la lecture de A se maintient (P1(A) ≥ 0,6) | 0,893 | **passe** |
-| C3, C4 | enquête sur l'adaptateur final | build suivant | en attente |
+| **C3** | il cherche sa marque (critère d'I1) | lieu 1 préféré dans **1,0** des vies (48 sur 48) ; gain 0,163, autres lieux −0,005 | **passe** |
+| **C4** | F ne la cherche pas (I2) | 0,06 | **passe** |
 | Global | C1 à C4 | | **non satisfait** (C1 échoue) |
 
 - **La prédiction est réfutée** : même avec les quatre commandes à parts
@@ -471,6 +472,13 @@ dans `artifacts/llm-lora-mac/verdicts-run-12-full.json`, vérifiés en CI.
   au-delà du lecteur calibré de 0,85). La lecture reste liée à la commande
   qui l'a fait naître : l'enfance uniforme qui suit ne donne, pour les
   autres commandes, que l'interaction pure que VML n'avait pas trouvée.
-- Comme prévu par le protocole, le test d'enquête (C3) est fait dans un
-  build suivant, sur l'adaptateur final publié. Ce test ne mesure pas une
-  expérience vécue.
+- **Il cherche toujours sa marque** (C3), dans un build suivant comme
+  prévu (`menia-lora-seek-mac`, 21 h 34 – 22 h 02 UTC, commit `b6e4ce4`,
+  artefacts dans `artifacts/llm-lora-mac/run-13-full-seek`) : lieu de la
+  marque préféré dans les 48 vies, gain 0,163 (0,123 à 1 350 itérations),
+  qui suit une lecture de A plus sûre.
+
+**Conclusion** : l'enfance uniforme qui suit ne suffit pas à étendre la
+lecture ; l'appui qui a fait naître la lecture de A manque pour B, C et D.
+Une enfance par étapes, une commande préférée après l'autre, serait la
+suite logique. Ce test ne mesure pas une expérience vécue.

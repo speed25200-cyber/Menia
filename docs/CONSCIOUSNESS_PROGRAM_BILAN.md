@@ -123,6 +123,9 @@ l'information intégrée, juge même le logiciel insuffisant.
    désignent le lieu de la marque, et lui seul, comme le lieu à inspecter
    (gain 0,123 contre −0,004 ; `docs/LLM_MARK_SEEK_PROTOCOL.md`). Le
    modèle de soi actif est porté dans un LLM, dans un monde extrême (corps
-   qui change à chaque mouvement) et pour une commande sur quatre. La
-   suite : étendre la lecture aux autres commandes et à un monde où le
-   corps est stable, puis faire agir le LLM d'après ces gains.
+   qui change à chaque mouvement) et pour une commande sur quatre.
+   Repris sur des vies à commandes égales, il lit A encore mieux (0,89) et
+   la cherche toujours (48 vies sur 48), mais la lecture ne s'étend pas
+   aux autres commandes (0,26). La suite : une enfance par étapes (une
+   commande préférée après l'autre), puis faire agir le LLM d'après ce
+   qu'il sait de lui-même.
