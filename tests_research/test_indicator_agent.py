@@ -184,5 +184,31 @@ class VersionFourTests(unittest.TestCase):
             self.assertEqual(audit(tmp, replay_lives=2, full=True, log=lambda m: None)["problems"], [])
 
 
+class VersionFiveTests(unittest.TestCase):
+    def test_empty_model_foresees_nothing_and_a_learned_one_arbitrates(self):
+        from research.indicator_agent_v5 import NeedModel, simulate, need_observations, fit_model
+        empty = NeedModel()
+        self.assertEqual(simulate(empty, 0.5, 0.5, [("charger", 3, 0.0)], False),
+                         simulate(empty, 0.5, 0.5, [("stay", 1, 0.0)], False))
+        model = NeedModel(decay=(1 / 14, 1 / 20), charge=1.0, food=(1.0, 0.0), reward=(1.0, 0.0), travel=(0.5, 0.6))
+        self.assertGreater(simulate(model, 0.25, 0.6, [("charger", 2, 0.0)], False),
+                           simulate(model, 0.25, 0.6, [("food", 2, 0.6)], False))
+        self.assertGreater(simulate(model, 0.9, 0.4, [("food", 2, 0.6)], False),
+                           simulate(model, 0.9, 0.4, [("charger", 2, 0.0)], False))
+        params = provisional_params(2)
+        life = run_life(params, "agent", 12, "fixed", 12, version=5, learn=True)
+        steps = [r for r, _ in life["steps"]]
+        self.assertTrue(all(r["goal"] == "stay" or r["exploring"] for r in steps))
+        self.assertTrue(all(len(r["writers"]) == 1 for r in steps))
+        obs = need_observations(life)
+        self.assertTrue(all(d >= 0 for d in obs["decay_e"]))
+        self.assertEqual(fit_model({k: [] for k in obs}).to_json(), NeedModel().to_json())
+        with tempfile.TemporaryDirectory() as tmp:
+            experiment_main(["--version", "5", "--out", tmp, "--seeds", "9", "--childhood", "20", "--updates", "2",
+                             "--batch", "3", "--lives", "2"])
+            self.assertEqual(audit(tmp, replay_lives=2, full=True, log=lambda m: None)["problems"], [])
+            self.assertIn("need", json.loads(Path(tmp, "params-9.json").read_text()))
+
+
 if __name__ == "__main__":
     unittest.main()
