@@ -57,6 +57,13 @@ class ConsequenceMonitor(v5.AgentV5):
         return action
 
 
+class RevisionOnly(ConsequenceMonitor):
+    """Prototype: the same revision of the Pos belief, without giving the revised content an alarm's priority."""
+
+    def _alarm(self, contents):
+        return v5.AgentV5._alarm(self, contents)
+
+
 class GatedBinding(v5.AgentV5):
     """Prototype: a hue is bound only when the attention schema is confident of where the spotlight landed."""
 
@@ -67,6 +74,22 @@ class GatedBinding(v5.AgentV5):
             rec["unbound"] = True
             return None
         return estimate
+
+
+class Both(ConsequenceMonitor, GatedBinding):
+    """Prototype: both changes, the revised position taking the workspace before any other alarm."""
+
+
+class BothAlarmLast(Both):
+    """Prototype: both changes, the revised position taking the workspace only when no other alarm does."""
+
+    def _alarm(self, contents):
+        alarm = v5.AgentV5._alarm(self, contents)
+        return "pos" if alarm is None and self.meta_alarm else alarm
+
+
+class BothRevisionOnly(RevisionOnly, GatedBinding):
+    """Prototype: both changes, the revised position competing for the workspace like any content."""
 
 
 def plan_avoiding(W, target):
@@ -196,6 +219,37 @@ def returns(params, cls, variants, n):
     return out
 
 
+def body_writes(params, cls, n):
+    """Set M: share of lives where Corps writes into the workspace at steps 25 to 27 (GWT-4, presence)."""
+    base, mode = SETS["M"]
+    hits = 0
+    for i in range(n):
+        env = SenseAtelier(life_seed(base, i), mode, n_objects=3, charger_moves=True)
+        agent = cls(params, "agent", seed=DEV * 1_000_000 + 10_000 + i)
+        obs, truth = env.reset()
+        hit = False
+        for _ in range(28):
+            action, intent, rec = agent.step(obs)
+            hit = hit or (25 <= truth["t"] <= 27 and "body" in rec["writers"])
+            obs, truth = env.step(action, intent)
+        hits += hit
+    return round(hits / n, 4)
+
+
+def priority(params, n, n_body):
+    """How the revised position should reach the workspace: recharge, body writes, return, gap with the constant gain."""
+    out = {}
+    for name, cls in (("version 5", v5.AgentV5), ("monitor, alarm first", ConsequenceMonitor), ("monitor, no alarm", RevisionOnly),
+                      ("binding only", GatedBinding), ("both, alarm first", Both), ("both, alarm last", BothAlarmLast),
+                      ("both, no alarm", BothRevisionOnly)):
+        r = returns(params, cls, ("agent", "constant_gain"), n)
+        out[name] = {"recharge_when_low": r["agent"]["recharge_when_low"], "body_writes_25_27": body_writes(params, cls, n),
+                     "return": r["agent"]["return"], "gap_with_constant_gain": round(r["agent"]["return"] - r["constant_gain"]["return"], 4)}
+        if name in ("version 5", "binding only", "both, no alarm"):
+            out[name][f"body_writes_25_27_{n_body}_lives"] = body_writes(params, cls, n_body)
+    return out
+
+
 def band_value_error(params):
     code = params.hue_code
     thetas = np.linspace(0.15, 0.25, 11)
@@ -207,6 +261,7 @@ def main(argv=None):
     parser = argparse.ArgumentParser()
     parser.add_argument("--params", default="artifacts/indicator-agent-v5/dev-params-19.json")
     parser.add_argument("--lives", type=int, default=200)
+    parser.add_argument("--body-lives", type=int, default=800)
     parser.add_argument("--output", default="artifacts/indicator-agent-v5/diagnostics-v6.json")
     a = parser.parse_args(argv)
     params, n = Params.load(a.params), a.lives
@@ -225,6 +280,7 @@ def main(argv=None):
         out["prototype_avoiding_planner"] = returns(params, v5.AgentV5, four, n)
     finally:
         v5.plan = planner
+    out["alarm_priority"] = priority(params, n, a.body_lives)
     out["returns"]["agent_minus_constant_gain_prototype_monitor"] = \
         out["prototype_consequence_monitor"]["returns"]["agent"]["return"] - out["prototype_consequence_monitor"]["returns"]["constant_gain"]["return"]
     Path(a.output).write_text(json.dumps(out, indent=1) + "\n")
