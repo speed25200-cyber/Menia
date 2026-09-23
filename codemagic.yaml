@@ -226,8 +226,6 @@ workflows:
       vars:
         ATELIER_MODEL: "Qwen/Qwen3-4B-MLX-4bit"
         ATELIER_REVISION: "52a5ab34fa604bc8af6d3ce0cac0cab10b7eb495"
-        # Second version (docs/MENIA_REPORT_V2_PROTOCOL.md): the relay sets artifacts/menia-report/items-v2.jsonl.
-        MENIA_REPORT_ITEMS: "artifacts/menia-report/items.jsonl"
     scripts:
       - name: Installer mlx-lm dans un environnement isolé
         script: |
@@ -241,11 +239,12 @@ workflows:
           python -m unittest tests_research.test_llm_menia_report.MeniaReportTests -v
       - name: Faire rapporter l'espace de travail de l'agent par Qwen3-4B, sans génération
         script: |
+          # Second version (docs/MENIA_REPORT_V2_PROTOCOL.md): the relay sets MENIA_REPORT_ITEMS to items-v2.jsonl.
           set -eo pipefail
           source .venv/bin/activate
           python -m research.llm_menia_report score --backend mlx --model "$ATELIER_MODEL" --revision "$ATELIER_REVISION" \
             --manifest ios/MeniaCore/Sources/MeniaCore/Resources/qwen3-4b.json \
-            --items "$MENIA_REPORT_ITEMS" --out "$CM_BUILD_DIR/menia-report" | tail -40
+            --items "${MENIA_REPORT_ITEMS:-artifacts/menia-report/items.jsonl}" --out "$CM_BUILD_DIR/menia-report" | tail -40
           git rev-parse HEAD > "$CM_BUILD_DIR/menia-report/commit.txt"
     artifacts:
       - menia-report/**
