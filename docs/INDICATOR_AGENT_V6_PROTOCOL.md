@@ -137,6 +137,29 @@ Si HOT-3 échoue encore, le moniteur change les croyances sans que le retour
 en dépende assez dans ce monde. Dans tous les cas, ce protocole ne mesure
 pas une expérience vécue.
 
+## Premier essai de développement (graine 23), déclaré
+
+Le 23 septembre, de 3 h 34 à 3 h 50 UTC, code du commit `87bfce8` : **11
+propriétés sur 14** (RPT-2, GWT-1, GWT-2, GWT-3, HOT-1, HOT-2, HOT-4,
+AST-1, PP-1, AE-1, AE-2). AE-1 : recharge quand l'énergie est basse 0,88,
+objet quand elle est haute 0,89, apprentissage 1,38, but unique +4,3
+malaises. HOT-4 : choix sur les conflits de bande 0,81 contre 0,51 pour le
+code aléatoire (0,67 et 0,45 sur tous les pas avec un objet de la bande) ;
+Spearman du code 0,850, au seuil (le code de teinte, appris dans
+l'enfance, n'a pas changé). Liaisons fausses : 0,8 % des lectures, 26 %
+sans schéma ; 4,8 lectures de teinte refusées par vie sur 36. Le moniteur
+signale 2,0 conséquences absentes par vie (1,7 repas, 0,3 recharge),
+toutes à raison : sur 100 vies rejouées, l'agent n'était jamais sur la
+case jugée. Restent sous leurs seuils : HOT-3 (écart de retour 0,092·Δ
+pour 0,1·Δ ; Pos 0,038 pour 0,05), GWT-4 (écart d'attention 0,19 pour
+0,2 ; Corps écrit aux pas 25 à 27 dans 0,595 des vies pour 0,6), RPT-1
+(baisse du choix 0,12 pour 0,15).
+
+**Aucune modification n'est faite** : les écarts restants sont au bord des
+seuils, et aucun amendement fondé ne les vise sans viser le seuil. Les
+deuxième et troisième essais ne sont pas utilisés ; l'exécution
+confirmatoire sur les graines 151, 157 et 163 est lancée avec ce code.
+
 ## Exécution
 
 `python -m research.indicator_experiment --version 6`, artefacts dans
