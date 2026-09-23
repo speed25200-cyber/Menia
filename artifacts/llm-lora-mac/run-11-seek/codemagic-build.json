@@ -1,0 +1,64 @@
+{
+ "id": "6ab42b9766c174dbaa201f8c",
+ "tag": null,
+ "branch": "claude/causal-self-model-llm-results-mauabk",
+ "workflow": "menia-lora-seek-mac",
+ "status": "finished",
+ "createdAt": "2026-09-23T19:42:15.016000+00:00",
+ "startedAt": "2026-09-23T19:42:26.805000+00:00",
+ "finishedAt": "2026-09-23T20:10:38.919000+00:00",
+ "commit": "101bf8700a9adfe51b4bd49d4d37fc899f7518ef",
+ "message": null,
+ "steps": [
+  {
+   "name": "Preparing build machine",
+   "status": "success",
+   "startedAt": "2026-09-23T19:42:27.186000+00:00",
+   "finishedAt": "2026-09-23T19:42:52.441000+00:00"
+  },
+  {
+   "name": "Fetching app sources",
+   "status": "success",
+   "startedAt": "2026-09-23T19:42:52.441000+00:00",
+   "finishedAt": "2026-09-23T19:43:08.059000+00:00"
+  },
+  {
+   "name": "Installer mlx-lm dans un environnement isolé",
+   "status": "success",
+   "startedAt": "2026-09-23T19:43:08.059000+00:00",
+   "finishedAt": "2026-09-23T19:43:31.827000+00:00"
+  },
+  {
+   "name": "Vérifier le protocole sur scoreurs simulés",
+   "status": "success",
+   "startedAt": "2026-09-23T19:43:31.827000+00:00",
+   "finishedAt": "2026-09-23T19:43:32.486000+00:00"
+  },
+  {
+   "name": "Test d'enquête sur l'adaptateur publié VMLA-1350",
+   "status": "success",
+   "startedAt": "2026-09-23T19:43:32.486000+00:00",
+   "finishedAt": "2026-09-23T20:10:37.138000+00:00"
+  },
+  {
+   "name": "Publishing",
+   "status": "success",
+   "startedAt": "2026-09-23T20:10:37.138000+00:00",
+   "finishedAt": "2026-09-23T20:10:38.783000+00:00"
+  },
+  {
+   "name": "Cleaning up",
+   "status": "success",
+   "startedAt": "2026-09-23T20:10:38.783000+00:00",
+   "finishedAt": "2026-09-23T20:10:38.920000+00:00"
+  }
+ ],
+ "artefacts": [
+  {
+   "name": "Menia_1_artifacts.zip",
+   "size": 4180,
+   "md5": null,
+   "type": "bundle"
+  }
+ ]
+}
