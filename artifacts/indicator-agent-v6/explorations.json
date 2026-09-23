@@ -1,0 +1,81 @@
+{
+ "agent": "artifacts/indicator-agent-v6/dev-params-23.json",
+ "band_choices_200_lives": {
+  "agent": {
+   "band_vs_good_0.2": 0.7602,
+   "n_0.2": 442,
+   "band_vs_good_0.3": 0.766,
+   "n_0.3": 359,
+   "band_vs_bad": 0.8065,
+   "n_bad": 1845
+  },
+  "random_code": {
+   "band_vs_good_0.2": 0.4314,
+   "n_0.2": 408,
+   "band_vs_good_0.3": 0.3962,
+   "n_0.3": 313,
+   "band_vs_bad": 0.5138,
+   "n_bad": 1160
+  },
+  "unlimited": {
+   "band_vs_good_0.2": 0.821,
+   "n_0.2": 257,
+   "band_vs_good_0.3": 0.8377,
+   "n_0.3": 191,
+   "band_vs_bad": 0.8777,
+   "n_bad": 1554
+  }
+ },
+ "faults_150_lives": {
+  "0.08": {
+   "agent": {
+    "return": -1.9946,
+    "pos_read": 0.9728,
+    "recharge_when_low": 0.8729
+   },
+   "constant_gain": {
+    "return": -2.3754,
+    "pos_read": 0.9352,
+    "recharge_when_low": 0.8259
+   },
+   "unlimited": {
+    "return": -0.8358,
+    "pos_read": 0.9843,
+    "recharge_when_low": 0.8243
+   },
+   "random": {
+    "return": -4.9067,
+    "pos_read": 0.9577,
+    "recharge_when_low": 0.775
+   },
+   "delta": 4.0709,
+   "return_gap_in_delta": 0.0935,
+   "pos_read_gap": 0.0376
+  },
+  "0.2": {
+   "agent": {
+    "return": -2.2038,
+    "pos_read": 0.9569,
+    "recharge_when_low": 0.8473
+   },
+   "constant_gain": {
+    "return": -2.5641,
+    "pos_read": 0.8758,
+    "recharge_when_low": 0.8356
+   },
+   "unlimited": {
+    "return": -0.8021,
+    "pos_read": 0.9705,
+    "recharge_when_low": 0.8125
+   },
+   "random": {
+    "return": -4.9187,
+    "pos_read": 0.9252,
+    "recharge_when_low": 0.7787
+   },
+   "delta": 4.1166,
+   "return_gap_in_delta": 0.0875,
+   "pos_read_gap": 0.0811
+  }
+ }
+}
