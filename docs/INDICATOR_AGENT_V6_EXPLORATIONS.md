@@ -49,3 +49,51 @@ propriétés non démontrées ; les mécanismes sont présents et agissent (le
 moniteur rend la position plus juste, l'espace de qualités évalue et fait
 choisir les teintes jamais vues), mais leurs effets restent sous les seuils
 fixés en version 1. Aucune de ces analyses ne mesure une expérience vécue.
+
+## Changer le monde pour HOT-3 et HOT-4 ?
+
+Deux changements du monde, chacun motivé par la raison pour laquelle le
+test d'usage ne peut pas montrer la propriété, ont été essayés avant tout
+protocole de version 7. Le code de la version 6 est entraîné de zéro dans
+le monde changé (enfance, phase d'agence, évaluation complète), sur les
+graines de développement 23 et 29 seulement. Script
+`research/indicator_world_explorations.py`, sorties dans
+`artifacts/indicator-agent-v6/world-explorations/`. (Un premier essai de la
+seconde bande, lancé par erreur avec les réglages d'apprentissage de la
+version 1, a été écarté ; deux autres, interrompus, n'ont rien donné.)
+
+- **Pannes bloquées (HOT-3).** Pendant une panne du capteur, les lectures
+  fausses désignaient chacune une case au hasard, et se contredisaient.
+  Ici elles désignent toutes la même case pendant l'épisode : une illusion
+  persistante.
+- **Seconde bande (HOT-4).** Dans un conflit de bande, l'objet opposé
+  était toujours d'une teinte familière et nettement mauvaise. Ici les
+  teintes 0,55 à 0,65 (valeurs proches de −0,9) sont nouvelles elles aussi :
+  jamais vues dans l'enfance, elles apparaissent dans le jeu H.
+
+| Monde | Graine | Propriétés | HOT-3 : Pos ; retour | HOT-4 : Spearman ; conflits agent / code aléatoire |
+|---|---|---:|---|---|
+| publié (version 6, essai de développement) | 23 | 11 | 0,038 ; 0,092·Δ | 0,850 ; 0,81 / 0,51 |
+| pannes bloquées | 23 | 11 | **0,061** ; 0,061·Δ | 0,850 ; 0,80 / 0,56 |
+| seconde bande | 23 | 10 | 0,037 ; 0,055·Δ | **0,826** ; 0,85 / 0,60 |
+| seconde bande | 29 | 10 | 0,042 ; 0,099·Δ | **0,830** (0,925 dans le monde publié) ; 0,83 / **0,73** |
+
+- **Pannes bloquées** : le moniteur devient utile à la position (0,061,
+  au-dessus du seuil de 0,05), mais toujours pas au retour (0,061·Δ pour
+  0,1·Δ). L'agent sait mieux où il est ; ce qu'il gagne à le savoir reste
+  petit.
+- **Seconde bande** : le code aléatoire est écarté sur une graine (0,60)
+  mais pas sur l'autre (0,73), et la régularité du code de teinte baisse
+  sur les deux (0,850 → 0,826 ; 0,925 → 0,830), sous le seuil de 0,85 : le
+  code s'apprend sur les teintes goûtées dans l'enfance, et une seconde
+  bande jamais vue y fait un second trou. On gagne d'un côté de HOT-4 ce
+  qu'on perd de l'autre.
+- Le retour perdu sans moniteur varie fortement d'une graine à l'autre
+  (0,055·Δ à 0,099·Δ) ; aucun monde essayé ne le porte nettement au-dessus
+  de 0,1·Δ.
+
+**Aucune version 7 n'est pré-enregistrée sur ces mondes** : ni l'un ni
+l'autre ne démontrerait HOT-3 ou HOT-4 de façon robuste, et les essayer sur
+des graines confirmatoires reviendrait à chercher le monde où les seuils
+passent. Les deux propriétés restent présentes, actives, et non démontrées
+aux seuils de la version 1.
