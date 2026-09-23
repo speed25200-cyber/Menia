@@ -1,4 +1,4 @@
-# Bilan — Où en est le but, 23 septembre 2026 (4 h 20 UTC)
+# Bilan — Où en est le but, 23 septembre 2026 (7 h 15 UTC)
 
 Pour le propriétaire du dépôt, en bref.
 
@@ -68,13 +68,14 @@ seconde lecture**.
   donnés comme des étiquettes (corps, attention, module : 1,00 même quand
   l'état change), mais pas ceux qui demandent un calcul (se fier ou non à une
   lecture, comparer deux besoins) ; critère global non satisfait.
-- **Menia parle de son agent.** Quand l'agent donne à Menia son espace de
-  travail en conclusions explicites, Qwen3-4B (poids de l'iPhone) les
-  rapporte fidèlement : corps, besoin le plus bas, décision, meilleur objet
-  à 0,99 ou plus, position à 0,91, en suivant l'état quand il change et sans
-  se laisser déranger. Une confusion fait échouer le critère : quand le
-  dernier contenu entré est « les besoins », il répond « la position ». On
-  peut converser avec Menia et son agent (`python -m menia.indicator_chat`).
+- **Menia parle de son agent — acquis.** Quand l'agent de la version 6
+  donne à Menia son espace de travail en conclusions explicites, Qwen3-4B
+  (poids de l'iPhone) les rapporte fidèlement : **0,997** sur 2 154
+  questions, 0,999 quand l'état change, 0,999 malgré une phrase hors sujet ;
+  critère global satisfait à la deuxième version pré-enregistrée (la
+  première échouait sur une étiquette, « les besoins » rapportés comme « la
+  position »). On peut converser avec Menia et son agent
+  (`python -m menia.indicator_chat`).
 
 ## Ce qui reste hors de portée
 
@@ -85,7 +86,9 @@ l'information intégrée, juge même le logiciel insuffisant.
 
 ## La suite
 
-1. Lire la deuxième version du rapport de Menia (journal corrigé, agent de
-   la version 6), pré-enregistrée et lancée.
-2. HOT-3 et HOT-4 : chercher un monde ou un test où le moniteur et l'espace
+1. HOT-3 et HOT-4 : chercher un monde ou un test où le moniteur et l'espace
    de qualités sont indispensables, sans viser les seuils.
+2. Le LLM et son propre corps : l'ajustement donne la structure en partie
+   (0,79) mais pas l'enquête ; une autre recette (données où la marque est
+   la seule source d'information, ou un modèle plus grand) serait à
+   pré-enregistrer.

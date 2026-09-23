@@ -119,3 +119,15 @@ toutes les lectures : **HOT-3** (sans le moniteur, la position est moins
 juste mais le retour ne perd que 0,055·Δ) et **HOT-4** (l'espace de
 qualités évalue bien les teintes jamais vues, mais un code aléatoire choisit
 presque aussi bien sur les conflits de bande, 0,71 pour un plafond de 0,65).
+
+
+## État au 23 septembre 2026, 7 h 15 UTC : l'agent et le langage
+
+Le modèle de langage de Menia (Qwen3-4B, poids de l'iPhone) **rapporte
+fidèlement l'espace de travail global de l'agent de la version 6**
+([rapport de Menia](MENIA_REPORT_RESULTS.md), deuxième version
+pré-enregistrée) : 0,997 sur le journal réel, 0,999 quand l'état change,
+0,999 malgré une phrase hors sujet. Le système assemblé réunit un agent qui
+porte douze des quatorze propriétés (seconde lecture), un espace de travail
+dont le contenu est diffusé, et un langage qui dit ce contenu, et seulement
+lui.

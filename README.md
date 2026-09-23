@@ -112,7 +112,10 @@ position) et son **schéma d'attention contrôle la liaison** des teintes ;
 l'agence à buts concurrents devient robuste (recharge 0,86 sur chaque
 graine) ; **dix sur quatorze** en lecture principale, **douze sur quatorze**
 en seconde lecture. HOT-3 et HOT-4 restent non démontrées.
-L'agent est branché dans Menia (`menia/indicator_bridge.py`, versions 5 et 6). [Rapport verbal](docs/LLM_REPORT_RESULTS.md) :
+L'agent est branché dans Menia (`menia/indicator_bridge.py`, versions 5 et 6) :
+[Qwen3-4B rapporte fidèlement son espace de travail](docs/MENIA_REPORT_RESULTS.md)
+(0,997 ; critère global satisfait à la deuxième version), et l'on peut
+converser avec Menia et son agent (`python -m menia.indicator_chat`). [Rapport verbal](docs/LLM_REPORT_RESULTS.md) :
 Qwen3-4B rapporte fidèlement les états donnés comme des étiquettes, pas ceux
 qui demandent un calcul.
 
