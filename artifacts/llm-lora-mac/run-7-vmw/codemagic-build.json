@@ -1,0 +1,64 @@
+{
+ "id": "6ab3c9018b920230e19ea2b4",
+ "tag": null,
+ "branch": "claude/causal-self-model-llm-results-mauabk",
+ "workflow": "menia-lora-weighted-mac",
+ "status": "finished",
+ "createdAt": "2026-09-23T12:41:37.174000+00:00",
+ "startedAt": "2026-09-23T12:42:16.659000+00:00",
+ "finishedAt": "2026-09-23T14:09:34.282000+00:00",
+ "commit": "a9bf62daf96bd42a02b1711de4b3cfb3c5e11d18",
+ "message": null,
+ "steps": [
+  {
+   "name": "Preparing build machine",
+   "status": "success",
+   "startedAt": "2026-09-23T12:42:16.950000+00:00",
+   "finishedAt": "2026-09-23T12:42:40.757000+00:00"
+  },
+  {
+   "name": "Fetching app sources",
+   "status": "success",
+   "startedAt": "2026-09-23T12:42:40.757000+00:00",
+   "finishedAt": "2026-09-23T12:42:49.903000+00:00"
+  },
+  {
+   "name": "Installer mlx-lm dans un environnement isolé",
+   "status": "success",
+   "startedAt": "2026-09-23T12:42:49.903000+00:00",
+   "finishedAt": "2026-09-23T12:43:06.572000+00:00"
+  },
+  {
+   "name": "Vérifier le protocole sur scoreurs simulés",
+   "status": "success",
+   "startedAt": "2026-09-23T12:43:06.572000+00:00",
+   "finishedAt": "2026-09-23T12:43:07.188000+00:00"
+  },
+  {
+   "name": "Exporter les vies VMI, ajuster avec la perte pondérée, mesurer l'enquête",
+   "status": "success",
+   "startedAt": "2026-09-23T12:43:07.188000+00:00",
+   "finishedAt": "2026-09-23T14:09:31.597000+00:00"
+  },
+  {
+   "name": "Publishing",
+   "status": "success",
+   "startedAt": "2026-09-23T14:09:31.597000+00:00",
+   "finishedAt": "2026-09-23T14:09:34.198000+00:00"
+  },
+  {
+   "name": "Cleaning up",
+   "status": "success",
+   "startedAt": "2026-09-23T14:09:34.198000+00:00",
+   "finishedAt": "2026-09-23T14:09:34.282000+00:00"
+  }
+ ],
+ "artefacts": [
+  {
+   "name": "Menia_1_artifacts.zip",
+   "size": 21641617,
+   "md5": null,
+   "type": "bundle"
+  }
+ ]
+}

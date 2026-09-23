@@ -1,0 +1,14 @@
+{
+ "train": {
+  "documents": 1500,
+  "targets": 1058663,
+  "landing_targets": 14942,
+  "landing_share_of_loss": 0.22258951362358953
+ },
+ "valid": {
+  "documents": 150,
+  "targets": 105836,
+  "landing_targets": 1560,
+  "landing_share_of_loss": 0.23029909356638814
+ }
+}
