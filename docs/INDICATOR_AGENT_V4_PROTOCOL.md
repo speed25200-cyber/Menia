@@ -101,6 +101,50 @@ travail, pas à l'architecture. S'ils échouent, la partie « agent » reste le
 point faible, avec un diagnostic plus précis. Dans tous les cas, ce protocole
 ne mesure pas une expérience vécue.
 
+## Premier essai de développement (graine 13), déclaré
+
+Le 23 septembre à 0 h 27 UTC, code du commit `e2b1a1c` : 6 propriétés sur
+14 (RPT-2, GWT-2, HOT-1, HOT-2, AST-1, PP-1). Les alarmes font leur effet :
+l'intéroception écrit dans 0,51 des pas où l'énergie est basse contre 0,34
+où elle est haute (écart 0,17, seuil 0,2) ; sans diffusion, l'AUROC du
+moniteur perd 0,045 (seuil 0,05) ; le gain constant coûte 0,105·Δ au retour
+(seuil 0,1·Δ). Mais **les valeurs n'apprennent rien** (retour −2,04 au
+premier tour, −1,77 au dernier) et **l'agent campe sur la recharge** : 71 %
+des pas sur cette case, 1,5 malaise de faim par vie. Deux causes :
+
+- avec une pulsion quadratique, tout déficit d'énergie coûte, même petit,
+  et la recharge est la ressource la plus sûre ; arrivé sur la case, l'agent
+  y choisit de nouveau la recharge à chaque pas, comme la version 3 le
+  faisait avec « rester » ;
+- ajustées sur des retours de 16 pas, les valeurs mêlent les conséquences
+  des buts suivants : énergie haute, satiété basse et bon objet connu,
+  l'agent choisit encore la recharge dans 45 décisions sur 87.
+
+Conséquences : la lésion de l'intéroception ne change plus les malaises
+d'énergie (−0,005), l'arbitrage reste sous ses seuils (0,68 et 0,53), la
+croyance sur le corps après le changement aussi (0,63).
+
+### Amendements 1 à 3, datés du 23 septembre 2026, 0 h 35 UTC
+
+Avant toute exécution sur les graines 103, 107 et 109. **Aucun seuil n'est
+modifié.**
+
+1. **Pulsion convexe** : D = (1 − ê)⁴ + (1 − f̂)⁴, la forme convexe de
+   Keramati et Gutkin (les écarts à la consigne sont élevés à une puissance
+   supérieure à 1) : un petit déficit ne coûte presque rien, un déficit
+   profond coûte beaucoup.
+2. **On ne va pas où l'on est** : quand l'agent se croit sur la case de
+   recharge, la recharge n'est pas un but possible ; y rester, c'est le but
+   « rester ».
+3. **Valeur d'un but** : la cible de Q(but) est la somme escomptée des
+   récompenses internes jusqu'à la décision suivante, plus γ^τ V(besoins à
+   la décision suivante), où V, fonction des 16 cases de besoins, est
+   ajustée par le même Monte-Carlo sur 16 pas aux points de décision (0 en
+   fin de vie). Les buts suivants n'entrent plus dans la valeur d'un but que
+   par l'état des besoins où il laisse l'agent.
+
+Le deuxième essai de développement sur la graine 13 suit ; il sera déclaré.
+
 ## Exécution
 
 `python -m research.indicator_experiment --version 4`, artefacts dans

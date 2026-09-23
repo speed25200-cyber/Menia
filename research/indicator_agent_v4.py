@@ -3,24 +3,29 @@
 Two alarms take the workspace before the version 2 controller: a need read by Intero below 0.35
 that the workspace does not reflect, and a Body belief that has moved away from the workspace's by
 more than 0.5 in total variation. The goal values of version 3 are fitted on an internal reward,
-the world's reward minus the drive D = (1 - e)^2 + (1 - f)^2 felt through the Intero estimates
-(homeostatic reinforcement learning, Keramati and Gutkin 2014). Staying is a commitment like the
+the world's reward minus the drive D felt through the Intero estimates (homeostatic reinforcement
+learning, Keramati and Gutkin 2014; squares at first, convex after amendment 1). Staying is a commitment like the
 other goals, and goals of exactly equal value are drawn at random. Everything else is version 3.
 Protocol: docs/INDICATOR_AGENT_V4_PROTOCOL.md.
+
+Amendments 1 to 3, after the first development run: the drive is convex, D = (1 - e)^4 + (1 - f)^4;
+the charger is not a goal while the agent believes it stands on it; and a goal's value is what it
+brings until the next decision plus the value of the need state it leaves, V over the 16 need cells.
 """
 import math
 import numpy as np
 from .sense_atelier import STAY, N_ACTIONS
 from .indicator_agent import MODULES, total_variation
-from .indicator_agent_v2 import AgentV3, plan
+from .indicator_agent_v2 import AgentV3, plan, discounted_returns, HORIZON, GAMMA
 
 ALARM = 0.35
 ALARM_STALE = 0.1
 BODY_ALARM = 0.5
+DRIVE_POWER = 4  # amendment 1: a convex drive; with squares, every energy deficit cost and the agent camped on the charger
 
 
 def drive(energy, satiety):
-    return (1.0 - energy) ** 2 + (1.0 - satiety) ** 2
+    return (1.0 - energy) ** DRIVE_POWER + (1.0 - satiety) ** DRIVE_POWER
 
 
 def internal_rewards(life):
@@ -33,8 +38,32 @@ def internal_rewards(life):
     return out
 
 
+def option_samples(life, gamma=GAMMA, horizon=HORIZON):
+    """Amendment 3: for each decision, (goal, features, internal reward until the next decision, steps to it,
+    features at the next decision or None at the end of life, 16-step internal return from the decision)."""
+    rewards = internal_rewards(life)
+    G = discounted_returns(rewards, horizon, gamma)
+    samples = life["samples"]
+    out = []
+    for i, (t, k, phi) in enumerate(samples):
+        t_next = samples[i + 1][0] if i + 1 < len(samples) else len(rewards)
+        R = float(sum(gamma ** (s - t) * rewards[s] for s in range(t, t_next)))
+        out.append((k, phi, R, t_next - t, samples[i + 1][2] if i + 1 < len(samples) else None, float(G[t])))
+    return out
+
+
 class AgentV4(AgentV3):
     """Version 3 with alarms that take the workspace, drive-based values, a committed stay and random ties."""
+
+    def _features(self, W, charger):
+        self._on_charger = int(np.argmax(W["pos"])) == charger  # amendment 2: one does not go where one stands
+        return super()._features(W, charger)
+
+    def _values(self, phi, candidate):
+        q_charge, q_food, q_stay = super()._values(phi, candidate)
+        if getattr(self, "_on_charger", False):
+            q_charge = -math.inf
+        return q_charge, q_food, q_stay
 
     def _alarm(self, contents):
         sensed, held = contents["intero"], self.W["intero"]
@@ -91,7 +120,7 @@ class AgentV4(AgentV3):
         else:
             if self.learn and self.rng.random() < self.epsilon:
                 options = ["charger", "stay"] + ([candidate] if candidate is not None else [])
-                if self._is("single_goal"):
+                if self._is("single_goal") or self._on_charger:
                     options.remove("charger")
                 goal = options[int(self.rng.integers(len(options)))]
             else:

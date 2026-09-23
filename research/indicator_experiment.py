@@ -138,11 +138,12 @@ def fit_goal_values(params, seed, rounds=25, lives=160, epsilon=0.2, log=print, 
     """Versions 2 to 4: fitted Monte-Carlo values of the goals, epsilon-greedy while learning. Version 2 refits on
     the lives of the round only; versions 3 and 4 on all the lives lived so far (replay). Version 4 fits them on the
     internal reward, the world's reward minus the drive felt through Intero."""
-    from .indicator_agent_v2 import Q_FEATURES, Q_FEATURES_V3, discounted_returns, fit_values
-    from .indicator_agent_v4 import internal_rewards
+    from .indicator_agent_v2 import Q_FEATURES, Q_FEATURES_V3, GAMMA, discounted_returns, fit_values
+    from .indicator_agent_v4 import option_samples
     params.q = np.zeros((3, Q_FEATURES if version == 2 else Q_FEATURES_V3))
     history = []
     X, y = {0: [], 1: [], 2: []}, {0: [], 1: [], 2: []}
+    options, cells, cell_returns = {0: [], 1: [], 2: []}, [], []
     for r in range(1, rounds + 1):
         if version == 2:
             X, y = {0: [], 1: [], 2: []}, {0: [], 1: [], 2: []}
@@ -150,11 +151,24 @@ def fit_goal_values(params, seed, rounds=25, lives=160, epsilon=0.2, log=print, 
         for j in range(lives):
             life = run_life(params, "agent", 30_000_000 + seed * 100_000 + r * lives + j, "childhood",
                             seed * 104729 + r * lives + j, learn=True, version=version, epsilon=epsilon)
-            G = discounted_returns(internal_rewards(life) if version >= 4 else life["rewards"])
-            for t, k, phi in life["samples"]:
-                X[k].append(phi)
-                y[k].append(G[t])
+            if version >= 4:
+                for k, phi, R, tau, phi_next, G_t in option_samples(life):
+                    X[k].append(phi)
+                    options[k].append((R, tau, phi_next))
+                    cells.append(phi[:16])
+                    cell_returns.append(G_t)
+            else:
+                G = discounted_returns(life["rewards"])
+                for t, k, phi in life["samples"]:
+                    X[k].append(phi)
+                    y[k].append(G[t])
             returns.append(float(sum(life["rewards"])))
+        if version >= 4:
+            # Amendment 3: value of the need state at the next decision, then option targets that stop there.
+            v_cells = fit_values(cells, cell_returns)
+            for k in (0, 1, 2):
+                y[k] = [R + (GAMMA ** tau * float(np.asarray(nxt[:16]) @ v_cells) if nxt is not None else 0.0)
+                        for R, tau, nxt in options[k]]
         for k in (0, 1, 2):
             if len(y[k]) > 10:
                 params.q[k] = fit_values(X[k], y[k])

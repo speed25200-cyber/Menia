@@ -169,7 +169,7 @@ class VersionFourTests(unittest.TestCase):
         self.assertIsNone(agent._alarm(contents))
         contents["body"] = np.array([0.0, 1.0, 0.0, 0.0])
         self.assertEqual(agent._alarm(contents), "body")
-        self.assertAlmostEqual(drive(1.0, 0.5), 0.25)
+        self.assertAlmostEqual(drive(1.0, 0.5), 0.0625)
         life = run_life(params, "agent", 12, "fixed", 12, version=4)
         steps = [r for r, _ in life["steps"]]
         self.assertTrue(all(len(r["writers"]) == 1 for r in steps))
