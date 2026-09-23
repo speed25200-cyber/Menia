@@ -5,8 +5,10 @@ Exécuté le 23 septembre 2026, 3 h 52 – 4 h 08 UTC, sur CPU, code du commit
 déclaration), protocole `docs/INDICATOR_AGENT_V6_PROTOCOL.md` (commit
 `3c33994`). Graines 151, 157 et 163 ; 27 000 vies de test. Artefacts dans
 `artifacts/indicator-agent-v6` : critères dans `criteria.json`, seconde
-lecture dans `second-reading.json`, recalculées en CI ; paramètres et
-critères du premier essai de développement (graine 23) publiés à côté.
+lecture dans `second-reading.json`, recalculées en CI ; audit complet
+sans écart dans `verification.json` (200 vies rejouées par jeu et par
+graine, toutes les variantes réévaluées) ; paramètres et critères du
+premier essai de développement (graine 23) publiés à côté.
 
 **Contrôle de validité : passé** (Δ = 4,04, 3,88 et 3,99).
 
