@@ -1,5 +1,7 @@
+import json
 import tempfile
 import unittest
+from pathlib import Path
 import numpy as np
 from research.llm_inquiry import (points, replay_until, gains, summarize, verdicts, ScriptedDigits, scripted_symbols, Cached,
                                   evaluate, main)
@@ -35,6 +37,17 @@ class InquiryTests(unittest.TestCase):
     def test_cli(self):
         with tempfile.TemporaryDirectory() as tmp:
             main(["--out", tmp, "--r-lives", "2", "--m-lives", "1"])
+
+    def test_verdicts_are_recomputed_from_published_rows(self):
+        from research.llm_inquiry_verdicts import main as verdicts_main
+        with tempfile.TemporaryDirectory() as tmp:
+            main(["--out", f"{tmp}/VM", "--r-lives", "3", "--m-lives", "2", "--scripted", "mark"])
+            main(["--out", f"{tmp}/F", "--r-lives", "3", "--m-lives", "2", "--scripted", "fixed"])
+            verdicts_main(["--vm", f"{tmp}/VM", "--f", f"{tmp}/F", "--output", f"{tmp}/verdicts.json"])
+            result = json.loads(Path(tmp, "verdicts.json").read_text())
+            self.assertTrue(result["summaries_match_published"])
+            self.assertTrue(result["verdicts"]["I1"] and result["verdicts"]["I2"] and result["verdicts"]["global"])
+            verdicts_main(["--vm", f"{tmp}/VM", "--f", f"{tmp}/F", "--check", f"{tmp}/verdicts.json"])
 
 
 if __name__ == "__main__":
