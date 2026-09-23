@@ -156,5 +156,33 @@ class VersionThreeTests(unittest.TestCase):
             self.assertEqual(audit(tmp, replay_lives=2, full=True, log=lambda m: None)["problems"], [])
 
 
+class VersionFourTests(unittest.TestCase):
+    def test_alarms_take_the_workspace_and_values_follow_the_drive(self):
+        from research.indicator_agent_v4 import AgentV4, drive, internal_rewards
+        params = provisional_params(2)
+        params.q = np.zeros((3, 19))
+        agent = AgentV4(params, seed=1)
+        agent.W["intero"] = np.array([0.5, 0.9])
+        contents = {"intero": np.array([0.3, 0.9]), "body": agent.W["body"].copy()}
+        self.assertEqual(agent._alarm(contents), "intero")
+        agent.W["intero"] = np.array([0.33, 0.9])
+        self.assertIsNone(agent._alarm(contents))
+        contents["body"] = np.array([0.0, 1.0, 0.0, 0.0])
+        self.assertEqual(agent._alarm(contents), "body")
+        self.assertAlmostEqual(drive(1.0, 0.5), 0.25)
+        life = run_life(params, "agent", 12, "fixed", 12, version=4)
+        steps = [r for r, _ in life["steps"]]
+        self.assertTrue(all(len(r["writers"]) == 1 for r in steps))
+        self.assertGreater(len({str(r["goal"]) for r in steps if r["decided"]}), 1)
+        self.assertTrue(any(a["goal"] == "stay" and b["goal"] == "stay" and not b["decided"] for a, b in zip(steps, steps[1:])))
+        rewards = internal_rewards(life)
+        self.assertEqual(len(rewards), len(life["rewards"]))
+        self.assertTrue(all(ri <= r + 1e-12 for ri, r in zip(rewards, life["rewards"])))
+        with tempfile.TemporaryDirectory() as tmp:
+            experiment_main(["--version", "4", "--out", tmp, "--seeds", "8", "--childhood", "20", "--updates", "2",
+                             "--batch", "3", "--lives", "2"])
+            self.assertEqual(audit(tmp, replay_lives=2, full=True, log=lambda m: None)["problems"], [])
+
+
 if __name__ == "__main__":
     unittest.main()
