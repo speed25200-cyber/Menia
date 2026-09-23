@@ -66,6 +66,13 @@ seconde lecture**.
   donnés comme des étiquettes (corps, attention, module : 1,00 même quand
   l'état change), mais pas ceux qui demandent un calcul (se fier ou non à une
   lecture, comparer deux besoins) ; critère global non satisfait.
+- **Menia parle de son agent.** Quand l'agent donne à Menia son espace de
+  travail en conclusions explicites, Qwen3-4B (poids de l'iPhone) les
+  rapporte fidèlement : corps, besoin le plus bas, décision, meilleur objet
+  à 0,99 ou plus, position à 0,91, en suivant l'état quand il change et sans
+  se laisser déranger. Une confusion fait échouer le critère : quand le
+  dernier contenu entré est « les besoins », il répond « la position ». On
+  peut converser avec Menia et son agent (`python -m menia.indicator_chat`).
 
 ## Ce qui reste hors de portée
 
@@ -78,8 +85,8 @@ l'information intégrée, juge même le logiciel insuffisant.
 
 1. Lire le test d'enquête corrigé : le LLM ajusté sait-il où chercher la
    cause de son corps ?
-2. Lire le rapport de Menia (pré-enregistré, 2 160 questions) : quand
-   l'agent lui donne son espace de travail en conclusions explicites,
-   Qwen3-4B le rapporte-t-il fidèlement ?
+2. Corriger la ligne du dernier contenu entré et celle de la case de
+   l'objet dans le journal, et le vérifier par un nouveau test
+   pré-enregistré.
 3. HOT-3 et HOT-4 : chercher un monde ou un test où le moniteur et l'espace
    de qualités sont indispensables, sans viser les seuils.
