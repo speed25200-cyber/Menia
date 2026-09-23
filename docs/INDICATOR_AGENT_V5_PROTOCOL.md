@@ -158,6 +158,34 @@ Le monde garde trois objets ; les prédictions sur RPT-1 et HOT-4 restent
 écrites et seront jugées telles quelles. Le deuxième essai de
 développement sur la graine 19 suit ; il sera déclaré.
 
+## Deuxième essai de développement (graine 19), déclaré
+
+Le 23 septembre, de 1 h 00 à 1 h 16 UTC, code du commit `20f7adf` : **9
+propriétés sur 14** (RPT-2, GWT-1, GWT-2, GWT-3, HOT-1, HOT-2, AST-1, PP-1,
+AE-2). L'agent ne campe plus (11 % des pas sur la recharge, contre 70 %) ;
+la lésion de l'intéroception coûte 4,1 malaises d'énergie par vie ; la
+croyance sur le corps après le changement est exacte dans 0,98 des pas ;
+sans diffusion, l'AUROC du moniteur perd 0,078. Restent sous leurs seuils :
+la recharge quand l'énergie est basse (0,77 pour 0,8 ; les autres volets
+d'AE-1 passent : apprentissage 1,48, objet 0,87, but unique +4,3 malaises),
+l'attention à l'intéroception selon l'énergie (écart 0,15 pour 0,2), la
+baisse du choix sans récurrence (0,12 pour 0,15), le gain constant et le
+choix sur la bande.
+
+Sur 120 vies du jeu R, les deux tiers des pas où l'énergie est basse sans
+but de recharge sont des choix que le modèle justifie (un objet tout proche
+d'abord, la recharge ensuite, atteinte à temps) ; les autres viennent de
+pas où l'espace de travail garde une position périmée et place l'agent sur
+la case de recharge, qui n'est alors pas un but possible. À énergie haute,
+l'intéroception écrit surtout pour la faim (alarmes de satiété, changements
+de but), besoin que le test de GWT-4 compte comme une écriture à énergie
+haute.
+
+**Aucune modification n'est faite** : aucun amendement simple et fondé ne
+répond à ces écarts sans viser le seuil. Le troisième essai de développement
+n'est pas utilisé ; l'exécution confirmatoire sur les graines 113, 127 et
+131 est lancée avec ce code.
+
 ## Exécution
 
 `python -m research.indicator_experiment --version 5`, artefacts dans
