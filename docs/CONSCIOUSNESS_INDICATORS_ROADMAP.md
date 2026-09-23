@@ -78,3 +78,20 @@ propriétés, GWT-1 reperdu de peu. **Bilan des trois versions** : six
 propriétés robustes (RPT-2, GWT-2, HOT-1, HOT-2, AST-1, PP-1) ; GWT-1
 fragile ; RPT-1, GWT-3, GWT-4, HOT-3, HOT-4, AE-1 et AE-2 jamais démontrées
 par leur test, bien que présentes par construction.
+
+## État au 23 septembre 2026, 1 h 40 UTC
+
+[Version 4](INDICATOR_AGENT_V4_RESULTS.md) : alarmes intéroceptives et
+corporelles prioritaires, valeurs apprises contre la pulsion ; six
+propriétés, GWT-1 revient, GWT-2 se perd, l'arbitrage n'est toujours pas
+appris.
+
+[Version 5](INDICATOR_AGENT_V5_RESULTS.md) : **arbitrage allostatique**,
+l'agent apprend un modèle de ses besoins et les simule avant de choisir ;
+la recharge se déplace après usage, pour que le monde exige ce que les tests
+mesurent. **Dix propriétés démontrées ensemble dans un même agent** :
+RPT-2, GWT-1, GWT-2, GWT-3, HOT-1, HOT-2, AST-1, PP-1, AE-1 et AE-2.
+Restent sous leurs seuils : RPT-1 (la mémoire sert peu quand un seul bon
+objet est présent), GWT-4 (l'intéroception écrit aussi pour la faim, que le
+test compte contre elle), HOT-3 (le moniteur ne compte que pendant les
+pannes) et HOT-4 (même sans goulot, le choix sur la bande plafonne à 0,71).

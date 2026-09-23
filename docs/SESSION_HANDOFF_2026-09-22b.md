@@ -39,14 +39,18 @@ GitHub Actions :
    pré-enregistré) dès que les adaptateurs existent.
 3. **Programme des indicateurs de conscience**
    (`docs/CONSCIOUSNESS_INDICATORS_ROADMAP.md`) : les quatorze propriétés de
-   Butlin, Long et collaborateurs. Un agent dans l'Atelier des sens les
-   réunit toutes par construction ; trois versions pré-enregistrées, neuf
-   graines confirmatoires, audits complets sans écart :
-   - v1 (`docs/INDICATOR_AGENT_RESULTS.md`) : 6/14 ;
-   - v2 (`docs/INDICATOR_AGENT_V2_RESULTS.md`) : 7/14, GWT-1 s'ajoute ;
-   - v3 (`docs/INDICATOR_AGENT_V3_RESULTS.md`) : 6/14, prédiction réfutée.
-   **Robustes dans les trois** : RPT-2, GWT-2, HOT-1, HOT-2, AST-1, PP-1.
-   **Point faible** : l'arbitrage des buts appris (GWT-1, GWT-4, AE-1).
+   Butlin, Long et collaborateurs, réunies par construction dans un agent de
+   l'Atelier des sens ; cinq versions pré-enregistrées, quinze graines
+   confirmatoires, audits complets sans écart :
+   - v1 à v3 : 6, 7 et 6 propriétés sur 14 ;
+   - v4 (`docs/INDICATOR_AGENT_V4_RESULTS.md`) : 6/14 ; alarmes prioritaires
+     et valeurs contre la pulsion, l'arbitrage n'est pas appris ;
+   - **v5 (`docs/INDICATOR_AGENT_V5_RESULTS.md`) : 10/14.** L'agent apprend
+     un modèle de ses besoins et les simule sur 16 pas avant de choisir ; la
+     recharge se déplace après usage (amendement déclaré). AE-1 et AE-2
+     passent pour la première fois, avec GWT-1, GWT-2, GWT-3 et les cinq
+     robustes (RPT-2, HOT-1, HOT-2, AST-1, PP-1).
+   Restent : RPT-1, GWT-4, HOT-3, HOT-4 (diagnostics dans les résultats v5).
 4. **Rapport verbal** (`docs/LLM_REPORT_PROTOCOL.md`) : Qwen3-4B lit le
    journal intérieur de l'agent ; 1 854 items ; le premier build s'est
    arrêté dans les tests (arrondi ARM), relancé ; résultats attendus dans
@@ -59,18 +63,23 @@ GitHub Actions :
 
 ## À faire ensuite
 
-- Récupérer les trois builds (le relais les pousse seul), écrire
-  `docs/ADJUSTED_BODY_RESULTS.md`, compléter `docs/LATENT_BODY_RESULTS.md`,
-  écrire `docs/LLM_REPORT_RESULTS.md`, avec les verdicts pré-enregistrés.
-- Si le corps ajusté passe A3 et A4 : pré-enregistrer la boucle P-soi sur le
-  LLM ajusté, puis la recette sur Qwen3-4B.
-- Indicateurs : une version 4 donnerait aux alarmes intéroceptives un accès
-  prioritaire à l'espace de travail (théoriquement fondé, et c'est ce que
-  l'analyse de la règle fixe désigne), jugée aux mêmes seuils sur de
-  nouvelles graines. Le volet « apprentissage » d'AE-1 resterait difficile :
-  la politique de départ est déjà bonne.
-- La recette sur Qwen3-4B ne tient pas dans un build de 120 minutes sur ce
-  Mac ; il faudrait l'A100 de Colab.
+- **Corps ajusté** : l'ajustement F est fini (23 h 30 – 0 h 51), le VM
+  tourne depuis 0 h 51 ; le relais (demande 7) pousse `run-3-f` et
+  `run-3-vm` ensemble. Verdicts :
+  `python -m research.llm_body_verdicts --lora artifacts/llm-lora-mac/run-3-f artifacts/llm-lora-mac/run-3-vm`,
+  puis `docs/ADJUSTED_BODY_RESULTS.md` et une vérification en CI.
+- **Test d'enquête** : son amendement (chemins des adaptateurs) est écrit ;
+  le lancer par le relais (`menia-inquiry-mac`, destination
+  `artifacts/llm-inquiry/run-1`) dès que les adaptateurs sont sur la branche.
+- **Rapport verbal** : build en file après le VM ; résultats dans
+  `artifacts/llm-report/run-2`, puis `docs/LLM_REPORT_RESULTS.md`.
+- Si le corps ajusté passe A3 et A4 : pré-enregistrer la boucle P-soi sur
+  le LLM ajusté, puis la recette sur Qwen3-4B (A100 de Colab nécessaire).
+- **Indicateurs** : une version 6 pour RPT-1, GWT-4, HOT-3 et HOT-4, en ne
+  changeant le monde que là où il empêche le test de mesurer (plus d'objets
+  pour que la mémoire compte, pannes plus fréquentes pour que le moniteur
+  compte), mêmes critères, nouvelles graines.
+- La demande suivante du relais porte le numéro 10.
 - Rappel constant : aucun de ces résultats n'établit une expérience vécue.
 
 ## Pièges
