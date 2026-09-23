@@ -1,0 +1,64 @@
+{
+ "id": "6ab4336daae39d3012f3b05b",
+ "tag": null,
+ "branch": "claude/causal-self-model-llm-results-mauabk",
+ "workflow": "menia-lora-full-mac",
+ "status": "finished",
+ "createdAt": "2026-09-23T20:15:41.827000+00:00",
+ "startedAt": "2026-09-23T20:15:49.335000+00:00",
+ "finishedAt": "2026-09-23T21:31:36.057000+00:00",
+ "commit": "45fc6b317633275f64a3227aaaa87227237a0d3b",
+ "message": null,
+ "steps": [
+  {
+   "name": "Preparing build machine",
+   "status": "success",
+   "startedAt": "2026-09-23T20:15:49.726000+00:00",
+   "finishedAt": "2026-09-23T20:16:14.694000+00:00"
+  },
+  {
+   "name": "Fetching app sources",
+   "status": "success",
+   "startedAt": "2026-09-23T20:16:14.694000+00:00",
+   "finishedAt": "2026-09-23T20:16:25.755000+00:00"
+  },
+  {
+   "name": "Installer mlx-lm dans un environnement isolé",
+   "status": "success",
+   "startedAt": "2026-09-23T20:16:25.755000+00:00",
+   "finishedAt": "2026-09-23T20:16:44.456000+00:00"
+  },
+  {
+   "name": "Vérifier le protocole sur scoreurs simulés",
+   "status": "success",
+   "startedAt": "2026-09-23T20:16:44.456000+00:00",
+   "finishedAt": "2026-09-23T20:16:45.218000+00:00"
+  },
+  {
+   "name": "Reprendre VMLA-1350 sur les vies VML, 750 itérations, lire à chaque point de contrôle",
+   "status": "success",
+   "startedAt": "2026-09-23T20:16:45.218000+00:00",
+   "finishedAt": "2026-09-23T21:31:33.591000+00:00"
+  },
+  {
+   "name": "Publishing",
+   "status": "success",
+   "startedAt": "2026-09-23T21:31:33.591000+00:00",
+   "finishedAt": "2026-09-23T21:31:35.932000+00:00"
+  },
+  {
+   "name": "Cleaning up",
+   "status": "success",
+   "startedAt": "2026-09-23T21:31:35.932000+00:00",
+   "finishedAt": "2026-09-23T21:31:36.057000+00:00"
+  }
+ ],
+ "artefacts": [
+  {
+   "name": "Menia_1_artifacts.zip",
+   "size": 10906614,
+   "md5": null,
+   "type": "bundle"
+  }
+ ]
+}
