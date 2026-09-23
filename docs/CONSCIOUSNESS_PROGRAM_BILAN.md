@@ -1,4 +1,4 @@
-# Bilan — Où en est le but, 23 septembre 2026 (7 h 15 UTC)
+# Bilan — Où en est le but, 23 septembre 2026 (8 h 30 UTC)
 
 Pour le propriétaire du dépôt, en bref.
 
@@ -86,9 +86,15 @@ l'information intégrée, juge même le logiciel insuffisant.
 
 ## La suite
 
-1. HOT-3 et HOT-4 : chercher un monde ou un test où le moniteur et l'espace
-   de qualités sont indispensables, sans viser les seuils.
-2. Le LLM et son propre corps : l'ajustement donne la structure en partie
-   (0,79) mais pas l'enquête ; une autre recette (données où la marque est
-   la seule source d'information, ou un modèle plus grand) serait à
-   pré-enregistrer.
+1. **HOT-3 et HOT-4.** Six versions de l'agent et plusieurs mondes essayés
+   (plus d'objets, pannes plus fréquentes, pannes bloquées, seconde bande de
+   teintes nouvelles ; `docs/INDICATOR_AGENT_V5_EXPLORATIONS.md` et
+   `docs/INDICATOR_AGENT_V6_EXPLORATIONS.md`) : les deux mécanismes sont
+   présents et agissent, mais aucun monde ne les rend assez utiles pour les
+   seuils fixés en version 1 sans abîmer autre chose. Aller plus loin
+   demanderait de redéfinir leurs tests d'usage, ce qui ne se fait qu'avec
+   l'accord du propriétaire et par un nouveau protocole.
+2. **Le LLM et son propre corps** : l'ajustement donne la structure en
+   partie (0,79) mais pas l'enquête ; une autre recette (données où la
+   marque est la seule source d'information, ou un modèle plus grand) serait
+   à pré-enregistrer.
