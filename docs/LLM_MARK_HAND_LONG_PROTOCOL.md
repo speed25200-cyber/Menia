@@ -68,3 +68,17 @@ Workflow Codemagic `menia-lora-hand-long-mac`, lancé par le relais ;
 artefacts dans `artifacts/llm-lora-mac/run-10-vmla-long` ; verdicts par
 `research/llm_mark_reading.py`, vérifiés en CI ; résultats dans
 `docs/LLM_INQUIRY_RESULTS.md`.
+
+## Précisions fixées avant l'exécution
+
+Écrites avec le code, avant tout lancement. Le build réexporte les vies
+VMLA et vérifie qu'elles sont identiques octet pour octet à celles de
+`run-9-vmla` avant d'ajuster. La reprise charge les poids publiés
+(`--resume-adapter-file`) ; le compteur d'itérations repart de 1, si bien
+que les points 250, 500 et 750 de ce build sont les points 850, 1 100 et
+1 350 au total. La validation a lieu toutes les 250 itérations. Les tests
+de lecture arrivent dans `run-10-vmla-long/reading-850`, `reading-1100` et
+`reading-1350` ; seul l'adaptateur final est gardé. Verdicts :
+`python -m research.llm_mark_reading long --baseline
+artifacts/llm-lora-mac/run-9-vmla/reading-VMLA --reading 850=… 1100=…
+1350=…`.

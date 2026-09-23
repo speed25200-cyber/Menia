@@ -80,6 +80,16 @@ def hand_verdicts(summary, commands, inquiry):
     return out
 
 
+def long_verdicts(curve, baseline, last):
+    """G1 and G2 of docs/LLM_MARK_HAND_LONG_PROTOCOL.md; curve: iterations -> summary with P1_A and P1_BCD."""
+    out = {f"valid_{k}": v["digit_mass"] >= VALIDITY_MASS for k, v in curve.items()}
+    end = curve[last]
+    out["G1"] = (end["P1_A"] >= 0.6 and end["P1_A"] - end["P0"] >= 0.3) if out[f"valid_{last}"] else None
+    out["G2"] = end["P1_A"] >= baseline["P1_A"] + 0.1 if out[f"valid_{last}"] else None
+    out["global"] = out["G1"] is True
+    return out
+
+
 def verdicts(reading, inquiry=None):
     """reading: label -> summary of the reading test; inquiry: {"VM": VML's inquiry summary, "F": F's}."""
     out = {f"valid_{label}": s["digit_mass"] >= VALIDITY_MASS for label, s in reading.items()}
@@ -120,7 +130,28 @@ def main(argv=None):
     ha.add_argument("--inquiry-f", required=True)
     ha.add_argument("--output", default=None)
     ha.add_argument("--check", default=None)
+    lo = sub.add_parser("long", help="verdicts G1 and G2 of docs/LLM_MARK_HAND_LONG_PROTOCOL.md")
+    lo.add_argument("--baseline", required=True, help="reading test of VMLA after 600 iterations")
+    lo.add_argument("--reading", nargs="+", required=True, help="ITERATIONS=directory, the last one judged")
+    lo.add_argument("--output", default=None)
+    lo.add_argument("--check", default=None)
     a = parser.parse_args(argv)
+    if a.command == "long":
+        def read(root):
+            rows = read_rows(root)
+            summary = summarize(rows)
+            return dict(summary, **by_command(rows)), json.loads(json.dumps(summary)) == json.loads(
+                Path(root, "summary.json").read_text())
+        baseline, same = read(a.baseline)
+        curve = {}
+        for spec in a.reading:
+            label, root = spec.split("=", 1)
+            curve[label], ok = read(root)
+            same &= ok
+        last = a.reading[-1].split("=", 1)[0]
+        result = json.loads(json.dumps({"verdicts": long_verdicts(curve, baseline, last), "summaries_match_published": same,
+                                        "baseline_600": baseline, "curve": curve}))
+        return report(result, a.output, a.check)
     if a.command == "score":
         out = Path(a.out)
         out.mkdir(parents=True, exist_ok=True)

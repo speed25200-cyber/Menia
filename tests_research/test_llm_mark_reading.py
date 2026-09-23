@@ -2,7 +2,7 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
-from research.llm_mark_reading import items, prompt, score, summarize, verdicts, main, by_command, hand_verdicts
+from research.llm_mark_reading import items, prompt, score, summarize, verdicts, main, by_command, hand_verdicts, long_verdicts
 from research.llm_inquiry import ScriptedDigits
 
 
@@ -46,6 +46,15 @@ class ReadingTests(unittest.TestCase):
         v = hand_verdicts(summary, commands, {"VM": seeker, "F": blind})
         self.assertEqual((v["H1"], v["H2"], v["L1_all_commands"], v["H3"], v["H4"], v["global"]),
                          (True, False, False, True, True, True))
+
+    def test_long_verdicts(self):
+        point = lambda a: {"digit_mass": 0.99, "P0": 0.25, "P1_A": a, "P1_BCD": 0.25}
+        v = long_verdicts({"850": point(0.35), "1350": point(0.7)}, point(0.312), "1350")
+        self.assertEqual((v["G1"], v["G2"], v["global"]), (True, True, True))
+        v = long_verdicts({"1350": point(0.45)}, point(0.312), "1350")
+        self.assertEqual((v["G1"], v["G2"]), (False, True))
+        v = long_verdicts({"1350": point(0.33)}, point(0.312), "1350")
+        self.assertEqual((v["G1"], v["G2"]), (False, False))
 
     def test_cli_scores_and_checks(self):
         with tempfile.TemporaryDirectory() as tmp:
