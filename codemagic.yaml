@@ -718,6 +718,37 @@ workflows:
     artifacts:
       - llm-lora/**
 
+  menia-lora-seek-mac:
+    name: Menia - Le LLM qui lit sa marque la cherche-t-il ? (docs/LLM_MARK_SEEK_PROTOCOL.md)
+    instance_type: mac_mini_m2
+    max_build_duration: 60
+    environment:
+      vars:
+        LORA_MODEL: "Qwen/Qwen3-0.6B"
+    scripts:
+      - name: Installer mlx-lm dans un environnement isolé
+        script: |
+          python3 -m venv .venv
+          source .venv/bin/activate
+          pip install --upgrade pip
+          pip install "numpy==2.2.6" "mlx-lm==0.31.3" "huggingface_hub>=0.30"
+      - name: Vérifier le protocole sur scoreurs simulés
+        script: |
+          source .venv/bin/activate
+          python -m unittest tests_research.test_llm_inquiry -v
+      - name: Test d'enquête sur l'adaptateur publié VMLA-1350
+        script: |
+          set -eo pipefail
+          source .venv/bin/activate
+          OUT="$CM_BUILD_DIR/llm-lora"
+          mkdir -p "$OUT"
+          python -m research.llm_inquiry --backend mlx --model "$LORA_MODEL" \
+            --adapter artifacts/llm-lora-mac/run-10-vmla-long/adapters-VMLA-1350 \
+            --label VMLA-1350 --out "$OUT/inquiry-VMLA-1350" | tail -25
+          git rev-parse HEAD > "$OUT/commit.txt"
+    artifacts:
+      - llm-lora/**
+
   menia-lora-vm-rank-mac:
     name: Menia - Le corps ajusté, régime VM au rang 16 sur toutes les couches (troisième amendement)
     instance_type: mac_mini_m2
