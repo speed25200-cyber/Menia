@@ -2,7 +2,7 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
-from research.llm_mark_reading import items, prompt, score, summarize, verdicts, main, by_command, hand_verdicts, long_verdicts
+from research.llm_mark_reading import items, prompt, score, summarize, verdicts, main, by_command, hand_verdicts, long_verdicts, full_verdicts
 from research.llm_inquiry import ScriptedDigits
 
 
@@ -55,6 +55,18 @@ class ReadingTests(unittest.TestCase):
         self.assertEqual((v["G1"], v["G2"]), (False, True))
         v = long_verdicts({"1350": point(0.33)}, point(0.312), "1350")
         self.assertEqual((v["G1"], v["G2"]), (False, False))
+
+    def test_full_verdicts(self):
+        point = lambda a, bcd: {"digit_mass": 0.99, "P0": 0.25, "P1_A": a, "P1_BCD": bcd}
+        v = full_verdicts({"2100": point(0.8, 0.7)}, "2100")
+        self.assertEqual((v["C1"], v["C2"], v["C3"], v["global"]), (True, True, None, False))
+        seeker = {"digit_mass": 0.99, "symbol_mass": 0.99, "start_mark_best": 0.9,
+                  "start_mean_gain": {1: 0.3, 2: 0.0, 3: 0.0, 4: 0.0},
+                  "mark_gain_before_change": 0.0, "mark_gain_after_first_move": 0.0}
+        v = full_verdicts({"2100": point(0.8, 0.7)}, "2100", {"VM": seeker, "F": dict(seeker, start_mark_best=0.06)})
+        self.assertEqual((v["C3"], v["C4"], v["global"]), (True, True, True))
+        v = full_verdicts({"2100": point(0.5, 0.3)}, "2100")
+        self.assertEqual((v["C1"], v["C2"]), (False, False))
 
     def test_cli_scores_and_checks(self):
         with tempfile.TemporaryDirectory() as tmp:

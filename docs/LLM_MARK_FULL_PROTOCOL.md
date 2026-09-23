@@ -64,3 +64,16 @@ Workflow Codemagic `menia-lora-full-mac`, lancé par le relais ; artefacts
 dans `artifacts/llm-lora-mac/run-12-full` ; verdicts par
 `research/llm_mark_reading.py`, vérifiés en CI ; résultats dans
 `docs/LLM_INQUIRY_RESULTS.md`.
+
+## Précisions fixées avant l'exécution
+
+Écrites avec le code, avant tout lancement. L'ajustement, les trois tests
+de lecture et le test d'enquête ne tiennent pas dans la durée d'un build
+(120 minutes) : **le test d'enquête (C3) est fait dans un build suivant,
+sur l'adaptateur final publié**, sans ajustement, comme pour S1
+(`docs/LLM_MARK_SEEK_PROTOCOL.md`). Les points de contrôle 250, 500 et 750
+de ce build sont les points 1 600, 1 850 et 2 100 itérations au total. Le
+build réexporte les vies VML et vérifie qu'elles sont identiques octet
+pour octet à celles de `run-8-vml`. Verdicts :
+`python -m research.llm_mark_reading full --reading 1600=… 1850=… 2100=…`,
+puis avec `--inquiry` et `--inquiry-f` une fois l'enquête faite.

@@ -90,6 +90,19 @@ def long_verdicts(curve, baseline, last):
     return out
 
 
+def full_verdicts(curve, last, inquiry=None):
+    """C1 to C4 of docs/LLM_MARK_FULL_PROTOCOL.md; C3 and C4 wait for the inquiry test of the final adapter."""
+    out = {f"valid_{k}": v["digit_mass"] >= VALIDITY_MASS for k, v in curve.items()}
+    end = curve[last]
+    out["C1"] = end["P1_BCD"] >= 0.6 if out[f"valid_{last}"] else None
+    out["C2"] = end["P1_A"] >= 0.6 if out[f"valid_{last}"] else None
+    found = inquiry_verdicts(inquiry) if inquiry else {}
+    out["valid_inquiry"], out["valid_inquiry_F"] = found.get("valid_VM"), found.get("valid_F")
+    out["C3"], out["C4"] = found.get("I1"), found.get("I2")
+    out["global"] = all(out[k] is True for k in ("C1", "C2", "C3", "C4"))
+    return out
+
+
 def verdicts(reading, inquiry=None):
     """reading: label -> summary of the reading test; inquiry: {"VM": VML's inquiry summary, "F": F's}."""
     out = {f"valid_{label}": s["digit_mass"] >= VALIDITY_MASS for label, s in reading.items()}
@@ -135,7 +148,29 @@ def main(argv=None):
     lo.add_argument("--reading", nargs="+", required=True, help="ITERATIONS=directory, the last one judged")
     lo.add_argument("--output", default=None)
     lo.add_argument("--check", default=None)
+    fu = sub.add_parser("full", help="verdicts C1 to C4 of docs/LLM_MARK_FULL_PROTOCOL.md")
+    fu.add_argument("--reading", nargs="+", required=True, help="ITERATIONS=directory, the last one judged")
+    fu.add_argument("--inquiry", default=None)
+    fu.add_argument("--inquiry-f", default=None)
+    fu.add_argument("--output", default=None)
+    fu.add_argument("--check", default=None)
     a = parser.parse_args(argv)
+    if a.command == "full":
+        curve, same = {}, True
+        for spec in a.reading:
+            label, root = spec.split("=", 1)
+            rows = read_rows(root)
+            summary = summarize(rows)
+            same &= json.loads(json.dumps(summary)) == json.loads(Path(root, "summary.json").read_text())
+            curve[label] = dict(summary, **by_command(rows))
+        inquiry = None
+        if a.inquiry and a.inquiry_f:
+            (final, final_same), (f, f_same) = load_inquiry(a.inquiry), load_inquiry(a.inquiry_f)
+            inquiry, same = {"VM": final, "F": f}, same and final_same and f_same
+        last = a.reading[-1].split("=", 1)[0]
+        result = json.loads(json.dumps({"verdicts": full_verdicts(curve, last, inquiry), "summaries_match_published": same,
+                                        "curve": curve, "inquiry": inquiry}))
+        return report(result, a.output, a.check)
     if a.command == "long":
         def read(root):
             rows = read_rows(root)

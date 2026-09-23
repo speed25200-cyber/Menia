@@ -749,6 +749,56 @@ workflows:
     artifacts:
       - llm-lora/**
 
+  menia-lora-full-mac:
+    name: Menia - Du code d'une commande au code entier du corps (docs/LLM_MARK_FULL_PROTOCOL.md)
+    instance_type: mac_mini_m2
+    max_build_duration: 120
+    environment:
+      vars:
+        LORA_MODEL: "Qwen/Qwen3-0.6B"
+        LORA_ITERS: "750"
+        LORA_TRAIN_LIVES: "1500"
+    scripts:
+      - name: Installer mlx-lm dans un environnement isolé
+        script: |
+          python3 -m venv .venv
+          source .venv/bin/activate
+          pip install --upgrade pip
+          pip install "numpy==2.2.6" "mlx-lm==0.31.3" "huggingface_hub>=0.30"
+      - name: Vérifier le protocole sur scoreurs simulés
+        script: |
+          source .venv/bin/activate
+          python -m unittest tests_research.test_llm_lora_body tests_research.test_llm_mark_reading -v
+      - name: Reprendre VMLA-1350 sur les vies VML, 750 itérations, lire à chaque point de contrôle
+        script: |
+          set -eo pipefail
+          source .venv/bin/activate
+          OUT="$CM_BUILD_DIR/llm-lora"
+          A="$OUT/adapters-FULL-2100"
+          mkdir -p "$OUT"
+          python -m research.llm_lora_body export --regime VML --out "$OUT/data-VML" \
+            --train "$LORA_TRAIN_LIVES" --valid 150 --seed 17
+          cmp "$OUT/data-VML/train.jsonl" artifacts/llm-lora-mac/run-8-vml/data-VML/train.jsonl
+          python -m research.llm_weighted_lora --model "$LORA_MODEL" --train --data "$OUT/data-VML" \
+            --resume-adapter-file artifacts/llm-lora-mac/run-10-vmla-long/adapters-VMLA-1350/adapters.safetensors \
+            --iters "$LORA_ITERS" --batch-size 4 --num-layers 16 --learning-rate 1e-4 \
+            --max-seq-length 1024 --steps-per-eval 250 --val-batches 10 --save-every 250 --grad-checkpoint \
+            --seed 17 --adapter-path "$A" 2>&1 | tee "$OUT/lora-FULL.log" | tail -30
+          for n in 250 500; do
+            C="$OUT/checkpoint-$((1350 + n))"
+            mkdir -p "$C" && cp "$A/adapter_config.json" "$C/"
+            cp "$A/$(printf %07d $n)_adapters.safetensors" "$C/adapters.safetensors"
+            python -m research.llm_mark_reading score --backend mlx --model "$LORA_MODEL" \
+              --adapter "$C" --label "FULL-$((1350 + n))" --out "$OUT/reading-$((1350 + n))"
+            rm -rf "$C"
+          done
+          python -m research.llm_mark_reading score --backend mlx --model "$LORA_MODEL" \
+            --adapter "$A" --label FULL-2100 --out "$OUT/reading-2100"
+          rm -f "$A"/0*_adapters.safetensors
+          git rev-parse HEAD > "$OUT/commit.txt"
+    artifacts:
+      - llm-lora/**
+
   menia-lora-vm-rank-mac:
     name: Menia - Le corps ajusté, régime VM au rang 16 sur toutes les couches (troisième amendement)
     instance_type: mac_mini_m2
