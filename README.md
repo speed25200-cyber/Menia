@@ -64,8 +64,13 @@ qu'avec 0,43 de sa masse ; contrôle de validité échoué. Relu en complétion
 brute (validité 0,99) : il copie en partie l'effet déjà vu d'une commande
 (0,64, seuil 0,70), fait pire que le hasard sur une commande nouvelle
 (0,16) et reste sûr de lui quand il se trompe ; critère global non
-satisfait. [Corps ajusté](docs/ADJUSTED_BODY_PROTOCOL.md) :
-pré-enregistré, en cours sur le Mac de Codemagic. [Synthèse des cinq plans](docs/SELF_INQUIRY_SYNTHESIS.md).
+satisfait. [Corps ajusté](docs/ADJUSTED_BODY_RESULTS.md) : Qwen3-0.6B
+ajusté par LoRA sur des vies à corps variable et changeant copie l'effet de
+ses commandes (0,995), prédit celui d'une commande jamais essayée après un
+mouvement dans 0,793 des cas (seuil 0,80 ; modèle de base 0,12) et suit son
+nouveau corps après un changement (0,86) ; ajusté sur un corps fixe, il
+confabule avec une confiance de 1,00. Critère global non satisfait d'une
+question ; relance au rang 16 déclarée et en cours. [Synthèse des cinq plans](docs/SELF_INQUIRY_SYNTHESIS.md).
 
 ## Agent à indicateurs de conscience
 
@@ -90,7 +95,14 @@ AE-1 ; l'apprentissage des valeurs reste instable. [Version 3](docs/INDICATOR_AG
 valeurs stabilisées : meilleur retour des trois versions mais **six
 propriétés**, prédiction réfutée. Robustes dans les trois versions, sur neuf
 graines : RPT-2, GWT-2, HOT-1, HOT-2, AST-1, PP-1 ; le point faible est
-l'arbitrage des buts appris.
+l'arbitrage des buts appris. [Version 4](docs/INDICATOR_AGENT_V4_RESULTS.md),
+alarmes prioritaires et valeurs contre la pulsion : six propriétés.
+[Version 5](docs/INDICATOR_AGENT_V5_RESULTS.md), **arbitrage allostatique** :
+l'agent apprend un modèle de ses besoins et les simule avant de choisir, dans
+un monde où la recharge se déplace après usage ; **dix propriétés sur
+quatorze démontrées dans un même agent**, dont pour la première fois
+l'agence à buts concurrents (AE-1) et l'incarnation (AE-2). Restent RPT-1,
+GWT-4, HOT-3 et HOT-4 ([explorations](docs/INDICATOR_AGENT_V5_EXPLORATIONS.md)).
 
 **[Colab 24 : classement de confiance au sein d'une catégorie](docs/CONFIDENCE_RANKING_PROTOCOL.md).**
 Le [résultat complet](docs/CONFIDENCE_RANKING_RESULTS.md) est reçu et audité :

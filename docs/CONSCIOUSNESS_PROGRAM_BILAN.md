@@ -42,10 +42,13 @@ recharge se déplace après usage.
   de GWT-4 compte contre l'agent, des pannes du capteur trop rares, des
   teintes de la bande trop proches pour être départagées même sans goulot.
 - **Le vrai LLM.** Qwen3-4B copie en partie l'effet de ses commandes (0,64)
-  mais n'en a pas la structure (0,16 sur une commande nouvelle), et reste
-  sûr de lui quand il se trompe. Le test décisif, Qwen3-0.6B ajusté sur des
-  vies à corps variable, tourne sur le Mac (l'ajustement F est terminé, le
-  VM en cours) ; le rapport verbal de l'agent par Qwen3-4B suit.
+  mais n'en a pas la structure (0,16 sur une commande nouvelle). Ajusté sur
+  des vies à corps variable et changeant, Qwen3-0.6B en acquiert l'essentiel :
+  copie 0,995, commande nouvelle après un mouvement 0,793 (seuil 0,80, raté
+  d'une question), révision après un changement 0,86 ; ajusté sur un corps
+  fixe, il confabule avec une confiance de 1,00. Une relance au rang 16 est
+  en cours ; le test d'enquête et le rapport verbal de l'agent par Qwen3-4B
+  suivent sur le Mac.
 
 ## Ce qui reste hors de portée
 

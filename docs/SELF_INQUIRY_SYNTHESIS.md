@@ -86,6 +86,17 @@ commande jamais essayée (0,16) : un corps à moitié latent, copié sans
 structure. Le micro-transformeur V, sur les mêmes vies, prédit l'effet d'une
 commande jamais essayée dans 100 % des cas.
 
+Le [corps ajusté](ADJUSTED_BODY_RESULTS.md) demandait si la recette de
+données du micro-transformeur passe à un modèle de langage. En grande
+partie : Qwen3-0.6B ajusté par LoRA sur des vies à corps variable et
+changeant copie l'effet de ses commandes (0,995), prédit celui d'une
+commande jamais essayée après un mouvement dans 0,793 des cas (le modèle de
+base 0,12, le hasard 0,25) et suit son nouveau corps après un changement
+(0,86) ; ajusté sur un corps fixe, il répète l'effet de l'unique corps connu
+avec une confiance de 1,00, exactement le défaut du micro-transformeur F. Le
+critère de la structure (≥ 0,80) échoue d'une question sur 140 ; une relance
+au rang 16, prévue par le protocole, est déclarée.
+
 ## Méthode
 
 Chaque plan a été écrit avec ses critères avant exécution, puis exécuté une
