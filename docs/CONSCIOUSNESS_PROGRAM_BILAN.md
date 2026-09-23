@@ -59,9 +59,11 @@ seconde lecture**.
   d'une question), révision après un changement 0,86 ; ajusté sur un corps
   fixe, il confabule avec une confiance de 1,00. La relance au rang 16, sur
   toutes les couches, donne la même chose (0,793) : la capacité n'est pas ce
-  qui manque. Le test d'enquête (où le LLM ajusté chercherait
-  l'information sur lui-même) a été invalide par un défaut de mesure (les
-  symboles lus sans leur espace) ; relance corrigée déclarée et lancée.
+  qui manque. Le test d'enquête, invalide une première fois par un défaut
+  de mesure puis relancé corrigé, est valide : **le LLM ajusté ne sait pas
+  où chercher la cause de son corps** (lieu de la marque préféré dans 0,40
+  des vies pour 0,7 exigé), alors que les petits modèles élevés sur les
+  mêmes vies allaient la lire.
 - **Le rapport verbal.** Qwen3-4B rapporte fidèlement les états de l'agent
   donnés comme des étiquettes (corps, attention, module : 1,00 même quand
   l'état change), mais pas ceux qui demandent un calcul (se fier ou non à une
@@ -83,10 +85,7 @@ l'information intégrée, juge même le logiciel insuffisant.
 
 ## La suite
 
-1. Lire le test d'enquête corrigé : le LLM ajusté sait-il où chercher la
-   cause de son corps ?
-2. Corriger la ligne du dernier contenu entré et celle de la case de
-   l'objet dans le journal, et le vérifier par un nouveau test
-   pré-enregistré.
-3. HOT-3 et HOT-4 : chercher un monde ou un test où le moniteur et l'espace
+1. Lire la deuxième version du rapport de Menia (journal corrigé, agent de
+   la version 6), pré-enregistrée et lancée.
+2. HOT-3 et HOT-4 : chercher un monde ou un test où le moniteur et l'espace
    de qualités sont indispensables, sans viser les seuils.
