@@ -89,3 +89,45 @@ corps (A3, 0,79) et la révision après un changement (A4), mais pas la
 disposition à chercher la trace de sa cause. Cette disposition, que les
 petits modèles acquéraient avec les mêmes données, ne passe pas au LLM par
 cet ajustement.
+
+## Régime VMI : une enfance où regarder avant d'agir paie
+
+Protocole `docs/LLM_INQUIRY_DATA_PROTOCOL.md`. Build `menia-lora-vmi-mac`
+du 23 septembre 2026, 8 h 48 – 10 h 35 UTC, commit `227225d`, lancé par le
+relais : Qwen3-0.6B ajusté par LoRA (même ajustement que VM dans `run-3`)
+sur 1 500 vies VMI, où les 2 à 6 premiers tours sont des inspections et où
+la marque est lue avant le premier mouvement dans trois vies sur quatre ;
+puis le test d'enquête et les cellules du corps ajusté sur cet adaptateur.
+Artefacts dans `artifacts/llm-lora-mac/run-5-vmi` ; verdicts (VMI contre le
+F de la deuxième exécution) recalculés depuis les lignes dans
+`artifacts/llm-lora-mac/verdicts-run-5-vmi.json`, vérifiés en CI.
+
+| | Prédiction | Mesure | Verdict |
+|---|---|---|---|
+| Validité | masse ≥ 0,5 sur les chiffres et sur les symboles | 0,999 ; 0,996 | **passe** |
+| **J1** | VMI cherche sa cause (critère d'I1) | lieu 1 préféré dans **0,29** des vies (14 sur 48) ; gains de tous les lieux légèrement négatifs (−0,012 pour le lieu 1) | **échoue** |
+| **J2** | F ne la cherche pas (I2 de la deuxième exécution) | 0,06 | **passe** |
+| **J3** | aucune prédiction | gain du lieu 1 −0,058 au pas 11, **+0,032** après le premier mouvement suivant le changement | passe au sens du calcul |
+| Global | J1 et J2 | | **non satisfait** |
+
+Cellules du corps ajusté, sans prédiction : copie 0,99, commandes
+nouvelles 0,65, **nouvelles après un mouvement 0,786** (VM : 0,793), pas 16
+à 23 du jeu M 0,80 (VM : 0,86) ; perte de validation 0,109.
+
+- **La prédiction est réfutée.** Même quand la marque est, dans trois vies
+  sur quatre, la seule information sur le corps avant le premier
+  mouvement, le LLM ajusté n'apprend pas à la lire : au début d'une vie, il
+  n'attend d'aucune inspection une baisse de son incertitude. La
+  redondance de la marque dans VM n'expliquait donc pas l'échec.
+- Après un changement de corps et un premier mouvement qui le contredit, le
+  gain attendu du lieu de la marque devient positif (0,032) : une trace
+  d'enquête qui se rallume, que rien ne prédisait et qui reste petite.
+- **Le reste ne change pas** : la structure du corps (0,786) et la révision
+  sont celles de VM.
+
+**Conclusion** : avec cet ajustement (LoRA de rang 8, 600 itérations),
+Qwen3-0.6B apprend l'effet de ses commandes à partir de ses mouvements,
+mais pas à chercher la marque de sa cause, que les données la rendent
+redondante ou nécessaire. Les petits modèles, entraînés longtemps sur ces
+mêmes vies avec une tête qui prédit le mouvement, y arrivaient ; ce qui
+manque au LLM ajusté tient à l'ajustement, pas à l'enfance seule.
