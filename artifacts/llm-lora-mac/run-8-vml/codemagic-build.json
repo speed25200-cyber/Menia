@@ -1,0 +1,76 @@
+{
+ "id": "6ab3e0112c405db01e39362c",
+ "tag": null,
+ "branch": "claude/causal-self-model-llm-results-mauabk",
+ "workflow": "menia-lora-reading-mac",
+ "status": "finished",
+ "createdAt": "2026-09-23T14:20:01.963000+00:00",
+ "startedAt": "2026-09-23T14:37:53.589000+00:00",
+ "finishedAt": "2026-09-23T16:22:57.588000+00:00",
+ "commit": "78e33b851c163f904f1689d9f8f31a847f0fa987",
+ "message": null,
+ "steps": [
+  {
+   "name": "Preparing build machine",
+   "status": "success",
+   "startedAt": "2026-09-23T14:37:53.900000+00:00",
+   "finishedAt": "2026-09-23T14:38:23.261000+00:00"
+  },
+  {
+   "name": "Fetching app sources",
+   "status": "success",
+   "startedAt": "2026-09-23T14:38:23.261000+00:00",
+   "finishedAt": "2026-09-23T14:38:39.683000+00:00"
+  },
+  {
+   "name": "Installer mlx-lm dans un environnement isolé",
+   "status": "success",
+   "startedAt": "2026-09-23T14:38:39.683000+00:00",
+   "finishedAt": "2026-09-23T14:39:02.216000+00:00"
+  },
+  {
+   "name": "Vérifier le protocole sur scoreurs simulés",
+   "status": "success",
+   "startedAt": "2026-09-23T14:39:02.216000+00:00",
+   "finishedAt": "2026-09-23T14:39:03.056000+00:00"
+  },
+  {
+   "name": "Test de lecture des adaptateurs publiés (F, VM, VMI, VMW)",
+   "status": "success",
+   "startedAt": "2026-09-23T14:39:03.056000+00:00",
+   "finishedAt": "2026-09-23T14:41:43.806000+00:00"
+  },
+  {
+   "name": "Exporter les vies VML, ajuster comme VMW, lire, mesurer l'enquête",
+   "status": "success",
+   "startedAt": "2026-09-23T14:41:43.806000+00:00",
+   "finishedAt": "2026-09-23T16:15:27.155000+00:00"
+  },
+  {
+   "name": "Cellules du corps ajusté VML (descriptives)",
+   "status": "success",
+   "startedAt": "2026-09-23T16:15:27.155000+00:00",
+   "finishedAt": "2026-09-23T16:22:53.853000+00:00"
+  },
+  {
+   "name": "Publishing",
+   "status": "success",
+   "startedAt": "2026-09-23T16:22:53.853000+00:00",
+   "finishedAt": "2026-09-23T16:22:57.455000+00:00"
+  },
+  {
+   "name": "Cleaning up",
+   "status": "success",
+   "startedAt": "2026-09-23T16:22:57.455000+00:00",
+   "finishedAt": "2026-09-23T16:22:57.588000+00:00"
+  }
+ ],
+ "artefacts": [
+  {
+   "name": "Menia_1_artifacts.zip",
+   "size": 21621174,
+   "md5": null,
+   "type": "bundle"
+  }
+ ]
+}

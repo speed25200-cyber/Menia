@@ -1,0 +1,200 @@
+Receiving objects:  64% (1545/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects:  65% (1569/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects:  66% (1593/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects:  67% (1617/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects:  68% (1641/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects:  69% (1665/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects:  70% (1690/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects:  71% (1714/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects:  72% (1738/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects:  73% (1762/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects:  74% (1786/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects:  75% (1810/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects:  76% (1834/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects:  77% (1859/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects:  78% (1883/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects:  79% (1907/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects:  80% (1931/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects:  81% (1955/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects:  82% (1979/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects:  83% (2003/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects:  84% (2027/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects:  85% (2052/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects:  86% (2076/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects:  87% (2100/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects:  88% (2124/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects:  89% (2148/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects:  90% (2172/2413), 95.15 MiB | 47.59 MiB/s
+remote: Total 2413 (delta 750), reused 2048 (delta 539), pack-reused 0 (from 0)        
+Receiving objects:  91% (2196/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects:  92% (2220/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects:  93% (2245/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects:  94% (2269/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects:  95% (2293/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects:  96% (2317/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects:  97% (2341/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects:  98% (2365/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects:  99% (2389/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects: 100% (2413/2413), 95.15 MiB | 47.59 MiB/s
+Receiving objects: 100% (2413/2413), 104.04 MiB | 48.23 MiB/s, done.
+Resolving deltas:   0% (0/750)
+Resolving deltas:   1% (8/750)
+Resolving deltas:   2% (15/750)
+Resolving deltas:   3% (23/750)
+Resolving deltas:   4% (30/750)
+Resolving deltas:   5% (38/750)
+Resolving deltas:   6% (45/750)
+Resolving deltas:   7% (53/750)
+Resolving deltas:   8% (60/750)
+Resolving deltas:   9% (68/750)
+Resolving deltas:  10% (75/750)
+Resolving deltas:  11% (83/750)
+Resolving deltas:  12% (90/750)
+Resolving deltas:  13% (98/750)
+Resolving deltas:  14% (105/750)
+Resolving deltas:  15% (114/750)
+Resolving deltas:  16% (120/750)
+Resolving deltas:  17% (128/750)
+Resolving deltas:  18% (135/750)
+Resolving deltas:  19% (143/750)
+Resolving deltas:  20% (150/750)
+Resolving deltas:  21% (158/750)
+Resolving deltas:  22% (165/750)
+Resolving deltas:  23% (173/750)
+Resolving deltas:  24% (180/750)
+Resolving deltas:  25% (188/750)
+Resolving deltas:  26% (195/750)
+Resolving deltas:  27% (203/750)
+Resolving deltas:  28% (210/750)
+Resolving deltas:  29% (218/750)
+Resolving deltas:  30% (225/750)
+Resolving deltas:  31% (233/750)
+Resolving deltas:  32% (240/750)
+Resolving deltas:  33% (248/750)
+Resolving deltas:  34% (255/750)
+Resolving deltas:  35% (264/750)
+Resolving deltas:  36% (270/750)
+Resolving deltas:  37% (278/750)
+Resolving deltas:  38% (285/750)
+Resolving deltas:  39% (293/750)
+Resolving deltas:  40% (300/750)
+Resolving deltas:  41% (308/750)
+Resolving deltas:  42% (315/750)
+Resolving deltas:  43% (323/750)
+Resolving deltas:  44% (330/750)
+Resolving deltas:  45% (338/750)
+Resolving deltas:  46% (345/750)
+Resolving deltas:  47% (353/750)
+Resolving deltas:  48% (361/750)
+Resolving deltas:  49% (368/750)
+Resolving deltas:  50% (375/750)
+Resolving deltas:  51% (383/750)
+Resolving deltas:  52% (390/750)
+Resolving deltas:  53% (398/750)
+Resolving deltas:  54% (405/750)
+Resolving deltas:  55% (413/750)
+Resolving deltas:  56% (420/750)
+Resolving deltas:  57% (428/750)
+Resolving deltas:  58% (435/750)
+Resolving deltas:  59% (443/750)
+Resolving deltas:  60% (450/750)
+Resolving deltas:  61% (458/750)
+Resolving deltas:  62% (465/750)
+Resolving deltas:  63% (473/750)
+Resolving deltas:  64% (480/750)
+Resolving deltas:  65% (488/750)
+Resolving deltas:  66% (495/750)
+Resolving deltas:  67% (503/750)
+Resolving deltas:  68% (510/750)
+Resolving deltas:  69% (518/750)
+Resolving deltas:  70% (525/750)
+Resolving deltas:  71% (533/750)
+Resolving deltas:  72% (540/750)
+Resolving deltas:  73% (548/750)
+Resolving deltas:  74% (555/750)
+Resolving deltas:  75% (563/750)
+Resolving deltas:  76% (570/750)
+Resolving deltas:  77% (578/750)
+Resolving deltas:  78% (585/750)
+Resolving deltas:  79% (593/750)
+Resolving deltas:  80% (600/750)
+Resolving deltas:  81% (608/750)
+Resolving deltas:  82% (615/750)
+Resolving deltas:  83% (623/750)
+Resolving deltas:  84% (630/750)
+Resolving deltas:  85% (638/750)
+Resolving deltas:  86% (645/750)
+Resolving deltas:  87% (653/750)
+Resolving deltas:  88% (660/750)
+Resolving deltas:  89% (668/750)
+Resolving deltas:  90% (675/750)
+Resolving deltas:  91% (683/750)
+Resolving deltas:  92% (690/750)
+Resolving deltas:  93% (698/750)
+Resolving deltas:  94% (705/750)
+Resolving deltas:  95% (713/750)
+Resolving deltas:  96% (720/750)
+Resolving deltas:  97% (728/750)
+Resolving deltas:  98% (735/750)
+Resolving deltas:  99% (743/750)
+Resolving deltas: 100% (750/750)
+Resolving deltas: 100% (750/750), done.
+Updating files:  47% (957/2009)
+Updating files:  48% (965/2009)
+Updating files:  49% (985/2009)
+Updating files:  50% (1005/2009)
+Updating files:  51% (1025/2009)
+Updating files:  52% (1045/2009)
+Updating files:  53% (1065/2009)
+Updating files:  54% (1085/2009)
+Updating files:  55% (1105/2009)
+Updating files:  56% (1126/2009)
+Updating files:  57% (1146/2009)
+Updating files:  58% (1166/2009)
+Updating files:  59% (1186/2009)
+Updating files:  60% (1206/2009)
+Updating files:  61% (1226/2009)
+Updating files:  62% (1246/2009)
+Updating files:  63% (1266/2009)
+Updating files:  64% (1286/2009)
+Updating files:  65% (1306/2009)
+Updating files:  66% (1326/2009)
+Updating files:  67% (1347/2009)
+Updating files:  68% (1367/2009)
+Updating files:  69% (1387/2009)
+Updating files:  70% (1407/2009)
+Updating files:  71% (1427/2009)
+Updating files:  72% (1447/2009)
+Updating files:  73% (1467/2009)
+Updating files:  74% (1487/2009)
+Updating files:  75% (1507/2009)
+Updating files:  76% (1527/2009)
+Updating files:  77% (1547/2009)
+Updating files:  78% (1568/2009)
+Updating files:  79% (1588/2009)
+Updating files:  80% (1608/2009)
+Updating files:  81% (1628/2009)
+Updating files:  82% (1648/2009)
+Updating files:  83% (1668/2009)
+Updating files:  84% (1688/2009)
+Updating files:  85% (1708/2009)
+Updating files:  86% (1728/2009)
+Updating files:  87% (1748/2009)
+Updating files:  88% (1768/2009)
+Updating files:  89% (1789/2009)
+Updating files:  90% (1809/2009)
+Updating files:  91% (1829/2009)
+Updating files:  92% (1849/2009)
+Updating files:  93% (1869/2009)
+Updating files:  94% (1889/2009)
+Updating files:  95% (1909/2009)
+Updating files:  96% (1929/2009)
+Updating files:  97% (1949/2009)
+Updating files:  98% (1969/2009)
+Updating files:  99% (1989/2009)
+Updating files: 100% (2009/2009)
+Updating files: 100% (2009/2009), done.
+
+== Checking out commit hash 78e33b851c163f904f1689d9f8f31a847f0fa987 ==
+<span style="color:#268BD2">&gt; /usr/bin/git reset --hard 78e33b851c163f904f1689d9f8f31a847f0fa987</span>
+HEAD is now at 78e33b8 Lancer le test de lecture de la marque et le régime VML par le relais, demande 19

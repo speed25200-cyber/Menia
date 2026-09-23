@@ -1,0 +1,30 @@
+{
+  "schema": "menia-latent-body-receipt-v1",
+  "machine": {
+    "platform": "macOS-26.5.1-arm64-arm-64bit",
+    "machine": "arm64",
+    "python": "3.12.7",
+    "cpu": "Apple M2 (Virtual)",
+    "memory_bytes": 10737418240
+  },
+  "files_sha256": {
+    "lives-M.jsonl": "c5acbe662fc4b7566facd3571006de70ea0a7ef57c48d790c948b0beb2aefb6f",
+    "lives-R.jsonl": "43b224dad2132bcb158f1c519b059742ece8fd50e7ce5b69bd65ddaa88a7873d",
+    "rows-M.jsonl": "be4fda2e7321a4b2e78a7f1141a9d93f198828bb4b205983c89b8c48df223547",
+    "rows-R.jsonl": "f1e0070807b1f40dbb269f1d9726db0c2bead475a4f5e1018cc7cbb44957b3b4"
+  },
+  "backend": "mlx",
+  "label": "VML",
+  "episodes_per_set": 48,
+  "mode": "completion",
+  "started": "2026-09-23T16:15:27.368632+00:00",
+  "protocol": "docs/ADJUSTED_BODY_PROTOCOL.md",
+  "model": {
+    "repository": "Qwen/Qwen3-0.6B",
+    "revision": null,
+    "path": "Qwen/Qwen3-0.6B",
+    "adapter": "/Users/builder/clone/llm-lora/adapters-VML"
+  },
+  "mlx_lm_version": "0.31.3",
+  "finished": "2026-09-23T16:22:52.910429+00:00"
+}
