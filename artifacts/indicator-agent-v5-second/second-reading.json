@@ -1,0 +1,70 @@
+{
+ "primary": {
+  "valid": true,
+  "RPT-1": false,
+  "RPT-2": true,
+  "GWT-1": true,
+  "GWT-2": true,
+  "GWT-3": true,
+  "GWT-4": false,
+  "HOT-1": true,
+  "HOT-2": true,
+  "HOT-3": false,
+  "HOT-4": false,
+  "AST-1": true,
+  "PP-1": true,
+  "AE-1": false,
+  "AE-2": true,
+  "passed": 9,
+  "global": false
+ },
+ "second": {
+  "valid": true,
+  "RPT-1": true,
+  "RPT-2": true,
+  "GWT-1": true,
+  "GWT-2": true,
+  "GWT-3": true,
+  "GWT-4": true,
+  "HOT-1": true,
+  "HOT-2": true,
+  "HOT-3": false,
+  "HOT-4": false,
+  "AST-1": true,
+  "PP-1": true,
+  "AE-1": false,
+  "AE-2": true,
+  "passed": 11,
+  "global": false
+ },
+ "second_values": {
+  "RPT-1": {
+   "memory_sign": 0.9464298512367738,
+   "return_loss": 0.5322566666666666,
+   "threshold": 0.41173106666666676
+  },
+  "GWT-4": {
+   "intero_low_need": 0.48475577259985175,
+   "intero_high_need": 0.2393511769650647,
+   "body_writes_after_change": 0.645,
+   "round_robin_gap": 4.269827333333334
+  },
+  "HOT-3": {
+   "pos_fault_gap": 0.16342933690555927,
+   "return_gap": 0.04508599999999996,
+   "threshold_return": 0.41173106666666676
+  },
+  "HOT-4": {
+   "spearman": 0.939325299593229,
+   "active_fraction": 0.1859722222222222,
+   "band_error": 0.11609323070855103,
+   "band_error_random": 1.2198724378631534,
+   "conflict_choice": 0.764785553047404,
+   "conflict_choice_random": 0.6199616122840691,
+   "counts": [
+    6645,
+    3126
+   ]
+  }
+ }
+}
