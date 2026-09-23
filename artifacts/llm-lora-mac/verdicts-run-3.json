@@ -1,0 +1,154 @@
+{
+ "lora": {
+  "valid": {
+   "base": true,
+   "F": true,
+   "VM": true
+  },
+  "cells": {
+   "base": {
+    "digit_mass": 0.9923323373493975,
+    "R_seen": 0.4520884520884521,
+    "R_new": 0.13297872340425532,
+    "R_new_after_move": 0.12142857142857143,
+    "R_confidence_when_wrong": 0.5117974533678756,
+    "R_new_confidence_when_wrong": 0.5154186993865031,
+    "M_12_23_seen_after": 0.40714285714285714,
+    "M_12_23_seen_before_only": 0.20175438596491227,
+    "M_12_23_new": 0.3125,
+    "M_16_23": 0.3235294117647059,
+    "M_before_change": 0.33807829181494664,
+    "counts": {
+     "R": 595,
+     "M": 567,
+     "R_seen": 407,
+     "R_new": 188,
+     "R_new_after_move": 140,
+     "M_12_23_seen_after": 140,
+     "M_12_23_seen_before_only": 114,
+     "M_16_23": 204
+    }
+   },
+   "F": {
+    "digit_mass": 0.9994731092943201,
+    "R_seen": 0.20884520884520885,
+    "R_new": 0.2074468085106383,
+    "R_new_after_move": 0.20714285714285716,
+    "R_confidence_when_wrong": 0.9979427770700638,
+    "R_new_confidence_when_wrong": 0.9999263691275165,
+    "M_12_23_seen_after": 0.45,
+    "M_12_23_seen_before_only": 0.3684210526315789,
+    "M_12_23_new": 0.375,
+    "M_16_23": 0.39705882352941174,
+    "M_before_change": 0.2918149466192171,
+    "counts": {
+     "R": 595,
+     "M": 567,
+     "R_seen": 407,
+     "R_new": 188,
+     "R_new_after_move": 140,
+     "M_12_23_seen_after": 140,
+     "M_12_23_seen_before_only": 114,
+     "M_16_23": 204
+    }
+   },
+   "VM": {
+    "digit_mass": 0.9996327951807229,
+    "R_seen": 0.995085995085995,
+    "R_new": 0.6542553191489362,
+    "R_new_after_move": 0.7928571428571428,
+    "R_confidence_when_wrong": 0.45458629850746274,
+    "R_new_confidence_when_wrong": 0.44848236923076923,
+    "M_12_23_seen_after": 1.0,
+    "M_12_23_seen_before_only": 0.35964912280701755,
+    "M_12_23_new": 0.53125,
+    "M_16_23": 0.8578431372549019,
+    "M_before_change": 0.8291814946619217,
+    "counts": {
+     "R": 595,
+     "M": 567,
+     "R_seen": 407,
+     "R_new": 188,
+     "R_new_after_move": 140,
+     "M_12_23_seen_after": 140,
+     "M_12_23_seen_before_only": 114,
+     "M_16_23": 204
+    }
+   }
+  },
+  "validation_losses": {
+   "F": [
+    [
+     1,
+     0.922
+    ],
+    [
+     100,
+     0.101
+    ],
+    [
+     200,
+     0.102
+    ],
+    [
+     300,
+     0.103
+    ],
+    [
+     400,
+     0.1
+    ],
+    [
+     500,
+     0.101
+    ],
+    [
+     600,
+     0.099
+    ]
+   ],
+   "VM": [
+    [
+     1,
+     0.922
+    ],
+    [
+     100,
+     0.117
+    ],
+    [
+     200,
+     0.113
+    ],
+    [
+     300,
+     0.111
+    ],
+    [
+     400,
+     0.111
+    ],
+    [
+     500,
+     0.11
+    ],
+    [
+     600,
+     0.11
+    ]
+   ]
+  },
+  "budget_sufficient": false,
+  "A1": true,
+  "A2": true,
+  "A2_confidence_when_wrong_all_R": 0.9979427770700638,
+  "A3": false,
+  "A4": true,
+  "A5": false,
+  "A5_models": {
+   "base": false,
+   "VM": true
+  },
+  "global": false
+ }
+}
