@@ -39,6 +39,7 @@ jobs:
       - run: python -m research.audit_indicator_agent --root artifacts/indicator-agent --replay-lives 2 --check
       - run: python -m research.audit_indicator_agent --root artifacts/indicator-agent-v2 --replay-lives 2 --check
       - run: python -m research.audit_indicator_agent --root artifacts/indicator-agent-v3 --replay-lives 2 --check
+      - run: python -m research.audit_indicator_agent --root artifacts/indicator-agent-v4 --replay-lives 2 --check
       - run: python scripts/check_reliability_artifacts.py
       - run: python scripts/check_self_model_artifacts.py
       - run: python scripts/audit_self_monitor_information.py
