@@ -79,3 +79,15 @@ Code `research/llm_lora_body.py` (régime VMI), workflow Codemagic
 artefacts dans `artifacts/llm-lora-mac/run-5-vmi`, verdicts par
 `research/llm_inquiry_verdicts.py` (VMI contre le F de la deuxième
 exécution), résultats dans `docs/LLM_INQUIRY_RESULTS.md`.
+
+## Précisions fixées avant l'exécution
+
+Écrites avec le code, avant tout lancement. Les inspections ajoutées sont
+tirées par un générateur à part : les vies VMI ont les mêmes graines, les
+mêmes corps initiaux et les mêmes pas de changement que les vies VM ; le
+corps tiré au changement vient du générateur du monde, que les actions
+consomment, et peut donc différer. Sur 300 vies, la marque est lue avant
+le premier mouvement dans 0,77 d'entre elles (0,2 dans VM). Dans le build,
+le test d'enquête passe avant les cellules du corps ajusté, pour être fait
+même si le temps venait à manquer. Le relais retire le préfixe
+`llm-lora` : l'enquête arrive dans `run-5-vmi/inquiry-VMI`.

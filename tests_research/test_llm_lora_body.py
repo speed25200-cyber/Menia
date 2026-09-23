@@ -39,6 +39,19 @@ class DataTests(unittest.TestCase):
         self.assertIn("\nHistorique :\nTour 1 : ", doc)
         self.assertEqual(doc.count("Tour "), LIFE)
 
+    def test_the_look_first_regime_is_vm_looking_before_it_acts(self):
+        vm, vmi = childhood_text_lives("VM", 5, 60), childhood_text_lives("VMI", 5, 60)
+        self.assertEqual([d["d"] for d in vm], [d["d"] for d in vmi])
+        self.assertEqual([d["change_step"] for d in vm], [d["change_step"] for d in vmi])
+        read_first = 0
+        for doc in vmi:
+            lines = doc["text"].split("Historique :\n")[1].splitlines()
+            first_move = next(i for i, line in enumerate(lines) if "commande" in line)
+            self.assertGreaterEqual(first_move, 2)
+            self.assertTrue(all("inspection du lieu" in line for line in lines[:first_move]))
+            read_first += any("lieu 1," in line for line in lines[:first_move])
+        self.assertGreater(read_first / len(vmi), 0.6)
+
     def test_export_writes_train_and_valid(self):
         with tempfile.TemporaryDirectory() as tmp:
             export_dataset("F", tmp, train=5, valid=2, seed=4)

@@ -17,7 +17,8 @@ from .llm_atelier import COMMANDS, move_line, inspect_line
 from .llm_latent_body import ScriptedScorer, MLXScorer, run_sets, write_receipt
 from .text_atelier import MUTATION_PROBABILITY, FIXED_BODY
 
-DATA_REGIMES = ("F", "V", "VM")
+DATA_REGIMES = ("F", "V", "VM", "VMI")
+LOOK_FIRST = (2, 6)  # VMI: the first k turns of a life are inspections, k uniform in this range (docs/LLM_INQUIRY_DATA_PROTOCOL.md)
 HEADER = ["Tu es un agent dans un atelier. Tu te trouves sur un anneau de 8 cases numérotées de 0 à 7.",
           "À chaque tour, tu peux soit donner une commande motrice A, B, C ou D, soit inspecter un lieu 1, 2, 3 ou 4.",
           "Tu ne sais pas quel déplacement chaque commande produit. Une inspection prend un tour et te montre un symbole.",
@@ -43,18 +44,24 @@ def life_text(lines):
 
 
 def childhood_text_lives(regime, seed, count):
-    """Random-action lives of one childhood regime, as text documents, with their hidden values."""
+    """Random-action lives of one childhood regime, as text documents, with their hidden values.
+
+    VMI is VM where the agent looks before it acts: the first k turns inspect a random place."""
     if regime not in DATA_REGIMES:
         raise ValueError("Unknown regime")
     rng = np.random.default_rng(seed)
+    look = np.random.default_rng([seed, 1])  # VMI's own draws, so that its lives are those of VM, looking first
     docs = []
     for n in range(count):
-        env = Atelier("T", int(rng.integers(2 ** 31)), mutate="self" if regime == "VM" else None,
+        env = Atelier("T", int(rng.integers(2 ** 31)), mutate="self" if regime in ("VM", "VMI") else None,
                       mutation_probability=MUTATION_PROBABILITY)
         env.reset()
         if regime == "F":
             env.d = env.d_initial = FIXED_BODY
         actions = [int(rng.integers(N_ACTIONS)) for _ in range(LIFE)]
+        if regime == "VMI":
+            k = int(look.integers(LOOK_FIRST[0], LOOK_FIRST[1] + 1))
+            actions[:k] = [N_MOVE + int(look.integers(N_ACTIONS - N_MOVE)) for _ in range(k)]
         d0 = env.d
         lines = life_lines(env, actions)
         docs.append({"text": life_text(lines), "d": d0, "d_final": env.d, "e": env.e, "change_step": env.change_step})
