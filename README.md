@@ -79,8 +79,11 @@ lecture](docs/LLM_MARK_READING_PROTOCOL.md) : aucun adaptateur ne lit la
 marque (0,25, le hasard), même élevé dans un monde où elle est la seule
 information à chaque mouvement ; le code qui relie la marque au corps est
 une interaction pure (ni le symbole ni la commande seuls ne disent rien),
-qu'un ajustement court ne trouve pas, même avec une commande préférée qui
-lui donne un appui (0,31 pour cette commande). [Synthèse des cinq plans](docs/SELF_INQUIRY_SYNTHESIS.md).
+qu'un ajustement court ne trouve pas. Avec une commande préférée qui lui
+donne un appui, et un ajustement prolongé à 1 350 itérations, **le LLM
+apprend à lire la marque** pour cette commande (0,81 ; lecteur parfait
+0,85), après un saut entre 600 et 850 itérations
+([prolongation](docs/LLM_MARK_HAND_LONG_PROTOCOL.md)). [Synthèse des cinq plans](docs/SELF_INQUIRY_SYNTHESIS.md).
 
 ## Agent à indicateurs de conscience
 

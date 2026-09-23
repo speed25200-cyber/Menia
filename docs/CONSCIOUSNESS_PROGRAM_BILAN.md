@@ -113,7 +113,10 @@ l'information intégrée, juge même le logiciel insuffisant.
    avec une commande préférée (VMLA), où le symbole seul prédit déjà la
    case dans 61 % des mouvements, ne donne qu'un début d'appui (0,31 pour
    la commande préférée ; lieu de la marque préféré dans 0,56 des vies).
-   Trois enfances et deux objectifs ont échoué avec le même ajustement
-   court : la limite est l'ajustement (LoRA de rang 8, 600 itérations).
-   La suite demanderait un ajustement bien plus long, réparti sur
-   plusieurs builds, ou un modèle plus grand ; à pré-enregistrer.
+   **Prolongé à 1 350 itérations, VMLA lit la marque** : pour sa
+   commande préférée, il donne 0,81 à la case qu'elle implique (lecteur
+   parfait 0,85 ; hasard 0,25), après un saut entre 600 et 850 itérations.
+   La lecture est spécifique (lieu 1 seulement, quatre symboles) mais ne
+   s'étend pas encore aux autres commandes. C'est la première fois qu'un
+   LLM ajusté lit la trace de la cause de ses mouvements ; il faut
+   maintenant mesurer s'il la cherche.

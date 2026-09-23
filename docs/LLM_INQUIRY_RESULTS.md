@@ -348,3 +348,56 @@ ajustement court. La limite tient à l'ajustement (LoRA de rang 8, 600
 itérations sur 1 500 vies) : c'est la troisième enfance (VMI, VML, VMLA) et
 le deuxième objectif (texte, perte pondérée) qui échouent à faire lire la
 marque à Qwen3-0.6B. Ce test ne mesure pas une expérience vécue.
+
+## VMLA prolongé : le LLM ajusté lit la marque de son corps
+
+Protocole `docs/LLM_MARK_HAND_LONG_PROTOCOL.md`. Build
+`menia-lora-hand-long-mac` du 23 septembre 2026, 18 h 17 – 19 h 39 UTC,
+commit `1a1b2e9`, lancé par le relais : l'adaptateur publié de VMLA (600
+itérations) repris et ajusté 750 itérations de plus sur les mêmes vies,
+test de lecture à 850, 1 100 et 1 350 itérations au total. Artefacts dans
+`artifacts/llm-lora-mac/run-10-vmla-long` ; verdicts dans
+`artifacts/llm-lora-mac/verdicts-run-10-vmla-long.json`, vérifiés en CI.
+
+| Itérations | Perte de validation | P1(A) | P1(B, C, D) | P0 | Masse |
+|---:|---:|---:|---:|---:|---:|
+| 600 (`run-9-vmla`) | 0,402 | 0,312 | 0,231 | 0,253 | 1,000 |
+| 850 | 0,356 | **0,737** | 0,249 | 0,251 | 0,999 |
+| 1 100 | 0,353 | 0,765 | 0,250 | 0,249 | 0,999 |
+| 1 350 | 0,362 | **0,811** | 0,250 | 0,250 | 0,999 |
+
+(Lecteur parfait : 0,85 ; hasard : 0,25.)
+
+| | Prédiction | Mesure | Verdict |
+|---|---|---|---|
+| Validité | masse ≥ 0,5 à chaque point | 0,999 | **passe** |
+| **G1** | à 1 350 : P1(A) ≥ 0,6 et P1(A) − P0 ≥ 0,3 | 0,811 ; écart 0,561 | **passe** |
+| **G2** | P1(A) gagne au moins 0,1 sur 0,312 | + 0,499 | **passe** |
+| G3 | aucune prédiction | P1(B, C, D) 0,250 à chaque point ; P1 sur les quatre commandes 0,390 | — |
+| Global | G1 | | **satisfait** |
+
+- **La prédiction est confirmée : pour la première fois, un LLM ajusté lit
+  la marque de son corps.** Entre 600 et 850 itérations, la probabilité
+  qu'il donne à la case qu'implique la marque, pour sa commande préférée,
+  passe de 0,31 à 0,74, puis monte à 0,81, près du lecteur parfait (0,85).
+  La perte de validation fait le même saut (0,402 → 0,356). C'est une
+  **transition après un plateau**, comme on l'attend quand le gradient
+  doit trouver une interaction : l'appui donné par la commande préférée l'a
+  rendue trouvable, et la durée l'a fait trouver.
+- **La lecture est spécifique** (constats, non pré-enregistrés). Elle ne
+  vient que du lieu 1 : après un symbole lu à un autre lieu, la commande A
+  reste au hasard (0,25). Les quatre symboles sont lus (0,78 à 0,84 à
+  1 350 itérations) ; △ et □, confondus à 600 itérations, sont distingués.
+  Pour les commandes B, C et D, le modèle reste au hasard (0,25) au lieu
+  d'appliquer la case de A : il ne sait pas, et ne fait pas semblant de
+  savoir.
+- **La lecture ne s'étend pas aux autres commandes** en 1 350 itérations :
+  le code entier du corps (l'interaction complète entre symbole et
+  commande) n'est pas appris. C'était sans prédiction.
+
+**Conclusion** : un Qwen3-0.6B ajusté par LoRA apprend à lire la trace de
+la cause de ses mouvements, pourvu que son enfance lui donne un appui (une
+commande préférée, qui rend le symbole utile à lui seul) et que
+l'ajustement dure assez pour passer le plateau. Reste à mesurer s'il
+**cherche** désormais cette marque, ce que le protocole renvoyait à une
+mesure suivante. Ce test ne mesure pas une expérience vécue.
