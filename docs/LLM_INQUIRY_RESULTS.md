@@ -173,3 +173,67 @@ L'hypothèse (l'objectif compte) reste ouverte. Une relance devrait garder
 la perte sur tout le texte, pour les symboles et pour le nombre de cibles,
 et y ajouter un poids sur les cases d'arrivée ; elle demande un nouveau
 protocole.
+
+## Ajustement pondéré (VMW) : la structure apprise, pas l'enquête
+
+Protocole `docs/LLM_MOTOR_OBJECTIVE_PROTOCOL.md`, amendement 1. Build
+`menia-lora-weighted-mac` du 23 septembre 2026, 12 h 42 – 14 h 10 UTC,
+commit `a9bf62d`, lancé par le relais : Qwen3-0.6B ajusté sur les mêmes
+1 500 vies VMI que `run-5-vmi`, même LoRA, 600 itérations, la perte portant
+sur tout le texte mais chaque chiffre de case d'arrivée pesant 20 fois
+plus. Artefacts dans `artifacts/llm-lora-mac/run-7-vmw` ; verdicts dans
+`artifacts/llm-lora-mac/verdicts-run-7-vmw.json`, vérifiés en CI.
+
+| | Prédiction | Mesure | Verdict |
+|---|---|---|---|
+| Validité | masse ≥ 0,5 sur les chiffres et sur les symboles | 0,999 ; 0,996 | **passe** |
+| **K1** | VMW cherche sa cause (critère d'I1) | lieu 1 préféré dans **0,44** des vies (21 sur 48) ; gains de tous les lieux légèrement négatifs (−0,007 pour le lieu 1, −0,008 à −0,011 pour les autres) | **échoue** |
+| **K2** | F ne la cherche pas (I2 de la deuxième exécution) | 0,06 | **passe** |
+| **K3** | aucune prédiction | gain du lieu 1 −0,082 au pas 11, +0,002 après le premier mouvement suivant le changement | passe au sens du calcul, parce que le gain d'avant est négatif ; la hausse est presque nulle |
+| Global | K1 et K2 | | **non satisfait** |
+
+L'ajustement s'est fait normalement (perte de validation pondérée de 1,16
+à 0,17, en baisse jusqu'au bout). Les cases d'arrivée ont porté **0,22**
+de la perte, et non « près du tiers » comme l'amendement l'estimait : une
+vie compte environ 700 cibles, pas 500 (`weights-VMW.json`). Le poids de 20
+est resté celui qui avait été fixé.
+
+Cellules du corps ajusté, sans prédiction :
+
+| | VMI (`run-5-vmi`) | **VMW** |
+|---|---:|---:|
+| Copie des commandes vues (jeu R) | 0,99 | 0,98 |
+| Commandes nouvelles (jeu R) | 0,65 | **0,75** |
+| Nouvelles après un mouvement (cellule d'A3) | 0,786 | **0,929** |
+| Jeu M, pas 16 à 23 (cellule d'A4) | 0,80 | **0,86** |
+| Jeu M, commandes vues seulement avant le changement | 0,24 | 0,39 |
+
+- **La prédiction est réfutée.** Même quand la perte met l'accent sur
+  l'effet de ses commandes, le LLM ajusté n'attend d'aucune inspection,
+  au début d'une vie, une baisse de son incertitude.
+- **L'objectif change la structure apprise.** Sur les commandes jamais
+  essayées, après un mouvement, VMW prédit juste dans 0,93 des cas, là où
+  tous les ajustements sur le texte plafonnaient à 0,79 (VM, VMI, rang 16).
+  C'est la première fois qu'une valeur passe le seuil de 0,80 d'A3. Ce
+  n'est pas un verdict A3, qui porte sur le régime VM avec la perte sur le
+  texte : c'est une cellule descriptive.
+- **Analyse exploratoire, non pré-enregistrée** (petit échantillon). Dans
+  les vies d'évaluation, la marque du lieu 1 a été lue avant le premier
+  mouvement dans 20 cas (10 dans R, 10 dans M). VMW donne alors à la bonne
+  case d'arrivée une probabilité moyenne de 0,26, contre 0,24 dans les 76
+  cas où elle n'a pas été lue (hasard : 0,25) ; VMI : 0,26 contre 0,24 ;
+  VM (`run-4`) : 0,22 contre 0,25 (`research/llm_mark_use.py`, sortie
+  `artifacts/llm-lora-mac/mark-use.json`, vérifiée en CI). **Le LLM
+  ajusté ne lit pas la marque** : il n'a pas appris ce que chaque symbole
+  dit de son corps. L'enquête ne peut pas se former sur une information
+  qu'il ne sait pas lire. L'échec est en amont de la disposition à
+  chercher.
+
+**Conclusion** : l'amendement 1 prévoyait une seule relance. Elle a donné
+un résultat valide, négatif pour l'hypothèse. Avec un ajustement LoRA court
+de Qwen3-0.6B, ni l'enfance (VMI) ni l'objectif (VMW) ne suffisent pour que
+le modèle cherche la cause de son corps. L'objectif pondéré lui fait mieux
+apprendre l'effet de ses commandes à partir de ses mouvements, mais le lien
+arbitraire entre un symbole et son corps, qui ne sert qu'au premier
+mouvement d'une vie, n'est pas appris. Ce test ne mesure pas une
+expérience vécue.

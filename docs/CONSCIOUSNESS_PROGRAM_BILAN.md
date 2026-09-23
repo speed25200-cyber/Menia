@@ -94,10 +94,17 @@ l'information intégrée, juge même le logiciel insuffisant.
    seuils fixés en version 1 sans abîmer autre chose. Aller plus loin
    demanderait de redéfinir leurs tests d'usage, ce qui ne se fait qu'avec
    l'accord du propriétaire et par un nouveau protocole.
-2. **Le LLM et son propre corps** : l'ajustement donne la structure en
-   partie (0,79) mais pas l'enquête, même avec une enfance où la marque est
-   la seule information avant le premier mouvement (régime VMI : lieu de la
-   marque préféré dans 0,29 des vies ; `docs/LLM_INQUIRY_RESULTS.md`). Ce
-   qui manque tient à l'ajustement (LoRA court sur le prochain mot) ; la
-   suite serait un ajustement plus long ou ciblé sur la prédiction du
-   mouvement, ou un modèle plus grand, à pré-enregistrer.
+2. **Le LLM et son propre corps** : l'ajustement sur le texte donne la
+   structure en partie (0,79), mais pas l'enquête, même avec une enfance où
+   la marque est la seule information avant le premier mouvement (régime
+   VMI : lieu de la marque préféré dans 0,29 des vies). Avec une perte où
+   les cases d'arrivée pèsent 20 fois plus (VMW), la structure est
+   nettement mieux apprise (**0,93** sur les commandes jamais essayées),
+   mais l'enquête toujours pas (0,44). Une analyse exploratoire montre
+   pourquoi : le LLM ajusté **ne lit pas la marque**. Après l'avoir vue, il
+   ne prédit pas mieux son premier mouvement (0,26 ; hasard 0,25). Le lien
+   arbitraire entre un symbole et son corps ne sert qu'au premier mouvement
+   d'une vie, et un ajustement LoRA court ne l'apprend pas
+   (`docs/LLM_INQUIRY_RESULTS.md`). La suite, à pré-enregistrer : un
+   monde où la marque sert à chaque tour (corps qui change souvent), un
+   ajustement plus long, ou un modèle plus grand.

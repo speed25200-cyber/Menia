@@ -70,7 +70,13 @@ ses commandes (0,995), prédit celui d'une commande jamais essayée après un
 mouvement dans 0,793 des cas (seuil 0,80 ; modèle de base 0,12) et suit son
 nouveau corps après un changement (0,86) ; ajusté sur un corps fixe, il
 confabule avec une confiance de 1,00. Critère global non satisfait d'une
-question ; relance au rang 16 déclarée et en cours. [Synthèse des cinq plans](docs/SELF_INQUIRY_SYNTHESIS.md).
+question, même au rang 16 (0,793). [Enquête du LLM
+ajusté](docs/LLM_INQUIRY_RESULTS.md) : il ne cherche pas la marque de son
+corps, ni après une enfance où l'on regarde avant d'agir (0,29), ni avec
+une perte où les cases d'arrivée pèsent 20 fois plus (0,44, seuil 0,7).
+Cette perte porte pourtant la structure à 0,93. Une analyse exploratoire
+montre qu'il ne lit pas la marque : après l'avoir vue, il ne prédit pas
+mieux son premier mouvement que le hasard. [Synthèse des cinq plans](docs/SELF_INQUIRY_SYNTHESIS.md).
 
 ## Agent à indicateurs de conscience
 

@@ -1,0 +1,32 @@
+{
+ "VM": {
+  "read": {
+   "moves": 20,
+   "p_true": 0.2182
+  },
+  "not_read": {
+   "moves": 76,
+   "p_true": 0.2459
+  }
+ },
+ "VMI": {
+  "read": {
+   "moves": 20,
+   "p_true": 0.2583
+  },
+  "not_read": {
+   "moves": 76,
+   "p_true": 0.2416
+  }
+ },
+ "VMW": {
+  "read": {
+   "moves": 20,
+   "p_true": 0.2561
+  },
+  "not_read": {
+   "moves": 76,
+   "p_true": 0.2373
+  }
+ }
+}
