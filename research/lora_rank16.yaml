@@ -1,0 +1,5 @@
+# Third execution amendment of docs/ADJUSTED_BODY_PROTOCOL.md: LoRA rank 16 instead of 8; dropout and scale unchanged.
+lora_parameters:
+  rank: 16
+  dropout: 0.0
+  scale: 20.0

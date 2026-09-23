@@ -106,3 +106,23 @@ en deux builds**, `menia-lora-f-mac` (base et F) et `menia-lora-vm-mac` (VM),
 chacun avec les mêmes données, les mêmes réglages LoRA et les points de
 contrôle ; résultats attendus dans `artifacts/llm-lora-mac/run-3-f` et
 `run-3-vm`, verdicts calculés sur les deux répertoires réunis.
+
+## Troisième amendement, 23 septembre 2026 (heure du commit) : relance de VM au rang 16
+
+Écrit après la lecture de `run-3` (`docs/ADJUSTED_BODY_RESULTS.md`), selon la
+règle du protocole : A3 échoue (0,793 pour 0,80) alors que le
+micro-transformeur réussit, et la perte de validation de VM ne descend pas
+sous celle de F, ce qui déclare le budget insuffisant. La perte de VM ne
+baisse plus depuis 300 itérations : la durée n'est pas en cause, la
+capacité peut l'être.
+
+**Relance de VM seul**, workflow `menia-lora-vm-rank-mac` : LoRA de **rang 16
+au lieu de 8**, sur **toutes les couches (28) au lieu de 16**, mêmes données
+(1 500 vies VM, graine 17), mêmes 600 itérations, mêmes lots, taux, longueur
+et points de contrôle, mlx-lm fixé à 0.31.3. Base et F ne sont pas relancés.
+
+**Critères inchangés.** A3 (≥ 0,80) et la part VM d'A4 (≥ 0,70) sont jugés
+sur la relance ; A1, A2 et la part F d'A4 restent ceux de `run-3`. Le verdict
+global de la relance (A1 et A2 de `run-3`, A3 de la relance) sera publié à
+côté de celui de `run-3`, qui reste non satisfait. Résultats attendus dans
+`artifacts/llm-lora-mac/run-4-vm`.
