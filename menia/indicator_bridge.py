@@ -105,8 +105,53 @@ class IndicatorAgentBridge:
     def context(self):
         self._active()
         rec = self.last or {}
+        workspace = self.workspace()
+        values = workspace["vision"]["values"]
+        needs = workspace["interoception"]
         return copy_json({"scope": "agent à indicateurs de l'Atelier des sens, version 5 : contenus de l'espace de travail "
                                    "global et dernière décision ; les états propres aux modules ne sont pas diffusés",
-                          "tick": self.tick, "workspace": self.workspace(), "goal": rec.get("goal"),
-                          "plan_values": rec.get("plan_values"), "last_writer": (rec.get("writers") or [None])[0],
-                          "alarm": rec.get("alarm"), "explanation": self.explain()})
+                          "tick": self.tick, "workspace": workspace,
+                          "best_known_object": int(max(values, key=values.get)) if values else None,
+                          "lowest_need": "energy" if needs["energy"] < needs["satiety"] else "satiety",
+                          "goal": rec.get("goal"), "plan_values": rec.get("plan_values"),
+                          "last_writer": (rec.get("writers") or [None])[0], "alarm": rec.get("alarm"),
+                          "explanation": self.explain()})
+
+
+WRITER_TEXT = {"pos": "la position", "body": "le corps", "vis": "la vision", "intero": "les besoins"}
+NEED_TEXT = {"energy": "l'énergie", "satiety": "la satiété"}
+
+
+def steps_text(age):
+    """The age of a workspace content; ages are capped at 8 steps by the agent."""
+    if age == 0:
+        return "à ce pas"
+    return f"{'au moins ' if age >= 8 else ''}{age} pas plus tôt"
+
+
+def decision_text(goal):
+    if goal == "charger":
+        return "aller à la recharge"
+    if goal == "stay":
+        return "rester sur place"
+    return f"aller vers l'objet de la case {goal}"
+
+
+def journal(context):
+    """The bridge context as explicit French statements, one per line, without pronouns (docs/MENIA_REPORT_PROTOCOL.md)."""
+    w = context["workspace"]
+    pos, body, vis, needs = w["position"], w["body"], w["vision"], w["interoception"]
+    best = context["best_known_object"]
+    seen = f"Objets vus sur les cases : {', '.join(str(x) for x in vis['present'])}." if vis["present"] else "Aucun objet vu."
+    known = (f"L'objet de plus grande valeur connue est sur la case {best}" if best is not None
+             else "Aucun objet vu n'a de valeur connue")
+    alarm = " (par une alarme)" if context.get("alarm") else ""
+    lines = [f"Espace de travail de l'agent, pas {context['tick']}.",
+             f"L'espace de travail place l'agent sur la case {pos['square']} (contenu écrit {steps_text(pos['age'])}).",
+             f"L'espace de travail attribue à l'agent le corps {body['body']} (contenu écrit {steps_text(body['age'])}).",
+             f"{seen} {known} (contenu écrit {steps_text(vis['age'])}).",
+             f"Énergie : {needs['energy']:.2f}. Satiété : {needs['satiety']:.2f}. Le besoin le plus bas est "
+             f"{NEED_TEXT[context['lowest_need']]} (contenu écrit {steps_text(needs['age'])}).",
+             f"Dernier contenu entré dans l'espace de travail : {WRITER_TEXT[context['last_writer']]}{alarm}.",
+             f"Décision de l'agent : {decision_text(context['goal'])}."]
+    return "\n".join(lines) + "\n"

@@ -66,3 +66,21 @@ vérification.
 Workflow Codemagic `menia-menia-report-mac`, lancé par le relais, artefacts
 dans `artifacts/menia-report/run-1`, résultats dans
 `docs/MENIA_REPORT_RESULTS.md`.
+
+## Précisions fixées avant l'exécution
+
+Écrites avec le code, avant tout lancement. 120 états, tous avec un objet
+de valeur connue : **2 160 items**, empreinte `7ff6ed37…` (fichier
+`artifacts/menia-report/items.jsonl`, reconstruit depuis l'agent en CI).
+
+- Le journal dit l'âge de chaque contenu sans pronom (« contenu écrit
+  3 pas plus tôt », « au moins 8 pas plus tôt » quand l'âge atteint le
+  plafond de l'agent) et la décision « aller à la recharge ».
+- Le contrefactuel change l'étiquette interrogée **et ce dont elle est la
+  conclusion**, pour que le journal reste cohérent : pour le besoin le plus
+  bas, les deux besoins sont échangés ; pour l'objet de plus grande valeur
+  ou une décision vers un objet, la case est ajoutée aux objets vus si elle
+  n'y est pas ; pour le dernier contenu entré, la mention d'alarme est
+  retirée.
+- La phrase hors sujet est « Dehors, la pluie tombe sur la ville. », placée
+  entre les objets vus et les besoins.

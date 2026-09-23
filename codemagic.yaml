@@ -218,6 +218,36 @@ workflows:
     artifacts:
       - llm-report/**
 
+  menia-menia-report-mac:
+    name: Menia - Menia rapporte l'espace de travail de son agent (Qwen3-4B)
+    instance_type: mac_mini_m2
+    max_build_duration: 100
+    environment:
+      vars:
+        ATELIER_MODEL: "Qwen/Qwen3-4B-MLX-4bit"
+        ATELIER_REVISION: "52a5ab34fa604bc8af6d3ce0cac0cab10b7eb495"
+    scripts:
+      - name: Installer mlx-lm dans un environnement isolé
+        script: |
+          python3 -m venv .venv
+          source .venv/bin/activate
+          pip install --upgrade pip
+          pip install "numpy==2.2.6" "mlx-lm==0.31.3" "huggingface_hub>=0.30"
+      - name: Vérifier le protocole sur un rapporteur simulé
+        script: |
+          source .venv/bin/activate
+          python -m unittest tests_research.test_llm_menia_report.MeniaReportTests -v
+      - name: Faire rapporter l'espace de travail de l'agent par Qwen3-4B, sans génération
+        script: |
+          set -eo pipefail
+          source .venv/bin/activate
+          python -m research.llm_menia_report score --backend mlx --model "$ATELIER_MODEL" --revision "$ATELIER_REVISION" \
+            --manifest ios/MeniaCore/Sources/MeniaCore/Resources/qwen3-4b.json \
+            --items artifacts/menia-report/items.jsonl --out "$CM_BUILD_DIR/menia-report" | tail -40
+          git rev-parse HEAD > "$CM_BUILD_DIR/menia-report/commit.txt"
+    artifacts:
+      - menia-report/**
+
   menia-inquiry-mac:
     name: Menia - Où le LLM ajusté chercherait-il sa cause
     instance_type: mac_mini_m2
