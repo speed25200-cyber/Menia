@@ -743,8 +743,8 @@ workflows:
           OUT="$CM_BUILD_DIR/llm-lora"
           mkdir -p "$OUT"
           python -m research.llm_inquiry --backend mlx --model "$LORA_MODEL" \
-            --adapter artifacts/llm-lora-mac/run-10-vmla-long/adapters-VMLA-1350 \
-            --label VMLA-1350 --out "$OUT/inquiry-VMLA-1350" | tail -25
+            --adapter "${SEEK_ADAPTER:-artifacts/llm-lora-mac/run-10-vmla-long/adapters-VMLA-1350}" \
+            --label "${SEEK_LABEL:-VMLA-1350}" --out "$OUT/inquiry-${SEEK_LABEL:-VMLA-1350}" | tail -25
           git rev-parse HEAD > "$OUT/commit.txt"
     artifacts:
       - llm-lora/**

@@ -15,7 +15,7 @@ Il attend la fin de tous les builds (`wait_minutes`, 345 au plus), rapatrie
 les artefacts dans `dest` et pousse sur la branche. Il ne retire que les
 préfixes `llm-latent`, `llm-lora` et `llm-atelier` : les autres artefacts
 arrivent sous `dest/<nom du dossier>`. Les builds passent un par un.
-**La prochaine demande porte le numéro 24** (la 23 lance `menia-lora-full-mac` vers `run-12-full` ; l'enquête sur son adaptateur final suivra). Codemagic fige le commit à la
+**La prochaine demande porte le numéro 25** (la 24 lance l'enquête sur `adapters-FULL-2100` vers `run-13-full-seek`). Codemagic fige le commit à la
 création du build : un build lancé par une demande utilise le commit de
 cette demande, même s'il démarre plus tard.
 
@@ -49,6 +49,7 @@ cette demande, même s'il démarre plus tard.
 | 12 | `menia-lora-vm-rank-mac` | `artifacts/llm-lora-mac/run-4-vm` | **fait** : A3 0,793 (échoue encore), A4 passe, global non satisfait ; pas de boucle P-soi |
 | 13 | `menia-menia-report-mac` | `artifacts/menia-report/run-1/menia-report` | **fait** : M2 et M3 passent, M1 échoue (« les besoins » rapportés comme « la position »), `docs/MENIA_REPORT_RESULTS.md` |
 | 15 | `menia-menia-report-mac`, `MENIA_REPORT_ITEMS=items-v2.jsonl` | `artifacts/menia-report/run-2/menia-report` | **fait** : M1, M2 et M3 passent (0,997 ; 0,999 ; 0,999), global satisfait |
+| 23 | `menia-lora-full-mac` (`docs/LLM_MARK_FULL_PROTOCOL.md`) | `artifacts/llm-lora-mac/run-12-full` | **fait** : C1 échoue (P1(BCD) 0,262), C2 passe (P1(A) 0,893) ; global non satisfait ; C3–C4 par la demande 24 |
 | 22 | `menia-lora-seek-mac` (`docs/LLM_MARK_SEEK_PROTOCOL.md`) | `artifacts/llm-lora-mac/run-11-seek` | **fait** : S1 passe (lieu 1 préféré dans 48 vies sur 48, gain 0,123), S2 passe ; global satisfait |
 | 21 | `menia-lora-hand-long-mac` (`docs/LLM_MARK_HAND_LONG_PROTOCOL.md`) | `artifacts/llm-lora-mac/run-10-vmla-long` | **fait** : G1 et G2 passent, P1(A) 0,312 → 0,737 → 0,811 ; global satisfait ; la marque est lue pour A, pas pour B à D |
 | 20 | `menia-lora-hand-mac` (`docs/LLM_MARK_HAND_PROTOCOL.md`) | `artifacts/llm-lora-mac/run-9-vmla` | **fait** : H1 échoue (P1(A) 0,312), H3 échoue (0,56), H4 passe ; global non satisfait |

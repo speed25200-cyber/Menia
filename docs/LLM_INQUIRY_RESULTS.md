@@ -442,3 +442,35 @@ l'apprendre. Limites : un monde où le corps change à chaque mouvement ; une
 lecture pour une seule commande ; une disposition mesurée sur les
 prédictions du modèle, pas encore sur des actions qu'il choisirait. Ce
 test ne mesure pas une expérience vécue.
+
+## Vers le code entier : la lecture reste liée à la commande préférée
+
+Protocole `docs/LLM_MARK_FULL_PROTOCOL.md`. Build `menia-lora-full-mac` du
+23 septembre 2026, 20 h 16 – 21 h 32 UTC, commit `45fc6b3` : VMLA-1350
+repris 750 itérations sur les vies VML (quatre commandes à parts égales).
+Artefacts dans `artifacts/llm-lora-mac/run-12-full` ; verdicts de lecture
+dans `artifacts/llm-lora-mac/verdicts-run-12-full.json`, vérifiés en CI.
+
+| Itérations | Perte de validation | P1(A) | P1(B, C, D) | P0 |
+|---:|---:|---:|---:|---:|
+| 1 350 (`run-10-vmla-long`) | — | 0,811 | 0,250 | 0,250 |
+| 1 600 | 0,396 | 0,690 | 0,250 | 0,250 |
+| 1 850 | 0,396 | 0,841 | 0,248 | 0,250 |
+| 2 100 | 0,389 | **0,893** | **0,262** | 0,250 |
+
+| | Prédiction | Mesure | Verdict |
+|---|---|---|---|
+| **C1** | la lecture s'étend aux autres commandes (P1(BCD) ≥ 0,6) | 0,262 | **échoue** |
+| **C2** | la lecture de A se maintient (P1(A) ≥ 0,6) | 0,893 | **passe** |
+| C3, C4 | enquête sur l'adaptateur final | build suivant | en attente |
+| Global | C1 à C4 | | **non satisfait** (C1 échoue) |
+
+- **La prédiction est réfutée** : même avec les quatre commandes à parts
+  égales pendant 750 itérations, la lecture ne s'étend pas à B, C et D
+  (0,262, à peine au-dessus du hasard). Pour A, elle se renforce (0,893,
+  au-delà du lecteur calibré de 0,85). La lecture reste liée à la commande
+  qui l'a fait naître : l'enfance uniforme qui suit ne donne, pour les
+  autres commandes, que l'interaction pure que VML n'avait pas trouvée.
+- Comme prévu par le protocole, le test d'enquête (C3) est fait dans un
+  build suivant, sur l'adaptateur final publié. Ce test ne mesure pas une
+  expérience vécue.

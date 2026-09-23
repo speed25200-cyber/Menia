@@ -1,0 +1,48 @@
+{
+ "verdicts": {
+  "valid_1600": true,
+  "valid_1850": true,
+  "valid_2100": true,
+  "C1": false,
+  "C2": true,
+  "valid_inquiry": null,
+  "valid_inquiry_F": null,
+  "C3": null,
+  "C4": null,
+  "global": false
+ },
+ "summaries_match_published": true,
+ "curve": {
+  "1600": {
+   "points": 256,
+   "digit_mass": 0.9994468671875,
+   "P1": 0.360147328125,
+   "P0": 0.2501351614583333,
+   "accuracy_1": 0.4375,
+   "accuracy_0": 0.25,
+   "P1_A": 0.6899630625,
+   "P1_BCD": 0.25020875000000004
+  },
+  "1850": {
+   "points": 256,
+   "digit_mass": 0.9993715898437501,
+   "P1": 0.39593975000000003,
+   "P0": 0.25044831770833337,
+   "accuracy_1": 0.421875,
+   "accuracy_0": 0.265625,
+   "P1_A": 0.841246625,
+   "P1_BCD": 0.247504125
+  },
+  "2100": {
+   "points": 256,
+   "digit_mass": 0.99948069921875,
+   "P1": 0.41943315625,
+   "P0": 0.25004070312500004,
+   "accuracy_1": 0.53125,
+   "accuracy_0": 0.2604166666666667,
+   "P1_A": 0.893027375,
+   "P1_BCD": 0.2615684166666667
+  }
+ },
+ "inquiry": null
+}
