@@ -49,7 +49,7 @@ cette demande, même s'il démarre plus tard.
 | 12 | `menia-lora-vm-rank-mac` | `artifacts/llm-lora-mac/run-4-vm` | **fait** : A3 0,793 (échoue encore), A4 passe, global non satisfait ; pas de boucle P-soi |
 | 13 | `menia-menia-report-mac` | `artifacts/menia-report/run-1/menia-report` | **fait** : M2 et M3 passent, M1 échoue (« les besoins » rapportés comme « la position »), `docs/MENIA_REPORT_RESULTS.md` |
 | 15 | `menia-menia-report-mac`, `MENIA_REPORT_ITEMS=items-v2.jsonl` | `artifacts/menia-report/run-2/menia-report` | **fait** : M1, M2 et M3 passent (0,997 ; 0,999 ; 0,999), global satisfait |
-| 16 | `menia-lora-vmi-mac` (`docs/LLM_INQUIRY_DATA_PROTOCOL.md`) | `artifacts/llm-lora-mac/run-5-vmi` | verdicts J1–J3 : `python -m research.llm_inquiry_verdicts --vm …/run-5-vmi/inquiry-VMI --f artifacts/llm-inquiry/run-2/llm-inquiry/F` ; cellules du corps ajusté en description ; ajouter à `docs/LLM_INQUIRY_RESULTS.md`, contrôle CI |
+| 16 | `menia-lora-vmi-mac` (`docs/LLM_INQUIRY_DATA_PROTOCOL.md`) | `artifacts/llm-lora-mac/run-5-vmi` | **fait** : valide ; J1 échoue (0,29), J2 passe, J3 +0,032 ; global non satisfait |
 | 14 | `menia-inquiry-mac` (amendement 2) | `artifacts/llm-inquiry/run-2/llm-inquiry` | **fait** : valide ; I1 échoue (0,40), I2 passe, I3 échoue ; `docs/LLM_INQUIRY_RESULTS.md` |
 
 ## Version 6 de l'agent

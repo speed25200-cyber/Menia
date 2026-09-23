@@ -1,4 +1,4 @@
-# Bilan — Où en est le but, 23 septembre 2026 (8 h 30 UTC)
+# Bilan — Où en est le but, 23 septembre 2026 (10 h 40 UTC)
 
 Pour le propriétaire du dépôt, en bref.
 
@@ -95,6 +95,9 @@ l'information intégrée, juge même le logiciel insuffisant.
    demanderait de redéfinir leurs tests d'usage, ce qui ne se fait qu'avec
    l'accord du propriétaire et par un nouveau protocole.
 2. **Le LLM et son propre corps** : l'ajustement donne la structure en
-   partie (0,79) mais pas l'enquête ; une autre recette (données où la
-   marque est la seule source d'information, ou un modèle plus grand) serait
-   à pré-enregistrer.
+   partie (0,79) mais pas l'enquête, même avec une enfance où la marque est
+   la seule information avant le premier mouvement (régime VMI : lieu de la
+   marque préféré dans 0,29 des vies ; `docs/LLM_INQUIRY_RESULTS.md`). Ce
+   qui manque tient à l'ajustement (LoRA court sur le prochain mot) ; la
+   suite serait un ajustement plus long ou ciblé sur la prédiction du
+   mouvement, ou un modèle plus grand, à pré-enregistrer.
