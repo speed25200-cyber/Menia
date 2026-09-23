@@ -80,3 +80,42 @@ de VM ne baissait déjà presque plus après 300 itérations (0,111, puis 0,110
 Le test d'enquête (`docs/LLM_INQUIRY_PROTOCOL.md`), pré-enregistré pour être
 lancé quels que soient les verdicts A1 à A5, part avec ces adaptateurs : le
 LLM ajusté sait-il où chercher la cause de son corps ?
+
+## Relance de VM au rang 16 (troisième amendement)
+
+Build `menia-lora-vm-rank-mac` du 23 septembre 2026, 3 h 27 – 4 h 58 UTC,
+commit `463a691`, lancé par le relais : Qwen3-0.6B, LoRA de rang 16 sur
+les 28 couches, mêmes données, mêmes 600 itérations, mlx-lm 0.31.3.
+Artefacts dans `artifacts/llm-lora-mac/run-4-vm` ; verdicts recalculés
+depuis les lignes (VM de la relance, base et F de `run-3`) dans
+`artifacts/llm-lora-mac/verdicts-run-4.json`, vérifiés en CI.
+
+| | Prédiction | Mesure | Verdict |
+|---|---|---|---|
+| Validité | masse sur les chiffres ≥ 0,50 | VM 0,999 | **passe** |
+| **A3** | nouvelles après un mouvement ≥ 0,80 | **0,793** (111 sur 140) | **échoue** |
+| **A4** | VM, pas 16 à 23 ≥ 0,70 ; F ≤ 0,40 | 0,72 ; 0,40 (`run-3`) | **passe** |
+| **A5** | copie : base et VM ≥ 0,60 | base 0,45 (`run-3`) ; VM 1,00 | **échoue** (base) |
+| Global | A1 et A2 de `run-3`, A3 de la relance | | **non satisfait** |
+
+**Budget** : la perte de validation de VM finit à 0,112 (0,115 à 400
+itérations, 0,111 à 500), toujours au-dessus de celle de F (0,099) ; le
+budget reste déclaré insuffisant.
+
+- **Doubler le rang et couvrir toutes les couches ne change rien
+  d'essentiel.** La perte plafonne au même niveau (0,11) et A3 retombe sur
+  la même fraction, 111 sur 140. Ce n'est pas la même réponse répétée : 47
+  des 595 prédictions du jeu R diffèrent entre les deux ajustements, et sur
+  les commandes nouvelles 12 erreurs deviennent justes quand 17 réponses
+  justes deviennent fausses. La capacité de l'adaptateur n'est donc pas ce
+  qui manque.
+- La révision après un changement de corps baisse (0,72 contre 0,86) et
+  reste au-dessus de son seuil ; la confiance quand la prédiction est fausse
+  baisse aussi (0,35 contre 0,45).
+- **Conclusion de la ligne du corps ajusté** : un LLM ajusté sur des vies à
+  corps variable et changeant acquiert l'essentiel de la structure de son
+  corps (0,79 sur les commandes jamais essayées, contre 0,13 pour le modèle
+  de base et 0,21 pour l'ajustement à corps fixe) et la révise après un
+  changement, mais pas au niveau pré-enregistré de 0,80, et ni la durée ni
+  la capacité ne l'y amènent. La boucle P-soi, conditionnée à A3, n'est pas
+  pré-enregistrée ; aucune autre relance n'est faite.
