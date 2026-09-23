@@ -15,7 +15,7 @@ Il attend la fin de tous les builds (`wait_minutes`, 345 au plus), rapatrie
 les artefacts dans `dest` et pousse sur la branche. Il ne retire que les
 préfixes `llm-latent`, `llm-lora` et `llm-atelier` : les autres artefacts
 arrivent sous `dest/<nom du dossier>`. Les builds passent un par un.
-**La prochaine demande porte le numéro 14.**
+**La prochaine demande porte le numéro 15.**
 
 ## Où en est le programme
 
@@ -43,9 +43,19 @@ arrivent sous `dest/<nom du dossier>`. Les builds passent un par un.
 
 | Demande | Workflow | Destination | Suite |
 |---|---|---|---|
-| 11 | `menia-inquiry-mac` | `artifacts/llm-inquiry/run-1` | verdicts I1–I3 par `research.llm_inquiry`, puis `docs/LLM_INQUIRY_RESULTS.md` et un contrôle CI |
+| 11 | `menia-inquiry-mac` | `artifacts/llm-inquiry/run-1` | **fait** : invalide (masse sur les symboles 0,014 et 0,007), `docs/LLM_INQUIRY_RESULTS.md` |
 | 12 | `menia-lora-vm-rank-mac` | `artifacts/llm-lora-mac/run-4-vm` | A3 et la part VM de A4 ; verdict global avec A1 et A2 de run-3 ; ajouter à `docs/ADJUSTED_BODY_RESULTS.md` ; si A3 passe, pré-enregistrer la boucle P-soi |
 | 13 | `menia-menia-report-mac` | `artifacts/menia-report/run-1/menia-report` | `python -m research.llm_menia_report verdicts --rows …/rows.jsonl --check …/summary.json`, puis `docs/MENIA_REPORT_RESULTS.md` et un contrôle CI |
+| 14 | `menia-inquiry-mac` (amendement 2) | `artifacts/llm-inquiry/run-2/llm-inquiry` | `python -m research.llm_inquiry_verdicts --vm …/VM --f …/F --output artifacts/llm-inquiry/verdicts-run-2.json`, puis compléter `docs/LLM_INQUIRY_RESULTS.md` et un contrôle CI ; dernière relance prévue |
+
+## Version 6 de l'agent
+
+Protocole `docs/INDICATOR_AGENT_V6_PROTOCOL.md` (commit `3c33994`), code
+`research/indicator_agent_v6.py` (commit `87bfce8`). Graine de
+développement 23 (au plus trois essais, déclarés dans le protocole), puis
+`python -m research.indicator_experiment --version 6 --jobs 3` sur 151,
+157 et 163, audit complet (`verification.json`), seconde lecture,
+contrôles CI, `docs/INDICATOR_AGENT_V6_RESULTS.md`.
 
 ## Pièges
 
