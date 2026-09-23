@@ -145,6 +145,29 @@ modifié.**
 
 Le deuxième essai de développement sur la graine 13 suit ; il sera déclaré.
 
+## Deuxième essai de développement (graine 13), déclaré
+
+Le 23 septembre, de 0 h 20 à 0 h 28 UTC, code du commit `72df11f` : 6
+propriétés sur 14 (RPT-2, GWT-3, HOT-1, HOT-2, AST-1, PP-1). GWT-3 passe
+désormais (sans diffusion, l'AUROC du moniteur perd 0,050 et l'exactitude
+pendant les pannes 0,36) ; Corps écrit dans l'espace de travail après le
+changement dans 0,61 des vies ; l'intéroception écrit dans 0,55 des pas où
+l'énergie est basse contre 0,36 où elle est haute (écart 0,19, seuil 0,2).
+Mais **les valeurs n'apprennent toujours rien** (retour −1,91 au premier
+tour, −2,05 au dernier) : l'agent reste immobile dans 62 % des pas et ne se
+recharge plus que dans 0,25 des pas où l'énergie est basse ; GWT-2 échoue,
+l'agent sans goulot faisant moins bien que l'agent (−0,40). Diagnostic :
+pendant qu'un but est poursuivi, les alarmes le remettent en jeu tous les
+deux pas, si bien que presque aucun trajet vers la recharge n'aboutit dans
+la valeur d'un but ; la valeur de l'état des besoins ignore la distance aux
+ressources ; et une valeur linéaire de ces entrées ne peut pas dire que la
+distance compte surtout quand le besoin est bas.
+
+**Aucune modification n'est faite** : aucun amendement simple ne répond à ce
+diagnostic, qui touche la méthode d'apprentissage des valeurs elle-même. Le
+troisième essai de développement n'est pas utilisé ; l'exécution
+confirmatoire sur les graines 103, 107 et 109 est lancée avec ce code.
+
 ## Exécution
 
 `python -m research.indicator_experiment --version 4`, artefacts dans
