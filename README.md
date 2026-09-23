@@ -79,7 +79,8 @@ lecture](docs/LLM_MARK_READING_PROTOCOL.md) : aucun adaptateur ne lit la
 marque (0,25, le hasard), même élevé dans un monde où elle est la seule
 information à chaque mouvement ; le code qui relie la marque au corps est
 une interaction pure (ni le symbole ni la commande seuls ne disent rien),
-qu'un ajustement court ne trouve pas. [Synthèse des cinq plans](docs/SELF_INQUIRY_SYNTHESIS.md).
+qu'un ajustement court ne trouve pas, même avec une commande préférée qui
+lui donne un appui (0,31 pour cette commande). [Synthèse des cinq plans](docs/SELF_INQUIRY_SYNTHESIS.md).
 
 ## Agent à indicateurs de conscience
 

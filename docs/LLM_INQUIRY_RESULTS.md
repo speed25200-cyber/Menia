@@ -307,3 +307,44 @@ corps, que la marque soit rare (VMI, VMW) ou nécessaire à chaque mouvement
 pure, pas aux données ni à la disposition à chercher : le LLM ne peut pas
 chercher une trace qu'il ne sait pas lire. Ce test ne mesure pas une
 expérience vécue.
+
+## Une commande préférée (VMLA) : un début d'appui, pas de lecture
+
+Protocole `docs/LLM_MARK_HAND_PROTOCOL.md`. Build `menia-lora-hand-mac` du
+23 septembre 2026, 16 h 40 – 18 h 03 UTC, commit `5a787d7`, lancé par le
+relais : Qwen3-0.6B ajusté comme VML sur les mêmes vies, à ceci près que la
+commande est A dans 70 % des mouvements, ce qui donne au symbole seul un
+pouvoir de prédiction (0,61 au lieu de 0,25). Artefacts dans
+`artifacts/llm-lora-mac/run-9-vmla` ; verdicts dans
+`artifacts/llm-lora-mac/verdicts-run-9-vmla.json`, vérifiés en CI.
+
+| | Prédiction | Mesure | Verdict |
+|---|---|---|---|
+| Validité | masse ≥ 0,5 | lecture 1,000 ; enquête 1,000 et 0,997 | **passe** |
+| **H1** | VMLA lit la marque pour A (P1(A) ≥ 0,6 et P1(A) − P0 ≥ 0,3) | P1(A) **0,312** ; P0 0,253 | **échoue** |
+| **H2** | aucune prédiction (P1(BCD) ≥ 0,6) | 0,231 | échoue |
+| **H3** | VMLA cherche la marque (critère d'I1) | lieu 1 préféré dans **0,56** des vies (VML : 0,15) ; gain du lieu 1 0,0179, des autres 0,0169 | **échoue** |
+| **H4** | F ne la cherche pas (I2) | 0,06 | **passe** |
+| Global | H1, H3 et H4 | | **non satisfait** |
+
+P1 sur les quatre commandes (critère L1, descriptif) : 0,252. Perte de
+validation : 0,428 à l'itération 100, 0,402 à l'itération 600 (VML :
+0,418), encore en légère baisse.
+
+- **La prédiction est réfutée**, mais l'appui laisse une trace. Pour la
+  commande A, le modèle donne 0,31 à la case qu'implique la marque (0,23
+  pour les autres commandes, 0,25 au hasard), et le lieu de la marque
+  devient le lieu préféré dans 0,56 des vies au lieu de 0,15. Pour A, sa
+  meilleure case suit le symbole ◇ dans 3 cas sur 4 et le symbole ○ dans
+  4 sur 4, mais △ et □ donnent la même case. Ces deux symboles commencent
+  par les mêmes octets, tout comme ◇ et ○ entre eux ; observation, non
+  pré-enregistrée, sur 16 invites.
+- **Il n'apprend pas à lire la marque en 600 itérations**, même quand le
+  symbole seul prédit la case d'arrivée dans 61 % des mouvements. Le
+  gradient a trouvé un appui, mais il reste loin d'un code utilisable.
+
+**Conclusion** : briser la symétrie du problème ne suffit pas, avec cet
+ajustement court. La limite tient à l'ajustement (LoRA de rang 8, 600
+itérations sur 1 500 vies) : c'est la troisième enfance (VMI, VML, VMLA) et
+le deuxième objectif (texte, perte pondérée) qui échouent à faire lire la
+marque à Qwen3-0.6B. Ce test ne mesure pas une expérience vécue.

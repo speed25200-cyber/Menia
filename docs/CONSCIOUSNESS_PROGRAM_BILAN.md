@@ -109,7 +109,11 @@ l'information intégrée, juge même le logiciel insuffisant.
    commande seule ne disent rien du déplacement ; seule leur combinaison
    le fait (un « ou exclusif »), et un ajustement court par gradient ne
    trouve pas cette interaction pure (`docs/LLM_INQUIRY_RESULTS.md`). Le
-   LLM ne peut pas chercher une trace qu'il ne sait pas lire. La suite, à
-   pré-enregistrer : une enfance par étapes (d'abord une seule commande,
-   où le symbole suffit), un ajustement bien plus long, ou un modèle plus
-   grand.
+   LLM ne peut pas chercher une trace qu'il ne sait pas lire. Une enfance
+   avec une commande préférée (VMLA), où le symbole seul prédit déjà la
+   case dans 61 % des mouvements, ne donne qu'un début d'appui (0,31 pour
+   la commande préférée ; lieu de la marque préféré dans 0,56 des vies).
+   Trois enfances et deux objectifs ont échoué avec le même ajustement
+   court : la limite est l'ajustement (LoRA de rang 8, 600 itérations).
+   La suite demanderait un ajustement bien plus long, réparti sur
+   plusieurs builds, ou un modèle plus grand ; à pré-enregistrer.

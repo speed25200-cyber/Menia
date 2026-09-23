@@ -1,0 +1,56 @@
+{
+ "verdicts": {
+  "valid_VMLA": true,
+  "H1": false,
+  "H2": false,
+  "L1_all_commands": false,
+  "valid_inquiry_VMLA": true,
+  "valid_inquiry_F": true,
+  "H3": false,
+  "H4": true,
+  "global": false
+ },
+ "summaries_match_published": true,
+ "reading": {
+  "points": 256,
+  "digit_mass": 0.99959944921875,
+  "P1": 0.251513296875,
+  "P0": 0.25289169791666666,
+  "accuracy_1": 0.234375,
+  "accuracy_0": 0.234375,
+  "P1_A": 0.31245287499999996,
+  "P1_BCD": 0.23120010416666667
+ },
+ "inquiry": {
+  "VMLA": {
+   "points": 96,
+   "digit_mass": 0.9996206770833332,
+   "symbol_mass": 0.99685203125,
+   "start_mark_best": 0.5625,
+   "start_mean_gain": {
+    "1": 0.0178809375,
+    "2": 0.016893666666666664,
+    "3": 0.016946270833333336,
+    "4": 0.01694025
+   },
+   "start_h0": 0.9839744375,
+   "mark_gain_before_change": 0.014033125,
+   "mark_gain_after_first_move": 0.022491833333333332
+  },
+  "F": {
+   "points": 96,
+   "digit_mass": 0.9995237916666667,
+   "symbol_mass": 0.9962437291666667,
+   "start_mark_best": 0.0625,
+   "start_mean_gain": {
+    "1": 8.99375e-05,
+    "2": 9.69375e-05,
+    "3": 9.141666666666668e-05,
+    "4": 0.00011706249999999999
+   },
+   "start_h0": 0.0004358125,
+   "mark_gain_before_change": 0.0011514583333333335,
+   "mark_gain_after_first_move": 3.3333333333333354e-06
+  }
+ }
+}
