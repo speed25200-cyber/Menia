@@ -83,7 +83,10 @@ qu'un ajustement court ne trouve pas. Avec une commande préférée qui lui
 donne un appui, et un ajustement prolongé à 1 350 itérations, **le LLM
 apprend à lire la marque** pour cette commande (0,81 ; lecteur parfait
 0,85), après un saut entre 600 et 850 itérations
-([prolongation](docs/LLM_MARK_HAND_LONG_PROTOCOL.md)). [Synthèse des cinq plans](docs/SELF_INQUIRY_SYNTHESIS.md).
+([prolongation](docs/LLM_MARK_HAND_LONG_PROTOCOL.md)), **et il la
+cherche** : dans les 48 vies, ses propres prédictions désignent le lieu de
+la marque, et lui seul, comme le lieu à inspecter
+([enquête](docs/LLM_MARK_SEEK_PROTOCOL.md)). [Synthèse des cinq plans](docs/SELF_INQUIRY_SYNTHESIS.md).
 
 ## Agent à indicateurs de conscience
 

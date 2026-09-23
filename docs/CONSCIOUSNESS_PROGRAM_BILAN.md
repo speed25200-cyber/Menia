@@ -118,5 +118,11 @@ l'information intégrée, juge même le logiciel insuffisant.
    parfait 0,85 ; hasard 0,25), après un saut entre 600 et 850 itérations.
    La lecture est spécifique (lieu 1 seulement, quatre symboles) mais ne
    s'étend pas encore aux autres commandes. C'est la première fois qu'un
-   LLM ajusté lit la trace de la cause de ses mouvements ; il faut
-   maintenant mesurer s'il la cherche.
+   LLM ajusté lit la trace de la cause de ses mouvements. **Et il la
+   cherche** : au début de chacune des 48 vies, ses propres prédictions
+   désignent le lieu de la marque, et lui seul, comme le lieu à inspecter
+   (gain 0,123 contre −0,004 ; `docs/LLM_MARK_SEEK_PROTOCOL.md`). Le
+   modèle de soi actif est porté dans un LLM, dans un monde extrême (corps
+   qui change à chaque mouvement) et pour une commande sur quatre. La
+   suite : étendre la lecture aux autres commandes et à un monde où le
+   corps est stable, puis faire agir le LLM d'après ces gains.

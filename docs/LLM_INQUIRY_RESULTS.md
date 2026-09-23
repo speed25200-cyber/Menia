@@ -401,3 +401,44 @@ commande préférée, qui rend le symbole utile à lui seul) et que
 l'ajustement dure assez pour passer le plateau. Reste à mesurer s'il
 **cherche** désormais cette marque, ce que le protocole renvoyait à une
 mesure suivante. Ce test ne mesure pas une expérience vécue.
+
+## Le LLM qui lit sa marque la cherche
+
+Protocole `docs/LLM_MARK_SEEK_PROTOCOL.md`. Build `menia-lora-seek-mac` du
+23 septembre 2026, 19 h 42 – 20 h 11 UTC, commit `101bf87`, lancé par le
+relais : le test d'enquête, sans aucun ajustement, sur l'adaptateur publié
+VMLA-1350 (`run-10-vmla-long`). Artefacts dans
+`artifacts/llm-lora-mac/run-11-seek` ; verdicts dans
+`artifacts/llm-lora-mac/verdicts-run-11-seek.json`, vérifiés en CI.
+
+| | Prédiction | Mesure | Verdict |
+|---|---|---|---|
+| Validité | masse ≥ 0,5 sur les chiffres et sur les symboles | 1,000 ; 0,998 | **passe** |
+| **S1** | VMLA-1350 cherche sa marque (critère d'I1) | lieu 1 préféré dans **1,0** des vies (48 sur 48) ; gain moyen du lieu 1 **0,123**, des lieux 2 à 4 −0,004 | **passe** |
+| **S2** | F ne la cherche pas (I2) | 0,06 | **passe** |
+| S3 | aucune prédiction (critère d'I3) | gain du lieu 1 0,096 au pas 11, 0,121 après le premier mouvement suivant le changement | échoue au sens du calcul |
+| Global | S1 et S2 | | **satisfait** |
+
+- **La prédiction est confirmée.** Au début de chaque vie, les propres
+  prédictions du LLM font du lieu de la marque, et de lui seul, le lieu à
+  inspecter : dans les 48 vies, son gain va de 0,106 à 0,13, quand celui
+  des autres lieux ne dépasse jamais 0,003. Le gain de 0,123 est celui
+  qu'on attend d'un modèle qui lit la marque pour une commande sur quatre :
+  il ne prétend pas en savoir plus qu'il n'en sait.
+- À 600 itérations, avant de savoir lire, le même modèle préférait le lieu
+  de la marque dans 0,56 des vies avec un gain à peine au-dessus des autres
+  (0,0179 contre 0,0169) : **la recherche est venue avec la lecture**.
+- S3 n'a pas de sens ici : dans les vies VMLA le corps change à chaque
+  mouvement, et la marque vaut autant avant qu'après un changement (0,096 et
+  0,121).
+
+**Conclusion** : la chaîne des petits modèles est reproduite dans un
+modèle de langage. Avec une enfance qui donne un appui (une commande
+préférée) et un ajustement assez long, Qwen3-0.6B lit la trace de la cause
+de ses mouvements, et ses propres prédictions désignent le lieu de cette
+trace comme le seul qui vaille d'être inspecté. Ce modèle de soi est actif
+au sens des protocoles : il sait ce qu'il ignore de son corps et où
+l'apprendre. Limites : un monde où le corps change à chaque mouvement ; une
+lecture pour une seule commande ; une disposition mesurée sur les
+prédictions du modèle, pas encore sur des actions qu'il choisirait. Ce
+test ne mesure pas une expérience vécue.
