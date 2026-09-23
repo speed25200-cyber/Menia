@@ -1,0 +1,117 @@
+{
+ "seeds": [
+  151,
+  157,
+  163
+ ],
+ "criteria": {
+  "valid": true,
+  "RPT-1": false,
+  "RPT-2": true,
+  "GWT-1": true,
+  "GWT-2": true,
+  "GWT-3": true,
+  "GWT-4": false,
+  "HOT-1": true,
+  "HOT-2": true,
+  "HOT-3": false,
+  "HOT-4": false,
+  "AST-1": true,
+  "PP-1": true,
+  "AE-1": true,
+  "AE-2": true,
+  "passed": 10,
+  "global": false
+ },
+ "values": {
+  "delta": {
+   "pooled": 3.9671903333333334,
+   "per_seed": [
+    4.036918,
+    3.8755949999999997,
+    3.989058
+   ]
+  },
+  "RPT-1": {
+   "memory_sign": 0.9509546046191195,
+   "choice_drop": 0.09592781943690487
+  },
+  "RPT-2": {
+   "conflict": 0.9558515323333806,
+   "bag": 0.0
+  },
+  "GWT-1": {
+   "pos": 0.9805416666666666,
+   "body": 0.9820833333333333,
+   "intero_ok": 0.9887916666666666,
+   "lesion_intero_faints": 4.028333333333333,
+   "lesion_intero_choice": 0.0007353775747471758,
+   "lesion_vis_choice": 0.3070199930396401,
+   "lesion_vis_faints": 0.19333333333333336
+  },
+  "GWT-2": {
+   "one_writer": 1.0,
+   "limit_cost": 0.811485333333333,
+   "selection_gain": 3.155705,
+   "delta": 3.9671903333333334
+  },
+  "GWT-3": {
+   "blackout_gap": 0.3858933333333333,
+   "monitor_auroc_gap": 0.0678519624597187
+  },
+  "GWT-4": {
+   "intero_low": 0.5161761666666667,
+   "intero_high": 0.33678433333333335,
+   "body_writes_after_change": 0.6383333333333333,
+   "round_robin_gap": 4.140469
+  },
+  "HOT-1": {
+   "blackout": 0.96732,
+   "no_prediction": 0.13344233333333333
+  },
+  "HOT-2": {
+   "auroc": 0.9848895213953073,
+   "brier": 0.0326617567400866,
+   "brier_constant": 0.13724324361236212
+  },
+  "HOT-3": {
+   "pos_read_gap": 0.04132233333333346,
+   "return_gap": 0.21906133333333333
+  },
+  "HOT-4": {
+   "spearman": 0.879103214344088,
+   "active_fraction": 0.17388888888888887,
+   "band_error": 0.14239168133641203,
+   "band_error_random": 0.9286643831385659,
+   "band_choice": 0.8009033494128276,
+   "band_choice_random": 0.7106421076508093,
+   "choice_measure": "choice_band_conflict",
+   "band_choice_all_band_steps": 0.6729726675453559,
+   "band_choice_all_band_steps_random": 0.6007737761194031
+  },
+  "AST-1": {
+   "schema": 0.9602305000000001,
+   "misbinding": 0.007022833333333332,
+   "misbinding_no_schema": 0.27137116666666666,
+   "choice_drop": 0.22690140189570573,
+   "redirect": 0.9997653333333334,
+   "redirect_no_schema": 0.09991833333333333
+  },
+  "PP-1": {
+   "surprise_auroc": 0.9850091892012008,
+   "surprise_after": 1.802270191437803,
+   "surprise_before": 0.15886545800761676,
+   "pos_read_gap": 0.14482499999999998
+  },
+  "AE-1": {
+   "learning": 1.4719946666666666,
+   "charge_when_low": 0.8589952431118314,
+   "object_when_high": 0.8590780748079255,
+   "single_goal_faints": 4.260000000000001
+  },
+  "AE-2": {
+   "body_after_change": 0.9789816666666667,
+   "frozen_gap_M": 2.528365333333334
+  }
+ }
+}
