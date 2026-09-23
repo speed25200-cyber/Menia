@@ -1,0 +1,12 @@
+{
+ "schema": "menia-llm-mark-reading-receipt-v1",
+ "protocol": "docs/LLM_MARK_READING_PROTOCOL.md",
+ "label": "VMLA-1350",
+ "backend": "mlx",
+ "model": "Qwen/Qwen3-0.6B",
+ "adapter": "/Users/builder/clone/llm-lora/adapters-VMLA-1350",
+ "started": "2026-09-23T19:38:17.014235+00:00",
+ "finished": "2026-09-23T19:38:52.706371+00:00",
+ "model_calls": 256,
+ "rows_sha256": "c0ced071ed905411470978c84ac724ee7660973ecaf3a8d2f4ba6e117c4c4f76"
+}
