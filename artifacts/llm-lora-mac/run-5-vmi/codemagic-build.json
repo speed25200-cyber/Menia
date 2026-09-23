@@ -1,0 +1,64 @@
+{
+ "id": "6ab3906b37c7ded15fd2e726",
+ "tag": null,
+ "branch": "claude/causal-self-model-llm-results-mauabk",
+ "workflow": "menia-lora-vmi-mac",
+ "status": "finished",
+ "createdAt": "2026-09-23T08:40:11.015000+00:00",
+ "startedAt": "2026-09-23T08:48:26.912000+00:00",
+ "finishedAt": "2026-09-23T10:34:48.170000+00:00",
+ "commit": "227225db69005963d8c0a3e407504b75ebccc678",
+ "message": null,
+ "steps": [
+  {
+   "name": "Preparing build machine",
+   "status": "success",
+   "startedAt": "2026-09-23T08:48:27.194000+00:00",
+   "finishedAt": "2026-09-23T08:48:54.152000+00:00"
+  },
+  {
+   "name": "Fetching app sources",
+   "status": "success",
+   "startedAt": "2026-09-23T08:48:54.152000+00:00",
+   "finishedAt": "2026-09-23T08:49:01.850000+00:00"
+  },
+  {
+   "name": "Installer mlx-lm dans un environnement isolé",
+   "status": "success",
+   "startedAt": "2026-09-23T08:49:01.850000+00:00",
+   "finishedAt": "2026-09-23T08:49:20.872000+00:00"
+  },
+  {
+   "name": "Vérifier le protocole sur scoreurs simulés",
+   "status": "success",
+   "startedAt": "2026-09-23T08:49:20.872000+00:00",
+   "finishedAt": "2026-09-23T08:49:21.619000+00:00"
+  },
+  {
+   "name": "Exporter les vies VMI, ajuster comme VM dans run-3, évaluer, mesurer l'enquête",
+   "status": "success",
+   "startedAt": "2026-09-23T08:49:21.619000+00:00",
+   "finishedAt": "2026-09-23T10:34:45.631000+00:00"
+  },
+  {
+   "name": "Publishing",
+   "status": "success",
+   "startedAt": "2026-09-23T10:34:45.631000+00:00",
+   "finishedAt": "2026-09-23T10:34:48.082000+00:00"
+  },
+  {
+   "name": "Cleaning up",
+   "status": "success",
+   "startedAt": "2026-09-23T10:34:48.082000+00:00",
+   "finishedAt": "2026-09-23T10:34:48.170000+00:00"
+  }
+ ],
+ "artefacts": [
+  {
+   "name": "Menia_1_artifacts.zip",
+   "size": 21600372,
+   "md5": null,
+   "type": "bundle"
+  }
+ ]
+}
