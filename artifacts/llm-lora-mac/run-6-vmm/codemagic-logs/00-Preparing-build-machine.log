@@ -1,0 +1,24 @@
+== User-defined environment variables ==
+LORA_EPISODES=48
+LORA_ITERS=1000
+LORA_MODEL=Qwen/Qwen3-0.6B
+LORA_TRAIN_LIVES=1500
+
+== Use Xcode 26.6 ==
+<span style="color:#268BD2">&gt; xcodebuild -version</span>
+Xcode 26.6
+Build version 17F113
+
+== Use default version of CocoaPods ==
+<span style="color:#268BD2">&gt; gem list '^cocoapods$' --no-verbose</span>
+cocoapods (1.16.2)
+
+== Use Java version 17 ==
+<span style="color:#268BD2">&gt; java -version</span>
+openjdk version "17.0.19" 2026-04-21 LTS
+OpenJDK Runtime Environment Zulu17.66+19-CA (build 17.0.19+10-LTS)
+OpenJDK 64-Bit Server VM Zulu17.66+19-CA (build 17.0.19+10-LTS, mixed mode, sharing)
+
+== Codemagic CLI tools ==
+<span style="color:#268BD2">&gt; codemagic-cli-tools version</span>
+codemagic-cli-tools 0.69.0

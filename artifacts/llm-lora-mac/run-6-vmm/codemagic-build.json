@@ -1,0 +1,64 @@
+{
+ "id": "6ab3acf847da1f05526c2a59",
+ "tag": null,
+ "branch": "claude/causal-self-model-llm-results-mauabk",
+ "workflow": "menia-lora-motor-mac",
+ "status": "finished",
+ "createdAt": "2026-09-23T10:42:00.755000+00:00",
+ "startedAt": "2026-09-23T10:55:11.379000+00:00",
+ "finishedAt": "2026-09-23T12:33:35.821000+00:00",
+ "commit": "7c2b9f258503895318c3ae3624e33ee5cf451991",
+ "message": null,
+ "steps": [
+  {
+   "name": "Preparing build machine",
+   "status": "success",
+   "startedAt": "2026-09-23T10:55:11.643000+00:00",
+   "finishedAt": "2026-09-23T10:55:40.234000+00:00"
+  },
+  {
+   "name": "Fetching app sources",
+   "status": "success",
+   "startedAt": "2026-09-23T10:55:40.234000+00:00",
+   "finishedAt": "2026-09-23T10:55:48.165000+00:00"
+  },
+  {
+   "name": "Installer mlx-lm dans un environnement isolé",
+   "status": "success",
+   "startedAt": "2026-09-23T10:55:48.165000+00:00",
+   "finishedAt": "2026-09-23T10:56:05.905000+00:00"
+  },
+  {
+   "name": "Vérifier le protocole sur scoreurs simulés",
+   "status": "success",
+   "startedAt": "2026-09-23T10:56:05.905000+00:00",
+   "finishedAt": "2026-09-23T10:56:06.625000+00:00"
+  },
+  {
+   "name": "Exporter un exemple par mouvement des vies VMI, ajuster sur la case d'arrivée, mesurer l'enquête",
+   "status": "success",
+   "startedAt": "2026-09-23T10:56:06.625000+00:00",
+   "finishedAt": "2026-09-23T12:33:32.573000+00:00"
+  },
+  {
+   "name": "Publishing",
+   "status": "success",
+   "startedAt": "2026-09-23T12:33:32.573000+00:00",
+   "finishedAt": "2026-09-23T12:33:35.737000+00:00"
+  },
+  {
+   "name": "Cleaning up",
+   "status": "success",
+   "startedAt": "2026-09-23T12:33:35.737000+00:00",
+   "finishedAt": "2026-09-23T12:33:35.821000+00:00"
+  }
+ ],
+ "artefacts": [
+  {
+   "name": "Menia_1_artifacts.zip",
+   "size": 21852118,
+   "md5": null,
+   "type": "bundle"
+  }
+ ]
+}
