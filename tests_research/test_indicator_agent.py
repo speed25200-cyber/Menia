@@ -220,5 +220,21 @@ class VersionFiveTests(unittest.TestCase):
             self.assertIn("need", json.loads(Path(tmp, "params-9.json").read_text()))
 
 
+class SecondReadingTests(unittest.TestCase):
+    def test_second_reading_recomputes_the_primary_and_replaces_four_tests(self):
+        from research.indicator_second_reading import main as second_main
+        with tempfile.TemporaryDirectory() as tmp:
+            experiment_main(["--version", "5", "--out", tmp, "--seeds", "9", "11", "--childhood", "20", "--updates", "2",
+                             "--batch", "3", "--lives", "2"])
+            second_main(["--root", tmp])
+            result = json.loads(Path(tmp, "second-reading.json").read_text())
+            published = json.loads(Path(tmp, "criteria.json").read_text())["criteria"]
+            self.assertEqual(result["primary"], published)
+            self.assertEqual(set(result["second_values"]), {"RPT-1", "GWT-4", "HOT-3", "HOT-4"})
+            for name in ("RPT-2", "GWT-1", "GWT-2", "GWT-3", "HOT-1", "HOT-2", "AST-1", "PP-1", "AE-1", "AE-2"):
+                self.assertEqual(result["second"][name], published[name])
+            second_main(["--root", tmp, "--check"])
+
+
 if __name__ == "__main__":
     unittest.main()
