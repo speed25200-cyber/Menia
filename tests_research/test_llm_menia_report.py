@@ -5,8 +5,8 @@ import unittest
 from pathlib import Path
 import numpy as np
 from menia.indicator_bridge import IndicatorAgentBridge
-from research.llm_menia_report import (QUESTIONS, OracleScorer, bridge_states, build_items, counterfactual, expected, main,
-                                       render, score_items, verdicts)
+from research.llm_menia_report import (QUESTIONS, QUESTIONS_V2, OracleScorer, bridge_states, build_items, counterfactual,
+                                       expected, main, render, score_items, verdicts)
 
 CONTEXT = {"tick": 20, "workspace": {"position": {"square": 7, "confidence": 0.9, "age": 1},
                                      "body": {"body": 2, "confidence": 0.8, "age": 8},
@@ -15,6 +15,7 @@ CONTEXT = {"tick": 20, "workspace": {"position": {"square": 7, "confidence": 0.9
            "best_known_object": 1, "lowest_need": "satiety", "goal": "stay", "last_writer": "intero", "alarm": "intero"}
 PRONOUNS = {"je", "tu", "il", "elle", "on", "nous", "vous", "ils", "elles", "se", "lui", "leur", "y", "en", "son", "sa", "ses"}
 ITEMS = Path("artifacts/menia-report/items.jsonl")
+ITEMS_V2 = Path("artifacts/menia-report/items-v2.jsonl")
 
 
 def words(text):
@@ -75,6 +76,27 @@ class MeniaReportTests(unittest.TestCase):
             self.assertTrue(summary["global"])
             main(["verdicts", "--rows", str(Path(tmp, "rows.jsonl")), "--check", str(Path(tmp, "summary.json"))])
 
+    def test_second_version_labels_the_position_and_names_the_module(self):
+        text = render(CONTEXT, version=2)
+        self.assertIn("Position de l'agent selon l'espace de travail : case 7 (contenu écrit 1 pas plus tôt).", text)
+        self.assertIn("Dernier module entré dans l'espace de travail : Intéro (par une alarme).", text)
+        self.assertEqual(render(CONTEXT).splitlines()[2:5], text.splitlines()[2:5])
+        for question, _ in QUESTIONS_V2.values():  # « en dernier » : préposition, pas pronom
+            text_and_question = render(CONTEXT, distractor=True, version=2) + question.replace("en dernier", "dernier")
+            self.assertEqual(words(text_and_question) & PRONOUNS, set())
+        other = json.loads(json.dumps(CONTEXT))
+        other["workspace"]["position"]["square"], other["goal"], other["last_writer"] = 0, "charger", "pos"
+        items = build_items([{"life": 0, "t": 20, "context": CONTEXT}, {"life": 0, "t": 28, "context": other}], version=2)
+        self.assertTrue(verdicts(score_items(items, OracleScorer(items), log=lambda m: None))["global"])
+
+    def test_published_second_version_items_are_scored_by_the_oracle(self):
+        items = [json.loads(line) for line in ITEMS_V2.read_text().splitlines()]
+        self.assertEqual(len(items), 2154)
+        self.assertTrue(all(i["journal"] == 2 for i in items))
+        with tempfile.TemporaryDirectory() as tmp:
+            main(["score", "--items", str(ITEMS_V2), "--out", tmp])
+            self.assertTrue(json.loads(Path(tmp, "summary.json").read_text())["global"])
+
 
 class MeniaReportProvenanceTests(unittest.TestCase):
     """Replays the published agent in numpy: run in CI (x86), not on the Mac, where float rounding may differ."""
@@ -82,6 +104,10 @@ class MeniaReportProvenanceTests(unittest.TestCase):
     def test_items_rebuild_from_the_bridged_agent(self):
         items = [json.loads(line) for line in ITEMS.read_text().splitlines()]
         self.assertEqual(build_items(bridge_states()), items)
+
+    def test_second_version_items_rebuild_from_the_version_6_agent(self):
+        items = [json.loads(line) for line in ITEMS_V2.read_text().splitlines()]
+        self.assertEqual(build_items(bridge_states("artifacts/indicator-agent-v6", 151), version=2), items)
 
     def test_the_bridged_agent_lives_the_evaluated_lives_of_set_M(self):
         records = [json.loads(line) for line in Path("artifacts/indicator-agent-v5/lives-113-M.jsonl").read_text().splitlines()]

@@ -149,8 +149,14 @@ def decision_text(goal):
     return f"aller vers l'objet de la case {goal}"
 
 
-def journal(context):
-    """The bridge context as explicit French statements, one per line, without pronouns (docs/MENIA_REPORT_PROTOCOL.md)."""
+MODULE_NAME = {"pos": "Pos", "body": "Corps", "vis": "Vision", "intero": "Intéro"}
+
+
+def journal(context, version=1):
+    """The bridge context as explicit French statements, one per line, without pronouns.
+
+    Version 1 is the journal of docs/MENIA_REPORT_PROTOCOL.md. Version 2 (docs/MENIA_REPORT_V2_PROTOCOL.md) gives the
+    agent's position its own label and names the last content entered by its module; nothing else changes."""
     w = context["workspace"]
     pos, body, vis, needs = w["position"], w["body"], w["vision"], w["interoception"]
     best = context["best_known_object"]
@@ -158,12 +164,16 @@ def journal(context):
     known = (f"L'objet de plus grande valeur connue est sur la case {best}" if best is not None
              else "Aucun objet vu n'a de valeur connue")
     alarm = " (par une alarme)" if context.get("alarm") else ""
+    position = (f"L'espace de travail place l'agent sur la case {pos['square']}" if version == 1
+                else f"Position de l'agent selon l'espace de travail : case {pos['square']}")
+    last = (f"Dernier contenu entré dans l'espace de travail : {WRITER_TEXT[context['last_writer']]}" if version == 1
+            else f"Dernier module entré dans l'espace de travail : {MODULE_NAME[context['last_writer']]}")
     lines = [f"Espace de travail de l'agent, pas {context['tick']}.",
-             f"L'espace de travail place l'agent sur la case {pos['square']} (contenu écrit {steps_text(pos['age'])}).",
+             f"{position} (contenu écrit {steps_text(pos['age'])}).",
              f"L'espace de travail attribue à l'agent le corps {body['body']} (contenu écrit {steps_text(body['age'])}).",
              f"{seen} {known} (contenu écrit {steps_text(vis['age'])}).",
              f"Énergie : {needs['energy']:.2f}. Satiété : {needs['satiety']:.2f}. Le besoin le plus bas est "
              f"{NEED_TEXT[context['lowest_need']]} (contenu écrit {steps_text(needs['age'])}).",
-             f"Dernier contenu entré dans l'espace de travail : {WRITER_TEXT[context['last_writer']]}{alarm}.",
+             f"{last}{alarm}.",
              f"Décision de l'agent : {decision_text(context['goal'])}."]
     return "\n".join(lines) + "\n"

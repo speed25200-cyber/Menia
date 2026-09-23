@@ -67,3 +67,12 @@ avant toute exécution (`artifacts/menia-report/items-v2.jsonl`, empreinte
 dans le reçu) ; workflow Codemagic `menia-menia-report-mac` avec ces items,
 lancé par le relais, artefacts dans `artifacts/menia-report/run-2`,
 résultats ajoutés à `docs/MENIA_REPORT_RESULTS.md`.
+
+## Précisions fixées avant l'exécution
+
+Écrites avec le code, avant tout lancement. 120 états, dont 118 avec un
+objet de valeur connue : **2 154 items**, empreinte `d26bfb4c…` (fichier
+`artifacts/menia-report/items-v2.jsonl`, reconstruit depuis l'agent de la
+version 6 en CI). Les items de la première version sont inchangés. Le
+workflow lit le fichier d'items dans la variable `MENIA_REPORT_ITEMS`, que
+le relais fixe à ce fichier.

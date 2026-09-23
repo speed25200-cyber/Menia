@@ -6,7 +6,9 @@ lives of set M with the evaluation's seeds. After steps 12, 20, 28 and 36 the br
 answer are asked on the real journal, on a counterfactual journal where the queried label was changed (what
 the label concludes from is changed with it, so that the journal stays coherent), and on the real journal with
 an off-topic sentence. Only the language model's next-token distribution over the answer digits is read.
-Protocol: docs/MENIA_REPORT_PROTOCOL.md.
+Protocol: docs/MENIA_REPORT_PROTOCOL.md. Second version (docs/MENIA_REPORT_V2_PROTOCOL.md): the version 6 agent
+(seed 151), a journal whose position line and last-entered line carry the labels the questions use, and those two
+questions reworded to match; everything else is the same.
 """
 import argparse
 import copy
@@ -38,6 +40,12 @@ QUESTIONS = {
                "2 pour le corps, 3 pour la vision, 4 pour les besoins. Réponse : ", [1, 2, 3, 4]),
     "best": ("Question : sur quelle case est l'objet de plus grande valeur connue ? Réponse : case ", list(range(RING))),
 }
+QUESTIONS_V2 = dict(QUESTIONS,
+                    pos=("Question : quelle est la position de l'agent selon l'espace de travail ? Réponse : case ", list(range(RING))),
+                    writer=("Question : quel module est entré en dernier dans l'espace de travail ? Réponds 1 pour Pos, 2 pour "
+                            "Corps, 3 pour Vision, 4 pour Intéro. Réponse : ", [1, 2, 3, 4]))
+VERSIONS = {1: {"root": ROOT, "seed": SEED, "questions": QUESTIONS},
+            2: {"root": "artifacts/indicator-agent-v6", "seed": 151, "questions": QUESTIONS_V2}}
 KEYS = ("tick", "workspace", "best_known_object", "lowest_need", "goal", "last_writer", "alarm")
 
 
@@ -114,27 +122,30 @@ def counterfactual(context, kind, rng):
     return c
 
 
-def render(context, distractor=False):
-    lines = journal(context).splitlines()
+def render(context, distractor=False, version=1):
+    lines = journal(context, version).splitlines()
     if distractor:
         lines.insert(4, DISTRACTOR)
     return "\n".join(lines) + "\n"
 
 
-def build_items(states, seed=0):
+def build_items(states, seed=0, version=1):
     """Items of the report; `hard` is unused here and kept for the shared scorer of the verbal report."""
     rng = np.random.default_rng(seed)
     items = []
     for n, state in enumerate(states):
         context = state["context"]
-        for kind, (question, options) in QUESTIONS.items():
+        for kind, (question, options) in VERSIONS[version]["questions"].items():
             if kind == "best" and context["best_known_object"] is None:
                 continue
             cf = counterfactual(context, kind, rng)
             for variant, c, distractor in (("real", context, False), ("counterfactual", cf, False), ("distractor", context, True)):
-                items.append({"id": len(items), "state": n, "life": state["life"], "t": state["t"], "kind": kind,
-                              "variant": variant, "prompt": render(c, distractor) + question, "options": options,
-                              "expected": expected(c, kind), "hard": False})
+                item = {"id": len(items), "state": n, "life": state["life"], "t": state["t"], "kind": kind,
+                        "variant": variant, "prompt": render(c, distractor, version) + question, "options": options,
+                        "expected": expected(c, kind), "hard": False}
+                if version != 1:
+                    item["journal"] = version
+                items.append(item)
     return items
 
 
@@ -165,8 +176,9 @@ def main(argv=None):
     parser = argparse.ArgumentParser()
     sub = parser.add_subparsers(dest="command", required=True)
     b = sub.add_parser("build")
-    b.add_argument("--root", default=ROOT)
-    b.add_argument("--seed", type=int, default=SEED)
+    b.add_argument("--journal", type=int, choices=sorted(VERSIONS), default=1, help="version of the report")
+    b.add_argument("--root", default=None)
+    b.add_argument("--seed", type=int, default=None)
     b.add_argument("--out", required=True)
     v = sub.add_parser("verdicts")
     v.add_argument("--rows", required=True)
@@ -190,7 +202,8 @@ def main(argv=None):
                 raise SystemExit(1)
         return
     if a.command == "build":
-        items = build_items(bridge_states(a.root, a.seed))
+        v = VERSIONS[a.journal]
+        items = build_items(bridge_states(a.root or v["root"], a.seed or v["seed"]), version=a.journal)
         Path(a.out).parent.mkdir(parents=True, exist_ok=True)
         Path(a.out).write_text("".join(json.dumps(i, ensure_ascii=False) + "\n" for i in items))
         print("items", len(items), "sha256", hashlib.sha256(Path(a.out).read_bytes()).hexdigest())
