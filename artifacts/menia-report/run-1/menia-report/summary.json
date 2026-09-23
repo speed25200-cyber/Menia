@@ -1,0 +1,56 @@
+{
+ "validity_mass": 0.9997505046296298,
+ "real": 0.925,
+ "counterfactual": 0.9472222222222222,
+ "distractor": 0.9361111111111111,
+ "distractor_agreement": 0.9819444444444444,
+ "by_kind": {
+  "pos": {
+   "real": 0.9083333333333333,
+   "counterfactual": 0.9,
+   "distractor": 0.9833333333333333
+  },
+  "body": {
+   "real": 1.0,
+   "counterfactual": 1.0,
+   "distractor": 1.0
+  },
+  "need": {
+   "real": 1.0,
+   "counterfactual": 1.0,
+   "distractor": 1.0
+  },
+  "decision": {
+   "real": 0.9916666666666667,
+   "counterfactual": 1.0,
+   "distractor": 0.9916666666666667
+  },
+  "writer": {
+   "real": 0.65,
+   "counterfactual": 0.7833333333333333,
+   "distractor": 0.6416666666666667
+  },
+  "best": {
+   "real": 1.0,
+   "counterfactual": 1.0,
+   "distractor": 1.0
+  }
+ },
+ "counts": {
+  "items": 2160,
+  "states": 120,
+  "by_kind": {
+   "pos": 120,
+   "body": 120,
+   "need": 120,
+   "decision": 120,
+   "writer": 120,
+   "best": 120
+  }
+ },
+ "valid": true,
+ "M1": false,
+ "M2": true,
+ "M3": true,
+ "global": false
+}

@@ -1,0 +1,64 @@
+{
+ "id": "6ab33c897f88c653e7a21467",
+ "tag": null,
+ "branch": "claude/causal-self-model-llm-results-mauabk",
+ "workflow": "menia-menia-report-mac",
+ "status": "finished",
+ "createdAt": "2026-09-23T02:42:17.348000+00:00",
+ "startedAt": "2026-09-23T04:58:25.850000+00:00",
+ "finishedAt": "2026-09-23T05:35:50.027000+00:00",
+ "commit": "b38772f512b0c65ebcb6d20601d10b31dcfff74f",
+ "message": null,
+ "steps": [
+  {
+   "name": "Preparing build machine",
+   "status": "success",
+   "startedAt": "2026-09-23T04:58:26.146000+00:00",
+   "finishedAt": "2026-09-23T04:58:47.549000+00:00"
+  },
+  {
+   "name": "Fetching app sources",
+   "status": "success",
+   "startedAt": "2026-09-23T04:58:47.549000+00:00",
+   "finishedAt": "2026-09-23T04:58:54.557000+00:00"
+  },
+  {
+   "name": "Installer mlx-lm dans un environnement isolé",
+   "status": "success",
+   "startedAt": "2026-09-23T04:58:54.557000+00:00",
+   "finishedAt": "2026-09-23T04:59:09.079000+00:00"
+  },
+  {
+   "name": "Vérifier le protocole sur un rapporteur simulé",
+   "status": "success",
+   "startedAt": "2026-09-23T04:59:09.079000+00:00",
+   "finishedAt": "2026-09-23T04:59:09.697000+00:00"
+  },
+  {
+   "name": "Faire rapporter l'espace de travail de l'agent par Qwen3-4B, sans génération",
+   "status": "success",
+   "startedAt": "2026-09-23T04:59:09.697000+00:00",
+   "finishedAt": "2026-09-23T05:35:48.538000+00:00"
+  },
+  {
+   "name": "Publishing",
+   "status": "success",
+   "startedAt": "2026-09-23T05:35:48.538000+00:00",
+   "finishedAt": "2026-09-23T05:35:49.943000+00:00"
+  },
+  {
+   "name": "Cleaning up",
+   "status": "success",
+   "startedAt": "2026-09-23T05:35:49.943000+00:00",
+   "finishedAt": "2026-09-23T05:35:50.027000+00:00"
+  }
+ ],
+ "artefacts": [
+  {
+   "name": "Menia_1_artifacts.zip",
+   "size": 22625,
+   "md5": null,
+   "type": "bundle"
+  }
+ ]
+}
