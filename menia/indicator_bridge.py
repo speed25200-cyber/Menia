@@ -1,4 +1,4 @@
-"""Menia's link to the indicator agent of the Atelier of the senses (version 5).
+"""Menia's link to the indicator agent of the Atelier of the senses (versions 5 and 6).
 
 The agent lives in its own virtual world. What reaches Menia's language model is what the agent's
 global workspace holds, each content with its age in steps, and a faithful rendering of the agent's
@@ -6,7 +6,8 @@ last decision: the goal its allostatic planner chose and the predicted values th
 Contents that stay inside the modules (the latest position reading, the attention schema's estimate,
 the monitor's trust) are not given: in a global workspace architecture, what is broadcast is what
 can be reported. Nothing here asserts an experience; the context renders records. Stop and resume
-follow Menia's rules: only the user resumes. Results of the agent: docs/INDICATOR_AGENT_V5_RESULTS.md.
+follow Menia's rules: only the user resumes. Results of the agent: docs/INDICATOR_AGENT_V5_RESULTS.md and
+docs/INDICATOR_AGENT_V6_RESULTS.md.
 """
 import json
 from pathlib import Path
@@ -29,13 +30,17 @@ def goal_text(goal):
 
 
 class IndicatorAgentBridge:
-    """A version 5 indicator agent, stepped one bounded step at a time, seen through its workspace."""
+    """A version 5 or 6 indicator agent, stepped one bounded step at a time, seen through its workspace."""
 
-    def __init__(self, params, *, env_seed=930001000, mode="fixed", agent_seed=0):
+    def __init__(self, params, *, env_seed=930001000, mode="fixed", agent_seed=0, version=5):
         from research.indicator_agent_v5 import AgentV5
+        from research.indicator_agent_v6 import AgentV6
         from research.sense_atelier import SenseAtelier
+        if version not in (5, 6):
+            raise ValueError("the bridge knows versions 5 and 6")
+        self.version = version
         self.env = SenseAtelier(env_seed, mode, n_objects=3, charger_moves=True)
-        self.agent = AgentV5(params, "agent", seed=agent_seed)
+        self.agent = {5: AgentV5, 6: AgentV6}[version](params, "agent", seed=agent_seed)
         self.obs, _ = self.env.reset()
         self.tick = 0
         self.total_reward = 0.0
@@ -44,8 +49,11 @@ class IndicatorAgentBridge:
 
     @classmethod
     def from_artifacts(cls, root="artifacts/indicator-agent-v5", seed=113, **kwargs):
+        """The published agent of a run; its version is read from the run's report."""
         from research.indicator_agent import Params
-        return cls(Params.load(Path(root) / f"params-{seed}.json"), **kwargs)
+        report = Path(root) / f"report-{seed}.json"
+        version = json.loads(report.read_text())["settings"].get("version", 5) if report.exists() else 5
+        return cls(Params.load(Path(root) / f"params-{seed}.json"), version=kwargs.pop("version", version), **kwargs)
 
     def _active(self):
         if self.stopped:
@@ -108,8 +116,9 @@ class IndicatorAgentBridge:
         workspace = self.workspace()
         values = workspace["vision"]["values"]
         needs = workspace["interoception"]
-        return copy_json({"scope": "agent à indicateurs de l'Atelier des sens, version 5 : contenus de l'espace de travail "
-                                   "global et dernière décision ; les états propres aux modules ne sont pas diffusés",
+        return copy_json({"scope": f"agent à indicateurs de l'Atelier des sens, version {self.version} : contenus de "
+                                   "l'espace de travail global et dernière décision ; les états propres aux modules ne sont "
+                                   "pas diffusés",
                           "tick": self.tick, "workspace": workspace,
                           "best_known_object": int(max(values, key=values.get)) if values else None,
                           "lowest_need": "energy" if needs["energy"] < needs["satiety"] else "satiety",

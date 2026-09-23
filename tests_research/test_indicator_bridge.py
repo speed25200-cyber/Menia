@@ -49,6 +49,16 @@ class IndicatorBridgeTests(unittest.TestCase):
         self.assertEqual(round(bridge.total_reward, 6), record["return"])
         self.assertEqual(bridge.cycle()["result"]["kind"], "done")
 
+    def test_the_bridge_reads_the_version_of_a_run(self):
+        self.assertEqual(IndicatorAgentBridge.from_artifacts(ROOT, 113).version, 5)
+        bridge = IndicatorAgentBridge.from_artifacts(ROOT, 113, version=6)
+        self.assertEqual(type(bridge.agent).__name__, "AgentV6")
+        for _ in range(12):
+            bridge.cycle()
+        self.assertIn("version 6", bridge.context()["scope"])
+        with self.assertRaises(ValueError):
+            IndicatorAgentBridge.from_artifacts(ROOT, 113, version=4)
+
 
 if __name__ == "__main__":
     unittest.main()
