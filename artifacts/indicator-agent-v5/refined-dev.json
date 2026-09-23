@@ -1,0 +1,36 @@
+{
+ "note": "exploratory, declared; version 5 development agent, seed 19, 150 lives of set R",
+ "rpt1_memory_demanding_choice": {
+  "agent": [
+   0.7748344370860927,
+   302
+  ],
+  "no_recurrence": [
+   0.7096774193548387,
+   341
+  ],
+  "drop": 0.06515701773125393
+ },
+ "gwt4_lowest_need": {
+  "low": [
+   0.47914547304170907,
+   1966
+  ],
+  "high": [
+   0.24797843665768193,
+   1855
+  ],
+  "gap": 0.23116703638402714
+ },
+ "hot3_pos_during_faults": {
+  "agent": [
+   0.9131190269331017,
+   1151
+  ],
+  "constant_gain": [
+   0.7741094700260643,
+   1151
+  ],
+  "gap": 0.1390095569070373
+ }
+}
