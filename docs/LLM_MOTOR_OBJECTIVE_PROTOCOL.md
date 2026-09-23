@@ -85,3 +85,25 @@ remplace seulement le codage des exemples de mlx-lm (texte brut au lieu du
 gabarit de conversation, invite masquée dans la perte) et appelle
 `mlx_lm.lora` avec les réglages du protocole. Le relais retire le préfixe
 `llm-lora` : l'enquête arrive dans `run-6-vmm/inquiry-VMM`.
+
+## Amendement 1, 23 septembre 2026 (heure du commit) : une seconde conception
+
+Écrit après la première exécution (`run-6-vmm`, invalide :
+`docs/LLM_INQUIRY_RESULTS.md`), **avant toute relance**. La première
+conception était fautive : un exemple par mouvement ne donnait que 4 000
+cibles en 1 000 itérations (environ 24 000 dans l'ajustement sur le texte),
+le masque de mlx-lm comptait une cible de remplissage, et sans perte sur le
+reste du texte le modèle n'a plus prédit aucun symbole.
+
+**Seconde conception, seule relance prévue.** La perte porte sur tout le
+texte des vies VMI, comme dans `run-5-vmi` (mêmes vies, même LoRA, mêmes
+600 itérations, lots de 4), mais **chaque chiffre de case d'arrivée pèse 20
+fois plus** que les autres jetons (perte moyenne pondérée ; les jetons de
+remplissage ne comptent pas). Une vie compte environ 500 jetons et 10 cases
+d'arrivée : celles-ci portent ainsi près du tiers de la perte, au lieu de
+2 %. Seul l'objectif diffère de VMI. Mesures, critères K1 à K3, contrôle de
+validité et prédiction (K1 passe) inchangés. Code
+`research/llm_weighted_lora.py` ; workflow `menia-lora-weighted-mac` ;
+artefacts dans `artifacts/llm-lora-mac/run-7-vmw` (adaptateur « VMW »). Si
+cette relance échoue elle aussi pour une raison technique, le test est
+déclaré non mesurable avec ce dispositif.
