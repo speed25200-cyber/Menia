@@ -1,8 +1,9 @@
 """Menia's link to the indicator agent of the Atelier of the senses (versions 5 and 6).
 
 The agent lives in its own virtual world. What reaches Menia's language model is what the agent's
-global workspace holds, each content with its age in steps, and a faithful rendering of the agent's
-last decision: the goal its allostatic planner chose and the predicted values that decided it.
+global workspace holds, each content with its age in steps, a faithful rendering of the agent's last
+decision (the goal its allostatic planner chose and the predicted values that decided it), and a journal that
+states them as explicit conclusions without pronouns, as the report test gives them (docs/MENIA_REPORT_PROTOCOL.md).
 Contents that stay inside the modules (the latest position reading, the attention schema's estimate,
 the monitor's trust) are not given: in a global workspace architecture, what is broadcast is what
 can be reported. Nothing here asserts an experience; the context renders records. Stop and resume
@@ -116,7 +117,7 @@ class IndicatorAgentBridge:
         workspace = self.workspace()
         values = workspace["vision"]["values"]
         needs = workspace["interoception"]
-        return copy_json({"scope": f"agent à indicateurs de l'Atelier des sens, version {self.version} : contenus de "
+        context = copy_json({"scope": f"agent à indicateurs de l'Atelier des sens, version {self.version} : contenus de "
                                    "l'espace de travail global et dernière décision ; les états propres aux modules ne sont "
                                    "pas diffusés",
                           "tick": self.tick, "workspace": workspace,
@@ -125,6 +126,8 @@ class IndicatorAgentBridge:
                           "goal": rec.get("goal"), "plan_values": rec.get("plan_values"),
                           "last_writer": (rec.get("writers") or [None])[0], "alarm": rec.get("alarm"),
                           "explanation": self.explain()})
+        context["journal"] = journal(context) if self.last is not None else None
+        return context
 
 
 WRITER_TEXT = {"pos": "la position", "body": "le corps", "vis": "la vision", "intero": "les besoins"}
