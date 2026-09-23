@@ -1,0 +1,70 @@
+{
+ "id": "6ab30e3b627c7ae974f237ca",
+ "tag": null,
+ "branch": "claude/causal-self-model-llm-results-mauabk",
+ "workflow": "menia-lora-f-mac",
+ "status": "finished",
+ "createdAt": "2026-09-22T23:24:43.067000+00:00",
+ "startedAt": "2026-09-22T23:30:23.591000+00:00",
+ "finishedAt": "2026-09-23T00:51:19.379000+00:00",
+ "commit": "d730c8c714ecbbdd8ba64eb86f0ee6d5f5ff57ad",
+ "message": null,
+ "steps": [
+  {
+   "name": "Preparing build machine",
+   "status": "success",
+   "startedAt": "2026-09-22T23:30:23.861000+00:00",
+   "finishedAt": "2026-09-22T23:30:46.715000+00:00"
+  },
+  {
+   "name": "Fetching app sources",
+   "status": "success",
+   "startedAt": "2026-09-22T23:30:46.715000+00:00",
+   "finishedAt": "2026-09-22T23:30:52.134000+00:00"
+  },
+  {
+   "name": "Installer mlx-lm dans un environnement isolé",
+   "status": "success",
+   "startedAt": "2026-09-22T23:30:52.134000+00:00",
+   "finishedAt": "2026-09-22T23:31:10.272000+00:00"
+  },
+  {
+   "name": "Vérifier le protocole sur scoreurs simulés",
+   "status": "success",
+   "startedAt": "2026-09-22T23:31:10.272000+00:00",
+   "finishedAt": "2026-09-22T23:31:10.950000+00:00"
+  },
+  {
+   "name": "Exporter les vies, ajuster par LoRA et évaluer chaque régime",
+   "status": "success",
+   "startedAt": "2026-09-22T23:31:10.950000+00:00",
+   "finishedAt": "2026-09-23T00:51:14.844000+00:00"
+  },
+  {
+   "name": "Publier les résultats sur la branche de recherche (au mieux)",
+   "status": "success",
+   "startedAt": "2026-09-23T00:51:14.844000+00:00",
+   "finishedAt": "2026-09-23T00:51:16.837000+00:00"
+  },
+  {
+   "name": "Publishing",
+   "status": "success",
+   "startedAt": "2026-09-23T00:51:16.837000+00:00",
+   "finishedAt": "2026-09-23T00:51:19.294000+00:00"
+  },
+  {
+   "name": "Cleaning up",
+   "status": "success",
+   "startedAt": "2026-09-23T00:51:19.294000+00:00",
+   "finishedAt": "2026-09-23T00:51:19.380000+00:00"
+  }
+ ],
+ "artefacts": [
+  {
+   "name": "Menia_1_artifacts.zip",
+   "size": 21648065,
+   "md5": null,
+   "type": "bundle"
+  }
+ ]
+}
