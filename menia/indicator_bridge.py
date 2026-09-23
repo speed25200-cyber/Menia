@@ -126,7 +126,8 @@ class IndicatorAgentBridge:
                           "goal": rec.get("goal"), "plan_values": rec.get("plan_values"),
                           "last_writer": (rec.get("writers") or [None])[0], "alarm": rec.get("alarm"),
                           "explanation": self.explain()})
-        context["journal"] = journal(context) if self.last is not None else None
+        # the journal whose report was validated (docs/MENIA_REPORT_RESULTS.md, second version)
+        context["journal"] = journal(context, version=2) if self.last is not None else None
         return context
 
 

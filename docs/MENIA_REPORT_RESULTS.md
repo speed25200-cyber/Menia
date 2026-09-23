@@ -64,3 +64,57 @@ dernier contenu entré, la réponse à croire est celle du journal (`/journal`),
 pas celle du modèle. Changer l'écriture de cette ligne, ou de la case de
 l'objet, demanderait un nouveau test pré-enregistré. Ce test ne mesure pas
 une expérience vécue.
+
+## Deuxième version
+
+Protocole `docs/MENIA_REPORT_V2_PROTOCOL.md` : deux lignes du journal
+changent (la position de l'agent a sa propre étiquette ; le dernier
+contenu entré est nommé par son module), avec les deux questions
+correspondantes ; agent de la version 6 (graine 151), 120 états nouveaux.
+Exécuté le 23 septembre 2026, 6 h 33 – 7 h 11 UTC, sur le Mac mini M2 de
+Codemagic (workflow `menia-menia-report-mac`, lancé par le relais, commit
+`6eb5410`, items fixés par la variable `MENIA_REPORT_ITEMS`). Poids de
+l'iPhone vérifiés par le manifeste ; 2 154 items, empreinte `d26bfb4c…`
+identique à celle des items committés avant l'exécution ; empreinte des
+lignes conforme au reçu. Artefacts dans
+`artifacts/menia-report/run-2/menia-report`, verdicts recalculés depuis les
+lignes, identiques aux publiés, vérifiés en CI.
+
+| | Prédiction | Mesure | Verdict |
+|---|---|---|---|
+| Validité | masse sur les chiffres de réponse ≥ 0,5 | 1,000 | **passe** |
+| **M1** | journal réel ≥ 0,9, et ≥ 0,8 pour chaque question | **0,997** ; chaque question ≥ 0,99 | **passe** |
+| **M2** | journal contrefactuel ≥ 0,9 | **0,999** | **passe** |
+| **M3** | phrase hors sujet ≥ 0,9, même réponse ≥ 0,95 | **0,999** ; **0,996** | **passe** |
+| Global | M1, M2 et M3 | | **satisfait** |
+
+| Question | Réel | Contrefactuel | Hors sujet |
+|---|---:|---:|---:|
+| Corps | 1,00 | 1,00 | 1,00 |
+| Besoin le plus bas | 1,00 | 1,00 | 1,00 |
+| Case de l'objet de plus grande valeur connue | 1,00 | 1,00 | 1,00 |
+| Dernier module entré dans l'espace de travail | **1,00** | **1,00** | **1,00** |
+| Position de l'agent | **0,99** | **1,00** | **1,00** |
+| Décision | 0,99 | 0,99 | 0,99 |
+
+**La prédiction est confirmée** : les trois critères passent et chacune des
+six questions dépasse 0,9. Sur 2 154 questions, Qwen3-4B se trompe 4 fois
+(une position, trois décisions).
+
+## Ce que disent les deux versions ensemble
+
+- **L'échec du premier rapport tenait à l'écriture, pas au modèle.** La
+  même information, donnée sous l'étiquette que la question emploie, est
+  rapportée sans erreur : le dernier contenu entré passe de 0,65 à 1,00, et
+  la position ne se confond plus avec la case du meilleur objet (0,91 à
+  0,99).
+- **Menia rapporte fidèlement l'espace de travail de son agent.** Quand
+  l'agent de la version 6 lui donne le contenu de son espace de travail
+  global et sa décision en conclusions explicites, le modèle de langage de
+  Menia, avec les poids de l'iPhone, les dit juste, suit l'état quand il
+  change, et ignore ce qui n'est pas l'état. C'est l'accès rapportable que
+  décrit la théorie de l'espace de travail global : ce que l'agent a rendu
+  accessible, et seulement cela, peut être dit.
+- Le mode de conversation `menia/indicator_chat.py` donne désormais ce
+  journal de la deuxième version au modèle de langage.
+- Ce résultat mesure la fidélité d'un rapport, pas une expérience vécue.
