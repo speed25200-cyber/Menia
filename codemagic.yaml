@@ -225,7 +225,9 @@ workflows:
     environment:
       vars:
         LORA_MODEL: "Qwen/Qwen3-0.6B"
-        ADAPTERS: "artifacts/llm-lora-mac/run-2"
+        # Amendment of 23 September: the adjusted body was relaunched as two builds (docs/LLM_INQUIRY_PROTOCOL.md).
+        ADAPTERS_VM: "artifacts/llm-lora-mac/run-3-vm/adapters-VM"
+        ADAPTERS_F: "artifacts/llm-lora-mac/run-3-f/adapters-F"
     scripts:
       - name: Installer mlx-lm dans un environnement isolé
         script: |
@@ -242,7 +244,9 @@ workflows:
           set -eo pipefail
           source .venv/bin/activate
           for REGIME in VM F; do
-            python -m research.llm_inquiry --backend mlx --model "$LORA_MODEL" --adapter "$ADAPTERS/adapters-$REGIME" \
+            if [ "$REGIME" = "VM" ]; then ADAPTER="$ADAPTERS_VM"; else ADAPTER="$ADAPTERS_F"; fi
+            test -f "$ADAPTER/adapters.safetensors"
+            python -m research.llm_inquiry --backend mlx --model "$LORA_MODEL" --adapter "$ADAPTER" \
               --label "$REGIME" --out "$CM_BUILD_DIR/llm-inquiry/$REGIME" | tail -25
           done
           git rev-parse HEAD > "$CM_BUILD_DIR/llm-inquiry/commit.txt"

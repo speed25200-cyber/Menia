@@ -46,6 +46,16 @@ chaque modèle : masse moyenne ≥ 0,5 sur les chiffres et sur les symboles.
 Le test n'est lancé que si le corps ajusté relancé produit les adaptateurs
 F et VM ; il est lancé quels que soient les verdicts A1 à A5.
 
+## Amendement d'exécution, 23 septembre 2026, 0 h 25 UTC
+
+Écrit avant toute exécution du test d'enquête. Le corps ajusté n'a pas
+produit `artifacts/llm-lora-mac/run-2` : la relance a dépassé la durée
+maximale d'un build, et il a été relancé en deux builds (second amendement
+d'exécution de `docs/ADJUSTED_BODY_PROTOCOL.md`). Les adaptateurs sont donc
+lus dans `artifacts/llm-lora-mac/run-3-vm/adapters-VM` et
+`artifacts/llm-lora-mac/run-3-f/adapters-F`, et le build s'arrête si l'un
+d'eux manque. États, mesures, critères et seuils sont inchangés.
+
 ## Exécution
 
 Workflow Codemagic `menia-inquiry-mac`, lancé par le relais, artefacts dans
