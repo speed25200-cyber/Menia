@@ -1,10 +1,10 @@
 {
- "request": 24,
+ "request": 25,
  "app": "Menia",
  "wait_minutes": 345,
  "builds": [
-  {"launch": {"workflow": "menia-lora-seek-mac", "branch": "claude/causal-self-model-llm-results-mauabk",
-              "variables": {"SEEK_ADAPTER": "artifacts/llm-lora-mac/run-12-full/adapters-FULL-2100", "SEEK_LABEL": "FULL-2100"}},
-   "dest": "artifacts/llm-lora-mac/run-13-full-seek"}
+  {"launch": {"workflow": "menia-lora-stage-mac", "branch": "claude/causal-self-model-llm-results-mauabk",
+              "variables": {"STAGE_REGIME": "VMLB", "STAGE_START": "artifacts/llm-lora-mac/run-12-full/adapters-FULL-2100", "STAGE_BASE": "2100"}},
+   "dest": "artifacts/llm-lora-mac/run-14-stage-b"}
  ]
 }
