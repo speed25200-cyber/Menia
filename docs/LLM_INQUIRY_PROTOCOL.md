@@ -46,7 +46,7 @@ chaque modèle : masse moyenne ≥ 0,5 sur les chiffres et sur les symboles.
 Le test n'est lancé que si le corps ajusté relancé produit les adaptateurs
 F et VM ; il est lancé quels que soient les verdicts A1 à A5.
 
-## Amendement d'exécution, 23 septembre 2026, 0 h 25 UTC
+## Amendement d'exécution, 23 septembre 2026, 0 h 09 UTC
 
 Écrit avant toute exécution du test d'enquête. Le corps ajusté n'a pas
 produit `artifacts/llm-lora-mac/run-2` : la relance a dépassé la durée

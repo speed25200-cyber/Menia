@@ -1,6 +1,6 @@
 # Protocole pré-enregistré — L'agent à indicateurs, version 4
 
-Rédigé le 23 septembre 2026 à 0 h 10 UTC, après la publication de la
+Rédigé le 23 septembre 2026 à 0 h 05 UTC (commit `41b9d4f`), après la publication de la
 version 3 (`docs/INDICATOR_AGENT_V3_RESULTS.md`) et de ses analyses
 exploratoires, **avant l'écriture du code de la version 4 et avant toute
 exécution**. Mêmes règles que les versions 1 à 3.
