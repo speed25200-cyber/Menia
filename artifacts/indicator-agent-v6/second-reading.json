@@ -1,0 +1,70 @@
+{
+ "primary": {
+  "valid": true,
+  "RPT-1": false,
+  "RPT-2": true,
+  "GWT-1": true,
+  "GWT-2": true,
+  "GWT-3": true,
+  "GWT-4": false,
+  "HOT-1": true,
+  "HOT-2": true,
+  "HOT-3": false,
+  "HOT-4": false,
+  "AST-1": true,
+  "PP-1": true,
+  "AE-1": true,
+  "AE-2": true,
+  "passed": 10,
+  "global": false
+ },
+ "second": {
+  "valid": true,
+  "RPT-1": true,
+  "RPT-2": true,
+  "GWT-1": true,
+  "GWT-2": true,
+  "GWT-3": true,
+  "GWT-4": true,
+  "HOT-1": true,
+  "HOT-2": true,
+  "HOT-3": false,
+  "HOT-4": false,
+  "AST-1": true,
+  "PP-1": true,
+  "AE-1": true,
+  "AE-2": true,
+  "passed": 12,
+  "global": false
+ },
+ "second_values": {
+  "RPT-1": {
+   "memory_sign": 0.9509546046191195,
+   "return_loss": 0.9166083333333335,
+   "threshold": 0.39671903333333336
+  },
+  "GWT-4": {
+   "intero_low_need": 0.49462505347100233,
+   "intero_high_need": 0.2393888564792194,
+   "body_writes_after_change": 0.6383333333333333,
+   "round_robin_gap": 4.140469
+  },
+  "HOT-3": {
+   "pos_fault_gap": 0.17235990176378657,
+   "return_gap": 0.21906133333333333,
+   "threshold_return": 0.39671903333333336
+  },
+  "HOT-4": {
+   "spearman": 0.879103214344088,
+   "active_fraction": 0.17388888888888887,
+   "band_error": 0.14239168133641203,
+   "band_error_random": 0.9286643831385659,
+   "conflict_choice": 0.800903342366757,
+   "conflict_choice_random": 0.7106424717999019,
+   "counts": [
+    5535,
+    4078
+   ]
+  }
+ }
+}
