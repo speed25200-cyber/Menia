@@ -40,6 +40,7 @@ jobs:
       - run: python -m research.llm_body_verdicts --lora artifacts/llm-lora-mac/run-4-vm artifacts/llm-lora-mac/run-3-f --check artifacts/llm-lora-mac/verdicts-run-4.json
       - run: python -m research.llm_report verdicts --rows artifacts/llm-report/run-2/llm-report/rows.jsonl --check artifacts/llm-report/run-2/llm-report/summary.json
       - run: python -m research.llm_inquiry_verdicts --vm artifacts/llm-inquiry/run-1/llm-inquiry/VM --f artifacts/llm-inquiry/run-1/llm-inquiry/F --check artifacts/llm-inquiry/verdicts-run-1.json
+      - run: python -m research.llm_inquiry_verdicts --vm artifacts/llm-inquiry/run-2/llm-inquiry/VM --f artifacts/llm-inquiry/run-2/llm-inquiry/F --check artifacts/llm-inquiry/verdicts-run-2.json
       - run: python -m research.llm_menia_report verdicts --rows artifacts/menia-report/run-1/menia-report/rows.jsonl --check artifacts/menia-report/run-1/menia-report/summary.json
       - run: python -m research.audit_indicator_agent --root artifacts/indicator-agent --replay-lives 2 --check
       - run: python -m research.audit_indicator_agent --root artifacts/indicator-agent-v2 --replay-lives 2 --check
