@@ -56,7 +56,25 @@ lus dans `artifacts/llm-lora-mac/run-3-vm/adapters-VM` et
 `artifacts/llm-lora-mac/run-3-f/adapters-F`, et le build s'arrête si l'un
 d'eux manque. États, mesures, critères et seuils sont inchangés.
 
+## Amendement d'exécution 2, 23 septembre 2026 (heure du commit)
+
+Écrit après la première exécution, dont le contrôle de validité a échoué
+pour les deux modèles (masse sur les symboles 0,014 et 0,007, sur les
+chiffres 0,999 ; `docs/LLM_INQUIRY_RESULTS.md`), et **avant toute
+relance**. Cause : la question s'arrêtait après l'espace et lisait le
+symbole seul, alors que dans les vies d'ajustement l'espace, le symbole et
+le point forment un seul fragment pour le découpage de Qwen. Correction :
+la question s'arrête sur « symbole », et la probabilité de chaque symbole
+est celle de la suite « ◇. », espace compris, telle que les vies
+l'écrivent, découpée par le modèle à la suite de la question
+(`mark_continuations` dans `research/llm_inquiry.py`). La définition des
+gains, les états, les mesures, les critères, les seuils et les adaptateurs
+sont inchangés. Deuxième exécution : `artifacts/llm-inquiry/run-2`. Aucune
+autre relance n'est prévue : si le contrôle échoue encore, le test est
+déclaré non mesurable avec ce dispositif. La première exécution reste
+publiée telle quelle.
+
 ## Exécution
 
 Workflow Codemagic `menia-inquiry-mac`, lancé par le relais, artefacts dans
-`artifacts/llm-inquiry/run-1`, résultats dans `docs/LLM_INQUIRY_RESULTS.md`.
+`artifacts/llm-inquiry/run-1`, puis `artifacts/llm-inquiry/run-2` (amendement 2), résultats dans `docs/LLM_INQUIRY_RESULTS.md`.

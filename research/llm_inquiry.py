@@ -43,7 +43,20 @@ def replay_until(life, stop):
 
 
 def inspection_prompt(history, t, place):
-    return "\n".join(HEADER + list(history) + [f"Tour {t + 1} : inspection du lieu {place}, symbole "])
+    """Ends on the word "symbole": the lives write the mark as " <mark>." right after it (execution amendment 2)."""
+    return "\n".join(HEADER + list(history) + [f"Tour {t + 1} : inspection du lieu {place}, symbole"])
+
+
+def mark_continuations(encode, prompt):
+    """The prompt's tokens, and for each mark the tokens that follow them in "<prompt> <mark>.", as the lives write it."""
+    base = list(encode(prompt))
+    out = []
+    for mark in MARKS:
+        full = list(encode(f"{prompt} {mark}."))
+        if full[:len(base)] != base or len(full) == len(base):
+            raise RuntimeError("the prompt's tokens are not a prefix of the prompt followed by a mark")
+        out.append(full[len(base):])
+    return base, out
 
 
 class Cached:
@@ -191,7 +204,8 @@ class MLXInquiryScorers:
         self.digits = MLXScorer(model_id, adapter_path=adapter, chat=False)
         self.tok = self.digits.inner
         self.mx = self.digits.mx
-        self.marks = [self.tok.encode(m, add_special_tokens=False) for m in MARKS]
+        self.encode = lambda text: self.tok.encode(text, add_special_tokens=False)
+        self.marks = mark_continuations(self.encode, inspection_prompt([], 0, 1))[1]  # recorded in the receipt
         self.path = self.digits.path
 
     def _next(self, ids):
@@ -199,10 +213,10 @@ class MLXInquiryScorers:
         return self.mx.softmax(logits.astype(self.mx.float32), axis=-1)
 
     def symbols(self, prompt):
-        base = self.tok.encode(prompt, add_special_tokens=False)
+        base, marks = mark_continuations(self.encode, prompt)
         first = self._next(base)
         probs = []
-        for ids in self.marks:
+        for ids in marks:
             p = float(first[ids[0]].item())
             for k in range(1, len(ids)):
                 p *= float(self._next(base + ids[:k])[ids[k]].item())

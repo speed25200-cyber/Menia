@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path
 import numpy as np
 from research.llm_inquiry import (points, replay_until, gains, summarize, verdicts, ScriptedDigits, scripted_symbols, Cached,
-                                  evaluate, main)
+                                  evaluate, main, inspection_prompt, mark_continuations)
 from research.llm_atelier import MARKS
 
 
@@ -33,6 +33,22 @@ class InquiryTests(unittest.TestCase):
         fixed = summarize(evaluate(Cached(ScriptedDigits("fixed")), Cached(scripted_symbols), points(4, 2), log=lambda m: None))
         out = verdicts({"VM": mark, "F": fixed})
         self.assertTrue(out["I1"] and out["I2"] and out["global"])
+
+    def test_marks_are_read_as_the_lives_write_them(self):
+        import re
+        vocab = {}
+
+        def encode(text):  # a toy tokenizer that, like Qwen's, joins a space to the signs that follow it
+            return [vocab.setdefault(piece, len(vocab)) for piece in re.findall(r"\w+| ?[^\s\w]+|\s+", text)]
+
+        prompt = inspection_prompt([], 0, 2)
+        self.assertTrue(prompt.endswith("inspection du lieu 2, symbole"))
+        base, marks = mark_continuations(encode, prompt)
+        self.assertEqual(base, encode(prompt))
+        self.assertEqual([len(m) for m in marks], [1, 1, 1, 1])
+        self.assertEqual(len({tuple(m) for m in marks}), 4)
+        with self.assertRaises(RuntimeError):
+            mark_continuations(lambda text: [hash(text)], prompt)
 
     def test_cli(self):
         with tempfile.TemporaryDirectory() as tmp:
