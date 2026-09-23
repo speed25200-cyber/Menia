@@ -53,6 +53,25 @@ class DataTests(unittest.TestCase):
             read_first += any("lieu 1," in line for line in lines[:first_move])
         self.assertGreater(read_first / len(vmi), 0.6)
 
+    def test_the_reading_regime_redraws_the_body_and_reads_before_each_move(self):
+        from research.llm_atelier import MARKS, COMMANDS
+        docs = childhood_text_lives("VML", 5, 60)
+        read = told = 0
+        for doc in docs:
+            lines = doc["text"].split("Historique :\n")[1].splitlines()
+            self.assertEqual(len(lines), LIFE)
+            self.assertTrue(all("inspection du lieu" in line for line in lines[::2]))
+            self.assertTrue(all(" : commande " in line for line in lines[1::2]))
+            for look, move in zip(lines[::2], lines[1::2]):
+                if "lieu 1," in look:
+                    s, p = re.search(r"symbole (\S)\. Position (\d)", look).groups()
+                    c, q = re.search(r"commande (\w), de la case \d à la case (\d)", move).groups()
+                    read += 1
+                    told += (int(p) + motor_delta(MARKS.index(s), COMMANDS.index(c))) % 8 == int(q)
+        self.assertGreater(read / (12 * len(docs)), 0.4)
+        self.assertGreater(told / read, 0.75)
+        self.assertGreater(sum(len(implied_bodies(d["text"])) > 2 for d in docs), 40)
+
     def test_motor_examples_are_the_test_prompts_with_the_landing_digit(self):
         doc = childhood_text_lives("VMI", 5, 1)[0]
         lines = doc["text"].split("Historique :\n", 1)[1].splitlines()

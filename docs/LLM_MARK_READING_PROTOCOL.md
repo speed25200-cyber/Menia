@@ -111,3 +111,18 @@ de lecture des quatre adaptateurs publiés, puis l'ajustement VML, son test
 de lecture, le test d'enquête et les cellules. Artefacts dans
 `artifacts/llm-lora-mac/run-8-vml` ; verdicts recalculés depuis les lignes
 et vérifiés en CI ; résultats dans `docs/LLM_INQUIRY_RESULTS.md`.
+
+## Précisions fixées avant l'exécution
+
+Écrites avec le code, avant tout lancement. Dans les 1 500 vies VML
+d'entraînement, 5,95 mouvements par vie suivent une lecture du lieu 1 (0,77
+dans VMI, le premier seulement) ; la case qu'implique la marque est la case
+d'arrivée dans 0,85 de ces mouvements, et dans 0,25 après un autre lieu.
+Les corps tirés à nouveau viennent d'un générateur à part ; les vies VMI
+exportées restent identiques octet pour octet à celles de `run-7-vmw`. Le
+découpage autour des chiffres d'arrivée garde partout le pré-tokeniseur
+de Qwen (12 chiffres par vie). Dans le build, le test de lecture des quatre
+adaptateurs publiés passe en premier, pour être fait même si
+l'ajustement échouait ; les cellules du corps ajusté passent en dernier.
+Le relais retire le préfixe `llm-lora` : les tests de lecture arrivent dans
+`run-8-vml/reading-<adaptateur>`, l'enquête dans `run-8-vml/inquiry-VML`.
