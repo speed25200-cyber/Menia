@@ -1,0 +1,112 @@
+{
+ "world": "two_bands",
+ "seed": 29,
+ "criteria": {
+  "valid": true,
+  "RPT-1": false,
+  "RPT-2": true,
+  "GWT-1": true,
+  "GWT-2": true,
+  "GWT-3": true,
+  "GWT-4": false,
+  "HOT-1": true,
+  "HOT-2": true,
+  "HOT-3": false,
+  "HOT-4": false,
+  "AST-1": true,
+  "PP-1": true,
+  "AE-1": true,
+  "AE-2": true,
+  "passed": 10,
+  "global": false
+ },
+ "values": {
+  "delta": {
+   "pooled": 3.7947130000000002,
+   "per_seed": [
+    3.7947130000000002
+   ]
+  },
+  "RPT-1": {
+   "memory_sign": 0.963039,
+   "choice_drop": 0.11332699999999996
+  },
+  "RPT-2": {
+   "conflict": 0.9521860000000001,
+   "bag": 0.0
+  },
+  "GWT-1": {
+   "pos": 0.97625,
+   "body": 0.980625,
+   "intero_ok": 0.988375,
+   "lesion_intero_faints": 3.97,
+   "lesion_intero_choice": 0.00481100000000001,
+   "lesion_vis_choice": 0.304873,
+   "lesion_vis_faints": 0.21000000000000002
+  },
+  "GWT-2": {
+   "one_writer": 1.0,
+   "limit_cost": 0.573604,
+   "selection_gain": 3.221109,
+   "delta": 3.7947130000000002
+  },
+  "GWT-3": {
+   "blackout_gap": 0.400327,
+   "monitor_auroc_gap": 0.08037878257408093
+  },
+  "GWT-4": {
+   "intero_low": 0.5023945,
+   "intero_high": 0.33292449999999996,
+   "body_writes_after_change": 0.655,
+   "round_robin_gap": 4.449332
+  },
+  "HOT-1": {
+   "blackout": 0.964869,
+   "no_prediction": 0.125
+  },
+  "HOT-2": {
+   "auroc": 0.9852388297812332,
+   "brier": 0.032772452034143765,
+   "brier_constant": 0.13748621773106873
+  },
+  "HOT-3": {
+   "pos_read_gap": 0.04220800000000002,
+   "return_gap": 0.37402400000000013
+  },
+  "HOT-4": {
+   "spearman": 0.830131402897443,
+   "active_fraction": 0.25375,
+   "band_error": 0.11828125881224431,
+   "band_error_random": 1.2702751405951036,
+   "band_choice": 0.832595,
+   "band_choice_random": 0.731288,
+   "choice_measure": "choice_band_conflict",
+   "band_choice_all_band_steps": 0.72521,
+   "band_choice_all_band_steps_random": 0.577297
+  },
+  "AST-1": {
+   "schema": 0.9566490000000001,
+   "misbinding": 0.0074730000000000005,
+   "misbinding_no_schema": 0.269104,
+   "choice_drop": 0.24167499999999997,
+   "redirect": 1.0,
+   "redirect_no_schema": 0.100331
+  },
+  "PP-1": {
+   "surprise_auroc": 0.9856236120296735,
+   "surprise_after": 1.7826246924939466,
+   "surprise_before": 0.14519371282973623,
+   "pos_read_gap": 0.14152900000000002
+  },
+  "AE-1": {
+   "learning": 1.345809333333333,
+   "charge_when_low": 0.873016,
+   "object_when_high": 0.913597,
+   "single_goal_faints": 4.24
+  },
+  "AE-2": {
+   "body_after_change": 0.970556,
+   "frozen_gap_M": 2.464151
+  }
+ }
+}
