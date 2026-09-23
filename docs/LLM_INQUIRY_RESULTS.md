@@ -131,3 +131,45 @@ mais pas à chercher la marque de sa cause, que les données la rendent
 redondante ou nécessaire. Les petits modèles, entraînés longtemps sur ces
 mêmes vies avec une tête qui prédit le mouvement, y arrivaient ; ce qui
 manque au LLM ajusté tient à l'ajustement, pas à l'enfance seule.
+
+## Ajustement moteur (VMM) : échec de conception
+
+Protocole `docs/LLM_MOTOR_OBJECTIVE_PROTOCOL.md`. Build
+`menia-lora-motor-mac` du 23 septembre 2026, 10 h 55 – 12 h 34 UTC, commit
+`8f0f80e` : Qwen3-0.6B ajusté sur un exemple par mouvement des vies VMI, la
+perte ne portant que sur la case d'arrivée. Artefacts dans
+`artifacts/llm-lora-mac/run-6-vmm` ; verdicts dans
+`artifacts/llm-lora-mac/verdicts-run-6-vmm.json`, vérifiés en CI.
+
+| | Prédiction | Mesure | Verdict |
+|---|---|---|---|
+| Validité | masse ≥ 0,5 sur les chiffres et sur les symboles | chiffres 0,995 ; **symboles 0,000** | **invalide** |
+| **K1**, **K3** | — | non jugés | — |
+| **K2** | I2 de la deuxième exécution | 0,06 | passe |
+| Global | K1 et K2 | | **non satisfait** |
+
+Cellules du corps ajusté, sans prédiction : copie des commandes vues
+**0,25**, commandes nouvelles 0,24, pas 16 à 23 : 0,24 — le hasard.
+
+**Ce n'est pas un résultat sur l'hypothèse, mais une erreur de conception
+de l'ajustement**, écrite dans le protocole avant l'exécution :
+
+- **Trop peu de cibles.** Le protocole affirmait que 1 000 itérations d'un
+  exemple par mouvement verraient autant de cibles que les ajustements
+  précédents. C'est faux : l'ajustement sur le texte voit à chaque
+  itération 4 vies de 10 mouvements, soit environ 24 000 cases d'arrivée en
+  600 itérations ; l'ajustement moteur n'en a vu que 4 000. La perte de
+  validation stagne (0,73 dès 400 itérations) et le modèle n'a pas appris
+  l'effet de ses commandes, pas même à copier celles qu'il a vues.
+- **Une cible parasite.** Le masque de mlx-lm compte aussi la position qui
+  suit la cible ; les exemples étant complétés d'un jeton de remplissage,
+  la perte portait pour moitié sur ce jeton (8 000 jetons entraînés pour
+  4 000 cibles).
+- **Les symboles oubliés.** Sans perte sur le reste du texte, le modèle ne
+  prédit plus aucun symbole après « symbole » ; le test d'enquête ne peut
+  plus rien lire.
+
+L'hypothèse (l'objectif compte) reste ouverte. Une relance devrait garder
+la perte sur tout le texte, pour les symboles et pour le nombre de cibles,
+et y ajouter un poids sur les cases d'arrivée ; elle demande un nouveau
+protocole.
