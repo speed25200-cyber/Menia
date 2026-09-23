@@ -1,0 +1,64 @@
+{
+ "id": "6ab34832a30cffb474d3688a",
+ "tag": null,
+ "branch": "claude/causal-self-model-llm-results-mauabk",
+ "workflow": "menia-inquiry-mac",
+ "status": "finished",
+ "createdAt": "2026-09-23T03:32:02.172000+00:00",
+ "startedAt": "2026-09-23T05:35:57.796000+00:00",
+ "finishedAt": "2026-09-23T06:33:04.062000+00:00",
+ "commit": "a83f30f638079f3ea1f38a1dc92cf10998768284",
+ "message": null,
+ "steps": [
+  {
+   "name": "Preparing build machine",
+   "status": "success",
+   "startedAt": "2026-09-23T05:35:58.069000+00:00",
+   "finishedAt": "2026-09-23T05:36:23.362000+00:00"
+  },
+  {
+   "name": "Fetching app sources",
+   "status": "success",
+   "startedAt": "2026-09-23T05:36:23.362000+00:00",
+   "finishedAt": "2026-09-23T05:36:29.857000+00:00"
+  },
+  {
+   "name": "Installer mlx-lm dans un environnement isolé",
+   "status": "success",
+   "startedAt": "2026-09-23T05:36:29.857000+00:00",
+   "finishedAt": "2026-09-23T05:36:46.559000+00:00"
+  },
+  {
+   "name": "Vérifier la mesure sur modèles simulés",
+   "status": "success",
+   "startedAt": "2026-09-23T05:36:46.559000+00:00",
+   "finishedAt": "2026-09-23T05:36:47.243000+00:00"
+  },
+  {
+   "name": "Mesurer le lieu où chaque modèle ajusté chercherait l'information sur lui-même",
+   "status": "success",
+   "startedAt": "2026-09-23T05:36:47.243000+00:00",
+   "finishedAt": "2026-09-23T06:33:02.480000+00:00"
+  },
+  {
+   "name": "Publishing",
+   "status": "success",
+   "startedAt": "2026-09-23T06:33:02.480000+00:00",
+   "finishedAt": "2026-09-23T06:33:03.977000+00:00"
+  },
+  {
+   "name": "Cleaning up",
+   "status": "success",
+   "startedAt": "2026-09-23T06:33:03.977000+00:00",
+   "finishedAt": "2026-09-23T06:33:04.062000+00:00"
+  }
+ ],
+ "artefacts": [
+  {
+   "name": "Menia_2_artifacts.zip",
+   "size": 7482,
+   "md5": null,
+   "type": "bundle"
+  }
+ ]
+}
