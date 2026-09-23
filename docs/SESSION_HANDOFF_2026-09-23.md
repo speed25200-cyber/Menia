@@ -15,7 +15,7 @@ Il attend la fin de tous les builds (`wait_minutes`, 345 au plus), rapatrie
 les artefacts dans `dest` et pousse sur la branche. Il ne retire que les
 préfixes `llm-latent`, `llm-lora` et `llm-atelier` : les autres artefacts
 arrivent sous `dest/<nom du dossier>`. Les builds passent un par un.
-**La prochaine demande porte le numéro 17.** Codemagic fige le commit à la
+**La prochaine demande porte le numéro 18.** Codemagic fige le commit à la
 création du build : un build lancé par une demande utilise le commit de
 cette demande, même s'il démarre plus tard.
 
@@ -49,6 +49,7 @@ cette demande, même s'il démarre plus tard.
 | 12 | `menia-lora-vm-rank-mac` | `artifacts/llm-lora-mac/run-4-vm` | **fait** : A3 0,793 (échoue encore), A4 passe, global non satisfait ; pas de boucle P-soi |
 | 13 | `menia-menia-report-mac` | `artifacts/menia-report/run-1/menia-report` | **fait** : M2 et M3 passent, M1 échoue (« les besoins » rapportés comme « la position »), `docs/MENIA_REPORT_RESULTS.md` |
 | 15 | `menia-menia-report-mac`, `MENIA_REPORT_ITEMS=items-v2.jsonl` | `artifacts/menia-report/run-2/menia-report` | **fait** : M1, M2 et M3 passent (0,997 ; 0,999 ; 0,999), global satisfait |
+| 17 | `menia-lora-motor-mac` (`docs/LLM_MOTOR_OBJECTIVE_PROTOCOL.md`) | `artifacts/llm-lora-mac/run-6-vmm` | vérifier d'abord le build (emballage mlx-lm neuf) ; verdicts K1–K3 : `python -m research.llm_inquiry_verdicts --vm …/run-6-vmm/inquiry-VMM --f artifacts/llm-inquiry/run-2/llm-inquiry/F` ; résultats dans `docs/LLM_INQUIRY_RESULTS.md`, contrôle CI |
 | 16 | `menia-lora-vmi-mac` (`docs/LLM_INQUIRY_DATA_PROTOCOL.md`) | `artifacts/llm-lora-mac/run-5-vmi` | **fait** : valide ; J1 échoue (0,29), J2 passe, J3 +0,032 ; global non satisfait |
 | 14 | `menia-inquiry-mac` (amendement 2) | `artifacts/llm-inquiry/run-2/llm-inquiry` | **fait** : valide ; I1 échoue (0,40), I2 passe, I3 échoue ; `docs/LLM_INQUIRY_RESULTS.md` |
 
