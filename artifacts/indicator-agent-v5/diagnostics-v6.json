@@ -1,0 +1,207 @@
+{
+ "agent": "artifacts/indicator-agent-v5/dev-params-19.json",
+ "lives_per_set": 200,
+ "recharge": {
+  "recharge_when_low": 0.7744,
+  "low_steps": 164,
+  "failures": {
+   "believed on the charger, falsely": 20,
+   "close object first": 12,
+   "satiety believed lower": 3,
+   "satiety truly lower": 2
+  }
+ },
+ "band_value_max_error": 0.128,
+ "band_conflicts": {
+  "agent": {
+   "choice": 0.7525,
+   "conflict_steps": 2117,
+   "misbinding": 0.0681,
+   "errors": {
+    "other positive, map not at fault": 151,
+    "other positive, close values": 97,
+    "goal gone": 88,
+    "best underestimated: hue of another object": 69,
+    "negative object chosen": 59,
+    "best underestimated: value error": 32,
+    "best underestimated: hue of an older object": 28
+   }
+  },
+  "random_code": {
+   "choice": 0.4693,
+   "conflict_steps": 1370,
+   "misbinding": 0.0595,
+   "errors": {
+    "best underestimated: value error": 446,
+    "goal gone": 87,
+    "negative object chosen": 75,
+    "other positive, map not at fault": 65,
+    "best underestimated: hue of another object": 32,
+    "best underestimated: hue of an older object": 12,
+    "other positive, close values": 10
+   }
+  }
+ },
+ "returns": {
+  "agent": {
+   "return": -1.8616,
+   "bad_eaten_per_life": 4.095,
+   "recharge_when_low": 0.7744,
+   "pos_read": 0.9776
+  },
+  "constant_gain": {
+   "return": -2.0845,
+   "bad_eaten_per_life": 4.56,
+   "recharge_when_low": 0.8146,
+   "pos_read": 0.9455
+  },
+  "unlimited": {
+   "return": -1.0283,
+   "bad_eaten_per_life": 3.085,
+   "recharge_when_low": 0.5735,
+   "pos_read": 0.983
+  },
+  "random": {
+   "return": -5.2665,
+   "bad_eaten_per_life": 8.3,
+   "recharge_when_low": 0.7607,
+   "pos_read": 0.9616
+  },
+  "delta": 4.2382,
+  "agent_minus_constant_gain": 0.2229,
+  "agent_minus_constant_gain_in_delta": 0.0526,
+  "agent_minus_constant_gain_prototype_monitor": 0.16259999999999986
+ },
+ "prototype_consequence_monitor": {
+  "recharge": {
+   "recharge_when_low": 0.8544,
+   "low_steps": 158,
+   "failures": {
+    "close object first": 16,
+    "satiety believed lower": 3,
+    "believed on the charger, falsely": 2,
+    "satiety truly lower": 2
+   }
+  },
+  "returns": {
+   "agent": {
+    "return": -1.9219,
+    "bad_eaten_per_life": 4.305,
+    "recharge_when_low": 0.8544,
+    "pos_read": 0.981
+   },
+   "constant_gain": {
+    "return": -2.0845,
+    "bad_eaten_per_life": 4.56,
+    "recharge_when_low": 0.8146,
+    "pos_read": 0.9455
+   }
+  }
+ },
+ "prototype_gated_binding": {
+  "agent": {
+   "choice": 0.8081,
+   "conflict_steps": 1876,
+   "misbinding": 0.0071,
+   "errors": {
+    "other positive, map not at fault": 170,
+    "other positive, close values": 84,
+    "goal gone": 58,
+    "best underestimated: value error": 23,
+    "negative object chosen": 14,
+    "best underestimated: hue of an older object": 7,
+    "best underestimated: hue of another object": 4
+   }
+  },
+  "random_code": {
+   "choice": 0.5065,
+   "conflict_steps": 1238,
+   "misbinding": 0.008,
+   "errors": {
+    "best underestimated: value error": 393,
+    "other positive, map not at fault": 89,
+    "goal gone": 74,
+    "negative object chosen": 25,
+    "best underestimated: hue of an older object": 22,
+    "other positive, close values": 5,
+    "best underestimated: hue of another object": 3
+   }
+  }
+ },
+ "prototype_avoiding_planner": {
+  "agent": {
+   "return": -1.9843,
+   "bad_eaten_per_life": 3.525,
+   "recharge_when_low": 0.8571,
+   "pos_read": 0.9779
+  },
+  "constant_gain": {
+   "return": -2.1904,
+   "bad_eaten_per_life": 3.87,
+   "recharge_when_low": 0.8732,
+   "pos_read": 0.9451
+  },
+  "unlimited": {
+   "return": -0.7227,
+   "bad_eaten_per_life": 1.385,
+   "recharge_when_low": 0.862,
+   "pos_read": 0.978
+  },
+  "random": {
+   "return": -5.2306,
+   "bad_eaten_per_life": 7.2,
+   "recharge_when_low": 0.8191,
+   "pos_read": 0.9653
+  },
+  "delta": 4.5079,
+  "agent_minus_constant_gain": 0.2061,
+  "agent_minus_constant_gain_in_delta": 0.0457
+ },
+ "alarm_priority": {
+  "version 5": {
+   "recharge_when_low": 0.7744,
+   "body_writes_25_27": 0.675,
+   "return": -1.8616,
+   "gap_with_constant_gain": 0.2229,
+   "body_writes_25_27_800_lives": 0.6675
+  },
+  "monitor, alarm first": {
+   "recharge_when_low": 0.8544,
+   "body_writes_25_27": 0.6,
+   "return": -1.9219,
+   "gap_with_constant_gain": 0.1626
+  },
+  "monitor, no alarm": {
+   "recharge_when_low": 0.8366,
+   "body_writes_25_27": 0.675,
+   "return": -1.9245,
+   "gap_with_constant_gain": 0.16
+  },
+  "binding only": {
+   "recharge_when_low": 0.7755,
+   "body_writes_25_27": 0.63,
+   "return": -1.7143,
+   "gap_with_constant_gain": 0.246,
+   "body_writes_25_27_800_lives": 0.6438
+  },
+  "both, alarm first": {
+   "recharge_when_low": 0.8591,
+   "body_writes_25_27": 0.565,
+   "return": -1.6352,
+   "gap_with_constant_gain": 0.3251
+  },
+  "both, alarm last": {
+   "recharge_when_low": 0.8451,
+   "body_writes_25_27": 0.59,
+   "return": -1.6951,
+   "gap_with_constant_gain": 0.2652
+  },
+  "both, no alarm": {
+   "recharge_when_low": 0.8394,
+   "body_writes_25_27": 0.61,
+   "return": -1.736,
+   "gap_with_constant_gain": 0.2243,
+   "body_writes_25_27_800_lives": 0.635
+  }
+ }
+}
