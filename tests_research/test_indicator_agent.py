@@ -203,6 +203,16 @@ class VersionFiveTests(unittest.TestCase):
         obs = need_observations(life)
         self.assertTrue(all(d >= 0 for d in obs["decay_e"]))
         self.assertEqual(fit_model({k: [] for k in obs}).to_json(), NeedModel().to_json())
+        from research.sense_atelier import SenseAtelier, motor_delta
+        env = SenseAtelier(5, "fixed", n_objects=3, charger_moves=True)
+        env.reset()
+        charger = env.charger
+        env.p = (charger - 1) % 8
+        env.objects.pop(env.p, None)
+        env.step(next(a for a in range(4) if motor_delta(env.d, a) == 1), None)
+        self.assertEqual(env.p, charger)
+        self.assertNotEqual(env.charger, charger)
+        self.assertEqual((env.energy, env.relocations), (1.0, 1))
         with tempfile.TemporaryDirectory() as tmp:
             experiment_main(["--version", "5", "--out", tmp, "--seeds", "9", "--childhood", "20", "--updates", "2",
                              "--batch", "3", "--lives", "2"])

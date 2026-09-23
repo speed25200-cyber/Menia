@@ -50,7 +50,7 @@ def run_life(params, variant, env_seed, mode, agent_seed, learn=False, phase="ad
         from .indicator_agent_v2 import AgentV2, AgentV3
         from .indicator_agent_v4 import AgentV4
         from .indicator_agent_v5 import AgentV5
-        env = SenseAtelier(env_seed, mode, n_objects=3)
+        env = SenseAtelier(env_seed, mode, n_objects=3, charger_moves=version >= 5)
         agent = {2: AgentV2, 3: AgentV3, 4: AgentV4, 5: AgentV5}[version](params, variant, seed=agent_seed, learn=learn,
                                                                        phase=phase, epsilon=epsilon)
     obs, truth = env.reset()
@@ -184,7 +184,7 @@ def fit_need_model(params, seed, rounds=25, lives=160, log=print):
     """Version 5: the need model, refitted after each round on everything the agency phase has shown so far."""
     from .indicator_agent_v5 import NeedModel, need_observations, fit_model
     params.need = NeedModel().to_json()
-    pooled = {"decay_e": [], "decay_f": [], "charge": [], "food": [], "travel": []}
+    pooled = {"decay_e": [], "decay_f": [], "charge": [], "hold": [], "food": [], "travel": []}
     history = []
     for r in range(1, rounds + 1):
         returns = []

@@ -71,13 +71,16 @@ class SenseAtelier:
 
     MODES = ("childhood", "fixed", "change", "band")
 
-    def __init__(self, seed, mode="fixed", change_step=24, n_objects=N_OBJECTS):
+    def __init__(self, seed, mode="fixed", change_step=24, n_objects=N_OBJECTS, charger_moves=False):
         if mode not in self.MODES:
             raise ValueError("unknown mode")
         self.seed, self.mode, self.forced_step = int(seed), mode, change_step
         self.n_objects = int(n_objects)
+        self.charger_moves = bool(charger_moves)  # version 5, amendment 1: the charger leaves once used
         rng = np.random.default_rng(self.seed)
         streams = [np.random.default_rng(s) for s in rng.integers(2 ** 63, size=14)]
+        relocate = np.random.default_rng(rng.integers(2 ** 63))  # drawn after the fourteen, which stay as they were
+        self.relocate_u = relocate.random(MAX_SPAWNS)
         (start, body, flash, reading, felt, energy, capture, cue, hue_noise, spawn_square, spawn_hue, change, fault,
          expire) = streams
         self.d0 = int(body.integers(4))
@@ -143,6 +146,7 @@ class SenseAtelier:
         self.objects = {}
         self.spawns = 0
         self.faints = 0
+        self.relocations = 0
         self.energy_faints = 0
         self.food_faints = 0
         for _ in range(self.n_objects):
@@ -154,7 +158,7 @@ class SenseAtelier:
     def _observe(self, felt, onsets, intent, reward):
         t = self.t
         truth = {"t": t, "p": self.p, "d": self.d, "energy": self.energy, "satiety": self.satiety,
-                 "fault": bool(self.fault[t]), "objects": dict(self.objects)}
+                 "fault": bool(self.fault[t]), "objects": dict(self.objects), "charger": self.charger}
         if self.blackout[t]:
             read = None
         elif self.glitch[t]:
@@ -195,6 +199,10 @@ class SenseAtelier:
         self.energy -= ENERGY_STEP
         if self.p == self.charger:
             self.energy = 1.0
+            if self.charger_moves:
+                free = [x for x in range(RING) if x != self.p and x not in self.objects]
+                self.charger = free[int(self.relocate_u[self.relocations % MAX_SPAWNS] * len(free))]
+                self.relocations += 1
         if self.energy <= 1e-9:
             reward -= 1.0
             self.faints += 1

@@ -116,6 +116,48 @@ RPT-1 et HOT-4 passent, leurs échecs précédents tenaient à l'ordre d'accès 
 l'espace de travail et non à la mémoire ou au code de teinte. Dans tous les
 cas, ce protocole ne mesure pas une expérience vécue.
 
+## Premier essai de développement (graine 19), déclaré
+
+Le 23 septembre, de 0 h 42 à 0 h 54 UTC, code du commit `ed2e43f` : 6
+propriétés sur 14 (RPT-2, GWT-2, HOT-1, HOT-2, AST-1, PP-1). **L'arbitrage
+allostatique apprend** : retour −6,87 au premier tour (modèle vide),
+−2,66 au deuxième, −1,70 au dernier ; apprentissage 1,93 (seuil
+0,2·Δ = 0,89) ; objet quand l'énergie est haute 0,84 (seuil 0,8) ;
+recharge quand elle est basse 0,72 (seuil 0,8) ; 0,01 malaise d'énergie
+par vie. Le modèle appris retrouve la baisse d'énergie par pas (0,066 pour
+0,071 dans le monde) et celle de la satiété (0,052 pour 0,05).
+
+Mais **l'agent campe sur la recharge** (70 % des pas, 60 vies du jeu R) :
+la case maintient l'énergie à 1 tant qu'il y reste, et quand aucun bon
+objet n'est connu, rien ne vaut mieux. Un agent qui ne quitte pas la
+recharge n'a pas besoin de son intéroception pour gérer son énergie
+(lésion d'Intéro : +0,0 malaise), bouge peu (33 % des pas) et ne découvre
+pas que son corps a changé (croyance après le changement 0,57) ; les
+lectures qui suivent un mouvement restent rares (écart d'AUROC sans
+diffusion 0,043). Le choix des objets s'améliore (0,77 contre 0,69 en
+version 4), mais la mémoire y sert peu : dans 65 % des pas à objet, un seul
+bon objet est présent.
+
+### Amendement 1, daté du 23 septembre 2026 (heure du commit)
+
+Avant toute exécution sur les graines 113, 127 et 131. **Aucun seuil n'est
+modifié.** Comme l'amendement 3 de la version 1, il touche le monde, parce
+que le monde permettait une stratégie qui rend trois tests muets.
+
+1. **La recharge se déplace** : quand l'agent s'y recharge, la case de
+   recharge part vers une case libre tirée au hasard (tirages préparés à
+   l'avance, comme les apparitions d'objets, pour que toutes les variantes
+   rencontrent les mêmes). L'agent voit toujours où elle est. Comme les
+   objets, la recharge devient une ressource qu'il faut rejoindre. Le modèle
+   des besoins apprend en conséquence le niveau d'énergie à l'arrivée sur la
+   case de recharge du pas précédent, et la variation d'énergie quand
+   l'agent reste sur une case de recharge qui ne part pas, s'il l'observe
+   jamais ; sans observation, il ne prévoit aucun maintien.
+
+Le monde garde trois objets ; les prédictions sur RPT-1 et HOT-4 restent
+écrites et seront jugées telles quelles. Le deuxième essai de
+développement sur la graine 19 suit ; il sera déclaré.
+
 ## Exécution
 
 `python -m research.indicator_experiment --version 5`, artefacts dans

@@ -9,6 +9,10 @@ anticipation, Sterling 2012). The model starts empty: nothing is foreseen, and t
 While learning, exploration goals are held until reached. In the workspace, content that would
 change the goal wins over content that would only change the action; the alarms of version 4 keep
 their priority. Everything else is version 4. Protocol: docs/INDICATOR_AGENT_V5_PROTOCOL.md.
+
+Amendment 1, after the first development run: the charger leaves for a free square once used (world
+flag charger_moves); the model learns the energy on arriving at the charger and, if it ever sees
+it, the change of energy while staying on it, instead of assuming that the charger holds energy.
 """
 import numpy as np
 from .sense_atelier import STAY, N_ACTIONS
@@ -23,16 +27,17 @@ TIE = 1e-9
 class NeedModel:
     """What the agent has learned about its needs. Empty: no decay and no effect, so every goal looks alike."""
 
-    def __init__(self, decay=(0.0, 0.0), charge=None, food=(0.0, 0.0), reward=(0.0, 0.0), travel=(1.0, 0.0)):
+    def __init__(self, decay=(0.0, 0.0), charge=None, food=(0.0, 0.0), reward=(0.0, 0.0), travel=(1.0, 0.0), hold=None):
         self.decay = np.asarray(decay, dtype=float)
-        self.charge = None if charge is None else float(charge)
+        self.charge = None if charge is None else float(charge)  # energy on arriving at the charger
+        self.hold = None if hold is None else float(hold)  # change of energy per step while staying on it, if ever seen
         self.food = np.asarray(food, dtype=float)  # satiety gain = food[0] * value + food[1]
         self.reward = np.asarray(reward, dtype=float)  # reward on arrival = reward[0] * value + reward[1]
         self.travel = np.asarray(travel, dtype=float)  # steps = travel[0] + travel[1] * expected distance
 
     def to_json(self):
         return {"decay": self.decay.tolist(), "charge": self.charge, "food": self.food.tolist(),
-                "reward": self.reward.tolist(), "travel": self.travel.tolist()}
+                "reward": self.reward.tolist(), "travel": self.travel.tolist(), "hold": self.hold}
 
     @classmethod
     def from_json(cls, value):
@@ -51,16 +56,19 @@ def simulate(model, e, f, legs, on_charger, horizon=HORIZON, gamma=GAMMA):
         for i in range(steps):
             if s >= horizon:
                 return total
-            e = max(e - model.decay[0], 0.0)
+            if here and model.hold is not None:
+                e = float(np.clip(e + model.hold, 0.0, 1.0))
+            else:
+                e = max(e - model.decay[0], 0.0)
             f = max(f - model.decay[1], 0.0)
             reward = 0.0
             if i == steps - 1 and kind == "charger":
                 here = True
+                if model.charge is not None:
+                    e = model.charge
             if i == steps - 1 and kind == "food":
                 reward = float(model.reward[0] * v + model.reward[1])
                 f = min(1.0, f + max(0.0, float(model.food[0] * v + model.food[1])))
-            if here and model.charge is not None:
-                e = model.charge
             total += disc * (reward - drive(e, f))
             disc *= gamma
             s += 1
@@ -80,7 +88,7 @@ def need_observations(life):
     """What one life teaches about the needs, from the agent's own records only."""
     recs = [rec for rec, _ in life["steps"]]
     rewards = life["rewards"]
-    out = {"decay_e": [], "decay_f": [], "charge": [], "food": [], "travel": []}
+    out = {"decay_e": [], "decay_f": [], "charge": [], "hold": [], "food": [], "travel": []}
     for t in range(len(recs) - 1):
         a, b = recs[t], recs[t + 1]
         charger = a["charger"]
@@ -90,8 +98,10 @@ def need_observations(life):
             out["decay_e"].append(de)
         if df >= 0:
             out["decay_f"].append(df)
-        if b["pos_belief"] == charger:
-            out["charge"].append(b["energy_estimate"])
+        if b["pos_belief"] == charger and a["pos_belief"] != charger:
+            out["charge"].append(b["energy_estimate"])  # arriving on the charger of the step before
+        if a["pos_belief"] == charger and b["pos_belief"] == charger and b["charger"] == charger:
+            out["hold"].append(-de)  # staying on a charger that stayed
         g = a["goal"]
         if isinstance(g, int) and b["pos_belief"] == g and not b["presence"][g] and a.get("goal_value") is not None:
             out["food"].append((a["goal_value"], a["satiety_estimate"], b["satiety_estimate"], float(rewards[t])))
@@ -116,11 +126,12 @@ def fit_model(obs):
     decay = [float(np.mean(obs["decay_e"])) if obs["decay_e"] else 0.0,
              float(np.mean(obs["decay_f"])) if obs["decay_f"] else 0.0]
     charge = float(np.mean(obs["charge"])) if obs["charge"] else None
+    hold = float(np.mean(obs["hold"])) if obs["hold"] else None
     food_rows = [(v, b - a + decay[1]) for v, a, b, _ in obs["food"] if a + v < 0.95]
     food = _line([r[0] for r in food_rows], [r[1] for r in food_rows])
     reward = _line([r[0] for r in obs["food"]], [r[3] for r in obs["food"]])
     travel = _line([d for d, _ in obs["travel"]], [n for _, n in obs["travel"]]) if len(obs["travel"]) >= 5 else [1.0, 0.0]
-    return NeedModel(decay, charge, food, reward, travel)
+    return NeedModel(decay, charge, food, reward, travel, hold)
 
 
 class AgentV5(AgentV4):
