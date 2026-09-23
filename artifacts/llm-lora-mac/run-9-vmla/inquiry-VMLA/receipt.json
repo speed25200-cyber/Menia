@@ -1,0 +1,21 @@
+{
+ "schema": "menia-llm-inquiry-receipt-v1",
+ "protocol": "docs/LLM_INQUIRY_PROTOCOL.md",
+ "label": "VMLA",
+ "backend": "mlx",
+ "started": "2026-09-23T17:35:26.180926+00:00",
+ "model": {
+  "repository": "Qwen/Qwen3-0.6B",
+  "adapter": "/Users/builder/clone/llm-lora/adapters-VMLA",
+  "path": "Qwen/Qwen3-0.6B",
+  "mark_tokens": [
+   3,
+   3,
+   2,
+   3
+  ]
+ },
+ "finished": "2026-09-23T18:02:46.008401+00:00",
+ "model_calls": 5284,
+ "rows_sha256": "ea7bd1aa681ebdaba24eb28dabb563b449d065c096099300c33158b001b39c3c"
+}
