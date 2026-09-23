@@ -80,3 +80,20 @@ Code : `research/llm_lora_body.py` (régime VMLA) et
 workflow Codemagic `menia-lora-hand-mac`, lancé par le relais ; artefacts
 dans `artifacts/llm-lora-mac/run-9-vmla` ; verdicts recalculés depuis les
 lignes et vérifiés en CI ; résultats dans `docs/LLM_INQUIRY_RESULTS.md`.
+
+## Précisions fixées avant l'exécution
+
+Écrites avec le code, avant tout lancement. Les commandes de VMLA viennent
+d'un générateur à part ; la commande de VML est tirée quand même, si bien
+que VMLA vit les mêmes vies que VML (mêmes graines, mêmes corps, mêmes
+lieux inspectés), seules les commandes diffèrent. Les vies VML et VMI
+exportées restent identiques octet pour octet à celles de `run-8-vml` et
+de `run-7-vmw`. Dans les 1 500 vies VMLA d'entraînement : A dans 0,70 des
+mouvements ; 5,95 mouvements par vie suivent une lecture du lieu 1 ; la
+marque y donne la case d'arrivée dans 0,85 des cas, et **le symbole seul,
+lu comme s'il s'agissait toujours de A, dans 0,61** (0,25 dans VML) : c'est
+l'appui de premier ordre que VML n'avait pas. Le découpage autour des
+chiffres garde partout le pré-tokeniseur de Qwen. Le relais retire le
+préfixe `llm-lora` : la lecture arrive dans `run-9-vmla/reading-VMLA`,
+l'enquête dans `run-9-vmla/inquiry-VMLA`. Verdicts par
+`python -m research.llm_mark_reading hand`.

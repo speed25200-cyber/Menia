@@ -72,6 +72,15 @@ class DataTests(unittest.TestCase):
         self.assertGreater(told / read, 0.75)
         self.assertGreater(sum(len(implied_bodies(d["text"])) > 2 for d in docs), 40)
 
+    def test_the_hand_regime_is_vml_with_a_preferred_command(self):
+        vml, vmla = childhood_text_lives("VML", 5, 40), childhood_text_lives("VMLA", 5, 40)
+        self.assertEqual([d["d"] for d in vml], [d["d"] for d in vmla])
+        looks = lambda docs: [l for d in docs for l in d["text"].split("Historique :\n")[1].splitlines()[::2]]
+        self.assertEqual([l.split(",")[0] for l in looks(vml)], [l.split(",")[0] for l in looks(vmla)])
+        commands = re.findall(r"commande (\w),", "".join(d["text"] for d in vmla))
+        self.assertGreater(commands.count("A") / len(commands), 0.6)
+        self.assertLess(commands.count("A") / len(commands), 0.8)
+
     def test_motor_examples_are_the_test_prompts_with_the_landing_digit(self):
         doc = childhood_text_lives("VMI", 5, 1)[0]
         lines = doc["text"].split("Historique :\n", 1)[1].splitlines()

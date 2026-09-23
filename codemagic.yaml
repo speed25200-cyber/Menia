@@ -617,6 +617,57 @@ workflows:
     artifacts:
       - llm-lora/**
 
+  menia-lora-hand-mac:
+    name: Menia - Une main préférée pour apprendre à lire la marque (docs/LLM_MARK_HAND_PROTOCOL.md)
+    instance_type: mac_mini_m2
+    max_build_duration: 120
+    environment:
+      vars:
+        LORA_MODEL: "Qwen/Qwen3-0.6B"
+        LORA_ITERS: "600"
+        LORA_TRAIN_LIVES: "1500"
+    scripts:
+      - name: Installer mlx-lm dans un environnement isolé
+        script: |
+          python3 -m venv .venv
+          source .venv/bin/activate
+          pip install --upgrade pip
+          pip install "numpy==2.2.6" "mlx-lm==0.31.3" "huggingface_hub>=0.30"
+      - name: Vérifier le protocole sur scoreurs simulés
+        script: |
+          source .venv/bin/activate
+          python -m unittest tests_research.test_llm_lora_body tests_research.test_llm_inquiry tests_research.test_llm_mark_reading -v
+      - name: Exporter les vies VMLA, ajuster comme VML, lire, mesurer l'enquête
+        script: |
+          set -eo pipefail
+          source .venv/bin/activate
+          OUT="$CM_BUILD_DIR/llm-lora"
+          mkdir -p "$OUT"
+          python -m research.llm_lora_body export --regime VMLA --out "$OUT/data-VMLA" \
+            --train "$LORA_TRAIN_LIVES" --valid 150 --seed 17
+          python - "$OUT" <<'EOF'
+          import json, os, sys
+          from transformers import AutoTokenizer
+          from research.llm_weighted_lora import summary
+          out = sys.argv[1]
+          tokenizer = AutoTokenizer.from_pretrained(os.environ["LORA_MODEL"])
+          report = {name: summary([json.loads(l) for l in open(f"{out}/data-VMLA/{name}.jsonl")], tokenizer)
+                    for name in ("train", "valid")}
+          open(f"{out}/weights-VMLA.json", "w").write(json.dumps(report, indent=1) + "\n")
+          print(json.dumps(report))
+          EOF
+          python -m research.llm_weighted_lora --model "$LORA_MODEL" --train --data "$OUT/data-VMLA" \
+            --iters "$LORA_ITERS" --batch-size 4 --num-layers 16 --learning-rate 1e-4 \
+            --max-seq-length 1024 --steps-per-eval 100 --val-batches 10 --save-every 600 --grad-checkpoint \
+            --seed 17 --adapter-path "$OUT/adapters-VMLA" 2>&1 | tee "$OUT/lora-VMLA.log" | tail -30
+          python -m research.llm_mark_reading score --backend mlx --model "$LORA_MODEL" \
+            --adapter "$OUT/adapters-VMLA" --label VMLA --out "$OUT/reading-VMLA"
+          python -m research.llm_inquiry --backend mlx --model "$LORA_MODEL" --adapter "$OUT/adapters-VMLA" \
+            --label VMLA --out "$OUT/inquiry-VMLA" | tail -25
+          git rev-parse HEAD > "$OUT/commit.txt"
+    artifacts:
+      - llm-lora/**
+
   menia-lora-vm-rank-mac:
     name: Menia - Le corps ajusté, régime VM au rang 16 sur toutes les couches (troisième amendement)
     instance_type: mac_mini_m2

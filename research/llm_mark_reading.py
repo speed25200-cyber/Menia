@@ -59,6 +59,27 @@ def summarize(rows):
             "accuracy_0": float(np.mean([r["best"] == r["implied"] for r in other]))}
 
 
+def by_command(rows):
+    """P1 on the preferred command A and on the three others (docs/LLM_MARK_HAND_PROTOCOL.md)."""
+    mark = [r for r in rows if r["place"] == 1]
+    return {"P1_A": float(np.mean([r["p_implied"] for r in mark if r["command"] == 0])),
+            "P1_BCD": float(np.mean([r["p_implied"] for r in mark if r["command"] != 0]))}
+
+
+def hand_verdicts(summary, commands, inquiry):
+    """H1 to H4 of docs/LLM_MARK_HAND_PROTOCOL.md; L1 of the reading protocol is reported, not judged."""
+    out = {"valid_VMLA": summary["digit_mass"] >= VALIDITY_MASS}
+    if out["valid_VMLA"]:
+        out["H1"] = commands["P1_A"] >= 0.6 and commands["P1_A"] - summary["P0"] >= 0.3
+        out["H2"] = commands["P1_BCD"] >= 0.6
+        out["L1_all_commands"] = summary["P1"] >= 0.6 and summary["P1"] - summary["P0"] >= 0.3
+    found = inquiry_verdicts(inquiry)
+    out["valid_inquiry_VMLA"], out["valid_inquiry_F"] = found.get("valid_VM"), found.get("valid_F")
+    out["H3"], out["H4"] = found.get("I1"), found.get("I2")
+    out["global"] = out.get("H1") is True and out["H3"] is True and out["H4"] is True
+    return out
+
+
 def verdicts(reading, inquiry=None):
     """reading: label -> summary of the reading test; inquiry: {"VM": VML's inquiry summary, "F": F's}."""
     out = {f"valid_{label}": s["digit_mass"] >= VALIDITY_MASS for label, s in reading.items()}
@@ -93,6 +114,12 @@ def main(argv=None):
     ve.add_argument("--inquiry-f", default=None)
     ve.add_argument("--output", default=None)
     ve.add_argument("--check", default=None)
+    ha = sub.add_parser("hand", help="verdicts H1 to H4 of docs/LLM_MARK_HAND_PROTOCOL.md")
+    ha.add_argument("--reading", required=True)
+    ha.add_argument("--inquiry", required=True)
+    ha.add_argument("--inquiry-f", required=True)
+    ha.add_argument("--output", default=None)
+    ha.add_argument("--check", default=None)
     a = parser.parse_args(argv)
     if a.command == "score":
         out = Path(a.out)
@@ -114,6 +141,16 @@ def main(argv=None):
         (out / "receipt.json").write_text(json.dumps(receipt, indent=1) + "\n")
         print(a.label, json.dumps(summary))
         return
+    if a.command == "hand":
+        rows = read_rows(a.reading)
+        summary = summarize(rows)
+        same = json.loads(json.dumps(summary)) == json.loads(Path(a.reading, "summary.json").read_text())
+        (vmla, vmla_same), (f, f_same) = load_inquiry(a.inquiry), load_inquiry(a.inquiry_f)
+        commands = by_command(rows)
+        result = json.loads(json.dumps({"verdicts": hand_verdicts(summary, commands, {"VM": vmla, "F": f}),
+                                        "summaries_match_published": same and vmla_same and f_same,
+                                        "reading": dict(summary, **commands), "inquiry": {"VMLA": vmla, "F": f}}))
+        return report(result, a.output, a.check)
     reading, same = {}, True
     for spec in a.reading:
         label, root = spec.split("=", 1)
@@ -125,11 +162,15 @@ def main(argv=None):
         inquiry, same = {"VM": vml, "F": f}, same and vml_same and f_same
     result = json.loads(json.dumps({"verdicts": verdicts(reading, inquiry), "summaries_match_published": same,
                                     "reading": reading, "inquiry": inquiry}))
-    print(json.dumps(result["verdicts"], indent=1), "\nsummaries match:", same)
-    if a.output:
-        Path(a.output).write_text(json.dumps(result, indent=1) + "\n")
-    if a.check:
-        differs = json.loads(Path(a.check).read_text()) != result or not same
+    report(result, a.output, a.check)
+
+
+def report(result, output, check):
+    print(json.dumps(result["verdicts"], indent=1), "\nsummaries match:", result["summaries_match_published"])
+    if output:
+        Path(output).write_text(json.dumps(result, indent=1) + "\n")
+    if check:
+        differs = json.loads(Path(check).read_text()) != result or not result["summaries_match_published"]
         print("differs:", "yes" if differs else "none")
         if differs:
             raise SystemExit(1)

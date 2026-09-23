@@ -2,7 +2,7 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
-from research.llm_mark_reading import items, prompt, score, summarize, verdicts, main
+from research.llm_mark_reading import items, prompt, score, summarize, verdicts, main, by_command, hand_verdicts
 from research.llm_inquiry import ScriptedDigits
 
 
@@ -30,6 +30,22 @@ class ReadingTests(unittest.TestCase):
         self.assertEqual((v["L0"], v["L1"]), (False, False))
         v = verdicts({"VMW": dict(blind, digit_mass=0.2), "VML": dict(reader, digit_mass=0.2)})
         self.assertEqual((v["valid_VMW"], v["L0"], v["L1"]), (False, None, None))
+
+    def test_hand_verdicts_read_the_preferred_command_apart(self):
+        rows = score(ScriptedDigits("mark"))
+        for r in rows:  # a reader of command A only, which applies A's landing to every command
+            if r["place"] == 1 and r["command"] != 0:
+                r["p_implied"] = 0.05
+        summary, commands = summarize(rows), by_command(rows)
+        self.assertGreater(commands["P1_A"], 0.99)
+        self.assertAlmostEqual(commands["P1_BCD"], 0.05)
+        seeker = {"digit_mass": 0.99, "symbol_mass": 0.99, "start_mark_best": 0.9,
+                  "start_mean_gain": {1: 0.3, 2: 0.0, 3: 0.0, 4: 0.0},
+                  "mark_gain_before_change": 0.0, "mark_gain_after_first_move": 0.0}
+        blind = dict(seeker, start_mark_best=0.06)
+        v = hand_verdicts(summary, commands, {"VM": seeker, "F": blind})
+        self.assertEqual((v["H1"], v["H2"], v["L1_all_commands"], v["H3"], v["H4"], v["global"]),
+                         (True, False, False, True, True, True))
 
     def test_cli_scores_and_checks(self):
         with tempfile.TemporaryDirectory() as tmp:
