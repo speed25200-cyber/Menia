@@ -8,6 +8,8 @@ runs/
 export/
 *.sqlite*
 *.safetensors
+# LoRA adapters of the adjusted body are small and needed by later builds (docs/LLM_INQUIRY_PROTOCOL.md)
+!artifacts/llm-lora-mac/*/adapters-*/adapters.safetensors
 *.gguf
 *.xcuserstate
 xcuserdata/

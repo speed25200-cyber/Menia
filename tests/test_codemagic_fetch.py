@@ -117,6 +117,14 @@ class LaunchTests(unittest.TestCase):
         self.assertEqual(len(naps), 1)
         self.assertEqual(report["menia-lora-mac"]["status"], "finished")
 
+    def test_fetch_by_build_id(self):
+        client = FakeClient([{"_id": "b7", "status": "finished", "artefacts": [{"name": "a.zip", "url": "z"}]}],
+                            {"z": zipped({"llm-lora/adapters-VM/adapters.safetensors": "weights"})})
+        with tempfile.TemporaryDirectory() as tmp:
+            report = codemagic_fetch.fetch(client, {"builds": [{"build": "b7", "dest": "out"}]}, Path(tmp), sleep=lambda s: None)
+            self.assertTrue((Path(tmp) / "out/adapters-VM/adapters.safetensors").exists())
+        self.assertEqual(report["build b7"]["status"], "finished")
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -171,6 +171,8 @@ def launch(client, app_id, spec):
 
 
 def label_of(wanted):
+    if "build" in wanted:
+        return f"build {wanted['build']}"
     return wanted.get("tag") or wanted["launch"]["workflow"]
 
 
@@ -197,6 +199,8 @@ def fetch(client, request, root=Path("."), sleep=time.sleep):
         if "launch" in wanted:
             ids[label_of(wanted)] = launch(client, app["_id"], wanted["launch"])
             print(f"lancé {label_of(wanted)} sur {wanted['launch']['branch']} : build {ids[label_of(wanted)]}", flush=True)
+        elif "build" in wanted:
+            ids[label_of(wanted)] = wanted["build"]  # a build launched earlier through the API, which has no tag
         else:
             found = latest_for_tag(builds, wanted["tag"])
             ids[label_of(wanted)] = found["_id"] if found else None

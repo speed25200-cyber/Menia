@@ -1,6 +1,9 @@
 {
- "request": 9,
+ "request": 10,
  "app": "Menia",
  "wait_minutes": 0,
- "builds": []
+ "builds": [
+  {"build": "6ab30e3b627c7ae974f237ca", "dest": "artifacts/llm-lora-mac/run-3-f"},
+  {"build": "6ab30e3b2934162d10940d6e", "dest": "artifacts/llm-lora-mac/run-3-vm"}
+ ]
 }
