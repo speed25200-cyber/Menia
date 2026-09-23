@@ -1,10 +1,9 @@
 {
- "request": 15,
+ "request": 16,
  "app": "Menia",
  "wait_minutes": 345,
  "builds": [
-  {"launch": {"workflow": "menia-menia-report-mac", "branch": "claude/causal-self-model-llm-results-mauabk",
-              "variables": {"MENIA_REPORT_ITEMS": "artifacts/menia-report/items-v2.jsonl"}},
-   "dest": "artifacts/menia-report/run-2"}
+  {"launch": {"workflow": "menia-lora-vmi-mac", "branch": "claude/causal-self-model-llm-results-mauabk"},
+   "dest": "artifacts/llm-lora-mac/run-5-vmi"}
  ]
 }
