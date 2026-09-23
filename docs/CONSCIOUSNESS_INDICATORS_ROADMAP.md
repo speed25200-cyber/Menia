@@ -95,3 +95,14 @@ Restent sous leurs seuils : RPT-1 (la mémoire sert peu quand un seul bon
 objet est présent), GWT-4 (l'intéroception écrit aussi pour la faim, que le
 test compte contre elle), HOT-3 (le moniteur ne compte que pendant les
 pannes) et HOT-4 (même sans goulot, le choix sur la bande plafonne à 0,71).
+
+## État au 23 septembre 2026, 2 h 35 UTC
+
+La version 5, rejugée sur trois graines nouvelles
+([seconde lecture](INDICATOR_AGENT_SECOND_READING_RESULTS.md)) : **neuf
+propriétés robustes** sur les deux jeux de graines (RPT-2, GWT-1, GWT-2,
+GWT-3, HOT-1, HOT-2, AST-1, PP-1, AE-2) ; **AE-1 à la limite** (passe sur un
+jeu, pas sur l'autre). En seconde lecture pré-enregistrée, qui mesure la
+récurrence par le retour perdu et l'attention selon le besoin le plus bas,
+RPT-1 et GWT-4 passent : **onze sur quatorze**. HOT-3 et HOT-4 ne sont
+démontrées dans aucune lecture.

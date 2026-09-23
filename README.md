@@ -100,9 +100,15 @@ alarmes prioritaires et valeurs contre la pulsion : six propriétés.
 [Version 5](docs/INDICATOR_AGENT_V5_RESULTS.md), **arbitrage allostatique** :
 l'agent apprend un modèle de ses besoins et les simule avant de choisir, dans
 un monde où la recharge se déplace après usage ; **dix propriétés sur
-quatorze démontrées dans un même agent**, dont pour la première fois
-l'agence à buts concurrents (AE-1) et l'incarnation (AE-2). Restent RPT-1,
-GWT-4, HOT-3 et HOT-4 ([explorations](docs/INDICATOR_AGENT_V5_EXPLORATIONS.md)).
+quatorze** sur ses graines, dont pour la première fois l'agence à buts
+concurrents (AE-1) et l'incarnation (AE-2). Rejugée sur trois graines de
+plus ([seconde lecture](docs/INDICATOR_AGENT_SECOND_READING_RESULTS.md)) :
+**neuf propriétés robustes**, AE-1 à la limite ; en seconde lecture
+pré-enregistrée, RPT-1 et GWT-4 passent aussi (onze sur quatorze). HOT-3 et
+HOT-4 ne sont démontrées dans aucune lecture ([explorations](docs/INDICATOR_AGENT_V5_EXPLORATIONS.md)).
+L'agent est branché dans Menia (`menia/indicator_bridge.py`). [Rapport verbal](docs/LLM_REPORT_RESULTS.md) :
+Qwen3-4B rapporte fidèlement les états donnés comme des étiquettes, pas ceux
+qui demandent un calcul.
 
 **[Colab 24 : classement de confiance au sein d'une catégorie](docs/CONFIDENCE_RANKING_PROTOCOL.md).**
 Le [résultat complet](docs/CONFIDENCE_RANKING_RESULTS.md) est reçu et audité :

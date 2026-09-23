@@ -21,34 +21,39 @@ de Qwen. Les données d'enfance décident, pas l'architecture.
 
 **Les indicateurs de conscience.** Un seul agent, dans l'Atelier des sens,
 réunit par construction les quatorze propriétés. Cinq versions
-pré-enregistrées, quinze graines confirmatoires, 135 000 vies de test. La
-cinquième démontre **dix propriétés présentes et utilisées dans un même
-agent** : liaison des traits en objets (RPT-2), modules spécialisés
-(GWT-1), espace de travail limité (GWT-2), diffusion globale (GWT-3),
-perception qui complète ce qui manque (HOT-1), surveillance de ses
-perceptions (HOT-2), modèle de sa propre attention (AST-1), erreur de
-prédiction (PP-1), **agence à buts concurrents (AE-1)** et **incarnation
-(AE-2)**. La clé des deux dernières : l'agent apprend un modèle de ses
-besoins et les simule avant de choisir (allostasie), dans un monde où la
-recharge se déplace après usage.
+pré-enregistrées, puis la version 5 rejugée sur trois graines de plus :
+**neuf propriétés sont démontrées présentes et utilisées dans le même agent,
+sur les deux jeux de graines** — liaison des traits en objets (RPT-2),
+modules spécialisés (GWT-1), espace de travail limité (GWT-2), diffusion
+globale (GWT-3), perception qui complète ce qui manque (HOT-1),
+surveillance de ses perceptions (HOT-2), modèle de sa propre attention
+(AST-1), erreur de prédiction (PP-1), incarnation (AE-2). **L'agence à buts
+concurrents (AE-1) est à la limite** : elle passe sur un jeu de graines,
+pas sur l'autre (recharge 0,78 en moyenne pour un seuil de 0,8). La clé :
+l'agent apprend un modèle de ses besoins et les simule avant de choisir
+(allostasie), dans un monde où la recharge se déplace après usage. Une
+**seconde lecture**, pré-enregistrée, montre aussi la récurrence (RPT-1) et
+l'attention selon l'état (GWT-4) quand on les mesure là où elles agissent :
+**onze propriétés sur quatorze**.
 
 ## Ce qui manque
 
-- **Quatre indicateurs** restent sous leurs seuils, bien que présents et
-  mesurés : la récurrence (RPT-1), l'attention selon l'état (GWT-4), les
-  croyances réglées par le moniteur (HOT-3), l'espace de qualités (HOT-4).
-  Leurs échecs tiennent surtout au monde et aux tests fixés en version 1 :
-  un seul bon objet présent dans la plupart des choix, une faim que le test
-  de GWT-4 compte contre l'agent, des pannes du capteur trop rares, des
-  teintes de la bande trop proches pour être départagées même sans goulot.
+- **Deux indicateurs** ne sont démontrés dans aucune lecture : les croyances
+  réglées par le moniteur (HOT-3 : il rend la position plus juste pendant
+  les pannes, mais sans effet sur le retour) et l'espace de qualités (HOT-4 :
+  les teintes jamais vues sont bien évaluées, mais le choix reste sous le
+  seuil). **AE-1 est fragile.**
 - **Le vrai LLM.** Qwen3-4B copie en partie l'effet de ses commandes (0,64)
   mais n'en a pas la structure (0,16 sur une commande nouvelle). Ajusté sur
   des vies à corps variable et changeant, Qwen3-0.6B en acquiert l'essentiel :
   copie 0,995, commande nouvelle après un mouvement 0,793 (seuil 0,80, raté
   d'une question), révision après un changement 0,86 ; ajusté sur un corps
-  fixe, il confabule avec une confiance de 1,00. Une relance au rang 16 est
-  en cours ; le test d'enquête et le rapport verbal de l'agent par Qwen3-4B
-  suivent sur le Mac.
+  fixe, il confabule avec une confiance de 1,00. Une relance au rang 16 et
+  le test d'enquête tournent sur le Mac.
+- **Le rapport verbal.** Qwen3-4B rapporte fidèlement les états de l'agent
+  donnés comme des étiquettes (corps, attention, module : 1,00 même quand
+  l'état change), mais pas ceux qui demandent un calcul (se fier ou non à une
+  lecture, comparer deux besoins) ; critère global non satisfait.
 
 ## Ce qui reste hors de portée
 
@@ -63,6 +68,7 @@ l'information intégrée, juge même le logiciel insuffisant.
    chercher la cause de son corps ?
 2. Lire le rapport verbal : Qwen3-4B rapporte-t-il fidèlement les états
    intérieurs de l'agent ?
-3. Une version 6 de l'agent pour les quatre indicateurs restants, en
-   changeant le monde seulement là où il empêche le test de mesurer.
-4. Brancher l'agent à dix indicateurs et le LLM ajusté dans Menia.
+3. L'agent de la version 5 est branché dans Menia (`menia/indicator_bridge.py`) :
+   le langage reçoit l'espace de travail et la décision enregistrée. Reste à
+   mesurer, par un rapport pré-enregistré, si Qwen3-4B le dit fidèlement
+   quand les états lui sont donnés comme des étiquettes.
