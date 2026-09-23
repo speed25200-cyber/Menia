@@ -7,7 +7,7 @@
     "menia/episodic.py": "ea444f6079d7dd3743d36d8659cce505fbf611757f0aca31c4717c327e51a2f3",
     "menia/environments.py": "623ab03081ad8d0f3496326a224b155d8d93e575606093b2e979ad09520f81af",
     "menia/core.py": "1a9bd6abd7628d9607be9d7f11e8811412a9500c8512f7559dd224c4dca9246a",
-    "menia/conversation.py": "5e3ec6d8cc9ca32de687f36bab1be281970cc035194140eb24f10fce2c88c6cd",
+    "menia/conversation.py": "b437583e16b2308a965ff829477101a4f41c48af4a2816706f0c18a4a03246a2",
     "research/evaluate_agent.py": "2d4aa3389676fbb60fde02f42e52b408fdb3dc6891ae90d0fb3496b3f534a9ab",
     "docs/INTEGRATED_AGENT_PROTOCOL.md": "783334faa24e10ef41978b3194291aa7462a194ed1612d29739d805a8ca635f1"
   },
