@@ -844,3 +844,13 @@ et `verdicts-rep-s29-3.json`. La recette continue pour les deux graines.
 
 Graine 23 : les quatre commandes dépassent 0,6. Graine 29 : le code entier
 tient. Verdicts dans `verdicts-rep-s23-4.json` et `verdicts-rep-s29-4.json`.
+
+**Étape 5 — consolidation, VML, 750 itérations (3 600 au total) :**
+
+| Graine | Itérations | Perte de validation | P1(A) | P1(B) | P1(C) | P1(D) | P0 |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 29 | 3 100 / 3 350 / 3 600 | 0,342 / 0,332 / 0,324 | **0,896** | **0,882** | **0,884** | **0,891** | 0,249 |
+| 23 | panne matérielle à l'itération 270 (« GPU Hang ») ; relancée à l'identique (amendement 1) | | | | | | |
+
+Graine 29 : **P-lecture passe** (les quatre commandes ≥ 0,6, P0 0,249, P1
+− P0 = 0,64). Verdicts dans `verdicts-rep-s29-5.json`.

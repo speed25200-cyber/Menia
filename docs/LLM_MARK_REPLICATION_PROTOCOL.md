@@ -85,3 +85,16 @@ l'étape précédente de la même graine (points 1 350, 2 100, 2 850, 3 600).
 Les deux graines passent dans la même demande du relais à chaque étape.
 Dans les vies VMLA des graines 23 et 29, A est jouée dans 0,70 des
 mouvements, comme pour la graine 17.
+
+## Amendement 1, 24 septembre 2026 (heure du commit) : panne matérielle et relance
+
+Écrit après l'échec du build de l'étape 5 pour la graine 23, **avant toute
+relance**. Le build s'est arrêté à l'itération 270 sur une erreur du
+processeur graphique du Mac (« [METAL] Command buffer execution failed:
+Caused GPU Hang Error »), sur une machine deux fois plus rapide que les
+précédentes (0,35 itération par seconde) : une panne matérielle, pas un
+résultat. Ses traces sont gardées dans
+`artifacts/llm-lora-mac/rep-s23-5-echec-gpu`. **Règle fixée ici** : un
+build arrêté par une panne matérielle est relancé une fois, à
+l'identique ; s'il échoue de nouveau, l'étape est déclarée non mesurée
+pour cette graine, et le critère global ne peut plus être satisfait.

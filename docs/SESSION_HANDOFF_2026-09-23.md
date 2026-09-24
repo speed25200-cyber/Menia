@@ -15,7 +15,7 @@ Il attend la fin de tous les builds (`wait_minutes`, 345 au plus), rapatrie
 les artefacts dans `dest` et pousse sur la branche. Il ne retire que les
 préfixes `llm-latent`, `llm-lora` et `llm-atelier` : les autres artefacts
 arrivent sous `dest/<nom du dossier>`. Les builds passent un par un.
-**La prochaine demande porte le numéro 38** (la 37 lance l'étape 5 de la réplication). La 32 a lancé l'étape 1 des graines 23 et 29, mais un défaut du relais (deux lancements du même workflow partageaient une clé) a copié le build de la graine 29 dans les deux dossiers ; corrigé (`keys_of` dans `scripts/codemagic_fetch.py`, test de non-régression), et la 33 récupère le build de la graine 23 par son identifiant. Codemagic fige le commit à la
+**La prochaine demande porte le numéro 39** (la 38 relance l'étape 5 de la graine 23, arrêtée par une panne matérielle, et lance l'étape 6 de la graine 29). La 32 a lancé l'étape 1 des graines 23 et 29, mais un défaut du relais (deux lancements du même workflow partageaient une clé) a copié le build de la graine 29 dans les deux dossiers ; corrigé (`keys_of` dans `scripts/codemagic_fetch.py`, test de non-régression), et la 33 récupère le build de la graine 23 par son identifiant. Codemagic fige le commit à la
 création du build : un build lancé par une demande utilise le commit de
 cette demande, même s'il démarre plus tard.
 
