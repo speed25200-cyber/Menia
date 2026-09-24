@@ -1,8 +1,13 @@
 {
- "request": 33,
+ "request": 34,
  "app": "Menia",
- "wait_minutes": 30,
+ "wait_minutes": 345,
  "builds": [
-  {"build": "6ab4c2516b1031ad7213f9e2", "dest": "artifacts/llm-lora-mac/rep-s23-1"}
+  {"launch": {"workflow": "menia-lora-stage-mac", "branch": "claude/causal-self-model-llm-results-mauabk",
+              "variables": {"STAGE_REGIME": "VMLA", "STAGE_START": "artifacts/llm-lora-mac/rep-s23-1/adapters-VMLA-600", "STAGE_BASE": "600", "LORA_ITERS": "750", "LORA_SEED": "23"}},
+   "dest": "artifacts/llm-lora-mac/rep-s23-2"},
+  {"launch": {"workflow": "menia-lora-stage-mac", "branch": "claude/causal-self-model-llm-results-mauabk",
+              "variables": {"STAGE_REGIME": "VMLA", "STAGE_START": "artifacts/llm-lora-mac/rep-s29-1/adapters-VMLA-600", "STAGE_BASE": "600", "LORA_ITERS": "750", "LORA_SEED": "29"}},
+   "dest": "artifacts/llm-lora-mac/rep-s29-2"}
  ]
 }

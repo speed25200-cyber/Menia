@@ -786,3 +786,26 @@ rend le problème apprenable, lit la trace de la cause de ses mouvements,
 la cherche avant d'agir, s'en sert pour atteindre ses buts, et estime
 justement ses chances de réussir. Une seule graine d'ajustement ; résultat
 à répliquer. Ce test ne mesure pas une expérience vécue.
+
+## Réplication de la recette (graines 23 et 29) — en cours
+
+Protocole `docs/LLM_MARK_REPLICATION_PROTOCOL.md`. Chaque étape est
+publiée ici à son arrivée ; le verdict se lit sur l'adaptateur final.
+Incident : dans la demande 32, un défaut du relais (deux lancements du même
+workflow partageaient une clé) a copié le build de la graine 29 dans les
+deux dossiers ; le relais est corrigé et le build de la graine 23 a été
+récupéré par son identifiant (demande 33). Aucun résultat n'en est changé.
+
+**Étape 1 — appui, VMLA depuis zéro, 600 itérations** (P1 par commande ;
+lecteur parfait 0,85, hasard 0,25) :
+
+| Graine | Itérations | Perte de validation | P1(A) | P1(B) | P1(C) | P1(D) | P0 |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 17 (`run-9-vmla`) | 600 | 0,402 | 0,312 | 0,23 (B, C, D) | | | 0,253 |
+| 23 | 250 / 500 / 600 | 0,412 / 0,405 / 0,396 | 0,254 / 0,300 / **0,411** | 0,223 | 0,245 | 0,205 | 0,254 |
+| 29 | 250 / 500 / 600 | 0,413 / 0,363 / 0,356 | 0,281 / **0,837** / 0,773 | 0,251 | 0,250 | 0,250 | 0,249 |
+
+La lecture de A naît pour les deux graines, plus tôt que pour la graine 17
+(avant 500 itérations pour la graine 29, vers 600 pour la graine 23).
+Verdicts de lecture dans `artifacts/llm-lora-mac/verdicts-rep-s23-1.json`
+et `verdicts-rep-s29-1.json`, vérifiés en CI.
