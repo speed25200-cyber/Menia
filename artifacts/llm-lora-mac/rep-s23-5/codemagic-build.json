@@ -1,0 +1,64 @@
+{
+ "id": "6ab54f6a51c90d05822b9b07",
+ "tag": null,
+ "branch": "claude/causal-self-model-llm-results-mauabk",
+ "workflow": "menia-lora-stage-mac",
+ "status": "failed",
+ "createdAt": "2026-09-24T16:27:22.411000+00:00",
+ "startedAt": "2026-09-24T16:43:08.263000+00:00",
+ "finishedAt": "2026-09-24T16:59:04.478000+00:00",
+ "commit": "d103f233055936ba19414d9b6a19b8150f44d39f",
+ "message": "Step 4 script `Reprendre l'adaptateur de départ, 750 itérations sur le régime de l'étape, lire à chaque point` exited with status code 1",
+ "steps": [
+  {
+   "name": "Preparing build machine",
+   "status": "success",
+   "startedAt": "2026-09-24T16:43:08.613000+00:00",
+   "finishedAt": "2026-09-24T16:43:32.152000+00:00"
+  },
+  {
+   "name": "Fetching app sources",
+   "status": "success",
+   "startedAt": "2026-09-24T16:43:32.152000+00:00",
+   "finishedAt": "2026-09-24T16:45:16.304000+00:00"
+  },
+  {
+   "name": "Installer mlx-lm dans un environnement isolé",
+   "status": "success",
+   "startedAt": "2026-09-24T16:45:16.304000+00:00",
+   "finishedAt": "2026-09-24T16:45:36.023000+00:00"
+  },
+  {
+   "name": "Vérifier le protocole sur scoreurs simulés",
+   "status": "success",
+   "startedAt": "2026-09-24T16:45:36.023000+00:00",
+   "finishedAt": "2026-09-24T16:45:36.661000+00:00"
+  },
+  {
+   "name": "Reprendre l'adaptateur de départ, 750 itérations sur le régime de l'étape, lire à chaque point",
+   "status": "failed",
+   "startedAt": "2026-09-24T16:45:36.661000+00:00",
+   "finishedAt": "2026-09-24T16:59:01.738000+00:00"
+  },
+  {
+   "name": "Publishing",
+   "status": "success",
+   "startedAt": "2026-09-24T16:59:01.738000+00:00",
+   "finishedAt": "2026-09-24T16:59:04.367000+00:00"
+  },
+  {
+   "name": "Cleaning up",
+   "status": "success",
+   "startedAt": "2026-09-24T16:59:04.367000+00:00",
+   "finishedAt": "2026-09-24T16:59:04.478000+00:00"
+  }
+ ],
+ "artefacts": [
+  {
+   "name": "Menia_14_artifacts.zip",
+   "size": 21584358,
+   "md5": null,
+   "type": "bundle"
+  }
+ ]
+}
