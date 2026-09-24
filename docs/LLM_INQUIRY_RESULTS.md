@@ -809,3 +809,16 @@ La lecture de A naît pour les deux graines, plus tôt que pour la graine 17
 (avant 500 itérations pour la graine 29, vers 600 pour la graine 23).
 Verdicts de lecture dans `artifacts/llm-lora-mac/verdicts-rep-s23-1.json`
 et `verdicts-rep-s29-1.json`, vérifiés en CI.
+
+**Étape 2 — appui prolongé, VMLA, 750 itérations (1 350 au total) :**
+
+| Graine | Itérations | Perte de validation | P1(A) | P1(B) | P1(C) | P1(D) | P0 |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 17 (`run-10-vmla-long`) | 1 350 | 0,362 | 0,811 | 0,25 (B, C, D) | | | 0,250 |
+| 23 | 850 / 1 100 / 1 350 | 0,391 / 0,342 / 0,346 | 0,629 / 0,819 / **0,827** | 0,245 | 0,250 | 0,244 | 0,250 |
+| 29 | 850 / 1 100 / 1 350 | 0,367 / 0,362 / 0,334 | 0,764 / 0,881 / **0,848** | 0,255 | 0,376 | **0,606** | 0,250 |
+
+Les deux graines lisent A à 1 350 itérations, comme la graine 17. Pour la
+graine 29, la lecture commence à naître pour D (0,606) et C (0,376), qui ne
+sont jouées que dans 10 % des mouvements : ce qu'on n'avait pas vu avec la
+graine 17. Verdicts dans `verdicts-rep-s23-2.json` et `verdicts-rep-s29-2.json`.

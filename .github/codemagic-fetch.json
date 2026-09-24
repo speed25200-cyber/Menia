@@ -1,13 +1,13 @@
 {
- "request": 34,
+ "request": 35,
  "app": "Menia",
  "wait_minutes": 345,
  "builds": [
   {"launch": {"workflow": "menia-lora-stage-mac", "branch": "claude/causal-self-model-llm-results-mauabk",
-              "variables": {"STAGE_REGIME": "VMLA", "STAGE_START": "artifacts/llm-lora-mac/rep-s23-1/adapters-VMLA-600", "STAGE_BASE": "600", "LORA_ITERS": "750", "LORA_SEED": "23"}},
-   "dest": "artifacts/llm-lora-mac/rep-s23-2"},
+              "variables": {"STAGE_REGIME": "VMLAB", "STAGE_START": "artifacts/llm-lora-mac/rep-s23-2/adapters-VMLA-1350", "STAGE_BASE": "1350", "LORA_ITERS": "750", "LORA_SEED": "23"}},
+   "dest": "artifacts/llm-lora-mac/rep-s23-3"},
   {"launch": {"workflow": "menia-lora-stage-mac", "branch": "claude/causal-self-model-llm-results-mauabk",
-              "variables": {"STAGE_REGIME": "VMLA", "STAGE_START": "artifacts/llm-lora-mac/rep-s29-1/adapters-VMLA-600", "STAGE_BASE": "600", "LORA_ITERS": "750", "LORA_SEED": "29"}},
-   "dest": "artifacts/llm-lora-mac/rep-s29-2"}
+              "variables": {"STAGE_REGIME": "VMLAB", "STAGE_START": "artifacts/llm-lora-mac/rep-s29-2/adapters-VMLA-1350", "STAGE_BASE": "1350", "LORA_ITERS": "750", "LORA_SEED": "29"}},
+   "dest": "artifacts/llm-lora-mac/rep-s29-3"}
  ]
 }
