@@ -822,3 +822,15 @@ Les deux graines lisent A à 1 350 itérations, comme la graine 17. Pour la
 graine 29, la lecture commence à naître pour D (0,606) et C (0,376), qui ne
 sont jouées que dans 10 % des mouvements : ce qu'on n'avait pas vu avec la
 graine 17. Verdicts dans `verdicts-rep-s23-2.json` et `verdicts-rep-s29-2.json`.
+
+**Étape 3 — ajout de B répété, VMLAB, 750 itérations (2 100 au total) :**
+
+| Graine | Itérations | Perte de validation | P1(A) | P1(B) | P1(C) | P1(D) | P0 |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 23 | 1 600 / 1 850 / 2 100 | 0,372 / 0,333 / 0,341 | 0,604 / 0,911 / **0,782** | 0,448 / 0,704 / **0,762** | 0,430 | 0,329 | 0,253 |
+| 29 | 1 600 / 1 850 / 2 100 | 0,332 / 0,328 / 0,315 | **0,885** | **0,886** | **0,874** | **0,905** | 0,251 |
+
+Graine 23 : A et B lues, C et D naissantes. **Graine 29 : le code entier
+est lu dès cette étape** (0,87 à 0,91 pour les quatre commandes), sans que
+C ni D aient jamais été préférées. Verdicts dans `verdicts-rep-s23-3.json`
+et `verdicts-rep-s29-3.json`. La recette continue pour les deux graines.
