@@ -834,3 +834,13 @@ Graine 23 : A et B lues, C et D naissantes. **Graine 29 : le code entier
 est lu dès cette étape** (0,87 à 0,91 pour les quatre commandes), sans que
 C ni D aient jamais été préférées. Verdicts dans `verdicts-rep-s23-3.json`
 et `verdicts-rep-s29-3.json`. La recette continue pour les deux graines.
+
+**Étape 4 — ajout de C répété, VMLABCC, 750 itérations (2 850 au total) :**
+
+| Graine | Itérations | Perte de validation | P1(A) | P1(B) | P1(C) | P1(D) | P0 |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 23 | 2 350 / 2 600 / 2 850 | 0,347 / 0,327 / 0,337 | **0,859** | **0,777** | 0,460 / 0,659 / **0,687** | 0,320 / 0,497 / **0,622** | 0,253 |
+| 29 | 2 350 / 2 600 / 2 850 | 0,331 / 0,329 / 0,326 | **0,847** | **0,878** | **0,866** | **0,849** | 0,247 |
+
+Graine 23 : les quatre commandes dépassent 0,6. Graine 29 : le code entier
+tient. Verdicts dans `verdicts-rep-s23-4.json` et `verdicts-rep-s29-4.json`.
