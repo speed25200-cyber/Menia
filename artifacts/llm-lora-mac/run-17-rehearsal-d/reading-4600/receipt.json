@@ -1,0 +1,12 @@
+{
+ "schema": "menia-llm-mark-reading-receipt-v1",
+ "protocol": "docs/LLM_MARK_READING_PROTOCOL.md",
+ "label": "VMLABCDDD-4600",
+ "backend": "mlx",
+ "model": "Qwen/Qwen3-0.6B",
+ "adapter": "/Users/builder/clone/llm-lora/checkpoint-4600",
+ "started": "2026-09-24T03:01:02.690876+00:00",
+ "finished": "2026-09-24T03:01:37.554193+00:00",
+ "model_calls": 256,
+ "rows_sha256": "c5297cffdc9ab320cb144204ac1f5686e60aa0c50fee8047453530428f2bab6b"
+}
