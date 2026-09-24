@@ -811,6 +811,7 @@ workflows:
         STAGE_REGIME: "VMLB"
         STAGE_START: "artifacts/llm-lora-mac/run-12-full/adapters-FULL-2100"
         STAGE_BASE: "2100"
+        LORA_SEED: "17"
     scripts:
       - name: Installer mlx-lm dans un environnement isolé
         script: |
@@ -829,14 +830,15 @@ workflows:
           OUT="$CM_BUILD_DIR/llm-lora"
           A="$OUT/adapters-$STAGE_REGIME-$((STAGE_BASE + LORA_ITERS))"
           mkdir -p "$OUT"
-          echo "étape $STAGE_REGIME depuis $STAGE_START ($STAGE_BASE itérations)" | tee "$OUT/stage.txt"
+          echo "étape $STAGE_REGIME depuis $STAGE_START ($STAGE_BASE itérations), graine $LORA_SEED" | tee "$OUT/stage.txt"
           python -m research.llm_lora_body export --regime "$STAGE_REGIME" --out "$OUT/data-$STAGE_REGIME" \
-            --train "$LORA_TRAIN_LIVES" --valid 150 --seed 17
+            --train "$LORA_TRAIN_LIVES" --valid 150 --seed "$LORA_SEED"
+          RESUME=""
+          if [ "$STAGE_START" != "none" ]; then RESUME="--resume-adapter-file $STAGE_START/adapters.safetensors"; fi
           python -m research.llm_weighted_lora --model "$LORA_MODEL" --train --data "$OUT/data-$STAGE_REGIME" \
-            --resume-adapter-file "$STAGE_START/adapters.safetensors" \
-            --iters "$LORA_ITERS" --batch-size 4 --num-layers 16 --learning-rate 1e-4 \
+            $RESUME --iters "$LORA_ITERS" --batch-size 4 --num-layers 16 --learning-rate 1e-4 \
             --max-seq-length 1024 --steps-per-eval 250 --val-batches 10 --save-every 250 --grad-checkpoint \
-            --seed 17 --adapter-path "$A" 2>&1 | tee "$OUT/lora-$STAGE_REGIME.log" | tail -30
+            --seed "$LORA_SEED" --adapter-path "$A" 2>&1 | tee "$OUT/lora-$STAGE_REGIME.log" | tail -30
           for n in 250 500; do
             C="$OUT/checkpoint-$((STAGE_BASE + n))"
             mkdir -p "$C" && cp "$A/adapter_config.json" "$C/"

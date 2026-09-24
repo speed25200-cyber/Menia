@@ -71,3 +71,17 @@ artefacts dans `artifacts/llm-lora-mac/rep-s23-1` à `rep-s23-6` et
 `rep-s29-1` à `rep-s29-6` ; verdicts par `research/llm_mark_reading.py`,
 `research/llm_inquiry_verdicts.py` et `research/llm_mark_action.py`,
 vérifiés en CI ; résultats dans `docs/LLM_INQUIRY_RESULTS.md`.
+
+## Précisions fixées avant l'exécution
+
+Écrites avec le code, avant tout lancement. `menia-lora-stage-mac` prend
+la graine en variable (`LORA_SEED`, 17 par défaut : les étapes déjà
+publiées sont inchangées) pour l'export des vies et pour l'ajustement, et
+part de zéro quand `STAGE_START=none`. Étape 1 : `STAGE_REGIME=VMLA`,
+`STAGE_START=none`, `STAGE_BASE=0`, `LORA_ITERS=600` (points 250, 500 et
+600). Étapes 2 à 5 : 750 itérations chacune, départ l'adaptateur final de
+l'étape précédente de la même graine (points 1 350, 2 100, 2 850, 3 600).
+Étape 6 : `menia-lora-action-mac` avec `CODE_ADAPTER` l'adaptateur final.
+Les deux graines passent dans la même demande du relais à chaque étape.
+Dans les vies VMLA des graines 23 et 29, A est jouée dans 0,70 des
+mouvements, comme pour la graine 17.
