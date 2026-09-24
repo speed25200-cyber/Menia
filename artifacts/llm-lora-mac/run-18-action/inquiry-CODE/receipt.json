@@ -1,0 +1,21 @@
+{
+ "schema": "menia-llm-inquiry-receipt-v1",
+ "protocol": "docs/LLM_INQUIRY_PROTOCOL.md",
+ "label": "CODE",
+ "backend": "mlx",
+ "started": "2026-09-24T03:51:42.385092+00:00",
+ "model": {
+  "repository": "Qwen/Qwen3-0.6B",
+  "adapter": "artifacts/llm-lora-mac/run-16-rehearsal-c/adapters-VMLABCC-4350",
+  "path": "Qwen/Qwen3-0.6B",
+  "mark_tokens": [
+   3,
+   3,
+   2,
+   3
+  ]
+ },
+ "finished": "2026-09-24T04:19:37.153656+00:00",
+ "model_calls": 5284,
+ "rows_sha256": "1801a9b7263281f4d1bf673abc7f999aeec5a2316f84d93b2c5c1d7e26bc569d"
+}
