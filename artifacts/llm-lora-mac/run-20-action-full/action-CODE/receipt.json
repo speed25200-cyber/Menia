@@ -1,0 +1,13 @@
+{
+ "schema": "menia-llm-mark-action-receipt-v1",
+ "protocol": "docs/LLM_MARK_ACTION_PROTOCOL.md",
+ "label": "CODE",
+ "backend": "mlx",
+ "model": "Qwen/Qwen3-0.6B",
+ "adapter": "artifacts/llm-lora-mac/run-19-consolidation/adapters-VML-5100",
+ "seed": 930001,
+ "started": "2026-09-24T05:45:17.690925+00:00",
+ "finished": "2026-09-24T05:58:33.645211+00:00",
+ "model_calls": 4500,
+ "rows_sha256": "c2a70e2b5dea5161bc62ee18d6669e34225810e54ff481c54d085fcf0d810792"
+}

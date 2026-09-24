@@ -1,0 +1,64 @@
+{
+ "id": "6ab4b6df8e1563c211df1e82",
+ "tag": null,
+ "branch": "claude/causal-self-model-llm-results-mauabk",
+ "workflow": "menia-lora-action-mac",
+ "status": "finished",
+ "createdAt": "2026-09-24T05:36:31.853000+00:00",
+ "startedAt": "2026-09-24T05:44:09.093000+00:00",
+ "finishedAt": "2026-09-24T06:20:52.143000+00:00",
+ "commit": "38bb18b9fcaadcf1e3f4403fa6247c7ec6bbaaec",
+ "message": null,
+ "steps": [
+  {
+   "name": "Preparing build machine",
+   "status": "success",
+   "startedAt": "2026-09-24T05:44:09.467000+00:00",
+   "finishedAt": "2026-09-24T05:44:29.242000+00:00"
+  },
+  {
+   "name": "Fetching app sources",
+   "status": "success",
+   "startedAt": "2026-09-24T05:44:29.242000+00:00",
+   "finishedAt": "2026-09-24T05:44:58.553000+00:00"
+  },
+  {
+   "name": "Installer mlx-lm dans un environnement isolé",
+   "status": "success",
+   "startedAt": "2026-09-24T05:44:58.553000+00:00",
+   "finishedAt": "2026-09-24T05:45:16.943000+00:00"
+  },
+  {
+   "name": "Vérifier le protocole sur scoreurs simulés",
+   "status": "success",
+   "startedAt": "2026-09-24T05:45:16.943000+00:00",
+   "finishedAt": "2026-09-24T05:45:17.618000+00:00"
+  },
+  {
+   "name": "Agir avec et sans la marque, puis contrôle qui ne lit pas, puis test d'enquête",
+   "status": "success",
+   "startedAt": "2026-09-24T05:45:17.618000+00:00",
+   "finishedAt": "2026-09-24T06:20:50.415000+00:00"
+  },
+  {
+   "name": "Publishing",
+   "status": "success",
+   "startedAt": "2026-09-24T06:20:50.415000+00:00",
+   "finishedAt": "2026-09-24T06:20:52.016000+00:00"
+  },
+  {
+   "name": "Cleaning up",
+   "status": "success",
+   "startedAt": "2026-09-24T06:20:52.016000+00:00",
+   "finishedAt": "2026-09-24T06:20:52.143000+00:00"
+  }
+ ],
+ "artefacts": [
+  {
+   "name": "Menia_2_artifacts.zip",
+   "size": 17443,
+   "md5": null,
+   "type": "bundle"
+  }
+ ]
+}

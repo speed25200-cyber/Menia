@@ -1,0 +1,8 @@
+{
+ "intact": {
+  "lives": 48,
+  "points_per_life": 1.375,
+  "hit_when_reachable": 0.24354243542435425,
+  "predicted_hit_when_reachable": 0.2651498708487085
+ }
+}
