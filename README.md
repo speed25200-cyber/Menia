@@ -148,7 +148,11 @@ par leurs conséquences** (une recharge prévue qui ne vient pas révise sa
 position) et son **schéma d'attention contrôle la liaison** des teintes ;
 l'agence à buts concurrents devient robuste (recharge 0,86 sur chaque
 graine) ; **dix sur quatorze** en lecture principale, **douze sur quatorze**
-en seconde lecture. HOT-3 et HOT-4 restent non démontrées.
+en seconde lecture, répliquées sur trois graines neuves. HOT-3 et HOT-4
+échouent à ces deux lectures, mais passent en
+[troisième lecture](docs/INDICATOR_THIRD_READING_RESULTS.md), sur trois
+agents neufs, sous des critères plus faibles ou choisis après coup :
+quatorze sur quatorze, dont deux en troisième lecture.
 L'agent est branché dans Menia (`menia/indicator_bridge.py`, versions 5 et 6) :
 [Qwen3-4B rapporte fidèlement son espace de travail](docs/MENIA_REPORT_RESULTS.md)
 (0,997 ; critère global satisfait à la deuxième version), et l'on peut

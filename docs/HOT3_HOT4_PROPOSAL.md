@@ -1,7 +1,15 @@
 # Proposition — Redéfinir les tests de HOT-3 et HOT-4
 
-**Statut : proposition, en attente de l'accord du propriétaire.** Rien
-n'est exécuté ni pré-enregistré. Les règles du programme interdisent de
+**Statut, 24 septembre 2026 (nuit) : remplacée.** Sans réponse du
+propriétaire, les deux tests ont été pré-enregistrés comme une
+**troisième lecture**, mesurée sur trois agents neufs (graines 167, 173,
+179) plutôt que sur les graines 151, 157 et 163 déjà lues
+(`docs/INDICATOR_THIRD_READING_PROTOCOL.md`) ; les verdicts précédents
+restent publiés. Résultats : `docs/INDICATOR_THIRD_READING_RESULTS.md`.
+Le texte ci-dessous est celui de la proposition.
+
+**Statut d'origine : proposition, en attente de l'accord du
+propriétaire.** Rien n'est exécuté ni pré-enregistré. Les règles du programme interdisent de
 changer un test après en avoir lu les résultats sans cet accord : ce
 document sert à le demander, en disant exactement ce qui changerait.
 

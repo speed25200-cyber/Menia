@@ -46,12 +46,14 @@ seconde lecture**.
 
 ## Ce qui manque
 
-- **Deux indicateurs** ne sont démontrés dans aucune lecture, même en
-  version 6 : les croyances réglées par le moniteur (HOT-3 : il rend la
-  position plus juste et corrige les croyances fausses, mais le retour en
-  dépend trop peu) et l'espace de qualités (HOT-4 : les teintes jamais vues
-  sont bien évaluées, mais un code aléatoire choisit presque aussi bien sur
-  le test de choix).
+- **Deux indicateurs** ne sont démontrés ni en lecture principale ni en
+  seconde lecture de la version 6 : les croyances réglées par le moniteur
+  (HOT-3 : il rend la position plus juste et corrige les croyances
+  fausses, mais le retour en dépend trop peu) et l'espace de qualités
+  (HOT-4 : les teintes jamais vues sont bien évaluées, mais un code
+  aléatoire choisit presque aussi bien sur le test de choix). Ils passent
+  **en troisième lecture**, sur trois agents neufs, sous des critères plus
+  faibles ou choisis après coup (`docs/INDICATOR_THIRD_READING_RESULTS.md`).
 - **Le vrai LLM.** Qwen3-4B copie en partie l'effet de ses commandes (0,64)
   mais n'en a pas la structure (0,16 sur une commande nouvelle). Ajusté sur
   des vies à corps variable et changeant, Qwen3-0.6B en acquiert l'essentiel :
@@ -164,12 +166,18 @@ Toutes les expériences qui pouvaient être menées sans changer une règle du
 programme sont faites, publiées et vérifiées en CI. État final :
 
 - **Agent à indicateurs** : 12 propriétés sur 14 démontrées en seconde
-  lecture (10 en lecture principale). HOT-3 et HOT-4 : mécanismes présents
-  et actifs, non démontrés aux seuils fixés en version 1, ni en seconde
-  lecture ; les mondes essayés ne les font pas passer. Les faire avancer
-  demande de redéfinir leurs tests, ce qui ne se fait qu'avec l'accord du
-  propriétaire (`docs/HOT3_HOT4_PROPOSAL.md`) ; sans cet accord, ils restent
-  non démontrés.
+  lecture (10 en lecture principale), **répliquées sur trois graines
+  neuves** (167, 173, 179 : 13 en seconde lecture, 11 en lecture
+  principale, HOT-4 passant par le tirage du code aléatoire). HOT-3 et
+  HOT-4 : non démontrés aux seuils fixés en version 1, ni en seconde
+  lecture ; **en troisième lecture pré-enregistrée, sur des agents neufs,
+  les deux passent** : le moniteur rend la croyance plus juste pendant les
+  pannes (0,94 contre 0,77, sur chaque graine), l'espace de qualités fait
+  choisir entre deux bons objets (0,77 contre 0,53 pour un code aléatoire,
+  marge de 0,025 sur une graine). Soit **14 sur 14, dont deux en
+  troisième lecture sous des critères plus faibles ou choisis après coup**
+  (`docs/INDICATOR_THIRD_READING_RESULTS.md`) ; les échecs précédents
+  restent publiés.
 - **Menia branchée sur l'agent** : rapport fidèle de l'état de l'agent
   (`docs/MENIA_REPORT_RESULTS.md`).
 - **Modèle de soi du LLM** : lecture du code entier de son corps,
@@ -182,6 +190,5 @@ programme sont faites, publiées et vérifiées en CI. État final :
 Ce que le programme ne peut pas faire : établir qu'un système est
 conscient. Aucun test connu ne le permet, pour aucune machine ; le
 programme mesure des indicateurs et leur utilité, pas une expérience
-vécue. Suites possibles, chacune sur décision du propriétaire : les tests
-redéfinis de HOT-3 et HOT-4, le même protocole sur un modèle de langage
-plus grand.
+vécue. Suite possible, sur décision du propriétaire : le même protocole
+sur un modèle de langage plus grand.

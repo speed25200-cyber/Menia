@@ -1,0 +1,92 @@
+{
+ "valid": true,
+ "T3": true,
+ "T4": true,
+ "values": {
+  "T3": {
+   "pos_fault_agent": 0.9412815360571556,
+   "pos_fault_constant_gain": 0.7662424648359009,
+   "gap": 0.17503907122125473
+  },
+  "T4": {
+   "spearman": 0.9335366938724547,
+   "active_fraction": 0.17805555555555555,
+   "band_error": 0.15236596453754173,
+   "band_error_random": 0.9617030891750898,
+   "band_vs_good_agent": 0.7679127725856698,
+   "band_vs_good_random": 0.5339130434782609,
+   "gap": 0.23399972910740896
+  }
+ },
+ "per_seed": [
+  {
+   "seed": 167,
+   "fault_read": {
+    "agent": [
+     1419,
+     1493
+    ],
+    "constant_gain": [
+     1170,
+     1493
+    ]
+   },
+   "band_vs_good": {
+    "agent": [
+     301,
+     409
+    ],
+    "random_code": [
+     239,
+     441
+    ]
+   }
+  },
+  {
+   "seed": 173,
+   "fault_read": {
+    "agent": [
+     1400,
+     1493
+    ],
+    "constant_gain": [
+     1132,
+     1493
+    ]
+   },
+   "band_vs_good": {
+    "agent": [
+     370,
+     469
+    ],
+    "random_code": [
+     201,
+     263
+    ]
+   }
+  },
+  {
+   "seed": 179,
+   "fault_read": {
+    "agent": [
+     1397,
+     1493
+    ],
+    "constant_gain": [
+     1130,
+     1493
+    ]
+   },
+   "band_vs_good": {
+    "agent": [
+     315,
+     406
+    ],
+    "random_code": [
+     174,
+     446
+    ]
+   }
+  }
+ ]
+}

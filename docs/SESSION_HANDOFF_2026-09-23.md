@@ -76,6 +76,18 @@ développement 23 (au plus trois essais, déclarés dans le protocole), puis
 157 et 163, audit complet (`verification.json`), seconde lecture,
 contrôles CI, `docs/INDICATOR_AGENT_V6_RESULTS.md`.
 
+## Troisième lecture de HOT-3 et HOT-4
+
+Protocole `docs/INDICATOR_THIRD_READING_PROTOCOL.md` (commit `ea443a7`),
+calcul `research/indicator_third_reading.py` (commit `a9161b8`). Trois
+agents neufs (graines 167, 173, 179, code de la version 6) dans
+`artifacts/indicator-agent-v6-third` : réplication de la version 6 (11 en
+lecture principale, 13 en seconde lecture), audit complet
+(`verification.json`), **T3 et T4 passent**
+(`docs/INDICATOR_THIRD_READING_RESULTS.md`). À dire toujours : « 14 sur 14,
+dont deux en troisième lecture sous des critères plus faibles ou choisis
+après coup », jamais « 14 sur 14 » seul.
+
 ## Pièges
 
 - **Python local 3.11, CI en 3.12** : `sum()` des flottants a changé en
