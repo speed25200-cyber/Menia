@@ -140,7 +140,13 @@ l'information intégrée, juge même le logiciel insuffisant.
    entier** : les quatre commandes lues (0,82 à 0,86 ; moyenne 0,84 pour un
    lecteur parfait à 0,85), seulement au lieu de la marque
    (`docs/LLM_MARK_CONSOLIDATION_PROTOCOL.md`). L'ordre de l'enfance
-   (appui, ajouts répétés, consolidation) décide de ce qu'il apprend.
+   (appui, ajouts répétés, consolidation) décide de ce qu'il apprend,
+   comme le prédit la théorie des parités (Cornacchia et Mossel 2023 ;
+   `docs/LITERATURE_CHECK_2026-09-24.md`). Ce lecteur du code entier
+   cherche sa marque (48 vies sur 48, gain 0,50), s'en sert (6,75 points
+   par vie, 1,56 marque brouillée, 1,38 pour un modèle qui ne lit pas) et
+   estime justement ses chances (0,842 pour 0,848 de réussite). Une seule
+   graine : à répliquer.
    **Et ce savoir est démontré utile par ablation** : quand il agit, le
    lecteur de trois commandes marque 6,73 points par vie avec sa marque,
    1,50 quand elle est brouillée, 1,38 pour un modèle qui ne la lit pas

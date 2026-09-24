@@ -744,3 +744,45 @@ mouvements à son corps, qu'aucun ajustement direct n'apprenait, est à la
 portée d'un Qwen3-0.6B ajusté par LoRA, pourvu que l'ordre de l'enfance
 soit le bon. Le test d'enquête et le test d'action sur cet adaptateur
 suivent. Ce test ne mesure pas une expérience vécue.
+
+## Le lecteur du code entier : il cherche sa marque, s'en sert, et sait ce qu'il sait
+
+Protocole `docs/LLM_MARK_ACTION_PROTOCOL.md`, amendement 2. Build
+`menia-lora-action-mac` du 24 septembre 2026, 5 h 44 – 6 h 21 UTC, commit
+`38bb18b` : l'adaptateur consolidé (`run-19-consolidation/adapters-VML-5100`,
+les quatre commandes lues) agit sur les mêmes 48 vies, avec la vraie
+marque puis brouillée ; même contrôle VML ; puis le test d'enquête.
+Artefacts dans `artifacts/llm-lora-mac/run-20-action-full` ; verdicts dans
+`artifacts/llm-lora-mac/verdicts-run-20-action.json` et
+`verdicts-run-20-seek.json`, vérifiés en CI.
+
+| Condition | Points par vie | Cible à portée atteinte | Probabilité que le modèle s'en donnait |
+|---|---:|---:|---:|
+| Code entier, vraie marque | **6,75** | **0,848** | **0,842** |
+| Code entier, marque brouillée | 1,56 | 0,250 | 0,830 |
+| Contrôle VML | 1,38 | 0,244 | 0,265 |
+
+| | Prédiction | Mesure | Verdict |
+|---|---|---|---|
+| **U1** | la marque lui rapporte ≥ 2,5 points par vie | **+5,19** [4,69 ; 5,69] | **passe** |
+| **U2** | sa lecture lui rapporte ≥ 2,5 points par vie | **+5,38** [4,85 ; 5,90] | **passe** |
+| Enquête (I1) | il cherche sa marque | lieu 1 préféré dans **48 vies sur 48** ; gain **0,504**, autres lieux −0,067 | **passe** |
+| Global | U1 et U2 (et I1) | | **satisfait** |
+
+- **Tout est confirmé sur le lecteur du code entier.** Il atteint la
+  cible à portée dans 85 % des cas avec sa marque, 25 % sans.
+- **Il sait ce qu'il sait** (constat, non pré-enregistré) : avec la vraie
+  marque, la probabilité qu'il se donne d'arriver sur la cible (0,842)
+  est celle de sa réussite (0,848) ; le lecteur de trois commandes se
+  sous-estimait (0,73 pour 0,85), celui qui ne lit pas se donne le hasard
+  (0,27 pour 0,24). Marque brouillée, il reste confiant (0,83) et échoue :
+  il croit ce que dit le symbole.
+- **Plus il lit, plus il cherche** : le gain qu'il attend de l'inspection
+  de sa marque passe de 0,123 (une commande lue) à 0,314 (trois) et 0,504
+  (quatre).
+
+**Conclusion** : un Qwen3-0.6B ajusté par LoRA, élevé dans l'ordre qui
+rend le problème apprenable, lit la trace de la cause de ses mouvements,
+la cherche avant d'agir, s'en sert pour atteindre ses buts, et estime
+justement ses chances de réussir. Une seule graine d'ajustement ; résultat
+à répliquer. Ce test ne mesure pas une expérience vécue.

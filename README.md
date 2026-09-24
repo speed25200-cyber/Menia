@@ -96,7 +96,11 @@ Ajoutée de même, C tient aussi (trois commandes lues, 0,87 à 0,88) ; la
 quatrième efface tout ([ajouts répétés](docs/LLM_MARK_FULL_REHEARSAL_PROTOCOL.md)),
 mais consolidé sur des vies à commandes égales, **il lit le code entier**
 (quatre commandes, 0,84 en moyenne ; lecteur parfait 0,85 ;
-[consolidation](docs/LLM_MARK_CONSOLIDATION_PROTOCOL.md)).
+[consolidation](docs/LLM_MARK_CONSOLIDATION_PROTOCOL.md)) : il la cherche
+(48 vies sur 48), s'en sert (6,75 points par vie contre 1,56 marque
+brouillée) et estime justement ses chances de réussir (0,842 pour 0,848).
+Ce que cela a de nouveau et de connu :
+[vérification bibliographique](docs/LITERATURE_CHECK_2026-09-24.md).
 **Ce savoir lui sert** : quand il agit, le lecteur de trois commandes
 marque 6,73 points par vie avec sa marque, 1,50 quand elle est brouillée et
 1,38 pour un modèle qui ne la lit pas, autant qu'un lecteur parfait

@@ -15,7 +15,7 @@ Il attend la fin de tous les builds (`wait_minutes`, 345 au plus), rapatrie
 les artefacts dans `dest` et pousse sur la branche. Il ne retire que les
 préfixes `llm-latent`, `llm-lora` et `llm-atelier` : les autres artefacts
 arrivent sous `dest/<nom du dossier>`. Les builds passent un par un.
-**La prochaine demande porte le numéro 32** (la 31 lance action et enquête sur le code entier vers `run-20-action-full`). Codemagic fige le commit à la
+**La prochaine demande porte le numéro 32.** Codemagic fige le commit à la
 création du build : un build lancé par une demande utilise le commit de
 cette demande, même s'il démarre plus tard.
 
@@ -49,6 +49,7 @@ cette demande, même s'il démarre plus tard.
 | 12 | `menia-lora-vm-rank-mac` | `artifacts/llm-lora-mac/run-4-vm` | **fait** : A3 0,793 (échoue encore), A4 passe, global non satisfait ; pas de boucle P-soi |
 | 13 | `menia-menia-report-mac` | `artifacts/menia-report/run-1/menia-report` | **fait** : M2 et M3 passent, M1 échoue (« les besoins » rapportés comme « la position »), `docs/MENIA_REPORT_RESULTS.md` |
 | 15 | `menia-menia-report-mac`, `MENIA_REPORT_ITEMS=items-v2.jsonl` | `artifacts/menia-report/run-2/menia-report` | **fait** : M1, M2 et M3 passent (0,997 ; 0,999 ; 0,999), global satisfait |
+| 31 | `menia-lora-action-mac`, `CODE_ADAPTER=…/adapters-VML-5100` | `artifacts/llm-lora-mac/run-20-action-full` | **fait** : U1 (+5,19), U2 (+5,38), enquête 48/48 (gain 0,50) ; confiance calibrée (0,842 pour 0,848) |
 | 30 | `menia-lora-stage-mac`, `STAGE_REGIME=VML` depuis l'étape C | `artifacts/llm-lora-mac/run-19-consolidation` | **fait** : Q1, Q2, Q3 passent ; code entier lu (0,82 à 0,86) |
 | 29 | `menia-lora-action-mac`, `CODE_ADAPTER=…/adapters-VMLABCC-4350` | `artifacts/llm-lora-mac/run-18-action` | **fait** : U1 (+5,23) et U2 (+5,35) passent ; enquête 48/48 ; modèle de soi utile par ablation |
 | 28 | `menia-lora-stage-mac`, `STAGE_REGIME=VMLABCDDD` | `artifacts/llm-lora-mac/run-17-rehearsal-d` | **fait** : K-D échoue (A, B, C effacées ; D 0,447 lue à tous les lieux) ; plan arrêté |
