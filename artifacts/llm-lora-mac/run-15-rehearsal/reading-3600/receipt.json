@@ -1,0 +1,12 @@
+{
+ "schema": "menia-llm-mark-reading-receipt-v1",
+ "protocol": "docs/LLM_MARK_READING_PROTOCOL.md",
+ "label": "VMLAB-3600",
+ "backend": "mlx",
+ "model": "Qwen/Qwen3-0.6B",
+ "adapter": "/Users/builder/clone/llm-lora/adapters-VMLAB-3600",
+ "started": "2026-09-24T00:42:15.224429+00:00",
+ "finished": "2026-09-24T00:42:48.695775+00:00",
+ "model_calls": 256,
+ "rows_sha256": "58ff37087dfb837f6315cf8e2eda9b96846a4e6721e9a9b4b0eb82a08b99efe1"
+}
