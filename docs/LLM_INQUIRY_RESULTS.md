@@ -532,3 +532,48 @@ son corps, que les petits modèles apprenaient. Garder les deux demanderait
 de mêler les étapes (répétition des vies anciennes), ce qui redonne au
 problème sa symétrie ; c'est une autre question, à pré-enregistrer à part.
 Ce test ne mesure pas une expérience vécue.
+
+## Répétition : deux lectures tiennent ensemble
+
+Protocole `docs/LLM_MARK_REHEARSAL_PROTOCOL.md`. Build
+`menia-lora-stage-mac` (`STAGE_REGIME=VMLAB`) du 23 au 24 septembre 2026,
+23 h 36 – 0 h 43 UTC, commit `27db6a7` : l'adaptateur de l'étape B (qui
+lit B, a oublié A) repris 750 itérations sur des vies dont la commande
+préférée est A ou B, tirée pour chaque vie. Artefacts dans
+`artifacts/llm-lora-mac/run-15-rehearsal` ; verdicts dans
+`artifacts/llm-lora-mac/verdicts-run-15-rehearsal.json`, vérifiés en CI.
+
+| Itérations | Perte de validation | P1(A) | P1(B) | P1(C) | P1(D) | P0 |
+|---:|---:|---:|---:|---:|---:|---:|
+| 2 850 (`run-14-stage-b`) | 0,353 | 0,252 | 0,789 | 0,248 | 0,252 | 0,251 |
+| 3 100 | 0,393 | 0,251 | 0,805 | 0,250 | 0,251 | 0,251 |
+| 3 350 | 0,348 | **0,781** | 0,805 | 0,255 | 0,255 | 0,252 |
+| 3 600 | 0,341 | **0,829** | **0,825** | 0,302 | 0,278 | 0,250 |
+
+| | Prédiction | Mesure | Verdict |
+|---|---|---|---|
+| **R1** | il lit la marque pour A et pour B (P1 ≥ 0,6 chacune) | 0,829 et 0,825 | **passe** |
+| Global | R1 | | **satisfait** |
+
+**Ce que fait le modèle** (constats, non pré-enregistrés, sur les 64
+invites du lieu 1). À 3 350 et 3 600 itérations, pour la commande A, sa
+meilleure case est toujours celle que donne A avec le corps lu, et pour B
+toujours celle que donne B : **deux associations distinctes, chacune
+rattachée à sa commande**, sans confusion. À 3 600, pour C, sa meilleure
+case suit déjà la carte de C dans 0,62 des invites (P1(C) 0,30), alors que
+C n'était préférée dans aucune vie ; pour D, elle suit la carte de C dans
+0,50 des invites.
+
+- **La prédiction est confirmée : l'effacement de l'étape B venait de
+  l'interférence.** Quand les deux enfances sont répétées ensemble, le LLM
+  ajusté garde deux lectures de sa marque, chacune pour sa commande. A,
+  oubliée, revient en moins de 500 itérations.
+- **Un début de généralisation** : une troisième association naît pour C,
+  à 10 % des mouvements, et s'applique encore à tort à D. Le modèle passe
+  d'associations isolées à une lecture qui s'étend.
+
+**Conclusion** : le LLM ajusté peut tenir plusieurs lectures de la trace
+de la cause de ses mouvements si son enfance les répète ensemble. La voie
+vers le code entier est une enfance où l'on ajoute une commande préférée à
+la fois en gardant les précédentes. Ce test ne mesure pas une expérience
+vécue.

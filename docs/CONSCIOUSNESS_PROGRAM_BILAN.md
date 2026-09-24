@@ -129,5 +129,9 @@ l'information intégrée, juge même le logiciel insuffisant.
    aux autres commandes (0,26). Une enfance par étapes (B préférée après
    A) fait naître la lecture de B (0,79) mais efface celle de A : le LLM
    ajusté ne garde qu'**une association entre la marque et le déplacement
-   de sa commande habituelle**, pas un code de son corps. C'est la limite
-   atteinte dans ce dispositif (`docs/LLM_INQUIRY_RESULTS.md`).
+   de sa commande habituelle**, pas un code de son corps. Mais l'effacement
+   venait de l'interférence : **répétées ensemble, les deux lectures
+   tiennent** (A 0,83, B 0,83, chacune pour sa commande), et une troisième
+   commence à naître pour C (`docs/LLM_MARK_REHEARSAL_PROTOCOL.md`). La
+   voie vers le code entier est d'ajouter une commande à la fois en gardant
+   les précédentes.
