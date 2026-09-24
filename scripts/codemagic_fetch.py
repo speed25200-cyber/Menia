@@ -176,6 +176,13 @@ def label_of(wanted):
     return wanted.get("tag") or wanted["launch"]["workflow"]
 
 
+def keys_of(wanted_builds):
+    """One key per wanted build: its label, followed by its destination when two wanted builds share a label (two
+    launches of the same workflow must not overwrite each other's build id)."""
+    labels = [label_of(w) for w in wanted_builds]
+    return [label if labels.count(label) == 1 else f"{label} -> {w['dest']}" for label, w in zip(labels, wanted_builds)]
+
+
 def wait_for(client, ids, minutes, sleep=time.sleep, log=print):
     """Poll until every build id has ended, or the time runs out."""
     for minute in range(int(minutes) + 1):
@@ -195,19 +202,19 @@ def fetch(client, request, root=Path("."), sleep=time.sleep):
         print(f"  {b.get('tag') or b.get('branch')} {b.get('fileWorkflowId') or b.get('workflowId')} {b.get('status')} "
               f"{b.get('startedAt')} -> {b.get('finishedAt')}")
     ids = {}
-    for wanted in request["builds"]:
+    keys = keys_of(request["builds"])
+    for key, wanted in zip(keys, request["builds"]):
         if "launch" in wanted:
-            ids[label_of(wanted)] = launch(client, app["_id"], wanted["launch"])
-            print(f"lancé {label_of(wanted)} sur {wanted['launch']['branch']} : build {ids[label_of(wanted)]}", flush=True)
+            ids[key] = launch(client, app["_id"], wanted["launch"])
+            print(f"lancé {key} sur {wanted['launch']['branch']} : build {ids[key]}", flush=True)
         elif "build" in wanted:
-            ids[label_of(wanted)] = wanted["build"]  # a build launched earlier through the API, which has no tag
+            ids[key] = wanted["build"]  # a build launched earlier through the API, which has no tag
         else:
             found = latest_for_tag(builds, wanted["tag"])
-            ids[label_of(wanted)] = found["_id"] if found else None
+            ids[key] = found["_id"] if found else None
     wait_for(client, ids, request.get("wait_minutes", 0), sleep)
     report = {}
-    for wanted in request["builds"]:
-        label = label_of(wanted)
+    for label, wanted in zip(keys, request["builds"]):
         if ids[label] is None:
             report[label] = "introuvable"
             continue

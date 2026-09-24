@@ -33,8 +33,10 @@ class FakeClient:
     def request(self, url, data=None):
         if url == "/builds" and data is not None:
             self.launched = data
-            self.builds.append({"_id": "new", "status": "queued", "workflowId": data["workflowId"]})
-            return json.dumps({"buildId": "new"}).encode()
+            build_id = "new" if not any(b["_id"].startswith("new") for b in self.builds) else f"new{len(self.builds)}"
+            self.builds.append({"_id": build_id, "status": "queued", "workflowId": data["workflowId"],
+                                "variables": data.get("environment", {}).get("variables")})
+            return json.dumps({"buildId": build_id}).encode()
         return self.blobs[url]
 
     def download(self, url):
@@ -116,6 +118,22 @@ class LaunchTests(unittest.TestCase):
                                            "environment": {"variables": {"X": "1"}}})
         self.assertEqual(len(naps), 1)
         self.assertEqual(report["menia-lora-mac"]["status"], "finished")
+
+    def test_two_launches_of_one_workflow_keep_their_own_builds(self):
+        client = FakeClient([], {"z23": zipped({"llm-lora/seed.txt": "23"}), "z29": zipped({"llm-lora/seed.txt": "29"})})
+
+        def nap(seconds):
+            for build in client.builds:
+                build.update(status="finished", artefacts=[{"name": "a.zip", "url": "z" + build["variables"]["LORA_SEED"]}])
+
+        request = {"wait_minutes": 5, "builds": [
+            {"launch": {"workflow": "stage", "branch": "b", "variables": {"LORA_SEED": "23"}}, "dest": "s23"},
+            {"launch": {"workflow": "stage", "branch": "b", "variables": {"LORA_SEED": "29"}}, "dest": "s29"}]}
+        with tempfile.TemporaryDirectory() as tmp:
+            report = codemagic_fetch.fetch(client, request, Path(tmp), sleep=nap)
+            self.assertEqual((Path(tmp) / "s23/seed.txt").read_text(), "23")
+            self.assertEqual((Path(tmp) / "s29/seed.txt").read_text(), "29")
+        self.assertEqual(set(report), {"stage -> s23", "stage -> s29"})
 
     def test_fetch_by_build_id(self):
         client = FakeClient([{"_id": "b7", "status": "finished", "artefacts": [{"name": "a.zip", "url": "z"}]}],
