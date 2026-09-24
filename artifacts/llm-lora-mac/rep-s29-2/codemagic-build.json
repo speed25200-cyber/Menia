@@ -1,0 +1,64 @@
+{
+ "id": "6ab4e1c8e107fc6b4dffbcd0",
+ "tag": null,
+ "branch": "claude/causal-self-model-llm-results-mauabk",
+ "workflow": "menia-lora-stage-mac",
+ "status": "finished",
+ "createdAt": "2026-09-24T08:39:36.058000+00:00",
+ "startedAt": "2026-09-24T09:59:30.170000+00:00",
+ "finishedAt": "2026-09-24T11:09:03.517000+00:00",
+ "commit": "2bd46d1c65bf03cfcd3b1db65a0d52c944ea0062",
+ "message": null,
+ "steps": [
+  {
+   "name": "Preparing build machine",
+   "status": "success",
+   "startedAt": "2026-09-24T09:59:30.470000+00:00",
+   "finishedAt": "2026-09-24T09:59:59.338000+00:00"
+  },
+  {
+   "name": "Fetching app sources",
+   "status": "success",
+   "startedAt": "2026-09-24T09:59:59.338000+00:00",
+   "finishedAt": "2026-09-24T10:00:58.972000+00:00"
+  },
+  {
+   "name": "Installer mlx-lm dans un environnement isolé",
+   "status": "success",
+   "startedAt": "2026-09-24T10:00:58.972000+00:00",
+   "finishedAt": "2026-09-24T10:01:17.307000+00:00"
+  },
+  {
+   "name": "Vérifier le protocole sur scoreurs simulés",
+   "status": "success",
+   "startedAt": "2026-09-24T10:01:17.307000+00:00",
+   "finishedAt": "2026-09-24T10:01:18.026000+00:00"
+  },
+  {
+   "name": "Reprendre l'adaptateur de départ, 750 itérations sur le régime de l'étape, lire à chaque point",
+   "status": "success",
+   "startedAt": "2026-09-24T10:01:18.026000+00:00",
+   "finishedAt": "2026-09-24T11:09:01.409000+00:00"
+  },
+  {
+   "name": "Publishing",
+   "status": "success",
+   "startedAt": "2026-09-24T11:09:01.409000+00:00",
+   "finishedAt": "2026-09-24T11:09:03.438000+00:00"
+  },
+  {
+   "name": "Cleaning up",
+   "status": "success",
+   "startedAt": "2026-09-24T11:09:03.438000+00:00",
+   "finishedAt": "2026-09-24T11:09:03.517000+00:00"
+  }
+ ],
+ "artefacts": [
+  {
+   "name": "Menia_9_artifacts.zip",
+   "size": 10899007,
+   "md5": null,
+   "type": "bundle"
+  }
+ ]
+}
