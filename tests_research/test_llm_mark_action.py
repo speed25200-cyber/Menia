@@ -2,7 +2,7 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
-from research.llm_mark_action import run, summarize, paired_difference, play, main
+from research.llm_mark_action import run, summarize, paired_difference, play, main, PartialReader
 from research.llm_inquiry import Cached, ScriptedDigits
 
 
@@ -21,6 +21,12 @@ class ActionTests(unittest.TestCase):
         intact = [r for r in rows if r["condition"] == "intact"]
         lesion = [r for r in rows if r["condition"] == "lesion"]
         self.assertLess(abs(paired_difference(intact, lesion)["mean"]), 1.0)
+
+    def test_a_reader_of_three_commands_acts_almost_like_a_full_reader(self):
+        rows = run(Cached(PartialReader()), "three", 24)
+        intact = [r for r in rows if r["condition"] == "intact"]
+        lesion = [r for r in rows if r["condition"] == "lesion"]
+        self.assertGreater(paired_difference(intact, lesion)["low"], 3)
 
     def test_lives_are_the_same_across_conditions_and_models(self):
         _, a = play(ScriptedDigits("mark"), 3, "intact")

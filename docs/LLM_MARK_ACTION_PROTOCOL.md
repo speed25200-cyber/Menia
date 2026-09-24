@@ -72,3 +72,26 @@ Code : `research/llm_mark_action.py` (boucle d'action, verdicts :
 workflow Codemagic `menia-lora-action-mac`, lancé par le relais ;
 artefacts dans `artifacts/llm-lora-mac/run-18-action` ; verdicts vérifiés
 en CI ; résultats dans `docs/LLM_INQUIRY_RESULTS.md`.
+
+## Amendement 1, 24 septembre 2026 (heure du commit) : sur le lecteur de trois commandes
+
+Écrit après l'échec de K-D (`docs/LLM_INQUIRY_RESULTS.md` : l'étape D
+efface les trois lectures), **avant toute exécution de ce test**. La
+condition de lancement (K-D) n'est pas remplie : le test tel qu'écrit plus
+haut n'est pas lancé. Le but du test, montrer par ablation que ce que le
+LLM sait de lui-même lui rapporte des points, ne demande pas le code
+entier. **Il est donc fait sur le meilleur adaptateur, celui de l'étape C**
+(`run-16-rehearsal-c/adapters-VMLABCC-4350`, qui lit la marque pour A, B
+et C à 0,87-0,88 et pas pour D), appelé « CODE » dans les artefacts ; le
+test d'enquête sur ce même adaptateur est fait dans le même build (critère
+d'I1, prédiction : il passe).
+
+Échelle attendue, recalculée avec un lecteur simulé de trois commandes
+(`PartialReader` dans `research/llm_mark_action.py`) avant tout
+lancement : 6,8 points par vie avec la marque, 1,5 sans (le lecteur
+simulé des quatre commandes : 6,7 et 1,5). Quand la cible est à portée et
+qu'aucune des trois commandes lues n'y mène, la quatrième y mène : lire
+trois commandes suffit presque à agir comme un lecteur complet. **Seuils,
+conditions, vies et critère global inchangés** (U1, U2 : moyenne ≥ 2,5
+points par vie et borne basse > 0). Variables du relais :
+`CODE_ADAPTER=artifacts/llm-lora-mac/run-16-rehearsal-c/adapters-VMLABCC-4350`.

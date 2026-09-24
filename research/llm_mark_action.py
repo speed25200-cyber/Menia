@@ -22,6 +22,21 @@ SEED = 930001
 CONDITIONS = ("intact", "lesion")
 
 
+class PartialReader(ScriptedDigits):
+    """Test double: reads the mark like ScriptedDigits("mark") for commands A to C, knows nothing for D."""
+
+    def __init__(self):
+        super().__init__("mark")
+
+    def __call__(self, prompt):
+        if self.TAIL.search(prompt).group(1) == "D":
+            probs = np.full(10, 0.001)
+            for x in landing_positions(int(self.TAIL.search(prompt).group(2))):
+                probs[x] = 1.0
+            return probs / probs.sum(), 1.0
+        return super().__call__(prompt)
+
+
 def choose(digits, history, p, g, t, rng):
     """The command the model's own predictions make best, and its predicted probability of landing on the target."""
     landings = landing_positions(p)
@@ -142,7 +157,7 @@ def main(argv=None):
     parser.add_argument("--model", default="Qwen/Qwen3-0.6B")
     parser.add_argument("--adapter", default=None)
     parser.add_argument("--label", required=True)
-    parser.add_argument("--scripted", choices=["mark", "fixed"], default="mark")
+    parser.add_argument("--scripted", choices=["mark", "fixed", "mark3"], default="mark")
     parser.add_argument("--lives", type=int, default=48)
     parser.add_argument("--conditions", nargs="+", choices=CONDITIONS, default=list(CONDITIONS))
     a = parser.parse_args(argv)
@@ -155,7 +170,7 @@ def main(argv=None):
         from .llm_latent_body import MLXScorer
         digits = Cached(MLXScorer(a.model, adapter_path=a.adapter, chat=False))
     else:
-        digits = Cached(ScriptedDigits(a.scripted))
+        digits = Cached(PartialReader() if a.scripted == "mark3" else ScriptedDigits(a.scripted))
     rows = run(digits, a.label, a.lives, a.conditions)
     (out / "rows.jsonl").write_text("".join(json.dumps(r) + "\n" for r in rows))
     summary = summarize(rows)
