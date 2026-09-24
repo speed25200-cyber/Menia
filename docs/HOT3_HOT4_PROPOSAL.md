@@ -59,9 +59,20 @@ graines confirmatoires compterait.
 serve au but de l'agent (le retour), pour ne garder que son effet sur la
 croyance. C'est un critère plus faible ; il faudrait le dire ainsi.
 
+**Correction du 24 septembre 2026 (soir).** Telle qu'écrite, l'option A
+n'est pas recevable : l'erreur de position pendant les pannes a **déjà été
+lue** sur les graines 151, 157 et 163 (−0,17 sans moniteur,
+`docs/INDICATOR_AGENT_V6_RESULTS.md`), et fixer un seuil de 0,1 après
+l'avoir vue serait choisir le seuil d'après le résultat. Pour être
+recevable, l'option A devrait être jugée sur des agents entraînés de zéro
+sur de **nouvelles graines** (167, 173, 179), avec le seuil fixé avant ;
+coût : quelques heures de calcul local, aucun build. Le test proposé pour
+HOT-4 n'a pas ce défaut : le choix « bande contre bon objet » n'a été
+calculé que sur la graine de développement 23.
+
 ## Ce qu'il faut répondre
 
-« **Oui pour HOT-4** », « **oui pour HOT-3 option A** » (ou B), ou « non ».
+« **Oui pour HOT-4** », « **oui pour HOT-3 option A** » (sur nouvelles graines) ou « B », ou « non ».
 Avec un oui, le protocole est écrit et commité avant tout calcul, les
 résultats sont publiés tels quels, et l'audit indépendant les vérifie en
 CI.
