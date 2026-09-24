@@ -695,3 +695,52 @@ cause de ses mouvements, la cherche, et **s'en sert pour agir** : ce
 savoir sur lui-même lui fait atteindre ses buts plus de quatre fois plus
 souvent, et le lui retirer le ramène au hasard. Ce test ne mesure pas une
 expérience vécue.
+
+## Consolidation : le LLM ajusté lit le code entier de son corps
+
+Protocole `docs/LLM_MARK_CONSOLIDATION_PROTOCOL.md`. Build
+`menia-lora-stage-mac` (`STAGE_REGIME=VML`) du 24 septembre 2026, 4 h 25 –
+5 h 32 UTC, commit `d1169dc` : l'adaptateur de l'étape C (A, B et C lues)
+repris 750 itérations sur les vies VML, les quatre commandes à parts
+égales. Artefacts dans `artifacts/llm-lora-mac/run-19-consolidation` ;
+verdicts dans `artifacts/llm-lora-mac/verdicts-run-19-consolidation.json`,
+vérifiés en CI.
+
+| Itérations | Perte de validation | P1(A) | P1(B) | P1(C) | P1(D) | P1 (les quatre) | P0 |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 4 350 (`run-16-rehearsal-c`) | 0,328 | 0,881 | 0,866 | 0,869 | 0,284 | 0,725 | 0,251 |
+| 4 600 | 0,327 | 0,635 | 0,677 | 0,838 | 0,598 | 0,687 | 0,252 |
+| 4 850 | 0,324 | 0,804 | 0,806 | 0,846 | **0,823** | 0,820 | 0,251 |
+| 5 100 | 0,318 | **0,821** | **0,839** | **0,859** | **0,839** | **0,840** | 0,252 |
+
+(Lecteur parfait : 0,85 ; hasard : 0,25.)
+
+| | Prédiction | Mesure | Verdict |
+|---|---|---|---|
+| **Q1** | la lecture de D s'achève (P1(D) ≥ 0,6) | 0,839 | **passe** |
+| **Q2** | A, B, C restent lues (≥ 0,6) | 0,821 ; 0,839 ; 0,859 | **passe** |
+| **Q3** | attachée au lieu de la marque (P0 ≤ 0,3, P1 − P0 ≥ 0,3) | P0 0,252 ; écart 0,588 | **passe** |
+| Global | Q1, Q2 et Q3 | | **satisfait** |
+
+Constat (non pré-enregistré) : dès 4 850 itérations, pour chacune des
+quatre commandes, la meilleure case du modèle est, dans les 16 invites du
+lieu 1, celle que donne cette commande avec le corps que dit la marque.
+
+- **La prédiction est confirmée : le LLM ajusté lit le code entier qui
+  relie la marque à son corps**, à 0,84 en moyenne pour un lecteur parfait
+  à 0,85, et seulement au lieu de la marque. Sur des vies à commandes
+  égales, les trois lectures acquises ont tenu et la quatrième, née d'elle-
+  même, s'est achevée en 500 itérations ; la perte n'a fait que baisser.
+- **Ce qui l'a permis est une enfance en trois temps** : une commande
+  préférée qui donne au gradient un premier appui (sans elle, rien ne
+  s'apprend : VML, 0,25) ; des commandes ajoutées une à une en répétant les
+  anciennes (apprise seule, une nouvelle efface l'ancienne ; ajoutée alors
+  que les anciennes ne reviennent plus qu'à 20 %, elle efface tout) ; puis
+  une consolidation à parts égales. Enfance uniforme dès le départ : échec ;
+  même enfance uniforme après ces étapes : code entier.
+
+**Conclusion** : le code arbitraire qui relie la trace de la cause de ses
+mouvements à son corps, qu'aucun ajustement direct n'apprenait, est à la
+portée d'un Qwen3-0.6B ajusté par LoRA, pourvu que l'ordre de l'enfance
+soit le bon. Le test d'enquête et le test d'action sur cet adaptateur
+suivent. Ce test ne mesure pas une expérience vécue.

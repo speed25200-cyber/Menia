@@ -135,8 +135,12 @@ l'information intégrée, juge même le logiciel insuffisant.
    commence à naître pour C (`docs/LLM_MARK_REHEARSAL_PROTOCOL.md`). En
    ajoutant C de la même façon, **trois lectures tiennent** (0,87 à 0,88) ;
    la quatrième (D) efface tout, et ce qui renaît lit n'importe quel
-   symbole (`docs/LLM_MARK_FULL_REHEARSAL_PROTOCOL.md`). Dans ce dispositif,
-   le LLM ajusté lit sa marque pour trois commandes sur quatre au mieux.
+   symbole (`docs/LLM_MARK_FULL_REHEARSAL_PROTOCOL.md`). Repris sur des
+   vies à commandes égales, le lecteur de trois commandes **apprend le code
+   entier** : les quatre commandes lues (0,82 à 0,86 ; moyenne 0,84 pour un
+   lecteur parfait à 0,85), seulement au lieu de la marque
+   (`docs/LLM_MARK_CONSOLIDATION_PROTOCOL.md`). L'ordre de l'enfance
+   (appui, ajouts répétés, consolidation) décide de ce qu'il apprend.
    **Et ce savoir est démontré utile par ablation** : quand il agit, le
    lecteur de trois commandes marque 6,73 points par vie avec sa marque,
    1,50 quand elle est brouillée, 1,38 pour un modèle qui ne la lit pas

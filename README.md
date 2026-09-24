@@ -93,7 +93,10 @@ habituelle : apprise pour une autre commande, elle remplace la première
 enfances sont répétées ensemble : alors deux lectures tiennent (0,83 et
 0,83) et une troisième commence ([répétition](docs/LLM_MARK_REHEARSAL_PROTOCOL.md)).
 Ajoutée de même, C tient aussi (trois commandes lues, 0,87 à 0,88) ; la
-quatrième efface tout ([code entier](docs/LLM_MARK_FULL_REHEARSAL_PROTOCOL.md)).
+quatrième efface tout ([ajouts répétés](docs/LLM_MARK_FULL_REHEARSAL_PROTOCOL.md)),
+mais consolidé sur des vies à commandes égales, **il lit le code entier**
+(quatre commandes, 0,84 en moyenne ; lecteur parfait 0,85 ;
+[consolidation](docs/LLM_MARK_CONSOLIDATION_PROTOCOL.md)).
 **Ce savoir lui sert** : quand il agit, le lecteur de trois commandes
 marque 6,73 points par vie avec sa marque, 1,50 quand elle est brouillée et
 1,38 pour un modèle qui ne la lit pas, autant qu'un lecteur parfait
