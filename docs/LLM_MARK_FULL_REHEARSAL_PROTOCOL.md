@@ -77,3 +77,15 @@ avec L1 lu dans la sortie) ; workflow `menia-lora-stage-mac`, lancé par
 le relais ; artefacts dans `artifacts/llm-lora-mac/run-16-rehearsal-c` et
 `run-17-rehearsal-d` ; verdicts vérifiés en CI ; résultats dans
 `docs/LLM_INQUIRY_RESULTS.md`.
+
+## Précisions fixées avant l'exécution
+
+Écrites avec le code, avant tout lancement. Dans les 1 500 vies
+d'entraînement : VMLABCC joue A dans 0,25 des mouvements, B 0,26, C 0,39,
+D 0,10 ; VMLABCDDD joue A 0,21, B 0,20, C 0,21, D 0,39. Les vies VMLAB et
+VMLB exportées restent identiques octet pour octet à celles de
+`run-15-rehearsal` et `run-14-stage-b`. Étape C : `STAGE_REGIME=VMLABCC`,
+`STAGE_START=artifacts/llm-lora-mac/run-15-rehearsal/adapters-VMLAB-3600`,
+`STAGE_BASE=3600`, points 3 850, 4 100 et 4 350. Étape D :
+`STAGE_REGIME=VMLABCDDD`, départ `run-16-rehearsal-c/adapters-VMLABCC-4350`,
+`STAGE_BASE=4350`, points 4 600, 4 850 et 5 100.
