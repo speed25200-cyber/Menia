@@ -787,7 +787,7 @@ la cherche avant d'agir, s'en sert pour atteindre ses buts, et estime
 justement ses chances de réussir. Une seule graine d'ajustement ; résultat
 à répliquer. Ce test ne mesure pas une expérience vécue.
 
-## Réplication de la recette (graines 23 et 29) — en cours
+## Réplication de la recette (graines 23 et 29) : réussie
 
 Protocole `docs/LLM_MARK_REPLICATION_PROTOCOL.md`. Chaque étape est
 publiée ici à son arrivée ; le verdict se lit sur l'adaptateur final.
@@ -873,3 +873,40 @@ lieu de la marque préféré dans **48 vies sur 48** (gain 0,389, autres
 lieux −0,266). **Graine 29 : P-lecture, P-enquête et P-action passent.**
 Verdicts dans `verdicts-rep-s29-6-action.json` et
 `verdicts-rep-s29-6-seek.json`.
+
+**Étape 6 — enquête et action, graine 23 :**
+
+| Condition | Points par vie | Cible à portée atteinte | Probabilité que le modèle s'en donnait |
+|---|---:|---:|---:|
+| Code entier, vraie marque | **6,67** | **0,847** | 0,791 |
+| Code entier, marque brouillée | 1,63 | 0,268 | 0,794 |
+| Contrôle VML | 1,38 | 0,244 | 0,265 |
+
+U1 : **+5,04** [4,56 ; 5,54] ; U2 : **+5,29** [4,75 ; 5,81] ; enquête :
+lieu de la marque préféré dans **48 vies sur 48** (gain 0,512, autres
+lieux −0,018). Verdicts dans `verdicts-rep-s23-6-action.json` et
+`verdicts-rep-s23-6-seek.json`.
+
+### Verdict de la réplication
+
+| | Graine 17 (chemin d'origine) | Graine 23 (recette) | Graine 29 (recette) |
+|---|---|---|---|
+| **P-lecture** (quatre commandes ≥ 0,6, P0 ≤ 0,3) | 0,82 à 0,86 ; P0 0,252 | **0,78 à 0,86 ; P0 0,253** | **0,88 à 0,90 ; P0 0,249** |
+| **P-enquête** (I1) | 48/48, gain 0,504 | **48/48, gain 0,512** | **48/48, gain 0,389** |
+| **P-action** (U1 ; U2) | +5,19 ; +5,38 | **+5,04 ; +5,29** | **+5,19 ; +5,40** |
+| Points par vie : vraie marque / brouillée / contrôle | 6,75 / 1,56 / 1,38 | 6,67 / 1,63 / 1,38 | 6,77 / 1,58 / 1,38 |
+
+**Critère global : satisfait pour les deux graines.** La recette (un
+appui par une commande préférée, des ajouts répétés, une consolidation à
+parts égales) donne, sur trois graines d'ajustement (autres vies, autre
+initialisation, autre ordre des lots), un LLM qui lit le code entier
+reliant la marque à son corps, la cherche avant d'agir et s'en sert : il
+atteint la cible à portée dans 85 % des cas avec sa marque, 25 à 27 % sans.
+Les deux nouvelles graines apprennent plus vite que la graine 17 (la
+graine 29 lit les quatre commandes dès l'étape 3, sans que C ni D aient
+été préférées) ; le résultat final est le même. La confiance du modèle est
+proche de sa réussite pour la graine 17 (0,84 pour 0,85), un peu au-dessus
+pour la graine 29 (0,88), un peu au-dessous pour la graine 23 (0,79) : le
+calibrage n'est pas répliqué aussi finement que le reste, et il n'était
+pas prédit. Limites : un seul modèle (Qwen3-0.6B), un monde jouet, un
+corps à quatre états ; ce test ne mesure pas une expérience vécue.

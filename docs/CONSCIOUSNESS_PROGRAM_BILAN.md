@@ -145,8 +145,11 @@ l'information intégrée, juge même le logiciel insuffisant.
    `docs/LITERATURE_CHECK_2026-09-24.md`). Ce lecteur du code entier
    cherche sa marque (48 vies sur 48, gain 0,50), s'en sert (6,75 points
    par vie, 1,56 marque brouillée, 1,38 pour un modèle qui ne lit pas) et
-   estime justement ses chances (0,842 pour 0,848 de réussite). Une seule
-   graine : à répliquer.
+   estime justement ses chances (0,842 pour 0,848 de réussite). **Répliqué
+   sur deux nouvelles graines** avec la recette sans détour (appui, ajouts
+   répétés, consolidation) : lecture des quatre commandes, recherche dans
+   48 vies sur 48 et +5,0 à +5,2 points par vie grâce à la marque, pour les
+   trois graines (`docs/LLM_MARK_REPLICATION_PROTOCOL.md`).
    **Et ce savoir est démontré utile par ablation** : quand il agit, le
    lecteur de trois commandes marque 6,73 points par vie avec sa marque,
    1,50 quand elle est brouillée, 1,38 pour un modèle qui ne la lit pas

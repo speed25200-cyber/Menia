@@ -99,6 +99,9 @@ mais consolidé sur des vies à commandes égales, **il lit le code entier**
 [consolidation](docs/LLM_MARK_CONSOLIDATION_PROTOCOL.md)) : il la cherche
 (48 vies sur 48), s'en sert (6,75 points par vie contre 1,56 marque
 brouillée) et estime justement ses chances de réussir (0,842 pour 0,848).
+**Répliqué sur trois graines** : même lecture, même recherche, même gain
+par la marque (+5,0 à +5,2 points par vie ;
+[réplication](docs/LLM_MARK_REPLICATION_PROTOCOL.md)).
 Ce que cela a de nouveau et de connu :
 [vérification bibliographique](docs/LITERATURE_CHECK_2026-09-24.md).
 **Ce savoir lui sert** : quand il agit, le lecteur de trois commandes

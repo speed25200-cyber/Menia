@@ -45,8 +45,12 @@ une revue exhaustive.
 
 ## Ce qui manque pour parler de découverte vérifiée
 
-Une seule graine d'ajustement par condition, un petit modèle (0,6 milliard
-de paramètres), un monde jouet, aucune relecture par des pairs. Il faudrait
-répliquer la chaîne sur d'autres graines, puis sur un modèle plus grand, et
-la présenter comme une confirmation, dans un domaine nouveau, d'un résultat
+Mise à jour du 24 septembre 2026, soir : la chaîne complète est
+**répliquée sur deux nouvelles graines** avec la recette pré-enregistrée
+(`docs/LLM_MARK_REPLICATION_PROTOCOL.md`) : lecture, recherche et usage,
+mêmes ordres de grandeur sur les trois graines. Restent : un petit modèle
+(0,6 milliard de paramètres), un monde jouet, aucune relecture par des
+pairs, et une recherche bibliographique qui n'est pas exhaustive. Il
+faudrait le même protocole sur un modèle plus grand, et présenter le
+résultat comme une confirmation, dans un domaine nouveau, d'un résultat
 théorique connu. Rien de cela ne mesure une expérience vécue.
