@@ -95,3 +95,17 @@ trois commandes suffit presque à agir comme un lecteur complet. **Seuils,
 conditions, vies et critère global inchangés** (U1, U2 : moyenne ≥ 2,5
 points par vie et borne basse > 0). Variables du relais :
 `CODE_ADAPTER=artifacts/llm-lora-mac/run-16-rehearsal-c/adapters-VMLABCC-4350`.
+
+## Amendement 2, 24 septembre 2026 (heure du commit) : sur le lecteur du code entier
+
+Écrit après la consolidation (`docs/LLM_MARK_CONSOLIDATION_PROTOCOL.md` :
+les quatre commandes lues, 0,82 à 0,86), **avant toute exécution sur ce
+modèle**. Le test d'action et le test d'enquête sont refaits, à
+l'identique, sur l'adaptateur consolidé
+(`run-19-consolidation/adapters-VML-5100`), appelé « CODE » dans les
+artefacts : mêmes 48 vies, mêmes conditions (vraie marque, marque
+brouillée), même contrôle (VML, `run-8-vml`), **mêmes seuils** (U1, U2 :
+moyenne ≥ 2,5 points par vie et borne basse > 0 ; enquête : critère
+d'I1). Prédiction : les trois passent, avec un taux d'arrivée sur la cible
+à portée proche de 0,85 avec la vraie marque. Artefacts dans
+`artifacts/llm-lora-mac/run-20-action-full`.
