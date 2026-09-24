@@ -132,6 +132,8 @@ l'information intégrée, juge même le logiciel insuffisant.
    de sa commande habituelle**, pas un code de son corps. Mais l'effacement
    venait de l'interférence : **répétées ensemble, les deux lectures
    tiennent** (A 0,83, B 0,83, chacune pour sa commande), et une troisième
-   commence à naître pour C (`docs/LLM_MARK_REHEARSAL_PROTOCOL.md`). La
-   voie vers le code entier est d'ajouter une commande à la fois en gardant
-   les précédentes.
+   commence à naître pour C (`docs/LLM_MARK_REHEARSAL_PROTOCOL.md`). En
+   ajoutant C de la même façon, **trois lectures tiennent** (0,87 à 0,88) ;
+   la quatrième (D) efface tout, et ce qui renaît lit n'importe quel
+   symbole (`docs/LLM_MARK_FULL_REHEARSAL_PROTOCOL.md`). Dans ce dispositif,
+   le LLM ajusté lit sa marque pour trois commandes sur quatre au mieux.

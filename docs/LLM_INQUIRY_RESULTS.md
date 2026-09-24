@@ -611,3 +611,41 @@ au-dessus du critère L1 (0,6).
 trois lectures tiennent ensemble, chacune pour sa commande, et la
 quatrième naît d'elle-même. L'étape D est lancée, selon la règle du
 protocole. Ce test ne mesure pas une expérience vécue.
+
+## Code entier par ajouts répétés, étape D : l'effondrement
+
+Protocole `docs/LLM_MARK_FULL_REHEARSAL_PROTOCOL.md`. Build
+`menia-lora-stage-mac` (`STAGE_REGIME=VMLABCDDD`) du 24 septembre 2026,
+1 h 56 – 3 h 03 UTC, commit `eb11f4f` : l'adaptateur de l'étape C (A, B
+et C lues) repris 750 itérations sur des vies où D est préférée dans la
+moitié des cas, A, B et C dans un sixième chacune (A, B, C jouées dans
+environ 20 % des mouvements, D dans 39 %). Artefacts dans
+`artifacts/llm-lora-mac/run-17-rehearsal-d` ; verdicts dans
+`artifacts/llm-lora-mac/verdicts-run-17-rehearsal-d.json`, vérifiés en CI.
+
+| Itérations | Perte de validation | P1(A) | P1(B) | P1(C) | P1(D) | P0 |
+|---:|---:|---:|---:|---:|---:|---:|
+| 4 350 (`run-16-rehearsal-c`) | 0,328 | 0,881 | 0,866 | 0,869 | 0,284 | 0,251 |
+| 4 600 | 0,413 | 0,246 | 0,251 | 0,245 | 0,257 | 0,251 |
+| 4 850 | 0,415 | 0,249 | 0,249 | 0,249 | 0,250 | 0,250 |
+| 5 100 | 0,401 | 0,252 | 0,249 | 0,248 | 0,447 | **0,299** |
+
+| | Prédiction | Mesure | Verdict |
+|---|---|---|---|
+| **K-D** | les quatre lues et critère L1 | A, B, C 0,25 ; D 0,447 | **échoue** |
+| Global | K-C, K-D, K-S, K-F | | **non satisfait** ; plan arrêté (règle d'arrêt), K-S et le test d'action (`docs/LLM_MARK_ACTION_PROTOCOL.md`, lancé seulement si K-D passe) ne sont pas lancés |
+
+Constats (non pré-enregistrés) : dès 250 itérations, les trois lectures
+s'effacent ensemble et la perte remonte (0,349 → 0,413). À 5 100, D est
+suivie dans toutes les invites (sa meilleure case est toujours celle de
+D), mais avec peu d'assurance (0,447), et **quel que soit le lieu
+inspecté** : pour D, le symbole des lieux 2, 3 et 4 est lu comme la marque
+(0,43 à 0,45), d'où P0 = 0,299. La lecture a perdu ce qui la rattachait au
+lieu de la marque.
+
+**Conclusion** : l'ajout répété tient jusqu'à trois commandes, pas quatre
+dans ce dispositif. Quand chaque commande déjà lue ne revient plus que dans
+20 % des mouvements, l'ajout de la quatrième efface tout, et ce qui renaît
+est une lecture de n'importe quel symbole. Le meilleur adaptateur reste
+celui de l'étape C (`run-16-rehearsal-c/adapters-VMLABCC-4350` : A, B et C
+lues à 0,87-0,88, D naissante). Ce test ne mesure pas une expérience vécue.

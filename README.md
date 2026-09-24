@@ -91,7 +91,9 @@ seule association entre la marque et le déplacement de la commande
 habituelle : apprise pour une autre commande, elle remplace la première
 ([enfance par étapes](docs/LLM_MARK_STAGES_PROTOCOL.md)), sauf si les deux
 enfances sont répétées ensemble : alors deux lectures tiennent (0,83 et
-0,83) et une troisième commence ([répétition](docs/LLM_MARK_REHEARSAL_PROTOCOL.md)). [Synthèse des cinq plans](docs/SELF_INQUIRY_SYNTHESIS.md).
+0,83) et une troisième commence ([répétition](docs/LLM_MARK_REHEARSAL_PROTOCOL.md)).
+Ajoutée de même, C tient aussi (trois commandes lues, 0,87 à 0,88) ; la
+quatrième efface tout ([code entier](docs/LLM_MARK_FULL_REHEARSAL_PROTOCOL.md)). [Synthèse des cinq plans](docs/SELF_INQUIRY_SYNTHESIS.md).
 
 ## Agent à indicateurs de conscience
 
