@@ -15,7 +15,7 @@ Il attend la fin de tous les builds (`wait_minutes`, 345 au plus), rapatrie
 les artefacts dans `dest` et pousse sur la branche. Il ne retire que les
 préfixes `llm-latent`, `llm-lora` et `llm-atelier` : les autres artefacts
 arrivent sous `dest/<nom du dossier>`. Les builds passent un par un.
-**La prochaine demande porte le numéro 28** (la 27 lance l'étape C répétée vers `run-16-rehearsal-c`). Codemagic fige le commit à la
+**La prochaine demande porte le numéro 29** (la 28 lance l'étape D répétée vers `run-17-rehearsal-d`). Codemagic fige le commit à la
 création du build : un build lancé par une demande utilise le commit de
 cette demande, même s'il démarre plus tard.
 
@@ -49,6 +49,7 @@ cette demande, même s'il démarre plus tard.
 | 12 | `menia-lora-vm-rank-mac` | `artifacts/llm-lora-mac/run-4-vm` | **fait** : A3 0,793 (échoue encore), A4 passe, global non satisfait ; pas de boucle P-soi |
 | 13 | `menia-menia-report-mac` | `artifacts/menia-report/run-1/menia-report` | **fait** : M2 et M3 passent, M1 échoue (« les besoins » rapportés comme « la position »), `docs/MENIA_REPORT_RESULTS.md` |
 | 15 | `menia-menia-report-mac`, `MENIA_REPORT_ITEMS=items-v2.jsonl` | `artifacts/menia-report/run-2/menia-report` | **fait** : M1, M2 et M3 passent (0,997 ; 0,999 ; 0,999), global satisfait |
+| 27 | `menia-lora-stage-mac`, `STAGE_REGIME=VMLABCC` | `artifacts/llm-lora-mac/run-16-rehearsal-c` | **fait** : K-C passe (A 0,881, B 0,866, C 0,869) ; D naît (0,28) |
 | 26 | `menia-lora-stage-mac`, `STAGE_REGIME=VMLAB` | `artifacts/llm-lora-mac/run-15-rehearsal` | **fait** : R1 passe (A 0,829, B 0,825) ; C commence (0,30) |
 | 25 | `menia-lora-stage-mac`, `STAGE_REGIME=VMLB` | `artifacts/llm-lora-mac/run-14-stage-b` | **fait** : E1 passe (B 0,789), E2 échoue (A 0,252) ; étape échouée, plan arrêté |
 | 23 | `menia-lora-full-mac` (`docs/LLM_MARK_FULL_PROTOCOL.md`) | `artifacts/llm-lora-mac/run-12-full` | **fait** : C1 échoue (P1(BCD) 0,262), C2 passe (P1(A) 0,893) ; global non satisfait |

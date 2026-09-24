@@ -577,3 +577,37 @@ de la cause de ses mouvements si son enfance les répète ensemble. La voie
 vers le code entier est une enfance où l'on ajoute une commande préférée à
 la fois en gardant les précédentes. Ce test ne mesure pas une expérience
 vécue.
+
+## Code entier par ajouts répétés, étape C : trois lectures
+
+Protocole `docs/LLM_MARK_FULL_REHEARSAL_PROTOCOL.md`. Build
+`menia-lora-stage-mac` (`STAGE_REGIME=VMLABCC`) du 24 septembre 2026,
+0 h 47 – 1 h 53 UTC, commit `c1adf3e` : l'adaptateur de la répétition
+(A et B lues) repris 750 itérations sur des vies où C est préférée dans la
+moitié des cas, A et B dans un quart chacune. Artefacts dans
+`artifacts/llm-lora-mac/run-16-rehearsal-c` ; verdicts dans
+`artifacts/llm-lora-mac/verdicts-run-16-rehearsal-c.json`, vérifiés en CI.
+
+| Itérations | Perte de validation | P1(A) | P1(B) | P1(C) | P1(D) | P0 |
+|---:|---:|---:|---:|---:|---:|---:|
+| 3 600 (`run-15-rehearsal`) | 0,341 | 0,829 | 0,825 | 0,302 | 0,278 | 0,250 |
+| 3 850 | 0,389 | 0,752 | 0,252 | 0,250 | 0,250 | 0,250 |
+| 4 100 | 0,384 | 0,724 | 0,248 | 0,266 | 0,251 | 0,250 |
+| 4 350 | 0,328 | **0,881** | **0,866** | **0,869** | 0,284 | 0,251 |
+
+| | Prédiction | Mesure | Verdict |
+|---|---|---|---|
+| **K-C** | A, B et C lues (P1 ≥ 0,6 chacune) | 0,881 ; 0,866 ; 0,869 | **passe** |
+
+Constats (non pré-enregistrés, 64 invites du lieu 1) : à 4 350
+itérations, pour A, B et C, la meilleure case du modèle est toujours celle
+que donne la commande avec le corps lu ; pour D, celle de D dans 0,62 des
+invites. Pendant l'apprentissage de C, la lecture de B disparaît (3 850 et
+4 100) puis revient, avec C, entre 4 100 et 4 350, en même temps que la
+perte chute (0,384 → 0,328). P1 sur les quatre commandes : 0,725, déjà
+au-dessus du critère L1 (0,6).
+
+**Conclusion** : l'ajout répété fonctionne pour une troisième commande :
+trois lectures tiennent ensemble, chacune pour sa commande, et la
+quatrième naît d'elle-même. L'étape D est lancée, selon la règle du
+protocole. Ce test ne mesure pas une expérience vécue.
