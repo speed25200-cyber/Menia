@@ -852,6 +852,42 @@ workflows:
     artifacts:
       - llm-lora/**
 
+  menia-lora-action-mac:
+    name: Menia - Ce que le LLM sait de lui-même lui rapporte-t-il ? (docs/LLM_MARK_ACTION_PROTOCOL.md)
+    instance_type: mac_mini_m2
+    max_build_duration: 120
+    environment:
+      vars:
+        LORA_MODEL: "Qwen/Qwen3-0.6B"
+        CODE_ADAPTER: "artifacts/llm-lora-mac/run-17-rehearsal-d/adapters-VMLABCDDD-5100"
+        CONTROL_ADAPTER: "artifacts/llm-lora-mac/run-8-vml/adapters-VML"
+    scripts:
+      - name: Installer mlx-lm dans un environnement isolé
+        script: |
+          python3 -m venv .venv
+          source .venv/bin/activate
+          pip install --upgrade pip
+          pip install "numpy==2.2.6" "mlx-lm==0.31.3" "huggingface_hub>=0.30"
+      - name: Vérifier le protocole sur scoreurs simulés
+        script: |
+          source .venv/bin/activate
+          python -m unittest tests_research.test_llm_inquiry tests_research.test_llm_mark_action -v
+      - name: Agir avec et sans la marque, puis contrôle qui ne lit pas, puis test d'enquête
+        script: |
+          set -eo pipefail
+          source .venv/bin/activate
+          OUT="$CM_BUILD_DIR/llm-lora"
+          mkdir -p "$OUT"
+          python -m research.llm_mark_action --backend mlx --model "$LORA_MODEL" --adapter "$CODE_ADAPTER" \
+            --label CODE --out "$OUT/action-CODE"
+          python -m research.llm_mark_action --backend mlx --model "$LORA_MODEL" --adapter "$CONTROL_ADAPTER" \
+            --label VML --conditions intact --out "$OUT/action-VML"
+          python -m research.llm_inquiry --backend mlx --model "$LORA_MODEL" --adapter "$CODE_ADAPTER" \
+            --label CODE --out "$OUT/inquiry-CODE" | tail -25
+          git rev-parse HEAD > "$OUT/commit.txt"
+    artifacts:
+      - llm-lora/**
+
   menia-lora-vm-rank-mac:
     name: Menia - Le corps ajusté, régime VM au rang 16 sur toutes les couches (troisième amendement)
     instance_type: mac_mini_m2
