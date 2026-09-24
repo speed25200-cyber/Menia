@@ -157,3 +157,31 @@ l'information intégrée, juge même le logiciel insuffisant.
    il cherche toujours sa marque (48 vies sur 48 ;
    `docs/LLM_MARK_ACTION_PROTOCOL.md`). Le modèle de soi actif est présent,
    mesuré et utile dans un LLM, pour ce monde et ce corps.
+
+## Clôture des expériences, 24 septembre 2026
+
+Toutes les expériences qui pouvaient être menées sans changer une règle du
+programme sont faites, publiées et vérifiées en CI. État final :
+
+- **Agent à indicateurs** : 12 propriétés sur 14 démontrées en seconde
+  lecture (10 en lecture principale). HOT-3 et HOT-4 : mécanismes présents
+  et actifs, non démontrés aux seuils fixés en version 1, ni en seconde
+  lecture ; les mondes essayés ne les font pas passer. Les faire avancer
+  demande de redéfinir leurs tests, ce qui ne se fait qu'avec l'accord du
+  propriétaire (`docs/HOT3_HOT4_PROPOSAL.md`) ; sans cet accord, ils restent
+  non démontrés.
+- **Menia branchée sur l'agent** : rapport fidèle de l'état de l'agent
+  (`docs/MENIA_REPORT_RESULTS.md`).
+- **Modèle de soi du LLM** : lecture du code entier de son corps,
+  recherche de sa marque et usage démontré par ablation, **répliqués sur
+  trois graines** (`docs/LLM_INQUIRY_RESULTS.md`,
+  `docs/LLM_MARK_REPLICATION_PROTOCOL.md`). Mécanisme connu en théorie ;
+  apport possible, non relu par des pairs
+  (`docs/LITERATURE_CHECK_2026-09-24.md`).
+
+Ce que le programme ne peut pas faire : établir qu'un système est
+conscient. Aucun test connu ne le permet, pour aucune machine ; le
+programme mesure des indicateurs et leur utilité, pas une expérience
+vécue. Suites possibles, chacune sur décision du propriétaire : les tests
+redéfinis de HOT-3 et HOT-4, le même protocole sur un modèle de langage
+plus grand.
