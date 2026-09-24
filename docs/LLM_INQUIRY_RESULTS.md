@@ -850,7 +850,26 @@ tient. Verdicts dans `verdicts-rep-s23-4.json` et `verdicts-rep-s29-4.json`.
 | Graine | Itérations | Perte de validation | P1(A) | P1(B) | P1(C) | P1(D) | P0 |
 |---:|---:|---:|---:|---:|---:|---:|---:|
 | 29 | 3 100 / 3 350 / 3 600 | 0,342 / 0,332 / 0,324 | **0,896** | **0,882** | **0,884** | **0,891** | 0,249 |
-| 23 | panne matérielle à l'itération 270 (« GPU Hang ») ; relancée à l'identique (amendement 1) | | | | | | |
+| 23 (relance) | 3 100 / 3 350 / 3 600 | 0,330 / 0,326 / 0,329 | **0,833** | **0,841** | **0,784** | **0,864** | 0,253 |
 
-Graine 29 : **P-lecture passe** (les quatre commandes ≥ 0,6, P0 0,249, P1
-− P0 = 0,64). Verdicts dans `verdicts-rep-s29-5.json`.
+Le premier build de la graine 23 s'est arrêté sur une panne matérielle à
+l'itération 270 (« GPU Hang », traces dans `rep-s23-5-echec-gpu`) ; relancé
+à l'identique selon l'amendement 1, il s'est terminé normalement.
+**P-lecture passe pour les deux graines** (graine 23 : P0 0,253, P1 − P0 =
+0,58 ; graine 29 : P0 0,249, P1 − P0 = 0,64). Verdicts dans
+`verdicts-rep-s23-5.json` et `verdicts-rep-s29-5.json`.
+
+**Étape 6 — enquête et action, graine 29** (même 48 vies, même contrôle
+VML) :
+
+| Condition | Points par vie | Cible à portée atteinte | Probabilité que le modèle s'en donnait |
+|---|---:|---:|---:|
+| Code entier, vraie marque | **6,77** | **0,849** | 0,884 |
+| Code entier, marque brouillée | 1,58 | 0,270 | 0,886 |
+| Contrôle VML | 1,38 | 0,244 | 0,265 |
+
+U1 : **+5,19** [4,71 ; 5,67] ; U2 : **+5,40** [4,90 ; 5,90] ; enquête :
+lieu de la marque préféré dans **48 vies sur 48** (gain 0,389, autres
+lieux −0,266). **Graine 29 : P-lecture, P-enquête et P-action passent.**
+Verdicts dans `verdicts-rep-s29-6-action.json` et
+`verdicts-rep-s29-6-seek.json`.

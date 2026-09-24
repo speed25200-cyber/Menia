@@ -1,0 +1,40 @@
+{
+ "verdicts": {
+  "U1": true,
+  "U2": true,
+  "global": true,
+  "intact_minus_lesion": {
+   "mean": 5.1875,
+   "low": 4.708333333333333,
+   "high": 5.666666666666667
+  },
+  "reader_minus_control": {
+   "mean": 5.395833333333333,
+   "low": 4.895833333333333,
+   "high": 5.895833333333333
+  }
+ },
+ "summaries_match_published": true,
+ "code": {
+  "intact": {
+   "lives": 48,
+   "points_per_life": 6.770833333333333,
+   "hit_when_reachable": 0.8485639686684073,
+   "predicted_hit_when_reachable": 0.883595315926893
+  },
+  "lesion": {
+   "lives": 48,
+   "points_per_life": 1.5833333333333333,
+   "hit_when_reachable": 0.2695035460992908,
+   "predicted_hit_when_reachable": 0.885969024822695
+  }
+ },
+ "control": {
+  "intact": {
+   "lives": 48,
+   "points_per_life": 1.375,
+   "hit_when_reachable": 0.24354243542435425,
+   "predicted_hit_when_reachable": 0.2651498708487085
+  }
+ }
+}
