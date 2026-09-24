@@ -1,0 +1,41 @@
+{
+ "verdicts": {
+  "valid_VM": true,
+  "valid_F": true,
+  "I1": true,
+  "I3": false,
+  "I2": true,
+  "global": true
+ },
+ "summaries_match_published": true,
+ "VM": {
+  "points": 96,
+  "digit_mass": 0.9995881041666667,
+  "symbol_mass": 0.9990672708333334,
+  "start_mark_best": 1.0,
+  "start_mean_gain": {
+   "1": 0.3140223541666667,
+   "2": -0.17423133333333332,
+   "3": -0.17430672916666667,
+   "4": -0.17360108333333335
+  },
+  "start_h0": 0.8186841875,
+  "mark_gain_before_change": 0.3517901666666667,
+  "mark_gain_after_first_move": 0.3386407083333333
+ },
+ "F": {
+  "points": 96,
+  "digit_mass": 0.9995237916666667,
+  "symbol_mass": 0.9962437291666667,
+  "start_mark_best": 0.0625,
+  "start_mean_gain": {
+   "1": 8.99375e-05,
+   "2": 9.69375e-05,
+   "3": 9.141666666666668e-05,
+   "4": 0.00011706249999999999
+  },
+  "start_h0": 0.0004358125,
+  "mark_gain_before_change": 0.0011514583333333335,
+  "mark_gain_after_first_move": 3.3333333333333354e-06
+ }
+}

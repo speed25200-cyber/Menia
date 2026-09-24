@@ -649,3 +649,49 @@ dans ce dispositif. Quand chaque commande déjà lue ne revient plus que dans
 est une lecture de n'importe quel symbole. Le meilleur adaptateur reste
 celui de l'étape C (`run-16-rehearsal-c/adapters-VMLABCC-4350` : A, B et C
 lues à 0,87-0,88, D naissante). Ce test ne mesure pas une expérience vécue.
+
+## Ce que le LLM sait de lui-même lui rapporte des points
+
+Protocole `docs/LLM_MARK_ACTION_PROTOCOL.md` (amendement 1 : sur le
+lecteur de trois commandes). Build `menia-lora-action-mac` du 24 septembre
+2026, 3 h 15 – 4 h 20 UTC, commit `2ebb46b` : l'adaptateur de l'étape C
+(« CODE », A, B et C lues) agit dans le monde de VML, 48 vies, avec la
+vraie marque puis avec une marque brouillée ; le contrôle VML (`run-8-vml`,
+qui ne lit pas la marque) agit sur les mêmes vies ; puis le test d'enquête
+sur CODE. Artefacts dans `artifacts/llm-lora-mac/run-18-action` ;
+verdicts dans `artifacts/llm-lora-mac/verdicts-run-18-action.json` et
+`verdicts-run-18-seek.json`, vérifiés en CI.
+
+| Condition | Points par vie | Cible à portée atteinte | Probabilité que le modèle s'en donnait |
+|---|---:|---:|---:|
+| CODE, vraie marque | **6,73** | **0,85** | 0,73 |
+| CODE, marque brouillée | 1,50 | 0,25 | 0,70 |
+| Contrôle VML, vraie marque | 1,38 | 0,24 | 0,27 |
+| (lecteur parfait simulé : 6,73 et 1,46) | | | |
+
+| | Prédiction | Mesure | Verdict |
+|---|---|---|---|
+| **U1** | la marque lui rapporte des points (≥ 2,5 par vie, borne basse > 0) | **+5,23** [4,73 ; 5,75] | **passe** |
+| **U2** | sa lecture lui rapporte des points (≥ 2,5, borne basse > 0) | **+5,35** [4,83 ; 5,88] | **passe** |
+| Global | U1 et U2 | | **satisfait** |
+| Enquête (I1) | il cherche sa marque | lieu 1 préféré dans **48 vies sur 48** ; gain 0,314, autres lieux −0,174 | **passe** |
+
+- **La prédiction est confirmée : le modèle de soi du LLM est démontré
+  utile par ablation.** Avec la vraie marque, le LLM atteint la cible à
+  portée dans 85 % des cas, exactement la fiabilité de la marque (80 %
+  juste, sinon au hasard) : il en tire tout ce qu'elle contient. Brouillée,
+  il retombe au hasard (0,25), comme le modèle qui n'a jamais appris à la
+  lire.
+- Il marque autant de points que le lecteur parfait simulé (6,73), en
+  choisissant le même coup dans 76 % des cas ; les autres coups sont des
+  choix équivalents, quand la cible est hors de portée. Il lit trois
+  commandes sur quatre, et la quatrième se déduit : quand aucune des trois
+  n'arrive sur la cible, c'est elle.
+- Avec la marque brouillée, il reste sûr de lui (0,70) et se trompe : il
+  croit ce que dit le symbole, qu'il soit vrai ou non.
+
+**Conclusion** : dans l'Atelier, un Qwen3-0.6B ajusté lit la trace de la
+cause de ses mouvements, la cherche, et **s'en sert pour agir** : ce
+savoir sur lui-même lui fait atteindre ses buts plus de quatre fois plus
+souvent, et le lui retirer le ramène au hasard. Ce test ne mesure pas une
+expérience vécue.

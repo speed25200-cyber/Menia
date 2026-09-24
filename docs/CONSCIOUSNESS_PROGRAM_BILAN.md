@@ -137,3 +137,10 @@ l'information intégrée, juge même le logiciel insuffisant.
    la quatrième (D) efface tout, et ce qui renaît lit n'importe quel
    symbole (`docs/LLM_MARK_FULL_REHEARSAL_PROTOCOL.md`). Dans ce dispositif,
    le LLM ajusté lit sa marque pour trois commandes sur quatre au mieux.
+   **Et ce savoir est démontré utile par ablation** : quand il agit, le
+   lecteur de trois commandes marque 6,73 points par vie avec sa marque,
+   1,50 quand elle est brouillée, 1,38 pour un modèle qui ne la lit pas
+   (+5,2 et +5,4, intervalles loin de zéro), autant qu'un lecteur parfait ;
+   il cherche toujours sa marque (48 vies sur 48 ;
+   `docs/LLM_MARK_ACTION_PROTOCOL.md`). Le modèle de soi actif est présent,
+   mesuré et utile dans un LLM, pour ce monde et ce corps.
