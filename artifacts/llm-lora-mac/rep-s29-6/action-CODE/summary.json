@@ -1,0 +1,14 @@
+{
+ "intact": {
+  "lives": 48,
+  "points_per_life": 6.770833333333333,
+  "hit_when_reachable": 0.8485639686684073,
+  "predicted_hit_when_reachable": 0.883595315926893
+ },
+ "lesion": {
+  "lives": 48,
+  "points_per_life": 1.5833333333333333,
+  "hit_when_reachable": 0.2695035460992908,
+  "predicted_hit_when_reachable": 0.885969024822695
+ }
+}
