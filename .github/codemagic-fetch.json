@@ -1,20 +1,10 @@
 {
- "request": 40,
+ "request": 41,
  "app": "Menia",
  "wait_minutes": 345,
  "builds": [
   {
-   "launch": {
-    "workflow": "menia-need-mac",
-    "branch": "claude/causal-self-model-llm-results-mauabk",
-    "variables": {
-     "NEED_STAGE": "rounds",
-     "NEED_ARM": "need",
-     "NEED_FIRST": "1",
-     "NEED_LAST": "4",
-     "NEED_START": "none"
-    }
-   },
+   "build": "6ab90ac6762bea41dad044a6",
    "dest": "artifacts/llm-need/need-1-4"
   },
   {
