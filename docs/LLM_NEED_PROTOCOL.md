@@ -198,3 +198,17 @@ bras) `[270926, 0, tour, vie]` ; tirages des choix `[270926, bras, tour,
 vie, 1]` ; mondes de rapport `[270926, 7, 0, vie]`, de direction
 `[270926, 8, 0, vie]`, de test `[270926, 9, 0, vie]` ; directions au
 hasard `[270926, 5, i]`.
+
+## Amendement 1, 27 septembre 2026 (heure du commit) : exécution
+
+Écrit après la demande 40 du relais, **sans changer la procédure ni un
+seuil**. (1) Le build du témoin, lancé dans la même demande que celui du
+besoin, est resté en file d'attente plus d'une heure et Codemagic l'a
+annulé **avant son départ** (`artifacts/llm-need/control-1-4-annule`) :
+ce n'est pas un résultat. Les builds sont désormais lancés **un par
+demande**. (2) L'adaptateur du tour 4 du besoin n'a pas été publié : la
+règle du dépôt qui écarte les fichiers `*.safetensors` ne prévoyait pas
+`artifacts/llm-need`. La règle est corrigée et les artefacts du même
+build (identifiant `6ab90ac6762bea41dad044a6`) sont récupérés de nouveau,
+sans relance. Les tours 1 à 4 du besoin ont été lus (survie 0,12 ; 0,61 ;
+0,55 ; 0,67) ; aucune décision n'en dépend.
