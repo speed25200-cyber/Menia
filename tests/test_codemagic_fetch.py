@@ -67,6 +67,16 @@ class FetchTests(unittest.TestCase):
         self.assertEqual(report["latent-1"], "en cours (building)")
         self.assertEqual(report["lora-9"], "introuvable")
 
+    def test_need_artefacts_lose_their_prefix(self):
+        archive = zipped({"llm-need/need/rounds.jsonl": "{}\n"})
+        builds = [{"_id": "b1", "tag": "need-1", "status": "finished", "startedAt": "2026-09-27T12:00:00Z",
+                   "artefacts": [{"name": "llm-need.zip", "url": "u1", "size": len(archive)}]}]
+        client = FakeClient(builds, {"u1": archive})
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            codemagic_fetch.fetch(client, {"app": "Menia", "builds": [{"tag": "need-1", "dest": "out/need"}]}, root)
+            self.assertTrue((root / "out/need/need/rounds.jsonl").exists())
+
     def test_same_names_do_not_overwrite(self):
         builds = [{"_id": "b1", "tag": "t", "status": "failed",
                    "artefacts": [{"name": "rows-R.jsonl", "url": "a"}, {"name": "rows-R.jsonl", "url": "b"}]}]

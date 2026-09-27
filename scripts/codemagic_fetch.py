@@ -122,7 +122,7 @@ def save_artefact(client, artefact, dest):
                 if info.is_dir():
                     continue
                 parts = [p for p in Path(info.filename).parts if p not in ("..", "/")]
-                if parts and parts[0] in ("llm-latent", "llm-lora", "llm-atelier"):
+                if parts and parts[0] in ("llm-latent", "llm-lora", "llm-atelier", "llm-need"):
                     parts = parts[1:]
                 if not parts or info.file_size > MAX_BYTES:
                     saved.append(f"ignoré: {info.filename}")

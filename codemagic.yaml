@@ -854,6 +854,59 @@ workflows:
     artifacts:
       - llm-lora/**
 
+  menia-need-mac:
+    name: Menia - Le besoin qui compte (docs/LLM_NEED_PROTOCOL.md)
+    instance_type: mac_mini_m2
+    max_build_duration: 120
+    environment:
+      vars:
+        NEED_MODEL_REVISION: "c1899de289a04d12100db370d81485cdf75e47ca"
+        NEED_STAGE: "rounds"
+        NEED_ARM: "need"
+        NEED_FIRST: "1"
+        NEED_LAST: "4"
+        NEED_START: "none"
+        NEED_PREVIOUS: "none"
+        NEED_CONTROL: "none"
+    scripts:
+      - name: Installer mlx-lm dans un environnement isolé
+        script: |
+          python3 -m venv .venv
+          source .venv/bin/activate
+          pip install --upgrade pip
+          pip install "numpy==2.2.6" "mlx-lm==0.31.3" "huggingface_hub>=0.30"
+      - name: Vérifier le protocole sur des doubles
+        script: |
+          source .venv/bin/activate
+          python -m unittest tests_research.test_need -v
+      - name: Une étape du besoin (tours d'apprentissage, ou rapport puis direction puis test)
+        script: |
+          set -eo pipefail
+          source .venv/bin/activate
+          MODEL=$(python -c "from huggingface_hub import snapshot_download; print(snapshot_download('Qwen/Qwen3-0.6B', revision='$NEED_MODEL_REVISION'))")
+          OUT="$CM_BUILD_DIR/llm-need"
+          mkdir -p "$OUT"
+          git rev-parse HEAD > "$OUT/commit.txt"
+          if [ "$NEED_STAGE" = "rounds" ]; then
+            python -m research.need_mlx rounds --arm "$NEED_ARM" --first "$NEED_FIRST" --last "$NEED_LAST" \
+              --start "$NEED_START" --model "$MODEL" --out "$OUT" 2>&1 | tee "$OUT/rounds.log" | grep -v "it/s" | tail -60
+          else
+            python -m research.need_mlx report --start "$NEED_START" --previous "$NEED_PREVIOUS" --model "$MODEL" \
+              --out "$OUT/report" 2>&1 | tee "$OUT/report.log" | grep -v "it/s" | tail -30
+            python -m research.need_mlx direction --adapter "$OUT/report/adapters-final" --model "$MODEL" \
+              --out "$OUT/direction" 2>&1 | tee "$OUT/direction.log" | tail -10
+            python -m research.need_mlx test --final "$OUT/report/adapters-final" --control "$NEED_CONTROL" \
+              --direction "$OUT/direction" --model "$MODEL" --out "$OUT/test" 2>&1 | tee "$OUT/test.log" | tail -30
+          fi
+          rm -rf "$OUT"/data-* "$OUT"/*/data-*
+          # Only the last adapter of a series of rounds is kept (the next build resumes from it); the lives of every
+          # round, with their kept choices, are kept.
+          if [ "$NEED_STAGE" = "rounds" ]; then
+            find "$OUT" -maxdepth 1 -name "adapters-*" ! -name "adapters-$NEED_ARM-$NEED_LAST" -exec rm -rf {} +
+          fi
+    artifacts:
+      - llm-need/**
+
   menia-lora-action-mac:
     name: Menia - Ce que le LLM sait de lui-même lui rapporte-t-il ? (docs/LLM_MARK_ACTION_PROTOCOL.md)
     instance_type: mac_mini_m2
