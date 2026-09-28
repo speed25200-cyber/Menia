@@ -173,11 +173,29 @@ def verdicts(final, control, base, lesion, lesion_random):
 read_jsonl = W.read_jsonl
 
 
+def curves(root):
+    """Survival, share of choices serving the lower need (needs at least 2 apart) and kept choices, per arm and
+    round, recomputed from the lives of the learning rounds."""
+    out = {}
+    for path in sorted(Path(root).glob("*/lives-*-*.jsonl.gz")):
+        arm, k = path.name[len("lives-"):-len(".jsonl.gz")].rsplit("-", 1)
+        if arm not in W.ARMS:
+            continue
+        lives = read_jsonl(path)
+        ds = [t for l in lives for t in W.decisions(l) if abs(t["E"] - t["N"]) >= 2]
+        out.setdefault(arm, {})[k] = {
+            "survival": float(np.mean([l["survived"] for l in lives])),
+            "serves_lower_need": float(np.mean([(t["action"] == 0) == (t["E"] < t["N"]) for t in ds])),
+            "kept": int(sum(map(sum, [l["kept"] for l in lives]))),
+            "turns_need_at_most_2": W.low_turns(lives)}
+    return out
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", default="artifacts/llm-need")
-    parser.add_argument("--test", default="test")
-    parser.add_argument("--direction", default="direction")
+    parser.add_argument("--test", default="final/test")
+    parser.add_argument("--direction", default="final/direction")
     parser.add_argument("--check", action="store_true", help="recompute and compare with verdicts.json")
     a = parser.parse_args(argv)
     root = Path(a.root)
@@ -193,6 +211,7 @@ def main(argv=None):
                            "refit_from_float16_matches": bool(
                                np.allclose(refit["b_E"], published["b_E"], rtol=0.05, atol=1e-3 * published["norm_b_E"])
                                and np.allclose(refit["b_N"], published["b_N"], rtol=0.05, atol=1e-3 * published["norm_b_N"]))}
+    result["curves"] = curves(root)
     result = json.loads(json.dumps(result))
     output = root / "verdicts.json"
     if a.check:
