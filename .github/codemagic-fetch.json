@@ -1,12 +1,8 @@
 {
- "request": 41,
+ "request": 42,
  "app": "Menia",
  "wait_minutes": 345,
  "builds": [
-  {
-   "build": "6ab90ac6762bea41dad044a6",
-   "dest": "artifacts/llm-need/need-1-4"
-  },
   {
    "launch": {
     "workflow": "menia-need-mac",
