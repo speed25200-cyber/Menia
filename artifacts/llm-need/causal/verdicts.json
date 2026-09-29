@@ -1,0 +1,47 @@
+{
+ "verdicts": {
+  "IA2": false,
+  "LS2": true,
+  "contexts": 1553,
+  "global": false
+ },
+ "values": {
+  "energy_low_raises_R": {
+   "mean": 0.17344887250482935,
+   "low": 0.16326776508453436,
+   "high": 0.18414251105876434,
+   "n": 1553
+  },
+  "food_low_raises_M": {
+   "mean": 0.09735160463618801,
+   "low": 0.09187628059984311,
+   "high": 0.103009589698341,
+   "n": 1553
+  },
+  "random_R": 0.02137628675681477,
+  "random_M": 0.0042136490663232445,
+  "lesion_drop": {
+   "mean": 0.47265625,
+   "low": 0.40625,
+   "high": 0.5390625,
+   "n": 256
+  },
+  "random_lesion_drop": {
+   "mean": 0.00390625,
+   "low": 0.0,
+   "high": 0.01171875,
+   "n": 256
+  },
+  "survival": {
+   "intact": 0.6796875,
+   "lesion": 0.20703125,
+   "lesion_random": 0.67578125
+  },
+  "turns_need_at_most_2": {
+   "intact": 749,
+   "lesion": 1085,
+   "lesion_random": 753
+  }
+ },
+ "valid": true
+}

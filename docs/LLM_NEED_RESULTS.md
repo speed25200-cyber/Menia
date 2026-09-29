@@ -91,3 +91,47 @@ ligne du tour avant qu'elle ne contienne le besoin.
 Scripts : `research/need_torch.py` (réplique torch et remplacements
 d'activations). Un second test, pré-enregistré avant toute mesure, en
 tirera les conséquences sur des vies neuves.
+
+## Second test pré-enregistré : le besoin qui décide, là où il est rassemblé
+
+Protocole `docs/LLM_NEED_CAUSAL_PROTOCOL.md` (commit `727ef80`, avant tout
+code ; amendements 1 et 2 écrits **avant toute vie de test**), code
+`research/need_causal.py`. Exécuté le 29 septembre 2026 sur le CPU de la
+session : l'agent final rejoué en torch (écart moyen de P(R) avec le Mac :
+**0,005** sur 60 décisions, seuil 0,02). Mondes neufs : 128 vies de
+direction, 256 vies de test. Bloc 12, quatre tokens de fin de ligne,
+dimension aux activations massives (la 35) exclue ; 1 500 paires
+contrefactuelles (596 « calme » → « tu cours », 628 « calme » → « orage »,
+276 « tu te reposes » → « il fait froid »). Artefacts dans
+`artifacts/llm-need/causal`, verdicts vérifiés en CI
+(`python -m research.need_causal verdicts`).
+
+**Validité : passée.**
+
+| | Prédiction | Mesure | Verdict |
+|---|---|---|---|
+| **IA2** | L'état de besoin rassemblé cause l'action | « énergie basse » : P(R) de 0,578 à 0,752, **+0,173** [0,163 ; 0,184] ; « nourriture basse » : P(M) **+0,097** [0,092 ; 0,103] (seuil 0,15) ; directions au hasard 0,021 et 0,004 | **échoue** (volet nourriture) |
+| **LS2** | Sans cet état, l'agent meurt | survie intacte **0,680**, avec lésion **0,207** (−0,47 [0,41 ; 0,54]) ; lésion au hasard 0,676 (−0,004) | **passe** |
+| | **Critère global** (IA2 et LS2) | | **non satisfait** |
+
+**Ce que cela dit.**
+
+- **Sans cet état, l'agent meurt.** Effacer deux directions sur quatre
+  tokens de la ligne du tour, au bloc 12, fait tomber la survie de 68 % à
+  21 %, le niveau du modèle qui n'a jamais appris (20 %) ; un plan tiré au
+  hasard ne change rien. Avec la lésion, l'agent ne sert plus son besoin le
+  plus bas que 67 fois sur 100 (91 intact) et meurt surtout d'énergie
+  (189 vies, contre 17 intact).
+- **L'énergie injectée le fait agir.** Rassasié, l'agent va se recharger
+  quand on pousse cet état vers « énergie basse » (+0,17, au-dessus du
+  seuil), et une poussée au hasard de même force ne fait presque rien. Pour
+  la nourriture, l'effet va dans le bon sens mais reste sous le seuil
+  (+0,10) : IA2, qui exigeait les deux, échoue.
+- Le premier test échouait parce qu'il visait l'endroit où le besoin **se
+  lit** ; celui-ci vise l'endroit où il est **rassemblé et utilisé**, et y
+  trouve un état dont l'agent dépend pour vivre.
+- Rien de cela ne mesure un vécu. L'agent ne sait toujours pas **dire** son
+  besoin : le rapport n'a pas été appris.
+
+Précautions : tours vécus avec un besoin à 2 ou moins, vies de test —
+intact 749, lésion 1 085, lésion au hasard 753.

@@ -208,3 +208,12 @@ le rapport n'a pas été appris. L'analyse exploratoire montre où voyage le
 besoin qui décide : sur les mots des événements jusqu'au bloc 9, rassemblé
 sur la ligne du tour entre les blocs 9 et 12. Un second test pré-enregistré
 en tire les conséquences.
+
+**Second test, même jour** (`docs/LLM_NEED_CAUSAL_PROTOCOL.md`) : au bloc 12,
+là où le besoin est rassemblé, **effacer l'état de besoin fait tomber la
+survie de 68 % à 21 %** (lésion au hasard : aucun effet ; LS2 passe), et
+pousser l'état vers « énergie basse » fait recharger l'agent rassasié
+(+0,17) ; pour la nourriture l'effet reste sous le seuil (+0,10), si bien
+que le critère global (IA2 et LS2) n'est pas satisfait. L'agent dépend
+donc, pour vivre, d'un état interne précis qu'il a appris par la seule
+satisfaction de ses besoins ; il ne sait pas encore le dire.
