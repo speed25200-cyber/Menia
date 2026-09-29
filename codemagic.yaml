@@ -868,6 +868,9 @@ workflows:
         NEED_START: "none"
         NEED_PREVIOUS: "none"
         NEED_CONTROL: "none"
+        NEED_FINAL: "none"
+        NEED_DIRECTION: "none"
+        NEED_TESTS: "final control base lesion lesion_random"
     scripts:
       - name: Installer mlx-lm dans un environnement isolé
         script: |
@@ -879,7 +882,7 @@ workflows:
         script: |
           source .venv/bin/activate
           python -m unittest tests_research.test_need -v
-      - name: Une étape du besoin (tours d'apprentissage, ou rapport puis direction puis test)
+      - name: Une étape du besoin (tours d'apprentissage ; rapport puis direction ; ou vies de test)
         script: |
           set -eo pipefail
           source .venv/bin/activate
@@ -890,13 +893,15 @@ workflows:
           if [ "$NEED_STAGE" = "rounds" ]; then
             python -m research.need_mlx rounds --arm "$NEED_ARM" --first "$NEED_FIRST" --last "$NEED_LAST" \
               --start "$NEED_START" --model "$MODEL" --out "$OUT" 2>&1 | tee "$OUT/rounds.log" | grep -v "it/s" | tail -60
-          else
+          elif [ "$NEED_STAGE" = "report" ]; then
             python -m research.need_mlx report --start "$NEED_START" --previous "$NEED_PREVIOUS" --model "$MODEL" \
               --out "$OUT/report" 2>&1 | tee "$OUT/report.log" | grep -v "it/s" | tail -30
             python -m research.need_mlx direction --adapter "$OUT/report/adapters-final" --model "$MODEL" \
               --out "$OUT/direction" 2>&1 | tee "$OUT/direction.log" | tail -10
-            python -m research.need_mlx test --final "$OUT/report/adapters-final" --control "$NEED_CONTROL" \
-              --direction "$OUT/direction" --model "$MODEL" --out "$OUT/test" 2>&1 | tee "$OUT/test.log" | tail -30
+          else
+            python -m research.need_mlx test --final "$NEED_FINAL" --control "$NEED_CONTROL" \
+              --direction "$NEED_DIRECTION" --stages $NEED_TESTS --model "$MODEL" --out "$OUT/test" 2>&1 \
+              | tee "$OUT/test.log" | tail -30
           fi
           rm -rf "$OUT"/data-* "$OUT"/*/data-*
           # Only the last adapter of a series of rounds is kept (the next build resumes from it); the lives of every

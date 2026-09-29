@@ -212,3 +212,14 @@ règle du dépôt qui écarte les fichiers `*.safetensors` ne prévoyait pas
 build (identifiant `6ab90ac6762bea41dad044a6`) sont récupérés de nouveau,
 sans relance. Les tours 1 à 4 du besoin ont été lus (survie 0,12 ; 0,61 ;
 0,55 ; 0,67) ; aucune décision n'en dépend.
+
+## Amendement 2, 29 septembre 2026 (heure du commit) : découpage des derniers builds
+
+Écrit pendant les tours 5 à 8 du besoin, avant tout rapport, direction ou
+test, **sans changer la procédure ni un seuil**. Les vies de l'agent
+entraîné sont plus longues : l'étape finale (rapport, direction, puis
+toutes les vies de test avec leurs injections) dépasserait la limite de
+120 minutes d'un build. Elle est découpée en builds successifs : rapport
+puis direction ; vies de test de l'agent final (avec rapports et
+injections) ; vies de test du témoin, du modèle de base et des deux
+lésions. Les verdicts lisent les vies de test dans ces dossiers.

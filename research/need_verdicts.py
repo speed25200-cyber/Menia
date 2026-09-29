@@ -194,13 +194,18 @@ def curves(root):
 def main(argv=None):
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", default="artifacts/llm-need")
-    parser.add_argument("--test", default="final/test")
+    parser.add_argument("--test", nargs="+", default=["final/test"], help="folders holding the test lives")
     parser.add_argument("--direction", default="final/direction")
     parser.add_argument("--check", action="store_true", help="recompute and compare with verdicts.json")
     a = parser.parse_args(argv)
     root = Path(a.root)
-    test = root / a.test
-    lives = {n: read_jsonl(test / f"lives-test-{n}.jsonl.gz") for n in ("final", "control", "base", "lesion", "lesion_random")}
+    def find(name):
+        paths = [root / f / f"lives-test-{name}.jsonl.gz" for f in a.test if (root / f / f"lives-test-{name}.jsonl.gz").exists()]
+        if len(paths) != 1:
+            raise SystemExit(f"lives-test-{name}: {len(paths)} files in {a.test}")
+        return read_jsonl(paths[0])
+
+    lives = {n: find(n) for n in ("final", "control", "base", "lesion", "lesion_random")}
     result = verdicts(**lives)
     folder = root / a.direction
     published = json.loads((folder / "direction.json").read_text())
