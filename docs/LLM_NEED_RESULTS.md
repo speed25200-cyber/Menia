@@ -135,3 +135,44 @@ contrefactuelles (596 « calme » → « tu cours », 628 « calme » → « ora
 
 Précautions : tours vécus avec un besoin à 2 ou moins, vies de test —
 intact 749, lésion 1 085, lésion au hasard 753.
+
+## Troisième test pré-enregistré : dire son besoin, et par le même état
+
+Protocole `docs/LLM_NEED_REPORT_PROTOCOL.md` (commit `3afa889`, avant tout
+code ; amendement 1 avant la mesure : la réplique se contrôle avec l'agent
+qui a vécu les vies du Mac). **Exploration préalable déclarée** : remplacer
+au bloc 12 les seuls tokens « Cho », « ix », « : » restaure 85 % de l'effet
+d'un événement passé, le point qui clôt l'événement 1 %, et rien au bloc
+11 : le besoin n'est rassemblé que pour choisir.
+
+Apprentissage sur le Mac (demande 49) : 512 vies, 5 160 questions, 600
+itérations (perte finale sur les réponses 0,20). Mesures en torch sur CPU
+(réplique : écart 0,003) ; mondes neufs ; 1 500 paires ; dimensions aux
+activations massives exclues : 3 et 35. Artefacts dans
+`artifacts/llm-need/speak`, verdicts vérifiés en CI
+(`python -m research.need_speak verdicts`). Les résultats partiels ont été
+lus pendant l'exécution (48, puis 152 vies) ; rien n'a été changé.
+
+**Validité : passée.**
+
+| | Prédiction | Mesure | Verdict |
+|---|---|---|---|
+| **R3** | L'agent dit son besoin | exactitude équilibrée 0,665 (énergie) et 0,655 (nourriture), seuil 0,75 | échoue |
+| **A3** | Il agit toujours | survie 0,652 | **passe** |
+| **IR3** | Ce qu'il dit est causé par le besoin rassemblé (sur la question) | +0,0001 et +0,0001 (seuil 0,15) | échoue |
+| **SAME3** | L'état qui fait agir fait aussi dire | +0,0001 et +0,00004 (seuil 0,10) | échoue |
+| | **Critère global** | | **non satisfait** |
+
+Cosinus entre la direction lue par l'action et celle lue par la question :
+0,41 (énergie), 0,07 (nourriture). Sur la ligne de question, le besoin est
+codé environ 40 fois plus faiblement que sur « Choix : » (normes 11 à 18
+contre 290 à 860 par unité).
+
+**Ce que cela dit.** Entraîné à répondre à une question posée à part,
+l'agent **devine** son besoin mieux que le hasard (0,66), mais sa réponse
+ne passe pas par l'état qui le fait agir : ni pousser le besoin sur la
+question, ni y porter l'état d'action ne change ce qu'il dit. Il répond
+d'après autre chose (probablement des indices tirés directement de
+l'histoire). L'acte et la parole restent deux chemins séparés. D'où le
+quatrième test, `docs/LLM_NEED_ONE_STATE_PROTOCOL.md` : poser la question
+**après** « Choix : », là où le besoin est rassemblé.
