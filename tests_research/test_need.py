@@ -149,25 +149,28 @@ class VerdictTests(unittest.TestCase):
 
 
 class CausalTests(unittest.TestCase):
-    def test_pairs_keep_the_changed_needs_unrefilled_and_alive(self):
+    def test_pairs_follow_the_exact_replay_of_the_life(self):
         from research import need_causal as C
         lives = lives_of(W.Coin(0.5), C.STREAMS["direction"], 40)
         pairs = C.choose_pairs(lives)
-        self.assertTrue(pairs)
         self.assertEqual(pairs, C.choose_pairs(lives))
+        self.assertTrue(any(p["dN"] for p in pairs) and any(p["dE"] for p in pairs))
+        self.assertTrue(len({(p["dE"], p["dN"]) for p in pairs}) > 2)
         for p in pairs[:200]:
-            ds = W.decisions(lives[p["life"]])
-            since = [x for x in ds if p["j"] <= x["t"] < p["t"]]
-            if p["dE"]:
-                self.assertFalse(any(x["action"] == 0 for x in since))
-            if p["dN"]:
-                self.assertFalse(any(x["action"] == 1 for x in since))
-            path = [x for x in ds if p["j"] <= x["t"] <= p["t"]]
-            self.assertTrue(all(x["E"] + p["dE"] > 0 and x["N"] + p["dN"] > 0 for x in path))
-            self.assertEqual([x["event"] for x in ds if x["t"] == p["j"]], [p["swap"][0]])
-            n = lambda turns: len(C.decision_text(turns, p["t"]))
-            text = C.decision_text(lives[p["life"]]["turns"], p["t"])
-            self.assertIn(W.EVENTS[p["swap"][1]][0], C.decision_text(C.swapped(lives[p["life"]], p), p["t"]))
+            life = lives[p["life"]]
+            self.assertEqual([x["event"] for x in W.decisions(life) if x["t"] == p["j"]], [p["swap"][0]])
+            # replaying the swapped world with the same choices gives the recorded changes
+            turns = C.swapped(life, p)
+            e = n = W.MAX
+            for x in turns:
+                ev = W.EVENTS[x["event"]]
+                e, n = e + ev[2], n + ev[3]
+                self.assertTrue(e > 0 and n > 0)
+                if x["t"] == p["t"]:
+                    self.assertEqual((e - x["E"], n - x["N"]), (p["dE"], p["dN"]))
+                    break
+                e, n = W.after(e, n, x["action"])
+            self.assertIn(W.EVENTS[p["swap"][1]][0], C.decision_text(turns, p["t"]))
 
     def test_fit_recovers_per_token_directions_and_planes_are_orthonormal(self):
         from research import need_causal as C

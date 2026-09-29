@@ -113,3 +113,22 @@ sur les décisions des vies de direction, dépasse dix fois celle de la
 dimension médiane, pour l'un des quatre tokens de fin, sont exclues : d_E,
 d_N, les directions au hasard et les plans au hasard y valent zéro. Les
 prédictions et les seuils ne changent pas.
+
+## Amendement 2, 29 septembre 2026 (heure du commit), avant la mesure
+
+Écrit après l'arrêt de la première exécution, **avant qu'aucune vie de
+test ne soit écrite ni lue**. La règle des paires exigeait qu'aucune
+recharge du besoin concerné ne suive l'événement changé ; or l'agent
+recharge un besoin à chaque tour, si bien que les échanges qui touchent
+les deux besoins (« calme » → « orage », « tu te reposes » → « il fait
+froid ») n'étaient jamais retenus : 573 paires, toutes « calme » → « tu
+cours », et d_N nulle. La direction de la nourriture n'était donc pas
+mesurable. **Règle corrigée** : pour chaque décision et chaque événement
+passé échangeable, la vie est rejouée exactement avec l'événement changé
+et les mêmes choix ; (ΔE, ΔN) sont les écarts de niveaux obtenus au tour
+de la décision ; la paire est gardée si l'agent reste en vie jusque-là et
+si (ΔE, ΔN) n'est pas nul. Le reste (tirage, au plus 3 paires par
+décision et 1 500 en tout, régression, injection, lésion, seuils) ne
+change pas. Avec cette règle, les vies de direction donnent 1 500 paires
+(628, 596 et 276 selon l'échange). La première exécution est relancée
+depuis le début, sur les mêmes mondes.

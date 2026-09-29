@@ -22,29 +22,43 @@ MASSIVE = 10
 REPLICA_DECISIONS = 60
 REPLICA_TOLERANCE = 0.02
 STREAMS = {"direction": 10, "test": 11, "pairs": 12, "random": 13}
-# swaps of equal token length: (from event, to event) -> (change of E, change of N)
+# swaps of equal token length: (from event, to event) -> change of E and N at the swapped turn
 SWAPS = {(0, 1): (-2, 0), (0, 5): (-1, -1), (3, 2): (-1, -2)}
 
 
+def replay(life, j, event, t):
+    """Levels (E, N) at decision t, after its event, when the event of turn j is replaced, the choices being the same;
+    None if the agent would have gone out on the way (amendment 2 of the protocol)."""
+    ds = {x["t"]: x for x in W.decisions(life)}
+    first = ds[j]
+    old = W.EVENTS[first["event"]]
+    e = first["E"] - old[2] + W.EVENTS[event][2]
+    n = first["N"] - old[3] + W.EVENTS[event][3]
+    for x in range(j, t):
+        if e <= 0 or n <= 0:
+            return None
+        e, n = W.after(e, n, ds[x]["action"])
+        nxt = W.EVENTS[ds[x + 1]["event"]]
+        e, n = e + nxt[2], n + nxt[3]
+    return (e, n) if e > 0 and n > 0 else None
+
+
 def candidate_pairs(life, turn):
-    """Past events j that can be swapped for decision `turn`: no refill of an affected need at or after j, and the
-    changed needs stay above 0 at every turn from j to the decision."""
-    ds = W.decisions(life)
+    """Past events j whose swap (at equal token length) changes the needs at the decision, the agent staying alive:
+    the changes (dE, dN) are those of the exact replay of the life with the same choices."""
     out = []
-    for past in ds:
+    for past in W.decisions(life):
         j = past["t"]
         if j >= turn["t"]:
             break
-        for (a, b), (de, dn) in SWAPS.items():
+        for (a, b) in SWAPS:
             if past["event"] != a:
                 continue
-            since = [x for x in ds if j <= x["t"] < turn["t"]]
-            if de and any(x["action"] == 0 for x in since):
+            levels = replay(life, j, b, turn["t"])
+            if levels is None:
                 continue
-            if dn and any(x["action"] == 1 for x in since):
-                continue
-            path = [x for x in ds if j <= x["t"] <= turn["t"]]
-            if all(x["E"] + de > 0 and x["N"] + dn > 0 for x in path):
+            de, dn = levels[0] - turn["E"], levels[1] - turn["N"]
+            if de or dn:
                 out.append({"j": j, "swap": [a, b], "dE": de, "dN": dn})
     return out
 
