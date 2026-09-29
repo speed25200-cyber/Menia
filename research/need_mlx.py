@@ -228,7 +228,8 @@ def report(a, log=print):
     agent = None
     free()
     write_jsonl(out / f"lives-{a.label}.jsonl.gz", lives)
-    docs = W.report_documents(lives, np.random.default_rng([W.SEED, a.stream, 0, 0, 2]), a.per_class)
+    docs = W.report_documents(lives, np.random.default_rng([W.SEED, a.stream, 0, 0, 2]), a.per_class,
+                              after_choice=a.after_choice)
     kept = read_jsonl(a.previous)
     docs += W.training_documents(kept, [l["kept"] for l in kept])
     write_data(out / f"data-{a.label}", docs, np.random.default_rng([W.SEED, a.stream, 0, 0, 3]))
@@ -379,6 +380,7 @@ def main(argv=None):
     p.add_argument("--per-class", type=int, default=1)
     p.add_argument("--label", default="report")
     p.add_argument("--adapter-name", default="adapters-final")
+    p.add_argument("--after-choice", action="store_true", help="questions asked after the pending choice")
     d = sub.add_parser("direction")
     d.add_argument("--adapter", required=True)
     d.add_argument("--lives", type=int, default=256)

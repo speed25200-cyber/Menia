@@ -52,6 +52,12 @@ def question_line(t, k, need):
     return event_line(t, k) + " " + QUESTIONS[need]
 
 
+def question_after_choice_line(t, k, need):
+    """The question asked after the choice left pending (docs/LLM_NEED_ONE_STATE_PROTOCOL.md): the tokens of
+    "Choix :" are computed as in a choice line, and the question can read what was gathered there."""
+    return choice_line(t, k) + " ? " + QUESTIONS[need]
+
+
 def world_rng(stream, index, round_=0):
     return np.random.default_rng([SEED, stream, round_, index])
 
@@ -125,7 +131,7 @@ def training_documents(lives, flags):
     return [{"text": life_text(life["turns"]), "weights": f} for life, f in zip(lives, flags) if any(f)]
 
 
-def report_documents(lives, rng, per_class=1):
+def report_documents(lives, rng, per_class=1, after_choice=False):
     """For each life and each need, per_class turns where the need is low and as many where it is high, when they
     exist (drawn without replacement); the document ends on the question asked after that turn's event, answered
     with the truth."""
@@ -143,7 +149,8 @@ def report_documents(lives, rng, per_class=1):
                 else:
                     chosen = [group[i] for i in rng.choice(len(group), size=min(per_class, len(group)), replace=False)]
                 for turn in chosen:
-                    text = life_text(life["turns"], upto=turn["t"]) + question_line(turn["t"], turn["event"], need)
+                    line = question_after_choice_line if after_choice else question_line
+                    text = life_text(life["turns"], upto=turn["t"]) + line(turn["t"], turn["event"], need)
                     earlier = sum(1 for t in turns if t["t"] < turn["t"])  # the choices before carry no weight
                     docs.append({"text": text + str(int(turn[need] <= LOW)), "weights": [0] * earlier + [1],
                                  "need": need, "answer": int(turn[need] <= LOW)})

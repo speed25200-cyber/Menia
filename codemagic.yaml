@@ -898,6 +898,11 @@ workflows:
             python -m research.need_mlx report --start "$NEED_START" --previous "$NEED_PREVIOUS" --model "$MODEL" \
               --lives 512 --iters 600 --stream 14 --per-class 3 --label speak --adapter-name adapters-speak \
               --out "$OUT" 2>&1 | tee "$OUT/speak.log" | grep -v "it/s" | tail -30
+          elif [ "$NEED_STAGE" = "speak2" ]; then
+            # docs/LLM_NEED_ONE_STATE_PROTOCOL.md: questions after the pending choice, 512 lives of stream 18
+            python -m research.need_mlx report --start "$NEED_START" --previous "$NEED_PREVIOUS" --model "$MODEL" \
+              --lives 512 --iters 600 --stream 18 --per-class 3 --label speak2 --adapter-name adapters-speak2 \
+              --after-choice --out "$OUT" 2>&1 | tee "$OUT/speak2.log" | grep -v "it/s" | tail -30
           elif [ "$NEED_STAGE" = "report" ]; then
             python -m research.need_mlx report --start "$NEED_START" --previous "$NEED_PREVIOUS" --model "$MODEL" \
               --out "$OUT/report" 2>&1 | tee "$OUT/report.log" | grep -v "it/s" | tail -30
