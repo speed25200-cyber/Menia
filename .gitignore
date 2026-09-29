@@ -22,3 +22,5 @@ SourcePackages/
 *.app.zip
 ios/build.log
 ios/Menia.xcodeproj/
+# partial outputs of resumable runs (research/need_speak.py)
+artifacts/llm-need/*/test/partial-*

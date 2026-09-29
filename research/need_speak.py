@@ -100,24 +100,50 @@ def run(a):
     replica = C.replica_check(C.TorchAgent(a.replica_adapter, tail=K), W.read_jsonl(a.mac_lives))
     log(json.dumps({"replica": replica}))
     agent = C.TorchAgent(a.adapter, tail=K)
-    lives = [W.play(agent, W.world_rng(STREAMS["direction"], i), W.choice_rng(STREAMS["direction"], i))
-             for i in range(a.direction_lives)]
-    W.write_jsonl(out / "lives-direction.jsonl.gz", lives)
+    # The run can be resumed after an interruption: everything is deterministic, so the direction lives, the pair
+    # activations done and the test lives done are read back from the output folder instead of being computed again.
+    if (out / "lives-direction.jsonl.gz").exists():
+        lives = W.read_jsonl(out / "lives-direction.jsonl.gz")
+    else:
+        lives = [W.play(agent, W.world_rng(STREAMS["direction"], i), W.choice_rng(STREAMS["direction"], i))
+                 for i in range(a.direction_lives)]
+        W.write_jsonl(out / "lives-direction.jsonl.gz", lives)
     log(f"direction lives: survival {np.mean([l['survived'] for l in lives]):.3f}")
     pairs = C.choose_pairs(lives)
     W.write_jsonl(out / "pairs.jsonl", pairs)
     real, diffs, states = {}, {n: [] for n in ("choice", "E", "N")}, {n: [] for n in ("choice", "E", "N")}
+    seen = []
+    partial = out / "partial-pairs.npz"
+    if partial.exists():
+        saved = np.load(partial)
+        diffs = {n: list(saved[f"diff_{n}"]) for n in diffs}
+        states = {n: list(saved[f"state_{n}"]) for n in states}
+        seen = [tuple(k) for k in saved["seen"].tolist()]
+        log(f"resumed after {len(diffs['choice'])} pairs")
+    done = len(diffs["choice"])
+
+    def save_partial():
+        np.savez(partial, seen=np.array(seen, int).reshape(-1, 2),
+                 **{f"diff_{n}": np.array(v, np.float32) for n, v in diffs.items()},
+                 **{f"state_{n}": np.array(v, np.float32) for n, v in states.items()})
+
     for i, pair in enumerate(pairs):
+        if i < done:
+            continue
         life = lives[pair["life"]]
         turn = [x for x in life["turns"] if x["t"] == pair["t"]][0]
         key = (pair["life"], pair["t"])
         if key not in real:
             real[key] = line_tails(agent, W.life_text(life["turns"], upto=pair["t"]), pair["t"], turn["event"])
-            for n in states:
-                states[n].append(real[key][n])
+            if key not in seen:
+                seen.append(key)
+                for n in states:
+                    states[n].append(real[key][n])
         cf = line_tails(agent, W.life_text(C.swapped(life, pair), upto=pair["t"]), pair["t"], turn["event"])
         for n in diffs:
             diffs[n].append(cf[n] - real[key][n])
+        if (i + 1) % 50 == 0:
+            save_partial()
         if (i + 1) % 250 == 0:
             log(f"  {i + 1} pairs")
     diffs = {n: np.array(v, np.float32) for n, v in diffs.items()}
@@ -173,9 +199,20 @@ def run(a):
                                       for name, v in conditions[q].items()} for q in ("E", "N")}
         return extra
 
-    lives = [W.play(agent, W.world_rng(STREAMS["test"], i), W.choice_rng(STREAMS["test"], i), at_decision)
-             for i in range(a.test_lives)]
+    partial_lives = out / "partial-lives-test.jsonl.gz"
+    lives = W.read_jsonl(partial_lives) if partial_lives.exists() else []
+    if lives:
+        log(f"resumed after {len(lives)} test lives")
+    for i in range(len(lives), a.test_lives):
+        lives.append(W.play(agent, W.world_rng(STREAMS["test"], i), W.choice_rng(STREAMS["test"], i), at_decision))
+        if (i + 1) % 8 == 0:
+            W.write_jsonl(partial_lives, lives)
+        if (i + 1) % 64 == 0:
+            log(f"  {i + 1} test lives")
     W.write_jsonl(out / "lives-test.jsonl.gz", lives)
+    for p in (partial, partial_lives):
+        if p.exists():
+            p.unlink()
     result = verdicts(lives, replica["mean_gap"])
     (out / "verdicts.json").write_text(json.dumps(json.loads(json.dumps(result)), indent=1) + "\n")
     log(json.dumps(result["verdicts"]))
