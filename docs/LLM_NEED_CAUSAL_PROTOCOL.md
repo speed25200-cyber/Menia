@@ -97,3 +97,19 @@ comptés et publiés.
 `artifacts/llm-need/causal` ; verdicts recalculés depuis les sorties par
 `research/need_causal.py verdicts`, vérifiés en CI ; résultats ajoutés à
 `docs/LLM_NEED_RESULTS.md`.
+
+## Amendement 1, 29 septembre 2026 (heure du commit), avant la mesure
+
+Écrit après un essai du code sur 3 vies de direction et 2 vies de test
+(brouillon hors du dépôt, aucune vie de ce test), **avant toute mesure**.
+Au bloc 12, une seule dimension du flux résiduel (la 35) a des activations
+énormes (en moyenne 2 000 à 2 800, contre une médiane de 50 à 90) : c'est
+le phénomène connu des « activations massives » des modèles de langage.
+Elle varie beaucoup d'une vie à l'autre et dominerait d_E et d_N ; une
+lésion qui la fige casserait le modèle sans rien dire du besoin (dans
+l'essai, la lésion tuait 2 vies sur 2, la lésion au hasard aucune). **Règle
+fixée ici** : les dimensions dont l'activation moyenne en valeur absolue,
+sur les décisions des vies de direction, dépasse dix fois celle de la
+dimension médiane, pour l'un des quatre tokens de fin, sont exclues : d_E,
+d_N, les directions au hasard et les plans au hasard y valent zéro. Les
+prédictions et les seuils ne changent pas.

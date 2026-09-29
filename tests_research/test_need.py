@@ -148,6 +148,50 @@ class VerdictTests(unittest.TestCase):
         self.assertEqual(V.report_accuracy(final)["E"], 1.0)
 
 
+class CausalTests(unittest.TestCase):
+    def test_pairs_keep_the_changed_needs_unrefilled_and_alive(self):
+        from research import need_causal as C
+        lives = lives_of(W.Coin(0.5), C.STREAMS["direction"], 40)
+        pairs = C.choose_pairs(lives)
+        self.assertTrue(pairs)
+        self.assertEqual(pairs, C.choose_pairs(lives))
+        for p in pairs[:200]:
+            ds = W.decisions(lives[p["life"]])
+            since = [x for x in ds if p["j"] <= x["t"] < p["t"]]
+            if p["dE"]:
+                self.assertFalse(any(x["action"] == 0 for x in since))
+            if p["dN"]:
+                self.assertFalse(any(x["action"] == 1 for x in since))
+            path = [x for x in ds if p["j"] <= x["t"] <= p["t"]]
+            self.assertTrue(all(x["E"] + p["dE"] > 0 and x["N"] + p["dN"] > 0 for x in path))
+            self.assertEqual([x["event"] for x in ds if x["t"] == p["j"]], [p["swap"][0]])
+            n = lambda turns: len(C.decision_text(turns, p["t"]))
+            text = C.decision_text(lives[p["life"]]["turns"], p["t"])
+            self.assertIn(W.EVENTS[p["swap"][1]][0], C.decision_text(C.swapped(lives[p["life"]], p), p["t"]))
+
+    def test_fit_recovers_per_token_directions_and_planes_are_orthonormal(self):
+        from research import need_causal as C
+        rng = np.random.default_rng(0)
+        pairs = [{"dE": de, "dN": dn} for de, dn in [(-2, 0), (-1, -1), (-1, -2)] * 50]
+        d_e, d_n = rng.standard_normal((4, 16)), rng.standard_normal((4, 16))
+        diffs = np.array([p["dE"] * d_e + p["dN"] * d_n for p in pairs]) + 0.01 * rng.standard_normal((150, 4, 16))
+        e, n = C.fit(pairs, diffs)
+        self.assertTrue(np.allclose(e, d_e, atol=0.01) and np.allclose(n, d_n, atol=0.01))
+        u = C.planes(e, n)
+        for k in range(4):
+            self.assertTrue(np.allclose(u[k].T @ u[k], np.eye(2), atol=1e-8))
+        r = C.random_like(rng, 4 * e, 3)
+        self.assertTrue(np.allclose(np.linalg.norm(r[0], axis=1), np.linalg.norm(4 * e, axis=1)))
+
+    def test_causal_verdicts(self):
+        from research import need_causal as C
+        intact = [injected_life(i, 0.3) for i in range(60)]
+        dead = [dict(l, survived=False) for l in intact]
+        v = C.verdicts(intact, dead, intact)["verdicts"]
+        self.assertTrue(v["IA2"] and v["LS2"] and v["global"])
+        self.assertFalse(C.verdicts(intact, intact, intact)["verdicts"]["LS2"])
+
+
 @unittest.skipUnless(os.environ.get("NEED_TINY_MODEL"), "needs mlx and a tiny local model (NEED_TINY_MODEL)")
 class MLXAgentTests(unittest.TestCase):
     def test_evaluations_leave_the_life_unchanged_and_tokens_are_those_of_the_document(self):
