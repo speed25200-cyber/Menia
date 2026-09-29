@@ -1,5 +1,5 @@
 {
- "request": 44,
+ "request": 45,
  "app": "Menia",
  "wait_minutes": 345,
  "builds": [
@@ -8,12 +8,13 @@
     "workflow": "menia-need-mac",
     "branch": "claude/causal-self-model-llm-results-mauabk",
     "variables": {
-     "NEED_STAGE": "report",
-     "NEED_START": "artifacts/llm-need/need-5-8/adapters-need-8",
-     "NEED_PREVIOUS": "artifacts/llm-need/need-5-8/lives-need-8.jsonl.gz"
+     "NEED_STAGE": "test",
+     "NEED_TESTS": "final",
+     "NEED_FINAL": "artifacts/llm-need/final/report/adapters-final",
+     "NEED_DIRECTION": "artifacts/llm-need/final/direction"
     }
    },
-   "dest": "artifacts/llm-need/final"
+   "dest": "artifacts/llm-need/test-final"
   }
  ]
 }
