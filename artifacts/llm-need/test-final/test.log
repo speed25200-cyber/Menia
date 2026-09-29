@@ -1,0 +1,5 @@
+  64 lives, survival 0.688
+  128 lives, survival 0.672
+  192 lives, survival 0.682
+  256 lives, survival 0.684
+{"final": {"lives": 256, "survival": 0.68359375, "mean_length": 25.77734375, "mean_satisfaction": 11.800121230489468, "mean_mass": 0.9697083041369905, "p_R": 0.5311981777542052, "turns_need_at_most_2": 781}, "calls": 69029, "resets": 0}
