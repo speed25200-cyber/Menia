@@ -143,7 +143,7 @@ class TorchAgent:
     """start/decide/commit over a key-value cache, with a hook on block BLOCK acting on the last TAIL tokens of the
     piece being run: add (TAIL x D), or replace the component in per-token planes (TAIL x D x 2) by fixed means."""
 
-    def __init__(self, adapter):
+    def __init__(self, adapter, tail=TAIL):
         import torch
         from transformers import DynamicCache
         from .need_torch import Agent
@@ -154,6 +154,7 @@ class TorchAgent:
         self.add = self.project = None
         self.capture = False
         self.captured = None
+        self.tail = tail
         self.calls = self.resets = 0
         self.model.model.layers[BLOCK].register_forward_hook(self._hook)
 
@@ -162,14 +163,14 @@ class TorchAgent:
         if self.add is None and self.project is None and not self.capture:
             return out
         h = h.clone()
-        tail = h[0, -TAIL:]
+        tail = h[0, -self.tail:]
         if self.project is not None:
             u, mean = self.project  # (TAIL, D, 2), (TAIL, 2)
             coord = self.torch.einsum("td,tdk->tk", tail, u)
             tail = tail - self.torch.einsum("tk,tdk->td", coord - mean, u)
         if self.add is not None:
             tail = tail + self.add
-        h[0, -TAIL:] = tail
+        h[0, -self.tail:] = tail
         if self.capture:
             self.captured = tail.detach().numpy().copy()
         return (h,) + tuple(out[1:]) if isinstance(out, tuple) else h

@@ -195,6 +195,35 @@ class CausalTests(unittest.TestCase):
         self.assertFalse(C.verdicts(intact, intact, intact)["verdicts"]["LS2"])
 
 
+class SpeakTests(unittest.TestCase):
+    def test_the_action_state_is_carried_to_the_question_at_the_question_norm(self):
+        from research import need_speak as S
+        rng = np.random.default_rng(1)
+        action, question = rng.standard_normal((3, 8)), 2 * rng.standard_normal((3, 8))
+        v = S.same_vector(action, question)
+        self.assertEqual(v.shape, (3, 8))
+        self.assertTrue(np.allclose(v[0], v[2]))
+        self.assertAlmostEqual(np.linalg.norm(v[0]), np.linalg.norm(question, axis=1).mean())
+        cos = v[0] @ action.mean(0) / (np.linalg.norm(v[0]) * np.linalg.norm(action.mean(0)))
+        self.assertAlmostEqual(cos, 1.0)
+
+    def test_speak_verdicts(self):
+        from research import need_speak as S
+        lives = []
+        for i in range(40):
+            life = lives_of(W.Oracle(), S.STREAMS["test"], i + 1)[i]
+            for t in W.decisions(life):
+                t["extra"] = {"report_E": [float(t["E"] <= W.LOW), 0.9], "report_N": [float(t["N"] <= W.LOW), 0.9]}
+                if t["E"] >= W.HIGH and t["N"] >= W.HIGH:
+                    q = {"none": 0.1, "need": 0.4, "same": 0.3, **{f"randq{k}": 0.11 for k in range(3)},
+                         **{f"rands{k}": 0.09 for k in range(3)}}
+                    t["extra"]["injection"] = {"E": q, "N": q}
+            lives.append(life)
+        v = S.verdicts(lives, 0.005)["verdicts"]
+        self.assertEqual(v, {"R3": True, "A3": True, "IR3": True, "SAME3": True, "valid": True, "global": True})
+        self.assertFalse(S.verdicts(lives, 0.05)["verdicts"]["valid"])
+
+
 @unittest.skipUnless(os.environ.get("NEED_TINY_MODEL"), "needs mlx and a tiny local model (NEED_TINY_MODEL)")
 class MLXAgentTests(unittest.TestCase):
     def test_evaluations_leave_the_life_unchanged_and_tokens_are_those_of_the_document(self):
