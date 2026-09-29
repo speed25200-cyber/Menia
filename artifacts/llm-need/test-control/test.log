@@ -1,0 +1,5 @@
+  64 lives, survival 0.000
+  128 lives, survival 0.008
+  192 lives, survival 0.005
+  256 lives, survival 0.004
+{"control": {"lives": 256, "survival": 0.00390625, "mean_length": 8.87109375, "mean_satisfaction": 8.082342580361074, "mean_mass": 0.9985314346103039, "p_R": 0.26860590885072655, "turns_need_at_most_2": 846}, "r2": {"E": 0.8250209710507148, "E_shallow": 0.481488501101056, "N": 0.7751094563689118, "N_shallow": 0.5921235274175329}}
