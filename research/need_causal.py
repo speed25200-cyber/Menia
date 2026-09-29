@@ -155,6 +155,7 @@ class TorchAgent:
         self.capture = False
         self.captured = None
         self.tail = tail
+        self.offset = 0  # tokens after the hooked ones, at the end of the piece being run
         self.calls = self.resets = 0
         self.model.model.layers[BLOCK].register_forward_hook(self._hook)
 
@@ -163,14 +164,15 @@ class TorchAgent:
         if self.add is None and self.project is None and not self.capture:
             return out
         h = h.clone()
-        tail = h[0, -self.tail:]
+        start, end = -(self.tail + self.offset), (-self.offset if self.offset else None)
+        tail = h[0, start:end]
         if self.project is not None:
             u, mean = self.project  # (TAIL, D, 2), (TAIL, 2)
             coord = self.torch.einsum("td,tdk->tk", tail, u)
             tail = tail - self.torch.einsum("tk,tdk->td", coord - mean, u)
         if self.add is not None:
             tail = tail + self.add
-        h[0, -self.tail:] = tail
+        h[0, start:end] = tail
         if self.capture:
             self.captured = tail.detach().numpy().copy()
         return (h,) + tuple(out[1:]) if isinstance(out, tuple) else h

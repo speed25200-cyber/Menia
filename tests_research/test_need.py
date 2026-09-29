@@ -224,6 +224,30 @@ class SpeakTests(unittest.TestCase):
         self.assertFalse(S.verdicts(lives, 0.05)["verdicts"]["valid"])
 
 
+class OneStateTests(unittest.TestCase):
+    def test_one_state_verdicts(self):
+        from research import need_one as O
+        lives = []
+        for i in range(40):
+            life = lives_of(W.Oracle(), O.STREAMS["test"], i + 1)[i]
+            for t in W.decisions(life):
+                t["extra"] = {"report_E": [float(t["E"] <= W.LOW), 0.9], "report_N": [float(t["N"] <= W.LOW), 0.9]}
+                if t["E"] >= W.HIGH and t["N"] >= W.HIGH:
+                    base = {"p_R": 0.5, "yes_E": 0.1, "yes_N": 0.1}
+                    inj = {"none": base, "E": dict(base, p_R=0.7, yes_E=0.25), "N": dict(base, p_R=0.4, yes_N=0.2)}
+                    inj.update({f"randE{k}": dict(base, p_R=0.51) for k in range(3)})
+                    inj.update({f"randN{k}": dict(base, p_R=0.49) for k in range(3)})
+                    t["extra"]["injection"] = inj
+            lives.append(life)
+        v = O.verdicts(lives, 0.005)["verdicts"]
+        self.assertEqual(v, {"R4": True, "A4": True, "ONE4": True, "valid": True, "global": True})
+        for life in lives:
+            for t in W.decisions(life):
+                if "injection" in t["extra"]:
+                    t["extra"]["injection"]["E"]["yes_E"] = 0.12
+        self.assertFalse(O.verdicts(lives, 0.005)["verdicts"]["ONE4"])
+
+
 @unittest.skipUnless(os.environ.get("NEED_TINY_MODEL"), "needs mlx and a tiny local model (NEED_TINY_MODEL)")
 class MLXAgentTests(unittest.TestCase):
     def test_evaluations_leave_the_life_unchanged_and_tokens_are_those_of_the_document(self):
