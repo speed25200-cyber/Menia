@@ -1,0 +1,14 @@
+{
+ "stage": "report",
+ "from": "artifacts/llm-need/need-5-8/adapters-need-8",
+ "adapter": "/Users/builder/clone/llm-need/report/adapters-final",
+ "lives": 256,
+ "survival": 0.62890625,
+ "mean_length": 25.765625,
+ "mean_satisfaction": 12.414493632504549,
+ "mean_mass": 0.9948362566707095,
+ "p_R": 0.45524379639175255,
+ "turns_need_at_most_2": 929,
+ "report_documents": 939,
+ "documents": 1451
+}
