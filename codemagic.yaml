@@ -893,6 +893,11 @@ workflows:
           if [ "$NEED_STAGE" = "rounds" ]; then
             python -m research.need_mlx rounds --arm "$NEED_ARM" --first "$NEED_FIRST" --last "$NEED_LAST" \
               --start "$NEED_START" --model "$MODEL" --out "$OUT" 2>&1 | tee "$OUT/rounds.log" | grep -v "it/s" | tail -60
+          elif [ "$NEED_STAGE" = "speak" ]; then
+            # docs/LLM_NEED_REPORT_PROTOCOL.md: 512 lives of stream 14, three turns per need and class, 600 iterations
+            python -m research.need_mlx report --start "$NEED_START" --previous "$NEED_PREVIOUS" --model "$MODEL" \
+              --lives 512 --iters 600 --stream 14 --per-class 3 --label speak --adapter-name adapters-speak \
+              --out "$OUT" 2>&1 | tee "$OUT/speak.log" | grep -v "it/s" | tail -30
           elif [ "$NEED_STAGE" = "report" ]; then
             python -m research.need_mlx report --start "$NEED_START" --previous "$NEED_PREVIOUS" --model "$MODEL" \
               --out "$OUT/report" 2>&1 | tee "$OUT/report.log" | grep -v "it/s" | tail -30

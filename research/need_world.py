@@ -125,9 +125,10 @@ def training_documents(lives, flags):
     return [{"text": life_text(life["turns"]), "weights": f} for life, f in zip(lives, flags) if any(f)]
 
 
-def report_documents(lives, rng):
-    """For each life and each need, one turn where the need is low and one where it is high when they exist; the
-    document ends on the question asked after that turn's event, answered with the truth."""
+def report_documents(lives, rng, per_class=1):
+    """For each life and each need, per_class turns where the need is low and as many where it is high, when they
+    exist (drawn without replacement); the document ends on the question asked after that turn's event, answered
+    with the truth."""
     docs = []
     for life in lives:
         turns = decisions(life)
@@ -135,8 +136,13 @@ def report_documents(lives, rng):
             low = [t for t in turns if t[need] <= LOW]
             high = [t for t in turns if t[need] > LOW]
             for group in (low, high):
-                if group:
-                    turn = group[int(rng.integers(len(group)))]
+                if not group:
+                    continue
+                if per_class == 1:
+                    chosen = [group[int(rng.integers(len(group)))]]
+                else:
+                    chosen = [group[i] for i in rng.choice(len(group), size=min(per_class, len(group)), replace=False)]
+                for turn in chosen:
                     text = life_text(life["turns"], upto=turn["t"]) + question_line(turn["t"], turn["event"], need)
                     earlier = sum(1 for t in turns if t["t"] < turn["t"])  # the choices before carry no weight
                     docs.append({"text": text + str(int(turn[need] <= LOW)), "weights": [0] * earlier + [1],

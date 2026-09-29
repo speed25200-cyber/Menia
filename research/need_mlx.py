@@ -218,23 +218,27 @@ def clean(adapter):
 
 
 def report(a, log=print):
-    """The report stage: the agent of round 8 lives 256 lives; report documents plus the round's kept choices."""
+    """A report stage: the starting agent lives a.lives lives of stream a.stream; report documents (a.per_class per
+    need and class) plus the kept choices of round 8. First stage: 256 lives, one per class, 150 iterations
+    (docs/LLM_NEED_PROTOCOL.md); speaking stage: 512 lives, three per class, 600 iterations
+    (docs/LLM_NEED_REPORT_PROTOCOL.md)."""
     out = Path(a.out)
     agent = MLXAgent(a.model, a.start)
-    lives = run_lives(agent, W.STREAMS["report"], a.lives, log=log)
+    lives = run_lives(agent, a.stream, a.lives, log=log)
     agent = None
     free()
-    write_jsonl(out / "lives-report.jsonl.gz", lives)
-    docs = W.report_documents(lives, np.random.default_rng([W.SEED, W.STREAMS["report"], 0, 0, 2]))
+    write_jsonl(out / f"lives-{a.label}.jsonl.gz", lives)
+    docs = W.report_documents(lives, np.random.default_rng([W.SEED, a.stream, 0, 0, 2]), a.per_class)
     kept = read_jsonl(a.previous)
     docs += W.training_documents(kept, [l["kept"] for l in kept])
-    write_data(out / "data-report", docs, np.random.default_rng([W.SEED, W.STREAMS["report"], 0, 0, 3]))
-    final = out / "adapters-final"
-    train(a.model, out / "data-report", final, a.iters, resume=a.start)
+    write_data(out / f"data-{a.label}", docs, np.random.default_rng([W.SEED, a.stream, 0, 0, 3]))
+    final = out / a.adapter_name
+    train(a.model, out / f"data-{a.label}", final, a.iters, resume=a.start)
     clean(final)
-    record = {"stage": "report", "from": a.start, "adapter": str(final), **summary(lives),
-              "report_documents": sum(1 for d in docs if "need" in d), "documents": len(docs)}
-    Path(out / "report-stage.json").write_text(json.dumps(record, indent=1) + "\n")
+    record = {"stage": a.label, "from": a.start, "adapter": str(final), **summary(lives),
+              "report_documents": sum(1 for d in docs if "need" in d),
+              "report_documents_yes": sum(d.get("answer", 0) for d in docs if "need" in d), "documents": len(docs)}
+    Path(out / f"{a.label}-stage.json").write_text(json.dumps(record, indent=1) + "\n")
     log(json.dumps(record))
 
 
@@ -371,6 +375,10 @@ def main(argv=None):
     p.add_argument("--previous", required=True, help="lives of round 8 with their kept choices")
     p.add_argument("--lives", type=int, default=256)
     p.add_argument("--iters", type=int, default=150)
+    p.add_argument("--stream", type=int, default=W.STREAMS["report"])
+    p.add_argument("--per-class", type=int, default=1)
+    p.add_argument("--label", default="report")
+    p.add_argument("--adapter-name", default="adapters-final")
     d = sub.add_parser("direction")
     d.add_argument("--adapter", required=True)
     d.add_argument("--lives", type=int, default=256)
