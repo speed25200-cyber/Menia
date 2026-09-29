@@ -192,3 +192,19 @@ conscient. Aucun test connu ne le permet, pour aucune machine ; le
 programme mesure des indicateurs et leur utilité, pas une expérience
 vécue. Suite possible, sur décision du propriétaire : le même protocole
 sur un modèle de langage plus grand.
+
+## Le besoin qui compte, 29 septembre 2026
+
+Pré-enregistré à la demande du propriétaire (« il faut que le besoin
+compte ») : `docs/LLM_NEED_PROTOCOL.md`, résultats
+`docs/LLM_NEED_RESULTS.md`. Qwen3-0.6B, dans un monde où il a deux besoins
+cachés, apprend **par la seule satisfaction de ses besoins**, sans
+professeur : sa survie passe de 12 % à 68 % (témoin au hasard : 0 %) et il
+sert son besoin le plus bas 93 fois sur 100 sans jamais voir ses niveaux
+(**S passe**). Les tests causaux pré-enregistrés (injection, rapport,
+lésion) **échouent** : la règle choisissait le bloc où le besoin se lit le
+mieux, bloc que le modèle de base partage et que l'agent n'utilise pas, et
+le rapport n'a pas été appris. L'analyse exploratoire montre où voyage le
+besoin qui décide : sur les mots des événements jusqu'au bloc 9, rassemblé
+sur la ligne du tour entre les blocs 9 et 12. Un second test pré-enregistré
+en tire les conséquences.
