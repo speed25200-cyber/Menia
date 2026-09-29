@@ -94,10 +94,12 @@ def run(a):
     torch.set_num_threads(a.threads)
     out = Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
-    agent = C.TorchAgent(a.adapter, tail=K)
     log = lambda m: print(m, flush=True)
-    replica = C.replica_check(agent, W.read_jsonl(a.mac_lives))
+    # amendment 1: the lives of the speaking stage were played on the Mac by the agent it started from, so the
+    # replica is checked with that agent, then the speaking agent is loaded the same way
+    replica = C.replica_check(C.TorchAgent(a.replica_adapter, tail=K), W.read_jsonl(a.mac_lives))
     log(json.dumps({"replica": replica}))
+    agent = C.TorchAgent(a.adapter, tail=K)
     lives = [W.play(agent, W.world_rng(STREAMS["direction"], i), W.choice_rng(STREAMS["direction"], i))
              for i in range(a.direction_lives)]
     W.write_jsonl(out / "lives-direction.jsonl.gz", lives)
@@ -198,6 +200,7 @@ def main(argv=None):
     r = sub.add_parser("run")
     r.add_argument("--adapter", default="artifacts/llm-need/speak/adapters-speak")
     r.add_argument("--mac-lives", default="artifacts/llm-need/speak/lives-speak.jsonl.gz")
+    r.add_argument("--replica-adapter", default="artifacts/llm-need/final/report/adapters-final")
     r.add_argument("--direction-lives", type=int, default=128)
     r.add_argument("--test-lives", type=int, default=256)
     r.add_argument("--threads", type=int, default=4)

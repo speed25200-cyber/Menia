@@ -89,6 +89,17 @@ comptés et publiés.
 
 ## Exécution
 
-Apprentissage : workflow `menia-need-mac`, étape `report2`, sortie
+Apprentissage : workflow `menia-need-mac`, étape `speak`, sortie
 `artifacts/llm-need/speak`. Mesures : `research/need_speak.py`, sorties
 `artifacts/llm-need/speak/test`, verdicts vérifiés en CI.
+
+## Amendement 1, 29 septembre 2026 (heure du commit), avant la mesure
+
+Écrit après le premier contrôle de la réplique, **avant toute vie de
+direction ou de test**. Les vies de l'étape d'apprentissage du rapport ont
+été vécues sur le Mac par l'agent **de départ** (l'agent final), avant
+l'ajustement : comparer leurs P(R) à l'agent parlant mesurait l'effet de
+l'ajustement (écart 0,049), pas la fidélité de la réplique. **Règle
+corrigée** : la réplique est contrôlée avec l'agent qui a vécu ces vies
+(l'agent final, fusionné de la même façon), puis l'agent parlant est chargé
+par la même méthode. Le reste ne change pas.
