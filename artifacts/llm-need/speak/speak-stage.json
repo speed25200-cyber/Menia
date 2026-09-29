@@ -1,0 +1,15 @@
+{
+ "stage": "speak",
+ "from": "artifacts/llm-need/final/report/adapters-final",
+ "adapter": "/Users/builder/clone/llm-need/adapters-speak",
+ "lives": 512,
+ "survival": 0.6640625,
+ "mean_length": 26.412109375,
+ "mean_satisfaction": 12.08770243289211,
+ "mean_mass": 0.9686913484433928,
+ "p_R": 0.5246461895289507,
+ "turns_need_at_most_2": 1637,
+ "report_documents": 5160,
+ "report_documents_yes": 2088,
+ "documents": 5672
+}
