@@ -1,0 +1,15 @@
+  64 lives, survival 0.234
+  128 lives, survival 0.234
+  192 lives, survival 0.203
+  256 lives, survival 0.203
+{"base": {"lives": 256, "survival": 0.203125, "mean_length": 17.28515625, "mean_satisfaction": 11.709152542372882, "mean_mass": 0.9921264748022599, "p_R": 0.48708905355932197, "turns_need_at_most_2": 1077}, "r2": {"E": 0.7719065732864245, "E_shallow": 0.4589954675145721, "N": 0.7879800923487831, "N_shallow": 0.4634005029789543}}
+  64 lives, survival 0.641
+  128 lives, survival 0.664
+  192 lives, survival 0.672
+  256 lives, survival 0.660
+{"lesion": {"lives": 256, "survival": 0.66015625, "mean_length": 25.44921875, "mean_satisfaction": 11.73937068303914, "mean_mass": 0.9660087613200308, "p_R": 0.5347084520337683, "turns_need_at_most_2": 752}}
+  64 lives, survival 0.688
+  128 lives, survival 0.680
+  192 lives, survival 0.688
+  256 lives, survival 0.688
+{"lesion_random": {"lives": 256, "survival": 0.6875, "mean_length": 25.65234375, "mean_satisfaction": 11.787269681742044, "mean_mass": 0.9688594993147556, "p_R": 0.5335694690117253, "turns_need_at_most_2": 763}}
