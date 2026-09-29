@@ -1,5 +1,5 @@
 {
- "request": 45,
+ "request": 46,
  "app": "Menia",
  "wait_minutes": 345,
  "builds": [
@@ -9,12 +9,12 @@
     "branch": "claude/causal-self-model-llm-results-mauabk",
     "variables": {
      "NEED_STAGE": "test",
-     "NEED_TESTS": "final",
+     "NEED_TESTS": "lesion lesion_random base",
      "NEED_FINAL": "artifacts/llm-need/final/report/adapters-final",
      "NEED_DIRECTION": "artifacts/llm-need/final/direction"
     }
    },
-   "dest": "artifacts/llm-need/test-final"
+   "dest": "artifacts/llm-need/test-lesion"
   }
  ]
 }
