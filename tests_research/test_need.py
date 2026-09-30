@@ -338,6 +338,35 @@ class ReplicationTests(unittest.TestCase):
         self.assertFalse(RP.verdicts(reader, necessity)["verdicts"]["global"])
 
 
+class BalancedTests(unittest.TestCase):
+    def test_the_event_of_the_turn_says_nothing_of_the_answer(self):
+        lives = lives_of(W.Oracle(), W.STREAMS["report"], 30)
+        docs = W.balanced_report_documents(lives, np.random.default_rng(0))
+        self.assertTrue(docs)
+        for need in ("E", "N"):
+            for k, event in enumerate(W.EVENTS):
+                line = lambda d: d["text"][:d["workspace"]].rsplit("\n", 1)[-1]
+                cell = [d for d in docs if d["need"] == need and line(d).endswith(f" : {event[0]}. Choix :")]
+                self.assertEqual(sum(d["answer"] for d in cell) * 2, len(cell))
+        for d in docs:
+            self.assertTrue(d["text"][d["workspace"]:].startswith(" ? Question :"))
+
+    def test_balanced_verdicts(self):
+        from research import need_balanced as B, need_reader as RD
+        lives = one_state_lives(30)
+        for life in lives:
+            for t in W.decisions(life):
+                if "injection" in t["extra"]:
+                    t["extra"]["injection"]["N"]["yes_N"] = 0.25
+        v = B.verdicts(RD.verdicts(lives, 0.005, 1e-6, 0.01))["verdicts"]
+        self.assertEqual(v, {"R8": True, "SAY8": True, "ONE8": True, "valid": True, "global": True})
+        for life in lives:
+            for t in W.decisions(life):
+                if "injection" in t["extra"]:
+                    t["extra"]["injection"]["N"]["yes_N"] = 0.12
+        self.assertFalse(B.verdicts(RD.verdicts(lives, 0.005, 1e-6, 0.01))["verdicts"]["SAY8"])
+
+
 @unittest.skipUnless(os.environ.get("NEED_TINY_MODEL"), "needs mlx and a tiny local model (NEED_TINY_MODEL)")
 class MLXAgentTests(unittest.TestCase):
     def test_evaluations_leave_the_life_unchanged_and_tokens_are_those_of_the_document(self):

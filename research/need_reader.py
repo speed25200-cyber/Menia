@@ -87,7 +87,22 @@ def reader_replica(agent, rows):
     return {"documents": len(gaps), "mean_gap": float(np.mean(gaps)), "max_gap": float(np.max(gaps))}
 
 
+def reuse_direction(source, out):
+    """Starts a measure of a new reader of the same acting agent from the directions, direction lives and pairs of an
+    earlier one (docs/LLM_NEED_BALANCED_READER_PROTOCOL.md); the execution check and the reader's replica are redone."""
+    out.mkdir(parents=True, exist_ok=True)
+    if (out / "direction.json").exists():
+        return
+    for name in ("lives-direction.jsonl.gz", "pairs.jsonl", "pairs.npz"):
+        (out / name).write_bytes((source / name).read_bytes())
+    kept = ("block", "massive_dims", "pairs", "replica", "norm_d_E", "norm_d_N", "d_E", "d_N")
+    direction = json.loads((source / "direction.json").read_text())
+    (out / "direction.json").write_text(json.dumps({k: direction[k] for k in kept}) + "\n")
+
+
 def run(a):
+    if a.direction_from:
+        reuse_direction(Path(a.direction_from), Path(a.out))
     agent = ReaderAgent(a.adapter, a.reader)
 
     def prepare(direction):
@@ -96,7 +111,10 @@ def run(a):
         direction["reader_replica"] = reader_replica(agent, json.loads(Path(a.reader_rows).read_text()))
         direction["reader_layers"] = agent.reader_layers
         return True
-    WS.run(a, agent=agent, streams={k: v + a.offset for k, v in STREAMS.items()}, prepare=prepare, judge=judge)
+    streams = {k: v + a.offset for k, v in STREAMS.items()}
+    if a.test_stream is not None:
+        streams["test"] = a.test_stream
+    WS.run(a, agent=agent, streams=streams, prepare=prepare, judge=judge)
 
 
 def main(argv=None):
@@ -112,6 +130,8 @@ def main(argv=None):
     r.add_argument("--test-lives", type=int, default=256)
     r.add_argument("--threads", type=int, default=4)
     r.add_argument("--offset", type=int, default=0, help="100 for the second agent (docs/LLM_NEED_REPLICATION_PROTOCOL.md)")
+    r.add_argument("--direction-from", default=None, help="directions of an earlier reader of the same acting agent")
+    r.add_argument("--test-stream", type=int, default=None, help="the stream of the test lives, if not the usual one")
     c = sub.add_parser("verdicts")
     for s in (r, c):
         s.add_argument("--out", default="artifacts/llm-need/reader/test")

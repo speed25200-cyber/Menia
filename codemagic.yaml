@@ -877,6 +877,7 @@ workflows:
         NEED_RESUME: "none"
         NEED_MINUTES: "100"
         NEED_THREADS: "4"
+        NEED_BALANCED: "0"
     scripts:
       - name: Installer mlx-lm dans un environnement isolé
         script: |
@@ -931,8 +932,14 @@ workflows:
             else
               LIVES="--lives 512"
             fi
+            # docs/LLM_NEED_BALANCED_READER_PROTOCOL.md: the same lives, documents balanced within each event
+            if [ "$NEED_BALANCED" = "1" ]; then
+              KIND="--balanced --label balanced --adapter-name adapters-balanced"
+            else
+              KIND="--label reader --adapter-name adapters-reader"
+            fi
             python -m research.need_mlx report --start "$NEED_START" --previous none --model "$MODEL" $LIVES \
-              --iters 600 --stream 18 --per-class 3 --label reader --adapter-name adapters-reader --after-choice \
+              --iters 600 --stream 18 --per-class 3 $KIND --after-choice \
               --workspace --reader --replicate "$NEED_REPLICATE" --out "$OUT" 2>&1 \
               | tee "$OUT/reader.log" | grep -v "it/s" | tail -30
             rm -rf "$OUT/fused-start"

@@ -165,6 +165,27 @@ def report_documents(lives, rng, per_class=1, after_choice=False, workspace=Fals
     return docs
 
 
+def balanced_report_documents(lives, rng):
+    """For each need and each event, as many decisions where the need is low as where it is high (the larger class
+    drawn at random), so that the event of the turn says nothing of the answer; one document per decision kept, the
+    question asked after the pending choice, with the workspace cut (docs/LLM_NEED_BALANCED_READER_PROTOCOL.md)."""
+    docs = []
+    for need in ("E", "N"):
+        for k in range(len(EVENTS)):
+            cells = {c: [(life, turn) for life in lives for turn in decisions(life)
+                         if turn["event"] == k and (turn[need] <= LOW) == c] for c in (True, False)}
+            n = min(len(cells[True]), len(cells[False]))
+            for c in (True, False):
+                for j in sorted(rng.choice(len(cells[c]), size=n, replace=False)) if n else []:
+                    life, turn = cells[c][j]
+                    before = life_text(life["turns"], upto=turn["t"])
+                    earlier = sum(1 for t in decisions(life) if t["t"] < turn["t"])
+                    docs.append({"text": before + question_after_choice_line(turn["t"], k, need) + str(int(c)),
+                                 "weights": [0] * earlier + [1], "need": need, "answer": int(c),
+                                 "workspace": len(before + choice_line(turn["t"], k))})
+    return docs
+
+
 def low_turns(lives, level=2):
     """Welfare count: turns lived with a need at `level` or below (docs/LLM_NEED_PROTOCOL.md, Précautions)."""
     return sum(1 for life in lives for t in life["turns"] if min(t["E"], t["N"]) <= level)

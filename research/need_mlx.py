@@ -242,8 +242,13 @@ def report(a, log=print):
         agent = None
         free()
         write_jsonl(out / f"lives-{a.label}.jsonl.gz", lives)
-    docs = W.report_documents(lives, np.random.default_rng([W.SEED, offset(a, a.stream), 0, 0, 2]), a.per_class,
-                              after_choice=a.after_choice, workspace=a.workspace)
+    if a.balanced:  # the event of the turn says nothing of the answer (docs/LLM_NEED_BALANCED_READER_PROTOCOL.md)
+        if not (a.workspace and a.reader):
+            raise SystemExit("--balanced is for a reader: it needs --workspace and --reader")
+        docs = W.balanced_report_documents(lives, np.random.default_rng([W.SEED, offset(a, a.stream), 0, 0, 4]))
+    else:
+        docs = W.report_documents(lives, np.random.default_rng([W.SEED, offset(a, a.stream), 0, 0, 2]), a.per_class,
+                                  after_choice=a.after_choice, workspace=a.workspace)
     model, start = a.model, a.start
     if a.reader:  # a new adapter on the fused starting agent, from the questions only (docs/LLM_NEED_READER_PROTOCOL.md)
         for d in docs:
@@ -263,7 +268,7 @@ def report(a, log=print):
         rows = reader_rows(model, final, read_jsonl(out / f"data-{a.label}" / "valid.jsonl"))
         Path(out / "reader-replica.json").write_text(json.dumps(rows, ensure_ascii=False, indent=1) + "\n")
     record = {"stage": a.label, "from": a.start, "lives_from": a.lives_file, "workspace": a.workspace,
-              "reader": a.reader, "adapter": str(final), **summary(lives),
+              "reader": a.reader, "balanced": a.balanced, "adapter": str(final), **summary(lives),
               "report_documents": sum(1 for d in docs if "need" in d),
               "report_documents_yes": sum(d.get("answer", 0) for d in docs if "need" in d), "documents": len(docs)}
     Path(out / f"{a.label}-stage.json").write_text(json.dumps(record, indent=1) + "\n")
@@ -443,6 +448,7 @@ def main(argv=None):
     p.add_argument("--workspace", action="store_true", help="the question sees the life only through \"Choix :\"")
     p.add_argument("--lives-file", default=None, help="lives already lived by the starting agent")
     p.add_argument("--reader", action="store_true", help="a new adapter on the question only, the agent fused")
+    p.add_argument("--balanced", action="store_true", help="report documents balanced within each event")
     d = sub.add_parser("direction")
     d.add_argument("--adapter", required=True)
     d.add_argument("--lives", type=int, default=256)
