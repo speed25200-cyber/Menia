@@ -1,0 +1,50 @@
+Loading pretrained model
+Loading datasets
+Training
+Trainable parameters: 0.484% (2.884M/596.050M)
+Starting training..., iters: 150
+Calculating loss...:   0%|          | 0/2 [00:00<?, ?it/s]Calculating loss...:  50%|█████     | 1/2 [00:01<00:01,  1.87s/it]Calculating loss...: 100%|██████████| 2/2 [00:02<00:00,  1.40s/it]Calculating loss...: 100%|██████████| 2/2 [00:02<00:00,  1.47s/it]
+Iter 1: Val loss 0.346, Val took 2.967s
+Iter 10: Train loss 1.880, Learning Rate 1.000e-04, It/sec 0.413, Tokens/sec 7.755, Trained Tokens 188, Peak mem 7.919 GB
+Iter 20: Train loss 0.668, Learning Rate 1.000e-04, It/sec 0.432, Tokens/sec 12.888, Trained Tokens 486, Peak mem 8.279 GB
+Iter 30: Train loss 0.529, Learning Rate 1.000e-04, It/sec 0.463, Tokens/sec 12.869, Trained Tokens 764, Peak mem 8.279 GB
+Iter 40: Train loss 0.568, Learning Rate 1.000e-04, It/sec 0.462, Tokens/sec 14.132, Trained Tokens 1070, Peak mem 8.279 GB
+Iter 50: Train loss 0.465, Learning Rate 1.000e-04, It/sec 0.477, Tokens/sec 11.353, Trained Tokens 1308, Peak mem 8.279 GB
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/builder/clone/research/need_lora.py", line 186, in <module>
+    main()
+  File "/Users/builder/clone/research/need_lora.py", line 182, in main
+    lora.main()
+  File "/Users/builder/clone/.venv/lib/python3.12/site-packages/mlx_lm/lora.py", line 369, in main
+    run(types.SimpleNamespace(**args))
+  File "/Users/builder/clone/.venv/lib/python3.12/site-packages/mlx_lm/lora.py", line 341, in run
+    train_model(args, model, train_set, valid_set, training_callback)
+  File "/Users/builder/clone/.venv/lib/python3.12/site-packages/mlx_lm/lora.py", line 295, in train_model
+    train(
+  File "/Users/builder/clone/.venv/lib/python3.12/site-packages/mlx_lm/tuner/trainer.py", line 328, in train
+    mx.eval(state, losses, n_tokens, grad_accum)
+RuntimeError: [METAL] Command buffer execution failed: Caused GPU Hang Error (00000003:kIOGPUCommandBufferCallbackErrorHang).
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/builder/clone/research/need_mlx.py", line 476, in <module>
+    main()
+  File "/Users/builder/clone/research/need_mlx.py", line 472, in main
+    {"rounds": rounds, "report": report, "direction": direction, "test": test}[a.command](a)
+  File "/Users/builder/clone/research/need_mlx.py", line 215, in rounds
+    train(a.model, out / f"data-{a.arm}-{k}", new, a.iters, resume=adapter, seed=W.SEED + a.replicate)
+  File "/Users/builder/clone/research/need_mlx.py", line 179, in train
+    subprocess.run(cmd, check=True)
+  File "/Users/builder/.pyenv/versions/3.12.7/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/Users/builder/clone/.venv/bin/python', '-m', 'research.need_lora', '--model', '/Users/builder/.cache/huggingface/hub/models--Qwen--Qwen3-0.6B/snapshots/c1899de289a04d12100db370d81485cdf75e47ca', '--train', '--data', '/Users/builder/clone/llm-need/data-need-1', '--iters', '150', '--batch-size', '4', '--num-layers', '16', '--learning-rate', '1e-4', '--max-seq-length', '1024', '--steps-per-eval', '150', '--val-batches', '2', '--save-every', '150', '--seed', '270928', '--adapter-path', '/Users/builder/clone/llm-need/adapters-need-1']' returned non-zero exit status 1.
+  64 lives, survival 0.078
+  128 lives, survival 0.125
+  192 lives, survival 0.115
+  256 lives, survival 0.113
+  320 lives, survival 0.109
+  384 lives, survival 0.112
+  448 lives, survival 0.105
+  512 lives, survival 0.113
