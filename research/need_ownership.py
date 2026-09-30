@@ -141,12 +141,12 @@ def run(a):
         def save():
             arrays = {}
             for k in rows:
-                arrays[f"{k}_d"] = np.array([r[0] for r in rows[k]], np.float32).reshape(len(rows[k]), WS.K, -1)
+                arrays[f"{k}_d"] = np.array([r[0] for r in rows[k]], np.float16).reshape(len(rows[k]), WS.K, -1)
                 arrays[f"{k}_r"] = np.array([r[1] for r in rows[k]], np.float32)
                 arrays[f"{k}_y"] = np.array([r[2] for r in rows[k]], np.float32)
             keys = list(real)
             arrays["real_keys"] = np.array(keys, int).reshape(-1, 2)
-            arrays["real_s"] = np.array([real[k][0] for k in keys], np.float32).reshape(len(keys), WS.K, -1)
+            arrays["real_s"] = np.array([real[k][0] for k in keys], np.float16).reshape(len(keys), WS.K, -1)
             arrays["real_r"] = np.array([real[k][1] for k in keys], np.float32)
             arrays["real_y"] = np.array([real[k][2] for k in keys], np.float32)
             np.savez(partial, **arrays)
@@ -157,9 +157,12 @@ def run(a):
                 life = lives[pair["life"]]
                 key = (pair["life"], pair["t"])
                 if key not in real:
-                    real[key] = probe(agent, life["turns"], pair["t"])
+                    s_, r_, y_ = probe(agent, life["turns"], pair["t"])
+                    real[key] = (s_.astype(np.float16).astype(np.float32), r_, y_)
                 cf = probe(agent, swapped(life, dict(pair, who=kind)), pair["t"])
-                rows[kind].append((cf[0] - real[key][0], cf[1] - real[key][1], cf[2] - real[key][2]))
+                # kept in float16 at once, so that a resumed run gives the same numbers as an unbroken one
+                rows[kind].append(((cf[0] - real[key][0]).astype(np.float16), cf[1] - real[key][1],
+                                   cf[2] - real[key][2]))
                 if (i + 1) % 50 == 0:
                     save()
                 if (i + 1) % 250 == 0:
