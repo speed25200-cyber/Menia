@@ -140,13 +140,14 @@ def run(a):
 
         def save():
             arrays = {}
+            shape = lambda n: (n, WS.K, -1) if n else (0, WS.K, 1)  # an empty kind (not reached yet) too
             for k in rows:
-                arrays[f"{k}_d"] = np.array([r[0] for r in rows[k]], np.float16).reshape(len(rows[k]), WS.K, -1)
+                arrays[f"{k}_d"] = np.array([r[0] for r in rows[k]], np.float16).reshape(shape(len(rows[k])))
                 arrays[f"{k}_r"] = np.array([r[1] for r in rows[k]], np.float32)
                 arrays[f"{k}_y"] = np.array([r[2] for r in rows[k]], np.float32)
             keys = list(real)
             arrays["real_keys"] = np.array(keys, int).reshape(-1, 2)
-            arrays["real_s"] = np.array([real[k][0] for k in keys], np.float16).reshape(len(keys), WS.K, -1)
+            arrays["real_s"] = np.array([real[k][0] for k in keys], np.float16).reshape(shape(len(keys)))
             arrays["real_r"] = np.array([real[k][1] for k in keys], np.float32)
             arrays["real_y"] = np.array([real[k][2] for k in keys], np.float32)
             W.save_npz(partial, **arrays)
