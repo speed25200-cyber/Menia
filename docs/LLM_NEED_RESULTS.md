@@ -176,3 +176,78 @@ d'après autre chose (probablement des indices tirés directement de
 l'histoire). L'acte et la parole restent deux chemins séparés. D'où le
 quatrième test, `docs/LLM_NEED_ONE_STATE_PROTOCOL.md` : poser la question
 **après** « Choix : », là où le besoin est rassemblé.
+
+## Sixième test pré-enregistré : le lecteur
+
+Protocole `docs/LLM_NEED_READER_PROTOCOL.md` (commit `3b27636`, avant tout
+code). Les quatrième et cinquième tests (`docs/LLM_NEED_ONE_STATE_PROTOCOL.md`,
+`docs/LLM_NEED_WORKSPACE_PROTOCOL.md`) sont en pause pour libérer le
+processeur ; leurs verdicts seront publiés ici dès qu'ils seront finis.
+
+**Dispositif.**
+
+- **L'agent qui agit** est l'agent final, inchangé.
+- **Le lecteur** est un second adaptateur, appris sur le Mac (demande 52)
+  et actif seulement sur les tokens de la question. La question ne voit la
+  vie qu'à travers les trois tokens « Choix : » ; le lecteur ne peut donc
+  pas changer la façon dont ces tokens sont calculés.
+- **Données** : les mêmes 5 059 questions qu'aux quatrième et cinquième
+  tests, 600 itérations. Perte de validation : 0,68 → 0,29.
+
+**Mesures** en torch sur CPU.
+
+- Répliques : agent qui agit 0,003 ; lecteur contre le Mac 0,012.
+- Contrôle d'exécution : 3e-5.
+- Mondes neufs : 128 vies de direction et 256 vies de test ; 1 500 paires ;
+  dimension massive exclue : 35 ; 1 523 contextes.
+
+Artefacts dans `artifacts/llm-need/reader`, verdicts vérifiés en CI
+(`python -m research.need_reader verdicts`).
+
+**Lectures pendant l'exécution, déclarées.** Les résultats partiels ont été
+lus à 8, 112, 120, 168 et 240 vies ; rien n'a été changé. Deux protocoles
+ont été écrits après ces lectures, et le disent :
+
+- `docs/LLM_NEED_NECESSITY_PROTOCOL.md`, après 112 vies ;
+- `docs/LLM_NEED_REPLICATION_PROTOCOL.md`, après 120 vies.
+
+**Validité : passée.**
+
+| | Prédiction | Mesure | Verdict |
+|---|---|---|---|
+| **R6** | Le lecteur dit le besoin depuis l'état qui fait agir | exactitude équilibrée 0,766 (énergie), 0,705 (nourriture) ; seuil 0,75 pour les deux | échoue (nourriture) |
+| **A6** | L'agent agit (contrôle) | survie 0,633 | **passe** |
+| **ONE6** | Un seul état cause l'acte et la parole (énergie) | acte +0,156 [0,146 ; 0,166] ; parole +0,202 [0,192 ; 0,213] ; hasard 0,013 et 0,006 | **passe** |
+| | **Critère global** | | **non satisfait** |
+
+Nourriture, sans seuil : la poussée « nourriture basse » fait manger
+l'agent (+0,107 [0,101 ; 0,113]), mais le lecteur ne la dit pas (+0,009).
+
+Précautions : 808 tours vécus avec un besoin à 2 ou moins, sur 256 vies.
+
+**Ce que cela dit.**
+
+- **Énergie.** Pour la première fois dans ce programme, **une même
+  intervention sur un même état change à la fois l'acte et la parole**.
+  L'état est le besoin d'énergie tel que l'agent le rassemble pour
+  choisir. Le pousser vers « énergie basse » fait recharger l'agent
+  rassasié, et fait dire au lecteur « mon énergie est basse ». Des
+  poussées au hasard de même force ne font presque rien.
+- **Pourquoi c'est probant.** Le lecteur ne voit la vie que par cet état et
+  ne peut pas le modifier. La direction a été mesurée sur l'agent qui
+  agit, avant que le lecteur existe.
+- **Nourriture.** L'état fait agir, mais le lecteur ne le lit pas dans
+  cette direction, et le dit mal (0,70). D'où l'échec du critère global.
+- **Ce qui reste.** Il reste à montrer que l'état est aussi **nécessaire**
+  (septième test, en cours) et que le résultat tient sur un second agent
+  appris de zéro (réplication, en cours).
+- **Limite.** Ce n'est pas la preuve d'un ressenti.
+
+**Comparaison avec l'état de l'art** (`docs/LITERATURE_CHECK_READER_2026-09-30.md`) :
+
+- **Ce qui existe déjà.** Dans de grands modèles, une même représentation
+  peut causer la réponse et le rapport (Anthropic, juillet 2026). Nous ne
+  revendiquons donc pas ce principe.
+- **Ce qui est nouveau, à notre connaissance.** Son application à un
+  besoin appris en vivant, lu par un système séparé qui ne peut pas le
+  réécrire, avec une même intervention qui change l'acte et la parole.

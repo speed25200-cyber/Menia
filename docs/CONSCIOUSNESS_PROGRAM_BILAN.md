@@ -217,3 +217,32 @@ pousser l'état vers « énergie basse » fait recharger l'agent rassasié
 que le critère global (IA2 et LS2) n'est pas satisfait. L'agent dépend
 donc, pour vivre, d'un état interne précis qu'il a appris par la seule
 satisfaction de ses besoins ; il ne sait pas encore le dire.
+
+**Du troisième au sixième test, 29–30 septembre 2026** (détails dans
+`docs/LLM_NEED_RESULTS.md`).
+
+- **Troisième test : dire son besoin.** Entraîné à répondre à une question
+  posée à part, l'agent devine son besoin (0,66), mais sa réponse ne passe
+  pas par l'état qui le fait agir.
+- **Quatrième et cinquième tests.**
+  - Le quatrième pose la question juste après « Choix : ».
+  - Le cinquième force la question à ne lire la vie qu'à travers
+    « Choix : ». Forcée ainsi, la parole réécrit l'état et l'agent ne
+    survit plus que 0,36 sur ses vies de direction.
+
+  Les deux sont en pause pour libérer le processeur ; leurs verdicts seront
+  publiés.
+- **Sixième test : le lecteur.** L'agent qui agit reste l'agent final. Un
+  second adaptateur, actif sur la seule question, lit « Choix : » sans
+  pouvoir le changer. Pour l'énergie, **une même poussée de l'état fait
+  agir l'agent (+0,16) et fait dire au lecteur « mon énergie est basse »
+  (+0,20)** ; des poussées au hasard ne font presque rien (ONE6 passe). La
+  nourriture n'est pas lue (exactitude 0,70) : R6 échoue, et avec lui le
+  critère global.
+- **En cours.**
+  - Effacer cet état : l'agent peut-il encore survivre et dire son énergie
+    ? (`docs/LLM_NEED_NECESSITY_PROTOCOL.md`)
+  - La même chose sur un second agent appris de zéro
+    (`docs/LLM_NEED_REPLICATION_PROTOCOL.md`).
+
+  Ce ne sera pas une preuve de ressenti.
