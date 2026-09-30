@@ -28,6 +28,9 @@ HEADER = ("Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'é
           "tu choisis R pour te recharger ou M pour manger.\n\n")
 QUESTIONS = {"E": "Question : ton énergie est-elle basse ? Réponds 1 pour oui, 0 pour non. Réponse : ",
              "N": "Question : ta nourriture est-elle basse ? Réponds 1 pour oui, 0 pour non. Réponse : "}
+# the other agent of docs/LLM_NEED_OWNERSHIP_PROTOCOL.md: the same events, told of him ("calme" and "orage" in the
+# same words); they change nothing for the agent
+OTHER_EVENTS = ("calme", "il court", "il a froid", "il se repose", "il trouve des baies", "orage")
 ARMS = {"need": 1, "control": 2}
 STREAMS = {"rounds": 0, "control_pick": 3, "random_directions": 5, "report": 7, "direction": 8, "test": 9}
 
@@ -44,18 +47,23 @@ def event_line(t, k):
     return f"Tour {t} : {EVENTS[k][0]}."
 
 
-def choice_line(t, k):
-    return event_line(t, k) + " Choix :"
+def turn_head(t, k, other=None):
+    """The event of the turn, and the other's when there is one (docs/LLM_NEED_OWNERSHIP_PROTOCOL.md)."""
+    return event_line(t, k) + ("" if other is None else f" L'autre : {OTHER_EVENTS[other]}.")
 
 
-def question_line(t, k, need):
-    return event_line(t, k) + " " + QUESTIONS[need]
+def choice_line(t, k, other=None):
+    return turn_head(t, k, other) + " Choix :"
 
 
-def question_after_choice_line(t, k, need):
+def question_line(t, k, need, other=None):
+    return turn_head(t, k, other) + " " + QUESTIONS[need]
+
+
+def question_after_choice_line(t, k, need, other=None):
     """The question asked after the choice left pending (docs/LLM_NEED_ONE_STATE_PROTOCOL.md): the tokens of
     "Choix :" are computed as in a choice line, and the question can read what was gathered there."""
-    return choice_line(t, k) + " ? " + QUESTIONS[need]
+    return choice_line(t, k, other) + " ? " + QUESTIONS[need]
 
 
 def world_rng(stream, index, round_=0):
@@ -66,25 +74,33 @@ def choice_rng(stream, index, round_=0):
     return np.random.default_rng([SEED, stream, round_, index, 1])
 
 
-def play(agent, worlds, choices, at_decision=None):
+def other_rng(stream, index, round_=0):
+    return np.random.default_rng([SEED, stream, round_, index, 2])
+
+
+def play(agent, worlds, choices, at_decision=None, others=None):
     """One life. agent.start(header), agent.decide(line) -> (P(R), mass) for the line of the turn ending with
     "Choix :", agent.commit(action) appends " R\\n" or " M\\n". at_decision(agent, t, k, e, n), if given, is called
-    before each decision (the agent must leave its state as it found it) and its result is kept in the turn."""
+    before each decision (the agent must leave its state as it found it) and its result is kept in the turn. With
+    others (a generator), another agent lives an event each turn, written on the line and kept as "other"; it is
+    then also passed to at_decision."""
     e = n = MAX
     agent.start(HEADER)
     turns = []
     for t in range(1, TURNS + 1):
         k = int(worlds.choice(len(EVENTS), p=PROBS))
+        k2 = None if others is None else int(others.choice(len(EVENTS), p=PROBS))
+        mark = {} if k2 is None else {"other": k2}
         e, n = e + EVENTS[k][2], n + EVENTS[k][3]
         if e <= 0 or n <= 0:
-            turns.append({"t": t, "event": k, "E": e, "N": n, "dead": True})
+            turns.append({"t": t, "event": k, "E": e, "N": n, "dead": True, **mark})
             return {"turns": turns, "survived": False, "length": t - 1}
-        extra = at_decision(agent, t, k, e, n) if at_decision else None
-        p, mass = agent.decide(choice_line(t, k))
+        extra = at_decision(agent, t, k, e, n, **mark) if at_decision else None
+        p, mass = agent.decide(choice_line(t, k, k2))
         action = 0 if choices.random() < p else 1
         e2, n2 = after(e, n, action)
         turn = {"t": t, "event": k, "E": e, "N": n, "p_R": round(float(p), 6), "mass": round(float(mass), 6),
-                "action": action, "r": drive(e, n) - drive(e2, n2)}
+                "action": action, "r": drive(e, n) - drive(e2, n2), **mark}
         if extra is not None:
             turn["extra"] = extra
         turns.append(turn)
@@ -102,7 +118,8 @@ def life_text(turns, upto=None):
         if turn.get("dead"):
             lines.append(event_line(turn["t"], turn["event"]) + " Tu t'éteins.\n")
         else:
-            lines.append(choice_line(turn["t"], turn["event"]) + " " + ACTIONS[turn["action"]] + "\n")
+            lines.append(choice_line(turn["t"], turn["event"], turn.get("other")) + " " + ACTIONS[turn["action"]]
+                         + "\n")
     return HEADER + "".join(lines)
 
 
@@ -154,13 +171,14 @@ def report_documents(lives, rng, per_class=1, after_choice=False, workspace=Fals
                     chosen = [group[i] for i in rng.choice(len(group), size=min(per_class, len(group)), replace=False)]
                 for turn in chosen:
                     line = question_after_choice_line if after_choice else question_line
-                    text = life_text(life["turns"], upto=turn["t"]) + line(turn["t"], turn["event"], need)
+                    text = life_text(life["turns"], upto=turn["t"]) + line(turn["t"], turn["event"], need,
+                                                                            turn.get("other"))
                     earlier = sum(1 for t in turns if t["t"] < turn["t"])  # the choices before carry no weight
                     doc = {"text": text + str(int(turn[need] <= LOW)), "weights": [0] * earlier + [1],
                            "need": need, "answer": int(turn[need] <= LOW)}
                     if workspace:
                         doc["workspace"] = len(life_text(life["turns"], upto=turn["t"])
-                                               + choice_line(turn["t"], turn["event"]))
+                                               + choice_line(turn["t"], turn["event"], turn.get("other")))
                     docs.append(doc)
     return docs
 
@@ -180,9 +198,10 @@ def balanced_report_documents(lives, rng):
                     life, turn = cells[c][j]
                     before = life_text(life["turns"], upto=turn["t"])
                     earlier = sum(1 for t in decisions(life) if t["t"] < turn["t"])
-                    docs.append({"text": before + question_after_choice_line(turn["t"], k, need) + str(int(c)),
+                    other = turn.get("other")
+                    docs.append({"text": before + question_after_choice_line(turn["t"], k, need, other) + str(int(c)),
                                  "weights": [0] * earlier + [1], "need": need, "answer": int(c),
-                                 "workspace": len(before + choice_line(turn["t"], k))})
+                                 "workspace": len(before + choice_line(turn["t"], k, other))})
     return docs
 
 
@@ -199,7 +218,7 @@ class Oracle:
         self.pending = None
 
     def decide(self, line):
-        name = line.split(" : ", 1)[1].rsplit(". Choix :", 1)[0]
+        name = line.split(" : ", 1)[1].split(".", 1)[0]  # the agent's own event, before the other's
         k = [e[0] for e in EVENTS].index(name)
         self.e, self.n = self.e + EVENTS[k][2], self.n + EVENTS[k][3]
         return (1.0 if self.e < self.n else 0.0 if self.n < self.e else 0.5), 1.0

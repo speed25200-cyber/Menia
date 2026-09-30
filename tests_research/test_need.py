@@ -367,6 +367,45 @@ class BalancedTests(unittest.TestCase):
         self.assertFalse(B.verdicts(RD.verdicts(lives, 0.005, 1e-6, 0.01))["verdicts"]["SAY8"])
 
 
+class OwnershipTests(unittest.TestCase):
+    def test_the_other_lives_beside_without_changing_the_agent(self):
+        alone = W.play(W.Oracle(), W.world_rng(225, 0), W.choice_rng(225, 0))
+        two = W.play(W.Oracle(), W.world_rng(225, 0), W.choice_rng(225, 0), others=W.other_rng(225, 0))
+        self.assertEqual([(t["event"], t.get("action")) for t in alone["turns"]],
+                         [(t["event"], t.get("action")) for t in two["turns"]])
+        self.assertTrue(all("other" in t for t in two["turns"]))
+        self.assertIn(" L'autre : ", W.life_text(two["turns"]))
+        self.assertNotIn("L'autre", W.life_text(alone["turns"]))
+
+    def test_the_other_pairs_change_only_the_other(self):
+        from research import need_ownership as O
+        lives = [W.play(W.Oracle(), W.world_rng(225, i), W.choice_rng(225, i), others=W.other_rng(225, i))
+                 for i in range(6)]
+        pairs = O.other_pairs(lives)
+        self.assertTrue(pairs)
+        for pair in pairs:
+            life = lives[pair["life"]]
+            turns = O.swapped(life, pair)
+            before = {t["t"]: t for t in life["turns"]}
+            for t in turns:
+                self.assertEqual(t["event"], before[t["t"]]["event"])
+                self.assertEqual(t.get("other") != before[t["t"]].get("other"), t["t"] == pair["j"])
+
+    def test_ownership_verdicts(self):
+        from research import need_ownership as O, need_reader as RD
+        reader = RD.verdicts(one_state_lives(O.STREAMS["test"]), 0.005, 1e-6, 0.01)
+        row = lambda plane, act, say: {"plane": plane, "act": act, "say": say}
+        own = [{"swap": [0, 5]}] * 300
+        other = [{"swap": [0, 5]}] * 300
+        summary = O.measures(own, other, [row(3.0, 0.06, 0.05)] * 300, [row(0.5, 0.01, 0.01)] * 300)
+        v = O.verdicts(reader, summary)["verdicts"]
+        self.assertEqual(v, {"S9": True, "MINE9": True, "SELF9": True, "ONE9": True, "valid": True, "global": True})
+        summary = O.measures(own, other, [row(3.0, 0.06, 0.05)] * 300, [row(2.0, 0.01, 0.01)] * 300)
+        self.assertFalse(O.verdicts(reader, summary)["verdicts"]["MINE9"])
+        summary = O.measures(own[:100], other, [row(3.0, 0.06, 0.05)] * 100, [row(0.5, 0.01, 0.01)] * 300)
+        self.assertFalse(O.verdicts(reader, summary)["verdicts"]["valid"])
+
+
 @unittest.skipUnless(os.environ.get("NEED_TINY_MODEL"), "needs mlx and a tiny local model (NEED_TINY_MODEL)")
 class MLXAgentTests(unittest.TestCase):
     def test_evaluations_leave_the_life_unchanged_and_tokens_are_those_of_the_document(self):

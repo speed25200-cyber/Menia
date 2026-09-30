@@ -81,7 +81,7 @@ def swapped(life, pair):
 
 def decision_text(turns, t):
     turn = [x for x in turns if x["t"] == t][0]
-    return W.life_text(turns, upto=t) + W.choice_line(t, turn["event"])
+    return W.life_text(turns, upto=t) + W.choice_line(t, turn["event"], turn.get("other"))
 
 
 def fit(pairs, diffs):

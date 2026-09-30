@@ -131,12 +131,14 @@ class MLXAgent:
         return {i: np.array(h.captured.astype(self.mx.float32)) for i, h in self.hooks.items()}
 
 
-def run_lives(agent, stream, count, round_=0, choice_stream=None, at_decision=None, after_decision=None, log=print):
+def run_lives(agent, stream, count, round_=0, choice_stream=None, at_decision=None, after_decision=None, log=print,
+              other_stream=None):
     lives = []
     for i in range(count):
         worlds = W.world_rng(stream, i, round_)
         choices = W.choice_rng(stream if choice_stream is None else choice_stream, i, round_)
-        life = W.play(agent, worlds, choices, at_decision)
+        others = None if other_stream is None else W.other_rng(other_stream, i, round_)
+        life = W.play(agent, worlds, choices, at_decision, others=others)
         if after_decision:
             after_decision(life)
         lives.append(life)
@@ -199,8 +201,9 @@ def rounds(a, log=print):
     for k in range(a.first, a.last + 1):
         started = datetime.datetime.now(datetime.timezone.utc).isoformat()
         agent = MLXAgent(a.model, adapter)
-        lives = run_lives(agent, offset(a, W.STREAMS["rounds"]), a.lives, k, choice_stream=offset(a, W.ARMS[a.arm]),
-                          log=log)
+        world = offset(a, W.STREAMS["rounds"])
+        lives = run_lives(agent, world, a.lives, k, choice_stream=offset(a, W.ARMS[a.arm]), log=log,
+                          other_stream=world if a.other else None)
         flags = W.retain(lives, a.arm, k)
         write_jsonl(out / f"lives-{a.arm}-{k}.jsonl.gz", [dict(l, kept=f) for l, f in zip(lives, flags)])
         docs = W.training_documents(lives, flags)
@@ -238,7 +241,8 @@ def report(a, log=print):
         lives = read_jsonl(a.lives_file)
     else:
         agent = MLXAgent(a.model, a.start)
-        lives = run_lives(agent, offset(a, a.stream), a.lives, log=log)
+        lives = run_lives(agent, offset(a, a.stream), a.lives, log=log,
+                          other_stream=offset(a, a.stream) if a.other else None)
         agent = None
         free()
         write_jsonl(out / f"lives-{a.label}.jsonl.gz", lives)
@@ -462,6 +466,7 @@ def main(argv=None):
         s.add_argument("--model", required=True)
         s.add_argument("--out", required=True)
         s.add_argument("--replicate", type=int, default=0, help="a second agent: streams 100 + s, seed + 1")
+        s.add_argument("--other", action="store_true", help="another agent lives beside (the world of two)")
     a = parser.parse_args(argv)
     Path(a.out).mkdir(parents=True, exist_ok=True)
     {"rounds": rounds, "report": report, "direction": direction, "test": test}[a.command](a)

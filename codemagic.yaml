@@ -878,6 +878,7 @@ workflows:
         NEED_MINUTES: "100"
         NEED_THREADS: "4"
         NEED_BALANCED: "0"
+        NEED_OTHER: "0"
     scripts:
       - name: Installer mlx-lm dans un environnement isolé
         script: |
@@ -895,11 +896,13 @@ workflows:
           source .venv/bin/activate
           MODEL=$(python -c "from huggingface_hub import snapshot_download; print(snapshot_download('Qwen/Qwen3-0.6B', revision='$NEED_MODEL_REVISION'))")
           OUT="$CM_BUILD_DIR/llm-need"
+          OTHER=""
+          if [ "$NEED_OTHER" = "1" ]; then OTHER="--other"; fi  # docs/LLM_NEED_OWNERSHIP_PROTOCOL.md
           mkdir -p "$OUT"
           git rev-parse HEAD > "$OUT/commit.txt"
           if [ "$NEED_STAGE" = "rounds" ]; then
             python -m research.need_mlx rounds --arm "$NEED_ARM" --first "$NEED_FIRST" --last "$NEED_LAST" \
-              --start "$NEED_START" --model "$MODEL" --out "$OUT" --replicate "$NEED_REPLICATE" 2>&1 \
+              --start "$NEED_START" --model "$MODEL" --out "$OUT" --replicate "$NEED_REPLICATE" $OTHER 2>&1 \
               | tee "$OUT/rounds.log" | grep -v "it/s" | tail -60
           elif [ "$NEED_STAGE" = "speak" ]; then
             # docs/LLM_NEED_REPORT_PROTOCOL.md: 512 lives of stream 14, three turns per need and class, 600 iterations
@@ -940,7 +943,7 @@ workflows:
             fi
             python -m research.need_mlx report --start "$NEED_START" --previous none --model "$MODEL" $LIVES \
               --iters 600 --stream 18 --per-class 3 $KIND --after-choice \
-              --workspace --reader --replicate "$NEED_REPLICATE" --out "$OUT" 2>&1 \
+              --workspace --reader --replicate "$NEED_REPLICATE" $OTHER --out "$OUT" 2>&1 \
               | tee "$OUT/reader.log" | grep -v "it/s" | tail -30
             rm -rf "$OUT/fused-start"
           elif [ "$NEED_STAGE" = "measure" ]; then

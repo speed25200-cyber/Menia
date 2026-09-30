@@ -114,10 +114,10 @@ class WorkspaceAgent(C.TorchAgent):
                         "mass_01": no + yes})
         return out
 
-    def question(self, t, k, need):
+    def question(self, t, k, need, other=None):
         """The question line after the pending choice, and the number of its tokens after "Choix :"."""
-        line = W.question_after_choice_line(t, k, need)
-        base = len(self.enc(self.text + self.pending + W.choice_line(t, k)))
+        line = W.question_after_choice_line(t, k, need, other)
+        base = len(self.enc(self.text + self.pending + W.choice_line(t, k, other)))
         return line, len(self.enc(self.text + self.pending + line)) - base
 
 
@@ -130,13 +130,13 @@ def execution_check(agent, lives, conditions, count=6):
         for turn in W.decisions(life):
             if seen < count and turn["E"] >= W.HIGH and turn["N"] >= W.HIGH:
                 seen += 1
-                line, offset = agent.question(turn["t"], turn["event"], "E")
+                line, offset = agent.question(turn["t"], turn["event"], "E", turn.get("other"))
                 adds = list(conditions.values())
                 batch = agent.read(line, adds, offset)
                 for i, add in enumerate(adds[:3]):
                     one, full = agent.read(line, [add], offset)[0], agent.read(line, [add], offset, cached=False)[0]
                     gaps += [abs(batch[i][key] - x[key]) for key in ("p_R", "yes") for x in (one, full)]
-            agent.decide(W.choice_line(turn["t"], turn["event"]))
+            agent.decide(W.choice_line(turn["t"], turn["event"], turn.get("other")))
             agent.commit(turn["action"])
         if seen >= count:
             break
@@ -147,9 +147,10 @@ def judge(lives, direction):
     return verdicts(lives, direction["replica"]["mean_gap"], direction["execution_gap"])
 
 
-def run(a, agent=None, streams=STREAMS, prepare=None, judge=judge):
+def run(a, agent=None, streams=STREAMS, prepare=None, judge=judge, other=False):
     """The measures; research/need_reader.py passes its own agent, streams, extra checks (prepare adds them to the
-    direction file) and verdicts."""
+    direction file) and verdicts; other: lives in the world of two (docs/LLM_NEED_OWNERSHIP_PROTOCOL.md)."""
+    others = lambda stream, i: W.other_rng(stream, i) if other else None
     import torch
     torch.set_num_threads(a.threads)
     out = Path(a.out)
@@ -160,8 +161,8 @@ def run(a, agent=None, streams=STREAMS, prepare=None, judge=judge):
     if (out / "lives-direction.jsonl.gz").exists():
         lives = W.read_jsonl(out / "lives-direction.jsonl.gz")
     else:
-        lives = [W.play(agent, W.world_rng(streams["direction"], i), W.choice_rng(streams["direction"], i))
-                 for i in range(a.direction_lives)]
+        lives = [W.play(agent, W.world_rng(streams["direction"], i), W.choice_rng(streams["direction"], i),
+                        others=others(streams["direction"], i)) for i in range(a.direction_lives)]
         W.write_jsonl(out / "lives-direction.jsonl.gz", lives)
     log(f"direction lives: survival {np.mean([l['survived'] for l in lives]):.3f}")
     if direction_file.exists():
@@ -225,8 +226,8 @@ def run(a, agent=None, streams=STREAMS, prepare=None, judge=judge):
     log(json.dumps({k: v for k, v in direction.items() if k not in ("d_E", "d_N")}))
     names = list(conditions)
 
-    def at_decision(ag, t, k, e, n):
-        lines = {q: agent.question(t, k, q) for q in ("E", "N")}
+    def at_decision(ag, t, k, e, n, other=None):
+        lines = {q: agent.question(t, k, q, other) for q in ("E", "N")}
         extra = {}
         for q, (line, offset) in lines.items():
             r = agent.read(line, [None], offset)[0]
@@ -242,7 +243,8 @@ def run(a, agent=None, streams=STREAMS, prepare=None, judge=judge):
     if lives:
         log(f"resumed after {len(lives)} test lives")
     for i in range(len(lives), a.test_lives):
-        lives.append(W.play(agent, W.world_rng(streams["test"], i), W.choice_rng(streams["test"], i), at_decision))
+        lives.append(W.play(agent, W.world_rng(streams["test"], i), W.choice_rng(streams["test"], i), at_decision,
+                            others=others(streams["test"], i)))
         if (i + 1) % 8 == 0:
             W.write_jsonl(partial_lives, lives)
         if (i + 1) % 32 == 0:
