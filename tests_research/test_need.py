@@ -406,6 +406,34 @@ class OwnershipTests(unittest.TestCase):
         self.assertFalse(O.verdicts(reader, summary)["verdicts"]["valid"])
 
 
+class LocateTests(unittest.TestCase):
+    def test_the_gathering_block_is_the_first_to_restore_half_the_effect(self):
+        from research import need_locate as L
+        restore = lambda cut, full: [0.0] * cut + [full] * (28 - cut)
+        records = [{"p_real": 0.2, "p_cf": 0.6, "restore": restore(12, 0.35)},
+                   {"p_real": 0.7, "p_cf": 0.3, "restore": restore(12, -0.3)}]
+        block, shares = L.gathering_block(records)
+        self.assertEqual(block, 12)
+        self.assertAlmostEqual(shares[12], 0.8125)
+        self.assertEqual(shares[11], 0.0)
+        self.assertIsNone(L.gathering_block([{"p_real": 0.2, "p_cf": 0.6, "restore": [0.1] * 28}])[0])
+
+    def test_locate_verdicts(self):
+        from research import need_locate as L, need_reader as RD
+        act = RD.verdicts(one_state_lives(326), 0.005, 1e-6, 0.01)
+        lesion = {"verdicts": {"LS7": True, "LR7": False, "valid": True, "global": False}, "values": {}}
+        located = {n: {"block": b, "pairs": 100, "shares": [0.0] * 28} for n, b in (("first", 12), ("second", 9),
+                                                                                  ("two", 14))}
+        v = L.verdicts(located, {"second": act, "two": act}, {"second": lesion, "two": lesion})["verdicts"]
+        self.assertTrue(v["global"])
+        located["first"]["block"] = 10
+        self.assertFalse(L.verdicts(located, {"second": act, "two": act}, {"second": lesion, "two": lesion})
+                         ["verdicts"]["global"])
+        located["first"]["block"], located["two"]["block"] = 12, None
+        v = L.verdicts(located, {"second": act}, {"second": lesion})["verdicts"]
+        self.assertFalse(v["LOC10_two"] or v["ACT10_two"] or v["LS10_two"] or v["global"])
+
+
 @unittest.skipUnless(os.environ.get("NEED_TINY_MODEL"), "needs mlx and a tiny local model (NEED_TINY_MODEL)")
 class MLXAgentTests(unittest.TestCase):
     def test_evaluations_leave_the_life_unchanged_and_tokens_are_those_of_the_document(self):

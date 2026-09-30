@@ -96,8 +96,10 @@ class Recorder:
         self.agent.commit(action)
 
 
-def setup_state(agent, reader_test, log, offset=0):
-    """The lesion planes and means (and the random ones), from the sixth test's direction and direction lives."""
+def setup_state(agent, reader_test, log, offset=0, streams=None, other=False):
+    """The lesion planes and means (and the random ones), from the sixth test's direction and direction lives
+    (streams and other: the direction lives of an agent measured elsewhere, docs/LLM_NEED_LOCATE_PROTOCOL.md)."""
+    streams = streams or {"direction": RD.STREAMS["direction"] + offset, "random": STREAMS["random"] + offset}
     direction = json.loads((Path(reader_test) / "direction.json").read_text())
     d_e, d_n = np.array(direction["d_E"]), np.array(direction["d_N"])
     massive = direction["massive_dims"]
@@ -105,15 +107,16 @@ def setup_state(agent, reader_test, log, offset=0):
     rec = Recorder(agent)
     same = 0
     for i, life in enumerate(recorded):
-        stream = RD.STREAMS["direction"] + offset
-        again = W.play(rec, W.world_rng(stream, i), W.choice_rng(stream, i))
+        stream = streams["direction"]
+        again = W.play(rec, W.world_rng(stream, i), W.choice_rng(stream, i),
+                       others=W.other_rng(stream, i) if other else None)
         path = lambda x: [(t["t"], t["event"], t.get("action")) for t in x["turns"]]
         same += path(again) == path(life)
     log(f"direction lives replayed identically: {same} of {len(recorded)}")
     states = np.array(rec.states, np.float64)
     u = C.planes(d_e, d_n)
     mean = np.einsum("ntd,tdk->ntk", states, u).mean(axis=0)
-    rng = np.random.default_rng([W.SEED, STREAMS["random"] + offset])
+    rng = np.random.default_rng([W.SEED, streams["random"]])
     gaussian = [rng.standard_normal((d_e.shape[1], 2)) for _ in range(K)]
     for g in gaussian:
         g[massive] = 0
@@ -124,13 +127,17 @@ def setup_state(agent, reader_test, log, offset=0):
             "replica": direction["replica"]["mean_gap"], "reader_replica": direction["reader_replica"]["mean_gap"]}
 
 
-def run(a):
+def run(a, agent=None, streams=None, other=False):
+    """streams ({"direction", "test", "random"}) and other: for an agent measured at its own block
+    (docs/LLM_NEED_LOCATE_PROTOCOL.md); by default the streams of the protocol, shifted by a.offset."""
     import torch
     torch.set_num_threads(a.threads)
     out = Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
     log = lambda m: print(m, flush=True)
-    agent = RD.ReaderAgent(a.adapter, a.reader)
+    agent = agent or RD.ReaderAgent(a.adapter, a.reader)
+    streams = streams or {"direction": RD.STREAMS["direction"] + a.offset, "test": STREAMS["test"] + a.offset,
+                          "random": STREAMS["random"] + a.offset}
     T = lambda x: torch.tensor(np.asarray(x, np.float32))
     arrays = out / "lesion.npz"
     setup_file = out / "setup.json"
@@ -138,8 +145,8 @@ def run(a):
         saved = np.load(arrays)
         state = dict(json.loads(setup_file.read_text()), **{k: saved[k] for k in saved.files})
     else:
-        state = setup_state(agent, a.reader_test, log, a.offset)
-        np.savez(arrays, **{k: state[k] for k in ("planes", "means", "random_planes", "random_means")})
+        state = setup_state(agent, a.reader_test, log, streams=streams, other=other)
+        W.save_npz(arrays, **{k: state[k] for k in ("planes", "means", "random_planes", "random_means")})
     lesions = {"lesion": (T(state["planes"]), T(state["means"])),
                "lesion_random": (T(state["random_planes"]), T(state["random_means"]))}
     if "execution_gap" not in state:
@@ -147,22 +154,22 @@ def run(a):
         life = W.read_jsonl(Path(a.reader_test) / "lives-direction.jsonl.gz")[0]
         agent.start(W.HEADER)
         for turn in W.decisions(life)[:4]:
-            line, offset = agent.question(turn["t"], turn["event"], "E")
+            line, offset = agent.question(turn["t"], turn["event"], "E", turn.get("other"))
             batch = agent.read(line, [None] * 3, offset, projects=[None, lesions["lesion"], lesions["lesion_random"]])
             for i, name in enumerate(CONDITIONS):
                 one = agent.read(line, [None], offset, projects=[lesions.get(name)])[0]
                 gaps += [abs(batch[i][key] - one[key]) for key in ("p_R", "yes")]
-            agent.decide(W.choice_line(turn["t"], turn["event"]))
+            agent.decide(W.choice_line(turn["t"], turn["event"], turn.get("other")))
             agent.commit(turn["action"])
         state["execution_gap"] = float(max(gaps))
         setup_file.write_text(json.dumps({k: v for k, v in state.items() if not isinstance(v, np.ndarray)},
                                          indent=1) + "\n")
     log(json.dumps({k: v for k, v in state.items() if not isinstance(v, np.ndarray)}))
 
-    def at_decision(ag, t, k, e, n):
+    def at_decision(ag, t, k, e, n, other=None):
         reports = {c: {} for c in CONDITIONS}
         for q in ("E", "N"):
-            line, offset = agent.question(t, k, q)
+            line, offset = agent.question(t, k, q, other)
             reads = agent.read(line, [None] * 3, offset, projects=[None, lesions["lesion"], lesions["lesion_random"]])
             for c, r in zip(CONDITIONS, reads):
                 reports[c][q] = round(r["yes"], 6)
@@ -180,9 +187,10 @@ def run(a):
             log(f"{name}: resumed after {len(lives)} lives")
         agent.project = lesions.get(name)
         for i in range(len(lives), a.test_lives):
-            stream = STREAMS["test"] + a.offset
+            stream = streams["test"]
             lives.append(W.play(agent, W.world_rng(stream, i), W.choice_rng(stream, i),
-                                at_decision if name == "intact" else None))
+                                at_decision if name == "intact" else None,
+                                others=W.other_rng(stream, i) if other else None))
             if (i + 1) % 8 == 0:
                 W.write_jsonl(partial, lives)
             if (i + 1) % 32 == 0:

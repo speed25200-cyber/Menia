@@ -143,7 +143,7 @@ class TorchAgent:
     """start/decide/commit over a key-value cache, with a hook on block BLOCK acting on the last TAIL tokens of the
     piece being run: add (TAIL x D), or replace the component in per-token planes (TAIL x D x 2) by fixed means."""
 
-    def __init__(self, adapter, tail=TAIL):
+    def __init__(self, adapter, tail=TAIL, block=BLOCK):
         import torch
         from transformers import DynamicCache
         from .need_torch import Agent
@@ -157,7 +157,8 @@ class TorchAgent:
         self.tail = tail
         self.offset = 0  # tokens after the hooked ones, at the end of the piece being run
         self.calls = self.resets = 0
-        self.model.model.layers[BLOCK].register_forward_hook(self._hook)
+        self.block = block
+        self.model.model.layers[block].register_forward_hook(self._hook)
 
     def _hook(self, mod, inp, out):
         h = out[0] if isinstance(out, tuple) else out

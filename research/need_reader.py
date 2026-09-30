@@ -40,10 +40,10 @@ def judge(lives, direction):
 class ReaderAgent(WS.WorkspaceAgent):
     """The final agent, and the reader on the last `offset` tokens of a read (none when offset is 0)."""
 
-    def __init__(self, adapter, reader):
+    def __init__(self, adapter, reader, block=C.BLOCK):
         import torch
         from safetensors.numpy import load_file
-        super().__init__(adapter)
+        super().__init__(adapter, block=block)
         weights = load_file(str(Path(reader) / "adapters.safetensors"))
         scale = json.loads((Path(reader) / "adapter_config.json").read_text())["lora_parameters"]["scale"]
         modules = dict(self.model.named_modules())

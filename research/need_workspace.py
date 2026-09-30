@@ -40,8 +40,8 @@ def verdicts(lives, replica_gap, execution_gap):
 class WorkspaceAgent(C.TorchAgent):
     """C.TorchAgent whose hook adds to every sequence of a batch, and which reads a question line under the mask."""
 
-    def __init__(self, adapter):
-        super().__init__(adapter, tail=K)
+    def __init__(self, adapter, block=C.BLOCK):
+        super().__init__(adapter, tail=K, block=block)
         self.header = len(self.enc(W.HEADER))
         if self.enc(W.HEADER + W.choice_line(1, 0))[:self.header] != self.enc(W.HEADER):
             raise RuntimeError("the header is cut differently inside a life")
