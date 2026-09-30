@@ -1,11 +1,19 @@
 {
- "request": 58,
+ "request": 59,
  "app": "Menia",
  "wait_minutes": 345,
  "builds": [
   {
-   "build": "6abcf52feeab91514bcdf57e",
-   "dest": "artifacts/llm-need/r1/final"
+   "launch": {
+    "workflow": "menia-need-mac",
+    "branch": "claude/causal-self-model-llm-results-mauabk",
+    "variables": {
+     "NEED_STAGE": "reader",
+     "NEED_START": "artifacts/llm-need/r1/final/report/adapters-final",
+     "NEED_REPLICATE": "1"
+    }
+   },
+   "dest": "artifacts/llm-need/r1/reader"
   }
  ]
 }
