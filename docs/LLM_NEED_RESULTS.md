@@ -251,3 +251,18 @@ Précautions : 808 tours vécus avec un besoin à 2 ou moins, sur 256 vies.
 - **Ce qui est nouveau, à notre connaissance.** Son application à un
   besoin appris en vivant, lu par un système séparé qui ne peut pas le
   réécrire, avec une même intervention qui change l'acte et la parole.
+
+**Analyse exploratoire après le verdict (non pré-enregistrée).**
+
+- **Le lecteur lit bien un niveau de nourriture**, gradué : P(oui) moyen
+  0,73 au niveau 1, puis 0,55 au niveau 4 et 0,21 au niveau 8. Mais la
+  pente est bien plus douce que pour l'énergie (0,67 → 0,51 → 0,02).
+- **Sa réponse suit beaucoup l'événement du tour.** Après « il fait froid »
+  (−3 en nourriture), il dit « oui » à 0,67, alors que la nourriture n'est
+  basse que dans 42 % de ces tours. Après « tu cours », il dit « oui » à
+  0,29 pour 12 % de tours bas.
+- **Lecture.** Pour la nourriture, le lecteur s'appuie en partie sur
+  l'événement présent, que « Choix : » porte aussi. La direction d_N, elle,
+  vient des événements passés ; le lecteur l'utilise peu, d'où
+  l'injection sans effet (+0,009). Pour l'énergie, la direction qui fait
+  agir est celle que le lecteur lit.
