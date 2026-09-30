@@ -1,0 +1,19 @@
+{
+ "stage": "balanced",
+ "from": "artifacts/llm-need/final/report/adapters-final",
+ "lives_from": "artifacts/llm-need/speak2/lives-speak2.jsonl.gz",
+ "workspace": true,
+ "reader": true,
+ "balanced": true,
+ "adapter": "/Users/builder/clone/llm-need/adapters-balanced",
+ "lives": 512,
+ "survival": 0.6640625,
+ "mean_length": 25.849609375,
+ "mean_satisfaction": 12.088628636191915,
+ "mean_mass": 0.9677359781639592,
+ "p_R": 0.5278387773328296,
+ "turns_need_at_most_2": 1590,
+ "report_documents": 7356,
+ "report_documents_yes": 3678,
+ "documents": 7356
+}
