@@ -4,6 +4,7 @@ its choice probabilities match the Mac's to 0.003 on test decisions. Needs torch
 the CI requirements)."""
 import argparse
 import json
+import os
 import time
 from pathlib import Path
 import numpy as np
@@ -13,7 +14,8 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 
 from . import need_world as W
 
-SNAP = "/root/.cache/huggingface/hub/models--Qwen--Qwen3-0.6B/snapshots/c1899de289a04d12100db370d81485cdf75e47ca"
+SNAP = os.environ.get("NEED_SNAP", "/root/.cache/huggingface/hub/models--Qwen--Qwen3-0.6B/snapshots/"
+                                   "c1899de289a04d12100db370d81485cdf75e47ca")  # the Mac passes its own copy
 torch.set_grad_enabled(False)
 
 
