@@ -1,5 +1,5 @@
 {
- "request": 69,
+ "request": 70,
  "app": "Menia",
  "wait_minutes": 345,
  "builds": [
@@ -10,12 +10,12 @@
     "variables": {
      "NEED_STAGE": "measure",
      "NEED_MEASURE": "research.need_ownership",
-     "NEED_RESUME": "artifacts/llm-need/two/measure-2/measure",
+     "NEED_RESUME": "artifacts/llm-need/two/measure-3/measure",
      "NEED_MINUTES": "100",
      "NEED_THREADS": "4"
     }
    },
-   "dest": "artifacts/llm-need/two/measure-3"
+   "dest": "artifacts/llm-need/two/measure-4"
   }
  ]
 }
