@@ -1,0 +1,19 @@
+{
+ "stage": "reader",
+ "from": "artifacts/llm-need/r1/final/report/adapters-final",
+ "lives_from": null,
+ "workspace": true,
+ "reader": true,
+ "balanced": false,
+ "adapter": "/Users/builder/clone/llm-need/adapters-reader",
+ "lives": 512,
+ "survival": 0.525390625,
+ "mean_length": 24.13671875,
+ "mean_satisfaction": 12.1574688460916,
+ "mean_mass": 0.9803648892215567,
+ "p_R": 0.5688069403625182,
+ "turns_need_at_most_2": 1838,
+ "report_documents": 5091,
+ "report_documents_yes": 2025,
+ "documents": 5091
+}
