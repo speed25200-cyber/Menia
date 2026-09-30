@@ -1,0 +1,14 @@
+{
+ "id": "6abcf42ab1962a933e3700f4",
+ "tag": null,
+ "branch": "claude/causal-self-model-llm-results-mauabk",
+ "workflow": "menia-need-mac",
+ "status": "failed",
+ "createdAt": "2026-09-30T11:36:10.179000+00:00",
+ "startedAt": null,
+ "finishedAt": "2026-09-30T11:36:11.781000+00:00",
+ "commit": "a6f8f452d5abbba2924acbd939fa40ff42934dac",
+ "message": "4 validation errors in codemagic.yaml:\nmenia-need-mac -> environment -> vars -> NEED_ARGS\n  ensure this value has at least 1 characters\nenvironment -> vars -> NEED_ARGS\n  value is not a valid integer\nenvironment -> vars -> NEED_ARGS\n  value is not a valid float\nenvironment -> vars -> NEED_ARGS\n  value is not a valid boolean",
+ "steps": [],
+ "artefacts": []
+}
