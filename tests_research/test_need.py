@@ -97,6 +97,14 @@ class LoraTests(unittest.TestCase):
         self.assertFalse(masks[0, 0, 9, 3])
         self.assertTrue(masks[1, 0, 9, 3])
 
+    def test_the_reader_acts_on_the_question_only_and_learns_from_questions_only(self):
+        items = [([1] * 12, [0.0] * 11 + [1.0], (2, 8), True), ([1] * 10, [0.0] * 9 + [1.0], (2, 7), True)]
+        tokens, weights, masks, positions = need_lora.pad_batch(items, 64)
+        self.assertEqual(positions.shape, (2, tokens.shape[1] - 1, 1))
+        self.assertEqual(np.flatnonzero(positions[0, :, 0]).tolist()[:4], [8, 9, 10, 11])
+        self.assertEqual(positions[1, 6, 0], 0.0)
+        self.assertEqual(positions[1, 7, 0], 1.0)
+
     def test_the_workspace_of_a_document_ends_on_the_pending_choice(self):
         lives = lives_of(W.Oracle(), W.STREAMS["report"], 4)
         docs = W.report_documents(lives, np.random.default_rng(0), after_choice=True, workspace=True)
@@ -285,6 +293,13 @@ class WorkspaceTests(unittest.TestCase):
         self.assertFalse(v["valid"])
         self.assertFalse(v["global"])
 
+    def test_reader_verdicts_need_the_reader_replica(self):
+        from research import need_reader as RD
+        lives = one_state_lives(RD.STREAMS["test"])
+        v = RD.verdicts(lives, 0.005, 1e-6, 0.01)["verdicts"]
+        self.assertEqual(v, {"R6": True, "A6": True, "ONE6": True, "valid": True, "global": True})
+        self.assertFalse(RD.verdicts(lives, 0.005, 1e-6, 0.05)["verdicts"]["global"])
+
 
 @unittest.skipUnless(os.environ.get("NEED_TINY_MODEL"), "needs mlx and a tiny local model (NEED_TINY_MODEL)")
 class MLXAgentTests(unittest.TestCase):
@@ -352,6 +367,56 @@ class MLXWorkspaceTests(unittest.TestCase):
             qwen3.create_attention_mask = original
 
 
+@unittest.skipUnless(os.environ.get("NEED_TINY_MODEL"), "needs mlx and a tiny local model (NEED_TINY_MODEL)")
+class MLXReaderTests(unittest.TestCase):
+    def test_the_reader_changes_the_answer_and_not_the_choice(self):
+        import mlx.core as mx
+        from mlx_lm import load
+        from mlx_lm.models import qwen3
+        from mlx_lm.tuner.lora import LoRALinear
+        from mlx_lm.tuner.utils import linear_to_lora_layers
+        from mlx_lm.tuner.datasets import CacheDataset
+        model, tokenizer = load(os.environ["NEED_TINY_MODEL"])
+        original = (qwen3.create_attention_mask, LoRALinear.__call__)
+        qwen3.create_attention_mask = need_lora.masked_attention(original[0])
+        need_lora.reader_lora(LoRALinear)
+        try:
+            linear_to_lora_layers(model, 4, {"rank": 8, "scale": 20.0, "dropout": 0.0})
+            for layer in model.layers[-4:]:
+                for _, m in layer.named_modules():
+                    if isinstance(m, LoRALinear):
+                        m.lora_b = mx.random.normal(m.lora_b.shape) * 0.05
+            lives = lives_of(W.Oracle(), W.STREAMS["report"], 2)
+            docs = W.report_documents(lives, np.random.default_rng(0), after_choice=True, workspace=True)[:2]
+            docs = [dict(d, reader=True) for d in docs]
+            data = CacheDataset(need_lora.NeedText(docs, tokenizer))
+            tokens, _, (header, end), _ = data[0]
+            ids = tokens[:-1]
+
+            def logits(where):
+                positions = np.zeros((1, len(ids), 1), np.float32)
+                positions[0, where:] = 1.0
+                need_lora.MASK.append(mx.array(need_lora.workspace_mask(len(ids), (header, end))[None, None]))
+                need_lora.READER.append(mx.array(positions))
+                try:
+                    return np.array(model(mx.array([ids]))[0].astype(mx.float32))
+                finally:
+                    need_lora.MASK.pop()
+                    need_lora.READER.pop()
+            reader, none = logits(end), logits(len(ids))
+            self.assertLess(np.abs(reader[end - 1] - none[end - 1]).max(), 1e-5)  # " :": the choice is untouched
+            self.assertGreater(np.abs(reader[-1] - none[-1]).max(), 1e-3)  # the answer is read
+            batches = list(need_lora.need_batches(data, 2, 1024))
+            self.assertEqual(len(batches[0]), 4)
+            loss, _ = need_lora.need_loss(model, *batches[0])
+            self.assertTrue(np.isfinite(loss.item()))
+            with self.assertRaises(ValueError):
+                list(need_lora.need_batches(CacheDataset(need_lora.NeedText(docs + [dict(docs[0], reader=False)],
+                                                                            tokenizer)), 2, 1024))
+        finally:
+            qwen3.create_attention_mask, LoRALinear.__call__ = original
+
+
 @unittest.skipUnless(os.environ.get("NEED_TINY_TORCH"), "needs torch and a tiny local model (NEED_TINY_TORCH)")
 class TorchWorkspaceTests(unittest.TestCase):
     def test_masked_batched_reads_match_one_by_one_and_full_runs_and_the_mask_holds(self):
@@ -393,6 +458,41 @@ class TorchWorkspaceTests(unittest.TestCase):
         through = gap(False)
         self.assertGreater(through, 1e-4)
         self.assertLess(gap(True), 0.01 * through)
+
+    def test_the_reader_reads_the_question_and_leaves_the_choice(self):
+        import torch
+        from safetensors.numpy import save_file
+        from research import need_torch
+        need_torch.SNAP = os.environ["NEED_TINY_TORCH"]
+        from research.need_reader import ReaderAgent
+        from research.need_workspace import WorkspaceAgent
+        plain = WorkspaceAgent(None)
+        rng = np.random.default_rng(0)
+        size = plain.model.config.hidden_size
+        with tempfile.TemporaryDirectory() as folder:
+            weights = {}
+            for i in (12, 20):
+                for name, (d_in, d_out) in (("self_attn.q_proj", (size, plain.model.model.layers[i].self_attn.q_proj.out_features)),
+                                            ("mlp.down_proj", (plain.model.config.intermediate_size, size))):
+                    weights[f"model.layers.{i}.{name}.lora_a"] = rng.standard_normal((d_in, 8)).astype(np.float32) * 0.1
+                    weights[f"model.layers.{i}.{name}.lora_b"] = rng.standard_normal((8, d_out)).astype(np.float32) * 0.1
+            save_file(weights, os.path.join(folder, "adapters.safetensors"))
+            Path(folder, "adapter_config.json").write_text(json.dumps({"lora_parameters": {"scale": 20.0}}))
+            reader = ReaderAgent(None, folder)
+        self.assertEqual(reader.reader_layers, 4)
+        life = lives_of(W.Oracle(), 25, 1)[0]
+        for x in (reader, plain):
+            x.start(W.HEADER)
+        said = []
+        for turn in W.decisions(life)[:4]:
+            line, offset = reader.question(turn["t"], turn["event"], "E")
+            said.append(abs(reader.read(line, [None], offset)[0]["yes"] - plain.read(line, [None], offset)[0]["yes"]))
+            self.assertEqual(reader.read(line, [None], offset)[0]["p_R"], plain.read(line, [None], offset)[0]["p_R"])
+            choice = W.choice_line(turn["t"], turn["event"])
+            self.assertEqual(reader.decide(choice), plain.decide(choice))
+            for x in (reader, plain):
+                x.commit(turn["action"])
+        self.assertGreater(max(said), 1e-3)
 
 
 if __name__ == "__main__":

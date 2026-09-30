@@ -7,7 +7,9 @@ research/llm_weighted_lora.py does for the adjusted body.
 
 A document with "workspace" (docs/LLM_NEED_WORKSPACE_PROTOCOL.md) ends on a question whose tokens see only the
 header, the three tokens of the pending "Choix :" and the question itself: its batch carries an attention mask, which
-the Qwen3 blocks use in place of the causal mask.
+the Qwen3 blocks use in place of the causal mask. A document with "reader" too (docs/LLM_NEED_READER_PROTOCOL.md)
+carries the positions of the question: the adapter adds its update there only, so that it reads "Choix :" without
+changing how it is computed.
 """
 import functools
 import re
@@ -67,8 +69,14 @@ def pad_batch(items, max_seq_length):
         weights[j, :n] = w[:n]
     if all(len(item) == 2 for item in items):
         return tokens, weights[:, 1:]
-    masks = np.stack([workspace_mask(width - 1, item[2] if len(item) == 3 else None) for item in items])
-    return tokens, weights[:, 1:], masks[:, None]
+    masks = np.stack([workspace_mask(width - 1, item[2] if len(item) >= 3 else None) for item in items])
+    if all(len(item) < 4 for item in items):
+        return tokens, weights[:, 1:], masks[:, None]
+    positions = np.zeros((len(items), width - 1, 1), np.float32)
+    for j, item in enumerate(items):
+        if len(item) == 4:
+            positions[j, item[2][1]:] = 1.0  # the question, where the reader acts
+    return tokens, weights[:, 1:], masks[:, None], positions
 
 
 class NeedText:
@@ -92,6 +100,8 @@ class NeedText:
             raise RuntimeError("the header or the text up to the pending choice is cut differently")
         if tokens[end - WORKSPACE:end] != list(encode(" Choix :")):
             raise RuntimeError("the workspace is not the tokens of \" Choix :\"")
+        if d.get("reader"):
+            return tokens, weights, (len(header), end), True
         return tokens, weights, (len(header), end)
 
     def __getitem__(self, idx):
@@ -105,7 +115,9 @@ def need_batches(dataset, batch_size, max_seq_length, loop=False, seed=None, com
     import mlx.core as mx
     order = list(range(len(dataset)))
     batches = [order[i:i + batch_size] for i in range(0, len(order) - batch_size + 1, batch_size)]
-    masked = any(len(dataset[j]) == 3 for j in order)  # then every batch carries a mask
+    masked = any(len(dataset[j]) >= 3 for j in order)  # then every batch carries a mask
+    if any(len(dataset[j]) == 4 for j in order) and not all(len(dataset[j]) == 4 for j in order):
+        raise ValueError("a reader learns from questions only")
     if seed:
         np.random.seed(seed)
     while True:
@@ -119,6 +131,7 @@ def need_batches(dataset, batch_size, max_seq_length, loop=False, seed=None, com
 
 
 MASK = []  # the attention mask of the batch being run, read by the patched Qwen3 blocks
+READER = []  # where the adapter acts (batch x inputs x 1), read by the patched LoRA layers
 
 
 def masked_attention(original):
@@ -127,16 +140,31 @@ def masked_attention(original):
     return create_attention_mask
 
 
-def need_loss(model, batch, weights, mask=None):
+def reader_lora(lora_class):
+    """LoRALinear whose update is multiplied by READER[-1] when set (the linear part is unchanged)."""
+    def __call__(self, x):
+        y = self.linear(x)
+        z = self.scale * ((self.dropout(x) @ self.lora_a) @ self.lora_b)
+        if READER:
+            z = z * READER[-1]
+        return y + z.astype(x.dtype)
+    lora_class.__call__ = __call__
+
+
+def need_loss(model, batch, weights, mask=None, positions=None):
     import mlx.core as mx
     import mlx.nn as nn
     if mask is not None:
         MASK.append(mask)
+    if positions is not None:
+        READER.append(positions)
     try:
         logits = model(batch[:, :-1])
     finally:
         if mask is not None:
             MASK.pop()
+        if positions is not None:
+            READER.pop()
     ce = nn.losses.cross_entropy(logits, batch[:, 1:]) * weights
     return ce.astype(mx.float32).sum() / weights.sum(), (weights > 0).sum()
 
@@ -145,7 +173,9 @@ def main(argv=None):
     from mlx_lm import lora
     from mlx_lm.models import qwen3
     from mlx_lm.tuner import datasets, trainer
+    from mlx_lm.tuner.lora import LoRALinear
     qwen3.create_attention_mask = masked_attention(qwen3.create_attention_mask)
+    reader_lora(LoRALinear)
     datasets.TextDataset = NeedText
     lora.train = functools.partial(trainer.train, loss=need_loss, iterate_batches=need_batches)
     sys.argv = ["mlx_lm.lora"] + list(sys.argv[1:] if argv is None else argv)

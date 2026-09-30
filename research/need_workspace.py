@@ -130,18 +130,24 @@ def execution_check(agent, lives, conditions, count=6):
     return float(max(gaps))
 
 
-def run(a):
+def judge(lives, direction):
+    return verdicts(lives, direction["replica"]["mean_gap"], direction["execution_gap"])
+
+
+def run(a, agent=None, streams=STREAMS, prepare=None, judge=judge):
+    """The measures; research/need_reader.py passes its own agent, streams, extra checks (prepare adds them to the
+    direction file) and verdicts."""
     import torch
     torch.set_num_threads(a.threads)
     out = Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
     log = lambda m: print(m, flush=True)
     direction_file = out / "direction.json"
-    agent = WorkspaceAgent(a.adapter)
+    agent = agent or WorkspaceAgent(a.adapter)
     if (out / "lives-direction.jsonl.gz").exists():
         lives = W.read_jsonl(out / "lives-direction.jsonl.gz")
     else:
-        lives = [W.play(agent, W.world_rng(STREAMS["direction"], i), W.choice_rng(STREAMS["direction"], i))
+        lives = [W.play(agent, W.world_rng(streams["direction"], i), W.choice_rng(streams["direction"], i))
                  for i in range(a.direction_lives)]
         W.write_jsonl(out / "lives-direction.jsonl.gz", lives)
     log(f"direction lives: survival {np.mean([l['survived'] for l in lives]):.3f}")
@@ -192,7 +198,7 @@ def run(a):
         direction_file.write_text(json.dumps(direction) + "\n")
         if partial.exists():
             partial.unlink()
-    rng = np.random.default_rng([W.SEED, STREAMS["random"]])
+    rng = np.random.default_rng([W.SEED, streams["random"]])
     rand_e, rand_n = C.random_like(rng, UNITS * d_e, 3, massive), C.random_like(rng, UNITS * d_n, 3, massive)
     T = lambda x: torch.tensor(np.asarray(x, np.float32))
     conditions = {"none": None, "E": T(-UNITS * d_e), "N": T(-UNITS * d_n)}
@@ -200,6 +206,8 @@ def run(a):
     conditions.update({f"randN{i}": T(v) for i, v in enumerate(rand_n)})
     if "execution_gap" not in direction:
         direction["execution_gap"] = execution_check(agent, lives, conditions)
+        direction_file.write_text(json.dumps(direction) + "\n")
+    if prepare and prepare(direction):
         direction_file.write_text(json.dumps(direction) + "\n")
     log(json.dumps({k: v for k, v in direction.items() if k not in ("d_E", "d_N")}))
     names = list(conditions)
@@ -221,7 +229,7 @@ def run(a):
     if lives:
         log(f"resumed after {len(lives)} test lives")
     for i in range(len(lives), a.test_lives):
-        lives.append(W.play(agent, W.world_rng(STREAMS["test"], i), W.choice_rng(STREAMS["test"], i), at_decision))
+        lives.append(W.play(agent, W.world_rng(streams["test"], i), W.choice_rng(streams["test"], i), at_decision))
         if (i + 1) % 8 == 0:
             W.write_jsonl(partial_lives, lives)
         if (i + 1) % 32 == 0:
@@ -229,17 +237,16 @@ def run(a):
     W.write_jsonl(out / "lives-test.jsonl.gz", lives)
     if partial_lives.exists():
         partial_lives.unlink()
-    result = verdicts(lives, direction["replica"]["mean_gap"], direction["execution_gap"])
+    result = judge(lives, direction)
     (out / "verdicts.json").write_text(json.dumps(json.loads(json.dumps(result)), indent=1) + "\n")
     log(json.dumps(result["verdicts"]))
     log(json.dumps(result["values"]))
 
 
-def check(a):
+def check(a, judge=judge):
     out = Path(a.out)
     direction = json.loads((out / "direction.json").read_text())
-    result = verdicts(W.read_jsonl(out / "lives-test.jsonl.gz"), direction["replica"]["mean_gap"],
-                      direction["execution_gap"])
+    result = judge(W.read_jsonl(out / "lives-test.jsonl.gz"), direction)
     if C.choose_pairs(W.read_jsonl(out / "lives-direction.jsonl.gz")) != W.read_jsonl(out / "pairs.jsonl"):
         raise SystemExit("the pairs differ from those drawn from the direction lives")
     differs = json.loads(json.dumps(result)) != json.loads((out / "verdicts.json").read_text())

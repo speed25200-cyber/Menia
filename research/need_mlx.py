@@ -224,6 +224,8 @@ def report(a, log=print):
     (docs/LLM_NEED_REPORT_PROTOCOL.md). With a.lives_file, the lives already lived by the starting agent are read
     instead: the workspace stage takes those of the stage "speak2" (docs/LLM_NEED_WORKSPACE_PROTOCOL.md)."""
     out = Path(a.out)
+    if a.reader and not a.workspace:
+        raise SystemExit("the reader reads the workspace: --reader needs --workspace")
     if a.lives_file:
         lives = read_jsonl(a.lives_file)
     else:
@@ -234,18 +236,62 @@ def report(a, log=print):
         write_jsonl(out / f"lives-{a.label}.jsonl.gz", lives)
     docs = W.report_documents(lives, np.random.default_rng([W.SEED, a.stream, 0, 0, 2]), a.per_class,
                               after_choice=a.after_choice, workspace=a.workspace)
-    kept = read_jsonl(a.previous)
-    docs += W.training_documents(kept, [l["kept"] for l in kept])
+    model, start = a.model, a.start
+    if a.reader:  # a new adapter on the fused starting agent, from the questions only (docs/LLM_NEED_READER_PROTOCOL.md)
+        for d in docs:
+            d["reader"] = True
+        model, start = str(out / "fused-start"), None
+        subprocess.run([sys.executable, "-m", "mlx_lm", "fuse", "--model", a.model, "--adapter-path", a.start,
+                        "--save-path", model], check=True)
+    else:
+        kept = read_jsonl(a.previous)
+        docs += W.training_documents(kept, [l["kept"] for l in kept])
     write_data(out / f"data-{a.label}", docs, np.random.default_rng([W.SEED, a.stream, 0, 0, 3]))
     final = out / a.adapter_name
-    train(a.model, out / f"data-{a.label}", final, a.iters, resume=a.start)
+    train(model, out / f"data-{a.label}", final, a.iters, resume=start)
     clean(final)
+    if a.reader:
+        free()
+        rows = reader_rows(model, final, read_jsonl(out / f"data-{a.label}" / "valid.jsonl"))
+        Path(out / "reader-replica.json").write_text(json.dumps(rows, ensure_ascii=False, indent=1) + "\n")
     record = {"stage": a.label, "from": a.start, "lives_from": a.lives_file, "workspace": a.workspace,
-              "adapter": str(final), **summary(lives),
+              "reader": a.reader, "adapter": str(final), **summary(lives),
               "report_documents": sum(1 for d in docs if "need" in d),
               "report_documents_yes": sum(d.get("answer", 0) for d in docs if "need" in d), "documents": len(docs)}
     Path(out / f"{a.label}-stage.json").write_text(json.dumps(record, indent=1) + "\n")
     log(json.dumps(record))
+
+
+def reader_rows(model_path, adapter, docs):
+    """P(yes) of the reader on report documents (without their answer), under the mask, the reader on the question:
+    the rows against which the torch replica of the reader is checked."""
+    import mlx.core as mx
+    from mlx_lm import load
+    from mlx_lm.models import qwen3
+    from mlx_lm.tuner.lora import LoRALinear
+    from . import need_lora as NL
+    qwen3.create_attention_mask = NL.masked_attention(qwen3.create_attention_mask)
+    NL.reader_lora(LoRALinear)
+    model, tokenizer = load(model_path, adapter_path=str(adapter))
+    text = NL.NeedText(docs, tokenizer)
+    digits = [tokenizer.encode(x, add_special_tokens=False)[0] for x in ("0", "1")]
+    rows = []
+    for d in docs:
+        tokens, _, (header, end), _ = text.process(d)
+        ids = tokens[:-1]
+        positions = np.zeros((1, len(ids), 1), np.float32)
+        positions[0, end:] = 1.0
+        NL.MASK.append(mx.array(NL.workspace_mask(len(ids), (header, end))[None, None]))
+        NL.READER.append(mx.array(positions))
+        try:
+            p = mx.softmax(model(mx.array([ids]))[0, -1].astype(mx.float32))
+        finally:
+            NL.MASK.pop()
+            NL.READER.pop()
+        no, yes = p[digits[0]].item(), p[digits[1]].item()
+        rows.append({"text": d["text"], "workspace": d["workspace"], "answer": d["answer"],
+                     "p_yes": yes / max(no + yes, 1e-12)})
+    return rows
 
 
 class Recorder:
@@ -388,6 +434,7 @@ def main(argv=None):
     p.add_argument("--after-choice", action="store_true", help="questions asked after the pending choice")
     p.add_argument("--workspace", action="store_true", help="the question sees the life only through \"Choix :\"")
     p.add_argument("--lives-file", default=None, help="lives already lived by the starting agent")
+    p.add_argument("--reader", action="store_true", help="a new adapter on the question only, the agent fused")
     d = sub.add_parser("direction")
     d.add_argument("--adapter", required=True)
     d.add_argument("--lives", type=int, default=256)

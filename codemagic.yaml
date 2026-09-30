@@ -912,6 +912,16 @@ workflows:
               --lives-file artifacts/llm-need/speak2/lives-speak2.jsonl.gz --iters 600 --stream 18 --per-class 3 \
               --label workspace --adapter-name adapters-workspace --after-choice --workspace --out "$OUT" 2>&1 \
               | tee "$OUT/workspace.log" | grep -v "it/s" | tail -30
+          elif [ "$NEED_STAGE" = "reader" ]; then
+            # docs/LLM_NEED_READER_PROTOCOL.md: the final agent fused, a new adapter on the question only, the same
+            # questions under the mask; the mask and the reader are first checked on this model and this machine
+            NEED_TINY_MODEL="$MODEL" python -m unittest tests_research.test_need.MLXWorkspaceTests \
+              tests_research.test_need.MLXReaderTests -v 2>&1 | tee "$OUT/reader-check.log" | tail -5
+            python -m research.need_mlx report --start "$NEED_START" --previous none --model "$MODEL" \
+              --lives-file artifacts/llm-need/speak2/lives-speak2.jsonl.gz --iters 600 --stream 18 --per-class 3 \
+              --label reader --adapter-name adapters-reader --after-choice --workspace --reader --out "$OUT" 2>&1 \
+              | tee "$OUT/reader.log" | grep -v "it/s" | tail -30
+            rm -rf "$OUT/fused-start"
           elif [ "$NEED_STAGE" = "report" ]; then
             python -m research.need_mlx report --start "$NEED_START" --previous "$NEED_PREVIOUS" --model "$MODEL" \
               --out "$OUT/report" 2>&1 | tee "$OUT/report.log" | grep -v "it/s" | tail -30
