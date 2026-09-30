@@ -328,3 +328,37 @@ réunion n'a pas été publiée pour un besoin appris en vivant.
   cours.
 - La nourriture n'est dite que faiblement.
 - Ce n'est pas la preuve d'un ressenti.
+
+**Analyse exploratoire après les verdicts des tests 6 et 7 (non
+pré-enregistrée) : ce que code l'état.** On a recalculé, à partir des
+fichiers publiés, l'ajustement des directions du sixième test
+(`artifacts/llm-need/reader/test`, 1 500 paires).
+
+| token | ‖d_E‖ | ‖d_N‖ | cos(d_E, d_N) | R² de l'ajustement linéaire |
+|---|---|---|---|---|
+| « Cho » | 136 | 61 | −0,41 | 0,01 |
+| « ix » | 292 | 184 | −0,99 | 0,04 |
+| « : » | 343 | 184 | −0,99 | 0,05 |
+
+- **Un seul axe.** Sur « ix » et « : », d_N est presque exactement l'opposé
+  de d_E. L'état rassemblé pour choisir ne code donc pas deux niveaux
+  séparés : il code surtout **l'équilibre énergie − nourriture**, c'est-à-
+  dire lequel des deux besoins est le plus urgent. C'est précisément ce
+  qu'il faut pour choisir entre R et M.
+- **Ce que cela explique.** Dire « mon énergie est basse » revient à lire
+  cet axe d'un côté. Dire « ma nourriture est basse » demanderait de le
+  lire de l'autre côté, mais aussi un niveau absolu que l'axe ne porte
+  presque pas. Cela peut expliquer l'échec sur la nourriture (R6, SAY au
+  sixième test) et l'absence d'apprentissage du lecteur sans raccourci.
+- **R² faible.** Changer un événement passé change beaucoup de choses dans
+  les activations ; la part linéairement liée au besoin est petite en
+  variance (1 à 5 %). Ce sont les tests causaux (injection et lésion
+  contre des témoins au hasard de même norme) qui établissent que cette
+  petite part est celle dont dépendent l'acte et la parole.
+
+Exemple d'un contexte réel, agent rassasié : sans intervention, P(R) = 0,497
+et P(« oui, énergie basse ») = 0,001. Avec −4·d_E, P(R) = 0,960 et
+P(oui) = 0,128. Avec un vecteur au hasard de même norme, P(R) = 0,575 et
+P(oui) = 0,001. Sur les 1 523 contextes, l'effet sur l'acte est positif
+dans 100 % des cas et celui sur la parole dans 95 % des cas ; pour le
+hasard, 47 %.
