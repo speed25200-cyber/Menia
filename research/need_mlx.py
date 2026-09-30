@@ -20,6 +20,7 @@ from . import need_world as W
 
 LAYERS = (6, 10, 14, 18, 22)  # candidate blocks for the direction of the need (numbered from 0)
 UNITS = 4  # the injection: as if the need were UNITS lower
+ATTEMPTS = 3  # trainings, when the GPU hangs
 RANDOM_DIRECTIONS = 3
 
 
@@ -176,7 +177,11 @@ def train(model, data, adapter, iters, resume=None, seed=W.SEED):
            "--save-every", str(iters), "--seed", str(seed), "--adapter-path", str(adapter)]
     if resume:
         cmd += ["--resume-adapter-file", str(Path(resume) / "adapters.safetensors")]
-    subprocess.run(cmd, check=True)
+    for attempt in range(ATTEMPTS):  # the Mac's GPU sometimes hangs ("GPU Hang Error"): the same training again
+        if subprocess.run(cmd).returncode == 0:
+            return
+        print(f"training failed (attempt {attempt + 1} of {ATTEMPTS})", flush=True)
+    raise RuntimeError("training failed on every attempt")
 
 
 def write_data(folder, docs, rng):
