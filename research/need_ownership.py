@@ -149,7 +149,7 @@ def run(a):
             arrays["real_s"] = np.array([real[k][0] for k in keys], np.float16).reshape(len(keys), WS.K, -1)
             arrays["real_r"] = np.array([real[k][1] for k in keys], np.float32)
             arrays["real_y"] = np.array([real[k][2] for k in keys], np.float32)
-            np.savez(partial, **arrays)
+            W.save_npz(partial, **arrays)
         for kind, pairs in (("own", own), ("other", oth)):
             for i, pair in enumerate(pairs):
                 if i < len(rows[kind]):

@@ -196,8 +196,8 @@ def run(a, agent=None, streams=STREAMS, prepare=None, judge=judge, other=False):
             cf = O.choice_tail(agent, W.life_text(C.swapped(life, pair), upto=pair["t"]), pair["t"], turn["event"])
             diffs.append(cf - real[key])
             if (i + 1) % 50 == 0:
-                np.savez(partial, diffs=np.array(diffs, np.float32), states=np.array(states, np.float32),
-                         seen=np.array(seen, int).reshape(-1, 2))
+                W.save_npz(partial, diffs=np.array(diffs, np.float32), states=np.array(states, np.float32),
+                           seen=np.array(seen, int).reshape(-1, 2))
             if (i + 1) % 250 == 0:
                 log(f"  {i + 1} pairs")
         diffs, states = np.array(diffs, np.float32), np.array(states, np.float32)

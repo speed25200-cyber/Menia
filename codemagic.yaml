@@ -959,7 +959,9 @@ workflows:
             ARGS=""
             if [ "$NEED_ARGS" != "none" ]; then ARGS="$NEED_ARGS"; fi
             set +e
-            timeout "${NEED_MINUTES}m" python -m "$NEED_MEASURE" run --out "$OUT/measure" --threads "$NEED_THREADS" \
+            # macOS has no timeout(1): perl's alarm ends the slice (the partial files are saved as it goes)
+            perl -e 'alarm(shift @ARGV); exec @ARGV' $((NEED_MINUTES * 60)) \
+              python -m "$NEED_MEASURE" run --out "$OUT/measure" --threads "$NEED_THREADS" \
               $ARGS > "$OUT/measure.log" 2>&1
             echo "exit $?" >> "$OUT/measure.log"
             set -e

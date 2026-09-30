@@ -243,6 +243,15 @@ class Coin:
         pass
 
 
+def write_atomic(path, data):
+    """Writes the bytes to a temporary file then renames it, so that a run cut off (the Mac's slices) never leaves a
+    half-written file behind."""
+    path = Path(path)
+    tmp = path.with_name(path.name + ".tmp")
+    tmp.write_bytes(data)
+    tmp.replace(path)
+
+
 def write_jsonl(path, rows):
     """JSON lines, gzipped (without a timestamp, so that the same rows give the same bytes) when the name ends in
     .gz."""
@@ -252,7 +261,13 @@ def write_jsonl(path, rows):
         with gzip.GzipFile(filename="", mode="wb", fileobj=buffer, mtime=0) as f:
             f.write(text)
         text = buffer.getvalue()
-    Path(path).write_bytes(text)
+    write_atomic(path, text)
+
+
+def save_npz(path, **arrays):
+    buffer = io.BytesIO()
+    np.savez(buffer, **arrays)
+    write_atomic(path, buffer.getvalue())
 
 
 def read_jsonl(path):
