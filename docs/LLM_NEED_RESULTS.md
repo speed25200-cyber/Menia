@@ -266,3 +266,65 @@ Précautions : 808 tours vécus avec un besoin à 2 ou moins, sur 256 vies.
   vient des événements passés ; le lecteur l'utilise peu, d'où
   l'injection sans effet (+0,009). Pour l'énergie, la direction qui fait
   agir est celle que le lecteur lit.
+
+## Septième test pré-enregistré : sans cet état, ni agir ni dire
+
+Protocole `docs/LLM_NEED_NECESSITY_PROTOCOL.md` (commit `732ed1c`, avant tout
+code ; écrit après avoir lu 112 vies du sixième test).
+
+**Dispositif.**
+
+- **Agent** : l'agent qui agit et son lecteur du sixième test, rejoués en
+  torch sur CPU.
+- **Lésion** : au bloc 12, sur les trois tokens « Choix : », les
+  coordonnées dans le plan (d_E, d_N) du sixième test sont remplacées par
+  leur moyenne.
+  - La moyenne est prise sur 3 403 décisions des 128 vies de direction du
+    sixième test, toutes rejouées à l'identique.
+  - Témoin : un plan au hasard par token.
+- **Contrôle d'exécution** : 3e-7.
+- **Mondes neufs** : 256 vies, chacune vécue trois fois (intacte, lésée,
+  lésée au hasard). Dans les vies intactes, les deux questions sont lues
+  à chaque décision sans lésion, avec et au hasard, soit 6 618 décisions.
+
+Artefacts dans `artifacts/llm-need/reader/necessity`, verdicts vérifiés en
+CI (`python -m research.need_necessity verdicts`). Les résultats partiels
+ont été lus à 8, 64, 256 vies intactes et à 32 vies lésées ; rien n'a été
+changé.
+
+**Validité : passée.**
+
+| | Prédiction | Mesure | Verdict |
+|---|---|---|---|
+| **LS7** | Sans l'état, l'agent ne sait plus survivre | survie 0,676 → 0,203 : baisse 0,473 [0,410 ; 0,535] ; lésion au hasard : 0,676 (baisse 0,000) | **passe** |
+| **LR7** | Sans l'état, l'agent ne sait plus dire son énergie | exactitude (énergie) 0,750 → 0,500 : baisse 0,250 [0,233 ; 0,268] ; lésion au hasard : baisse 0,000 | **passe** |
+| | **Critère global** | | **satisfait** |
+
+Nourriture, sans seuil : exactitude 0,745 → 0,671 avec la lésion (baisse
+0,074 [0,057 ; 0,090]), aucune baisse au hasard.
+
+Précautions : tours vécus avec un besoin à 2 ou moins : intact 755, lésion
+1 037, lésion au hasard 749.
+
+**Ce que cela dit, avec le sixième test.** Chez cet agent, pour
+l'énergie, un même état interne est à la fois :
+
+- **suffisant** : le pousser fait agir (+0,156) et dire (+0,202) ;
+- **nécessaire** : l'effacer fait tomber la survie de 0,68 à 0,20, et le
+  rapport au niveau du hasard (0,50).
+
+Des interventions au hasard de même force ne font rien.
+
+L'état a été appris par la seule satisfaction du besoin. Le lecteur ne voit
+la vie qu'à travers lui et ne peut pas le modifier. L'acte et la parole
+dépendent donc causalement de lui, dans les deux sens.
+
+À notre connaissance (`docs/LITERATURE_CHECK_READER_2026-09-30.md`), cette
+réunion n'a pas été publiée pour un besoin appris en vivant.
+
+**Limites.**
+
+- Un seul agent pour l'instant ; la réplication sur un second agent est en
+  cours.
+- La nourriture n'est dite que faiblement.
+- Ce n'est pas la preuve d'un ressenti.

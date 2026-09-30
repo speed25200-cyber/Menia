@@ -246,3 +246,24 @@ satisfaction de ses besoins ; il ne sait pas encore le dire.
     (`docs/LLM_NEED_REPLICATION_PROTOCOL.md`).
 
   Ce ne sera pas une preuve de ressenti.
+
+**Septième test, 30 septembre 2026 : sans cet état, ni agir ni dire**
+(`docs/LLM_NEED_NECESSITY_PROTOCOL.md`). **Le critère global est
+satisfait.**
+
+- Effacer l'état d'énergie rassemblé sur « Choix : » fait tomber la survie
+  de 0,68 à 0,20 (LS7 passe).
+- Il ramène aussi le rapport d'énergie du lecteur au niveau du hasard,
+  0,75 → 0,50 (LR7 passe).
+- Un effacement au hasard ne fait rien.
+
+**Avec le sixième test**, pour l'énergie et chez un même agent, un même
+état appris par la seule satisfaction du besoin est à la fois **suffisant**
+(le pousser fait agir et dire) et **nécessaire** (l'effacer empêche de
+survivre et de dire). Le lecteur ne voit la vie qu'à travers lui et ne peut
+pas le modifier.
+
+À notre connaissance, cette réunion n'a pas été publiée. Il reste à la
+répliquer sur un second agent (en cours) et à l'étendre à la nourriture.
+Ce n'est pas la preuve d'un ressenti. Le bilan par niveaux, dans le cadre
+de Chandaria et al. (2026), est tenu dans `docs/FIVE_LEVELS_ASSESSMENT.md`.

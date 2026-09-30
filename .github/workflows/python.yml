@@ -91,6 +91,7 @@ jobs:
       - run: python -m research.need_causal verdicts
       - run: python -m research.need_speak verdicts
       - run: python -m research.need_reader verdicts
+      - run: python -m research.need_necessity verdicts
       - run: python scripts/check_reliability_artifacts.py
       - run: python scripts/check_self_model_artifacts.py
       - run: python scripts/audit_self_monitor_information.py

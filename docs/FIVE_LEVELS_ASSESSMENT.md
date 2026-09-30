@@ -53,7 +53,7 @@ dit (niveau 2).
 |---|---|---|
 | Un état interne rassemblé et utilisé pour agir | Au bloc 12, sur « Choix : », l'agent rassemble son besoin. L'effacer fait tomber la survie de 0,68 à 0,21 ; un effacement au hasard ne fait rien (second test, LS2 passe). | **établi** |
 | Accès à cet état pour le rapport (« espace de travail ») | Pousser cet état vers « énergie basse » fait agir (+0,156) **et** dire (+0,202) ; poussées au hasard : 0,013 et 0,006 (sixième test, ONE6 passe). | **établi (énergie)** |
-| Nécessité de cet état pour le rapport | Septième test en cours. Sur les 64 premières vies (aperçu déclaré), l'effacer ramène le rapport d'énergie au hasard (0,74 → 0,50) sans toucher celui de la nourriture. | **en cours** |
+| Nécessité de cet état pour agir et pour dire | L'effacer fait tomber la survie de 0,676 à 0,203, et le rapport d'énergie au hasard (0,750 → 0,500) ; un effacement au hasard ne fait rien (septième test, LS7 et LR7 passent). | **établi (énergie)** |
 | Nourriture | L'état fait agir (+0,107) mais n'est pas lu (+0,009). Le huitième test retire le raccourci par l'événement du tour. | **échoue ; en cours** |
 | Capacité limitée : forcer la parole dans l'état | Au cinquième test, forcer la question à passer par « Choix : » réécrit l'état : l'agent survit à 0,36 sur ses vies de direction. Le verdict reste à publier. | **observé** |
 
@@ -69,7 +69,7 @@ dit (niveau 2).
 | Indicateur | Résultat | Statut |
 |---|---|---|
 | Homéostasie, auto-maintien | Deux besoins à maintenir ; l'agent apprend à les maintenir, et sa survie en dépend. | **établi (au sens fonctionnel)** |
-| Intéroception | L'agent ne voit jamais ses niveaux. Il les infère et les rassemble en un état interne, que le lecteur lit. | **établi (énergie)** |
+| Intéroception | L'agent ne voit jamais ses niveaux. Il les infère et les rassemble en un état interne, que le lecteur lit. Cet état est suffisant et nécessaire pour agir et pour dire (tests 6 et 7). | **établi (énergie)** |
 | États de valence | Le seul signal d'apprentissage est la réduction du manque : un état de valence fonctionnel. Nous n'avons pas mesuré de valence « vécue » : aucun test connu ne le permet. | **fonctionnel seulement** |
 | Modèle de soi, possession | Le test « À qui est ce besoin ? » (`docs/LLM_NEED_OWNERSHIP_PROTOCOL.md`) est pré-enregistré, et son code est en cours d'écriture. | **manque ; pré-enregistré** |
 
@@ -96,8 +96,9 @@ Voir `docs/LITERATURE_CHECK_READER_2026-09-30.md`.
 
 ## Ce qui manque, par ordre de priorité
 
-1. Nécessité de l'état pour la parole (septième test, en cours).
-2. Réplication sur un second agent appris de zéro (en cours).
+1. Réplication sur un second agent appris de zéro (en cours ; son lecteur a
+   moins bien appris que le premier).
+2. La nécessité est établie (septième test).
 3. Les deux besoins, pas seulement l'énergie (huitième test).
 4. La possession : mon besoin, pas celui de l'autre (pré-enregistré).
 5. La persistance : l'état d'un tour est-il repris au tour suivant ?
