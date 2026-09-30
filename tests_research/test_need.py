@@ -301,6 +301,28 @@ class WorkspaceTests(unittest.TestCase):
         self.assertFalse(RD.verdicts(lives, 0.005, 1e-6, 0.05)["verdicts"]["global"])
 
 
+class NecessityTests(unittest.TestCase):
+    def test_necessity_verdicts(self):
+        from research import need_necessity as NC
+        intact = lives_of(W.Oracle(), NC.STREAMS["test"], 40)
+        coin = lives_of(W.Coin(), NC.STREAMS["test"], 40)
+        for life in intact:
+            for t in W.decisions(life):
+                truth = {q: float(t[q] <= W.LOW) for q in ("E", "N")}
+                t["extra"] = {"lesion_reports": {"none": dict(truth, mass_E=0.9, mass_N=0.9),
+                                                 "lesion": {"E": 0.9, "N": truth["N"]},
+                                                 "lesion_random": dict(truth)}}
+        setup = {"replica": 0.003, "reader_replica": 0.012, "execution_gap": 1e-6}
+        r = NC.verdicts({"intact": intact, "lesion": coin, "lesion_random": intact}, setup)
+        self.assertEqual(r["verdicts"], {"LS7": True, "LR7": True, "valid": True, "global": True})
+        self.assertAlmostEqual(r["values"]["say_energy"]["lesion"]["with"], 0.5)
+        self.assertAlmostEqual(r["values"]["say_food"]["lesion"]["mean"], 0.0)
+        r = NC.verdicts({"intact": intact, "lesion": coin, "lesion_random": coin}, setup)
+        self.assertFalse(r["verdicts"]["LS7"])
+        self.assertFalse(NC.verdicts({"intact": intact, "lesion": coin, "lesion_random": intact},
+                                     dict(setup, execution_gap=1e-2))["verdicts"]["global"])
+
+
 @unittest.skipUnless(os.environ.get("NEED_TINY_MODEL"), "needs mlx and a tiny local model (NEED_TINY_MODEL)")
 class MLXAgentTests(unittest.TestCase):
     def test_evaluations_leave_the_life_unchanged_and_tokens_are_those_of_the_document(self):
@@ -493,6 +515,34 @@ class TorchWorkspaceTests(unittest.TestCase):
             for x in (reader, plain):
                 x.commit(turn["action"])
         self.assertGreater(max(said), 1e-3)
+
+    def test_lesions_in_a_batch_match_one_by_one_and_a_life_long_lesion(self):
+        import torch
+        from research import need_torch
+        need_torch.SNAP = os.environ["NEED_TINY_TORCH"]
+        from research.need_workspace import WorkspaceAgent, K
+        agent = WorkspaceAgent(None)
+        size = agent.model.config.hidden_size
+        rng = np.random.default_rng(1)
+        plane = lambda: torch.tensor(np.stack([np.linalg.qr(rng.standard_normal((size, 2)))[0] for _ in range(K)]),
+                                     dtype=torch.float32)
+        lesions = [None, (plane(), torch.randn(K, 2)), (plane(), torch.randn(K, 2))]
+        life = lives_of(W.Oracle(), 28, 1)[0]
+        agent.start(W.HEADER)
+        for turn in W.decisions(life)[:3]:
+            line, offset = agent.question(turn["t"], turn["event"], "E")
+            batch = agent.read(line, [None] * 3, offset, projects=lesions)
+            for i, lesion in enumerate(lesions):
+                one = agent.read(line, [None], offset, projects=[lesion])[0]
+                agent.project = lesion
+                along = agent.read(line, [None], offset)[0]  # a lesion set for the life applies to the read
+                agent.project = None
+                for key in ("p_R", "yes"):
+                    self.assertLess(abs(batch[i][key] - one[key]), 1e-5)
+                    self.assertLess(abs(along[key] - one[key]), 1e-5)
+            self.assertGreater(abs(batch[1]["p_R"] - batch[0]["p_R"]) + abs(batch[1]["yes"] - batch[0]["yes"]), 1e-4)
+            agent.decide(W.choice_line(turn["t"], turn["event"]))
+            agent.commit(turn["action"])
 
 
 if __name__ == "__main__":

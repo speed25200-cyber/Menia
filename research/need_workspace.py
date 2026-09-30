@@ -49,21 +49,29 @@ class WorkspaceAgent(C.TorchAgent):
 
     def _hook(self, mod, inp, out):
         h = out[0] if isinstance(out, tuple) else out
-        if self.add is None and not self.capture:
+        if self.add is None and self.project is None and not self.capture:
             return out
         h = h.clone()
         start, end = -(self.tail + self.offset), (-self.offset if self.offset else None)
+        if self.project is not None:  # per-token planes (K x D x 2) and means (K x 2), or one per sequence
+            u, mean = self.project
+            tail = h[:, start:end]
+            pattern = "btd,btdk->btk" if u.dim() == 4 else "btd,tdk->btk"
+            coord = self.torch.einsum(pattern, tail, u)
+            h[:, start:end] = tail - self.torch.einsum(pattern.replace("btd,", "btk,").replace("->btk", "->btd"),
+                                                       coord - mean, u)
         if self.add is not None:
             h[:, start:end] = h[:, start:end] + self.add
         if self.capture:
             self.captured = h[0, start:end].detach().numpy().copy()
         return (h,) + tuple(out[1:]) if isinstance(out, tuple) else h
 
-    def read(self, line, adds, offset, masked=True, cached=True):
+    def read(self, line, adds, offset, masked=True, cached=True, projects=None):
         """For each vector of `adds` (None: nothing added) on the three "Choix :" tokens, offset tokens before the end
         of the line run after the life: [P(R), mass R+M] at " :" and [P(1), mass 0+1] at the end. Under the mask, the
         tokens after "Choix :" see only the header, "Choix :" and themselves. The life's cache is left untouched;
-        cached=False runs the whole text from scratch (the execution check)."""
+        cached=False runs the whole text from scratch (the execution check). projects, one (planes, means) or None
+        per sequence, replaces the coordinates in the planes by the means before the addition (the lesion)."""
         torch = self.torch
         self._flush()
         full, new = self._new(self.text + line)
@@ -83,13 +91,18 @@ class WorkspaceAgent(C.TorchAgent):
         if any(a is not None for a in adds):
             zero = torch.zeros(K, self.model.config.hidden_size)
             self.add = torch.stack([zero if a is None else a for a in adds])
+        saved = self.project  # a lesion set for the whole life applies to the read unless projects replaces it
+        if projects is not None and any(p is not None for p in projects):
+            none = (torch.zeros(K, self.model.config.hidden_size, 2), torch.zeros(K, 2))
+            projects = [none if p is None else p for p in projects]
+            self.project = (torch.stack([u for u, _ in projects]), torch.stack([m for _, m in projects]))
         self.offset = offset
         keep = torch.tensor([len(run) - 1 - offset, len(run) - 1])  # " :" and the end
         with torch.no_grad():
             self.calls += 1
             logits = self.model(torch.tensor([run] * batch), past_key_values=cache, attention_mask=mask,
                                 use_cache=True, logits_to_keep=keep).logits
-        self.add, self.offset = None, 0
+        self.add, self.project, self.offset = None, saved, 0
         if cached and batch == 1:
             self.cache.crop(-len(run))  # a negative value removes that many tokens
         p = torch.softmax(logits.float(), -1)
