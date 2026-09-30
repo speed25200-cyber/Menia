@@ -13,6 +13,7 @@ export/
 # LoRA adapters of the need experiment, resumed by the next build (docs/LLM_NEED_PROTOCOL.md)
 !artifacts/llm-need/*/adapters-*/adapters.safetensors
 !artifacts/llm-need/*/*/adapters-*/adapters.safetensors
+!artifacts/llm-need/*/*/*/adapters-*/adapters.safetensors
 *.gguf
 *.xcuserstate
 xcuserdata/
