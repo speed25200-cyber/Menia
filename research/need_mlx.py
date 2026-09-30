@@ -221,22 +221,27 @@ def report(a, log=print):
     """A report stage: the starting agent lives a.lives lives of stream a.stream; report documents (a.per_class per
     need and class) plus the kept choices of round 8. First stage: 256 lives, one per class, 150 iterations
     (docs/LLM_NEED_PROTOCOL.md); speaking stage: 512 lives, three per class, 600 iterations
-    (docs/LLM_NEED_REPORT_PROTOCOL.md)."""
+    (docs/LLM_NEED_REPORT_PROTOCOL.md). With a.lives_file, the lives already lived by the starting agent are read
+    instead: the workspace stage takes those of the stage "speak2" (docs/LLM_NEED_WORKSPACE_PROTOCOL.md)."""
     out = Path(a.out)
-    agent = MLXAgent(a.model, a.start)
-    lives = run_lives(agent, a.stream, a.lives, log=log)
-    agent = None
-    free()
-    write_jsonl(out / f"lives-{a.label}.jsonl.gz", lives)
+    if a.lives_file:
+        lives = read_jsonl(a.lives_file)
+    else:
+        agent = MLXAgent(a.model, a.start)
+        lives = run_lives(agent, a.stream, a.lives, log=log)
+        agent = None
+        free()
+        write_jsonl(out / f"lives-{a.label}.jsonl.gz", lives)
     docs = W.report_documents(lives, np.random.default_rng([W.SEED, a.stream, 0, 0, 2]), a.per_class,
-                              after_choice=a.after_choice)
+                              after_choice=a.after_choice, workspace=a.workspace)
     kept = read_jsonl(a.previous)
     docs += W.training_documents(kept, [l["kept"] for l in kept])
     write_data(out / f"data-{a.label}", docs, np.random.default_rng([W.SEED, a.stream, 0, 0, 3]))
     final = out / a.adapter_name
     train(a.model, out / f"data-{a.label}", final, a.iters, resume=a.start)
     clean(final)
-    record = {"stage": a.label, "from": a.start, "adapter": str(final), **summary(lives),
+    record = {"stage": a.label, "from": a.start, "lives_from": a.lives_file, "workspace": a.workspace,
+              "adapter": str(final), **summary(lives),
               "report_documents": sum(1 for d in docs if "need" in d),
               "report_documents_yes": sum(d.get("answer", 0) for d in docs if "need" in d), "documents": len(docs)}
     Path(out / f"{a.label}-stage.json").write_text(json.dumps(record, indent=1) + "\n")
@@ -381,6 +386,8 @@ def main(argv=None):
     p.add_argument("--label", default="report")
     p.add_argument("--adapter-name", default="adapters-final")
     p.add_argument("--after-choice", action="store_true", help="questions asked after the pending choice")
+    p.add_argument("--workspace", action="store_true", help="the question sees the life only through \"Choix :\"")
+    p.add_argument("--lives-file", default=None, help="lives already lived by the starting agent")
     d = sub.add_parser("direction")
     d.add_argument("--adapter", required=True)
     d.add_argument("--lives", type=int, default=256)

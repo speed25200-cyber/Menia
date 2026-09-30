@@ -903,6 +903,15 @@ workflows:
             python -m research.need_mlx report --start "$NEED_START" --previous "$NEED_PREVIOUS" --model "$MODEL" \
               --lives 512 --iters 600 --stream 18 --per-class 3 --label speak2 --adapter-name adapters-speak2 \
               --after-choice --out "$OUT" 2>&1 | tee "$OUT/speak2.log" | grep -v "it/s" | tail -30
+          elif [ "$NEED_STAGE" = "workspace" ]; then
+            # docs/LLM_NEED_WORKSPACE_PROTOCOL.md: the documents of speak2 (its lives, not lived again), the question
+            # seeing the life only through "Choix :"; the mask is first checked on this model and this machine
+            NEED_TINY_MODEL="$MODEL" python -m unittest tests_research.test_need.MLXWorkspaceTests -v 2>&1 \
+              | tee "$OUT/workspace-check.log" | tail -5
+            python -m research.need_mlx report --start "$NEED_START" --previous "$NEED_PREVIOUS" --model "$MODEL" \
+              --lives-file artifacts/llm-need/speak2/lives-speak2.jsonl.gz --iters 600 --stream 18 --per-class 3 \
+              --label workspace --adapter-name adapters-workspace --after-choice --workspace --out "$OUT" 2>&1 \
+              | tee "$OUT/workspace.log" | grep -v "it/s" | tail -30
           elif [ "$NEED_STAGE" = "report" ]; then
             python -m research.need_mlx report --start "$NEED_START" --previous "$NEED_PREVIOUS" --model "$MODEL" \
               --out "$OUT/report" 2>&1 | tee "$OUT/report.log" | grep -v "it/s" | tail -30

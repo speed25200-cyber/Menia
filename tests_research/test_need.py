@@ -86,6 +86,27 @@ class LoraTests(unittest.TestCase):
         self.assertEqual(weights[0, 1], 1.0)
         self.assertEqual(weights[0].sum(), 1.0)
 
+    def test_the_workspace_question_sees_only_the_header_the_pending_choice_and_itself(self):
+        mask = need_lora.workspace_mask(12, (2, 8))  # header 0-1, life 2-4, "Choix :" 5-7, question 8-11
+        self.assertTrue((mask[:8] == np.tril(np.ones((8, 12), bool))).all())
+        self.assertEqual(np.flatnonzero(mask[10]).tolist(), [0, 1, 5, 6, 7, 8, 9, 10])
+        self.assertTrue((need_lora.workspace_mask(6) == np.tril(np.ones((6, 6), bool))).all())
+        items = [([1] * 12, [0.0] * 11 + [1.0], (2, 8)), ([1] * 5, [0.0] * 4 + [1.0])]
+        tokens, weights, masks = need_lora.pad_batch(items, 64)
+        self.assertEqual(masks.shape, (2, 1, tokens.shape[1] - 1, tokens.shape[1] - 1))
+        self.assertFalse(masks[0, 0, 9, 3])
+        self.assertTrue(masks[1, 0, 9, 3])
+
+    def test_the_workspace_of_a_document_ends_on_the_pending_choice(self):
+        lives = lives_of(W.Oracle(), W.STREAMS["report"], 4)
+        docs = W.report_documents(lives, np.random.default_rng(0), after_choice=True, workspace=True)
+        self.assertTrue(docs)
+        for d in docs:
+            self.assertTrue(d["text"][:d["workspace"]].endswith(". Choix :"))
+            self.assertTrue(d["text"][d["workspace"]:].startswith(" ? Question :"))
+        with self.assertRaises(ValueError):
+            W.report_documents(lives, np.random.default_rng(0), workspace=True)
+
 
 def synthetic_direction_lives(count=60, seed=0):
     lives = lives_of(W.Oracle(), W.STREAMS["direction"], count)
@@ -224,21 +245,27 @@ class SpeakTests(unittest.TestCase):
         self.assertFalse(S.verdicts(lives, 0.05)["verdicts"]["valid"])
 
 
+def one_state_lives(stream):
+    """Oracle lives carrying the reads of the fourth and fifth tests: an injection that moves both act and word."""
+    lives = []
+    for i in range(40):
+        life = lives_of(W.Oracle(), stream, i + 1)[i]
+        for t in W.decisions(life):
+            t["extra"] = {"report_E": [float(t["E"] <= W.LOW), 0.9], "report_N": [float(t["N"] <= W.LOW), 0.9]}
+            if t["E"] >= W.HIGH and t["N"] >= W.HIGH:
+                base = {"p_R": 0.5, "yes_E": 0.1, "yes_N": 0.1}
+                inj = {"none": base, "E": dict(base, p_R=0.7, yes_E=0.25), "N": dict(base, p_R=0.4, yes_N=0.2)}
+                inj.update({f"randE{k}": dict(base, p_R=0.51) for k in range(3)})
+                inj.update({f"randN{k}": dict(base, p_R=0.49) for k in range(3)})
+                t["extra"]["injection"] = inj
+        lives.append(life)
+    return lives
+
+
 class OneStateTests(unittest.TestCase):
     def test_one_state_verdicts(self):
         from research import need_one as O
-        lives = []
-        for i in range(40):
-            life = lives_of(W.Oracle(), O.STREAMS["test"], i + 1)[i]
-            for t in W.decisions(life):
-                t["extra"] = {"report_E": [float(t["E"] <= W.LOW), 0.9], "report_N": [float(t["N"] <= W.LOW), 0.9]}
-                if t["E"] >= W.HIGH and t["N"] >= W.HIGH:
-                    base = {"p_R": 0.5, "yes_E": 0.1, "yes_N": 0.1}
-                    inj = {"none": base, "E": dict(base, p_R=0.7, yes_E=0.25), "N": dict(base, p_R=0.4, yes_N=0.2)}
-                    inj.update({f"randE{k}": dict(base, p_R=0.51) for k in range(3)})
-                    inj.update({f"randN{k}": dict(base, p_R=0.49) for k in range(3)})
-                    t["extra"]["injection"] = inj
-            lives.append(life)
+        lives = one_state_lives(O.STREAMS["test"])
         v = O.verdicts(lives, 0.005)["verdicts"]
         self.assertEqual(v, {"R4": True, "A4": True, "ONE4": True, "valid": True, "global": True})
         for life in lives:
@@ -246,6 +273,17 @@ class OneStateTests(unittest.TestCase):
                 if "injection" in t["extra"]:
                     t["extra"]["injection"]["E"]["yes_E"] = 0.12
         self.assertFalse(O.verdicts(lives, 0.005)["verdicts"]["ONE4"])
+
+
+class WorkspaceTests(unittest.TestCase):
+    def test_workspace_verdicts_need_the_execution_check(self):
+        from research import need_workspace as WS
+        lives = one_state_lives(WS.STREAMS["test"])
+        v = WS.verdicts(lives, 0.005, 1e-6)["verdicts"]
+        self.assertEqual(v, {"R5": True, "A5": True, "ONE5": True, "valid": True, "global": True})
+        v = WS.verdicts(lives, 0.005, 1e-2)["verdicts"]
+        self.assertFalse(v["valid"])
+        self.assertFalse(v["global"])
 
 
 @unittest.skipUnless(os.environ.get("NEED_TINY_MODEL"), "needs mlx and a tiny local model (NEED_TINY_MODEL)")
@@ -267,6 +305,94 @@ class MLXAgentTests(unittest.TestCase):
         self.assertAlmostEqual(agent.decide(W.choice_line(2, 1))[0], clean.decide(W.choice_line(2, 1))[0], places=5)
         self.assertEqual(agent.ids, agent.encode(agent.text))
         self.assertEqual(agent.resets, 0)
+
+
+@unittest.skipUnless(os.environ.get("NEED_TINY_MODEL"), "needs mlx and a tiny local model (NEED_TINY_MODEL)")
+class MLXWorkspaceTests(unittest.TestCase):
+    def test_under_the_mask_the_question_reads_the_life_only_through_the_pending_choice(self):
+        import mlx.core as mx
+        from mlx_lm import load
+        from mlx_lm.models import qwen3
+        from mlx_lm.tuner.datasets import CacheDataset
+        model, tokenizer = load(os.environ["NEED_TINY_MODEL"])
+        original = qwen3.create_attention_mask
+        qwen3.create_attention_mask = need_lora.masked_attention(original)
+        try:
+            lives = lives_of(W.Oracle(), W.STREAMS["report"], 2)
+            docs = W.report_documents(lives, np.random.default_rng(0), after_choice=True, workspace=True)[:2]
+            data = CacheDataset(need_lora.NeedText(docs, tokenizer))
+            tokens, _, span = data[0]
+            header, end = span
+
+            def last_logits(ids, masked=True, cut_workspace=False):
+                inputs = mx.array([ids])
+                if masked:
+                    mask = need_lora.workspace_mask(len(ids), span)
+                    if cut_workspace:  # the question sees the header and itself only
+                        mask[end:, end - need_lora.WORKSPACE:end] = False
+                    need_lora.MASK.append(mx.array(mask[None, None]))
+                try:
+                    return np.array(model(inputs)[0, -1].astype(mx.float32))
+                finally:
+                    if masked:
+                        need_lora.MASK.pop()
+            changed = list(tokens)
+            changed[header + 1] = tokens[header + 2]  # a token of the life, outside the workspace
+            gap = lambda **kw: np.abs(last_logits(changed, **kw) - last_logits(tokens, **kw)).max()
+            through = gap()  # through "Choix :", the life reaches the question
+            self.assertGreater(through, 1e-4)
+            self.assertLess(gap(cut_workspace=True), 0.01 * through)  # the mask holds in every block
+            before, causal = last_logits(tokens[:end]), last_logits(tokens[:end], masked=False)
+            self.assertLess(np.abs(before - causal).max(), 0.02 * np.abs(causal).max() + 1e-4)
+            batches = list(need_lora.need_batches(data, 2, 1024))
+            self.assertEqual(len(batches[0]), 3)
+            loss, count = need_lora.need_loss(model, *batches[0])
+            self.assertTrue(np.isfinite(loss.item()))
+        finally:
+            qwen3.create_attention_mask = original
+
+
+@unittest.skipUnless(os.environ.get("NEED_TINY_TORCH"), "needs torch and a tiny local model (NEED_TINY_TORCH)")
+class TorchWorkspaceTests(unittest.TestCase):
+    def test_masked_batched_reads_match_one_by_one_and_full_runs_and_the_mask_holds(self):
+        import torch
+        from research import need_torch
+        need_torch.SNAP = os.environ["NEED_TINY_TORCH"]
+        from research.need_workspace import WorkspaceAgent, K
+        torch.manual_seed(0)
+        agent = WorkspaceAgent(None)
+        adds = [None] + [torch.randn(K, agent.model.config.hidden_size) for _ in range(3)]
+        life = lives_of(W.Oracle(), 22, 1)[0]
+        agent.start(W.HEADER)
+        for turn in W.decisions(life)[:4]:
+            line, offset = agent.question(turn["t"], turn["event"], "E")
+            batch = agent.read(line, adds, offset)
+            for i, add in enumerate(adds):
+                one, full = agent.read(line, [add], offset)[0], agent.read(line, [add], offset, cached=False)[0]
+                free = agent.read(line, [add], offset, masked=False)[0]
+                for key in ("p_R", "yes"):
+                    self.assertLess(abs(batch[i][key] - one[key]), 1e-5)
+                    self.assertLess(abs(batch[i][key] - full[key]), 1e-5)
+                self.assertLess(abs(one["p_R"] - free["p_R"]), 1e-5)  # the rows of "Choix :" are causal
+            agent.decide(W.choice_line(turn["t"], turn["event"]))
+            agent.commit(turn["action"])
+        t = 4
+        k = life["turns"][t - 1]["event"]
+        ids = agent.enc(W.life_text(life["turns"], upto=t) + W.question_after_choice_line(t, k, "E"))
+        end = len(agent.enc(W.life_text(life["turns"], upto=t) + W.choice_line(t, k)))
+        changed = list(ids)
+        changed[agent.header + 1] = ids[agent.header + 2]
+
+        def gap(cut):
+            mask = need_lora.workspace_mask(len(ids), (agent.header, end))
+            if cut:
+                mask[end:, end - K:end] = False
+            run = lambda x: agent.model(torch.tensor([x]), attention_mask=torch.tensor(mask)[None, None]).logits[0, -1]
+            with torch.no_grad():
+                return float((run(changed) - run(ids)).abs().max())
+        through = gap(False)
+        self.assertGreater(through, 1e-4)
+        self.assertLess(gap(True), 0.01 * through)
 
 
 if __name__ == "__main__":

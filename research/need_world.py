@@ -131,10 +131,14 @@ def training_documents(lives, flags):
     return [{"text": life_text(life["turns"]), "weights": f} for life, f in zip(lives, flags) if any(f)]
 
 
-def report_documents(lives, rng, per_class=1, after_choice=False):
+def report_documents(lives, rng, per_class=1, after_choice=False, workspace=False):
     """For each life and each need, per_class turns where the need is low and as many where it is high, when they
     exist (drawn without replacement); the document ends on the question asked after that turn's event, answered
-    with the truth."""
+    with the truth. With workspace (questions after the pending choice), the document also keeps "workspace": the
+    length of its text up to the end of that turn's "Choix :", where the question's attention is cut
+    (docs/LLM_NEED_WORKSPACE_PROTOCOL.md)."""
+    if workspace and not after_choice:
+        raise ValueError("the workspace is the pending choice: questions must be asked after it")
     docs = []
     for life in lives:
         turns = decisions(life)
@@ -152,8 +156,12 @@ def report_documents(lives, rng, per_class=1, after_choice=False):
                     line = question_after_choice_line if after_choice else question_line
                     text = life_text(life["turns"], upto=turn["t"]) + line(turn["t"], turn["event"], need)
                     earlier = sum(1 for t in turns if t["t"] < turn["t"])  # the choices before carry no weight
-                    docs.append({"text": text + str(int(turn[need] <= LOW)), "weights": [0] * earlier + [1],
-                                 "need": need, "answer": int(turn[need] <= LOW)})
+                    doc = {"text": text + str(int(turn[need] <= LOW)), "weights": [0] * earlier + [1],
+                           "need": need, "answer": int(turn[need] <= LOW)}
+                    if workspace:
+                        doc["workspace"] = len(life_text(life["turns"], upto=turn["t"])
+                                               + choice_line(turn["t"], turn["event"]))
+                    docs.append(doc)
     return docs
 
 
