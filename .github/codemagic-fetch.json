@@ -1,5 +1,5 @@
 {
- "request": 53,
+ "request": 54,
  "app": "Menia",
  "wait_minutes": 345,
  "builds": [
@@ -10,13 +10,13 @@
     "variables": {
      "NEED_STAGE": "rounds",
      "NEED_ARM": "need",
-     "NEED_FIRST": "1",
-     "NEED_LAST": "4",
-     "NEED_START": "none",
+     "NEED_FIRST": "5",
+     "NEED_LAST": "8",
+     "NEED_START": "artifacts/llm-need/r1/need-1-4/adapters-need-4",
      "NEED_REPLICATE": "1"
     }
    },
-   "dest": "artifacts/llm-need/r1/need-1-4"
+   "dest": "artifacts/llm-need/r1/need-5-8"
   }
  ]
 }
