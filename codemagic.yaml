@@ -873,7 +873,7 @@ workflows:
         NEED_TESTS: "final control base lesion lesion_random"
         NEED_REPLICATE: "0"
         NEED_MEASURE: "none"
-        NEED_ARGS: ""
+        NEED_ARGS: "none"
         NEED_RESUME: "none"
         NEED_MINUTES: "100"
         NEED_THREADS: "4"
@@ -953,9 +953,11 @@ workflows:
               cp -R "$NEED_RESUME"/. "$OUT/measure/"
               for f in "$OUT"/measure/resume-*; do if [ -e "$f" ]; then mv "$f" "$OUT/measure/partial-${f##*/resume-}"; fi; done
             fi
+            ARGS=""
+            if [ "$NEED_ARGS" != "none" ]; then ARGS="$NEED_ARGS"; fi
             set +e
             timeout "${NEED_MINUTES}m" python -m "$NEED_MEASURE" run --out "$OUT/measure" --threads "$NEED_THREADS" \
-              $NEED_ARGS > "$OUT/measure.log" 2>&1
+              $ARGS > "$OUT/measure.log" 2>&1
             echo "exit $?" >> "$OUT/measure.log"
             set -e
             grep -v "Loading weights" "$OUT/measure.log" | tail -20
