@@ -1,5 +1,5 @@
 {
- "request": 59,
+ "request": 60,
  "app": "Menia",
  "wait_minutes": 345,
  "builds": [
@@ -9,11 +9,11 @@
     "branch": "claude/causal-self-model-llm-results-mauabk",
     "variables": {
      "NEED_STAGE": "reader",
-     "NEED_START": "artifacts/llm-need/r1/final/report/adapters-final",
-     "NEED_REPLICATE": "1"
+     "NEED_BALANCED": "1",
+     "NEED_START": "artifacts/llm-need/final/report/adapters-final"
     }
    },
-   "dest": "artifacts/llm-need/r1/reader"
+   "dest": "artifacts/llm-need/balanced"
   }
  ]
 }
