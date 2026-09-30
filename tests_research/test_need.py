@@ -323,6 +323,21 @@ class NecessityTests(unittest.TestCase):
                                      dict(setup, execution_gap=1e-2))["verdicts"]["global"])
 
 
+class ReplicationTests(unittest.TestCase):
+    def test_replication_verdicts_join_the_reader_and_the_lesion(self):
+        from research import need_replication as RP, need_reader as RD, need_necessity as NC
+        reader = RD.verdicts(one_state_lives(RD.STREAMS["test"] + 100), 0.005, 1e-6, 0.01)
+        self.assertLess(reader["values"]["report_accuracy"]["E"], 1.01)
+        necessity = {"verdicts": {"LS7": True, "LR7": True, "valid": True, "global": True},
+                     "values": {k: {} for k in ("survival", "survival_drop", "survival_drop_random", "say_energy",
+                                                "say_food")}}
+        v = RP.verdicts(reader, necessity)["verdicts"]
+        self.assertEqual(v, {"RR": True, "RA": True, "RONE": True, "RLS": True, "RLR": True, "valid": True,
+                             "global": True})
+        necessity["verdicts"]["LR7"] = False
+        self.assertFalse(RP.verdicts(reader, necessity)["verdicts"]["global"])
+
+
 @unittest.skipUnless(os.environ.get("NEED_TINY_MODEL"), "needs mlx and a tiny local model (NEED_TINY_MODEL)")
 class MLXAgentTests(unittest.TestCase):
     def test_evaluations_leave_the_life_unchanged_and_tokens_are_those_of_the_document(self):

@@ -96,7 +96,7 @@ def run(a):
         direction["reader_replica"] = reader_replica(agent, json.loads(Path(a.reader_rows).read_text()))
         direction["reader_layers"] = agent.reader_layers
         return True
-    WS.run(a, agent=agent, streams=STREAMS, prepare=prepare, judge=judge)
+    WS.run(a, agent=agent, streams={k: v + a.offset for k, v in STREAMS.items()}, prepare=prepare, judge=judge)
 
 
 def main(argv=None):
@@ -111,6 +111,7 @@ def main(argv=None):
     r.add_argument("--direction-lives", type=int, default=128)
     r.add_argument("--test-lives", type=int, default=256)
     r.add_argument("--threads", type=int, default=4)
+    r.add_argument("--offset", type=int, default=0, help="100 for the second agent (docs/LLM_NEED_REPLICATION_PROTOCOL.md)")
     c = sub.add_parser("verdicts")
     for s in (r, c):
         s.add_argument("--out", default="artifacts/llm-need/reader/test")

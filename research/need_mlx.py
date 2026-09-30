@@ -185,6 +185,12 @@ def write_data(folder, docs, rng):
     write_jsonl(folder / "valid.jsonl", [docs[i] for i in order[:16]])
 
 
+def offset(a, stream):
+    """The stream of the replicate a.replicate (docs/LLM_NEED_REPLICATION_PROTOCOL.md): 100 * replicate + stream; the
+    first agent is replicate 0."""
+    return 100 * a.replicate + stream
+
+
 def rounds(a, log=print):
     """Learning rounds a.first..a.last of one arm; round k plays with the adapter of round k - 1."""
     out = Path(a.out)
@@ -193,15 +199,17 @@ def rounds(a, log=print):
     for k in range(a.first, a.last + 1):
         started = datetime.datetime.now(datetime.timezone.utc).isoformat()
         agent = MLXAgent(a.model, adapter)
-        lives = run_lives(agent, W.STREAMS["rounds"], a.lives, k, choice_stream=W.ARMS[a.arm], log=log)
+        lives = run_lives(agent, offset(a, W.STREAMS["rounds"]), a.lives, k, choice_stream=offset(a, W.ARMS[a.arm]),
+                          log=log)
         flags = W.retain(lives, a.arm, k)
         write_jsonl(out / f"lives-{a.arm}-{k}.jsonl.gz", [dict(l, kept=f) for l, f in zip(lives, flags)])
         docs = W.training_documents(lives, flags)
-        write_data(out / f"data-{a.arm}-{k}", docs, np.random.default_rng([W.SEED, W.ARMS[a.arm], k, 2]))
+        write_data(out / f"data-{a.arm}-{k}", docs,
+                   np.random.default_rng([W.SEED, offset(a, W.ARMS[a.arm]), k, 2]))
         new = out / f"adapters-{a.arm}-{k}"
         agent = None
         free()
-        train(a.model, out / f"data-{a.arm}-{k}", new, a.iters, resume=adapter)
+        train(a.model, out / f"data-{a.arm}-{k}", new, a.iters, resume=adapter, seed=W.SEED + a.replicate)
         record = {"arm": a.arm, "round": k, "played_with": adapter, "adapter": str(new), "started": started,
                   "finished": datetime.datetime.now(datetime.timezone.utc).isoformat(), **summary(lives),
                   "kept": int(sum(map(sum, flags))), "documents": len(docs)}
@@ -230,11 +238,11 @@ def report(a, log=print):
         lives = read_jsonl(a.lives_file)
     else:
         agent = MLXAgent(a.model, a.start)
-        lives = run_lives(agent, a.stream, a.lives, log=log)
+        lives = run_lives(agent, offset(a, a.stream), a.lives, log=log)
         agent = None
         free()
         write_jsonl(out / f"lives-{a.label}.jsonl.gz", lives)
-    docs = W.report_documents(lives, np.random.default_rng([W.SEED, a.stream, 0, 0, 2]), a.per_class,
+    docs = W.report_documents(lives, np.random.default_rng([W.SEED, offset(a, a.stream), 0, 0, 2]), a.per_class,
                               after_choice=a.after_choice, workspace=a.workspace)
     model, start = a.model, a.start
     if a.reader:  # a new adapter on the fused starting agent, from the questions only (docs/LLM_NEED_READER_PROTOCOL.md)
@@ -246,9 +254,9 @@ def report(a, log=print):
     else:
         kept = read_jsonl(a.previous)
         docs += W.training_documents(kept, [l["kept"] for l in kept])
-    write_data(out / f"data-{a.label}", docs, np.random.default_rng([W.SEED, a.stream, 0, 0, 3]))
+    write_data(out / f"data-{a.label}", docs, np.random.default_rng([W.SEED, offset(a, a.stream), 0, 0, 3]))
     final = out / a.adapter_name
-    train(model, out / f"data-{a.label}", final, a.iters, resume=start)
+    train(model, out / f"data-{a.label}", final, a.iters, resume=start, seed=W.SEED + a.replicate)
     clean(final)
     if a.reader:
         free()
@@ -447,6 +455,7 @@ def main(argv=None):
     for s in (r, p, d, t):
         s.add_argument("--model", required=True)
         s.add_argument("--out", required=True)
+        s.add_argument("--replicate", type=int, default=0, help="a second agent: streams 100 + s, seed + 1")
     a = parser.parse_args(argv)
     Path(a.out).mkdir(parents=True, exist_ok=True)
     {"rounds": rounds, "report": report, "direction": direction, "test": test}[a.command](a)

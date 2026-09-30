@@ -96,7 +96,7 @@ class Recorder:
         self.agent.commit(action)
 
 
-def setup_state(agent, reader_test, log):
+def setup_state(agent, reader_test, log, offset=0):
     """The lesion planes and means (and the random ones), from the sixth test's direction and direction lives."""
     direction = json.loads((Path(reader_test) / "direction.json").read_text())
     d_e, d_n = np.array(direction["d_E"]), np.array(direction["d_N"])
@@ -105,14 +105,15 @@ def setup_state(agent, reader_test, log):
     rec = Recorder(agent)
     same = 0
     for i, life in enumerate(recorded):
-        again = W.play(rec, W.world_rng(RD.STREAMS["direction"], i), W.choice_rng(RD.STREAMS["direction"], i))
+        stream = RD.STREAMS["direction"] + offset
+        again = W.play(rec, W.world_rng(stream, i), W.choice_rng(stream, i))
         path = lambda x: [(t["t"], t["event"], t.get("action")) for t in x["turns"]]
         same += path(again) == path(life)
     log(f"direction lives replayed identically: {same} of {len(recorded)}")
     states = np.array(rec.states, np.float64)
     u = C.planes(d_e, d_n)
     mean = np.einsum("ntd,tdk->ntk", states, u).mean(axis=0)
-    rng = np.random.default_rng([W.SEED, STREAMS["random"]])
+    rng = np.random.default_rng([W.SEED, STREAMS["random"] + offset])
     gaussian = [rng.standard_normal((d_e.shape[1], 2)) for _ in range(K)]
     for g in gaussian:
         g[massive] = 0
@@ -137,7 +138,7 @@ def run(a):
         saved = np.load(arrays)
         state = dict(json.loads(setup_file.read_text()), **{k: saved[k] for k in saved.files})
     else:
-        state = setup_state(agent, a.reader_test, log)
+        state = setup_state(agent, a.reader_test, log, a.offset)
         np.savez(arrays, **{k: state[k] for k in ("planes", "means", "random_planes", "random_means")})
     lesions = {"lesion": (T(state["planes"]), T(state["means"])),
                "lesion_random": (T(state["random_planes"]), T(state["random_means"]))}
@@ -179,7 +180,8 @@ def run(a):
             log(f"{name}: resumed after {len(lives)} lives")
         agent.project = lesions.get(name)
         for i in range(len(lives), a.test_lives):
-            lives.append(W.play(agent, W.world_rng(STREAMS["test"], i), W.choice_rng(STREAMS["test"], i),
+            stream = STREAMS["test"] + a.offset
+            lives.append(W.play(agent, W.world_rng(stream, i), W.choice_rng(stream, i),
                                 at_decision if name == "intact" else None))
             if (i + 1) % 8 == 0:
                 W.write_jsonl(partial, lives)
@@ -217,6 +219,7 @@ def main(argv=None):
     r.add_argument("--reader-test", default="artifacts/llm-need/reader/test")
     r.add_argument("--test-lives", type=int, default=256)
     r.add_argument("--threads", type=int, default=4)
+    r.add_argument("--offset", type=int, default=0, help="100 for the second agent (docs/LLM_NEED_REPLICATION_PROTOCOL.md)")
     c = sub.add_parser("verdicts")
     for s in (r, c):
         s.add_argument("--out", default="artifacts/llm-need/reader/necessity")

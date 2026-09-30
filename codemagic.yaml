@@ -871,6 +871,7 @@ workflows:
         NEED_FINAL: "none"
         NEED_DIRECTION: "none"
         NEED_TESTS: "final control base lesion lesion_random"
+        NEED_REPLICATE: "0"
     scripts:
       - name: Installer mlx-lm dans un environnement isolé
         script: |
@@ -892,7 +893,8 @@ workflows:
           git rev-parse HEAD > "$OUT/commit.txt"
           if [ "$NEED_STAGE" = "rounds" ]; then
             python -m research.need_mlx rounds --arm "$NEED_ARM" --first "$NEED_FIRST" --last "$NEED_LAST" \
-              --start "$NEED_START" --model "$MODEL" --out "$OUT" 2>&1 | tee "$OUT/rounds.log" | grep -v "it/s" | tail -60
+              --start "$NEED_START" --model "$MODEL" --out "$OUT" --replicate "$NEED_REPLICATE" 2>&1 \
+              | tee "$OUT/rounds.log" | grep -v "it/s" | tail -60
           elif [ "$NEED_STAGE" = "speak" ]; then
             # docs/LLM_NEED_REPORT_PROTOCOL.md: 512 lives of stream 14, three turns per need and class, 600 iterations
             python -m research.need_mlx report --start "$NEED_START" --previous "$NEED_PREVIOUS" --model "$MODEL" \
@@ -917,16 +919,25 @@ workflows:
             # questions under the mask; the mask and the reader are first checked on this model and this machine
             NEED_TINY_MODEL="$MODEL" python -m unittest tests_research.test_need.MLXWorkspaceTests \
               tests_research.test_need.MLXReaderTests -v 2>&1 | tee "$OUT/reader-check.log" | tail -5
-            python -m research.need_mlx report --start "$NEED_START" --previous none --model "$MODEL" \
-              --lives-file artifacts/llm-need/speak2/lives-speak2.jsonl.gz --iters 600 --stream 18 --per-class 3 \
-              --label reader --adapter-name adapters-reader --after-choice --workspace --reader --out "$OUT" 2>&1 \
+            # the first agent reads the lives it lived at the stage speak2; a replicate lives its own 512 lives
+            # (docs/LLM_NEED_REPLICATION_PROTOCOL.md)
+            if [ "$NEED_REPLICATE" = "0" ]; then
+              LIVES="--lives-file artifacts/llm-need/speak2/lives-speak2.jsonl.gz"
+            else
+              LIVES="--lives 512"
+            fi
+            python -m research.need_mlx report --start "$NEED_START" --previous none --model "$MODEL" $LIVES \
+              --iters 600 --stream 18 --per-class 3 --label reader --adapter-name adapters-reader --after-choice \
+              --workspace --reader --replicate "$NEED_REPLICATE" --out "$OUT" 2>&1 \
               | tee "$OUT/reader.log" | grep -v "it/s" | tail -30
             rm -rf "$OUT/fused-start"
           elif [ "$NEED_STAGE" = "report" ]; then
             python -m research.need_mlx report --start "$NEED_START" --previous "$NEED_PREVIOUS" --model "$MODEL" \
-              --out "$OUT/report" 2>&1 | tee "$OUT/report.log" | grep -v "it/s" | tail -30
-            python -m research.need_mlx direction --adapter "$OUT/report/adapters-final" --model "$MODEL" \
-              --out "$OUT/direction" 2>&1 | tee "$OUT/direction.log" | tail -10
+              --replicate "$NEED_REPLICATE" --out "$OUT/report" 2>&1 | tee "$OUT/report.log" | grep -v "it/s" | tail -30
+            if [ "$NEED_REPLICATE" = "0" ]; then
+              python -m research.need_mlx direction --adapter "$OUT/report/adapters-final" --model "$MODEL" \
+                --out "$OUT/direction" 2>&1 | tee "$OUT/direction.log" | tail -10
+            fi
           else
             python -m research.need_mlx test --final "$NEED_FINAL" --control "$NEED_CONTROL" \
               --direction "$NEED_DIRECTION" --stages $NEED_TESTS --model "$MODEL" --out "$OUT/test" 2>&1 \
