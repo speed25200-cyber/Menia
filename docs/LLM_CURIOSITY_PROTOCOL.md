@@ -316,6 +316,26 @@ poussée unique sur les quatre domaines ; bras E ; instinct pur.
 ni la curiosité humaine. L'instinct est le nôtre, le besoin est inné, le
 tableau est un sens que nous avons construit.
 
+## Amendement du 1er octobre, avant toute exécution : la température
+
+Le monde a d'abord été codé sans modèle (`research/curiosity_world.py`), et
+simulé avec des apprenants jouets (une courbe de perte par domaine, trois
+jeux de courbes, avec et sans bruit d'examen). Avec la règle écrite plus haut,
+T = la moitié de la médiane des progrès des **deux premières** séances,
+l'instinct est presque plat : les premiers progrès sont grands, les suivants
+petits. Dans les trois jeux de courbes, la soif de savoir n'apprend alors pas
+plus que le hasard (CUR échoue).
+
+**La règle devient** : T = la moitié de la médiane des progrès de **toutes**
+les séances sur « mots » et « base » des 12 vies du pilote au hasard ; b = 2T
+(inchangé). Avec elle, CUR passe dans les trois jeux de courbes.
+
+**Ce que la simulation prédit aussi, dit d'avance.** VIDE est à la limite :
+la part des séances sur « calcul » et « suites » y va de 0,26 à 0,37 (hasard :
+0,50), au-dessus du seuil de 0,25. Le seuil n'est **pas** changé. Ces
+apprenants jouets ne sont pas le modèle : ils ne servent qu'à vérifier que les
+règles ne rendent pas le test impossible.
+
 ## Lien avec la recherche sur les hormones
 
 La note de recherche du 1er octobre (Doya 2002 ; Frémaux et Gerstner 2016 ;
