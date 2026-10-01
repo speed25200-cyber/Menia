@@ -1,5 +1,5 @@
 {
- "request": 72,
+ "request": 73,
  "app": "Menia",
  "wait_minutes": 345,
  "builds": [
@@ -11,12 +11,12 @@
      "NEED_STAGE": "measure",
      "NEED_MEASURE": "research.need_locate",
      "NEED_ARGS": "--agent two",
-     "NEED_RESUME": "none",
+     "NEED_RESUME": "artifacts/llm-need/locate-two/slice-1/measure",
      "NEED_MINUTES": "100",
      "NEED_THREADS": "4"
     }
    },
-   "dest": "artifacts/llm-need/locate-two/slice-1"
+   "dest": "artifacts/llm-need/locate-two/slice-2"
   }
  ]
 }
