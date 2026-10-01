@@ -1,0 +1,17 @@
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights:   0%|          | 1/311 [00:02<11:04,  2.14s/it]Loading weights:  72%|███████▏  | 224/311 [00:02<00:00, 138.86it/s]Loading weights: 100%|██████████| 311/311 [00:02<00:00, 121.13it/s]
+{"agent": "two", "block": 22, "pairs": 100, "tried": 643} [np.float64(-0.0), np.float64(-0.0), np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(0.35), np.float64(0.35), np.float64(0.35), np.float64(0.35), np.float64(0.35), np.float64(0.35), np.float64(0.35), np.float64(0.35), np.float64(0.35), np.float64(0.36), np.float64(0.88), np.float64(0.88), np.float64(0.87), np.float64(0.87), np.float64(1.0), np.float64(1.0)]
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights:   0%|          | 1/311 [00:00<00:35,  8.70it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 2254.03it/s]
+two: 500 pairs at block 22
+two: 750 pairs at block 22
+two: 1000 pairs at block 22
+two: 1250 pairs at block 22
+two: 1500 pairs at block 22
+{"block": 22, "massive_dims": [35], "pairs": 1500, "replica": {"decisions": 60, "mean_gap": 0.003353429641694064}, "norm_d_E": [257.97833287529147, 365.7599014543243, 384.2788401317385], "norm_d_N": [184.77640645874453, 247.55438557051875, 252.16584743239378]}
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights:   0%|          | 1/311 [00:00<03:15,  1.59it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 449.21it/s]
+direction lives: survival 0.734
+{"block": 22, "massive_dims": [35], "pairs": 1500, "replica": {"decisions": 60, "mean_gap": 0.003353429641694064}, "norm_d_E": [257.97833287529147, 365.7599014543243, 384.2788401317385], "norm_d_N": [184.77640645874453, 247.55438557051875, 252.16584743239378], "execution_gap": 2.5295331644858976e-06, "reader_replica": {"documents": 16, "mean_gap": 0.009107018931073374, "max_gap": 0.026337063980081565}}
+  32 test lives
+  64 test lives
+  96 test lives
+/Users/builder/.pyenv/versions/3.12.7/lib/python3.12/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

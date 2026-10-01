@@ -1,0 +1,39 @@
+== User-defined environment variables ==
+NEED_ARGS=--agent two
+NEED_ARM=need
+NEED_BALANCED=0
+NEED_CONTROL=none
+NEED_DIRECTION=none
+NEED_FINAL=none
+NEED_FIRST=1
+NEED_LAST=4
+NEED_MEASURE=research.need_locate
+NEED_MINUTES=100
+NEED_MODEL_REVISION=c1899de289a04d12100db370d81485cdf75e47ca
+NEED_OTHER=0
+NEED_PREVIOUS=none
+NEED_REPLICATE=0
+NEED_RESUME=artifacts/llm-need/locate-two/slice-2/measure
+NEED_STAGE=measure
+NEED_START=none
+NEED_TESTS=final control base lesion lesion_random
+NEED_THREADS=4
+
+== Use Xcode 26.6 ==
+<span style="color:#268BD2">&gt; xcodebuild -version</span>
+Xcode 26.6
+Build version 17F113
+
+== Use default version of CocoaPods ==
+<span style="color:#268BD2">&gt; gem list '^cocoapods$' --no-verbose</span>
+cocoapods (1.16.2)
+
+== Use Java version 17 ==
+<span style="color:#268BD2">&gt; java -version</span>
+openjdk version "17.0.19" 2026-04-21 LTS
+OpenJDK Runtime Environment Zulu17.66+19-CA (build 17.0.19+10-LTS)
+OpenJDK 64-Bit Server VM Zulu17.66+19-CA (build 17.0.19+10-LTS, mixed mode, sharing)
+
+== Codemagic CLI tools ==
+<span style="color:#268BD2">&gt; codemagic-cli-tools version</span>
+codemagic-cli-tools 0.69.0
