@@ -397,8 +397,9 @@ Artefacts dans `artifacts/llm-need/r1/reader/test`, vérifiés en CI.
 | | **Critère global** | | **non satisfait** |
 
 **Ce que cela dit.** Chez le second agent, la poussée de l'état au bloc 12
-sur « Choix : » fait agir dans le bon sens, mais dix fois moins que chez le
-premier. Elle ne fait rien dire. Le résultat des tests 6 et 7 n'est donc
+sur « Choix : » fait agir dans le bon sens, mais environ cinq fois moins que
+chez le premier (+0,034 contre +0,156 ; corrigé le 1er octobre : « dix fois »
+était faux). Elle ne fait rien dire. Le résultat des tests 6 et 7 n'est donc
 **pas répliqué**, sous la forme où il a été mesuré.
 
 Deux explications possibles, testées par le protocole suivant
