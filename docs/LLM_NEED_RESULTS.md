@@ -362,3 +362,46 @@ P(oui) = 0,128. Avec un vecteur au hasard de même norme, P(R) = 0,575 et
 P(oui) = 0,001. Sur les 1 523 contextes, l'effet sur l'acte est positif
 dans 100 % des cas et celui sur la parole dans 95 % des cas ; pour le
 hasard, 47 %.
+
+## Réplication sur un second agent : la partie « lecteur » (partielle)
+
+Protocole `docs/LLM_NEED_REPLICATION_PROTOCOL.md` (commit `4e10a6c`).
+
+**Le second agent.** Appris de zéro sur le Mac, avec les mêmes réglages,
+des flux 100 + s et la graine 270927.
+- Tours de survie : 0,17 → 0,70.
+- Premier apprentissage du rapport : la demande 55 a échoué sur une panne
+  du GPU du Mac (trace dans `artifacts/llm-need/r1/final-echec-gpu`). Elle
+  a été relancée à l'identique et a abouti à la demande 57. Les poids ont
+  été récupérés par identifiant (demande 58), parce que le `.gitignore`
+  n'autorisait pas ce niveau de dossier.
+- Lecteur : perte de validation 0,74 → 0,66 seulement (premier agent :
+  0,68 → 0,29).
+
+**Mesures en torch.**
+- Répliques : agent 0,006, lecteur 0,013.
+- Contrôle d'exécution : 3e-6.
+- 1 260 contextes.
+- La machine a redémarré une fois pendant la mesure ; celle-ci a repris
+  après 152 vies.
+- Aperçus déclarés : 144 et 216 vies.
+
+Artefacts dans `artifacts/llm-need/r1/reader/test`, vérifiés en CI.
+
+| | Prédiction | Mesure | Verdict |
+|---|---|---|---|
+| **RR** | Le lecteur dit son énergie | 0,623 (seuil 0,75) | échoue |
+| **RA** | Le second agent agit | survie 0,512 (seuil 0,55) | échoue |
+| **RONE** | Un seul état fait agir et dire | acte +0,034 [0,031 ; 0,036], parole +0,002 ; hasard 0,003 et 0,001 | échoue |
+| **RLS**, **RLR** | Nécessité au bloc 12 | à mesurer (`research/need_necessity.py --offset 100`) | — |
+| | **Critère global** | | **non satisfait** |
+
+**Ce que cela dit.** Chez le second agent, la poussée de l'état au bloc 12
+sur « Choix : » fait agir dans le bon sens, mais dix fois moins que chez le
+premier. Elle ne fait rien dire. Le résultat des tests 6 et 7 n'est donc
+**pas répliqué**, sous la forme où il a été mesuré.
+
+Deux explications possibles, testées par le protocole suivant
+(`docs/LLM_NEED_LOCATE_PROTOCOL.md`) :
+- le second agent rassemble son besoin ailleurs ;
+- son lecteur n'a pas appris.
