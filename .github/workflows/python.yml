@@ -94,6 +94,9 @@ jobs:
       - run: python -m research.need_necessity verdicts
       - run: python -m research.need_reader verdicts --out artifacts/llm-need/r1/reader/test
       - run: python -m research.need_ownership verdicts --out artifacts/llm-need/two/measure-5/measure
+      - run: python -m research.need_necessity verdicts --out artifacts/llm-need/r1/necessity
+      - run: python -m research.need_replication verdicts
+      - run: python -m research.need_reader verdicts --out artifacts/llm-need/long/second/test
       - run: python scripts/check_reliability_artifacts.py
       - run: python scripts/check_self_model_artifacts.py
       - run: python scripts/audit_self_monitor_information.py
