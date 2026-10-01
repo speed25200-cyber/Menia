@@ -508,7 +508,7 @@ qui en rend au moins la moitié, sur 100 paires d'effet ≥ 0,10.
 
 | Agent | Paires | b* | Part au bloc 12 | Part au bloc 22 |
 |---|---|---|---|---|
-| Premier (étalonnage) | 100 | **12** (étalonnage réussi) | ≥ 0,5 | — |
+| Premier (étalonnage) | 100 sur 550 | **12** (étalonnage réussi) | 0,68 | 0,97 |
 | Second | **71** sur 454 essayées | 12 | 0,63 | 0,65 |
 | Monde à deux | 100 sur 643 | **22** | 0,35 | 0,88 |
 
