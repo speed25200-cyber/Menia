@@ -1,5 +1,5 @@
 {
- "request": 84,
+ "request": 85,
  "app": "Menia",
  "wait_minutes": 345,
  "builds": [
@@ -8,15 +8,24 @@
     "workflow": "menia-need-mac",
     "branch": "claude/causal-self-model-llm-results-mauabk",
     "variables": {
-     "NEED_STAGE": "measure",
-     "NEED_MEASURE": "research.need_long",
-     "NEED_ARGS": "--agent two",
-     "NEED_RESUME": "artifacts/llm-need/long/two/measure-2/measure",
-     "NEED_MINUTES": "100",
-     "NEED_THREADS": "4"
+     "NEED_STAGE": "curiosity",
+     "NEED_ARGS": "check",
+     "NEED_MINUTES": "30"
     }
    },
-   "dest": "artifacts/llm-need/long/two/measure-3"
+   "dest": "artifacts/llm-curiosity/check"
+  },
+  {
+   "launch": {
+    "workflow": "menia-need-mac",
+    "branch": "claude/causal-self-model-llm-results-mauabk",
+    "variables": {
+     "NEED_STAGE": "curiosity",
+     "NEED_ARGS": "pilot",
+     "NEED_MINUTES": "100"
+    }
+   },
+   "dest": "artifacts/llm-curiosity/pilot"
   }
  ]
 }
