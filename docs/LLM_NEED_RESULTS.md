@@ -363,7 +363,7 @@ P(oui) = 0,001. Sur les 1 523 contextes, l'effet sur l'acte est positif
 dans 100 % des cas et celui sur la parole dans 95 % des cas ; pour le
 hasard, 47 %.
 
-## Réplication sur un second agent : la partie « lecteur » (partielle)
+## Réplication sur un second agent
 
 Protocole `docs/LLM_NEED_REPLICATION_PROTOCOL.md` (commit `4e10a6c`).
 
@@ -393,7 +393,8 @@ Artefacts dans `artifacts/llm-need/r1/reader/test`, vérifiés en CI.
 | **RR** | Le lecteur dit son énergie | 0,623 (seuil 0,75) | échoue |
 | **RA** | Le second agent agit | survie 0,512 (seuil 0,55) | échoue |
 | **RONE** | Un seul état fait agir et dire | acte +0,034 [0,031 ; 0,036], parole +0,002 ; hasard 0,003 et 0,001 | échoue |
-| **RLS**, **RLR** | Nécessité au bloc 12 | à mesurer (`research/need_necessity.py --offset 100`) | — |
+| **RLS** | Sans l'état, il ne survit plus | survie 0,570 → 0,043, baisse 0,527 [0,465 ; 0,590] ; lésion au hasard : baisse 0,008 | **passe** |
+| **RLR** | Sans l'état, il ne dit plus son énergie | exactitude 0,639 → 0,500, baisse 0,139 [0,115 ; 0,164] ; hasard 0,001 | **passe** |
 | | **Critère global** | | **non satisfait** |
 
 **Ce que cela dit.** Chez le second agent, la poussée de l'état au bloc 12
@@ -406,6 +407,25 @@ Deux explications possibles, testées par le protocole suivant
 (`docs/LLM_NEED_LOCATE_PROTOCOL.md`) :
 - le second agent rassemble son besoin ailleurs ;
 - son lecteur n'a pas appris.
+
+**La nécessité (1er octobre).** Mesurée ensuite sur 256 mondes neufs
+(flux 128, lésion au hasard flux 129), avec les directions et les vies de
+direction du second agent ; artefacts `artifacts/llm-need/r1/necessity`,
+vérifiés en CI avec `research/need_replication.py`.
+- La mesure a été mise en pause à 176 vies intactes pour laisser le
+  processeur au test 11, puis reprise ; une copie lancée par erreur au
+  redémarrage du conteneur a tourné une demi-heure en parallèle avant d'être
+  arrêtée (elle n'avait rien écrit).
+- Effacer le plan (d_E, d_N) au bloc 12 tue presque toujours le second agent
+  (survie 0,570 → 0,043), et son lecteur ne dit plus son énergie (0,639 →
+  0,500, le niveau du hasard). Un plan au hasard ne change rien.
+
+**Ce que cela dit.** La **nécessité** se réplique : chez le second agent
+aussi, un état sur « Choix : » au bloc 12 est nécessaire pour survivre et
+pour dire son énergie. La **suffisance** ne se réplique pas sous la forme
+mesurée : pousser cet état le long de d_E fait peu agir (+0,034) et ne fait
+pas dire. Le critère global de la réplication reste non satisfait (RR, RA,
+RONE).
 
 ## Neuvième test pré-enregistré : à qui est ce besoin ? (monde à deux)
 
@@ -474,3 +494,101 @@ type d'échange par type d'échange :
   avons appris après avoir écrit ce protocole.
 
 Le verdict reste celui du protocole : la possession n'est pas démontrée.
+
+## Dixième test pré-enregistré : où chaque agent rassemble-t-il son besoin ? (en cours)
+
+Protocole `docs/LLM_NEED_LOCATE_PROTOCOL.md` (commit `12b4d2d`). La
+lésion de l'agent du monde à deux tourne encore sur le Mac ; ce qui suit est
+ce qui est mesuré au 1er octobre.
+
+**La règle.** Pour chaque bloc b, on recopie la sortie du bloc b sur
+« Choix : » depuis une vie où un « calme » passé devient « tu cours », et
+l'on mesure la part de l'effet sur P(R) qui revient. b* est le premier bloc
+qui en rend au moins la moitié, sur 100 paires d'effet ≥ 0,10.
+
+| Agent | Paires | b* | Part au bloc 12 | Part au bloc 22 |
+|---|---|---|---|---|
+| Premier (étalonnage) | 100 | **12** (étalonnage réussi) | ≥ 0,5 | — |
+| Second | **71** sur 454 essayées | 12 | 0,63 | 0,65 |
+| Monde à deux | 100 sur 643 | **22** | 0,35 | 0,88 |
+
+**Second agent.** Il n'a fourni que 71 paires d'effet suffisant : par le
+code pré-enregistré, **LOC10 échoue** pour lui, et ACT10, LS10 ne comptent
+pas. Ses mesures au bloc 12 sont publiées à titre descriptif
+(`artifacts/llm-need/locate/second`) :
+- acte +0,036 [0,033 ; 0,039], hasard 0,0015 ; parole +0,003 ;
+- lésion : survie 0,531 → 0,035 ; lésion au hasard 0,531 ; rapport
+  d'énergie 0,614 → 0,500, de nourriture 0,694 → 0,502.
+
+**Agent du monde à deux, au bloc 22** (256 vies, flux 426 ; aperçu de 112
+vies lu avant d'écrire le protocole du test 11, déclaré) :
+- **acte +0,217 [0,206 ; 0,230]**, hasard 0,011 : ACT10 passe pour lui ;
+- parole −0,001 ; exactitude du rapport : énergie 0,608, nourriture 0,712 ;
+- lésion (LS10) : en cours. Une tranche du Mac (la sixième) a été perdue :
+  le code de reprise revivait des vies de test déjà finies. Corrigé
+  (commit `de2c1b4`) ; aucun résultat n'est changé.
+
+**Critère global** : déjà **non satisfait** (LOC10 échoue pour le second
+agent).
+
+## Onzième test pré-enregistré : un lecteur qui apprend assez (en cours)
+
+Protocole `docs/LLM_NEED_LONG_READER_PROTOCOL.md` (commit `0a28560`), avec
+un ajout avant toute exécution : deux tranches de 1 000 itérations reprises
+exactement (mêmes lots, moments d'Adam conservés). Vérifié : sur un petit
+modèle, 3 + 3 itérations reprises donnent l'adaptateur de 6 ; sur le Mac,
+les 600 premières itérations redonnent les pertes des premiers lecteurs
+(60 points, écart 0,000, pour les deux agents).
+
+**Second agent** (bloc 12, 256 vies neuves, flux 526 ; artefacts
+`artifacts/llm-need/long/second/test`, vérifiés en CI) :
+
+| | Prédiction | Mesure | Verdict |
+|---|---|---|---|
+| **R11** | Le lecteur long dit son énergie | exactitude équilibrée 0,595 (seuil 0,75) ; nourriture 0,729 | **échoue** |
+| **SAY11** | Il la dit par l'état qui fait agir | −4·d_E : parole +0,0015 [0,0006 ; 0,0025] (seuil 0,10) ; hasard 0,0009 | **échoue** |
+| | Validité | répliques 0,006 et 0,013 ; exécution 2,6e-6 ; 1 320 contextes ; masses 0,98 et 1,00 | valide |
+
+Acte, publié sans seuil : +0,032 [0,030 ; 0,034]. Pertes de validation du
+lecteur (8 documents, descriptif) : 0,655 (600 it.) → 0,555 (1 000) → 0,431
+(2 000).
+
+**Agent du monde à deux** : mesure en cours sur le Mac (bloc 22, flux 626).
+
+**Critère global** : déjà **non satisfait** (le second agent échoue).
+
+**Ce que cela dit.** Pour le second agent, l'hypothèse « son lecteur avait
+trop peu appris » est réfutée : trois fois plus d'apprentissage ne lui fait
+pas dire son énergie (0,623 → 0,595).
+
+## Analyse exploratoire : le niveau d'énergie est-il dans l'état ? (1er octobre)
+
+Écrite après l'échec du test 11 chez le second agent, et publiée avant
+lecture (`research/need_probe.py`, commit `5ad433f`). L'hypothèse de départ
+était : le second agent ne rassemble que l'équilibre E − N qui décide, pas
+le niveau de son énergie.
+
+On rejoue les 128 vies de direction de chaque agent (rejeu exact : écarts
+de P(R) ≤ 1e-6), on capture la sortie de son bloc de rassemblement sur les
+trois tokens « Choix : » (dimension massive exclue), et une régression ridge,
+validée par vie sur 4 plis, lit chaque grandeur.
+
+| R² hors échantillon | Premier (bloc 12) | Second (bloc 12) | Monde à deux (bloc 22) |
+|---|---|---|---|
+| E | 0,72 | 0,64 | 0,69 |
+| N | 0,58 | 0,61 | 0,62 |
+| E − N | 0,68 | 0,68 | 0,74 |
+| E + N | 0,60 | 0,57 | 0,57 |
+| E au-delà de E − N | 0,62 | 0,57 | 0,58 |
+| P(R) | 0,98 | 0,93 | 0,98 |
+| « E ≤ 3 » lu depuis E prédit (exactitude équilibrée) | 0,69 | 0,68 | 0,71 |
+
+**Ce que cela dit (exploratoire, sans verdict).** L'hypothèse est
+**réfutée** : chez les trois agents, l'état porte le niveau d'énergie, et
+pas seulement l'équilibre qui décide, avec une précision voisine. La
+différence de parole entre les agents ne vient donc pas de l'information
+disponible dans l'état. Elle vient du lecteur (le premier atteint 0,77, au-
+dessus de la lecture linéaire 0,69 ; le second 0,595, en dessous), ou du
+chemin par lequel il lit. Chez le second agent, la lésion du plan rend
+pourtant son lecteur aveugle (0,639 → 0,500) : il lit bien quelque chose
+dans cet état. Ces deux pistes appellent un protocole à part.
