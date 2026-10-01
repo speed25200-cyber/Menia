@@ -1,0 +1,11 @@
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights:   0%|          | 1/311 [00:04<21:10,  4.10s/it]Loading weights:  33%|███▎      | 103/311 [00:04<00:06, 34.56it/s]Loading weights:  52%|█████▏    | 162/311 [00:05<00:03, 40.20it/s]Loading weights:  63%|██████▎   | 197/311 [00:05<00:02, 47.70it/s]Loading weights:  71%|███████▏  | 222/311 [00:06<00:01, 53.41it/s]Loading weights:  77%|███████▋  | 241/311 [00:06<00:01, 57.67it/s]Loading weights:  83%|████████▎ | 257/311 [00:06<00:00, 58.65it/s]Loading weights:  87%|████████▋ | 270/311 [00:06<00:00, 51.58it/s]Loading weights:  90%|█████████ | 280/311 [00:07<00:00, 47.75it/s]Loading weights:  93%|█████████▎| 288/311 [00:07<00:00, 50.53it/s]Loading weights:  95%|█████████▌| 296/311 [00:07<00:00, 43.69it/s]Loading weights:  97%|█████████▋| 303/311 [00:07<00:00, 37.80it/s]Loading weights: 100%|██████████| 311/311 [00:07<00:00, 39.05it/s]
+two: 60 pairs kept of 437
+two: 70 pairs kept of 479
+two: 80 pairs kept of 535
+two: 90 pairs kept of 613
+two: 100 pairs kept of 643
+{"agent": "two", "block": 22, "pairs": 100, "tried": 643} [np.float64(-0.0), np.float64(-0.0), np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(0.35), np.float64(0.35), np.float64(0.35), np.float64(0.35), np.float64(0.35), np.float64(0.35), np.float64(0.35), np.float64(0.35), np.float64(0.35), np.float64(0.36), np.float64(0.88), np.float64(0.88), np.float64(0.87), np.float64(0.87), np.float64(1.0), np.float64(1.0)]
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights:   0%|          | 1/311 [00:00<02:59,  1.73it/s]Loading weights:  47%|████▋     | 147/311 [00:00<00:00, 290.23it/s]Loading weights:  75%|███████▍  | 233/311 [00:00<00:00, 319.34it/s]Loading weights:  95%|█████████▌| 296/311 [00:01<00:00, 207.91it/s]Loading weights: 100%|██████████| 311/311 [00:01<00:00, 207.74it/s]
+two: 250 pairs at block 22
+/Users/builder/.pyenv/versions/3.12.7/lib/python3.12/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
