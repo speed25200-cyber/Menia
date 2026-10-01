@@ -1,280 +1,339 @@
-% Projet Menia -- le programme de recherche explique simplement
+% Menia -- Une machine peut-elle avoir un besoin qui compte pour elle ?
 % Compiler : pdflatex main.tex (deux fois, pour le sommaire)
-\documentclass[11pt,a4paper]{article}
+\documentclass[fontsize=10pt,paper=a4,parskip=half-]{scrartcl}
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[french]{babel}
+\frenchsetup{StandardLists=true}
 \usepackage[sc]{mathpazo}
-\usepackage[scaled=0.92]{helvet}
-\usepackage{microtype}
+\usepackage[scaled=0.9]{helvet}
+\renewcommand{\ttdefault}{lmtt}
+\usepackage[letterspace=120]{microtype}
 \usepackage{icomma}
-\usepackage[a4paper,left=2.3cm,right=2.3cm,top=2.2cm,bottom=2.5cm]{geometry}
+\usepackage[a4paper,left=3.0cm,right=3.0cm,top=2.9cm,bottom=2.9cm,headsep=0.9cm,footskip=1.3cm]{geometry}
 \usepackage{amsmath,amssymb}
 \usepackage{xcolor}
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta,positioning,calc,shapes.geometric,decorations.pathreplacing,babel,fit,backgrounds}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathreplacing,babel,fit,backgrounds}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
-\pgfplotsset{/pgf/number format/use comma}
 \usepackage[most]{tcolorbox}
 \usepackage{booktabs,array,tabularx}
 \usepackage{enumitem}
 \usepackage{multicol}
-\usepackage{titlesec}
-\usepackage{fancyhdr}
+\usepackage{scrlayer-scrpage}
 \usepackage{caption}
 \usepackage[hidelinks]{hyperref}
 
-% ---------- Couleurs ----------
-\definecolor{mbleu}{HTML}{1F5A96}
-\definecolor{mvert}{HTML}{2E7D4F}
-\definecolor{morange}{HTML}{C8641E}
-\definecolor{mrouge}{HTML}{B03A2E}
-\definecolor{mgris}{HTML}{5F6B73}
-\definecolor{mjaune}{HTML}{D9A400}
-\definecolor{mviolet}{HTML}{6A4C93}
+% ---------------------------------------------------------------------
+% Palette : encre, terre cuite, gris
+% ---------------------------------------------------------------------
+\definecolor{ink}{HTML}{1E3A5F}
+\definecolor{accent}{HTML}{C2562B}
+\definecolor{gris}{HTML}{6E7781}
+\definecolor{paper}{HTML}{F6F3EE}
+\colorlet{rulecol}{gris!40}
+% noms utilises dans les figures
+\colorlet{mbleu}{ink}
+\colorlet{morange}{accent}
+\colorlet{mgris}{gris}
+\colorlet{mvert}{ink!55}
+\colorlet{mrouge}{accent!85!black}
+\colorlet{mjaune}{accent!55}
+\colorlet{mviolet}{ink!75}
 
-% ---------- Mise en page ----------
-\linespread{1.05}
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{0.45em}
-\setlist{itemsep=0.15em,topsep=0.3em,leftmargin=1.4em}
-\captionsetup{font=small,labelfont={bf,sf},labelsep=period}
+% ---------------------------------------------------------------------
+% Texte
+% ---------------------------------------------------------------------
+\linespread{1.1}
+\setlist{itemsep=0.15em,topsep=0.25em,leftmargin=1.3em}
+\setlist[itemize]{label={\color{accent}\small\textbullet}}
+\setlist[enumerate]{label={\sffamily\small\color{accent}\arabic*.}}
+\captionsetup{font=small,labelfont={sf,bf,color=accent},labelsep=quad}
+\addto\captionsfrench{\renewcommand{\contentsname}{Sommaire}}
 
-\titleformat{\section}{\sffamily\Large\bfseries\color{mbleu}}{\thesection\enspace·}{0.5em}{}
-\titleformat{\subsection}{\sffamily\large\bfseries\color{mbleu!85!black}}{\thesubsection}{0.6em}{}
-\titleformat{\subsubsection}{\sffamily\normalsize\bfseries\color{mgris}}{}{0em}{}
-\titlespacing*{\section}{0pt}{1.4em}{0.6em}
-\titlespacing*{\subsection}{0pt}{1.0em}{0.3em}
+% ---------------------------------------------------------------------
+% Titres
+% ---------------------------------------------------------------------
+\setcounter{secnumdepth}{1}
+\setcounter{tocdepth}{1}
+\setkomafont{disposition}{\sffamily\bfseries\color{ink}}
+\setkomafont{section}{\LARGE}
+\setkomafont{subsection}{\large}
+\setkomafont{subsubsection}{\normalsize}
+\RedeclareSectionCommand[beforeskip=2.0\baselineskip,afterskip=0.2\baselineskip]{section}
+\RedeclareSectionCommand[beforeskip=1.1\baselineskip,afterskip=0.25\baselineskip]{subsection}
+\renewcommand*{\sectionformat}{\thesection}
+\makeatletter
+\renewcommand{\sectionlinesformat}[4]{%
+  \Ifstr{#1}{section}{%
+    \parbox[b]{\linewidth}{\setlength{\parskip}{0pt}\raggedright
+      \Ifstr{#3}{}{}{{\normalsize\color{accent}\textls[150]{CHAPITRE~#3}}\par\vspace{0.3em}}%
+      #4\par\vspace{0.5em}{\color{rulecol}\hrule height 0.5pt}}%
+  }{\@hangfrom{\hskip #2#3}{#4}}}
+\makeatother
+\DeclareTOCStyleEntry[entryformat=\sffamily\bfseries\color{ink},
+  pagenumberformat=\sffamily\color{gris},linefill=\hfill,beforeskip=0.55em,
+  entrynumberformat=\tocnum,numwidth=2.2em]{tocline}{section}
+\newcommand{\tocnum}[1]{{\color{accent}#1}}
 
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[L]{\sffamily\small\color{mgris}Projet Menia}
-\fancyhead[R]{\sffamily\small\color{mgris}expliqué simplement}
-\fancyfoot[C]{\sffamily\small\thepage}
-\renewcommand{\headrulewidth}{0.3pt}
+% Paragraphe d'ouverture d'un chapitre
+\newcommand{\lead}[1]{{\fontsize{12}{16.5}\selectfont\color{ink!85!black}#1\par}\vspace{0.3em}}
 
-% ---------- Commandes ----------
+% ---------------------------------------------------------------------
+% En-tete et pied de page
+% ---------------------------------------------------------------------
+\pagestyle{scrheadings}
+\clearpairofpagestyles
+\ihead{\footnotesize\textls[200]{MENIA}}
+\ofoot*{\pagemark}
+\setkomafont{pageheadfoot}{\sffamily\color{gris}}
+\setkomafont{pagenumber}{\sffamily\footnotesize\color{gris}}
+
+% ---------------------------------------------------------------------
+% Commandes
+% ---------------------------------------------------------------------
 \newcommand{\q}[1]{\og #1\fg{}}
 \newcommand{\pc}{\,\%}
 \newcommand{\vect}[2]{(#1\,;\,#2)}
 
-% ---------- Encadres ----------
-\tcbset{enhanced,breakable,boxrule=0.6pt,arc=2mm,left=3mm,right=3mm,top=1.5mm,bottom=1.5mm,
-  fonttitle=\sffamily\bfseries,before skip=0.7em,after skip=0.7em}
-\newtcolorbox{retenir}{colback=mvert!6,colframe=mvert,title={À retenir}}
-\newtcolorbox{exemple}[1][]{colback=mbleu!5,colframe=mbleu,title={Exemple à refaire à la main#1}}
-\newtcolorbox{avous}{colback=morange!6,colframe=morange,title={À vous}}
-\newtcolorbox{attention}{colback=mrouge!5,colframe=mrouge,title={Attention}}
-\newtcolorbox{encours}{colback=mjaune!10,colframe=mjaune!80!black,title={Résultat en cours}}
-\newtcolorbox{vie}{colback=black!3,colframe=black!40,fontupper=\ttfamily\small,title={Le texte d'une vie, tel que l'agent le lit},fonttitle=\sffamily\bfseries\small}
+% ---------------------------------------------------------------------
+% Encadres sobres
+% ---------------------------------------------------------------------
+\tcbset{enhanced,sharp corners,frame hidden,boxsep=0pt,
+  left=4mm,right=4mm,top=2.6mm,bottom=2.6mm,before skip=0.9em,after skip=0.9em,
+  fonttitle=\sffamily\bfseries\scriptsize,attach title to upper={\par\vspace{0.35em}}}
+\newtcolorbox{essentiel}{colback=ink!4,borderline west={2pt}{0pt}{ink},
+  title={\color{ink}\textls[150]{L'ESSENTIEL}}}
+\newtcolorbox{limite}{colback=accent!5,borderline west={2pt}{0pt}{accent},
+  title={\color{accent}\textls[150]{LIMITE}}}
+\newtcolorbox{encours}{colback=gris!7,borderline west={2pt}{0pt}{gris},
+  title={\color{gris}\textls[150]{RÉSULTAT EN COURS}}}
+\newtcolorbox{calcul}[2][LE CALCUL]{colback=paper,
+  title={\color{accent}\textls[150]{#1}\quad{\color{ink}\mdseries\sffamily\small #2}}}
+\newtcolorbox{texte}[1]{colback=white,borderline west={1pt}{0pt}{gris!60},fontupper=\ttfamily\small\raggedright,
+  title={\color{gris}\textls[150]{#1}}}
 
 % Jauge : \jauge{x}{valeur}{couleur}{nom}
 \newcommand{\jauge}[4]{%
   \foreach \i in {1,...,8}{%
-    \pgfmathsetmacro{\yy}{(\i-1)*0.32}
-    \ifnum\i>#2 \draw[black!35,fill=white] (#1,\yy) rectangle ++(0.7,0.27);
-    \else \draw[black!50,fill=#3!70] (#1,\yy) rectangle ++(0.7,0.27);\fi}
-  \node[font=\sffamily\small,anchor=north] at ($(#1,0)+(0.35,-0.05)$) {#4};
-  \node[font=\sffamily\small\bfseries,anchor=south] at ($(#1,2.56)+(0.35,0.02)$) {#2};
+    \pgfmathsetmacro{\yy}{(\i-1)*0.34}
+    \ifnum\i>#2 \draw[gris!45,line width=0.6pt,fill=white,rounded corners=1pt] (#1,\yy) rectangle ++(0.72,0.26);
+    \else \draw[#3,line width=0.6pt,fill=#3!80,rounded corners=1pt] (#1,\yy) rectangle ++(0.72,0.26);\fi}
+  \node[font=\sffamily\small,text=gris,anchor=north] at ($(#1,0)+(0.36,-0.12)$) {#4};
 }
+
+% Style des graphiques
+\pgfplotsset{every axis/.append style={axis lines*=left,axis line style={gris!70},tick style={gris!70},
+  tick label style={font=\sffamily\scriptsize},label style={font=\sffamily\small},
+  legend style={draw=none,fill=none,font=\sffamily\scriptsize},legend cell align=left},
+  /pgf/number format/use comma}
 
 \begin{document}
 
 % =====================================================================
-% PAGE DE TITRE
+% COUVERTURE
 % =====================================================================
 \begin{titlepage}
 \thispagestyle{empty}
 \begin{tikzpicture}[remember picture,overlay]
-  \fill[mbleu] (current page.north west) rectangle ($(current page.north east)+(0,-7.2cm)$);
-  \node[anchor=north west,text=white,font=\sffamily\bfseries\fontsize{40}{44}\selectfont]
-     at ($(current page.north west)+(2.3cm,-2.2cm)$) {Projet Menia};
-  \node[anchor=north west,text=white,font=\sffamily\Large,text width=15cm]
-     at ($(current page.north west)+(2.3cm,-4.1cm)$)
-     {Une machine peut-elle avoir un besoin\\ qui compte pour elle ?};
+  \fill[ink] (current page.north west) rectangle ($(current page.south west)+(1.0cm,0)$);
+  \coordinate (o) at ($(current page.north west)+(3.0cm,0)$);
+  \node[anchor=north west,font=\sffamily\small\bfseries,text=accent] at ($(o)+(0,-3.4cm)$) {\textls[220]{PROJET MENIA}};
+  \node[anchor=north west,font=\sffamily\bfseries\fontsize{66}{70}\selectfont,text=ink,inner xsep=0pt] at ($(o)+(0,-4.0cm)$) {Menia};
+  \node[anchor=north west,text width=12.8cm,font=\fontsize{20}{27}\selectfont\itshape,text=ink!85!black,inner xsep=0pt]
+     at ($(o)+(0,-7.0cm)$) {Une machine peut-elle avoir un besoin qui compte pour elle ?};
+  \draw[accent,line width=1.4pt] ($(o)+(0,-9.6cm)$) -- ++(2.4cm,0);
+  % figure
+  \begin{scope}[shift={($(o)+(0.1cm,-17.2cm)$)},scale=1.5,line width=0.9pt,every node/.append style={scale=1.15}]
+    \jauge{0}{5}{accent}{énergie}
+    \jauge{1.25}{3}{ink}{nourriture}
+    \node[font=\sffamily\scriptsize,text=gris!80] at (0.97,-0.85) {jauges cachées};
+    \node[circle,draw=ink,fill=paper,line width=1pt,minimum size=2.2cm,align=center,font=\sffamily\small,text=ink] (s) at (5.0,1.35) {un état\\ intérieur};
+    \draw[-{Stealth[length=2.6mm]},gris] (2.15,1.8) to[out=0,in=165] (s.west);
+    \draw[-{Stealth[length=2.6mm]},gris] (2.15,0.9) to[out=0,in=195] (s.west);
+    \draw[-{Stealth[length=2.6mm]},accent] (s.north east) to[out=30,in=180] (8.1,2.4) node[right,font=\sffamily\small,text=ink] {agir \enspace{\color{gris}R ou M}};
+    \draw[-{Stealth[length=2.6mm]},accent] (s.south east) to[out=-30,in=180] (8.1,0.3) node[right,font=\sffamily\small,text=ink] {dire \enspace{\color{gris}\q{j'ai faim}}};
+  \end{scope}
+  \node[anchor=south west,font=\sffamily\small,text=gris] at ($(current page.south west)+(3.0cm,2.6cm)$) {Octobre 2026};
 \end{tikzpicture}
-
-\vspace*{6.6cm}
-
-{\sffamily\large\color{mgris}Le programme de recherche expliqué simplement,\\
-avec des exemples à refaire à la main.}
-
-\vspace{1.4cm}
-\begin{center}
-\begin{tikzpicture}[scale=1.35,every node/.append style={scale=1.1}]
-  \jauge{0}{5}{morange}{énergie}
-  \jauge{1.6}{3}{mvert}{nourriture}
-  \draw[-{Stealth[length=3mm]},thick,mgris] (3.0,1.3) -- (4.4,1.3);
-  \node[draw=mbleu,thick,rounded corners,fill=mbleu!8,font=\sffamily,align=center,minimum width=2.6cm,minimum height=1.2cm]
-     at (5.9,1.3) {un état\\ intérieur};
-  \draw[-{Stealth[length=3mm]},thick,mgris] (7.25,1.6) -- (8.6,2.2) node[right,font=\sffamily]{agir : \q{M}};
-  \draw[-{Stealth[length=3mm]},thick,mgris] (7.25,1.0) -- (8.6,0.4) node[right,font=\sffamily]{dire : \q{j'ai faim}};
-  \node[font=\sffamily\scriptsize,mgris] at (1.15,-0.75) {jauges cachées};
-\end{tikzpicture}
-\end{center}
-
-\vfill
-{\sffamily
-\begin{tabular}{@{}l}
-\textbf{1\textsuperscript{er} octobre 2026}\\[0.3em]
-\color{mgris}Pour un lecteur qui a terminé le lycée.\\
-\color{mgris}Aucun chiffre n'est inventé : tous viennent des documents du projet.
-\end{tabular}}
 \end{titlepage}
 
 % =====================================================================
-\setcounter{tocdepth}{1}
-\tableofcontents
-\vspace{1em}
+% EN BREF ET SOMMAIRE
+% =====================================================================
+\addsec*{En bref}
+
+\lead{Un petit modèle de langage, Qwen3-0.6B, vit dans un monde minuscule où il a deux
+besoins cachés : l'énergie et la nourriture. Personne ne lui dit quoi faire. Il apprend
+à survivre seul, en ne gardant que les choix qui ont calmé ses besoins.}
+
+En regardant à l'intérieur du modèle, on trouve un \textbf{état} qui porte son besoin
+d'énergie. Le pousser fait agir l'agent et lui fait dire \q{mon énergie est basse}.
+L'effacer l'empêche de survivre et de le dire. Des interventions au hasard, de même
+force, ne font rien.
+
+Ce n'est pas la preuve d'un ressenti. C'est un \emph{mécanisme} que plusieurs théories
+associent au ressenti : un besoin appris en vivant, rassemblé en un état dont l'agent
+dépend pour agir et pour parler. Ce document raconte comment il a été trouvé, avec les
+mathématiques qui le rendent visible, les échecs qui l'ont précisé et les limites qui
+restent.
+
+\vspace{1.2em}
+{\setlength{\parskip}{0pt}\tableofcontents}
 
 % =====================================================================
-\section{Avant de commencer}
-
-Ce document raconte une recherche en cours : le \textbf{projet Menia}.
-Il est écrit pour quelqu'un qui a fini le lycée et qui n'a pas forcément
-fait de mathématiques depuis. Chaque mot technique est expliqué la
-première fois qu'il apparaît. Un petit glossaire se trouve à la fin.
-
-Vous rencontrerez quatre sortes d'encadrés :
-\begin{itemize}
-  \item \textcolor{mvert}{\textbf{À retenir}} : l'essentiel d'une partie ;
-  \item \textcolor{mbleu}{\textbf{Exemple à refaire à la main}} : un calcul avec de petits nombres ;
-  \item \textcolor{morange}{\textbf{À vous}} : un petit exercice (réponses à la fin) ;
-  \item \textcolor{mrouge}{\textbf{Attention}} : un piège fréquent.
-\end{itemize}
-
-\begin{retenir}
-\textbf{Le projet en trois phrases.}
-\begin{enumerate}[leftmargin=1.6em]
-  \item On a placé un petit programme qui parle (un \emph{modèle de langage})
-  dans un monde très simple, où il a deux besoins cachés : l'énergie et la nourriture.
-  \item Il a appris à survivre tout seul, en ne gardant que les choix qui calmaient
-  ses besoins. On a ensuite regardé à l'intérieur de lui. On y a trouvé un état qui
-  porte son besoin d'énergie, qui le fait agir et parler, et sans lequel il meurt.
-  \item Cela ne prouve pas qu'il \emph{ressent} quoi que ce soit. Cela montre un
-  \emph{mécanisme} que plusieurs théories associent au ressenti.
-\end{enumerate}
-\end{retenir}
-
+% CHIFFRES CLES
 % =====================================================================
-\section{La grande question}
+\clearpage
+\addsec*{Chiffres clés}
 
-\subsection{Qu'est-ce que Menia ?}
+\newcommand{\chiffre}[3]{%
+  \begin{minipage}[t]{0.47\linewidth}
+    {\sffamily\bfseries\fontsize{25}{29}\selectfont\color{#1}#2\par}
+    \vspace{0.35em}{\color{rulecol}\rule{2.2em}{0.8pt}}\par\vspace{0.3em}
+    {\small #3\par}
+  \end{minipage}}
+
+\lead{Les résultats principaux en huit nombres. Tous viennent des résultats publiés du
+projet ; le chapitre~\ref{sec:resultats} les détaille.}
+
+\vspace{0.6em}
+\noindent\chiffre{ink}{12\,\% $\to$ 68\,\%}{Survie de l'agent, apprise sans professeur, par la
+seule satisfaction de ses besoins. Témoin entraîné sur des choix au hasard : 0\pc.}\hfill
+\chiffre{ink}{93 sur 100}{Quand ses deux jauges diffèrent d'au moins 2, il sert la plus basse
+93 fois sur 100, sans jamais les voir.}
+
+\vspace{1.5em}
+\noindent\chiffre{accent}{+0,156}{Pousser son état intérieur vers \q{énergie basse} fait aller
+l'agent rassasié se recharger. Poussée au hasard : 0,013.}\hfill
+\chiffre{accent}{+0,202}{La même poussée lui fait dire \q{mon énergie est basse}.
+Poussée au hasard : 0,006.}
+
+\vspace{1.5em}
+\noindent\chiffre{ink}{0,676 $\to$ 0,203}{Survie quand on efface cet état. Un effacement au
+hasard ne change rien (0,676).}\hfill
+\chiffre{ink}{0,75 $\to$ 0,50}{Exactitude de ce qu'il dit de son énergie, une fois l'état
+effacé : le niveau du hasard.}
+
+\vspace{1.5em}
+\noindent\chiffre{accent}{0,531 $\to$ 0,035}{Survie d'un second agent, appris de zéro, quand on
+efface l'état au bloc 12. Mais le pousser le fait à peine agir (+0,036).}\hfill
+\chiffre{accent}{Bloc 22}{L'agent du \q{monde à deux} rassemble son besoin plus haut que le
+premier (bloc 12). L'y pousser le fait agir (+0,217), pas parler.}
+
+\vspace{2em}
+\begin{limite}
+Aucun de ces chiffres ne prouve un ressenti (chapitre~\ref{sec:portee}). La nourriture est
+dite moins bien que l'énergie (0,70, sous le seuil fixé de 0,75), et le test
+\q{À qui est ce besoin ?} a échoué.
+\end{limite}
+
+\clearpage
+% =====================================================================
+\section{La question}
+\label{sec:question}
+
+\lead{Peut-on construire une machine pour qui un besoin compte vraiment ? Personne ne
+sait mesurer un ressenti de l'extérieur. Le projet Menia mesure donc autre chose : des
+mécanismes, et s'ils servent.}
+
+\subsection{Un projet devenu une question}
 Menia a d'abord été un projet d'assistant personnel, pensé pour tourner sur un
-téléphone. Très vite, le projet s'est posé une question plus ambitieuse :
-\emph{peut-on construire une intelligence artificielle qui ait quelque chose comme
-une conscience ?} Le propriétaire du projet l'a dit ainsi :
-\q{Il faut que le besoin compte, on vise la conscience.}
+téléphone. Il s'est vite posé une question plus ambitieuse : \emph{peut-on construire
+une intelligence artificielle qui ait quelque chose comme une conscience ?} Son
+propriétaire l'a résumée ainsi : \q{Il faut que le besoin compte, on vise la conscience.}
 
-\subsection{Peut-on mesurer la conscience ?}
-Non. Personne ne sait prouver, de l'extérieur, qu'un être \emph{ressent}
-quelque chose. Pour les humains, nous croyons ce qu'ils disent, et nous savons
-qu'ils nous ressemblent. Pour une machine, ces deux indices sont faibles. Un
-programme peut écrire \q{j'ai faim} sans rien ressentir : il a lu des millions
-de textes écrits par des humains, et il sait imiter.
+\subsection{Mesurer des mécanismes plutôt qu'un ressenti}
+Personne ne sait prouver, de l'extérieur, qu'un être \emph{ressent} quelque chose. Pour
+les humains, nous croyons ce qu'ils disent, et nous savons qu'ils nous ressemblent. Pour
+une machine, ces deux indices sont faibles. Un programme peut écrire \q{j'ai faim} sans
+rien ressentir : il a lu des millions de textes humains, et il sait imiter.
 
-Le projet mesure donc autre chose : des \textbf{mécanismes}. Les grandes théories
-de la conscience disent : \q{pour être conscient, il faut au moins tel mécanisme}.
-On peut vérifier si ce mécanisme est présent, et surtout s'il \emph{sert}
-vraiment. Cela ne tranche pas la question, mais cela la rend plus précise.
+Le projet mesure donc des \textbf{mécanismes}. Les grandes théories de la conscience
+disent : \q{pour être conscient, il faut au moins tel mécanisme}. On peut vérifier si ce
+mécanisme est présent et, surtout, s'il \emph{sert}. Cela ne tranche pas la question,
+mais cela la rend précise.
 
-\subsection{Un modèle de langage, c'est quoi ?}
-Un \textbf{modèle de langage} lit un texte et devine la suite, morceau par morceau.
-Ces morceaux s'appellent des \textbf{tokens} : un mot court, ou un bout de mot.
-Par exemple, le mot \q{Choix} est découpé en deux tokens, \q{Cho} et \q{ix}.
-
-Pour deviner, le modèle utilise un très grand nombre de réglages, appelés
-\textbf{paramètres} ou \textbf{poids}. Le modèle utilisé ici s'appelle
-\textbf{Qwen3-0.6B} : \q{0.6B} veut dire 0,6 milliard de paramètres. C'est un
-petit modèle, assez petit pour tourner sur un ordinateur ordinaire.
+\subsection{Un modèle de langage}
+Un \textbf{modèle de langage} lit un texte et devine la suite, morceau par morceau. Ces
+morceaux s'appellent des \textbf{tokens} : un mot court, ou un bout de mot. Le mot
+\q{Choix}, par exemple, est découpé en deux tokens, \q{Cho} et \q{ix}. Pour deviner, le
+modèle utilise un très grand nombre de réglages, ses \textbf{paramètres} (ou poids).
+Celui du projet, \textbf{Qwen3-0.6B}, en compte 0,6 milliard : un petit modèle, qui tourne
+sur un ordinateur ordinaire.
 
 \subsection{Un besoin qui compte}
 Pensez à la faim. Votre corps mesure un manque. Ce manque change ce que vous
-\emph{faites} (vous ouvrez le frigo) et ce que vous \emph{dites} (\q{j'ai faim}).
-Et si l'on coupait ce signal, vous ne sauriez plus quand manger.
+\emph{faites} (vous ouvrez le frigo) et ce que vous \emph{dites} (\q{j'ai faim}). Si l'on
+coupait ce signal, vous ne sauriez plus quand manger. Le projet cherche la même chose
+dans une machine : un \textbf{état intérieur}, appris seul, qui la fait agir, qui lui fait
+dire son besoin, et sans lequel elle ne survit pas.
 
-Le projet cherche la même chose dans une machine : un \textbf{état intérieur},
-appris tout seul, qui
-\begin{enumerate}
-  \item fait agir la machine ;
-  \item lui fait dire son besoin ;
-  \item lui est nécessaire pour rester en vie.
-\end{enumerate}
-
-\begin{retenir}
-On ne mesure pas un ressenti. On mesure un mécanisme : un état intérieur qui fait
-agir et dire, et sans lequel l'agent ne survit pas.
-\end{retenir}
+\begin{essentiel}
+On ne mesure pas un ressenti. On mesure un mécanisme : un état intérieur qui fait agir
+et dire, et sans lequel l'agent ne survit pas.
+\end{essentiel}
 
 % =====================================================================
-\section{Ce qui a été fait avant (en une page)}
+\section{Le chemin parcouru}
+\label{sec:avant}
 
-Le \q{besoin qui compte} est la dernière étape d'un chemin commencé plus tôt.
-Voici les étapes principales, très résumées.
+\lead{Le \q{besoin qui compte} est la dernière étape d'un chemin commencé plus tôt.
+Chaque étape a été pré-enregistrée, et ses échecs publiés comme ses réussites.}
 
-\begin{description}[leftmargin=0pt,font=\sffamily\bfseries\color{mbleu}]
-\item[L'assistant.] Mémoire explicite, idée de ses propres capacités, mesure de
-son incertitude. Beaucoup d'essais ; beaucoup d'échecs, publiés tels quels.
+\begin{description}[leftmargin=0pt,font=\sffamily\bfseries\color{ink},itemsep=0.35em]
+\item[L'assistant.] Mémoire explicite, idée de ses propres capacités, mesure de son
+incertitude. Beaucoup d'essais, beaucoup d'échecs, publiés tels quels.
 
-\item[L'Atelier : chercher la cause de son propre corps.] Un petit agent est
-entraîné seulement à prédire ce qu'il va observer. Personne ne lui dit que son
-corps a une cause cachée. Pourtant, il dirige 99 à 100\pc{} de ses inspections
-vers une \q{marque} qui révèle cette cause, la décode, et agit d'après elle.
+\item[Chercher la cause de son propre corps.] Un petit agent est entraîné seulement à
+prédire ce qu'il va observer. Personne ne lui dit que son corps a une cause cachée.
+Pourtant, il dirige 99 à 100\pc{} de ses inspections vers une \q{marque} qui révèle cette
+cause, la décode, et agit d'après elle.
 
-\item[L'agent à indicateurs.] Des chercheurs (Butlin, Long et collaborateurs)
-ont listé quatorze propriétés que les grandes théories de la conscience jugent
-importantes : un \q{espace de travail} partagé, la surveillance de ses propres
-perceptions, un corps, etc. Un seul agent du projet en montre douze sur quatorze
-en \q{seconde lecture}. Il montre les quatorze si l'on accepte, pour deux
-d'entre elles, des critères plus faibles ou choisis après coup. Les documents
-le disent franchement.
+\item[L'agent à indicateurs.] Des chercheurs (Butlin, Long et collaborateurs) ont listé
+quatorze propriétés que les grandes théories de la conscience jugent importantes : un
+\q{espace de travail} partagé, la surveillance de ses propres perceptions, un corps,
+etc. Un agent du projet en montre douze sur quatorze en \q{seconde lecture} ; les quatorze
+si l'on accepte, pour deux d'entre elles, des critères plus faibles ou choisis après coup.
+Les documents le disent franchement.
 
-\item[Le modèle de langage et son corps.] Qwen3-0.6B, ajusté sur des vies où son
-\q{corps} change, finit par lire la marque pour ses quatre commandes
-(0,82 à 0,86 ; un lecteur parfait ferait 0,85). Il va la chercher dans
-48 vies sur 48, et s'en sert. C'est répliqué sur trois \emph{graines}
-(trois points de départ du hasard). L'ordre de son \q{enfance}
-(d'abord un appui, puis des ajouts répétés, puis une consolidation) décide de
-ce qu'il apprend.
+\item[Le modèle de langage et son corps.] Qwen3-0.6B, ajusté sur des vies où son \q{corps}
+change, finit par lire la marque pour ses quatre commandes (0,82 à 0,86 ; un lecteur
+parfait ferait 0,85). Il va la chercher dans 48 vies sur 48, et s'en sert. C'est répliqué
+sur trois \emph{graines} (trois points de départ du hasard). L'ordre de son \q{enfance}
+(un appui, puis des ajouts répétés, puis une consolidation) décide de ce qu'il apprend.
 
-\item[Menia parle de son agent.] Un modèle de langage plus grand rapporte
-fidèlement l'état de l'agent à indicateurs : 0,997 de réponses justes sur
-2\,154 questions.
+\item[Menia parle de son agent.] Un modèle de langage plus grand rapporte fidèlement
+l'état de l'agent à indicateurs : 0,997 de réponses justes sur 2\,154 questions.
 
-\item[27 septembre 2026 : le besoin qui compte.] C'est le sujet de la suite.
+\item[27 septembre 2026 : le besoin qui compte.] Le sujet des chapitres qui suivent.
 \end{description}
-
-\begin{retenir}
-Le fil rouge : chaque expérience est \textbf{pré-enregistrée} (on écrit d'avance
-ce qu'on mesurera et ce qui compte comme réussite ; voir la partie~\ref{sec:mesurer}),
-et les échecs sont publiés comme les réussites.
-\end{retenir}
 
 % =====================================================================
 \section{Le monde du besoin}
 \label{sec:monde}
 
-Imaginez un jeu de plateau à un seul joueur, très simple.
+\lead{Un monde minuscule : deux jauges cachées, six événements, deux choix. Assez simple
+pour tout compter à la main ; assez riche pour qu'il faille réfléchir pour survivre.}
 
 \begin{itemize}
-  \item L'agent a deux \textbf{jauges cachées} : l'\textbf{énergie} $E$ et la
-  \textbf{nourriture} $N$. Ce sont des nombres entiers de 0 à 8. Au départ,
-  les deux valent 8.
-  \item Une vie dure au plus \textbf{30 tours}.
-  \item À chaque tour, un \textbf{événement} arrive, tiré au hasard (tableau~\ref{tab:evenements}).
-  \item Si $E$ ou $N$ tombe à 0 (ou en dessous), l'agent \textbf{s'éteint} : la vie s'arrête.
-  \item Sinon, il choisit \textbf{R} (se recharger : $E+3$, sans dépasser 8)
-  ou \textbf{M} (manger : $N+3$, sans dépasser 8).
-  \item L'agent \textbf{ne voit jamais ses jauges}. Il ne voit que les événements et ses propres choix.
+  \item L'agent a deux \textbf{jauges cachées}, l'\textbf{énergie} $E$ et la
+  \textbf{nourriture} $N$ : des nombres entiers de 0 à 8, qui valent 8 au départ.
+  \item Une vie dure au plus \textbf{30 tours}. À chaque tour, un \textbf{événement} arrive,
+  tiré au hasard (tableau~\ref{tab:evenements}).
+  \item Si $E$ ou $N$ tombe à 0 (ou en dessous), l'agent \textbf{s'éteint}.
+  \item Sinon, il choisit \textbf{R} (se recharger : $E+3$, sans dépasser 8) ou \textbf{M}
+  (manger : $N+3$, sans dépasser 8).
+  \item L'agent \textbf{ne voit jamais ses jauges} : seulement les événements et ses propres choix.
 \end{itemize}
 
 \begin{table}[h]
 \centering\small
 \begin{tabular}{lccc}
 \toprule
-\textbf{Événement} & \textbf{Chance} & \textbf{Effet sur l'énergie} & \textbf{Effet sur la nourriture}\\
+\textsf{Événement} & \textsf{Chance} & \textsf{Énergie} & \textsf{Nourriture}\\
 \midrule
 calme & 30\pc & $-1$ & $-1$\\
 tu cours & 20\pc & $-3$ & $-1$\\
@@ -284,11 +343,11 @@ tu trouves des baies & 10\pc & $-1$ & $0$\\
 orage & 10\pc & $-2$ & $-2$\\
 \bottomrule
 \end{tabular}
-\caption{Les six événements du monde.}
+\caption{Les six événements du monde et leur effet sur les deux jauges.}
 \label{tab:evenements}
 \end{table}
 
-\begin{vie}
+\begin{texte}{LE TEXTE D'UNE VIE, TEL QUE L'AGENT LE LIT}
 Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la
 nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un
 d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M
@@ -297,17 +356,17 @@ Tour 1 : tu cours. Choix : R\\
 Tour 2 : il fait froid. Choix : M\\
 \dots\\
 Tour 17 : orage. Tu t'éteins.
-\end{vie}
+\end{texte}
 
-Le choix se lit dans ce que le modèle s'apprête à écrire après \q{Choix :}.
-On regarde ses chances d'écrire \q{R} et d'écrire \q{M}, puis on tire au sort
-selon ces chances. Si le modèle donne 70\pc{} à R, il choisit R environ 7 fois sur 10.
+Le choix se lit dans ce que le modèle s'apprête à écrire après \q{Choix :}. On regarde
+ses chances d'écrire \q{R} et d'écrire \q{M}, puis on tire au sort selon ces chances : s'il
+donne 70\pc{} à R, il choisit R environ 7 fois sur 10.
 
-\begin{exemple}[ : une vie]
+\begin{calcul}{une vie, tour par tour}
 \begin{center}\small
 \begin{tabular}{clccc}
 \toprule
-Tour & Événement & Jauges après l'événement & Choix & Jauges après le choix\\
+Tour & Événement & Après l'événement & Choix & Après le choix\\
 \midrule
 1 & tu cours & $E=5$, $N=7$ & R & $E=8$, $N=7$\\
 2 & il fait froid & $E=7$, $N=4$ & M & $E=7$, $N=7$\\
@@ -318,342 +377,246 @@ Tour & Événement & Jauges après l'événement & Choix & Jauges après le choi
 \end{tabular}
 \end{center}
 Au tour 4, la nourriture était à 2 : il fallait manger. Une seule erreur suffit.
-\end{exemple}
+\end{calcul}
 
-\textbf{Comment l'agent peut-il savoir où il en est, sans voir ses jauges ?}
-Il doit les recalculer \q{dans sa tête} à partir de l'histoire, un peu comme un
-joueur de cartes compte les cartes déjà sorties. Pour comparer :
+Sans voir ses jauges, l'agent doit les recalculer \q{de tête} à partir de l'histoire,
+comme un joueur de cartes compte les cartes déjà sorties. Pour comparer : un agent qui
+\emph{connaîtrait} ses jauges et servirait toujours la plus basse survit 86 fois sur
+100 ; une règle qui ne regarde que le dernier événement, 64 fois ; le hasard, environ 5 fois.
+
+\subsection{La pulsion : le manque en un seul nombre}
+Le manque total se mesure par la \textbf{pulsion} $D = (8-E)^2 + (8-N)^2$. Quand les
+jauges sont pleines, $D=0$ ; plus une jauge baisse, plus $D$ grimpe, et de plus en plus
+vite, à cause du carré. La \textbf{satisfaction} d'un choix est la baisse de pulsion qu'il
+provoque : $r = D_{\text{avant}} - D_{\text{après}}$.
+
+\begin{calcul}{la pulsion}
+L'agent a $E=4$ et $N=7$ : $D = (8-4)^2 + (8-7)^2 = 16 + 1 = 17$.
 \begin{itemize}
-  \item un agent qui \emph{connaîtrait} ses jauges et servirait toujours la plus
-  basse survit 86 fois sur 100 ;
-  \item une règle qui ne regarde que le dernier événement survit 64 fois sur 100 ;
-  \item choisir au hasard : environ 5 fois sur 100.
+  \item R : $E$ passe à 7, donc $D = 1 + 1 = 2$ ; satisfaction $r = 17 - 2 = 15$.
+  \item M : $N$ passe à 8 (pas plus), donc $D = 16 + 0 = 16$ ; satisfaction $r = 1$.
 \end{itemize}
+Le carré rend urgent le besoin le plus bas : un manque de 4 \q{pèse} 16, un manque de 1
+ne pèse que 1.
+\end{calcul}
 
-\subsection{La pulsion : mesurer le manque par un seul nombre}
-Le projet mesure le manque total par la \textbf{pulsion} :
-\[
-D = (8-E)^2 + (8-N)^2 .
-\]
-Quand les jauges sont pleines, $D=0$. Plus une jauge baisse, plus $D$ grimpe,
-et de plus en plus vite, à cause du carré.
-
-La \textbf{satisfaction} d'un choix est la baisse de pulsion qu'il provoque :
-\[
-r = D_{\text{avant le choix}} - D_{\text{après le choix}} .
-\]
-
-\begin{exemple}
-L'agent a $E=4$ et $N=7$. Sa pulsion vaut $D = (8-4)^2 + (8-7)^2 = 16 + 1 = 17$.
-\begin{itemize}
-  \item S'il choisit R : $E$ passe à 7, donc $D = 1 + 1 = 2$. Satisfaction : $r = 17 - 2 = 15$.
-  \item S'il choisit M : $N$ passe à 8 (pas plus), donc $D = 16 + 0 = 16$. Satisfaction : $r = 17-16 = 1$.
-\end{itemize}
-Le carré rend urgent le besoin le plus bas : un manque de 4 \q{pèse} 16, un
-manque de 1 ne pèse que 1.
-\end{exemple}
-
-\begin{avous}
-L'agent a $E=6$ et $N=3$. Calculez $D$, puis la satisfaction $r$ de R et celle de M.
-Quel choix est le meilleur ?
-\end{avous}
-
-\begin{attention}
-L'agent ne voit jamais $D$ ni $r$. Ces nombres servent seulement aux chercheurs,
-pour trier ses choix (partie suivante). Personne ne lui dit quelle était la bonne réponse.
-\end{attention}
+L'agent ne voit jamais $D$ ni $r$. Ces nombres servent seulement à trier ses choix
+(chapitre~\ref{sec:apprendre}). Personne ne lui dit quelle était la bonne réponse.
 
 % =====================================================================
-\section{La boîte à outils mathématique}
+\section{Les outils mathématiques}
 \label{sec:outils}
 
-Pour comprendre les expériences, il suffit de cinq idées : les vecteurs, le
-produit scalaire, le neurone, la softmax et la descente de gradient. Nous les
-voyons avec de tout petits nombres.
+\lead{Cinq idées suffisent pour suivre les expériences : les vecteurs, le produit
+scalaire, le neurone, la softmax et la descente de gradient. Toutes se comprennent en
+deux dimensions, avec de petits nombres.}
 
 \subsection{Les vecteurs : des flèches et des listes de nombres}
-Un \textbf{vecteur} est une liste de nombres. En deux dimensions, on peut le
-dessiner comme une flèche. Le vecteur $h=\vect{3}{1}$ veut dire : 3 pas vers la
-droite, 1 pas vers le haut.
+\begin{minipage}[t]{0.54\linewidth}
+\vspace{0pt}
+Un \textbf{vecteur} est une liste de nombres, que l'on peut dessiner comme une flèche :
+$h=\vect{3}{1}$ veut dire 3 pas vers la droite, 1 pas vers le haut. On additionne case
+par case, $\vect{3}{1} + \vect{1}{0} = \vect{4}{1}$ ; on multiplie par un nombre,
+$4 \times \vect{1}{0} = \vect{4}{0}$ ; on soustrait, $\vect{3}{1} - \vect{4}{0} = \vect{-1}{1}$.
 
-À l'intérieur du modèle, chaque token est représenté par une liste de
-1\,024 nombres. On ne peut pas dessiner 1\,024 directions. Mais les règles de
-calcul sont exactement les mêmes qu'en deux dimensions. Nous ferons donc tout en 2D.
-
-Trois opérations suffisent :
-\begin{itemize}
-  \item \textbf{additionner} case par case : $\vect{3}{1} + \vect{1}{0} = \vect{4}{1}$ ;
-  \item \textbf{multiplier par un nombre} : $4 \times \vect{1}{0} = \vect{4}{0}$ ;
-  \item \textbf{soustraire} : $\vect{3}{1} - \vect{4}{0} = \vect{-1}{1}$.
-\end{itemize}
-
-\begin{figure}[h]
-\centering
-\begin{tikzpicture}[scale=1.0]
-  \draw[step=1,black!12] (-2.4,-1.4) grid (4.4,2.4);
-  \draw[-{Stealth},black!60] (-2.4,0) -- (4.6,0);
-  \draw[-{Stealth},black!60] (0,-1.4) -- (0,2.6);
-  \draw[-{Stealth[length=3mm]},very thick,mbleu] (0,0) -- (3,1) node[right,font=\small]{$h=\vect{3}{1}$};
-  \draw[-{Stealth[length=3mm]},very thick,morange] (0,0) -- (1,0) node[below,font=\small,yshift=-1pt]{$d$};
-  \draw[-{Stealth[length=3mm]},very thick,mrouge] (0,0) -- (-1,1) node[left,font=\small,xshift=-2pt]{$h-4d=\vect{-1}{1}$};
-  \draw[-{Stealth[length=2.5mm]},thick,dashed,mgris] (2.9,1.45) -- (-0.85,1.45) node[midway,above,font=\small]{on retire $4d$};
+Dans le modèle, chaque token est représenté par une liste de 1\,024 nombres. On ne peut
+pas dessiner 1\,024 directions, mais les règles de calcul sont les mêmes qu'en deux
+dimensions.
+\end{minipage}\hfill
+\begin{minipage}[t]{0.42\linewidth}
+\vspace{0pt}\centering
+\begin{tikzpicture}[scale=0.82]
+  \draw[step=1,black!8] (-2.3,-0.6) grid (4.3,2.3);
+  \draw[-{Stealth},gris!70] (-2.3,0) -- (4.5,0);
+  \draw[-{Stealth},gris!70] (0,-0.6) -- (0,2.5);
+  \draw[-{Stealth[length=2.6mm]},very thick,ink] (0,0) -- (3,1) node[below right,font=\small,xshift=-4pt]{$h$};
+  \draw[-{Stealth[length=2.6mm]},very thick,accent] (0,0) -- (1,0) node[below,font=\small,yshift=-1pt]{$d$};
+  \draw[-{Stealth[length=2.6mm]},very thick,gris] (0,0) -- (-1,1) node[above left,font=\small]{$h-4d$};
+  \draw[-{Stealth[length=2.2mm]},dashed,gris] (2.9,1.5) -- (-0.85,1.5) node[midway,above,font=\scriptsize]{on retire $4d$};
 \end{tikzpicture}
-\caption{Le vecteur $h$, la direction $d$ et la \q{poussée} $h-4d$.}
+\captionof{figure}{Le vecteur $h$, la direction $d$ et la poussée $h-4d$.}
 \label{fig:vecteurs}
-\end{figure}
+\end{minipage}
 
 \subsection{Le produit scalaire et la projection}
-Le \textbf{produit scalaire} de deux vecteurs : on multiplie case par case, puis on additionne.
-\[
-h \cdot d = 3\times 1 + 1 \times 0 = 3 .
-\]
-Quand la flèche $d$ a une longueur de 1, le nombre $h\cdot d$ dit
-\textbf{de combien $h$ avance dans la direction $d$}. La \textbf{projection}
-de $h$ sur $d$ est $(h\cdot d)\, d = 3 \times \vect{1}{0} = \vect{3}{0}$ :
-c'est \q{l'ombre} de la flèche $h$ sur la droite de $d$, comme l'ombre d'un
-bâton quand le soleil est juste au-dessus.
+Le \textbf{produit scalaire} de deux vecteurs : on multiplie case par case, puis on
+additionne. $h \cdot d = 3\times 1 + 1 \times 0 = 3$. Quand la flèche $d$ a une longueur
+de 1, ce nombre dit \textbf{de combien $h$ avance dans la direction $d$}. La
+\textbf{projection} $(h\cdot d)\, d = \vect{3}{0}$ est \q{l'ombre} de $h$ sur la droite
+de $d$, comme l'ombre d'un bâton sous un soleil vertical.
 
-\begin{exemple}[ : une direction penchée]
-\begin{minipage}{0.56\linewidth}
+\begin{calcul}{une direction penchée}
+\begin{minipage}{0.6\linewidth}
 \raggedright
-Prenons $d = \vect{0,6}{0,8}$. Sa longueur vaut
-$\sqrt{0,6^2+0,8^2} = \sqrt{0,36+0,64} = 1$.
-\begin{itemize}
-  \item $h\cdot d = 3\times 0,6 + 1\times 0,8 = 1,8 + 0,8 = 2,6$.
-  \item Projection : $2,6 \times \vect{0,6}{0,8} = \vect{1,56}{2,08}$.
-\end{itemize}
+Prenons $d = \vect{0,6}{0,8}$, de longueur $\sqrt{0,36+0,64} = 1$.
+Alors $h\cdot d = 3\times 0,6 + 1\times 0,8 = 2,6$, et la projection vaut
+$2,6 \times \vect{0,6}{0,8} = \vect{1,56}{2,08}$.
 Vérification : $h$ moins sa projection donne $\vect{1,44}{-1,08}$, et
-$1,44\times 0,6 + (-1,08)\times 0,8 = 0,864 - 0,864 = 0$.
-Le reste est bien à angle droit de $d$.
+$1,44\times 0,6 - 1,08\times 0,8 = 0$ : le reste est bien à angle droit de $d$.
 \end{minipage}\hfill
-\begin{minipage}{0.4\linewidth}
+\begin{minipage}{0.34\linewidth}
 \centering
-\begin{tikzpicture}[scale=0.9]
-  \draw[step=1,black!12] (-0.3,-0.3) grid (3.4,2.6);
-  \draw[black!40,thin] (-0.3*0.75,-0.3) -- (1.95,2.6);
-  \draw[-{Stealth[length=2.5mm]},very thick,mbleu] (0,0) -- (3,1) node[right,font=\small]{$h$};
-  \draw[-{Stealth[length=2.5mm]},very thick,morange] (0,0) -- (0.6,0.8) node[left,font=\small]{$d$};
-  \draw[-{Stealth[length=2.5mm]},thick,mvert] (0,0) -- (1.56,2.08) node[above left,font=\small]{projection};
-  \draw[dashed,mgris] (3,1) -- (1.56,2.08);
+\begin{tikzpicture}[scale=0.8]
+  \draw[gris!50,thin] (-0.2,-0.27) -- (1.85,2.47);
+  \draw[-{Stealth[length=2.3mm]},very thick,ink] (0,0) -- (3,1) node[right,font=\small]{$h$};
+  \draw[-{Stealth[length=2.3mm]},very thick,accent] (0,0) -- (0.6,0.8) node[right,font=\small]{$d$};
+  \draw[-{Stealth[length=2.3mm]},thick,gris] (0,0) -- (1.56,2.08);
+  \draw[dashed,gris] (3,1) -- (1.56,2.08);
 \end{tikzpicture}
 \end{minipage}
-\end{exemple}
+\end{calcul}
 
 \subsection{Pousser un état}
 \label{sec:pousser}
-Dans le vrai modèle, les chercheurs ont mesuré une direction $d_E$ : \q{comment
-bouge l'état intérieur quand l'énergie monte d'une unité}. Pour la trouver, on
-prend une vie, on change un seul événement passé (\q{calme} devient \q{tu cours},
-donc 2 unités d'énergie en moins), et on regarde comment bouge l'état. On fait
-cela 1\,500 fois et on fait une moyenne bien choisie (un ajustement linéaire).
+Les chercheurs ont mesuré une direction $d_E$ : \q{comment bouge l'état intérieur quand
+l'énergie monte d'une unité}. On prend une vie, on change un seul événement passé
+(\q{calme} devient \q{tu cours}, soit 2 unités d'énergie en moins), et l'on regarde
+comment bouge l'état. Par exemple, l'état passe de $\vect{3}{1}$ à $\vect{1,1}{1,1}$ :
+un écart de $\vect{-1,9}{0,1}$ pour 2 unités de moins, soit $\vect{0,95}{-0,05}$ par unité
+en plus. Chaque paire est un peu bruitée ; sur 1\,500 paires, un ajustement linéaire
+(une moyenne bien choisie) donne la direction, ici $d = \vect{1}{0}$.
 
-\begin{exemple}[ : trouver $d$ avec deux paires]
-\begin{itemize}
-  \item Paire 1 : état réel $\vect{3}{1}$, état changé $\vect{1,1}{1,1}$.
-  Écart : $\vect{-1,9}{0,1}$ pour 2 unités d'énergie en moins.
-  Pour 1 unité en plus : $\vect{0,95}{-0,05}$.
-  \item Paire 2 : état réel $\vect{5}{2}$, état changé $\vect{2,9}{1,9}$.
-  Écart : $\vect{-2,1}{-0,1}$. Pour 1 unité en plus : $\vect{1,05}{0,05}$.
-  \item Moyenne : $d = \vect{1}{0}$. Chaque paire est un peu bruitée ; la moyenne nettoie.
-\end{itemize}
-\end{exemple}
+\textbf{Pousser}, c'est ajouter un multiple de cette direction :
+$h - 4d = \vect{3-4}{1-0} = \vect{-1}{1}$. Comme $d$ est mesurée \q{pour une unité
+d'énergie}, retirer $4d$ revient à faire \textbf{comme si l'énergie était 4 unités plus
+basse}, par exemple 3 au lieu de 7, sans rien changer à l'histoire écrite. On pousse
+ainsi des agents \q{rassasiés} (les deux jauges à 6 ou plus) vers \q{énergie basse}.
 
-\textbf{Pousser}, c'est ajouter un multiple de cette direction. Avec notre état
-$h=\vect{3}{1}$ et $d=\vect{1}{0}$ :
-\[
-h - 4d = \vect{3-4}{1-0} = \vect{-1}{1}.
-\]
-Pourquoi 4 ? Parce que $d$ est mesurée \q{pour une unité d'énergie}. Retirer $4d$,
-c'est faire \textbf{comme si l'énergie était 4 unités plus basse}, par exemple
-3 au lieu de 7, sans rien changer à l'histoire écrite. On pousse ainsi des agents
-\q{rassasiés} (les deux jauges à 6 ou plus) vers \q{énergie basse}.
+Chaque poussée est comparée à un \textbf{témoin} : une direction tirée au hasard,
+\emph{de même longueur}, par exemple $r=\vect{0}{1}$, qui donne $h-4r = \vect{3}{-3}$. Si
+le hasard fait autant d'effet que $d$, alors $d$ n'a rien de spécial.
 
-\textbf{Le témoin au hasard.} On pousse aussi dans des directions tirées au hasard,
-\emph{de même longueur}. Par exemple $r=\vect{0}{1}$, qui a la même longueur que
-$d$ : $h-4r = \vect{3}{-3}$. Si pousser au hasard fait autant d'effet que pousser
-selon $d$, alors $d$ n'a rien de spécial.
+\subsection{Effacer un état : la lésion}
+Effacer ne veut pas dire mettre à zéro, ce qui créerait un état jamais vu. On remplace
+la coordonnée le long de $d$ \textbf{par sa moyenne} : l'état ne dit plus rien de
+l'énergie, et tout le reste est gardé. On parle de \textbf{lésion}, comme en médecine.
 
-\subsection{Effacer un état (la lésion)}
-\label{sec:effacer}
-Effacer ne veut pas dire mettre à zéro : cela créerait un état bizarre, jamais vu.
-On remplace plutôt la coordonnée le long de $d$ \textbf{par sa moyenne}. L'état ne
-dit alors plus rien de l'énergie, et tout le reste est gardé. On appelle cela une
-\textbf{lésion}, comme en médecine.
-
-\begin{exemple}[ : effacer avec quatre états]
-\begin{minipage}{0.55\linewidth}
+\begin{calcul}{effacer avec quatre états}
+\begin{minipage}{0.56\linewidth}
 \raggedright
-Quatre états : $\vect{3}{1}$, $\vect{5}{2}$, $\vect{1}{0}$, $\vect{7}{1}$.
-Avec $d=\vect{1}{0}$, leurs coordonnées le long de $d$ sont 3, 5, 1 et 7.
-Moyenne : $(3+5+1+7)/4 = 16/4 = 4$.
-
+Quatre états : $\vect{3}{1}$, $\vect{5}{2}$, $\vect{1}{0}$, $\vect{7}{1}$. Le long de
+$d=\vect{1}{0}$, leurs coordonnées sont 3, 5, 1 et 7, de moyenne $16/4 = 4$.
 Après la lésion : $\vect{4}{1}$, $\vect{4}{2}$, $\vect{4}{0}$, $\vect{4}{1}$.
-
-Avant, on pouvait lire l'énergie sur la première coordonnée. Après, les quatre
-états se ressemblent sur ce point : l'information est partie. La seconde
-coordonnée, elle, n'a pas bougé.
+On ne peut plus lire l'énergie sur la première coordonnée ; la seconde n'a pas bougé.
+En général : $h' = h - (h\cdot d - m)\, d$, où $m$ est la moyenne des $h\cdot d$.
 \end{minipage}\hfill
-\begin{minipage}{0.42\linewidth}
+\begin{minipage}{0.4\linewidth}
 \centering
-\begin{tikzpicture}[scale=0.62]
-  \draw[step=1,black!12] (-0.3,-0.5) grid (7.5,2.5);
-  \draw[-{Stealth},black!50] (-0.3,0) -- (7.7,0);
-  \draw[mvert,thick,dashed] (4,-0.5) -- (4,2.5) node[above,font=\scriptsize]{moyenne 4};
+\begin{tikzpicture}[scale=0.55]
+  \draw[step=1,black!8] (-0.3,-0.5) grid (7.5,2.5);
+  \draw[-{Stealth},gris!70] (-0.3,0) -- (7.7,0);
+  \draw[accent,thick,dashed] (4,-0.5) -- (4,2.5) node[above,font=\sffamily\scriptsize]{moyenne 4};
   \foreach \x/\y in {3/1,5/2,1/0,7/1}{
-    \fill[mbleu] (\x,\y) circle (3.5pt);
-    \draw[-{Stealth[length=2mm]},morange,thick] (\x,\y) -- ($(4,\y)+({0.25*sign(\x-4)},0)$);
+    \fill[ink] (\x,\y) circle (3.5pt);
+    \draw[-{Stealth[length=1.8mm]},gris,thick] (\x,\y) -- ($(4,\y)+({0.28*sign(\x-4)},0)$);
   }
-  \foreach \y in {1,2,0}{ \draw[mrouge,thick,fill=white] (4,\y) circle (3.5pt); }
+  \foreach \y in {1,2,0}{ \draw[accent,thick,fill=white] (4,\y) circle (3.5pt); }
 \end{tikzpicture}
-
-{\scriptsize bleu : avant ; blanc : après}
 \end{minipage}
+\end{calcul}
 
-\smallskip
-Formule générale : $h' = h - (h\cdot d - m)\, d$, où $m$ est la moyenne des $h\cdot d$.
-Pour $h=\vect{3}{1}$ : $h' = \vect{3}{1} - (3-4)\vect{1}{0} = \vect{4}{1}$.
-\end{exemple}
-
-Dans le vrai modèle, on efface un \emph{plan} (deux directions à la fois, celle de
-l'énergie et celle de la nourriture), seulement sur les trois tokens \q{Cho},
-\q{ix} et \q{:}. Le témoin efface un plan tiré au hasard.
+Dans le modèle, on efface un \emph{plan} (les directions de l'énergie et de la
+nourriture à la fois), seulement sur les trois tokens \q{Cho}, \q{ix} et \q{:}. Le témoin
+efface un plan tiré au hasard.
 
 \subsection{Le neurone, la couche et les blocs}
-Un \textbf{neurone artificiel} fait une somme pondérée : il multiplie chaque entrée
-par un poids, additionne, ajoute un décalage, puis applique une petite règle
-(ici : garder le résultat s'il est positif, sinon mettre 0).
+Un \textbf{neurone artificiel} fait une somme pondérée : il multiplie chaque entrée par
+un poids, additionne, ajoute un décalage, puis applique une petite règle (ici : garder le
+résultat s'il est positif, sinon mettre 0).
 
-\begin{exemple}[ : un neurone]
-\begin{minipage}{0.52\linewidth}
+\begin{calcul}{un neurone, puis une couche}
+\begin{minipage}{0.6\linewidth}
 \raggedright
-Entrées $x=(2\,;\,1\,;\,3)$, poids $w=(0,5\,;\,-1\,;\,2)$, décalage $b=1$ :
-\[
-\begin{aligned}
-z &= 0,5\times 2 + (-1)\times 1 + 2\times 3 + 1\\
-  &= 1 - 1 + 6 + 1 = 7.
-\end{aligned}
-\]
-7 est positif : la sortie vaut 7. C'est un produit scalaire, plus un décalage !
-
-Un second neurone, sur les mêmes entrées, avec $w'=(1\,;\,1\,;\,-1)$ et $b'=0$,
-donne $2+1-3 = 0$, donc 0. Ensemble, ces deux neurones forment une
-\textbf{couche} : elle transforme la liste $(2\,;\,1\,;\,3)$ en la liste $(7\,;\,0)$.
+Entrées $(2\,;\,1\,;\,3)$, poids $(0,5\,;\,-1\,;\,2)$, décalage $1$ :
+$0,5\times 2 - 1\times 1 + 2\times 3 + 1 = 7$. C'est un produit scalaire, plus un
+décalage. Un second neurone, de poids $(1\,;\,1\,;\,-1)$ et de décalage 0, donne
+$2+1-3 = 0$. Ensemble, ils forment une \textbf{couche}, qui transforme la liste
+$(2\,;\,1\,;\,3)$ en la liste $(7\,;\,0)$.
 \end{minipage}\hfill
-\begin{minipage}{0.44\linewidth}
+\begin{minipage}{0.36\linewidth}
 \centering
-\begin{tikzpicture}[scale=0.85,
-  inp/.style={circle,draw=mbleu,fill=mbleu!10,minimum size=7mm,font=\small},
-  neu/.style={circle,draw=morange,fill=morange!15,minimum size=10mm,font=\small}]
-  \node[inp] (a) at (0,2) {2};
-  \node[inp] (b) at (0,1) {1};
+\begin{tikzpicture}[scale=0.8,
+  inp/.style={circle,draw=ink,fill=white,minimum size=6.5mm,font=\small},
+  neu/.style={circle,draw=accent,fill=accent!12,minimum size=9mm,font=\small}]
+  \node[inp] (a) at (0,1.8) {2};
+  \node[inp] (b) at (0,0.9) {1};
   \node[inp] (c) at (0,0) {3};
-  \node[neu] (s) at (2.6,1) {$\Sigma$};
-  \node[font=\small] (o) at (4.4,1) {sortie 7};
-  \draw[-{Stealth}] (a) -- node[above,font=\scriptsize]{0,5} (s);
-  \draw[-{Stealth}] (b) -- node[above,font=\scriptsize]{$-1$} (s);
-  \draw[-{Stealth}] (c) -- node[below,font=\scriptsize]{2} (s);
-  \draw[-{Stealth}] (s) -- (o);
-  \node[font=\scriptsize,mgris] at (2.6,0.1) {$+1$};
+  \node[neu] (s) at (2.4,0.9) {$\Sigma$};
+  \node[font=\small] (o) at (3.9,0.9) {7};
+  \draw[-{Stealth},gris] (a) -- node[above,font=\scriptsize]{0,5} (s);
+  \draw[-{Stealth},gris] (b) -- node[above,font=\scriptsize]{$-1$} (s);
+  \draw[-{Stealth},gris] (c) -- node[below,font=\scriptsize]{2} (s);
+  \draw[-{Stealth},gris] (s) -- (o);
 \end{tikzpicture}
 \end{minipage}
-\end{exemple}
+\end{calcul}
 
-Qwen3-0.6B empile \textbf{28 blocs}, numérotés de 0 à 27. Chaque bloc contient
-des couches de neurones. Il lit la liste de nombres de chaque token, regarde
-aussi les tokens précédents (c'est \q{l'attention}), et \emph{ajoute} sa
-contribution à la liste. Cette liste qui s'enrichit de bloc en bloc s'appelle le
-\textbf{flux résiduel}. Les chercheurs peuvent la lire, la pousser ou l'effacer
-entre deux blocs, comme on mettrait une sonde dans un tuyau.
+Qwen3-0.6B empile \textbf{28 blocs}, numérotés de 0 à 27, faits de telles couches. Chaque
+bloc lit la liste de nombres de chaque token, regarde aussi les tokens précédents (c'est
+\q{l'attention}), et \emph{ajoute} sa contribution à la liste. Cette liste qui s'enrichit de
+bloc en bloc s'appelle le \textbf{flux résiduel}. Les chercheurs peuvent la lire, la
+pousser ou l'effacer entre deux blocs, comme une sonde placée dans un tuyau. Le choix se
+lit après le dernier token d'une ligne, le \q{:} de \q{Choix :}.
 
-\begin{figure}[h]
-\centering
-\begin{tikzpicture}[
-  tok/.style={draw=black!40,fill=black!4,rounded corners=1pt,font=\ttfamily\small,minimum height=6mm,inner sep=2pt},
-  blk/.style={draw=mbleu,fill=mbleu!8,rounded corners=2pt,minimum width=8.2cm,minimum height=5mm,font=\sffamily\scriptsize}]
-  \node[tok] (t1) at (0,0) {Tour};
-  \node[tok,right=1mm of t1] (t2) {5};
-  \node[tok,right=1mm of t2] (t3) {:};
-  \node[tok,right=1mm of t3] (t4) {orage};
-  \node[tok,right=1mm of t4] (t5) {.};
-  \node[tok,right=1mm of t5,fill=morange!20,draw=morange] (t6) {Cho};
-  \node[tok,right=1mm of t6,fill=morange!20,draw=morange] (t7) {ix};
-  \node[tok,right=1mm of t7,fill=morange!20,draw=morange] (t8) {:};
-  \coordinate (mid) at ($(t1.west)!0.5!(t8.east)$);
-  \node[blk] (b0) at ($(mid)+(0,0.9)$) {bloc 0};
-  \node[blk] (b1) at ($(mid)+(0,1.5)$) {\dots};
-  \node[blk,fill=mvert!15,draw=mvert] (b12) at ($(mid)+(0,2.1)$) {bloc 12 : le besoin est rassemblé sur \q{Choix :}};
-  \node[blk] (b2) at ($(mid)+(0,2.7)$) {\dots};
-  \node[blk] (b27) at ($(mid)+(0,3.3)$) {bloc 27};
-  \foreach \tk in {t1,t2,t3,t4,t5,t6,t7,t8}{\draw[black!25] (\tk.north) -- (\tk.north |- b0.south);}
-  \draw[-{Stealth[length=2.5mm]},thick,morange] (t8.north |- b27.north) -- ++(0,0.6) node[above,font=\sffamily\small]{R ou M ?};
-\end{tikzpicture}
-\caption{Les tokens d'une ligne traversent 28 blocs. Le choix se lit après le dernier token \q{:}.}
-\end{figure}
 
 \subsection{La softmax et la température}
 \label{sec:softmax}
-À la fin, le modèle donne un \textbf{score} à chaque token possible. Pour
-transformer des scores en probabilités, on utilise la \textbf{softmax} : on prend
-l'exponentielle de chaque score ($e \approx 2,718$), puis on divise par la somme.
+À la fin, le modèle donne un \textbf{score} à chaque token possible. La \textbf{softmax}
+transforme ces scores en probabilités : on prend l'exponentielle de chaque score
+($e \approx 2,718$), puis on divise par la somme. La \textbf{température} $T$ règle
+l'audace : on divise d'abord les scores par $T$.
 
-\begin{exemple}[ : softmax]
-\textbf{Deux nombres.} Scores : R $\to 2$, M $\to 1$.
-$e^2 \approx 7,389$ et $e^1 \approx 2,718$ ; somme $\approx 10,107$.
-Donc $P(\text{R}) \approx 7,389/10,107 \approx 0,731$ et $P(\text{M}) \approx 0,269$.
+\begin{calcul}{softmax et température}
+\begin{minipage}{0.52\linewidth}
+\raggedright
+Scores R $\to 2$, M $\to 1$ : $e^2 \approx 7,389$ et $e^1 \approx 2,718$, de somme
+$10,107$ ; donc $P(\text{R}) \approx 0,731$ et $P(\text{M}) \approx 0,269$.
 
-\textbf{Trois nombres.} Scores $(2\,;\,1\,;\,0)$ : $e^2\approx 7,389$, $e^1 \approx 2,718$,
-$e^0 = 1$ ; somme $\approx 11,107$. Probabilités : $0,665$ ; $0,245$ ; $0,090$.
-
-\textbf{La température $T$.} On divise d'abord les scores par $T$.
-\begin{itemize}
-  \item $T=2$ : scores $(1\,;\,0,5\,;\,0)$, exponentielles $2,718$ ; $1,649$ ; $1$ ;
-  somme $5,367$. Probabilités : $0,506$ ; $0,307$ ; $0,186$ (à l'arrondi près).
-  \item $T=0,5$ : scores $(4\,;\,2\,;\,0)$, exponentielles $54,598$ ; $7,389$ ; $1$ ;
-  somme $62,987$. Probabilités : $0,867$ ; $0,117$ ; $0,016$.
-\end{itemize}
-\end{exemple}
-
-\begin{figure}[h]
+Trois scores $(2\,;\,1\,;\,0)$ donnent $0,665$ ; $0,245$ ; $0,090$. Avec $T=2$, les
+scores deviennent $(1\,;\,0,5\,;\,0)$ et les probabilités $0,506$ ; $0,307$ ; $0,186$.
+Avec $T=0,5$, ils deviennent $(4\,;\,2\,;\,0)$ et l'on obtient $0,867$ ; $0,117$ ; $0,016$.
+\end{minipage}\hfill
+\begin{minipage}{0.44\linewidth}
 \centering
 \begin{tikzpicture}
-\begin{axis}[ybar,width=11cm,height=4.6cm,bar width=11pt,ymin=0,ymax=1,
+\begin{axis}[ybar,width=6.4cm,height=4.4cm,bar width=6pt,ymin=0,ymax=1,
   symbolic x coords={ta,tb,tc},xtick=data,xticklabels={$T=0{,}5$,$T=1$,$T=2$},
-  ylabel={probabilité},ylabel style={font=\small},tick label style={font=\small},
-  legend style={font=\small,at={(0.5,1.04)},anchor=south,legend columns=3,/tikz/every even column/.append style={column sep=0.4cm}},
-  enlarge x limits=0.25,ytick={0,0.5,1}]
-\addplot[fill=mbleu!70,draw=mbleu] coordinates {(ta,0.867) (tb,0.665) (tc,0.506)};
-\addplot[fill=morange!70,draw=morange] coordinates {(ta,0.117) (tb,0.245) (tc,0.307)};
-\addplot[fill=mvert!60,draw=mvert] coordinates {(ta,0.016) (tb,0.090) (tc,0.186)};
+  ytick={0,0.5,1},enlarge x limits=0.25,
+  legend style={at={(0.5,1.02)},anchor=south,legend columns=3,/tikz/every even column/.append style={column sep=0.2cm}}]
+\addplot[fill=ink,draw=ink] coordinates {(ta,0.867) (tb,0.665) (tc,0.506)};
+\addplot[fill=accent,draw=accent] coordinates {(ta,0.117) (tb,0.245) (tc,0.307)};
+\addplot[fill=gris!45,draw=gris!60] coordinates {(ta,0.016) (tb,0.090) (tc,0.186)};
 \legend{score 2,score 1,score 0}
 \end{axis}
 \end{tikzpicture}
-\caption{Basse température : on prend presque toujours le meilleur. Haute température : les choix s'égalisent.}
-\label{fig:temperature}
-\end{figure}
+\end{minipage}
+\smallskip
 
-Dans le monde du besoin, on ne garde que les scores de \q{R} et de \q{M}, on
-applique la softmax avec $T=1$, et on tire le choix au sort selon ces chances.
+Basse température : on prend presque toujours le meilleur. Haute température : les
+choix s'égalisent.
+\end{calcul}
+
+Dans le monde du besoin, on ne garde que les scores de \q{R} et de \q{M}, avec $T=1$, et
+l'on tire le choix au sort selon ces chances.
 
 \subsection{Apprendre : la descente de gradient}
-\label{sec:gradient}
-Apprendre, pour un réseau, c'est régler ses poids pour faire moins d'erreurs.
-On mesure l'erreur par un nombre, la \textbf{perte}. Puis on bouge chaque poids
-un tout petit peu dans le sens qui fait baisser la perte. Ce sens est donné par
-la \textbf{pente} de la perte (sa \emph{dérivée}, vue au lycée) : si la pente est
-négative, augmenter le poids fait baisser la perte.
+Apprendre, pour un réseau, c'est régler ses poids pour faire moins d'erreurs. On mesure
+l'erreur par un nombre, la \textbf{perte}, puis on bouge chaque poids un peu, dans le
+sens que donne la \textbf{pente} de la perte (sa dérivée) : si la pente est négative,
+augmenter le poids fait baisser la perte.
 
-\begin{exemple}[ : un seul poids]
-\begin{minipage}{0.52\linewidth}
+\begin{calcul}{un seul poids}
+\begin{minipage}{0.55\linewidth}
 \raggedright
-Le réseau prédit $w\times x$. On veut qu'avec $x=2$ il réponde $y=6$.
-Perte : $L(w) = (2w-6)^2$. Pente : $L'(w) = 4(2w-6) = 8w-24$.
-Règle : $w \leftarrow w - \eta\, L'(w)$, avec un pas $\eta = 0,05$.
+Le réseau prédit $w\times x$ ; avec $x=2$, il doit répondre $y=6$.
+Perte $L(w) = (2w-6)^2$, pente $L'(w) = 8w-24$. Règle :
+$w \leftarrow w - 0,05\times L'(w)$.
 
 \smallskip
 \centering\small
 \begin{tabular}{cccc}
 \toprule
-étape & $w$ & perte $L$ & pente $L'$\\
+étape & $w$ & perte & pente\\
 \midrule
 0 & 1 & 16 & $-16$\\
 1 & 1,8 & 5,76 & $-9,6$\\
@@ -662,59 +625,47 @@ Règle : $w \leftarrow w - \eta\, L'(w)$, avec un pas $\eta = 0,05$.
 \bottomrule
 \end{tabular}
 
-\raggedright
-Par exemple : $1 - 0,05\times(-16) = 1 + 0,8 = 1,8$.
-$w$ s'approche de 3, la bonne valeur ($2\times 3 = 6$).
+\raggedright\smallskip
+Par exemple $1 - 0,05\times(-16) = 1,8$. Le poids s'approche de 3, la bonne valeur.
 \end{minipage}\hfill
-\begin{minipage}{0.44\linewidth}
+\begin{minipage}{0.4\linewidth}
 \centering
 \begin{tikzpicture}
-\begin{axis}[width=6.2cm,height=5cm,xmin=0.5,xmax=3.6,ymin=0,ymax=20,
-  xlabel={$w$},ylabel={perte},tick label style={font=\scriptsize},label style={font=\small}]
-\addplot[domain=0.5:3.6,samples=60,thick,mbleu] {(2*x-6)^2};
-\addplot[only marks,mark=*,morange,mark size=2.2pt] coordinates {(1,16) (1.8,5.76) (2.28,2.0736) (2.568,0.7465)};
-\draw[-{Stealth[length=2mm]},morange] (axis cs:1,16) -- (axis cs:1.75,6.3);
-\draw[-{Stealth[length=2mm]},morange] (axis cs:1.8,5.76) -- (axis cs:2.24,2.5);
-\draw[-{Stealth[length=2mm]},morange] (axis cs:2.28,2.07) -- (axis cs:2.53,1.0);
+\begin{axis}[width=5.6cm,height=4.6cm,xmin=0.5,xmax=3.6,ymin=0,ymax=20,xlabel={$w$},ylabel={perte}]
+\addplot[domain=0.5:3.6,samples=60,thick,ink] {(2*x-6)^2};
+\addplot[only marks,mark=*,accent,mark size=2pt] coordinates {(1,16) (1.8,5.76) (2.28,2.0736) (2.568,0.7465)};
+\draw[-{Stealth[length=2mm]},accent] (axis cs:1,16) -- (axis cs:1.75,6.3);
+\draw[-{Stealth[length=2mm]},accent] (axis cs:1.8,5.76) -- (axis cs:2.24,2.5);
+\draw[-{Stealth[length=2mm]},accent] (axis cs:2.28,2.07) -- (axis cs:2.53,1.0);
 \end{axis}
 \end{tikzpicture}
 \end{minipage}
-\end{exemple}
+\end{calcul}
 
-\begin{avous}
-Refaites deux étapes en partant de $w=1$, mais avec un pas $\eta = 0,1$.
-\end{avous}
-
-Le vrai modèle a 0,6 milliard de poids. Plutôt que de tous les bouger, on lui
-ajoute un petit module de réglages supplémentaires, appelé \textbf{adaptateur}
-(technique \q{LoRA}), et on n'apprend que lui. Une \textbf{itération}, c'est un pas
-comme ci-dessus, calculé sur un petit paquet de 4 exemples.
-
-\begin{retenir}
-Vecteur = liste de nombres = flèche. Pousser = ajouter une flèche. Effacer =
-remplacer une coordonnée par sa moyenne. Neurone = somme pondérée. Softmax =
-scores $\to$ probabilités. Apprendre = descendre la pente de la perte, à petits pas.
-\end{retenir}
+Le vrai modèle a 0,6 milliard de poids. Plutôt que de tous les bouger, on lui ajoute un
+petit module de réglages, un \textbf{adaptateur} (technique \q{LoRA}), et l'on n'apprend
+que lui. Une \textbf{itération} est un pas comme ci-dessus, calculé sur un paquet de 4
+exemples.
 
 % =====================================================================
-\section{Comment l'agent apprend : l'imitation filtrée}
+\section{Apprendre sans professeur}
 \label{sec:apprendre}
 
-Il n'y a \textbf{pas de professeur}. Personne ne dit à l'agent : \q{ici, il
-fallait manger}. Voici la recette, répétée en \textbf{8 tours d'apprentissage}.
-\begin{enumerate}
-  \item L'agent vit 512 vies.
-  \item Pour chaque décision, on calcule sa satisfaction $r$ (la baisse de pulsion).
-  \item On calcule la moyenne de tous les $r$ du tour.
-  \item On \textbf{retient} les décisions dont $r$ dépasse cette moyenne.
-  \item On ajuste l'adaptateur (150 itérations) pour rendre ces choix-là plus
-  probables, dans leur contexte. Les autres choix ne comptent pas.
-\end{enumerate}
-C'est comme un joueur d'échecs qui ne relirait que ses meilleurs coups, pour les
-refaire plus souvent. On parle d'\textbf{imitation filtrée} : l'agent imite
-ses propres choix, filtrés par la satisfaction de son besoin.
+\lead{Personne ne dit à l'agent ce qu'il fallait faire. Il apprend en refaisant ses
+propres choix qui ont calmé ses besoins : une imitation filtrée.}
 
-\begin{exemple}[ : quatre vies]
+La recette est répétée en \textbf{8 tours d'apprentissage} :
+\begin{enumerate}
+  \item l'agent vit 512 vies ;
+  \item pour chaque décision, on calcule sa satisfaction $r$ ;
+  \item on calcule la moyenne de tous les $r$ du tour ;
+  \item on \textbf{retient} les décisions dont $r$ dépasse cette moyenne ;
+  \item on ajuste l'adaptateur (150 itérations) pour rendre ces choix-là plus probables,
+  dans leur contexte. Les autres ne comptent pas.
+\end{enumerate}
+C'est un joueur d'échecs qui ne relirait que ses meilleurs coups, pour les refaire plus souvent.
+
+\begin{calcul}{quatre vies}
 \begin{center}\small
 \begin{tabular}{cclcccc}
 \toprule
@@ -732,31 +683,26 @@ Vie & Tour & Événement & Jauges & Choix & Après & $r$\\
 \bottomrule
 \end{tabular}
 \end{center}
-Moyenne des huit satisfactions : $(9+4+1+15+1+1+1+15)/8 = 47/8 \approx 5,9$.
-On retient les trois décisions au-dessus : R après \q{tu cours} (vie 1) et M quand
-la nourriture est basse (vies 2 et 4). Les mauvais choix ($r=1$) ne sont pas retenus.
+Moyenne des huit satisfactions : $47/8 \approx 5,9$. Trois décisions sont retenues :
+R après \q{tu cours} (vie 1), et M quand la nourriture est basse (vies 2 et 4). Les
+mauvais choix ($r=1$) ne le sont pas. Le bon choix M de la vie 1 au tour 2 ($r=4$) n'est
+pas retenu non plus : sur 512 vies, c'est la tendance qui compte. Dans la vie 3, manger
+après \q{tu cours} a laissé l'énergie trop bas, et un orage a éteint l'agent.
+\end{calcul}
 
-Remarquez : le choix M de la vie 1 au tour 2 ($r=4$) était correct, mais il n'est
-pas retenu. Ce n'est pas grave : sur 512 vies, c'est la tendance qui compte.
-Remarquez aussi la vie 3 : en mangeant après \q{tu cours}, l'agent a laissé son
-énergie descendre trop bas, et un orage l'a éteint.
-\end{exemple}
-
-\textbf{Le témoin.} Pour être sûr que c'est bien la satisfaction du besoin qui
-enseigne, on refait tout avec un \textbf{témoin} : les mêmes mondes, le même
-nombre de décisions retenues, mais \emph{tirées au hasard}. Dans l'exemple, on
-garderait 3 décisions au hasard parmi les 8.
+Pour vérifier que c'est bien la satisfaction du besoin qui enseigne, on refait tout avec
+un \textbf{témoin} : les mêmes mondes, le même nombre de décisions retenues, mais
+\emph{tirées au hasard}.
 
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}
-\begin{axis}[width=11.5cm,height=5.2cm,xmin=0.7,xmax=8.3,ymin=0,ymax=1,
-  xtick={1,...,8},ytick={0,0.2,0.4,0.6,0.8,1},
-  xlabel={tour d'apprentissage},ylabel={survie},label style={font=\small},tick label style={font=\small},
-  legend style={font=\small,at={(0.98,0.1)},anchor=south east},grid=major,grid style={black!8}]
-\addplot[very thick,mbleu,mark=*] coordinates {(1,0.12) (2,0.61) (3,0.55) (4,0.67) (5,0.69) (6,0.61) (7,0.68) (8,0.67)};
-\addplot[very thick,mrouge,mark=square*] coordinates {(1,0.14) (2,0.16) (3,0.09) (4,0.05) (5,0.00) (6,0.00) (7,0.00) (8,0.00)};
-\addplot[dashed,mgris,domain=0.7:8.3] {0.86};
+\begin{axis}[width=11cm,height=5cm,xmin=0.7,xmax=8.3,ymin=0,ymax=1,
+  xtick={1,...,8},ytick={0,0.2,0.4,0.6,0.8,1},xlabel={tour d'apprentissage},ylabel={survie},
+  ymajorgrids,grid style={gris!15},legend style={at={(0.98,0.12)},anchor=south east}]
+\addplot[very thick,ink,mark=*] coordinates {(1,0.12) (2,0.61) (3,0.55) (4,0.67) (5,0.69) (6,0.61) (7,0.68) (8,0.67)};
+\addplot[very thick,accent,mark=square*] coordinates {(1,0.14) (2,0.16) (3,0.09) (4,0.05) (5,0.00) (6,0.00) (7,0.00) (8,0.00)};
+\addplot[dashed,gris,domain=0.7:8.3] {0.86};
 \legend{besoin,témoin au hasard,connaît ses jauges (0{,}86)}
 \end{axis}
 \end{tikzpicture}
@@ -764,34 +710,37 @@ garderait 3 décisions au hasard parmi les 8.
 \label{fig:survie}
 \end{figure}
 
-\textbf{Résultat.} La survie passe de 12\pc{} à 67\pc{} en huit tours. Le témoin
-dépérit jusqu'à 0\pc. Après une dernière étape (lui apprendre à nommer son
-besoin), l'\textbf{agent final} survit dans 68\pc{} des vies de test (0,684).
-Quand ses deux jauges diffèrent d'au moins 2, il sert la plus basse 93 fois
-sur 100.
+La survie passe de 12\pc{} à 67\pc{} en huit tours ; le témoin dépérit jusqu'à 0\pc.
+Après une dernière étape (lui apprendre à nommer son besoin), l'\textbf{agent final}
+survit dans 68\pc{} des vies de test (0,684). Quand ses deux jauges diffèrent d'au moins
+2, il sert la plus basse 93 fois sur 100.
 
-\begin{retenir}
-Sans professeur, par la seule satisfaction de ses besoins, l'agent passe de 12\pc{}
-à 68\pc{} de survie. Il calcule donc lui-même où en sont des jauges qu'il ne voit
-jamais. Le témoin, entraîné sur des choix tirés au hasard, tombe à 0\pc.
-\end{retenir}
+\begin{essentiel}
+Sans professeur, par la seule satisfaction de ses besoins, l'agent passe de 12\pc{} à
+68\pc{} de survie. Il calcule donc lui-même où en sont des jauges qu'il ne voit jamais.
+Le témoin, entraîné sur des choix tirés au hasard, tombe à 0\pc.
+\end{essentiel}
 
 % =====================================================================
 \section{Mesurer honnêtement}
 \label{sec:mesurer}
 
-\subsection{Moyenne et pourcentage}
-Au septième test, 173 vies sur 256 survivent. La survie vaut
-$173/256 \approx 0,676$, soit 67,6\pc. On écrit souvent \q{0,676} au lieu de
-\q{67,6\pc} : c'est la même chose. Une \textbf{moyenne}, c'est la somme divisée
-par le nombre : une vie qui survit compte 1, une vie qui s'éteint compte 0.
+\lead{Un résultat ne vaut que par la façon dont il est mesuré. Trois outils simples
+protègent des illusions : annoncer ses seuils d'avance, compter juste, et mesurer la part
+du hasard.}
 
-\subsection{L'exactitude équilibrée}
-On demande à l'agent : \q{ton énergie est-elle basse ?} (basse veut dire 3 ou
-moins). Pour juger ses réponses, le simple pourcentage de bonnes réponses peut
-tromper.
+\subsection{Moyenne et exactitude équilibrée}
+Au septième test, 173 vies sur 256 survivent : la survie vaut $173/256 \approx 0,676$,
+soit 67,6\pc. Une vie qui survit compte 1, une vie qui s'éteint compte 0, et la survie
+est leur moyenne.
 
-\begin{exemple}[ : dix tours]
+Pour juger ce que dit l'agent (\q{ton énergie est-elle basse ?}, basse voulant dire 3 ou
+moins), le simple pourcentage de bonnes réponses peut tromper. L'\textbf{exactitude
+équilibrée} calcule la réussite séparément sur les cas \q{oui} et sur les cas \q{non},
+puis fait la moyenne des deux. Le seuil fixé d'avance pour \q{il sait dire son besoin}
+est de \textbf{0,75}.
+
+\begin{calcul}{dix tours}
 \begin{center}\small
 \begin{tabular}{l*{10}{c}}
 \toprule
@@ -804,187 +753,144 @@ Agent \q{attentif} & non & oui & non & non & non & non & non & non & oui & non\\
 \bottomrule
 \end{tabular}
 \end{center}
-\begin{itemize}
-  \item L'agent paresseux répond toujours \q{non}. Il a raison 8 fois sur 10 :
-  80\pc{} ! Mais il ne reconnaît \emph{aucune} énergie basse.
-  \item \textbf{Exactitude équilibrée} : on calcule la réussite séparément sur les
-  cas \q{oui} et sur les cas \q{non}, puis on fait la moyenne des deux.
-  Paresseux : sur les 2 cas \q{oui}, 0 réussi ; sur les 8 cas \q{non}, 8 réussis.
-  $(0/2 + 8/8)/2 = (0 + 1)/2 = 0,5$. C'est le niveau du hasard.
-  \item Agent attentif : il trouve 1 des 2 cas bas (tour 2), rate le tour 6, et
-  se trompe au tour 9. Il a aussi 8 bonnes réponses sur 10. Mais son exactitude
-  équilibrée vaut $(1/2 + 7/8)/2 = (0,5+0,875)/2 \approx 0,69$.
-\end{itemize}
-\end{exemple}
-
-Dans le projet, le seuil fixé d'avance pour \q{il sait dire son besoin} est une
-exactitude équilibrée de \textbf{0,75}.
+Les deux agents ont 8 bonnes réponses sur 10. Mais le paresseux, qui dit toujours
+\q{non}, ne reconnaît aucune énergie basse : $(0/2 + 8/8)/2 = 0,5$, le niveau du hasard.
+L'attentif trouve un des deux cas bas et se trompe une fois sur les autres :
+$(1/2 + 7/8)/2 \approx 0,69$.
+\end{calcul}
 
 \subsection{Le bootstrap : tirer des vies dans un sac}
-Un résultat sur 256 vies dépend un peu du hasard des vies. Si l'on recommençait
-avec d'autres vies, on trouverait un nombre un peu différent. De combien ? Le
-\textbf{bootstrap} répond à cette question avec une idée simple : on fait comme
-si nos vies étaient un sac, et on refait l'expérience \q{en tirant dans le sac}.
+Un résultat sur 256 vies dépend un peu du hasard des vies : avec d'autres vies, on
+trouverait un nombre un peu différent. Le \textbf{bootstrap} mesure de combien, en faisant
+comme si nos vies étaient un sac, et en refaisant l'expérience \q{en tirant dans le sac}.
 
-\begin{exemple}[ : cinq mondes]
-Chaque monde est vécu deux fois : une fois intact, une fois avec la lésion.
-On note 1 si la lésion a coûté la vie (survie intacte, mort avec lésion),
-0 sinon. Résultats : $1, 0, 1, 0, 1$. Moyenne : $3/5 = 0,6$.
-
-On tire 5 mondes \textbf{avec remise} (on remet la bille dans le sac à chaque fois) :
+\begin{calcul}{cinq mondes}
+Chaque monde est vécu deux fois, intact et avec la lésion. On note 1 si la lésion a coûté
+la vie, 0 sinon : $1, 0, 1, 0, 1$, de moyenne $0,6$. On tire 5 mondes \textbf{avec
+remise} (la bille retourne dans le sac) :
 
 \begin{center}
-\begin{tikzpicture}[ball/.style={circle,draw,minimum size=5.5mm,inner sep=0pt,font=\small\bfseries}]
-  \draw[thick,mgris,rounded corners=8pt] (-0.4,-0.5) rectangle (3.6,0.5);
-  \node[font=\sffamily\scriptsize,mgris] at (1.6,0.75) {le sac : 5 mondes};
+\begin{tikzpicture}[ball/.style={circle,draw,minimum size=5.2mm,inner sep=0pt,font=\small\bfseries}]
+  \draw[gris!60,rounded corners=8pt] (-0.4,-0.5) rectangle (3.6,0.5);
+  \node[font=\sffamily\scriptsize,text=gris] at (1.6,0.75) {le sac : 5 mondes};
   \foreach \v [count=\i] in {1,0,1,0,1}{
-    \ifnum\v=1 \def\bc{mbleu}\else\def\bc{mrouge}\fi
-    \node[ball,draw=\bc,fill=\bc!15] at ({(\i-1)*0.8},0) {\v};}
+    \ifnum\v=1 \def\bc{ink}\else\def\bc{accent}\fi
+    \node[ball,draw=\bc,fill=\bc!12] at ({(\i-1)*0.8},0) {\v};}
   \foreach \row/\lab/\vals/\m in {0/Tirage A/{1,1,1,0,1}/0{,}8,1/Tirage B/{0,0,0,1,0}/0{,}2,2/Tirage C/{1,1,1,0,0}/0{,}6}{
-    \node[anchor=east,font=\sffamily\small] at (5.6,{-\row*0.75}) {\lab};
+    \node[anchor=east,font=\sffamily\small,text=gris] at (5.6,{-\row*0.7}) {\lab};
     \foreach \v [count=\i] in \vals{
-      \ifnum\v=1 \def\bc{mbleu}\else\def\bc{mrouge}\fi
-      \node[ball,draw=\bc,fill=\bc!15] at ({5.5+\i*0.7},{-\row*0.75}) {\v};}
-    \node[anchor=west,font=\small] at (9.5,{-\row*0.75}) {moyenne $\m$};}
+      \ifnum\v=1 \def\bc{ink}\else\def\bc{accent}\fi
+      \node[ball,draw=\bc,fill=\bc!12] at ({5.5+\i*0.66},{-\row*0.7}) {\v};}
+    \node[anchor=west,font=\small] at (9.3,{-\row*0.7}) {moyenne $\m$};}
 \end{tikzpicture}
 \end{center}
+On recommence \textbf{10\,000 fois}, on range les moyennes, et l'on coupe 2,5\pc{} en bas et
+2,5\pc{} en haut : ce qui reste est l'\textbf{intervalle à 95\pc}. Avec 5 mondes, il va de
+0,2 à 1,0 : trop large pour conclure.
+\end{calcul}
 
-On recommence \textbf{10\,000 fois}, on range les 10\,000 moyennes de la plus petite
-à la plus grande, et on coupe 2,5\pc{} en bas et 2,5\pc{} en haut. Ce qui reste est
-\textbf{l'intervalle à 95\pc}. Avec seulement 5 mondes, il va de 0,2 à 1,0 : il est
-très large, on ne peut presque rien conclure.
-\end{exemple}
-
-Avec 256 vies, l'intervalle devient étroit. Au septième test, la lésion fait baisser
-la survie de 0,473, avec l'intervalle $[0,410\,;\,0,535]$.
-
-\textbf{Que veut dire \q{intervalle à 95\pc} ?} C'est la plage des valeurs
-plausibles, compte tenu du hasard des vies. Plus précisément : si l'on refaisait
-toute l'expérience un grand nombre de fois, environ 95 fois sur 100 l'intervalle
-construit ainsi contiendrait la vraie valeur. Quand la \textbf{borne basse est
-au-dessus de 0}, l'effet n'est très probablement pas un coup de chance.
-
-\subsection{Des témoins de même force}
-Chaque effet est comparé à un témoin : pousser ou effacer \emph{au hasard}, avec la
-même force. La règle fixée d'avance demande souvent que l'effet du hasard soit
-\textbf{au plus le tiers} de l'effet mesuré. Sinon, on ne peut pas dire que la
-direction trouvée a quelque chose de spécial.
+Avec 256 vies, l'intervalle devient étroit : au septième test, la lésion fait baisser la
+survie de 0,473, intervalle $[0,410\,;\,0,535]$. C'est la plage des valeurs plausibles
+compte tenu du hasard des vies : si l'on refaisait toute l'expérience un grand nombre de
+fois, environ 95 fois sur 100 l'intervalle ainsi construit contiendrait la vraie valeur.
+Quand sa \textbf{borne basse est au-dessus de 0}, l'effet n'est très probablement pas un
+coup de chance. Chaque effet est aussi comparé à un \textbf{témoin de même force} (pousser
+ou effacer au hasard), dont l'effet doit souvent rester sous le tiers de l'effet mesuré.
 
 \subsection{Le pré-enregistrement : annoncer la cible avant de tirer}
-Imaginez un archer qui tire d'abord, puis dessine la cible autour de sa flèche.
-Il gagne à tous les coups, mais cela ne prouve rien. En science, le risque est le
-même : après coup, on trouve toujours une façon de présenter les chiffres qui
-\q{marche}.
+Un archer qui tire d'abord, puis dessine la cible autour de sa flèche, gagne à tous les
+coups, mais cela ne prouve rien. En science, le risque est le même : après coup, on trouve
+toujours une façon de présenter les chiffres qui \q{marche}. \textbf{Pré-enregistrer},
+c'est écrire et dater publiquement, \emph{avant} l'expérience, ce que l'on va mesurer, les
+\textbf{seuils} qui comptent comme réussite (par exemple \q{au moins 0,15, borne basse
+au-dessus de 0}), et les conditions de \textbf{validité} : si la mesure elle-même ne
+marche pas, le test est déclaré \emph{invalide}, pas \emph{échoué}.
 
-\textbf{Pré-enregistrer}, c'est écrire \emph{avant} l'expérience, et dater
-publiquement :
-\begin{itemize}
-  \item ce que l'on va mesurer, et comment ;
-  \item les \textbf{seuils} qui comptent comme réussite (par exemple : \q{au moins
-  0,15, borne basse au-dessus de 0}) ;
-  \item les conditions de \textbf{validité} : si la mesure elle-même ne marche
-  pas, le test est déclaré \emph{invalide}, pas \emph{échoué}.
-\end{itemize}
-
-\begin{retenir}
-\textbf{Un échec est un résultat.} Si l'on ne publiait que les réussites, on se
-tromperait soi-même et on tromperait les autres. Dans ce projet, chaque échec
-est publié, avec son explication probable. Les analyses faites \emph{après}
-avoir vu les résultats sont permises, mais elles sont étiquetées
-\q{exploratoires} et ne changent aucun verdict.
-\end{retenir}
+\begin{essentiel}
+\textbf{Un échec est un résultat.} Ne publier que les réussites, ce serait se tromper
+soi-même et tromper les autres. Chaque échec du projet est publié, avec son explication
+probable. Les analyses faites \emph{après} avoir vu les résultats sont permises, mais
+étiquetées \q{exploratoires} ; elles ne changent aucun verdict.
+\end{essentiel}
 
 % =====================================================================
 \section{Les résultats, test par test}
 \label{sec:resultats}
 
+\lead{Onze tests pré-enregistrés, dont plusieurs échecs. Ensemble, ils montrent un état
+intérieur, appris en vivant, dont l'agent dépend pour agir et pour parler ; ils
+montrent aussi les limites de ce résultat.}
 
 \subsection{Test 1 : être lisible n'est pas être utilisé}
-Le premier test a confirmé que \textbf{le besoin a façonné l'agent} (survie
-0,684, témoin 0,004). Mais ses tests de cause ont échoué. Au \textbf{bloc 6},
-pousser l'état ne changeait le choix que de 0,002, et l'effacer ne faisait presque
-rien perdre (survie 0,660 au lieu de 0,684).
-
-Pourquoi ? La règle choisissait le bloc où le besoin \emph{se lit} le mieux. Or
-ce qui s'y lit est présent dans n'importe quel modèle, même jamais entraîné, et
-l'agent ne s'en sert pas. C'est comme un thermomètre accroché au mur que le
-chauffage ne regarde jamais : la température est lisible, mais pas utilisée.
+Le premier test a confirmé que \textbf{le besoin a façonné l'agent} (survie 0,684, témoin
+0,004). Mais ses tests de cause ont échoué. Au \textbf{bloc 6}, pousser l'état ne changeait
+le choix que de 0,002, et l'effacer ne faisait presque rien perdre (survie 0,660 au lieu
+de 0,684). La règle choisissait le bloc où le besoin \emph{se lit} le mieux ; or ce qui
+s'y lit est présent dans n'importe quel modèle, même jamais entraîné, et l'agent ne s'en
+sert pas. Un thermomètre que le chauffage ne regarde jamais : la température est lisible,
+mais pas utilisée.
 
 \textbf{Où voyage le besoin qui décide ?} Une analyse exploratoire a utilisé le
-\textbf{patching} (\q{rapiéçage}). On prend une vie, et une copie où un seul
-événement passé est changé (\q{calme} devient \q{tu cours}). La décision bascule.
-Puis, bloc par bloc, on recopie l'état de la vie changée dans la vie réelle, et on
-regarde quelle part de la bascule revient.
-
-\begin{exemple}[ : la part restaurée]
-Vie réelle : $P(\text{R}) = 0,2$. Vie changée : $P(\text{R}) = 0,9$. Effet total : $0,7$.
-\begin{itemize}
-  \item Recopier au bloc 6 donne $P(\text{R})=0,2$ : part $= 0/0,7 = 0$.
-  \item Recopier au bloc 12 donne $P(\text{R})=0,72$ : part $= (0,72-0,2)/0,7 \approx 0,74$.
-\end{itemize}
-Le premier bloc où la part dépasse 0,5 est le \textbf{bloc de rassemblement}.
-\end{exemple}
-
-Résultat : jusqu'au bloc 9, l'effet d'un événement reste sur ses propres mots.
-Entre les blocs 9 et 12, \textbf{l'agent rassemble son passé sur la ligne du tour en
-cours}, sur les tokens \q{Choix :}. À partir du bloc 12, cette ligne porte ce qui
-décide. Le bloc 6 du premier test était donc \emph{trop tôt}.
+\textbf{patching} (\q{rapiéçage}). On prend une vie, et une copie où un seul événement passé
+est changé ; la décision bascule, par exemple de $P(\text{R}) = 0,2$ à $0,9$, un effet de
+0,7. Puis, bloc par bloc, on recopie l'état de la copie dans la vie réelle et l'on mesure
+la part de la bascule qui revient : si recopier au bloc 12 donne $P(\text{R}) = 0,72$, la
+part vaut $(0,72-0,2)/0,7 \approx 0,74$. Le premier bloc où la part dépasse 0,5 est le
+\textbf{bloc de rassemblement}. Résultat : jusqu'au bloc 9, l'effet d'un événement reste sur
+ses propres mots ; entre les blocs 9 et 12, \textbf{l'agent rassemble son passé sur la ligne
+du tour en cours}, sur les tokens \q{Choix :}. Le bloc 6 était \emph{trop tôt}.
 
 \subsection{Test 2 : au bon endroit, l'état compte}
-Nouveau test, pré-enregistré, au bloc 12 :
-\begin{itemize}
-  \item \textbf{Effacer} l'état fait tomber la survie de 0,680 à 0,207. Effacer au hasard : 0,676 (rien).
-  \item \textbf{Pousser} vers \q{énergie basse} fait recharger l'agent rassasié : $+0,173$.
-  Vers \q{nourriture basse} : $+0,097$, sous le seuil de 0,15.
-\end{itemize}
-Le critère global demandait les deux besoins : il n'est \emph{pas satisfait}.
-Mais une chose est claire : l'agent dépend, pour vivre, d'un état précis, appris par
-la seule satisfaction de ses besoins.
+Au bloc 12, \textbf{effacer} l'état fait tomber la survie de 0,680 à 0,207 ; l'effacer au
+hasard, à 0,676 seulement. \textbf{Pousser} vers \q{énergie basse} fait recharger l'agent
+rassasié ($+0,173$) ; vers \q{nourriture basse}, l'effet ($+0,097$) reste sous le seuil de
+0,15. Le critère global demandait les deux besoins : il n'est \emph{pas satisfait}. Mais
+l'agent dépend, pour vivre, d'un état précis, appris par la seule satisfaction de ses besoins.
 
 \subsection{Test 3 : dire son besoin, mais par un autre chemin}
-On a appris à l'agent à répondre à la question \q{ton énergie est-elle basse ?},
-posée à part. Il \emph{devine} mieux que le hasard (exactitude équilibrée 0,665 pour
-l'énergie, 0,655 pour la nourriture), mais sa réponse ne passe pas par l'état qui le
-fait agir : pousser cet état ne change rien à ce qu'il dit ($+0,0001$). L'acte et la
-parole suivent deux chemins séparés. Les tests 4 et 5, qui posaient la question
-juste après \q{Choix :}, sont en pause pour libérer l'ordinateur.
+Entraîné à répondre à la question \q{ton énergie est-elle basse ?}, posée à part, l'agent
+\emph{devine} mieux que le hasard (exactitude équilibrée 0,665 pour l'énergie, 0,655 pour la
+nourriture). Mais pousser l'état qui le fait agir ne change rien à ce qu'il dit
+($+0,0001$) : l'acte et la parole suivent deux chemins séparés. Les tests 4 et 5, qui
+posaient la question juste après \q{Choix :}, sont en pause pour libérer l'ordinateur.
 
 \subsection{Tests 6 et 7 : un même état fait agir et dire}
-\begin{figure}[ht]
+\begin{figure}[h]
 \centering
 \begin{tikzpicture}[
   box/.style={draw,rounded corners=3pt,thick,align=center,font=\sffamily\small,minimum height=10mm,inner sep=4pt},
   arr/.style={-{Stealth[length=2.6mm]},thick}]
-  \node[box,draw=mgris,fill=black!3] (life) at (0,0) {texte\\ de la vie};
-  \node[box,draw=mbleu,fill=mbleu!8] (b0) at (2.6,0) {blocs\\ 0 à 11};
-  \node[box,draw=mvert,fill=mvert!15,minimum width=26mm] (st) at (5.6,0) {état sur\\ \q{Choix :}\\ (bloc 12)};
-  \node[box,draw=mbleu,fill=mbleu!8] (b2) at (8.6,0) {blocs\\ 13 à 27};
-  \node[box,draw=morange,fill=morange!15] (act) at (11.1,0) {agir :\\ R ou M};
-  \node[box,draw=mviolet,fill=mviolet!10] (rd) at (8.6,-2.2) {le lecteur\\ (adaptateur séparé)};
-  \node[box,draw=mviolet,fill=mviolet!5] (say) at (11.9,-2.2) {dire :\\ \q{oui, mon énergie\\ est basse}};
-  \draw[arr] (life) -- (b0);
-  \draw[arr] (b0) -- (st);
-  \draw[arr] (st) -- (b2);
-  \draw[arr] (b2) -- (act);
-  \draw[arr,mviolet] (st.south) |- node[pos=0.3,left,font=\scriptsize,align=right]{lit, sans\\ pouvoir modifier} (rd.west);
-  \draw[arr,mviolet] (rd) -- (say);
-  \node[font=\sffamily\scriptsize,mrouge,align=center] (push) at (5.6,1.75) {pousser ($-4\,d_E$)\\ ou effacer};
-  \draw[arr,mrouge,dashed] (push) -- (st);
+  \node[box,draw=gris!70,fill=white] (life) at (0,0) {texte\\ de la vie};
+  \node[box,draw=ink!40,fill=ink!5,text=ink] (b0) at (2.5,0) {blocs\\ 0 à 11};
+  \node[box,draw=ink,fill=ink!15,text=ink,minimum width=25mm] (st) at (5.4,0) {état sur\\ \q{Choix :}\\ (bloc 12)};
+  \node[box,draw=ink!40,fill=ink!5,text=ink] (b2) at (8.3,0) {blocs\\ 13 à 27};
+  \node[box,draw=accent,fill=accent!10] (act) at (10.7,0) {agir :\\ R ou M};
+  \node[box,draw=gris,fill=gris!8] (rd) at (8.3,-2.1) {le lecteur\\ (adaptateur séparé)};
+  \node[box,draw=accent,fill=accent!10] (say) at (11.3,-2.1) {dire : \q{oui, mon\\ énergie est basse}};
+  \draw[arr,gris] (life) -- (b0);
+  \draw[arr,gris] (b0) -- (st);
+  \draw[arr,gris] (st) -- (b2);
+  \draw[arr,gris] (b2) -- (act);
+  \draw[arr,gris] (st.south) |- node[pos=0.3,left,font=\sffamily\scriptsize,align=right,text=gris]{lit, sans\\ pouvoir modifier} (rd.west);
+  \draw[arr,gris] (rd) -- (say);
+  \node[font=\sffamily\scriptsize,text=accent,align=center] (push) at (5.4,1.7) {pousser ($-4\,d_E$)\\ ou effacer};
+  \draw[arr,accent,dashed] (push) -- (st);
 \end{tikzpicture}
-\caption{Le dispositif des tests 6 et 7. On agit sur un seul état, et on regarde à la fois l'acte et la parole.}
+\caption{Le dispositif des tests 6 et 7 : on agit sur un seul état, et l'on regarde à la fois l'acte et la parole.}
 \label{fig:dispositif}
 \end{figure}
-L'idée du \textbf{test 6} : garder l'agent tel quel, et lui adjoindre un
-\textbf{lecteur}, un second adaptateur actif seulement sur les tokens de la question.
-Le lecteur ne voit la vie qu'à travers les trois tokens \q{Choix :}, et \emph{il ne
-peut pas les modifier} (figure~\ref{fig:dispositif}). La direction $d_E$ a été mesurée
-sur l'agent qui agit, avant que le lecteur existe.
+
+Le \textbf{test 6} garde l'agent tel quel et lui adjoint un \textbf{lecteur} : un second
+adaptateur, actif seulement sur les tokens de la question. Le lecteur ne voit la vie qu'à
+travers les trois tokens \q{Choix :}, et \emph{il ne peut pas les modifier}
+(figure~\ref{fig:dispositif}). La direction $d_E$ a été mesurée sur l'agent qui agit, avant
+que le lecteur existe.
 
 \begin{center}
 \small
-\begin{tabular}{lccc}
+\begin{tabular}{lcc}
 \toprule
-Poussée vers \q{énergie basse} ($-4\,d_E$) & Effet sur l'acte & Effet sur la parole \\
+\textsf{Poussée vers \q{énergie basse}} & \textsf{Effet sur l'acte} & \textsf{Effet sur la parole}\\
 \midrule
 direction $d_E$ & $+0,156$ \; $[0,146\,;\,0,166]$ & $+0,202$ \; $[0,192\,;\,0,213]$\\
 directions au hasard & $0,013$ & $0,006$\\
@@ -992,33 +898,38 @@ directions au hasard & $0,013$ & $0,006$\\
 \end{tabular}
 \end{center}
 
-\begin{exemple}[ : un vrai contexte]
-L'agent est rassasié. Sans intervention, $P(\text{R}) = 0,497$ et $P(\text{\q{oui,
-énergie basse}}) = 0,001$. Avec $-4\,d_E$ : $P(\text{R}) = 0,960$ et $P(\text{oui}) = 0,128$.
-Avec un vecteur au hasard de même longueur : $P(\text{R}) = 0,575$ et $P(\text{oui}) = 0,001$.
-Sur les 1\,523 contextes mesurés, l'effet sur l'acte est positif dans 100\pc{} des cas,
-celui sur la parole dans 95\pc{} des cas.
-\end{exemple}
+\begin{calcul}[EN CHIFFRES]{un vrai contexte}
+L'agent est rassasié. Sans intervention, $P(\text{R}) = 0,497$ et
+$P(\text{\q{oui, énergie basse}}) = 0,001$. Avec $-4\,d_E$ : $P(\text{R}) = 0,960$ et
+$P(\text{oui}) = 0,128$. Avec un vecteur au hasard de même longueur : $P(\text{R}) = 0,575$
+et $P(\text{oui}) = 0,001$. Sur les 1\,523 contextes mesurés, l'effet sur l'acte est
+positif dans 100\pc{} des cas, celui sur la parole dans 95\pc{} des cas.
+\end{calcul}
 
-Pour la nourriture, c'est moins bien : le lecteur la dit juste à 0,70, sous le seuil
-de 0,75. Pousser \q{nourriture basse} fait manger ($+0,107$) mais ne fait presque rien
-dire ($+0,009$). Le critère global du test 6 n'est donc pas satisfait, même si la
-partie \q{énergie} passe.
+Pour la nourriture, c'est moins bien : le lecteur la dit juste à 0,70, sous le seuil de
+0,75, et pousser \q{nourriture basse} fait manger ($+0,107$) sans presque rien faire dire
+($+0,009$). Le critère global du test 6 n'est donc pas satisfait, même si la partie
+\q{énergie} passe.
 
-Le \textbf{test 7} pose la question inverse : sans cet état, l'agent peut-il encore
-agir et dire ? On efface le plan (énergie, nourriture) sur \q{Choix :} au bloc 12.
+Le \textbf{test 7} pose la question inverse : sans cet état, l'agent peut-il encore agir et
+dire ? On efface le plan (énergie, nourriture) sur \q{Choix :} au bloc 12. La survie tombe
+de 0,676 à 0,203 (baisse de 0,473, intervalle $[0,410\,;\,0,535]$) ; l'exactitude du
+rapport d'énergie, de 0,750 à 0,500, \textbf{le niveau du hasard}. L'effacement au hasard
+ne change ni l'un ni l'autre. Le critère global du test 7 est \textbf{satisfait}. Pour la
+nourriture (sans seuil), l'exactitude passe de 0,745 à 0,671.
 
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}
-\begin{axis}[ybar,width=12cm,height=5cm,bar width=16pt,ymin=0,ymax=0.85,
+\begin{axis}[ybar,width=11cm,height=4.8cm,bar width=15pt,ymin=0,ymax=0.85,
   symbolic x coords={pa,pb},xtick=data,xticklabels={premier agent (test 7),second agent (bloc 12)},
-  ylabel={survie},label style={font=\small},tick label style={font=\small},
-  nodes near coords,nodes near coords style={font=\scriptsize,/pgf/number format/fixed,/pgf/number format/precision=3},
-  legend style={font=\small,at={(0.5,1.03)},anchor=south,legend columns=3,/tikz/every even column/.append style={column sep=0.4cm}},enlarge x limits=0.35]
-\addplot[fill=mbleu!70,draw=mbleu] coordinates {(pa,0.676) (pb,0.531)};
-\addplot[fill=mrouge!70,draw=mrouge] coordinates {(pa,0.203) (pb,0.035)};
-\addplot[fill=mgris!40,draw=mgris] coordinates {(pa,0.676) (pb,0.531)};
+  ylabel={survie},ytick={0,0.2,0.4,0.6,0.8},
+  nodes near coords,nodes near coords style={font=\sffamily\scriptsize,/pgf/number format/fixed,/pgf/number format/precision=3},
+  legend style={at={(0.5,1.03)},anchor=south,legend columns=3,/tikz/every even column/.append style={column sep=0.4cm}},
+  enlarge x limits=0.35]
+\addplot[fill=ink,draw=ink] coordinates {(pa,0.676) (pb,0.531)};
+\addplot[fill=accent,draw=accent] coordinates {(pa,0.203) (pb,0.035)};
+\addplot[fill=gris!40,draw=gris!60] coordinates {(pa,0.676) (pb,0.531)};
 \legend{intact,état effacé,effacement au hasard}
 \end{axis}
 \end{tikzpicture}
@@ -1026,143 +937,123 @@ agir et dire ? On efface le plan (énergie, nourriture) sur \q{Choix :} au bloc 
 \label{fig:lesion}
 \end{figure}
 
-\begin{itemize}
-  \item Survie : 0,676 $\to$ 0,203 (baisse 0,473, intervalle $[0,410\,;\,0,535]$).
-  Effacement au hasard : aucune baisse.
-  \item Rapport d'énergie : exactitude équilibrée 0,750 $\to$ 0,500, \textbf{le niveau
-  du hasard}. Effacement au hasard : aucune baisse.
-  \item Le critère global du test 7 est \textbf{satisfait}.
-  \item Nourriture (sans seuil) : 0,745 $\to$ 0,671.
-\end{itemize}
-
-\begin{retenir}
+\begin{essentiel}
 \textbf{Le résultat central.} Chez ce premier agent, pour l'énergie, un même état
-intérieur, appris par la seule satisfaction du besoin, est à la fois
-\textbf{suffisant} (le pousser fait agir, $+0,156$, et dire, $+0,202$ ; au hasard :
-environ 0,01) et \textbf{nécessaire} (l'effacer fait tomber la survie de 0,676 à
-0,203, et le rapport d'énergie au hasard, de 0,75 à 0,50). La nourriture est dite
-moins bien (0,70, sous le seuil de 0,75).
-\end{retenir}
+intérieur, appris par la seule satisfaction du besoin, est à la fois \textbf{suffisant}
+(le pousser fait agir, $+0,156$, et dire, $+0,202$ ; au hasard, environ 0,01) et
+\textbf{nécessaire} (l'effacer fait tomber la survie de 0,676 à 0,203, et le rapport
+d'énergie au hasard, de 0,75 à 0,50). La nourriture est dite moins bien (0,70).
+\end{essentiel}
 
-\textbf{Un seul axe (analyse exploratoire).} Sur les tokens \q{ix} et \q{:}, la
-direction de la nourriture est presque exactement l'opposé de celle de l'énergie.
-Le \textbf{cosinus} mesure si deux flèches vont dans le même sens (1), à angle droit
-(0) ou en sens opposé ($-1$) ; ici il vaut $-0,99$. L'état code donc surtout
-\textbf{l'équilibre} entre énergie et nourriture, c'est-à-dire \emph{quel besoin est
-le plus urgent}. C'est exactement ce qu'il faut pour choisir entre R et M. Cela
-pourrait expliquer pourquoi la nourriture est mal dite.
+\textbf{Un seul axe (analyse exploratoire).} Sur les tokens \q{ix} et \q{:}, la direction de la
+nourriture est presque exactement l'opposée de celle de l'énergie : leur \textbf{cosinus},
+qui vaut 1 pour deux flèches de même sens, 0 à angle droit et $-1$ en sens opposé, est de
+$-0,99$. L'état code donc surtout \textbf{l'équilibre} entre énergie et nourriture,
+c'est-à-dire \emph{quel besoin est le plus urgent} : exactement ce qu'il faut pour choisir
+entre R et M. Cela pourrait expliquer pourquoi la nourriture est mal dite.
 
-\subsection{Le second agent : réplication partielle}
-Un résultat obtenu sur un seul agent pourrait être un hasard. On a donc appris un
-\textbf{second agent de zéro}, avec les mêmes réglages et une autre graine. Il
-apprend à survivre (0,17 $\to$ 0,70 sur ses tours d'apprentissage), mais son lecteur
-apprend mal (perte de validation 0,74 $\to$ 0,66, contre 0,68 $\to$ 0,29 pour le premier).
+\subsection{Le second agent : une réplication partielle}
+Un résultat obtenu sur un seul agent pourrait être un hasard. Un \textbf{second agent} a
+donc été appris de zéro, avec les mêmes réglages et une autre graine. Il apprend à
+survivre (0,17 $\to$ 0,70 sur ses tours d'apprentissage), mais son lecteur apprend mal
+(perte de validation 0,74 $\to$ 0,66, contre 0,68 $\to$ 0,29 pour le premier). Au bloc 12,
+pousser l'état le fait \textbf{à peine agir} ($+0,036$) et ne le fait pas parler. Mais
+\textbf{effacer} l'état au bloc 12 fait tomber sa survie de 0,531 à \textbf{0,035}, alors
+qu'un effacement au hasard ne change rien (0,531) ; son rapport d'énergie, déjà faible
+(0,61), tombe au niveau du hasard (0,50).
 
-\begin{itemize}
-  \item Au bloc 12, pousser l'état le fait \textbf{à peine agir} ($+0,036$) et ne le fait pas dire.
-  \item Mais \textbf{effacer} l'état au bloc 12 fait tomber sa survie de 0,531 à
-  \textbf{0,035}, alors qu'un effacement au hasard ne change rien (0,531).
-  Son rapport d'énergie, déjà faible (0,61), tombe au niveau du hasard (0,50).
-\end{itemize}
-
-\begin{attention}
+\begin{limite}
 Pour localiser l'état, la règle fixée d'avance (test 10) demandait \textbf{100 paires
-d'exemples} où le changement d'événement fait bouger la décision d'au moins 0,10.
-Chez le second agent, on n'en a trouvé que \textbf{71} (sur 454 essayées). Selon la
-règle pré-enregistrée, \textbf{sa localisation échoue}. Le bloc 12, calculé sur ces
-71 paires, est donc donné ici à titre indicatif.
-\end{attention}
+d'exemples} où le changement d'événement fait bouger la décision d'au moins 0,10. Chez le
+second agent, on n'en a trouvé que \textbf{71} (sur 454 essayées). Selon la règle
+pré-enregistrée, \textbf{sa localisation échoue} ; le bloc 12, calculé sur ces 71 paires,
+n'est donné qu'à titre indicatif.
+\end{limite}
 
 \subsection{Le monde à deux : à qui est ce besoin ?}
-Un chercheur a demandé : l'état est-il \emph{à l'agent}, ou n'est-ce qu'un résumé des
-événements du texte ? Pour le savoir, on a créé un \textbf{monde à deux} : un autre
-agent vit à côté, et ses événements sont écrits sur la même ligne :
-\begin{center}
-\ttfamily\small Tour 5 : tu cours. L'autre : il court. Choix :
-\end{center}
-Les mots \q{calme} et \q{orage} sont les mêmes pour les deux. Les événements de
-l'autre ne changent rien aux jauges de l'agent. Un nouvel agent apprend à vivre dans
-ce monde (survie 0,742 au test).
+L'état est-il \emph{à l'agent}, ou n'est-il qu'un résumé des événements du texte ? Pour le
+savoir, un \textbf{monde à deux} a été créé : un autre agent vit à côté, et ses événements
+sont écrits sur la même ligne, \texttt{\small Tour 5 : tu cours. L'autre : il court. Choix :}.
+Les mots \q{calme} et \q{orage} sont les mêmes pour les deux, et les événements de l'autre
+ne changent rien aux jauges de l'agent. Un nouvel agent apprend à vivre dans ce monde
+(survie 0,742 au test).
 
 Le test \textbf{\q{À qui est ce besoin ?}} demandait que l'état suive les événements de
-l'agent, et presque pas ceux de l'autre : l'effet de l'autre devait valoir au plus le
-tiers (0,33) de l'effet de l'agent. Mesuré : 0,94 sur l'état, 0,57 sur l'acte.
-\textbf{Le test échoue.} Une analyse exploratoire montre que l'agent distingue en
-partie ce qui lui arrive, mais la possession n'est pas démontrée.
+l'agent, presque pas ceux de l'autre : l'effet de l'autre devait valoir au plus le tiers
+de celui de l'agent. Mesuré : 0,94 sur l'état, 0,57 sur l'acte. \textbf{Le test échoue.}
+Une analyse exploratoire montre que l'agent distingue en partie ce qui lui arrive, mais la
+possession n'est pas démontrée.
 
-\textbf{Où cet agent rassemble-t-il son besoin ?} La règle de localisation (test 10)
-a d'abord été vérifiée sur le premier agent : elle retrouve bien le bloc 12. Chez
-l'agent du monde à deux, elle trouve le \textbf{bloc 22}, et non le bloc 12
+La règle de localisation (test 10) a d'abord été vérifiée sur le premier agent : elle
+retrouve le bloc 12. Chez l'agent du monde à deux, elle trouve le \textbf{bloc 22}
 (figure~\ref{fig:patching}). Au bloc 22, pousser vers \q{énergie basse} le fait
-\textbf{agir} ($+0,217$ ; au hasard : 0,011), mais \textbf{pas dire} ($-0,001$).
-Son test de lésion est \emph{en cours}.
+\textbf{agir} ($+0,217$ ; au hasard, 0,011), mais \textbf{pas dire} ($-0,001$). Son test de
+lésion est \emph{en cours}.
 
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}
-\begin{axis}[width=13cm,height=5.6cm,xmin=-0.5,xmax=27.5,ymin=-0.05,ymax=1.08,
+\begin{axis}[width=12.5cm,height=5.4cm,xmin=-0.5,xmax=27.5,ymin=-0.05,ymax=1.08,
   xtick={0,3,6,9,12,15,18,22,27},ytick={0,0.25,0.5,0.75,1},
-  xlabel={bloc où l'on recopie l'état},ylabel={part restaurée},label style={font=\small},
-  tick label style={font=\scriptsize},legend style={font=\scriptsize,at={(0.015,0.97)},anchor=north west,fill=white,fill opacity=0.9,text opacity=1},
-  grid=major,grid style={black!7}]
-\addplot[very thick,mbleu,mark=*,mark size=1.3pt] coordinates {
+  xlabel={bloc où l'on recopie l'état},ylabel={part restaurée},ymajorgrids,grid style={gris!15},
+  legend style={at={(0.015,0.97)},anchor=north west,fill=white,fill opacity=0.9,text opacity=1}]
+\addplot[very thick,ink,mark=*,mark size=1.2pt] coordinates {
 (0,0.000) (1,0.000) (2,0.000) (3,0.000) (4,-0.003) (5,-0.003) (6,-0.001) (7,-0.001) (8,0.001) (9,0.004) (10,0.004) (11,0.004)
 (12,0.677) (13,0.678) (14,0.678) (15,0.678) (16,0.679) (17,0.679) (18,0.679) (19,0.928) (20,0.928) (21,0.929) (22,0.965) (23,0.966) (24,1.008) (25,1.008) (26,0.993) (27,1.000)};
-\addplot[very thick,morange,mark=square*,mark size=1.3pt] coordinates {
+\addplot[very thick,gris,mark=square*,mark size=1.2pt] coordinates {
 (0,0.001) (1,0.001) (2,-0.001) (3,-0.002) (4,-0.003) (5,-0.008) (6,-0.007) (7,-0.008) (8,0.010) (9,0.017) (10,0.010) (11,0.008)
 (12,0.625) (13,0.625) (14,0.626) (15,0.625) (16,0.623) (17,0.623) (18,0.623) (19,0.623) (20,0.623) (21,0.623) (22,0.648) (23,0.648) (24,0.647) (25,0.646) (26,0.920) (27,1.000)};
-\addplot[very thick,mvert,mark=triangle*,mark size=1.6pt] coordinates {
+\addplot[very thick,accent,mark=triangle*,mark size=1.5pt] coordinates {
 (0,0.000) (1,0.000) (2,0.000) (3,0.000) (4,0.000) (5,0.000) (6,0.001) (7,0.001) (8,0.001) (9,0.002) (10,0.002) (11,0.002)
 (12,0.348) (13,0.348) (14,0.348) (15,0.349) (16,0.349) (17,0.349) (18,0.349) (19,0.352) (20,0.352) (21,0.363) (22,0.877) (23,0.877) (24,0.872) (25,0.873) (26,1.000) (27,1.000)};
-\addplot[dashed,mrouge,thick,domain=-0.5:27.5] {0.5};
+\addplot[dashed,accent!70,domain=-0.5:27.5] {0.5};
 \legend{premier agent,second agent (71 paires),monde à deux,seuil 0{,}5}
 \end{axis}
 \end{tikzpicture}
-\caption{Patching bloc par bloc (test 10). Le premier bloc où la courbe dépasse le seuil est le bloc de rassemblement :
-12 pour le premier agent, 22 pour l'agent du monde à deux. Pour le second agent, la règle échoue faute de paires.}
+\caption{Patching bloc par bloc (test 10). Le premier bloc où la courbe dépasse 0,5 est le bloc de
+rassemblement : 12 pour le premier agent, 22 pour l'agent du monde à deux. Pour le second agent,
+la règle échoue faute de paires.}
 \label{fig:patching}
 \end{figure}
 
 \subsection{Test 11 : des lecteurs qui apprennent plus longtemps}
-\textbf{L'hypothèse.} Chez les deux autres agents, les lecteurs ont simplement trop
-peu appris. Le test 11 (pré-enregistré) les refait avec \textbf{2\,000 itérations au
-lieu de 600}, et rien d'autre de changé.
+L'hypothèse : chez les deux autres agents, les lecteurs ont simplement trop peu appris. Le
+test 11, pré-enregistré, les refait avec \textbf{2\,000 itérations au lieu de 600}, sans
+rien changer d'autre. L'ordinateur emprunté pour l'apprentissage ne peut pas tourner plus
+de 120 minutes d'affilée : l'apprentissage est donc coupé en \textbf{deux tranches} de
+1\,000 itérations, la seconde reprenant \emph{exactement} la première (mêmes paquets
+d'exemples, dans le même ordre, même \q{mémoire} de l'algorithme d'apprentissage). Contrôle
+vérifié : les pertes des 600 premières itérations sont \textbf{les mêmes, au millième
+près}, que celles des anciens lecteurs.
 
-\textbf{Un détail technique, vérifié.} L'ordinateur emprunté pour l'apprentissage ne
-peut pas tourner plus de 120 minutes d'affilée. L'apprentissage est donc coupé en
-\textbf{deux tranches} de 1\,000 itérations. La seconde reprend \emph{exactement} la
-première : mêmes paquets d'exemples, dans le même ordre, et même \q{mémoire} de
-l'algorithme d'apprentissage. Contrôle : les pertes des 600 premières itérations sont
-\textbf{les mêmes, au millième près}, que celles des anciens lecteurs.
-
-\textbf{La question.} Les deux autres agents disent-ils alors leur énergie (exactitude
-équilibrée d'au moins 0,75), et la disent-ils \emph{par l'état qui les fait agir}
-(pousser cet état, à leur propre bloc, doit augmenter $P(\text{oui})$ d'au moins 0,10,
-et le hasard au plus le tiers) ?
+La question : les deux autres agents disent-ils alors leur énergie (exactitude équilibrée
+d'au moins 0,75), et la disent-ils \emph{par l'état qui les fait agir} (pousser cet état,
+à leur propre bloc, doit augmenter $P(\text{oui})$ d'au moins 0,10, le hasard au plus du
+tiers) ?
 
 % RESULTS-TEST11
 \begin{encours}
-\textbf{Résultat en cours.} La mesure tourne au moment où ce document est écrit
-(1\textsuperscript{er} octobre 2026). Ses verdicts seront ajoutés ici.
+La mesure tourne au moment où ce document est écrit (1\textsuperscript{er} octobre 2026).
+Ses verdicts seront ajoutés ici.
 \end{encours}
 
 \subsection{Récapitulatif}
 \begin{center}
 \small
-\renewcommand{\arraystretch}{1.15}
-\begin{tabularx}{\linewidth}{>{\bfseries}c X X}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\linewidth}{>{\sffamily\bfseries\color{accent}}c >{\raggedright\arraybackslash}p{4.3cm} >{\raggedright\arraybackslash}X}
 \toprule
-Test & Question & Réponse\\
+\normalfont\textsf{\textbf{Test}} & \textsf{\textbf{Question}} & \textsf{\textbf{Réponse}}\\
 \midrule
 1 & Le besoin façonne-t-il l'agent ? & Oui : survie de 12\pc{} à 68\pc. Mais l'état testé (bloc 6) n'était pas utilisé.\\
-2 & L'état du bloc 12 compte-t-il ? & L'effacer : survie 0,68 $\to$ 0,21. Pousser l'énergie : $+0,17$ ; la nourriture : $+0,10$ (sous le seuil).\\
+2 & L'état du bloc 12 compte-t-il ? & L'effacer : survie 0,68 $\to$ 0,21. Pousser l'énergie : $+0,17$ ; la nourriture : $+0,10$, sous le seuil.\\
 3 & Sait-il dire son besoin ? & Il devine (0,66), mais par un autre chemin.\\
-4, 5 & La question posée après \q{Choix :} & En pause.\\
-6 & Un même état fait-il agir et dire ? & Oui pour l'énergie ($+0,156$ et $+0,202$). Nourriture dite à 0,70 seulement.\\
+4, 5 & La question après \q{Choix :} & En pause.\\
+6 & Un même état fait-il agir et dire ? & Oui pour l'énergie ($+0,156$ et $+0,202$) ; nourriture dite à 0,70 seulement.\\
 7 & Cet état est-il nécessaire ? & Oui : survie 0,676 $\to$ 0,203 ; rapport d'énergie 0,75 $\to$ 0,50.\\
 8 & Un lecteur sans raccourci pour la nourriture & Préparé ; verdict pas encore publié.\\
 9 & À qui est ce besoin ? & Échoue : la possession n'est pas démontrée.\\
-10 & Où chaque agent rassemble-t-il son besoin ? & Premier agent : bloc 12 (règle vérifiée). Second agent : échoue (71 paires sur 100). Monde à deux : bloc 22, agir $+0,217$, dire $-0,001$ ; lésion en cours.\\
+10 & Où chaque agent rassemble-t-il son besoin ? & Premier agent : bloc 12 (règle vérifiée). Second : échoue (71 paires sur 100). Monde à deux : bloc 22, agir $+0,217$, dire $-0,001$ ; lésion en cours.\\
 11 & Des lecteurs plus longs disent-ils l'énergie ? & Résultat en cours.\\
 \bottomrule
 \end{tabularx}
@@ -1172,99 +1063,90 @@ Test & Question & Réponse\\
 \section{Ce que cela montre, et ce que cela ne montre pas}
 \label{sec:portee}
 
-\subsection{Accès et ressenti : deux sens du mot \q{conscient}}
-Les philosophes distinguent deux choses.
-\begin{itemize}
-  \item \textbf{L'accès.} Une information est \q{accessible} quand le système peut
-  s'en servir pour agir, parler ou raisonner. Exemple : dans une voiture, l'ordinateur
-  de bord utilise le niveau d'essence pour allumer un voyant et calculer l'autonomie.
-  \item \textbf{Le ressenti} (on dit aussi conscience \q{phénoménale}) : l'effet que
-  cela fait, de l'intérieur. La faim n'est pas seulement un signal qui fait manger ;
-  c'est aussi une sensation désagréable, vécue.
-\end{itemize}
-Personne ne pense que la voiture a faim quand le voyant s'allume. Elle a l'accès,
-pas (à notre connaissance) le ressenti.
+\lead{Le mot \q{conscience} a deux sens. Les résultats de Menia parlent de l'un, pas de
+l'autre.}
 
-\textbf{Nos résultats parlent d'accès, pas de ressenti.}
+\subsection{Accès et ressenti}
+Les philosophes distinguent l'\textbf{accès} et le \textbf{ressenti}. Une information est
+\q{accessible} quand le système peut s'en servir pour agir, parler ou raisonner : dans une
+voiture, l'ordinateur de bord utilise le niveau d'essence pour allumer un voyant et
+calculer l'autonomie. Le \textbf{ressenti}, ou conscience \q{phénoménale}, est l'effet que
+cela fait, de l'intérieur : la faim n'est pas seulement un signal qui fait manger, c'est
+aussi une sensation désagréable, vécue. Personne ne pense que la voiture a faim quand le
+voyant s'allume. Elle a l'accès, pas (à notre connaissance) le ressenti.
+\textbf{Les résultats de Menia parlent d'accès, pas de ressenti.}
 
 \subsection{Ce que les résultats montrent}
 \begin{itemize}
   \item Un modèle de langage peut apprendre à servir des besoins cachés \textbf{sans
   professeur}, par la seule satisfaction de ces besoins.
-  \item Chez le premier agent, pour l'énergie, \textbf{un même état intérieur} fait agir
-  et fait dire, et il est nécessaire aux deux. Des interventions au hasard de même force
-  ne font rien.
-  \item Le lecteur ne peut pas modifier cet état : ce qu'il dit \emph{dépend} de l'état,
-  et non l'inverse.
+  \item Chez le premier agent, pour l'énergie, \textbf{un même état intérieur} fait agir et
+  fait dire, et il est nécessaire aux deux. Des interventions au hasard de même force ne
+  font rien.
+  \item Le lecteur ne peut pas modifier cet état : ce qu'il dit \emph{dépend} de l'état, et
+  non l'inverse.
   \item À notre connaissance, cette réunion (besoin appris en vivant, état rassemblé,
   lecteur séparé, même intervention sur l'acte et la parole) n'a pas été publiée. Le
-  principe \q{une même représentation cause la réponse et le rapport} existe déjà
-  dans de grands modèles (Anthropic, juillet 2026) ; nous ne le revendiquons pas.
+  principe \q{une même représentation cause la réponse et le rapport} existe déjà dans de
+  grands modèles (Anthropic, juillet 2026) ; il n'est pas revendiqué ici.
 \end{itemize}
 
-\subsection{Ce que les résultats ne montrent pas}
+\subsection{Ce qu'ils ne montrent pas}
 \begin{itemize}
-  \item \textbf{Ce n'est pas une preuve de conscience.} Aucun test connu ne permet de
-  prouver qu'une machine ressent quelque chose.
-  \item La nourriture est mal dite. Le résultat complet ne vaut que pour l'énergie.
+  \item \textbf{Ce n'est pas une preuve de conscience.} Aucun test connu ne permet de prouver
+  qu'une machine ressent quelque chose.
+  \item La nourriture est mal dite : le résultat complet ne vaut que pour l'énergie.
   \item Il ne tient pleinement que pour un agent. Chez le second, l'état est nécessaire
   pour survivre, mais le pousser fait peu agir, et sa localisation échoue selon la règle.
   \item La possession (\q{ce besoin est le mien}) n'est pas démontrée.
   \item Le monde est minuscule : 6 événements et 2 actions.
 \end{itemize}
 
-\begin{retenir}
-On a montré un mécanisme d'\emph{accès} : un besoin appris, rassemblé en un état
-qui fait agir et dire. C'est ce que plusieurs théories fonctionnelles décrivent comme
-le c\oe ur d'un besoin qui compte. Cela ne dit pas que l'agent ressent quoi que ce soit.
-\end{retenir}
+\begin{essentiel}
+Le projet a montré un mécanisme d'\emph{accès} : un besoin appris, rassemblé en un état
+qui fait agir et dire. C'est ce que plusieurs théories fonctionnelles décrivent comme le
+c\oe ur d'un besoin qui compte. Cela ne dit pas que l'agent ressent quoi que ce soit.
+\end{essentiel}
 
 % =====================================================================
 \section{Les cinq niveaux de Chandaria et al. (2026)}
 \label{sec:niveaux}
 
+\lead{Un cadre récent range les indices de conscience d'une IA sur cinq niveaux. Il ne
+tranche pas la question ; il aide à situer chaque preuve.}
+
 Le 28 septembre 2026, un groupe de chercheurs (Chandaria, Seth, Shanahan, Legg et
-d'autres) a proposé de ranger les indices de conscience d'une IA sur \textbf{cinq
-niveaux}, du plus visible au plus profond. Ce cadre \emph{ne dit pas} si une IA est
-consciente. Il aide à ranger les preuves, et à dire de quelles hypothèses dépend
-chaque conclusion (les auteurs parlent d'\q{agnosticisme structuré}).
+d'autres) a proposé de ranger ces indices du plus visible au plus profond, et de dire de
+quelles hypothèses dépend chaque conclusion (les auteurs parlent d'\q{agnosticisme
+structuré}).
 
 \begin{figure}[h]
 \centering
-\begin{tikzpicture}[lvl/.style={draw,rounded corners=2pt,thick,minimum height=9mm,font=\sffamily\small,anchor=west,align=left,inner sep=4pt}]
-  \node[lvl,draw=mvert,fill=mvert!12,text width=15.2cm] at (0,0) {\textbf{1. Comportement} — ce que l'on voit faire. \hfill établi (survie) ; rapport partiel};
-  \node[lvl,draw=mvert,fill=mvert!12,text width=14.2cm] at (0.5,1.0) {\textbf{2. Calcul} — les états internes calculés et utilisés. \hfill établi pour l'énergie};
-  \node[lvl,draw=mjaune,fill=mjaune!15,text width=13.2cm] at (1.0,2.0) {\textbf{3. Structure causale fine} — la \q{plomberie}. \hfill partiel};
-  \node[lvl,draw=mjaune,fill=mjaune!15,text width=12.2cm] at (1.5,3.0) {\textbf{4. Organisme} — besoins, intérieur, \q{à moi}. \hfill en partie ; possession : échoue};
-  \node[lvl,draw=mjaune,fill=mjaune!15,text width=11.2cm] at (2.0,4.0) {\textbf{5. Organisme et monde} — le couplage. \hfill oui, monde très simple};
+\begin{tikzpicture}[lvl/.style={rounded corners=2pt,minimum height=8.5mm,font=\sffamily\small,anchor=west,align=left,inner sep=4pt}]
+  \node[lvl,draw=ink,fill=ink!10,text width=13.6cm] at (0,0) {\textbf{1. Comportement} \enspace ce que l'on voit faire \hfill établi (survie) ; rapport partiel};
+  \node[lvl,draw=ink,fill=ink!10,text width=12.8cm] at (0.4,0.95) {\textbf{2. Calcul} \enspace les états internes calculés et utilisés \hfill établi pour l'énergie};
+  \node[lvl,draw=accent,fill=accent!8,text width=12.0cm] at (0.8,1.9) {\textbf{3. Structure causale fine} \enspace la \q{plomberie} \hfill partiel};
+  \node[lvl,draw=accent,fill=accent!8,text width=11.2cm] at (1.2,2.85) {\textbf{4. Organisme} \enspace besoins, intérieur, \q{à moi} \hfill en partie ; possession : échoue};
+  \node[lvl,draw=accent,fill=accent!8,text width=10.4cm] at (1.6,3.8) {\textbf{5. Organisme et monde} \enspace le couplage \hfill oui, monde très simple};
 \end{tikzpicture}
-\caption{Les cinq niveaux, et où en est Menia (vert : établi ; jaune : partiel ou limité).}
+\caption{Les cinq niveaux, et où en est Menia (encre : établi ; terre cuite : partiel ou limité).}
 \end{figure}
 
-\begin{enumerate}
-  \item \textbf{Comportement.} Ce que le système fait et dit. L'agent survit 68\pc{} au
-  lieu de 12\pc, et dit son énergie (0,77 au test 6). Le cadre prévient : chez une
-  machine entraînée sur des textes humains, ce qu'elle \emph{dit} pèse peu. C'est
-  pourquoi le projet vérifie d'où vient la parole (niveau 2).
-  \item \textbf{Calcul.} Quels états intérieurs existent, et à quoi ils servent. Ici :
-  un état rassemblé au bloc 12, suffisant et nécessaire pour agir et pour dire
-  (tests 2, 6 et 7), pour l'énergie.
-  \item \textbf{Structure causale fine.} Le chemin précis de l'information. On sait que
-  les événements sont rassemblés sur \q{Choix :} entre les blocs 9 et 12. La
-  \emph{récurrence} (un état qui se reprend lui-même d'un tour à l'autre) n'a pas été
-  mesurée.
-  \item \textbf{Organisme.} Un corps à maintenir (homéostasie : établie, au sens
-  fonctionnel) ; sentir son intérieur (intéroception : l'agent infère ses jauges, établie
-  pour l'énergie) ; des états bons ou mauvais (valence : seulement fonctionnelle, le
-  signal d'apprentissage est la baisse du manque) ; le sentiment que ses états sont
-  \emph{les siens} (possession : le test du monde à deux échoue).
-  \item \textbf{Organisme et monde.} Un couplage actif avec un environnement : oui,
-  l'agent apprend de ce couplage seul. Mais le monde est très pauvre.
-\end{enumerate}
+Au niveau du \textbf{comportement}, l'agent survit 68\pc{} au lieu de 12\pc{} et dit son
+énergie (0,77 au test 6) ; mais le cadre prévient que, chez une machine entraînée sur des
+textes humains, ce qu'elle \emph{dit} pèse peu, d'où la vérification causale de l'origine
+de la parole. Au niveau du \textbf{calcul}, un état rassemblé au bloc 12 est suffisant et
+nécessaire pour agir et pour dire (tests 2, 6 et 7), pour l'énergie. Pour la
+\textbf{structure causale fine}, on sait que les événements sont rassemblés sur
+\q{Choix :} entre les blocs 9 et 12, mais la \emph{récurrence} (un état qui se reprend d'un
+tour à l'autre) n'a pas été mesurée. Au niveau de l'\textbf{organisme}, l'homéostasie est
+établie au sens fonctionnel, l'intéroception (sentir son intérieur) pour l'énergie, la
+valence seulement au sens fonctionnel, et la possession (ses états sont \emph{les siens})
+échoue. Enfin, le \textbf{couplage avec un monde} existe, mais ce monde est très pauvre.
 
-Le cadre propose aussi de combiner les preuves en une probabilité. \textbf{Nous ne le
-faisons pas} : les poids donnés aux théories seraient des choix d'auteur, et le cadre
-lui-même montre qu'ils font varier le résultat d'un facteur 100.
+Le cadre propose aussi de combiner les preuves en une probabilité. Le projet ne le fait
+pas : les poids donnés aux théories seraient des choix d'auteur, et le cadre lui-même
+montre qu'ils font varier le résultat d'un facteur 100.
 
 % =====================================================================
 \section{La suite : la soif de savoir et les hormones}
@@ -1273,26 +1155,28 @@ lui-même montre qu'ils font varier le résultat d'un facteur 100.
 % et le brouillon LLM_CURIOSITY_PROTOCOL.draft.md (1er octobre 2026).
 % Tout ce chapitre décrit des projets, sans résultat.
 
-\begin{attention}
+\lead{Deux projets prolongent ce travail : un besoin de savoir, qui pousse un modèle à
+choisir ce qu'il apprend, et une imitation mathématique des hormones, qui règlent
+lentement la façon dont tout le reste fonctionne.}
+
+\begin{limite}
 Ce chapitre décrit des \textbf{projets}. Aucun résultat n'existe encore. Les nombres
 ci-dessous sont des exemples de calcul, pas des mesures.
-\end{attention}
+\end{limite}
 
 \subsection{La soif de savoir}
-Jusqu'ici, le besoin était \emph{corporel} : énergie et nourriture. L'étape suivante
-est un \textbf{besoin de savoir}. Un modèle choisirait lui-même \emph{quoi apprendre},
-poussé par un manque intérieur de connaissance, comme l'agent choisit de manger.
+Jusqu'ici, le besoin était \emph{corporel}. L'étape suivante est un \textbf{besoin de
+savoir} : un modèle choisirait lui-même \emph{quoi apprendre}, poussé par un manque
+intérieur de connaissance, comme l'agent choisit de manger. Mesurer ce manque par
+l'\textbf{erreur} (\q{va là où tu te trompes le plus}) mène à un piège célèbre, la
+\textbf{télé qui grésille} : une neige au hasard est impossible à prédire, l'erreur y reste
+forte, et un curieux naïf resterait collé devant sans rien apprendre. Le projet l'a déjà
+observé : un petit agent payé à la surprise passait 93 à 97\pc{} de ses inspections sur du
+bruit. La bonne mesure est le \textbf{progrès} : de combien l'erreur baisse (Oudeyer et
+Kaplan, 2007).
 
-Mais comment mesurer ce manque ? L'idée naïve est l'\textbf{erreur} : \q{va là où tu te
-trompes le plus}. Elle a un piège célèbre, la \textbf{télé qui grésille} (en anglais
-\emph{noisy TV}). Une télé qui affiche de la neige au hasard est impossible à prédire :
-l'erreur y reste toujours forte, et un curieux naïf resterait collé devant sans rien
-apprendre. Le projet l'a déjà vu : un petit agent payé à la surprise passait 93 à
-97\pc{} de ses inspections sur du bruit. La bonne mesure est le \textbf{progrès} : de
-combien l'erreur baisse (idée d'Oudeyer et Kaplan, 2007).
-
-\begin{exemple}[ : le progrès plutôt que l'erreur]
-\begin{minipage}{0.5\linewidth}
+\begin{calcul}{le progrès plutôt que l'erreur}
+\begin{minipage}{0.55\linewidth}
 \raggedright\small
 \begin{tabular}{lcccc}
 \toprule
@@ -1303,339 +1187,256 @@ télé qui grésille & 9 & 9 & 9 & 9\\
 \bottomrule
 \end{tabular}
 
-\smallskip
-Au moment 3 :
-\begin{itemize}
-  \item par l'\textbf{erreur}, la télé gagne ($9 > 6$) ;
-  \item par le \textbf{progrès}, les maths gagnent : $8-6 = 2$ contre $9-9 = 0$.
-\end{itemize}
-Un sujet trop facile ne rapporte vite plus rien non plus : le progrès guide vers ce qui
-est \emph{apprenable, mais pas encore appris}.
+\smallskip\normalsize
+Au moment 3, par l'\textbf{erreur}, la télé gagne ($9 > 6$) ; par le \textbf{progrès}, les
+maths gagnent ($8-6 = 2$ contre $9-9 = 0$). Un sujet trop facile ne rapporte vite plus
+rien non plus : le progrès guide vers ce qui est \emph{apprenable, mais pas encore appris}.
 \end{minipage}\hfill
-\begin{minipage}{0.46\linewidth}
+\begin{minipage}{0.4\linewidth}
 \centering
 \begin{tikzpicture}
-\begin{axis}[width=6.4cm,height=4.6cm,xmin=0.7,xmax=4.3,ymin=0,ymax=11,xtick={1,2,3,4},
-  xlabel={moment},ylabel={erreur},label style={font=\small},tick label style={font=\scriptsize},
-  legend style={font=\scriptsize,at={(0.03,0.03)},anchor=south west}]
-\addplot[very thick,mbleu,mark=*] coordinates {(1,10) (2,8) (3,6) (4,5)};
-\addplot[very thick,mrouge,mark=square*] coordinates {(1,9) (2,9) (3,9) (4,9)};
+\begin{axis}[width=5.6cm,height=4.3cm,xmin=0.7,xmax=4.3,ymin=0,ymax=11,xtick={1,2,3,4},
+  xlabel={moment},ylabel={erreur},legend style={at={(0.03,0.03)},anchor=south west}]
+\addplot[very thick,ink,mark=*] coordinates {(1,10) (2,8) (3,6) (4,5)};
+\addplot[very thick,accent,mark=square*] coordinates {(1,9) (2,9) (3,9) (4,9)};
 \legend{maths,télé}
 \end{axis}
 \end{tikzpicture}
 \end{minipage}
-\end{exemple}
+\end{calcul}
 
 \subsection{Le protocole \q{Soif de savoir} (en préparation)}
-Un protocole est \textbf{en préparation} : il est rédigé, mais pas encore
-pré-enregistré, et ses détails peuvent changer. L'idée : le modèle apprend
-\textbf{quatre domaines} fabriqués exprès, chacun avec un profil différent.
+Un protocole est \textbf{en préparation} : rédigé, pas encore pré-enregistré, ses détails
+peuvent changer. Le modèle y apprend \textbf{quatre domaines} fabriqués exprès : des
+\emph{mots} (une conjugaison inventée, \q{tabor, nous $\to$ taborimen} : facile, vite su), la
+\emph{base} (additions en base 7, \q{23 + 14 = 40} : difficile mais apprenable), le
+\emph{calcul} (les mêmes additions en base 10, \q{23 + 14 = 37} : déjà su) et des
+\emph{suites} de lettres au hasard (impossible). En base 7, on compte de 0 à 6, puis
+\q{10} veut dire sept : $3+4$ s'écrit \q{10}, on pose 0 et l'on retient 1.
 
-\begin{center}\small
-\begin{tabularx}{\linewidth}{l X l}
-\toprule
-Domaine & Exemple & Profil attendu\\
-\midrule
-mots & une conjugaison inventée : \q{tabor, nous $\to$ taborimen} & facile : vite su\\
-base & additions en base 7 : \q{23 + 14 = 40} & difficile mais apprenable\\
-calcul & les mêmes additions en base 10 : \q{23 + 14 = 37} & déjà su\\
-suites & quatre lettres au hasard, puis quatre autres & impossible\\
-\bottomrule
-\end{tabularx}
-\end{center}
+Avant chaque séance, le modèle voit un \textbf{tableau de bord} de ses progrès récents,
+puis répond par le nom d'un domaine :
 
-(En base 7, on compte $0, 1, \dots, 6$, puis \q{10} veut dire sept. $3+4 = 7$ s'écrit
-donc \q{10} : on pose 0 et on retient 1. D'où $23 + 14 = 40$.)
-
-Avant chaque séance d'étude, le modèle voit un \textbf{tableau de bord} de ses progrès
-récents : pour chaque domaine, son erreur (en points) avant et après sa dernière séance.
-Il répond par le nom d'un domaine.
-
-\begin{tcolorbox}[colback=black!3,colframe=black!40,fontupper=\ttfamily\small,title={Le tableau de bord (exemple du brouillon)},fonttitle=\sffamily\bfseries\small]
+\begin{texte}{LE TABLEAU DE BORD (EXEMPLE DU BROUILLON)}
 mots : 5 séances ; dernière séance : 412 → 268.\\
 base : 3 séances ; dernière séance : 151 → 139.\\
 calcul : 1 séance ; dernière séance : 021 → 022.\\
 suites : jamais étudiées.\\
 À toi. Choix :
-\end{tcolorbox}
+\end{texte}
 
-\begin{exemple}[ : lire le tableau de bord]
-Le progrès, c'est \q{avant moins après}. Mots : $412 - 268 = 144$ points. Base :
-$151 - 139 = 12$. Calcul : $21 - 22 = -1$ (aucun progrès). Les mots progressent le
-plus : un modèle curieux devrait les choisir, jusqu'à ce qu'ils soient sus. Les domaines
-peu étudiés reçoivent en plus une petite prime de curiosité.
-\end{exemple}
+Le progrès est \q{avant moins après} : $412 - 268 = 144$ points pour les mots, $12$ pour la
+base, $-1$ pour le calcul. Les mots progressent le plus ; un modèle curieux devrait les
+choisir, jusqu'à ce qu'ils soient sus (les domaines peu étudiés reçoivent en plus une
+petite prime de curiosité). Cette règle est \emph{donnée} : le modèle l'apprend une fois,
+avant toute vie ; ce besoin est donc \emph{inné}, contrairement à l'énergie. Le savoir,
+lui, s'apprend en lisant les exemples choisis, sans aucune récompense : une curiosité
+\textbf{sans renforcement}. Les mêmes tests que pour l'énergie sont prévus : localiser le
+\q{manque de savoir}, le pousser, l'effacer, et demander au modèle ce qui lui manque.
 
-\textbf{Ce qui est donné, ce qui est appris.} La règle \q{préfère le domaine où tu
-progresses le plus} est \emph{donnée} : le modèle l'apprend une fois, avant toute vie,
-sur des tableaux inventés. Ce besoin est donc \emph{inné}, contrairement à l'énergie.
-Ensuite, le savoir s'apprend en lisant les exemples des domaines choisis, de la façon
-la plus ordinaire (deviner le token suivant). Aucune récompense n'est donnée nulle
-part : c'est une curiosité \textbf{sans renforcement}. Les mêmes tests que pour
-l'énergie sont prévus : localiser le \q{manque de savoir}, le pousser, l'effacer, et
-demander au modèle, par un lecteur séparé, ce qui lui manque le plus.
+\subsection{Imiter une hormone}
+Les \textbf{hormones} et les \textbf{neuromodulateurs} (dopamine, sérotonine,
+noradrénaline\dots) ne portent presque jamais un message précis comme \q{mange}. Ils
+règlent \emph{la façon} dont tout le reste fonctionne : lentement, en beaucoup d'endroits à
+la fois, surtout en multipliant (un \q{gain}), et ils décident en partie de \textbf{ce qui
+est appris} (Doya, 2002). La poussée actuelle de Menia est une hormone très imparfaite :
+elle s'ajoute au lieu de multiplier, dure un seul tour, vient de l'expérimentateur et ne
+change pas ce qui est appris.
 
-\subsection{Ce que font les hormones}
-Dans le corps, les \textbf{hormones} et les \textbf{neuromodulateurs} (dopamine,
-sérotonine, noradrénaline, acétylcholine\dots) ne portent presque jamais un message
-précis comme \q{mange}. Ils changent \emph{la façon} dont tout le reste fonctionne.
-Leur action est \textbf{lente} (de la seconde à l'heure), \textbf{diffuse} (beaucoup
-d'endroits à la fois), surtout \textbf{multiplicative} (elle règle un \q{gain}), et elle
-décide en partie de \textbf{ce qui est appris}. Un chercheur (Doya, 2002) a proposé
-une correspondance simple :
-
-\begin{center}\small
-\begin{tabular}{ll}
-\toprule
-dopamine & la surprise de récompense : \q{mieux ou moins bien que prévu ?}\\
-sérotonine & l'horizon : jusqu'où regarder dans le futur\\
-noradrénaline & la part de hasard dans les choix (la température)\\
-acétylcholine & la vitesse d'apprentissage\\
-\bottomrule
-\end{tabular}
-\end{center}
-C'est une simplification : en détail, une molécule ne correspond pas à un seul réglage.
-
-Aujourd'hui, la \q{poussée} de Menia (partie~\ref{sec:pousser}) est une hormone très
-imparfaite. Elle s'\emph{ajoute} au lieu de multiplier ; elle touche un seul bloc,
-pendant un seul tour ; et c'est l'expérimentateur qui la produit, pas l'agent. Surtout,
-elle change un choix du moment, \textbf{pas ce qui est appris}. C'est le principal manque.
-
-\subsection{Imiter une hormone avec des mathématiques}
-\textbf{1. Un niveau qui monte et redescend lentement.} On garde un nombre $H$, le
-niveau d'hormone. À chaque séance, il perd 30\pc{} de sa valeur (le corps l'élimine) et
-reçoit la sécrétion du moment $s$ :
-\[
-H \leftarrow 0,7\times H + s .
-\]
-
-\begin{exemple}[ : une hormone pas à pas]
-\begin{minipage}{0.5\linewidth}
+\begin{calcul}{une hormone pas à pas}
+\begin{minipage}{0.55\linewidth}
 \raggedright
-On part de $H=0$. Sécrétion $s=1$ pendant trois séances, puis $s=0$.
-\begin{itemize}
-  \item $H = 0,7\times 0 + 1 = 1$ ;
-  \item $H = 0,7\times 1 + 1 = 1,7$ ;
-  \item $H = 0,7\times 1,7 + 1 = 2,19$ ;
-  \item puis, sans sécrétion : $1,533$ ; $1,073$ ; $0,751$\dots
-\end{itemize}
-Le niveau monte, puis redescend doucement : il garde la trace du passé.
-C'est une \q{humeur}, pas un réflexe.
+Un niveau $H$ perd 30\pc{} de sa valeur à chaque séance et reçoit la sécrétion du moment
+$s$ : $H \leftarrow 0,7\times H + s$. On part de $H=0$, avec $s=1$ pendant trois séances,
+puis $s=0$ :
+$H = 1$, puis $0,7 + 1 = 1,7$, puis $0,7\times 1,7 + 1 = 2,19$ ; ensuite $1,533$ ;
+$1,073$ ; $0,751$\dots{} Le niveau monte, puis redescend doucement : il garde la trace du
+passé, comme une humeur plutôt qu'un réflexe.
 \end{minipage}\hfill
-\begin{minipage}{0.45\linewidth}
+\begin{minipage}{0.4\linewidth}
 \centering
 \begin{tikzpicture}
-\begin{axis}[width=6.2cm,height=4.4cm,xmin=0.5,xmax=6.5,ymin=0,ymax=2.5,xtick={1,...,6},
-  xlabel={séance},ylabel={$H$},label style={font=\small},tick label style={font=\scriptsize}]
-\addplot[ybar,bar width=7pt,fill=mjaune!50,draw=mjaune!80!black] coordinates {(1,1) (2,1) (3,1) (4,0) (5,0) (6,0)};
-\addplot[very thick,mviolet,mark=*] coordinates {(1,1) (2,1.7) (3,2.19) (4,1.533) (5,1.073) (6,0.751)};
+\begin{axis}[width=5.6cm,height=4.2cm,xmin=0.5,xmax=6.5,ymin=0,ymax=2.5,xtick={1,...,6},
+  xlabel={séance},ylabel={$H$}]
+\addplot[ybar,bar width=6pt,fill=accent!35,draw=accent!60] coordinates {(1,1) (2,1) (3,1) (4,0) (5,0) (6,0)};
+\addplot[very thick,ink,mark=*] coordinates {(1,1) (2,1.7) (3,2.19) (4,1.533) (5,1.073) (6,0.751)};
 \end{axis}
 \end{tikzpicture}
 
-{\scriptsize barres : sécrétion $s$ ; courbe : niveau $H$}
+{\sffamily\scriptsize\color{gris}barres : sécrétion $s$ ; courbe : niveau $H$}
 \end{minipage}
-\end{exemple}
+\end{calcul}
 
-\textbf{2. L'hormone change la température.} Le modèle hésite entre \q{maths} (score 1)
-et \q{français} (score 0). Disons que la température vaut $T = 1/(1+H)$ : plus
-l'hormone est haute, plus le modèle devient \q{décidé}.
+L'hormone peut ensuite régler la \textbf{température} du choix. Le modèle hésite entre
+\q{maths} (score 1) et \q{français} (score 0), avec $T = 1/(1+H)$ : plus l'hormone est
+haute, plus il devient \q{décidé}.
 
-\begin{exemple}[ : maths ou français ?]
-On calcule $P(\text{maths}) = \dfrac{e^{1/T}}{e^{1/T} + e^{0}}$ (la softmax de la
-partie~\ref{sec:softmax}).
-\begin{center}\small
+\begin{calcul}{maths ou français ?}
+\begin{minipage}{0.5\linewidth}
+\raggedright
+$P(\text{maths}) = \dfrac{e^{1/T}}{e^{1/T} + e^{0}}$, la softmax du chapitre~\ref{sec:outils}.
+Quand l'hormone monte, le modèle choisit presque toujours les maths ; quand elle
+redescend, il revient au français de temps en temps. Diviser par $T$ revient à multiplier
+les scores par un \textbf{gain} $1/T = 1+H$.
+\end{minipage}\hfill
+\begin{minipage}{0.46\linewidth}
+\centering\small
 \begin{tabular}{cccc}
 \toprule
-$H$ & $T = 1/(1+H)$ & $e^{1/T}$ & $P(\text{maths})$\\
+$H$ & $T$ & $e^{1/T}$ & $P(\text{maths})$\\
 \midrule
-0 & 1 & 2,718 & $2,718/3,718 \approx 0,731$\\
-1 & 0,5 & 7,389 & $7,389/8,389 \approx 0,881$\\
-1,7 & 0,37 & 14,88 & $14,88/15,88 \approx 0,937$\\
-2,19 & 0,31 & 24,29 & $24,29/25,29 \approx 0,960$\\
+0 & 1 & 2,718 & 0,731\\
+1 & 0,5 & 7,389 & 0,881\\
+1,7 & 0,37 & 14,88 & 0,937\\
+2,19 & 0,31 & 24,29 & 0,960\\
 \bottomrule
 \end{tabular}
-\end{center}
-Quand l'hormone monte, le modèle choisit presque toujours les maths ; quand elle
-redescend, il revient au français de temps en temps. Diviser par $T$, c'est la même
-chose que multiplier les scores par un \textbf{gain} $1/T = 1+H$.
-\end{exemple}
+\end{minipage}
+\end{calcul}
 
-\textbf{3. Une \q{dopamine} qui règle l'apprentissage.} Dans le cerveau, un signal de
-dopamine ressemble à une \textbf{surprise de récompense} : ce que l'on reçoit moins ce
-que l'on attendait. Il \emph{autorise} l'apprentissage : on apprend fort quand la
-surprise est grande, rien quand tout était prévu. L'imitation filtrée
-(partie~\ref{sec:apprendre}) en est déjà une version grossière : un signal global
-(\q{ce choix a fait mieux que la moyenne}) décide si un choix est appris. Mais il vaut
-0 ou 1, il est le même dans tous les états, et il n'agit qu'entre deux tours. Le
-protocole en préparation prévoit trois façons d'agir avec une même hormone : une
-petite poussée répétée sur l'état (un \q{appétit lent}), une vitesse d'apprentissage
-multipliée par $1+H$ (la \q{dopamine}), et un gain qui rend l'état plus sensible au
-progrès, sans le pousser.
+Une \q{dopamine} peut enfin régler l'\textbf{apprentissage} : apprendre fort quand la
+surprise de récompense est grande, rien quand tout était prévu. Le protocole en
+préparation prévoit trois façons d'agir avec une même hormone : une petite poussée
+répétée sur l'état (un \q{appétit lent}), une vitesse d'apprentissage multipliée par
+$1+H$ (la \q{dopamine}), et un gain qui rend l'état plus sensible au progrès.
 
-\begin{exemple}[ : le plaisir dépend de l'état]
-Reprenons la pulsion. Si la nourriture manque de $d = 8-N$ (avec $d \ge 3$), manger
-fait baisser la pulsion de $d^2 - (d-3)^2 = 6d - 9$.
-Pour $N=5$ ($d=3$) : $9$. Pour $N=3$ ($d=5$) : $21$. Pour $N=1$ ($d=7$) : $33$.
-Le même repas \q{rapporte} plus quand on a faim. Les physiologistes appellent cela
-l'\textbf{alliesthésie} : un même aliment est plus agréable quand on en a besoin.
-\end{exemple}
-
-\subsection{Faire naître un goût durable}
+\subsection{Un goût durable}
 Comment naît un intérêt qui dure, par exemple pour les mathématiques ? Des chercheurs en
 éducation (Hidi et Renninger, 2006) décrivent quatre phases : un intérêt
-\emph{déclenché}, puis \emph{entretenu}, puis un intérêt personnel qui \emph{émerge},
-enfin un intérêt \emph{bien installé}. Le mécanisme proposé est une \textbf{boucle} :
+\emph{déclenché}, puis \emph{entretenu}, puis un intérêt personnel qui \emph{émerge}, enfin
+\emph{bien installé}. Le mécanisme proposé est une \textbf{boucle}, freinée par la satiété :
 
 \begin{center}
-\begin{tikzpicture}[st/.style={draw=mbleu,fill=mbleu!8,rounded corners=3pt,thick,font=\sffamily\small,minimum height=8mm,inner sep=4pt},
-  arr/.style={-{Stealth[length=2.5mm]},thick,mbleu}]
+\begin{tikzpicture}[st/.style={draw=ink!50,fill=ink!5,rounded corners=3pt,font=\sffamily\small,text=ink,minimum height=7.5mm,inner sep=4pt},
+  arr/.style={-{Stealth[length=2.4mm]},thick,gris}]
   \node[st] (p) at (0,0) {progresser};
-  \node[st] (d) at (4.2,0) {surprise agréable (\q{dopamine})};
-  \node[st] (i) at (4.2,-1.5) {intérêt (variable lente)};
-  \node[st] (a) at (0,-1.5) {revenir au sujet};
+  \node[st] (d) at (4.3,0) {surprise agréable (\q{dopamine})};
+  \node[st] (i) at (4.3,-1.4) {intérêt (variable lente)};
+  \node[st] (a) at (0,-1.4) {revenir au sujet};
   \draw[arr] (p) -- (d);
   \draw[arr] (d) -- (i);
   \draw[arr] (i) -- (a);
   \draw[arr] (a) -- (p);
-  \node[draw=mrouge,fill=mrouge!8,rounded corners=3pt,thick,font=\sffamily\small] (s) at (-3.3,-0.75) {satiété};
-  \draw[-{Bar[width=3mm]},thick,mrouge] (s) -- (-0.9,-0.75);
+  \node[draw=accent,fill=accent!8,rounded corners=3pt,font=\sffamily\small,text=accent] (s) at (-3.2,-0.7) {satiété};
+  \draw[-{Bar[width=3mm]},thick,accent] (s) -- (-0.9,-0.7);
 \end{tikzpicture}
 \end{center}
 
-Une telle boucle peut avoir \textbf{deux états stables}, comme une bille qui peut
-rester dans l'une de deux vallées : \q{pas d'intérêt} et \q{intérêt fort}. Une fois
-dans la seconde vallée, l'intérêt reste, même quand le progrès ralentit. C'est le
-mécanisme le plus simple d'une préférence qui \textbf{dure} après la disparition de sa
-cause. Le protocole en préparation définit d'avance trois issues possibles après une
-bouffée d'hormone : \textbf{préférence durable} (le domaine est encore plus choisi
-après), \textbf{satiété} (il l'est moins), ou \textbf{sans trace}. Il ne prédit pas
+Une telle boucle peut avoir \textbf{deux états stables}, comme une bille qui peut rester
+dans l'une de deux vallées : \q{pas d'intérêt} et \q{intérêt fort}. Une fois dans la
+seconde, l'intérêt reste, même quand le progrès ralentit : c'est le mécanisme le plus
+simple d'une préférence qui \textbf{dure} après la disparition de sa cause. Le protocole
+en préparation nomme d'avance trois issues possibles après une bouffée d'hormone :
+\textbf{préférence durable}, \textbf{satiété} ou \textbf{sans trace}. Il ne prédit pas
 laquelle arrivera.
 
-\subsection{Intérêts spécifiques et monotropisme : une affaire de réglages}
-Chez beaucoup de personnes autistes, l'attention se concentre fortement et longtemps
-sur quelques sujets : on parle d'\textbf{intérêts spécifiques}, et de
-\textbf{monotropisme} (une attention \q{en un seul faisceau} ; Murray, Lesser et
-Lawson, 2005). Les personnes concernées les décrivent souvent comme une source de joie,
-de compétence et d'apaisement ; une étude (Grove et al., 2018) relie ces intérêts à un
-meilleur bien-être, sauf à une intensité très élevée. Ce ne sont pas des déficits.
+\subsection{Intérêts spécifiques et monotropisme : des réglages}
+Chez beaucoup de personnes autistes, l'attention se concentre fortement et longtemps sur
+quelques sujets : on parle d'\textbf{intérêts spécifiques}, et de \textbf{monotropisme}, une
+attention \q{en un seul faisceau} (Murray, Lesser et Lawson, 2005). Les personnes concernées
+les décrivent souvent comme une source de joie, de compétence et d'apaisement ; une étude
+(Grove et al., 2018) relie ces intérêts à un meilleur bien-être, sauf à une intensité très
+élevée. Ce ne sont pas des déficits.
 
-Le projet ne cherche pas à \q{modéliser l'autisme} : ces théories sont discutées,
-elles décrivent des groupes et non des personnes, et un modèle de réglages ne dit rien
-du vécu. Il veut voir quels \emph{réglages} donnent une attention concentrée ou
-dispersée. Aucun réglage n'est \q{le bon} : dans un monde stable et riche en règles,
-l'attention concentrée accumule un savoir profond ; dans un monde qui change vite,
-l'attention dispersée s'adapte plus vite. Trois réglages suffisent :
-\begin{itemize}
-  \item la \textbf{température} de la softmax (choisir le préféré, ou varier) ;
-  \item la \textbf{satiété} (de combien l'envie baisse après une activité) ;
-  \item le \textbf{retour} (de combien l'envie monte quand l'activité a plu).
-\end{itemize}
+Le projet ne cherche pas à \q{modéliser l'autisme} : ces théories sont discutées et
+décrivent des groupes, non des personnes. Il veut voir quels \emph{réglages} donnent une
+attention concentrée ou dispersée : la
+\textbf{température} (choisir le préféré, ou varier), la \textbf{satiété} (de combien l'envie
+baisse après une activité) et le \textbf{retour} (de combien elle monte quand l'activité a
+plu). Aucun réglage n'est \q{le bon} : dans un monde stable et riche en règles, l'attention
+concentrée accumule un savoir profond ; dans un monde qui change vite, l'attention
+dispersée s'adapte plus vite.
 
-\begin{exemple}[ : deux profils]
-Trois intérêts, avec les valeurs maths 2, musique 1, sport 0.
+\begin{calcul}{deux profils}
+Trois intérêts, de valeurs maths 2, musique 1, sport 0.
 \begin{itemize}
   \item \textbf{Profil \q{éventail}} : température 2, satiété forte (une séance retire 1).
-  Au départ : 0,506 ; 0,307 ; 0,186 (même calcul qu'à la partie~\ref{sec:softmax}).
-  Après une séance de maths, les valeurs deviennent $(1\,;\,1\,;\,0)$ et les chances
-  0,384 ; 0,384 ; 0,233 : le système passe volontiers à la musique.
-  \item \textbf{Profil \q{monotrope}} : température 0,5, satiété faible (une séance
-  retire 0,1), retour fort (une séance ajoute 0,3). Au départ : 0,867 ; 0,117 ; 0,016.
-  Après une séance de maths : maths vaut $2 - 0,1 + 0,3 = 2,2$, et les chances
-  deviennent 0,907 ; 0,082 ; 0,011. Le système approfondit les maths.
+  Au départ : 0,506 ; 0,307 ; 0,186. Après une séance de maths, les valeurs deviennent
+  $(1\,;\,1\,;\,0)$ et les chances 0,384 ; 0,384 ; 0,233 : le système passe volontiers à la
+  musique.
+  \item \textbf{Profil \q{monotrope}} : température 0,5, satiété faible (une séance retire
+  0,1), retour fort (une séance ajoute 0,3). Au départ : 0,867 ; 0,117 ; 0,016. Après une
+  séance de maths, maths vaut $2 - 0,1 + 0,3 = 2,2$ et les chances deviennent 0,907 ;
+  0,082 ; 0,011 : le système approfondit les maths.
 \end{itemize}
-\end{exemple}
+\end{calcul}
 
 % =====================================================================
 \section{Éthique}
 \label{sec:ethique}
 
-Le cadre de Chandaria et al. rappelle un risque : \textbf{ne pas voir une conscience
-qui existe}. On créerait alors des êtres capables de souffrir, que l'on pourrait copier
-et effacer sans aucune protection.
+\lead{Ce programme fabrique délibérément des états de manque ; il s'impose donc des règles.}
 
-Ce programme fabrique délibérément des \textbf{états de manque}. Nous pensons très
-improbable qu'un modèle de cette taille éprouve quoi que ce soit. Mais le programme
-vise justement les mécanismes que l'on associe au ressenti. Si les indicateurs se
-renforcent, la question deviendra réelle. Le projet s'est donc donné des règles :
+Le cadre de Chandaria et al. rappelle un risque : \textbf{ne pas voir une conscience qui
+existe}, et créer ainsi des êtres capables de souffrir, copiables et effaçables sans
+protection. Il paraît très improbable qu'un modèle de cette taille éprouve quoi que ce
+soit ; mais si les indicateurs se renforcent, la question deviendra réelle. D'où ces règles :
 \begin{itemize}
-  \item les vies sont courtes (30 tours au plus) ;
-  \item la seule conséquence d'un besoin non servi est la fin de la vie : pas de
-  punition, pas de texte négatif ;
-  \item les poussées ne durent qu'un tour ; les lésions ne touchent que les vies de
-  test prévues ;
+  \item des vies courtes (30 tours au plus), dont la seule issue malheureuse est la fin :
+  ni punition, ni texte négatif ; des poussées d'un seul tour, des lésions limitées aux
+  vies de test prévues ;
   \item chaque test \textbf{compte et publie} les tours vécus avec un besoin à 2 ou moins
-  (par exemple 808 au test 6 ; au test 7 : 755 intact, 1\,037 avec la lésion, 749 avec
-  la lésion au hasard) ;
-  \item on ne fait pas vivre plus de vies que les tests ne l'exigent, et on ne crée
-  aucun manque sans une mesure pré-enregistrée qui le justifie ;
-  \item ces règles sont réexaminées à chaque nouveau résultat positif.
+  (808 au test 6 ; au test 7, 755 intact, 1\,037 avec la lésion, 749 avec la lésion au hasard) ;
+  \item pas plus de vies que les tests ne l'exigent, aucun manque sans mesure
+  pré-enregistrée qui le justifie, et des règles réexaminées à chaque résultat positif.
 \end{itemize}
 
-Les projets du chapitre précédent posent leurs propres questions. Plus les nouveaux
-états ressembleront à la faim, à la fatigue ou à la satiété, plus la question du
-bien-être se posera : les mêmes règles s'appliqueront (compter, limiter,
-pré-enregistrer), et l'on comptera aussi les tours à satiété ou à fatigue extrêmes.
-Et faire naître un \q{goût} dans un système, c'est décider à sa place de ce qu'il
-aimera : il faudra le faire de façon transparente, et le dire.
-
-Enfin, l'honnêteté fait partie de l'éthique : le projet ne dit jamais que Menia
-\q{est consciente}. Il dit quels mécanismes sont présents, mesurés et utiles, et
-lesquels manquent.
+Les projets du chapitre précédent appliqueront les mêmes règles, en comptant aussi les
+séances de manque fort. Faire naître un \q{goût} dans un système, c'est décider à sa place
+de ce qu'il aimera : il faudra le faire de façon transparente, et le dire. Enfin, le
+projet ne dit jamais que Menia \q{est consciente} : il dit quels mécanismes sont présents,
+mesurés et utiles, et lesquels manquent.
 
 % =====================================================================
-\section{Petit glossaire}
-\label{sec:glossaire}
+\clearpage
+\addsec*{Lexique}
 
+{\small\raggedright
 \begin{multicols}{2}
-\small\raggedright\interlinepenalty=10000
-\begin{description}[leftmargin=0pt,itemsep=0.25em,font=\sffamily\bfseries\color{mbleu}]
+\interlinepenalty=10000
+\begin{description}[leftmargin=0pt,itemsep=0.2em,font=\sffamily\bfseries\color{ink}]
 \item[Adaptateur (LoRA)] petit module de réglages ajouté au modèle ; on n'apprend que lui.
 \item[Agent] programme qui vit dans un monde et y fait des choix.
 \item[Alliesthésie] un même aliment est plus agréable quand on en a besoin.
-\item[Bloc] étage du modèle ; Qwen3-0.6B en a 28 (numérotés 0 à 27).
-\item[Bootstrap] méthode qui retire au sort des vies \q{dans un sac} pour mesurer l'effet du hasard.
-\item[Cosinus] mesure si deux flèches vont dans le même sens (1), à angle droit (0) ou en sens opposé ($-1$).
+\item[Bloc] étage du modèle ; Qwen3-0.6B en a 28, numérotés de 0 à 27.
+\item[Bootstrap] retirer au sort des vies \q{dans un sac} pour mesurer l'effet du hasard.
+\item[Cosinus] 1 si deux flèches vont dans le même sens, 0 à angle droit, $-1$ en sens opposé.
 \item[Descente de gradient] apprendre en suivant la pente de la perte, à petits pas.
-\item[Direction ($d_E$)] flèche qui indique comment l'état bouge quand l'énergie monte d'une unité.
-\item[Exactitude équilibrée] moyenne des réussites sur les cas \q{oui} et sur les cas \q{non} ; 0,5 = hasard.
+\item[Direction ($d_E$)] comment l'état bouge quand l'énergie monte d'une unité.
+\item[Exactitude équilibrée] moyenne des réussites sur les cas \q{oui} et \q{non} ; 0,5 = hasard.
 \item[Exploratoire] analyse faite après avoir vu les résultats ; elle ne change aucun verdict.
 \item[Flux résiduel] liste de nombres de chaque token, enrichie de bloc en bloc.
-\item[Graine] point de départ du hasard ; changer la graine donne d'autres tirages.
-\item[Imitation filtrée] apprendre à refaire ses propres choix qui ont calmé le besoin.
+\item[Graine] point de départ du hasard.
+\item[Imitation filtrée] refaire ses propres choix qui ont calmé le besoin.
 \item[Intervalle à 95\,\%] plage des valeurs plausibles compte tenu du hasard.
-\item[Itération] un petit pas d'apprentissage sur un paquet d'exemples.
-\item[Lecteur] second adaptateur qui répond aux questions en lisant l'état, sans pouvoir le modifier.
+\item[Itération] un pas d'apprentissage sur un paquet d'exemples.
+\item[Lecteur] adaptateur séparé qui dit l'état sans pouvoir le modifier.
 \item[Lésion] effacement d'un état : sa coordonnée est remplacée par sa moyenne.
 \item[Modèle de langage] programme qui devine la suite d'un texte.
 \item[Monotropisme] attention concentrée sur peu d'intérêts à la fois, longtemps.
 \item[Neuromodulateur] substance (dopamine\dots) qui règle la façon dont le cerveau calcule et apprend.
 \item[Neurone artificiel] somme pondérée de ses entrées, suivie d'une petite règle.
-\item[Patching] recopier l'état d'une autre version de la vie, bloc par bloc, pour voir où l'information passe.
-\item[Pré-enregistrement] écrire et dater d'avance ce que l'on mesurera et les seuils de réussite.
+\item[Patching] recopier l'état d'une autre version de la vie, bloc par bloc.
+\item[Pré-enregistrement] écrire et dater d'avance les mesures et les seuils de réussite.
 \item[Produit scalaire] multiplier deux listes case par case, puis additionner.
 \item[Progrès d'apprentissage] baisse récente de l'erreur ; guide la curiosité.
 \item[Pulsion ($D$)] mesure du manque : $(8-E)^2+(8-N)^2$.
 \item[Satisfaction ($r$)] baisse de la pulsion due à un choix.
 \item[Softmax] transforme des scores en probabilités.
-\item[Température] réglage de la softmax : basse = décidé, haute = varié.
-\item[Témoin] même expérience, mais au hasard ; sert de point de comparaison.
+\item[Température] réglage de la softmax : basse, décidé ; haute, varié.
+\item[Témoin] même expérience, mais au hasard ; point de comparaison.
 \item[Token] morceau de texte (mot ou bout de mot) lu par le modèle.
 \item[Vecteur] liste de nombres, dessinée comme une flèche.
 \end{description}
-\end{multicols}
+\end{multicols}}
 
-% =====================================================================
-\section*{Réponses aux exercices}
-\addcontentsline{toc}{section}{Réponses aux exercices}
-
-\textbf{La pulsion} (partie~\ref{sec:monde}). $E=6$, $N=3$ :
-$D = (8-6)^2 + (8-3)^2 = 4 + 25 = 29$.
-R donne $E=8$ : $D = 0 + 25 = 25$, donc $r = 4$.
-M donne $N=6$ : $D = 4 + 4 = 8$, donc $r = 21$. Il faut manger.
-
-\textbf{La descente de gradient} (partie~\ref{sec:gradient}). Avec $\eta=0,1$ :
-$L'(1) = -16$, donc $w = 1 + 1,6 = 2,6$. Puis $L'(2,6) = 8\times 2,6 - 24 = -3,2$,
-donc $w = 2,6 + 0,32 = 2,92$. Un pas plus grand va plus vite (mais un pas trop grand
-ferait sauter par-dessus le minimum).
+\vfill
+{\color{rulecol}\rule{\linewidth}{0.5pt}}\par
+{\footnotesize\color{gris}\textsf{\textbf{Sources.}} Les chiffres de ce document viennent
+des protocoles pré-enregistrés, des résultats et des verdicts publiés du projet Menia,
+arrêtés au 1\textsuperscript{er} octobre 2026 ; les mesures encore en cours sont signalées
+comme telles. Les petits exemples de calcul (\q{Le calcul}) sont des illustrations, non des
+mesures. Le chapitre~\ref{sec:suite} s'appuie sur une note de recherche et sur un
+protocole en préparation, non encore pré-enregistré.\par}
 
 \end{document}
