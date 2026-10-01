@@ -239,9 +239,15 @@ def run(a, agent=None, streams=STREAMS, prepare=None, judge=judge, other=False):
         return extra
 
     partial_lives = out / "partial-lives-test.jsonl.gz"
-    lives = W.read_jsonl(partial_lives) if partial_lives.exists() else []
-    if lives:
-        log(f"resumed after {len(lives)} test lives")
+    if (out / "lives-test.jsonl.gz").exists():  # finished in an earlier slice: not lived again
+        lives = W.read_jsonl(out / "lives-test.jsonl.gz")
+        if partial_lives.exists():
+            partial_lives.unlink()
+        log(f"test lives already lived: {len(lives)}")
+    else:
+        lives = W.read_jsonl(partial_lives) if partial_lives.exists() else []
+        if lives:
+            log(f"resumed after {len(lives)} test lives")
     for i in range(len(lives), a.test_lives):
         lives.append(W.play(agent, W.world_rng(streams["test"], i), W.choice_rng(streams["test"], i), at_decision,
                             others=others(streams["test"], i)))
