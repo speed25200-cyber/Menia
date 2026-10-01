@@ -1,5 +1,5 @@
 {
- "request": 81,
+ "request": 82,
  "app": "Menia",
  "wait_minutes": 345,
  "builds": [
@@ -9,14 +9,14 @@
     "branch": "claude/causal-self-model-llm-results-mauabk",
     "variables": {
      "NEED_STAGE": "measure",
-     "NEED_MEASURE": "research.need_locate",
+     "NEED_MEASURE": "research.need_long",
      "NEED_ARGS": "--agent two",
-     "NEED_RESUME": "artifacts/llm-need/locate-two/slice-6/measure",
+     "NEED_RESUME": "artifacts/llm-need/long/two/measure-1/measure",
      "NEED_MINUTES": "100",
      "NEED_THREADS": "4"
     }
    },
-   "dest": "artifacts/llm-need/locate-two/slice-7"
+   "dest": "artifacts/llm-need/long/two/measure-2"
   }
  ]
 }
