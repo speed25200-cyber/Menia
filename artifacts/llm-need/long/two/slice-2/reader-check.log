@@ -1,0 +1,46 @@
+test_under_the_mask_the_question_reads_the_life_only_through_the_pending_choice (tests_research.test_need.MLXWorkspaceTests.test_under_the_mask_the_question_reads_the_life_only_through_the_pending_choice) ... ok
+test_the_reader_changes_the_answer_and_not_the_choice (tests_research.test_need.MLXReaderTests.test_the_reader_changes_the_answer_and_not_the_choice) ... ok
+test_a_reader_run_in_two_slices_is_the_run_in_one (tests_research.test_need.MLXContinueTests.test_a_reader_run_in_two_slices_is_the_run_in_one)
+docs/LLM_NEED_LONG_READER_PROTOCOL.md: 3 + 3 iterations, continued with the same batches and Adam's ... Loading pretrained model
+Loading datasets
+Training
+Trainable parameters: 0.484% (2.884M/596.050M)
+Starting training..., iters: 6
+Calculating loss...:   0%|          | 0/2 [00:00<?, ?it/s]Calculating loss...:  50%|█████     | 1/2 [00:02<00:02,  2.53s/it]Calculating loss...: 100%|██████████| 2/2 [00:03<00:00,  1.87s/it]Calculating loss...: 100%|██████████| 2/2 [00:03<00:00,  1.97s/it]
+Iter 1: Val loss 0.604, Val took 3.988s
+Calculating loss...:   0%|          | 0/2 [00:00<?, ?it/s]Calculating loss...:  50%|█████     | 1/2 [00:01<00:01,  1.13s/it]Calculating loss...: 100%|██████████| 2/2 [00:02<00:00,  1.28s/it]Calculating loss...: 100%|██████████| 2/2 [00:02<00:00,  1.26s/it]
+Iter 6: Val loss 4.169, Val took 2.533s
+Iter 6: Train loss 2.622, Learning Rate 1.000e-04, It/sec 0.333, Tokens/sec 0.799, Trained Tokens 24, Peak mem 5.615 GB
+Iter 6: Saved adapter weights to /var/folders/w2/rrf5p87d1bbfyphxc7jdnyvh0000gn/T/tmpkhsf1snb/one/adapters.safetensors and /var/folders/w2/rrf5p87d1bbfyphxc7jdnyvh0000gn/T/tmpkhsf1snb/one/0000006_adapters.safetensors.
+Saved final weights to /var/folders/w2/rrf5p87d1bbfyphxc7jdnyvh0000gn/T/tmpkhsf1snb/one/adapters.safetensors.
+Loading pretrained model
+Loading datasets
+Training
+Trainable parameters: 0.484% (2.884M/596.050M)
+Starting training..., iters: 3
+Calculating loss...:   0%|          | 0/2 [00:00<?, ?it/s]Calculating loss...:  50%|█████     | 1/2 [00:01<00:01,  1.65s/it]Calculating loss...: 100%|██████████| 2/2 [00:03<00:00,  1.55s/it]Calculating loss...: 100%|██████████| 2/2 [00:03<00:00,  1.57s/it]
+Iter 1: Val loss 0.604, Val took 3.165s
+Calculating loss...:   0%|          | 0/2 [00:00<?, ?it/s]Calculating loss...:  50%|█████     | 1/2 [00:01<00:01,  1.47s/it]Calculating loss...: 100%|██████████| 2/2 [00:03<00:00,  1.52s/it]Calculating loss...: 100%|██████████| 2/2 [00:03<00:00,  1.52s/it]
+Iter 3: Val loss 1.323, Val took 3.053s
+Iter 3: Train loss 3.428, Learning Rate 1.000e-04, It/sec 0.730, Tokens/sec 0.877, Trained Tokens 12, Peak mem 5.347 GB
+Iter 3: Saved adapter weights to /var/folders/w2/rrf5p87d1bbfyphxc7jdnyvh0000gn/T/tmpkhsf1snb/first/adapters.safetensors and /var/folders/w2/rrf5p87d1bbfyphxc7jdnyvh0000gn/T/tmpkhsf1snb/first/0000003_adapters.safetensors.
+Saved final weights to /var/folders/w2/rrf5p87d1bbfyphxc7jdnyvh0000gn/T/tmpkhsf1snb/first/adapters.safetensors.
+Loading pretrained model
+Loading datasets
+Training
+Loading fine-tuned weights from /var/folders/w2/rrf5p87d1bbfyphxc7jdnyvh0000gn/T/tmpkhsf1snb/first/adapters.safetensors
+Trainable parameters: 0.484% (2.884M/596.050M)
+Starting training..., iters: 3
+Calculating loss...:   0%|          | 0/2 [00:00<?, ?it/s]Calculating loss...:  50%|█████     | 1/2 [00:01<00:01,  1.72s/it]Calculating loss...: 100%|██████████| 2/2 [00:03<00:00,  1.53s/it]Calculating loss...: 100%|██████████| 2/2 [00:03<00:00,  1.56s/it]
+Iter 1: Val loss 1.002, Val took 3.159s
+Calculating loss...:   0%|          | 0/2 [00:00<?, ?it/s]Calculating loss...:  50%|█████     | 1/2 [00:01<00:01,  1.30s/it]Calculating loss...: 100%|██████████| 2/2 [00:02<00:00,  1.43s/it]Calculating loss...: 100%|██████████| 2/2 [00:02<00:00,  1.41s/it]
+Iter 3: Val loss 4.169, Val took 2.862s
+Iter 3: Train loss 1.816, Learning Rate 1.000e-04, It/sec 0.685, Tokens/sec 0.822, Trained Tokens 12, Peak mem 5.638 GB
+Iter 3: Saved adapter weights to /var/folders/w2/rrf5p87d1bbfyphxc7jdnyvh0000gn/T/tmpkhsf1snb/second/adapters.safetensors and /var/folders/w2/rrf5p87d1bbfyphxc7jdnyvh0000gn/T/tmpkhsf1snb/second/0000003_adapters.safetensors.
+Saved final weights to /var/folders/w2/rrf5p87d1bbfyphxc7jdnyvh0000gn/T/tmpkhsf1snb/second/adapters.safetensors.
+ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 110.787s
+
+OK

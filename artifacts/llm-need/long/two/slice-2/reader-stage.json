@@ -1,0 +1,22 @@
+{
+ "stage": "reader",
+ "from": "artifacts/llm-need/two/need-5-8/adapters-need-8",
+ "lives_from": "artifacts/llm-need/two/reader/lives-reader.jsonl.gz",
+ "workspace": true,
+ "reader": true,
+ "balanced": false,
+ "adapter": "/Users/builder/clone/llm-need/adapters-reader",
+ "iters": 1000,
+ "skip": 1000,
+ "continue_from": "artifacts/llm-need/long/two/slice-1/adapters-reader",
+ "lives": 512,
+ "survival": 0.716796875,
+ "mean_length": 26.4921875,
+ "mean_satisfaction": 12.389781775287526,
+ "mean_mass": 0.9998759120465939,
+ "p_R": 0.4967336368327927,
+ "turns_need_at_most_2": 1619,
+ "report_documents": 5222,
+ "report_documents_yes": 2150,
+ "documents": 5222
+}
