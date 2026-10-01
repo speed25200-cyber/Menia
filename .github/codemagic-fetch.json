@@ -1,5 +1,5 @@
 {
- "request": 78,
+ "request": 79,
  "app": "Menia",
  "wait_minutes": 345,
  "builds": [
@@ -8,33 +8,15 @@
     "workflow": "menia-need-mac",
     "branch": "claude/causal-self-model-llm-results-mauabk",
     "variables": {
-     "NEED_STAGE": "reader",
-     "NEED_ITERS": "1000",
-     "NEED_SKIP": "1000",
-     "NEED_START": "artifacts/llm-need/r1/final/report/adapters-final",
-     "NEED_REPLICATE": "1",
-     "NEED_LIVES_FILE": "artifacts/llm-need/r1/reader/lives-reader.jsonl.gz",
-     "NEED_CONTINUE": "artifacts/llm-need/long/second/slice-1/adapters-reader"
+     "NEED_STAGE": "measure",
+     "NEED_MEASURE": "research.need_locate",
+     "NEED_ARGS": "--agent two",
+     "NEED_RESUME": "artifacts/llm-need/locate-two/slice-5/measure",
+     "NEED_MINUTES": "100",
+     "NEED_THREADS": "4"
     }
    },
-   "dest": "artifacts/llm-need/long/second/slice-2"
-  },
-  {
-   "launch": {
-    "workflow": "menia-need-mac",
-    "branch": "claude/causal-self-model-llm-results-mauabk",
-    "variables": {
-     "NEED_STAGE": "reader",
-     "NEED_ITERS": "1000",
-     "NEED_SKIP": "1000",
-     "NEED_START": "artifacts/llm-need/two/need-5-8/adapters-need-8",
-     "NEED_REPLICATE": "2",
-     "NEED_LIVES_FILE": "artifacts/llm-need/two/reader/lives-reader.jsonl.gz",
-     "NEED_CONTINUE": "artifacts/llm-need/long/two/slice-1/adapters-reader",
-     "NEED_OTHER": "1"
-    }
-   },
-   "dest": "artifacts/llm-need/long/two/slice-2"
+   "dest": "artifacts/llm-need/locate-two/slice-6"
   }
  ]
 }
