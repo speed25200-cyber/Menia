@@ -169,16 +169,70 @@ def need_loss(model, batch, weights, mask=None, positions=None):
     return ce.astype(mx.float32).sum() / weights.sum(), (weights > 0).sum()
 
 
+def skipping(batches, skip):
+    """The training batches of a run continued at batch skip + 1 (docs/LLM_NEED_LONG_READER_PROTOCOL.md). The
+    permutations come from numpy's global state, which the validations draw from too: the first validation's draw
+    follows the first epoch's, so the continued run draws in the same order only if it starts within the first epoch.
+    Validation batches (loop=False) are not skipped."""
+    def iterate(*args, **kwargs):
+        if kwargs.get("loop") and skip and skip >= len(kwargs["dataset"]) // kwargs["batch_size"]:
+            raise ValueError("a continued run must start within the first epoch")
+        it = batches(*args, **kwargs)
+        if kwargs.get("loop"):
+            for _ in range(skip):
+                next(it)
+        return it
+    return iterate
+
+
+MOMENTS = ("m", "v")
+
+
+def keeping_moments(train, folder, moments_from=None):
+    """mlx-lm's train, Adam's moments read from moments_from before and written to folder after, one file per moment
+    (each under the relay's size limit). Adam without bias correction and a constant rate: the moments are its whole
+    state."""
+    def run(**kwargs):
+        import mlx.core as mx
+        from mlx.utils import tree_flatten, tree_unflatten
+        optimizer, model = kwargs["optimizer"], kwargs["model"]
+        if moments_from:
+            optimizer.init(model.trainable_parameters())
+            state = dict(tree_flatten(optimizer.state))
+            for m in MOMENTS:
+                loaded = mx.load(str(f"{moments_from}/optimizer-{m}.safetensors"))
+                if set(loaded) != {k for k in state if k.endswith("." + m)}:
+                    raise ValueError(f"moments {m} do not match the adapter")
+                state.update(loaded)
+            optimizer.state = tree_unflatten(list(state.items()))
+            optimizer.init(model.trainable_parameters())
+        result = train(**kwargs)
+        state = dict(tree_flatten(optimizer.state))
+        for m in MOMENTS:
+            mx.save_safetensors(f"{folder}/optimizer-{m}.safetensors", {k: v for k, v in state.items()
+                                                                         if k.endswith("." + m)})
+        return result
+    return run
+
+
 def main(argv=None):
+    import argparse
     from mlx_lm import lora
     from mlx_lm.models import qwen3
     from mlx_lm.tuner import datasets, trainer
     from mlx_lm.tuner.lora import LoRALinear
+    p = argparse.ArgumentParser(add_help=False)
+    p.add_argument("--skip", type=int, default=0, help="batches already trained on (a run continued)")
+    p.add_argument("--moments-from", default=None, help="the folder of the adapter whose Adam moments continue")
+    p.add_argument("--adapter-path", default="adapters")
+    ours, rest = p.parse_known_args(sys.argv[1:] if argv is None else argv)
     qwen3.create_attention_mask = masked_attention(qwen3.create_attention_mask)
     reader_lora(LoRALinear)
     datasets.TextDataset = NeedText
-    lora.train = functools.partial(trainer.train, loss=need_loss, iterate_batches=need_batches)
-    sys.argv = ["mlx_lm.lora"] + list(sys.argv[1:] if argv is None else argv)
+    lora.train = keeping_moments(functools.partial(trainer.train, loss=need_loss,
+                                                   iterate_batches=skipping(need_batches, ours.skip)),
+                                 ours.adapter_path, ours.moments_from)
+    sys.argv = ["mlx_lm.lora", "--adapter-path", ours.adapter_path] + rest
     lora.main()
 
 

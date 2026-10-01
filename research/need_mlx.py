@@ -169,14 +169,18 @@ def summary(lives):
 write_jsonl, read_jsonl = W.write_jsonl, W.read_jsonl
 
 
-def train(model, data, adapter, iters, resume=None, seed=W.SEED):
-    """One LoRA stage through research.need_lora (rank 8, 16 layers, batch 4, lr 1e-4, as in the protocol)."""
+def train(model, data, adapter, iters, resume=None, seed=W.SEED, skip=0, moments=False):
+    """One LoRA stage through research.need_lora (rank 8, 16 layers, batch 4, lr 1e-4, as in the protocol). With
+    skip and moments, the run that left `resume` after skip batches is continued exactly: its batches, its Adam
+    moments (docs/LLM_NEED_LONG_READER_PROTOCOL.md)."""
     cmd = [sys.executable, "-m", "research.need_lora", "--model", model, "--train", "--data", str(data),
            "--iters", str(iters), "--batch-size", "4", "--num-layers", "16", "--learning-rate", "1e-4",
            "--max-seq-length", "1024", "--steps-per-eval", str(iters), "--val-batches", "2",
-           "--save-every", str(iters), "--seed", str(seed), "--adapter-path", str(adapter)]
+           "--save-every", str(iters), "--seed", str(seed), "--adapter-path", str(adapter), "--skip", str(skip)]
     if resume:
         cmd += ["--resume-adapter-file", str(Path(resume) / "adapters.safetensors")]
+    if moments:
+        cmd += ["--moments-from", str(resume)]
     for attempt in range(ATTEMPTS):  # the Mac's GPU sometimes hangs ("GPU Hang Error"): the same training again
         if subprocess.run(cmd).returncode == 0:
             return
@@ -262,7 +266,7 @@ def report(a, log=print):
     if a.reader:  # a new adapter on the fused starting agent, from the questions only (docs/LLM_NEED_READER_PROTOCOL.md)
         for d in docs:
             d["reader"] = True
-        model, start = str(out / "fused-start"), None
+        model, start = str(out / "fused-start"), a.continue_from
         subprocess.run([sys.executable, "-m", "mlx_lm", "fuse", "--model", a.model, "--adapter-path", a.start,
                         "--save-path", model], check=True)
     else:
@@ -270,14 +274,18 @@ def report(a, log=print):
         docs += W.training_documents(kept, [l["kept"] for l in kept])
     write_data(out / f"data-{a.label}", docs, np.random.default_rng([W.SEED, offset(a, a.stream), 0, 0, 3]))
     final = out / a.adapter_name
-    train(model, out / f"data-{a.label}", final, a.iters, resume=start, seed=W.SEED + a.replicate)
+    if a.continue_from and not a.reader:
+        raise SystemExit("--continue-from continues a reader")
+    train(model, out / f"data-{a.label}", final, a.iters, resume=start, seed=W.SEED + a.replicate, skip=a.skip,
+          moments=bool(a.continue_from))
     clean(final)
     if a.reader:
         free()
         rows = reader_rows(model, final, read_jsonl(out / f"data-{a.label}" / "valid.jsonl"))
         Path(out / "reader-replica.json").write_text(json.dumps(rows, ensure_ascii=False, indent=1) + "\n")
     record = {"stage": a.label, "from": a.start, "lives_from": a.lives_file, "workspace": a.workspace,
-              "reader": a.reader, "balanced": a.balanced, "adapter": str(final), **summary(lives),
+              "reader": a.reader, "balanced": a.balanced, "adapter": str(final), "iters": a.iters, "skip": a.skip,
+              "continue_from": a.continue_from, **summary(lives),
               "report_documents": sum(1 for d in docs if "need" in d),
               "report_documents_yes": sum(d.get("answer", 0) for d in docs if "need" in d), "documents": len(docs)}
     Path(out / f"{a.label}-stage.json").write_text(json.dumps(record, indent=1) + "\n")
@@ -458,6 +466,8 @@ def main(argv=None):
     p.add_argument("--lives-file", default=None, help="lives already lived by the starting agent")
     p.add_argument("--reader", action="store_true", help="a new adapter on the question only, the agent fused")
     p.add_argument("--balanced", action="store_true", help="report documents balanced within each event")
+    p.add_argument("--continue-from", default=None, help="a reader adapter whose run is continued exactly")
+    p.add_argument("--skip", type=int, default=0, help="batches the continued run has trained on")
     d = sub.add_parser("direction")
     d.add_argument("--adapter", required=True)
     d.add_argument("--lives", type=int, default=256)

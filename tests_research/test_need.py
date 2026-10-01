@@ -367,6 +367,41 @@ class BalancedTests(unittest.TestCase):
         self.assertFalse(B.verdicts(RD.verdicts(lives, 0.005, 1e-6, 0.01))["verdicts"]["SAY8"])
 
 
+class LongReaderTests(unittest.TestCase):
+    def test_long_reader_verdicts(self):
+        from research import need_long as L, need_reader as RD
+        lives = one_state_lives(30)
+        good = RD.verdicts(lives, 0.005, 1e-6, 0.01)
+        v = L.verdicts({"second": good, "two": good})["verdicts"]
+        self.assertEqual(v, {"R11_second": True, "SAY11_second": True, "valid_second": True, "R11_two": True,
+                             "SAY11_two": True, "valid_two": True, "global": True})
+        self.assertFalse(L.verdicts({"second": good})["verdicts"]["global"])
+        for life in lives:
+            for t in W.decisions(life):
+                if "injection" in t["extra"]:
+                    t["extra"]["injection"]["E"]["yes_E"] = 0.15
+        weak = RD.verdicts(lives, 0.005, 1e-6, 0.01)
+        v = L.verdicts({"second": good, "two": weak})["verdicts"]
+        self.assertTrue(v["SAY11_second"] and v["R11_two"])
+        self.assertFalse(v["SAY11_two"] or v["global"])
+        self.assertFalse(L.verdicts({"second": good, "two": RD.verdicts(lives, 0.005, 1e-6, 0.03)})["verdicts"]
+                         ["valid_two"])
+
+    def test_the_continued_batches_are_those_of_one_run(self):
+        data = list(range(40))
+        np.random.seed(5)
+        one = list(need_lora.skipping(lambda **k: iter(np.random.permutation(data)), 0)(dataset=data, batch_size=1,
+                                                                                         loop=True))
+        np.random.seed(5)
+        two = list(need_lora.skipping(lambda **k: iter(np.random.permutation(data)), 15)(dataset=data, batch_size=1,
+                                                                                          loop=True))
+        self.assertEqual(one[15:], two)
+        np.random.seed(5)
+        self.assertEqual(len(list(need_lora.skipping(lambda **k: iter(np.random.permutation(data)), 15)())), 40)
+        with self.assertRaises(ValueError):
+            need_lora.skipping(lambda **k: iter(data), 10)(dataset=data, batch_size=4, loop=True)
+
+
 class OwnershipTests(unittest.TestCase):
     def test_the_other_lives_beside_without_changing_the_agent(self):
         alone = W.play(W.Oracle(), W.world_rng(225, 0), W.choice_rng(225, 0))
@@ -548,6 +583,34 @@ class MLXReaderTests(unittest.TestCase):
                                                                             tokenizer)), 2, 1024))
         finally:
             qwen3.create_attention_mask, LoRALinear.__call__ = original
+
+
+@unittest.skipUnless(os.environ.get("NEED_TINY_MODEL"), "needs mlx and a tiny local model (NEED_TINY_MODEL)")
+class MLXContinueTests(unittest.TestCase):
+    def test_a_reader_run_in_two_slices_is_the_run_in_one(self):
+        """docs/LLM_NEED_LONG_READER_PROTOCOL.md: 3 + 3 iterations, continued with the same batches and Adam's
+        moments, give the adapter of 6 iterations; the 6 cross an epoch of 5 batches."""
+        import mlx.core as mx
+        from research.need_mlx import train, write_data
+        lives = lives_of(W.Oracle(), W.STREAMS["report"], 8)
+        docs = W.report_documents(lives, np.random.default_rng(0), after_choice=True, workspace=True)[:20]
+        self.assertEqual(len(docs), 20)
+        docs = [dict(d, reader=True) for d in docs]
+        with tempfile.TemporaryDirectory() as d:
+            d = Path(d)
+            write_data(d / "data", docs, np.random.default_rng(1))
+            model = os.environ["NEED_TINY_MODEL"]
+            train(model, d / "data", d / "one", 6)
+            train(model, d / "data", d / "first", 3)
+            train(model, d / "data", d / "second", 3, resume=d / "first", skip=3, moments=True)
+            one, two = mx.load(str(d / "one/adapters.safetensors")), mx.load(str(d / "second/adapters.safetensors"))
+            first = mx.load(str(d / "first/adapters.safetensors"))
+            self.assertEqual(set(one), set(two))
+            for k in one:
+                self.assertTrue(np.allclose(np.array(one[k]), np.array(two[k]), rtol=1e-4, atol=1e-6), k)
+            self.assertGreater(max(float(mx.abs(one[k] - first[k]).max()) for k in one), 1e-4)
+            for m in need_lora.MOMENTS:
+                self.assertTrue((d / f"second/optimizer-{m}.safetensors").exists())
 
 
 @unittest.skipUnless(os.environ.get("NEED_TINY_TORCH"), "needs torch and a tiny local model (NEED_TINY_TORCH)")

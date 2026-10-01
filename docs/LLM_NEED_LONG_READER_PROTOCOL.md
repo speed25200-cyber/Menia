@@ -106,3 +106,33 @@ autre chemin, par exemple un raccourci.
 - **Mesures** : `research/need_reader.py`, au bloc de l'agent, avec les
   directions du test de localisation.
 - **Verdicts** : `research/need_long.py`, vérifiés en CI.
+
+## Ajout du 1er octobre, avant toute exécution : deux tranches de 1 000 itérations
+
+Une construction du Mac dure au plus 120 minutes. 2 000 itérations au
+rythme mesuré (0,28 itération par seconde) en prennent 120 à elles
+seules. Chaque lecteur long apprend donc en **deux tranches de 1 000
+itérations**, et la seconde **continue exactement** la première :
+
+- **Mêmes lots, dans le même ordre.** La seconde tranche repart de la même
+  graine et passe les 1 000 premiers lots. Les permutations sont tirées
+  dans le même ordre que dans un apprentissage d'un seul tenant, parce que
+  la reprise tombe dans la première époque (1 272 lots par époque pour le
+  second agent, 1 305 pour l'agent du monde à deux). Le code refuse une
+  reprise qui ne tomberait pas dans la première époque.
+- **Même état de l'optimiseur.** Les moments d'Adam sont enregistrés à la
+  fin de la première tranche et relus au début de la seconde. Adam est ici
+  sans correction de biais, à taux constant : ses moments sont tout son
+  état.
+- **Vérifié avant l'emploi.** Un test (`MLXContinueTests`) compare 3 + 3
+  itérations reprises à 6 itérations d'un seul tenant, à travers une fin
+  d'époque. Il passe sur un petit modèle, et il est rejoué sur le Mac,
+  avec le vrai modèle, avant chaque tranche ; s'il échoue, la tranche
+  s'arrête.
+- **Contrôle gratuit.** Les 600 premières itérations sont alors celles du
+  premier lecteur (même graine, mêmes lots). Les pertes d'apprentissage
+  du journal, toutes les 10 itérations, doivent donc être les mêmes ; elles
+  seront comparées et publiées.
+
+Sorties : `artifacts/llm-need/long/<agent>/slice-1` et `slice-2` (le
+lecteur long), mesures dans `artifacts/llm-need/long/<agent>/test`.

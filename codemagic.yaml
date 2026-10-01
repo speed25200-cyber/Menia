@@ -879,6 +879,10 @@ workflows:
         NEED_THREADS: "4"
         NEED_BALANCED: "0"
         NEED_OTHER: "0"
+        NEED_ITERS: "600"
+        NEED_LIVES_FILE: "none"
+        NEED_CONTINUE: "none"
+        NEED_SKIP: "0"
     scripts:
       - name: Installer mlx-lm dans un environnement isolé
         script: |
@@ -927,10 +931,14 @@ workflows:
             # docs/LLM_NEED_READER_PROTOCOL.md: the final agent fused, a new adapter on the question only, the same
             # questions under the mask; the mask and the reader are first checked on this model and this machine
             NEED_TINY_MODEL="$MODEL" python -m unittest tests_research.test_need.MLXWorkspaceTests \
-              tests_research.test_need.MLXReaderTests -v 2>&1 | tee "$OUT/reader-check.log" | tail -5
+              tests_research.test_need.MLXReaderTests tests_research.test_need.MLXContinueTests -v 2>&1 \
+              | tee "$OUT/reader-check.log" | tail -5
             # the first agent reads the lives it lived at the stage speak2; a replicate lives its own 512 lives
-            # (docs/LLM_NEED_REPLICATION_PROTOCOL.md)
-            if [ "$NEED_REPLICATE" = "0" ]; then
+            # (docs/LLM_NEED_REPLICATION_PROTOCOL.md), or reads those it lived for its first reader
+            # (docs/LLM_NEED_LONG_READER_PROTOCOL.md)
+            if [ "$NEED_LIVES_FILE" != "none" ]; then
+              LIVES="--lives-file $NEED_LIVES_FILE"
+            elif [ "$NEED_REPLICATE" = "0" ]; then
               LIVES="--lives-file artifacts/llm-need/speak2/lives-speak2.jsonl.gz"
             else
               LIVES="--lives 512"
@@ -941,8 +949,13 @@ workflows:
             else
               KIND="--label reader --adapter-name adapters-reader"
             fi
+            # docs/LLM_NEED_LONG_READER_PROTOCOL.md: a long reader learns in slices of NEED_ITERS, each continuing the
+            # run of the reader NEED_CONTINUE exactly after its NEED_SKIP batches (Mac builds last at most 120 minutes)
+            if [ "$NEED_CONTINUE" != "none" ]; then
+              KIND="$KIND --continue-from $NEED_CONTINUE --skip $NEED_SKIP"
+            fi
             python -m research.need_mlx report --start "$NEED_START" --previous none --model "$MODEL" $LIVES \
-              --iters 600 --stream 18 --per-class 3 $KIND --after-choice \
+              --iters "$NEED_ITERS" --stream 18 --per-class 3 $KIND --after-choice \
               --workspace --reader --replicate "$NEED_REPLICATE" $OTHER --out "$OUT" 2>&1 \
               | tee "$OUT/reader.log" | grep -v "it/s" | tail -30
             rm -rf "$OUT/fused-start"
