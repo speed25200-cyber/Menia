@@ -97,10 +97,14 @@ def analyze(path):
     targets = {"E": e, "N": n, "E-N": e - n, "E+N": e + n, "P(R)": p_r}
     out = {"decisions": int(len(rows)), "lives": int(len(np.unique(groups))), "block": int(data["block"]),
            "replay_gap": float(data["replay_gap"]), "r2": {}}
+    preds = {}
     for name, y in targets.items():
-        out["r2"][name] = round(r2(y, ridge_cv(x, y, groups)), 4)
+        preds[name] = ridge_cv(x, y, groups)
+        out["r2"][name] = round(r2(y, preds[name]), 4)
     low = (e <= W.LOW).astype(float)
     out["E_low_balanced_accuracy"] = round(balanced(low.astype(bool), ridge_cv(x, low, groups)), 4)
+    # the same question read from the predicted level (a rare class: a 0/1 regression rarely crosses 0.5)
+    out["E_low_from_E_balanced_accuracy"] = round(balanced(low.astype(bool), (preds["E"] <= W.LOW + 0.5) * 1.0), 4)
     out["E_low_share"] = round(float(low.mean()), 4)
     # E once the balance is known: what the state says of E beyond E - N (the residual of E on E - N)
     slope = np.polyfit(e - n, e, 1)
