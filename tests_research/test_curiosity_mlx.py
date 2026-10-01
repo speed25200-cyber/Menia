@@ -23,7 +23,7 @@ class MLXCuriosityTests(unittest.TestCase):
         self.assertNotAlmostEqual(mind.exam("mots"), before, places=6)
         p1, _ = mind.choose(text)
         self.assertTrue(np.allclose(p0, p1, atol=1e-6))  # the knowledge is off while choosing
-        d = mind.model.model.layers[0].self_attn.q_proj.linear.weight.shape[1]
+        d = mind.model.model.layers[0].self_attn.q_proj.weight.shape[1]
         pushed, _ = mind.choose(text, add=np.full((3, d), 3.0, np.float32))
         self.assertGreater(np.abs(pushed - p0).max(), 1e-4)
         u = np.zeros((3, d, 1), np.float32)
