@@ -13,6 +13,7 @@
    "E | E-N": 0.615
   },
   "E_low_balanced_accuracy": 0.6095,
+  "E_low_from_E_balanced_accuracy": 0.6922,
   "E_low_share": 0.0867
  },
  "second": {
@@ -29,6 +30,7 @@
    "E | E-N": 0.5726
   },
   "E_low_balanced_accuracy": 0.6248,
+  "E_low_from_E_balanced_accuracy": 0.6794,
   "E_low_share": 0.0905
  },
  "two": {
@@ -45,6 +47,7 @@
    "E | E-N": 0.5788
   },
   "E_low_balanced_accuracy": 0.6614,
+  "E_low_from_E_balanced_accuracy": 0.7113,
   "E_low_share": 0.1115
  }
 }
