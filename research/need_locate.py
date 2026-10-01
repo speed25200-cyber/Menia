@@ -202,6 +202,14 @@ def test(a):
                                          "random": base + NC.STREAMS["random"]}, other=spec["other"])
 
 
+def run(a):
+    """The whole measure for one agent (the Mac's slices call "run"): the localization, then, at the block found, the
+    tests (not for the first agent, whose block-12 tests are the sixth and seventh tests)."""
+    locate(a)
+    if a.agent != "first" and json.loads((Path(a.out) / a.agent / "locate.json").read_text())["block"] is not None:
+        test(a)
+
+
 def gather(root):
     root = Path(root)
     located = {n: json.loads((root / n / "locate.json").read_text()) for n in AGENTS}
@@ -233,9 +241,9 @@ def check(a):
 def main(argv=None):
     parser = argparse.ArgumentParser()
     sub = parser.add_subparsers(dest="command", required=True)
-    for name in ("locate", "test"):
+    for name in ("locate", "test", "run"):
         s = sub.add_parser(name)
-        s.add_argument("--agent", choices=sorted(AGENTS) if name == "locate" else ["second", "two"], required=True)
+        s.add_argument("--agent", choices=sorted(AGENTS) if name != "test" else ["second", "two"], required=True)
         s.add_argument("--threads", type=int, default=4)
         s.add_argument("--test-lives", type=int, default=256)
     w = sub.add_parser("write")
@@ -248,7 +256,7 @@ def main(argv=None):
         (Path(a.out) / "verdicts.json").write_text(json.dumps(result, indent=1) + "\n")
         print(json.dumps(result["verdicts"]))
     else:
-        {"locate": locate, "test": test, "verdicts": check}[a.command](a)
+        {"locate": locate, "test": test, "run": run, "verdicts": check}[a.command](a)
 
 
 if __name__ == "__main__":

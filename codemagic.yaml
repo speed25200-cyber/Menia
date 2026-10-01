@@ -954,7 +954,7 @@ workflows:
             mkdir -p "$OUT/measure"
             if [ "$NEED_RESUME" != "none" ]; then
               cp -R "$NEED_RESUME"/. "$OUT/measure/"
-              for f in "$OUT"/measure/resume-*; do if [ -e "$f" ]; then mv "$f" "$OUT/measure/partial-${f##*/resume-}"; fi; done
+              find "$OUT/measure" -name 'resume-*' | while read -r f; do mv "$f" "$(dirname "$f")/partial-${f##*/resume-}"; done
             fi
             ARGS=""
             if [ "$NEED_ARGS" != "none" ]; then ARGS="$NEED_ARGS"; fi
@@ -966,7 +966,7 @@ workflows:
             echo "exit $?" >> "$OUT/measure.log"
             set -e
             grep -v "Loading weights" "$OUT/measure.log" | tail -20
-            for f in "$OUT"/measure/partial-*; do if [ -e "$f" ]; then mv "$f" "$OUT/measure/resume-${f##*/partial-}"; fi; done
+            find "$OUT/measure" -name 'partial-*' | while read -r f; do mv "$f" "$(dirname "$f")/resume-${f##*/partial-}"; done
           elif [ "$NEED_STAGE" = "report" ]; then
             python -m research.need_mlx report --start "$NEED_START" --previous "$NEED_PREVIOUS" --model "$MODEL" \
               --replicate "$NEED_REPLICATE" --out "$OUT/report" 2>&1 | tee "$OUT/report.log" | grep -v "it/s" | tail -30
