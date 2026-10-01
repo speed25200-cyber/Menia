@@ -43,6 +43,16 @@ def target_tokens(text, weights, encode):
     return tokens + rest, out + [0.0] * len(rest)
 
 
+def span_tokens(text, spans, tokenizer):
+    """Tokens of a text and the weight of each token as a target: 1 for every token whose characters overlap one of
+    the spans (start, end), else 0 (docs/LLM_CURIOSITY_PROTOCOL.md: the answers of the domains, the chosen name, the
+    reader's digit). Uses the offsets of a fast tokenizer, so nothing is cut."""
+    hf = tokenizer if callable(tokenizer) else tokenizer._tokenizer  # an HF tokenizer, or mlx-lm's wrapper of one
+    enc = hf(text, add_special_tokens=False, return_offsets_mapping=True)
+    weights = [1.0 if any(s < b and e > a for a, b in spans) else 0.0 for s, e in enc["offset_mapping"]]
+    return list(enc["input_ids"]), weights
+
+
 def workspace_mask(size, span=None):
     """Which positions each position attends to (size x size, True = seen): causal; with span = (header, end), the
     positions from `end` on (the question) see only the header, the WORKSPACE tokens before `end` (the pending
@@ -87,14 +97,18 @@ class NeedText:
 
     def process(self, d):
         encode = lambda s: self.tokenizer.encode(s, add_special_tokens=False)
-        tokens, weights = target_tokens(d[self.text_key], d["weights"], encode)
+        if "spans" in d:  # targets given as character spans (docs/LLM_CURIOSITY_PROTOCOL.md)
+            tokens, weights = span_tokens(d[self.text_key], d["spans"], self.tokenizer)
+        else:
+            tokens, weights = target_tokens(d[self.text_key], d["weights"], encode)
         if tokens != list(encode(d[self.text_key])):
             raise RuntimeError("cutting at the targets changed the tokens")
         if sum(weights) <= 0:
             raise RuntimeError("a document without a weighted target")
         if "workspace" not in d:
             return tokens, weights
-        header, before = list(encode(HEADER)), list(encode(d[self.text_key][:d["workspace"]]))
+        header = list(encode(d.get("header", HEADER)))
+        before = list(encode(d[self.text_key][:d["workspace"]]))
         end = len(before)
         if tokens[:len(header)] != header or tokens[:end] != before:
             raise RuntimeError("the header or the text up to the pending choice is cut differently")

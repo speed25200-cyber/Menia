@@ -959,6 +959,23 @@ workflows:
               --workspace --reader --replicate "$NEED_REPLICATE" $OTHER --out "$OUT" 2>&1 \
               | tee "$OUT/reader.log" | grep -v "it/s" | tail -30
             rm -rf "$OUT/fused-start"
+          elif [ "$NEED_STAGE" = "curiosity" ]; then
+            # docs/LLM_CURIOSITY_PROTOCOL.md: one command of research/curiosity_mlx.py per build (pilot, install,
+            # lives, check), resumable between lives; NEED_RESUME brings back the files of the previous build
+            NEED_TINY_MODEL="$MODEL" python -m unittest tests_research.test_curiosity_mlx -v 2>&1 \
+              | tee "$OUT/curiosity-check.log" | tail -5
+            mkdir -p "$OUT/curiosity"
+            if [ "$NEED_RESUME" != "none" ]; then
+              cp -R "$NEED_RESUME"/. "$OUT/curiosity/"
+            fi
+            set +e
+            perl -e 'alarm(shift @ARGV); exec @ARGV' $((NEED_MINUTES * 60)) \
+              python -m research.curiosity_mlx $NEED_ARGS --model "$MODEL" --out "$OUT/curiosity" \
+              > "$OUT/curiosity.log" 2>&1
+            echo "exit $?" >> "$OUT/curiosity.log"
+            set -e
+            grep -v "it/s" "$OUT/curiosity.log" | tail -30
+            rm -rf "$OUT/curiosity/fused-instinct" "$OUT/curiosity/check-reference"
           elif [ "$NEED_STAGE" = "measure" ]; then
             # torch measures on the Mac's CPU, in slices of NEED_MINUTES that resume one another: the partial files of
             # a slice travel as resume-* (the repository ignores partial-*) and are put back by the next slice

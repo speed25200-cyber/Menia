@@ -292,6 +292,34 @@ def life_verdicts(arms, temperature, bonus):
     return {"verdicts": out, "values": values}
 
 
+def static_verdicts(rows):
+    """The verdicts of the static measures on the decisions of the lives C (research/curiosity_causal.py):
+    ACT and SAY (the single push of +2 d_base against three random directions of the same norm), GAIN, READ."""
+    by_life = lambda key, f: [[f(r) for r in rows if r["life"] == v and key in r]
+                              for v in sorted({r["life"] for r in rows})]
+    out, values = {}, {}
+    for name, key, threshold in (("ACT", "act", 0.15), ("SAY", "say", 0.10)):
+        effect = bootstrap(by_life(key, lambda r: r[key]["push"] - r[key]["none"]))
+        rand = float(np.mean([abs(x - r[key]["none"]) for r in rows if key in r for x in r[key]["random"]]))
+        out[name] = bool(effect["mean"] >= threshold and effect["low"] > 0 and rand <= effect["mean"] / 3)
+        values[name] = dict(effect, random=rand)
+    gain = bootstrap(by_life("gain", lambda r: r["gain"]["S_gain"] - r["gain"]["S"]))
+    rand = float(np.mean([abs(r["gain"]["S_random_gain"] - r["gain"]["S"]) for r in rows if "gain" in r]))
+    out["GAIN"] = bool(gain["mean"] >= 0.05 and gain["low"] > 0 and rand <= gain["mean"] / 3)
+    values["GAIN"] = dict(gain, random=rand)
+    accuracies = []
+    for d in DOMAINS:
+        pairs = [(r["read"][d] > 0.5, r["truth"] == d) for r in rows if "read" in r]
+        rates = [np.mean([p == t for p, t in pairs if t == c]) for c in (True, False) if any(t == c for _, t in pairs)]
+        accuracies.append(float(np.mean(rates)) if rates else None)
+    known = [x for x in accuracies if x is not None]
+    read = float(np.mean(known)) if known else None
+    out["READ"] = bool(read is not None and read >= 0.75)
+    values["READ"] = {"balanced_accuracy": read, "by_domain": dict(zip(DOMAINS, accuracies))}
+    values["contexts"] = sum(1 for r in rows if "act" in r)
+    return {"verdicts": out, "values": values}
+
+
 def domains_valid(random_lives, temperature):
     """The domains are what they say (random lives): mots and base are learned, suites stops giving progress after
     its fourth session, calcul starts well below base."""
