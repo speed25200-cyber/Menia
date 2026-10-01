@@ -405,3 +405,71 @@ Deux explications possibles, testées par le protocole suivant
 (`docs/LLM_NEED_LOCATE_PROTOCOL.md`) :
 - le second agent rassemble son besoin ailleurs ;
 - son lecteur n'a pas appris.
+
+## Neuvième test pré-enregistré : à qui est ce besoin ? (monde à deux)
+
+Protocole `docs/LLM_NEED_OWNERSHIP_PROTOCOL.md` (commit `47eb0db`, avant
+tout code ; demandé par le propriétaire après lecture de Chandaria et al.,
+2026).
+
+**Le monde et l'agent.** Un autre agent vit à côté, et ses événements sont
+écrits sur la même ligne, avec les mêmes mots pour « calme » et « orage ».
+Un nouvel agent y apprend à survivre par la seule satisfaction de ses
+besoins :
+- 8 tours sur le Mac (demandes 63 et 64 ; la 62 avait subi une panne du
+  GPU) ;
+- survie 0,11 → 0,71 au tour 8 ;
+- graine 270928.
+
+Son lecteur, actif sur la seule question et sous le masque, a peu appris
+(perte de validation finale 0,78).
+
+**Mesures** en torch, sur le processeur du Mac (premier usage de l'étape
+`measure`).
+- Cinq tranches de 100 minutes au plus, demandes 66 à 71. Deux échecs
+  techniques au départ, corrigés : macOS n'a pas `timeout`, et la
+  sauvegarde plantait quand une sorte de paires était encore vide.
+- Répliques : agent 0,003, lecteur 0,009.
+- Contrôle d'exécution : 2e-6.
+- Directions : 1 500 paires de l'agent, plus 1 500 paires de l'autre ;
+  dimensions massives exclues : 35 et 277.
+- Test : 256 vies, 1 547 contextes.
+
+Artefacts dans `artifacts/llm-need/two/measure-5/measure`, vérifiés en CI.
+Les paires ont été lues dès la fin de la tranche 2 (verdicts MINE9 et
+SELF9 connus avant les vies de test, déclaré).
+
+**Validité : passée.**
+
+| | Prédiction | Mesure | Verdict |
+|---|---|---|---|
+| **S9** | L'agent vit dans le monde à deux | survie 0,742 | **passe** |
+| **MINE9** | L'état de besoin est le sien | « calme » → « orage » : effet de l'autre / effet de l'agent = 0,94 sur l'état, 0,57 sur l'acte (exigé ≤ 0,33) | échoue |
+| **SELF9** | Sa parole est la sienne | même rapport sur la parole : 0,78 | échoue |
+| **ONE9** | Un seul état fait agir et dire | acte +0,090 [0,085 ; 0,095], parole +0,014 ; hasard 0,006 et 0,0004 | échoue |
+| | **Critère global** | | **non satisfait** |
+
+Exactitude du rapport : énergie 0,61, nourriture 0,71. Tours vécus avec un
+besoin à 2 ou moins : 807.
+
+**Analyse exploratoire, après lecture des paires** (non pré-enregistrée),
+type d'échange par type d'échange :
+
+| échange | agent : état / acte | autre : état / acte |
+|---|---|---|
+| « calme » → « tu cours » / « il court » | 607 / 0,075 | 279 / 0,019 |
+| « tu te reposes » → « il fait froid » | 442 / 0,043 | 280 / 0,022 |
+| « calme » → « orage » (mêmes mots) | 286 / 0,028 | 269 / 0,016 |
+
+- **Les deux sortes de changements ne se comportent pas pareil.** Ceux de
+  l'agent bougent l'état selon ce qu'ils font à **ses** besoins. Ceux de
+  l'autre produisent une perturbation presque constante, de 269 à 280,
+  quel que soit l'événement.
+- **L'agent distingue donc en partie ce qui lui arrive.** Sur l'acte,
+  l'effet de l'autre vaut 25 % à 57 % du sien.
+- **La comparaison prévue était défavorable.** « Calme » → « orage » retire
+  1 aux deux besoins de l'agent. Cela change à peine leur équilibre, qui
+  est ce que l'état code ici aussi : cos(d_E, d_N) = −1,0, ce que nous
+  avons appris après avoir écrit ce protocole.
+
+Le verdict reste celui du protocole : la possession n'est pas démontrée.
