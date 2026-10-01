@@ -8,6 +8,7 @@ the block where its agent gathers its need, with the directions the localization
 """
 import argparse
 import json
+import re
 from pathlib import Path
 from . import need_world as W
 from . import need_verdicts as V
@@ -19,8 +20,10 @@ ACCURACY = 0.75
 ROOT = "artifacts/llm-need/long"
 AGENTS = {
     "second": {"adapter": "artifacts/llm-need/r1/final/report/adapters-final", "reader": f"{ROOT}/second/slice-2",
+               "first_reader": "artifacts/llm-need/r1/reader",
                "directions": "artifacts/llm-need/locate/second/act", "base": 500, "other": False},
     "two": {"adapter": "artifacts/llm-need/two/need-5-8/adapters-need-8", "reader": f"{ROOT}/two/slice-2",
+            "first_reader": "artifacts/llm-need/two/reader",
             "directions": "artifacts/llm-need/locate-two/slice-3/measure/two/act", "base": 600, "other": True},
 }
 
@@ -66,6 +69,23 @@ def measure(a):
     WS.run(run, agent=agent, streams=streams, prepare=prepare, judge=RD.judge, other=spec["other"])
 
 
+def train_losses(log):
+    """{iteration: train loss} of an mlx-lm log (every 10 iterations, three decimals)."""
+    found = re.findall(r"Iter (\d+): Train loss ([0-9.]+)", Path(log).read_text())
+    return {int(i): float(x) for i, x in found}
+
+
+def same_start(first, long):
+    """The first slice of a long reader against its first reader (600 iterations, same seed and batches): the train
+    losses of the iterations both logged, and the largest gap (docs/LLM_NEED_LONG_READER_PROTOCOL.md)."""
+    logs = [Path(first) / "reader.log", Path(long) / "reader.log"]
+    if not all(x.exists() for x in logs):
+        return {"iterations": 0, "max_gap": None}
+    a, b = (train_losses(x) for x in logs)
+    common = sorted(set(a) & set(b))
+    return {"iterations": len(common), "max_gap": max((abs(a[i] - b[i]) for i in common), default=None)}
+
+
 def gather(root):
     readers = {}
     for n in AGENTS:
@@ -73,7 +93,11 @@ def gather(root):
         if (out / "verdicts.json").exists():
             readers[n] = RD.judge(W.read_jsonl(out / "lives-test.jsonl.gz"),
                                   json.loads((out / "direction.json").read_text()))
-    return json.loads(json.dumps(verdicts(readers)))
+    result = verdicts(readers)
+    for n, spec in AGENTS.items():
+        if n in result["values"]:
+            result["values"][n]["same_start"] = same_start(spec["first_reader"], Path(spec["reader"]).parent / "slice-1")
+    return json.loads(json.dumps(result))
 
 
 def main(argv=None):
