@@ -1,0 +1,7 @@
+{
+ "model": "agent",
+ "adapter": "artifacts/llm-need/final/report/adapters-final",
+ "block": 12,
+ "contexts": 600,
+ "cache_gap": 1.6689300537109375e-06
+}
