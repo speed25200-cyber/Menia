@@ -173,6 +173,8 @@ En regardant à l'intérieur du modèle, on trouve un \textbf{état} qui porte s
 d'énergie. Le pousser fait agir l'agent ; l'effacer l'empêche de survivre. Des
 interventions au hasard, de même force, ne font rien. Chez deux autres agents, appris de
 zéro, effacer cet état les tue aussi, et chez l'un d'eux le pousser le fait agir de même.
+L'apprentissage l'a rendu stable : là où le modèle de départ cède à n'importe quelle poussée,
+l'agent ne répond presque plus qu'à son besoin.
 
 Un \q{lecteur} branché sur cet état répond \q{oui} quand on le pousse. Mais ce \q{oui}
 vaut presque pour n'importe quelle question, même \q{fait-il nuit ?} : c'est une aiguille
@@ -829,10 +831,10 @@ probable. Les analyses faites \emph{après} avoir vu les résultats sont permise
 \section{Les résultats, test par test}
 \label{sec:resultats}
 
-\lead{Quinze tests pré-enregistrés, dont plusieurs échecs. Ensemble, ils montrent un état
+\lead{Dix-sept tests pré-enregistrés, dont plusieurs échecs. Ensemble, ils montrent un état
 intérieur, appris en vivant, dont l'agent dépend pour agir et que sa parole suit ; ils
-montrent aussi ce que cette parole ne contient pas, et que l'état ne dure pas d'un tour
-à l'autre.}
+montrent aussi ce que cette parole ne contient pas, que l'état ne dure pas d'un tour
+à l'autre, et que l'apprentissage l'a rendu stable.}
 
 \subsection{Test 1 : être lisible n'est pas être utilisé}
 Le premier test a confirmé que \textbf{le besoin a façonné l'agent} (survie 0,684, témoin
@@ -1240,10 +1242,57 @@ croquis d'une même ville par deux passants : les traits diffèrent presque part
 les rues qui mènent quelque part sont les mêmes.
 
 \begin{essentiel}
-Deux agents appris séparément codent \q{énergie basse} en bonne partie de la même façon.
-Ce code vient sans doute du modèle de langage qu'ils partagent, et que chacun a appris à
-utiliser ; il n'est démontré au seuil que dans un sens. La part de la flèche qui fait agir
-se retrouve d'un agent à l'autre ; le reste, non.
+Deux agents appris séparément codent \q{énergie basse} en bonne partie de la même façon ;
+ce n'est démontré au seuil que dans un sens. La part de la flèche qui fait agir se retrouve
+d'un agent à l'autre ; le reste, non. Ce code viendrait-il du modèle de langage qu'ils
+partagent ? Les tests 18 et 19 ont posé la question.
+\end{essentiel}
+
+\subsection{Tests 18 et 19 : ce que l'apprentissage a changé}
+Si deux agents appris séparément partagent un même code, peut-être le tenaient-ils du modèle
+dont ils sont partis. Le test 18 pose la question au \textbf{modèle de départ} : Qwen3-0.6B
+sans adaptateur, qui n'a jamais vécu dans ce monde. Il lit les mêmes vies jusqu'à \q{Choix :},
+et l'on y applique la flèche du besoin de chaque agent, à la même force qu'au test 17.
+
+Les deux flèches lui font choisir R dans tous les contextes. Mais des flèches tirées au hasard,
+de même force, le font aussi bouger fortement, dans un sens ou dans l'autre (0,28 en moyenne) ;
+et comme $P(\text{R})$ ne peut pas dépasser 1, l'effet du besoin ne pouvait pas creuser l'écart.
+Les deux prédictions échouent. Après ce verdict, nous avions écrit, sans seuil, que le code
+existait sans doute déjà dans le modèle de départ.
+
+Le test 19, pré-enregistré lui aussi, reprend la question avec une poussée quatre fois plus
+petite, lue cette fois dans le modèle de départ \emph{et} chez le premier agent.
+
+\begin{center}\small
+\begin{tabular}{lcc}
+\toprule
+\textsf{Poussée quatre fois plus petite} & \textsf{Modèle de départ} & \textsf{Premier agent}\\
+\midrule
+flèche du premier agent & $+0,475$ & $+0,049$\\
+flèche du second agent & $+0,475$ & $+0,041$\\
+au hasard & $\mathbf{0,402}$ & $\mathbf{0,0019}$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Dans le modèle de départ, même petite, toute poussée à cet endroit efface le contexte : deux des
+trois flèches au hasard lui font elles aussi choisir R partout, et sa réponse ne dépend presque
+plus de la vie lue. Les deux prédictions qui cherchaient le code dans ce modèle échouent, et la
+suggestion du test 18 est \textbf{corrigée} : rien ne permet de dire que le code existait avant
+l'apprentissage.
+
+La troisième prédiction \textbf{réussit}, et c'est la plus parlante. Chez l'agent appris, les
+mêmes poussées au hasard ne changent presque rien : 0,0019, environ deux cents fois moins que
+dans le modèle de départ. Les flèches du besoin, elles, le font encore agir, et celle du second
+agent y fait 84\pc{} de ce que fait la sienne. À cet endroit, le modèle de départ est une
+girouette, que le moindre souffle fait tourner ; l'agent appris ressemble davantage à une
+boussole, qui ne répond plus qu'à son besoin.
+
+\begin{essentiel}
+L'apprentissage a rendu stable l'état sur \q{Choix :} : seul le besoin y compte encore, le
+hasard n'y fait presque plus rien. D'où vient le code du besoin, du modèle de départ ou de
+l'apprentissage, reste une question ouverte ; la suggestion faite trop vite après le test 18
+a été corrigée par le test 19.
 \end{essentiel}
 
 \subsection{Récapitulatif}
@@ -1269,6 +1318,8 @@ R & Le résultat tient-il chez un second agent ? & Nécessité répliquée (surv
 14 & Le lecteur dit-il la même chose avec d'autres mots ? & Oui pour \q{es-tu fatigué ?} ($+0,214$), mais presque autant pour \q{fait-il nuit ?} ($+0,183$) : un \q{oui} général.\\
 16 & Le lecteur dit-il le besoin, ou ce que l'agent va faire ? & Lecture fixée d'avance : \q{ce qu'il va faire}. Mais le besoin seul, qui change à peine la décision, fait dire \q{oui} autant ($+0,16$), \q{fait-il nuit ?} compris.\\
 17 & La flèche d'un agent fait-elle agir l'autre ? & Chez le premier, oui : $+0,138$, 90\pc{} de sa propre poussée. Chez le second, $+0,018$ (53\pc) : échoue, à 0,002 du seuil. Les deux flèches se ressemblent peu (cosinus 0,03 à 0,19).\\
+18 & Le code du besoin existe-t-il avant l'apprentissage ? & Échoue : les flèches du besoin font choisir R au modèle de départ partout, mais le hasard le fait bouger aussi (0,28). La suggestion faite ensuite est corrigée par le test 19.\\
+19 & Avec une poussée plus petite ? L'apprentissage rend-il l'état stable ? & Le modèle de départ cède à toute poussée : on ne peut pas dire si le code existait avant. Mais l'état de l'agent est stable : le hasard y pèse 0,0019, contre 0,402 (environ 200 fois moins).\\
 15 & Un lecteur qui écoute la question & Pré-enregistré, code prêt ; en attente du Mac.\\
 12 & Soif de savoir & Pré-enregistré, code écrit ; en attente du Mac.\\
 \bottomrule
@@ -1304,6 +1355,9 @@ voyant s'allume. Elle a l'accès, pas (à notre connaissance) le ressenti.
   \item La flèche qui fait agir un agent fait aussi agir, en bonne partie, un autre agent
   appris séparément : le code du besoin leur est \textbf{en partie commun} (test 17, au
   seuil dans un sens seulement).
+  \item L'apprentissage a rendu cet état \textbf{stable} : au même endroit, une poussée au
+  hasard change environ deux cents fois moins la décision de l'agent que celle du modèle de
+  départ, alors que le besoin le fait encore agir (test 19).
   \item Le lecteur ne peut pas modifier cet état : ce qu'il dit \emph{dépend} de l'état, et
   non l'inverse.
   \item À notre connaissance, cette réunion (besoin appris en vivant, état rassemblé,
@@ -1320,6 +1374,8 @@ voyant s'allume. Elle a l'accès, pas (à notre connaissance) le ressenti.
   qui suit l'état presque quelle que soit la question (test 14), et qui n'annonce pas
   seulement ce que l'agent va faire (test 16).
   \item L'état ne dure pas d'un tour à l'autre : il est recalculé à chaque tour (test 13).
+  \item On ne sait pas si le code du besoin existait avant l'apprentissage : à cet endroit,
+  le modèle de départ cède à n'importe quelle poussée (tests 18 et 19).
   \item La nourriture est mal dite : le résultat complet ne vaut que pour l'énergie.
   \item La parole par l'état ne tient que pour un agent : chez les deux autres, elle
   n'atteint pas les seuils, alors que l'information y est.
@@ -1608,7 +1664,7 @@ soit ; mais si les indicateurs se renforcent, la question deviendra réelle. D'o
   vies de test prévues ;
   \item chaque test \textbf{compte et publie} les tours vécus avec un besoin à 2 ou moins
   (808 au test 6 ; au test 7, 755 intact, 1\,037 avec la lésion, 749 avec la lésion au hasard) ;
-  \item pas plus de vies que les tests ne l'exigent (les tests 13, 14, 16 et 17 n'en ont fait
+  \item pas plus de vies que les tests ne l'exigent (les tests 13, 14 et 16 à 19 n'en ont fait
   vivre aucune), aucun manque sans mesure pré-enregistrée qui le justifie, et des règles
   réexaminées à chaque résultat positif.
 \end{itemize}
@@ -1645,6 +1701,7 @@ mesurés et utiles, et lesquels manquent.
 \item[Itération] un pas d'apprentissage sur un paquet d'exemples.
 \item[Lecteur] adaptateur séparé qui dit l'état sans pouvoir le modifier.
 \item[Lésion] effacement d'un état : sa coordonnée est remplacée par sa moyenne.
+\item[Modèle de départ] le modèle de langage sans adaptateur, tel qu'avant tout apprentissage dans ce monde.
 \item[Modèle de langage] programme qui devine la suite d'un texte.
 \item[Monotropisme] attention concentrée sur peu d'intérêts à la fois, longtemps.
 \item[Neuromodulateur] substance (dopamine\dots) qui règle la façon dont le cerveau calcule et apprend.

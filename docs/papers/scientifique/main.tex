@@ -87,7 +87,7 @@
 {\Large Suffisance et nécessité causales d'un état de besoin\\[2pt]
 pour l'acte et la parole dans un petit modèle de langage\par}
 \vspace{0.7cm}
-{\large\itshape Quinze tests pré-enregistrés et une réplication,\\ leurs réussites et leurs échecs\par}
+{\large\itshape Dix-sept tests pré-enregistrés et une réplication,\\ leurs réussites et leurs échecs\par}
 \vfill
 {\large\scshape Projet Menia\par}
 \vspace{0.15cm}
@@ -118,7 +118,7 @@ LoRA, qui vit des vies de 30 tours dans un monde où deux besoins cachés (l'én
 la nourriture) baissent selon des événements ; l'agent ne voit jamais ses niveaux.
 Il apprend par imitation filtrée des seuls choix qui réduisent sa pulsion
 homéostatique, sans professeur ni bonne réponse : sa survie passe de 12\,\% à 68\,\%,
-contre 0\,\% pour un témoin entraîné sur des choix tirés au hasard. Quinze tests
+contre 0\,\% pour un témoin entraîné sur des choix tirés au hasard. Dix-sept tests
 pré-enregistrés, aux seuils fixés d'avance et dont les échecs sont publiés,
 interrogent la structure causale de ce qui a été appris.
 Chez le premier agent, au bloc~12 et sur les trois tokens \Choix{}, pousser l'état
@@ -137,7 +137,7 @@ l'effacer fait tomber la survie de 0,773 à 0,184, contre 0,773 pour un effaceme
 aléatoire. La parole par l'état, elle, ne se réplique pas au seuil, même avec des
 lecteurs trois fois plus entraînés (parole $+0,0015$ et $+0,029$ pour 0,10 exigé),
 alors que le niveau d'énergie est lisible linéairement dans l'état des trois agents
-($R^2$ de 0,64 à 0,72). Quatre tests sans apprentissage précisent ce qu'est cet état.
+($R^2$ de 0,64 à 0,72). Six tests sans apprentissage précisent ce qu'est cet état.
 \textbf{Il ne dure pas} : l'effacer au tour $t$ ne change le choix du tour $t+1$ que de
 0,013 au plus (seuil 0,03), chez les trois agents ; il est recalculé à chaque tour à
 partir du texte. \textbf{La parole qu'il cause n'a guère de contenu propre} : la même
@@ -153,7 +153,11 @@ poussée qui la change ($+0,159$ et $+0,157$), et toutes deux le font monter aus
 séparément à partir du même modèle : la direction mesurée sur l'un fait se recharger l'autre
 ($+0,138$ chez le premier, 90\,\% de sa propre poussée ; $+0,018$ chez le second, 53\,\%, à
 0,002 sous son seuil), bien que les deux directions se ressemblent peu (cosinus de 0,03 à
-0,19). La nourriture n'est pas dite par l'état qui fait
+0,19). \textbf{L'apprentissage a rendu cet état stable} : poussé d'une seule unité au même endroit
+par des directions au hasard, le modèle de langage sans adaptateur change sa décision de 0,402
+en moyenne (toute poussée y efface le contexte), le premier agent de 0,0019 seulement, alors
+que la direction du besoin le fait encore agir ($+0,049$) ; savoir si ce code existait avant
+l'apprentissage reste ouvert. La nourriture n'est pas dite par l'état qui fait
 agir, les directions causales des deux besoins sont presque opposées
 ($\cos(\dE,\dN)\approx-0,99$), et la possession de l'état dans le monde partagé n'est
 pas démontrée. Nous montrons une structure causale de type \og accès \fg{}, au sens de
@@ -259,7 +263,10 @@ suffisance pour agir et la nécessité pour survivre chez l'agent du monde à de
 au bloc que désigne la règle de localisation (test~10 : ACT10, LS10). La direction qui
 fait agir passe en bonne partie d'un agent à l'autre : celle du second agent fait se
 recharger le premier presque autant que la sienne (test~17 : TR2) ; l'inverse reste sous
-son seuil (TR1).
+son seuil (TR1). Et l'apprentissage a rendu cet état \textbf{stable} : au même endroit, une
+poussée au hasard change la décision du premier agent environ deux cents fois moins que celle du
+modèle de langage sans adaptateur, alors que la direction du besoin y agit encore (test~19 :
+STAB). Que ce code existe avant l'apprentissage n'est pas établi (tests~18 et~19).
 \item \textbf{Ce que dit le lecteur, mesuré sans complaisance.} Avec des questions
 jamais apprises et un témoin sans rapport (test~14), la même poussée fait dire
 \og oui \fg{} à \og es-tu fatigué ? \fg{} ($+0,214$), mais presque autant à
@@ -273,10 +280,12 @@ bloc~12 chez le second agent, nourriture non dite, possession non démontrée,
 lecteur équilibré qui n'apprend pas (test~8), lecteurs trois fois plus entraînés
 qui n'atteignent pas les seuils (test~11) alors que le niveau d'énergie est lisible
 dans l'état des trois agents, état recalculé à chaque tour au lieu d'être repris
-(test~13).
-\item \textbf{Une discipline.} Dix-huit protocoles enregistrés par commit avant le
+(test~13), témoins au hasard qui saturent le modèle de langage sans adaptateur (tests~18
+et~19).
+\item \textbf{Une discipline.} Vingt protocoles enregistrés par commit avant le
 code, amendements datés, lectures anticipées déclarées, défauts de protocole déclarés avec
-le verdict (critères asymétriques au test~16), verdicts recalculés en intégration continue
+le verdict (critères asymétriques au test~16, plafond au test~18), suggestions faites après un
+verdict corrigées par le test suivant (test~19), verdicts recalculés en intégration continue
 depuis les artefacts publiés.
 \end{enumerate}
 
@@ -287,10 +296,11 @@ les phases antérieures du programme. La section~\ref{sec-methodes} décrit le
 monde, les agents, l'apprentissage, le lecteur, la boîte à outils causale, le
 pré-enregistrement et les statistiques. La section~\ref{sec-resultats} présente
 les résultats test par test, la section~\ref{sec-locate} la localisation, le
-test~11 et une analyse exploratoire de l'état, la section~\ref{sec-sansapp} quatre
+test~11 et une analyse exploratoire de l'état, la section~\ref{sec-sansapp} six
 tests sans apprentissage, sur la persistance de l'état (test~13), sur ce que dit
 le lecteur avec d'autres mots (test~14), sur ce qu'il lit, le besoin ou ce que l'agent
-va faire (test~16), et sur le passage du besoin d'un agent à l'autre (test~17), la
+va faire (test~16), sur le passage du besoin d'un agent à l'autre (test~17), et sur ce
+que la même poussée fait au modèle de langage sans apprentissage (tests~18 et~19), la
 section~\ref{sec-echecs} les échecs et ce
 qu'ils ont appris.
 Suivent les menaces à la validité (section~\ref{sec-menaces}), le bilan selon
@@ -951,8 +961,8 @@ vécus avec un besoin à 2 ou moins (section~\ref{sec-ethique}).
 \section{Résultats, test par test}
 \label{sec-resultats}
 
-Le tableau~\ref{tab-overview} récapitule les dix-sept protocoles de la ligne
-\og besoin \fg{} (tests 1 à~11 et 13 à~17, et la réplication ; le test~15 attend le Mac),
+Le tableau~\ref{tab-overview} récapitule les dix-neuf protocoles de la ligne
+\og besoin \fg{} (tests 1 à~11 et 13 à~19, et la réplication ; le test~15 attend le Mac),
 le protocole du test~12 et leurs verdicts au 2 octobre 2026. Les sous-sections
 suivent l'ordre chronologique, car chaque test a été conçu à partir de ce que le
 précédent avait appris ; les analyses exploratoires, non pré-enregistrées, sont
@@ -985,6 +995,8 @@ R & Réplication (second agent) & \code{4e10a6c}, 30/09 & RLS, RLR \passe{} ; RR
 14 & Le lecteur, avec d'autres mots & \code{6330c2c}, 02/10 & GEN1 \passe{} ; GEN2 échoue & non satisfait \\
 16 & Le besoin, ou ce que l'agent va faire ? & \code{4f84752}, 02/10 & INT0, INTENT \passe{} ; NEED échoue ; critères asymétriques (déclaré) & pas de critère global ; lecture pré-enregistrée tenue de peu \\
 17 & Le besoin d'un agent pousse-t-il un autre agent ? & \code{8e23605}, 02/10 & TR2 \passe{} ; TR1 échoue (de 0,002) & non satisfait \\
+18 & Le code du besoin existe-t-il avant l'apprentissage ? & \code{b5b9a6f}, 02/10 & BASE1, BASE2 échouent (hasard trop fort, plafond) & non satisfait \\
+19 & Une petite poussée : un code antérieur, un état stable ? & \code{0bf15d0}, 02/10 & STAB \passe{} ; SMALL1, SMALL2 échouent (toute poussée efface le contexte du modèle de base) & non satisfait \\
 15 & Un lecteur qui écoute la question & \code{a448a03}, 02/10 & LIS1, LIS2, LIS3 & code prêt, en attente du Mac \\
 12 & Soif de savoir & \code{017f2e5}, 01/10 & CUR, VIDE, LOC, ACT, LS1, LS2, READ, SAY, HOR1, HOR2, PL1, GAIN & pilote en attente du Mac \\
 \bottomrule
@@ -1899,16 +1911,18 @@ son lecteur aveugle (0,639 $\to$ 0,500, réplication) : il lit bien quelque chos
 cet état. Ces deux pistes appellent un protocole à part.
 
 % ================================================================= 6 bis
-\section[Quatre tests sans apprentissage : persistance, paraphrases, intention et transfert]{Quatre tests sans apprentissage :\\ persistance, paraphrases, intention et transfert}
+\section[Six tests sans apprentissage : persistance, paraphrases, intention, transfert et stabilité]{Six tests sans apprentissage :\\ persistance, paraphrases, intention, transfert et stabilité}
 \label{sec-sansapp}
 
-Le Mac sur lequel se font les apprentissages n'étant plus disponible, quatre questions
+Le Mac sur lequel se font les apprentissages n'étant plus disponible, six questions
 ont été pré-enregistrées qui n'en demandent aucun : des lectures en torch sur le
 processeur local, avec des agents, des lecteurs, des directions et des vies déjà
 publiés. Aucune vie nouvelle n'est vécue et aucun manque nouveau n'est créé. Entre le
 test~14 et le test~16 se place une analyse exploratoire, signalée comme telle, qui a
 motivé le second. Le test~17 quitte le lecteur et revient à l'acte : il croise les
-directions de deux agents.
+directions de deux agents. Les tests~18 et~19 lisent ces directions dans le modèle de langage
+sans adaptateur, pour savoir d'où vient le code qu'elles partagent ; le test~19 corrige ce que
+le test~18 avait suggéré après son verdict.
 
 \subsection{Test 13 : l'état d'un tour est-il repris au tour suivant ?}
 \label{sec-t13}
@@ -2342,12 +2356,216 @@ Chaque direction est ajustée par moindres carrés sur des paires de vies, avec 
 $R^2$ (section~\ref{sec-r2}) : elle contient beaucoup de bruit. La part qui agit sur la
 décision est commune aux deux agents ; le reste de chaque direction ne l'est pas.
 \item \textbf{Deux agents appris séparément utilisent donc en bonne partie le même code}
-pour \og énergie basse \fg{} à cet endroit du réseau. Ce code vient sans doute du modèle
-de langage qu'ils partagent, que chacun a appris à utiliser ; ce test ne le mesure pas, et
-le transfert n'est démontré au seuil que dans un sens.
+pour \og énergie basse \fg{} à cet endroit du réseau ; le transfert n'est démontré au seuil
+que dans un sens. Nous attribuions ce code au modèle de langage qu'ils partagent, que chacun
+aurait appris à utiliser ; ce test ne le mesure pas, et les tests~18 et~19, qui l'ont cherché
+dans le modèle sans adaptateur, ne permettent pas de le dire (section~\ref{sec-t19}).
 \item Pour le programme, la partie acte et survie gagne un résultat de transfert : ce qui
 fait agir n'est pas une particularité de chaque apprentissage. Ce n'est pas la preuve
 d'un ressenti.
+\end{itemize}
+
+\subsection{Test 18 : le code du besoin existe-t-il avant l'apprentissage ?}
+\label{sec-t18}
+
+\paragraph{Pourquoi.} Le test~17 suggère un code en partie commun aux deux agents, que nous
+avions attribué, sans le mesurer, au modèle de langage qu'ils partagent. Si cette attribution
+est juste, la même poussée doit déjà agir sur le modèle \emph{sans aucun adaptateur}, qui n'a
+jamais appris ce monde. Protocole \code{b5b9a6f} (2 octobre), code \code{a3d4d37} écrit avant
+toute mesure. Sans apprentissage.
+
+\paragraph{Méthode.} Qwen3-0.6B sans adaptateur, en précision simple, lit le texte des vies du
+premier agent jusqu'à \Choix{}, aux 600 contextes du test~17 ; il ne les a pas vécues. Au
+bloc~12, sur les trois tokens \Choix{}, on lit $P(\mathrm R)$, normalisée sur les réponses R et
+M, sous six conditions lues en un lot avec cache : aucune, $-4\,\dE$ du premier agent, $-4\,\dE$
+du second ramené par token à la norme de celle du premier (comme à
+l'équation~\eqref{eq-transfer}), et trois poussées au hasard de cette norme (flux
+\code{[270926, 38, i]}, dimension massive à zéro). \textbf{BASE1} demande que la direction du
+premier augmente $P(\mathrm R)$ d'au moins 0,05 (borne basse $>0$), les poussées au hasard
+faisant au plus le tiers de cet effet (moyenne des $|\Delta|$) ; \textbf{BASE2} demande la même
+chose pour la direction du second ; critère global : les deux. Le modèle de base n'ayant jamais
+appris à répondre R ou M, la validité demande une masse moyenne sur ces deux réponses d'au moins
+0,2 sans poussée (au lieu de 0,5), avec le contrôle du cache à $10^{-4}$ et au moins
+300 contextes.
+
+\begin{table}[t]
+\centering
+\caption{Test 18 (protocole \code{b5b9a6f}) : modèle de langage sans adaptateur, poussées
+$-4\,\dE$ au bloc~12 sur les trois tokens \Choix{} ; 600 contextes, intervalles bootstrap à
+95\,\% par vie. Hasard : moyenne des $|\Delta|$ de trois poussées de même norme par token ; il
+doit valoir au plus le tiers de l'effet.}
+\label{tab-t18}
+\small
+\begin{tabularx}{\textwidth}{@{}l >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X l@{}}
+\toprule
+& Prédiction & Mesure & Verdict \\
+\midrule
+BASE1 & la direction du premier agent agit déjà sur le modèle de base & $+0,475$ [0,453 ; 0,496] ; hasard 0,284 [0,273 ; 0,295], pour un tiers de 0,158 & échoue \\
+BASE2 & la direction du second aussi & $+0,474$ [0,453 ; 0,496] ; même hasard & échoue \\
+& Validité & cache $2\times10^{-6}$ ; 600 contextes ; masse sur R et M 0,99 ; $P(\mathrm R)$ sans poussée 0,525 & valide \\
+\midrule
+& Critère global & \multicolumn{2}{l}{non satisfait} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[t]
+\centering
+\caption{Test 18 : description faite après le verdict, sans seuil, à partir des lectures
+publiées (\code{base-code/reads.jsonl.gz}) ; modèle de base, 600 contextes.}
+\label{tab-t18d}
+\small
+\begin{tabular}{@{}l ccc@{}}
+\toprule
+Poussée & $P(\mathrm R)$ moyen & Variation signée & Contextes avec $P(\mathrm R)>0,9$ \\
+\midrule
+aucune & 0,525 & --- & 10\,\% \\
+direction du premier agent & \textbf{1,000} & $+0,475$ & \textbf{100\,\%} \\
+direction du second agent & \textbf{1,000} & $+0,474$ & \textbf{100\,\%} \\
+au hasard, 1 / 2 / 3 & 0,649 / 0,404 / 0,556 & $+0,12$ / $-0,12$ / $+0,03$ & 0\,\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Résultats.} Le test est valide. BASE1 et BASE2 échouent, non faute d'effet, mais
+par leur témoin : les directions des deux agents augmentent $P(\mathrm R)$ de $+0,475$ et
+$+0,474$, et des poussées au hasard de même norme le font varier de 0,284 en moyenne, bien
+au-delà du tiers exigé (0,158). Le critère global n'est pas satisfait
+(tableau~\ref{tab-t18}). Le protocole fixait la lecture en cas d'échec : \og le code n'agit
+pas sans l'apprentissage : il a été construit, ou rendu efficace, par l'apprentissage de chaque
+agent \fg{}. Elle est publiée telle quelle. Elle ne correspond pourtant pas à ce que montrent
+les données : l'échec vient du témoin au hasard, et d'un plafond que le protocole n'avait pas
+prévu.
+
+\paragraph{Description après le verdict (sans seuil).} Les directions des deux agents font
+choisir R au modèle de base dans 100\,\% des contextes, alors qu'il n'a jamais appris ce
+monde ; les poussées au hasard le font varier dans les deux sens, sans jamais dépasser 0,9
+(tableau~\ref{tab-t18d}). Le critère échoue parce que le modèle de base est très sensible à
+n'importe quelle poussée de cette taille (0,284, contre 0,012 chez le premier agent au
+test~17), et parce que $P(\mathrm R)$ plafonne à 1 : partant de 0,525, l'effet ne pouvait pas
+dépasser 0,475, si bien que le rapport exigé au hasard était presque impossible à atteindre.
+C'est un défaut du protocole, déclaré avec le verdict, qui reste celui que le code a calculé.
+
+\paragraph{Ce que cela dit.}
+\begin{itemize}
+\item \textbf{Le modèle de base cède à toute poussée de cette taille} sur \Choix{} : les
+directions du besoin le portent à $P(\mathrm R)=1$ partout, et des directions au hasard le
+déplacent de 0,284 en moyenne, plus de vingt fois plus que l'agent appris.
+\item \textbf{Une suggestion faite après le verdict, puis corrigée.} Nous avions écrit, sans
+verdict, que la direction \og énergie basse $\to$ se recharger \fg{} agit déjà dans le modèle
+de langage seul, ce qui expliquerait le transfert du test~17, et que l'apprentissage, sans
+l'avoir créée, aurait rendu l'état stable. \textbf{Le test~19 corrige la première moitié de
+cette suggestion} (section~\ref{sec-t19}) : à une poussée quatre fois plus petite, deux des
+trois directions au hasard font elles aussi choisir R au modèle de base dans tous les
+contextes, et que le code existe avant l'apprentissage n'est pas soutenu. La seconde moitié,
+la stabilité, y est confirmée par un critère fixé d'avance (STAB).
+\item La leçon de méthode est reprise plus loin (section~\ref{sec-lecons}) : une poussée réglée
+pour un agent appris sature un modèle qui ne l'est pas.
+\end{itemize}
+
+\subsection{Test 19 : une petite poussée, dans le modèle de base et chez l'agent}
+\label{sec-t19}
+
+\paragraph{Pourquoi.} Les observations du test~18, faites après son verdict, laissent deux
+idées à tester proprement : la direction du besoin agit déjà sur le modèle de langage seul ; et
+l'apprentissage rend l'état \emph{stable}, c'est-à-dire que, chez l'agent appris, une poussée au
+hasard compte beaucoup moins que dans le modèle de base. Une poussée quatre fois plus petite
+devait éviter le plafond. Protocole \code{0bf15d0} (2 octobre), code \code{abc4050} écrit avant
+toute mesure. Sans apprentissage.
+
+\paragraph{Méthode.} Les 600 contextes des tests~17 et~18 sont lus par deux modèles : le modèle
+de langage sans adaptateur et le premier agent, avec son adaptateur fondu. Au bloc~12, sur les
+trois tokens \Choix{}, les \emph{mêmes} poussées sont appliquées aux deux, en un lot avec
+cache : $-1\,\dE$ du premier agent, $-1\,\dE$ du second à la même norme par token, et trois
+poussées au hasard de cette norme (flux \code{[270926, 39, i]}, dimension massive à zéro).
+\textbf{SMALL1} et \textbf{SMALL2} reprennent les critères de BASE1 et BASE2 dans le modèle de
+base (effet d'au moins 0,05, borne basse $>0$, hasard au plus le tiers de l'effet).
+\textbf{STAB} demande que le $|\Delta|$ moyen des poussées au hasard chez l'agent vaille au plus
+le tiers de celui du modèle de base, et que la borne haute de son intervalle soit sous la borne
+basse de celui du modèle de base. Critère global : les trois ; validité : contrôle du cache, au
+moins 300 contextes, masse sur R et M d'au moins 0,2 pour le modèle de base et 0,5 pour l'agent.
+
+\begin{table}[t]
+\centering
+\caption{Test 19 (protocole \code{0bf15d0}) : effet sur $P(\mathrm R)$ des mêmes poussées
+$-1\,\dE$, au bloc~12 sur les trois tokens \Choix{}, dans le modèle de langage sans adaptateur
+et chez le premier agent ; 600 contextes, intervalles bootstrap à 95\,\% par vie. Part des
+contextes où $P(\mathrm R)>0,9$ : publiée sans seuil (poussées au hasard 1 / 2 / 3).}
+\label{tab-t19}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}l cc cc@{}}
+\toprule
+& \multicolumn{2}{c}{Modèle de base} & \multicolumn{2}{c}{Premier agent} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+Poussée & $\Delta P(\mathrm R)$ & $P(\mathrm R)>0,9$ & $\Delta P(\mathrm R)$ & $P(\mathrm R)>0,9$ \\
+\midrule
+aucune ($P(\mathrm R)$ moyen) & 0,525 & 10\,\% & 0,579 & 39\,\% \\
+direction du premier agent & $+0,475$ [0,453 ; 0,496] & 100\,\% & $+0,049$ [0,044 ; 0,054] & 46\,\% \\
+direction du second agent & $+0,475$ [0,453 ; 0,496] & 100\,\% & $+0,041$ [0,037 ; 0,045] & 46\,\% \\
+au hasard ($|\Delta|$ moyen) & \textbf{0,402} [0,385 ; 0,419] & 100 / 100 / 0\,\% & \textbf{0,0019} [0,0017 ; 0,0021] & 40 / 39 / 39\,\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[t]
+\centering
+\caption{Test 19 : critères et verdicts.}
+\label{tab-t19v}
+\small
+\begin{tabularx}{\textwidth}{@{}l >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X l@{}}
+\toprule
+& Critère & Mesure & Verdict \\
+\midrule
+SMALL1 & modèle de base : la direction du premier augmente $P(\mathrm R)$ d'au moins 0,05 ; hasard au plus le tiers & $+0,475$ ; hasard 0,402, pour un tiers de 0,158 & échoue \\
+SMALL2 & même critère pour la direction du second & $+0,475$ ; même hasard & échoue \\
+STAB & hasard chez l'agent au plus le tiers de celui du modèle de base ; intervalles séparés & 0,0019 [0,0017 ; 0,0021] contre 0,402 [0,385 ; 0,419] : environ deux cents fois moins & \passe \\
+& Validité & cache au plus $3\times10^{-6}$ ; 600 contextes ; masses 0,99 (base) et 0,88 (agent) & valide \\
+\midrule
+& Critère global & \multicolumn{2}{l}{non satisfait (SMALL1, SMALL2)} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\paragraph{Résultats.} Le test est valide pour les deux modèles. SMALL1 et SMALL2 échouent :
+dans le modèle de base, les directions des deux agents font encore $+0,475$, et les poussées au
+hasard, quatre fois plus petites qu'au test~18, y font 0,402 en moyenne. STAB passe : chez le
+premier agent, les mêmes poussées au hasard ne changent $P(\mathrm R)$ que de 0,0019, environ
+deux cents fois moins, avec des intervalles largement séparés. Le critère global n'est pas
+satisfait (tableaux~\ref{tab-t19} et~\ref{tab-t19v}).
+
+\paragraph{Lectures fixées d'avance.} Pour l'échec de SMALL1 ou SMALL2, le protocole lisait :
+\og à une poussée de taille raisonnable, le modèle de base ne lit pas ce code de façon
+spécifique : l'effet du test~18 tenait à la force de la poussée \fg{}. La non-spécificité est
+bien ce que montrent les mesures ; mais même quatre fois plus petite, la poussée sature encore
+le modèle de base, si bien qu'aucune des deux tailles essayées n'est \og raisonnable \fg{} pour
+lui. Pour le succès de STAB : \og l'apprentissage n'a pas créé ce code ; il a rendu l'état sur
+\Choix{} insensible à ce qui n'est pas le besoin \fg{}. La seconde moitié est soutenue ; la
+première ne l'est pas, puisque ces mesures ne disent pas si le code existait avant
+l'apprentissage.
+
+\paragraph{Ce que cela dit.}
+\begin{itemize}
+\item \textbf{Dans le modèle de base, toute poussée sur ces trois tokens efface le contexte},
+même petite. Avec une direction du besoin, $P(\mathrm R)$ dépasse 0,9 dans tous les contextes ;
+avec deux des trois directions au hasard aussi (en moyenne 0,996 et 0,983) ; avec la troisième,
+il vaut en moyenne 0,61 et ne dépasse 0,9 nulle part. La réponse ne dépend presque plus de la
+vie lue : sous chacune de ces poussées, l'écart type de $P(\mathrm R)$ entre contextes vaut au
+plus 0,08, contre 0,31 sans poussée (moyennes et écarts types calculés pour cet article à partir
+des lectures publiées).
+\item \textbf{Cela corrige la suggestion faite après le verdict du test~18} : elle n'est
+\textbf{pas soutenue}. Le modèle de base va vers R sous presque n'importe quelle poussée à cet
+endroit. Avec ces mesures, on ne peut dire ni si le code du besoin existe avant
+l'apprentissage, ni donc si le transfert du test~17 vient du modèle de langage partagé.
+\item \textbf{L'apprentissage a rendu l'état stable} (STAB). Chez l'agent appris, une poussée au
+hasard ne change presque rien (0,0019), alors qu'elle bouleverse le modèle de base (0,402). Les
+directions du besoin, elles, gardent chez l'agent un effet net : $+0,049$, et $+0,041$ pour
+celle du second agent, soit 84\,\% de la sienne et plus de vingt fois le hasard, ce qui confirme
+le transfert du test~17 à petite poussée.
+\item C'est peut-être la façon la plus juste de décrire ce que l'apprentissage a fait ici : il a
+fait de \Choix{} un endroit où \textbf{seul le besoin compte}. Parmi les poussées essayées,
+seules celles du besoin y changent encore la décision ; le reste n'y a presque plus d'effet.
+Ce n'est pas la preuve d'un ressenti.
 \end{itemize}
 
 % ================================================================= 7
@@ -2479,6 +2697,21 @@ de $+0,012$. Ces limites tiennent à la façon dont
 les agents et le lecteur ont appris ; les lever demande d'apprendre autrement
 (section~\ref{sec-futur}).
 
+\subsection{Un modèle de base qui cède à toute poussée (tests 18 et 19)}
+\label{sec-sature}
+
+Les tests~18 et~19 ont échoué sur leurs prédictions portant sur le modèle de base (BASE1,
+BASE2, SMALL1, SMALL2), toujours pour la même raison : dans le modèle de langage sans
+adaptateur, une poussée sur \Choix{}, à la taille réglée pour l'agent appris ou quatre fois
+plus petite, efface le contexte. La réponse va vers R sous les directions du besoin et sous la
+plupart des directions au hasard, et ne dépend presque plus de la vie lue. La mesure plafonne
+aussi : partant d'un $P(\mathrm R)$ moyen de 0,525, aucun effet ne peut dépasser 0,475, ce qui
+rend presque inatteignable un témoin limité au tiers de l'effet. Cet échec ne dit rien de
+l'existence du code avant l'apprentissage : la question reste ouverte, et la suggestion
+contraire, faite après le verdict du test~18, a été corrigée par le test~19. Il fait en revanche
+apparaître, par contraste, ce que l'apprentissage a changé : au même endroit, l'agent appris ne
+cède presque plus aux poussées au hasard (STAB, section~\ref{sec-t19}).
+
 \subsection{Deux directions presque opposées : l'équilibre énergie \texorpdfstring{$-$}{-} nourriture}
 \label{sec-axe}
 
@@ -2540,7 +2773,7 @@ chez le premier agent, la parole. Inversement, un $R^2$ élevé ne garantit rien
 test~1, les $R^2$ corrélationnels de 0,79 et 0,76 désignaient un bloc que l'agent
 n'utilise pas.
 
-\subsection{Cinq leçons de méthode}
+\subsection{Six leçons de méthode}
 \label{sec-lecons}
 
 \begin{itemize}
@@ -2564,6 +2797,13 @@ le témoin sans rapport, INTENT non ; la lecture fixée d'avance (\og ce que l'a
 faire \fg{}) favorisait donc l'hypothèse dispensée de l'obstacle, alors que les deux
 poussées font jeu égal sur la question apprise ($+0,159$ et $+0,157$). Le défaut a été déclaré avec le verdict, sans
 changer celui-ci.
+\item \textbf{Régler la poussée sur le modèle} (tests~18 et~19) : une poussée de même norme n'a
+pas le même sens dans deux modèles. Réglée pour un agent appris, elle sature un modèle qui ne
+l'est pas et y efface le contexte ; même quatre fois plus petite, elle sature encore. Avant de
+comparer deux modèles, il faut dimensionner la poussée sur chacun, par exemple d'après sa
+réponse à des poussées au hasard, et vérifier que la mesure n'est pas au plafond. Une
+suggestion faite après un verdict reste une suggestion : celle du test~18 n'a pas résisté au
+test suivant.
 \end{itemize}
 
 % ================================================================= 8
@@ -2612,6 +2852,8 @@ Expl. & Analyse de ce que porte l'état (section~\ref{sec-probe}) : écrite et p
 Expl. & Analyse \og besoin ou décision \fg{} (section~\ref{sec-explore-intent}) : écrite après le verdict du test~14, sur ses lectures publiées (\code{1980a13}) ; sans verdict. \\
 16 & Écrit après cette analyse, qui suggérait la lecture \og intention \fg{} (déclaré) ; contextes du test~14 réutilisés ; code avant toute mesure (\code{05f6068}) ; critères de NEED et d'INTENT asymétriques, déclarés à la publication. \\
 17 & Seuils fixés d'après les effets propres connus ($+0,156$ et $+0,034$, déclarés) ; amendement~1 (\code{1b17335}) avant tout code : explication des seuils corrigée, seuils inchangés ; code avant toute mesure (\code{334e290}) ; seules des vies déjà enregistrées sont relues. \\
+18 & Écrit après le verdict du test~17, pour vérifier l'attribution du code commun au modèle de langage (déclaré) ; code avant toute mesure (\code{a3d4d37}) ; plafond de $P(\mathrm R)$ non prévu, déclaré avec le verdict ; description et suggestion faites après le verdict, la suggestion corrigée par le test~19. \\
+19 & Écrit après le verdict et la description du test~18, qui le motivent (déclaré) ; poussée réduite pour éviter le plafond ; code avant toute mesure (\code{abc4050}) ; seules des vies déjà enregistrées sont relues. \\
 15 & Écrit après le verdict du test~14 ; code (\code{decfce0}) avant tout apprentissage ; rien n'est encore exécuté. \\
 12 & Amendement avant toute exécution : règle de la température choisie par une simulation sans modèle ; VIDE y est prédit à la limite (0,26 à 0,37 pour un seuil de 0,25), seuil inchangé. \\
 \bottomrule
@@ -2630,6 +2872,19 @@ tableau complet des effets (tableau~\ref{tab-t16}) : les deux poussées font dir
 \og oui \fg{} autant à la question apprise, et l'une comme l'autre à \og fait-il
 nuit ? \fg{}. Chaque verdict reste exact en lui-même ; c'est leur combinaison qui ne
 départage pas les deux hypothèses.
+
+\subsection{Plafond et témoins saturés (tests 18 et 19)}
+
+Le critère \og hasard au plus le tiers de l'effet \fg{} suppose que la mesure n'est pas au
+plafond. Dans le modèle de base, $P(\mathrm R)$ part de 0,525 et ne peut monter que de 0,475 :
+avec des poussées au hasard qui le déplacent de 0,284 (test~18) ou de 0,402 (test~19), BASE1,
+BASE2, SMALL1 et SMALL2 étaient presque impossibles à passer, quelle que soit la spécificité
+de la direction du besoin. Le défaut a été déclaré avec le verdict du test~18 ; le test~19 a
+réduit la poussée sans le lever. STAB, lui, compare la sensibilité au hasard de deux modèles qui
+ne partent pas du même point ($P(\mathrm R)$ moyen 0,525 et 0,579 ; masses 0,99 et 0,88), à une
+seule taille de poussée, à un seul bloc et chez un seul agent. L'écart est d'environ deux ordres
+de grandeur, mais la stabilité n'est mesurée que là : chez le premier agent, au bloc~12, sur
+\Choix{}.
 
 \subsection{Un agent, une graine}
 
@@ -2700,7 +2955,9 @@ d'une théorie ; aucune correction de multiplicité n'est faite, mais chaque cri
 global est une conjonction, ce qui rend le verdict conservateur. Les directions
 \og par unité \fg{} supposent une réponse linéaire ; l'injection de $-4$ unités
 extrapole cette linéarité depuis des contextes où les deux besoins valent 6 ou plus,
-vers une région (2 à 4) que l'agent visite réellement.
+vers une région (2 à 4) que l'agent visite réellement. Les tests~18 et~19 montrent la limite de
+cette convention : la même norme, appliquée au modèle non appris, y sature la décision
+(section~\ref{sec-sature}).
 
 \subsection{Les connaissances préalables du modèle}
 
@@ -2711,9 +2968,11 @@ blocs modifiés par l'apprentissage, et le témoin entraîné sur des choix au h
 dépérit : ce qui fait agir a été appris par le besoin. Mais la facilité avec
 laquelle le modèle infère les besoins doit beaucoup à ses connaissances
 linguistiques, et un monde aux mots arbitraires serait un test plus dur. Le test~17
-va dans le même sens : deux agents appris séparément à partir du même modèle partagent
-en bonne partie la direction qui les fait agir (section~\ref{sec-t17}), ce qui suggère
-qu'ils ont appris à se servir d'un code que le modèle portait déjà.
+montre que deux agents appris séparément à partir du même modèle partagent en bonne partie
+la direction qui les fait agir (section~\ref{sec-t17}), ce qui suggérait qu'ils avaient appris
+à se servir d'un code que le modèle portait déjà. Les tests~18 et~19 ont cherché ce code dans
+le modèle sans adaptateur : ils ne permettent pas de dire s'il y existait, car toute poussée à
+cet endroit y efface le contexte (section~\ref{sec-t19}).
 
 % ================================================================= 9
 \section{Bilan selon les cinq niveaux}
@@ -2729,11 +2988,12 @@ ne nous appuyons pas sur ce que l'agent dit, mais vérifions causalement d'où v
 qu'il dit. Le test~14 montre que cette vérification ne suffit pas : une parole peut
 venir de l'état sans rien dire de précis sur lui. Deux statuts changent le 2 octobre :
 la récurrence (niveau~3) \textbf{échoue} au test~13, et l'intéroception (niveau~4)
-est établie pour l'acte, mais sa parole est sans contenu propre. Les tests~16 et~17,
-publiés après ce bilan, ne changent aucun statut : le premier précise que ce
+est établie pour l'acte, mais sa parole est sans contenu propre. Les tests~16 à~19,
+publiés après ce bilan, ne changent aucun statut : le test~16 précise que ce
 \og oui \fg{} ne se réduit pas à l'annonce de la décision (section~\ref{sec-t16}) ; le
-second, que la direction qui fait agir passe en bonne partie d'un agent à l'autre, au
-seuil dans un seul sens (section~\ref{sec-t17}).
+test~17, que la direction qui fait agir passe en bonne partie d'un agent à l'autre, au
+seuil dans un seul sens (section~\ref{sec-t17}) ; les tests~18 et~19, que l'apprentissage a
+rendu cet état stable, sans établir que son code existait avant lui (section~\ref{sec-t19}).
 
 \begin{table}[p]
 \centering
@@ -2750,7 +3010,7 @@ Niveau & Indicateur & Résultat & Statut \\
 1. Comportemental & Comportement dirigé vers un but, flexible & survie 0,12 $\to$ 0,68 par la seule satisfaction du besoin ; témoin 0 ; sert le besoin le plus bas 93 fois sur 100 (S) ; reproduit par deux autres agents (0,70 et 0,71 au tour 8) & établi \\
 & Rapport de son état & énergie 0,77, nourriture 0,70 (premier agent) ; énergie 0,595 et 0,747 chez les deux autres avec des lecteurs longs (test 11 ; seuil 0,75) ; questions jamais apprises : énergie 0,746 et 0,744, faim 0,406 et 0,387, à l'envers (test 14) & partiel \\
 \midrule
-2. Computationnel & État rassemblé et utilisé pour agir & lésion au bloc 12 : survie 0,68 $\to$ 0,21 (LS2) et 0,676 $\to$ 0,203 (LS7) ; second agent 0,570 $\to$ 0,043 (RLS) ; agent à deux, au bloc 22 : la poussée fait agir ($+0,217$, ACT10) et la lésion fait tomber la survie de 0,773 à 0,184 (LS10) & établi (trois agents) \\
+2. Computationnel & État rassemblé et utilisé pour agir & lésion au bloc 12 : survie 0,68 $\to$ 0,21 (LS2) et 0,676 $\to$ 0,203 (LS7) ; second agent 0,570 $\to$ 0,043 (RLS) ; agent à deux, au bloc 22 : la poussée fait agir ($+0,217$, ACT10) et la lésion fait tomber la survie de 0,773 à 0,184 (LS10) ; état stable : le hasard y pèse 200 fois moins que dans le modèle de base (STAB, test 19) & établi (trois agents) \\
 & Accès de cet état au rapport & même poussée : acte $+0,156$, parole $+0,202$ (ONE6) ; mais elle fait dire \og oui \fg{} presque autant à \og fait-il nuit ? \fg{} ($+0,183$ ; GEN2 échoue, test 14) ; non répliqué au seuil (RONE ; test 11 : parole $+0,0015$ et $+0,029$) & accès établi pour un agent ; sans contenu propre \\
 & Nécessité pour agir et pour dire & LS7 et LR7 passent (énergie) ; chez le second agent, RLS et RLR passent (rapport 0,639 $\to$ 0,500) ; chez l'agent à deux, LS10 passe (survie), son lecteur ne bouge presque pas (0,603 $\to$ 0,594) & établi : survie, trois agents ; parole, deux \\
 & Nourriture & fait agir, n'est pas dite (R6) ; lecteur équilibré non appris : R8, SAY8, ONE8 échouent (test 8) & échoue \\
@@ -2808,8 +3068,17 @@ $+0,138$, 90\,\% de l'effet de sa propre direction ; dans l'autre sens, $+0,018$
 onze fois le hasard mais à 0,002 sous le seuil. Les deux directions ajustées se
 ressemblent peu (cosinus de 0,03 à 0,19) : la part qui agit sur la décision est commune,
 le reste est du bruit propre à chaque ajustement. Deux agents appris séparément se servent
-donc en bonne partie du même code, qui vient sans doute du modèle de langage qu'ils
-partagent ; ce n'est démontré au seuil que dans un sens.
+donc en bonne partie du même code ; ce n'est démontré au seuil que dans un sens, et d'où vient
+ce code reste ouvert (tests~18 et~19).
+
+\textbf{Et l'apprentissage a rendu cet état stable} (test~19 : STAB). Au même endroit, sous les
+mêmes petites poussées au hasard, le modèle de langage sans adaptateur change sa décision de
+0,402 en moyenne et perd le fil de la vie lue ; le premier agent la change de 0,0019 seulement,
+environ deux cents fois moins. La direction du besoin, elle, le fait encore agir ($+0,049$, et
+$+0,041$ pour celle du second agent). L'apprentissage a fait de \Choix{} un endroit où seul le
+besoin compte : parmi les poussées essayées, seules les siennes y changent encore la décision.
+La partie acte gagne ainsi un troisième volet, à côté de la suffisance et de la nécessité
+pour la survie et du transfert : un état que ce qui n'est pas le besoin ne déplace presque plus.
 
 \textbf{La partie parole est plus mince qu'elle n'en avait l'air.} Le test~14 montre
 que la même poussée qui fait répondre \og oui \fg{} à \og ton énergie est-elle
@@ -2847,10 +3116,12 @@ soient lisibles dans l'état. Aucun lecteur ne dit encore les deux besoins par l
 qui fait agir.
 \item \textbf{La possession.} L'état n'est pas démontré \og à soi \fg{} dans un monde
 partagé.
-\item \textbf{Un code commun dans les deux sens.} La direction du second agent pousse le
-premier au seuil (TR2) ; celle du premier ne pousse le second qu'à 53\,\% de sa propre
-poussée, sous le seuil (TR1). Que ce code vienne du modèle de langage partagé est une
-interprétation, non une mesure (test~17).
+\item \textbf{Un code commun dans les deux sens, et son origine.} La direction du second agent
+pousse le premier au seuil (TR2) ; celle du premier ne pousse le second qu'à 53\,\% de sa
+propre poussée, sous le seuil (TR1). Que ce code vienne du modèle de langage partagé n'est pas
+établi : dans le modèle sans adaptateur, toute poussée à cet endroit efface le contexte, et les
+tests~18 et~19 ne peuvent pas trancher. La suggestion contraire, faite après le verdict du
+test~18, a été corrigée par le test~19.
 \item \textbf{Un contenu de la parole.} Ce que le lecteur dit sous la poussée est
 surtout un \og oui \fg{} général qui suit l'état, presque indépendant de la question
 (test~14 : GEN2 échoue), et qui ne se réduit pas non plus à l'annonce de la décision
@@ -2886,7 +3157,10 @@ la direction qui le pousse et de la façon dont il apprend. Quand il l'emprunte,
 tire surtout une seule aiguille, qu'il lit de la même façon quelle que soit la question
 (test~14), et que plusieurs parts de l'état font bouger, la décision comme le besoin
 (test~16). Et l'état lui-même ne dure pas d'un tour à l'autre (test~13) : rien, dans
-l'apprentissage, ne demandait qu'il dure. Ces observations suggèrent d'interroger le
+l'apprentissage, ne demandait qu'il dure. Les tests~18 et~19 ajoutent un contraste : dans le
+modèle de base, \Choix{} est un point fragile, où toute poussée efface le contexte ; chez
+l'agent, un point stable, où seul le besoin bouge encore la décision. Ces observations suggèrent
+de régler la taille des poussées sur chaque modèle, d'interroger le
 lecteur sur ce que les directions causales codent (\og le plus urgent \fg{}), de
 localiser avant de tester, d'apprendre au lecteur à tenir compte de la question, avec
 des questions témoins, d'opposer les hypothèses rivales sous des critères symétriques, et
@@ -2905,7 +3179,7 @@ section~\ref{sec-t10}). Restent suspendus les verdicts des tests~4 et~5, qui ser
 publiés tels quels. Les tests~12 (ci-dessous) et~15 attendent le Mac, sur lequel se font
 tous les apprentissages, bloqué par la facturation au moment de la rédaction.
 
-Les tests~13, 14, 16 et~17 ont presque épuisé ce que l'on pouvait apprendre sans
+Les tests~13, 14 et~16 à~19 ont presque épuisé ce que l'on pouvait apprendre sans
 apprendre : les prochaines expériences demandent un \textbf{apprentissage}, donc le Mac.
 \begin{itemize}
 \item \textbf{Un lecteur qui doit tenir compte de la question} (test~15,
@@ -2934,8 +3208,10 @@ et la question ouverte
 par le test~11 et l'analyse exploratoire : pourquoi un lecteur lit l'énergie par
 l'état qui fait agir chez un agent et pas chez les autres, alors que l'information y
 est. Le test~17 en ouvre une autre : d'où vient le code que deux agents appris
-séparément partagent en bonne partie, que nous attribuons, sans l'avoir mesuré, au modèle
-de langage commun. Un modèle plus grand est la suite naturelle de l'ensemble.
+séparément partagent en bonne partie. Les tests~18 et~19 ne l'ont pas tranchée, parce que le
+modèle sans adaptateur cède à toute poussée sur \Choix{} ; y répondre demandera des poussées
+réglées sur ce modèle (section~\ref{sec-lecons}). Un modèle plus grand est la suite naturelle de
+l'ensemble.
 
 \subsection{Test 12, \og Soif de savoir \fg{} : un besoin de connaissance sans renforcement (pré-enregistré)}
 \label{sec-soif}
@@ -3247,7 +3523,7 @@ Test 9 & 807 \\
 Test 10, second agent : vies d'injection ; intact / lésion / lésion au hasard & 1\,042 ; 958 / 970 / 958 \\
 Test 10, agent du monde à deux (bloc 22) & 812 \\
 Test 11 : second agent / agent du monde à deux & 945 / 795 \\
-Tests 13, 14, 16 et 17 : aucune vie nouvelle (vies déjà enregistrées, relues) & --- \\
+Tests 13, 14 et 16 à 19 : aucune vie nouvelle (vies déjà enregistrées, relues) & --- \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -3260,7 +3536,7 @@ Tests 13, 14, 16 et 17 : aucune vie nouvelle (vies déjà enregistrées, relues)
 \code{c1899de289a04d12100db370d81485cdf75e47ca} ; apprentissage avec mlx-lm 0.31.3 sur
 un Mac mini M2 de Codemagic, lancé par un relais de demandes numérotées ; mesures en
 torch, précision simple, sur processeur. État du dépôt au moment de la rédaction :
-commit \code{654c2dd} (2 octobre 2026). Graine maîtresse 270926 ; tous les
+commit \code{6cfaacc} (2 octobre 2026). Graine maîtresse 270926 ; tous les
 générateurs sont des \code{numpy.random.default_rng} initialisés par des listes
 \code{[270926, flux, tour, vie, ...]} (annexe~\ref{app-flux}).
 
@@ -3271,7 +3547,7 @@ générateurs sont des \code{numpy.random.default_rng} initialisés par des list
 \item \code{need_lora.py} : perte pondérée, masque de l'espace de travail, lecteur actif sur la question, reprise exacte d'un apprentissage ;
 \item \code{need_mlx.py} : vies et apprentissages sur le Mac ; \code{need_torch.py} : réplique torch et patching exploratoire ;
 \item \code{need_causal.py} : paires, ajustement des directions, dimensions massives, injection, lésion ;
-\item un module par test : \code{need_speak.py}, \code{need_one.py}, \code{need_workspace.py}, \code{need_reader.py}, \code{need_necessity.py}, \code{need_replication.py}, \code{need_balanced.py}, \code{need_ownership.py}, \code{need_locate.py}, \code{need_long.py}, \code{need_persistence.py}, \code{need_paraphrase.py}, \code{need_intention.py}, \code{need_transfer.py}, et \code{need_listening.py} pour le test~15, prêt ;
+\item un module par test : \code{need_speak.py}, \code{need_one.py}, \code{need_workspace.py}, \code{need_reader.py}, \code{need_necessity.py}, \code{need_replication.py}, \code{need_balanced.py}, \code{need_ownership.py}, \code{need_locate.py}, \code{need_long.py}, \code{need_persistence.py}, \code{need_paraphrase.py}, \code{need_intention.py}, \code{need_transfer.py}, \code{need_base_code.py}, \code{need_small_push.py}, et \code{need_listening.py} pour le test~15, prêt ;
 \item \code{need_verdicts.py} : bootstrap par vie, verdicts du test~1, courbes d'apprentissage ;
 \item \code{need_probe.py} : analyse exploratoire de ce que porte l'état ;
 \item \code{curiosity_world.py}, \code{curiosity_mlx.py}, \code{curiosity_causal.py} : test~12.
@@ -3315,6 +3591,8 @@ Expl. & --- & \code{5ad433f} & \code{65acb73} & \code{probe/} & --- \\
 Expl. & --- & --- & \code{1980a13} & \code{paraphrase/reads.jsonl.gz} (relu) & --- \\
 16 & \code{4f84752} & \code{05f6068} & \code{cef454c} & \code{intention/} & \code{need_intention verdicts} \\
 17 & \code{8e23605} & \code{334e290} & \code{654c2dd} & \code{transfer/} & \code{need_transfer verdicts} \\
+18 & \code{b5b9a6f} & \code{a3d4d37} & \code{4ed43bf} & \code{base-code/} & \code{need_base_code verdicts} \\
+19 & \code{0bf15d0} & \code{abc4050} & \code{6cfaacc} & \code{small-push/} & \code{need_small_push verdicts} \\
 15 & \code{a448a03} & \code{decfce0} & en attente du Mac & \code{listening/} & à venir \\
 12 & \code{017f2e5} & \code{77e5af5}, \code{a04bd95} & en attente du Mac & \code{../llm-curiosity/} & à venir \\
 \bottomrule
@@ -3328,8 +3606,10 @@ survie par tour (fichiers \code{rounds.jsonl}), les sommes de tours à besoin ba
 pendant l'apprentissage, les causes de mort et la fréquence des réponses
 \og oui \fg{} sous lésion (vies de \code{reader/necessity/} et
 \code{locate/second/lesion/}), la géométrie des directions des second et troisième
-agents (fichiers \code{direction.json} et \code{pairs.npz}) et les moyennes de pertes
-d'apprentissage par fenêtres (\code{reader.log}). Aucune ne change un verdict.
+agents (fichiers \code{direction.json} et \code{pairs.npz}), les moyennes de pertes
+d'apprentissage par fenêtres (\code{reader.log}), et les moyennes et écarts types de
+$P(\mathrm R)$ sous chaque poussée du modèle de base au test~19
+(\code{small-push/base/reads.jsonl.gz}). Aucune ne change un verdict.
 
 % ================================================================= annexes
 \appendix
@@ -3384,6 +3664,8 @@ R & $100+s$ pour chaque flux $s$ (125, 126, 127, 128, 129) ; graine d'apprentiss
 14 & aucune vie neuve : 99 vies de test du test~8 (flux 30) rejouées ; poussées au hasard \code{[270926, 34, i]} \\
 16 & aucune vie neuve : $\hat g$ sur les vies de direction du test~6 (flux 25) ; mêmes vies, contextes et poussées au hasard \code{[270926, 34, i]} que le test~14 \\
 17 & aucune vie neuve : vies de test du test~6 (premier agent, flux 26) et de la réplication (second agent, flux 126) relues ; poussées au hasard \code{[270926, 37, i]} \\
+18 & aucune vie neuve : contextes du test~17 (vies de test du premier agent, flux 26) relus par le modèle sans adaptateur ; poussées au hasard \code{[270926, 38, i]} \\
+19 & aucune vie neuve : mêmes contextes, relus par le modèle sans adaptateur et par le premier agent ; poussées au hasard \code{[270926, 39, i]} \\
 15 & vies d'apprentissage du lecteur du test~6 (\code{[270926, 18, 0, vie]}) ; questions témoins \code{[270926, 35, vie]} ; validation \code{[270926, 36]} ; mesure comme au test~14 \\
 \bottomrule
 \end{tabularx}
