@@ -975,7 +975,7 @@ R & Réplication (second agent) & \code{4e10a6c}, 30/09 & RLS, RLR \passe{} ; RR
 11 & Un lecteur qui apprend assez & \code{0a28560}, 01/10 & R11, SAY11 échouent (deux agents) & non satisfait \\
 13 & L'état d'un tour est-il repris au suivant ? & \code{75fda95}, 02/10 & PERS1, PERS2 échouent (trois agents) & non satisfait \\
 14 & Le lecteur, avec d'autres mots & \code{6330c2c}, 02/10 & GEN1 \passe{} ; GEN2 échoue & non satisfait \\
-16 & Le besoin, ou ce que l'agent va faire ? & \code{4f84752}, 02/10 & INT0, INTENT \passe{} ; NEED échoue ; critères asymétriques (déclaré) & pas de critère global ; lecture pré-enregistrée affaiblie \\
+16 & Le besoin, ou ce que l'agent va faire ? & \code{4f84752}, 02/10 & INT0, INTENT \passe{} ; NEED échoue ; critères asymétriques (déclaré) & pas de critère global ; lecture pré-enregistrée tenue de peu \\
 15 & Un lecteur qui écoute la question & \code{a448a03}, 02/10 & LIS1, LIS2, LIS3 & code prêt, en attente du Mac \\
 12 & Soif de savoir & \code{017f2e5}, 01/10 & CUR, VIDE, LOC, ACT, LS1, LS2, READ, SAY, HOR1, HOR2, PL1, GAIN & pilote en attente du Mac \\
 \bottomrule
@@ -2132,7 +2132,7 @@ presque parfaitement dans l'état ($R^2$ de 0,93 à 0,98) et le niveau d'énergi
 (0,64 à 0,72). L'état rassemblé serait d'abord une \emph{intention d'agir}, et le
 \og rapport \fg{} dirait cette intention, pas la raison qui la cause. Mais une régression
 mêle la décision et le besoin, qui varient ensemble ; seule une intervention pouvait les
-séparer. C'est l'objet du test~16, qui \textbf{n'a pas confirmé} cette lecture
+séparer. C'est l'objet du test~16, qui ne la confirme \textbf{qu'en partie}
 (section~\ref{sec-t16}).
 
 \subsection{Test 16 : le lecteur dit-il le besoin, ou ce que l'agent va faire ?}
@@ -2221,20 +2221,22 @@ l'agent va faire, pas pourquoi \fg{} (tableaux~\ref{tab-t16} et~\ref{tab-t16v}).
 
 \paragraph{Une asymétrie des critères (déclarée).} Les deux critères n'étaient pas
 symétriques. NEED exigeait que l'effet dépasse celui sur la question témoin ; INTENT ne
-l'exigeait pas. Soumise à la même exigence, la décision seule serait tout juste au seuil :
-elle fait dire \og oui \fg{} à \og fait-il nuit ? \fg{} presque autant ($+0,125$, contre
-$+0,157$ pour E0 ; écart $+0,03$). La lecture pré-enregistrée ne doit donc pas être prise
-au pied de la lettre : elle tient pour une part à ce que seule l'une des deux hypothèses
-devait franchir l'obstacle du témoin. Le défaut a été déclaré avec le verdict, qui reste
-celui que le code a calculé.
+l'exigeait pas. Soumise à la même exigence, la décision seule passerait tout juste :
+au-delà de \og fait-il nuit ? \fg{}, $+0,031$ [0,028 ; 0,034] pour un seuil de 0,03, contre
+$+0,012$ [0,009 ; 0,016] pour le besoin seul. La lecture pré-enregistrée tient donc, mais de
+peu, et elle ne porte que sur une petite part du \og oui \fg{}. Le défaut a été déclaré avec
+le verdict, qui reste celui que le code a calculé.
 
 \paragraph{Ce que cela dit.}
 \begin{itemize}
-\item \textbf{Le besoin seul}, qui ne change presque pas la décision ($+0,020$), fait dire
-\og oui \fg{} au lecteur \textbf{autant que la décision seule} ($+0,159$ et $+0,157$ à E0).
-Le lecteur réagit donc à une part de l'état qui n'est pas la décision : l'hypothèse
-exploratoire \og il ne lit que ce que l'agent va faire \fg{}
-(section~\ref{sec-explore-intent}) est \textbf{affaiblie}, pas confirmée.
+\item \textbf{La part générale du \og oui \fg{} réagit aux deux.} Le besoin seul, qui ne
+change presque pas la décision ($+0,020$), fait dire \og oui \fg{} au lecteur \textbf{autant
+que la décision seule} ($+0,159$ et $+0,157$ à E0). Le lecteur réagit donc aussi à une part
+de l'état qui n'est pas la décision : l'hypothèse exploratoire \og il ne lit que ce que
+l'agent va faire \fg{} (section~\ref{sec-explore-intent}) n'est confirmée \textbf{qu'en
+partie}.
+\item \textbf{La petite part propre à l'énergie penche vers la décision} : au-delà de la
+question témoin, $+0,031$ pour la décision seule, $+0,012$ pour le besoin seul.
 \item Dans tous les cas, il dit aussi \og oui \fg{} à \og fait-il nuit ? \fg{} ($+0,147$ et
 $+0,125$) : c'est le cadran à une aiguille du test~14, qui s'ouvre pour plusieurs
 directions de l'état, \textbf{sans contenu propre}, ni au besoin ni à la décision.
