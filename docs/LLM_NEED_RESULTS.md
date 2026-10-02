@@ -804,10 +804,15 @@ Artefacts : `artifacts/llm-need/transfer`. Verdicts vérifiés en CI.
 Validité : passée pour les deux (contrôle d'exécution ≤ 1e-6 contre le
 P(R) enregistré ; cache ≤ 2e-6 ; 600 contextes ; masses 0,88 et 0,93).
 
-Publié sans seuil : cosinus entre les deux d_E, par token : **0,20, 0,03,
+Publié sans seuil : cosinus entre les deux d_E, par token : **0,19, 0,03,
 0,14**.
 
 **Critère global : non satisfait** (TR1 manque son seuil de 0,002).
+
+**Lecture pré-enregistrée** (critère échoué) : « chaque agent s'est fait
+son propre code ; ce qui se réplique d'un agent à l'autre est la fonction,
+pas sa forme ». C'est la conclusion que fixait le protocole, et elle est
+publiée telle quelle. Les données la nuancent fortement :
 
 **Ce que cela dit.**
 - **La direction du besoin se transfère d'un agent à l'autre.** Chez le
@@ -817,7 +822,7 @@ Publié sans seuil : cosinus entre les deux d_E, par token : **0,20, 0,03,
   mais sous le seuil fixé d'avance (0,02, soit 60 % de son effet propre ;
   voir l'amendement 1).
 - **Pourtant les deux directions se ressemblent peu** (cosinus 0,03 à
-  0,20). Chaque direction est mesurée par moindres carrés sur des paires
+  0,19). Chaque direction est mesurée par moindres carrés sur des paires
   de vies : elle contient beaucoup de bruit. La part qui agit sur la
   décision est commune aux deux agents ; le reste ne l'est pas.
 - Deux agents appris séparément utilisent donc en bonne partie **le même
