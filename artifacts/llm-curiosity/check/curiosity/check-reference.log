@@ -1,0 +1,12 @@
+Loading pretrained model
+Loading datasets
+Training
+Loading fine-tuned weights from /Users/builder/clone/llm-need/curiosity/check-start/adapters.safetensors
+Trainable parameters: 0.484% (2.884M/596.050M)
+Starting training..., iters: 20
+Iter 1: Val loss 2.453, Val took 0.930s
+Iter 10: Train loss 1.842, Learning Rate 1.000e-04, It/sec 1.226, Tokens/sec 69.154, Trained Tokens 564, Peak mem 1.928 GB
+Iter 20: Val loss 1.368, Val took 0.209s
+Iter 20: Train loss 1.575, Learning Rate 1.000e-04, It/sec 3.155, Tokens/sec 179.531, Trained Tokens 1133, Peak mem 1.928 GB
+Iter 20: Saved adapter weights to /Users/builder/clone/llm-need/curiosity/check-reference/adapters.safetensors and /Users/builder/clone/llm-need/curiosity/check-reference/0000020_adapters.safetensors.
+Saved final weights to /Users/builder/clone/llm-need/curiosity/check-reference/adapters.safetensors.

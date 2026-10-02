@@ -1,0 +1,15 @@
+pilot random life 0: G = 2.745, 81 s
+pilot random life 1: G = -1.943, 81 s
+pilot random life 2: G = 4.805, 80 s
+pilot random life 3: G = -3.315, 80 s
+pilot random life 4: G = 5.911, 81 s
+pilot random life 5: G = 3.360, 81 s
+pilot random life 6: G = 2.367, 81 s
+pilot random life 7: G = 3.653, 81 s
+pilot random life 8: G = 5.876, 81 s
+pilot random life 9: G = 1.559, 81 s
+pilot random life 10: G = 5.570, 81 s
+pilot random life 11: G = -2.705, 81 s
+{"temperature": 0.7402492463588715, "bonus": 1.480498492717743, "base_ratio": 0.4244269518960038, "base_digits": 2}
+{"temperature": 0.7402492463588715, "bonus": 1.480498492717743, "base_ratio": 0.4244269518960038, "base_digits": 2, "low": 0.046641916036605835, "high": 29.95494842529297, "seconds_per_life": 81.0195983548959, "domains": {"valid": false, "checks": {"mots_learned": false, "base_learned": true, "suites_flat": false, "calcul_known": false}, "values": {"K_mots": {"mean": 1.5268355434139569, "low": -0.18438681010156865, "high": 3.0942709842075904, "n": 12}, "K_base": {"mean": 0.796788060416778, "low": 0.3490376350780328, "high": 1.1942271539320546, "n": 12}, "suites_late_progress": 2.1779255761040583, "L0": {"mots": 4.896509647369385, "base": 1.8773267269134521, "calcul": 0.9704859852790833, "suites": 4.450714111328125}}}}
+exit 0

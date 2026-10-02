@@ -1,0 +1,39 @@
+{
+ "temperature": 0.7402492463588715,
+ "bonus": 1.480498492717743,
+ "base_ratio": 0.4244269518960038,
+ "base_digits": 2,
+ "low": 0.046641916036605835,
+ "high": 29.95494842529297,
+ "seconds_per_life": 81.0195983548959,
+ "domains": {
+  "valid": false,
+  "checks": {
+   "mots_learned": false,
+   "base_learned": true,
+   "suites_flat": false,
+   "calcul_known": false
+  },
+  "values": {
+   "K_mots": {
+    "mean": 1.5268355434139569,
+    "low": -0.18438681010156865,
+    "high": 3.0942709842075904,
+    "n": 12
+   },
+   "K_base": {
+    "mean": 0.796788060416778,
+    "low": 0.3490376350780328,
+    "high": 1.1942271539320546,
+    "n": 12
+   },
+   "suites_late_progress": 2.1779255761040583,
+   "L0": {
+    "mots": 4.896509647369385,
+    "base": 1.8773267269134521,
+    "calcul": 0.9704859852790833,
+    "suites": 4.450714111328125
+   }
+  }
+ }
+}

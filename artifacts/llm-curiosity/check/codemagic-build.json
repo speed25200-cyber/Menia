@@ -1,0 +1,64 @@
+{
+ "id": "6abedc066d89c2e9613bde05",
+ "tag": null,
+ "branch": "claude/causal-self-model-llm-results-mauabk",
+ "workflow": "menia-need-mac",
+ "status": "finished",
+ "createdAt": "2026-10-01T22:17:42.110000+00:00",
+ "startedAt": "2026-10-02T00:09:56.355000+00:00",
+ "finishedAt": "2026-10-02T00:12:12.279000+00:00",
+ "commit": "6c6019c43be9827151963e6c87f3ed1614bebc94",
+ "message": null,
+ "steps": [
+  {
+   "name": "Preparing build machine",
+   "status": "success",
+   "startedAt": "2026-10-02T00:09:56.622000+00:00",
+   "finishedAt": "2026-10-02T00:10:21.293000+00:00"
+  },
+  {
+   "name": "Fetching app sources",
+   "status": "success",
+   "startedAt": "2026-10-02T00:10:21.293000+00:00",
+   "finishedAt": "2026-10-02T00:11:01.052000+00:00"
+  },
+  {
+   "name": "Installer mlx-lm dans un environnement isolé",
+   "status": "success",
+   "startedAt": "2026-10-02T00:11:01.052000+00:00",
+   "finishedAt": "2026-10-02T00:11:16.040000+00:00"
+  },
+  {
+   "name": "Vérifier le protocole sur des doubles",
+   "status": "success",
+   "startedAt": "2026-10-02T00:11:16.040000+00:00",
+   "finishedAt": "2026-10-02T00:11:22.848000+00:00"
+  },
+  {
+   "name": "Une étape du besoin (tours d'apprentissage ; rapport puis direction ; ou vies de test)",
+   "status": "success",
+   "startedAt": "2026-10-02T00:11:22.848000+00:00",
+   "finishedAt": "2026-10-02T00:12:10.459000+00:00"
+  },
+  {
+   "name": "Publishing",
+   "status": "success",
+   "startedAt": "2026-10-02T00:12:10.459000+00:00",
+   "finishedAt": "2026-10-02T00:12:12.196000+00:00"
+  },
+  {
+   "name": "Cleaning up",
+   "status": "success",
+   "startedAt": "2026-10-02T00:12:12.196000+00:00",
+   "finishedAt": "2026-10-02T00:12:12.279000+00:00"
+  }
+ ],
+ "artefacts": [
+  {
+   "name": "Menia_48_artifacts.zip",
+   "size": 4833135,
+   "md5": null,
+   "type": "bundle"
+  }
+ ]
+}
