@@ -1,0 +1,39 @@
+{
+ "verdicts": {
+  "BASE1": false,
+  "BASE2": false,
+  "valid": true,
+  "global": false
+ },
+ "values": {
+  "effects": {
+   "first": {
+    "mean": 0.47460326666666675,
+    "low": 0.4534112356771327,
+    "high": 0.4957873508918974,
+    "contexts": 600
+   },
+   "second": {
+    "mean": 0.4744074916666667,
+    "low": 0.453204400439105,
+    "high": 0.49559817918821775,
+    "contexts": 600
+   }
+  },
+  "random": {
+   "mean": 0.2839551094444444,
+   "low": 0.2729632346882422,
+   "high": 0.29538130699681475,
+   "contexts": 600
+  },
+  "mass": 0.9899386266666667,
+  "contexts": 600,
+  "p_R_none": 0.5253967333333333
+ },
+ "setup": {
+  "block": 12,
+  "adapter": null,
+  "contexts": 600,
+  "cache_gap": 1.9669532775878906e-06
+ }
+}

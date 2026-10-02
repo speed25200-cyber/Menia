@@ -830,6 +830,57 @@ publiée telle quelle. Les données la nuancent fortement :
   sans doute du modèle de langage qu'ils partagent, que chacun a appris à
   utiliser. Ce n'est démontré au seuil que dans un sens.
 
+## Test 18 pré-enregistré : le code du besoin existe-t-il avant l'apprentissage ?
+
+Protocole `docs/LLM_NEED_BASE_CODE_PROTOCOL.md` (commit `b5b9a6f`), code
+`a3d4d37` écrit avant toute mesure. Le modèle de langage **sans aucun
+adaptateur** lit les textes des vies du premier agent jusqu'à « Choix : »
+(les 600 contextes du test 17). Au bloc 12, sur « Choix : », on pousse
+−4·d_E du premier agent, −4·d_E du second (à la même norme par token) ou
+trois directions au hasard de cette norme. Artefacts :
+`artifacts/llm-need/base-code`. Verdicts vérifiés en CI.
+
+| | Prédiction | Mesure | Verdict |
+|---|---|---|---|
+| **BASE1** | La direction du premier agit sur le modèle de base | +0,475 [0,453 ; 0,496] ; poussées au hasard : \|Δ\| moyen 0,284 (seuil : au plus le tiers, 0,158) | **échoue** |
+| **BASE2** | La direction du second aussi | +0,474 [0,453 ; 0,496] ; même hasard | **échoue** |
+| | Validité | cache 2e-6 ; 600 contextes ; masse sur « R » et « M » 0,99 | valide |
+
+**Critère global : non satisfait.**
+
+**Lecture pré-enregistrée** (critère échoué) : « le code n'agit pas sans
+l'apprentissage : il a été construit, ou rendu efficace, par
+l'apprentissage de chaque agent ». Elle est publiée telle quelle. **Mais
+elle ne correspond pas à ce que montrent les données** ; l'échec vient du
+témoin au hasard, et d'un plafond que le protocole n'avait pas prévu.
+
+**Description après le verdict (sans seuil).**
+
+| Poussée sur le modèle de base | P(R) moyen | variation signée | contextes avec P(R) > 0,9 |
+|---|---|---|---|
+| aucune | 0,525 | — | 10 % |
+| direction du premier agent | **1,000** | +0,475 | **100 %** |
+| direction du second agent | **1,000** | +0,474 | **100 %** |
+| au hasard, 1 / 2 / 3 | 0,649 / 0,404 / 0,556 | +0,12 / −0,12 / +0,03 | 0 % |
+
+- **Les directions des deux agents font choisir « R » au modèle de base
+  dans 100 % des contextes**, alors qu'il n'a jamais appris ce monde. Les
+  poussées au hasard de même norme le font varier dans les deux sens,
+  sans jamais dépasser 0,9.
+- Le critère échoue parce que le modèle de base est **très sensible à
+  n'importe quelle poussée** de cette taille (\|Δ\| 0,28, contre 0,012
+  chez le premier agent appris), et parce que P(R) **plafonne** à 1 : l'effet
+  ne peut pas dépasser 0,475. Avec un tel plafond, le rapport exigé au
+  hasard (un tiers) était presque impossible à atteindre. C'est un défaut du
+  protocole, déclaré ici.
+- **Ce que cela suggère (sans verdict).** La direction « énergie basse →
+  se recharger » agit déjà dans le modèle de langage seul, et c'est
+  probablement ce qui explique le transfert du test 17. L'apprentissage ne
+  l'a pas créée. En revanche, il a rendu l'état **stable** : chez les
+  agents appris, une poussée au hasard ne fait presque plus rien (0,012
+  contre 0,28). Un test pré-enregistré, avec une poussée plus petite (pour
+  éviter le plafond), pourrait le confirmer.
+
 ## Analyse exploratoire : le « oui » suit-il le besoin ou la décision ? (2 octobre)
 
 Écrite **après** le verdict du test 14, sur ses lectures publiées
