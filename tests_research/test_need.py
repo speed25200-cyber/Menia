@@ -525,6 +525,60 @@ class ParaphraseTests(unittest.TestCase):
             PA.MIN_CONTEXTS = old
 
 
+class ListeningTests(unittest.TestCase):
+    def test_listening_documents(self):
+        from research import need_listening as LS
+        lives = lives_of(W.Oracle(), 335, 12)
+        report = W.report_documents(lives, np.random.default_rng(0), 3, after_choice=True, workspace=True)
+        docs = LS.listening_documents(lives, report)
+        groups = [d["group"] for d in docs]
+        self.assertEqual(groups.count("learned"), len(report))
+        self.assertEqual(groups.count("reworded"), len(report))
+        self.assertEqual(groups.count("control"), LS.CONTROL_TURNS * len(lives))
+        encode = lambda text: list(text.encode())
+        for d in docs:
+            self.assertTrue(d["text"][:d["workspace"]].endswith(" Choix :"))
+            self.assertTrue(d["text"][d["workspace"]:].startswith(" ? Question : "))
+            need_lora.target_tokens(d["text"], d["weights"], encode)  # one weight per target, the answer last
+            self.assertEqual(d["text"][-1], str(d["answer"]))
+            if d["group"] == "control":
+                self.assertEqual(d["answer"], LS.CONTROLS[d["control"]][1])
+            if d["group"] == "reworded":
+                self.assertIn(LS.TRAINED[d["need"]], d["text"])
+        for a, b in zip([d for d in docs if d["group"] == "learned"], [d for d in docs if d["group"] == "reworded"]):
+            self.assertEqual((a["workspace"], a["weights"], a["answer"]), (b["workspace"], b["weights"], b["answer"]))
+        self.assertEqual(LS.control_documents(lives), LS.control_documents(lives))
+        valid = LS.validation(docs)
+        self.assertEqual([d["group"] for d in valid].count("control"), LS.VALID_PER_GROUP)
+        self.assertEqual(len(valid), 3 * LS.VALID_PER_GROUP)
+        held_out = set(PA_QUESTIONS()) | {"Question : fait-il nuit ? "}
+        trained = {q.split("Réponds")[0] for q in list(LS.TRAINED.values()) + [c[0] for c in LS.CONTROLS.values()]}
+        self.assertFalse(trained & {q.split("Réponds")[0] for q in held_out})
+
+    def test_listening_verdicts(self):
+        from research import need_listening as LS, need_paraphrase as PA
+        lives = lives_of(W.Oracle(), 334, 60)
+        rows = paraphrase_rows(lives)
+        for r in rows:
+            r["yes"]["water"], r["yes"]["agent"] = 0.03, 0.96
+        old = PA.MIN_CONTEXTS
+        PA.MIN_CONTEXTS = 100
+        try:
+            v = LS.verdicts(rows, 1e-6, 0.01)["verdicts"]
+            self.assertEqual(v, {"LIS1": True, "LIS2": True, "LIS3": True, "valid": True, "global": True})
+            self.assertFalse(LS.verdicts(rows, 1e-6, 0.03)["verdicts"]["valid"])
+            for r in rows:
+                r["yes"]["water"] = 0.2
+            self.assertFalse(LS.verdicts(rows, 1e-6, 0.01)["verdicts"]["LIS1"])
+        finally:
+            PA.MIN_CONTEXTS = old
+
+
+def PA_QUESTIONS():
+    from research import need_paraphrase as PA
+    return [PA.QUESTIONS[q].split("Réponds")[0] for q in ("E1", "E2", "N1", "N2", "C")]
+
+
 class OwnershipTests(unittest.TestCase):
     def test_the_other_lives_beside_without_changing_the_agent(self):
         alone = W.play(W.Oracle(), W.world_rng(225, 0), W.choice_rng(225, 0))

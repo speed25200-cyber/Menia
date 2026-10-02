@@ -878,6 +878,7 @@ workflows:
         NEED_MINUTES: "100"
         NEED_THREADS: "4"
         NEED_BALANCED: "0"
+        NEED_LISTENING: "0"
         NEED_OTHER: "0"
         NEED_ITERS: "600"
         NEED_LIVES_FILE: "none"
@@ -946,6 +947,9 @@ workflows:
             # docs/LLM_NEED_BALANCED_READER_PROTOCOL.md: the same lives, documents balanced within each event
             if [ "$NEED_BALANCED" = "1" ]; then
               KIND="--balanced --label balanced --adapter-name adapters-balanced"
+            # docs/LLM_NEED_LISTENING_READER_PROTOCOL.md: the same documents, reworded, and control questions
+            elif [ "$NEED_LISTENING" = "1" ]; then
+              KIND="--listening --label listening --adapter-name adapters-listening"
             else
               KIND="--label reader --adapter-name adapters-reader"
             fi

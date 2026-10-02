@@ -188,12 +188,13 @@ def train(model, data, adapter, iters, resume=None, seed=W.SEED, skip=0, moments
     raise RuntimeError("training failed on every attempt")
 
 
-def write_data(folder, docs, rng):
+def write_data(folder, docs, rng, valid=None):
+    """Training documents in a random order; validation: the first 16 of that order, or the given ones."""
     folder = Path(folder)
     folder.mkdir(parents=True, exist_ok=True)
     order = rng.permutation(len(docs))
     write_jsonl(folder / "train.jsonl", [docs[i] for i in order])
-    write_jsonl(folder / "valid.jsonl", [docs[i] for i in order[:16]])
+    write_jsonl(folder / "valid.jsonl", valid if valid is not None else [docs[i] for i in order[:16]])
 
 
 def offset(a, stream):
@@ -262,6 +263,13 @@ def report(a, log=print):
     else:
         docs = W.report_documents(lives, np.random.default_rng([W.SEED, offset(a, a.stream), 0, 0, 2]), a.per_class,
                                   after_choice=a.after_choice, workspace=a.workspace)
+    valid = None
+    if a.listening:  # a second wording and control questions (docs/LLM_NEED_LISTENING_READER_PROTOCOL.md)
+        if not (a.workspace and a.reader) or a.balanced:
+            raise SystemExit("--listening is for a reader of the sixth test's documents")
+        from . import need_listening as LS
+        docs = LS.listening_documents(lives, docs)
+        valid = LS.validation(docs)
     model, start = a.model, a.start
     if a.reader:  # a new adapter on the fused starting agent, from the questions only (docs/LLM_NEED_READER_PROTOCOL.md)
         for d in docs:
@@ -272,7 +280,7 @@ def report(a, log=print):
     else:
         kept = read_jsonl(a.previous)
         docs += W.training_documents(kept, [l["kept"] for l in kept])
-    write_data(out / f"data-{a.label}", docs, np.random.default_rng([W.SEED, offset(a, a.stream), 0, 0, 3]))
+    write_data(out / f"data-{a.label}", docs, np.random.default_rng([W.SEED, offset(a, a.stream), 0, 0, 3]), valid)
     final = out / a.adapter_name
     if a.continue_from and not a.reader:
         raise SystemExit("--continue-from continues a reader")
@@ -284,7 +292,9 @@ def report(a, log=print):
         rows = reader_rows(model, final, read_jsonl(out / f"data-{a.label}" / "valid.jsonl"))
         Path(out / "reader-replica.json").write_text(json.dumps(rows, ensure_ascii=False, indent=1) + "\n")
     record = {"stage": a.label, "from": a.start, "lives_from": a.lives_file, "workspace": a.workspace,
-              "reader": a.reader, "balanced": a.balanced, "adapter": str(final), "iters": a.iters, "skip": a.skip,
+              "reader": a.reader, "balanced": a.balanced, "listening": a.listening,
+              "groups": {g: sum(d.get("group") == g for d in docs) for g in ("learned", "reworded", "control")},
+              "adapter": str(final), "iters": a.iters, "skip": a.skip,
               "continue_from": a.continue_from, **summary(lives),
               "report_documents": sum(1 for d in docs if "need" in d),
               "report_documents_yes": sum(d.get("answer", 0) for d in docs if "need" in d), "documents": len(docs)}
@@ -466,6 +476,7 @@ def main(argv=None):
     p.add_argument("--lives-file", default=None, help="lives already lived by the starting agent")
     p.add_argument("--reader", action="store_true", help="a new adapter on the question only, the agent fused")
     p.add_argument("--balanced", action="store_true", help="report documents balanced within each event")
+    p.add_argument("--listening", action="store_true", help="a second wording and control questions too")
     p.add_argument("--continue-from", default=None, help="a reader adapter whose run is continued exactly")
     p.add_argument("--skip", type=int, default=0, help="batches the continued run has trained on")
     d = sub.add_parser("direction")

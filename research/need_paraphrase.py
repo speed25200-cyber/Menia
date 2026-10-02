@@ -99,33 +99,36 @@ def random_pushes(d_e, massive):
 
 # ----------------------------------------------------------------------------------------------------- torch part
 
-def question(agent, t, k, q):
+def question(agent, t, k, text):
     """The question line after the pending choice, and the number of its tokens after "Choix :" (checked to leave
     the tokens of "Choix :" as they are)."""
-    line = W.choice_line(t, k) + " ? " + QUESTIONS[q]
+    line = W.choice_line(t, k) + " ? " + text
     before = agent.enc(agent.text + agent.pending + W.choice_line(t, k))
     full = agent.enc(agent.text + agent.pending + line)
     if full[:len(before)] != before:
-        raise RuntimeError(f"question {q} changes the tokens of \"Choix :\"")
+        raise RuntimeError(f"question {text!r} changes the tokens of \"Choix :\"")
     return line, len(full) - len(before)
 
 
-def measure(a):
+def measure(a, spec=SPEC, extra=None):
+    """spec: the agent, reader, directions and lives (SPEC: the fourteenth test); extra: {name: question} read
+    without intervention at every decision, besides QUESTIONS (docs/LLM_NEED_LISTENING_READER_PROTOCOL.md)."""
     import torch
     from . import need_reader as RD
     torch.set_num_threads(a.threads)
     log = lambda m: print(m, flush=True)
     out = Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
-    for q, text in QUESTIONS.items():
+    extra = extra or {}
+    for q, text in {**QUESTIONS, **extra}.items():
         if not text.endswith(END):
             raise RuntimeError(f"question {q} does not end as the learned ones")
-    direction = json.loads((Path(SPEC["directions"]) / "direction.json").read_text())
+    direction = json.loads((Path(spec["directions"]) / "direction.json").read_text())
     d_e, d_n = np.array(direction["d_E"]), np.array(direction["d_N"])
     T = lambda x: torch.tensor(np.asarray(x, np.float32))
     adds = [None, T(-UNITS * d_e), T(-UNITS * d_n)] + [T(v) for v in random_pushes(d_e, direction["massive_dims"])]
-    agent = RD.ReaderAgent(SPEC["adapter"], SPEC["reader"], block=direction["block"])
-    lives = W.read_jsonl(SPEC["lives"])
+    agent = RD.ReaderAgent(spec["adapter"], spec["reader"], block=direction["block"])
+    lives = W.read_jsonl(spec["lives"])
     count = lives_to_read(lives)
     setup_file = out / "setup.json"
     setup = json.loads(setup_file.read_text()) if setup_file.exists() else {}
@@ -137,7 +140,7 @@ def measure(a):
                 if seen < EXECUTION_CHECKS and is_context(turn):
                     seen += 1
                     for q in QUESTIONS:
-                        line, offset = question(agent, turn["t"], turn["event"], q)
+                        line, offset = question(agent, turn["t"], turn["event"], QUESTIONS[q])
                         batch = agent.read(line, adds, offset)
                         for i, add in enumerate(adds):
                             whole = agent.read(line, [add], offset, cached=False)[0]
@@ -148,6 +151,8 @@ def measure(a):
                 break
         setup = {"block": direction["block"], "massive_dims": direction["massive_dims"], "lives_read": count,
                  "reader_layers": agent.reader_layers, "execution_gap": float(max(gaps))}
+        if "reader_rows" in spec:  # a reader learned for this test: its replica against the Mac
+            setup["reader_replica"] = RD.reader_replica(agent, json.loads(Path(spec["reader_rows"]).read_text()))
         setup_file.write_text(json.dumps(setup, indent=1) + "\n")
     log(json.dumps(setup))
     if setup["execution_gap"] > WS.EXECUTION_TOLERANCE:
@@ -170,13 +175,17 @@ def measure(a):
             row = {"life": index, "t": t, "E": turn["E"], "N": turn["N"], "recorded": turn["p_R"], "yes": {},
                    "mass": {}, "push": {c: {} for c in CONDITIONS} if context else None}
             for q in QUESTIONS:
-                line, offset = question(agent, t, k, q)
+                line, offset = question(agent, t, k, QUESTIONS[q])
                 reads = agent.read(line, adds if context else adds[:1], offset)
                 row["yes"][q] = round(reads[0]["yes"], 6)
                 row["mass"][q] = round(reads[0]["mass_01"], 6)
                 if context:
                     for c, r in zip(CONDITIONS, reads):
                         row["push"][c][q] = round(r["yes"], 6)
+            for q, text in extra.items():
+                line, offset = question(agent, t, k, text)
+                read = agent.read(line, adds[:1], offset)[0]
+                row["yes"][q], row["mass"][q] = round(read["yes"], 6), round(read["mass_01"], 6)
             row["p_R"] = round(agent.decide(W.choice_line(t, k))[0], 6)
             agent.commit(turn["action"])
             rows.append(row)
@@ -187,6 +196,14 @@ def measure(a):
     if partial.exists():
         partial.unlink()
     log(json.dumps(verdicts(rows, setup["execution_gap"])["verdicts"]))
+
+
+def check_rows(rows, lives_file=SPEC["lives"]):
+    """The reads are those of every decision of the protocol's lives, in order."""
+    lives = W.read_jsonl(lives_file)
+    expected = [(i, t["t"]) for i in range(lives_to_read(lives)) for t in W.decisions(lives[i])]
+    if [(r["life"], r["t"]) for r in rows] != expected:
+        raise SystemExit("the reads are not those of the protocol's lives")
 
 
 def main(argv=None):
@@ -204,10 +221,7 @@ def main(argv=None):
         return
     out = Path(a.out)
     rows = W.read_jsonl(out / "reads.jsonl.gz")
-    lives = W.read_jsonl(SPEC["lives"])
-    expected = [(i, t["t"]) for i in range(lives_to_read(lives)) for t in W.decisions(lives[i])]
-    if [(r["life"], r["t"]) for r in rows] != expected:
-        raise SystemExit("the reads are not those of the protocol's lives")
+    check_rows(rows)
     setup = json.loads((out / "setup.json").read_text())
     result = json.loads(json.dumps(dict(verdicts(rows, setup["execution_gap"]), setup=setup)))
     path = out / "verdicts.json"
