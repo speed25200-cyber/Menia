@@ -784,6 +784,47 @@ lecture, corrigée.) Les données disent donc deux choses :
   besoin seul. C'est ce que dit la lecture pré-enregistrée, mais l'écart
   est petit à côté de la part générale (+0,16).
 
+## Test 17 pré-enregistré : le besoin d'un agent pousse-t-il un autre agent ?
+
+Protocole `docs/LLM_NEED_TRANSFER_PROTOCOL.md` (commit `8e23605`,
+amendement 1 `1b17335` avant tout code : explication des seuils corrigée,
+seuils inchangés), code `334e290`. Sans apprentissage. Le premier et le
+second agent partent du même modèle de langage mais ont appris séparément.
+Chez chacun, sur ses propres vies de test (600 décisions où les deux
+besoins valent 6 ou plus), on pousse au bloc 12 sur « Choix : » : sa
+propre direction −4·d_E, la direction de **l'autre** agent ramenée à la
+même norme par token, ou trois directions au hasard de cette norme.
+Artefacts : `artifacts/llm-need/transfer`. Verdicts vérifiés en CI.
+
+| Agent poussé | Sa propre poussée | Poussée de l'autre agent | Rapport | Hasard (\|Δ\|) | Seuil | Verdict |
+|---|---|---|---|---|---|---|
+| Premier (TR2) | +0,153 [0,138 ; 0,169] | **+0,138** [0,124 ; 0,152] | **0,90** | 0,012 | 0,05 | **passe** |
+| Second (TR1) | +0,034 [0,030 ; 0,038] | **+0,018** [0,016 ; 0,020] | 0,53 | 0,0016 | 0,02 | **échoue** (de 0,002) |
+
+Validité : passée pour les deux (contrôle d'exécution ≤ 1e-6 contre le
+P(R) enregistré ; cache ≤ 2e-6 ; 600 contextes ; masses 0,88 et 0,93).
+
+Publié sans seuil : cosinus entre les deux d_E, par token : **0,20, 0,03,
+0,14**.
+
+**Critère global : non satisfait** (TR1 manque son seuil de 0,002).
+
+**Ce que cela dit.**
+- **La direction du besoin se transfère d'un agent à l'autre.** Chez le
+  premier agent, la direction mesurée sur le second fait presque tout ce
+  que fait la sienne (90 %). Chez le second, celle du premier fait la
+  moitié de ce que fait la sienne (53 %), onze fois plus que le hasard,
+  mais sous le seuil fixé d'avance (0,02, soit 60 % de son effet propre ;
+  voir l'amendement 1).
+- **Pourtant les deux directions se ressemblent peu** (cosinus 0,03 à
+  0,20). Chaque direction est mesurée par moindres carrés sur des paires
+  de vies : elle contient beaucoup de bruit. La part qui agit sur la
+  décision est commune aux deux agents ; le reste ne l'est pas.
+- Deux agents appris séparément utilisent donc en bonne partie **le même
+  code** pour « énergie basse » à cet endroit du réseau. Ce code vient
+  sans doute du modèle de langage qu'ils partagent, que chacun a appris à
+  utiliser. Ce n'est démontré au seuil que dans un sens.
+
 ## Analyse exploratoire : le « oui » suit-il le besoin ou la décision ? (2 octobre)
 
 Écrite **après** le verdict du test 14, sur ses lectures publiées
