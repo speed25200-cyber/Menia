@@ -10,7 +10,7 @@
 \usepackage{lmodern}
 \usepackage[french]{babel}
 \frenchsetup{og=«, fg=», SmallCapsFigTabCaptions=false}
-\usepackage[a4paper,margin=2.2cm,headheight=14pt]{geometry}
+\usepackage[a4paper,margin=2.0cm,headheight=14pt]{geometry}
 \usepackage{microtype}
 \DisableLigatures[-]{encoding=T1,family=tt*}
 \usepackage{amsmath,amssymb}
@@ -36,6 +36,9 @@
 \titleformat{\section}{\normalfont\Large\bfseries\color{accent}}{\thesection}{0.8em}{}
 \titleformat{\subsection}{\normalfont\large\bfseries\color{accent}}{\thesubsection}{0.8em}{}
 \titleformat{\subsubsection}{\normalfont\normalsize\bfseries\color{accent}}{\thesubsubsection}{0.8em}{}
+\titlespacing*{\section}{0pt}{3ex plus 1ex minus .2ex}{1.6ex plus .2ex}
+\titlespacing*{\subsection}{0pt}{2.4ex plus 1ex minus .2ex}{1.2ex plus .2ex}
+\titlespacing*{\paragraph}{0pt}{1.6ex plus .6ex minus .2ex}{0.8em}
 \DeclareCaptionFont{accent}{\color{accent}}
 \captionsetup{labelfont={bf,accent}}
 \usepackage[colorlinks=true,linkcolor=accent,citecolor=accent,urlcolor=accent]{hyperref}
@@ -88,12 +91,12 @@ pour l'acte et la parole dans un petit modèle de langage\par}
 \vfill
 {\large\scshape Projet Menia\par}
 \vspace{0.15cm}
-{\normalsize 1\ier{} octobre 2026\par}
+{\normalsize 2 octobre 2026\par}
 \vspace{1.4cm}
 \begin{minipage}{0.82\textwidth}
 \footnotesize\color{black!62}
 \textsc{Statut du document.} Rapport scientifique du programme de recherche Menia,
-arrêté au 1\ier{} octobre 2026. Tous les chiffres proviennent des documents, du code et
+arrêté au 2 octobre 2026. Tous les chiffres proviennent des documents, du code et
 des artefacts publiés dans le dépôt du projet ; les tests encore en cours sont signalés
 comme tels et aucun résultat n'y est anticipé. Les protocoles sont cités avec le commit
 qui les a enregistrés avant toute exécution. Le seul modèle de langage étudié est
@@ -125,28 +128,36 @@ voit la vie qu'à travers cet état et ne peut pas le modifier, \og mon énergie
 basse \fg{} ($+0,202$ [0,192 ; 0,213]) ; des poussées aléatoires de même norme
 donnent 0,013 et 0,006. Effacer ce plan fait tomber la survie de 0,676 à 0,203 et
 l'exactitude équilibrée du rapport d'énergie de 0,750 à 0,500, alors qu'un
-effacement aléatoire ne change rien. Ce résultat ne se réplique pas, sous la forme
-mesurée, chez un second agent appris de zéro (acte $+0,034$, parole $+0,002$) ;
-la nourriture n'est pas dite par l'état qui fait agir ; la possession de l'état
-dans un monde partagé avec un autre agent n'est pas démontrée ; et l'état code
-surtout l'équilibre énergie\,$-$\,nourriture ($\cos(\dE,\dN)\approx-0,99$).
-Une règle de localisation fixée d'avance retrouve le bloc~12 chez le premier
-agent et désigne le bloc~22 chez l'agent du monde à deux, où l'état suffit à faire
-agir ($+0,217$ [0,206 ; 0,230]) mais pas à faire dire. Un test de lecteurs plus
-longuement entraînés est en cours. Nous montrons une structure causale de type
-\og accès \fg{}, au sens de l'espace de travail global, pour un besoin appris, chez
-un agent et pour un besoin sur deux ; nous n'affirmons rien d'une conscience
-phénoménale.
+effacement aléatoire ne change rien. Chez un second agent appris de zéro, la
+nécessité se réplique (survie 0,570 à 0,043, rapport d'énergie 0,639 à 0,500), mais
+pas la suffisance : la même poussée fait peu agir ($+0,034$) et ne fait pas dire
+($+0,002$). Une règle de localisation fixée d'avance retrouve le bloc~12 chez le
+premier agent et désigne le bloc~22 chez un agent appris dans un monde partagé avec
+un autre, où l'état suffit à faire agir ($+0,217$ [0,206 ; 0,230]) mais presque pas
+à faire dire. Des lecteurs trois fois plus entraînés n'atteignent les seuils chez
+aucun de ces deux agents (exactitude 0,595 et 0,747 pour 0,75 exigé ; parole
+$+0,0015$ et $+0,029$ pour 0,10). Une analyse exploratoire montre pourtant que le
+niveau d'énergie est lisible linéairement dans l'état des trois agents ($R^2$ de
+0,64 à 0,72) : l'écart de parole tient au lecteur ou à son chemin, pas à
+l'information disponible. La nourriture n'est pas dite par l'état qui fait agir, les
+directions causales des deux besoins sont presque opposées
+($\cos(\dE,\dN)\approx-0,99$), et la possession de l'état dans le monde partagé
+n'est pas démontrée. Nous montrons une structure causale de type \og accès \fg{}, au
+sens de l'espace de travail global, pour un besoin appris : suffisante et nécessaire
+chez un agent, nécessaire chez un second ; nous n'affirmons rien d'une conscience
+phénoménale. Un douzième test, sur un besoin de savoir sans renforcement, est
+pré-enregistré.
 
 \medskip\noindent
 \textbf{Mots-clés~:} besoin homéostatique, intéroception, modèle de langage,
 interventions causales, pilotage d'activations, lésion, espace de travail global,
 représentation d'ordre supérieur, pré-enregistrement.
 \end{abstract}
+\clearpage
 
 \setcounter{tocdepth}{1}
 {\small\tableofcontents}
-\clearpage
+\vspace{0.8cm}
 
 % ================================================================= 1
 \section{Introduction}
@@ -227,11 +238,13 @@ trois tokens \Choix{}. Par construction, le rapport lit l'état qui fait agir ma
 ne peut pas l'écrire.
 \item \textbf{Un résultat positif circonscrit.} Chez le premier agent et pour
 l'énergie, un même état est suffisant (test~6) et nécessaire (test~7) à la fois
-pour l'acte et pour la parole.
-\item \textbf{Des échecs publiés et instructifs.} Absence de réplication au
-bloc~12 chez un second agent, nourriture non dite, possession non démontrée,
-lecteur équilibré qui n'apprend pas, état qui code surtout un axe d'équilibre.
-\item \textbf{Une discipline.} Douze protocoles enregistrés par commit avant le
+pour l'acte et pour la parole ; chez un second agent appris de zéro, la nécessité
+se réplique (RLS, RLR), la suffisance non.
+\item \textbf{Des échecs publiés et instructifs.} Suffisance non répliquée au
+bloc~12, nourriture non dite, possession non démontrée, lecteur équilibré qui
+n'apprend pas, lecteurs trois fois plus entraînés qui n'atteignent pas les seuils
+(test~11), alors que le niveau d'énergie est lisible dans l'état des trois agents.
+\item \textbf{Une discipline.} Treize protocoles enregistrés par commit avant le
 code, amendements datés, lectures anticipées déclarées, verdicts recalculés en
 intégration continue depuis les artefacts publiés.
 \end{enumerate}
@@ -242,8 +255,8 @@ La section~\ref{sec-related} situe ce travail. La section~\ref{sec-prior} résum
 les phases antérieures du programme. La section~\ref{sec-methodes} décrit le
 monde, les agents, l'apprentissage, le lecteur, la boîte à outils causale, le
 pré-enregistrement et les statistiques. La section~\ref{sec-resultats} présente
-les résultats test par test, la section~\ref{sec-locate} la localisation et le
-test~11 en cours, la section~\ref{sec-echecs} les échecs et ce qu'ils ont appris.
+les résultats test par test, la section~\ref{sec-locate} la localisation, le
+test~11 et une analyse exploratoire de l'état, la section~\ref{sec-echecs} les échecs et ce qu'ils ont appris.
 Suivent les menaces à la validité (section~\ref{sec-menaces}), le bilan selon
 les cinq niveaux de Chandaria et collaborateurs (section~\ref{sec-cinq}), la
 discussion (section~\ref{sec-discussion}), les travaux futurs
@@ -900,14 +913,14 @@ vécus avec un besoin à 2 ou moins (section~\ref{sec-ethique}).
 \label{sec-resultats}
 
 Le tableau~\ref{tab-overview} récapitule les douze protocoles de la ligne
-\og besoin \fg{} et leurs verdicts au 1\ier{} octobre 2026. Les sous-sections
+\og besoin \fg{}, le protocole du test~12 et leurs verdicts au 2 octobre 2026. Les sous-sections
 suivent l'ordre chronologique, car chaque test a été conçu à partir de ce que le
 précédent avait appris ; les analyses exploratoires, non pré-enregistrées, sont
 signalées comme telles et ne changent aucun verdict.
 
 \begin{table}[tp]
 \centering
-\caption{Les tests de la ligne \og besoin \fg{}. Commit et date du protocole
+\caption{Les tests de la ligne \og besoin \fg{} et le test~12. Commit et date du protocole
 (enregistré avant le code et toute exécution) ; prédictions qui passent (\passe)
 et qui échouent ; verdict du critère global.}
 \label{tab-overview}
@@ -924,10 +937,11 @@ Test & Titre & Protocole & Prédictions & Critère global \\
 6 & Le lecteur & \code{3b27636}, 30/09 & A6, ONE6 \passe{} ; R6 échoue (nourriture) & non satisfait \\
 7 & Sans cet état, ni agir ni dire & \code{732ed1c}, 30/09 & LS7, LR7 \passe & \textbf{satisfait} \\
 8 & Un lecteur sans raccourci & \code{c7b5624}, 30/09 & R8, SAY8, ONE8 : lecteur non appris, pas de mesure publiée & non établi \\
-R & Réplication (second agent) & \code{4e10a6c}, 30/09 & RR, RA, RONE échouent ; RLS, RLR en cours & non satisfait \\
+R & Réplication (second agent) & \code{4e10a6c}, 30/09 & RLS, RLR \passe{} ; RR, RA, RONE échouent & non satisfait \\
 9 & À qui est ce besoin ? & \code{47eb0db}, 30/09 & S9 \passe{} ; MINE9, SELF9, ONE9 échouent & non satisfait \\
 10 & Où le besoin est-il rassemblé ? & \code{12b4d2d}, 30/09 & étalonnage \passe{} ; LOC10 échoue (second agent) ; agent à deux : $b^\star=22$, ACT10 atteint, LS10 en cours & non satisfait \\
-11 & Un lecteur qui apprend assez & \code{0a28560}, 01/10 & R11, SAY11 & en cours \\
+11 & Un lecteur qui apprend assez & \code{0a28560}, 01/10 & R11, SAY11 échouent (deux agents) & non satisfait \\
+12 & Soif de savoir & \code{017f2e5}, 01/10 & CUR, VIDE, LOC, ACT, LS1, LS2, READ, SAY, HOR1, HOR2, PL1, GAIN & pilote en cours \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -959,7 +973,7 @@ le même entraînement sur des choix pris au hasard, il dépérit jusqu'à 0\,\%
 \begin{figure}[t]
 \centering
 \begin{tikzpicture}
-\begin{axis}[width=0.62\textwidth,height=6.2cm,xlabel={tour d'apprentissage},ylabel={survie (512 vies)},
+\begin{axis}[width=0.62\textwidth,height=5.6cm,xlabel={tour d'apprentissage},ylabel={survie (512 vies)},
   xmin=0.7,xmax=8.3,ymin=-0.03,ymax=0.95,xtick={1,...,8},ytick={0,0.2,0.4,0.6,0.8},
   legend pos=outer north east,legend cell align=left,grid=major,grid style={gray!20}]
 \addplot[cact,thick,mark=*] coordinates {(1,0.121)(2,0.611)(3,0.547)(4,0.666)(5,0.689)(6,0.609)(7,0.684)(8,0.666)};
@@ -1053,7 +1067,7 @@ Ligne du tour en cours & 0,00 & $-0,02$ & $-0,03$ & 0,00 & 0,94 & 0,94 & 0,94 & 
 \begin{figure}[t]
 \centering
 \begin{tikzpicture}
-\begin{axis}[width=0.7\textwidth,height=5.4cm,xlabel={bloc},ylabel={part restaurée},
+\begin{axis}[width=0.7\textwidth,height=5cm,xlabel={bloc},ylabel={part restaurée},
   xmin=-1,xmax=28,ymin=-0.1,ymax=1.1,xtick={0,3,...,27},
   legend pos=outer north east,legend cell align=left,grid=major,grid style={gray!20}]
 \addplot[corg,thick,mark=*] coordinates {(0,1.01)(3,1.02)(6,0.98)(9,0.86)(12,0.06)(15,0.06)(18,0.06)(21,0.00)(24,0.00)(27,0.00)};
@@ -1296,25 +1310,27 @@ baissent (7 contre 63).
 \begin{figure}[t]
 \centering
 \begin{tikzpicture}
-\begin{axis}[ybar=2pt,width=0.9\textwidth,height=6.4cm,bar width=13pt,
+\begin{axis}[ybar=2pt,width=\textwidth,height=5.8cm,bar width=12pt,
   ylabel={survie},ymin=0,ymax=1.0,ytick={0,0.2,0.4,0.6,0.8},
-  symbolic x coords={T1b6,T2b12,T7b12,R2b12},
-  xticklabels={{test 1 (bloc 6)},{test 2 (bloc 12)},{test 7 (bloc 12)},{second agent (bloc 12)}},
-  xtick=data,enlarge x limits=0.15,
+  symbolic x coords={T1b6,T2b12,T7b12,RLb12,R2b12},
+  xticklabels={{test 1\\(bloc 6)},{test 2\\(bloc 12)},{test 7\\(bloc 12)},{second agent,\\réplication (bloc 12)},{second agent,\\test 10 (bloc 12)}},
+  x tick label style={align=center,font=\footnotesize},
+  xtick=data,enlarge x limits=0.12,
   legend style={at={(0.5,1.03)},anchor=south,legend columns=3,/tikz/every even column/.append style={column sep=0.5cm}},
   nodes near coords,nodes near coords style={font=\scriptsize,rotate=90,anchor=west,inner sep=2pt,/pgf/number format/fixed,/pgf/number format/fixed zerofill,/pgf/number format/precision=3},
   grid=major,grid style={gray!15}]
-\addplot[fill=cact!70,draw=cact] coordinates {(T1b6,0.684)(T2b12,0.680)(T7b12,0.676)(R2b12,0.531)};
-\addplot[fill=csay!70,draw=csay] coordinates {(T1b6,0.660)(T2b12,0.207)(T7b12,0.203)(R2b12,0.035)};
-\addplot[fill=cctl!50,draw=cctl] coordinates {(T1b6,0.688)(T2b12,0.676)(T7b12,0.676)(R2b12,0.531)};
+\addplot[fill=cact!70,draw=cact] coordinates {(T1b6,0.684)(T2b12,0.680)(T7b12,0.676)(RLb12,0.570)(R2b12,0.531)};
+\addplot[fill=csay!70,draw=csay] coordinates {(T1b6,0.660)(T2b12,0.207)(T7b12,0.203)(RLb12,0.043)(R2b12,0.035)};
+\addplot[fill=cctl!50,draw=cctl] coordinates {(T1b6,0.688)(T2b12,0.676)(T7b12,0.676)(RLb12,0.563)(R2b12,0.531)};
 \legend{intact,lésion du plan du besoin,lésion d'un plan aléatoire}
 \end{axis}
 \end{tikzpicture}
 \caption{Survie sous lésion. Au bloc~6 (test~1), effacer le plan corrélationnel
 ne change rien ; au bloc~12, sur la fin de la ligne du tour, effacer le plan causal
 fait tomber la survie au niveau du modèle de base (tests 2 et 7) ou presque à zéro
-(second agent, mesure descriptive du test~10, section~\ref{sec-locate}). Les
-lésions aléatoires de même dimension ne changent rien.}
+chez le second agent (réplication, RLS ; et mesure descriptive du test~10,
+section~\ref{sec-locate}, sur d'autres mondes). Les lésions aléatoires de même
+dimension ne changent rien (0,563 contre 0,570 pour la réplication).}
 \label{fig-lesions}
 \end{figure}
 
@@ -1355,7 +1371,8 @@ protocole.
 \begin{table}[t]
 \centering
 \caption{Réplication (protocole \code{4e10a6c}), second agent, au bloc 12. La
-réplication est jugée seule.}
+réplication est jugée seule. RLS et RLR : 256 mondes neufs (flux 128 ; plan au
+hasard, flux 129).}
 \label{tab-repl}
 \small
 \begin{tabularx}{\textwidth}{@{}l >{\raggedright\arraybackslash}p{3.6cm} X l@{}}
@@ -1365,21 +1382,34 @@ réplication est jugée seule.}
 RR & Le lecteur dit son énergie & 0,623 ; seuil 0,75 & échoue \\
 RA & Le second agent agit & survie 0,512 ; seuil 0,55 & échoue \\
 RONE & Un seul état fait agir et dire & acte $+0,034$ [0,031 ; 0,036] ; parole $+0,002$ [0,002 ; 0,003] ; hasard 0,003 et 0,001 & échoue \\
-RLS, RLR & Nécessité au bloc 12 & mesure en cours (en pause à 176 vies intactes sur 256) & --- \\
+RLS & Sans l'état, il ne survit plus & survie 0,570 $\to$ 0,043 ; baisse 0,527 [0,465 ; 0,590] ; lésion au hasard : baisse 0,008 & \passe \\
+RLR & Sans l'état, il ne dit plus son énergie & exactitude 0,639 $\to$ 0,500 ; baisse 0,139 [0,115 ; 0,164] ; hasard 0,001 & \passe \\
 \midrule
 & Critère global & & non satisfait \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-\paragraph{Résultats.} Chez le second agent, la poussée de l'état au bloc~12 sur
-\Choix{} fait agir dans le bon sens, mais bien moins que chez le
-premier ($+0,034$ contre $+0,156$, soit environ 4,6 fois moins), et elle ne fait rien dire (tableau~\ref{tab-repl}). Le résultat des tests~6
-et~7 n'est \textbf{pas répliqué}, sous la forme où il a été mesuré. Deux
+\paragraph{Suffisance.} Chez le second agent, la poussée de l'état au bloc~12 sur
+\Choix{} fait agir dans le bon sens, mais environ cinq fois moins que chez le premier
+($+0,034$ contre $+0,156$), et elle ne fait rien dire (tableau~\ref{tab-repl}). Deux
 explications étaient possibles : le second agent rassemble son besoin ailleurs, ou
 son lecteur n'a pas appris ; le test~10 teste la première, le test~11 la seconde.
-Puisque RR, RA et RONE échouent, le critère global de la réplication ne peut plus
-être satisfait, quelle que soit l'issue de RLS et RLR.
+
+\paragraph{Nécessité.} Mesurée ensuite sur 256 mondes neufs avec les directions et
+les vies de direction du second agent, comme au test~7. La mesure a été mise en
+pause à 176 vies intactes pour laisser le processeur au test~11, puis reprise ; une
+copie lancée par erreur au redémarrage du conteneur a tourné une demi-heure en
+parallèle avant d'être arrêtée, sans avoir rien écrit. Effacer le plan $(\dE,\dN)$
+au bloc~12 tue presque toujours le second agent (survie 0,570 $\to$ 0,043) et ramène
+le rapport d'énergie de son lecteur au niveau du hasard (0,639 $\to$ 0,500) ; un plan
+aléatoire ne change rien. La nourriture, sans seuil, suit (0,706 $\to$ 0,502).
+
+\paragraph{Ce que cela dit.} La \textbf{nécessité se réplique} : chez le second agent
+aussi, un état sur \Choix{} au bloc~12 est nécessaire pour survivre et pour dire son
+énergie. La \textbf{suffisance ne se réplique pas} sous la forme mesurée : pousser
+cet état le long de $\dE$ fait peu agir et ne fait pas dire. Le critère global de la
+réplication reste non satisfait (RR, RA, RONE).
 
 \subsection{Test 9 : à qui est ce besoin ?}
 \label{sec-t9}
@@ -1452,7 +1482,7 @@ du besoin (état) et $|\Delta P(\mathrm R)|$ moyen (acte), par type d'échange.}
 \end{table}
 
 % ================================================================= 6
-\section{La localisation et le test 11}
+\section{La localisation, le test 11 et ce que porte l'état}
 \label{sec-locate}
 
 \subsection{Test 10 : où chaque agent rassemble-t-il son besoin ?}
@@ -1482,7 +1512,7 @@ d'un lecteur qui a mal appris chez ces deux agents.
 \begin{figure}[t]
 \centering
 \begin{tikzpicture}
-\begin{axis}[width=0.78\textwidth,height=6.2cm,xlabel={bloc $b$},ylabel={$\operatorname{part}(b)$},
+\begin{axis}[width=0.78\textwidth,height=5.6cm,xlabel={bloc $b$},ylabel={$\operatorname{part}(b)$},
   xmin=-0.5,xmax=27.5,ymin=-0.05,ymax=1.5,xtick={0,3,...,27},ytick={0,0.5,1},
   legend pos=north west,legend cell align=left,grid=major,grid style={gray!20}]
 \addplot[cact,thick,mark=*,mark size=1.4pt] coordinates {(0,0.000)(1,0.000)(2,0.000)(3,0.000)(4,-0.003)(5,-0.003)(6,-0.001)(7,-0.001)(8,0.001)(9,0.004)(10,0.004)(11,0.004)(12,0.677)(13,0.678)(14,0.678)(15,0.678)(16,0.679)(17,0.679)(18,0.679)(19,0.928)(20,0.928)(21,0.929)(22,0.965)(23,0.966)(24,1.008)(25,1.008)(26,0.993)(27,1.000)};
@@ -1533,13 +1563,16 @@ $+0,217$ [0,206 ; 0,230], contre 0,011 pour le hasard : \textbf{le critère ACT1
 atteint par les valeurs mesurées}. Elle ne fait pas dire : $-0,001$
 [$-0,0019$ ; $-0,0004$]. Exactitude du rapport : énergie 0,608, nourriture 0,712 ;
 survie 0,707 ; pour la nourriture, l'acte suit ($+0,125$ [0,117 ; 0,133]) mais pas
-la parole ($+0,007$). Les bras de lésion (LS10) tournent sur le Mac. Un aperçu de
-112 vies de ces mesures avait été lu avant l'écriture du protocole du test~11, ce
-que ce protocole déclare.
+la parole ($+0,007$). Les bras de lésion (LS10) tournent sur le Mac (168 vies
+intactes sur 256 au 2 octobre). Une tranche du Mac, la sixième, a été perdue : le
+code de reprise revivait des vies de test déjà finies dans une tranche précédente ;
+il a été corrigé (commit \code{de2c1b4}) et aucun résultat n'en est changé. Un
+aperçu de 112 vies de ces mesures avait été lu avant l'écriture du protocole du
+test~11, ce que ce protocole déclare.
 
 \begin{table}[t]
 \centering
-\caption{Test 10 (protocole \code{12b4d2d}). Statut au 1\ier{} octobre 2026. Les
+\caption{Test 10 (protocole \code{12b4d2d}). Statut au 2 octobre 2026. Les
 mesures du second agent sont descriptives (LOC10 échoue).}
 \label{tab-t10}
 \small
@@ -1551,7 +1584,7 @@ $b^\star$ ; paires retenues & 12 ; 71 sur 454 essayées & 22 ; 100 sur 643 essay
 LOC10 & \textbf{échoue} (moins de 100 paires) & \passe \\
 Acte, $-4\,\dE$ à $b^\star$ & $+0,036$ [0,033 ; 0,039] ; hasard 0,0015 (descriptif) & $+0,217$ [0,206 ; 0,230] ; hasard 0,011 : ACT10 atteint \\
 Parole, $-4\,\dE$ à $b^\star$ & $+0,003$ (descriptif) & $-0,001$ [$-0,0019$ ; $-0,0004$] (sans seuil) \\
-Survie intacte $\to$ lésée (hasard) & 0,531 $\to$ 0,035 (0,531) ; baisse 0,496 [0,434 ; 0,555] (descriptif) & en cours sur le Mac (LS10) \\
+Survie intacte $\to$ lésée (hasard) & 0,531 $\to$ 0,035 (0,531) ; baisse 0,496 [0,434 ; 0,555] (descriptif) & en cours sur le Mac (LS10 ; 168 vies intactes sur 256) \\
 Exactitude énergie, intacte $\to$ lésée & 0,614 $\to$ 0,500 (descriptif) & en cours \\
 Exactitude nourriture, intacte $\to$ lésée & 0,694 $\to$ 0,502 (descriptif) & en cours \\
 \midrule
@@ -1652,7 +1685,7 @@ Agent du monde à deux, lecteur long & 19,688 & 0,779 & 0,939 & 0,698 \\
 \begin{figure}[t]
 \centering
 \begin{tikzpicture}
-\begin{axis}[width=0.62\textwidth,height=6cm,xlabel={itération},ylabel={perte (moyenne sur 100 it.)},
+\begin{axis}[width=0.62\textwidth,height=5.5cm,xlabel={itération},ylabel={perte (moyenne sur 100 it.)},
   xmin=0,xmax=2050,ymin=0.4,ymax=0.85,
   legend pos=outer north east,legend cell align=left,grid=major,grid style={gray!20},
   scaled x ticks=false,xticklabel style={/pgf/number format/1000 sep={\,}}]
@@ -1677,36 +1710,98 @@ marque la reprise exacte entre les deux tranches des lecteurs longs. Le lecteur
 \label{fig-losses}
 \end{figure}
 
-\paragraph{Résultats : en cours.} Au 1\ier{} octobre 2026, la mesure du second agent
-tourne en local (64 vies de test sur 256) ; celle de l'agent du monde à deux est en
-file d'attente sur le Mac. Aucun résultat partiel n'est rapporté ici. Le
-tableau~\ref{tab-t11} sera rempli à la publication des verdicts, calculés par le
-script pré-enregistré.
+\paragraph{Résultats.} Les deux mesures sont terminées (second agent : 256 vies,
+flux 526, en local ; agent du monde à deux : 256 vies, flux 626, sur le processeur
+du Mac en trois tranches) et leurs verdicts sont vérifiés en intégration continue
+(tableau~\ref{tab-t11}). Les deux mesures sont valides. \textbf{Le critère global
+n'est pas satisfait} : R11 et SAY11 échouent pour les deux agents.
 
-% RESULTS-TEST11
-% Remplacer les cellules « en cours » par les valeurs de artifacts/llm-need/long/verdicts.json
-% (python -m research.need_long write), puis retirer la mention « en cours » du titre.
+% RESULTS-TEST11 (rempli le 2 octobre 2026 depuis artifacts/llm-need/long/verdicts.json)
 \begin{table}[t]
 \centering
-\caption{Test 11 (protocole \code{0a28560}) : \textbf{en cours}. Cellules à
-remplir à la publication des verdicts.}
+\caption{Test 11 (protocole \code{0a28560}) : lecteurs longs (2\,000 itérations),
+256 vies de test neuves par agent, intervalles bootstrap à 95\,\% par vie. Entre
+parenthèses, la valeur obtenue avec le lecteur court (600 itérations).}
 \label{tab-t11}
 \small
-\begin{tabularx}{\textwidth}{@{}l >{\raggedright\arraybackslash}p{3.8cm} X X@{}}
+\begin{tabularx}{\textwidth}{@{}l >{\raggedright\arraybackslash}p{3.3cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X@{}}
 \toprule
 & Prédiction & Second agent (bloc 12) & Agent du monde à deux (bloc 22) \\
 \midrule
-R11 & Exactitude équilibrée (énergie) $\ge0,75$ & en cours & en cours \\
-SAY11 & $-4\,\dE$ : $P(\text{oui})$ $+0,10$ au moins ; hasard $\le$ 1/3 & en cours & en cours \\
---- & Acte, $-4\,\dE$ (sans seuil) & en cours & en cours \\
---- & Nourriture (sans seuil) & en cours & en cours \\
---- & Validité (réplique, exécution, contextes, masses) & réplique 0,013 ; exécution $2,6\times10^{-6}$ ; reste en cours & en cours \\
+R11 & Exactitude équilibrée (énergie) $\ge0,75$ & 0,595 (0,623) : \textbf{échoue} & \textbf{0,747} (0,608) : \textbf{échoue} de 0,003 \\
+SAY11 & $-4\,\dE$ : $P(\text{oui})$ $+0,10$ au moins ; hasard $\le$ 1/3 & $+0,0015$ [0,0006 ; 0,0025] ; hasard 0,0009 : \textbf{échoue} & $+0,029$ [0,028 ; 0,030] ($-0,001$) ; hasard 0,001 : \textbf{échoue} \\
+--- & Acte, $-4\,\dE$ (sans seuil) & $+0,032$ [0,030 ; 0,034] ; hasard 0,003 & $+0,226$ [0,215 ; 0,237] ; hasard 0,007 \\
+--- & Nourriture (sans seuil) & exactitude 0,729 ; acte $+0,029$ ; parole $+0,023$ & exactitude 0,721 ; acte $+0,132$ ; parole $-0,005$ \\
+--- & Validité & répliques 0,006 et 0,013 ; exécution $2,6\times10^{-6}$ ; 1\,320 contextes ; masses 0,98 et 1,00 & répliques 0,003 et 0,009 ; exécution $3\times10^{-6}$ ; 1\,549 contextes ; masses 1,00 \\
 \midrule
-& Critère global (R11 et SAY11, deux agents) & \multicolumn{2}{l}{en cours} \\
+& Critère global (R11 et SAY11, deux agents) & \multicolumn{2}{l}{\textbf{non satisfait}} \\
 \bottomrule
 \end{tabularx}
 \end{table}
 % END RESULTS-TEST11
+
+\paragraph{Ce que cela dit.} Chez le second agent, l'hypothèse \og son lecteur avait
+trop peu appris \fg{} est réfutée : trois fois plus d'apprentissage ne lui fait pas
+dire son énergie (0,623 $\to$ 0,595), ni par l'état qui fait agir. Chez l'agent du
+monde à deux, plus d'apprentissage aide nettement : le lecteur dit son énergie à
+0,747 au lieu de 0,608, juste sous le seuil, et pousser l'état qui fait agir change
+maintenant un peu ce qu'il dit ($+0,029$, environ trente fois le hasard, contre
+$-0,001$ avec le lecteur court). Le chemin de la parole par l'état existe chez lui,
+mais il est faible, loin du seuil fixé (0,10) et de ce que fait le premier agent
+($+0,202$). La parole par l'état qui fait agir reste donc, au niveau des seuils
+fixés, propre au premier agent.
+
+\subsection{Analyse exploratoire : le niveau d'énergie est-il dans l'état ?}
+\label{sec-probe}
+
+\paragraph{Question et déclaration.} Après l'échec du test~11 chez le second agent,
+une hypothèse s'imposait : cet agent ne rassemblerait que l'équilibre $E-N$ qui
+décide, et non le niveau de son énergie, si bien qu'aucun lecteur ne pourrait le
+dire. L'analyse a été écrite et publiée avant toute lecture
+(\code{research/need_probe.py}, commit \code{5ad433f}). Elle n'est pas
+pré-enregistrée comme un test et ne porte aucun verdict.
+
+\paragraph{Méthode.} Les 128 vies de direction de chaque agent sont rejouées
+exactement (écart de $P(\mathrm R)$ au plus $10^{-6}$ en moyenne) ; la sortie de son bloc
+de rassemblement (12, 12 et 22) est capturée sur les trois tokens \Choix{} à chaque
+décision (3\,403, 3\,139 et 3\,435 décisions), dimension massive exclue. Des
+régressions ridge lisent chaque grandeur ; le $R^2$ est hors échantillon, validé par
+vie sur quatre plis, et la régularisation est choisie à l'intérieur de chaque pli
+d'apprentissage. \og $E$ au-delà de $E-N$ \fg{} est le $R^2$ du résidu de $E$ après
+régression sur $E-N$ : ce que l'état dit de l'énergie une fois l'équilibre connu.
+
+\begin{table}[t]
+\centering
+\caption{Ce que l'état rassemblé porte (analyse exploratoire, commit \code{5ad433f}).
+$R^2$ hors échantillon de régressions ridge validées par vie ; valeurs du fichier
+\code{probe/probe.json}.}
+\label{tab-probe}
+\small
+\begin{tabular}{@{}l ccc@{}}
+\toprule
+Grandeur lue & Premier (bloc 12) & Second (bloc 12) & Monde à deux (bloc 22) \\
+\midrule
+$E$ & 0,72 & 0,64 & 0,69 \\
+$N$ & 0,58 & 0,61 & 0,62 \\
+$E-N$ & 0,68 & 0,68 & 0,74 \\
+$E+N$ & 0,60 & 0,57 & 0,57 \\
+$E$ au-delà de $E-N$ & 0,62 & 0,57 & 0,58 \\
+$P(\mathrm R)$ & 0,98 & 0,93 & 0,98 \\
+\midrule
+\makecell[l]{\og $E\le3$ \fg{} lu depuis $E$ prédit\\(exactitude équilibrée)} & 0,69 & 0,68 & 0,71 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Ce que cela dit (exploratoire).} L'hypothèse est \textbf{réfutée}
+(tableau~\ref{tab-probe}) : chez les trois agents, l'état porte le niveau d'énergie,
+et pas seulement l'équilibre qui décide, avec une précision voisine ; il porte aussi
+$E+N$ et ce que $E$ ajoute à $E-N$. La différence de parole entre les agents ne vient
+donc pas de l'information disponible dans l'état. Elle vient du lecteur (le premier
+atteint 0,77, au-dessus de la lecture linéaire de 0,69 ; le second 0,595, en dessous)
+ou du chemin par lequel il lit. Chez le second agent, la lésion du plan rend pourtant
+son lecteur aveugle (0,639 $\to$ 0,500, réplication) : il lit bien quelque chose dans
+cet état. Ces deux pistes appellent un protocole à part.
 
 % ================================================================= 7
 \section{Les échecs et ce qu'ils ont appris}
@@ -1720,35 +1815,37 @@ suivant. La figure~\ref{fig-inject} rassemble les effets de la même interventio
 \begin{figure}[t]
 \centering
 \begin{tikzpicture}
-\begin{axis}[ybar,width=0.95\textwidth,height=6.4cm,bar width=10pt,
+\begin{axis}[ybar,width=0.95\textwidth,height=5.8cm,bar width=7pt,
   ylabel={effet de $-4\,d_E$},ymin=-0.02,ymax=0.25,
-  symbolic x coords={A,B,C,D,E},
-  xticklabels={{premier, b12 (t.6)},{second, b12 (répl.)},{second, b12 (t.10)},{deux, b12 (t.9)},{deux, b22 (t.10)}},
-  xtick=data,enlarge x limits=0.12,x tick label style={font=\scriptsize},
+  symbolic x coords={A,B,C,F,D,E,G},
+  xticklabels={{premier\\b12, t.6},{second\\b12, répl.},{second\\b12, t.10},{second\\b12, t.11},{deux\\b12, t.9},{deux\\b22, t.10},{deux\\b22, t.11}},
+  xtick=data,enlarge x limits=0.08,x tick label style={font=\scriptsize,align=center},
   legend style={at={(0.5,1.03)},anchor=south,legend columns=4,/tikz/every even column/.append style={column sep=0.4cm}},
   grid=major,grid style={gray!15}]
-\addplot[fill=cact!70,draw=cact] coordinates {(A,0.156)(B,0.034)(C,0.036)(D,0.090)(E,0.217)};
-\addplot[fill=csay!70,draw=csay] coordinates {(A,0.202)(B,0.002)(C,0.003)(D,0.014)(E,-0.001)};
-\addplot[fill=cact!20,draw=cact!60] coordinates {(A,0.013)(B,0.003)(C,0.0015)(D,0.006)(E,0.011)};
-\addplot[fill=csay!20,draw=csay!60] coordinates {(A,0.006)(B,0.001)(C,0.001)(D,0.0004)(E,0.0003)};
+\addplot[fill=cact!70,draw=cact] coordinates {(A,0.156)(B,0.034)(C,0.036)(F,0.032)(D,0.090)(E,0.217)(G,0.226)};
+\addplot[fill=csay!70,draw=csay] coordinates {(A,0.202)(B,0.002)(C,0.003)(F,0.0015)(D,0.014)(E,-0.001)(G,0.029)};
+\addplot[fill=cact!20,draw=cact!60] coordinates {(A,0.013)(B,0.003)(C,0.0015)(F,0.003)(D,0.006)(E,0.011)(G,0.007)};
+\addplot[fill=csay!20,draw=csay!60] coordinates {(A,0.006)(B,0.001)(C,0.001)(F,0.0009)(D,0.0004)(E,0.0003)(G,0.001)};
 \legend{acte $\Delta P(\mathrm R)$,parole $\Delta P(\text{oui})$,acte (hasard),parole (hasard)}
 \draw[cact,dashed] (rel axis cs:0,0.6296) -- (rel axis cs:1,0.6296);
 \draw[csay,dotted,thick] (rel axis cs:0,0.4444) -- (rel axis cs:1,0.4444);
 \end{axis}
 \end{tikzpicture}
-\caption{La même intervention chez trois agents. Tirets : seuil de l'acte (0,15) ;
-pointillés : seuil de la parole (0,10). Seul le premier agent franchit les deux.
-Chez l'agent du monde à deux, l'état localisé au bloc~22 fait agir plus fort que
-chez le premier, sans faire dire. Effets aléatoires : moyennes des valeurs absolues
+\caption{La même intervention chez trois agents ; t.11 : lecteurs longs. Tirets :
+seuil de l'acte (0,15) ; pointillés : seuil de la parole (0,10). Seul le premier
+agent franchit les deux. Chez l'agent du monde à deux, l'état localisé au bloc~22
+fait agir plus fort que chez le premier ; avec le lecteur long, il fait un peu
+dire ($+0,029$), loin du seuil. Effets aléatoires : moyennes des valeurs absolues
 de trois directions de même norme.}
 \label{fig-inject}
 \end{figure}
 
 \subsection{La réplication au bloc 12}
 
-Le résultat le plus fort du programme (tests 6 et 7) ne se réplique pas chez un
-second agent appris de zéro avec les mêmes réglages (section~\ref{sec-repl}). Trois
-enseignements en découlent.
+Le résultat le plus fort du programme (tests 6 et 7) ne se réplique qu'à moitié chez
+un second agent appris de zéro avec les mêmes réglages (section~\ref{sec-repl}) : la
+nécessité oui (RLS, RLR), la suffisance non (RONE). Quatre enseignements en
+découlent.
 \begin{itemize}
 \item \textbf{Le lieu ne s'importe pas.} Le bloc~12 avait été trouvé par une
 exploration sur le premier agent. Le test~10 montre que le rassemblement se fait
@@ -1759,8 +1856,13 @@ que 454 paires \og calme \fg{}$\to$\og tu cours \fg{} parmi ses 1\,500 (le premi
 en avait 587), et 71 d'entre elles seulement font bouger l'acte d'au moins 0,10. Sa
 direction d'énergie se répartit autrement sur les trois tokens (normes 508, 97 et
 205 contre 136, 292 et 343 chez le premier ; tableau~\ref{tab-axe}). L'effacer
-détruit la survie, la pousser fait peu agir : l'état est nécessaire, mais la
-direction ajustée n'est pas un bon levier.
+détruit la survie (0,570 $\to$ 0,043) et le rapport, la pousser fait peu agir :
+l'état est nécessaire, mais la direction ajustée n'est pas un bon levier.
+\item \textbf{Plus d'apprentissage ne suffit pas.} Un lecteur trois fois plus
+entraîné ne dit pas mieux l'énergie du second agent (0,595 ; test~11), alors que
+l'information est présente dans l'état ($R^2$ de 0,64 pour $E$ ;
+section~\ref{sec-probe}). L'écart avec le premier agent tient au lecteur ou au
+chemin par lequel il lit, ce qu'aucun test n'a encore isolé.
 \item \textbf{L'apprentissage du rapport a pu abîmer l'action.} Observation
 descriptive, tirée des résumés d'étapes publiés : les vies de l'étape de rapport,
 vécues par le second agent \emph{avant} l'apprentissage du rapport, survivent
@@ -1778,8 +1880,8 @@ autant (0,94) que changer le même événement de l'agent. Mais l'analyse par é
 perturbation presque constante, alors que ceux de l'agent bougent l'état selon ce
 qu'ils font à ses besoins. La comparaison pré-enregistrée portait sur
 \og calme \fg{}$\to$\og orage \fg{}, qui retire une unité aux \emph{deux} besoins et
-change donc à peine leur équilibre, alors que l'état code surtout cet équilibre
-(section~\ref{sec-axe}). ONE9 échoue de son côté : l'état y a été cherché au bloc~12, alors que la règle du
+change donc à peine leur équilibre, alors que les directions causales mesurées
+suivent surtout cet équilibre (section~\ref{sec-axe}). ONE9 échoue de son côté : l'état y a été cherché au bloc~12, alors que la règle du
 test~10 situe le rassemblement de cet agent au bloc~22, et son lecteur a peu appris. Leçons : formuler les comparaisons de possession dans les
 termes de ce que l'état code, et localiser avant de tester.
 
@@ -1790,7 +1892,10 @@ test~6, +0,125 chez l'agent du monde à deux au bloc~22), mais sous le seuil de
 0,15 chez le premier agent, et il n'est jamais lu par les lecteurs (+0,009, +0,014,
 +0,007). L'exactitude du rapport de nourriture reste sous 0,75 (0,705 au test~6).
 Le lecteur du premier agent s'appuie en partie sur l'événement du tour
-(section~\ref{sec-t6}). La géométrie de l'état explique en partie cet échec.
+(section~\ref{sec-t6}). La géométrie des directions causales peut en expliquer une
+partie (section~\ref{sec-axe}), mais pas l'absence d'information : le niveau de
+nourriture se lit linéairement dans l'état ($R^2$ de 0,58 à 0,62 ;
+section~\ref{sec-probe}).
 
 \subsection{Le lecteur équilibré}
 
@@ -1800,29 +1905,35 @@ avec ce résultat et n'ont pas été départagées : soit, dans les documents du
 premier lecteur, l'événement du tour servait d'appui pour commencer à apprendre
 (comme la commande préférée servait d'appui à la lecture de la marque dans la phase
 antérieure, section~\ref{sec-prior}) ; soit l'état sur \Choix{} ne porte pas le
-niveau absolu de nourriture sous une forme apprenable en 600 itérations. Les
-verdicts R8, SAY8 et ONE8 ne sont pas établis.
+niveau absolu de nourriture sous une forme apprenable en 600 itérations. L'analyse
+exploratoire de la section~\ref{sec-probe}, qui lit linéairement ce niveau dans
+l'état ($R^2$ 0,58 chez le premier agent), rend la seconde lecture moins probable
+sans l'exclure : une information lisible par une régression n'est pas forcément
+apprenable par un lecteur en 600 itérations. Les verdicts R8, SAY8 et ONE8 ne sont
+pas établis.
 
-\subsection{Un seul axe : l'équilibre énergie \texorpdfstring{$-$}{-} nourriture}
+\subsection{Deux directions presque opposées : l'équilibre énergie \texorpdfstring{$-$}{-} nourriture}
 \label{sec-axe}
 
 Une analyse exploratoire faite après les verdicts des tests 6 et 7 a recalculé,
 depuis les fichiers publiés, la géométrie des directions (tableau~\ref{tab-axe}).
 Sur \og ix \fg{} et \og\ :\fg{}, $\dN$ est presque exactement l'opposé de $\dE$
-($\cos=-0,99$). L'état rassemblé pour choisir ne code donc pas deux niveaux
-séparés : il code surtout \textbf{l'équilibre énergie\,$-$\,nourriture}, c'est-à-dire
-lequel des deux besoins est le plus urgent, ce qui est précisément ce qu'il faut
-pour choisir entre R et M, et ce que la pulsion~\eqref{eq-drive} récompense. Les
-directions des autres agents, recalculées pour cet article, ont la même forme
-($\cos$ de $-0,89$ à $-1,00$).
+($\cos=-0,99$). Un changement d'événement passé déplace donc l'état surtout le long
+d'un axe, \textbf{l'équilibre énergie\,$-$\,nourriture}, c'est-à-dire lequel des deux
+besoins est le plus urgent : ce qu'il faut pour choisir entre R et M, et ce que la
+pulsion~\eqref{eq-drive} récompense. Les directions des autres agents, recalculées
+pour cet article, ont la même forme ($\cos$ de $-0,89$ à $-1,00$).
 
-Cette géométrie éclaire trois échecs. Dire \og mon énergie est basse \fg{} revient à
-lire l'axe d'un côté ; dire \og ma nourriture est basse \fg{} demanderait de le lire
-de l'autre côté \emph{et} un niveau absolu que l'axe ne porte presque pas (R6,
-lecteur équilibré). Un échange qui retire une unité aux deux besoins le bouge à
-peine (MINE9). Enfin, la lésion du plan $(\dE,\dN)$ efface surtout cet axe : la
-réponse \og non \fg{} constante du lecteur sous lésion (section~\ref{sec-t7}) en est
-la conséquence attendue.
+Cette géométrie porte sur les directions \emph{causales}, pas sur toute
+l'information de l'état. L'analyse exploratoire de la section~\ref{sec-probe} montre
+que l'état porte aussi le niveau d'énergie lui-même, au-delà de l'équilibre ($R^2$
+de 0,57 à 0,62 une fois $E-N$ connu), chez les trois agents. Notre première lecture
+(\og l'état ne code qu'un axe \fg{}) était donc trop forte. Ce qui reste vrai : pousser
+$\dE$ ou $\dN$ revient à pousser surtout cet axe, si bien que dire \og ma nourriture
+est basse \fg{} par la direction qui fait agir demande de le lire de l'autre côté
+(R6), et qu'un échange qui retire une unité aux deux besoins le bouge à peine
+(MINE9). La lésion du plan $(\dE,\dN)$ fige cet axe : la réponse \og non \fg{}
+constante du lecteur sous lésion (section~\ref{sec-t7}) est compatible avec ce gel.
 
 \begin{table}[t]
 \centering
@@ -1911,22 +2022,25 @@ Test & Lectures anticipées, amendements \\
 5 & Écrit après 8 vies de test du test~4. \\
 6 & Écrit après les vies de direction du test~5 ; lectures à 8, 112, 120, 168 et 240 vies. \\
 7 & Écrit après 112 vies du test~6 ; lectures à 8, 64, 256 vies intactes et 32 lésées. \\
-R & Écrit après 120 vies du test~6 ; critères sur l'énergie seule ; aperçus à 144 et 216 vies ; redémarrage après 152 vies. \\
+R & Écrit après 120 vies du test~6 ; critères sur l'énergie seule ; aperçus à 144 et 216 vies ; redémarrage après 152 vies ; nécessité mise en pause à 176 vies intactes puis reprise (une copie lancée par erreur a tourné une demi-heure sans rien écrire). \\
 8 & Écrit après le verdict et l'analyse exploratoire du test~6 ; acte pour la nourriture sans seuil, choix fait en connaissance. \\
 9 & Paires lues à la fin de la deuxième tranche : MINE9 et SELF9 connus avant les vies de test. \\
-10 & Écrit après les aperçus du second agent (216 vies) et de l'agent du monde à deux (64 vies) au bloc~12. \\
+10 & Écrit après les aperçus du second agent (216 vies) et de l'agent du monde à deux (64 vies) au bloc~12 ; une tranche du Mac perdue (vies déjà finies revécues), code de reprise corrigé (\code{de2c1b4}), aucun résultat changé. \\
 11 & Écrit après les blocs trouvés par le test~10 et un aperçu de 112 vies au bloc~22 ; ajout avant exécution : deux tranches exactes de 1\,000 itérations. \\
+Expl. & Analyse de ce que porte l'état (section~\ref{sec-probe}) : écrite et publiée avant lecture (\code{5ad433f}), après l'échec du test~11 chez le second agent ; sans verdict. \\
+12 & Amendement avant toute exécution : règle de la température choisie par une simulation sans modèle ; VIDE y est prédit à la limite (0,26 à 0,37 pour un seuil de 0,25), seuil inchangé. \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
 \subsection{Un agent, une graine}
 
-Chaque agent est le produit d'une seule graine d'apprentissage. Le résultat positif
-(tests 6 et 7) repose sur un seul agent, et la réplication sur un second agent a
-échoué. Il est donc possible que ce résultat tienne en partie au hasard de son
-apprentissage ; c'est même l'interprétation la plus prudente tant que le test~11 et
-les mesures de nécessité du second agent ne sont pas publiés. Les intervalles de
+Chaque agent est le produit d'une seule graine d'apprentissage. Le résultat le plus
+fort (tests 6 et 7) repose sur un seul agent ; chez un second agent, la nécessité se
+réplique, mais ni la suffisance pour l'acte au seuil fixé, ni la parole par l'état,
+même avec un lecteur trois fois plus entraîné (test~11). Il est donc possible que la
+parole par l'état tienne en partie au hasard de l'apprentissage du premier agent ou
+de son lecteur ; c'est l'interprétation la plus prudente. Les intervalles de
 confiance décrivent la variabilité \emph{entre vies}, pas \emph{entre agents}.
 
 \subsection{Un petit monde et un petit modèle}
@@ -1999,16 +2113,18 @@ linguistiques, et un monde aux mots arbitraires serait un test plus dur.
 
 Le tableau~\ref{tab-cinq} place chaque résultat pré-enregistré sur les niveaux de
 Chandaria et collaborateurs~\cite{chandaria2026}, en disant ce qui passe, ce qui
-échoue et ce qui manque. Le bilan tenu dans le dépôt (30 septembre) est mis à jour
-avec les tests 9 et 10 et la réplication. Le cadre prévient que, chez des systèmes
+échoue et ce qui manque. Il suit le bilan tenu dans le dépôt, mis à jour le
+2 octobre avec la réplication, les tests 9 à 11 et l'analyse exploratoire de
+l'état. Le cadre prévient que, chez des systèmes
 entraînés à imiter les humains, les rapports verbaux pèsent peu ; c'est pourquoi nous
 ne nous appuyons pas sur ce que l'agent dit, mais vérifions causalement d'où vient ce
 qu'il dit.
 
 \begin{table}[p]
 \centering
-\caption{Menia sur les cinq niveaux de Chandaria et al. (2026), au 1\ier{} octobre
-2026. \og Premier agent \fg{} : l'agent des tests 1 à 8.}
+\caption{Menia sur les cinq niveaux de Chandaria et al. (2026), au 2 octobre 2026.
+\og Premier agent \fg{} : l'agent des tests 1 à 8 ; \og second agent \fg{} : celui de
+la réplication ; \og agent à deux \fg{} : celui du monde à deux.}
 \label{tab-cinq}
 \small
 \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.2cm} >{\raggedright\arraybackslash}p{3.4cm} X >{\raggedright\arraybackslash}p{2.3cm}@{}}
@@ -2016,21 +2132,21 @@ qu'il dit.
 Niveau & Indicateur & Résultat & Statut \\
 \midrule
 1. Comportemental & Comportement dirigé vers un but, flexible & survie 0,12 $\to$ 0,68 par la seule satisfaction du besoin ; témoin 0 ; sert le besoin le plus bas 93 fois sur 100 (S) ; reproduit par deux autres agents (0,70 et 0,71 au tour 8) & établi \\
-& Rapport de son état & énergie 0,77, nourriture 0,70 (premier agent) ; 0,61 à 0,62 pour l'énergie chez les deux autres & partiel \\
+& Rapport de son état & énergie 0,77, nourriture 0,70 (premier agent) ; énergie 0,595 et 0,747 chez les deux autres avec des lecteurs longs (test 11 ; seuil 0,75) & partiel \\
 \midrule
-2. Computationnel & État rassemblé et utilisé pour agir & lésion au bloc 12 : survie 0,68 $\to$ 0,21 (LS2) et 0,676 $\to$ 0,203 (LS7) ; second agent 0,531 $\to$ 0,035 (descriptif) & établi (premier agent) \\
-& Accès de cet état au rapport & même poussée : acte $+0,156$, parole $+0,202$ (ONE6) ; non répliqué (RONE), ni au bloc 22 (parole $-0,001$) & établi pour un agent \\
-& Nécessité pour agir et pour dire & LS7 et LR7 passent (énergie) & établi (premier agent, énergie) \\
+2. Computationnel & État rassemblé et utilisé pour agir & lésion au bloc 12 : survie 0,68 $\to$ 0,21 (LS2) et 0,676 $\to$ 0,203 (LS7) ; second agent 0,570 $\to$ 0,043 (RLS) ; agent à deux : la poussée au bloc 22 fait agir ($+0,217$, ACT10) & établi (deux agents) \\
+& Accès de cet état au rapport & même poussée : acte $+0,156$, parole $+0,202$ (ONE6) ; non répliqué au seuil (RONE ; test 11 : parole $+0,0015$ et $+0,029$) & établi pour un agent \\
+& Nécessité pour agir et pour dire & LS7 et LR7 passent (énergie) ; répliquée chez le second agent : RLS et RLR passent (rapport 0,639 $\to$ 0,500) & établi (deux agents, énergie) \\
 & Nourriture & fait agir, n'est pas dite (R6) ; lecteur équilibré non appris & échoue \\
 & Capacité limitée & forcer la parole dans \Choix{} réécrit l'état (test 5, non publié) & observé \\
 \midrule
 3. Structure causale fine & Récurrence & non mesurée ; d'un tour à l'autre, l'état passé est relu par l'attention & manque \\
-& Organisation causale précise & événements sur leurs mots jusqu'au bloc 9, rassemblés sur \Choix{} ensuite ; règle étalonnée : $b^\star=12$ ou 22 selon l'agent & partiel \\
+& Organisation causale précise & événements sur leurs mots jusqu'au bloc 9, rassemblés sur \Choix{} ensuite ; règle étalonnée : $b^\star=12$ ou 22 selon l'agent ; niveau d'énergie lisible dans l'état des trois agents ($R^2$ 0,64 à 0,72, exploratoire) & partiel \\
 \midrule
 4. Organismique & Homéostasie & deux besoins à maintenir ; l'agent apprend à les maintenir et sa survie en dépend & établi (fonctionnel) \\
-& Intéroception & niveaux jamais vus, inférés et rassemblés en un état suffisant et nécessaire pour agir et dire & établi (premier agent, énergie) \\
+& Intéroception & niveaux jamais vus, inférés et rassemblés en un état suffisant et nécessaire pour agir et dire (premier agent) ; nécessaire chez le second & établi (énergie) ; suffisance pour un agent \\
 & Valence & seul signal : la réduction du manque ; valence fonctionnelle, pas vécue & fonctionnel seulement \\
-& Modèle de soi, possession & MINE9, SELF9 échouent ; l'agent ne distingue qu'en partie ses événements de ceux de l'autre & non démontré \\
+& Modèle de soi, possession & MINE9, SELF9 échouent ; l'agent ne distingue qu'en partie ses événements de ceux de l'autre & échoue \\
 \midrule
 5. Organisme et environnement & Couplage actif & l'agent agit dans un monde qui le change et apprend de ce couplage seul & établi (monde simple) \\
 & Sens construit par l'interaction & 6 événements, 2 actions & limité \\
@@ -2063,23 +2179,30 @@ modèles~\cite{workspace2026} ; l'apport, à notre connaissance, est son applica
 un besoin appris en vivant, dont la survie dépend, lu par un système séparé, avec des
 tests de suffisance et de nécessité contre des témoins aléatoires.
 
+La partie \emph{nécessité} de ce résultat se réplique chez un second agent appris de
+zéro : effacer le même plan au bloc~12 y fait tomber la survie de 0,570 à 0,043 et
+le rapport d'énergie au niveau du hasard. La partie \emph{suffisance} ne se réplique
+pas au seuil fixé.
+
 Trois détails renforcent cette lecture. La direction a été mesurée sur l'agent qui agit
 seul, sans que le lecteur intervienne, sur des vies différentes de celles du test. Les effets de
 l'intervention sont presque universels : positifs sur l'acte dans 100\,\% des
 contextes et sur la parole dans 95\,\%, contre 47\,\% pour le hasard. Et la lésion
-ne rend pas le lecteur aléatoire mais constant (\og non \fg{}), ce qui montre que ce
+ne rend pas le lecteur aléatoire mais constant (\og non \fg{}), ce qui indique que ce
 plan est sa seule source d'information sur l'énergie.
 
 \subsection{Ce qui n'est pas montré}
 
 \begin{itemize}
-\item \textbf{La généralité.} Le résultat ne se réplique pas, sous la forme mesurée,
-chez un second agent ; chez l'agent du monde à deux, l'état localisé fait agir mais
-pas dire. Tant que le test~11 n'est pas publié, nous ne savons pas si l'échec de la
-parole tient aux lecteurs ou aux agents.
-\item \textbf{Les deux besoins.} La nourriture fait agir mais n'est pas dite, et
-l'état code surtout un équilibre ; il n'y a pas, dans ces agents, deux variables
-intéroceptives séparées.
+\item \textbf{La généralité de la parole.} La parole par l'état qui fait agir ne se
+réplique pas : ni chez le second agent, ni chez l'agent du monde à deux, même avec
+des lecteurs trois fois plus entraînés (test~11), alors que l'information sur
+l'énergie est présente dans leur état (section~\ref{sec-probe}). Ce qui manque
+tient au lecteur ou à son chemin, et n'a pas encore été isolé.
+\item \textbf{Les deux besoins.} La nourriture fait agir mais n'est pas dite ; les
+directions causales des deux besoins sont presque opposées, bien que les deux niveaux
+soient lisibles dans l'état. Aucun lecteur ne dit encore les deux besoins par l'état
+qui fait agir.
 \item \textbf{La possession.} L'état n'est pas démontré \og à soi \fg{} dans un monde
 partagé.
 \item \textbf{La persistance.} Nous n'avons pas mesuré si l'état d'un tour est repris
@@ -2096,17 +2219,21 @@ qu'il dit, et non ce qu'il dit.
 
 \subsection{Ce que les échecs suggèrent}
 
-Les échecs dessinent une image cohérente. Le besoin que ces agents apprennent n'est
-pas une jauge par besoin, mais une estimation de \emph{lequel est le plus urgent},
-exactement ce que demande un choix binaire guidé par une pulsion quadratique. Cette
-estimation est rassemblée tardivement et par paliers, à des blocs qui varient d'un
-agent à l'autre. Un lecteur appris en 600 itérations y trouve l'énergie chez un agent
-et pas chez les autres ; quand on lui retire le raccourci de l'événement, il
-n'apprend plus. Le rapport verbal d'un état appris est donc fragile : il dépend de la
-géométrie de l'état, de son lieu, et de la façon dont le lecteur apprend. Ces
-observations suggèrent d'interroger le lecteur sur ce que l'état code (\og le plus
-urgent \fg{}), de localiser avant de tester, et de mesurer la persistance. Le brouillon
-de protocole de la section~\ref{sec-futur} en tient compte.
+Les échecs dessinent une image plus nuancée que celle que nous avions d'abord
+proposée. Les directions par lesquelles un événement passé déplace l'état codent
+surtout \emph{lequel des besoins est le plus urgent}, exactement ce que demande un
+choix binaire guidé par une pulsion quadratique ; mais l'état porte aussi les niveaux
+eux-mêmes (section~\ref{sec-probe}). Ce rassemblement se fait tardivement et par
+paliers, à des blocs qui varient d'un agent à l'autre. Un lecteur y lit l'énergie
+par l'état qui fait agir chez un agent, pas chez les deux autres, même trois fois
+plus entraîné ; quand on lui retire le raccourci de l'événement, il n'apprend plus.
+Le rapport verbal d'un état appris est donc fragile : l'information est là, mais le
+lecteur ne l'emprunte pas toujours, et ce qu'il emprunte dépend du lieu de l'état, de
+la direction qui le pousse et de la façon dont il apprend. Ces observations suggèrent
+d'interroger le lecteur sur ce que les directions causales codent (\og le plus
+urgent \fg{}), de localiser avant de tester, d'étudier le chemin du lecteur et de
+mesurer la persistance. Le test~12 (section~\ref{sec-futur}) en tient compte : son
+lecteur est interrogé sur \og ce qui manque le plus \fg{}.
 
 % ================================================================= 11
 \section{Travaux futurs}
@@ -2114,24 +2241,28 @@ de protocole de la section~\ref{sec-futur} en tient compte.
 
 \subsection{Finir ce qui est en cours}
 
-Quatre mesures pré-enregistrées sont en cours ou suspendues : le test~11 (lecteurs
-longs), la nécessité chez le second agent (RLS, RLR ; en pause à 176 vies intactes
-sur 256), les lésions de l'agent du monde à deux au bloc~22 (LS10) et les verdicts des
-tests~4 et~5. Leurs verdicts seront publiés tels quels. Deux tests restent à
+Deux mesures pré-enregistrées restent en cours ou suspendues : les lésions de l'agent
+du monde à deux au bloc~22 (LS10 ; 168 vies intactes sur 256 au 2 octobre) et les
+verdicts des tests~4 et~5. Ils seront publiés tels quels. Trois questions restent à
 pré-enregistrer : la \emph{persistance} (l'état d'un tour est-il repris au tour
-suivant ? niveau~3) et un lecteur interrogé sur ce que l'état code
-(\og quel besoin est le plus urgent ? \fg{}). Un modèle plus grand est la suite
-naturelle de l'ensemble.
+suivant ? niveau~3), un lecteur interrogé sur ce que les directions causales codent
+(\og quel besoin est le plus urgent ? \fg{}), et surtout la question ouverte par le
+test~11 et l'analyse exploratoire : pourquoi un lecteur lit l'énergie par l'état qui
+fait agir chez un agent et pas chez les autres, alors que l'information y est. Un
+modèle plus grand est la suite naturelle de l'ensemble.
 
-\subsection{\og Soif de savoir \fg{} : un besoin de connaissance sans renforcement (en préparation)}
+\subsection{Test 12, \og Soif de savoir \fg{} : un besoin de connaissance sans renforcement (pré-enregistré)}
 \label{sec-soif}
 
 Le propriétaire du projet a demandé un modèle qui choisisse lui-même ce qu'il
-apprend, poussé par un besoin de savoir, sans apprentissage par renforcement. Un
-brouillon de protocole existe ; il \textbf{n'est pas encore pré-enregistré} et
-plusieurs de ses choix sont explicitement marqués \og à trancher \fg{}. Les valeurs
-ci-dessous sont celles du brouillon et peuvent changer avant l'enregistrement par
-commit, qui précédera tout code.
+apprend, poussé par un besoin de savoir, sans apprentissage par renforcement. Le
+protocole est \textbf{pré-enregistré} (commit \code{017f2e5}, 1\ier{} octobre), avec un
+amendement déclaré avant toute exécution (ci-dessous). Le code est écrit (monde,
+tableau, instinct, hormone et verdicts en numpy ; apprenant et choix sur le Mac ;
+localisation, directions et mesures statiques en torch) ; ses tests passent sur un
+petit modèle, et un essai à blanc de la partie torch a réussi. Le pilote déclaré
+(24 vies) tourne sur le Mac, après une vérification de l'apprentissage en mémoire
+contre \code{mlx_lm.lora}. \textbf{Aucun résultat n'est encore disponible.}
 
 \paragraph{Ce qui est donné, ce qui est appris.} Le besoin de l'énergie avait une
 faiblesse : l'imitation filtrée par le résultat~\eqref{eq-keep} est proche du
@@ -2163,21 +2294,66 @@ p_d=(1-\varepsilon)\operatorname{softmax}\!\Bigl(\frac{\text{besoin}}{T}\Bigr)_{
 \end{gathered}
 \label{eq-instinct}
 \end{equation}
-avec $\varepsilon=0,10$ et $T$, $b$ fixés par un pilote déclaré. Le savoir d'une vie
-de 32 séances est $G=K_\text{mots}(32)+K_\text{base}(32)$, avec $K_d(k)=L_d(0)-L_d(k)$
-sur des examens fixes.
+avec $\varepsilon=0,10$ (exploration fixe) et $b=2T$. Le savoir d'une vie de 32
+séances est $G=K_\text{mots}(32)+K_\text{base}(32)$, avec $K_d(k)=L_d(0)-L_d(k)$ sur
+des examens fixes. L'instinct est installé dans le modèle par 2\,000 itérations
+d'imitation sur 8\,000 tableaux inventés ; il doit être reproduit à 0,15 près en
+variation totale sur 1\,000 tableaux neufs, sinon le test est invalide.
 
-\paragraph{Les tests.} La boîte à outils du besoin est reprise : localisation par la
-même règle~\eqref{eq-share} sur des tableaux où le progrès de \og base \fg{} change ;
-directions par moindres carrés sans constante ; poussée $+2\,d_\text{base}$ ; lésion
-du plan du besoin ; lecteur séparé interrogé sur \og ce qui te manque le plus \fg{},
-c'est-à-dire sur le relatif que l'état code probablement. Les prédictions du
-brouillon sont regroupées en quatre critères : \textbf{A}, une curiosité sans
-renforcement (le modèle apprend au moins 15\,\% de plus qu'au hasard et délaisse ce
-qui n'apprend rien) ; \textbf{B}, le manque de savoir est un état (localisé,
-suffisant, nécessaire au choix et à l'apprentissage) ; \textbf{C}, il dit ce qui lui
-manque par l'état qui le fait choisir ; \textbf{D}, une hormone (section suivante).
-Personne ne s'éteint dans ce monde : le manque est plus doux que la faim.
+\paragraph{L'amendement, avant toute exécution.} Le monde a d'abord été codé sans
+modèle et simulé avec des apprenants jouets (une courbe de perte par domaine, trois
+jeux de courbes, avec et sans bruit d'examen). Avec la règle écrite d'abord ($T$ =
+la moitié de la médiane des progrès des \emph{deux premières} séances), l'instinct
+était presque plat et la soif de savoir n'apprenait pas plus que le hasard. La règle
+devient : $T$ = la moitié de la médiane des progrès de \emph{toutes} les séances sur
+\og mots \fg{} et \og base \fg{} des 12 vies du pilote au hasard ($b=2T$ inchangé) ;
+avec elle, CUR passe dans les trois jeux de courbes. La même simulation prédit, et
+le protocole le dit d'avance, que VIDE sera à la limite : la part des séances sur
+\og calcul \fg{} et \og suites \fg{} y va de 0,26 à 0,37 (hasard : 0,50), au-dessus du
+seuil de 0,25, qui n'est \textbf{pas} changé.
+
+\paragraph{Les bras et les tests.} Huit bras de vies de test, appariés par vie :
+le modèle qui choisit (C, 24 vies), le hasard (H, 24), le modèle sous lésion du plan
+du besoin (L, 24) ou d'un plan aléatoire (LH, 16), le modèle sous hormone sur l'état
+(HA, 24) ou dans une direction aléatoire (HAr, 16), sous hormone sur la plasticité
+(HP, 24), et une règle \og la plus haute perte \fg{} (E, 12, descriptive). La boîte à
+outils du besoin est reprise : localisation par la même règle~\eqref{eq-share} sur
+des tableaux où le progrès de \og base \fg{} change ; directions par moindres carrés
+sans constante ; poussée $+2\,d_\text{base}$ ; lésion du plan du besoin ; lecteur
+séparé interrogé sur \og ce qui te manque le plus \fg{}, c'est-à-dire sur le relatif
+que l'état code probablement. Les douze prédictions (tableau~\ref{tab-t12}) sont
+regroupées en quatre critères globaux : \textbf{A}, une curiosité sans renforcement
+(CUR et VIDE) ; \textbf{B}, le manque de savoir est un état (LOC, ACT, LS1, LS2) ;
+\textbf{C}, il dit ce qui lui manque par l'état qui le fait choisir (READ, SAY) ;
+\textbf{D}, une hormone (HOR1, HOR2, PL1, GAIN ; section suivante). Personne ne
+s'éteint dans ce monde : le manque est plus doux que la faim.
+
+\begin{table}[t]
+\centering
+\caption{Test 12 (protocole \code{017f2e5}) : les prédictions fixées. $G$ : savoir
+acquis ; $K_\text{base}(20)$ : savoir sur \og base \fg{} à la séance 20 ; intervalles
+bootstrap à 95\,\% par vie, appariés entre bras. Aucun résultat au 2 octobre.}
+\label{tab-t12}
+\small
+\begin{tabularx}{\textwidth}{@{}l >{\raggedright\arraybackslash}p{4.6cm} X@{}}
+\toprule
+& Prédiction & Critère \\
+\midrule
+CUR & La soif de savoir apprend plus que le hasard & $G(C)-G(H)\ge0,15\,G(H)$, borne basse $>0$ \\
+VIDE & Elle délaisse ce qui n'apprend rien & part de C sur \og calcul \fg{} et \og suites \fg{} $\le0,25$ (borne haute $<0,50$) \\
+LOC & Le manque est rassemblé sur \Choix{} & un bloc $b^\star$ existe \\
+ACT & Le pousser fait choisir & $+2\,d_\text{base}$ : $P(\text{base})$ $+0,15$ au moins ; hasard $\le$ 1/3 \\
+LS1 & Sans lui, le choix ne suit plus le besoin & écart à l'instinct, L $-$ C $\ge0,15$ ; LH $\le$ 1/3 \\
+LS2 & Sans lui, il apprend moins & $G(C)-G(L)\ge0,5\,(G(C)-G(H))$ ; LH $\le$ 1/3 \\
+READ & Ce qu'il dit est vrai & exactitude équilibrée $\ge0,75$ \\
+SAY & Il le dit par l'état qui fait choisir & $+2\,d_\text{base}$ : $P(\text{oui})$ $+0,10$ au moins ; hasard $\le$ 1/3 \\
+HOR1 & L'appétit lent fait étudier \og base \fg{} & part de \og base \fg{} (séances 5 à 20), HA $-$ C $\ge0,10$ ; HAr $\le$ 1/3 \\
+HOR2 & \dots{} et l'apprendre & $K_\text{base}(20)$, HA $-$ C $\ge0,10\,K_\text{base}(20)$ de C \\
+PL1 & La plasticité modulée fait apprendre plus vite & $K_\text{base}(20)$, HP $-$ C $\ge0,10\,K_\text{base}(20)$ de C \\
+GAIN & Un gain rend le choix plus sensible au progrès & sensibilité avec gain $-$ sans gain $\ge0,05$ ; gain aléatoire $\le$ 1/3 \\
+\bottomrule
+\end{tabularx}
+\end{table}
 
 \paragraph{Ce qui existe déjà.} Choisir ses données d'après le progrès a des
 précédents : curriculums automatiques~\cite{graves2017}, mélanges de données de
@@ -2325,7 +2501,7 @@ un $\Delta_\text{dur}\ne0$ signifiant que l'hormone a été consolidée dans les
 sur l'apprentissage ; (6)~le lecteur, qui doit suivre $H$, avec une même injection qui
 change l'acte et la parole ; (7)~l'intérêt : entropie des choix de domaine,
 persistance après la baisse du progrès, hystérésis, coût en survie, en comparant les
-profils sans les classer. Le brouillon \og Soif de savoir \fg{} en contient une
+profils sans les classer. Le protocole du test~12 en contient une
 première version : une hormone intégrée avec fuite ($\tau=3$ séances, pic d'une unité
 à la séance 12) agit soit sur l'état (appétit lent, $+H(k)\,d_\text{base}$), soit sur la
 plasticité (taux d'apprentissage des séances sur \og base \fg{} multiplié par
@@ -2379,10 +2555,11 @@ Test 2 : intact / lésion / lésion au hasard & 749 / 1\,085 / 753 \\
 Test 3 & 807 \\
 Test 6 & 808 \\
 Test 7 : intact / lésion / lésion au hasard & 755 / 1\,037 / 749 \\
-Réplication (second agent, bloc 12) & 1\,049 \\
+Réplication (second agent, bloc 12) : injection ; nécessité intact / lésion / lésion au hasard & 1\,049 ; 902 / 968 / 891 \\
 Test 9 & 807 \\
 Test 10, second agent : vies d'injection ; intact / lésion / lésion au hasard & 1\,042 ; 958 / 970 / 958 \\
 Test 10, agent du monde à deux (bloc 22) & 812 \\
+Test 11 : second agent / agent du monde à deux & 945 / 795 \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -2395,7 +2572,7 @@ Test 10, agent du monde à deux (bloc 22) & 812 \\
 \code{c1899de289a04d12100db370d81485cdf75e47ca} ; apprentissage avec mlx-lm 0.31.3 sur
 un Mac mini M2 de Codemagic, lancé par un relais de demandes numérotées ; mesures en
 torch, précision simple, sur processeur. État du dépôt au moment de la rédaction :
-commit \code{25d2347} (1\ier{} octobre 2026). Graine maîtresse 270926 ; tous les
+commit \code{354334b} (2 octobre 2026). Graine maîtresse 270926 ; tous les
 générateurs sont des \code{numpy.random.default_rng} initialisés par des listes
 \code{[270926, flux, tour, vie, ...]} (annexe~\ref{app-flux}).
 
@@ -2407,7 +2584,9 @@ générateurs sont des \code{numpy.random.default_rng} initialisés par des list
 \item \code{need_mlx.py} : vies et apprentissages sur le Mac ; \code{need_torch.py} : réplique torch et patching exploratoire ;
 \item \code{need_causal.py} : paires, ajustement des directions, dimensions massives, injection, lésion ;
 \item un module par test : \code{need_speak.py}, \code{need_one.py}, \code{need_workspace.py}, \code{need_reader.py}, \code{need_necessity.py}, \code{need_replication.py}, \code{need_balanced.py}, \code{need_ownership.py}, \code{need_locate.py}, \code{need_long.py} ;
-\item \code{need_verdicts.py} : bootstrap par vie, verdicts du test~1, courbes d'apprentissage.
+\item \code{need_verdicts.py} : bootstrap par vie, verdicts du test~1, courbes d'apprentissage ;
+\item \code{need_probe.py} : analyse exploratoire de ce que porte l'état ;
+\item \code{curiosity_world.py}, \code{curiosity_mlx.py}, \code{curiosity_causal.py} : test~12.
 \end{itemize}
 }
 
@@ -2438,10 +2617,12 @@ Test & Protocole & Code & Publication & Artefacts (\code{artifacts/llm-need/...}
 6 & \code{3b27636} & \code{a0490e0} & \code{200012b} & \code{reader/test/} & \code{need_reader verdicts} \\
 7 & \code{732ed1c} & \code{f04f77f} & \code{e479eff} & \code{reader/necessity/} & \code{need_necessity verdicts} \\
 8 & \code{c7b5624} & \code{798e176} & --- & \code{balanced/} & --- \\
-R & \code{4e10a6c} & \code{778a22b} & \code{43e18f3} & \code{r1/reader/test/} & \code{need_reader verdicts --out ...r1/reader/test} \\
+R & \code{4e10a6c} & \code{778a22b} & \code{43e18f3}, \code{d674f86} & \code{r1/reader/test/}, \code{r1/necessity/} & \code{need_reader}, \code{need_necessity} et \code{need_replication verdicts} \\
 9 & \code{47eb0db} & \code{a39269d} & \code{e8c09d4} & \code{two/measure-5/measure/} & \code{need_ownership verdicts --out ...} \\
 10 & \code{12b4d2d} & \code{b0a0226} & en cours & \code{locate/}, \code{locate-two/slice-5/} & \code{need_locate verdicts} (à venir) \\
-11 & \code{0a28560} & \code{3ccdede} & en cours & \code{long/} & \code{need_long verdicts} (à venir) \\
+11 & \code{0a28560} & \code{3ccdede} & \code{049dc8e} & \code{long/} & \code{need_long verdicts} \\
+Expl. & --- & \code{5ad433f} & \code{65acb73} & \code{probe/} & --- \\
+12 & \code{017f2e5} & \code{77e5af5}, \code{a04bd95} & en cours & \code{../llm-curiosity/} & à venir \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -2484,7 +2665,7 @@ vaut 3 ou moins.
 \section{Flux aléatoires}
 \label{app-flux}
 
-\begin{table}[h]
+\begin{table}[ht]
 \centering
 \caption{Flux des générateurs (deuxième élément de la graine \code{[270926, flux, ...]}).}
 \label{tab-flux}
@@ -2510,7 +2691,6 @@ R & $100+s$ pour chaque flux $s$ (125, 126, 127, 128, 129) ; graine d'apprentiss
 \end{table}
 
 % ================================================================= références
-\clearpage
 \begin{thebibliography}{99}
 \footnotesize\NoAutoSpacing
 \setlength{\itemsep}{0.5pt}
