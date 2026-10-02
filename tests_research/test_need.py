@@ -627,6 +627,58 @@ class IntentionTests(unittest.TestCase):
         self.assertFalse(IN.verdicts(intention_rows(400), dict(self.SETUP, gradient_decisions=100))["verdicts"]["valid"])
 
 
+def transfer_rows(count, other=0.06, own=0.15, random=0.005, recorded_gap=0.001):
+    from research import need_transfer as TR
+    rng = np.random.default_rng(5)
+    rows = []
+    for k in range(count):
+        base = 0.4 + 0.1 * rng.standard_normal()
+        p = {"none": base, "own": base + own, "other": base + other + 0.01 * rng.standard_normal()}
+        p.update({f"random{i}": base + (random if i % 2 else -random) for i in range(TR.RANDOM)})
+        rows.append({"life": k // 4, "t": 1 + k % 4, "recorded": base + recorded_gap, "mass": 0.95, "p_R": p})
+    return rows
+
+
+class TransferTests(unittest.TestCase):
+    def test_pushes(self):
+        from research import need_transfer as TR
+        rng = np.random.default_rng(1)
+        own, other = rng.standard_normal((3, 10)), rng.standard_normal((3, 10)) * 5
+        own[:, 4] = other[:, 4] = 0
+        pushes = TR.pushes(own, other, [4])
+        self.assertEqual(len(pushes), 2 + TR.RANDOM)
+        np.testing.assert_allclose(pushes[0], -TR.UNITS * own)
+        for v in pushes[1:]:
+            np.testing.assert_allclose(np.linalg.norm(v, axis=1), np.linalg.norm(TR.UNITS * own, axis=1))
+        cos = (pushes[1] * other).sum(axis=1) / np.linalg.norm(pushes[1], axis=1) / np.linalg.norm(other, axis=1)
+        np.testing.assert_allclose(cos, -1)
+        self.assertTrue(np.all(pushes[2][:, 4] == 0))
+
+    def test_contexts(self):
+        from research import need_transfer as TR
+        lives = lives_of(W.Oracle(), 336, 40)
+        chosen = TR.contexts(lives, limit=50)
+        self.assertEqual(chosen, sorted(chosen))
+        for i, t in chosen:
+            turn = [x for x in lives[i]["turns"] if x["t"] == t][0]
+            self.assertTrue(turn["E"] >= W.HIGH and turn["N"] >= W.HIGH)
+
+    def test_transfer_verdicts(self):
+        from research import need_transfer as TR
+        ok = {"cache_gap": 1e-6}
+        good = TR.verdicts({"first": transfer_rows(400), "second": transfer_rows(400, other=0.03, own=0.03)},
+                           {"first": ok, "second": ok})["verdicts"]
+        self.assertEqual(good, {"TR1": True, "valid_second": True, "TR2": True, "valid_first": True, "global": True})
+        weak = TR.verdicts({"first": transfer_rows(400, other=0.04), "second": transfer_rows(400, other=0.03)},
+                           {"first": ok, "second": ok})["verdicts"]
+        self.assertTrue(weak["TR1"])
+        self.assertFalse(weak["TR2"] or weak["global"])
+        loud = TR.verdicts({"second": transfer_rows(400, other=0.03, random=0.02)}, {"second": ok})["verdicts"]
+        self.assertFalse(loud["TR1"] or loud["global"])
+        off = TR.verdicts({"first": transfer_rows(400, recorded_gap=0.05)}, {"first": ok})["verdicts"]
+        self.assertFalse(off["valid_first"])
+
+
 class OwnershipTests(unittest.TestCase):
     def test_the_other_lives_beside_without_changing_the_agent(self):
         alone = W.play(W.Oracle(), W.world_rng(225, 0), W.choice_rng(225, 0))
