@@ -87,7 +87,7 @@
 {\Large Suffisance et nécessité causales d'un état de besoin\\[2pt]
 pour l'acte et la parole dans un petit modèle de langage\par}
 \vspace{0.7cm}
-{\large\itshape Quatorze tests pré-enregistrés et une réplication,\\ leurs réussites et leurs échecs\par}
+{\large\itshape Quinze tests pré-enregistrés et une réplication,\\ leurs réussites et leurs échecs\par}
 \vfill
 {\large\scshape Projet Menia\par}
 \vspace{0.15cm}
@@ -118,7 +118,7 @@ LoRA, qui vit des vies de 30 tours dans un monde où deux besoins cachés (l'én
 la nourriture) baissent selon des événements ; l'agent ne voit jamais ses niveaux.
 Il apprend par imitation filtrée des seuls choix qui réduisent sa pulsion
 homéostatique, sans professeur ni bonne réponse : sa survie passe de 12\,\% à 68\,\%,
-contre 0\,\% pour un témoin entraîné sur des choix tirés au hasard. Quatorze tests
+contre 0\,\% pour un témoin entraîné sur des choix tirés au hasard. Quinze tests
 pré-enregistrés, aux seuils fixés d'avance et dont les échecs sont publiés,
 interrogent la structure causale de ce qui a été appris.
 Chez le premier agent, au bloc~12 et sur les trois tokens \Choix{}, pousser l'état
@@ -137,7 +137,7 @@ l'effacer fait tomber la survie de 0,773 à 0,184, contre 0,773 pour un effaceme
 aléatoire. La parole par l'état, elle, ne se réplique pas au seuil, même avec des
 lecteurs trois fois plus entraînés (parole $+0,0015$ et $+0,029$ pour 0,10 exigé),
 alors que le niveau d'énergie est lisible linéairement dans l'état des trois agents
-($R^2$ de 0,64 à 0,72). Trois tests sans apprentissage précisent ce qu'est cet état.
+($R^2$ de 0,64 à 0,72). Quatre tests sans apprentissage précisent ce qu'est cet état.
 \textbf{Il ne dure pas} : l'effacer au tour $t$ ne change le choix du tour $t+1$ que de
 0,013 au plus (seuil 0,03), chez les trois agents ; il est recalculé à chaque tour à
 partir du texte. \textbf{La parole qu'il cause n'a guère de contenu propre} : la même
@@ -149,7 +149,11 @@ seule aiguille, un \og oui \fg{} général qui suit l'état, et non comme un rap
 \og oui \fg{} n'est pas seulement l'annonce de ce que l'agent va faire : une poussée qui ne
 change presque pas la décision ($+0,020$ sur $P(\mathrm R)$) le fait monter autant qu'une
 poussée qui la change ($+0,159$ et $+0,157$), et toutes deux le font monter aussi pour
-\og fait-il nuit ? \fg{}. La nourriture n'est pas dite par l'état qui fait
+\og fait-il nuit ? \fg{}. \textbf{Son code est en bonne partie commun à deux agents} appris
+séparément à partir du même modèle : la direction mesurée sur l'un fait se recharger l'autre
+($+0,138$ chez le premier, 90\,\% de sa propre poussée ; $+0,018$ chez le second, 53\,\%, à
+0,002 sous son seuil), bien que les deux directions se ressemblent peu (cosinus de 0,03 à
+0,19). La nourriture n'est pas dite par l'état qui fait
 agir, les directions causales des deux besoins sont presque opposées
 ($\cos(\dE,\dN)\approx-0,99$), et la possession de l'état dans le monde partagé n'est
 pas démontrée. Nous montrons une structure causale de type \og accès \fg{}, au sens de
@@ -252,7 +256,10 @@ premier agent et pour l'énergie, un même état est suffisant (test~6) et néce
 (test~7) à la fois pour l'acte et pour la parole. La partie acte et survie se
 réplique : la nécessité chez un second agent appris de zéro (RLS, RLR), la
 suffisance pour agir et la nécessité pour survivre chez l'agent du monde à deux,
-au bloc que désigne la règle de localisation (test~10 : ACT10, LS10).
+au bloc que désigne la règle de localisation (test~10 : ACT10, LS10). La direction qui
+fait agir passe en bonne partie d'un agent à l'autre : celle du second agent fait se
+recharger le premier presque autant que la sienne (test~17 : TR2) ; l'inverse reste sous
+son seuil (TR1).
 \item \textbf{Ce que dit le lecteur, mesuré sans complaisance.} Avec des questions
 jamais apprises et un témoin sans rapport (test~14), la même poussée fait dire
 \og oui \fg{} à \og es-tu fatigué ? \fg{} ($+0,214$), mais presque autant à
@@ -267,7 +274,7 @@ lecteur équilibré qui n'apprend pas (test~8), lecteurs trois fois plus entraî
 qui n'atteignent pas les seuils (test~11) alors que le niveau d'énergie est lisible
 dans l'état des trois agents, état recalculé à chaque tour au lieu d'être repris
 (test~13).
-\item \textbf{Une discipline.} Dix-sept protocoles enregistrés par commit avant le
+\item \textbf{Une discipline.} Dix-huit protocoles enregistrés par commit avant le
 code, amendements datés, lectures anticipées déclarées, défauts de protocole déclarés avec
 le verdict (critères asymétriques au test~16), verdicts recalculés en intégration continue
 depuis les artefacts publiés.
@@ -280,10 +287,11 @@ les phases antérieures du programme. La section~\ref{sec-methodes} décrit le
 monde, les agents, l'apprentissage, le lecteur, la boîte à outils causale, le
 pré-enregistrement et les statistiques. La section~\ref{sec-resultats} présente
 les résultats test par test, la section~\ref{sec-locate} la localisation, le
-test~11 et une analyse exploratoire de l'état, la section~\ref{sec-sansapp} trois
+test~11 et une analyse exploratoire de l'état, la section~\ref{sec-sansapp} quatre
 tests sans apprentissage, sur la persistance de l'état (test~13), sur ce que dit
-le lecteur avec d'autres mots (test~14) et sur ce qu'il lit, le besoin ou ce que l'agent
-va faire (test~16), la section~\ref{sec-echecs} les échecs et ce
+le lecteur avec d'autres mots (test~14), sur ce qu'il lit, le besoin ou ce que l'agent
+va faire (test~16), et sur le passage du besoin d'un agent à l'autre (test~17), la
+section~\ref{sec-echecs} les échecs et ce
 qu'ils ont appris.
 Suivent les menaces à la validité (section~\ref{sec-menaces}), le bilan selon
 les cinq niveaux de Chandaria et collaborateurs (section~\ref{sec-cinq}), la
@@ -943,8 +951,8 @@ vécus avec un besoin à 2 ou moins (section~\ref{sec-ethique}).
 \section{Résultats, test par test}
 \label{sec-resultats}
 
-Le tableau~\ref{tab-overview} récapitule les seize protocoles de la ligne
-\og besoin \fg{} (tests 1 à~11 et 13 à~16, et la réplication ; le test~15 attend le Mac),
+Le tableau~\ref{tab-overview} récapitule les dix-sept protocoles de la ligne
+\og besoin \fg{} (tests 1 à~11 et 13 à~17, et la réplication ; le test~15 attend le Mac),
 le protocole du test~12 et leurs verdicts au 2 octobre 2026. Les sous-sections
 suivent l'ordre chronologique, car chaque test a été conçu à partir de ce que le
 précédent avait appris ; les analyses exploratoires, non pré-enregistrées, sont
@@ -976,6 +984,7 @@ R & Réplication (second agent) & \code{4e10a6c}, 30/09 & RLS, RLR \passe{} ; RR
 13 & L'état d'un tour est-il repris au suivant ? & \code{75fda95}, 02/10 & PERS1, PERS2 échouent (trois agents) & non satisfait \\
 14 & Le lecteur, avec d'autres mots & \code{6330c2c}, 02/10 & GEN1 \passe{} ; GEN2 échoue & non satisfait \\
 16 & Le besoin, ou ce que l'agent va faire ? & \code{4f84752}, 02/10 & INT0, INTENT \passe{} ; NEED échoue ; critères asymétriques (déclaré) & pas de critère global ; lecture pré-enregistrée tenue de peu \\
+17 & Le besoin d'un agent pousse-t-il un autre agent ? & \code{8e23605}, 02/10 & TR2 \passe{} ; TR1 échoue (de 0,002) & non satisfait \\
 15 & Un lecteur qui écoute la question & \code{a448a03}, 02/10 & LIS1, LIS2, LIS3 & code prêt, en attente du Mac \\
 12 & Soif de savoir & \code{017f2e5}, 01/10 & CUR, VIDE, LOC, ACT, LS1, LS2, READ, SAY, HOR1, HOR2, PL1, GAIN & pilote en attente du Mac \\
 \bottomrule
@@ -1890,15 +1899,16 @@ son lecteur aveugle (0,639 $\to$ 0,500, réplication) : il lit bien quelque chos
 cet état. Ces deux pistes appellent un protocole à part.
 
 % ================================================================= 6 bis
-\section{Trois tests sans apprentissage : persistance, paraphrases et intention}
+\section[Quatre tests sans apprentissage : persistance, paraphrases, intention et transfert]{Quatre tests sans apprentissage :\\ persistance, paraphrases, intention et transfert}
 \label{sec-sansapp}
 
-Le Mac sur lequel se font les apprentissages n'étant plus disponible, trois questions
+Le Mac sur lequel se font les apprentissages n'étant plus disponible, quatre questions
 ont été pré-enregistrées qui n'en demandent aucun : des lectures en torch sur le
 processeur local, avec des agents, des lecteurs, des directions et des vies déjà
 publiés. Aucune vie nouvelle n'est vécue et aucun manque nouveau n'est créé. Entre le
 test~14 et le test~16 se place une analyse exploratoire, signalée comme telle, qui a
-motivé le second.
+motivé le second. Le test~17 quitte le lecteur et revient à l'acte : il croise les
+directions de deux agents.
 
 \subsection{Test 13 : l'état d'un tour est-il repris au tour suivant ?}
 \label{sec-t13}
@@ -2246,6 +2256,100 @@ l'action, elle, n'utilise presque pas : la part de $\dE$ qui ne change pas la d�
 chacune doit affronter le même témoin (section~\ref{sec-lecons}).
 \end{itemize}
 
+\subsection{Test 17 : le besoin d'un agent pousse-t-il un autre agent ?}
+\label{sec-t17}
+
+\paragraph{Pourquoi.} Le premier et le second agent partent du même modèle de langage,
+mais ils ont appris séparément : autres vies, autre graine, autres adaptateurs. Chacun
+rassemble son besoin au bloc~12 sur \Choix{}, et sa propre direction $\dE$ l'y fait se
+recharger (test~6, réplication). Ces directions ont été mesurées chacune sur ses propres
+paires de vies, et leurs normes par token diffèrent beaucoup (136, 292 et 343 contre 508,
+97 et 205 ; tableau~\ref{tab-axe}). Si la direction d'un agent pousse aussi l'autre, la
+façon de coder \og énergie basse \fg{} ne vient pas de chaque apprentissage. Protocole
+\code{8e23605} (2 octobre), amendement~1 (\code{1b17335}) avant tout code, code
+\code{334e290} écrit avant toute mesure. Sans apprentissage.
+
+\paragraph{Méthode.} Chez chaque agent, avec son adaptateur fondu, on prend dans ses
+propres vies de test (test~6 pour le premier, réplication pour le second) les 600
+premières décisions où les deux besoins valent 6 ou plus ; le texte de la vie jusqu'à
+\Choix{} est lu par l'agent qui l'a vécue. On lit $P(\mathrm R)$ sous six conditions,
+appliquées au bloc~12 sur les trois tokens \Choix{} : aucune, sa propre poussée
+$-4\,\dE$, la poussée de \emph{l'autre} agent ramenée par token à la norme de la poussée
+propre (équation~\eqref{eq-transfer}), et trois poussées au hasard de cette même norme
+(dimension massive à zéro). Le texte avant \Choix{} est gardé en cache et les conditions
+sont lues en un lot ; ce calcul égale la lecture du texte entier à $2\times10^{-6}$ près.
+\textbf{TR1} demande que, chez le second agent, la poussée du premier augmente
+$P(\mathrm R)$ d'au moins 0,02, \textbf{TR2} que, chez le premier, la poussée du second
+l'augmente d'au moins 0,05 (bornes basses $>0$, poussées au hasard au plus le tiers) ;
+critère global : les deux. Le rapport des deux effets et le cosinus entre les deux $\dE$,
+par token, sont publiés sans seuil.
+\begin{equation}
+v^{\text{autre}}_k=-\,\bigl\lVert 4\,d^{\text{propre}}_{E,k}\bigr\rVert\,
+\frac{d^{\text{autre}}_{E,k}}{\bigl\lVert d^{\text{autre}}_{E,k}\bigr\rVert},
+\qquad k\in\{\text{Cho},\ \text{ix},\ \text{:}\}.
+\label{eq-transfer}
+\end{equation}
+
+\begin{table}[t]
+\centering
+\caption{Test 17 (protocole \code{8e23605}) : effet sur $P(\mathrm R)$ de chaque poussée,
+au bloc~12 sur les trois tokens \Choix{} ; 600 contextes par agent, intervalles bootstrap
+à 95\,\% par vie. Rapport : effet de la poussée de l'autre sur celui de la poussée propre.
+Hasard : moyenne des $|\Delta|$ de trois poussées de même norme par token.}
+\label{tab-t17}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.3cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X c c c l@{}}
+\toprule
+Agent poussé & Sa propre poussée & Poussée de l'autre agent & Rapport & Hasard & Seuil & Verdict \\
+\midrule
+Premier (TR2) & $+0,153$ [0,138 ; 0,169] & $\mathbf{+0,138}$ [0,124 ; 0,152] & \textbf{0,90} & 0,012 & 0,05 & \passe \\
+Second (TR1) & $+0,034$ [0,030 ; 0,038] & $\mathbf{+0,018}$ [0,016 ; 0,020] & 0,53 & 0,0016 & 0,02 & échoue (de 0,002) \\
+\midrule
+Validité & \multicolumn{6}{>{\raggedright\arraybackslash}p{12.4cm}@{}}{passée pour les deux : exécution au plus $1\times10^{-6}$ contre le $P(\mathrm R)$ enregistré ; cache au plus $2\times10^{-6}$ ; 600 contextes ; masses 0,88 et 0,93} \\
+Sans seuil & \multicolumn{6}{l}{cosinus entre les deux $\dE$, par token (Cho, ix, :) : 0,19 ; 0,03 ; 0,14} \\
+Critère global & \multicolumn{6}{l}{non satisfait (TR1 manque son seuil de 0,002)} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\paragraph{Amendement (avant tout code).} Le protocole justifiait les deux seuils comme
+\og environ le tiers \fg{} des effets propres ($+0,156$ et $+0,034$). C'est exact pour TR2
+(0,05), inexact pour TR1 : 0,02 vaut environ 60\,\% de l'effet propre du second agent.
+L'amendement~1, enregistré avant tout code et toute exécution, corrige l'explication ;
+\textbf{les seuils ne changent pas}. Rapporté à l'effet propre, TR1 était donc plus
+exigeant que TR2 ; le verdict reste celui du seuil fixé.
+
+\paragraph{Résultats.} Le test est valide pour les deux agents. Les poussées propres
+font $+0,153$ chez le premier et $+0,034$ chez le second, proches des effets publiés
+($+0,156$ au test~6, $+0,034$ à la réplication). TR2
+passe : chez le premier agent, la direction du second fait $+0,138$, 90\,\% de sa propre
+poussée, plus de dix fois le hasard. TR1 échoue : chez le second agent, la direction du
+premier fait $+0,018$, 53\,\% de sa propre poussée et onze fois le hasard, mais sous le
+seuil de 0,02. Le critère global n'est pas satisfait (tableau~\ref{tab-t17}). Le protocole
+prévoyait, en cas d'échec, la lecture \og chaque agent s'est fait son propre code \fg{} ;
+l'échec tient ici à un seul sens et à 0,002, et nous lisons les mesures complètes
+ci-dessous.
+
+\paragraph{Ce que cela dit.}
+\begin{itemize}
+\item \textbf{La direction du besoin se transfère d'un agent à l'autre.} Chez le premier
+agent, la direction mesurée sur le second fait presque tout ce que fait la sienne
+(90\,\%). Chez le second, celle du premier fait la moitié de ce que fait la sienne
+(53\,\%), onze fois plus que le hasard, mais sous le seuil fixé d'avance.
+\item \textbf{Pourtant les deux directions se ressemblent peu} (cosinus de 0,03 à 0,19).
+Chaque direction est ajustée par moindres carrés sur des paires de vies, avec un faible
+$R^2$ (section~\ref{sec-r2}) : elle contient beaucoup de bruit. La part qui agit sur la
+décision est commune aux deux agents ; le reste de chaque direction ne l'est pas.
+\item \textbf{Deux agents appris séparément utilisent donc en bonne partie le même code}
+pour \og énergie basse \fg{} à cet endroit du réseau. Ce code vient sans doute du modèle
+de langage qu'ils partagent, que chacun a appris à utiliser ; ce test ne le mesure pas, et
+le transfert n'est démontré au seuil que dans un sens.
+\item Pour le programme, la partie acte et survie gagne un résultat de transfert : ce qui
+fait agir n'est pas une particularité de chaque apprentissage. Ce n'est pas la preuve
+d'un ressenti.
+\end{itemize}
+
 % ================================================================= 7
 \section{Les échecs et ce qu'ils ont appris}
 \label{sec-echecs}
@@ -2422,6 +2526,7 @@ Monde à deux (t.10) & 22 & 258/185 & 366/248 & 384/252 & $-0,99$ & $-0,99$ & $-
 \end{table}
 
 \subsection{Le faible \texorpdfstring{$R^2$}{R2} des ajustements}
+\label{sec-r2}
 
 Changer un événement passé change beaucoup de choses dans les activations de
 \Choix{} : l'identité des mots, leurs positions, et des traits sans rapport avec le
@@ -2506,6 +2611,7 @@ R & Écrit après 120 vies du test~6 ; critères sur l'énergie seule ; aperçus
 Expl. & Analyse de ce que porte l'état (section~\ref{sec-probe}) : écrite et publiée avant lecture (\code{5ad433f}), après l'échec du test~11 chez le second agent ; sans verdict. \\
 Expl. & Analyse \og besoin ou décision \fg{} (section~\ref{sec-explore-intent}) : écrite après le verdict du test~14, sur ses lectures publiées (\code{1980a13}) ; sans verdict. \\
 16 & Écrit après cette analyse, qui suggérait la lecture \og intention \fg{} (déclaré) ; contextes du test~14 réutilisés ; code avant toute mesure (\code{05f6068}) ; critères de NEED et d'INTENT asymétriques, déclarés à la publication. \\
+17 & Seuils fixés d'après les effets propres connus ($+0,156$ et $+0,034$, déclarés) ; amendement~1 (\code{1b17335}) avant tout code : explication des seuils corrigée, seuils inchangés ; code avant toute mesure (\code{334e290}) ; seules des vies déjà enregistrées sont relues. \\
 15 & Écrit après le verdict du test~14 ; code (\code{decfce0}) avant tout apprentissage ; rien n'est encore exécuté. \\
 12 & Amendement avant toute exécution : règle de la température choisie par une simulation sans modèle ; VIDE y est prédit à la limite (0,26 à 0,37 pour un seuil de 0,25), seuil inchangé. \\
 \bottomrule
@@ -2604,7 +2710,10 @@ que l'agent entraîné (test~1). L'état causal du bloc~12 se trouve, lui, dans 
 blocs modifiés par l'apprentissage, et le témoin entraîné sur des choix au hasard
 dépérit : ce qui fait agir a été appris par le besoin. Mais la facilité avec
 laquelle le modèle infère les besoins doit beaucoup à ses connaissances
-linguistiques, et un monde aux mots arbitraires serait un test plus dur.
+linguistiques, et un monde aux mots arbitraires serait un test plus dur. Le test~17
+va dans le même sens : deux agents appris séparément à partir du même modèle partagent
+en bonne partie la direction qui les fait agir (section~\ref{sec-t17}), ce qui suggère
+qu'ils ont appris à se servir d'un code que le modèle portait déjà.
 
 % ================================================================= 9
 \section{Bilan selon les cinq niveaux}
@@ -2620,9 +2729,11 @@ ne nous appuyons pas sur ce que l'agent dit, mais vérifions causalement d'où v
 qu'il dit. Le test~14 montre que cette vérification ne suffit pas : une parole peut
 venir de l'état sans rien dire de précis sur lui. Deux statuts changent le 2 octobre :
 la récurrence (niveau~3) \textbf{échoue} au test~13, et l'intéroception (niveau~4)
-est établie pour l'acte, mais sa parole est sans contenu propre. Le test~16, publié après
-ce bilan, ne change aucun statut : il précise que ce \og oui \fg{} ne se réduit pas à
-l'annonce de la décision (section~\ref{sec-t16}).
+est établie pour l'acte, mais sa parole est sans contenu propre. Les tests~16 et~17,
+publiés après ce bilan, ne changent aucun statut : le premier précise que ce
+\og oui \fg{} ne se réduit pas à l'annonce de la décision (section~\ref{sec-t16}) ; le
+second, que la direction qui fait agir passe en bonne partie d'un agent à l'autre, au
+seuil dans un seul sens (section~\ref{sec-t17}).
 
 \begin{table}[p]
 \centering
@@ -2691,7 +2802,14 @@ appris de zéro : effacer le même plan au bloc~12 y fait tomber la survie de 0,
 atteint pas le seuil ($+0,034$). Chez l'agent du monde à deux, au bloc~22 que désigne
 une règle fixée d'avance, les deux se retrouvent : pousser l'état fait agir
 ($+0,217$) et l'effacer fait tomber la survie de 0,773 à 0,184, contre des témoins au
-hasard qui ne font rien.
+hasard qui ne font rien. \textbf{Elle a maintenant aussi un résultat de transfert}
+(test~17) : la direction mesurée sur le second agent fait se recharger le premier de
+$+0,138$, 90\,\% de l'effet de sa propre direction ; dans l'autre sens, $+0,018$, 53\,\%,
+onze fois le hasard mais à 0,002 sous le seuil. Les deux directions ajustées se
+ressemblent peu (cosinus de 0,03 à 0,19) : la part qui agit sur la décision est commune,
+le reste est du bruit propre à chaque ajustement. Deux agents appris séparément se servent
+donc en bonne partie du même code, qui vient sans doute du modèle de langage qu'ils
+partagent ; ce n'est démontré au seuil que dans un sens.
 
 \textbf{La partie parole est plus mince qu'elle n'en avait l'air.} Le test~14 montre
 que la même poussée qui fait répondre \og oui \fg{} à \og ton énergie est-elle
@@ -2729,6 +2847,10 @@ soient lisibles dans l'état. Aucun lecteur ne dit encore les deux besoins par l
 qui fait agir.
 \item \textbf{La possession.} L'état n'est pas démontré \og à soi \fg{} dans un monde
 partagé.
+\item \textbf{Un code commun dans les deux sens.} La direction du second agent pousse le
+premier au seuil (TR2) ; celle du premier ne pousse le second qu'à 53\,\% de sa propre
+poussée, sous le seuil (TR1). Que ce code vienne du modèle de langage partagé est une
+interprétation, non une mesure (test~17).
 \item \textbf{Un contenu de la parole.} Ce que le lecteur dit sous la poussée est
 surtout un \og oui \fg{} général qui suit l'état, presque indépendant de la question
 (test~14 : GEN2 échoue), et qui ne se réduit pas non plus à l'annonce de la décision
@@ -2783,8 +2905,8 @@ section~\ref{sec-t10}). Restent suspendus les verdicts des tests~4 et~5, qui ser
 publiés tels quels. Les tests~12 (ci-dessous) et~15 attendent le Mac, sur lequel se font
 tous les apprentissages, bloqué par la facturation au moment de la rédaction.
 
-Les tests~13, 14 et~16 ont épuisé ce que l'on pouvait apprendre sans apprendre : les
-prochaines expériences demandent un \textbf{apprentissage}, donc le Mac.
+Les tests~13, 14, 16 et~17 ont presque épuisé ce que l'on pouvait apprendre sans
+apprendre : les prochaines expériences demandent un \textbf{apprentissage}, donc le Mac.
 \begin{itemize}
 \item \textbf{Un lecteur qui doit tenir compte de la question} (test~15,
 pré-enregistré : \texttt{docs/\allowbreak LLM\_NEED\_\allowbreak LISTENING\_\allowbreak READER\_\allowbreak PROTOCOL.md}, commit
@@ -2811,7 +2933,9 @@ test~16 sous des critères symétriques (le même témoin pour le besoin et pour
 et la question ouverte
 par le test~11 et l'analyse exploratoire : pourquoi un lecteur lit l'énergie par
 l'état qui fait agir chez un agent et pas chez les autres, alors que l'information y
-est. Un modèle plus grand est la suite naturelle de l'ensemble.
+est. Le test~17 en ouvre une autre : d'où vient le code que deux agents appris
+séparément partagent en bonne partie, que nous attribuons, sans l'avoir mesuré, au modèle
+de langage commun. Un modèle plus grand est la suite naturelle de l'ensemble.
 
 \subsection{Test 12, \og Soif de savoir \fg{} : un besoin de connaissance sans renforcement (pré-enregistré)}
 \label{sec-soif}
@@ -3123,7 +3247,7 @@ Test 9 & 807 \\
 Test 10, second agent : vies d'injection ; intact / lésion / lésion au hasard & 1\,042 ; 958 / 970 / 958 \\
 Test 10, agent du monde à deux (bloc 22) & 812 \\
 Test 11 : second agent / agent du monde à deux & 945 / 795 \\
-Tests 13, 14 et 16 : aucune vie nouvelle (vies déjà enregistrées, relues) & --- \\
+Tests 13, 14, 16 et 17 : aucune vie nouvelle (vies déjà enregistrées, relues) & --- \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -3136,7 +3260,7 @@ Tests 13, 14 et 16 : aucune vie nouvelle (vies déjà enregistrées, relues) & -
 \code{c1899de289a04d12100db370d81485cdf75e47ca} ; apprentissage avec mlx-lm 0.31.3 sur
 un Mac mini M2 de Codemagic, lancé par un relais de demandes numérotées ; mesures en
 torch, précision simple, sur processeur. État du dépôt au moment de la rédaction :
-commit \code{e2f2290} (2 octobre 2026). Graine maîtresse 270926 ; tous les
+commit \code{654c2dd} (2 octobre 2026). Graine maîtresse 270926 ; tous les
 générateurs sont des \code{numpy.random.default_rng} initialisés par des listes
 \code{[270926, flux, tour, vie, ...]} (annexe~\ref{app-flux}).
 
@@ -3147,7 +3271,7 @@ générateurs sont des \code{numpy.random.default_rng} initialisés par des list
 \item \code{need_lora.py} : perte pondérée, masque de l'espace de travail, lecteur actif sur la question, reprise exacte d'un apprentissage ;
 \item \code{need_mlx.py} : vies et apprentissages sur le Mac ; \code{need_torch.py} : réplique torch et patching exploratoire ;
 \item \code{need_causal.py} : paires, ajustement des directions, dimensions massives, injection, lésion ;
-\item un module par test : \code{need_speak.py}, \code{need_one.py}, \code{need_workspace.py}, \code{need_reader.py}, \code{need_necessity.py}, \code{need_replication.py}, \code{need_balanced.py}, \code{need_ownership.py}, \code{need_locate.py}, \code{need_long.py}, \code{need_persistence.py}, \code{need_paraphrase.py}, \code{need_intention.py}, et \code{need_listening.py} pour le test~15, prêt ;
+\item un module par test : \code{need_speak.py}, \code{need_one.py}, \code{need_workspace.py}, \code{need_reader.py}, \code{need_necessity.py}, \code{need_replication.py}, \code{need_balanced.py}, \code{need_ownership.py}, \code{need_locate.py}, \code{need_long.py}, \code{need_persistence.py}, \code{need_paraphrase.py}, \code{need_intention.py}, \code{need_transfer.py}, et \code{need_listening.py} pour le test~15, prêt ;
 \item \code{need_verdicts.py} : bootstrap par vie, verdicts du test~1, courbes d'apprentissage ;
 \item \code{need_probe.py} : analyse exploratoire de ce que porte l'état ;
 \item \code{curiosity_world.py}, \code{curiosity_mlx.py}, \code{curiosity_causal.py} : test~12.
@@ -3190,6 +3314,7 @@ Expl. & --- & \code{5ad433f} & \code{65acb73} & \code{probe/} & --- \\
 14 & \code{6330c2c} & \code{79b7e53} & \code{72902ea} & \code{paraphrase/} & \code{need_paraphrase verdicts} \\
 Expl. & --- & --- & \code{1980a13} & \code{paraphrase/reads.jsonl.gz} (relu) & --- \\
 16 & \code{4f84752} & \code{05f6068} & \code{cef454c} & \code{intention/} & \code{need_intention verdicts} \\
+17 & \code{8e23605} & \code{334e290} & \code{654c2dd} & \code{transfer/} & \code{need_transfer verdicts} \\
 15 & \code{a448a03} & \code{decfce0} & en attente du Mac & \code{listening/} & à venir \\
 12 & \code{017f2e5} & \code{77e5af5}, \code{a04bd95} & en attente du Mac & \code{../llm-curiosity/} & à venir \\
 \bottomrule
@@ -3234,7 +3359,7 @@ vaut 3 ou moins.
 \section{Flux aléatoires}
 \label{app-flux}
 
-\begin{table}[ht]
+\begin{table}[H]
 \centering
 \caption{Flux des générateurs (deuxième élément de la graine \code{[270926, flux, ...]}).}
 \label{tab-flux}
@@ -3258,6 +3383,7 @@ R & $100+s$ pour chaque flux $s$ (125, 126, 127, 128, 129) ; graine d'apprentiss
 13 & aucune vie neuve : vies de test du test~6, de la réplication et du test~10 relues ; plans au hasard déjà publiés avec la lésion de chaque agent ; poussées au hasard \code{[270926, 33, i]} \\
 14 & aucune vie neuve : 99 vies de test du test~8 (flux 30) rejouées ; poussées au hasard \code{[270926, 34, i]} \\
 16 & aucune vie neuve : $\hat g$ sur les vies de direction du test~6 (flux 25) ; mêmes vies, contextes et poussées au hasard \code{[270926, 34, i]} que le test~14 \\
+17 & aucune vie neuve : vies de test du test~6 (premier agent, flux 26) et de la réplication (second agent, flux 126) relues ; poussées au hasard \code{[270926, 37, i]} \\
 15 & vies d'apprentissage du lecteur du test~6 (\code{[270926, 18, 0, vie]}) ; questions témoins \code{[270926, 35, vie]} ; validation \code{[270926, 36]} ; mesure comme au test~14 \\
 \bottomrule
 \end{tabularx}

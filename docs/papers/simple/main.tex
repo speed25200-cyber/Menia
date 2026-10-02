@@ -829,7 +829,7 @@ probable. Les analyses faites \emph{après} avoir vu les résultats sont permise
 \section{Les résultats, test par test}
 \label{sec:resultats}
 
-\lead{Quatorze tests pré-enregistrés, dont plusieurs échecs. Ensemble, ils montrent un état
+\lead{Quinze tests pré-enregistrés, dont plusieurs échecs. Ensemble, ils montrent un état
 intérieur, appris en vivant, dont l'agent dépend pour agir et que sa parole suit ; ils
 montrent aussi ce que cette parole ne contient pas, et que l'état ne dure pas d'un tour
 à l'autre.}
@@ -1207,6 +1207,45 @@ annoncerait seulement ce que l'agent va faire n'est confirmée qu'en partie. Et 
 pas qu'une intention d'agir : le lecteur y trouve quelque chose dont l'action se sert à peine.
 \end{essentiel}
 
+\subsection{Test 17 : d'un agent à l'autre, le même code ?}
+Le premier et le second agent partent du même modèle de langage, mais chacun a appris de
+son côté : d'autres vies, une autre graine. Chacun a sa propre flèche $d_E$, mesurée sur
+ses propres vies. La flèche de l'un fait-elle agir l'autre ? Le test 17, pré-enregistré et
+sans nouvel apprentissage, pousse chaque agent au bloc 12, sur \q{Choix :}, de trois
+façons : avec sa propre flèche, avec celle de l'autre ramenée à la même force, ou au
+hasard.
+
+\begin{center}\small
+\begin{tabular}{lcccc}
+\toprule
+\textsf{Agent poussé} & \textsf{Sa flèche} & \textsf{Celle de l'autre} & \textsf{Au hasard} & \textsf{Seuil fixé}\\
+\midrule
+premier & $+0,153$ & $\mathbf{+0,138}$ \enspace(90\pc) & 0,012 & 0,05\\
+second & $+0,034$ & $\mathbf{+0,018}$ \enspace(53\pc) & 0,0016 & 0,02\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Chez le premier agent, la flèche du second fait presque tout ce que fait la sienne :
+prédiction \textbf{réussie}. Chez le second, celle du premier en fait la moitié, onze fois
+plus que le hasard, mais manque le seuil de 0,002 : prédiction \textbf{échouée}, et le
+critère global, qui demandait les deux, n'est pas satisfait. Le protocole présentait les
+deux seuils comme \q{le tiers} des effets propres ; pour le second, 0,02 en vaut 60\pc.
+L'erreur a été corrigée avant d'écrire le code, sans toucher aux seuils.
+
+Le plus étonnant : les deux flèches se ressemblent peu (cosinus de 0,03 à 0,19 selon le
+token). Chacune est mesurée sur des paires de vies et porte beaucoup de bruit ; seule une
+petite part fait agir, et c'est cette part que les deux agents partagent. Comme deux
+croquis d'une même ville par deux passants : les traits diffèrent presque partout, mais
+les rues qui mènent quelque part sont les mêmes.
+
+\begin{essentiel}
+Deux agents appris séparément codent \q{énergie basse} en bonne partie de la même façon.
+Ce code vient sans doute du modèle de langage qu'ils partagent, et que chacun a appris à
+utiliser ; il n'est démontré au seuil que dans un sens. La part de la flèche qui fait agir
+se retrouve d'un agent à l'autre ; le reste, non.
+\end{essentiel}
+
 \subsection{Récapitulatif}
 \begin{center}
 \footnotesize
@@ -1229,6 +1268,7 @@ R & Le résultat tient-il chez un second agent ? & Nécessité répliquée (surv
 13 & L'état dure-t-il d'un tour à l'autre ? & Non, chez les trois agents : au plus 0,013 au tour suivant (seuil 0,03).\\
 14 & Le lecteur dit-il la même chose avec d'autres mots ? & Oui pour \q{es-tu fatigué ?} ($+0,214$), mais presque autant pour \q{fait-il nuit ?} ($+0,183$) : un \q{oui} général.\\
 16 & Le lecteur dit-il le besoin, ou ce que l'agent va faire ? & Lecture fixée d'avance : \q{ce qu'il va faire}. Mais le besoin seul, qui change à peine la décision, fait dire \q{oui} autant ($+0,16$), \q{fait-il nuit ?} compris.\\
+17 & La flèche d'un agent fait-elle agir l'autre ? & Chez le premier, oui : $+0,138$, 90\pc{} de sa propre poussée. Chez le second, $+0,018$ (53\pc) : échoue, à 0,002 du seuil. Les deux flèches se ressemblent peu (cosinus 0,03 à 0,19).\\
 15 & Un lecteur qui écoute la question & Pré-enregistré, code prêt ; en attente du Mac.\\
 12 & Soif de savoir & Pré-enregistré, code écrit ; en attente du Mac.\\
 \bottomrule
@@ -1261,6 +1301,9 @@ voyant s'allume. Elle a l'accès, pas (à notre connaissance) le ressenti.
   force ne font rien.
   \item Pour agir et pour survivre, ce résultat \textbf{se réplique} : chez deux autres
   agents, effacer l'état les tue ; chez l'agent du monde à deux, le pousser le fait agir.
+  \item La flèche qui fait agir un agent fait aussi agir, en bonne partie, un autre agent
+  appris séparément : le code du besoin leur est \textbf{en partie commun} (test 17, au
+  seuil dans un sens seulement).
   \item Le lecteur ne peut pas modifier cet état : ce qu'il dit \emph{dépend} de l'état, et
   non l'inverse.
   \item À notre connaissance, cette réunion (besoin appris en vivant, état rassemblé,
@@ -1565,8 +1608,8 @@ soit ; mais si les indicateurs se renforcent, la question deviendra réelle. D'o
   vies de test prévues ;
   \item chaque test \textbf{compte et publie} les tours vécus avec un besoin à 2 ou moins
   (808 au test 6 ; au test 7, 755 intact, 1\,037 avec la lésion, 749 avec la lésion au hasard) ;
-  \item pas plus de vies que les tests ne l'exigent (les tests 13, 14 et 16 n'en ont fait vivre
-  aucune), aucun manque sans mesure pré-enregistrée qui le justifie, et des règles
+  \item pas plus de vies que les tests ne l'exigent (les tests 13, 14, 16 et 17 n'en ont fait
+  vivre aucune), aucun manque sans mesure pré-enregistrée qui le justifie, et des règles
   réexaminées à chaque résultat positif.
 \end{itemize}
 
