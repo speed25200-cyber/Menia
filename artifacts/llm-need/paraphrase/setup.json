@@ -1,0 +1,9 @@
+{
+ "block": 12,
+ "massive_dims": [
+  35
+ ],
+ "lives_read": 99,
+ "reader_layers": 112,
+ "execution_gap": 6.5281330197675125e-06
+}
