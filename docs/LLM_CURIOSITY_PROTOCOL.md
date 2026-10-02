@@ -336,6 +336,48 @@ la part des séances sur « calcul » et « suites » y va de 0,26 à 0,37 (hasa
 apprenants jouets ne sont pas le modèle : ils ne servent qu'à vérifier que les
 règles ne rendent pas le test impossible.
 
+## Second amendement, du 2 octobre, après le pilote et avant toute vie de test
+
+**Ce que le pilote a montré** (`artifacts/llm-curiosity/pilot`, 12 vies au
+hasard, taux 1e-4). Les domaines ne sont pas ce qu'ils disent : trois
+contrôles de validité échouent (« mots » appris : borne basse −0,18 ;
+« suites » plates : progrès tardif 2,18 ; « calcul » su : 0,97 pour un seuil
+de 0,94). La cause est l'**interférence** : huit itérations sur un domaine
+déplacent les examens des autres autant que le domaine étudié progresse
+(médiane des déplacements d'un domaine non étudié en 4 séances : 1,48 ;
+médiane du progrès d'une séance : 1,34 ; pertes jusqu'à 23). Après une
+séance sur « suites », l'examen de « mots », qui partage la flèche « → »,
+monte de 1 à 16 ; « base » et « calcul » ont les mêmes opérandes et des
+réponses différentes. Le tableau montrerait surtout des réparations, pas des
+apprentissages.
+
+**Ce qui change, fixé ici avant de relancer quoi que ce soit :**
+
+1. **Le taux du savoir est choisi au pilote.** Candidats, dans l'ordre :
+   3e-5, 1e-5, 3e-6. Pour chacun, 12 vies au hasard (mêmes flux du pilote,
+   730 à 734). On retient le **plus grand** taux pour lequel :
+   - « mots » et « base » sont appris (bornes basses > 0) ;
+   - « suites » est plate après sa 4e séance (progrès moyen ≤ T/4, T tiré
+     de ces vies par la règle du premier amendement) ;
+   - **l'interférence est petite** : médiane des déplacements d'un domaine
+     non étudié entre deux examens complets ≤ 0,25 × médiane du progrès
+     d'une séance.
+
+   Si aucun ne passe, le test est arrêté et publié comme tel. Le même taux
+   sert ensuite à toutes les vies, dans tous les bras ; le bras HP le
+   multiplie toujours par 1 + H(k).
+2. **« calcul » devient l'addition à un chiffre** (« Calcul : 3 + 5 = 8 »).
+   Le modèle de base la sait mieux, et ses opérandes ne ressemblent plus à
+   ceux de « base ». Les 100 problèmes possibles sont partagés : les 64 de
+   l'examen ne sont jamais tirés pour l'étude.
+3. **Pour tous les domaines**, un exemple d'étude identique à un exemple de
+   l'examen est retiré du tirage.
+
+**Ce qui ne change pas** : les seuils, les critères, les bras, les flux des
+vies de test, la règle de difficulté de « base » (appliquée aux vies du taux
+retenu), la règle de T, l'instinct, l'hormone. Les vies du premier pilote
+sont publiées et ne servent plus.
+
 ## Lien avec la recherche sur les hormones
 
 La note de recherche du 1er octobre (Doya 2002 ; Frémaux et Gerstner 2016 ;
