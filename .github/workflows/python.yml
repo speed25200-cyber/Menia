@@ -105,6 +105,7 @@ jobs:
       - run: python -m research.need_necessity verdicts --out artifacts/llm-need/locate/two/lesion
       - run: python -m research.need_locate verdicts
       - run: python -m research.need_paraphrase verdicts
+      - run: python -m research.need_intention verdicts
       - run: python scripts/check_reliability_artifacts.py
       - run: python scripts/check_self_model_artifacts.py
       - run: python scripts/audit_self_monitor_information.py

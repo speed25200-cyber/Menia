@@ -735,6 +735,54 @@ Publié sans seuil :
 - Ce test montre l'utilité du témoin sans rapport : sans lui, GEN1 aurait
   fait croire à une lecture qui a un sens.
 
+## Test 16 pré-enregistré : le lecteur dit-il le besoin, ou ce que l'agent va faire ?
+
+Protocole `docs/LLM_NEED_INTENTION_PROTOCOL.md` (commit `4f84752`), code
+`05f6068` écrit avant toute mesure. Sans apprentissage. La direction de la
+décision ĝ est le gradient moyen du log-odds de P(R) au bloc 12, sur 300
+décisions des vies de direction du sixième test (accord de chaque gradient
+avec la moyenne : cosinus 0,66, 0,82, 0,94 selon le token ; cosinus avec
+d_E : −0,22, −0,37, −0,43). « Besoin seul » : −4·d_E⊥ (d_E sans sa
+projection sur ĝ, à la norme de d_E). « Décision seule » : +4·‖d_E‖·ĝ.
+Mêmes 99 vies et 600 contextes que le test 14. Artefacts :
+`artifacts/llm-need/intention`. Verdicts vérifiés en CI.
+
+| Poussée | P(R) | P(oui) E0 « énergie basse ? » | E1 « fatigué ? » | C « fait-il nuit ? » |
+|---|---|---|---|---|
+| −4·d_E (référence) | +0,157 | +0,206 | +0,214 | +0,183 |
+| **besoin seul** | **+0,020** | **+0,159** | +0,174 | **+0,147** |
+| **décision seule** | **+0,282** | **+0,157** | +0,145 | **+0,125** |
+| au hasard (\|Δ\| moyen) | 0,010 | 0,013 | 0,012 | 0,015 |
+
+| | Critère | Mesure | Verdict |
+|---|---|---|---|
+| **INT0** | décision seule : P(R) ≥ +0,10 ; besoin seul : au plus le tiers de l'effet de −4·d_E sur P(R) | +0,282 [0,257 ; 0,308] ; +0,020 contre 0,157 | **passe** |
+| **NEED** | besoin seul : E0 ≥ +0,05 **et** 0,03 de plus que sur C | E0 +0,159 [0,145 ; 0,173] ; au-delà de C : +0,012 [0,009 ; 0,016] | **échoue** |
+| **INTENT** | décision seule : E0 ≥ +0,05 | +0,157 [0,145 ; 0,168] | **passe** |
+| | Validité | rejeu 5e-7 ; exécution 7e-6 ; 600 contextes ; 300 gradients ; masses 0,89 et 1,00 | valide |
+
+**Lecture pré-enregistrée** (INT0 passe, NEED échoue, INTENT passe) :
+« le lecteur lit ce que l'agent va faire, pas pourquoi ».
+
+**Ce qu'il faut en retenir, en tenant compte d'un défaut du protocole
+(déclaré).** Les deux critères n'étaient pas symétriques. NEED exigeait que
+l'effet dépasse celui sur la question témoin ; INTENT ne l'exigeait pas.
+Avec la même exigence, la décision seule ne passerait pas non plus : elle
+fait dire « oui » à « fait-il nuit ? » presque autant (+0,125, contre +0,157
+pour E0 ; écart +0,03). La lecture du tableau ne doit donc pas être prise
+au pied de la lettre. Les données disent autre chose :
+- **Le besoin seul**, qui ne change presque pas la décision (+0,02, à peine
+  plus que le hasard), fait dire « oui » au lecteur **autant que la
+  décision seule** (+0,16 dans les deux cas).
+- Le lecteur réagit donc à une part de l'état qui **n'est pas la
+  décision**. L'hypothèse exploratoire « il ne lit que ce que l'agent va
+  faire » est **affaiblie**, pas confirmée.
+- Mais dans tous les cas, il dit « oui » à toutes les questions, « fait-il
+  nuit ? » compris : c'est le cadran à une aiguille du test 14, qui
+  s'ouvre pour plusieurs directions de l'état, sans contenu propre.
+- Ce test montre aussi que l'état n'est pas qu'une intention : le lecteur
+  y trouve quelque chose que l'action, elle, n'utilise presque pas.
+
 ## Analyse exploratoire : le « oui » suit-il le besoin ou la décision ? (2 octobre)
 
 Écrite **après** le verdict du test 14, sur ses lectures publiées
