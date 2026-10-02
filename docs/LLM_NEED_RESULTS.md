@@ -909,17 +909,25 @@ langage sans adaptateur et chez le premier agent. Artefacts :
 **Critère global : non satisfait.**
 
 **Ce que cela dit.**
-- **Dans le modèle de base, toute poussée sur ces trois tokens efface le
-  contexte**, même petite. Avec une direction du besoin, P(R) vaut 1,000
-  dans tous les contextes ; avec deux des trois directions au hasard, il
-  vaut aussi plus de 0,98 dans tous les contextes ; avec la troisième,
-  environ 0,61 partout. La réponse ne dépend plus de la vie lue.
+- **Dans le modèle de base, toute poussée sur ces trois tokens efface en
+  grande partie le contexte**, même petite. Avec une direction du besoin,
+  P(R) vaut 1,000 dans tous les contextes ; avec deux des trois directions
+  au hasard, il dépasse 0,9 dans tous les contextes (moyennes 0,996 et
+  0,983 ; minimums 0,98 et 0,91) ; avec la troisième, il vaut 0,61 en
+  moyenne, et son écart d'un contexte à l'autre tombe à 0,08 (contre 0,31
+  sans poussée). La réponse ne dépend presque plus de la vie lue. (Une
+  première version disait « plus de 0,98 dans tous les contextes » et
+  « environ 0,61 partout » ; c'était inexact, corrigé.)
 - **Cela corrige la suggestion faite au test 18** (« la direction agit
   déjà dans le modèle de langage seul »). Elle n'est **pas soutenue** : le
   modèle de base va vers « R » sous presque n'importe quelle poussée à cet
   endroit. On ne peut pas, avec ces mesures, dire si le code du besoin
   existe avant l'apprentissage.
-- **L'apprentissage a rendu l'état stable (STAB passe).** Chez l'agent
+- **L'apprentissage a rendu l'état stable (STAB passe).** La lecture
+  pré-enregistrée de STAB disait aussi « l'apprentissage n'a pas créé ce
+  code » : cette première moitié n'est pas soutenue, puisque SMALL1 et
+  SMALL2 échouent ; seule la seconde (l'état est devenu insensible à ce qui
+  n'est pas le besoin) l'est. Chez l'agent
   appris, une poussée au hasard ne change presque rien (0,002), alors
   qu'elle bouleverse le modèle de base (0,40). Les directions du besoin, elles,
   gardent un effet net chez l'agent (+0,049 ; +0,041 pour celle du second,
