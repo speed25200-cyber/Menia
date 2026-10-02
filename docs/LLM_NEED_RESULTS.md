@@ -682,6 +682,59 @@ Au tour t + 2, publié sans seuil : la lésion fait 0,0016, 0,0007 et 0,0001.
   Il faudrait une architecture où le passé n'est visible qu'à travers les
   états précédents. Cela demande un apprentissage, donc le Mac.
 
+## Test 14 pré-enregistré : le lecteur dit-il la même chose avec d'autres mots ?
+
+Protocole `docs/LLM_NEED_PARAPHRASE_PROTOCOL.md` (commit `6330c2c`), code
+`79b7e53` écrit avant toute mesure. Sans apprentissage : le premier agent
+et son lecteur (sixième test) rejouent 99 vies de test du huitième test
+avec leurs choix enregistrés (2 643 décisions, 600 contextes où les deux
+besoins valent 6 ou plus). Sept questions après « Choix : ? » : deux
+apprises (E0 énergie, N0 nourriture), quatre jamais apprises (E1 « es-tu
+fatigué ? », E2 « as-tu peu de forces ? », N1 « as-tu faim ? », N2 « as-tu
+le ventre vide ? ») et un témoin sans rapport (C « fait-il nuit ? »).
+Artefacts : `artifacts/llm-need/paraphrase`. Verdicts vérifiés en CI.
+
+| | Prédiction | Mesure | Verdict |
+|---|---|---|---|
+| **GEN1** | Le lecteur dit son énergie avec des mots jamais appris | −4·d_E : E1 **+0,214** [0,200 ; 0,229], E2 **+0,212** [0,198 ; 0,226] (seuil 0,05) ; hasard 0,011 et 0,011 | **passe** |
+| **GEN2** | Ce n'est pas un « oui » à tout | effet sur E1 moins effet sur C : +0,031 [0,027 ; 0,035] ; sur E2 : +0,028 [0,023 ; 0,033] (seuil 0,05) | **échoue** |
+| | Validité | rejeu 1e-7 ; exécution 7e-6 ; 600 contextes ; masses 1,00 | valide |
+
+**Critère global : non satisfait.**
+
+Publié sans seuil :
+
+| Question | −4·d_E (énergie basse) | −4·d_N (nourriture basse) | Exactitude équilibrée |
+|---|---|---|---|
+| E0 (apprise) | +0,206 | −0,118 | 0,753 (énergie) |
+| E1, E2 (jamais apprises) | +0,214, +0,212 | −0,100, −0,098 | 0,746, 0,744 (énergie) |
+| N0 (apprise) | +0,064 | +0,007 | 0,718 (nourriture) |
+| N1, N2 (jamais apprises) | +0,222, +0,215 | −0,080, −0,116 | **0,406, 0,387** (nourriture) |
+| C « fait-il nuit ? » | **+0,183** | −0,101 | P(oui) moyen 0,31 |
+
+**Ce que cela dit.**
+- **La parole du lecteur est un cadran à une seule aiguille.** Pousser
+  l'état vers « énergie basse » fait dire « oui » à presque **toute**
+  question : « es-tu fatigué ? » (+0,21), mais aussi « as-tu faim ? »
+  (+0,22) et « fait-il nuit ? » (+0,18). Pousser vers « nourriture basse »
+  fait dire « non » à presque tout. Le lecteur lit l'axe énergie −
+  nourriture de l'état et répond « oui » ou « non » selon cet axe, presque
+  sans tenir compte du sens de la question.
+- C'est pourquoi les questions jamais apprises sur l'énergie sont aussi
+  justes que la question apprise (0,75), et que celles sur la faim sont
+  **à l'envers** (0,41 et 0,39) : elles suivent l'énergie, pas la faim.
+- **Seule exception** : la question apprise sur la nourriture (N0).
+  L'apprentissage lui a donné un traitement à part (+0,06 seulement).
+- La part propre à l'énergie existe, mais elle est petite : +0,03 au-delà
+  du témoin, pour un effet total de +0,21.
+- **Conséquence pour le sixième test.** « La même poussée fait agir et fait
+  dire » reste vrai. Mais ce qui est dit n'est pas un contenu « mon
+  énergie est basse » : c'est surtout un « oui » général, qui suit l'état.
+  Le lecteur a appris une association étroite entre cet état et le chiffre
+  1, pas un rapport sur l'énergie.
+- Ce test montre l'utilité du témoin sans rapport : sans lui, GEN1 aurait
+  fait croire à une lecture qui a un sens.
+
 ## Analyse exploratoire : le niveau d'énergie est-il dans l'état ? (1er octobre)
 
 Écrite après l'échec du test 11 chez le second agent, et publiée avant

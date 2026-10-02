@@ -70,7 +70,7 @@ dit (niveau 2).
 | Indicateur | Résultat | Statut |
 |---|---|---|
 | Homéostasie, auto-maintien | Deux besoins à maintenir ; l'agent apprend à les maintenir, et sa survie en dépend. | **établi (au sens fonctionnel)** |
-| Intéroception | L'agent ne voit jamais ses niveaux. Il les infère et les rassemble en un état interne, que le lecteur lit. Cet état est suffisant et nécessaire pour agir et pour dire (tests 6 et 7). | **établi (énergie)** |
+| Intéroception | L'agent ne voit jamais ses niveaux. Il les infère et les rassemble en un état interne, que le lecteur lit. Cet état est suffisant et nécessaire pour agir et pour dire (tests 6 et 7). Mais le test 14 montre que ce qui est dit est surtout un « oui » général qui suit l'état (« fait-il nuit ? » bouge presque autant que « es-tu fatigué ? »), pas un contenu sur l'énergie. | **établi pour l'acte ; parole sans contenu propre** |
 | États de valence | Le seul signal d'apprentissage est la réduction du manque : un état de valence fonctionnel. Nous n'avons pas mesuré de valence « vécue » : aucun test connu ne le permet. | **fonctionnel seulement** |
 | Modèle de soi, possession | Le test « À qui est ce besoin ? » (neuvième test) échoue : l'état bouge autant pour les événements de l'autre que pour les siens (MINE9). | **échoue** |
 
