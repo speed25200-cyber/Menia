@@ -701,6 +701,32 @@ class BaseCodeTests(unittest.TestCase):
         self.assertFalse(BC.verdicts(mute, {"cache_gap": 1e-6})["verdicts"]["valid"])
 
 
+class SmallPushTests(unittest.TestCase):
+    def test_small_push_verdicts(self):
+        from research import need_small_push as SP
+        rng = np.random.default_rng(6)
+
+        def rows(effect, random):
+            out = []
+            for k in range(400):
+                base = 0.5 + 0.05 * rng.standard_normal()
+                p = {"none": base, "first": base + effect, "second": base + effect + 0.005 * rng.standard_normal()}
+                p.update({f"random{i}": base + (random if i % 2 else -random) for i in range(SP.RANDOM)})
+                out.append({"life": k // 4, "t": 1 + k % 4, "mass": 0.9, "p_R": p})
+            return out
+        ok = {"cache_gap": 1e-6}
+        v = SP.verdicts({"base": rows(0.15, 0.03), "agent": rows(0.05, 0.004)}, {"base": ok, "agent": ok})["verdicts"]
+        self.assertEqual(v, {"SMALL1": True, "SMALL2": True, "STAB": True, "valid": True, "global": True})
+        v = SP.verdicts({"base": rows(0.15, 0.08), "agent": rows(0.05, 0.004)}, {"base": ok, "agent": ok})["verdicts"]
+        self.assertFalse(v["SMALL1"] or v["global"])
+        self.assertTrue(v["STAB"])
+        v = SP.verdicts({"base": rows(0.15, 0.03), "agent": rows(0.05, 0.02)}, {"base": ok, "agent": ok})["verdicts"]
+        self.assertFalse(v["STAB"])
+        self.assertFalse(SP.verdicts({"base": rows(0.15, 0.03)}, {"base": ok})["verdicts"]["valid"])
+        pushes = SP.pushes(rng.standard_normal((3, 5)), rng.standard_normal((3, 5)), [0])
+        self.assertEqual(len(pushes), 2 + SP.RANDOM)
+
+
 class OwnershipTests(unittest.TestCase):
     def test_the_other_lives_beside_without_changing_the_agent(self):
         alone = W.play(W.Oracle(), W.world_rng(225, 0), W.choice_rng(225, 0))
