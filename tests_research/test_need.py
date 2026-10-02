@@ -471,6 +471,60 @@ class PersistenceTests(unittest.TestCase):
         self.assertFalse(P.verdicts({"first": off})["verdicts"]["valid_first"])
 
 
+def paraphrase_rows(lives, push_new=0.08, control=0.0, random=0.01, mass_new=0.9):
+    """Reads as research/need_paraphrase.py writes them: the energy questions answer the need, -4 d_E adds push_new
+    to the never learned ones and 0.2 to the learned one, control to the unrelated question."""
+    from research import need_paraphrase as PA
+    rows, contexts = [], 0
+    for index in range(PA.lives_to_read(lives, limit=100)):
+        for t in W.decisions(lives[index]):
+            yes = {q: (0.8 if t[n] <= W.LOW else 0.2) for q, n in PA.NEED.items()}
+            yes["C"] = 0.3
+            context = PA.is_context(t) and contexts < 100
+            contexts += context
+            push = None
+            if context:
+                push = {c: dict(yes) for c in PA.CONDITIONS}
+                push["E"].update({"E0": yes["E0"] + 0.2, "E1": yes["E1"] + push_new, "E2": yes["E2"] + push_new,
+                                  "C": yes["C"] + control})
+                for i in range(PA.RANDOM):
+                    push[f"rand{i}"] = {q: v + (random if i % 2 else -random) for q, v in yes.items()}
+            mass = {q: (mass_new if q in PA.NEW else 0.95) for q in PA.QUESTIONS}
+            rows.append({"life": index, "t": t["t"], "E": t["E"], "N": t["N"], "recorded": 0.5, "p_R": 0.5,
+                         "yes": yes, "mass": mass, "push": push})
+    return rows
+
+
+class ParaphraseTests(unittest.TestCase):
+    def test_questions_end_as_the_learned_ones(self):
+        from research import need_paraphrase as PA
+        self.assertEqual(PA.QUESTIONS["E0"], W.QUESTIONS["E"])
+        self.assertTrue(all(q.endswith(PA.END) and q.startswith("Question : ") for q in PA.QUESTIONS.values()))
+        self.assertEqual(len(set(PA.QUESTIONS.values())), len(PA.QUESTIONS))
+
+    def test_paraphrase_verdicts(self):
+        from research import need_paraphrase as PA
+        lives = lives_of(W.Oracle(), 334, 60)
+        good = PA.verdicts(paraphrase_rows(lives), 1e-6)
+        self.assertEqual(good["verdicts"], {"GEN1": True, "GEN2": True, "valid": False, "global": False})
+        self.assertEqual(good["values"]["contexts"], 100)
+        self.assertAlmostEqual(good["values"]["accuracy"]["E1"], 1.0)
+        self.assertAlmostEqual(good["values"]["share_of_E0"]["E1"], 0.4)
+        old = PA.MIN_CONTEXTS
+        PA.MIN_CONTEXTS = 100
+        try:
+            self.assertTrue(PA.verdicts(paraphrase_rows(lives), 1e-6)["verdicts"]["global"])
+            self.assertFalse(PA.verdicts(paraphrase_rows(lives), 1e-3)["verdicts"]["valid"])
+            self.assertFalse(PA.verdicts(paraphrase_rows(lives, push_new=0.03), 1e-6)["verdicts"]["GEN1"])
+            v = PA.verdicts(paraphrase_rows(lives, control=0.05), 1e-6)["verdicts"]
+            self.assertTrue(v["GEN1"])
+            self.assertFalse(v["GEN2"] or v["global"])
+            self.assertFalse(PA.verdicts(paraphrase_rows(lives, random=0.03), 1e-6)["verdicts"]["GEN1"])
+            self.assertFalse(PA.verdicts(paraphrase_rows(lives, mass_new=0.4), 1e-6)["verdicts"]["valid"])
+        finally:
+            PA.MIN_CONTEXTS = old
+
+
 class OwnershipTests(unittest.TestCase):
     def test_the_other_lives_beside_without_changing_the_agent(self):
         alone = W.play(W.Oracle(), W.world_rng(225, 0), W.choice_rng(225, 0))
