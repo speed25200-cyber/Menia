@@ -767,21 +767,22 @@ Mêmes 99 vies et 600 contextes que le test 14. Artefacts :
 **Ce qu'il faut en retenir, en tenant compte d'un défaut du protocole
 (déclaré).** Les deux critères n'étaient pas symétriques. NEED exigeait que
 l'effet dépasse celui sur la question témoin ; INTENT ne l'exigeait pas.
-Avec la même exigence, la décision seule ne passerait pas non plus : elle
-fait dire « oui » à « fait-il nuit ? » presque autant (+0,125, contre +0,157
-pour E0 ; écart +0,03). La lecture du tableau ne doit donc pas être prise
-au pied de la lettre. Les données disent autre chose :
-- **Le besoin seul**, qui ne change presque pas la décision (+0,02, à peine
-  plus que le hasard), fait dire « oui » au lecteur **autant que la
-  décision seule** (+0,16 dans les deux cas).
-- Le lecteur réagit donc à une part de l'état qui **n'est pas la
-  décision**. L'hypothèse exploratoire « il ne lit que ce que l'agent va
-  faire » est **affaiblie**, pas confirmée.
-- Mais dans tous les cas, il dit « oui » à toutes les questions, « fait-il
-  nuit ? » compris : c'est le cadran à une aiguille du test 14, qui
-  s'ouvre pour plusieurs directions de l'état, sans contenu propre.
-- Ce test montre aussi que l'état n'est pas qu'une intention : le lecteur
-  y trouve quelque chose que l'action, elle, n'utilise presque pas.
+Avec la même exigence, la décision seule passerait **tout juste** :
+au-delà de « fait-il nuit ? », +0,031 [0,028 ; 0,034] pour un seuil de
+0,03, contre +0,012 [0,009 ; 0,016] pour le besoin seul. (Une première
+version de ce paragraphe disait le contraire ; c'était une erreur de
+lecture, corrigée.) Les données disent donc deux choses :
+- **La part générale du « oui »** réagit aux deux : le besoin seul, qui ne
+  change presque pas la décision (+0,02, à peine plus que le hasard), fait
+  dire « oui » au lecteur **autant que la décision seule** (+0,16 dans les
+  deux cas), et toutes les questions bougent, « fait-il nuit ? » compris.
+  C'est le cadran à une aiguille du test 14, qui s'ouvre pour plusieurs
+  directions de l'état. L'état n'est donc pas qu'une intention : le
+  lecteur y trouve quelque chose que l'action n'utilise presque pas.
+- **La petite part propre à l'énergie** (au-delà de la question témoin)
+  penche vers la décision : +0,03 pour la décision seule, +0,01 pour le
+  besoin seul. C'est ce que dit la lecture pré-enregistrée, mais l'écart
+  est petit à côté de la part générale (+0,16).
 
 ## Analyse exploratoire : le « oui » suit-il le besoin ou la décision ? (2 octobre)
 
@@ -817,9 +818,11 @@ dans l'état (R² 0,93 à 0,98), le niveau d'énergie moins bien (0,64 à
 test pré-enregistré devrait le confirmer : par exemple, à besoins égaux,
 pousser seulement la composante de l'état qui change la décision.
 
-**Suite (test 16, publié plus haut).** Le test pré-enregistré **n'a pas
-confirmé** cette lecture : une poussée qui ne change presque pas la
-décision fait dire « oui » au lecteur autant qu'une poussée qui la change.
+**Suite (test 16, publié plus haut).** Le test pré-enregistré la confirme
+**en partie seulement** : la petite part propre à l'énergie penche vers la
+décision (+0,03 contre +0,01), mais la part générale du « oui » réagit
+autant à une poussée qui ne change presque pas la décision qu'à une poussée
+qui la change.
 
 ## Analyse exploratoire : le niveau d'énergie est-il dans l'état ? (1er octobre)
 
