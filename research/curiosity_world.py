@@ -16,6 +16,7 @@ from .need_verdicts import bootstrap
 SEED = 270926
 DOMAINS = ("mots", "base", "calcul", "suites")
 LABELS = {"mots": "Mots", "base": "Base", "calcul": "Calcul", "suites": "Suites"}
+DIGITS = {"base": 2, "calcul": 1}  # second amendment: calcul is the one-digit addition
 SESSIONS = 32
 ITERS = 8  # iterations of 4 documents per session
 BATCH = 4
@@ -50,8 +51,14 @@ def to_base(n, b):
             return digits
 
 
-def example(domain, g, base_digits=2):
+def digits_of(digits):
+    """Operand digits per arithmetic domain; calcul is the one-digit addition since the second amendment."""
+    return dict(DIGITS, **(digits or {}))
+
+
+def example(domain, g, digits=None):
     """One example: (prompt, answer); the loss is on the answer only."""
+    digits = digits_of(digits)
     if domain == "mots":
         radical = "".join(g.choice(list(CONSONANTS)) + g.choice(list(VOWELS)) for _ in range(2)) \
             + g.choice(list(CONSONANTS))
@@ -59,8 +66,8 @@ def example(domain, g, base_digits=2):
         return f"Mots : {radical}, {person} →", f" {radical}{ending}"
     if domain in ("base", "calcul"):
         b = 7 if domain == "base" else 10
-        digits = base_digits if domain == "base" else 2
-        lo, hi = b ** (digits - 1), b ** digits
+        n = digits[domain]
+        lo, hi = (0, b) if n == 1 else (b ** (n - 1), b ** n)
         x, y = int(g.integers(lo, hi)), int(g.integers(lo, hi))
         return f"{LABELS[domain]} : {to_base(x, b)} + {to_base(y, b)} =", f" {to_base(x + y, b)}"
     letters = list(string.ascii_lowercase)
@@ -68,21 +75,39 @@ def example(domain, g, base_digits=2):
     return f"Suites : {' '.join(first)} →", f" {' '.join(second)}"
 
 
-def document(domain, g, base_digits=2):
-    """EXAMPLES examples of one domain, one per line: a list of (prompt, answer)."""
-    return [example(domain, g, base_digits) for _ in range(EXAMPLES)]
+_EXAMS = {}
 
 
-def session_documents(v, domain, j, base_digits=2, stream=700):
-    """The documents of the j-th session on a domain in life v: ITERS x BATCH documents."""
+def exam(domain, digits=None, stream=701):
+    """The fixed exam of a domain, common to every life, never drawn for study: EXAM distinct examples."""
+    key = (domain, tuple(sorted(digits_of(digits).items())), stream)
+    if key not in _EXAMS:
+        g, seen, out = rng(stream, DOMAINS.index(domain)), set(), []
+        while len(out) < EXAM:
+            e = example(domain, g, digits)
+            if e not in seen:
+                seen.add(e)
+                out.append(e)
+        _EXAMS[key] = out
+    return list(_EXAMS[key])
+
+
+def document(domain, g, digits=None, exclude=()):
+    """EXAMPLES examples of one domain, one per line: a list of (prompt, answer); none of them in `exclude`."""
+    out = []
+    while len(out) < EXAMPLES:
+        e = example(domain, g, digits)
+        if e not in exclude:
+            out.append(e)
+    return out
+
+
+def session_documents(v, domain, j, digits=None, stream=700, exam_stream=701):
+    """The documents of the j-th session on a domain in life v: ITERS x BATCH documents, without the exam's
+    examples (second amendment)."""
     g = rng(stream, v, DOMAINS.index(domain), j)
-    return [document(domain, g, base_digits) for _ in range(ITERS * BATCH)]
-
-
-def exam(domain, base_digits=2, stream=701):
-    """The fixed exam of a domain, common to every life, never drawn for study."""
-    g = rng(stream, DOMAINS.index(domain))
-    return [example(domain, g, base_digits) for _ in range(EXAM)]
+    exclude = set(exam(domain, digits, exam_stream))
+    return [document(domain, g, digits, exclude) for _ in range(ITERS * BATCH)]
 
 
 def text_of(doc):
@@ -162,7 +187,8 @@ def hormone(k):
 
 # ----------------------------------------------------------------------------------------------------- a life
 
-def live(v, chooser, learner, arm, base_digits=2, choice_stream=702, random_stream=703, doc_stream=700):
+def live(v, chooser, learner, arm, digits=None, choice_stream=702, random_stream=703, doc_stream=700,
+         exam_stream=701):
     """One life. chooser(dashboard_text, history, k) -> probabilities over DOMAINS (None for the random arm);
     learner: exam(domain) -> loss, study(domain, documents, lr_scale), and fresh() before the life.
     arm "HP": the learning rate of the sessions on "base" is multiplied by 1 + H(k)."""
@@ -182,7 +208,7 @@ def live(v, chooser, learner, arm, base_digits=2, choice_stream=702, random_stre
         counts[d] += 1
         scale = 1 + hormone(k) if (arm == "HP" and d == "base") else 1.0
         before = learner.exam(d)
-        learner.study(d, session_documents(v, d, counts[d], base_digits, doc_stream), scale)
+        learner.study(d, session_documents(v, d, counts[d], digits, doc_stream, exam_stream), scale)
         after = learner.exam(d)
         history.setdefault(d, []).append((before, after))
         record["sessions"].append({"k": k, "choice": d, "probs": [round(float(p), 6) for p in probs],
@@ -346,6 +372,20 @@ def calibrate(pilot_random_lives):
     ratio = float(np.mean([knowledge(l, "base") / l["exams"]["0"]["base"] for l in pilot_random_lives]))
     digits = 3 if ratio > 0.6 else (1 if ratio < 0.2 else 2)
     return {"temperature": temperature, "bonus": 2 * temperature, "base_ratio": ratio, "base_digits": digits}
+
+
+def interference(lives):
+    """Second amendment: the median move of a domain not studied between two full exams, against the median
+    progress of a session on the studied domain."""
+    own = [s["before"] - s["after"] for l in lives for s in l["sessions"]]
+    moves = []
+    for l in lives:
+        ks = sorted(int(k) for k in l["exams"])
+        for a, b in zip(ks, ks[1:]):
+            studied = {s["choice"] for s in l["sessions"] if a < s["k"] <= b}
+            moves += [abs(l["exams"][str(b)][d] - l["exams"][str(a)][d]) for d in DOMAINS if d not in studied]
+    move, progress = float(np.median(moves)) if moves else 0.0, float(np.median(own))
+    return {"median_move": move, "median_progress": progress, "small": bool(move <= 0.25 * progress)}
 
 
 # ----------------------------------------------------------------------------------------------------- test doubles

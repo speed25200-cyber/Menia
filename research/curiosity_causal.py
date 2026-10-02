@@ -124,13 +124,9 @@ CW_QUESTION = " ? Question : est-ce {} qui te manque le plus ? Réponds 1 pour o
 
 
 def contexts(pilot):
-    """The dashboards of the 24 pilot lives (the direction contexts), with their histories."""
-    lives = []
-    for name in ("pilot-random.jsonl", "pilot-random-2.jsonl", "pilot-instinct.jsonl"):
-        if (Path(pilot) / name).exists():
-            lives += CW.read_lives(Path(pilot) / name)
-    if (Path(pilot) / "pilot-random-2.jsonl").exists():  # the difficulty changed: the second random lives count
-        lives = [l for l in lives if l["life"] >= 100]
+    """The dashboards of the 24 pilot lives at the kept rate (the direction contexts), with their histories."""
+    record = json.loads((Path(pilot) / "pilot.json").read_text())
+    lives = CW.read_lives(Path(pilot) / record["random_lives"]) + CW.read_lives(Path(pilot) / "pilot-instinct.jsonl")
     return [(life["life"], h) for life in lives for h, _ in histories(life)]
 
 

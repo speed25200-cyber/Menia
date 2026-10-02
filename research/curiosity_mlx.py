@@ -23,7 +23,8 @@ from . import need_lora as NL
 LAYERS = range(12, 28)
 MODULES = ("self_attn.q_proj", "self_attn.k_proj", "self_attn.v_proj", "self_attn.o_proj", "mlp.gate_proj",
            "mlp.up_proj", "mlp.down_proj")
-RANK, SCALE, LR = 8, 20.0, 1e-4
+RANK, SCALE = 8, 20.0
+RATES = (3e-5, 1e-5, 3e-6)  # second amendment: the knowledge's rate, the largest that passes the pilot
 PILOT = {"doc": 730, "exam": 731, "choice": 732, "random": 733, "init": 734}
 TEST = {"doc": 700, "exam": 701, "choice": 702, "random": 703, "init": 704}
 INSTINCT_ITERS, READER_ITERS = 2000, 1000
@@ -95,7 +96,8 @@ def choice_hook():
 class Mind:
     """The model, its two adapters and the hook at b*; the learner of curiosity_world.live and the chooser."""
 
-    def __init__(self, model_path, instinct=None, block=None, base_digits=2, exam_stream=701, init_stream=704):
+    def __init__(self, model_path, instinct=None, block=None, digits=None, exam_stream=701, init_stream=704,
+                 lr=1e-4):
         import mlx.core as mx
         import mlx.nn as nn
         import mlx.optimizers as optim
@@ -127,7 +129,7 @@ class Mind:
         self.encode = lambda s: list(inner.encode(s, add_special_tokens=False))
         self.names = [self.single(" " + d) for d in CW.DOMAINS]
         self.digits = [self.single("0"), self.single("1")]
-        self.base_digits, self.exam_stream, self.init_stream = base_digits, exam_stream, init_stream
+        self.digits, self.exam_stream, self.init_stream, self.lr = CW.digits_of(digits), exam_stream, init_stream, lr
         self.exams = {}
         self.timings = []
 
@@ -155,7 +157,7 @@ class Mind:
             m.k_a = self.mx.array(g.uniform(-bound, bound, m.k_a.shape).astype(np.float32))
             m.k_b = self.mx.zeros(m.k_b.shape)
             m.unfreeze(keys=["k_a", "k_b"], recurse=False)
-        self.optimizer = self.optim.Adam(learning_rate=LR)
+        self.optimizer = self.optim.Adam(learning_rate=self.lr)
         self.step = self.nn.value_and_grad(self.model, self.loss)
 
     def items(self, docs):
@@ -182,7 +184,7 @@ class Mind:
     def study(self, domain, docs, lr_scale=1.0):
         """ITERS iterations of BATCH documents, in order; the rate times lr_scale (the dopamine arm)."""
         Switch.instinct, Switch.knowledge = False, True
-        self.optimizer.learning_rate = LR * lr_scale
+        self.optimizer.learning_rate = self.lr * lr_scale
         items = self.items(docs)
         losses = []
         start = time.time()
@@ -199,7 +201,7 @@ class Mind:
         """Mean loss per answer token on the domain's exam (64 examples, one per row)."""
         Switch.instinct, Switch.knowledge = False, True
         if domain not in self.exams:
-            examples = CW.exam(domain, self.base_digits if domain == "base" else 2, self.exam_stream)
+            examples = CW.exam(domain, self.digits, self.exam_stream)
             self.exams[domain] = self.batch(self.items([[e] for e in examples]))
         tokens, weights = self.exams[domain]
         mx, nn = self.mx, self.nn
@@ -273,39 +275,58 @@ def reader_documents(count, stream, low, high, temperature, bonus):
 # ----------------------------------------------------------------------------------------------------- stages
 
 def pilot(a, log=print):
+    """Second amendment: for each candidate rate, 12 random lives (streams 730-734); the largest rate whose lives
+    pass the domains' checks and show little interference is kept; then the rule of difficulty of base, T, and 12
+    lives of the pure instinct at that rate."""
     out = Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
-    mind = Mind(a.model, exam_stream=PILOT["exam"], init_stream=PILOT["init"])
-    lives_file = out / "pilot-random.jsonl"
-    random_lives = CW.read_lives(lives_file) if lives_file.exists() else []
-    for v in range(len(random_lives), 12):
-        random_lives.append(CW.live(v, None, mind, "H", 2, PILOT["choice"], PILOT["random"], PILOT["doc"]))
-        CW.write_lives(lives_file, random_lives)
-        log(f"pilot random life {v}: G = {CW.gain(random_lives[-1]):.3f}, {sum(mind.timings[-32:]):.0f} s")
-    cal = CW.calibrate(random_lives)
-    log(json.dumps(cal))
+    sweep, chosen = [], None
+    for lr in RATES:
+        mind = Mind(a.model, exam_stream=PILOT["exam"], init_stream=PILOT["init"], lr=lr)
+        random_lives = run_pilot_lives(out / f"pilot-random-{lr:g}.jsonl", mind, range(12), None, "H", None, log)
+        cal = CW.calibrate(random_lives)
+        record = dict(lr=lr, calibration=cal, domains=CW.domains_valid(random_lives, cal["temperature"]),
+                      interference=CW.interference(random_lives))
+        checks = record["domains"]["checks"]
+        record["passes"] = bool(checks["mots_learned"] and checks["base_learned"] and checks["suites_flat"]
+                                and record["interference"]["small"])
+        sweep.append(record)
+        log(json.dumps({k: v for k, v in record.items() if k != "domains"} | {"checks": checks}))
+        if record["passes"]:
+            chosen = record
+            break
+    (out / "pilot-sweep.json").write_text(json.dumps(sweep, indent=1) + "\n")
+    if chosen is None:
+        (out / "pilot.json").write_text(json.dumps({"stopped": "no rate passes the pilot"}, indent=1) + "\n")
+        log("no rate passes the pilot: the test stops")
+        return
+    lr, cal = chosen["lr"], chosen["calibration"]
+    digits = {"base": cal["base_digits"]}
+    random_lives = CW.read_lives(out / f"pilot-random-{lr:g}.jsonl")
+    mind = Mind(a.model, digits=digits, exam_stream=PILOT["exam"], init_stream=PILOT["init"], lr=lr)
     if cal["base_digits"] != 2:  # one change of difficulty, with 12 new random lives
-        mind = Mind(a.model, base_digits=cal["base_digits"], exam_stream=PILOT["exam"], init_stream=PILOT["init"])
-        lives_file = out / "pilot-random-2.jsonl"
-        random_lives = CW.read_lives(lives_file) if lives_file.exists() else []
-        for v in range(len(random_lives), 12):
-            random_lives.append(CW.live(100 + v, None, mind, "H", cal["base_digits"], PILOT["choice"],
-                                        PILOT["random"], PILOT["doc"]))
-            CW.write_lives(lives_file, random_lives)
+        random_lives = run_pilot_lives(out / "pilot-random-2.jsonl", mind, range(100, 112), None, "H", digits, log)
         cal = dict(CW.calibrate(random_lives), base_digits=cal["base_digits"], first=cal)
-    pure_file = out / "pilot-instinct.jsonl"
-    pure = CW.read_lives(pure_file) if pure_file.exists() else []
     chooser = CW.instinct_chooser(cal["temperature"], cal["bonus"])
-    for v in range(len(pure), 12):
-        pure.append(CW.live(200 + v, chooser, mind, "C", cal["base_digits"], PILOT["choice"], PILOT["random"],
-                            PILOT["doc"]))
-        CW.write_lives(pure_file, pure)
+    pure = run_pilot_lives(out / "pilot-instinct.jsonl", mind, range(200, 212), chooser, "C", digits, log)
     losses = [x for l in random_lives + pure for s in l["sessions"] for x in (s["before"], s["after"])]
-    record = dict(cal, low=float(min(losses)), high=float(max(losses)),
-                  seconds_per_life=float(np.mean(mind.timings)) * CW.SESSIONS,
-                  domains=CW.domains_valid(random_lives, cal["temperature"]))
+    record = dict(cal, lr=lr, digits=CW.digits_of(digits), low=float(min(losses)), high=float(max(losses)),
+                  random_lives=f"pilot-random-{lr:g}.jsonl" if cal["base_digits"] == 2 else "pilot-random-2.jsonl",
+                  domains=CW.domains_valid(random_lives, cal["temperature"]),
+                  interference=CW.interference(random_lives))
     (out / "pilot.json").write_text(json.dumps(record, indent=1) + "\n")
     log(json.dumps(record))
+
+
+def run_pilot_lives(path, mind, indices, chooser, arm, digits, log):
+    lives = CW.read_lives(path) if path.exists() else []
+    for v in list(indices)[len(lives):]:
+        start = time.time()
+        lives.append(CW.live(v, chooser, mind, arm, digits, PILOT["choice"], PILOT["random"], PILOT["doc"],
+                             PILOT["exam"]))
+        CW.write_lives(path, lives)
+        log(f"{path.name} life {v}: G = {CW.gain(lives[-1]):.3f}, {time.time() - start:.0f} s")
+    return lives
 
 
 def write_split(folder, docs, seed):
@@ -394,12 +415,12 @@ def lives(a, log=print):
                                   else "adapters-instinct")
     inter = interventions(a.interventions) if a.interventions else None
     block = int(inter["block"]) if inter is not None else None
-    mind = Mind(a.model, instinct=instinct, block=block, base_digits=cal["base_digits"])
+    mind = Mind(a.model, instinct=instinct, block=block, digits={"base": cal["base_digits"]}, lr=cal["lr"])
     for arm, count in zip(a.arms, a.counts):
         path = out / f"lives-{arm}.jsonl"
         done = CW.read_lives(path) if path.exists() else []
         for v in range(len(done), count):
-            done.append(CW.live(v, chooser_of(arm, mind, inter), mind, arm, cal["base_digits"]))
+            done.append(CW.live(v, chooser_of(arm, mind, inter), mind, arm, {"base": cal["base_digits"]}))
             CW.write_lives(path, done)
             log(f"{arm} life {v}: G = {CW.gain(done[-1]):.3f}")
 
@@ -472,7 +493,7 @@ def check(a, log=print):
     ref = out / "check-reference"
     log_file = out / "check-reference.log"
     cmd = [sys.executable, "-m", "research.need_lora", "--model", a.model, "--train", "--data", str(folder),
-           "--iters", "20", "--batch-size", "4", "--num-layers", "16", "--learning-rate", str(LR),
+           "--iters", "20", "--batch-size", "4", "--num-layers", "16", "--learning-rate", "1e-4",
            "--max-seq-length", "1024", "--steps-per-eval", "20", "--val-batches", "1", "--save-every", "20",
            "--seed", str(CW.SEED), "--adapter-path", str(ref), "--resume-adapter-file",
            str(start / "adapters.safetensors"), "--steps-per-report", "10"]
