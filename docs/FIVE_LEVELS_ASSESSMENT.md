@@ -1,6 +1,6 @@
 # Menia sur les cinq niveaux de Chandaria et al. (2026)
 
-État au 30 septembre 2026. Ce document est tenu à jour à chaque verdict.
+État au 2 octobre 2026. Ce document est tenu à jour à chaque verdict.
 
 Cadre : Chandaria, Muñoz Morán, Rosas, Seth, Shevlin, Hutter, Graepel,
 Bales, Comsa, Shanahan, Laukkonen, Kringelbach, Frith et Legg,
@@ -54,7 +54,8 @@ dit (niveau 2).
 | Un état interne rassemblé et utilisé pour agir | Au bloc 12, sur « Choix : », l'agent rassemble son besoin. L'effacer fait tomber la survie de 0,68 à 0,21 ; un effacement au hasard ne fait rien (second test, LS2 passe). | **établi** |
 | Accès à cet état pour le rapport (« espace de travail ») | Pousser cet état vers « énergie basse » fait agir (+0,156) **et** dire (+0,202) ; poussées au hasard : 0,013 et 0,006 (sixième test, ONE6 passe). | **établi (énergie)** |
 | Nécessité de cet état pour agir et pour dire | L'effacer fait tomber la survie de 0,676 à 0,203, et le rapport d'énergie au hasard (0,750 → 0,500) ; un effacement au hasard ne fait rien (septième test, LS7 et LR7 passent). | **établi (énergie)** |
-| Nourriture | L'état fait agir (+0,107) mais n'est pas lu (+0,009). Le huitième test retire le raccourci par l'événement du tour. | **échoue ; en cours** |
+| Nourriture | L'état fait agir (+0,107) mais n'est pas lu (+0,009). Le lecteur sans raccourci (huitième test) n'a pas appris. | **échoue** |
+| Réplication sur deux autres agents | **Nécessité répliquée** : chez le second agent, effacer l'état au bloc 12 fait tomber la survie de 0,57 à 0,04 et le rapport d'énergie au hasard (RLS, RLR passent). **Acte** : l'agent du monde à deux rassemble son besoin au bloc 22, où le pousser le fait agir (+0,22). **Parole par l'état** : non répliquée au seuil (test 11) ; chez l'agent du monde à deux, un lecteur plus long dit son énergie à 0,747 et la poussée change un peu sa parole (+0,029). | **partiel** |
 | Capacité limitée : forcer la parole dans l'état | Au cinquième test, forcer la question à passer par « Choix : » réécrit l'état : l'agent survit à 0,36 sur ses vies de direction. Le verdict reste à publier. | **observé** |
 
 ## Niveau 3 — structure causale fine
@@ -62,7 +63,7 @@ dit (niveau 2).
 | Indicateur | Résultat | Statut |
 |---|---|---|
 | Récurrence | Un transformeur ne boucle pas au sein d'un token. D'un tour à l'autre, l'état passé est relu par l'attention. Nous ne l'avons pas mesuré comme tel. | **manque** |
-| Organisation causale précise | Chemin localisé : les événements (blocs 0 à 9) sont rassemblés sur « Choix : » au bloc 12, puis lus pour agir et pour dire. Localisé par patching exploratoire, puis vérifié par les tests 2, 6 et 7. | **partiel** |
+| Organisation causale précise | Chemin localisé : les événements (blocs 0 à 9) sont rassemblés sur « Choix : » au bloc 12, puis lus pour agir et pour dire. Une règle fixée d'avance (test 10) retrouve le bloc 12 chez le premier agent et trouve le bloc 22 chez l'agent du monde à deux. Une analyse exploratoire montre que le niveau d'énergie se lit dans cet état chez les trois agents (R² 0,64 à 0,72). | **partiel** |
 
 ## Niveau 4 — organismique
 
@@ -71,7 +72,7 @@ dit (niveau 2).
 | Homéostasie, auto-maintien | Deux besoins à maintenir ; l'agent apprend à les maintenir, et sa survie en dépend. | **établi (au sens fonctionnel)** |
 | Intéroception | L'agent ne voit jamais ses niveaux. Il les infère et les rassemble en un état interne, que le lecteur lit. Cet état est suffisant et nécessaire pour agir et pour dire (tests 6 et 7). | **établi (énergie)** |
 | États de valence | Le seul signal d'apprentissage est la réduction du manque : un état de valence fonctionnel. Nous n'avons pas mesuré de valence « vécue » : aucun test connu ne le permet. | **fonctionnel seulement** |
-| Modèle de soi, possession | Le test « À qui est ce besoin ? » (`docs/LLM_NEED_OWNERSHIP_PROTOCOL.md`) est pré-enregistré, et son code est en cours d'écriture. | **manque ; pré-enregistré** |
+| Modèle de soi, possession | Le test « À qui est ce besoin ? » (neuvième test) échoue : l'état bouge autant pour les événements de l'autre que pour les siens (MINE9). | **échoue** |
 
 ## Niveau 5 — organisme et environnement
 
@@ -96,13 +97,15 @@ Voir `docs/LITERATURE_CHECK_READER_2026-09-30.md`.
 
 ## Ce qui manque, par ordre de priorité
 
-1. Réplication sur un second agent appris de zéro (en cours ; son lecteur a
-   moins bien appris que le premier).
-2. La nécessité est établie (septième test).
-3. Les deux besoins, pas seulement l'énergie (huitième test).
-4. La possession : mon besoin, pas celui de l'autre (pré-enregistré).
-5. La persistance : l'état d'un tour est-il repris au tour suivant ?
+1. La parole par l'état chez d'autres agents : pourquoi un lecteur s'en sert
+   chez un agent et pas chez un autre, alors que l'information y est.
+2. Les deux besoins, pas seulement l'énergie.
+3. La possession : mon besoin, pas celui de l'autre (neuvième test échoué).
+4. La persistance : l'état d'un tour est-il repris au tour suivant ?
    (niveau 3 ; à pré-enregistrer).
+5. Un besoin de savoir (test 12, « soif de savoir », pré-enregistré et en
+   cours) : un manque calculé par le modèle, sans renforcement, et un test
+   hormonal (`docs/LLM_CURIOSITY_PROTOCOL.md`).
 
 ## Éthique
 
