@@ -101,3 +101,10 @@ relues. Aucun manque nouveau n'est créé.
 - **Mesures** : `research/need_transfer.py` (reprenable), torch sur le
   processeur local. Sorties : `artifacts/llm-need/transfer`.
 - **Verdicts** : numpy seulement, vérifiés en CI.
+
+## Amendement 1 (avant tout code et toute exécution)
+
+La phrase « ils valent environ le tiers de ces effets propres » est
+inexacte pour TR1 : 0,02 vaut environ 60 % de l'effet propre du second
+(+0,034), et 0,05 environ le tiers de celui du premier (+0,156). **Les
+seuils ne changent pas** ; seule l'explication était fausse.
