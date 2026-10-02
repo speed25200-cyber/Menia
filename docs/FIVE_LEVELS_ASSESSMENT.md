@@ -62,7 +62,7 @@ dit (niveau 2).
 
 | Indicateur | Résultat | Statut |
 |---|---|---|
-| Récurrence | Un transformeur ne boucle pas au sein d'un token. D'un tour à l'autre, l'état passé est relu par l'attention. Nous ne l'avons pas mesuré comme tel. | **manque** |
+| Récurrence | Un transformeur ne boucle pas au sein d'un token. D'un tour à l'autre, le test 13 l'a mesuré : effacer ou pousser l'état au tour t ne change presque pas le choix du tour t + 1 (au plus 0,013, seuil 0,03), chez les trois agents. L'état est **recalculé** à chaque tour à partir du texte ; il ne dure pas. | **échoue** |
 | Organisation causale précise | Chemin localisé : les événements (blocs 0 à 9) sont rassemblés sur « Choix : » au bloc 12, puis lus pour agir et pour dire. Une règle fixée d'avance (test 10) retrouve le bloc 12 chez le premier agent et trouve le bloc 22 chez l'agent du monde à deux. Une analyse exploratoire montre que le niveau d'énergie se lit dans cet état chez les trois agents (R² 0,64 à 0,72). | **partiel** |
 
 ## Niveau 4 — organismique
@@ -101,8 +101,10 @@ Voir `docs/LITERATURE_CHECK_READER_2026-09-30.md`.
    chez un agent et pas chez un autre, alors que l'information y est.
 2. Les deux besoins, pas seulement l'énergie.
 3. La possession : mon besoin, pas celui de l'autre (neuvième test échoué).
-4. La persistance : l'état d'un tour est-il repris au tour suivant ?
-   (niveau 3 ; à pré-enregistrer).
+4. La persistance (test 13) : **échoue** chez les trois agents ; l'état
+   est recalculé à chaque tour. Une mémoire de l'état demanderait une
+   architecture où le passé n'est visible qu'à travers lui (apprentissage,
+   donc le Mac).
 5. Un besoin de savoir (test 12, « soif de savoir », pré-enregistré et en
    cours) : un manque calculé par le modèle, sans renforcement, et un test
    hormonal (`docs/LLM_CURIOSITY_PROTOCOL.md`).

@@ -619,6 +619,50 @@ redonné les pertes des premiers lecteurs (60 points, écart 0,000).
 - La parole par l'état qui fait agir reste donc, au niveau des seuils fixés,
   propre au premier agent.
 
+## Test 13 pré-enregistré : l'état d'un tour est-il repris au tour suivant ?
+
+Protocole `docs/LLM_NEED_PERSISTENCE_PROTOCOL.md` (commit `75fda95`), code
+`30c51b9` écrit avant toute mesure. Sans apprentissage : les vies de test
+déjà enregistrées sont relues en torch sur le processeur local. Pour chaque
+agent, 600 contextes (une décision au tour t + 1, dont le tour t est une
+décision, les deux besoins à 3 ou plus). On n'agit qu'au tour t, sur les
+trois tokens « Choix : » du bloc où l'agent rassemble son besoin, et on lit
+P(R) au tour t + 1.
+
+Le texte avant le tour t est lu une fois et gardé en cache, puis le reste
+est lu en un lot de sept conditions. Ce calcul égale la lecture du texte
+entier (écarts 3e-6 à 7e-6 sur 4 contextes par agent). Artefacts :
+`artifacts/llm-need/persistence`. Verdicts vérifiés en CI.
+
+| Agent | Lésion au tour t : \|ΔP(R)\| au tour t + 1 (PERS1) | Poussée −4·d_E au tour t : ΔP(R) au tour t + 1 (PERS2) | Même poussée au tour t + 1 lui-même | Verdicts |
+|---|---|---|---|---|
+| Premier (bloc 12) | 0,013 [0,011 ; 0,015] ; hasard 0,00004 | +0,0015 [0,0003 ; 0,0027] ; hasard 0,0007 | +0,129 | PERS1 et PERS2 **échouent** |
+| Second (bloc 12) | 0,002 [0,002 ; 0,002] ; hasard < 0,0001 | −0,0001 | +0,029 | **échouent** |
+| Monde à deux (bloc 22) | 0,0001 | −0,0001 | +0,219 | **échouent** |
+
+Seuil : 0,03 (borne basse > 0). Validité : passée pour les trois agents
+(contrôle d'exécution ≤ 1,3e-6 contre le P(R) enregistré ; 600 contextes ;
+masses 0,99 à 1,00).
+
+Au tour t + 2, publié sans seuil : la lésion fait 0,0016, 0,0007 et 0,0001.
+
+**Critère global : non satisfait.**
+
+**Ce que cela dit.**
+- **L'état est recalculé à chaque tour.** Chez le monde à deux, pousser
+  l'état au tour t + 1 lui-même change le choix de +0,22 ; le pousser au
+  tour t ne change presque rien au tour t + 1 (+0,00002). Le tour suivant
+  ne relit pas cet état : il recalcule le besoin à partir du texte de la
+  vie, qui contient tous les événements.
+- Chez le premier agent, il en reste une petite trace propre à l'état
+  (lésion 0,013, trois cents fois le plan au hasard), loin du seuil.
+- C'est cohérent avec la façon dont ces agents ont appris : tout le passé
+  est écrit dans le texte, rien ne les oblige à garder un état d'un tour à
+  l'autre.
+- Pour le cadre en cinq niveaux, la récurrence (niveau 3) **échoue** ici.
+  Il faudrait une architecture où le passé n'est visible qu'à travers les
+  états précédents. Cela demande un apprentissage, donc le Mac.
+
 ## Analyse exploratoire : le niveau d'énergie est-il dans l'état ? (1er octobre)
 
 Écrite après l'échec du test 11 chez le second agent, et publiée avant

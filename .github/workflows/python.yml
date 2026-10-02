@@ -100,6 +100,7 @@ jobs:
       - run: python -m research.need_long verdicts
       - run: python -m research.need_reader verdicts --out artifacts/llm-need/balanced/test
       - run: python -m research.need_balanced verdicts
+      - run: python -m research.need_persistence verdicts
       - run: python scripts/check_reliability_artifacts.py
       - run: python scripts/check_self_model_artifacts.py
       - run: python scripts/audit_self_monitor_information.py
