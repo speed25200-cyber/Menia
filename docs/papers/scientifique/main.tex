@@ -2580,13 +2580,14 @@ apprentissages, bloqué par la facturation au moment de la rédaction.
 Les tests~13 et~14 ont épuisé ce que l'on pouvait apprendre sans apprendre : les
 prochaines expériences demandent un \textbf{apprentissage}, donc le Mac.
 \begin{itemize}
-\item \textbf{Un lecteur qui doit tenir compte de la question.} Le lecteur actuel a
-appris une seule phrase par besoin et en a tiré un \og oui \fg{} général. Un lecteur
-appris sur plusieurs questions, dont des \textbf{questions témoins} sans rapport avec
-le besoin (comme \og fait-il nuit ? \fg{}) et des questions sur l'autre besoin, ne
-pourrait plus répondre en lisant une seule aiguille. Les prédictions de type GEN1 et
-GEN2 (section~\ref{sec-t14}) en seraient le critère, sur des formulations jamais
-apprises.
+\item \textbf{Un lecteur qui doit tenir compte de la question} (test~15,
+pré-enregistré : \texttt{docs/LLM\_NEED\_LISTENING\_READER\_PROTOCOL.md}, code prêt).
+Le lecteur actuel a appris une seule phrase par besoin et en a tiré un \og oui \fg{}
+général. Le nouveau lecteur apprend aussi une seconde formulation de chaque question et
+des \textbf{questions témoins} à réponse fixe, sans rapport avec le besoin (\og es-tu
+sous l'eau ? \fg{} : toujours non), qui l'obligent à écouter la question. Les critères
+reprennent GEN1 et GEN2 (section~\ref{sec-t14}) sur les mêmes questions jamais apprises,
+\og fait-il nuit ? \fg{} compris, avec les mêmes vies et les mêmes contextes.
 \item \textbf{Une architecture où le passé ne passe que par les états.} Les agents
 actuels relisent tout leur passé dans le texte ; rien ne les oblige à garder un état
 d'un tour à l'autre (test~13). Un agent dont les tours passés ne seraient visibles
