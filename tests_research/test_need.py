@@ -579,6 +579,54 @@ def PA_QUESTIONS():
     return [PA.QUESTIONS[q].split("Réponds")[0] for q in ("E1", "E2", "N1", "N2", "C")]
 
 
+def intention_rows(count, need_yes=0.0, decision_yes=0.08, need_pR=0.01, decision_pR=0.15, control=0.0):
+    from research import need_intention as IN
+    rng = np.random.default_rng(4)
+    rows = []
+    for k in range(count):
+        base = {"p_R": 0.5 + 0.05 * rng.standard_normal(), "E0": 0.3, "E1": 0.3, "C": 0.3,
+                "mass_RM": 0.95, "mass_E0": 0.99, "mass_E1": 0.99, "mass_C": 0.99}
+        push = {c: dict(base) for c in IN.CONDITIONS}
+        push["E"].update(p_R=base["p_R"] + 0.16, E0=0.5)
+        push["need"].update(p_R=base["p_R"] + need_pR, E0=0.3 + need_yes + 0.005 * rng.standard_normal(),
+                            C=0.3 + control)
+        push["decision"].update(p_R=base["p_R"] + decision_pR + 0.01 * rng.standard_normal(),
+                                E0=0.3 + decision_yes + 0.005 * rng.standard_normal())
+        rows.append({"life": k // 5, "t": 1 + k % 5, "push": push})
+    return rows
+
+
+class IntentionTests(unittest.TestCase):
+    SETUP = {"replay_gap": 1e-6, "execution_gap": 1e-6, "gradient_decisions": 300}
+
+    def test_directions(self):
+        from research import need_intention as IN
+        rng = np.random.default_rng(0)
+        g_true = rng.standard_normal((3, 8))
+        grads = [g_true * (1 + 0.1 * i) + 0.01 * rng.standard_normal((3, 8)) for i in range(20)]
+        d_e = rng.standard_normal((3, 8))
+        d_e[:, 2] = 0
+        g_hat, d_perp, agreement = IN.directions(grads, d_e, [2])
+        np.testing.assert_allclose(np.linalg.norm(g_hat, axis=1), 1)
+        self.assertTrue(np.all(g_hat[:, 2] == 0) and np.all(d_perp[:, 2] == 0))
+        np.testing.assert_allclose((d_perp * g_hat).sum(axis=1), 0, atol=1e-10)
+        np.testing.assert_allclose(np.linalg.norm(d_perp, axis=1), np.linalg.norm(d_e, axis=1))
+        self.assertTrue(np.all(agreement > 0.99))
+
+    def test_intention_verdicts(self):
+        from research import need_intention as IN
+        v = IN.verdicts(intention_rows(400), self.SETUP)
+        self.assertEqual(v["verdicts"], {"INT0": True, "NEED": False, "INTENT": True, "valid": True})
+        self.assertEqual(v["reading"], IN.READING[(False, True)])
+        v = IN.verdicts(intention_rows(400, need_yes=0.08, decision_yes=0.0), self.SETUP)["verdicts"]
+        self.assertTrue(v["NEED"] and not v["INTENT"])
+        self.assertFalse(IN.verdicts(intention_rows(400, need_yes=0.08, control=0.07), self.SETUP)["verdicts"]["NEED"])
+        self.assertFalse(IN.verdicts(intention_rows(400, need_pR=0.1), self.SETUP)["verdicts"]["INT0"])
+        self.assertFalse(IN.verdicts(intention_rows(400, decision_pR=0.05), self.SETUP)["verdicts"]["INT0"])
+        self.assertFalse(IN.verdicts(intention_rows(200), self.SETUP)["verdicts"]["valid"])
+        self.assertFalse(IN.verdicts(intention_rows(400), dict(self.SETUP, gradient_decisions=100))["verdicts"]["valid"])
+
+
 class OwnershipTests(unittest.TestCase):
     def test_the_other_lives_beside_without_changing_the_agent(self):
         alone = W.play(W.Oracle(), W.world_rng(225, 0), W.choice_rng(225, 0))
