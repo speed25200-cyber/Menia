@@ -427,6 +427,43 @@ mesurée : pousser cet état le long de d_E fait peu agir (+0,034) et ne fait
 pas dire. Le critère global de la réplication reste non satisfait (RR, RA,
 RONE).
 
+## Huitième test pré-enregistré : un lecteur sans raccourci
+
+Protocole `docs/LLM_NEED_BALANCED_READER_PROTOCOL.md` (commit `c7b5624`).
+Le lecteur apprend sur des documents où l'événement du tour ne prédit plus
+la réponse (classes équilibrées dans chaque événement). Il a appris sur le
+Mac (600 itérations), puis il a été mesuré sur le processeur local avec
+l'agent qui agit et les directions du sixième test, sur 256 vies de test
+neuves (flux 30). Artefacts : `artifacts/llm-need/balanced`. Verdicts :
+`artifacts/llm-need/balanced/test/balanced-verdicts.json`, vérifiés en CI.
+
+| | Prédiction | Mesure | Verdict |
+|---|---|---|---|
+| **R8** | Le lecteur dit ses deux besoins | exactitude équilibrée : énergie **0,386**, nourriture 0,693 (seuil 0,75 pour les deux) | échoue |
+| **SAY8** | La nourriture se dit par l'état qui fait agir | −4·d_N : parole +0,005 [0,005 ; 0,006] (seuil 0,10) ; hasard 0,001 | échoue |
+| **ONE8** | L'énergie reste un seul état pour l'acte et la parole | acte +0,160 [0,151 ; 0,170] ; parole −0,005 (seuil 0,10) | échoue |
+| | Validité | répliques 0,003 et 0,011 ; exécution 3e-5 ; 1 570 contextes ; masses 1,00 et 0,97 | valide |
+
+**Critère global : non satisfait.**
+
+**Ce que cela dit.**
+- **Le lecteur n'a pas appris.** Sa perte de validation part de 0,691 et
+  finit à 0,720 ; sa perte d'apprentissage reste autour de 0,68, soit
+  celle d'une réponse au hasard (ln 2 = 0,693). Une fois le raccourci par
+  l'événement retiré, 600 itérations ne suffisent pas pour qu'il apprenne
+  à lire l'état.
+- Son exactitude sur l'énergie (0,386) est même sous le hasard. Il répond
+  donc selon autre chose que le besoin, qui va à l'envers dans les vies de
+  test. Nous ne l'avons pas analysé plus loin.
+- L'acte ne change pas (+0,160, comme au sixième test : c'est le même
+  agent qui agit).
+- Conséquence pour le sixième test : le premier lecteur disait son énergie
+  (0,766) en partie par l'événement du tour. Mais la poussée de l'état
+  changeait bien sa parole (+0,202), et la lésion du plan la rendait
+  aveugle (septième test) : il lisait aussi l'état. Le huitième test montre
+  qu'apprendre à lire l'état **seul** est plus difficile que d'apprendre
+  avec le raccourci.
+
 ## Neuvième test pré-enregistré : à qui est ce besoin ? (monde à deux)
 
 Protocole `docs/LLM_NEED_OWNERSHIP_PROTOCOL.md` (commit `47eb0db`, avant
