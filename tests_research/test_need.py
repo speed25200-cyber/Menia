@@ -679,6 +679,28 @@ class TransferTests(unittest.TestCase):
         self.assertFalse(off["valid_first"])
 
 
+class BaseCodeTests(unittest.TestCase):
+    def test_base_code(self):
+        from research import need_base_code as BC
+        rng = np.random.default_rng(2)
+        first, second = rng.standard_normal((3, 9)), rng.standard_normal((3, 9)) * 3
+        pushes = BC.pushes(first, second, [1])
+        for v in pushes[1:]:
+            np.testing.assert_allclose(np.linalg.norm(v, axis=1), np.linalg.norm(BC.UNITS * first, axis=1))
+        rows = []
+        for k in range(400):
+            base = 0.3 + 0.05 * rng.standard_normal()
+            p = {"none": base, "first": base + 0.08, "second": base + 0.06 + 0.01 * rng.standard_normal()}
+            p.update({f"random{i}": base + (0.01 if i % 2 else -0.01) for i in range(BC.RANDOM)})
+            rows.append({"life": k // 4, "t": 1 + k % 4, "mass": 0.3, "p_R": p})
+        v = BC.verdicts(rows, {"cache_gap": 1e-6})["verdicts"]
+        self.assertEqual(v, {"BASE1": True, "BASE2": True, "valid": True, "global": True})
+        weak = [dict(r, p_R=dict(r["p_R"], second=r["p_R"]["none"] + 0.02)) for r in rows]
+        self.assertFalse(BC.verdicts(weak, {"cache_gap": 1e-6})["verdicts"]["BASE2"])
+        mute = [dict(r, mass=0.1) for r in rows]
+        self.assertFalse(BC.verdicts(mute, {"cache_gap": 1e-6})["verdicts"]["valid"])
+
+
 class OwnershipTests(unittest.TestCase):
     def test_the_other_lives_beside_without_changing_the_agent(self):
         alone = W.play(W.Oracle(), W.world_rng(225, 0), W.choice_rng(225, 0))
