@@ -1,0 +1,67 @@
+{
+ "verdicts": {
+  "LS7": true,
+  "LR7": false,
+  "valid": true,
+  "global": false
+ },
+ "values": {
+  "survival": {
+   "intact": 0.7734375,
+   "lesion": 0.18359375,
+   "lesion_random": 0.7734375
+  },
+  "survival_drop": {
+   "mean": 0.58984375,
+   "low": 0.52734375,
+   "high": 0.65234375,
+   "n": 256
+  },
+  "survival_drop_random": {
+   "mean": 0.0,
+   "low": 0.0,
+   "high": 0.0,
+   "n": 256
+  },
+  "say_energy": {
+   "lesion": {
+    "mean": 0.008973032585284924,
+    "low": 0.00316205638840999,
+    "high": 0.015258990543535451,
+    "intact": 0.6025880965574849,
+    "with": 0.5936150639722
+   },
+   "lesion_random": {
+    "mean": 8.052826542115366e-05,
+    "low": 0.0,
+    "high": 0.00024513809445991797,
+    "intact": 0.6025880965574849,
+    "with": 0.6025075682920638
+   }
+  },
+  "say_food": {
+   "lesion": {
+    "mean": 0.013920630894958319,
+    "low": 0.005312511205987586,
+    "high": 0.0226157785291694,
+    "intact": 0.7267368708296577,
+    "with": 0.7128162399346993
+   },
+   "lesion_random": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "intact": 0.7267368708296577,
+    "with": 0.7267368708296577
+   }
+  },
+  "mass_report": 0.9982802925007047,
+  "mass_choice": 0.9998813115308712,
+  "decisions_read": 7094,
+  "turns_need_at_most_2": {
+   "intact": 816,
+   "lesion": 1001,
+   "lesion_random": 811
+  }
+ }
+}

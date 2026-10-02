@@ -532,11 +532,10 @@ type d'échange par type d'échange :
 
 Le verdict reste celui du protocole : la possession n'est pas démontrée.
 
-## Dixième test pré-enregistré : où chaque agent rassemble-t-il son besoin ? (en cours)
+## Dixième test pré-enregistré : où chaque agent rassemble-t-il son besoin ?
 
-Protocole `docs/LLM_NEED_LOCATE_PROTOCOL.md` (commit `12b4d2d`). La
-lésion de l'agent du monde à deux tourne encore sur le Mac ; ce qui suit est
-ce qui est mesuré au 1er octobre.
+Protocole `docs/LLM_NEED_LOCATE_PROTOCOL.md` (commit `12b4d2d`).
+Verdicts : `artifacts/llm-need/locate/verdicts.json`, vérifiés en CI.
 
 **La règle.** Pour chaque bloc b, on recopie la sortie du bloc b sur
 « Choix : » depuis une vie où un « calme » passé devient « tu cours », et
@@ -561,12 +560,32 @@ pas. Ses mesures au bloc 12 sont publiées à titre descriptif
 vies lu avant d'écrire le protocole du test 11, déclaré) :
 - **acte +0,217 [0,206 ; 0,230]**, hasard 0,011 : ACT10 passe pour lui ;
 - parole −0,001 ; exactitude du rapport : énergie 0,608, nourriture 0,712 ;
-- lésion (LS10) : en cours. Une tranche du Mac (la sixième) a été perdue :
-  le code de reprise revivait des vies de test déjà finies. Corrigé
-  (commit `de2c1b4`) ; aucun résultat n'est changé.
+- **lésion (LS10)** : effacer le plan (d_E, d_N) au bloc 22 fait tomber
+  la survie de **0,773 à 0,184** (chute 0,59 [0,53 ; 0,65]) ; le plan au
+  hasard ne change rien (0,773). **LS10 passe** pour lui. Le rapport de son
+  lecteur court ne bouge presque pas (énergie 0,603 → 0,594) : il lisait
+  peu cet état (test 11).
+- Exécution : une tranche du Mac (la sixième) a été perdue, le code de
+  reprise revivant des vies de test déjà finies. Corrigé (commit
+  `de2c1b4`). Le Mac ayant ensuite été bloqué (facturation), la fin de la
+  lésion (88 vies intactes sur 256, puis les vies sous lésion) a été
+  mesurée sur le processeur local, reprise depuis la huitième tranche du
+  Mac avec le même code. Aucun résultat n'est changé.
 
-**Critère global** : déjà **non satisfait** (LOC10 échoue pour le second
-agent).
+| | Second agent | Monde à deux |
+|---|---|---|
+| **LOC10** | échoue (71 paires) | **passe** (bloc 22) |
+| **ACT10** | ne compte pas | **passe** (+0,217) |
+| **LS10** | ne compte pas | **passe** (0,773 → 0,184) |
+
+**Critère global : non satisfait** (LOC10 échoue pour le second agent).
+
+**Ce que cela dit.** Chez l'agent du monde à deux, l'état qui fait agir est
+rassemblé plus tard (bloc 22 au lieu de 12), mais il a les mêmes
+propriétés que chez le premier : suffisant pour agir (le pousser fait agir)
+et nécessaire pour survivre (l'effacer le tue), contre des témoins au
+hasard qui ne font rien. Ce résultat se réplique donc chez un agent
+différent, dans un monde différent.
 
 ## Onzième test pré-enregistré : un lecteur qui apprend assez (en cours)
 
