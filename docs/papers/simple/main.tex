@@ -11,7 +11,7 @@
 \renewcommand{\ttdefault}{lmtt}
 \usepackage[letterspace=120]{microtype}
 \usepackage{icomma}
-\usepackage[a4paper,left=3.0cm,right=3.0cm,top=2.9cm,bottom=2.9cm,headsep=0.9cm,footskip=1.3cm]{geometry}
+\usepackage[a4paper,left=2.8cm,right=2.8cm,top=2.8cm,bottom=2.8cm,headsep=0.9cm,footskip=1.3cm]{geometry}
 \usepackage{amsmath,amssymb}
 \usepackage{xcolor}
 \usepackage{tikz}
@@ -172,7 +172,9 @@ besoins cachés : l'énergie et la nourriture. Personne ne lui dit quoi faire. I
 En regardant à l'intérieur du modèle, on trouve un \textbf{état} qui porte son besoin
 d'énergie. Le pousser fait agir l'agent et lui fait dire \q{mon énergie est basse}.
 L'effacer l'empêche de survivre et de le dire. Des interventions au hasard, de même
-force, ne font rien.
+force, ne font rien. Chez un second agent, appris de zéro, effacer cet état le tue aussi ;
+mais la parole par cet état, elle, ne se retrouve pas aux seuils fixés chez les autres
+agents.
 
 Ce n'est pas la preuve d'un ressenti. C'est un \emph{mécanisme} que plusieurs théories
 associent au ressenti : un besoin appris en vivant, rassemblé en un état dont l'agent
@@ -218,16 +220,16 @@ hasard ne change rien (0,676).}\hfill
 effacé : le niveau du hasard.}
 
 \vspace{1.5em}
-\noindent\chiffre{accent}{0,531 $\to$ 0,035}{Survie d'un second agent, appris de zéro, quand on
-efface l'état au bloc 12. Mais le pousser le fait à peine agir (+0,036).}\hfill
+\noindent\chiffre{accent}{0,57 $\to$ 0,04}{Survie d'un second agent, appris de zéro, quand on
+efface le même état : la nécessité se réplique. Mais le pousser le fait à peine agir (+0,034).}\hfill
 \chiffre{accent}{Bloc 22}{L'agent du \q{monde à deux} rassemble son besoin plus haut que le
-premier (bloc 12). L'y pousser le fait agir (+0,217), pas parler.}
+premier (bloc 12). L'y pousser le fait agir (+0,217), mais à peine parler (+0,029).}
 
 \vspace{2em}
 \begin{limite}
 Aucun de ces chiffres ne prouve un ressenti (chapitre~\ref{sec:portee}). La nourriture est
-dite moins bien que l'énergie (0,70, sous le seuil fixé de 0,75), et le test
-\q{À qui est ce besoin ?} a échoué.
+dite moins bien que l'énergie (0,70, sous le seuil fixé de 0,75) ; la parole par l'état reste
+propre au premier agent ; et le test \q{À qui est ce besoin ?} a échoué.
 \end{limite}
 
 \clearpage
@@ -697,7 +699,7 @@ un \textbf{témoin} : les mêmes mondes, le même nombre de décisions retenues,
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}
-\begin{axis}[width=11cm,height=5cm,xmin=0.7,xmax=8.3,ymin=0,ymax=1,
+\begin{axis}[width=11cm,height=4.4cm,xmin=0.7,xmax=8.3,ymin=0,ymax=1,
   xtick={1,...,8},ytick={0,0.2,0.4,0.6,0.8,1},xlabel={tour d'apprentissage},ylabel={survie},
   ymajorgrids,grid style={gris!15},legend style={at={(0.98,0.12)},anchor=south east}]
 \addplot[very thick,ink,mark=*] coordinates {(1,0.12) (2,0.61) (3,0.55) (4,0.67) (5,0.69) (6,0.61) (7,0.68) (8,0.67)};
@@ -921,15 +923,15 @@ nourriture (sans seuil), l'exactitude passe de 0,745 à 0,671.
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}
-\begin{axis}[ybar,width=11cm,height=4.8cm,bar width=15pt,ymin=0,ymax=0.85,
-  symbolic x coords={pa,pb},xtick=data,xticklabels={premier agent (test 7),second agent (bloc 12)},
+\begin{axis}[ybar,width=11cm,height=4.3cm,bar width=15pt,ymin=0,ymax=0.85,
+  symbolic x coords={pa,pb},xtick=data,xticklabels={premier agent (test 7),second agent (réplication)},
   ylabel={survie},ytick={0,0.2,0.4,0.6,0.8},
   nodes near coords,nodes near coords style={font=\sffamily\scriptsize,/pgf/number format/fixed,/pgf/number format/precision=3},
   legend style={at={(0.5,1.03)},anchor=south,legend columns=3,/tikz/every even column/.append style={column sep=0.4cm}},
   enlarge x limits=0.35]
-\addplot[fill=ink,draw=ink] coordinates {(pa,0.676) (pb,0.531)};
-\addplot[fill=accent,draw=accent] coordinates {(pa,0.203) (pb,0.035)};
-\addplot[fill=gris!40,draw=gris!60] coordinates {(pa,0.676) (pb,0.531)};
+\addplot[fill=ink,draw=ink] coordinates {(pa,0.676) (pb,0.570)};
+\addplot[fill=accent,draw=accent] coordinates {(pa,0.203) (pb,0.043)};
+\addplot[fill=gris!40,draw=gris!60] coordinates {(pa,0.676) (pb,0.562)};
 \legend{intact,état effacé,effacement au hasard}
 \end{axis}
 \end{tikzpicture}
@@ -945,22 +947,22 @@ intérieur, appris par la seule satisfaction du besoin, est à la fois \textbf{s
 d'énergie au hasard, de 0,75 à 0,50). La nourriture est dite moins bien (0,70).
 \end{essentiel}
 
-\textbf{Un seul axe (analyse exploratoire).} Sur les tokens \q{ix} et \q{:}, la direction de la
-nourriture est presque exactement l'opposée de celle de l'énergie : leur \textbf{cosinus},
-qui vaut 1 pour deux flèches de même sens, 0 à angle droit et $-1$ en sens opposé, est de
-$-0,99$. L'état code donc surtout \textbf{l'équilibre} entre énergie et nourriture,
-c'est-à-dire \emph{quel besoin est le plus urgent} : exactement ce qu'il faut pour choisir
-entre R et M. Cela pourrait expliquer pourquoi la nourriture est mal dite.
+\textbf{Un seul axe (analyse exploratoire).} Sur \q{ix} et \q{:}, la direction de la
+nourriture est presque l'opposée de celle de l'énergie (\textbf{cosinus} $-0,99$ ; 1 pour
+deux flèches de même sens, $-1$ en sens opposé). L'état code donc surtout \textbf{quel
+besoin est le plus urgent}, ce qu'il faut pour choisir entre R et M ; cela pourrait
+expliquer pourquoi la nourriture est mal dite.
 
 \subsection{Le second agent : une réplication partielle}
 Un résultat obtenu sur un seul agent pourrait être un hasard. Un \textbf{second agent} a
 donc été appris de zéro, avec les mêmes réglages et une autre graine. Il apprend à
 survivre (0,17 $\to$ 0,70 sur ses tours d'apprentissage), mais son lecteur apprend mal
 (perte de validation 0,74 $\to$ 0,66, contre 0,68 $\to$ 0,29 pour le premier). Au bloc 12,
-pousser l'état le fait \textbf{à peine agir} ($+0,036$) et ne le fait pas parler. Mais
-\textbf{effacer} l'état au bloc 12 fait tomber sa survie de 0,531 à \textbf{0,035}, alors
-qu'un effacement au hasard ne change rien (0,531) ; son rapport d'énergie, déjà faible
-(0,61), tombe au niveau du hasard (0,50).
+pousser l'état le fait \textbf{à peine agir} ($+0,034$) et ne le fait pas parler : la
+\emph{suffisance} ne se réplique pas. Mais la \textbf{nécessité} se réplique : effacer
+l'état au bloc 12 fait tomber sa survie de 0,570 à \textbf{0,043}, et son lecteur ne dit plus
+son énergie (0,639 $\to$ 0,500, le niveau du hasard) ; un effacement au hasard ne change
+rien (0,562).
 
 \begin{limite}
 Pour localiser l'état, la règle fixée d'avance (test 10) demandait \textbf{100 paires
@@ -987,13 +989,13 @@ possession n'est pas démontrée.
 La règle de localisation (test 10) a d'abord été vérifiée sur le premier agent : elle
 retrouve le bloc 12. Chez l'agent du monde à deux, elle trouve le \textbf{bloc 22}
 (figure~\ref{fig:patching}). Au bloc 22, pousser vers \q{énergie basse} le fait
-\textbf{agir} ($+0,217$ ; au hasard, 0,011), mais \textbf{pas dire} ($-0,001$). Son test de
-lésion est \emph{en cours}.
+\textbf{agir} ($+0,217$ ; au hasard, 0,011), mais, avec son premier lecteur, \textbf{pas
+dire} ($-0,001$). Son test de lésion est \emph{en cours}.
 
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}
-\begin{axis}[width=12.5cm,height=5.4cm,xmin=-0.5,xmax=27.5,ymin=-0.05,ymax=1.08,
+\begin{axis}[width=12.5cm,height=4.8cm,xmin=-0.5,xmax=27.5,ymin=-0.05,ymax=1.08,
   xtick={0,3,6,9,12,15,18,22,27},ytick={0,0.25,0.5,0.75,1},
   xlabel={bloc où l'on recopie l'état},ylabel={part restaurée},ymajorgrids,grid style={gris!15},
   legend style={at={(0.015,0.97)},anchor=north west,fill=white,fill opacity=0.9,text opacity=1}]
@@ -1019,29 +1021,64 @@ la règle échoue faute de paires.}
 \subsection{Test 11 : des lecteurs qui apprennent plus longtemps}
 L'hypothèse : chez les deux autres agents, les lecteurs ont simplement trop peu appris. Le
 test 11, pré-enregistré, les refait avec \textbf{2\,000 itérations au lieu de 600}, sans
-rien changer d'autre. L'ordinateur emprunté pour l'apprentissage ne peut pas tourner plus
-de 120 minutes d'affilée : l'apprentissage est donc coupé en \textbf{deux tranches} de
-1\,000 itérations, la seconde reprenant \emph{exactement} la première (mêmes paquets
-d'exemples, dans le même ordre, même \q{mémoire} de l'algorithme d'apprentissage). Contrôle
-vérifié : les pertes des 600 premières itérations sont \textbf{les mêmes, au millième
-près}, que celles des anciens lecteurs.
+rien changer d'autre. L'ordinateur emprunté ne tournant pas plus de 120 minutes
+d'affilée, l'apprentissage est coupé en \textbf{deux tranches} de 1\,000 itérations, la
+seconde reprenant \emph{exactement} la première ; contrôle vérifié, les pertes des 600
+premières itérations sont \textbf{les mêmes, au millième près}, que celles des anciens lecteurs.
 
 La question : les deux autres agents disent-ils alors leur énergie (exactitude équilibrée
-d'au moins 0,75), et la disent-ils \emph{par l'état qui les fait agir} (pousser cet état,
-à leur propre bloc, doit augmenter $P(\text{oui})$ d'au moins 0,10, le hasard au plus du
-tiers) ?
+d'au moins 0,75), et la disent-ils \emph{par l'état qui les fait agir} (pousser cet état, à
+leur propre bloc, doit augmenter $P(\text{oui})$ d'au moins 0,10) ? \textbf{Le test échoue
+pour les deux.}
 
 % RESULTS-TEST11
-\begin{encours}
-La mesure tourne au moment où ce document est écrit (1\textsuperscript{er} octobre 2026).
-Ses verdicts seront ajoutés ici.
-\end{encours}
+\begin{center}\small
+\begin{tabular}{lccc}
+\toprule
+\textsf{Lecteur} & \textsf{Dit son énergie} & \textsf{Parole quand on pousse l'état} & \textsf{Hasard}\\
+\midrule
+second agent, 600 itérations & 0,623 & $+0,002$ & 0,001\\
+second agent, 2\,000 itérations & 0,595 & $+0,0015$ & 0,0009\\
+monde à deux, 600 itérations & 0,608 & $-0,001$ & 0,0003\\
+monde à deux, 2\,000 itérations & \textbf{0,747} & $\mathbf{+0,029}$ & 0,001\\
+\midrule
+\emph{seuil fixé} & \emph{0,75} & \emph{0,10} & \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Chez le second agent, trois fois plus d'apprentissage ne change rien : l'hypothèse
+\q{son lecteur avait trop peu appris} est réfutée. Chez l'agent du monde à deux, cela aide
+nettement : il dit son énergie à 0,747, à 0,003 du seuil, et pousser l'état qui le fait
+agir change maintenant un peu ce qu'il dit ($+0,029$, trente fois le hasard). Le lien
+existe chez lui, mais il est faible, loin du premier agent ($+0,202$). Aux seuils fixés, la
+parole par l'état qui fait agir reste \textbf{propre au premier agent}.
+
+\textbf{L'information est là (analyse exploratoire).} Le niveau d'énergie se lit-il dans
+l'état des trois agents ? On le mesure par le $R^2$ d'une règle linéaire : la part des
+variations de l'énergie qu'elle retrouve dans l'état (1 : tout ; 0 : rien).
+
+\begin{center}\small
+\begin{tabular}{lccc}
+\toprule
+ & \textsf{Premier (bloc 12)} & \textsf{Second (bloc 12)} & \textsf{Monde à deux (bloc 22)}\\
+\midrule
+énergie lue dans l'état ($R^2$) & 0,72 & 0,64 & 0,69\\
+\q{énergie basse}, lue directement & 0,69 & 0,68 & 0,71\\
+\q{énergie basse}, dite par le lecteur & 0,77 & 0,595 & 0,747\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Les trois agents portent leur niveau d'énergie à peu près aussi bien. Ce qui diffère,
+c'est la façon dont le lecteur s'en sert : le premier dit mieux que la lecture directe, le
+second moins bien. Comprendre pourquoi demandera un protocole à part.
 
 \subsection{Récapitulatif}
 \begin{center}
-\small
-\renewcommand{\arraystretch}{1.12}
-\begin{tabularx}{\linewidth}{>{\sffamily\bfseries\color{accent}}c >{\raggedright\arraybackslash}p{4.3cm} >{\raggedright\arraybackslash}X}
+\footnotesize
+\renewcommand{\arraystretch}{1.08}
+\begin{tabularx}{\linewidth}{>{\sffamily\bfseries\color{accent}}c >{\raggedright\arraybackslash}p{4.6cm} >{\raggedright\arraybackslash}X}
 \toprule
 \normalfont\textsf{\textbf{Test}} & \textsf{\textbf{Question}} & \textsf{\textbf{Réponse}}\\
 \midrule
@@ -1053,8 +1090,10 @@ Ses verdicts seront ajoutés ici.
 7 & Cet état est-il nécessaire ? & Oui : survie 0,676 $\to$ 0,203 ; rapport d'énergie 0,75 $\to$ 0,50.\\
 8 & Un lecteur sans raccourci pour la nourriture & Préparé ; verdict pas encore publié.\\
 9 & À qui est ce besoin ? & Échoue : la possession n'est pas démontrée.\\
-10 & Où chaque agent rassemble-t-il son besoin ? & Premier agent : bloc 12 (règle vérifiée). Second : échoue (71 paires sur 100). Monde à deux : bloc 22, agir $+0,217$, dire $-0,001$ ; lésion en cours.\\
-11 & Des lecteurs plus longs disent-ils l'énergie ? & Résultat en cours.\\
+R & Le résultat tient-il chez un second agent ? & Nécessité répliquée (survie 0,57 $\to$ 0,04 ; rapport 0,64 $\to$ 0,50) ; suffisance non.\\
+10 & Où chaque agent rassemble-t-il son besoin ? & Premier agent : bloc 12 (règle vérifiée). Second : échoue (71 paires sur 100). Monde à deux : bloc 22, agir $+0,217$ ; lésion en cours.\\
+11 & Des lecteurs plus longs disent-ils l'énergie ? & Échoue : second agent 0,595 ; monde à deux 0,747 et parole $+0,029$ (seuils 0,75 et 0,10).\\
+12 & Soif de savoir & Pré-enregistré, code écrit ; pilote en cours.\\
 \bottomrule
 \end{tabularx}
 \end{center}
@@ -1096,8 +1135,9 @@ voyant s'allume. Elle a l'accès, pas (à notre connaissance) le ressenti.
   \item \textbf{Ce n'est pas une preuve de conscience.} Aucun test connu ne permet de prouver
   qu'une machine ressent quelque chose.
   \item La nourriture est mal dite : le résultat complet ne vaut que pour l'énergie.
-  \item Il ne tient pleinement que pour un agent. Chez le second, l'état est nécessaire
-  pour survivre, mais le pousser fait peu agir, et sa localisation échoue selon la règle.
+  \item Il ne tient pleinement que pour un agent. Chez le second, la nécessité se réplique,
+  mais le pousser fait peu agir et ne le fait pas parler ; chez les deux autres agents, la
+  parole par l'état n'atteint pas les seuils, alors que l'information y est.
   \item La possession (\q{ce besoin est le mien}) n'est pas démontrée.
   \item Le monde est minuscule : 6 événements et 2 actions.
 \end{itemize}
@@ -1120,8 +1160,7 @@ d'autres) a proposé de ranger ces indices du plus visible au plus profond, et d
 quelles hypothèses dépend chaque conclusion (les auteurs parlent d'\q{agnosticisme
 structuré}).
 
-\begin{figure}[h]
-\centering
+\begin{center}
 \begin{tikzpicture}[lvl/.style={rounded corners=2pt,minimum height=8.5mm,font=\sffamily\small,anchor=west,align=left,inner sep=4pt}]
   \node[lvl,draw=ink,fill=ink!10,text width=13.6cm] at (0,0) {\textbf{1. Comportement} \enspace ce que l'on voit faire \hfill établi (survie) ; rapport partiel};
   \node[lvl,draw=ink,fill=ink!10,text width=12.8cm] at (0.4,0.95) {\textbf{2. Calcul} \enspace les états internes calculés et utilisés \hfill établi pour l'énergie};
@@ -1129,30 +1168,24 @@ structuré}).
   \node[lvl,draw=accent,fill=accent!8,text width=11.2cm] at (1.2,2.85) {\textbf{4. Organisme} \enspace besoins, intérieur, \q{à moi} \hfill en partie ; possession : échoue};
   \node[lvl,draw=accent,fill=accent!8,text width=10.4cm] at (1.6,3.8) {\textbf{5. Organisme et monde} \enspace le couplage \hfill oui, monde très simple};
 \end{tikzpicture}
-\caption{Les cinq niveaux, et où en est Menia (encre : établi ; terre cuite : partiel ou limité).}
-\end{figure}
+\captionof{figure}{Les cinq niveaux, et où en est Menia (encre : établi ; terre cuite : partiel ou limité).}
+\end{center}
 
-Au niveau du \textbf{comportement}, l'agent survit 68\pc{} au lieu de 12\pc{} et dit son
-énergie (0,77 au test 6) ; mais le cadre prévient que, chez une machine entraînée sur des
-textes humains, ce qu'elle \emph{dit} pèse peu, d'où la vérification causale de l'origine
-de la parole. Au niveau du \textbf{calcul}, un état rassemblé au bloc 12 est suffisant et
-nécessaire pour agir et pour dire (tests 2, 6 et 7), pour l'énergie. Pour la
-\textbf{structure causale fine}, on sait que les événements sont rassemblés sur
-\q{Choix :} entre les blocs 9 et 12, mais la \emph{récurrence} (un état qui se reprend d'un
-tour à l'autre) n'a pas été mesurée. Au niveau de l'\textbf{organisme}, l'homéostasie est
-établie au sens fonctionnel, l'intéroception (sentir son intérieur) pour l'énergie, la
-valence seulement au sens fonctionnel, et la possession (ses états sont \emph{les siens})
-échoue. Enfin, le \textbf{couplage avec un monde} existe, mais ce monde est très pauvre.
-
-Le cadre propose aussi de combiner les preuves en une probabilité. Le projet ne le fait
-pas : les poids donnés aux théories seraient des choix d'auteur, et le cadre lui-même
-montre qu'ils font varier le résultat d'un facteur 100.
+\textbf{Comportement} : survie de 12\pc{} à 68\pc, énergie dite à 0,77 ; mais chez une
+machine entraînée sur des textes humains, ce qu'elle \emph{dit} pèse peu, d'où la
+vérification causale. \textbf{Calcul} : un état suffisant et nécessaire pour agir et dire
+(tests 2, 6 et 7), pour l'énergie. \textbf{Structure fine} : le rassemblement entre les blocs
+9 et 12 est connu, la \emph{récurrence} d'un tour à l'autre n'est pas mesurée.
+\textbf{Organisme} : homéostasie et valence fonctionnelles, intéroception pour l'énergie,
+possession non démontrée. \textbf{Monde} : un couplage réel, mais un monde très pauvre. Le
+projet ne combine pas ces preuves en une probabilité : les poids des théories seraient des
+choix d'auteur, et le cadre montre qu'ils font varier le résultat d'un facteur 100.
 
 % =====================================================================
 \section{La suite : la soif de savoir et les hormones}
 \label{sec:suite}
 % Chapitre rédigé avec la note de recherche papers/neuromodulation-notes.md
-% et le brouillon LLM_CURIOSITY_PROTOCOL.draft.md (1er octobre 2026).
+% et le protocole pré-enregistré docs/LLM_CURIOSITY_PROTOCOL.md (test 12).
 % Tout ce chapitre décrit des projets, sans résultat.
 
 \lead{Deux projets prolongent ce travail : un besoin de savoir, qui pousse un modèle à
@@ -1165,15 +1198,12 @@ ci-dessous sont des exemples de calcul, pas des mesures.
 \end{limite}
 
 \subsection{La soif de savoir}
-Jusqu'ici, le besoin était \emph{corporel}. L'étape suivante est un \textbf{besoin de
-savoir} : un modèle choisirait lui-même \emph{quoi apprendre}, poussé par un manque
-intérieur de connaissance, comme l'agent choisit de manger. Mesurer ce manque par
-l'\textbf{erreur} (\q{va là où tu te trompes le plus}) mène à un piège célèbre, la
-\textbf{télé qui grésille} : une neige au hasard est impossible à prédire, l'erreur y reste
-forte, et un curieux naïf resterait collé devant sans rien apprendre. Le projet l'a déjà
-observé : un petit agent payé à la surprise passait 93 à 97\pc{} de ses inspections sur du
-bruit. La bonne mesure est le \textbf{progrès} : de combien l'erreur baisse (Oudeyer et
-Kaplan, 2007).
+Après le besoin \emph{corporel}, un \textbf{besoin de savoir} : un modèle choisirait
+lui-même \emph{quoi apprendre}. Mesurer ce manque par l'\textbf{erreur} mène au piège de la
+\textbf{télé qui grésille} : une neige au hasard reste imprévisible, et un curieux naïf
+resterait collé devant (un petit agent du projet, payé à la surprise, passait 93 à 97\pc{}
+de ses inspections sur du bruit). La bonne mesure est le \textbf{progrès} : de combien
+l'erreur baisse (Oudeyer et Kaplan, 2007).
 
 \begin{calcul}{le progrès plutôt que l'erreur}
 \begin{minipage}{0.55\linewidth}
@@ -1205,9 +1235,11 @@ rien non plus : le progrès guide vers ce qui est \emph{apprenable, mais pas enc
 \end{minipage}
 \end{calcul}
 
-\subsection{Le protocole \q{Soif de savoir} (en préparation)}
-Un protocole est \textbf{en préparation} : rédigé, pas encore pré-enregistré, ses détails
-peuvent changer. Le modèle y apprend \textbf{quatre domaines} fabriqués exprès : des
+\subsection{Le test 12 : la soif de savoir}
+Ce test est maintenant \textbf{pré-enregistré}, et son code est écrit ; son pilote tourne.
+Avant toute exécution, une simulation sans modèle, avec des apprenants jouets, a montré
+que la règle prévue pour régler la température rendait l'instinct presque plat : la règle a
+été changée, et ce changement déclaré, avant toute vie. Le modèle y apprend \textbf{quatre domaines} fabriqués exprès : des
 \emph{mots} (une conjugaison inventée, \q{tabor, nous $\to$ taborimen} : facile, vite su), la
 \emph{base} (additions en base 7, \q{23 + 14 = 40} : difficile mais apprenable), le
 \emph{calcul} (les mêmes additions en base 10, \q{23 + 14 = 37} : déjà su) et des
@@ -1217,7 +1249,7 @@ peuvent changer. Le modèle y apprend \textbf{quatre domaines} fabriqués exprè
 Avant chaque séance, le modèle voit un \textbf{tableau de bord} de ses progrès récents,
 puis répond par le nom d'un domaine :
 
-\begin{texte}{LE TABLEAU DE BORD (EXEMPLE DU BROUILLON)}
+\begin{texte}{LE TABLEAU DE BORD (EXEMPLE DU PROTOCOLE)}
 mots : 5 séances ; dernière séance : 412 → 268.\\
 base : 3 séances ; dernière séance : 151 → 139.\\
 calcul : 1 séance ; dernière séance : 021 → 022.\\
@@ -1226,12 +1258,9 @@ suites : jamais étudiées.\\
 \end{texte}
 
 Le progrès est \q{avant moins après} : $412 - 268 = 144$ points pour les mots, $12$ pour la
-base, $-1$ pour le calcul. Les mots progressent le plus ; un modèle curieux devrait les
-choisir, jusqu'à ce qu'ils soient sus (les domaines peu étudiés reçoivent en plus une
-petite prime de curiosité). Cette règle est \emph{donnée} : le modèle l'apprend une fois,
-avant toute vie ; ce besoin est donc \emph{inné}, contrairement à l'énergie. Le savoir,
-lui, s'apprend en lisant les exemples choisis, sans aucune récompense : une curiosité
-\textbf{sans renforcement}. Les mêmes tests que pour l'énergie sont prévus : localiser le
+base, $-1$ pour le calcul ; un modèle curieux devrait choisir les mots, jusqu'à ce qu'ils
+soient sus. Cette règle est \emph{donnée} (un besoin \emph{inné}) ; le savoir, lui, s'apprend
+sans aucune récompense. Les mêmes tests que pour l'énergie sont prévus : localiser le
 \q{manque de savoir}, le pousser, l'effacer, et demander au modèle ce qui lui manque.
 
 \subsection{Imiter une hormone}
@@ -1295,8 +1324,8 @@ $H$ & $T$ & $e^{1/T}$ & $P(\text{maths})$\\
 \end{calcul}
 
 Une \q{dopamine} peut enfin régler l'\textbf{apprentissage} : apprendre fort quand la
-surprise de récompense est grande, rien quand tout était prévu. Le protocole en
-préparation prévoit trois façons d'agir avec une même hormone : une petite poussée
+surprise de récompense est grande, rien quand tout était prévu. Le test 12 prévoit
+trois façons d'agir avec une même hormone : une petite poussée
 répétée sur l'état (un \q{appétit lent}), une vitesse d'apprentissage multipliée par
 $1+H$ (la \q{dopamine}), et un gain qui rend l'état plus sensible au progrès.
 
@@ -1322,11 +1351,10 @@ Comment naît un intérêt qui dure, par exemple pour les mathématiques ? Des c
 \end{tikzpicture}
 \end{center}
 
-Une telle boucle peut avoir \textbf{deux états stables}, comme une bille qui peut rester
-dans l'une de deux vallées : \q{pas d'intérêt} et \q{intérêt fort}. Une fois dans la
-seconde, l'intérêt reste, même quand le progrès ralentit : c'est le mécanisme le plus
-simple d'une préférence qui \textbf{dure} après la disparition de sa cause. Le protocole
-en préparation nomme d'avance trois issues possibles après une bouffée d'hormone :
+Une telle boucle peut avoir \textbf{deux états stables}, comme une bille dans l'une de
+deux vallées (\q{pas d'intérêt}, \q{intérêt fort}) : une fois installé, l'intérêt
+\textbf{dure} même quand le progrès ralentit. Le test 12
+nomme d'avance trois issues possibles après une bouffée d'hormone :
 \textbf{préférence durable}, \textbf{satiété} ou \textbf{sans trace}. Il ne prédit pas
 laquelle arrivera.
 
@@ -1434,9 +1462,8 @@ mesurés et utiles, et lesquels manquent.
 {\color{rulecol}\rule{\linewidth}{0.5pt}}\par
 {\footnotesize\color{gris}\textsf{\textbf{Sources.}} Les chiffres de ce document viennent
 des protocoles pré-enregistrés, des résultats et des verdicts publiés du projet Menia,
-arrêtés au 1\textsuperscript{er} octobre 2026 ; les mesures encore en cours sont signalées
-comme telles. Les petits exemples de calcul (\q{Le calcul}) sont des illustrations, non des
-mesures. Le chapitre~\ref{sec:suite} s'appuie sur une note de recherche et sur un
-protocole en préparation, non encore pré-enregistré.\par}
+arrêtés au 2 octobre 2026 ; les mesures encore en cours sont signalées comme telles. Les petits exemples de calcul (\q{Le calcul}) sont des illustrations, non des
+mesures. Le chapitre~\ref{sec:suite} s'appuie sur une note de recherche et sur le
+protocole pré-enregistré du test 12, dont le pilote tourne.\par}
 
 \end{document}
