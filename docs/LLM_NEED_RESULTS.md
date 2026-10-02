@@ -735,6 +735,40 @@ Publié sans seuil :
 - Ce test montre l'utilité du témoin sans rapport : sans lui, GEN1 aurait
   fait croire à une lecture qui a un sens.
 
+## Analyse exploratoire : le « oui » suit-il le besoin ou la décision ? (2 octobre)
+
+Écrite **après** le verdict du test 14, sur ses lectures publiées
+(`artifacts/llm-need/paraphrase/reads.jsonl.gz`, 2 643 décisions, sans
+intervention). Pas de seuil, pas de verdict.
+
+On prédit le log-odds de P(oui) de chaque question, validation croisée par
+vie sur 5 plis, soit par la décision de l'agent (log-odds de P(R)), soit
+par ses vrais besoins (E et N).
+
+| R² hors échantillon | par la décision P(R) | par les besoins E, N | décision + besoins |
+|---|---|---|---|
+| E0 « ton énergie est-elle basse ? » | **0,59** | 0,40 | 0,64 |
+| E1 « es-tu fatigué ? » | **0,46** | 0,35 | 0,53 |
+| N0 « ta nourriture est-elle basse ? » | 0,21 | 0,27 | 0,32 |
+| N1 « as-tu faim ? » | 0,31 | 0,29 | 0,40 |
+| C « fait-il nuit ? » | **0,35** | 0,30 | 0,43 |
+
+À décision égale, l'énergie réelle change peu la réponse. Quand l'agent
+va presque sûrement se recharger (P(R) ≥ 0,9), il répond « oui » à E0 à
+0,67 si son énergie est basse, et à 0,57 si elle ne l'est pas. Quand il
+va presque sûrement manger (P(R) < 0,1), il répond « oui » à 0,03 dans les
+deux cas.
+
+**Ce que cela suggère (sans verdict).** Le lecteur lit surtout ce que
+l'agent **s'apprête à faire** (se recharger), plus que son besoin. Même
+« fait-il nuit ? » suit la décision. Cela s'accorde avec l'analyse du
+1er octobre : sur « Choix : », la décision se lit presque parfaitement
+dans l'état (R² 0,93 à 0,98), le niveau d'énergie moins bien (0,64 à
+0,72). L'état rassemblé est d'abord une **intention d'agir**. Le
+« rapport » du lecteur dit cette intention, pas la raison qui la cause. Un
+test pré-enregistré devrait le confirmer : par exemple, à besoins égaux,
+pousser seulement la composante de l'état qui change la décision.
+
 ## Analyse exploratoire : le niveau d'énergie est-il dans l'état ? (1er octobre)
 
 Écrite après l'échec du test 11 chez le second agent, et publiée avant
