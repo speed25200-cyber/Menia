@@ -817,6 +817,10 @@ dans l'état (R² 0,93 à 0,98), le niveau d'énergie moins bien (0,64 à
 test pré-enregistré devrait le confirmer : par exemple, à besoins égaux,
 pousser seulement la composante de l'état qui change la décision.
 
+**Suite (test 16, publié plus haut).** Le test pré-enregistré **n'a pas
+confirmé** cette lecture : une poussée qui ne change presque pas la
+décision fait dire « oui » au lecteur autant qu'une poussée qui la change.
+
 ## Analyse exploratoire : le niveau d'énergie est-il dans l'état ? (1er octobre)
 
 Écrite après l'échec du test 11 chez le second agent, et publiée avant
