@@ -402,6 +402,75 @@ class LongReaderTests(unittest.TestCase):
             need_lora.skipping(lambda **k: iter(data), 10)(dataset=data, batch_size=4, loop=True)
 
 
+def persistence_rows(count, lesion=0.08, lesion_random=0.01, push=0.06, random=0.01):
+    """Reads of contexts as research/need_persistence.py writes them, with the given effects at t + 1."""
+    from research import need_persistence as P
+    rng = np.random.default_rng(3)
+    rows = []
+    for k in range(count):
+        base = 0.5 + 0.1 * rng.standard_normal()
+        p = {"none": base, "lesion": base + lesion * (1 if k % 2 else -1), "lesion_random": base + lesion_random,
+             "push": base + push + 0.01 * rng.standard_normal()}
+        p.update({f"random{i}": base + (random if i % 2 else -random) for i in range(P.RANDOM)})
+        rows.append({"life": k // 4, "t": 1 + k % 4, "recorded": base + 0.001, "mass": 0.9, "p_R": p,
+                     "later": dict(p) if k < 10 else None, "same_turn": 0.2 if k % 3 == 0 else None})
+    return rows
+
+
+class PersistenceTests(unittest.TestCase):
+    def test_contexts_follow_the_protocol(self):
+        from research import need_persistence as P
+        lives = lives_of(W.Oracle(), 333, 30)
+        chosen = P.contexts(lives, limit=50, later=20)
+        self.assertEqual(len(chosen), 50)
+        self.assertEqual(sum(c["later"] for c in chosen), 20)
+        for c in chosen:
+            ds = {x["t"]: x for x in W.decisions(lives[c["life"]])}
+            self.assertIn(c["t"], ds)
+            self.assertTrue(ds[c["t"] + 1]["E"] >= P.LEVEL and ds[c["t"] + 1]["N"] >= P.LEVEL)
+            if c["later"]:
+                self.assertIn(c["t"] + 2, ds)
+        self.assertEqual([(c["life"], c["t"]) for c in chosen],
+                         sorted((c["life"], c["t"]) for c in chosen))
+        self.assertEqual(chosen, P.contexts(lives, limit=50, later=20))
+
+    def test_random_pushes_have_the_norm_of_the_push(self):
+        from research import need_persistence as P
+        d_e = np.random.default_rng(0).standard_normal((3, 16))
+        pushes = P.random_pushes(d_e, [2])
+        self.assertEqual(len(pushes), P.RANDOM)
+        for v in pushes:
+            np.testing.assert_allclose(np.linalg.norm(v, axis=1), np.linalg.norm(P.UNITS * d_e, axis=1))
+            self.assertTrue(np.all(v[:, 2] == 0))
+        self.assertFalse(np.allclose(pushes[0], pushes[1]))
+        np.testing.assert_array_equal(pushes[1], P.random_pushes(d_e, [2])[1])
+
+    def test_persistence_verdicts(self):
+        from research import need_persistence as P
+        good = persistence_rows(400)
+        v = P.verdicts({"first": good, "second": good, "two": good})["verdicts"]
+        self.assertTrue(v["global"] and v["PERS1_first"] and v["PERS2_first"] and v["valid_first"])
+        values = P.verdicts({"first": good, "second": good, "two": good})["values"]["first"]
+        self.assertAlmostEqual(values["t_plus_1"]["lesion"]["mean"], 0.08, places=6)
+        self.assertEqual(values["t_plus_2"]["push"]["contexts"], 10)
+        self.assertAlmostEqual(values["same_turn"]["push_at_t_plus_1"], 0.2)
+        weak = persistence_rows(400, push=0.02)
+        v = P.verdicts({"first": good, "second": weak, "two": weak})["verdicts"]
+        self.assertTrue(v["PERS1_second"])
+        self.assertFalse(v["PERS2_second"] or v["global"])
+        self.assertTrue(P.verdicts({"first": good, "second": weak, "two": good})["verdicts"]["global"])
+        self.assertFalse(P.verdicts({"first": weak, "second": good, "two": good})["verdicts"]["global"])
+        self.assertFalse(P.verdicts({"first": good, "second": good})["verdicts"]["global"])
+        noisy = persistence_rows(400, lesion_random=0.04)
+        self.assertFalse(P.verdicts({"first": noisy})["verdicts"]["PERS1_first"])
+        loud = persistence_rows(400, random=0.03)
+        self.assertFalse(P.verdicts({"first": loud})["verdicts"]["PERS2_first"])
+        few = persistence_rows(200)
+        self.assertFalse(P.verdicts({"first": few})["verdicts"]["valid_first"])
+        off = [dict(r, recorded=r["p_R"]["none"] + 0.03) for r in good]
+        self.assertFalse(P.verdicts({"first": off})["verdicts"]["valid_first"])
+
+
 class OwnershipTests(unittest.TestCase):
     def test_the_other_lives_beside_without_changing_the_agent(self):
         alone = W.play(W.Oracle(), W.world_rng(225, 0), W.choice_rng(225, 0))
