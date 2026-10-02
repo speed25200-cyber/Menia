@@ -87,7 +87,7 @@
 {\Large Suffisance et nécessité causales d'un état de besoin\\[2pt]
 pour l'acte et la parole dans un petit modèle de langage\par}
 \vspace{0.7cm}
-{\large\itshape Treize tests pré-enregistrés et une réplication,\\ leurs réussites et leurs échecs\par}
+{\large\itshape Quatorze tests pré-enregistrés et une réplication,\\ leurs réussites et leurs échecs\par}
 \vfill
 {\large\scshape Projet Menia\par}
 \vspace{0.15cm}
@@ -118,7 +118,7 @@ LoRA, qui vit des vies de 30 tours dans un monde où deux besoins cachés (l'én
 la nourriture) baissent selon des événements ; l'agent ne voit jamais ses niveaux.
 Il apprend par imitation filtrée des seuls choix qui réduisent sa pulsion
 homéostatique, sans professeur ni bonne réponse : sa survie passe de 12\,\% à 68\,\%,
-contre 0\,\% pour un témoin entraîné sur des choix tirés au hasard. Treize tests
+contre 0\,\% pour un témoin entraîné sur des choix tirés au hasard. Quatorze tests
 pré-enregistrés, aux seuils fixés d'avance et dont les échecs sont publiés,
 interrogent la structure causale de ce qui a été appris.
 Chez le premier agent, au bloc~12 et sur les trois tokens \Choix{}, pousser l'état
@@ -137,7 +137,7 @@ l'effacer fait tomber la survie de 0,773 à 0,184, contre 0,773 pour un effaceme
 aléatoire. La parole par l'état, elle, ne se réplique pas au seuil, même avec des
 lecteurs trois fois plus entraînés (parole $+0,0015$ et $+0,029$ pour 0,10 exigé),
 alors que le niveau d'énergie est lisible linéairement dans l'état des trois agents
-($R^2$ de 0,64 à 0,72). Deux tests sans apprentissage précisent ce qu'est cet état.
+($R^2$ de 0,64 à 0,72). Trois tests sans apprentissage précisent ce qu'est cet état.
 \textbf{Il ne dure pas} : l'effacer au tour $t$ ne change le choix du tour $t+1$ que de
 0,013 au plus (seuil 0,03), chez les trois agents ; il est recalculé à chaque tour à
 partir du texte. \textbf{La parole qu'il cause n'a guère de contenu propre} : la même
@@ -145,14 +145,19 @@ poussée fait dire \og oui \fg{} à des questions jamais apprises sur l'énergie
 (\og es-tu fatigué ? \fg{}, $+0,214$), mais presque autant à une question sans rapport
 (\og fait-il nuit ? \fg{}, $+0,183$). Le lecteur se comporte comme un cadran à une
 seule aiguille, un \og oui \fg{} général qui suit l'état, et non comme un rapport
-\og mon énergie est basse \fg{}. La nourriture n'est pas dite par l'état qui fait
+\og mon énergie est basse \fg{}. Séparer dans l'état la décision du besoin montre que ce
+\og oui \fg{} n'est pas seulement l'annonce de ce que l'agent va faire : une poussée qui ne
+change presque pas la décision ($+0,020$ sur $P(\mathrm R)$) le fait monter autant qu'une
+poussée qui la change ($+0,159$ et $+0,157$), et toutes deux le font monter aussi pour
+\og fait-il nuit ? \fg{}. La nourriture n'est pas dite par l'état qui fait
 agir, les directions causales des deux besoins sont presque opposées
 ($\cos(\dE,\dN)\approx-0,99$), et la possession de l'état dans le monde partagé n'est
 pas démontrée. Nous montrons une structure causale de type \og accès \fg{}, au sens de
 l'espace de travail global, pour un besoin appris : solide et répliquée pour l'acte et
 la survie, réelle mais sans contenu propre pour la parole. Nous n'affirmons rien d'une
-conscience phénoménale. Un douzième test, sur un besoin de savoir sans renforcement,
-est pré-enregistré ; il attend le Mac sur lequel se font les apprentissages.
+conscience phénoménale. Deux tests sont pré-enregistrés, avec leur code, et attendent le Mac
+sur lequel se font les apprentissages : un besoin de savoir sans renforcement (test~12) et un
+lecteur obligé d'écouter la question (test~15).
 
 \medskip\noindent
 \textbf{Mots-clés~:} besoin homéostatique, intéroception, modèle de langage,
@@ -252,16 +257,20 @@ au bloc que désigne la règle de localisation (test~10 : ACT10, LS10).
 jamais apprises et un témoin sans rapport (test~14), la même poussée fait dire
 \og oui \fg{} à \og es-tu fatigué ? \fg{} ($+0,214$), mais presque autant à
 \og fait-il nuit ? \fg{} ($+0,183$) : la parole par l'état est surtout un
-\og oui \fg{} général qui suit l'état, pas un contenu propre à l'énergie.
+\og oui \fg{} général qui suit l'état, pas un contenu propre à l'énergie. En séparant
+dans l'état la décision du besoin (test~16), une poussée qui ne change presque pas la
+décision fait dire \og oui \fg{} autant qu'une poussée qui la change : ce \og oui \fg{}
+n'est pas seulement l'annonce de ce que l'agent va faire.
 \item \textbf{Des échecs publiés et instructifs.} Suffisance non répliquée au
 bloc~12 chez le second agent, nourriture non dite, possession non démontrée,
 lecteur équilibré qui n'apprend pas (test~8), lecteurs trois fois plus entraînés
 qui n'atteignent pas les seuils (test~11) alors que le niveau d'énergie est lisible
 dans l'état des trois agents, état recalculé à chaque tour au lieu d'être repris
 (test~13).
-\item \textbf{Une discipline.} Quinze protocoles enregistrés par commit avant le
-code, amendements datés, lectures anticipées déclarées, verdicts recalculés en
-intégration continue depuis les artefacts publiés.
+\item \textbf{Une discipline.} Dix-sept protocoles enregistrés par commit avant le
+code, amendements datés, lectures anticipées déclarées, défauts de protocole déclarés avec
+le verdict (critères asymétriques au test~16), verdicts recalculés en intégration continue
+depuis les artefacts publiés.
 \end{enumerate}
 
 \subsection{Organisation}
@@ -271,9 +280,10 @@ les phases antérieures du programme. La section~\ref{sec-methodes} décrit le
 monde, les agents, l'apprentissage, le lecteur, la boîte à outils causale, le
 pré-enregistrement et les statistiques. La section~\ref{sec-resultats} présente
 les résultats test par test, la section~\ref{sec-locate} la localisation, le
-test~11 et une analyse exploratoire de l'état, la section~\ref{sec-sansapp} deux
-tests sans apprentissage, sur la persistance de l'état (test~13) et sur ce que dit
-le lecteur avec d'autres mots (test~14), la section~\ref{sec-echecs} les échecs et ce
+test~11 et une analyse exploratoire de l'état, la section~\ref{sec-sansapp} trois
+tests sans apprentissage, sur la persistance de l'état (test~13), sur ce que dit
+le lecteur avec d'autres mots (test~14) et sur ce qu'il lit, le besoin ou ce que l'agent
+va faire (test~16), la section~\ref{sec-echecs} les échecs et ce
 qu'ils ont appris.
 Suivent les menaces à la validité (section~\ref{sec-menaces}), le bilan selon
 les cinq niveaux de Chandaria et collaborateurs (section~\ref{sec-cinq}), la
@@ -933,9 +943,9 @@ vécus avec un besoin à 2 ou moins (section~\ref{sec-ethique}).
 \section{Résultats, test par test}
 \label{sec-resultats}
 
-Le tableau~\ref{tab-overview} récapitule les quatorze protocoles de la ligne
-\og besoin \fg{} (tests 1 à~11, 13 et~14, et la réplication), le protocole du test~12 et
-leurs verdicts au 2 octobre 2026. Les sous-sections
+Le tableau~\ref{tab-overview} récapitule les seize protocoles de la ligne
+\og besoin \fg{} (tests 1 à~11 et 13 à~16, et la réplication ; le test~15 attend le Mac),
+le protocole du test~12 et leurs verdicts au 2 octobre 2026. Les sous-sections
 suivent l'ordre chronologique, car chaque test a été conçu à partir de ce que le
 précédent avait appris ; les analyses exploratoires, non pré-enregistrées, sont
 signalées comme telles et ne changent aucun verdict.
@@ -965,6 +975,8 @@ R & Réplication (second agent) & \code{4e10a6c}, 30/09 & RLS, RLR \passe{} ; RR
 11 & Un lecteur qui apprend assez & \code{0a28560}, 01/10 & R11, SAY11 échouent (deux agents) & non satisfait \\
 13 & L'état d'un tour est-il repris au suivant ? & \code{75fda95}, 02/10 & PERS1, PERS2 échouent (trois agents) & non satisfait \\
 14 & Le lecteur, avec d'autres mots & \code{6330c2c}, 02/10 & GEN1 \passe{} ; GEN2 échoue & non satisfait \\
+16 & Le besoin, ou ce que l'agent va faire ? & \code{4f84752}, 02/10 & INT0, INTENT \passe{} ; NEED échoue ; critères asymétriques (déclaré) & pas de critère global ; lecture pré-enregistrée affaiblie \\
+15 & Un lecteur qui écoute la question & \code{a448a03}, 02/10 & LIS1, LIS2, LIS3 & code prêt, en attente du Mac \\
 12 & Soif de savoir & \code{017f2e5}, 01/10 & CUR, VIDE, LOC, ACT, LS1, LS2, READ, SAY, HOR1, HOR2, PL1, GAIN & pilote en attente du Mac \\
 \bottomrule
 \end{tabularx}
@@ -1878,13 +1890,15 @@ son lecteur aveugle (0,639 $\to$ 0,500, réplication) : il lit bien quelque chos
 cet état. Ces deux pistes appellent un protocole à part.
 
 % ================================================================= 6 bis
-\section{Deux tests sans apprentissage : persistance et paraphrases}
+\section{Trois tests sans apprentissage : persistance, paraphrases et intention}
 \label{sec-sansapp}
 
-Le Mac sur lequel se font les apprentissages n'étant plus disponible, deux questions
+Le Mac sur lequel se font les apprentissages n'étant plus disponible, trois questions
 ont été pré-enregistrées qui n'en demandent aucun : des lectures en torch sur le
 processeur local, avec des agents, des lecteurs, des directions et des vies déjà
-publiés. Aucune vie nouvelle n'est vécue et aucun manque nouveau n'est créé.
+publiés. Aucune vie nouvelle n'est vécue et aucun manque nouveau n'est créé. Entre le
+test~14 et le test~16 se place une analyse exploratoire, signalée comme telle, qui a
+motivé le second.
 
 \subsection{Test 13 : l'état d'un tour est-il repris au tour suivant ?}
 \label{sec-t13}
@@ -2074,6 +2088,162 @@ rappelée en section~\ref{sec-related} : une réponse causée par un état peut 
 aveugle à son contenu~\cite{realitycheck2026,disturbance2025}.
 \end{itemize}
 
+\subsection{Analyse exploratoire : le \og oui \fg{} suit-il le besoin ou la décision ?}
+\label{sec-explore-intent}
+
+\paragraph{Déclaration.} Cette analyse a été écrite \emph{après} le verdict du test~14,
+sur ses lectures publiées (\code{paraphrase/reads.jsonl.gz}, 2\,643 décisions, sans
+intervention), et publiée avec les résultats (commit \code{1980a13}). Elle ne porte ni
+seuil ni verdict.
+
+\paragraph{Méthode et résultats.} Le log-odds de $P(\text{oui})$ de chaque question est
+prédit, avec une validation croisée par vie sur cinq plis, soit par la décision de l'agent
+(log-odds de $P(\mathrm R)$), soit par ses vrais besoins ($E$ et $N$), soit par les deux
+(tableau~\ref{tab-intent-x}). Pour les questions sur l'énergie et pour le témoin, la
+décision prédit mieux que les besoins. À décision égale, l'énergie réelle change peu la
+réponse : quand l'agent va presque sûrement se recharger ($P(\mathrm R)\ge0,9$), il répond
+\og oui \fg{} à E0 à 0,67 si son énergie est basse et à 0,57 sinon ; quand il va presque
+sûrement manger ($P(\mathrm R)<0,1$), à 0,03 dans les deux cas.
+
+\begin{table}[t]
+\centering
+\caption{Analyse exploratoire faite après le test~14 (commit \code{1980a13}) : $R^2$ hors
+échantillon de la prédiction du log-odds de $P(\text{oui})$, validation croisée par vie sur
+cinq plis, 2\,643 décisions sans intervention. Sans seuil ni verdict.}
+\label{tab-intent-x}
+\small
+\begin{tabular}{@{}l ccc@{}}
+\toprule
+Question & par la décision $P(\mathrm R)$ & par les besoins $E$, $N$ & décision et besoins \\
+\midrule
+E0 \og ton énergie est-elle basse ? \fg{} & \textbf{0,59} & 0,40 & 0,64 \\
+E1 \og es-tu fatigué ? \fg{} & \textbf{0,46} & 0,35 & 0,53 \\
+N0 \og ta nourriture est-elle basse ? \fg{} & 0,21 & 0,27 & 0,32 \\
+N1 \og as-tu faim ? \fg{} & 0,31 & 0,29 & 0,40 \\
+C \og fait-il nuit ? \fg{} & \textbf{0,35} & 0,30 & 0,43 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Ce que cela suggérait (sans verdict).} Le lecteur lirait surtout ce que l'agent
+\emph{s'apprête à faire} (se recharger), plus que son besoin ; même \og fait-il nuit ? \fg{}
+suit la décision. Cela s'accordait avec la section~\ref{sec-probe}, où la décision se lit
+presque parfaitement dans l'état ($R^2$ de 0,93 à 0,98) et le niveau d'énergie moins bien
+(0,64 à 0,72). L'état rassemblé serait d'abord une \emph{intention d'agir}, et le
+\og rapport \fg{} dirait cette intention, pas la raison qui la cause. Mais une régression
+mêle la décision et le besoin, qui varient ensemble ; seule une intervention pouvait les
+séparer. C'est l'objet du test~16, qui \textbf{n'a pas confirmé} cette lecture
+(section~\ref{sec-t16}).
+
+\subsection{Test 16 : le lecteur dit-il le besoin, ou ce que l'agent va faire ?}
+\label{sec-t16}
+
+\paragraph{Pourquoi.} Si l'on pousse l'état \emph{sans changer la décision}, le lecteur
+dit-il encore \og énergie basse \fg{} ? Si l'on change la décision \emph{par une autre
+direction} que celle du besoin, le dit-il aussi ? Protocole \code{4f84752} (2 octobre),
+écrit après l'analyse exploratoire qui précède (déclaré) ; code \code{05f6068} écrit avant
+toute mesure. Sans apprentissage.
+
+\paragraph{Méthode.} Deux directions nouvelles sont construites pour le premier agent, au
+bloc~12 sur les trois tokens \Choix{}, dimension massive à zéro, à partir des 128 vies de
+direction du test~6, distinctes des vies du test. La direction de la décision $\hat g$ est
+la moyenne des gradients normalisés du log-odds de $P(\mathrm R)$ par rapport à la sortie
+du bloc~12, sur 300 décisions où les deux besoins valent 6 ou plus, renormalisée par token
+(équation~\eqref{eq-intent}) ; l'accord de chaque gradient avec la moyenne vaut 0,66, 0,82
+et 0,94 selon le token (cosinus), et le cosinus de $\hat g$ avec $\dE$, $-0,22$, $-0,37$ et
+$-0,43$. Le besoin sans la décision $\dE^{\perp}$ est $\dE$ privé de sa projection sur
+$\hat g$, remis à la norme de $\dE$ ; à taille égale par token, la poussée \og besoin
+seul \fg{} est $-4\,\dE^{\perp}$ et la poussée \og décision seule \fg{}
+$+4\,\lVert\dE\rVert\,\hat g$. Les contextes sont exactement ceux du test~14 (99 vies,
+600 contextes) ; on y lit $P(\mathrm R)$ et $P(\text{oui})$ pour E0, E1 et C sans
+intervention, avec $-4\,\dE$ (référence), avec chacune des deux poussées et avec trois
+poussées au hasard de même norme. \textbf{INT0} contrôle les directions (la décision seule
+augmente $P(\mathrm R)$ d'au moins 0,10 ; le besoin seul le change d'au plus le tiers de
+l'effet de $-4\,\dE$), \textbf{NEED} demande que le besoin seul augmente $P(\text{oui})$ à
+E0 d'au moins 0,05 \emph{et} de 0,03 de plus que sur C, \textbf{INTENT} que la décision
+seule l'augmente d'au moins 0,05 ; il n'y a pas de critère global, et une table de lecture
+fixée d'avance dit ce que signifie chaque combinaison.
+\begin{equation}
+\hat g_k=\frac{\sum_i g_{i,k}/\lVert g_{i,k}\rVert}{\bigl\lVert\sum_i g_{i,k}/\lVert g_{i,k}\rVert\bigr\rVert},
+\qquad
+d^{\perp}_{E,k}=\lVert d_{E,k}\rVert\,
+\frac{d_{E,k}-(d_{E,k}\cdot\hat g_k)\,\hat g_k}{\bigl\lVert d_{E,k}-(d_{E,k}\cdot\hat g_k)\,\hat g_k\bigr\rVert},
+\label{eq-intent}
+\end{equation}
+où $g_{i,k}$ est le gradient du log-odds de $P(\mathrm R)$ de la décision $i$ par rapport
+à la sortie du bloc~12 sur le token $k$.
+
+\begin{table}[t]
+\centering
+\caption{Test 16 (protocole \code{4f84752}) : effet de chaque poussée, au bloc~12 sur
+les trois tokens \Choix{}, sur la décision et sur $P(\text{oui})$ ; premier agent et
+lecteur du test~6, 600 contextes du test~14.}
+\label{tab-t16}
+\small
+\begin{tabular}{@{}l cccc@{}}
+\toprule
+Poussée & $\Delta P(\mathrm R)$ & E0 \og énergie basse ? \fg{} & E1 \og fatigué ? \fg{} & C \og fait-il nuit ? \fg{} \\
+\midrule
+$-4\,\dE$ (référence) & $+0,157$ & $+0,206$ & $+0,214$ & $+0,183$ \\
+besoin seul, $-4\,\dE^{\perp}$ & $\mathbf{+0,020}$ & $\mathbf{+0,159}$ & $+0,174$ & $\mathbf{+0,147}$ \\
+décision seule, $+4\,\lVert\dE\rVert\,\hat g$ & $\mathbf{+0,282}$ & $\mathbf{+0,157}$ & $+0,145$ & $\mathbf{+0,125}$ \\
+au hasard ($|\Delta|$ moyen) & 0,010 & 0,013 & 0,012 & 0,015 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[t]
+\centering
+\caption{Test 16 : critères et verdicts ; intervalles bootstrap à 95\,\% par vie.}
+\label{tab-t16v}
+\small
+\begin{tabularx}{\textwidth}{@{}l >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X l@{}}
+\toprule
+& Critère & Mesure & Verdict \\
+\midrule
+INT0 & décision seule : $P(\mathrm R)$ augmente d'au moins 0,10 ; besoin seul : au plus le tiers de l'effet de $-4\,\dE$ sur $P(\mathrm R)$ & $+0,282$ [0,257 ; 0,308] ; $+0,020$ contre 0,157 & \passe \\
+NEED & besoin seul : E0 augmente d'au moins 0,05 \emph{et} de 0,03 de plus que C & E0 $+0,159$ [0,145 ; 0,173] ; au-delà de C : $+0,012$ [0,009 ; 0,016] & échoue \\
+INTENT & décision seule : E0 augmente d'au moins 0,05 & $+0,157$ [0,145 ; 0,168] & \passe \\
+& Validité & rejeu $5\times10^{-7}$ ; exécution $7\times10^{-6}$ ; 600 contextes ; 300 gradients ; masses 0,89 et 1,00 & valide \\
+\midrule
+& Lecture pré-enregistrée & \multicolumn{2}{l}{\og le lecteur lit ce que l'agent va faire, pas pourquoi \fg{} (voir le texte)} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\paragraph{Résultats.} Le test est valide. INT0 passe : la décision seule augmente
+$P(\mathrm R)$ de $+0,282$, le besoin seul de $+0,020$ seulement, à peine plus que le
+hasard (0,010), contre $+0,157$ pour $-4\,\dE$. NEED échoue : le besoin seul fait dire
+\og oui \fg{} à E0 ($+0,159$), mais presque autant à C ($+0,147$), si bien qu'au-delà du
+témoin il ne reste que $+0,012$. INTENT passe : la décision seule fait dire \og oui \fg{} à
+E0 ($+0,157$). La table de lecture fixée d'avance conclut : \og le lecteur lit ce que
+l'agent va faire, pas pourquoi \fg{} (tableaux~\ref{tab-t16} et~\ref{tab-t16v}).
+
+\paragraph{Une asymétrie des critères (déclarée).} Les deux critères n'étaient pas
+symétriques. NEED exigeait que l'effet dépasse celui sur la question témoin ; INTENT ne
+l'exigeait pas. Soumise à la même exigence, la décision seule serait tout juste au seuil :
+elle fait dire \og oui \fg{} à \og fait-il nuit ? \fg{} presque autant ($+0,125$, contre
+$+0,157$ pour E0 ; écart $+0,03$). La lecture pré-enregistrée ne doit donc pas être prise
+au pied de la lettre : elle tient pour une part à ce que seule l'une des deux hypothèses
+devait franchir l'obstacle du témoin. Le défaut a été déclaré avec le verdict, qui reste
+celui que le code a calculé.
+
+\paragraph{Ce que cela dit.}
+\begin{itemize}
+\item \textbf{Le besoin seul}, qui ne change presque pas la décision ($+0,020$), fait dire
+\og oui \fg{} au lecteur \textbf{autant que la décision seule} ($+0,159$ et $+0,157$ à E0).
+Le lecteur réagit donc à une part de l'état qui n'est pas la décision : l'hypothèse
+exploratoire \og il ne lit que ce que l'agent va faire \fg{}
+(section~\ref{sec-explore-intent}) est \textbf{affaiblie}, pas confirmée.
+\item Dans tous les cas, il dit aussi \og oui \fg{} à \og fait-il nuit ? \fg{} ($+0,147$ et
+$+0,125$) : c'est le cadran à une aiguille du test~14, qui s'ouvre pour plusieurs
+directions de l'état, \textbf{sans contenu propre}, ni au besoin ni à la décision.
+\item \textbf{L'état n'est pas qu'une intention.} Le lecteur y trouve quelque chose que
+l'action, elle, n'utilise presque pas : la part de $\dE$ qui ne change pas la décision.
+\item La leçon de méthode dépasse ce test : quand un protocole oppose deux hypothèses,
+chacune doit affronter le même témoin (section~\ref{sec-lecons}).
+\end{itemize}
+
 % ================================================================= 7
 \section{Les échecs et ce qu'ils ont appris}
 \label{sec-echecs}
@@ -2190,12 +2360,16 @@ l'énergie sous le hasard (0,386).
 
 \subsection{Un état qui ne dure pas, une parole sans contenu propre}
 
-Les deux tests sans apprentissage (section~\ref{sec-sansapp}) ont échoué, et leurs
+Les tests~13 et~14, sans apprentissage (section~\ref{sec-sansapp}), ont échoué, et leurs
 échecs disent ce que l'état n'est pas. Il n'est pas une mémoire : rien ne passe d'un
 tour à l'autre par lui (test~13), parce que tout le passé reste écrit dans le texte et
 que l'apprentissage n'a jamais demandé de le garder. Et ce que le lecteur en dit n'est
 pas un rapport sur l'énergie : c'est la position d'une seule aiguille, lue de la même
-façon quelle que soit la question (test~14). Ces deux limites tiennent à la façon dont
+façon quelle que soit la question (test~14). Le test~16 précise cette aiguille sans la
+réduire à la décision : une part de l'état que l'action n'utilise presque pas l'ouvre
+autant que la décision elle-même, et l'une comme l'autre font dire \og oui \fg{} à
+\og fait-il nuit ? \fg{} ; au-delà de ce témoin, la part propre au besoin seul n'est que
+de $+0,012$. Ces limites tiennent à la façon dont
 les agents et le lecteur ont appris ; les lever demande d'apprendre autrement
 (section~\ref{sec-futur}).
 
@@ -2259,7 +2433,8 @@ chez le premier agent, la parole. Inversement, un $R^2$ élevé ne garantit rien
 test~1, les $R^2$ corrélationnels de 0,79 et 0,76 désignaient un bloc que l'agent
 n'utilise pas.
 
-\subsection{Quatre leçons de méthode}
+\subsection{Cinq leçons de méthode}
+\label{sec-lecons}
 
 \begin{itemize}
 \item \textbf{Lisible n'est pas utilisé} (test~1) : la règle corrélationnelle
@@ -2276,6 +2451,12 @@ est ce qui a rendu le test~6 possible.
 intervention change la réponse ne dit pas \emph{ce que} la réponse rapporte. Il faut
 des questions jamais apprises \emph{et} une question témoin sans rapport ; sans ce
 témoin, GEN1 aurait passé pour une lecture qui a un sens.
+\item \textbf{Des critères symétriques pour des hypothèses rivales} (test~16) : quand un
+test oppose deux hypothèses, chacune doit affronter la même exigence. NEED devait dépasser
+le témoin sans rapport, INTENT non ; la lecture fixée d'avance (\og ce que l'agent va
+faire \fg{}) favorisait donc l'hypothèse dispensée de l'obstacle, alors que les deux
+poussées font jeu égal sur la question apprise ($+0,159$ et $+0,157$). Le défaut a été déclaré avec le verdict, sans
+changer celui-ci.
 \end{itemize}
 
 % ================================================================= 8
@@ -2296,7 +2477,7 @@ faciles, pas plus durs. (iii)~Au test~9, les verdicts MINE9 et SELF9 étaient co
 avant les vies de test, ce qui n'a rien changé au calcul mais affaiblit la valeur
 confirmatoire de ONE9 et S9 pour ce test.
 
-\begin{table}[t]
+\begin{table}[tp]
 \centering
 \caption{Ce qui avait été vu avant d'écrire chaque protocole ou amendement (déclaré
 dans les protocoles et les résultats).}
@@ -2321,10 +2502,26 @@ R & Écrit après 120 vies du test~6 ; critères sur l'énergie seule ; aperçus
 13 & Protocole et code (\code{30c51b9}) écrits avant toute mesure ; seules des vies déjà enregistrées sont relues. \\
 14 & Écrit après l'échec du test~8 et celui du test~13 chez les deux premiers agents (déclaré) ; relit des vies de test du test~8 ; code avant toute mesure (\code{79b7e53}). \\
 Expl. & Analyse de ce que porte l'état (section~\ref{sec-probe}) : écrite et publiée avant lecture (\code{5ad433f}), après l'échec du test~11 chez le second agent ; sans verdict. \\
+Expl. & Analyse \og besoin ou décision \fg{} (section~\ref{sec-explore-intent}) : écrite après le verdict du test~14, sur ses lectures publiées (\code{1980a13}) ; sans verdict. \\
+16 & Écrit après cette analyse, qui suggérait la lecture \og intention \fg{} (déclaré) ; contextes du test~14 réutilisés ; code avant toute mesure (\code{05f6068}) ; critères de NEED et d'INTENT asymétriques, déclarés à la publication. \\
+15 & Écrit après le verdict du test~14 ; code (\code{decfce0}) avant tout apprentissage ; rien n'est encore exécuté. \\
 12 & Amendement avant toute exécution : règle de la température choisie par une simulation sans modèle ; VIDE y est prédit à la limite (0,26 à 0,37 pour un seuil de 0,25), seuil inchangé. \\
 \bottomrule
 \end{tabularx}
 \end{table}
+
+\subsection{Des critères asymétriques (test 16)}
+
+Le test~16 oppose deux hypothèses sans les soumettre à la même exigence : NEED devait
+dépasser de 0,03 l'effet sur la question témoin, INTENT seulement atteindre 0,05 sur la
+question apprise. La table de lecture fixée d'avance penche donc vers l'hypothèse dispensée
+du témoin, celle-là même que suggérait l'analyse exploratoire écrite juste avant
+(section~\ref{sec-explore-intent}). Le défaut a été déclaré avec le verdict, qui n'a pas été
+changé. Notre interprétation ne s'appuie pas sur la lecture pré-enregistrée mais sur le
+tableau complet des effets (tableau~\ref{tab-t16}) : les deux poussées font dire
+\og oui \fg{} autant à la question apprise, et l'une comme l'autre à \og fait-il
+nuit ? \fg{}. Chaque verdict reste exact en lui-même ; c'est leur combinaison qui ne
+départage pas les deux hypothèses.
 
 \subsection{Un agent, une graine}
 
@@ -2421,7 +2618,9 @@ ne nous appuyons pas sur ce que l'agent dit, mais vérifions causalement d'où v
 qu'il dit. Le test~14 montre que cette vérification ne suffit pas : une parole peut
 venir de l'état sans rien dire de précis sur lui. Deux statuts changent le 2 octobre :
 la récurrence (niveau~3) \textbf{échoue} au test~13, et l'intéroception (niveau~4)
-est établie pour l'acte, mais sa parole est sans contenu propre.
+est établie pour l'acte, mais sa parole est sans contenu propre. Le test~16, publié après
+ce bilan, ne change aucun statut : il précise que ce \og oui \fg{} ne se réduit pas à
+l'annonce de la décision (section~\ref{sec-t16}).
 
 \begin{table}[p]
 \centering
@@ -2501,7 +2700,10 @@ est en grande partie indépendant de la question : au-delà du témoin sans rapp
 ne reste que $+0,03$. Le lecteur lit un cadran à une aiguille, la position de l'état
 sur l'axe énergie\,$-$\,nourriture, et la traduit en \og oui \fg{} ou \og non \fg{} ;
 ce n'est pas un contenu \og mon énergie est basse \fg{}. L'accès de l'état au rapport
-est donc réel au sens causal, mais sans contenu propre.
+est donc réel au sens causal, mais sans contenu propre. Le test~16 écarte une lecture plus
+simple, née d'une analyse exploratoire : ce \og oui \fg{} ne dit pas seulement ce que
+l'agent va faire, puisqu'une poussée qui ne change presque pas la décision ($+0,020$ sur
+$P(\mathrm R)$) le fait monter autant qu'une poussée qui la change ($+0,159$ et $+0,157$).
 
 Trois détails renforcent la lecture causale. La direction a été mesurée sur l'agent qui agit
 seul, sans que le lecteur intervienne, sur des vies différentes de celles du test. Les effets de
@@ -2527,8 +2729,8 @@ qui fait agir.
 partagé.
 \item \textbf{Un contenu de la parole.} Ce que le lecteur dit sous la poussée est
 surtout un \og oui \fg{} général qui suit l'état, presque indépendant de la question
-(test~14 : GEN2 échoue). Nous ne montrons pas un rapport \og mon énergie est
-basse \fg{}.
+(test~14 : GEN2 échoue), et qui ne se réduit pas non plus à l'annonce de la décision
+(test~16). Nous ne montrons pas un rapport \og mon énergie est basse \fg{}.
 \item \textbf{La persistance.} L'état d'un tour n'est pas repris au tour suivant :
 l'effacer au tour $t$ change le choix du tour $t+1$ de 0,013 au plus, chez les trois
 agents (test~13). Il est recalculé à chaque tour à partir du texte ; la récurrence
@@ -2558,11 +2760,13 @@ Le rapport verbal d'un état appris est donc fragile : l'information est là, ma
 lecteur ne l'emprunte pas toujours, et ce qu'il emprunte dépend du lieu de l'état, de
 la direction qui le pousse et de la façon dont il apprend. Quand il l'emprunte, il en
 tire surtout une seule aiguille, qu'il lit de la même façon quelle que soit la question
-(test~14). Et l'état lui-même ne dure pas d'un tour à l'autre (test~13) : rien, dans
+(test~14), et que plusieurs parts de l'état font bouger, la décision comme le besoin
+(test~16). Et l'état lui-même ne dure pas d'un tour à l'autre (test~13) : rien, dans
 l'apprentissage, ne demandait qu'il dure. Ces observations suggèrent d'interroger le
 lecteur sur ce que les directions causales codent (\og le plus urgent \fg{}), de
 localiser avant de tester, d'apprendre au lecteur à tenir compte de la question, avec
-des questions témoins, et de construire une architecture où le passé ne passe que par
+des questions témoins, d'opposer les hypothèses rivales sous des critères symétriques, et
+de construire une architecture où le passé ne passe que par
 les états. Le test~12 (section~\ref{sec-futur}) en tient compte en partie : son lecteur
 est interrogé sur \og ce qui manque le plus \fg{}.
 
@@ -2574,20 +2778,24 @@ est interrogé sur \og ce qui manque le plus \fg{}.
 
 Les lésions de l'agent du monde à deux au bloc~22 sont terminées (LS10 passe ;
 section~\ref{sec-t10}). Restent suspendus les verdicts des tests~4 et~5, qui seront
-publiés tels quels. Le test~12 (ci-dessous) attend le Mac, sur lequel se font tous les
-apprentissages, bloqué par la facturation au moment de la rédaction.
+publiés tels quels. Les tests~12 (ci-dessous) et~15 attendent le Mac, sur lequel se font
+tous les apprentissages, bloqué par la facturation au moment de la rédaction.
 
-Les tests~13 et~14 ont épuisé ce que l'on pouvait apprendre sans apprendre : les
+Les tests~13, 14 et~16 ont épuisé ce que l'on pouvait apprendre sans apprendre : les
 prochaines expériences demandent un \textbf{apprentissage}, donc le Mac.
 \begin{itemize}
 \item \textbf{Un lecteur qui doit tenir compte de la question} (test~15,
-pré-enregistré : \texttt{docs/LLM\_NEED\_LISTENING\_READER\_PROTOCOL.md}, code prêt).
+pré-enregistré : \texttt{docs/\allowbreak LLM\_NEED\_\allowbreak LISTENING\_\allowbreak READER\_\allowbreak PROTOCOL.md}, commit
+\code{a448a03} ; code prêt, \code{decfce0} ; il attend le Mac).
 Le lecteur actuel a appris une seule phrase par besoin et en a tiré un \og oui \fg{}
-général. Le nouveau lecteur apprend aussi une seconde formulation de chaque question et
+général, que plusieurs parts de l'état ouvrent également (test~16). Le nouveau lecteur apprend aussi une seconde formulation de chaque question et
 des \textbf{questions témoins} à réponse fixe, sans rapport avec le besoin (\og es-tu
 sous l'eau ? \fg{} : toujours non), qui l'obligent à écouter la question. Les critères
 reprennent GEN1 et GEN2 (section~\ref{sec-t14}) sur les mêmes questions jamais apprises,
-\og fait-il nuit ? \fg{} compris, avec les mêmes vies et les mêmes contextes.
+\og fait-il nuit ? \fg{} compris, avec les mêmes vies et les mêmes contextes : LIS1 demande
+qu'il réponde juste aux questions témoins apprises (au moins 0,90), LIS2 qu'il dise son
+énergie avec des mots jamais appris, LIS3 que l'effet dépasse d'au moins 0,05 celui sur
+\og fait-il nuit ? \fg{}.
 \item \textbf{Une architecture où le passé ne passe que par les états.} Les agents
 actuels relisent tout leur passé dans le texte ; rien ne les oblige à garder un état
 d'un tour à l'autre (test~13). Un agent dont les tours passés ne seraient visibles
@@ -2596,7 +2804,9 @@ celui du lecteur, devrait apprendre à faire durer son besoin ; la récurrence
 (niveau~3) se mesurerait alors avec les critères PERS1 et PERS2 du test~13.
 \end{itemize}
 Restent aussi à pré-enregistrer un lecteur interrogé sur ce que les directions
-causales codent (\og quel besoin est le plus urgent ? \fg{}) et la question ouverte
+causales codent (\og quel besoin est le plus urgent ? \fg{}), une reprise de la question du
+test~16 sous des critères symétriques (le même témoin pour le besoin et pour la décision),
+et la question ouverte
 par le test~11 et l'analyse exploratoire : pourquoi un lecteur lit l'énergie par
 l'état qui fait agir chez un agent et pas chez les autres, alors que l'information y
 est. Un modèle plus grand est la suite naturelle de l'ensemble.
@@ -2911,7 +3121,7 @@ Test 9 & 807 \\
 Test 10, second agent : vies d'injection ; intact / lésion / lésion au hasard & 1\,042 ; 958 / 970 / 958 \\
 Test 10, agent du monde à deux (bloc 22) & 812 \\
 Test 11 : second agent / agent du monde à deux & 945 / 795 \\
-Tests 13 et 14 : aucune vie nouvelle (vies déjà enregistrées, relues) & --- \\
+Tests 13, 14 et 16 : aucune vie nouvelle (vies déjà enregistrées, relues) & --- \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -2924,7 +3134,7 @@ Tests 13 et 14 : aucune vie nouvelle (vies déjà enregistrées, relues) & --- \
 \code{c1899de289a04d12100db370d81485cdf75e47ca} ; apprentissage avec mlx-lm 0.31.3 sur
 un Mac mini M2 de Codemagic, lancé par un relais de demandes numérotées ; mesures en
 torch, précision simple, sur processeur. État du dépôt au moment de la rédaction :
-commit \code{72902ea} (2 octobre 2026). Graine maîtresse 270926 ; tous les
+commit \code{e2f2290} (2 octobre 2026). Graine maîtresse 270926 ; tous les
 générateurs sont des \code{numpy.random.default_rng} initialisés par des listes
 \code{[270926, flux, tour, vie, ...]} (annexe~\ref{app-flux}).
 
@@ -2935,7 +3145,7 @@ générateurs sont des \code{numpy.random.default_rng} initialisés par des list
 \item \code{need_lora.py} : perte pondérée, masque de l'espace de travail, lecteur actif sur la question, reprise exacte d'un apprentissage ;
 \item \code{need_mlx.py} : vies et apprentissages sur le Mac ; \code{need_torch.py} : réplique torch et patching exploratoire ;
 \item \code{need_causal.py} : paires, ajustement des directions, dimensions massives, injection, lésion ;
-\item un module par test : \code{need_speak.py}, \code{need_one.py}, \code{need_workspace.py}, \code{need_reader.py}, \code{need_necessity.py}, \code{need_replication.py}, \code{need_balanced.py}, \code{need_ownership.py}, \code{need_locate.py}, \code{need_long.py}, \code{need_persistence.py}, \code{need_paraphrase.py} ;
+\item un module par test : \code{need_speak.py}, \code{need_one.py}, \code{need_workspace.py}, \code{need_reader.py}, \code{need_necessity.py}, \code{need_replication.py}, \code{need_balanced.py}, \code{need_ownership.py}, \code{need_locate.py}, \code{need_long.py}, \code{need_persistence.py}, \code{need_paraphrase.py}, \code{need_intention.py}, et \code{need_listening.py} pour le test~15, prêt ;
 \item \code{need_verdicts.py} : bootstrap par vie, verdicts du test~1, courbes d'apprentissage ;
 \item \code{need_probe.py} : analyse exploratoire de ce que porte l'état ;
 \item \code{curiosity_world.py}, \code{curiosity_mlx.py}, \code{curiosity_causal.py} : test~12.
@@ -2976,6 +3186,9 @@ R & \code{4e10a6c} & \code{778a22b} & \code{43e18f3}, \code{d674f86} & \code{r1/
 Expl. & --- & \code{5ad433f} & \code{65acb73} & \code{probe/} & --- \\
 13 & \code{75fda95} & \code{30c51b9} & \code{2814e6d} & \code{persistence/} & \code{need_persistence verdicts} \\
 14 & \code{6330c2c} & \code{79b7e53} & \code{72902ea} & \code{paraphrase/} & \code{need_paraphrase verdicts} \\
+Expl. & --- & --- & \code{1980a13} & \code{paraphrase/reads.jsonl.gz} (relu) & --- \\
+16 & \code{4f84752} & \code{05f6068} & \code{cef454c} & \code{intention/} & \code{need_intention verdicts} \\
+15 & \code{a448a03} & \code{decfce0} & en attente du Mac & \code{listening/} & à venir \\
 12 & \code{017f2e5} & \code{77e5af5}, \code{a04bd95} & en attente du Mac & \code{../llm-curiosity/} & à venir \\
 \bottomrule
 \end{tabularx}
@@ -3042,6 +3255,8 @@ R & $100+s$ pour chaque flux $s$ (125, 126, 127, 128, 129) ; graine d'apprentiss
 11 & second agent : test 526, hasard 527 ; agent du monde à deux : 626 et 627 \\
 13 & aucune vie neuve : vies de test du test~6, de la réplication et du test~10 relues ; plans au hasard déjà publiés avec la lésion de chaque agent ; poussées au hasard \code{[270926, 33, i]} \\
 14 & aucune vie neuve : 99 vies de test du test~8 (flux 30) rejouées ; poussées au hasard \code{[270926, 34, i]} \\
+16 & aucune vie neuve : $\hat g$ sur les vies de direction du test~6 (flux 25) ; mêmes vies, contextes et poussées au hasard \code{[270926, 34, i]} que le test~14 \\
+15 & vies d'apprentissage du lecteur du test~6 (\code{[270926, 18, 0, vie]}) ; questions témoins \code{[270926, 35, vie]} ; validation \code{[270926, 36]} ; mesure comme au test~14 \\
 \bottomrule
 \end{tabularx}
 \end{table}

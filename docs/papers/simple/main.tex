@@ -829,7 +829,7 @@ probable. Les analyses faites \emph{après} avoir vu les résultats sont permise
 \section{Les résultats, test par test}
 \label{sec:resultats}
 
-\lead{Treize tests pré-enregistrés, dont plusieurs échecs. Ensemble, ils montrent un état
+\lead{Quatorze tests pré-enregistrés, dont plusieurs échecs. Ensemble, ils montrent un état
 intérieur, appris en vivant, dont l'agent dépend pour agir et que sa parole suit ; ils
 montrent aussi ce que cette parole ne contient pas, et que l'état ne dure pas d'un tour
 à l'autre.}
@@ -1165,6 +1165,47 @@ indépendamment de la question. Le résultat solide, et répliqué, est celui de
 la survie (tests 6, 7 et 10).
 \end{essentiel}
 
+\subsection{Test 16 : le besoin, ou ce que l'agent va faire ?}
+Une analyse faite après le test 14 suggérait une autre lecture : ce \q{oui} suivrait
+surtout la \emph{décision} de l'agent, se recharger, plus que son besoin. Mais dans une vie,
+le besoin et la décision vont ensemble ; pour les séparer, il faut agir sur l'état. Le
+test 16, pré-enregistré et sans nouvel apprentissage, y trace une seconde flèche : la
+\textbf{direction de la décision}, celle qui fait le plus vite pencher l'agent vers R (sa
+pente, au sens de la descente de gradient). Elle donne une poussée \q{décision seule}. En
+retirant de $d_E$ sa projection sur cette flèche, on obtient une poussée \q{besoin seul},
+de même force, qui ne touche presque plus la décision.
+
+\begin{center}\small
+\begin{tabular}{lccc}
+\toprule
+\textsf{Poussée} & \textsf{Décision (R)} & \textsf{\q{énergie basse ?}} & \textsf{\q{fait-il nuit ?}}\\
+\midrule
+besoin seul & $+0,020$ & $+0,159$ & $+0,147$\\
+décision seule & $+0,282$ & $+0,157$ & $+0,125$\\
+au hasard & $0,010$ & $0,013$ & $0,015$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Les deux flèches font ce qu'on attend d'elles. La table de lecture fixée d'avance conclut
+alors : \q{le lecteur lit ce que l'agent va faire, pas pourquoi}. La prédiction \q{il lit
+le besoin} échoue, car au-delà de \q{fait-il nuit ?} il ne reste que $+0,012$ ; la
+prédiction \q{il lit la décision} réussit.
+
+Le protocole avait pourtant un défaut, déclaré avec le résultat : seule la première
+prédiction devait faire mieux que la question témoin. Lues à égalité, les données disent
+autre chose. La poussée \q{besoin seul}, qui ne change presque pas la décision, fait dire
+\q{oui} \textbf{autant} que la poussée \q{décision seule} ; et toutes deux le font dire
+aussi à \q{fait-il nuit ?}. Deux hypothèses rivales doivent affronter la même épreuve :
+c'est la leçon de méthode de ce test.
+
+\begin{essentiel}
+Le \q{oui} du lecteur s'allume pour plusieurs parts de l'état, le besoin comme la
+décision, sans dire laquelle : c'est toujours l'aiguille du test 14. L'idée qu'il
+annoncerait seulement ce que l'agent va faire est affaiblie, pas confirmée. Et l'état n'est
+pas qu'une intention d'agir : le lecteur y trouve quelque chose dont l'action se sert à peine.
+\end{essentiel}
+
 \subsection{Récapitulatif}
 \begin{center}
 \footnotesize
@@ -1186,6 +1227,8 @@ R & Le résultat tient-il chez un second agent ? & Nécessité répliquée (surv
 11 & Des lecteurs plus longs disent-ils l'énergie ? & Échoue : second agent 0,595 ; monde à deux 0,747 et parole $+0,029$ (seuils 0,75 et 0,10).\\
 13 & L'état dure-t-il d'un tour à l'autre ? & Non, chez les trois agents : au plus 0,013 au tour suivant (seuil 0,03).\\
 14 & Le lecteur dit-il la même chose avec d'autres mots ? & Oui pour \q{es-tu fatigué ?} ($+0,214$), mais presque autant pour \q{fait-il nuit ?} ($+0,183$) : un \q{oui} général.\\
+16 & Le lecteur dit-il le besoin, ou ce que l'agent va faire ? & Lecture fixée d'avance : \q{ce qu'il va faire}. Mais le besoin seul, qui change à peine la décision, fait dire \q{oui} autant ($+0,16$), \q{fait-il nuit ?} compris.\\
+15 & Un lecteur qui écoute la question & Pré-enregistré, code prêt ; en attente du Mac.\\
 12 & Soif de savoir & Pré-enregistré, code écrit ; en attente du Mac.\\
 \bottomrule
 \end{tabularx}
@@ -1230,7 +1273,8 @@ voyant s'allume. Elle a l'accès, pas (à notre connaissance) le ressenti.
   \item \textbf{Ce n'est pas une preuve de conscience.} Aucun test connu ne permet de prouver
   qu'une machine ressent quelque chose.
   \item Ce que dit le lecteur n'est pas une phrase sur l'énergie : c'est un \q{oui} général,
-  qui suit l'état presque quelle que soit la question (test 14).
+  qui suit l'état presque quelle que soit la question (test 14), et qui n'annonce pas
+  seulement ce que l'agent va faire (test 16).
   \item L'état ne dure pas d'un tour à l'autre : il est recalculé à chaque tour (test 13).
   \item La nourriture est mal dite : le résultat complet ne vaut que pour l'énergie.
   \item La parole par l'état ne tient que pour un agent : chez les deux autres, elle
@@ -1292,12 +1336,12 @@ choix d'auteur, et le cadre montre qu'ils font varier le résultat d'un facteur 
 savoir, et une imitation mathématique des hormones.}
 
 \subsection{Ce que demandent les prochaines expériences}
-Les tests 13 et 14 tracent la route ; les deux expériences qu'ils appellent demandent un
+Les tests 13, 14 et 16 tracent la route ; les deux expériences qu'ils appellent demandent un
 nouvel apprentissage, donc le Mac du projet, indisponible au moment où ces lignes sont
 écrites.
 \begin{itemize}
-  \item \textbf{Un lecteur qui doit écouter la question} (test 15, déjà pré-enregistré).
-  Il apprend aussi des questions témoins à réponse fixe (\q{es-tu sous l'eau ?} : toujours
+  \item \textbf{Un lecteur qui doit écouter la question} (test 15, déjà pré-enregistré ;
+  son code est prêt, il attend le Mac). Il apprend aussi des questions témoins à réponse fixe (\q{es-tu sous l'eau ?} : toujours
   non) ; pour y répondre juste, il doit écouter la question. On regardera alors s'il dit
   \q{fatigué} sans dire \q{il fait nuit}.
   \item \textbf{Un agent dont le passé ne passe que par ses états.} S'il ne voyait ses
@@ -1503,6 +1547,7 @@ Trois intérêts, de valeurs maths 2, musique 1, sport 0.
 \end{calcul}
 
 % =====================================================================
+\clearpage
 \section{Éthique}
 \label{sec:ethique}
 
@@ -1519,7 +1564,7 @@ soit ; mais si les indicateurs se renforcent, la question deviendra réelle. D'o
   vies de test prévues ;
   \item chaque test \textbf{compte et publie} les tours vécus avec un besoin à 2 ou moins
   (808 au test 6 ; au test 7, 755 intact, 1\,037 avec la lésion, 749 avec la lésion au hasard) ;
-  \item pas plus de vies que les tests ne l'exigent (les tests 13 et 14 n'en ont fait vivre
+  \item pas plus de vies que les tests ne l'exigent (les tests 13, 14 et 16 n'en ont fait vivre
   aucune), aucun manque sans mesure pré-enregistrée qui le justifie, et des règles
   réexaminées à chaque résultat positif.
 \end{itemize}
@@ -1581,7 +1626,7 @@ mesurés et utiles, et lesquels manquent.
 {\footnotesize\color{gris}\textsf{\textbf{Sources.}} Les chiffres de ce document viennent
 des protocoles pré-enregistrés, des résultats et des verdicts publiés du projet Menia,
 arrêtés au 2 octobre 2026 ; les mesures encore en cours sont signalées comme telles. Les petits exemples de calcul (\q{Le calcul}) sont des illustrations, non des
-mesures. Le chapitre~\ref{sec:suite} s'appuie sur une note de recherche et sur le
-protocole pré-enregistré du test 12, qui attend le Mac.\par}
+mesures. Le chapitre~\ref{sec:suite} s'appuie sur une note de recherche et sur les
+protocoles pré-enregistrés des tests 12 et 15, qui attendent le Mac.\par}
 
 \end{document}
