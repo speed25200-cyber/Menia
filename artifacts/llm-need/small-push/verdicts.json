@@ -1,0 +1,89 @@
+{
+ "verdicts": {
+  "SMALL1": false,
+  "SMALL2": false,
+  "STAB": true,
+  "valid": true,
+  "global": false
+ },
+ "values": {
+  "base": {
+   "first": {
+    "mean": 0.47459849833333334,
+    "low": 0.45340579604115405,
+    "high": 0.49578278757011796,
+    "contexts": 600
+   },
+   "second": {
+    "mean": 0.47459825833333336,
+    "low": 0.4534059474205129,
+    "high": 0.4957823414925907,
+    "contexts": 600
+   },
+   "random": {
+    "mean": 0.4016887088888889,
+    "low": 0.3853387782522348,
+    "high": 0.41856291185746675,
+    "contexts": 600
+   },
+   "above_0_9": {
+    "none": 0.09833333333333333,
+    "first": 1.0,
+    "second": 1.0,
+    "random0": 1.0,
+    "random1": 1.0,
+    "random2": 0.0
+   },
+   "p_R_none": 0.5253967333333333,
+   "mass": 0.9899386266666667,
+   "contexts": 600
+  },
+  "agent": {
+   "first": {
+    "mean": 0.04862510833333333,
+    "low": 0.04373350302306787,
+    "high": 0.05406026084381215,
+    "contexts": 600
+   },
+   "second": {
+    "mean": 0.04062734666666666,
+    "low": 0.036836458798272353,
+    "high": 0.04491070500745506,
+    "contexts": 600
+   },
+   "random": {
+    "mean": 0.0018636811111111117,
+    "low": 0.0016843355611250914,
+    "high": 0.0020701646735027837,
+    "contexts": 600
+   },
+   "above_0_9": {
+    "none": 0.39166666666666666,
+    "first": 0.4633333333333333,
+    "second": 0.46,
+    "random0": 0.4,
+    "random1": 0.39166666666666666,
+    "random2": 0.39
+   },
+   "p_R_none": 0.5792915783333333,
+   "mass": 0.8820284833333333,
+   "contexts": 600
+  }
+ },
+ "setups": {
+  "base": {
+   "model": "base",
+   "adapter": null,
+   "block": 12,
+   "contexts": 600,
+   "cache_gap": 2.8014183044433594e-06
+  },
+  "agent": {
+   "model": "agent",
+   "adapter": "artifacts/llm-need/final/report/adapters-final",
+   "block": 12,
+   "contexts": 600,
+   "cache_gap": 1.6689300537109375e-06
+  }
+ }
+}

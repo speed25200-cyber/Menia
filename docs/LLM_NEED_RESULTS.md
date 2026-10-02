@@ -875,11 +875,59 @@ témoin au hasard, et d'un plafond que le protocole n'avait pas prévu.
   protocole, déclaré ici.
 - **Ce que cela suggère (sans verdict).** La direction « énergie basse →
   se recharger » agit déjà dans le modèle de langage seul, et c'est
-  probablement ce qui explique le transfert du test 17. L'apprentissage ne
+  probablement ce qui explique le transfert du test 17. **Corrigé par le
+  test 19** : à petite poussée, deux directions au hasard sur trois font
+  elles aussi choisir « R » au modèle de base dans tous les contextes ;
+  cette suggestion n'est pas soutenue. L'apprentissage ne
   l'a pas créée. En revanche, il a rendu l'état **stable** : chez les
   agents appris, une poussée au hasard ne fait presque plus rien (0,012
   contre 0,28). Un test pré-enregistré, avec une poussée plus petite (pour
   éviter le plafond), pourrait le confirmer.
+
+## Test 19 pré-enregistré : une petite poussée — le code existe-t-il avant l'apprentissage, et l'apprentissage le rend-il stable ?
+
+Protocole `docs/LLM_NEED_SMALL_PUSH_PROTOCOL.md` (commit `0bf15d0`), code
+`abc4050` écrit avant toute mesure. Mêmes contextes que les tests 17 et 18,
+poussées **quatre fois plus petites** (−1·d_E), lues dans le modèle de
+langage sans adaptateur et chez le premier agent. Artefacts :
+`artifacts/llm-need/small-push`. Verdicts vérifiés en CI.
+
+| −1·d_E (et hasard de même norme) | Modèle de base | Premier agent |
+|---|---|---|
+| direction du premier agent | +0,475 [0,453 ; 0,496] | +0,049 [0,044 ; 0,054] |
+| direction du second agent | +0,475 [0,453 ; 0,496] | +0,041 [0,037 ; 0,045] |
+| poussées au hasard (\|Δ\| moyen) | **0,402** [0,385 ; 0,419] | **0,0019** [0,0017 ; 0,0021] |
+| P(R) sans poussée | 0,525 | 0,579 |
+
+| | Critère | Verdict |
+|---|---|---|
+| **SMALL1** | base : direction du premier ≥ +0,05, hasard ≤ le tiers | **échoue** (hasard 0,40 pour un effet de 0,47) |
+| **SMALL2** | base : direction du second, même critère | **échoue** |
+| **STAB** | hasard chez l'agent ≤ le tiers de celui du modèle de base, intervalles séparés | **passe** (0,0019 contre 0,402 : 200 fois moins) |
+| | Validité : cache ≤ 3e-6 ; 600 contextes ; masses 0,99 et 0,88 | valide |
+
+**Critère global : non satisfait.**
+
+**Ce que cela dit.**
+- **Dans le modèle de base, toute poussée sur ces trois tokens efface le
+  contexte**, même petite. Avec une direction du besoin, P(R) vaut 1,000
+  dans tous les contextes ; avec deux des trois directions au hasard, il
+  vaut aussi plus de 0,98 dans tous les contextes ; avec la troisième,
+  environ 0,61 partout. La réponse ne dépend plus de la vie lue.
+- **Cela corrige la suggestion faite au test 18** (« la direction agit
+  déjà dans le modèle de langage seul »). Elle n'est **pas soutenue** : le
+  modèle de base va vers « R » sous presque n'importe quelle poussée à cet
+  endroit. On ne peut pas, avec ces mesures, dire si le code du besoin
+  existe avant l'apprentissage.
+- **L'apprentissage a rendu l'état stable (STAB passe).** Chez l'agent
+  appris, une poussée au hasard ne change presque rien (0,002), alors
+  qu'elle bouleverse le modèle de base (0,40). Les directions du besoin, elles,
+  gardent un effet net chez l'agent (+0,049 ; +0,041 pour celle du second,
+  soit 84 %, vingt fois le hasard), ce qui confirme le transfert du test 17
+  à petite poussée.
+- C'est peut-être la façon la plus juste de décrire ce que l'apprentissage
+  a fait ici : il a fait de « Choix : » un endroit où **seul le besoin
+  compte**. Le reste n'y a presque plus d'effet.
 
 ## Analyse exploratoire : le « oui » suit-il le besoin ou la décision ? (2 octobre)
 
