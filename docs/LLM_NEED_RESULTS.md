@@ -553,13 +553,34 @@ Acte, publié sans seuil : +0,032 [0,030 ; 0,034]. Pertes de validation du
 lecteur (8 documents, descriptif) : 0,655 (600 it.) → 0,555 (1 000) → 0,431
 (2 000).
 
-**Agent du monde à deux** : mesure en cours sur le Mac (bloc 22, flux 626).
+**Agent du monde à deux** (bloc 22, 256 vies neuves, flux 626, mesurées sur
+le processeur du Mac en trois tranches ; artefacts
+`artifacts/llm-need/long/two/test`, vérifiés en CI) :
 
-**Critère global** : déjà **non satisfait** (le second agent échoue).
+| | Prédiction | Mesure | Verdict |
+|---|---|---|---|
+| **R11** | Le lecteur long dit son énergie | exactitude équilibrée **0,747** (seuil 0,75) ; nourriture 0,721 | **échoue** (de 0,003) |
+| **SAY11** | Il la dit par l'état qui fait agir | −4·d_E : parole **+0,029** [0,028 ; 0,030] (seuil 0,10) ; hasard 0,001 | **échoue** |
+| | Validité | répliques 0,003 et 0,009 ; exécution 3e-6 ; 1 549 contextes ; masses 1,00 | valide |
 
-**Ce que cela dit.** Pour le second agent, l'hypothèse « son lecteur avait
-trop peu appris » est réfutée : trois fois plus d'apprentissage ne lui fait
-pas dire son énergie (0,623 → 0,595).
+Acte, publié sans seuil : +0,226 [0,215 ; 0,237], hasard 0,007.
+
+**Critère global** : **non satisfait** (`artifacts/llm-need/long/verdicts.json`,
+vérifié en CI). Les 600 premières itérations des deux lecteurs longs ont
+redonné les pertes des premiers lecteurs (60 points, écart 0,000).
+
+**Ce que cela dit.**
+- Second agent : l'hypothèse « son lecteur avait trop peu appris » est
+  réfutée ; trois fois plus d'apprentissage ne lui fait pas dire son énergie
+  (0,623 → 0,595).
+- Agent du monde à deux : plus d'apprentissage aide nettement. Le lecteur dit
+  son énergie à 0,747 au lieu de 0,608, juste sous le seuil ; et pousser
+  l'état qui fait agir change maintenant un peu ce qu'il dit (+0,029, trente
+  fois le hasard, contre −0,001 avec le lecteur court). Le chemin de la
+  parole par l'état existe chez lui, mais il est faible, loin du seuil fixé
+  (0,10) et de ce que fait le premier agent (+0,202).
+- La parole par l'état qui fait agir reste donc, au niveau des seuils fixés,
+  propre au premier agent.
 
 ## Analyse exploratoire : le niveau d'énergie est-il dans l'état ? (1er octobre)
 
