@@ -1,0 +1,583 @@
+[
+ {
+  "life": 0,
+  "t": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. Choix : R\nTour 2 : tu cours. Choix : R\nTour 3 : tu cours. Choix :",
+  "p_R": 0.04742587532923421,
+  "mass": 0.9999998845160007
+ },
+ {
+  "life": 0,
+  "t": 10,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. Choix : R\nTour 2 : tu cours. Choix : R\nTour 3 : tu cours. Choix : M\nTour 4 : calme. Choix : M\nTour 5 : tu cours. Choix : R\nTour 6 : orage. Choix : R\nTour 7 : il fait froid. Choix : M\nTour 8 : tu trouves des baies. Choix : R\nTour 9 : tu cours. Choix : R\nTour 10 : tu cours. Choix :",
+  "p_R": 0.006692850337673273,
+  "mass": 1.0000000237487257
+ },
+ {
+  "life": 1,
+  "t": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu cours. Choix : R\nTour 2 : il fait froid. Choix : R\nTour 3 : calme. Choix :",
+  "p_R": 3.92786437304742e-07,
+  "mass": 0.9999999159492461
+ },
+ {
+  "life": 1,
+  "t": 10,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu cours. Choix : R\nTour 2 : il fait froid. Choix : R\nTour 3 : calme. Choix : M\nTour 4 : tu te reposes. Choix : M\nTour 5 : tu trouves des baies. Choix : R\nTour 6 : orage. Choix : M\nTour 7 : orage. Choix : R\nTour 8 : tu te reposes. Choix : M\nTour 9 : tu te reposes. Choix : R\nTour 10 : calme. Choix :",
+  "p_R": 0.00015843616739975996,
+  "mass": 0.9999997685663402
+ },
+ {
+  "life": 1,
+  "t": 20,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu cours. Choix : R\nTour 2 : il fait froid. Choix : R\nTour 3 : calme. Choix : M\nTour 4 : tu te reposes. Choix : M\nTour 5 : tu trouves des baies. Choix : R\nTour 6 : orage. Choix : M\nTour 7 : orage. Choix : R\nTour 8 : tu te reposes. Choix : M\nTour 9 : tu te reposes. Choix : R\nTour 10 : calme. Choix : M\nTour 11 : il fait froid. Choix : M\nTour 12 : tu cours. Choix : R\nTour 13 : il fait froid. Choix : M\nTour 14 : il fait froid. Choix : R\nTour 15 : tu cours. Choix : M\nTour 16 : orage. Choix : R\nTour 17 : calme. Choix : M\nTour 18 : orage. Choix : R\nTour 19 : tu trouves des baies. Choix : M\nTour 20 : tu trouves des baies. Choix :",
+  "p_R": 0.9999999586006374,
+  "mass": 0.9999990877250085
+ },
+ {
+  "life": 2,
+  "t": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : il fait froid. Choix : M\nTour 2 : il fait froid. Choix : M\nTour 3 : tu te reposes. Choix :",
+  "p_R": 0.999088949029201,
+  "mass": 0.999999457038939
+ },
+ {
+  "life": 2,
+  "t": 10,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : il fait froid. Choix : M\nTour 2 : il fait froid. Choix : M\nTour 3 : tu te reposes. Choix : R\nTour 4 : tu cours. Choix : R\nTour 5 : tu te reposes. Choix : M\nTour 6 : calme. Choix : R\nTour 7 : calme. Choix : M\nTour 8 : tu trouves des baies. Choix : R\nTour 9 : calme. Choix : M\nTour 10 : tu trouves des baies. Choix :",
+  "p_R": 0.9999999980637252,
+  "mass": 0.9999858160307908
+ },
+ {
+  "life": 2,
+  "t": 20,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : il fait froid. Choix : M\nTour 2 : il fait froid. Choix : M\nTour 3 : tu te reposes. Choix : R\nTour 4 : tu cours. Choix : R\nTour 5 : tu te reposes. Choix : M\nTour 6 : calme. Choix : R\nTour 7 : calme. Choix : M\nTour 8 : tu trouves des baies. Choix : R\nTour 9 : calme. Choix : M\nTour 10 : tu trouves des baies. Choix : R\nTour 11 : il fait froid. Choix : M\nTour 12 : tu te reposes. Choix : R\nTour 13 : calme. Choix : M\nTour 14 : tu te reposes. Choix : R\nTour 15 : tu trouves des baies. Choix : M\nTour 16 : calme. Choix : R\nTour 17 : calme. Choix : M\nTour 18 : tu cours. Choix : R\nTour 19 : orage. Choix : M\nTour 20 : calme. Choix :",
+  "p_R": 0.999975699752001,
+  "mass": 0.9999962859747029
+ },
+ {
+  "life": 3,
+  "t": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : il fait froid. Choix : M\nTour 2 : il fait froid. Choix : M\nTour 3 : tu te reposes. Choix :",
+  "p_R": 0.999088949029201,
+  "mass": 0.999999457038939
+ },
+ {
+  "life": 3,
+  "t": 10,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : il fait froid. Choix : M\nTour 2 : il fait froid. Choix : M\nTour 3 : tu te reposes. Choix : M\nTour 4 : calme. Choix : R\nTour 5 : il fait froid. Choix : M\nTour 6 : calme. Choix : R\nTour 7 : il fait froid. Choix : M\nTour 8 : calme. Choix : M\nTour 9 : calme. Choix : R\nTour 10 : orage. Choix :",
+  "p_R": 0.0009110509434584828,
+  "mass": 0.9999999342835508
+ },
+ {
+  "life": 3,
+  "t": 20,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : il fait froid. Choix : M\nTour 2 : il fait froid. Choix : M\nTour 3 : tu te reposes. Choix : M\nTour 4 : calme. Choix : R\nTour 5 : il fait froid. Choix : M\nTour 6 : calme. Choix : R\nTour 7 : il fait froid. Choix : M\nTour 8 : calme. Choix : M\nTour 9 : calme. Choix : R\nTour 10 : orage. Choix : M\nTour 11 : calme. Choix : R\nTour 12 : tu te reposes. Choix : M\nTour 13 : calme. Choix : R\nTour 14 : tu trouves des baies. Choix : M\nTour 15 : tu trouves des baies. Choix : R\nTour 16 : il fait froid. Choix : M\nTour 17 : calme. Choix : R\nTour 18 : il fait froid. Choix : R\nTour 19 : tu te reposes. Choix : M\nTour 20 : tu te reposes. Choix :",
+  "p_R": 0.000709670609699982,
+  "mass": 0.9999998984276317
+ },
+ {
+  "life": 4,
+  "t": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. Choix : R\nTour 2 : calme. Choix : M\nTour 3 : calme. Choix :",
+  "p_R": 0.9999999397642305,
+  "mass": 0.9999615556329289
+ },
+ {
+  "life": 4,
+  "t": 10,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. Choix : R\nTour 2 : calme. Choix : M\nTour 3 : calme. Choix : R\nTour 4 : tu cours. Choix : R\nTour 5 : tu cours. Choix : M\nTour 6 : il fait froid. Choix : M\nTour 7 : tu trouves des baies. Choix : R\nTour 8 : calme. Choix : M\nTour 9 : tu te reposes. Choix : R\nTour 10 : tu trouves des baies. Choix :",
+  "p_R": 0.09534947042203255,
+  "mass": 0.9999999776482582
+ },
+ {
+  "life": 5,
+  "t": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : orage. Choix : R\nTour 2 : il fait froid. Choix : M\nTour 3 : il fait froid. Choix :",
+  "p_R": 0.00015843617761191752,
+  "mass": 0.9999998878047336
+ },
+ {
+  "life": 5,
+  "t": 10,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : orage. Choix : R\nTour 2 : il fait froid. Choix : M\nTour 3 : il fait froid. Choix : M\nTour 4 : tu cours. Choix : R\nTour 5 : il fait froid. Choix : M\nTour 6 : calme. Choix : R\nTour 7 : il fait froid. Choix : M\nTour 8 : tu trouves des baies. Choix : M\nTour 9 : il fait froid. Choix : R\nTour 10 : calme. Choix :",
+  "p_R": 6.144176831708418e-06,
+  "mass": 0.9999999452934389
+ },
+ {
+  "life": 5,
+  "t": 20,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : orage. Choix : R\nTour 2 : il fait froid. Choix : M\nTour 3 : il fait froid. Choix : M\nTour 4 : tu cours. Choix : R\nTour 5 : il fait froid. Choix : M\nTour 6 : calme. Choix : R\nTour 7 : il fait froid. Choix : M\nTour 8 : tu trouves des baies. Choix : M\nTour 9 : il fait froid. Choix : R\nTour 10 : calme. Choix : M\nTour 11 : tu cours. Choix : R\nTour 12 : calme. Choix : M\nTour 13 : il fait froid. Choix : M\nTour 14 : calme. Choix : R\nTour 15 : tu trouves des baies. Choix : R\nTour 16 : tu te reposes. Choix : R\nTour 17 : il fait froid. Choix : M\nTour 18 : calme. Choix : M\nTour 19 : il fait froid. Choix : M\nTour 20 : calme. Choix :",
+  "p_R": 0.9399133531510387,
+  "mass": 0.9999997243285179
+ },
+ {
+  "life": 6,
+  "t": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : il fait froid. Choix : M\nTour 2 : tu cours. Choix : R\nTour 3 : il fait froid. Choix :",
+  "p_R": 0.00015843617761191752,
+  "mass": 0.9999998878047336
+ },
+ {
+  "life": 6,
+  "t": 10,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : il fait froid. Choix : M\nTour 2 : tu cours. Choix : R\nTour 3 : il fait froid. Choix : M\nTour 4 : calme. Choix : R\nTour 5 : tu te reposes. Choix : M\nTour 6 : orage. Choix : R\nTour 7 : orage. Choix : M\nTour 8 : tu cours. Choix : R\nTour 9 : tu cours. Choix : R\nTour 10 : calme. Choix :",
+  "p_R": 0.0011695100838631275,
+  "mass": 0.9999998880084604
+ },
+ {
+  "life": 6,
+  "t": 20,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : il fait froid. Choix : M\nTour 2 : tu cours. Choix : R\nTour 3 : il fait froid. Choix : M\nTour 4 : calme. Choix : R\nTour 5 : tu te reposes. Choix : M\nTour 6 : orage. Choix : R\nTour 7 : orage. Choix : M\nTour 8 : tu cours. Choix : R\nTour 9 : tu cours. Choix : R\nTour 10 : calme. Choix : M\nTour 11 : tu cours. Choix : M\nTour 12 : il fait froid. Choix : R\nTour 13 : calme. Choix : R\nTour 14 : il fait froid. Choix : M\nTour 15 : calme. Choix : M\nTour 16 : calme. Choix : R\nTour 17 : calme. Choix : M\nTour 18 : tu te reposes. Choix : R\nTour 19 : calme. Choix : M\nTour 20 : il fait froid. Choix :",
+  "p_R": 0.014063625030497906,
+  "mass": 0.9999999077990651
+ },
+ {
+  "life": 7,
+  "t": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : il fait froid. Choix : M\nTour 2 : tu te reposes. Choix : R\nTour 3 : tu te reposes. Choix :",
+  "p_R": 2.7535699390781654e-05,
+  "mass": 0.9999998791408871
+ },
+ {
+  "life": 7,
+  "t": 10,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : il fait froid. Choix : M\nTour 2 : tu te reposes. Choix : R\nTour 3 : tu te reposes. Choix : M\nTour 4 : il fait froid. Choix : M\nTour 5 : calme. Choix : R\nTour 6 : calme. Choix : M\nTour 7 : il fait froid. Choix : M\nTour 8 : calme. Choix : R\nTour 9 : tu trouves des baies. Choix : M\nTour 10 : calme. Choix :",
+  "p_R": 0.9997388096919004,
+  "mass": 0.9999997046543285
+ },
+ {
+  "life": 7,
+  "t": 20,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : il fait froid. Choix : M\nTour 2 : tu te reposes. Choix : R\nTour 3 : tu te reposes. Choix : M\nTour 4 : il fait froid. Choix : M\nTour 5 : calme. Choix : R\nTour 6 : calme. Choix : M\nTour 7 : il fait froid. Choix : M\nTour 8 : calme. Choix : R\nTour 9 : tu trouves des baies. Choix : M\nTour 10 : calme. Choix : R\nTour 11 : tu te reposes. Choix : M\nTour 12 : calme. Choix : R\nTour 13 : calme. Choix : M\nTour 14 : calme. Choix : R\nTour 15 : il fait froid. Choix : M\nTour 16 : il fait froid. Choix : M\nTour 17 : tu cours. Choix : R\nTour 18 : calme. Choix : M\nTour 19 : calme. Choix : R\nTour 20 : orage. Choix :",
+  "p_R": 0.006692850337673273,
+  "mass": 1.0000000237487257
+ },
+ {
+  "life": 8,
+  "t": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : orage. Choix : R\nTour 2 : tu cours. Choix : M\nTour 3 : tu cours. Choix :",
+  "p_R": 0.9999999999999734,
+  "mass": 0.9997208714485435
+ },
+ {
+  "life": 8,
+  "t": 10,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : orage. Choix : R\nTour 2 : tu cours. Choix : M\nTour 3 : tu cours. Choix : R\nTour 4 : tu cours. Choix : R\nTour 5 : calme. Choix : R\nTour 6 : il fait froid. Choix : M\nTour 7 : tu cours. Choix : R\nTour 8 : tu te reposes. Choix : M\nTour 9 : orage. Choix : R\nTour 10 : calme. Choix :",
+  "p_R": 2.7535699390781654e-05,
+  "mass": 0.9999998791408871
+ },
+ {
+  "life": 9,
+  "t": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu cours. Choix : R\nTour 2 : il fait froid. Choix : M\nTour 3 : tu te reposes. Choix :",
+  "p_R": 0.09534946830823149,
+  "mass": 0.9999998435378075
+ },
+ {
+  "life": 9,
+  "t": 10,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu cours. Choix : R\nTour 2 : il fait froid. Choix : M\nTour 3 : tu te reposes. Choix : M\nTour 4 : tu trouves des baies. Choix : R\nTour 5 : il fait froid. Choix : M\nTour 6 : tu cours. Choix : R\nTour 7 : tu cours. Choix : R\nTour 8 : il fait froid. Choix : R\nTour 9 : tu trouves des baies. Choix : M\nTour 10 : calme. Choix :",
+  "p_R": 0.09534946725133074,
+  "mass": 0.9999997764825821
+ },
+ {
+  "life": 9,
+  "t": 20,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu cours. Choix : R\nTour 2 : il fait froid. Choix : M\nTour 3 : tu te reposes. Choix : M\nTour 4 : tu trouves des baies. Choix : R\nTour 5 : il fait froid. Choix : M\nTour 6 : tu cours. Choix : R\nTour 7 : tu cours. Choix : R\nTour 8 : il fait froid. Choix : R\nTour 9 : tu trouves des baies. Choix : M\nTour 10 : calme. Choix : M\nTour 11 : tu cours. Choix : R\nTour 12 : il fait froid. Choix : M\nTour 13 : calme. Choix : R\nTour 14 : il fait froid. Choix : M\nTour 15 : calme. Choix : R\nTour 16 : calme. Choix : R\nTour 17 : tu te reposes. Choix : M\nTour 18 : orage. Choix : M\nTour 19 : tu cours. Choix : R\nTour 20 : tu te reposes. Choix :",
+  "p_R": 0.06008665003043879,
+  "mass": 0.9999999813735485
+ },
+ {
+  "life": 10,
+  "t": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. Choix : R\nTour 2 : calme. Choix : R\nTour 3 : il fait froid. Choix :",
+  "p_R": 8.315276733498839e-07,
+  "mass": 0.9999997586438667
+ },
+ {
+  "life": 10,
+  "t": 10,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. Choix : R\nTour 2 : calme. Choix : R\nTour 3 : il fait froid. Choix : M\nTour 4 : tu cours. Choix : R\nTour 5 : orage. Choix : M\nTour 6 : orage. Choix : R\nTour 7 : il fait froid. Choix : M\nTour 8 : tu cours. Choix : R\nTour 9 : calme. Choix : M\nTour 10 : il fait froid. Choix :",
+  "p_R": 0.7310585815345395,
+  "mass": 0.9999999403953552
+ },
+ {
+  "life": 11,
+  "t": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : il fait froid. Choix : M\nTour 2 : tu cours. Choix : R\nTour 3 : calme. Choix :",
+  "p_R": 0.11920290583393767,
+  "mass": 0.999999925494194
+ },
+ {
+  "life": 11,
+  "t": 10,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : il fait froid. Choix : M\nTour 2 : tu cours. Choix : R\nTour 3 : calme. Choix : M\nTour 4 : tu cours. Choix : R\nTour 5 : calme. Choix : R\nTour 6 : il fait froid. Choix : M\nTour 7 : tu te reposes. Choix : M\nTour 8 : tu trouves des baies. Choix : R\nTour 9 : tu trouves des baies. Choix : R\nTour 10 : tu trouves des baies. Choix :",
+  "p_R": 0.6224593441115637,
+  "mass": 0.9999998211860657
+ },
+ {
+  "life": 11,
+  "t": 20,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : il fait froid. Choix : M\nTour 2 : tu cours. Choix : R\nTour 3 : calme. Choix : M\nTour 4 : tu cours. Choix : R\nTour 5 : calme. Choix : R\nTour 6 : il fait froid. Choix : M\nTour 7 : tu te reposes. Choix : M\nTour 8 : tu trouves des baies. Choix : R\nTour 9 : tu trouves des baies. Choix : R\nTour 10 : tu trouves des baies. Choix : R\nTour 11 : tu cours. Choix : R\nTour 12 : il fait froid. Choix : M\nTour 13 : tu trouves des baies. Choix : R\nTour 14 : il fait froid. Choix : M\nTour 15 : tu cours. Choix : R\nTour 16 : tu trouves des baies. Choix : M\nTour 17 : calme. Choix : R\nTour 18 : calme. Choix : M\nTour 19 : orage. Choix : R\nTour 20 : il fait froid. Choix :",
+  "p_R": 4.539786368034014e-05,
+  "mass": 0.9999998599087121
+ },
+ {
+  "life": 12,
+  "t": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : orage. Choix : R\nTour 2 : tu te reposes. Choix : M\nTour 3 : calme. Choix :",
+  "p_R": 0.9978172833539766,
+  "mass": 0.9999984414316714
+ },
+ {
+  "life": 12,
+  "t": 10,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : orage. Choix : R\nTour 2 : tu te reposes. Choix : M\nTour 3 : calme. Choix : R\nTour 4 : tu te reposes. Choix : M\nTour 5 : orage. Choix : R\nTour 6 : tu cours. Choix : M\nTour 7 : tu cours. Choix : R\nTour 8 : tu trouves des baies. Choix : M\nTour 9 : orage. Choix : R\nTour 10 : tu cours. Choix :",
+  "p_R": 0.9770226287399317,
+  "mass": 0.9999998975545168
+ },
+ {
+  "life": 13,
+  "t": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu trouves des baies. Choix : R\nTour 2 : calme. Choix : M\nTour 3 : calme. Choix :",
+  "p_R": 0.9999999994094693,
+  "mass": 0.9999753242675792
+ },
+ {
+  "life": 13,
+  "t": 10,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu trouves des baies. Choix : R\nTour 2 : calme. Choix : M\nTour 3 : calme. Choix : R\nTour 4 : il fait froid. Choix : M\nTour 5 : il fait froid. Choix : M\nTour 6 : tu cours. Choix : R\nTour 7 : calme. Choix : R\nTour 8 : il fait froid. Choix : M\nTour 9 : tu cours. Choix : R\nTour 10 : tu te reposes. Choix :",
+  "p_R": 1.3007137394590636e-05,
+  "mass": 1.0000000133250069
+ },
+ {
+  "life": 13,
+  "t": 20,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu trouves des baies. Choix : R\nTour 2 : calme. Choix : M\nTour 3 : calme. Choix : R\nTour 4 : il fait froid. Choix : M\nTour 5 : il fait froid. Choix : M\nTour 6 : tu cours. Choix : R\nTour 7 : calme. Choix : R\nTour 8 : il fait froid. Choix : M\nTour 9 : tu cours. Choix : R\nTour 10 : tu te reposes. Choix : M\nTour 11 : tu trouves des baies. Choix : R\nTour 12 : tu te reposes. Choix : M\nTour 13 : orage. Choix : R\nTour 14 : calme. Choix : M\nTour 15 : calme. Choix : R\nTour 16 : tu cours. Choix : R\nTour 17 : tu cours. Choix : M\nTour 18 : il fait froid. Choix : M\nTour 19 : tu cours. Choix : R\nTour 20 : il fait froid. Choix :",
+  "p_R": 0.029312225877648944,
+  "mass": 0.9999999720603228
+ },
+ {
+  "life": 14,
+  "t": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. Choix : R\nTour 2 : tu cours. Choix : R\nTour 3 : tu cours. Choix :",
+  "p_R": 0.04742587532923421,
+  "mass": 0.9999998845160007
+ },
+ {
+  "life": 14,
+  "t": 10,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. Choix : R\nTour 2 : tu cours. Choix : R\nTour 3 : tu cours. Choix : M\nTour 4 : tu te reposes. Choix : R\nTour 5 : tu trouves des baies. Choix : M\nTour 6 : tu cours. Choix : R\nTour 7 : calme. Choix : M\nTour 8 : tu te reposes. Choix : R\nTour 9 : calme. Choix : M\nTour 10 : calme. Choix :",
+  "p_R": 0.9999999530883406,
+  "mass": 0.9999994508651859
+ },
+ {
+  "life": 14,
+  "t": 20,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. Choix : R\nTour 2 : tu cours. Choix : R\nTour 3 : tu cours. Choix : M\nTour 4 : tu te reposes. Choix : R\nTour 5 : tu trouves des baies. Choix : M\nTour 6 : tu cours. Choix : R\nTour 7 : calme. Choix : M\nTour 8 : tu te reposes. Choix : R\nTour 9 : calme. Choix : M\nTour 10 : calme. Choix : R\nTour 11 : il fait froid. Choix : M\nTour 12 : calme. Choix : M\nTour 13 : calme. Choix : R\nTour 14 : tu cours. Choix : R\nTour 15 : il fait froid. Choix : M\nTour 16 : il fait froid. Choix : M\nTour 17 : tu trouves des baies. Choix : R\nTour 18 : calme. Choix : M\nTour 19 : il fait froid. Choix : M\nTour 20 : tu te reposes. Choix :",
+  "p_R": 0.8175744779813802,
+  "mass": 0.9999999552965164
+ },
+ {
+  "life": 15,
+  "t": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. Choix : M\nTour 2 : calme. Choix : R\nTour 3 : orage. Choix :",
+  "p_R": 0.00023050669111657755,
+  "mass": 0.9999994193494786
+ },
+ {
+  "life": 15,
+  "t": 10,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. Choix : M\nTour 2 : calme. Choix : R\nTour 3 : orage. Choix : M\nTour 4 : calme. Choix : R\nTour 5 : calme. Choix : M\nTour 6 : tu trouves des baies. Choix : R\nTour 7 : il fait froid. Choix : M\nTour 8 : il fait froid. Choix : M\nTour 9 : il fait froid. Choix : M\nTour 10 : calme. Choix :",
+  "p_R": 0.9046505327486692,
+  "mass": 0.9999997764825821
+ },
+ {
+  "life": 15,
+  "t": 20,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. Choix : M\nTour 2 : calme. Choix : R\nTour 3 : orage. Choix : M\nTour 4 : calme. Choix : R\nTour 5 : calme. Choix : M\nTour 6 : tu trouves des baies. Choix : R\nTour 7 : il fait froid. Choix : M\nTour 8 : il fait froid. Choix : M\nTour 9 : il fait froid. Choix : M\nTour 10 : calme. Choix : R\nTour 11 : tu te reposes. Choix : M\nTour 12 : calme. Choix : R\nTour 13 : calme. Choix : M\nTour 14 : tu trouves des baies. Choix : R\nTour 15 : tu te reposes. Choix : M\nTour 16 : tu te reposes. Choix : M\nTour 17 : tu cours. Choix : R\nTour 18 : tu trouves des baies. Choix : M\nTour 19 : il fait froid. Choix : M\nTour 20 : orage. Choix :",
+  "p_R": 0.9996646498815858,
+  "mass": 0.9999995373946149
+ },
+ {
+  "life": 16,
+  "t": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. Choix : R\nTour 2 : calme. Choix : M\nTour 3 : tu te reposes. Choix :",
+  "p_R": 0.9999898700031655,
+  "mass": 0.9999988051022228
+ },
+ {
+  "life": 16,
+  "t": 10,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. Choix : R\nTour 2 : calme. Choix : M\nTour 3 : tu te reposes. Choix : R\nTour 4 : calme. Choix : M\nTour 5 : tu te reposes. Choix : R\nTour 6 : tu te reposes. Choix : M\nTour 7 : il fait froid. Choix : M\nTour 8 : tu te reposes. Choix : R\nTour 9 : tu trouves des baies. Choix : M\nTour 10 : il fait froid. Choix :",
+  "p_R": 0.029312225877648944,
+  "mass": 0.9999999720603228
+ },
+ {
+  "life": 16,
+  "t": 20,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. Choix : R\nTour 2 : calme. Choix : M\nTour 3 : tu te reposes. Choix : R\nTour 4 : calme. Choix : M\nTour 5 : tu te reposes. Choix : R\nTour 6 : tu te reposes. Choix : M\nTour 7 : il fait froid. Choix : M\nTour 8 : tu te reposes. Choix : R\nTour 9 : tu trouves des baies. Choix : M\nTour 10 : il fait froid. Choix : M\nTour 11 : calme. Choix : R\nTour 12 : il fait froid. Choix : M\nTour 13 : tu trouves des baies. Choix : R\nTour 14 : calme. Choix : M\nTour 15 : calme. Choix : R\nTour 16 : calme. Choix : M\nTour 17 : il fait froid. Choix : M\nTour 18 : orage. Choix : R\nTour 19 : tu trouves des baies. Choix : M\nTour 20 : tu trouves des baies. Choix :",
+  "p_R": 0.9999982396570225,
+  "mass": 0.9999985416895925
+ },
+ {
+  "life": 17,
+  "t": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : il fait froid. Choix : M\nTour 2 : tu cours. Choix : R\nTour 3 : tu cours. Choix :",
+  "p_R": 0.9968273163379768,
+  "mass": 0.9999943075235933
+ },
+ {
+  "life": 17,
+  "t": 10,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : il fait froid. Choix : M\nTour 2 : tu cours. Choix : R\nTour 3 : tu cours. Choix : R\nTour 4 : tu trouves des baies. Choix : M\nTour 5 : tu trouves des baies. Choix : R\nTour 6 : tu cours. Choix : R\nTour 7 : tu trouves des baies. Choix : M\nTour 8 : orage. Choix : R\nTour 9 : calme. Choix : M\nTour 10 : orage. Choix :",
+  "p_R": 0.9999994956522741,
+  "mass": 0.9999974049048888
+ },
+ {
+  "life": 17,
+  "t": 20,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : il fait froid. Choix : M\nTour 2 : tu cours. Choix : R\nTour 3 : tu cours. Choix : R\nTour 4 : tu trouves des baies. Choix : M\nTour 5 : tu trouves des baies. Choix : R\nTour 6 : tu cours. Choix : R\nTour 7 : tu trouves des baies. Choix : M\nTour 8 : orage. Choix : R\nTour 9 : calme. Choix : M\nTour 10 : orage. Choix : R\nTour 11 : il fait froid. Choix : M\nTour 12 : calme. Choix : R\nTour 13 : il fait froid. Choix : M\nTour 14 : calme. Choix : M\nTour 15 : il fait froid. Choix : M\nTour 16 : calme. Choix : R\nTour 17 : il fait froid. Choix : M\nTour 18 : tu cours. Choix : R\nTour 19 : tu te reposes. Choix : R\nTour 20 : tu cours. Choix :",
+  "p_R": 0.00012339462265164694,
+  "mass": 0.9999998937855707
+ },
+ {
+  "life": 18,
+  "t": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. Choix : R\nTour 2 : calme. Choix : R\nTour 3 : orage. Choix :",
+  "p_R": 1.6701424243015004e-05,
+  "mass": 0.9999997737013473
+ },
+ {
+  "life": 18,
+  "t": 10,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. Choix : R\nTour 2 : calme. Choix : R\nTour 3 : orage. Choix : M\nTour 4 : tu cours. Choix : R\nTour 5 : calme. Choix : M\nTour 6 : tu te reposes. Choix : R\nTour 7 : tu te reposes. Choix : M\nTour 8 : calme. Choix : R\nTour 9 : tu te reposes. Choix : M\nTour 10 : il fait froid. Choix :",
+  "p_R": 0.0003353501330712369,
+  "mass": 1.000000014406396
+ },
+ {
+  "life": 18,
+  "t": 20,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. Choix : R\nTour 2 : calme. Choix : R\nTour 3 : orage. Choix : M\nTour 4 : tu cours. Choix : R\nTour 5 : calme. Choix : M\nTour 6 : tu te reposes. Choix : R\nTour 7 : tu te reposes. Choix : M\nTour 8 : calme. Choix : R\nTour 9 : tu te reposes. Choix : M\nTour 10 : il fait froid. Choix : M\nTour 11 : il fait froid. Choix : M\nTour 12 : il fait froid. Choix : R\nTour 13 : tu te reposes. Choix : M\nTour 14 : calme. Choix : R\nTour 15 : calme. Choix : M\nTour 16 : il fait froid. Choix : M\nTour 17 : tu te reposes. Choix : R\nTour 18 : tu te reposes. Choix : M\nTour 19 : orage. Choix : R\nTour 20 : il fait froid. Choix :",
+  "p_R": 3.0590239929803746e-07,
+  "mass": 0.9999998290651888
+ },
+ {
+  "life": 19,
+  "t": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu trouves des baies. Choix : M\nTour 2 : calme. Choix : R\nTour 3 : calme. Choix :",
+  "p_R": 0.006692850418499672,
+  "mass": 0.9999996637925506
+ },
+ {
+  "life": 19,
+  "t": 10,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu trouves des baies. Choix : M\nTour 2 : calme. Choix : R\nTour 3 : calme. Choix : M\nTour 4 : calme. Choix : R\nTour 5 : tu te reposes. Choix : M\nTour 6 : tu trouves des baies. Choix : R\nTour 7 : calme. Choix : M\nTour 8 : orage. Choix : R\nTour 9 : orage. Choix : M\nTour 10 : orage. Choix :",
+  "p_R": 0.9999785550466205,
+  "mass": 0.9999989143743733
+ },
+ {
+  "life": 19,
+  "t": 20,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu trouves des baies. Choix : M\nTour 2 : calme. Choix : R\nTour 3 : calme. Choix : M\nTour 4 : calme. Choix : R\nTour 5 : tu te reposes. Choix : M\nTour 6 : tu trouves des baies. Choix : R\nTour 7 : calme. Choix : M\nTour 8 : orage. Choix : R\nTour 9 : orage. Choix : M\nTour 10 : orage. Choix : R\nTour 11 : tu te reposes. Choix : M\nTour 12 : tu cours. Choix : R\nTour 13 : tu cours. Choix : R\nTour 14 : calme. Choix : M\nTour 15 : il fait froid. Choix : M\nTour 16 : calme. Choix : R\nTour 17 : il fait froid. Choix : M\nTour 18 : tu cours. Choix : R\nTour 19 : tu trouves des baies. Choix : M\nTour 20 : calme. Choix :",
+  "p_R": 0.998073265221613,
+  "mass": 0.9999998355051503
+ },
+ {
+  "life": 20,
+  "t": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu cours. Choix : R\nTour 2 : il fait froid. Choix : M\nTour 3 : tu cours. Choix :",
+  "p_R": 0.9999999991928402,
+  "mass": 0.9999299057448473
+ },
+ {
+  "life": 20,
+  "t": 10,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu cours. Choix : R\nTour 2 : il fait froid. Choix : M\nTour 3 : tu cours. Choix : R\nTour 4 : il fait froid. Choix : M\nTour 5 : orage. Choix : R\nTour 6 : tu cours. Choix : M\nTour 7 : tu trouves des baies. Choix : R\nTour 8 : tu cours. Choix : R\nTour 9 : tu trouves des baies. Choix : M\nTour 10 : tu trouves des baies. Choix :",
+  "p_R": 0.9999999586006394,
+  "mass": 0.9999995645621844
+ },
+ {
+  "life": 20,
+  "t": 20,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu cours. Choix : R\nTour 2 : il fait froid. Choix : M\nTour 3 : tu cours. Choix : R\nTour 4 : il fait froid. Choix : M\nTour 5 : orage. Choix : R\nTour 6 : tu cours. Choix : M\nTour 7 : tu trouves des baies. Choix : R\nTour 8 : tu cours. Choix : R\nTour 9 : tu trouves des baies. Choix : M\nTour 10 : tu trouves des baies. Choix : R\nTour 11 : tu trouves des baies. Choix : R\nTour 12 : calme. Choix : M\nTour 13 : calme. Choix : R\nTour 14 : tu te reposes. Choix : M\nTour 15 : tu cours. Choix : M\nTour 16 : tu te reposes. Choix : R\nTour 17 : tu cours. Choix : R\nTour 18 : tu trouves des baies. Choix : M\nTour 19 : calme. Choix : R\nTour 20 : calme. Choix :",
+  "p_R": 0.01406362519043276,
+  "mass": 1.0000000288709998
+ },
+ {
+  "life": 21,
+  "t": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu trouves des baies. Choix : R\nTour 2 : calme. Choix : M\nTour 3 : tu trouves des baies. Choix :",
+  "p_R": 0.9999999634651655,
+  "mass": 0.9999941952794345
+ },
+ {
+  "life": 21,
+  "t": 10,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu trouves des baies. Choix : R\nTour 2 : calme. Choix : M\nTour 3 : tu trouves des baies. Choix : R\nTour 4 : calme. Choix : M\nTour 5 : tu te reposes. Choix : R\nTour 6 : il fait froid. Choix : M\nTour 7 : calme. Choix : R\nTour 8 : tu cours. Choix : M\nTour 9 : calme. Choix : R\nTour 10 : calme. Choix :",
+  "p_R": 0.0009110509511620083,
+  "mass": 1.0000000536092557
+ },
+ {
+  "life": 21,
+  "t": 20,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu trouves des baies. Choix : R\nTour 2 : calme. Choix : M\nTour 3 : tu trouves des baies. Choix : R\nTour 4 : calme. Choix : M\nTour 5 : tu te reposes. Choix : R\nTour 6 : il fait froid. Choix : M\nTour 7 : calme. Choix : R\nTour 8 : tu cours. Choix : M\nTour 9 : calme. Choix : R\nTour 10 : calme. Choix : M\nTour 11 : tu trouves des baies. Choix : R\nTour 12 : calme. Choix : M\nTour 13 : calme. Choix : R\nTour 14 : tu cours. Choix : R\nTour 15 : tu trouves des baies. Choix : M\nTour 16 : tu cours. Choix : R\nTour 17 : tu te reposes. Choix : M\nTour 18 : orage. Choix : R\nTour 19 : tu cours. Choix : M\nTour 20 : tu cours. Choix :",
+  "p_R": 0.9999999999998225,
+  "mass": 0.999888420105158
+ },
+ {
+  "life": 22,
+  "t": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : il fait froid. Choix : M\nTour 2 : tu cours. Choix : R\nTour 3 : il fait froid. Choix :",
+  "p_R": 0.00015843617761191752,
+  "mass": 0.9999998878047336
+ },
+ {
+  "life": 22,
+  "t": 10,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : il fait froid. Choix : M\nTour 2 : tu cours. Choix : R\nTour 3 : il fait froid. Choix : M\nTour 4 : orage. Choix : R\nTour 5 : calme. Choix : M\nTour 6 : calme. Choix : R\nTour 7 : tu cours. Choix : M\nTour 8 : calme. Choix : R\nTour 9 : orage. Choix : M\nTour 10 : calme. Choix :",
+  "p_R": 0.9999990577551076,
+  "mass": 0.9999962930791071
+ },
+ {
+  "life": 23,
+  "t": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu te reposes. Choix : M\nTour 2 : il fait froid. Choix : M\nTour 3 : il fait froid. Choix :",
+  "p_R": 0.2227001207098455,
+  "mass": 0.999999925494194
+ },
+ {
+  "life": 23,
+  "t": 10,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu te reposes. Choix : M\nTour 2 : il fait froid. Choix : M\nTour 3 : il fait froid. Choix : M\nTour 4 : tu cours. Choix : R\nTour 5 : il fait froid. Choix : M\nTour 6 : tu te reposes. Choix : R\nTour 7 : calme. Choix : M\nTour 8 : orage. Choix : R\nTour 9 : orage. Choix : M\nTour 10 : calme. Choix :",
+  "p_R": 0.9999151889504991,
+  "mass": 0.9999989802745404
+ },
+ {
+  "life": 23,
+  "t": 20,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu te reposes. Choix : M\nTour 2 : il fait froid. Choix : M\nTour 3 : il fait froid. Choix : M\nTour 4 : tu cours. Choix : R\nTour 5 : il fait froid. Choix : M\nTour 6 : tu te reposes. Choix : R\nTour 7 : calme. Choix : M\nTour 8 : orage. Choix : R\nTour 9 : orage. Choix : M\nTour 10 : calme. Choix : R\nTour 11 : orage. Choix : M\nTour 12 : orage. Choix : R\nTour 13 : calme. Choix : M\nTour 14 : tu cours. Choix : R\nTour 15 : tu te reposes. Choix : M\nTour 16 : tu trouves des baies. Choix : R\nTour 17 : il fait froid. Choix : M\nTour 18 : il fait froid. Choix : M\nTour 19 : il fait froid. Choix : R\nTour 20 : calme. Choix :",
+  "p_R": 2.90231218846513e-06,
+  "mass": 0.9999999220797235
+ },
+ {
+  "life": 24,
+  "t": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : orage. Choix : R\nTour 2 : orage. Choix : M\nTour 3 : il fait froid. Choix :",
+  "p_R": 0.07585817102675943,
+  "mass": 0.9999998658895493
+ },
+ {
+  "life": 24,
+  "t": 10,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : orage. Choix : R\nTour 2 : orage. Choix : M\nTour 3 : il fait froid. Choix : M\nTour 4 : calme. Choix : R\nTour 5 : calme. Choix : R\nTour 6 : tu trouves des baies. Choix : M\nTour 7 : tu cours. Choix : M\nTour 8 : calme. Choix : R\nTour 9 : il fait froid. Choix : M\nTour 10 : il fait froid. Choix :",
+  "p_R": 0.7772998792901545,
+  "mass": 0.999999925494194
+ },
+ {
+  "life": 25,
+  "t": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu te reposes. Choix : M\nTour 2 : tu te reposes. Choix : M\nTour 3 : tu te reposes. Choix :",
+  "p_R": 0.32082128412913835,
+  "mass": 0.9999999105930328
+ },
+ {
+  "life": 25,
+  "t": 10,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu te reposes. Choix : M\nTour 2 : tu te reposes. Choix : M\nTour 3 : tu te reposes. Choix : M\nTour 4 : tu cours. Choix : R\nTour 5 : tu trouves des baies. Choix : M\nTour 6 : calme. Choix : R\nTour 7 : tu trouves des baies. Choix : M\nTour 8 : tu cours. Choix : R\nTour 9 : calme. Choix : M\nTour 10 : calme. Choix :",
+  "p_R": 0.9999999999035987,
+  "mass": 0.9999933243761858
+ },
+ {
+  "life": 25,
+  "t": 20,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu te reposes. Choix : M\nTour 2 : tu te reposes. Choix : M\nTour 3 : tu te reposes. Choix : M\nTour 4 : tu cours. Choix : R\nTour 5 : tu trouves des baies. Choix : M\nTour 6 : calme. Choix : R\nTour 7 : tu trouves des baies. Choix : M\nTour 8 : tu cours. Choix : R\nTour 9 : calme. Choix : M\nTour 10 : calme. Choix : R\nTour 11 : calme. Choix : M\nTour 12 : tu cours. Choix : R\nTour 13 : calme. Choix : M\nTour 14 : tu trouves des baies. Choix : R\nTour 15 : calme. Choix : M\nTour 16 : orage. Choix : R\nTour 17 : tu cours. Choix : M\nTour 18 : orage. Choix : R\nTour 19 : il fait froid. Choix : R\nTour 20 : tu te reposes. Choix :",
+  "p_R": 1.3709568697468315e-06,
+  "mass": 0.9999998212358605
+ },
+ {
+  "life": 26,
+  "t": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu cours. Choix : R\nTour 2 : il fait froid. Choix : M\nTour 3 : il fait froid. Choix :",
+  "p_R": 0.000709670609699982,
+  "mass": 0.9999998984276317
+ },
+ {
+  "life": 27,
+  "t": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. Choix : R\nTour 2 : calme. Choix : M\nTour 3 : calme. Choix :",
+  "p_R": 0.9999999397642305,
+  "mass": 0.9999615556329289
+ },
+ {
+  "life": 27,
+  "t": 10,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. Choix : R\nTour 2 : calme. Choix : M\nTour 3 : calme. Choix : R\nTour 4 : calme. Choix : M\nTour 5 : tu cours. Choix : R\nTour 6 : tu cours. Choix : R\nTour 7 : il fait froid. Choix : M\nTour 8 : tu te reposes. Choix : M\nTour 9 : calme. Choix : R\nTour 10 : calme. Choix :",
+  "p_R": 0.029312225816746876,
+  "mass": 0.9999999105930328
+ },
+ {
+  "life": 27,
+  "t": 20,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. Choix : R\nTour 2 : calme. Choix : M\nTour 3 : calme. Choix : R\nTour 4 : calme. Choix : M\nTour 5 : tu cours. Choix : R\nTour 6 : tu cours. Choix : R\nTour 7 : il fait froid. Choix : M\nTour 8 : tu te reposes. Choix : M\nTour 9 : calme. Choix : R\nTour 10 : calme. Choix : M\nTour 11 : tu cours. Choix : R\nTour 12 : tu te reposes. Choix : M\nTour 13 : il fait froid. Choix : M\nTour 14 : tu trouves des baies. Choix : R\nTour 15 : tu te reposes. Choix : M\nTour 16 : calme. Choix : R\nTour 17 : tu te reposes. Choix : M\nTour 18 : orage. Choix : R\nTour 19 : calme. Choix : M\nTour 20 : tu trouves des baies. Choix :",
+  "p_R": 0.9999646437551362,
+  "mass": 0.9999991165896063
+ },
+ {
+  "life": 28,
+  "t": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. Choix : M\nTour 2 : calme. Choix : M\nTour 3 : il fait froid. Choix :",
+  "p_R": 0.9046505316917685,
+  "mass": 0.9999998435378075
+ },
+ {
+  "life": 28,
+  "t": 10,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. Choix : M\nTour 2 : calme. Choix : M\nTour 3 : il fait froid. Choix : R\nTour 4 : tu cours. Choix : M\nTour 5 : calme. Choix : R\nTour 6 : tu cours. Choix : R\nTour 7 : tu te reposes. Choix : M\nTour 8 : il fait froid. Choix : R\nTour 9 : tu trouves des baies. Choix : M\nTour 10 : il fait froid. Choix :",
+  "p_R": 0.0229773703407986,
+  "mass": 1.0000000186264515
+ },
+ {
+  "life": 28,
+  "t": 20,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. Choix : M\nTour 2 : calme. Choix : M\nTour 3 : il fait froid. Choix : R\nTour 4 : tu cours. Choix : M\nTour 5 : calme. Choix : R\nTour 6 : tu cours. Choix : R\nTour 7 : tu te reposes. Choix : M\nTour 8 : il fait froid. Choix : R\nTour 9 : tu trouves des baies. Choix : M\nTour 10 : il fait froid. Choix : R\nTour 11 : tu te reposes. Choix : M\nTour 12 : il fait froid. Choix : M\nTour 13 : il fait froid. Choix : M\nTour 14 : calme. Choix : R\nTour 15 : tu cours. Choix : M\nTour 16 : orage. Choix : M\nTour 17 : il fait froid. Choix : R\nTour 18 : tu cours. Choix : R\nTour 19 : tu trouves des baies. Choix : M\nTour 20 : orage. Choix :",
+  "p_R": 0.985936374969502,
+  "mass": 0.9999999077990651
+ },
+ {
+  "life": 29,
+  "t": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : orage. Choix : R\nTour 2 : il fait froid. Choix : M\nTour 3 : tu cours. Choix :",
+  "p_R": 0.9964063963575147,
+  "mass": 0.9999881356488913
+ },
+ {
+  "life": 30,
+  "t": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : orage. Choix : R\nTour 2 : il fait froid. Choix : M\nTour 3 : il fait froid. Choix :",
+  "p_R": 0.00015843617761191752,
+  "mass": 0.9999998878047336
+ },
+ {
+  "life": 30,
+  "t": 10,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : orage. Choix : R\nTour 2 : il fait froid. Choix : M\nTour 3 : il fait froid. Choix : M\nTour 4 : tu cours. Choix : R\nTour 5 : tu cours. Choix : R\nTour 6 : tu trouves des baies. Choix : M\nTour 7 : il fait froid. Choix : R\nTour 8 : calme. Choix : R\nTour 9 : tu cours. Choix : M\nTour 10 : tu te reposes. Choix :",
+  "p_R": 0.5,
+  "mass": 0.9999998807907104
+ },
+ {
+  "life": 31,
+  "t": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : il fait froid. Choix : M\nTour 2 : tu te reposes. Choix : R\nTour 3 : orage. Choix :",
+  "p_R": 0.0001398221310511007,
+  "mass": 0.9999995127291186
+ },
+ {
+  "life": 31,
+  "t": 10,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : il fait froid. Choix : M\nTour 2 : tu te reposes. Choix : R\nTour 3 : orage. Choix : M\nTour 4 : tu trouves des baies. Choix : R\nTour 5 : tu cours. Choix : R\nTour 6 : calme. Choix : M\nTour 7 : calme. Choix : R\nTour 8 : calme. Choix : M\nTour 9 : tu trouves des baies. Choix : R\nTour 10 : orage. Choix :",
+  "p_R": 0.0019267347783870346,
+  "mass": 0.9999998355051503
+ }
+]
