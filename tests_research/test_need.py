@@ -769,6 +769,34 @@ class CarryTests(unittest.TestCase):
         self.assertTrue(all(r["text"].endswith("Choix :") and r["t"] in M.CARRY_TURNS for r in rows))
 
 
+class CarryVerdictTests(unittest.TestCase):
+    def test_pairs_and_verdicts(self):
+        from research import need_carry as CA
+        lives = lives_of(W.Oracle(), 339, 60)
+        pairs = CA.choose_pairs(lives, limit=200)
+        self.assertTrue(pairs and all(p["swap"] == CA.SWAP and p["t"] - p["j"] >= CA.MIN_GAP for p in pairs))
+        self.assertEqual(pairs, CA.choose_pairs(lives, limit=200))
+        rng = np.random.default_rng(1)
+        rows = [dict(p, carry=[0.4, 0.4 + 0.08 + 0.01 * rng.standard_normal()], control=[0.4, 0.41],
+                     free=[0.4, 0.6]) for p in pairs]
+        for life in lives:
+            for t in W.decisions(life):
+                t["mass"] = 0.9
+        dead = [dict(l, survived=False) for l in lives]
+        setup = {"replica": {"mean_gap": 0.01}, "cache_gap": 1e-6, "mask_gap": 0.0}
+        v = CA.verdicts({"carry": lives, "control": dead, "free": lives}, rows, setup)["verdicts"]
+        survival = np.mean([l["survived"] for l in lives])
+        self.assertEqual(v["MEM2"], True)
+        self.assertEqual(v["MEM1"], bool(survival >= CA.SURVIVAL))
+        flat = [dict(r, carry=[0.4, 0.42]) for r in rows]
+        self.assertFalse(CA.verdicts({"carry": lives, "control": dead, "free": lives}, flat, setup)["verdicts"]["MEM2"])
+        same = [dict(r, control=list(r["carry"])) for r in rows]
+        self.assertFalse(CA.verdicts({"carry": lives, "control": dead, "free": lives}, same, setup)["verdicts"]["MEM2"])
+        self.assertFalse(CA.verdicts({"carry": lives, "control": lives, "free": lives}, rows, setup)["verdicts"]["MEM1"])
+        bad = dict(setup, mask_gap=1e-3)
+        self.assertFalse(CA.verdicts({"carry": lives, "control": dead, "free": lives}, rows, bad)["verdicts"]["valid"])
+
+
 class OwnershipTests(unittest.TestCase):
     def test_the_other_lives_beside_without_changing_the_agent(self):
         alone = W.play(W.Oracle(), W.world_rng(225, 0), W.choice_rng(225, 0))
