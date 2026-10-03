@@ -1,0 +1,15 @@
+{
+ "stage": "memory",
+ "arm": "actions",
+ "from": "artifacts/llm-need/final/report/adapters-final",
+ "adapter": "/Users/builder/clone/llm-need/adapters-actions",
+ "iters": 2000,
+ "documents": 4093,
+ "left_out": [
+  1003,
+  3498,
+  3532
+ ],
+ "validation_lives": 32,
+ "replica_rows": 83
+}
