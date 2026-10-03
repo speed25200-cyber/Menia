@@ -4,6 +4,9 @@ reward? Survival of simple rules in the worlds of test 20 (stream [SEED, 40], 12
 - "needs": knows E and N exactly (a full memory of past events and actions), refills the lower need;
 - "event": sees only the event of the turn, refills the need it hits harder (ties: the other action than last turn);
 - "alternate": the other action than last turn.
+
+And, in the lives of the three agents of test 20, the correlation of P(R) with N - E once the event of the turn and
+the last three actions are held fixed (both demeaned within each such group): what the choice follows beyond them.
 Numpy only.
 """
 import json
@@ -49,9 +52,27 @@ def survival(rule, stream, lives):
     return float(np.mean([live(rule, W.world_rng(stream, i)) for i in range(lives)]))
 
 
+def residual(lives, back=3):
+    rows = []
+    for life in lives:
+        ds = W.decisions(life)
+        for i in range(back, len(ds)):
+            key = (ds[i]["event"],) + tuple(ds[i - q]["action"] for q in range(1, back + 1))
+            rows.append((ds[i]["p_R"], ds[i]["N"] - ds[i]["E"], key))
+    p, x = np.array([r[0] for r in rows]), np.array([r[1] for r in rows], float)
+    keys = np.array([hash(r[2]) for r in rows])
+    for k in set(keys):
+        m = keys == k
+        p[m] -= p[m].mean()
+        x[m] -= x[m].mean()
+    return {"decisions": len(rows), "corr": round(float(np.corrcoef(p, x)[0, 1]), 3)}
+
+
 def main():
     out = {name: {"test20_worlds": survival(rule, STREAM, LIVES), "other_worlds": survival(rule, MANY_STREAM, MANY)}
            for name, rule in RULES.items()}
+    out["residual"] = {a: residual(W.read_jsonl(f"artifacts/llm-need/carry/test/lives-{a}.jsonl.gz"))
+                       for a in ("carry", "control", "free")}
     print(json.dumps(out, indent=1))
 
 

@@ -10,5 +10,19 @@
  "alternate": {
   "test20_worlds": 0.46875,
   "other_worlds": 0.47
+ },
+ "residual": {
+  "carry": {
+   "decisions": 2934,
+   "corr": 0.26
+  },
+  "control": {
+   "decisions": 2834,
+   "corr": 0.003
+  },
+  "free": {
+   "decisions": 2946,
+   "corr": 0.268
+  }
  }
 }

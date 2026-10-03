@@ -1,6 +1,6 @@
 # Menia sur les cinq niveaux de Chandaria et al. (2026)
 
-État au 2 octobre 2026. Ce document est tenu à jour à chaque verdict.
+État au 3 octobre 2026. Ce document est tenu à jour à chaque verdict.
 
 Cadre : Chandaria, Muñoz Morán, Rosas, Seth, Shevlin, Hutter, Graepel,
 Bales, Comsa, Shanahan, Laukkonen, Kringelbach, Frith et Legg,
@@ -39,7 +39,7 @@ Détails et chiffres : `docs/LLM_NEED_RESULTS.md`.
 
 | Indicateur | Résultat | Statut |
 |---|---|---|
-| Comportement dirigé vers un but, flexible | Survie de 12 % à 68 % par la seule satisfaction du besoin ; témoin au hasard : 0 % (premier test, S passe). Il sert son besoin le plus bas 93 fois sur 100 sans voir ses niveaux. | **établi** |
+| Comportement dirigé vers un but, flexible | Survie de 12 % à 68 % par la seule satisfaction du besoin ; témoin au hasard : 0 % (premier test, S passe). Il sert son besoin le plus bas 93 fois sur 100 sans voir ses niveaux. Réserve (exploration, test 20) : une règle qui ne voit que l'événement du tour survit à 0,66 ; la survie seule ne montre donc pas que l'agent suit ses besoins cumulés, ce sont les tests causaux du niveau 2 qui le montrent. | **établi** |
 | Rapport de son état | Le lecteur dit son énergie juste à 0,77 (sixième test). La nourriture est dite à 0,70, sous le seuil de 0,75 (R6 échoue). | **partiel** |
 
 Le cadre prévient que, chez des systèmes entraînés à imiter les humains,
@@ -62,7 +62,7 @@ dit (niveau 2).
 
 | Indicateur | Résultat | Statut |
 |---|---|---|
-| Récurrence | Un transformeur ne boucle pas au sein d'un token. D'un tour à l'autre, le test 13 l'a mesuré : effacer ou pousser l'état au tour t ne change presque pas le choix du tour t + 1 (au plus 0,013, seuil 0,03), chez les trois agents. L'état est **recalculé** à chaque tour à partir du texte ; il ne dure pas. | **échoue** |
+| Récurrence | Un transformeur ne boucle pas au sein d'un token. D'un tour à l'autre, le test 13 l'a mesuré : effacer ou pousser l'état au tour t ne change presque pas le choix du tour t + 1 (au plus 0,013, seuil 0,03), chez les trois agents. L'état est **recalculé** à chaque tour à partir du texte ; il ne dure pas. Au test 20, le passé n'était visible qu'à travers les états « Choix : » et les actions (masque). Un adaptateur appris sous ce masque fait passer une **trace courte** d'un événement caché (+0,097 deux tours plus tard, témoin −0,012), éteinte en deux ou trois tours ; MEM1 (survie +0,047 sur le témoin, seuil +0,15) et MEM2 (+0,019, seuil 0,05) échouent. Ce monde récompense peu la mémoire : une règle qui ne voit que l'événement du tour survit à 0,66 (exploration). | **échoue (trace courte observée)** |
 | Organisation causale précise | Chemin localisé : les événements (blocs 0 à 9) sont rassemblés sur « Choix : » au bloc 12, puis lus pour agir et pour dire. Une règle fixée d'avance (test 10) retrouve le bloc 12 chez le premier agent et trouve le bloc 22 chez l'agent du monde à deux. Une analyse exploratoire montre que le niveau d'énergie se lit dans cet état chez les trois agents (R² 0,64 à 0,72). | **partiel** |
 
 ## Niveau 4 — organismique

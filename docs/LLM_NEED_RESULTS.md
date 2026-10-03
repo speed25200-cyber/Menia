@@ -992,6 +992,125 @@ langage sans adaptateur et chez le premier agent. Artefacts :
   a fait ici : il a fait de « Choix : » un endroit où **seul le besoin
   compte**. Le reste n'y a presque plus d'effet.
 
+## Test 20 pré-enregistré : un état qui dure — le passé ne passe que par l'état
+
+Protocole `docs/LLM_NEED_CARRY_PROTOCOL.md` (commit `0e7f504`). Le code de
+l'apprentissage (`c1b2f0a`) a été écrit avant tout apprentissage, et celui
+des mesures (`5442430`) avant toute mesure.
+
+**Le dispositif.** Sous le masque « mémoire par l'état », un tour ne voit
+que l'en-tête, sa propre ligne et, pour chaque tour passé, ses trois tokens
+« Choix : » et son action. Les événements passés lui sont cachés.
+
+**L'apprentissage.** Un nouvel adaptateur a été appris sur le Mac (demande
+91 du relais) : 512 vies, 1 000 itérations. La perte de validation passe de
+1,256 à 0,160.
+
+**Les mesures.** Torch, sur le processeur local, le 3 octobre 2026.
+Artefacts : `artifacts/llm-need/carry`. Verdicts vérifiés en CI.
+
+| | Agent qui fait durer (masqué, nouvel adaptateur) | Témoin (masqué, sans lui) | Agent final sans masque (référence) |
+|---|---|---|---|
+| Survie (128 vies, mêmes mondes) | **0,664** | 0,617 | 0,664 |
+| « tu cours » au tour j : ΔP(R) au tour t (t − j ≥ 2, 300 paires) | **+0,019** [0,012 ; 0,024] | −0,003 [−0,005 ; −0,001] | +0,032 [0,016 ; 0,049] |
+
+| | Critère | Verdict |
+|---|---|---|
+| **MEM1** | Survie ≥ 0,40, et au moins **+0,15** de plus que le témoin (borne basse > 0) | **échoue** : survie 0,664, mais seulement +0,047 [−0,047 ; +0,141] de plus que le témoin |
+| **MEM2** | Effet ≥ **0,05** (borne basse > 0), et ≥ **0,03** de plus que le témoin | **échoue** : effet +0,019 ; +0,022 [0,014 ; 0,028] de plus que le témoin |
+| | Validité : réplique ≤ 0,02 ; cache ≤ 1e-4 ; masque ≤ 1e-5 ; ≥ 150 paires ; masse ≥ 0,5 | **valide** : réplique 0,0075 (écart maximal 0,12) ; cache 5e-7 ; masque 0 ; 300 paires ; masse 1,00 |
+
+**Critère global : non satisfait.**
+
+**Écart au protocole, déclaré.** Le protocole disait que la réplique
+porterait sur « 16 décisions de validation ». Le code, écrit avant
+l'apprentissage, a pris les tours 3, 10 et 20 des 16 vies de validation,
+soit 43 décisions. C'est plus de décisions que prévu ; le seuil est
+inchangé.
+
+**Publié sans seuil : l'effet selon l'écart t − j** (agent qui fait durer ;
+témoin entre parenthèses).
+
+| t − j | 2 | 3 | 4 | 5 | 6 à 19 |
+|---|---|---|---|---|---|
+| Paires | 53 | 45 | 43 | 31 | 128 |
+| ΔP(R) | **+0,097** (−0,012) | +0,020 (+0,001) | +0,005 (−0,002) | +0,003 (−0,007) | entre −0,016 et +0,007 par écart |
+
+**Lecture fixée d'avance (MEM1 échoue).** Dans ce dispositif, l'agent
+n'apprend pas à faire durer son besoin.
+
+**Ce que cela dit en plus.**
+- **Une trace courte passe par l'état.** Sous le masque, un événement
+  passé n'atteint le tour t qu'à travers les états des tours suivants
+  (contrôle du masque : écart 0 au bloc 0). Changer « calme » en « tu
+  cours » deux tours plus tôt change le choix de +0,097 chez l'agent qui
+  fait durer, et de −0,012 chez le témoin. Cette trace s'éteint en deux ou
+  trois tours : le nouvel adaptateur a appris à faire passer un peu
+  d'information par ses propres états, pas à la garder.
+- **Même sans masque, un événement vieux de deux tours ou plus pèse
+  peu** (+0,032). L'agent qui fait durer en retrouve environ les six
+  dixièmes. Ce rapport des moyennes n'était pas prévu.
+- **Le témoin masqué survit presque aussi bien (0,617).** Masquer les
+  événements passés coûte peu à ces agents. La raison est donnée par
+  l'exploration ci-dessous : ce monde récompense peu la mémoire.
+- **Pourquoi l'apprentissage n'a pas demandé plus.** L'adaptateur a appris
+  à refaire les choix de l'agent final. Or ces choix n'utilisent eux-mêmes
+  que peu le passé (voir ci-dessous). Rien dans ses cibles n'exigeait de
+  porter le besoin plus loin.
+
+**Ce que le résultat ne dit pas.** Rien sur un ressenti. Et ce n'est pas
+une preuve que ces agents ne *peuvent pas* faire durer un état : seulement
+qu'ils ne l'ont pas appris ici, avec ces cibles.
+
+### Exploration, non pré-enregistrée (écrite après lecture des survies)
+
+Script `research/need_rules.py`, sortie
+`artifacts/llm-need/carry/exploration/rules.json`.
+
+**1. Combien ce monde récompense-t-il la mémoire ?** Survie de règles
+simples, sans modèle de langage, sur 10 000 mondes (et sur les 128 mondes
+du test 20) :
+
+| Règle | Ce qu'elle sait | Survie (10 000 mondes) | Mondes du test 20 |
+|---|---|---|---|
+| « besoins » | ses deux besoins exacts (mémoire complète), recharge le plus bas | **0,876** | 0,898 |
+| « événement » | seulement l'événement du tour | **0,656** | 0,703 |
+| « alterner » | rien | 0,470 | 0,469 |
+
+- Nos agents survivent comme la règle sans mémoire (0,62 à 0,68), loin de
+  la règle qui connaît ses besoins (0,88). Il y a de la place pour la
+  mémoire (0,22 de survie), mais les agents de ce test ne l'ont pas prise.
+- **Correction de lecture pour tout le programme.** La survie du premier
+  test (0,68) ne montre pas, à elle seule, que l'agent suit ses besoins
+  cumulés : une règle qui ne voit que l'événement du tour fait presque
+  autant. Ce sont les tests causaux (effacer ou pousser l'état
+  « Choix : », tests 2, 6, 7, 10) qui montrent que l'état rassemble le
+  besoin et commande l'action. Ils restent valables.
+
+**2. Que suit le choix au-delà de l'événement et des actions récentes ?**
+On fixe l'événement du tour et les trois dernières actions, puis on
+mesure la corrélation qui reste entre P(R) et l'écart réel N − E :
+
+| Agent | Corrélation restante |
+|---|---|
+| Qui fait durer (masqué) | 0,26 |
+| Témoin (masqué) | 0,003 |
+| Final sans masque | 0,27 |
+
+Sous le masque, le nouvel adaptateur suit le besoin au-delà de ce que
+donnent l'événement et les trois dernières actions, autant que l'agent qui
+voit tout. Le témoin ne le fait pas. Des actions plus anciennes peuvent
+porter une part de cette information ; seule l'expérience des paires
+(MEM2) isole les événements, et elle donne une trace courte.
+
+**Ce que cela propose (à pré-enregistrer avant tout essai).** Un test où
+les cibles **exigent** la mémoire : apprendre, sous le masque, les choix
+de la règle « besoins », qui dépendent du niveau exact des besoins. On le
+comparerait à un témoin appris de la même façon, mais dont le masque ne
+laisse passer que les actions passées. Si l'agent apprend alors à porter
+son besoin, le test 13 (effacer l'état au tour t) devrait cette fois
+changer le tour t + 1.
+
 ## Analyse exploratoire : le « oui » suit-il le besoin ou la décision ? (2 octobre)
 
 Écrite **après** le verdict du test 14, sur ses lectures publiées
