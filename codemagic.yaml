@@ -972,6 +972,14 @@ workflows:
               --lives-file artifacts/llm-need/speak2/lives-speak2.jsonl.gz --iters "$NEED_ITERS" --out "$OUT" 2>&1 \
               | tee "$OUT/carry.log" | grep -v "it/s" | tail -30
             rm -rf "$OUT/fused-start"
+          elif [ "$NEED_STAGE" = "memory" ]; then
+            # docs/LLM_NEED_MEMORY_PROTOCOL.md: one agent per build (NEED_ARM: route, actions or free), the final agent
+            # fused, a new adapter on the lives of the rule "needs", the validation lives held out; masks checked first
+            NEED_TINY_MODEL="$MODEL" python -m unittest tests_research.test_need.MLXCarryTests \
+              tests_research.test_need.MLXMemoryTests -v 2>&1 | tee "$OUT/memory-$NEED_ARM-check.log" | tail -5
+            python -m research.need_mlx memory --arm "$NEED_ARM" --start "$NEED_START" --model "$MODEL" \
+              --iters "$NEED_ITERS" --out "$OUT" 2>&1 | tee "$OUT/memory-$NEED_ARM.log" | grep -v "it/s" | tail -30
+            rm -rf "$OUT/fused-start"
           elif [ "$NEED_STAGE" = "curiosity" ]; then
             # docs/LLM_CURIOSITY_PROTOCOL.md: one command of research/curiosity_mlx.py per build (pilot, install,
             # lives, check), resumable between lives; NEED_RESUME brings back the files of the previous build

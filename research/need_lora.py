@@ -56,10 +56,11 @@ def span_tokens(text, spans, tokenizer):
 CHOICE = " Choix :"
 
 
-def carry_layout(text, tokenizer, header=HEADER):
+def carry_layout(text, tokenizer, header=HEADER, kinds=False):
     """Tokens of a life's text and, per token, its turn (-1 for the header) and whether later turns may see it: the
     three tokens of " Choix :" and the action token of each turn (docs/LLM_NEED_CARRY_PROTOCOL.md). Uses the offsets
-    of a fast tokenizer; raises if a carried span is not made of whole tokens."""
+    of a fast tokenizer; raises if a carried span is not made of whole tokens. With kinds, also whether each token is
+    an action token (docs/LLM_NEED_MEMORY_PROTOCOL.md)."""
     if not text.startswith(header):
         raise ValueError("the text does not start with the header")
     hf = tokenizer if callable(tokenizer) else tokenizer._tokenizer
@@ -76,29 +77,34 @@ def carry_layout(text, tokenizer, header=HEADER):
                 action = (choice[1], choice[1] + 2)
         lines.append((pos, end, choice, action))
         pos = end
-    turn, carried, counts = [], [], {}
+    turn, carried, acts, counts = [], [], [], {}
     for a, b in enc["offset_mapping"]:
         if a < len(header):
             if b > len(header):
                 raise ValueError("a token straddles the header and the first turn")
             turn.append(-1)
             carried.append(False)
+            acts.append(False)
             continue
         k = next(i for i, line in enumerate(lines) if line[0] <= a < line[1])
-        inside = False
-        for span in lines[k][2:]:
+        inside = is_action = False
+        for which, span in enumerate(lines[k][2:]):
             if span is not None and a < span[1] and b > span[0]:
                 if a < span[0] or b > span[1]:
                     raise ValueError("a token straddles a carried span")
                 inside = True
+                is_action = which == 1
                 counts[(k, span)] = counts.get((k, span), 0) + 1
         turn.append(k)
         carried.append(inside)
+        acts.append(is_action)
     for k, (_, _, choice, action) in enumerate(lines):
         if choice is not None and counts.get((k, choice)) != WORKSPACE:
             raise ValueError(f"turn {k}: \"Choix :\" is not {WORKSPACE} tokens")
         if action is not None and counts.get((k, action)) != 1:
             raise ValueError(f"turn {k}: the action is not one token")
+    if kinds:
+        return list(enc["input_ids"]), turn, carried, acts
     return list(enc["input_ids"]), turn, carried
 
 
@@ -110,6 +116,31 @@ def carry_mask(turn, carried):
     causal = idx[None, :] <= idx[:, None]
     seen = (t[None, :] == -1) | (t[None, :] == t[:, None]) | (c[None, :] & (t[None, :] < t[:, None]))
     return causal & seen
+
+
+def actions_mask(turn, action):
+    """The control of docs/LLM_NEED_MEMORY_PROTOCOL.md: a token of turn k sees the header, its own turn and, of each
+    earlier turn, only the action token; an action token sees only the header, the earlier action tokens and itself,
+    so that nothing of a past event reaches a later turn."""
+    t, a = np.asarray(turn), np.asarray(action, bool)
+    idx = np.arange(len(t))
+    causal = idx[None, :] <= idx[:, None]
+    seen = ((t[None, :] == -1) | ((t[None, :] == t[:, None]) & ~a[:, None]) | (a[None, :] & (t[None, :] < t[:, None]))
+            | (idx[None, :] == idx[:, None]))
+    return causal & seen
+
+
+def memory_mask(kind, text, tokenizer):
+    """Tokens of a life's text and the mask of an agent of docs/LLM_NEED_MEMORY_PROTOCOL.md: "route" (the memory
+    through the state of the carry test), "actions" (the control), or "free" (causal, all the text)."""
+    ids, turn, carried, action = carry_layout(text, tokenizer, kinds=True)
+    if kind == "route":
+        return ids, carry_mask(turn, carried)
+    if kind == "actions":
+        return ids, actions_mask(turn, action)
+    if kind == "free":
+        return ids, np.tril(np.ones((len(ids), len(ids)), bool))
+    raise ValueError(f"unknown memory kind {kind!r}")
 
 
 def workspace_mask(size, span=None):
@@ -176,10 +207,11 @@ class NeedText:
         if sum(weights) <= 0:
             raise RuntimeError("a document without a weighted target")
         if d.get("carry"):  # the past seen only through its carried tokens (docs/LLM_NEED_CARRY_PROTOCOL.md)
-            ids, turn, carried = carry_layout(d[self.text_key], self.tokenizer)
+            kind = "route" if d["carry"] is True else d["carry"]  # or "actions" (docs/LLM_NEED_MEMORY_PROTOCOL.md)
+            ids, mask = memory_mask(kind, d[self.text_key], self.tokenizer)
             if ids != tokens:
                 raise RuntimeError("the carried layout is cut differently")
-            return tokens, weights, carry_mask(turn, carried)
+            return tokens, weights, mask
         if "workspace" not in d:
             return tokens, weights
         header = list(encode(d.get("header", HEADER)))

@@ -797,6 +797,122 @@ class CarryVerdictTests(unittest.TestCase):
         self.assertFalse(CA.verdicts({"carry": lives, "control": dead, "free": lives}, rows, bad)["verdicts"]["valid"])
 
 
+class MemoryTests(unittest.TestCase):
+    def test_actions_mask_lets_no_past_event_through(self):
+        from research import need_memory as NM
+        life = NM.teacher_life(NM.HELD_STREAM, 0)
+        text = W.life_text(life["turns"])
+        ids, turn, carried, action = need_lora.carry_layout(text, fake_tokenizer, kinds=True)
+        self.assertEqual(sum(action), len(W.decisions(life)))
+        self.assertTrue(all(c for c, a in zip(carried, action) if a))
+        mask = need_lora.actions_mask(turn, action)
+        t, a = np.array(turn), np.array(action)
+        self.assertFalse(mask[np.triu_indices(len(turn), 1)].any())
+        for q in range(len(turn)):
+            seen = np.where(mask[q])[0]
+            if a[q]:  # an action token: the header, earlier action tokens, itself
+                self.assertTrue(all(t[j] == -1 or (a[j] and t[j] < t[q]) or j == q for j in seen))
+            else:
+                self.assertTrue(all(t[j] in (-1, t[q]) or (a[j] and t[j] < t[q]) for j in seen))
+        # what a token can be influenced by, through any number of layers: the closure of the mask
+        reach = mask.copy()
+        for _ in range(12):  # paths of any length up to 4096
+            reach = reach | ((reach.astype(int) @ reach.astype(int)) > 0)
+        events = [j for j in range(len(turn)) if t[j] >= 0 and not a[j]]
+        q = len(turn) - 1
+        self.assertFalse(any(reach[q, j] for j in events if t[j] < t[q]))
+        route = need_lora.carry_mask(turn, carried)
+        reach = route.copy()
+        for _ in range(12):  # paths of any length up to 4096
+            reach = reach | ((reach.astype(int) @ reach.astype(int)) > 0)
+        self.assertTrue(any(reach[q, j] for j in events if t[j] < t[q]))
+        for kind in ("route", "actions", "free"):
+            ids2, m = need_lora.memory_mask(kind, text, fake_tokenizer)
+            self.assertEqual(ids2, ids)
+            self.assertEqual(m.shape, (len(ids), len(ids)))
+        with self.assertRaises(ValueError):
+            need_lora.memory_mask("other", text, fake_tokenizer)
+
+    def test_teacher_lives_ceiling_and_pairs(self):
+        from research import need_memory as NM
+        lives = NM.teacher_lives(NM.HELD_STREAM, 40)
+        self.assertEqual(lives, NM.teacher_lives(NM.HELD_STREAM, 40))
+        for life in lives:
+            last = 1
+            for x in W.decisions(life):
+                self.assertEqual(x["rule"], NM.rule(x["E"], x["N"], last))
+                self.assertEqual(x["last"], last)
+                last = x["action"]
+        random = np.mean([x["action"] != x["rule"] for l in lives for x in W.decisions(l)])
+        self.assertTrue(0.05 < random < 0.15)  # about EPS / 2
+        for life in lives:
+            p = NM.ceiling(life)
+            self.assertEqual(len(p), len(W.decisions(life)))
+            self.assertTrue(all(0.0 <= q <= 1.0 for q in p))
+            first = W.decisions(life)[0]  # the start is known: the first decision is certain
+            self.assertEqual(p[0], float(first["rule"] == 0))
+        right = np.mean([NM.correct(q, x["rule"]) for l in lives for x, q in zip(W.decisions(l), NM.ceiling(l))])
+        self.assertTrue(0.8 < right < 0.95)
+        exact = np.mean([NM.correct(q, x["rule"]) for l in lives for x, q in
+                         zip(W.decisions(l), NM.ceiling(l, eps=1e-9))])
+        self.assertLessEqual(abs(exact - right), 0.1)
+        docs = NM.documents(lives, "actions")
+        for d in docs:
+            need_lora.target_tokens(d["text"], d["weights"], lambda x: list(x.encode()))
+            self.assertEqual(d["carry"], "actions")
+        self.assertNotIn("carry", NM.documents(lives, "free")[0])
+        pairs = NM.choose_pairs(lives, limit=60)
+        self.assertEqual(pairs, NM.choose_pairs(lives, limit=60))
+        self.assertTrue(pairs and all(p["swap"] == NM.SWAP and p["t"] - p["j"] >= NM.MIN_GAP for p in pairs))
+        per_life = {}
+        for p in pairs:
+            per_life[p["life"]] = per_life.get(p["life"], 0) + 1
+        self.assertLessEqual(max(per_life.values()), NM.PER_LIFE)
+        effects = [NM.rule_effect(lives[p["life"]], p) for p in pairs]
+        self.assertTrue(set(effects) <= {0.0, 1.0} and 0 < np.mean(effects) < 1)
+        rows = NM.replica_decisions(lives[:4])
+        self.assertTrue(all(r["text"].endswith("Choix :") and r["t"] in NM.REPLICA_TURNS for r in rows))
+
+
+class MemoryVerdictTests(unittest.TestCase):
+    def test_verdicts(self):
+        from research import need_memory as NM
+        held = NM.teacher_lives(NM.HELD_STREAM, 60)
+        bayes = {(i, x["t"]): q for i, l in enumerate(held) for x, q in zip(W.decisions(l), NM.ceiling(l))}
+        rule = {(i, x["t"]): x["rule"] for i, l in enumerate(held) for x in W.decisions(l)}
+        perfect = [{"life": i, "t": t, "route": 0.9 if rule[(i, t)] == 0 else 0.1, "actions": bayes[(i, t)],
+                    "free": 0.9 if rule[(i, t)] == 0 else 0.1} for (i, t) in sorted(rule)]
+        pairs = NM.choose_pairs(held, limit=200)
+        ideal = [NM.rule_effect(held[p["life"]], p) for p in pairs]
+        rows = [dict(p, route=[0.2, 0.2 + 0.9 * e], actions=[0.3, 0.3], free=[0.2, 0.2 + e]) for p, e in zip(pairs, ideal)]
+        lives = lives_of(W.Oracle(), 341, 40)
+        for life in lives:
+            for t in W.decisions(life):
+                t["mass"] = 0.9
+        dead = [dict(l, survived=False) for l in lives]
+        ok = {"replica": {a: {"mean_gap": 0.01} for a in NM.ARMS}, "cache_gap": {a: 1e-6 for a in NM.ARMS},
+              "mask_gap": {"route": 0.0, "actions": 0.0}}
+        v = NM.verdicts(held, perfect, {"route": lives, "actions": dead, "free": lives}, rows, ok)["verdicts"]
+        self.assertTrue(v["MEM4"] and v["MEM5"] and v["valid"] and v["global"])
+        self.assertEqual(v["MEM3"], bool(np.mean([l["survived"] for l in lives]) >= NM.SURVIVAL_GAIN))
+        like_bayes = [dict(c, route=c["actions"]) for c in perfect]
+        self.assertFalse(NM.verdicts(held, like_bayes, {"route": lives, "actions": dead, "free": lives}, rows,
+                                     ok)["verdicts"]["MEM4"])
+        weak = [dict(r, route=[0.2, 0.2 + 0.3 * e]) for r, e in zip(rows, ideal)]
+        self.assertFalse(NM.verdicts(held, perfect, {"route": lives, "actions": dead, "free": lives}, weak,
+                                     ok)["verdicts"]["MEM5"])
+        leaky = [dict(c, actions=c["route"]) for c in perfect]  # B beating the ceiling: the test is not valid
+        self.assertFalse(NM.verdicts(held, leaky, {"route": lives, "actions": dead, "free": lives}, rows,
+                                     ok)["verdicts"]["valid"])
+        self.assertFalse(NM.verdicts(held, perfect, {"route": lives, "actions": lives, "free": lives}, rows,
+                                     ok)["verdicts"]["MEM3"])
+        bad = dict(ok, mask_gap={"route": 0.0, "actions": 1e-3})
+        self.assertFalse(NM.verdicts(held, perfect, {"route": lives, "actions": dead, "free": lives}, rows,
+                                     bad)["verdicts"]["valid"])
+        with self.assertRaises(ValueError):
+            NM.verdicts(held, perfect[1:], {"route": lives, "actions": dead, "free": lives}, rows, ok)
+
+
 class OwnershipTests(unittest.TestCase):
     def test_the_other_lives_beside_without_changing_the_agent(self):
         alone = W.play(W.Oracle(), W.world_rng(225, 0), W.choice_rng(225, 0))
@@ -967,6 +1083,49 @@ class MLXCarryTests(unittest.TestCase):
             self.assertLess(np.abs(logits(changed, cut=True) - logits(tokens, cut=True)).max(), 0.01 * through)
             batches = list(need_lora.need_batches(data, 2, 1024))
             self.assertEqual(len(batches[0]), 3)
+            loss, count = need_lora.need_loss(model, *batches[0])
+            self.assertTrue(np.isfinite(loss.item()))
+        finally:
+            qwen3.create_attention_mask = original
+
+
+@unittest.skipUnless(os.environ.get("NEED_TINY_MODEL"), "needs mlx and a tiny local model (NEED_TINY_MODEL)")
+class MLXMemoryTests(unittest.TestCase):
+    def test_under_the_actions_mask_no_past_event_reaches_a_later_turn(self):
+        import mlx.core as mx
+        from mlx_lm import load
+        from mlx_lm.models import qwen3
+        from mlx_lm.tuner.datasets import CacheDataset
+        from research import need_memory as NM
+        model, tokenizer = load(os.environ["NEED_TINY_MODEL"])
+        original = qwen3.create_attention_mask
+        qwen3.create_attention_mask = need_lora.masked_attention(original)
+        try:
+            lives = NM.teacher_lives(NM.VALID_STREAM, 3)
+            docs = NM.documents(lives, "actions")
+            data = CacheDataset(need_lora.NeedText(docs, tokenizer))
+            tokens, weights, mask = data[0]
+            ids, turn, carried, action = need_lora.carry_layout(docs[0]["text"], tokenizer, kinds=True)
+            self.assertEqual(ids, tokens)
+            self.assertTrue((mask == need_lora.actions_mask(turn, action)).all())
+            hidden = next(j for j, (k, c) in enumerate(zip(turn, carried)) if k == 0 and not c)  # turn 1, not carried
+            last = max(j for j, k in enumerate(turn) if k == 3)
+
+            def logits(seq, m):
+                need_lora.MASK.append(mx.array(m[:last + 1, :last + 1][None, None]))
+                try:
+                    return np.array(model(mx.array([seq[:last + 1]]))[0, -1].astype(mx.float32))
+                finally:
+                    need_lora.MASK.pop()
+            changed = list(tokens)
+            changed[hidden] = tokens[hidden + 1]
+            route = need_lora.carry_mask(turn, carried)
+            through = np.abs(logits(changed, route) - logits(tokens, route)).max()
+            self.assertGreater(through, 1e-4)
+            self.assertLess(np.abs(logits(changed, mask) - logits(tokens, mask)).max(), 1e-6)
+            free = CacheDataset(need_lora.NeedText(NM.documents(lives, "free"), tokenizer))
+            self.assertEqual(len(free[0]), 2)
+            batches = list(need_lora.need_batches(data, 2, 1024))
             loss, count = need_lora.need_loss(model, *batches[0])
             self.assertTrue(np.isfinite(loss.item()))
         finally:

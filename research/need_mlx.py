@@ -169,13 +169,13 @@ def summary(lives):
 write_jsonl, read_jsonl = W.write_jsonl, W.read_jsonl
 
 
-def train(model, data, adapter, iters, resume=None, seed=W.SEED, skip=0, moments=False):
+def train(model, data, adapter, iters, resume=None, seed=W.SEED, skip=0, moments=False, val_batches=2):
     """One LoRA stage through research.need_lora (rank 8, 16 layers, batch 4, lr 1e-4, as in the protocol). With
     skip and moments, the run that left `resume` after skip batches is continued exactly: its batches, its Adam
     moments (docs/LLM_NEED_LONG_READER_PROTOCOL.md)."""
     cmd = [sys.executable, "-m", "research.need_lora", "--model", model, "--train", "--data", str(data),
            "--iters", str(iters), "--batch-size", "4", "--num-layers", "16", "--learning-rate", "1e-4",
-           "--max-seq-length", "1024", "--steps-per-eval", str(iters), "--val-batches", "2",
+           "--max-seq-length", "1024", "--steps-per-eval", str(iters), "--val-batches", str(val_batches),
            "--save-every", str(iters), "--seed", str(seed), "--adapter-path", str(adapter), "--skip", str(skip)]
     if resume:
         cmd += ["--resume-adapter-file", str(Path(resume) / "adapters.safetensors")]
@@ -382,9 +382,39 @@ def carry(a, log=print):
     log(json.dumps(record))
 
 
-def carry_rows(model_path, adapter, rows):
-    """P(R) at the end of each text, under the memory mask, with the carrying adapter: the rows against which the
-    torch replica is checked."""
+def memory(a, log=print):
+    """Memory that the choices require (docs/LLM_NEED_MEMORY_PROTOCOL.md): the final agent fused, a new adapter for
+    the arm a.arm ("route", "actions" or "free") on the lives of the rule "needs" (research/need_memory.py), the
+    validation lives held out; then P(R) at turns 3, 10 and 20 of the validation lives (the torch replica)."""
+    from . import need_memory as NM
+    out = Path(a.out)
+    out.mkdir(parents=True, exist_ok=True)
+    lives = NM.teacher_lives(NM.TRAIN_STREAM, NM.TRAIN_LIVES)
+    held = NM.teacher_lives(NM.VALID_STREAM, NM.VALID_LIVES)
+    docs, valid = NM.documents(lives, a.arm), NM.documents(held, a.arm)
+    if len(valid) != len(held):
+        raise RuntimeError("a validation life without target")
+    model = str(out / "fused-start")
+    if not Path(model).exists():
+        subprocess.run([sys.executable, "-m", "mlx_lm", "fuse", "--model", a.model, "--adapter-path", a.start,
+                        "--save-path", model], check=True)
+    write_data(out / f"data-{a.arm}", docs, np.random.default_rng([W.SEED, NM.TRAIN_STREAM, 2]), valid)
+    final = out / f"adapters-{a.arm}"
+    train(model, out / f"data-{a.arm}", final, a.iters, seed=W.SEED, val_batches=len(valid) // 4)
+    clean(final)
+    free()
+    rows = carry_rows(model, final, NM.replica_decisions(held), kind=a.arm)
+    Path(out / f"{a.arm}-replica.json").write_text(json.dumps(rows, ensure_ascii=False, indent=1) + "\n")
+    record = {"stage": "memory", "arm": a.arm, "from": a.start, "adapter": str(final), "iters": a.iters,
+              "documents": len(docs), "left_out": sorted(set(range(len(lives))) - {d["life"] for d in docs}),
+              "validation_lives": len(valid), "replica_rows": len(rows)}
+    Path(out / f"memory-{a.arm}-stage.json").write_text(json.dumps(record, indent=1) + "\n")
+    log(json.dumps(record))
+
+
+def carry_rows(model_path, adapter, rows, kind="route"):
+    """P(R) at the end of each text, under the memory mask (or the mask kind of docs/LLM_NEED_MEMORY_PROTOCOL.md),
+    with the adapter: the rows against which the torch replica is checked."""
     import mlx.core as mx
     from mlx_lm import load
     from mlx_lm.models import qwen3
@@ -394,12 +424,14 @@ def carry_rows(model_path, adapter, rows):
     r, m = (tokenizer.encode(x, add_special_tokens=False)[0] for x in (" R", " M"))
     out = []
     for row in rows:
-        ids, turn, carried = NL.carry_layout(row["text"], tokenizer)
-        NL.MASK.append(mx.array(NL.carry_mask(turn, carried)[None, None]))
+        ids, mask = NL.memory_mask(kind, row["text"], tokenizer)
+        if kind != "free":
+            NL.MASK.append(mx.array(mask[None, None]))
         try:
             p = mx.softmax(model(mx.array([ids]))[0, -1].astype(mx.float32))
         finally:
-            NL.MASK.pop()
+            if kind != "free":
+                NL.MASK.pop()
         pr, pm = p[r].item(), p[m].item()
         out.append(dict(row, p_R=pr / max(pr + pm, 1e-12), mass=pr + pm))
     return out
@@ -557,20 +589,25 @@ def main(argv=None):
     c.add_argument("--start", required=True)
     c.add_argument("--lives-file", required=True)
     c.add_argument("--iters", type=int, default=1000)
+    m = sub.add_parser("memory")
+    m.add_argument("--arm", choices=("route", "actions", "free"), required=True)
+    m.add_argument("--start", required=True)
+    m.add_argument("--iters", type=int, default=2000)
     t = sub.add_parser("test")
     t.add_argument("--final", required=True)
     t.add_argument("--control", required=True)
     t.add_argument("--direction", required=True)
     t.add_argument("--lives", type=int, default=256)
     t.add_argument("--stages", nargs="+", default=["final", "control", "base", "lesion", "lesion_random"])
-    for s in (r, p, d, t, c):
+    for s in (r, p, d, t, c, m):
         s.add_argument("--model", required=True)
         s.add_argument("--out", required=True)
         s.add_argument("--replicate", type=int, default=0, help="a second agent: streams 100 + s, seed + 1")
         s.add_argument("--other", action="store_true", help="another agent lives beside (the world of two)")
     a = parser.parse_args(argv)
     Path(a.out).mkdir(parents=True, exist_ok=True)
-    {"rounds": rounds, "report": report, "direction": direction, "test": test, "carry": carry}[a.command](a)
+    {"rounds": rounds, "report": report, "direction": direction, "test": test, "carry": carry,
+     "memory": memory}[a.command](a)
 
 
 if __name__ == "__main__":

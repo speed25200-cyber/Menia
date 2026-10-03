@@ -83,9 +83,10 @@ def verdicts(lives, rows, setup):
 
 class MaskedAgent:
     """start/decide/commit over a key-value cache under the memory mask; the final agent, with the carrying adapter
-    merged on top when given (it was learned on the fused final agent)."""
+    merged on top when given (it was learned on the fused final agent). kind: the mask, "route" (this test), or
+    "actions" or "free" (docs/LLM_NEED_MEMORY_PROTOCOL.md; "free" reads the whole text, causal)."""
 
-    def __init__(self, adapter=None):
+    def __init__(self, adapter=None, kind="route"):
         import torch
         from safetensors.numpy import load_file
         from transformers import DynamicCache
@@ -104,6 +105,12 @@ class MaskedAgent:
         enc = lambda s: self.tok.encode(s, add_special_tokens=False)
         self.R, self.M = enc(" R")[0], enc(" M")[0]
         self.calls = self.resets = 0
+        self.kind = kind
+
+    def layout(self, text):
+        """Tokens and boolean mask (None for "free": the model's own causal mask)."""
+        ids, mask = NL.memory_mask(self.kind, text, self.tok)
+        return ids, None if self.kind == "free" else mask
 
     def probability(self, logits):
         p = self.torch.softmax(logits.float(), -1)
@@ -113,8 +120,8 @@ class MaskedAgent:
     def whole(self, text, hook=None):
         """P(R) and mass at the end of text, run at once under the mask; hook(layer 0 output) if given."""
         torch = self.torch
-        ids, turn, carried = NL.carry_layout(text, self.tok)
-        mask = torch.tensor(NL.carry_mask(turn, carried))[None, None]
+        ids, mask = self.layout(text)
+        mask = None if mask is None else torch.tensor(mask)[None, None]
         handle = self.model.model.layers[0].register_forward_hook(hook) if hook else None
         try:
             with torch.no_grad():
@@ -130,12 +137,12 @@ class MaskedAgent:
     def decide(self, line):
         torch = self.torch
         text = self.text + self.pending + line
-        ids, turn, carried = NL.carry_layout(text, self.tok)
+        ids, mask = self.layout(text)
         if ids[:len(self.ids)] != self.ids:
             self.resets += 1
             self.cache, self.ids = self.Cache(), []
         past = len(self.ids)
-        mask = torch.tensor(NL.carry_mask(turn, carried)[past:])[None, None]
+        mask = None if mask is None else torch.tensor(mask[past:])[None, None]
         self.calls += 1
         with torch.no_grad():
             logits = self.model(torch.tensor([ids[past:]]), past_key_values=self.cache, attention_mask=mask,
