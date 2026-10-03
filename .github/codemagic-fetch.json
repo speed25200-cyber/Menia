@@ -1,7 +1,7 @@
 {
- "request": 89,
+ "request": 90,
  "app": "Menia",
- "wait_minutes": 345,
+ "wait_minutes": 150,
  "builds": [
   {
    "launch": {
@@ -10,23 +10,11 @@
     "variables": {
      "NEED_STAGE": "curiosity",
      "NEED_ARGS": "pilot",
-     "NEED_MINUTES": "105"
+     "NEED_MINUTES": "105",
+     "NEED_RESUME": "artifacts/llm-curiosity/pilot-2/curiosity"
     }
    },
-   "dest": "artifacts/llm-curiosity/pilot-2"
-  },
-  {
-   "launch": {
-    "workflow": "menia-need-mac",
-    "branch": "claude/causal-self-model-llm-results-mauabk",
-    "variables": {
-     "NEED_STAGE": "reader",
-     "NEED_LISTENING": "1",
-     "NEED_ITERS": "1500",
-     "NEED_START": "artifacts/llm-need/final/report/adapters-final"
-    }
-   },
-   "dest": "artifacts/llm-need/listening"
+   "dest": "artifacts/llm-curiosity/pilot-3"
   }
  ]
 }
