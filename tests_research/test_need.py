@@ -860,7 +860,9 @@ class MemoryTests(unittest.TestCase):
         for d in docs:
             need_lora.target_tokens(d["text"], d["weights"], lambda x: list(x.encode()))
             self.assertEqual(d["carry"], "actions")
-        self.assertNotIn("carry", NM.documents(lives, "free")[0])
+        free = NM.documents(lives, "free")[0]
+        ids, mask = need_lora.memory_mask(free["carry"], free["text"], fake_tokenizer)
+        self.assertTrue((mask == np.tril(np.ones_like(mask))).all())
         pairs = NM.choose_pairs(lives, limit=60)
         self.assertEqual(pairs, NM.choose_pairs(lives, limit=60))
         self.assertTrue(pairs and all(p["swap"] == NM.SWAP and p["t"] - p["j"] >= NM.MIN_GAP for p in pairs))
@@ -1156,7 +1158,9 @@ class MLXMemoryTests(unittest.TestCase):
             self.assertGreater(through, 1e-4)
             self.assertLess(np.abs(logits(changed, mask) - logits(tokens, mask)).max(), 1e-6)
             free = CacheDataset(need_lora.NeedText(NM.documents(lives, "free"), tokenizer))
-            self.assertEqual(len(free[0]), 2)
+            self.assertTrue((free[0][2] == np.tril(np.ones_like(free[0][2]))).all())  # explicit causal mask
+            full = np.tril(np.ones((last + 1, last + 1), bool))
+            self.assertGreater(np.abs(logits(changed, full) - logits(tokens, full)).max(), 1e-4)
             batches = list(need_lora.need_batches(data, 2, 1024))
             loss, count = need_lora.need_loss(model, *batches[0])
             self.assertTrue(np.isfinite(loss.item()))

@@ -424,14 +424,12 @@ def carry_rows(model_path, adapter, rows, kind="route"):
     r, m = (tokenizer.encode(x, add_special_tokens=False)[0] for x in (" R", " M"))
     out = []
     for row in rows:
-        ids, mask = NL.memory_mask(kind, row["text"], tokenizer)
-        if kind != "free":
-            NL.MASK.append(mx.array(mask[None, None]))
+        ids, mask = NL.memory_mask(kind, row["text"], tokenizer)  # "free": the causal mask, explicit
+        NL.MASK.append(mx.array(mask[None, None]))
         try:
             p = mx.softmax(model(mx.array([ids]))[0, -1].astype(mx.float32))
         finally:
-            if kind != "free":
-                NL.MASK.pop()
+            NL.MASK.pop()
         pr, pm = p[r].item(), p[m].item()
         out.append(dict(row, p_R=pr / max(pr + pm, 1e-12), mass=pr + pm))
     return out

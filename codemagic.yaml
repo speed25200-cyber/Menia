@@ -979,7 +979,9 @@ workflows:
             trap 'rm -rf "$OUT/fused-start"' EXIT
             NEED_TINY_MODEL="$MODEL" python -m unittest tests_research.test_need.MLXCarryTests \
               tests_research.test_need.MLXMemoryTests -v 2>&1 | tee "$OUT/memory-$NEED_ARM-check.log" | tail -5
-            python -m research.need_mlx memory --arm "$NEED_ARM" --start "$NEED_START" --model "$MODEL" \
+            # stopped after NEED_MINUTES (default 100; 110 for a memory build) so that a hang leaves its log behind
+            perl -e 'alarm(shift @ARGV); exec @ARGV' $((NEED_MINUTES * 60)) \
+              python -m research.need_mlx memory --arm "$NEED_ARM" --start "$NEED_START" --model "$MODEL" \
               --iters "$NEED_ITERS" --out "$OUT" 2>&1 | tee "$OUT/memory-$NEED_ARM.log" | grep -v "it/s" | tail -30
             rm -rf "$OUT/fused-start"
           elif [ "$NEED_STAGE" = "curiosity" ]; then

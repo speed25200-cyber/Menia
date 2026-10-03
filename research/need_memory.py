@@ -70,14 +70,13 @@ def teacher_lives(stream, count):
 
 def documents(lives, arm):
     """One document per life; targets: the decisions whose written action is the rule's (weight 1), the others 0. The
-    arm's mask is given by "carry" (none for "free"). A life with no such decision has no target and is left out
-    (amendment 1 of the protocol)."""
+    arm's mask is given by "carry"; for "free" it is the plain causal mask, given explicitly (the Mac's training ran
+    twice into a failure without an explicit mask, and with one for A and B it did not). A life with no such
+    decision has no target and is left out (amendment 1 of the protocol)."""
     out = []
     for i, life in enumerate(lives):
         d = {"text": W.life_text(life["turns"]), "weights": [int(x["action"] == x["rule"]) for x in W.decisions(life)],
-             "life": i}
-        if arm != "free":
-            d["carry"] = arm
+             "life": i, "carry": arm}
         if sum(d["weights"]):
             out.append(d)
     return out
