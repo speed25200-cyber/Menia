@@ -1,0 +1,14 @@
+{
+ "block": 12,
+ "massive_dims": [
+  35
+ ],
+ "lives_read": 99,
+ "reader_layers": 112,
+ "execution_gap": 7.250080800846881e-05,
+ "reader_replica": {
+  "documents": 48,
+  "mean_gap": 0.006951577946511748,
+  "max_gap": 0.08196156109781805
+ }
+}
