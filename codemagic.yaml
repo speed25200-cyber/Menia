@@ -963,6 +963,15 @@ workflows:
               --workspace --reader --replicate "$NEED_REPLICATE" $OTHER --out "$OUT" 2>&1 \
               | tee "$OUT/reader.log" | grep -v "it/s" | tail -30
             rm -rf "$OUT/fused-start"
+          elif [ "$NEED_STAGE" = "carry" ]; then
+            # docs/LLM_NEED_CARRY_PROTOCOL.md: the final agent fused, a new adapter on its 512 lives of the stage speak2
+            # read under the memory mask (the past seen only through the carried tokens); the mask is checked first
+            NEED_TINY_MODEL="$MODEL" python -m unittest tests_research.test_need.MLXCarryTests -v 2>&1 \
+              | tee "$OUT/carry-check.log" | tail -5
+            python -m research.need_mlx carry --start "$NEED_START" --model "$MODEL" \
+              --lives-file artifacts/llm-need/speak2/lives-speak2.jsonl.gz --iters "$NEED_ITERS" --out "$OUT" 2>&1 \
+              | tee "$OUT/carry.log" | grep -v "it/s" | tail -30
+            rm -rf "$OUT/fused-start"
           elif [ "$NEED_STAGE" = "curiosity" ]; then
             # docs/LLM_CURIOSITY_PROTOCOL.md: one command of research/curiosity_mlx.py per build (pilot, install,
             # lives, check), resumable between lives; NEED_RESUME brings back the files of the previous build

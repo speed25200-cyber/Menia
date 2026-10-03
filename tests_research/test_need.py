@@ -727,6 +727,48 @@ class SmallPushTests(unittest.TestCase):
         self.assertEqual(len(pushes), 2 + SP.RANDOM)
 
 
+def fake_tokenizer(text, add_special_tokens=False, return_offsets_mapping=True):
+    """A stand-in fast tokenizer with offsets: " Cho", "ix", words with their space, and line ends."""
+    import re
+    spans = [m.span() for m in re.finditer(r" Cho|ix(?= :)| ?[^\s]+|\n+", text)]
+    return {"input_ids": [hash(text[a:b]) % 1000 for a, b in spans], "offset_mapping": spans}
+
+
+class CarryTests(unittest.TestCase):
+    def test_carry_layout_and_mask(self):
+        life = lives_of(W.Oracle(), 337, 1)[0]
+        text = W.life_text(life["turns"])
+        ids, turn, carried = need_lora.carry_layout(text, fake_tokenizer)
+        n = len(W.decisions(life))
+        self.assertEqual(sum(carried), 4 * n)  # " Cho" "ix" " :" and the action, each turn
+        self.assertEqual(max(turn) + 1, len([t for t in life["turns"]]))
+        mask = need_lora.carry_mask(turn, carried)
+        t, c = np.array(turn), np.array(carried)
+        q = len(turn) - 1
+        seen = np.where(mask[q])[0]
+        self.assertTrue(all(t[j] in (-1, t[q]) or (c[j] and t[j] < t[q]) for j in seen))
+        hidden = [j for j in range(q) if t[j] not in (-1, t[q]) and not c[j]]
+        self.assertTrue(hidden and not mask[q, hidden].any())
+        self.assertTrue(mask[q, [j for j in range(q) if c[j]]].all())
+        self.assertFalse(mask[np.triu_indices(len(turn), 1)].any())
+        item = (ids, [0.0] * len(ids), mask)
+        padded = need_lora.input_mask(item, len(ids) + 5)
+        self.assertTrue((padded[:len(ids), :len(ids)] == mask).all())
+        self.assertTrue(padded[-1, :len(ids) + 5].sum() == len(ids) + 5)
+        with self.assertRaises(ValueError):
+            need_lora.carry_layout("x" + text, fake_tokenizer)
+
+    def test_carry_documents(self):
+        from research import need_mlx as M
+        lives = lives_of(W.Oracle(), 338, 4)
+        docs = M.carry_docs(lives)
+        for d, life in zip(docs, lives):
+            need_lora.target_tokens(d["text"], d["weights"], lambda x: list(x.encode()))
+            self.assertTrue(d["carry"])
+        rows = M.carry_decisions(lives, docs)
+        self.assertTrue(all(r["text"].endswith("Choix :") and r["t"] in M.CARRY_TURNS for r in rows))
+
+
 class OwnershipTests(unittest.TestCase):
     def test_the_other_lives_beside_without_changing_the_agent(self):
         alone = W.play(W.Oracle(), W.world_rng(225, 0), W.choice_rng(225, 0))
@@ -852,6 +894,49 @@ class MLXWorkspaceTests(unittest.TestCase):
             self.assertLess(gap(cut_workspace=True), 0.01 * through)  # the mask holds in every block
             before, causal = last_logits(tokens[:end]), last_logits(tokens[:end], masked=False)
             self.assertLess(np.abs(before - causal).max(), 0.02 * np.abs(causal).max() + 1e-4)
+            batches = list(need_lora.need_batches(data, 2, 1024))
+            self.assertEqual(len(batches[0]), 3)
+            loss, count = need_lora.need_loss(model, *batches[0])
+            self.assertTrue(np.isfinite(loss.item()))
+        finally:
+            qwen3.create_attention_mask = original
+
+
+@unittest.skipUnless(os.environ.get("NEED_TINY_MODEL"), "needs mlx and a tiny local model (NEED_TINY_MODEL)")
+class MLXCarryTests(unittest.TestCase):
+    def test_under_the_carry_mask_the_past_reaches_a_turn_only_through_its_carried_tokens(self):
+        import mlx.core as mx
+        from mlx_lm import load
+        from mlx_lm.models import qwen3
+        from mlx_lm.tuner.datasets import CacheDataset
+        from research import need_mlx as M
+        model, tokenizer = load(os.environ["NEED_TINY_MODEL"])
+        original = qwen3.create_attention_mask
+        qwen3.create_attention_mask = need_lora.masked_attention(original)
+        try:
+            lives = lives_of(W.Oracle(), W.STREAMS["report"], 3)
+            docs = M.carry_docs(lives)
+            data = CacheDataset(need_lora.NeedText(docs, tokenizer))
+            tokens, weights, mask = data[0]
+            ids, turn, carried = need_lora.carry_layout(docs[0]["text"], tokenizer)
+            self.assertEqual(ids, tokens)
+            hidden = next(j for j, (k, c) in enumerate(zip(turn, carried)) if k == 0 and not c)  # turn 1, not carried
+            last = max(j for j, k in enumerate(turn) if k == 2)
+
+            def logits(seq, cut=False):
+                m = need_lora.carry_mask(turn, carried)[:last + 1, :last + 1]
+                if cut:  # the turn read sees no token of earlier turns at all
+                    m[np.array(turn[:last + 1]) == 2] &= np.array([k in (-1, 2) for k in turn[:last + 1]])
+                need_lora.MASK.append(mx.array(m[None, None]))
+                try:
+                    return np.array(model(mx.array([seq[:last + 1]]))[0, -1].astype(mx.float32))
+                finally:
+                    need_lora.MASK.pop()
+            changed = list(tokens)
+            changed[hidden] = tokens[hidden + 1]
+            through = np.abs(logits(changed) - logits(tokens)).max()  # through the carried tokens of turns 1 and 2
+            self.assertGreater(through, 1e-4)
+            self.assertLess(np.abs(logits(changed, cut=True) - logits(tokens, cut=True)).max(), 0.01 * through)
             batches = list(need_lora.need_batches(data, 2, 1024))
             self.assertEqual(len(batches[0]), 3)
             loss, count = need_lora.need_loss(model, *batches[0])

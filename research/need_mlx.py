@@ -334,6 +334,77 @@ def reader_rows(model_path, adapter, docs):
     return rows
 
 
+CARRY_VALID = 16
+CARRY_TURNS = (3, 10, 20)
+
+
+def carry_docs(lives):
+    """One document per life, read under the memory through the state; every choice is a target."""
+    return [{"text": W.life_text(l["turns"]), "weights": [1] * len(W.decisions(l)), "carry": True, "life": i}
+            for i, l in enumerate(lives)]
+
+
+def carry_decisions(lives, docs):
+    """The texts up to "Choix :" of turns 3, 10 and 20 of the validation lives (the replica's decisions)."""
+    rows = []
+    for d in docs:
+        life = lives[d["life"]]
+        for turn in W.decisions(life):
+            if turn["t"] in CARRY_TURNS:
+                rows.append({"life": d["life"], "t": turn["t"], "text": W.life_text(life["turns"], upto=turn["t"])
+                             + W.choice_line(turn["t"], turn["event"], turn.get("other"))})
+    return rows
+
+
+def carry(a, log=print):
+    """Learning to carry the need through one's own states (docs/LLM_NEED_CARRY_PROTOCOL.md): the final agent fused,
+    a new adapter on its 512 lives of the stage speak2 read under the memory mask, every choice a target."""
+    out = Path(a.out)
+    out.mkdir(parents=True, exist_ok=True)
+    lives = read_jsonl(a.lives_file)
+    docs = carry_docs(lives)
+    pick = np.random.default_rng([W.SEED, 41]).choice(len(docs), size=CARRY_VALID, replace=False)
+    valid = [docs[i] for i in sorted(pick)]
+    model = str(out / "fused-start")
+    subprocess.run([sys.executable, "-m", "mlx_lm", "fuse", "--model", a.model, "--adapter-path", a.start,
+                    "--save-path", model], check=True)
+    write_data(out / "data-carry", docs, np.random.default_rng([W.SEED, 41, 1]), valid)
+    final = out / "adapters-carry"
+    train(model, out / "data-carry", final, a.iters, seed=W.SEED)
+    clean(final)
+    free()
+    rows = carry_rows(model, final, carry_decisions(lives, valid))
+    Path(out / "carry-replica.json").write_text(json.dumps(rows, ensure_ascii=False, indent=1) + "\n")
+    record = {"stage": "carry", "from": a.start, "lives_from": a.lives_file, "adapter": str(final),
+              "iters": a.iters, "documents": len(docs), "validation_lives": [d["life"] for d in valid],
+              "replica_rows": len(rows)}
+    Path(out / "carry-stage.json").write_text(json.dumps(record, indent=1) + "\n")
+    log(json.dumps(record))
+
+
+def carry_rows(model_path, adapter, rows):
+    """P(R) at the end of each text, under the memory mask, with the carrying adapter: the rows against which the
+    torch replica is checked."""
+    import mlx.core as mx
+    from mlx_lm import load
+    from mlx_lm.models import qwen3
+    from . import need_lora as NL
+    qwen3.create_attention_mask = NL.masked_attention(qwen3.create_attention_mask)
+    model, tokenizer = load(model_path, adapter_path=str(adapter))
+    r, m = (tokenizer.encode(x, add_special_tokens=False)[0] for x in (" R", " M"))
+    out = []
+    for row in rows:
+        ids, turn, carried = NL.carry_layout(row["text"], tokenizer)
+        NL.MASK.append(mx.array(NL.carry_mask(turn, carried)[None, None]))
+        try:
+            p = mx.softmax(model(mx.array([ids]))[0, -1].astype(mx.float32))
+        finally:
+            NL.MASK.pop()
+        pr, pm = p[r].item(), p[m].item()
+        out.append(dict(row, p_R=pr / max(pr + pm, 1e-12), mass=pr + pm))
+    return out
+
+
 class Recorder:
     """Plays through an agent and keeps the captured residual streams of each decision."""
 
@@ -482,20 +553,24 @@ def main(argv=None):
     d = sub.add_parser("direction")
     d.add_argument("--adapter", required=True)
     d.add_argument("--lives", type=int, default=256)
+    c = sub.add_parser("carry")
+    c.add_argument("--start", required=True)
+    c.add_argument("--lives-file", required=True)
+    c.add_argument("--iters", type=int, default=1000)
     t = sub.add_parser("test")
     t.add_argument("--final", required=True)
     t.add_argument("--control", required=True)
     t.add_argument("--direction", required=True)
     t.add_argument("--lives", type=int, default=256)
     t.add_argument("--stages", nargs="+", default=["final", "control", "base", "lesion", "lesion_random"])
-    for s in (r, p, d, t):
+    for s in (r, p, d, t, c):
         s.add_argument("--model", required=True)
         s.add_argument("--out", required=True)
         s.add_argument("--replicate", type=int, default=0, help="a second agent: streams 100 + s, seed + 1")
         s.add_argument("--other", action="store_true", help="another agent lives beside (the world of two)")
     a = parser.parse_args(argv)
     Path(a.out).mkdir(parents=True, exist_ok=True)
-    {"rounds": rounds, "report": report, "direction": direction, "test": test}[a.command](a)
+    {"rounds": rounds, "report": report, "direction": direction, "test": test, "carry": carry}[a.command](a)
 
 
 if __name__ == "__main__":

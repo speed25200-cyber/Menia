@@ -53,6 +53,65 @@ def span_tokens(text, spans, tokenizer):
     return list(enc["input_ids"]), weights
 
 
+CHOICE = " Choix :"
+
+
+def carry_layout(text, tokenizer, header=HEADER):
+    """Tokens of a life's text and, per token, its turn (-1 for the header) and whether later turns may see it: the
+    three tokens of " Choix :" and the action token of each turn (docs/LLM_NEED_CARRY_PROTOCOL.md). Uses the offsets
+    of a fast tokenizer; raises if a carried span is not made of whole tokens."""
+    if not text.startswith(header):
+        raise ValueError("the text does not start with the header")
+    hf = tokenizer if callable(tokenizer) else tokenizer._tokenizer
+    enc = hf(text, add_special_tokens=False, return_offsets_mapping=True)
+    lines, pos = [], len(header)
+    while pos < len(text):
+        nl = text.find("\n", pos)
+        end = len(text) if nl < 0 else nl + 1
+        c = text.find(CHOICE, pos, end)
+        choice = action = None
+        if c >= 0:
+            choice = (c, c + len(CHOICE))
+            if text[choice[1]:choice[1] + 2] in (" R", " M"):
+                action = (choice[1], choice[1] + 2)
+        lines.append((pos, end, choice, action))
+        pos = end
+    turn, carried, counts = [], [], {}
+    for a, b in enc["offset_mapping"]:
+        if a < len(header):
+            if b > len(header):
+                raise ValueError("a token straddles the header and the first turn")
+            turn.append(-1)
+            carried.append(False)
+            continue
+        k = next(i for i, line in enumerate(lines) if line[0] <= a < line[1])
+        inside = False
+        for span in lines[k][2:]:
+            if span is not None and a < span[1] and b > span[0]:
+                if a < span[0] or b > span[1]:
+                    raise ValueError("a token straddles a carried span")
+                inside = True
+                counts[(k, span)] = counts.get((k, span), 0) + 1
+        turn.append(k)
+        carried.append(inside)
+    for k, (_, _, choice, action) in enumerate(lines):
+        if choice is not None and counts.get((k, choice)) != WORKSPACE:
+            raise ValueError(f"turn {k}: \"Choix :\" is not {WORKSPACE} tokens")
+        if action is not None and counts.get((k, action)) != 1:
+            raise ValueError(f"turn {k}: the action is not one token")
+    return list(enc["input_ids"]), turn, carried
+
+
+def carry_mask(turn, carried):
+    """Which positions each position attends to (True = seen): causal, and a token of turn k sees the header, its
+    own turn, and of each earlier turn only the carried tokens."""
+    t, c = np.asarray(turn), np.asarray(carried, bool)
+    idx = np.arange(len(t))
+    causal = idx[None, :] <= idx[:, None]
+    seen = (t[None, :] == -1) | (t[None, :] == t[:, None]) | (c[None, :] & (t[None, :] < t[:, None]))
+    return causal & seen
+
+
 def workspace_mask(size, span=None):
     """Which positions each position attends to (size x size, True = seen): causal; with span = (header, end), the
     positions from `end` on (the question) see only the header, the WORKSPACE tokens before `end` (the pending
@@ -64,6 +123,17 @@ def workspace_mask(size, span=None):
         seen = (cols < header) | ((cols >= end - WORKSPACE) & (cols < end)) | (cols >= end)
         mask &= (rows < end) | seen
     return mask
+
+
+def input_mask(item, size):
+    """The attention mask of an item's inputs, padded to size: a mask given with the item (over its tokens: the
+    memory through the state), or the workspace mask of its span, or causal."""
+    if len(item) >= 3 and isinstance(item[2], np.ndarray):
+        mask = workspace_mask(size)  # padding rows stay causal
+        n = min(len(item[2]), size)
+        mask[:n, :n] = item[2][:n, :n]
+        return mask
+    return workspace_mask(size, item[2] if len(item) >= 3 else None)
 
 
 def pad_batch(items, max_seq_length):
@@ -79,7 +149,7 @@ def pad_batch(items, max_seq_length):
         weights[j, :n] = w[:n]
     if all(len(item) == 2 for item in items):
         return tokens, weights[:, 1:]
-    masks = np.stack([workspace_mask(width - 1, item[2] if len(item) >= 3 else None) for item in items])
+    masks = np.stack([input_mask(item, width - 1) for item in items])
     if all(len(item) < 4 for item in items):
         return tokens, weights[:, 1:], masks[:, None]
     positions = np.zeros((len(items), width - 1, 1), np.float32)
@@ -105,6 +175,11 @@ class NeedText:
             raise RuntimeError("cutting at the targets changed the tokens")
         if sum(weights) <= 0:
             raise RuntimeError("a document without a weighted target")
+        if d.get("carry"):  # the past seen only through its carried tokens (docs/LLM_NEED_CARRY_PROTOCOL.md)
+            ids, turn, carried = carry_layout(d[self.text_key], self.tokenizer)
+            if ids != tokens:
+                raise RuntimeError("the carried layout is cut differently")
+            return tokens, weights, carry_mask(turn, carried)
         if "workspace" not in d:
             return tokens, weights
         header = list(encode(d.get("header", HEADER)))
