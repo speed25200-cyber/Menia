@@ -193,3 +193,13 @@ professeur ne sont vécues par aucun modèle.
 - **Mesures** : `research/need_memory.py` (à écrire), torch sur le
   processeur local.
 - **Verdicts** : numpy seulement, vérifiés en CI.
+
+## Amendement 1 (3 octobre 2026, avant tout apprentissage et toute mesure)
+
+En écrivant le code, avant tout apprentissage, nous avons constaté que
+**3 des 4 096 vies** d'apprentissage n'ont aucune décision où l'action
+écrite est celle de la règle. Elles n'ont donc aucune cible, et le code
+d'apprentissage du programme refuse un document sans cible. Ces 3 vies
+sont retirées : **4 093 documents**. Leurs numéros sont écrits dans le
+fichier d'étape de chaque agent. Les 32 vies de validation et les 128
+vies de la mesure ont toutes des cibles. Rien d'autre ne change.
