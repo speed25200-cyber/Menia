@@ -1,5 +1,5 @@
 {
- "request": 93,
+ "request": 94,
  "app": "Menia",
  "wait_minutes": 130,
  "builds": [
@@ -11,7 +11,8 @@
      "NEED_STAGE": "memory",
      "NEED_ARM": "free",
      "NEED_ITERS": "2000",
-     "NEED_START": "artifacts/llm-need/final/report/adapters-final"
+     "NEED_START": "artifacts/llm-need/final/report/adapters-final",
+     "NEED_MINUTES": "110"
     }
    },
    "dest": "artifacts/llm-need/memory/free"
