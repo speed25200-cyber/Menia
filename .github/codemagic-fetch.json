@@ -1,34 +1,8 @@
 {
- "request": 92,
+ "request": 93,
  "app": "Menia",
- "wait_minutes": 330,
+ "wait_minutes": 130,
  "builds": [
-  {
-   "launch": {
-    "workflow": "menia-need-mac",
-    "branch": "claude/causal-self-model-llm-results-mauabk",
-    "variables": {
-     "NEED_STAGE": "memory",
-     "NEED_ARM": "route",
-     "NEED_ITERS": "2000",
-     "NEED_START": "artifacts/llm-need/final/report/adapters-final"
-    }
-   },
-   "dest": "artifacts/llm-need/memory/route"
-  },
-  {
-   "launch": {
-    "workflow": "menia-need-mac",
-    "branch": "claude/causal-self-model-llm-results-mauabk",
-    "variables": {
-     "NEED_STAGE": "memory",
-     "NEED_ARM": "actions",
-     "NEED_ITERS": "2000",
-     "NEED_START": "artifacts/llm-need/final/report/adapters-final"
-    }
-   },
-   "dest": "artifacts/llm-need/memory/actions"
-  },
   {
    "launch": {
     "workflow": "menia-need-mac",
