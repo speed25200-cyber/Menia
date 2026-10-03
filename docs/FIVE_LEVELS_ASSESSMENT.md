@@ -105,9 +105,10 @@ Voir `docs/LITERATURE_CHECK_READER_2026-09-30.md`.
    est recalculé à chaque tour. Une mémoire de l'état demanderait une
    architecture où le passé n'est visible qu'à travers lui (apprentissage,
    donc le Mac).
-5. Un besoin de savoir (test 12, « soif de savoir », pré-enregistré et en
-   cours) : un manque calculé par le modèle, sans renforcement, et un test
-   hormonal (`docs/LLM_CURIOSITY_PROTOCOL.md`).
+5. Un besoin de savoir (test 12, « soif de savoir ») : **arrêté au pilote**, comme le
+   protocole le prévoyait. Aucun taux d'apprentissage ne rend l'interférence entre
+   domaines assez petite (au mieux 0,32 pour un seuil de 0,25)
+   (`docs/LLM_CURIOSITY_RESULTS.md`).
 
 ## Éthique
 
