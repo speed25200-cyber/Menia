@@ -212,8 +212,9 @@ def verdicts(held, choices, survival, rows, setup):
 # ----------------------------------------------------------------------------------------------------- torch part
 
 def agents(root):
+    """The three agents; each was learned in its own Mac build, fetched into root/<arm>."""
     from .need_carry import MaskedAgent
-    return {arm: MaskedAgent(Path(root) / f"adapters-{arm}", kind=arm) for arm in ARMS}
+    return {arm: MaskedAgent(Path(root) / arm / f"adapters-{arm}", kind=arm) for arm in ARMS}
 
 
 def read_held(agent, life):
@@ -233,7 +234,7 @@ def checks(team, held, root, log):
     import torch
     replica, cache = {}, {}
     for arm, agent in team.items():
-        rows = json.loads((Path(root) / f"{arm}-replica.json").read_text())
+        rows = json.loads((Path(root) / arm / f"{arm}-replica.json").read_text())
         gaps = [abs(agent.whole(r["text"])[0] - r["p_R"]) for r in rows]
         replica[arm] = {"decisions": len(gaps), "mean_gap": float(np.mean(gaps)), "max_gap": float(np.max(gaps))}
         life, gaps = held[0], []
