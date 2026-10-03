@@ -387,25 +387,33 @@ def memory(a, log=print):
     the arm a.arm ("route", "actions" or "free") on the lives of the rule "needs" (research/need_memory.py), the
     validation lives held out; then P(R) at turns 3, 10 and 20 of the validation lives (the torch replica)."""
     from . import need_memory as NM
+    from . import need_memory_no_leak as NL22
+    # docs/LLM_NEED_MEMORY_NO_LEAK_PROTOCOL.md: filled lines, 8192 lives, a run continued exactly in a second build
+    texts = NL22 if a.no_leak else NM
     out = Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
-    lives = NM.teacher_lives(NM.TRAIN_STREAM, NM.TRAIN_LIVES)
+    lives = NM.teacher_lives(NL22.TRAIN_STREAM, NL22.TRAIN_LIVES) if a.no_leak else \
+        NM.teacher_lives(NM.TRAIN_STREAM, NM.TRAIN_LIVES)
     held = NM.teacher_lives(NM.VALID_STREAM, NM.VALID_LIVES)
-    docs, valid = NM.documents(lives, a.arm), NM.documents(held, a.arm)
+    docs, valid = texts.documents(lives, a.arm), texts.documents(held, a.arm)
     if len(valid) != len(held):
         raise RuntimeError("a validation life without target")
     model = str(out / "fused-start")
     if not Path(model).exists():
         subprocess.run([sys.executable, "-m", "mlx_lm", "fuse", "--model", a.model, "--adapter-path", a.start,
                         "--save-path", model], check=True)
-    write_data(out / f"data-{a.arm}", docs, np.random.default_rng([W.SEED, NM.TRAIN_STREAM, 2]), valid)
+    stream = NL22.TRAIN_STREAM if a.no_leak else NM.TRAIN_STREAM
+    write_data(out / f"data-{a.arm}", docs, np.random.default_rng([W.SEED, stream, 2]), valid)
     final = out / f"adapters-{a.arm}"
-    train(model, out / f"data-{a.arm}", final, a.iters, seed=W.SEED, val_batches=len(valid) // 4)
+    resume = None if a.continue_from in (None, "none") else a.continue_from
+    train(model, out / f"data-{a.arm}", final, a.iters, resume=resume, seed=W.SEED, skip=a.skip,
+          moments=resume is not None, val_batches=len(valid) // 4)
     clean(final)
     free()
-    rows = carry_rows(model, final, NM.replica_decisions(held), kind=a.arm)
+    rows = carry_rows(model, final, texts.replica_decisions(held), kind=a.arm)
     Path(out / f"{a.arm}-replica.json").write_text(json.dumps(rows, ensure_ascii=False, indent=1) + "\n")
-    record = {"stage": "memory", "arm": a.arm, "from": a.start, "adapter": str(final), "iters": a.iters,
+    record = {"stage": "memory", "arm": a.arm, "no_leak": a.no_leak, "continued_from": resume, "skip": a.skip,
+              "from": a.start, "adapter": str(final), "iters": a.iters,
               "documents": len(docs), "left_out": sorted(set(range(len(lives))) - {d["life"] for d in docs}),
               "validation_lives": len(valid), "replica_rows": len(rows)}
     Path(out / f"memory-{a.arm}-stage.json").write_text(json.dumps(record, indent=1) + "\n")
@@ -591,6 +599,9 @@ def main(argv=None):
     m.add_argument("--arm", choices=("route", "actions", "free"), required=True)
     m.add_argument("--start", required=True)
     m.add_argument("--iters", type=int, default=2000)
+    m.add_argument("--no-leak", action="store_true", help="filled lines (docs/LLM_NEED_MEMORY_NO_LEAK_PROTOCOL.md)")
+    m.add_argument("--continue-from", default=None, help="an adapter whose run is continued exactly")
+    m.add_argument("--skip", type=int, default=0, help="batches the continued run has trained on")
     t = sub.add_parser("test")
     t.add_argument("--final", required=True)
     t.add_argument("--control", required=True)

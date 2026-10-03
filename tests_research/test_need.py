@@ -947,6 +947,68 @@ class MemoryGatherTests(unittest.TestCase):
                 NM.gather(root)
 
 
+class MemoryNoLeakTests(unittest.TestCase):
+    def test_filled_texts_documents_and_agent(self):
+        from research import need_memory as NM, need_memory_no_leak as NL22
+        lives = NM.teacher_lives(NM.HELD_STREAM, 6)
+        for life in lives:
+            text = NL22.life_text(life["turns"])
+            self.assertEqual(text.count(" Choix :"), len(W.decisions(life)))
+            for x in W.decisions(life):
+                line = W.choice_line(x["t"], x["event"])
+                self.assertEqual(NL22.fill(line), NL22.choice_line(x["t"], x["event"]))
+                self.assertTrue(NL22.decision_text(life["turns"], x["t"]).endswith(NL22.choice_line(x["t"], x["event"])))
+            ids, turn, carried, acts = need_lora.carry_layout(text, fake_tokenizer, kinds=True)
+            self.assertEqual(sum(acts), len(W.decisions(life)))
+        with self.assertRaises(ValueError):
+            NL22.fill("Tour 3 : rien. Choix :")
+        docs = NL22.documents(lives, "actions")
+        self.assertTrue(all(d["carry"] == "actions" and " - " in d["text"] for d in docs))
+        for d in docs:
+            need_lora.target_tokens(d["text"], d["weights"], lambda x: list(x.encode()))
+
+        class Fake:
+            def __init__(self):
+                self.lines = []
+            def start(self, header):
+                self.lines = []
+            def decide(self, line):
+                self.lines.append(line)
+                return 0.5, 1.0
+            def commit(self, action):
+                pass
+        fake = Fake()
+        agent = NL22.Filled(fake)
+        W.play(agent, W.world_rng(343, 0), W.choice_rng(343, 0))
+        self.assertTrue(fake.lines and all(" - " in l or "baies" in l for l in fake.lines))
+
+    def test_the_two_agents_measured_apart_are_put_together(self):
+        from research import need_memory as NM, need_memory_no_leak as NL22
+        held = NM.teacher_lives(NM.HELD_STREAM, NM.HELD_LIVES)
+        pairs = NM.choose_pairs(held)
+        bayes = {(i, x["t"]): q for i, l in enumerate(held) for x, q in zip(W.decisions(l), NM.ceiling(l))}
+        lives = lives_of(W.Oracle(), 344, 8)
+        for life in lives:
+            for t in W.decisions(life):
+                t["mass"] = 0.9
+        with tempfile.TemporaryDirectory() as root:
+            out = Path(root) / "test"
+            out.mkdir()
+            for arm, p_of in (("route", lambda i, x: float(x["rule"] == 0)), ("actions", lambda i, x: bayes[(i, x["t"])])):
+                W.write_jsonl(out / f"choices-{arm}.jsonl.gz", [{"life": i, "t": x["t"], "p_R": p_of(i, x), "mass": 1.0}
+                                                                for i, l in enumerate(held) for x in W.decisions(l)])
+                gain = 1.0 if arm == "route" else 0.0
+                W.write_jsonl(out / f"pairs-{arm}.jsonl.gz",
+                              [dict(p, p_R=[0.2, 0.2 + gain * NM.rule_effect(held[p["life"]], p)]) for p in pairs])
+                W.write_jsonl(out / f"lives-{arm}.jsonl.gz", lives)
+                (out / f"setup-{arm}.json").write_text(json.dumps({"replica": {"mean_gap": 0.01}, "cache_gap": 1e-6,
+                                                                   "mask_gap": 0.0}))
+            result = NL22.gather(root)
+            self.assertTrue(result["verdicts"]["MEM4"] and result["verdicts"]["MEM5"] and result["verdicts"]["valid"])
+            self.assertTrue(result["verdicts"]["global"])
+            self.assertNotIn("free", result["values"]["accuracy"])
+
+
 class OwnershipTests(unittest.TestCase):
     def test_the_other_lives_beside_without_changing_the_agent(self):
         alone = W.play(W.Oracle(), W.world_rng(225, 0), W.choice_rng(225, 0))
@@ -1157,6 +1219,13 @@ class MLXMemoryTests(unittest.TestCase):
             through = np.abs(logits(changed, route) - logits(tokens, route)).max()
             self.assertGreater(through, 1e-4)
             self.assertLess(np.abs(logits(changed, mask) - logits(tokens, mask)).max(), 1e-6)
+            from research import need_memory_no_leak as NL22  # docs/LLM_NEED_MEMORY_NO_LEAK_PROTOCOL.md
+            enc = lambda x: tokenizer.encode(x, add_special_tokens=False)
+            for t in range(1, W.TURNS + 1):
+                self.assertEqual(len({len(enc(NL22.choice_line(t, k) + " " + a + "\n")) for k in range(len(W.EVENTS))
+                                      for a in W.ACTIONS}), 1)
+            filled = CacheDataset(need_lora.NeedText(NL22.documents(lives, "actions"), tokenizer))
+            self.assertEqual(len(filled[0]), 3)
             free = CacheDataset(need_lora.NeedText(NM.documents(lives, "free"), tokenizer))
             self.assertTrue((free[0][2] == np.tril(np.ones_like(free[0][2]))).all())  # explicit causal mask
             full = np.tril(np.ones((last + 1, last + 1), bool))

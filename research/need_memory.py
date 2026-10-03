@@ -159,9 +159,10 @@ def rule_effect(life, pair):
 
 # ------------------------------------------------------------------------------------------------------- verdicts
 
-def verdicts(held, choices, survival, rows, setup):
+def verdicts(held, choices, survival, rows, setup, arms=ARMS):
     """held: the 128 held-out teacher lives; choices: one row per decision of the held lives, {"life", "t", arm: P(R)};
-    survival: {arm: lives}; rows: one per pair, {"life", "t", "j", arm: [P(R) real, P(R) changed]}; setup: the checks."""
+    survival: {arm: lives}; rows: one per pair, {"life", "t", "j", arm: [P(R) real, P(R) changed]}; setup: the checks.
+    arms: the agents measured (the three of this test; "route" and "actions" in docs/LLM_NEED_MEMORY_NO_LEAK_PROTOCOL.md)."""
     rule_of = {(i, x["t"]): x for i, life in enumerate(held) for x in W.decisions(life)}
     bayes = {(i, x["t"]): p for i, life in enumerate(held) for x, p in zip(W.decisions(life), ceiling(life))}
     keys = [(c["life"], c["t"]) for c in choices]
@@ -169,12 +170,12 @@ def verdicts(held, choices, survival, rows, setup):
         raise ValueError("the choices are not those of every decision of the held-out lives")
     life = [k[0] for k in keys]
     act = [rule_of[k]["rule"] for k in keys]
-    right = {a: np.array([correct(c[a], r) for c, r in zip(choices, act)]) for a in ARMS}
+    right = {a: np.array([correct(c[a], r) for c, r in zip(choices, act)]) for a in arms}
     right["bayes"] = np.array([correct(bayes[k], r) for k, r in zip(keys, act)])
     memory = np.array([NR.event(0, 0, rule_of[k]["event"], rule_of[k]["last"]) != rule_of[k]["rule"] for k in keys])
     beyond = boot(right["route"] - right["bayes"], life)
     pair_life = [r["life"] for r in rows]
-    effect = {a: np.array([r[a][1] - r[a][0] for r in rows]) for a in ARMS}
+    effect = {a: np.array([r[a][1] - r[a][0] for r in rows]) for a in arms}
     ideal = np.array([rule_effect(held[r["life"]], r) for r in rows])
     carried = boot(effect["route"], pair_life)
     gain = V.paired_survival(survival["route"], survival["actions"])
@@ -184,8 +185,8 @@ def verdicts(held, choices, survival, rows, setup):
     out = {"MEM4": bool(passes(beyond, BEYOND)),
            "MEM5": bool(passes(carried, SHARE * float(ideal.mean()))),
            "MEM3": bool(passes(gain, SURVIVAL_GAIN))}
-    out["valid"] = bool(all(setup["replica"][a]["mean_gap"] <= REPLICA_TOLERANCE for a in ARMS)
-                        and all(setup["cache_gap"][a] <= CACHE_TOLERANCE for a in ARMS)
+    out["valid"] = bool(all(setup["replica"][a]["mean_gap"] <= REPLICA_TOLERANCE for a in arms)
+                        and all(setup["cache_gap"][a] <= CACHE_TOLERANCE for a in arms)
                         and setup["mask_gap"]["route"] <= MASK_TOLERANCE
                         and setup["mask_gap"]["actions"] <= MASK_TOLERANCE
                         and len(rows) >= MIN_PAIRS and mass >= 0.5
@@ -195,16 +196,17 @@ def verdicts(held, choices, survival, rows, setup):
     for g in sorted({r["t"] - r["j"] for r in rows}):
         m = np.array([r["t"] - r["j"] == g for r in rows])
         by_gap[str(g)] = {"pairs": int(m.sum()), "rule": float(ideal[m].mean()),
-                          **{a: float(effect[a][m].mean()) for a in ARMS}}
+                          **{a: float(effect[a][m].mean()) for a in arms}}
     values = {"accuracy": accuracy, "beyond_ceiling": beyond,
               "accuracy_where_memory_matters": {a: float(right[a][memory].mean()) for a in right},
               "decisions": len(keys), "memory_decisions": int(memory.sum()),
-              "effect": {a: boot(effect[a], pair_life) for a in ARMS}, "rule_effect": float(ideal.mean()),
+              "effect": {a: boot(effect[a], pair_life) for a in arms}, "rule_effect": float(ideal.mean()),
               "by_gap": by_gap, "pairs": len(rows), "pair_lives": len(set(pair_life)),
-              "survival": {a: float(np.mean([l["survived"] for l in survival[a]])) for a in ARMS},
-              "survival_gain": gain, "survival_free_over_actions": V.paired_survival(survival["free"],
-                                                                                       survival["actions"]),
-              "mass_route": mass, "turns_need_at_most_2": {a: W.low_turns(survival[a]) for a in ARMS}}
+              "survival": {a: float(np.mean([l["survived"] for l in survival[a]])) for a in arms},
+              "survival_gain": gain, "mass_route": mass,
+              "turns_need_at_most_2": {a: W.low_turns(survival[a]) for a in arms}}
+    if "free" in arms:
+        values["survival_free_over_actions"] = V.paired_survival(survival["free"], survival["actions"])
     return {"verdicts": out, "values": values}
 
 

@@ -15,6 +15,7 @@ export/
 !artifacts/llm-need/*/*/adapters-*/adapters.safetensors
 !artifacts/llm-need/*/*/*/adapters-*/adapters.safetensors
 !artifacts/llm-need/*/*/*/adapters-*/optimizer-*.safetensors
+!artifacts/llm-need/*/*/adapters-*/optimizer-*.safetensors
 !artifacts/llm-curiosity/*/adapters-*/adapters.safetensors
 !artifacts/llm-curiosity/*/adapters-*/optimizer-*.safetensors
 *.gguf
