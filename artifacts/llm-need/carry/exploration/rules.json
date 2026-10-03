@@ -1,0 +1,14 @@
+{
+ "needs": {
+  "test20_worlds": 0.8984375,
+  "other_worlds": 0.8762
+ },
+ "event": {
+  "test20_worlds": 0.703125,
+  "other_worlds": 0.6559
+ },
+ "alternate": {
+  "test20_worlds": 0.46875,
+  "other_worlds": 0.47
+ }
+}
