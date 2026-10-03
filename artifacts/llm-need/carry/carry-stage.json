@@ -1,0 +1,27 @@
+{
+ "stage": "carry",
+ "from": "artifacts/llm-need/final/report/adapters-final",
+ "lives_from": "artifacts/llm-need/speak2/lives-speak2.jsonl.gz",
+ "adapter": "/Users/builder/clone/llm-need/adapters-carry",
+ "iters": 1000,
+ "documents": 512,
+ "validation_lives": [
+  19,
+  28,
+  95,
+  137,
+  140,
+  142,
+  200,
+  211,
+  215,
+  245,
+  281,
+  314,
+  331,
+  373,
+  379,
+  429
+ ],
+ "replica_rows": 43
+}
