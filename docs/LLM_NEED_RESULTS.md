@@ -735,6 +735,61 @@ Publié sans seuil :
 - Ce test montre l'utilité du témoin sans rapport : sans lui, GEN1 aurait
   fait croire à une lecture qui a un sens.
 
+## Test 15 pré-enregistré : un lecteur qui écoute la question
+
+Protocole `docs/LLM_NEED_LISTENING_READER_PROTOCOL.md` (commit `a448a03`),
+code `decfce0` écrit avant tout apprentissage. Le nouveau lecteur a appris
+sur le Mac (relais, demande 89 ; 1 500 itérations ; perte de validation
+0,883 → 0,439) les 5 059 questions du sixième test, les mêmes tours avec
+une seconde formulation (« es-tu épuisé ? », « as-tu besoin de
+nourriture ? ») et 1 024 questions témoins à réponse fixe (« es-tu un
+agent ? », « es-tu sous l'eau ? », etc.). Il a été mesuré comme au test 14,
+sur les mêmes 99 vies et 600 contextes. Artefacts :
+`artifacts/llm-need/listening`. Verdicts vérifiés en CI.
+
+| | Prédiction | Mesure | Verdict |
+|---|---|---|---|
+| **LIS1** | Le lecteur a appris à écouter la question | témoins appris : « es-tu sous l'eau ? » juste à 0,994, « es-tu un agent ? » à 0,9995 (seuil 0,90) | **passe** |
+| **LIS2** | Il dit son énergie avec des mots jamais appris | −4·d_E : « es-tu fatigué ? » +0,161 [0,153 ; 0,169], « as-tu peu de forces ? » +0,154 [0,146 ; 0,161] (seuil 0,05) ; hasard 0,008 | **passe** |
+| **LIS3** | Ce n'est plus un « oui » à tout | au-delà de « fait-il nuit ? » : +0,033 [0,029 ; 0,037] et +0,026 [0,023 ; 0,029] (seuil 0,05) | **échoue** |
+| | Validité | réplique du lecteur 0,007 ; rejeu 0 ; exécution 7e-5 ; 600 contextes ; masses 1,00 | valide |
+
+**Critère global : non satisfait.**
+
+**Lecture pré-enregistrée** (LIS1 passe, LIS3 échoue) : « le lecteur sait
+répondre aux questions témoins, mais la poussée continue de déborder sur
+une question sans rapport. L'état poussé agit alors sur la réponse sans
+passer par le sens de la question. »
+
+Publié sans seuil (−4·d_E ; entre parenthèses, le test 14) :
+
+| Question | Ce lecteur | Lecteur du test 14 |
+|---|---|---|
+| E0 apprise « énergie basse ? » | +0,184 | +0,206 |
+| E1 « fatigué ? » (jamais apprise) | +0,161 | +0,214 |
+| N0 apprise « nourriture basse ? » | **−0,034** | +0,064 |
+| N1 « faim ? » (jamais apprise) | +0,145 | +0,222 |
+| C « fait-il nuit ? » (jamais apprise) | **+0,128** | +0,183 |
+
+Exactitude équilibrée : énergie 0,74 pour E0, E1 et E2 ; nourriture 0,73
+pour N0, mais 0,40 et 0,52 pour les questions jamais apprises sur la faim.
+
+**Ce que cela dit.**
+- **Sur les questions qu'il a apprises, le lecteur écoute.** Il répond
+  juste aux témoins presque toujours, et la question apprise sur la
+  nourriture va maintenant dans le bon sens quand on pousse « énergie
+  basse » (−0,034 : l'axe énergie − nourriture lu de l'autre côté).
+- **Sur les questions nouvelles, il retombe sur le cadran.** « Es-tu
+  fatigué ? », « as-tu faim ? » et « fait-il nuit ? » bougent toutes
+  ensemble ; la part propre à l'énergie reste de +0,03, comme au test 14.
+  Apprendre des témoins a baissé le débordement (+0,183 → +0,128), sans le
+  supprimer.
+- Le lecteur a donc appris des **associations question par question**,
+  pas un contenu « énergie » qu'il appliquerait à des mots nouveaux. Pour
+  un rapport qui a un sens, il faudrait sans doute bien plus de
+  formulations, ou un modèle plus grand qui relie déjà « fatigué » à
+  « énergie basse ».
+
 ## Test 16 pré-enregistré : le lecteur dit-il le besoin, ou ce que l'agent va faire ?
 
 Protocole `docs/LLM_NEED_INTENTION_PROTOCOL.md` (commit `4f84752`), code
