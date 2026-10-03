@@ -1,0 +1,137 @@
+[
+ {
+  "lr": 3e-05,
+  "calibration": {
+   "temperature": 0.10859408974647522,
+   "bonus": 0.21718817949295044,
+   "base_ratio": 0.9161631461385302,
+   "base_digits": 3
+  },
+  "domains": {
+   "valid": false,
+   "checks": {
+    "mots_learned": true,
+    "base_learned": true,
+    "suites_flat": false,
+    "calcul_known": true
+   },
+   "values": {
+    "K_mots": {
+     "mean": 4.6279575160394115,
+     "low": 4.570761385653167,
+     "high": 4.68269291537193,
+     "n": 12
+    },
+    "K_base": {
+     "mean": 1.719937560458978,
+     "low": 1.6757571860216558,
+     "high": 1.7626017149382582,
+     "n": 12
+    },
+    "suites_late_progress": 0.0453737046983507,
+    "L0": {
+     "mots": 4.896509647369385,
+     "base": 1.8773267269134521,
+     "calcul": 0.720044732093811,
+     "suites": 4.450714111328125
+    }
+   }
+  },
+  "interference": {
+   "median_move": 0.10900890827178955,
+   "median_progress": 0.10735304653644562,
+   "small": false
+  },
+  "passes": false
+ },
+ {
+  "lr": 1e-05,
+  "calibration": {
+   "temperature": 0.08936205506324768,
+   "bonus": 0.17872411012649536,
+   "base_ratio": 0.9073092379677036,
+   "base_digits": 3
+  },
+  "domains": {
+   "valid": true,
+   "checks": {
+    "mots_learned": true,
+    "base_learned": true,
+    "suites_flat": true,
+    "calcul_known": true
+   },
+   "values": {
+    "K_mots": {
+     "mean": 4.524235226213932,
+     "low": 4.459740818478167,
+     "high": 4.584254551616808,
+     "n": 12
+    },
+    "K_base": {
+     "mean": 1.703315882012248,
+     "low": 1.6574302449201546,
+     "high": 1.7419924707617611,
+     "n": 12
+    },
+    "suites_late_progress": 0.010319349500868056,
+    "L0": {
+     "mots": 4.896509647369385,
+     "base": 1.8773267269134521,
+     "calcul": 0.720044732093811,
+     "suites": 4.450714111328125
+    }
+   }
+  },
+  "interference": {
+   "median_move": 0.03627559542655945,
+   "median_progress": 0.06948148459196091,
+   "small": false
+  },
+  "passes": false
+ },
+ {
+  "lr": 3e-06,
+  "calibration": {
+   "temperature": 0.06578773260116577,
+   "bonus": 0.13157546520233154,
+   "base_ratio": 0.79838010790426,
+   "base_digits": 3
+  },
+  "domains": {
+   "valid": true,
+   "checks": {
+    "mots_learned": true,
+    "base_learned": true,
+    "suites_flat": true,
+    "calcul_known": true
+   },
+   "values": {
+    "K_mots": {
+     "mean": 4.257192015647888,
+     "low": 4.155248585529626,
+     "high": 4.347165542220076,
+     "n": 12
+    },
+    "K_base": {
+     "mean": 1.498820314804713,
+     "low": 1.4299722534914812,
+     "high": 1.5644547444457808,
+     "n": 12
+    },
+    "suites_late_progress": 0.006715223524305556,
+    "L0": {
+     "mots": 4.896509647369385,
+     "base": 1.8773267269134521,
+     "calcul": 0.720044732093811,
+     "suites": 4.450714111328125
+    }
+   }
+  },
+  "interference": {
+   "median_move": 0.017268896102905273,
+   "median_progress": 0.05390608310699463,
+   "small": false
+  },
+  "passes": false
+ }
+]

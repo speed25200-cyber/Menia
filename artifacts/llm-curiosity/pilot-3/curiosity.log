@@ -1,0 +1,9 @@
+{"lr": 3e-05, "calibration": {"temperature": 0.10859408974647522, "bonus": 0.21718817949295044, "base_ratio": 0.9161631461385302, "base_digits": 3}, "interference": {"median_move": 0.10900890827178955, "median_progress": 0.10735304653644562, "small": false}, "passes": false, "checks": {"mots_learned": true, "base_learned": true, "suites_flat": false, "calcul_known": true}}
+{"lr": 1e-05, "calibration": {"temperature": 0.08936205506324768, "bonus": 0.17872411012649536, "base_ratio": 0.9073092379677036, "base_digits": 3}, "interference": {"median_move": 0.03627559542655945, "median_progress": 0.06948148459196091, "small": false}, "passes": false, "checks": {"mots_learned": true, "base_learned": true, "suites_flat": true, "calcul_known": true}}
+pilot-random-3e-06.jsonl life 8: G = 5.731, 105 s
+pilot-random-3e-06.jsonl life 9: G = 5.664, 106 s
+pilot-random-3e-06.jsonl life 10: G = 5.861, 106 s
+pilot-random-3e-06.jsonl life 11: G = 5.993, 107 s
+{"lr": 3e-06, "calibration": {"temperature": 0.06578773260116577, "bonus": 0.13157546520233154, "base_ratio": 0.79838010790426, "base_digits": 3}, "interference": {"median_move": 0.017268896102905273, "median_progress": 0.05390608310699463, "small": false}, "passes": false, "checks": {"mots_learned": true, "base_learned": true, "suites_flat": true, "calcul_known": true}}
+no rate passes the pilot: the test stops
+exit 0
