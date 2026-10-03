@@ -112,6 +112,7 @@ jobs:
       - run: python -m research.curiosity_pilot verdicts
       - run: python -m research.need_listening verdicts
       - run: python -m research.need_carry verdicts
+      - run: python -m research.need_memory verdicts
       - run: python scripts/check_reliability_artifacts.py
       - run: python scripts/check_self_model_artifacts.py
       - run: python scripts/audit_self_monitor_information.py

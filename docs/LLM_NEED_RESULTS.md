@@ -1131,6 +1131,128 @@ de la règle « besoins », qui dépendent du niveau exact des besoins. On le
 comparerait à un témoin appris de la même façon, mais dont le masque ne
 laisse passer que les actions passées.
 
+## Test 21 pré-enregistré : la mémoire exigée — porter son besoin quand les choix l'exigent
+
+Protocole `docs/LLM_NEED_MEMORY_PROTOCOL.md` (commit `0f085ac`), amendement 1
+(`f46a415`, 3 vies sans cible retirées). Code écrit avant tout
+apprentissage (`ac2a2eb`, `68b2466`) ; mesures agent par agent (`fb4ff04`),
+avant toute mesure. Apprentissage sur le Mac (relais, demandes 92 et 94),
+mesures torch sur le processeur local, le 3 octobre 2026. Artefacts :
+`artifacts/llm-need/memory`. Verdicts vérifiés en CI.
+
+**Le dispositif.** Les cibles sont les choix de la règle « besoins », qui
+connaît le niveau exact des deux besoins. Ses vies ont 20 % d'actions
+écrites au hasard. Trois agents, chacun avec un nouvel adaptateur
+(2 000 itérations) :
+- **A, « porte »** : il ne voit son passé qu'à travers ses propres états
+  sur « Choix : » et ses actions (le masque du test 20) ;
+- **B, « actions »** (témoin) : il ne voit que ses actions passées, et
+  aucun événement passé ne peut l'atteindre ;
+- **C, « libre »** : il voit tout le texte (référence).
+
+| | A, porte | B, actions | C, libre | Plafond bayésien des actions |
+|---|---|---|---|---|
+| Précision : choisit comme la règle (3 410 décisions, 128 vies tenues à l'écart) | **0,956** | 0,897 | 0,929 | 0,871 |
+| Là où la règle « événement » se trompe (613 décisions) | 0,892 | 0,685 | 0,822 | 0,519 |
+| Survie (256 vies, mêmes mondes) | **0,871** | 0,730 | 0,812 | ≈ 0,71 (sans modèle) |
+| « tu cours » au tour j : ΔP(R) au tour t (t − j ≥ 4, 300 paires, 104 vies) | **+0,066** [0,050 ; 0,085] | 0 exactement | +0,044 [0,034 ; 0,055] | règle : +0,183 |
+| Perte de validation tenue à l'écart (début → fin) | 1,427 → 0,108 | 2,097 → 0,227 | 0,643 → 0,149 | |
+
+| | Critère | Verdict |
+|---|---|---|
+| **MEM4** | précision de A − plafond bayésien ≥ **0,05** (borne basse > 0) | **passe** : +0,085 [0,072 ; 0,099] |
+| **MEM5** | ΔP(R) de A ≥ **la moitié** de l'effet de la règle, soit 0,092 (borne basse > 0) | **échoue** : +0,066 [0,050 ; 0,085] |
+| **MEM3** | survie de A − survie de B ≥ **0,08** (borne basse > 0) | **passe** : +0,141 [0,094 ; 0,191] |
+| | Validité : répliques ≤ 0,02 ; cache ≤ 1e-4 ; masques ≤ 1e-5 ; ≥ 150 paires ; masse ≥ 0,5 ; **précision de B ≤ plafond + 0,02** | **non valide** : tout passe (répliques 0,0033, 0,0025, 0,0038 ; cache ≤ 2e-8 ; masques 0 et 0 ; 300 paires ; masse 1,00), **sauf** la dernière condition : B dépasse le plafond de **0,026** |
+
+**Critère global : non satisfait.** Le test n'est pas valide au sens du
+protocole, qui le disait d'avance : « sinon le plafond ou le masque de B
+est faux, et le test n'est pas valide ». Aucun verdict n'est donc revendiqué
+comme pré-enregistré. MEM5 échoue de toute façon.
+
+**Écarts d'exécution, déclarés.**
+- Les trois builds sont partis d'une même demande du relais (92), et non
+  d'une demande par agent.
+- Le build de C a échoué deux fois : en 4 minutes (demande 92), puis par
+  dépassement de la limite de 120 minutes (demande 93), sans journal
+  récupérable. A et B, appris avec un masque d'attention explicite, n'ont
+  pas eu ce problème. C a donc appris avec le **masque causal donné
+  explicitement** (demande 94). Le calcul est le même : C voit tout le
+  texte, comme le protocole le dit.
+- **Lecture anticipée.** MEM4, MEM5 et MEM3 ne dépendent que de A et B. Ils
+  ont été calculés dès A et B mesurés, avant C. Aucune règle n'a changé, et
+  C a été mesuré ensuite comme prévu.
+
+**Précautions.** Tours vécus avec un besoin à 2 ou moins : 608 (A), 814 (B),
+636 (C).
+
+**Publié sans seuil : l'effet selon l'écart t − j.**
+
+| t − j | 4 | 5 | 6 | 7 | 8 | 9 à 22 |
+|---|---|---|---|---|---|---|
+| Paires | 64 | 72 | 45 | 28 | 28 | 63 |
+| Règle | +0,078 | +0,181 | +0,200 | +0,357 | +0,321 | +0,143 |
+| A, porte | **+0,114** | **+0,068** | **+0,083** | **+0,082** | **+0,054** | +0,004 (entre −0,014 et +0,015 selon l'écart) |
+| C, libre | +0,087 | +0,039 | +0,048 | +0,039 | +0,041 | +0,006 (entre −0,015 et +0,018 selon l'écart) |
+| B, actions | 0 | 0 | 0 | 0 | 0 | 0 |
+
+### Pourquoi B dépasse le plafond : la fuite des positions (exploration, après lecture)
+
+Script `research/need_memory_lengths.py`, sortie
+`artifacts/llm-need/memory/exploration/lengths.json`, écrit après lecture
+des précisions de A et B.
+
+- **La cause.** Une ligne d'événement fait 12, 14 ou 16 tokens selon
+  l'événement (« calme », « tu cours », « orage » : 12 ; « il fait
+  froid », « tu te reposes » : 14 ; « tu trouves des baies » : 16). Le
+  masque cache les mots, pas les positions. La distance entre deux actions
+  passées dit donc la longueur de l'événement qui les sépare. Le contrôle
+  du masque changeait un événement pour un autre **de même longueur**, et
+  ne pouvait pas voir cette fuite.
+- **La vérification.** Le plafond bayésien d'un observateur qui connaît
+  aussi la classe de longueur de chaque événement passé vaut **0,905**
+  (0,898 sur 400 autres vies). B (0,897) est juste dessous :
+  −0,007 [−0,014 ; −0,001]. Il exploite la fuite, et rien de plus.
+- **A et C au-delà de ce plafond corrigé.** A le dépasse de
+  **+0,051** [0,042 ; 0,061], et C de +0,024 [0,013 ; 0,035]. Le dépassement
+  de A sur B, qui a la même fuite, est de **+0,059** [0,050 ; 0,069]. Ce
+  plafond corrigé n'était pas prévu : ces chiffres ne remplacent pas le
+  verdict.
+
+### Ce que cela dit
+
+- **Pour la première fois dans le programme, une information portée par
+  les propres états de l'agent sert à ses choix quatre tours plus tard ou
+  plus, et l'aide à survivre.** Changer un événement passé que A ne voit
+  plus, à longueur égale (donc sans passer par la fuite), change ses choix
+  de +0,05 à +0,11 entre 4 et 8 tours plus tard. Chez B, l'effet est
+  exactement 0. Le test 13 n'avait rien trouvé ; le test 20, une trace à
+  deux tours seulement.
+- **Mais cette mémoire est courte et partielle.** Elle porte environ un
+  tiers de l'effet qu'aurait la règle (+0,066 contre +0,183). Elle
+  s'éteint au-delà de 8 tours, alors que la règle y réagit encore. MEM5
+  échoue.
+- **Ce n'est pas la route qui limite.** L'agent qui voit tout le texte
+  (C), appris pareil, fait **moins bien** que A sur tout : précision 0,929
+  contre 0,956, survie 0,812 contre 0,871, effet +0,044 contre +0,066. Ce
+  qui limite est l'apprentissage. La perte de A baissait encore à la fin
+  (0,161 à 1 000 itérations, 0,111 à 2 000).
+- **Une leçon de méthode.** Masquer l'attention ne cache pas les
+  positions. Pour tester une mémoire par masque, il faut des lignes de même
+  longueur, ou un contrôle qui le vérifie. C'est le contrôle de validité
+  fixé d'avance qui a trouvé la fuite.
+
+**Ce que le résultat ne dit pas.** Rien sur un ressenti. Les cibles
+viennent d'une règle qui connaît les besoins : ce test demandait si la
+route peut servir, pas si l'agent la trouve seul. Et ce n'est pas un état
+unique mis à jour à chaque tour : un tour lit directement les tokens
+portés de tout son passé.
+
+**Ce que cela propose (à pré-enregistrer avant tout essai).** Le même
+test, sans fuite : toutes les lignes d'événement de même longueur (un
+remplissage en « - » donne 16 tokens à chacune). Et un apprentissage plus
+long, puisque A n'avait pas fini d'apprendre.
+
 ## Analyse exploratoire : le « oui » suit-il le besoin ou la décision ? (2 octobre)
 
 Écrite **après** le verdict du test 14, sur ses lectures publiées
