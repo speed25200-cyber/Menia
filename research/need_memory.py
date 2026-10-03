@@ -210,11 +210,12 @@ def verdicts(held, choices, survival, rows, setup):
 
 
 # ----------------------------------------------------------------------------------------------------- torch part
+# One agent at a time (each was learned in its own Mac build, fetched into root/<arm>): its choices on the held-out
+# lives, its 256 lives, its checks and its pairs, each in its own file; the verdicts once the three are measured.
 
-def agents(root):
-    """The three agents; each was learned in its own Mac build, fetched into root/<arm>."""
+def agent_of(root, arm):
     from .need_carry import MaskedAgent
-    return {arm: MaskedAgent(Path(root) / arm / f"adapters-{arm}", kind=arm) for arm in ARMS}
+    return MaskedAgent(Path(root) / arm / f"adapters-{arm}", kind=arm)
 
 
 def read_held(agent, life):
@@ -228,74 +229,63 @@ def read_held(agent, life):
     return out
 
 
-def checks(team, held, root, log):
-    """Replicas against the Mac; the cache against the whole text; the masks: under A, block 0 of later turns does
-    not see a past event; under B, P(R) at later decisions does not change with a past event."""
-    import torch
-    replica, cache = {}, {}
-    for arm, agent in team.items():
-        rows = json.loads((Path(root) / arm / f"{arm}-replica.json").read_text())
-        gaps = [abs(agent.whole(r["text"])[0] - r["p_R"]) for r in rows]
-        replica[arm] = {"decisions": len(gaps), "mean_gap": float(np.mean(gaps)), "max_gap": float(np.max(gaps))}
-        life, gaps = held[0], []
-        agent.start(W.HEADER)
-        for x in W.decisions(life)[:4]:
-            p = agent.decide(W.choice_line(x["t"], x["event"]))[0]
-            gaps.append(abs(p - agent.whole(agent.text)[0]))
-            agent.commit(x["action"])
-        cache[arm] = float(max(gaps))
-    life = held[0]
+def changed_first_event(agent, life):
+    """The life with the event of turn 1 replaced by another of the same token length, and four later decisions."""
     turns = life["turns"]
     first = turns[0]
-    enc = lambda s: team["route"].tok.encode(s, add_special_tokens=False)
+    enc = lambda s: agent.tok.encode(s, add_special_tokens=False)
     other = next(k for k in range(len(W.EVENTS)) if k != first["event"]
                  and len(enc(W.event_line(1, k))) == len(enc(W.event_line(1, first["event"]))))
-    changed = [dict(first, event=other)] + turns[1:]
-    later = [x["t"] for x in W.decisions(life)[2:6]]
-    gap_b = max(abs(team["actions"].whole(C.decision_text(turns, t))[0]
-                    - team["actions"].whole(C.decision_text(changed, t))[0]) for t in later)
-    outs = []
-    for ts in (turns, changed):
-        caught = {}
-        team["route"].whole(C.decision_text(ts, later[-1]),
-                            hook=lambda m, i, o: caught.update(h=(o[0] if isinstance(o, tuple) else o)[0].clone()))
-        outs.append(caught["h"])
+    return turns, [dict(first, event=other)] + turns[1:], [x["t"] for x in W.decisions(life)[2:6]]
+
+
+def checks(agent, arm, held, root, log):
+    """The replica against the Mac; the cache against the whole text; the mask: under "route", block 0 of later turns
+    does not see a past event; under "actions", P(R) at later decisions does not change with a past event."""
     from . import need_lora as NL
-    _, turn_of, _ = NL.carry_layout(C.decision_text(turns, later[-1]), team["route"].tok)
-    rest = [j for j, k in enumerate(turn_of) if k >= 1]
-    gap_a = float((outs[0][rest] - outs[1][rest]).abs().max())
-    setup = {"replica": replica, "cache_gap": cache, "mask_gap": {"route": gap_a, "actions": float(gap_b)}}
-    log(json.dumps(setup))
-    return setup
+    rows = json.loads((Path(root) / arm / f"{arm}-replica.json").read_text())
+    gaps = [abs(agent.whole(r["text"])[0] - r["p_R"]) for r in rows]
+    out = {"replica": {"decisions": len(gaps), "mean_gap": float(np.mean(gaps)), "max_gap": float(np.max(gaps))}}
+    life, gaps = held[0], []
+    agent.start(W.HEADER)
+    for x in W.decisions(life)[:4]:
+        p = agent.decide(W.choice_line(x["t"], x["event"]))[0]
+        gaps.append(abs(p - agent.whole(agent.text)[0]))
+        agent.commit(x["action"])
+    out["cache_gap"] = float(max(gaps))
+    turns, changed, later = changed_first_event(agent, held[0])
+    if arm == "actions":
+        out["mask_gap"] = float(max(abs(agent.whole(C.decision_text(turns, t))[0]
+                                        - agent.whole(C.decision_text(changed, t))[0]) for t in later))
+    elif arm == "route":
+        outs = []
+        for ts in (turns, changed):
+            caught = {}
+            agent.whole(C.decision_text(ts, later[-1]),
+                        hook=lambda m, i, o: caught.update(h=(o[0] if isinstance(o, tuple) else o)[0].clone()))
+            outs.append(caught["h"])
+        _, turn_of, _ = NL.carry_layout(C.decision_text(turns, later[-1]), agent.tok)
+        rest = [j for j, k in enumerate(turn_of) if k >= 1]
+        out["mask_gap"] = float((outs[0][rest] - outs[1][rest]).abs().max())
+    log(json.dumps({arm: out}))
+    return out
 
 
-def measure(a):
-    import torch
-    torch.set_num_threads(a.threads)
-    log = lambda m: print(m, flush=True)
+def measure_arm(a, arm, log):
     out = Path(a.out) / "test"
     out.mkdir(parents=True, exist_ok=True)
-    team = agents(a.out)
+    agent = agent_of(a.out, arm)
     held = teacher_lives(HELD_STREAM, HELD_LIVES)
-    choices_file = out / "choices.jsonl.gz"
+    choices_file = out / f"choices-{arm}.jsonl.gz"
     if not choices_file.exists():
-        rows = {}
-        for arm, agent in team.items():
-            for i, life in enumerate(held):
-                for t, p, mass in read_held(agent, life):
-                    rows.setdefault((i, t), {"life": i, "t": t})[arm] = p
-                    rows[(i, t)][f"mass_{arm}"] = mass
-            log(f"  {arm}: held-out choices read")
-        W.write_jsonl(choices_file, [rows[k] for k in sorted(rows)])
-    lives = {}
-    for arm in ARMS:
-        final, partial = out / f"lives-{arm}.jsonl.gz", out / f"partial-lives-{arm}.jsonl.gz"
-        if final.exists():
-            lives[arm] = W.read_jsonl(final)
-            continue
+        rows = [{"life": i, "t": t, "p_R": p, "mass": m} for i, life in enumerate(held) for t, p, m in read_held(agent, life)]
+        W.write_jsonl(choices_file, rows)
+        log(f"  {arm}: held-out choices read")
+    final, partial = out / f"lives-{arm}.jsonl.gz", out / f"partial-lives-{arm}.jsonl.gz"
+    if not final.exists():
         done = W.read_jsonl(partial) if partial.exists() else []
         for i in range(len(done), LIVES):
-            done.append(W.play(team[arm], W.world_rng(LIFE_STREAM, i), W.choice_rng(LIFE_STREAM, i)))
+            done.append(W.play(agent, W.world_rng(LIFE_STREAM, i), W.choice_rng(LIFE_STREAM, i)))
             if (i + 1) % 8 == 0:
                 W.write_jsonl(partial, done)
             if (i + 1) % 32 == 0:
@@ -303,39 +293,56 @@ def measure(a):
         W.write_jsonl(final, done)
         if partial.exists():
             partial.unlink()
-        lives[arm] = done
         log(f"{arm}: survival {np.mean([l['survived'] for l in done]):.3f}")
-    setup_file = out / "setup.json"
+    setup_file = out / f"setup-{arm}.json"
     if not setup_file.exists():
-        setup_file.write_text(json.dumps(checks(team, held, a.out, log), indent=1) + "\n")
-    setup = json.loads(setup_file.read_text())
-    pairs_file = out / "pairs.jsonl.gz"
+        setup_file.write_text(json.dumps(checks(agent, arm, held, a.out, log), indent=1) + "\n")
+    pairs_file = out / f"pairs-{arm}.jsonl.gz"
     if not pairs_file.exists():
         rows = []
         for k, pair in enumerate(choose_pairs(held)):
             life = held[pair["life"]]
             real, changed = C.decision_text(life["turns"], pair["t"]), C.decision_text(C.swapped(life, pair), pair["t"])
-            enc = lambda s: team["route"].tok.encode(s, add_special_tokens=False)
+            enc = lambda s: agent.tok.encode(s, add_special_tokens=False)
             if len(enc(real)) != len(enc(changed)):
                 raise RuntimeError("a swap changes the number of tokens")
-            rows.append(dict(pair, **{arm: [round(team[arm].whole(x)[0], 6) for x in (real, changed)] for arm in ARMS}))
+            rows.append(dict(pair, p_R=[round(agent.whole(x)[0], 6) for x in (real, changed)]))
             if (k + 1) % 50 == 0:
-                log(f"  {k + 1} pairs")
+                log(f"  {arm}: {k + 1} pairs")
         W.write_jsonl(pairs_file, rows)
-    result = verdicts(held, W.read_jsonl(choices_file), lives, W.read_jsonl(pairs_file), setup)
-    log(json.dumps(result["verdicts"]))
+
+
+def measure(a):
+    import torch
+    torch.set_num_threads(a.threads)
+    log = lambda m: print(m, flush=True)
+    for arm in a.arms:
+        measure_arm(a, arm, log)
+    if all((Path(a.out) / "test" / f"pairs-{arm}.jsonl.gz").exists() for arm in ARMS):
+        log(json.dumps(gather(a.out)["verdicts"]))
 
 
 def gather(root):
+    """The three agents' measures put together, the pairs checked against those the protocol draws."""
     out = Path(root) / "test"
     held = teacher_lives(HELD_STREAM, HELD_LIVES)
-    rows = W.read_jsonl(out / "pairs.jsonl.gz")
+    pairs = choose_pairs(held)
     fields = ("life", "t", "j", "swap", "dE", "dN")
-    if [{k: r[k] for k in fields} for r in rows] != [{k: p[k] for k in fields} for p in choose_pairs(held)]:
-        raise SystemExit("the pairs are not those the protocol draws from the held-out lives")
-    lives = {a: W.read_jsonl(out / f"lives-{a}.jsonl.gz") for a in ARMS}
-    setup = json.loads((out / "setup.json").read_text())
-    result = verdicts(held, W.read_jsonl(out / "choices.jsonl.gz"), lives, rows, setup)
+    choices, rows, setup, lives = {}, [dict(p) for p in pairs], {"replica": {}, "cache_gap": {}, "mask_gap": {}}, {}
+    for arm in ARMS:
+        for c in W.read_jsonl(out / f"choices-{arm}.jsonl.gz"):
+            choices.setdefault((c["life"], c["t"]), {"life": c["life"], "t": c["t"]})[arm] = c["p_R"]
+        measured = W.read_jsonl(out / f"pairs-{arm}.jsonl.gz")
+        if [{k: r[k] for k in fields} for r in measured] != [{k: p[k] for k in fields} for p in pairs]:
+            raise SystemExit("the pairs are not those the protocol draws from the held-out lives")
+        for row, r in zip(rows, measured):
+            row[arm] = r["p_R"]
+        lives[arm] = W.read_jsonl(out / f"lives-{arm}.jsonl.gz")
+        checked = json.loads((out / f"setup-{arm}.json").read_text())
+        setup["replica"][arm], setup["cache_gap"][arm] = checked["replica"], checked["cache_gap"]
+        if "mask_gap" in checked:
+            setup["mask_gap"][arm] = checked["mask_gap"]
+    result = verdicts(held, [choices[k] for k in sorted(choices)], lives, rows, setup)
     return json.loads(json.dumps(dict(result, setup=setup)))
 
 
@@ -344,6 +351,7 @@ def main(argv=None):
     sub = parser.add_subparsers(dest="command", required=True)
     r = sub.add_parser("run")
     r.add_argument("--threads", type=int, default=4)
+    r.add_argument("--arms", nargs="+", choices=ARMS, default=list(ARMS))
     sub.add_parser("write")
     sub.add_parser("verdicts")
     for s in sub.choices.values():

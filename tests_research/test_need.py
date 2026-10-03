@@ -913,6 +913,38 @@ class MemoryVerdictTests(unittest.TestCase):
             NM.verdicts(held, perfect[1:], {"route": lives, "actions": dead, "free": lives}, rows, ok)
 
 
+class MemoryGatherTests(unittest.TestCase):
+    def test_the_three_agents_measured_apart_are_put_together(self):
+        from research import need_memory as NM
+        held = NM.teacher_lives(NM.HELD_STREAM, NM.HELD_LIVES)
+        pairs = NM.choose_pairs(held)
+        lives = lives_of(W.Oracle(), 342, 8)
+        for life in lives:
+            for t in W.decisions(life):
+                t["mass"] = 0.9
+        with tempfile.TemporaryDirectory() as root:
+            out = Path(root) / "test"
+            out.mkdir()
+            for arm in NM.ARMS:
+                W.write_jsonl(out / f"choices-{arm}.jsonl.gz", [{"life": i, "t": x["t"], "p_R": float(x["rule"] == 0),
+                                                                 "mass": 1.0} for i, l in enumerate(held)
+                                                                for x in W.decisions(l)])
+                W.write_jsonl(out / f"pairs-{arm}.jsonl.gz", [dict(p, p_R=[0.2, 0.2 + NM.rule_effect(held[p["life"]], p)])
+                                                              for p in pairs])
+                W.write_jsonl(out / f"lives-{arm}.jsonl.gz", lives)
+                checked = {"replica": {"mean_gap": 0.01}, "cache_gap": 1e-6}
+                if arm != "free":
+                    checked["mask_gap"] = 0.0
+                (out / f"setup-{arm}.json").write_text(json.dumps(checked))
+            result = NM.gather(root)
+            self.assertTrue(result["verdicts"]["MEM4"] and result["verdicts"]["MEM5"])
+            self.assertFalse(result["verdicts"]["valid"])  # B as good as the rule beats the ceiling: not valid
+            self.assertEqual(result["values"]["pairs"], len(pairs))
+            W.write_jsonl(out / "pairs-free.jsonl.gz", [dict(p, p_R=[0.2, 0.2], t=p["t"] + 1) for p in pairs])
+            with self.assertRaises(SystemExit):
+                NM.gather(root)
+
+
 class OwnershipTests(unittest.TestCase):
     def test_the_other_lives_beside_without_changing_the_agent(self):
         alone = W.play(W.Oracle(), W.world_rng(225, 0), W.choice_rng(225, 0))

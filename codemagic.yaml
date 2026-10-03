@@ -974,7 +974,9 @@ workflows:
             rm -rf "$OUT/fused-start"
           elif [ "$NEED_STAGE" = "memory" ]; then
             # docs/LLM_NEED_MEMORY_PROTOCOL.md: one agent per build (NEED_ARM: route, actions or free), the final agent
-            # fused, a new adapter on the lives of the rule "needs", the validation lives held out; masks checked first
+            # fused, a new adapter on the lives of the rule "needs", the validation lives held out; masks checked first.
+            # The fused model is removed even on a failure, so that the artefacts (and the log) stay small enough
+            trap 'rm -rf "$OUT/fused-start"' EXIT
             NEED_TINY_MODEL="$MODEL" python -m unittest tests_research.test_need.MLXCarryTests \
               tests_research.test_need.MLXMemoryTests -v 2>&1 | tee "$OUT/memory-$NEED_ARM-check.log" | tail -5
             python -m research.need_mlx memory --arm "$NEED_ARM" --start "$NEED_START" --model "$MODEL" \
