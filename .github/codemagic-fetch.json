@@ -1,7 +1,7 @@
 {
- "request": 95,
+ "request": 96,
  "app": "Menia",
- "wait_minutes": 230,
+ "wait_minutes": 160,
  "builds": [
   {
    "launch": {
@@ -9,14 +9,16 @@
     "branch": "claude/causal-self-model-llm-results-mauabk",
     "variables": {
      "NEED_STAGE": "memory",
-     "NEED_ARM": "route",
-     "NEED_ITERS": "2000",
+     "NEED_ITERS": "1000",
      "NEED_NO_LEAK": "1",
-     "NEED_MINUTES": "110",
-     "NEED_START": "artifacts/llm-need/final/report/adapters-final"
+     "NEED_MINUTES": "100",
+     "NEED_START": "artifacts/llm-need/final/report/adapters-final",
+     "NEED_ARM": "route",
+     "NEED_CONTINUE": "artifacts/llm-need/memory-no-leak/route-1/adapters-route",
+     "NEED_SKIP": "2000"
     }
    },
-   "dest": "artifacts/llm-need/memory-no-leak/route-1"
+   "dest": "artifacts/llm-need/memory-no-leak/route-2"
   },
   {
    "launch": {
@@ -24,11 +26,11 @@
     "branch": "claude/causal-self-model-llm-results-mauabk",
     "variables": {
      "NEED_STAGE": "memory",
-     "NEED_ARM": "actions",
-     "NEED_ITERS": "2000",
+     "NEED_ITERS": "1000",
      "NEED_NO_LEAK": "1",
-     "NEED_MINUTES": "110",
-     "NEED_START": "artifacts/llm-need/final/report/adapters-final"
+     "NEED_MINUTES": "100",
+     "NEED_START": "artifacts/llm-need/final/report/adapters-final",
+     "NEED_ARM": "actions"
     }
    },
    "dest": "artifacts/llm-need/memory-no-leak/actions-1"
