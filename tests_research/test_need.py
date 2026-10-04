@@ -1107,6 +1107,55 @@ class CarriedContentTests(unittest.TestCase):
         self.assertLessEqual(d["low"], d["mean"])
 
 
+class ChainTests(unittest.TestCase):
+    def test_draw(self):
+        from research import need_chain as CH, need_carried_content as CC, need_memory as NM
+        held = NM.teacher_lives(NM.HELD_STREAM, 40)
+        grafts = CH.draw(held)
+        self.assertEqual(grafts, CH.draw(held))
+        self.assertTrue(grafts)
+        at = [{x["t"]: x for x in W.decisions(l)} for l in held]
+        for g in grafts:
+            r, d, i, t = g["r"], g["d"], g["i"], g["t"]
+            self.assertNotEqual(r, d)
+            self.assertIn(g["h"], CH.GAPS)
+            self.assertEqual(t - i, g["h"])
+            self.assertTrue(all(k in at[r] for k in range(i, t + 1)))
+            self.assertEqual(at[r][i]["action"], at[d][i]["action"])
+            self.assertNotEqual((at[r][i]["E"], at[r][i]["N"]), (at[d][i]["E"], at[d][i]["N"]))
+            self.assertNotEqual(g["rule_effect"], 0)
+            self.assertEqual(g["rule_effect"], CC.rule_effect(held[r], held[d], i, t))
+        for r in range(len(held)):
+            for h in CH.GAPS:
+                self.assertLessEqual(sum(1 for g in grafts if g["r"] == r and g["h"] == h), CH.PER_GAP)
+
+    def test_verdicts(self):
+        from research import need_chain as CH, need_memory as NM
+        grafts = CH.draw(NM.teacher_lives(NM.HELD_STREAM, NM.HELD_LIVES))
+        rng = np.random.default_rng(5)
+        ok = {"extend_gap": 1e-8, "self_graft_gap": 0.0, "positions_same": True}
+
+        def rows(total, direct):
+            out = []
+            for g in grafts:
+                e, noise = g["rule_effect"], 0.01 * rng.standard_normal()
+                out.append(dict(g, p_R={"own": 0.5, "total": 0.5 + e * total + noise, "direct": 0.5 + e * direct,
+                                        "mediators": 0.5 + e * (total - direct)}))
+            return out
+
+        chain = CH.verdicts(rows(0.4, 0.1), ok)
+        self.assertTrue(all(chain["verdicts"].values()))
+        self.assertAlmostEqual(chain["values"]["chain_share"]["mean"], 0.75, delta=0.02)
+        self.assertFalse(CH.verdicts(rows(0.4, 0.3), ok)["verdicts"]["CHAIN"])
+        weak = CH.verdicts(rows(0.05, 0.0), ok)["verdicts"]
+        self.assertFalse(weak["prior"] or weak["CHAIN"])
+        self.assertFalse(CH.verdicts(rows(0.4, 0.1), dict(ok, extend_gap=1e-3))["verdicts"]["valid"])
+        few = [r for r in rows(0.4, 0.1) if r["h"] == 2 or r["r"] < 20]
+        self.assertFalse(CH.verdicts(few, ok)["verdicts"]["valid"])
+        self.assertEqual({k: v["count"] for k, v in chain["values"]["by_gap"].items()},
+                         {str(h): sum(1 for g in grafts if g["h"] == h) for h in CH.GAPS})
+
+
 class OwnershipTests(unittest.TestCase):
     def test_the_other_lives_beside_without_changing_the_agent(self):
         alone = W.play(W.Oracle(), W.world_rng(225, 0), W.choice_rng(225, 0))
