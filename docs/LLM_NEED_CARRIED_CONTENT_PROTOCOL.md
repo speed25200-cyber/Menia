@@ -139,3 +139,19 @@ sont vécues par aucun modèle.
 - **Mesures** : `research/need_carried_content.py` (à écrire), torch sur le
   processeur local.
 - **Verdicts** : numpy seulement, vérifiés en CI.
+
+## Amendement 1 (4 octobre 2026, avant toute mesure)
+
+**Le problème.** En écrivant le code, avant toute lecture par le modèle,
+nous avons constaté que le tirage prévu ne laisse que **80** greffes (a) sur
+400 dont l'effet de la règle n'est pas nul. La validité en demande au moins
+100 : le test aurait été invalide par construction.
+
+**Ce qui change** (le tirage seulement ; critères et seuils inchangés) :
+- **(a) besoins différents, effet non nul** : la donneuse est tirée parmi
+  les admissibles dont l'effet de la règle n'est pas nul. Jusqu'à 400
+  greffes. C'est sur elles que portent STATE1 et STATE2.
+- **(a0) besoins différents, effet nul** : une donneuse tirée parmi les
+  admissibles dont l'effet est nul. Jusqu'à 200 greffes, publiées sans
+  seuil, comme le protocole le prévoyait pour ces greffes.
+- **(b) mêmes besoins** : inchangé, jusqu'à 200 greffes.
