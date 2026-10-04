@@ -1844,6 +1844,86 @@ au-dessus de la moitié qu'à quatre tours (voir selon h).
   test 24 (FAR1). La lecture par les médiateurs seuls (FAR2) n'en dépend
   pas ; elle passe, de peu.
 
+## Test 27 pré-enregistré : le relais pas à pas
+
+Protocole `docs/LLM_NEED_RELAY_PROTOCOL.md` (commit `4a4527a`), écrit après
+la publication du test 25 et sa relecture, avant le code et toute mesure
+(seul le nombre de greffes du tirage avait été compté, sans modèle). Code
+écrit avant toute mesure (`b8dfba9`). Mesures torch sur le processeur
+local, le 4 octobre 2026, en trois processus à un seul fil. Artefacts :
+`artifacts/llm-need/relay`. Verdicts recalculés en local (identiques) ; la
+CI les vérifie à chaque envoi.
+
+**La question.** Au test 25, l'effet d'un état greffé passe surtout par les
+états des tours intermédiaires. Mais chaque état reprend-il **celui
+d'avant** (i → i + 1 → i + 2), ou chacun prend-il la greffe directement de
+l'état ancien (i → i + 2) ? On regarde l'état du tour i + 2, à trois tours
+du choix (t = i + 3), sur **128 vies neuves**.
+
+**La mesure.** Trois versions de l'état porté du tour i + 2 :
+- **complet** : tour i greffé, tour i + 1 calculé avec la greffe ;
+- **par i seul** : tour i greffé, mais tour i + 1 remis à ses valeurs sans
+  greffe avant de calculer le tour i + 2 ;
+- **par i + 1 seul** : tour i sans greffe, tour i + 1 pris de la lecture
+  avec greffe.
+
+Chaque version est mise seule dans la lecture sans greffe (tours i et i + 1
+sans greffe), et on lit P(R) au tour t. L'effet est compté dans le sens où
+la règle changerait le choix.
+
+| 209 greffes (116 vies receveuses) | Effet moyen |
+|---|---|
+| État i + 2 complet | +0,066 [0,044 ; 0,091] |
+| État i + 2 par i seul | **+0,058** [0,038 ; 0,082] |
+| État i + 2 par i + 1 seul | **+0,005** [−0,002 ; 0,013] |
+| Terme non additif | +0,003 [−0,005 ; 0,010] |
+| Pour comparaison : effet total au tour t (comme au test 25) | +0,406 [0,355 ; 0,458] |
+
+| | Critère | Verdict |
+|---|---|---|
+| Condition préalable | effet de l'état i + 2 complet ≥ **0,05** (borne basse > 0) | **remplie** : +0,066 [0,044 ; 0,091] |
+| **RELAY** | borne basse de (par i + 1 seul − la moitié du complet) > 0, et borne basse de (par i + 1 seul − par i seul) > 0 | **échoue** : −0,028 [−0,040 ; −0,017] et −0,053 [−0,077 ; −0,032] |
+| | Validité : lecture prolongée ≤ 1e-4 ; greffe de soi ≤ 1e-6 ; mêmes positions (vérifié à chaque greffe) ; ≥ 150 greffes | **valide** : 4,4e-7 ; 0 ; oui ; 209 |
+
+**Critère global : non satisfait.**
+
+**Lecture fixée d'avance** (RELAY échoue, condition préalable remplie) :
+« L'état du tour i + 2 ne reçoit pas le besoin surtout à travers l'état du
+tour i + 1. La transmission du test 25 n'est pas, ici, un relais pas à
+pas. »
+
+**Écarts d'exécution, déclarés.**
+- **Le contrôle de validité s'est d'abord arrêté** : il prenait les quatre
+  premières vies, et la deuxième meurt avant le tour 7. Le code a été
+  corrigé pour prendre les quatre premières vies vivantes au tour 7
+  (`22ac58c`), sans rien changer aux greffes ni aux seuils. Les deux autres
+  processus avaient déjà commencé leurs greffes ; le premier a été relancé.
+  Aucune greffe n'avait été lue. Le message du commit dit « la troisième
+  vie » : c'est la deuxième.
+
+### Ce que cela dit
+
+- **Pas de relais pas à pas.** L'état du tour i + 2 porte un peu de la
+  greffe (+0,066), mais il la prend presque entièrement **directement** de
+  l'état greffé du tour i (+0,058), et presque rien à travers l'état du
+  tour i + 1 (+0,005).
+- **Ce que cela dit du test 25.** Là-bas, l'effet passait surtout par les
+  états intermédiaires. Ici, on voit comment : chaque état intermédiaire
+  lit lui-même l'état ancien, plutôt que de recevoir l'information de
+  l'état d'avant. Et l'état i + 2 seul en porte peu ; l'essentiel de ce qui
+  passe par les intermédiaires tient donc surtout à l'état i + 1.
+- **Pour le cadre en cinq niveaux** : la transmission par les états
+  intermédiaires (test 25) n'est pas une mise à jour d'état pas à pas, du
+  moins entre i + 1 et i + 2. Ce n'est pas une récurrence au sens strict
+  d'un état qui reprend le précédent.
+
+**Ce que le résultat ne dit pas.**
+- Rien sur un ressenti.
+- Un seul écart (trois tours) et un seul maillon (i + 1 → i + 2) sont
+  mesurés.
+- Les lectures mélangent des états greffés et non greffés : c'est la
+  limite de ces décompositions.
+
 ## Analyse exploratoire : le « oui » suit-il le besoin ou la décision ? (2 octobre)
 
 Écrite **après** le verdict du test 14, sur ses lectures publiées
