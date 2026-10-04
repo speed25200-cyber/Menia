@@ -145,3 +145,32 @@ qu'au test 21). Les vies du professeur ne sont vécues par aucun modèle.
   `artifacts/llm-need/memory-no-leak`.
 - **Mesures** : torch sur le processeur local (à écrire).
 - **Verdicts** : numpy seulement, vérifiés en CI.
+
+## Amendement 1 (4 octobre 2026, avant tout apprentissage de B et toute mesure)
+
+**Ce qui s'est passé** (demande 95 du relais) :
+- **Le premier build de A** (2 000 itérations) a réussi, en 107 minutes.
+  Les lignes remplies sont plus longues, donc l'apprentissage est plus lent
+  qu'au test 21.
+- **Le premier build de B** a dépassé la limite de 120 minutes du Mac et n'a
+  rien laissé. L'arrêt prévu à 110 minutes n'arrêtait que le processus
+  parent, pas l'apprentissage lui-même.
+
+**Ce qui change** (exécution seulement ; seuils, données et mesures
+inchangés) :
+1. **La suite de l'apprentissage se fait par builds de 1 000 itérations.**
+   - A : itérations 2 001 à 3 000, puis 3 001 à 4 000 ;
+   - B : quatre builds de 1 000, depuis zéro.
+2. **Reprise exacte au-delà de la première époque.**
+   - **Avant**, l'ordre des lots venait de l'état du générateur aléatoire
+     global, que les validations utilisent aussi. Une reprise n'était donc
+     exacte que dans la première époque (2 047 lots).
+   - **Désormais**, l'ordre des lots de l'époque k ≥ 2 est tiré du flux
+     `[270926, k]`. Il est fixé par la graine, quelles que soient les
+     validations.
+   - La première époque ne change pas. Le premier build de A n'est pas
+     touché. A et B voient les mêmes lots dans le même ordre.
+3. **Mesures « après 2 000 itérations » (publiées sans seuil)** : A après
+   son premier build, B après son deuxième.
+4. **L'arrêt à la limite de temps arrête maintenant l'apprentissage
+   lui-même**, pour que le journal revienne.
