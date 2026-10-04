@@ -1,0 +1,25 @@
+{
+ "stage": "memory",
+ "arm": "actions",
+ "no_leak": true,
+ "continued_from": "artifacts/llm-need/memory-no-leak/actions-3/adapters-actions",
+ "skip": 3750,
+ "from": "artifacts/llm-need/final/report/adapters-final",
+ "adapter": "/Users/builder/clone/llm-need/adapters-actions",
+ "iters": 250,
+ "documents": 8189,
+ "left_out": [
+  4790,
+  6639,
+  7751
+ ],
+ "validation_lives": 32,
+ "chunks": [
+  {
+   "iterations": 4000,
+   "seconds": 867
+  }
+ ],
+ "iterations_done": 4000,
+ "replica_rows": 83
+}
