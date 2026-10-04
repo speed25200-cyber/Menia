@@ -407,6 +407,11 @@ def memory(a, log=print):
     lives = NM.teacher_lives(NL22.TRAIN_STREAM, NL22.TRAIN_LIVES) if a.no_leak else \
         NM.teacher_lives(NM.TRAIN_STREAM, NM.TRAIN_LIVES)
     held = NM.teacher_lives(NM.VALID_STREAM, NM.VALID_LIVES)
+    relief = getattr(a, "relief", False)
+    if relief:  # docs/LLM_NEED_RELIEF_PROTOCOL.md: lives written by the event rule, the relief words as the only targets
+        from . import need_relief as RL
+        texts, lives, held = RL, RL.writer_lives(RL.TRAIN_STREAM, RL.TRAIN_LIVES), RL.writer_lives(RL.VALID_STREAM,
+                                                                                                    RL.VALID_LIVES)
     docs, valid = texts.documents(lives, a.arm), texts.documents(held, a.arm)
     if len(valid) != len(held):
         raise RuntimeError("a validation life without target")
@@ -414,11 +419,12 @@ def memory(a, log=print):
     if not Path(model).exists():
         subprocess.run([sys.executable, "-m", "mlx_lm", "fuse", "--model", a.model, "--adapter-path", a.start,
                         "--save-path", model], check=True)
-    stream = NL22.TRAIN_STREAM if a.no_leak else NM.TRAIN_STREAM
+    stream = texts.TRAIN_STREAM if relief else NL22.TRAIN_STREAM if a.no_leak else NM.TRAIN_STREAM
     write_data(out / f"data-{a.arm}", docs, np.random.default_rng([W.SEED, stream, 2]), valid)
     final = out / f"adapters-{a.arm}"
     resume = None if a.continue_from in (None, "none") else a.continue_from
-    record = {"stage": "memory", "arm": a.arm, "no_leak": a.no_leak, "continued_from": resume, "skip": a.skip,
+    record = {"stage": "memory", "arm": a.arm, "no_leak": a.no_leak, "relief": relief, "continued_from": resume,
+              "skip": a.skip,
               "from": a.start, "adapter": str(final), "iters": a.iters,
               "documents": len(docs), "left_out": sorted(set(range(len(lives))) - {d["life"] for d in docs}),
               "validation_lives": len(valid)}
@@ -426,7 +432,7 @@ def memory(a, log=print):
     if a.until is None:
         train(model, out / f"data-{a.arm}", final, a.iters, resume=resume, seed=W.SEED, skip=a.skip,
               moments=resume is not None, val_batches=len(valid) // 4,
-              fixed_epochs=W.SEED if a.no_leak else None,  # amendment 1 of docs/LLM_NEED_MEMORY_NO_LEAK_PROTOCOL.md
+              fixed_epochs=W.SEED if a.no_leak or relief else None,  # amendment 1 of the no-leak protocol
               deadline=deadline)
         clean(final)
         record["iterations_done"] = a.skip + a.iters
@@ -452,8 +458,12 @@ def memory(a, log=print):
             raise RuntimeError("no chunk could be trained in the time of the build")
         record["iterations_done"] = done
     free()
-    rows = carry_rows(model, final, texts.replica_decisions(held), kind=a.arm)
-    Path(out / f"{a.arm}-replica.json").write_text(json.dumps(rows, ensure_ascii=False, indent=1) + "\n")
+    if relief:
+        rows = relief_rows(model, final, texts.replica_decisions(held), kind=a.arm)
+        Path(out / f"{a.arm}-relief-replica.json").write_text(json.dumps(rows, ensure_ascii=False, indent=1) + "\n")
+    else:
+        rows = carry_rows(model, final, texts.replica_decisions(held), kind=a.arm)
+        Path(out / f"{a.arm}-replica.json").write_text(json.dumps(rows, ensure_ascii=False, indent=1) + "\n")
     record["replica_rows"] = len(rows)
     Path(out / f"memory-{a.arm}-stage.json").write_text(json.dumps(record, indent=1) + "\n")
     log(json.dumps(record))
@@ -479,6 +489,33 @@ def carry_rows(model_path, adapter, rows, kind="route"):
             NL.MASK.pop()
         pr, pm = p[r].item(), p[m].item()
         out.append(dict(row, p_R=pr / max(pr + pm, 1e-12), mass=pr + pm))
+    return out
+
+
+def relief_rows(model_path, adapter, rows, kind="route"):
+    """The four relief-word probabilities (normalized) at the end of each text, under the memory mask, with the
+    adapter; p_level: that of the true level (docs/LLM_NEED_RELIEF_PROTOCOL.md, the torch replica)."""
+    import mlx.core as mx
+    from mlx_lm import load
+    from mlx_lm.models import qwen3
+    from . import need_lora as NL
+    from . import need_relief as RL
+    qwen3.create_attention_mask = NL.masked_attention(qwen3.create_attention_mask)
+    model, tokenizer = load(model_path, adapter_path=str(adapter))
+    words = [tokenizer.encode(" " + w, add_special_tokens=False) for w in RL.LEVELS]
+    if any(len(w) != 1 for w in words):
+        raise RuntimeError("a relief word is not one token")
+    out = []
+    for row in rows:
+        ids, mask = NL.memory_mask(kind, row["text"], tokenizer)
+        NL.MASK.append(mx.array(mask[None, None]))
+        try:
+            p = mx.softmax(model(mx.array([ids]))[0, -1].astype(mx.float32))
+        finally:
+            NL.MASK.pop()
+        q = [p[w[0]].item() for w in words]
+        out.append(dict(row, p_levels=[x / max(sum(q), 1e-12) for x in q], p_level=q[row["level"]] / max(sum(q), 1e-12),
+                        mass=sum(q)))
     return out
 
 
@@ -643,6 +680,7 @@ def main(argv=None):
     m.add_argument("--skip", type=int, default=0, help="batches the continued run has trained on")
     m.add_argument("--minutes", type=float, default=None, help="the training is stopped this long after the start")
     m.add_argument("--until", type=int, default=None, help="chunks of CHUNK iterations up to this total, while time is left")
+    m.add_argument("--relief", action="store_true", help="the relief texts (docs/LLM_NEED_RELIEF_PROTOCOL.md)")
     t = sub.add_parser("test")
     t.add_argument("--final", required=True)
     t.add_argument("--control", required=True)

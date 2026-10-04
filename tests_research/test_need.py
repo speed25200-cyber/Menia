@@ -1211,6 +1211,101 @@ class ChainFarTests(unittest.TestCase):
                 CF.gather(folder)
 
 
+class ReliefTests(unittest.TestCase):
+    def test_lives_texts_and_targets(self):
+        from research import need_relief as RL, need_rules as NR
+        lives = RL.writer_lives(RL.VALID_STREAM, 6)
+        self.assertEqual(lives, RL.writer_lives(RL.VALID_STREAM, 6))
+        for life in lives:
+            for x in W.decisions(life):
+                self.assertEqual(x["level"], RL.level(x["E"] if x["action"] == 0 else x["N"]))
+        self.assertEqual([RL.level(v) for v in range(1, 9)], [3, 3, 2, 2, 1, 1, 0, 0])
+        docs = RL.documents(lives, "route")
+        self.assertEqual(len(docs), len(lives))
+        for d, life in zip(docs, lives):
+            ds = W.decisions(life)
+            self.assertEqual(len(d["spans"]), len(ds))
+            self.assertEqual([d["text"][a:b] for a, b in d["spans"]], [RL.LEVELS[x["level"]] for x in ds])
+            self.assertEqual(d["text"], RL.life_text(life["turns"]))
+            self.assertNotIn("Choix : R\n", d["text"])
+        x = W.decisions(lives[0])[4]
+        prompt = RL.prompt_text(lives[0]["turns"], x["t"], x["action"])
+        self.assertTrue(RL.life_text(lives[0]["turns"]).startswith(prompt))
+        self.assertTrue(prompt.endswith(" Soulagement :"))
+        rows = RL.replica_decisions(lives)
+        self.assertTrue(rows and all(r["t"] in RL.REPLICA_TURNS for r in rows))
+        # the writing rule: the event rule, 30 % at random
+        many = RL.writer_lives(RL.TRAIN_STREAM, 200)
+        follows = [x["action"] == NR.event(0, 0, x["event"], x["last"]) for l in many for x in W.decisions(l)]
+        self.assertAlmostEqual(np.mean(follows), 0.85, delta=0.03)
+
+    def test_ceiling_and_readout(self):
+        from research import need_relief as RL
+        life = RL.writer_life(RL.HELD_STREAM, 0)
+        dists = RL.ceiling(life)
+        self.assertEqual(len(dists), len(W.decisions(life)))
+        self.assertTrue(all(abs(sum(d) - 1) < 1e-9 for d in dists))
+        first = W.decisions(life)[0]
+        self.assertEqual(int(np.argmax(dists[0])), first["level"])  # at turn 1 the needs are known
+        self.assertEqual(RL.readout([0, 0, 1, 0], [0, 1, 0, 0], 1), 0)
+        self.assertEqual(RL.readout([0, 1, 0, 0], [0, 0, 0, 1], 0), 1)
+        self.assertEqual(RL.readout([0, 1, 0, 0], [0, 1, 0, 0], 0), 1)
+        self.assertEqual(RL.readout([0, 1, 0, 0], [0, 1, 0, 0], 1), 0)
+
+    def test_the_mac_stage_writes_the_relief_documents(self):
+        import argparse
+        from unittest import mock
+        from research import need_mlx as M, need_relief as RL
+        calls = []
+
+        def fake_train(model, data, adapter, iters, resume=None, skip=0, moments=False, fixed_epochs=None, **_):
+            calls.append((iters, skip, resume, moments, fixed_epochs))
+        with tempfile.TemporaryDirectory() as out:
+            (Path(out) / "fused-start").mkdir()
+            a = argparse.Namespace(arm="route", start="s", model="m", iters=250, no_leak=False, relief=True,
+                                   continue_from="none", skip=0, minutes=None, until=500, out=out)
+            with mock.patch.object(M, "train", fake_train), mock.patch.object(M, "free", lambda: None), \
+                    mock.patch.object(M, "relief_rows", lambda *x, **k: [{"p_level": 0.5}]), \
+                    mock.patch.object(M, "clean", lambda *x: None):
+                M.memory(a, log=lambda *x: None)
+            record = json.loads((Path(out) / "memory-route-stage.json").read_text())
+            self.assertTrue(record["relief"])
+            self.assertEqual(record["iterations_done"], 500)
+            self.assertEqual(record["validation_lives"], RL.VALID_LIVES)
+            self.assertTrue((Path(out) / "route-relief-replica.json").exists())
+            first = W.read_jsonl(Path(out) / "data-route" / "train.jsonl")[0]
+            self.assertEqual(first["carry"], "route")
+            self.assertTrue(first["spans"] and "Soulagement" in first["text"])
+            self.assertTrue(all(c[4] == W.SEED for c in calls))
+
+    def test_verdicts(self):
+        from research import need_relief as RL
+        held = RL.writer_lives(RL.HELD_STREAM, 24)
+        one = lambda v: [float(v == k) for k in range(4)]
+        reads = []
+        for i, life in enumerate(held):
+            for x, d in zip(W.decisions(life), RL.ceiling(life)):
+                e, n = x["E"], x["N"]
+                reads.append({"life": i, "t": x["t"],
+                              "route": {"written": one(x["level"]), "R": one(RL.level(e)), "M": one(RL.level(n)),
+                                        "mass": 0.9},
+                              "actions": {"written": d, "R": d, "M": d, "mass": 0.9}})
+        alive = lambda s: {"turns": [], "survived": s, "length": 30}
+        survival = {"route": [alive(i % 10 != 0) for i in range(256)], "actions": [alive(i % 2 == 0) for i in range(256)]}
+        ok = {"replica": {a: {"mean_gap": 0.001} for a in RL.ARMS}, "cache_gap": {a: 1e-6 for a in RL.ARMS},
+              "mask_gap": {a: 0.0 for a in RL.ARMS}}
+        v = RL.verdicts(held, reads, survival, ok)
+        self.assertTrue(all(v["verdicts"].values()))
+        self.assertEqual(v["values"]["accuracy"]["route"], 1.0)
+        self.assertAlmostEqual(v["values"]["accuracy"]["actions"], v["values"]["accuracy"]["bayes"])
+        self.assertFalse(RL.verdicts(held, reads, survival, dict(ok, mask_gap={"route": 0.0, "actions": 1e-3}))
+                         ["verdicts"]["valid"])
+        same = {"route": survival["actions"], "actions": survival["actions"]}
+        self.assertFalse(RL.verdicts(held, reads, same, ok)["verdicts"]["INTER2"])
+        with self.assertRaises(ValueError):
+            RL.verdicts(held, reads[1:], survival, ok)
+
+
 class OwnershipTests(unittest.TestCase):
     def test_the_other_lives_beside_without_changing_the_agent(self):
         alone = W.play(W.Oracle(), W.world_rng(225, 0), W.choice_rng(225, 0))
@@ -1383,6 +1478,45 @@ class MLXCarryTests(unittest.TestCase):
             self.assertEqual(len(batches[0]), 3)
             loss, count = need_lora.need_loss(model, *batches[0])
             self.assertTrue(np.isfinite(loss.item()))
+        finally:
+            qwen3.create_attention_mask = original
+
+
+@unittest.skipUnless(os.environ.get("NEED_TINY_MODEL"), "needs mlx and a tiny local model (NEED_TINY_MODEL)")
+class MLXReliefTests(unittest.TestCase):
+    def test_relief_texts_are_cut_as_planned(self):
+        """docs/LLM_NEED_RELIEF_PROTOCOL.md: one token per relief word, lines of one length, the relief words the only
+        targets, four carried tokens per turn, a finite loss under both masks."""
+        import mlx.core as mx
+        from mlx_lm import load
+        from mlx_lm.models import qwen3
+        from mlx_lm.tuner.datasets import CacheDataset
+        from research import need_relief as RL
+        model, tokenizer = load(os.environ["NEED_TINY_MODEL"])
+        enc = lambda x: tokenizer.encode(x, add_special_tokens=False)
+        self.assertTrue(all(len(enc(" " + w)) == 1 for w in RL.LEVELS))
+        for t in range(1, W.TURNS + 1):
+            self.assertEqual(len({len(enc(RL.relief_line(t, k, a, v))) for k in range(len(W.EVENTS)) for a in (0, 1)
+                                  for v in range(len(RL.LEVELS))}), 1)
+        original = qwen3.create_attention_mask
+        qwen3.create_attention_mask = need_lora.masked_attention(original)
+        try:
+            lives = RL.writer_lives(RL.VALID_STREAM, 3)
+            for arm in RL.ARMS:
+                docs = RL.documents(lives, arm)
+                data = CacheDataset(need_lora.NeedText(docs, tokenizer))
+                tokens, weights, mask = data[0]
+                ids, turn, carried, action = need_lora.carry_layout(docs[0]["text"], tokenizer, kinds=True)
+                self.assertEqual(ids, tokens)
+                targets = [tokens[j] for j, w in enumerate(weights) if w]
+                words = {enc(" " + w)[0] for w in RL.LEVELS}
+                self.assertEqual(len(targets), len(W.decisions(lives[0])))
+                self.assertTrue(set(targets) <= words)
+                for k in range(len(W.decisions(lives[0]))):
+                    self.assertEqual(sum(1 for j, c in zip(turn, carried) if j == k and c), 4)
+                batches = list(need_lora.need_batches(data, 2, 1024))
+                loss, count = need_lora.need_loss(model, *batches[0])
+                self.assertTrue(np.isfinite(loss.item()))
         finally:
             qwen3.create_attention_mask = original
 

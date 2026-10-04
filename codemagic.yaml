@@ -886,6 +886,7 @@ workflows:
         NEED_SKIP: "0"
         NEED_NO_LEAK: "0"
         NEED_UNTIL: "none"
+        NEED_RELIEF: "0"
     scripts:
       - name: Installer mlx-lm dans un environnement isolé
         script: |
@@ -980,13 +981,16 @@ workflows:
             # The fused model is removed even on a failure, so that the artefacts (and the log) stay small enough
             trap 'rm -rf "$OUT/fused-start"' EXIT
             NEED_TINY_MODEL="$MODEL" python -m unittest tests_research.test_need.MLXCarryTests \
-              tests_research.test_need.MLXMemoryTests -v 2>&1 | tee "$OUT/memory-$NEED_ARM-check.log" | tail -5
+              tests_research.test_need.MLXMemoryTests tests_research.test_need.MLXReliefTests -v 2>&1 \
+              | tee "$OUT/memory-$NEED_ARM-check.log" | tail -5
             # docs/LLM_NEED_MEMORY_NO_LEAK_PROTOCOL.md: NEED_NO_LEAK=1 fills the lines; NEED_CONTINUE (an adapter fetched
             # into the repository) and NEED_SKIP continue a run exactly
             MEMORY=""
             if [ "$NEED_NO_LEAK" = "1" ]; then MEMORY="--no-leak"; fi
             if [ "$NEED_CONTINUE" != "none" ]; then MEMORY="$MEMORY --continue-from $NEED_CONTINUE --skip $NEED_SKIP"; fi
             if [ "$NEED_UNTIL" != "none" ]; then MEMORY="$MEMORY --until $NEED_UNTIL"; fi  # amendment 2: chunks
+            # docs/LLM_NEED_RELIEF_PROTOCOL.md: NEED_RELIEF=1, the relief texts (the relief words the only targets)
+            if [ "$NEED_RELIEF" = "1" ]; then MEMORY="$MEMORY --relief"; fi
             # the training itself is stopped NEED_MINUTES after the start, so that its log comes back
             python -m research.need_mlx memory --arm "$NEED_ARM" --start "$NEED_START" --model "$MODEL" \
               --iters "$NEED_ITERS" $MEMORY --minutes "$NEED_MINUTES" --out "$OUT" 2>&1 \
