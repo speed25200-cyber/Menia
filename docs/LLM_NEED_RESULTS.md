@@ -1280,16 +1280,17 @@ Amendements, écrits avant les mesures concernées :
 Code écrit avant tout apprentissage (`88ff796`), et avant les mesures
 concernées pour les amendements (`55de952`, `cc1541d`).
 
-Apprentissage sur le Mac (relais, demandes 95 à 102) ; mesures torch sur le
-processeur local, les 3 et 4 octobre 2026. Artefacts :
+Apprentissage sur le Mac (relais, demandes 95 à 102), les 3 et 4 octobre
+2026 ; mesures torch sur le processeur local, le 4 octobre 2026. Artefacts :
 `artifacts/llm-need/memory-no-leak`. Verdicts vérifiés en CI.
 
 **Ce qui change par rapport au test 21.**
 - **Plus de fuite par les positions.** Toutes les lignes d'événement ont la
   même longueur, grâce à un remplissage « - ». Les actions tombent aux
   mêmes positions dans toutes les vies.
-- **Un apprentissage deux fois plus long** : 4 000 itérations, sur 8 192
-  vies du professeur.
+- **Un apprentissage deux fois plus long** : 4 000 itérations, sur 8 189
+  documents (8 192 vies du professeur, moins 3 sans cible). 2 000 itérations
+  font un peu moins d'une époque (2 047 lots), 4 000 environ 1,95.
 - **Deux agents** : A (« porte ») et B (« actions »).
 
 | | A, porte | B, actions | Plafond bayésien des actions |
@@ -1297,15 +1298,15 @@ processeur local, les 3 et 4 octobre 2026. Artefacts :
 | Précision : choisit comme la règle (3 410 décisions, 128 vies tenues à l'écart) | **0,968** | 0,872 | 0,871 |
 | Là où la règle « événement » se trompe (613 décisions) | 0,887 | 0,514 | 0,519 |
 | Survie (256 vies, mêmes mondes) | **0,906** | 0,594 | |
-| « tu cours » au tour j : ΔP(R) au tour t (t − j ≥ 4, 300 paires, 104 vies) | **+0,065** [0,050 ; 0,082] | 0 exactement | règle : +0,183 |
-| Perte de validation tenue à l'écart (début → 2 000 → 4 000 itérations) | 1,916 → 0,113 → 0,069 | 3,318 → 0,292 → 0,294 | |
+| « tu cours » au tour j : ΔP(R) au tour t (t − j ≥ 4, 300 paires, 104 vies) | **+0,065** [0,049 ; 0,082] | 0 exactement | règle : +0,183 |
+| Perte de validation tenue à l'écart (début → après 2 000 → après 4 000 itérations) | 1,916 → 0,112 → 0,069 | 3,318 → 0,291 → 0,294 | |
 
 | | Critère | Verdict |
 |---|---|---|
 | **MEM4** | précision de A − plafond bayésien ≥ **0,05** (borne basse > 0) | **passe** : +0,097 [0,085 ; 0,109] |
-| **MEM5** | ΔP(R) de A ≥ **la moitié** de l'effet de la règle, soit 0,092 (borne basse > 0) | **échoue** : +0,065 [0,050 ; 0,082] |
+| **MEM5** | ΔP(R) de A ≥ **la moitié** de l'effet de la règle, soit 0,092 (borne basse > 0) | **échoue** : +0,065 [0,049 ; 0,082] |
 | **MEM3** | survie de A − survie de B ≥ **0,08** (borne basse > 0) | **passe** : +0,313 [0,254 ; 0,371] |
-| | Validité : répliques ≤ 0,02 ; cache ≤ 1e-4 ; masques ≤ 1e-5 ; ≥ 150 paires ; masse ≥ 0,5 ; précision de B ≤ plafond + 0,02 | **valide** : répliques 0,0028 et 0,0059 ; cache 3e-14 et 9e-8 ; masques 0 et 0 (pour B, avec un événement de longueur naturelle différente) ; 300 paires ; masse 1,00 ; **B à +0,001 du plafond** |
+| | Validité : répliques ≤ 0,02 ; cache ≤ 1e-4 ; masques ≤ 1e-5 ; ≥ 150 paires ; masse ≥ 0,5 ; précision de B ≤ plafond + 0,02 | **valide** : répliques 0,0028 et 0,0059 ; cache 3e-14 et 9e-8 ; masques 0 et 0 (pour B, avec un événement de longueur naturelle différente) ; 300 paires ; masse 1,00 ; **B à +0,001 [−0,002 ; +0,004] du plafond** |
 
 **Critère global (MEM4 et MEM5) : non satisfait**, à cause de MEM5.
 
@@ -1323,9 +1324,12 @@ processeur local, les 3 et 4 octobre 2026. Artefacts :
 | Précision | 0,946 (+0,074 [0,062 ; 0,087] sur le plafond) | 0,874 (+0,003 [−0,001 ; +0,006]) |
 | ΔP(R) des paires | +0,057 [0,044 ; 0,072] | 0 exactement |
 
-Doubler l'apprentissage a amélioré la précision de A (+0,074 → +0,097),
-pas l'effet d'un événement caché (+0,057 → +0,065). Au test 21, cet effet
-valait +0,066.
+Doubler l'apprentissage a amélioré la précision de A (+0,074 → +0,097).
+L'effet d'un événement caché, lui, n'a que peu bougé (+0,057 → +0,065,
+intervalles qui se recouvrent) : un peu plus de 6 à 8 tours, toujours
+presque rien au-delà de 9. Au test 21 (lignes non remplies, avec la fuite,
+4 093 documents), cet effet valait +0,066 : chiffre non directement
+comparable.
 
 **Publié sans seuil : l'effet selon l'écart t − j (4 000 itérations).**
 
@@ -1340,16 +1344,34 @@ valait +0,066.
 - **Plusieurs builds ont échoué**, sans rien garder :
   - B, demande 95 : limite de 120 minutes ;
   - A, demande 96 : Mac deux fois plus lent, arrêté vers l'itération 850 ;
-  - B, demande 96 : arrêté à la limite de temps.
+  - B, demande 96 : arrêté à la limite de temps, vers l'itération 690.
 - **D'où les amendements 1 et 2.** Le total est resté exactement de 4 000
   itérations par agent, chaque morceau reprenant le précédent (mêmes lots,
   moments d'Adam).
 - **Les apprentissages réels :**
   - A : 2 000 itérations en un build, puis 1 750 en 7 morceaux, puis 250 ;
   - B : 1 250, 750, 1 750 et 250, par morceaux.
+- **Calendrier de l'amendement 2.** Il a été écrit après la publication des
+  mesures de A à 2 000 itérations (publiées sans seuil), pendant que le
+  build de B de la demande 96 tournait encore. Il ne touche que la façon de
+  découper l'apprentissage.
 - **Lecture anticipée.** MEM4 et MEM5 de A ont été calculés dès A mesuré,
-  avant la fin de l'apprentissage de B. Aucune règle n'a changé, et B a
-  été appris et mesuré ensuite comme prévu.
+  avant presque tout l'apprentissage de B : B venait de repartir de zéro.
+  Aucune règle n'a changé, et B a été appris et mesuré ensuite comme prévu.
+- **Les pertes de validation** sont celles notées par le Mac avant la
+  mise à jour de rang N : la valeur « après 2 000 » est celle notée au
+  début du build suivant. Celle de B reste plate vers 0,29 dès
+  l'itération 250.
+
+**Repères de survie, sans modèle, sur ces 256 mondes** (recalculés à la
+relecture) :
+- règle « besoins » : 0,906, autant que A ;
+- observateur bayésien des actions : 0,727 en prenant le choix le plus
+  probable, 0,629 en tirant ses choix comme le font les agents.
+
+B (0,594), qui tire ses choix d'une probabilité souvent incertaine, reste
+proche de ce second repère. Une part de l'écart de MEM3 vient donc de ce
+tirage, et non de l'information portée.
 
 **Précautions.** Tours vécus avec un besoin à 2 ou moins : 590 (A), 892 (B).
 
@@ -1368,29 +1390,38 @@ besoins, il réagirait moins quand elles contredisent l'événement.
 | Cohérentes (la règle aurait fait les mêmes actions) | 36 | +0,094 [0,049 ; 0,151] | +0,222 | 42 % |
 | Contredites | 264 | +0,061 [0,045 ; 0,078] | +0,178 | 34 % |
 
-L'écart va dans le sens de l'hypothèse, mais il est petit, et les paires
-cohérentes sont peu nombreuses. Cette hypothèse n'explique pas l'essentiel
-du déficit : même quand les actions ne contredisent rien, A réagit à moins
-de la moitié de ce que ferait la règle.
+L'écart, petit, tient surtout à la répartition des écarts t − j (16 des 36
+paires cohérentes sont à t − j = 4). Il ne se retrouve pas à écart égal :
++0,027 contre +0,059 à 5 tours, +0,097 contre +0,102 à 6 tours. Pour les
+paires cohérentes, la moyenne reste sous la moitié de la règle (42 %), mais
+l'intervalle (de 22 à 68 % de la règle) ne permet pas de conclure.
+L'hypothèse n'est donc ni établie ni écartée.
 
 ### Ce que cela dit
 
-- **Une mémoire par l'état, établie sans fuite.** L'agent qui ne voit son
-  passé qu'à travers ses propres états internes (« Choix : » et actions)
-  choisit comme la règle « besoins » à 0,968. C'est près de 10 points
-  au-dessus de ce que permet **tout** observateur de ses seules actions et
-  de l'événement du tour : un optimum calculé, pas un témoin appris.
-- **Le témoin appris confirme ce plafond.** B l'atteint presque exactement
-  (+0,001), sans le dépasser : la fuite du test 21 est fermée.
-- **Porter son besoin le fait survivre** : 0,906 contre 0,594 (MEM3).
+- **De l'information portée par ses états au-delà de ses actions, établie
+  sans fuite (MEM4).** L'agent qui ne voit son passé qu'à travers ses
+  propres états internes (« Choix : » et actions) choisit comme la règle
+  « besoins » à 0,968. C'est près de 10 points au-dessus de ce que permet
+  **tout** observateur de ses seules actions et de l'événement du tour : un
+  optimum calculé (en espérance), pas un témoin appris.
+- **Le témoin appris atteint ce plafond sans le dépasser** (+0,001
+  [−0,002 ; +0,004]). C'est cohérent avec l'absence de fuite. Ce qui le
+  montre, c'est le contrôle du masque : 0, même avec un événement de
+  longueur naturelle différente.
+- **Porter son besoin le fait survivre** : 0,906 contre 0,594 (MEM3). Une
+  part de cet écart vient de ce que B tire ses choix d'une probabilité
+  incertaine (voir les repères).
 - **Mais cette mémoire est courte et partielle.** Un événement qu'il ne voit
   plus change encore ses choix 4 à 8 tours plus tard (de +0,06 à +0,10
   selon l'écart ; témoin : 0 exactement). En moyenne, c'est environ un tiers
   de ce que ferait la règle, et presque rien au-delà de 9 tours. Doubler
-  l'apprentissage ne l'a pas allongée.
-- **Pour le cadre en cinq niveaux** : c'est la première fois dans le
-  programme qu'un état interne dure d'un tour à l'autre et sert, avec un
-  critère fixé d'avance, valide, qui passe.
+  l'apprentissage ne l'a guère changée.
+- **Pour le cadre en cinq niveaux** : c'est la première fois, dans un test
+  valide, qu'une information portée seulement par des états calculés aux
+  tours passés sert aux choix au-delà des actions (MEM4). Le critère global
+  n'est pas satisfait (MEM5). Et ce n'est pas une récurrence au sens
+  strict : un tour lit directement les états portés de tout son passé.
 
 **Ce que le résultat ne dit pas.**
 - Rien sur un ressenti.
