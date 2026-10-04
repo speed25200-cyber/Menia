@@ -1060,6 +1060,53 @@ class MemoryNoLeakTests(unittest.TestCase):
             self.assertNotIn("free", result["values"]["accuracy"])
 
 
+class CarriedContentTests(unittest.TestCase):
+    def test_draw_and_rule_effects(self):
+        from research import need_carried_content as CC, need_memory as NM
+        held = NM.teacher_lives(NM.HELD_STREAM, 40)
+        grafts = CC.draw(held)
+        self.assertEqual(grafts, CC.draw(held))
+        at = [{x["t"]: x for x in W.decisions(l)} for l in held]
+        for g in grafts:
+            r, d, j, t = g["r"], g["d"], g["j"], g["t"]
+            self.assertNotEqual(r, d)
+            self.assertEqual(t - j, g["g"])
+            self.assertEqual(at[r][j]["action"], at[d][j]["action"])
+            same = (at[r][j]["E"], at[r][j]["N"]) == (at[d][j]["E"], at[d][j]["N"])
+            self.assertEqual(same, g["kind"] == "b")
+            self.assertEqual(g["rule_effect"], CC.rule_effect(held[r], held[d], j, t))
+            if g["kind"] == "a":
+                self.assertNotEqual(g["rule_effect"], 0)
+            else:
+                self.assertEqual(g["rule_effect"], 0)
+        # replaying a life from its own needs gives back its needs
+        life = held[0]
+        ds = W.decisions(life)
+        x, y = ds[2], ds[5]
+        self.assertEqual(CC.replay(life, x["t"], x["E"], x["N"], y["t"]), (y["E"], y["N"]))
+
+    def test_verdicts(self):
+        from research import need_carried_content as CC, need_memory as NM
+        held = NM.teacher_lives(NM.HELD_STREAM, NM.HELD_LIVES)
+        grafts = CC.draw(held)
+        rng = np.random.default_rng(3)
+        rows = []
+        for g in grafts:
+            shift = 0.3 * g["rule_effect"] + (0.02 * rng.standard_normal() if g["kind"] != "a" else 0.0)
+            rows.append(dict(g, route=[0.5, 0.5 + shift], actions=[0.5, 0.5]))
+        ok = {"no_graft_gap": 1e-8, "self_graft_gap": 0.0, "positions_same": True}
+        v = CC.verdicts(rows, ok)["verdicts"]
+        self.assertTrue(v["STATE1"] and v["STATE2"] and v["valid"] and v["global"])
+        history = [dict(r, route=[0.5, 0.5 + (0.3 if r["kind"] == "b" else r["route"][1] - 0.5)]) for r in rows]
+        self.assertFalse(CC.verdicts(history, ok)["verdicts"]["STATE2"])
+        flat = [dict(r, route=[0.5, 0.52]) for r in rows]
+        self.assertFalse(CC.verdicts(flat, ok)["verdicts"]["STATE1"])
+        self.assertFalse(CC.verdicts(rows, dict(ok, self_graft_gap=1e-3))["verdicts"]["valid"])
+        d = CC._boot_diff(np.array([1.0, 1.0, 1.0]), np.array([0, 1, 2]), np.array([0.0, 0.0]), np.array([0, 1]))
+        self.assertEqual(d["mean"], 1.0)
+        self.assertLessEqual(d["low"], d["mean"])
+
+
 class OwnershipTests(unittest.TestCase):
     def test_the_other_lives_beside_without_changing_the_agent(self):
         alone = W.play(W.Oracle(), W.world_rng(225, 0), W.choice_rng(225, 0))
