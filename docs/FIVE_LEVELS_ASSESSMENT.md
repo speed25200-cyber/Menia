@@ -94,6 +94,23 @@ Voir `docs/LITERATURE_CHECK_READER_2026-09-30.md`.
   - une même intervention qui change l'acte et la parole.
 
   Cela touche à la fois les niveaux 2 et 4 du cadre.
+- **Un second ensemble de résultats (tests 22 à 27, octobre 2026)**, dont
+  la nouveauté **n'a pas été vérifiée** dans la littérature. La greffe de
+  clés et valeurs d'attention est une technique connue en interprétabilité ;
+  c'est son usage ici qui est à situer.
+  - Un modèle de langage qui ne voit son passé qu'à travers ses propres
+    états calculés (masque) apprend à y porter son besoin, au-delà de ce
+    que permettent ses seules actions (test 22).
+  - Ce qu'il porte dépend surtout de ce besoin, et peu de l'histoire qui
+    l'a produit (test 23, greffes entre vies).
+  - À trois tours et plus, ce besoin atteint les choix surtout en passant
+    par les états des tours intermédiaires (test 25, vies neuves), mais
+    sans relais pas à pas : chaque état intermédiaire mesuré lit
+    directement l'état ancien (test 27).
+
+  Cela touche surtout le niveau 3 (récurrence, organisation causale).
+  Les agents ont appris d'un professeur ; le test 26 refait la mémoire par
+  l'état **sans professeur**.
 
 ## Ce qui manque, par ordre de priorité
 
