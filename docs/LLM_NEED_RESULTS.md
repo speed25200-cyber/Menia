@@ -1939,6 +1939,122 @@ pas. »
 - Les lectures mélangent des états greffés et non greffés : c'est la
   limite de ces décompositions.
 
+## Test 29 pré-enregistré : sans pré-entraînement, de petits transformeurs portent-ils leurs besoins ?
+
+Protocole `docs/TINY_RELIEF_PROTOCOL.md` (commit `d6c6f03`), écrit avant le
+code et toute exécution. Code écrit avant toute mesure (`b972387`), essayé
+seulement sur 100 pas d'une graine hors protocole. Calcul torch sur le
+processeur local, le 4 octobre 2026 (deux processus : graines 0 à 4 et 5
+à 9). Artefacts : `artifacts/tiny-relief`. Verdicts recalculés en local
+(identiques) ; la CI les vérifie à chaque envoi.
+
+**Ce qu'on teste.** Le test 26 (en cours sur le Mac) demande si un modèle
+de langage pré-entraîné apprend, **sans professeur**, à porter ses besoins
+dans ses propres états, en apprenant seulement à prédire le soulagement de
+ses actions. Ici, on pose la même question à de **petits transformeurs
+appris de zéro** (2 couches, dimension 64, aucun pré-entraînement), sur
+**10 graines**. Les vies sont celles du test 26 : actions écrites par une
+règle qui ignore les besoins (la règle « événement », 30 % au hasard). La
+seule cible est le niveau du soulagement ; **aucune cible de choix**.
+Chaque tour s'écrit en 5 tokens : l'événement, « Choix », l'action,
+« Soulagement », le niveau.
+
+**Les masques** (ceux du test 22) :
+- **A (« porte »)** : un tour ne voit, de son passé, que les tokens
+  « Choix » et l'action des tours passés ;
+- **B (« actions »)**, le témoin : les tours suivants ne voient que les
+  actions passées ;
+- **C (« libre »)**, publié sans seuil : tout le passé visible.
+
+**Plafond des actions** : un observateur bayésien exact qui connaît le
+monde et la règle qui écrit les actions, et voit l'événement du tour et
+toutes les actions passées, prédit le bon niveau dans **0,648** des cas.
+
+| Moyenne sur 10 graines | A, porte | B, actions | C, libre |
+|---|---|---|---|
+| Précision du soulagement prédit (128 vies tenues à l'écart) | **0,885** | 0,634 | 0,935 |
+| Survie en choisissant par le soulagement prédit (256 mondes du test 22) | **0,884** | 0,666 | 0,884 |
+| Perte d'apprentissage (après 100 pas → après 3 000) | 1,09 → 0,26 | 1,09 → 0,79 | 1,04 → 0,15 |
+
+| | Critère | Verdict |
+|---|---|---|
+| **TINY1** | moyenne de (précision de A − plafond) ≥ **0,10**, borne basse > 0, et au moins 8 graines sur 10 au-dessus de 0,05 | **passe** : +0,237 [0,224 ; 0,250] ; 10 graines sur 10 |
+| **TINY2** | moyenne de (survie de A − survie de B, même graine) ≥ **0,08**, borne basse > 0 | **passe** : +0,219 [0,196 ; 0,241] |
+| | Validité : masques (écart ≤ 1e-6) ; précision moyenne de B ≤ plafond + 0,02 | **valide** : écarts 0 et 0 ; B à 0,634, sous le plafond (0,648) |
+
+Intervalles à 95 % sur les 10 graines (loi de Student).
+
+**Critère global (TINY1 et TINY2) : satisfait.**
+
+**Lecture fixée d'avance** (TINY1 et TINY2 passent) : « La mémoire par
+l'état ne dépend pas du pré-entraînement. Un petit transformeur appris de
+zéro, sous ce masque, en apprenant seulement à prédire ce que ses actes
+font à son corps, porte ses besoins dans ses propres états, mieux que tout
+observateur de ses seules actions, et s'en sert pour survivre. Et c'est
+vrai sur dix graines. »
+
+**Publié sans seuil : graine par graine.**
+
+| Graine | A : précision | B : précision | C : précision | A : survie | B : survie | C : survie |
+|---|---|---|---|---|---|---|
+| 0 | 0,903 | 0,626 | 0,959 | 0,887 | 0,699 | 0,906 |
+| 1 | 0,867 | 0,639 | 0,930 | 0,852 | 0,590 | 0,879 |
+| 2 | 0,876 | 0,638 | 0,937 | 0,891 | 0,711 | 0,887 |
+| 3 | 0,890 | 0,636 | 0,922 | 0,883 | 0,719 | 0,875 |
+| 4 | 0,860 | 0,633 | 0,903 | 0,887 | 0,668 | 0,836 |
+| 5 | 0,903 | 0,631 | 0,964 | 0,918 | 0,684 | 0,910 |
+| 6 | 0,873 | 0,637 | 0,934 | 0,891 | 0,652 | 0,902 |
+| 7 | 0,871 | 0,626 | 0,933 | 0,852 | 0,629 | 0,875 |
+| 8 | 0,896 | 0,635 | 0,935 | 0,895 | 0,660 | 0,883 |
+| 9 | 0,912 | 0,640 | 0,929 | 0,891 | 0,645 | 0,891 |
+
+- **Chaque graine** de A dépasse le plafond des actions de 0,21 à 0,26.
+  Aucune graine de B ne l'atteint (0,626 à 0,640).
+- **C (« libre »)**, qui voit tout le passé, prédit mieux que A (0,935
+  contre 0,885). Mais A survit autant que C (0,884 tous les deux) :
+  porter son passé à travers ses propres états ne coûte rien à la survie
+  ici.
+- **Repères sans modèle** (protocole du test 26) : choisir avec les
+  niveaux exacts survit à 0,852 ; la règle « besoins » à 0,906. A (0,884)
+  est entre les deux : il lit des probabilités, plus fines que les quatre
+  niveaux.
+
+**Écarts d'exécution, déclarés.**
+- Les 30 résultats étaient d'abord exclus du dépôt par une règle générale
+  du `.gitignore` (`runs/`). Une exception a été ajoutée pour les publier.
+  Aucun autre écart.
+
+### Ce que cela dit
+
+- **Sans professeur et sans pré-entraînement, la mémoire par l'état
+  apparaît, sur toutes les graines.** Un petit transformeur qui ne voit son
+  passé qu'à travers ses propres états portés, et qui apprend seulement à
+  prédire le soulagement de ses actions, prédit ce soulagement bien mieux
+  que tout observateur de ses seules actions (+0,24, 10 graines sur 10).
+  Il porte donc, dans ses états, une information sur ses besoins que ses
+  actions ne donnent pas.
+- **Il s'en sert pour vivre.** En prenant l'action dont il attend le plus
+  grand soulagement, il survit à 0,88, contre 0,67 pour le témoin qui ne
+  porte que ses actions, et autant que le modèle qui voit tout son passé.
+- **Ce que cela change pour le programme.** Jusqu'ici, la mémoire par
+  l'état n'était établie que chez un grand modèle pré-entraîné, appris
+  d'un professeur (test 22). Elle apparaît aussi sans l'un ni l'autre, de
+  façon reproductible. Elle tient donc à l'architecture (un transformeur
+  sous ce masque) et à une cible qui l'exige (prédire ce que ses actes font
+  à son corps), pas au pré-entraînement.
+
+**Ce que le résultat ne dit pas.**
+- Rien sur un ressenti. « Soulagement » est le nom d'un signal du monde.
+- Le signal vient du monde, qui connaît les besoins : c'est un retour de
+  ses actes, pas une consigne sur quoi faire. La règle qui choisit
+  l'action la plus soulageante est fixée par nous.
+- Il ne dit pas **ce que** les états portent (le besoin lui-même, ou ce qui
+  commande le soulagement) : c'est la question du test 28, pour le modèle
+  de langage.
+- Ces modèles sont petits, le monde aussi. D'autres tailles, d'autres
+  durées d'apprentissage ou d'autres tokens pourraient donner autre chose.
+- Les tokens sont simples et à positions fixes ; ce n'est pas du langage.
+
 ## Analyse exploratoire : le « oui » suit-il le besoin ou la décision ? (2 octobre)
 
 Écrite **après** le verdict du test 14, sur ses lectures publiées

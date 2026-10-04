@@ -1,0 +1,180 @@
+{
+ "verdicts": {
+  "TINY1": true,
+  "TINY2": true,
+  "valid": true,
+  "global": true
+ },
+ "values": {
+  "ceiling": 0.6479032867397053,
+  "accuracy": {
+   "route": 0.8850396752357483,
+   "actions": 0.6340385317802429,
+   "free": 0.9347941100597381
+  },
+  "beyond_ceiling": {
+   "mean": 0.237136388496043,
+   "low": 0.224376829739189,
+   "high": 0.249895947252897
+  },
+  "seeds_beyond_0.05": 10,
+  "survival": {
+   "route": 0.884375,
+   "actions": 0.665625,
+   "free": 0.884375
+  },
+  "survival_gain": {
+   "mean": 0.21875,
+   "low": 0.1961634334724326,
+   "high": 0.2413365665275674
+  },
+  "by_seed": {
+   "0": {
+    "route": {
+     "accuracy": 0.9025311470031738,
+     "survival": 0.88671875
+    },
+    "actions": {
+     "accuracy": 0.6263694763183594,
+     "survival": 0.69921875
+    },
+    "free": {
+     "accuracy": 0.959199070930481,
+     "survival": 0.90625
+    }
+   },
+   "1": {
+    "route": {
+     "accuracy": 0.8670192956924438,
+     "survival": 0.8515625
+    },
+    "actions": {
+     "accuracy": 0.6388364434242249,
+     "survival": 0.58984375
+    },
+    "free": {
+     "accuracy": 0.930487334728241,
+     "survival": 0.87890625
+    }
+   },
+   "2": {
+    "route": {
+     "accuracy": 0.8760861158370972,
+     "survival": 0.890625
+    },
+    "actions": {
+     "accuracy": 0.6377030611038208,
+     "survival": 0.7109375
+    },
+    "free": {
+     "accuracy": 0.9372875094413757,
+     "survival": 0.88671875
+    }
+   },
+   "3": {
+    "route": {
+     "accuracy": 0.8900642395019531,
+     "survival": 0.8828125
+    },
+    "actions": {
+     "accuracy": 0.6361919045448303,
+     "survival": 0.71875
+    },
+    "free": {
+     "accuracy": 0.9221760630607605,
+     "survival": 0.875
+    }
+   },
+   "4": {
+    "route": {
+     "accuracy": 0.8602191209793091,
+     "survival": 0.88671875
+    },
+    "actions": {
+     "accuracy": 0.6327918171882629,
+     "survival": 0.66796875
+    },
+    "free": {
+     "accuracy": 0.9032867550849915,
+     "survival": 0.8359375
+    }
+   },
+   "5": {
+    "route": {
+     "accuracy": 0.9025311470031738,
+     "survival": 0.91796875
+    },
+    "actions": {
+     "accuracy": 0.6305251121520996,
+     "survival": 0.68359375
+    },
+    "free": {
+     "accuracy": 0.9641103148460388,
+     "survival": 0.91015625
+    }
+   },
+   "6": {
+    "route": {
+     "accuracy": 0.8726860880851746,
+     "survival": 0.890625
+    },
+    "actions": {
+     "accuracy": 0.6365696787834167,
+     "survival": 0.65234375
+    },
+    "free": {
+     "accuracy": 0.9342651963233948,
+     "survival": 0.90234375
+    }
+   },
+   "7": {
+    "route": {
+     "accuracy": 0.8711749315261841,
+     "survival": 0.8515625
+    },
+    "actions": {
+     "accuracy": 0.625991702079773,
+     "survival": 0.62890625
+    },
+    "free": {
+     "accuracy": 0.9331318736076355,
+     "survival": 0.875
+    }
+   },
+   "8": {
+    "route": {
+     "accuracy": 0.8957310318946838,
+     "survival": 0.89453125
+    },
+    "actions": {
+     "accuracy": 0.635058581829071,
+     "survival": 0.66015625
+    },
+    "free": {
+     "accuracy": 0.9346429705619812,
+     "survival": 0.8828125
+    }
+   },
+   "9": {
+    "route": {
+     "accuracy": 0.9123536348342896,
+     "survival": 0.890625
+    },
+    "actions": {
+     "accuracy": 0.6403475403785706,
+     "survival": 0.64453125
+    },
+    "free": {
+     "accuracy": 0.9293540120124817,
+     "survival": 0.890625
+    }
+   }
+  }
+ },
+ "setup": {
+  "mask_gap": {
+   "route": 0.0,
+   "actions": 0.0
+  }
+ }
+}
