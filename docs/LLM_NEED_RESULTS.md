@@ -1435,35 +1435,42 @@ L'hypothèse n'est donc ni établie ni écartée.
 
 ## Test 23 pré-enregistré : que porte l'état ?
 
-Protocole `docs/LLM_NEED_CARRIED_CONTENT_PROTOCOL.md` (commit `50e490e`),
-**amendement 1** (`057f7c7`), écrit avant toute mesure : le tirage prévu ne
-donnait que 80 greffes (a) à effet de règle non nul, sous le minimum de
-100 ; les greffes (a) sont désormais tirées parmi les donneuses qui
-changent le choix de la règle, et celles à effet nul forment un groupe
-(a0) publié sans seuil.
+Protocole `docs/LLM_NEED_CARRIED_CONTENT_PROTOCOL.md` (commit `50e490e`).
+**Amendement 1** (`057f7c7`), écrit avant toute mesure. Le tirage prévu ne
+donnait que 80 greffes (a) sur 400 où la règle changerait de choix, sous
+le minimum de 100. Les greffes (a) sont donc tirées parmi les donneuses
+qui changent le choix de la règle. Les autres forment un groupe à part,
+(a0), publié sans seuil.
 
 Code écrit avant toute mesure (`23f07fa`). Mesures torch sur le processeur
 local, le 4 octobre 2026. Artefacts : `artifacts/llm-need/carried-content`.
-Verdicts vérifiés en CI.
+Verdicts recalculés en local (identiques) ; la CI les vérifie à chaque
+envoi.
 
 **La greffe.** On prend l'agent A du test 22 (« porte », 4 000
 itérations). Sous son masque, les tours suivants ne voient le tour j qu'à
 travers ses 4 tokens portés (« Cho », « ix », « : » et l'action). On
-remplace, dans toutes les couches, leurs clés et valeurs par celles d'une
-autre vie (la donneuse), qui a écrit la même action au tour j. Puis on lit
-le choix de la vie receveuse un ou deux tours plus tard (g = 1 ou 2).
+remplace, dans toutes les couches, leurs clés et valeurs (ce que les tours
+suivants lisent de ces tokens) par celles d'une autre vie, la donneuse,
+qui a écrit la même action au tour j. Puis on lit le choix de la vie
+receveuse un ou deux tours plus tard (g = 1 ou 2).
+- **ΔP(R)** : la probabilité que la receveuse choisisse R avec la greffe,
+  moins sans la greffe.
+- **Effet de la règle** : on rejoue la vie receveuse avec les besoins de la
+  donneuse au tour j, en gardant ses actions et ses événements. +1 si la
+  règle passerait alors de M à R, −1 de R à M, 0 sinon.
 
-| Greffes (128 vies receveuses tenues à l'écart) | Nombre | A, porte : \|ΔP(R)\| moyen | B, actions : \|ΔP(R)\| moyen |
+| Greffes (receveuses tirées parmi les 128 vies tenues à l'écart du test 22) | Nombre (vies receveuses) | A (« porte ») : écart moyen \|ΔP(R)\| | B (« actions ») : écart moyen \|ΔP(R)\| |
 |---|---|---|---|
-| (a) autres besoins, la règle changerait de choix | 374 | **0,510** | 0,041 |
-| (a0) autres besoins, la règle ne changerait pas | 200 | 0,073 | 0,026 |
-| (b) mêmes besoins, autre histoire | 200 | **0,070** | 0,022 |
+| (a) autres besoins, la règle changerait de choix | 374 (127) | **0,510** | 0,041 |
+| (a0) autres besoins, la règle ne changerait pas | 200 (50) | 0,073 | 0,026 |
+| (b) mêmes besoins, autre histoire | 200 (60) | **0,070** | 0,022 |
 
 | | Critère | Verdict |
 |---|---|---|
 | **STATE1** | sur les greffes (a) : moyenne de ΔP(R) × (effet de la règle) ≥ **0,10** (borne basse > 0) | **passe** : +0,484 [0,438 ; 0,530] |
 | **STATE2** | \|ΔP(R)\| des greffes (b) ≤ **la moitié** de celui des greffes (a), et différence à borne basse > 0 | **passe** : 0,070 contre 0,510 (seuil 0,255) ; différence +0,440 [0,392 ; 0,489] |
-| | Validité : sans greffe ≤ 1e-4 ; greffe de soi ≤ 1e-6 ; mêmes positions ; ≥ 100 greffes (a) et (b) | **valide** : 5e-9 ; 0 ; oui ; 374 et 200 |
+| | Validité : sans greffe ≤ 1e-4 ; greffe de soi ≤ 1e-6 ; mêmes positions (vérifié à chaque greffe) ; ≥ 100 greffes (a) et (b) | **valide** : 5e-9 ; 0 ; oui ; 374 et 200 |
 
 **Critère global (STATE1 et STATE2) : satisfait.**
 
@@ -1474,50 +1481,85 @@ aux mêmes besoins, venu d'une autre histoire, ne change presque rien. Ce
 qui est porté est un état de soi (le niveau de ses besoins), pas une trace
 des événements. »
 
+**Nuance (après lecture).** Le test ne sépare pas le niveau des besoins de
+ce qui en commande le choix. Et l'événement du tour j compte un peu (voir
+l'exploration plus bas).
+
 **Publié sans seuil.**
 - **Selon g** : effet aligné +0,470 à un tour (199 greffes (a)), +0,499 à
   deux tours (175) ; \|ΔP(R)\| des greffes (b) : 0,073 et 0,067. L'effet
   ne baisse pas entre un et deux tours.
 - **Greffes (a0)** : autres besoins, mais la règle ne changerait pas de
   choix. \|ΔP(R)\| = 0,073, comme les greffes (b) (0,070).
-- **La part de l'effet de la règle que A retrouve.** La règle change son
-  choix d'un tout (de 0 à 1 ou de 1 à 0). A déplace en moyenne sa
-  probabilité de 0,484 dans ce sens. Par sens : quand la règle passerait à
-  R (178 greffes), P(R) va de 0,062 à 0,556 ; quand elle passerait à M
+- **La part de l'effet de la règle que A retrouve.** Dans les greffes (a),
+  la règle change entièrement de choix (de M à R, ou de R à M). A déplace
+  en moyenne sa probabilité de choisir R de 0,484 dans ce sens, soit
+  environ la moitié. Par sens : quand la règle passerait à R (178
+  greffes), P(R) va en moyenne de 0,062 à 0,556 ; quand elle passerait à M
   (196), de 0,896 à 0,422.
 - **Le témoin B** (« actions » du test 22, 4 000 itérations ; sans greffe
-  4e-7, greffe de soi 0). Ses tokens portés ne sont que ses actions, et
-  la donneuse a écrit la même action au tour j. Greffés, ils changent à
-  peine le choix : effet aligné +0,025 [0,018 ; 0,031], \|ΔP(R)\| de 0,041
-  (a), 0,026 (a0) et 0,022 (b). Ce petit effet vient sans doute des
-  actions passées de la donneuse, que voit le token de l'action sous le
-  masque de B et qui disent un peu ses besoins.
+  4e-7, greffe de soi 0). Greffés, ses tokens portés changent à peine le
+  choix : effet aligné +0,025 [0,018 ; 0,031]. Sous le masque de B, seul le
+  token de l'action compte, et il ne voit que les actions passées. La
+  seule chose que la greffe change est donc la suite des actions passées
+  de la donneuse. Quand ces actions sont les mêmes (92 greffes), l'effet
+  est exactement nul. Ces actions disent un peu les besoins de la
+  donneuse : d'où le petit effet aligné.
 
 **Écarts d'exécution, déclarés.**
 - **Amendement 1**, avant toute mesure (voir plus haut).
 - **374 greffes (a) au lieu de 400** : le tirage a parcouru les 128 vies
   receveuses sans atteindre 400. Le protocole fixait un maximum ; le
   minimum de validité (100) est largement atteint.
-- **Les greffes (b) viennent de 60 vies receveuses** : le tirage s'arrête
-  à 200, atteint avant la fin des vies. L'intervalle bootstrap tient compte
-  de ce regroupement (tirage par vie).
+- **Peu de vies receveuses pour (b) et (a0)** : 60 pour (b), 50 pour (a0).
+  Le tirage s'arrête à 200, atteint avant la fin des vies. L'intervalle
+  bootstrap tient compte de ce regroupement (tirage par vie).
+- **20 des 200 greffes (b) n'ont pas d'autre histoire** (relevé à la
+  relecture). La donneuse a vécu les mêmes tours que la receveuse jusqu'au
+  tour j (12 fois au tour 1, où mêmes besoins veut dire même événement).
+  Leur greffe ne change rien, par construction. Le protocole ne l'avait
+  pas prévu. Sans elles, \|ΔP(R)\| des greffes (b) vaut 0,077 ; STATE2
+  passe toujours (différence +0,432 [0,383 ; 0,482]).
+- **Une donneuse dont le rejeu fait mourir la receveuse** est écartée avant
+  le tirage, pas après.
 - **Lecture anticipée.** Les verdicts de A ont été calculés dès ses greffes
   finies, avant les greffes du témoin B. Aucune règle n'a changé. B ne
   compte pas dans les verdicts.
 - **Le protocole du test 24** (`docs/LLM_NEED_CHAIN_PROTOCOL.md`) a été
   écrit après cette lecture anticipée, et avant la fin de B.
 
+### Exploration, non pré-enregistrée (après lecture, relevée par la relecture indépendante)
+
+Script `research/need_carried_exploration.py`, sortie
+`artifacts/llm-need/carried-content/exploration.json`.
+
+- **L'événement du tour j compte un peu.**
+  - (a), même événement au tour j chez la donneuse (79 greffes) : +0,31
+    [0,22 ; 0,41]. Événement différent (295) : +0,53 [0,48 ; 0,58].
+  - (b), événement différent au tour j (106 greffes) : \|ΔP(R)\| 0,098
+    [0,056 ; 0,147]. Même événement, autre histoire (74) : 0,047.
+  - Une simple trace de l'événement du tour j est exclue : à événement égal,
+    la greffe (a) change encore le choix de +0,31. Mais l'état porte aussi
+    un peu de l'événement récent, ce qui va avec la mémoire courte du
+    test 22.
+- **Ce n'est pas une hésitation autour de 0,5.** Dans les greffes (a), la
+  probabilité du nouveau choix de la règle dépasse 0,9 dans 144 greffes
+  sur 374, reste sous 0,1 dans 102, et se trouve entre les deux dans 128.
+  La greffe fait souvent basculer le choix presque entièrement, et souvent
+  presque pas.
+
 ### Ce que cela dit
 
-- **Ce que l'agent porte d'un tour à l'autre, c'est son besoin.** Greffé
-  dans une autre vie, l'état porté d'un seul tour fait choisir selon les
-  besoins de la vie d'origine, à la moitié environ d'un changement complet,
-  un ou deux tours plus tard. Venu d'une vie aux mêmes besoins, mais à
-  l'histoire différente (et souvent à l'événement différent au tour même),
-  il ne change presque rien.
-- **C'est un état de soi, pas une trace des événements.** Le contenu qui
-  compte pour les choix est le niveau des besoins à ce tour, non
-  l'événement qui l'a produit ni les tours d'avant.
+- **Ce que l'agent porte d'un tour à l'autre dépend surtout de son
+  besoin.** Greffé dans une autre vie, l'état porté d'un seul tour fait
+  pencher le choix vers les besoins de la vie d'origine. C'est vrai un
+  tour plus tard comme deux. En moyenne, c'est la moitié d'un changement
+  complet.
+- **Surtout le besoin, pas seulement une trace des événements.** À besoins
+  égaux, une autre histoire change peu le choix (0,070 contre 0,510 ;
+  0,098 quand l'événement du tour j diffère). L'événement du tour j compte
+  un peu (voir l'exploration). L'agent ne voit jamais ses niveaux :
+  l'état porte au mieux son estimation de ses besoins.
 - **Des besoins différents qui ne changeraient pas le choix de la règle
   (a0) changent aussi peu le choix que des besoins égaux (b)** (publié sans
   seuil). C'est attendu si l'état code les niveaux, puisque la règle ne
@@ -1526,11 +1568,13 @@ des événements. »
   bas). Ce test ne sépare pas les deux.
 - **Pour le cadre en cinq niveaux** : au test 22, nous savions que ces
   états portent une information au-delà des actions. Nous savons
-  maintenant laquelle : le besoin de l'agent.
+  maintenant qu'elle porte surtout sur le besoin de l'agent (ses niveaux,
+  ou au moins ce qui en commande le choix).
 
 **Ce que le résultat ne dit pas.**
 - Rien sur un ressenti.
 - L'agent a appris d'un professeur qui connaît les besoins.
+- Aucune vie n'a été vécue avec la greffe : on a lu P(R) au tour t.
 - La greffe porte sur les 4 tokens d'un seul tour : les tours précédents
   de la receveuse restent les siens.
 - La mesure ne sépare pas « Choix : » de l'action : les 4 tokens sont
