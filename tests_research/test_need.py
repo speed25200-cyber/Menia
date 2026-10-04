@@ -1251,6 +1251,60 @@ class RelayTests(unittest.TestCase):
             self.assertEqual(RY.gather(folder)["verdicts"], RY.verdicts(measured, ok)["verdicts"])
 
 
+class ReliefGraftTests(unittest.TestCase):
+    def test_draw_and_level_effects(self):
+        from research import need_relief_graft as RG, need_relief as RL
+        held = RG.lives()[:40]
+        grafts = RG.draw(held)
+        self.assertEqual(grafts, RG.draw(held))
+        at = [{x["t"]: x for x in W.decisions(l)} for l in held]
+        for g in grafts:
+            r, d, j, t = g["r"], g["d"], g["j"], g["t"]
+            self.assertNotEqual(r, d)
+            self.assertEqual(t - j, g["g"])
+            self.assertEqual(at[r][j]["action"], at[d][j]["action"])
+            same = (at[r][j]["E"], at[r][j]["N"]) == (at[d][j]["E"], at[d][j]["N"])
+            self.assertEqual(same, g["kind"] == "b")
+            self.assertEqual(g["level_effect"], RG.level_effect(held[r], held[d], j, t))
+            self.assertEqual(g["level_effect"] != 0, g["kind"] == "a" or (g["kind"] == "b" and g["level_effect"] != 0))
+        life = held[0]
+        x, y = W.decisions(life)[2], W.decisions(life)[4]
+        self.assertEqual(RG.level_effect(life, life, x["t"], y["t"]), 0)
+        full = RG.draw(RG.lives())
+        self.assertEqual({k: sum(g["kind"] == k for g in full) for k in RG.COUNTS}, RG.COUNTS)
+
+    def test_verdicts_and_gather(self):
+        import tempfile
+        from pathlib import Path
+        from research import need_relief_graft as RG
+        grafts = RG.draw(RG.lives())
+        rng = np.random.default_rng(13)
+        lv = lambda x: [max(0.0, 1 - abs(x - k)) for k in range(4)]  # expected level x for x in [0, 3]
+
+        def rows(gain, noise_b):
+            out = []
+            for g in grafts:
+                shift = gain * g["level_effect"] + (noise_b * rng.standard_normal() if g["kind"] != "a" else 0.0)
+                x = 1.5 + float(np.clip(shift, -1.5, 1.5))
+                out.append(dict(g, route=[lv(1.5), lv(x)], actions=[lv(1.5), lv(1.5)]))
+            return out
+        ok = {a: {"no_graft_gap": 1e-8, "self_graft_gap": 0.0, "positions_same": True} for a in RG.ARMS}
+        self.assertTrue(all(RG.verdicts(rows(0.5, 0.02), ok)["verdicts"].values()))
+        self.assertFalse(RG.verdicts(rows(0.05, 0.0), ok)["verdicts"]["SELF1"])
+        self.assertFalse(RG.verdicts(rows(0.5, 0.6), ok)["verdicts"]["SELF2"])
+        bad = dict(ok, route=dict(ok["route"], self_graft_gap=1e-3))
+        self.assertFalse(RG.verdicts(rows(0.5, 0.02), bad)["verdicts"]["valid"])
+        measured = rows(0.5, 0.02)
+        with tempfile.TemporaryDirectory() as folder:
+            for arm in RG.ARMS:
+                for k in range(2):
+                    W.write_jsonl(Path(folder) / f"grafts-{arm}-{k}-of-2.jsonl.gz",
+                                  [dict({f: r[f] for f in r if f not in RG.ARMS}, levels=r[arm])
+                                   for r in measured if r["index"] % 2 == k])
+                (Path(folder) / f"setup-{arm}.json").write_text(json.dumps(ok[arm]))
+            self.assertEqual(RG.gather(folder)["verdicts"], RG.verdicts(measured, ok)["verdicts"])
+
+
 class ReliefTests(unittest.TestCase):
     def test_lives_texts_and_targets(self):
         from research import need_relief as RL, need_rules as NR
