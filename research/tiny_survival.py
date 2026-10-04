@@ -241,6 +241,8 @@ def run(a):
             continue
         nets = {}
         for arm in ARMS:
+            if paths[arm].exists() and (seed != 0 or (root / "setup.json").exists()):
+                continue  # resumed after a stop: an arm already measured is kept as written
             net, curve = train(arm, seed, log)
             nets[arm] = net
             survived, agrees = measure(net, arm)
