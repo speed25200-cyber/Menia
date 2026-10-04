@@ -1,0 +1,7 @@
+test_under_the_carry_mask_the_past_reaches_a_turn_only_through_its_carried_tokens (tests_research.test_need.MLXCarryTests.test_under_the_carry_mask_the_past_reaches_a_turn_only_through_its_carried_tokens) ... ok
+test_under_the_actions_mask_no_past_event_reaches_a_later_turn (tests_research.test_need.MLXMemoryTests.test_under_the_actions_mask_no_past_event_reaches_a_later_turn) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 6.818s
+
+OK
