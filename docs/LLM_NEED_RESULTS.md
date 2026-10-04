@@ -1765,7 +1765,8 @@ sur des vies neuves. »
 
 Cette lecture va un peu au-delà des données. La mesure remet ensemble tous
 les tours intermédiaires : elle ne montre pas que chaque état reprend celui
-d'avant. Et, comptée par les médiateurs seuls, la part n'est nettement
+d'avant (le test 27 l'a mesuré à trois tours : l'état i + 2 ne reprend
+presque rien de l'état i + 1). Et, comptée par les médiateurs seuls, la part n'est nettement
 au-dessus de la moitié qu'à quatre tours (voir selon h).
 
 **Publié sans seuil : selon h.**
@@ -1849,7 +1850,7 @@ au-dessus de la moitié qu'à quatre tours (voir selon h).
 Protocole `docs/LLM_NEED_RELAY_PROTOCOL.md` (commit `4a4527a`), écrit après
 la publication du test 25 et sa relecture, avant le code et toute mesure
 (seul le nombre de greffes du tirage avait été compté, sans modèle). Code
-écrit avant toute mesure (`b8dfba9`). Mesures torch sur le processeur
+commis avant toute mesure (`b8dfba9`). Mesures torch sur le processeur
 local, le 4 octobre 2026, en trois processus à un seul fil. Artefacts :
 `artifacts/llm-need/relay`. Verdicts recalculés en local (identiques) ; la
 CI les vérifie à chaque envoi.
@@ -1857,13 +1858,15 @@ CI les vérifie à chaque envoi.
 **La question.** Au test 25, l'effet d'un état greffé passe surtout par les
 états des tours intermédiaires. Mais chaque état reprend-il **celui
 d'avant** (i → i + 1 → i + 2), ou chacun prend-il la greffe directement de
-l'état ancien (i → i + 2) ? On regarde l'état du tour i + 2, à trois tours
-du choix (t = i + 3), sur **128 vies neuves**.
+l'état ancien (i → i + 2) ? On regarde l'état du tour i + 2, le dernier
+avant le choix du tour t = i + 3 (la greffe est faite trois tours avant le
+choix), sur **128 vies neuves**.
 
 **La mesure.** Trois versions de l'état porté du tour i + 2 :
 - **complet** : tour i greffé, tour i + 1 calculé avec la greffe ;
-- **par i seul** : tour i greffé, mais tour i + 1 remis à ses valeurs sans
-  greffe avant de calculer le tour i + 2 ;
+- **par i seul** : tour i greffé, mais les 4 tokens portés du tour i + 1
+  remis à leurs valeurs sans greffe (le reste du tour i + 1 n'est pas
+  visible du tour i + 2) avant de calculer le tour i + 2 ;
 - **par i + 1 seul** : tour i sans greffe, tour i + 1 pris de la lecture
   avec greffe.
 
@@ -1876,14 +1879,16 @@ la règle changerait le choix.
 | État i + 2 complet | +0,066 [0,044 ; 0,091] |
 | État i + 2 par i seul | **+0,058** [0,038 ; 0,082] |
 | État i + 2 par i + 1 seul | **+0,005** [−0,002 ; 0,013] |
-| Terme non additif | +0,003 [−0,005 ; 0,010] |
+| Terme non additif (complet − par i seul − par i + 1 seul) | +0,003 [−0,005 ; 0,010] |
 | Pour comparaison : effet total au tour t (comme au test 25) | +0,406 [0,355 ; 0,458] |
+
+Intervalles à 95 %, bootstrap par vie receveuse.
 
 | | Critère | Verdict |
 |---|---|---|
 | Condition préalable | effet de l'état i + 2 complet ≥ **0,05** (borne basse > 0) | **remplie** : +0,066 [0,044 ; 0,091] |
 | **RELAY** | borne basse de (par i + 1 seul − la moitié du complet) > 0, et borne basse de (par i + 1 seul − par i seul) > 0 | **échoue** : −0,028 [−0,040 ; −0,017] et −0,053 [−0,077 ; −0,032] |
-| | Validité : lecture prolongée ≤ 1e-4 ; greffe de soi ≤ 1e-6 ; mêmes positions (vérifié à chaque greffe) ; ≥ 150 greffes | **valide** : 4,4e-7 ; 0 ; oui ; 209 |
+| | Validité : lecture prolongée (le calcul par morceaux redonne la lecture du texte entier) ≤ 1e-4 ; greffe de soi (greffer sa propre vie ne change aucune lecture) ≤ 1e-6 ; mêmes positions (vérifié à chaque greffe) ; ≥ 150 greffes | **valide** : 4,4e-7 ; 0 ; oui ; 209 |
 
 **Critère global : non satisfait.**
 
@@ -1906,21 +1911,31 @@ pas. »
 - **Pas de relais pas à pas.** L'état du tour i + 2 porte un peu de la
   greffe (+0,066), mais il la prend presque entièrement **directement** de
   l'état greffé du tour i (+0,058), et presque rien à travers l'état du
-  tour i + 1 (+0,005).
+  tour i + 1 (+0,005) (compté par ce qui change le choix du tour t).
 - **Ce que cela dit du test 25.** Là-bas, l'effet passait surtout par les
-  états intermédiaires. Ici, on voit comment : chaque état intermédiaire
-  lit lui-même l'état ancien, plutôt que de recevoir l'information de
-  l'état d'avant. Et l'état i + 2 seul en porte peu ; l'essentiel de ce qui
-  passe par les intermédiaires tient donc surtout à l'état i + 1.
-- **Pour le cadre en cinq niveaux** : la transmission par les états
-  intermédiaires (test 25) n'est pas une mise à jour d'état pas à pas, du
-  moins entre i + 1 et i + 2. Ce n'est pas une récurrence au sens strict
-  d'un état qui reprend le précédent.
+  états intermédiaires. Ici, à trois tours, l'état du tour i + 2 prend ce
+  qu'il porte de la greffe directement de l'état ancien, presque rien à
+  travers l'état i + 1. Seul ce maillon est mesuré ; on ne sait rien des
+  distances de quatre et cinq tours. Et l'état i + 2 seul porte peu de
+  l'effet au tour t (+0,066, un sixième de l'effet total, +0,406). Ce test
+  ne mesure pas l'état i + 1 seul ; rapproché du test 25 (autres vies : à
+  trois tours, les deux états intermédiaires ensemble y portaient +0,17 sur
+  +0,36), cela suggère, sans le montrer, que l'état i + 1 compte davantage.
+- **Pour le cadre en cinq niveaux** : à trois tours, entre i + 1 et i + 2,
+  la transmission par les états intermédiaires (test 25) n'est pas une mise
+  à jour d'état pas à pas. Sur ce maillon, ce n'est pas une récurrence au
+  sens strict d'un état qui reprend le précédent.
 
 **Ce que le résultat ne dit pas.**
 - Rien sur un ressenti.
+- L'agent a appris d'un professeur qui connaît les besoins ; et ce n'est
+  pas une boucle interne au réseau : tout passe par les clés et valeurs des
+  tokens portés, relues à chaque tour.
 - Un seul écart (trois tours) et un seul maillon (i + 1 → i + 2) sont
   mesurés.
+- L'effet de chaque version n'est compté que par ce qu'il change au choix
+  du tour t (états i et i + 1 sans greffe) : ce que l'état i + 2 recevrait
+  de l'état i + 1 sans que ce choix s'en serve n'est pas compté.
 - Les lectures mélangent des états greffés et non greffés : c'est la
   limite de ces décompositions.
 
