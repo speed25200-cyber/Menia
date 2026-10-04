@@ -1,29 +1,25 @@
 {
- "request": 97,
+ "request": 98,
  "app": "Menia",
- "wait_minutes": 200,
+ "wait_minutes": 150,
  "builds": [
-  {
-   "build": "6ac1a042fdf51da68cfaf84e",
-   "dest": "artifacts/llm-need/memory-no-leak/actions-1"
-  },
   {
    "launch": {
     "workflow": "menia-need-mac",
     "branch": "claude/causal-self-model-llm-results-mauabk",
     "variables": {
      "NEED_STAGE": "memory",
-     "NEED_ARM": "route",
      "NEED_NO_LEAK": "1",
      "NEED_ITERS": "250",
-     "NEED_UNTIL": "4000",
      "NEED_MINUTES": "108",
-     "NEED_CONTINUE": "artifacts/llm-need/memory-no-leak/route-1/adapters-route",
-     "NEED_SKIP": "2000",
-     "NEED_START": "artifacts/llm-need/final/report/adapters-final"
+     "NEED_START": "artifacts/llm-need/final/report/adapters-final",
+     "NEED_ARM": "route",
+     "NEED_UNTIL": "4000",
+     "NEED_CONTINUE": "artifacts/llm-need/memory-no-leak/route-2/adapters-route",
+     "NEED_SKIP": "3750"
     }
    },
-   "dest": "artifacts/llm-need/memory-no-leak/route-2"
+   "dest": "artifacts/llm-need/memory-no-leak/route-3"
   }
  ]
 }
