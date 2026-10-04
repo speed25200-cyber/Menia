@@ -34,3 +34,4 @@ artifacts/llm-need/**/*.tmp
 
 # test 29: the per-seed runs are the raw data of the verdicts (docs/TINY_RELIEF_PROTOCOL.md)
 !artifacts/tiny-relief/runs/
+!artifacts/tiny-survival/runs/
