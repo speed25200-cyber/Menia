@@ -241,17 +241,29 @@ def need_batches(dataset, batch_size, max_seq_length, loop=False, seed=None, com
         raise ValueError("a reader learns from questions only")
     if seed:
         np.random.seed(seed)
-    while True:
-        for i in np.random.permutation(len(batches)):
+    for order in epoch_orders(len(batches), loop):
+        for i in order:
             arrays = pad_batch([dataset[j] for j in batches[i]], max_seq_length)
             if masked and len(arrays) == 2:
                 arrays += (workspace_mask(arrays[0].shape[1] - 1)[None, None].repeat(len(batches[i]), 0),)
             yield tuple(mx.array(x) for x in arrays)
+
+
+def epoch_orders(count, loop):
+    """The order of the batches of each epoch, drawn when the epoch starts: from numpy's global state, or, with
+    EPOCHS (docs/LLM_NEED_MEMORY_NO_LEAK_PROTOCOL.md, amendment 1), for a training epoch after the first from
+    [EPOCHS[-1], epoch], whatever the validations drew from the global state meanwhile."""
+    epoch = 0
+    while True:
+        epoch += 1
+        fixed = loop and EPOCHS and epoch > 1
+        yield (np.random.default_rng([EPOCHS[-1], epoch]) if fixed else np.random).permutation(count)
         if not loop:
             break
 
 
 MASK = []  # the attention mask of the batch being run, read by the patched Qwen3 blocks
+EPOCHS = []  # the seed of the training epochs after the first, when their order is fixed (need_batches)
 READER = []  # where the adapter acts (batch x inputs x 1), read by the patched LoRA layers
 
 
@@ -296,8 +308,8 @@ def skipping(batches, skip):
     follows the first epoch's, so the continued run draws in the same order only if it starts within the first epoch.
     Validation batches (loop=False) are not skipped."""
     def iterate(*args, **kwargs):
-        if kwargs.get("loop") and skip and skip >= len(kwargs["dataset"]) // kwargs["batch_size"]:
-            raise ValueError("a continued run must start within the first epoch")
+        if kwargs.get("loop") and skip and skip >= len(kwargs["dataset"]) // kwargs["batch_size"] and not EPOCHS:
+            raise ValueError("a continued run must start within the first epoch (or the epochs' order be fixed)")
         it = batches(*args, **kwargs)
         if kwargs.get("loop"):
             for _ in range(skip):
@@ -346,7 +358,10 @@ def main(argv=None):
     p.add_argument("--skip", type=int, default=0, help="batches already trained on (a run continued)")
     p.add_argument("--moments-from", default=None, help="the folder of the adapter whose Adam moments continue")
     p.add_argument("--adapter-path", default="adapters")
+    p.add_argument("--fixed-epochs", type=int, default=None, help="the seed of the epochs after the first")
     ours, rest = p.parse_known_args(sys.argv[1:] if argv is None else argv)
+    if ours.fixed_epochs is not None:
+        EPOCHS.append(ours.fixed_epochs)
     qwen3.create_attention_mask = masked_attention(qwen3.create_attention_mask)
     reader_lora(LoRALinear)
     datasets.TextDataset = NeedText

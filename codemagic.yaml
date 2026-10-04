@@ -980,16 +980,15 @@ workflows:
             trap 'rm -rf "$OUT/fused-start"' EXIT
             NEED_TINY_MODEL="$MODEL" python -m unittest tests_research.test_need.MLXCarryTests \
               tests_research.test_need.MLXMemoryTests -v 2>&1 | tee "$OUT/memory-$NEED_ARM-check.log" | tail -5
-            # stopped after NEED_MINUTES (default 100; 110 for a memory build) so that a hang leaves its log behind
             # docs/LLM_NEED_MEMORY_NO_LEAK_PROTOCOL.md: NEED_NO_LEAK=1 fills the lines; NEED_CONTINUE (an adapter fetched
             # into the repository) and NEED_SKIP continue a run exactly
             MEMORY=""
             if [ "$NEED_NO_LEAK" = "1" ]; then MEMORY="--no-leak"; fi
             if [ "$NEED_CONTINUE" != "none" ]; then MEMORY="$MEMORY --continue-from $NEED_CONTINUE --skip $NEED_SKIP"; fi
-            perl -e 'alarm(shift @ARGV); exec @ARGV' $((NEED_MINUTES * 60)) \
-              python -m research.need_mlx memory --arm "$NEED_ARM" --start "$NEED_START" --model "$MODEL" \
-              --iters "$NEED_ITERS" $MEMORY --out "$OUT" 2>&1 | tee "$OUT/memory-$NEED_ARM.log" | grep -v "it/s" \
-              | tail -30
+            # the training itself is stopped NEED_MINUTES after the start, so that its log comes back
+            python -m research.need_mlx memory --arm "$NEED_ARM" --start "$NEED_START" --model "$MODEL" \
+              --iters "$NEED_ITERS" $MEMORY --minutes "$NEED_MINUTES" --out "$OUT" 2>&1 \
+              | tee "$OUT/memory-$NEED_ARM.log" | grep -v "it/s" | tail -30
             rm -rf "$OUT/fused-start"
           elif [ "$NEED_STAGE" = "curiosity" ]; then
             # docs/LLM_CURIOSITY_PROTOCOL.md: one command of research/curiosity_mlx.py per build (pilot, install,

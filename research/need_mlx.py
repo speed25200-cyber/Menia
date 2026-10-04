@@ -14,6 +14,7 @@ import hashlib
 import json
 import subprocess
 import sys
+import time
 from pathlib import Path
 import numpy as np
 from . import need_world as W
@@ -169,7 +170,8 @@ def summary(lives):
 write_jsonl, read_jsonl = W.write_jsonl, W.read_jsonl
 
 
-def train(model, data, adapter, iters, resume=None, seed=W.SEED, skip=0, moments=False, val_batches=2):
+def train(model, data, adapter, iters, resume=None, seed=W.SEED, skip=0, moments=False, val_batches=2,
+          fixed_epochs=None, deadline=None):
     """One LoRA stage through research.need_lora (rank 8, 16 layers, batch 4, lr 1e-4, as in the protocol). With
     skip and moments, the run that left `resume` after skip batches is continued exactly: its batches, its Adam
     moments (docs/LLM_NEED_LONG_READER_PROTOCOL.md)."""
@@ -181,8 +183,14 @@ def train(model, data, adapter, iters, resume=None, seed=W.SEED, skip=0, moments
         cmd += ["--resume-adapter-file", str(Path(resume) / "adapters.safetensors")]
     if moments:
         cmd += ["--moments-from", str(resume)]
+    if fixed_epochs is not None:
+        cmd += ["--fixed-epochs", str(fixed_epochs)]
     for attempt in range(ATTEMPTS):  # the Mac's GPU sometimes hangs ("GPU Hang Error"): the same training again
-        if subprocess.run(cmd).returncode == 0:
+        try:  # with a deadline, the training itself is stopped there (its log is kept)
+            done = subprocess.run(cmd, timeout=None if deadline is None else max(60.0, deadline - time.time()))
+        except subprocess.TimeoutExpired:
+            raise RuntimeError("training stopped at the time limit")
+        if done.returncode == 0:
             return
         print(f"training failed (attempt {attempt + 1} of {ATTEMPTS})", flush=True)
     raise RuntimeError("training failed on every attempt")
@@ -386,6 +394,7 @@ def memory(a, log=print):
     """Memory that the choices require (docs/LLM_NEED_MEMORY_PROTOCOL.md): the final agent fused, a new adapter for
     the arm a.arm ("route", "actions" or "free") on the lives of the rule "needs" (research/need_memory.py), the
     validation lives held out; then P(R) at turns 3, 10 and 20 of the validation lives (the torch replica)."""
+    start = time.time()
     from . import need_memory as NM
     from . import need_memory_no_leak as NL22
     # docs/LLM_NEED_MEMORY_NO_LEAK_PROTOCOL.md: filled lines, 8192 lives, a run continued exactly in a second build
@@ -407,7 +416,9 @@ def memory(a, log=print):
     final = out / f"adapters-{a.arm}"
     resume = None if a.continue_from in (None, "none") else a.continue_from
     train(model, out / f"data-{a.arm}", final, a.iters, resume=resume, seed=W.SEED, skip=a.skip,
-          moments=resume is not None, val_batches=len(valid) // 4)
+          moments=resume is not None, val_batches=len(valid) // 4,
+          fixed_epochs=W.SEED if a.no_leak else None,  # amendment 1 of docs/LLM_NEED_MEMORY_NO_LEAK_PROTOCOL.md
+          deadline=None if a.minutes is None else start + 60 * a.minutes)
     clean(final)
     free()
     rows = carry_rows(model, final, texts.replica_decisions(held), kind=a.arm)
@@ -602,6 +613,7 @@ def main(argv=None):
     m.add_argument("--no-leak", action="store_true", help="filled lines (docs/LLM_NEED_MEMORY_NO_LEAK_PROTOCOL.md)")
     m.add_argument("--continue-from", default=None, help="an adapter whose run is continued exactly")
     m.add_argument("--skip", type=int, default=0, help="batches the continued run has trained on")
+    m.add_argument("--minutes", type=float, default=None, help="the training is stopped this long after the start")
     t = sub.add_parser("test")
     t.add_argument("--final", required=True)
     t.add_argument("--control", required=True)

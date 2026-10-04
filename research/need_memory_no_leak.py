@@ -17,7 +17,9 @@ from . import need_memory as NM
 FILL = (4, 4, 2, 2, 0, 4)  # " -" after each event, up to the length of "tu trouves des baies" (Qwen3 tokenizer)
 TRAIN_STREAM, TRAIN_LIVES = 49, 8192
 ARMS = ("route", "actions")
-STAGES = {"half": 1, "final": 2}  # the Mac build after which each measure is taken: 2000 and 4000 iterations
+# the Mac build after which each measure is taken, 2000 and 4000 iterations (amendment 1: A learned its first 2000 in
+# one build, then 1000 per build; B 1000 per build)
+STAGES = {"route": {"half": 1, "final": 3}, "actions": {"half": 2, "final": 4}}
 ROOT = "artifacts/llm-need/memory-no-leak"
 
 
@@ -100,7 +102,7 @@ class Filled:
 
 
 def folder(root, arm, stage):
-    return Path(root) / f"{arm}-{STAGES[stage]}"
+    return Path(root) / f"{arm}-{STAGES[arm][stage]}"
 
 
 def agent_of(root, arm, stage):
@@ -238,7 +240,7 @@ def main(argv=None):
     r = sub.add_parser("run")
     r.add_argument("--threads", type=int, default=4)
     r.add_argument("--arms", nargs="+", choices=ARMS, default=list(ARMS))
-    r.add_argument("--stage", choices=sorted(STAGES), default="final")
+    r.add_argument("--stage", choices=("half", "final"), default="final")
     sub.add_parser("write")
     sub.add_parser("verdicts")
     for s in sub.choices.values():

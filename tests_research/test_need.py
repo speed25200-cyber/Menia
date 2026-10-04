@@ -982,6 +982,26 @@ class MemoryNoLeakTests(unittest.TestCase):
         W.play(agent, W.world_rng(343, 0), W.choice_rng(343, 0))
         self.assertTrue(fake.lines and all(" - " in l or "baies" in l for l in fake.lines))
 
+    def test_epoch_orders_after_the_first_are_fixed(self):
+        np.random.seed(5)
+        old = [o.tolist() for o, _ in zip(need_lora.epoch_orders(6, True), range(3))]
+        np.random.seed(5)
+        self.assertEqual(old, [np.random.permutation(6).tolist() for _ in range(3)])
+        need_lora.EPOCHS.append(270926)
+        try:
+            def run(validation):
+                np.random.seed(5)
+                orders = need_lora.epoch_orders(6, True)
+                out = [next(orders).tolist()]
+                if validation:
+                    np.random.permutation(10)  # what a validation draws from the global state
+                return out + [next(orders).tolist(), next(orders).tolist()]
+            self.assertEqual(run(False), run(True))
+            self.assertEqual(run(True)[0], old[0])  # the first epoch is unchanged
+            self.assertEqual(len(list(need_lora.epoch_orders(6, False))), 1)
+        finally:
+            need_lora.EPOCHS.clear()
+
     def test_the_two_agents_measured_apart_are_put_together(self):
         from research import need_memory as NM, need_memory_no_leak as NL22
         held = NM.teacher_lives(NM.HELD_STREAM, NM.HELD_LIVES)
