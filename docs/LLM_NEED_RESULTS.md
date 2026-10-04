@@ -1268,6 +1268,140 @@ test, sans fuite : toutes les lignes d'événement de même longueur (un
 remplissage en « - » donne 16 tokens à chacune). Et un apprentissage plus
 long, puisque A n'avait pas fini d'apprendre.
 
+## Test 22 pré-enregistré : la mémoire sans fuite
+
+Protocole `docs/LLM_NEED_MEMORY_NO_LEAK_PROTOCOL.md` (commit `c35d9ee`).
+Amendements, écrits avant les mesures concernées :
+- **amendement 1** (`a0d6b1a`) : builds plus courts, ordre des lots fixé
+  par époque, arrêt qui arrête l'apprentissage ;
+- **amendement 2** (`371ea11`) : morceaux de 250 itérations repris
+  exactement.
+
+Code écrit avant tout apprentissage (`88ff796`), et avant les mesures
+concernées pour les amendements (`55de952`, `cc1541d`).
+
+Apprentissage sur le Mac (relais, demandes 95 à 102) ; mesures torch sur le
+processeur local, les 3 et 4 octobre 2026. Artefacts :
+`artifacts/llm-need/memory-no-leak`. Verdicts vérifiés en CI.
+
+**Ce qui change par rapport au test 21.**
+- **Plus de fuite par les positions.** Toutes les lignes d'événement ont la
+  même longueur, grâce à un remplissage « - ». Les actions tombent aux
+  mêmes positions dans toutes les vies.
+- **Un apprentissage deux fois plus long** : 4 000 itérations, sur 8 192
+  vies du professeur.
+- **Deux agents** : A (« porte ») et B (« actions »).
+
+| | A, porte | B, actions | Plafond bayésien des actions |
+|---|---|---|---|
+| Précision : choisit comme la règle (3 410 décisions, 128 vies tenues à l'écart) | **0,968** | 0,872 | 0,871 |
+| Là où la règle « événement » se trompe (613 décisions) | 0,887 | 0,514 | 0,519 |
+| Survie (256 vies, mêmes mondes) | **0,906** | 0,594 | |
+| « tu cours » au tour j : ΔP(R) au tour t (t − j ≥ 4, 300 paires, 104 vies) | **+0,065** [0,050 ; 0,082] | 0 exactement | règle : +0,183 |
+| Perte de validation tenue à l'écart (début → 2 000 → 4 000 itérations) | 1,916 → 0,113 → 0,069 | 3,318 → 0,292 → 0,294 | |
+
+| | Critère | Verdict |
+|---|---|---|
+| **MEM4** | précision de A − plafond bayésien ≥ **0,05** (borne basse > 0) | **passe** : +0,097 [0,085 ; 0,109] |
+| **MEM5** | ΔP(R) de A ≥ **la moitié** de l'effet de la règle, soit 0,092 (borne basse > 0) | **échoue** : +0,065 [0,050 ; 0,082] |
+| **MEM3** | survie de A − survie de B ≥ **0,08** (borne basse > 0) | **passe** : +0,313 [0,254 ; 0,371] |
+| | Validité : répliques ≤ 0,02 ; cache ≤ 1e-4 ; masques ≤ 1e-5 ; ≥ 150 paires ; masse ≥ 0,5 ; précision de B ≤ plafond + 0,02 | **valide** : répliques 0,0028 et 0,0059 ; cache 3e-14 et 9e-8 ; masques 0 et 0 (pour B, avec un événement de longueur naturelle différente) ; 300 paires ; masse 1,00 ; **B à +0,001 du plafond** |
+
+**Critère global (MEM4 et MEM5) : non satisfait**, à cause de MEM5.
+
+**Lectures fixées d'avance.**
+- **MEM4 passe et MEM5 échoue** : « Il porte de l'information au-delà de
+  ses actions, mais sa mémoire reste courte, même avec un apprentissage
+  deux fois plus long. »
+- **MEM3 passe** : « porter son besoin fait survivre davantage que ses
+  seules actions. »
+
+**Publié sans seuil : après 2 000 itérations.**
+
+| | A | B |
+|---|---|---|
+| Précision | 0,946 (+0,074 [0,062 ; 0,087] sur le plafond) | 0,874 (+0,003 [−0,001 ; +0,006]) |
+| ΔP(R) des paires | +0,057 [0,044 ; 0,072] | 0 exactement |
+
+Doubler l'apprentissage a amélioré la précision de A (+0,074 → +0,097),
+pas l'effet d'un événement caché (+0,057 → +0,065). Au test 21, cet effet
+valait +0,066.
+
+**Publié sans seuil : l'effet selon l'écart t − j (4 000 itérations).**
+
+| t − j | 4 | 5 | 6 | 7 | 8 | 9 | 10 à 22 |
+|---|---|---|---|---|---|---|---|
+| Paires | 64 | 72 | 45 | 28 | 28 | 15 | 48 |
+| Règle | +0,078 | +0,181 | +0,200 | +0,357 | +0,321 | +0,333 | +0,083 |
+| A, porte | +0,074 | +0,056 | +0,102 | +0,100 | +0,085 | +0,029 | +0,013 |
+| B, actions | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+
+**Écarts d'exécution, déclarés.**
+- **Plusieurs builds ont échoué**, sans rien garder :
+  - B, demande 95 : limite de 120 minutes ;
+  - A, demande 96 : Mac deux fois plus lent, arrêté vers l'itération 850 ;
+  - B, demande 96 : arrêté à la limite de temps.
+- **D'où les amendements 1 et 2.** Le total est resté exactement de 4 000
+  itérations par agent, chaque morceau reprenant le précédent (mêmes lots,
+  moments d'Adam).
+- **Les apprentissages réels :**
+  - A : 2 000 itérations en un build, puis 1 750 en 7 morceaux, puis 250 ;
+  - B : 1 250, 750, 1 750 et 250, par morceaux.
+- **Lecture anticipée.** MEM4 et MEM5 de A ont été calculés dès A mesuré,
+  avant la fin de l'apprentissage de B. Aucune règle n'a changé, et B a
+  été appris et mesuré ensuite comme prévu.
+
+**Précautions.** Tours vécus avec un besoin à 2 ou moins : 590 (A), 892 (B).
+
+### Exploration, non pré-enregistrée (après lecture des paires de A)
+
+Script `research/need_memory_consistency.py`, sortie
+`artifacts/llm-need/memory-no-leak/exploration/consistency.json`.
+
+**L'hypothèse testée.** La paire garde les actions écrites après le tour j.
+Avec l'événement changé, ces actions peuvent contredire ce que la règle
+aurait fait. Si A se sert de ses actions récentes comme indice de ses
+besoins, il réagirait moins quand elles contredisent l'événement.
+
+| Paires | Nombre | Effet sur A | Règle | Part |
+|---|---|---|---|---|
+| Cohérentes (la règle aurait fait les mêmes actions) | 36 | +0,094 [0,049 ; 0,151] | +0,222 | 42 % |
+| Contredites | 264 | +0,061 [0,045 ; 0,078] | +0,178 | 34 % |
+
+L'écart va dans le sens de l'hypothèse, mais il est petit, et les paires
+cohérentes sont peu nombreuses. Cette hypothèse n'explique pas l'essentiel
+du déficit : même quand les actions ne contredisent rien, A réagit à moins
+de la moitié de ce que ferait la règle.
+
+### Ce que cela dit
+
+- **Une mémoire par l'état, établie sans fuite.** L'agent qui ne voit son
+  passé qu'à travers ses propres états internes (« Choix : » et actions)
+  choisit comme la règle « besoins » à 0,968. C'est près de 10 points
+  au-dessus de ce que permet **tout** observateur de ses seules actions et
+  de l'événement du tour : un optimum calculé, pas un témoin appris.
+- **Le témoin appris confirme ce plafond.** B l'atteint presque exactement
+  (+0,001), sans le dépasser : la fuite du test 21 est fermée.
+- **Porter son besoin le fait survivre** : 0,906 contre 0,594 (MEM3).
+- **Mais cette mémoire est courte et partielle.** Un événement qu'il ne voit
+  plus change encore ses choix 4 à 8 tours plus tard (de +0,06 à +0,10
+  selon l'écart ; témoin : 0 exactement). En moyenne, c'est environ un tiers
+  de ce que ferait la règle, et presque rien au-delà de 9 tours. Doubler
+  l'apprentissage ne l'a pas allongée.
+- **Pour le cadre en cinq niveaux** : c'est la première fois dans le
+  programme qu'un état interne dure d'un tour à l'autre et sert, avec un
+  critère fixé d'avance, valide, qui passe.
+
+**Ce que le résultat ne dit pas.**
+- Rien sur un ressenti.
+- Les cibles viennent d'une règle qui connaît les besoins (un
+  professeur) : ce test dit que la route **peut** servir, pas que l'agent
+  la trouve seul.
+- Ce n'est pas un état unique mis à jour à chaque tour : un tour lit
+  directement les tokens portés de tout son passé.
+- La mesure ne sépare pas la route « Choix : » de la route de l'action :
+  les deux sont portées.
+
 ## Analyse exploratoire : le « oui » suit-il le besoin ou la décision ? (2 octobre)
 
 Écrite **après** le verdict du test 14, sur ses lectures publiées
