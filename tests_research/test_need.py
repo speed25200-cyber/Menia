@@ -1156,6 +1156,61 @@ class ChainTests(unittest.TestCase):
                          {str(h): sum(1 for g in grafts if g["h"] == h) for h in CH.GAPS})
 
 
+class ChainFarTests(unittest.TestCase):
+    def test_draw_on_new_lives(self):
+        from research import need_chain_far as CF, need_carried_content as CC, need_memory as NM
+        held = CF.lives()
+        self.assertEqual(len(held), CF.LIVES)
+        used = NM.teacher_lives(NM.HELD_STREAM, 4)
+        self.assertNotEqual([l["turns"] for l in held[:4]], [l["turns"] for l in used])
+        self.assertTrue(all(len(W.decisions(l)) >= 7 for l in held[:4]))  # the checks read turns 4 and 7
+        grafts = CF.draw(held)
+        self.assertEqual([g["index"] for g in grafts], list(range(len(grafts))))
+        at = [{x["t"]: x for x in W.decisions(l)} for l in held]
+        for g in grafts[:120]:
+            r, d, i, t = g["r"], g["d"], g["i"], g["t"]
+            self.assertIn(g["h"], CF.GAPS)
+            self.assertEqual(t - i, g["h"])
+            self.assertTrue(all(k in at[r] for k in range(i, t + 1)))
+            self.assertEqual(at[r][i]["action"], at[d][i]["action"])
+            self.assertNotEqual((at[r][i]["E"], at[r][i]["N"]), (at[d][i]["E"], at[d][i]["N"]))
+            self.assertEqual(g["rule_effect"], CC.rule_effect(held[r], held[d], i, t))
+            self.assertNotEqual(g["rule_effect"], 0)
+        self.assertEqual({h: sum(g["h"] == h for g in grafts) for h in CF.GAPS}, {3: 219, 4: 217, 5: 173})
+
+    def test_verdicts_and_shards(self):
+        import tempfile
+        from pathlib import Path
+        from research import need_chain_far as CF
+        grafts = CF.draw(CF.lives())
+        rng = np.random.default_rng(7)
+        ok = {"extend_gap": 1e-8, "self_graft_gap": 0.0, "positions_same": True, "threads": 1}
+
+        def rows(total, direct, mediators):
+            return [dict(g, p_R={"own": 0.5, "total": 0.5 + g["rule_effect"] * total + 0.01 * rng.standard_normal(),
+                                 "direct": 0.5 + g["rule_effect"] * direct,
+                                 "mediators": 0.5 + g["rule_effect"] * mediators}) for g in grafts]
+
+        self.assertTrue(all(CF.verdicts(rows(0.4, 0.1, 0.3), ok)["verdicts"].values()))
+        v = CF.verdicts(rows(0.4, 0.1, 0.15), ok)["verdicts"]
+        self.assertTrue(v["FAR1"] and not v["FAR2"])
+        v = CF.verdicts(rows(0.4, 0.2, 0.3), ok)["verdicts"]  # the chain is exactly half: not clearly above
+        self.assertFalse(v["FAR1"])
+        v = CF.verdicts(rows(0.05, 0.0, 0.05), ok)["verdicts"]
+        self.assertFalse(v["prior"] or v["FAR1"] or v["FAR2"])
+        self.assertFalse(CF.verdicts(rows(0.4, 0.1, 0.3), dict(ok, self_graft_gap=1e-5))["verdicts"]["valid"])
+        measured = rows(0.4, 0.1, 0.3)
+        with tempfile.TemporaryDirectory() as folder:
+            for k in range(2):
+                W.write_jsonl(Path(folder) / f"grafts-{k}-of-2.jsonl.gz", [r for r in measured if r["index"] % 2 == k])
+            (Path(folder) / "setup.json").write_text(json.dumps(ok))
+            got = CF.gather(folder)
+            self.assertEqual(got["verdicts"], CF.verdicts(measured, ok)["verdicts"])
+            W.write_jsonl(Path(folder) / "grafts-1-of-2.jsonl.gz", [r for r in measured if r["index"] % 2 == 1][:-1])
+            with self.assertRaises(SystemExit):
+                CF.gather(folder)
+
+
 class OwnershipTests(unittest.TestCase):
     def test_the_other_lives_beside_without_changing_the_agent(self):
         alone = W.play(W.Oracle(), W.world_rng(225, 0), W.choice_rng(225, 0))
