@@ -1706,6 +1706,116 @@ distance.
   décompositions.
 - Il ne dit pas comment l'état est mis à jour d'un tour à l'autre.
 
+## Test 25 pré-enregistré : à distance, le besoin passe-t-il d'état en état ?
+
+Protocole `docs/LLM_NEED_CHAIN_FAR_PROTOCOL.md` (commit `e2920e7`), écrit
+après la publication et la relecture du test 24, avant tout code et toute
+mesure. Code écrit avant toute mesure (`29e9800`). Mesures torch sur le
+processeur local, le 4 octobre 2026, en trois processus à un seul fil
+(chaque greffe calculée seule). Artefacts : `artifacts/llm-need/chain-far`.
+Verdicts recalculés en local (identiques) ; la CI les vérifie à chaque
+envoi.
+
+**Pourquoi ce test.** Au test 24, après lecture, la part de l'effet qui
+passe par les états des tours intermédiaires semblait grandir avec la
+distance : 30 % à deux tours, 72 % à trois (21 % et 50 % en comptant par
+les médiateurs seuls). Ce test le met à l'épreuve sur **128 vies neuves**,
+jamais utilisées, à trois, quatre et cinq tours.
+
+**La mesure** est celle du test 24. On greffe les tokens portés du tour i
+d'une autre vie (même action au tour i, autres besoins ; avec ses besoins,
+la règle changerait de choix au tour t = i + h). On lit P(R) au tour t :
+- sans greffe ;
+- avec la greffe (**total**) ;
+- avec la greffe, mais les tokens portés des tours intermédiaires remis à
+  leurs valeurs sans greffe (**direct**) ;
+- sans greffe au tour i, mais les tours intermédiaires pris de la lecture
+  avec greffe (**par les médiateurs seuls**).
+
+Chaque effet est compté dans le sens où la règle changerait le choix. La
+**chaîne** est le total moins le direct.
+
+| 609 greffes (128 vies neuves) | Effet moyen |
+|---|---|
+| Total | **+0,307** [0,281 ; 0,334] |
+| Direct | +0,074 [0,062 ; 0,087] |
+| Chaîne (total − direct) | **+0,233** [0,210 ; 0,256] |
+| Par les médiateurs seuls | **+0,183** [0,158 ; 0,208] |
+| Terme non additif (total − direct − médiateurs seuls) | +0,050 [0,036 ; 0,065] |
+
+| | Critère | Verdict |
+|---|---|---|
+| Condition préalable | effet total ≥ **0,10** (borne basse > 0) | **remplie** : +0,307 [0,281 ; 0,334] |
+| **FAR1** | borne basse de (chaîne − la moitié du total) > 0 | **passe** : +0,079 [0,067 ; 0,092] ; la chaîne fait 0,76 du total [0,72 ; 0,79] |
+| **FAR2** | borne basse de (médiateurs seuls − la moitié du total) > 0 | **passe** : +0,029 [0,015 ; 0,044] ; les médiateurs seuls font 0,60 du total [0,55 ; 0,64] |
+| | Validité : lecture prolongée ≤ 1e-4 ; greffe de soi ≤ 1e-6 ; mêmes positions (vérifié à chaque greffe) ; ≥ 150 greffes par h | **valide** : 5,2e-7 ; 0 ; oui ; 219, 217 et 173 |
+
+**Critère global (FAR1 et FAR2) : satisfait.**
+
+**Lecture fixée d'avance** (FAR1 et FAR2 passent) : « Au-delà de deux
+tours, le besoin porté par l'état d'un tour atteint les choix surtout en
+passant par les états des tours suivants. Chaque état reprend celui d'avant
+et le transmet : c'est une transmission d'état en état, une récurrence au
+sens fonctionnel. L'agent l'a apprise alors que son masque lui permettait
+de lire directement tout son passé. L'observation du test 24 est confirmée
+sur des vies neuves. »
+
+**Publié sans seuil : selon h.**
+
+| | h = 3 (219 greffes, 119 vies) | h = 4 (217, 119) | h = 5 (173, 109) |
+|---|---|---|---|
+| Total | +0,358 | +0,305 | +0,243 |
+| Direct | +0,114 | +0,045 | +0,059 |
+| Chaîne (part) | +0,244 (0,68 [0,62 ; 0,74]) | +0,260 (0,85 [0,81 ; 0,89]) | +0,184 (0,76 [0,69 ; 0,82]) |
+| Médiateurs seuls (part) | +0,174 (0,49 [0,43 ; 0,54]) | +0,227 (0,74 [0,68 ; 0,80]) | +0,137 (0,56 [0,49 ; 0,63]) |
+| Terme non additif | +0,070 | +0,033 | +0,047 |
+
+- **Comptée comme au test 24**, la chaîne porte plus de la moitié à chaque
+  distance (de 68 à 85 %).
+- **Comptée par les médiateurs seuls**, elle porte la moitié à trois tours
+  (0,49, comme au test 24 : 0,50), les trois quarts à quatre tours, un peu
+  plus de la moitié à cinq tours. Séparément, seul h = 4 est nettement
+  au-dessus de la moitié ; le critère porte sur l'ensemble.
+- **La lecture directe de l'état ancien reste faible** à toutes ces
+  distances (+0,045 à +0,114).
+
+**Écarts d'exécution, déclarés.**
+- **Le conteneur a redémarré pendant la mesure** (vers 17 h 20). Les trois
+  processus n'ont pas été arrêtés ; ils ont fini normalement. Seule une
+  attente en arrière-plan a été relancée.
+- Aucun autre écart.
+
+### Ce que cela dit
+
+- **À trois tours et plus, le besoin passe surtout par les états des tours
+  intermédiaires.** Une greffe de l'état porté d'un tour change le choix
+  trois à cinq tours plus tard (+0,31 en moyenne). Les trois quarts de cet
+  effet disparaissent quand on remet les états intermédiaires à leurs
+  valeurs sans greffe. Et ces états seuls, pris de la vie greffée, en
+  portent 60 %. La lecture directe de l'état ancien ne fait que +0,07.
+- **C'est confirmé sur des vies neuves**, avec deux façons de compter, et
+  après une observation faite sur d'autres vies (test 24).
+- **C'est une forme de récurrence apprise.** Rien n'y obligeait l'agent :
+  son masque lui laisse lire directement les états portés de tout son
+  passé. Il a pourtant appris à faire passer son besoin par les états
+  successifs, surtout au-delà de deux tours.
+- **Pour le cadre en cinq niveaux** : c'est le premier résultat
+  pré-enregistré et valide de Menia sur la récurrence elle-même, et non
+  seulement sur une information portée.
+
+**Ce que le résultat ne dit pas.**
+- Rien sur un ressenti.
+- L'agent a appris d'un professeur qui connaît les besoins.
+- Il ne dit pas si l'état passe d'un tour au suivant à chaque tour, ou en
+  sautant des tours : la mesure remet tous les tours intermédiaires
+  ensemble.
+- Ce n'est pas une boucle à l'intérieur du réseau : la transmission passe
+  par les clés et valeurs des tokens portés, relues à chaque tour.
+- Remettre les états intermédiaires à leurs valeurs sans greffe, ou les
+  prendre seuls de la vie greffée, crée des mélanges que l'agent ne
+  rencontre jamais : c'est la limite de ces décompositions. C'est pourquoi
+  les deux façons de compter étaient exigées.
+
 ## Analyse exploratoire : le « oui » suit-il le besoin ou la décision ? (2 octobre)
 
 Écrite **après** le verdict du test 14, sur ses lectures publiées
