@@ -126,7 +126,7 @@ class Relay:
 def checks(relay, held, log):
     from . import need_memory_no_leak as NL22
     extend, selfs = [], []
-    for life in held[:4]:
+    for life in [l for l in held if len(W.decisions(l)) >= 4 + GAP][:4]:  # the first four lives alive at turn 7
         ds = W.decisions(life)
         i, t = ds[3]["t"], ds[3]["t"] + GAP
         cache, ids, mask, end_i, _ = relay.g.prefix(life["turns"], i, t)
