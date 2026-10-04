@@ -1340,6 +1340,27 @@ class TinyReliefTests(unittest.TestCase):
                          ["verdicts"]["valid"])
 
 
+class TinySurvivalTests(unittest.TestCase):
+    def test_masks_reference_and_verdicts(self):
+        from research import tiny_survival as TS
+        route, actions, free = (TS.mask(a) for a in TS.ARMS)
+        self.assertTrue((free == np.tril(np.ones_like(free))).all())
+        turn2 = 1 + TS.PER_TURN
+        self.assertTrue(route[turn2 + 1, 2] and route[turn2 + 1, 3] and not route[turn2 + 1, 1])
+        self.assertTrue(actions[turn2 + 1, 3] and not actions[turn2 + 1, 2] and not actions[turn2 + 1, 1])
+        self.assertFalse(actions[3, 1] or actions[3, 2])
+        self.assertAlmostEqual(TS.event_rule_survival(), 0.72265625)
+        runs = lambda a, b: {"route": {str(s): {"survival": a + 0.01 * (s % 3), "agrees": 0.9} for s in TS.SEEDS},
+                             "actions": {str(s): {"survival": b + 0.01 * (s % 2), "agrees": 0.7} for s in TS.SEEDS},
+                             "free": {str(s): {"survival": 0.88, "agrees": 0.9} for s in TS.SEEDS}}
+        ok = {"mask_gap": {"route": 0.0, "actions": 0.0}}
+        self.assertTrue(all(TS.verdicts(runs(0.85, 0.70), ok, 0.72265625)["verdicts"].values()))
+        self.assertFalse(TS.verdicts(runs(0.74, 0.70), ok, 0.72265625)["verdicts"]["SURV1"])
+        self.assertFalse(TS.verdicts(runs(0.85, 0.50), ok, 0.72265625)["verdicts"]["valid"])
+        v = TS.verdicts(runs(0.75, 0.62), ok, 0.72265625)["verdicts"]
+        self.assertTrue(v["SURV1"] and not v["SURV2"])
+
+
 class ReliefTests(unittest.TestCase):
     def test_lives_texts_and_targets(self):
         from research import need_relief as RL, need_rules as NR
