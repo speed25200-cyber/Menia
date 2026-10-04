@@ -1,0 +1,30 @@
+{
+ "stage": "memory",
+ "arm": "route",
+ "no_leak": false,
+ "relief": true,
+ "continued_from": null,
+ "skip": 0,
+ "from": "artifacts/llm-need/final/report/adapters-final",
+ "adapter": "/Users/builder/clone/llm-need/adapters-route",
+ "iters": 250,
+ "documents": 8192,
+ "left_out": [],
+ "validation_lives": 32,
+ "chunks": [
+  {
+   "iterations": 250,
+   "seconds": 2321
+  },
+  {
+   "iterations": 500,
+   "seconds": 1639
+  },
+  {
+   "iterations": 750,
+   "seconds": 1528
+  }
+ ],
+ "iterations_done": 750,
+ "replica_rows": 80
+}
