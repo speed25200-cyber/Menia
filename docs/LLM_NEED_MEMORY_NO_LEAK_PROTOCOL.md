@@ -174,3 +174,20 @@ inchangés) :
    son premier build, B après son deuxième.
 4. **L'arrêt à la limite de temps arrête maintenant l'apprentissage
    lui-même**, pour que le journal revienne.
+
+## Amendement 2 (4 octobre 2026, avant toute mesure à 4 000 itérations et avant tout apprentissage de B mesuré)
+
+**Ce qui s'est passé** (demande 96) : le build qui devait mener A de 2 001 à
+3 000 itérations a tourné à 0,16 itération par seconde, deux fois moins vite
+que le premier (0,33). Il a été arrêté à la limite de temps vers
+l'itération 850, sans rien garder. La vitesse du Mac varie d'un build à
+l'autre : les anciens apprentissages en tranches allaient de 0,13 à 0,53
+itération par seconde.
+
+**Ce qui change** (exécution seulement) : dans un build, l'apprentissage
+avance par morceaux de 250 itérations. Chaque morceau reprend exactement le
+précédent : mêmes lots (ordre fixé par époque, amendement 1), moments
+d'Adam repris. Le build enchaîne les morceaux tant qu'il lui reste le temps
+d'en faire un de plus, puis garde l'adaptateur. Le build suivant repart de
+là. Le total reste **exactement 4 000 itérations** pour A et pour B. Pour B,
+un build s'arrête à 2 000 itérations, pour la mesure publiée sans seuil.
