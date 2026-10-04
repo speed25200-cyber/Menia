@@ -1,7 +1,7 @@
 {
- "request": 101,
+ "request": 102,
  "app": "Menia",
- "wait_minutes": 150,
+ "wait_minutes": 120,
  "builds": [
   {
    "launch": {
@@ -15,11 +15,11 @@
      "NEED_START": "artifacts/llm-need/final/report/adapters-final",
      "NEED_ARM": "actions",
      "NEED_UNTIL": "4000",
-     "NEED_CONTINUE": "artifacts/llm-need/memory-no-leak/actions-2/adapters-actions",
-     "NEED_SKIP": "2000"
+     "NEED_CONTINUE": "artifacts/llm-need/memory-no-leak/actions-3/adapters-actions",
+     "NEED_SKIP": "3750"
     }
    },
-   "dest": "artifacts/llm-need/memory-no-leak/actions-3"
+   "dest": "artifacts/llm-need/memory-no-leak/actions-4"
   }
  ]
 }
