@@ -1580,6 +1580,109 @@ Script `research/need_carried_exploration.py`, sortie
 - La mesure ne sépare pas « Choix : » de l'action : les 4 tokens sont
   greffés ensemble.
 
+## Test 24 pré-enregistré : le besoin passe-t-il d'un état porté au suivant ?
+
+Protocole `docs/LLM_NEED_CHAIN_PROTOCOL.md` (commit `5a2a908`), écrit après
+la lecture anticipée des résultats de A au test 23, avant tout code et
+toute mesure. Code écrit avant toute mesure (`0d9a80a`). **Amendement 1**
+(`e4f97c0`), avant toute greffe mesurée : avec 4 fils de calcul, la greffe
+de soi donnait 1,3e-6, au-dessus de la tolérance de 1e-6 (erreurs
+d'arrondi qui dépendent de l'ordre des additions). Contrôles et greffes ont
+été refaits avec un seul fil, tolérances inchangées ; les contrôles à 4
+fils sont publiés.
+
+Mesures torch sur le processeur local, le 4 octobre 2026. Artefacts :
+`artifacts/llm-need/chain`. Verdicts recalculés en local (identiques) ; la
+CI les vérifie à chaque envoi.
+
+**La question.** Au test 23, l'état porté d'un tour fait pencher le choix
+un ou deux tours plus tard. Mais par quelle route ? Le tour t peut lire
+**directement** l'état porté du tour i. Ou bien l'état porté du tour i + 1
+le lit et le transmet, **en chaîne**.
+
+**La mesure.** Même greffe qu'au test 23 (tokens portés du tour i, autres
+besoins, la règle changerait de choix au tour t = i + h, h = 2 ou 3). On
+lit P(R) au tour t de quatre façons :
+- **propre** : sans greffe ;
+- **totale** : avec la greffe, les tours suivants calculés avec elle ;
+- **directe** : la totale, mais les tokens portés des tours i + 1 à t − 1
+  (les **médiateurs**) reprennent leurs valeurs sans greffe ;
+- **par les médiateurs seuls** : sans greffe au tour i, mais les
+  médiateurs reçoivent leurs valeurs de la lecture totale.
+
+Chaque effet est aligné sur la règle (multiplié par +1 ou −1).
+L'**effet en chaîne** est l'effet total moins l'effet direct.
+
+| 491 greffes (128 vies receveuses) | Effet aligné moyen |
+|---|---|
+| Total | **+0,419** [0,386 ; 0,451] |
+| Direct (médiateurs remis à leurs valeurs propres) | +0,226 [0,200 ; 0,253] |
+| En chaîne (total − direct) | **+0,193** [0,170 ; 0,215] |
+| Par les médiateurs seuls | +0,133 [0,111 ; 0,157] |
+
+| | Critère | Verdict |
+|---|---|---|
+| Condition préalable | effet total ≥ **0,10** (borne basse > 0) | **remplie** : +0,419 [0,386 ; 0,451] |
+| **CHAIN** | effet en chaîne ≥ **la moitié** de l'effet total, et borne basse de l'effet en chaîne > 0 | **échoue** : la chaîne fait 0,461 de l'effet total [0,417 ; 0,504] (+0,193 pour un seuil de 0,209) |
+| | Validité : lecture prolongée ≤ 1e-4 ; greffe de soi ≤ 1e-6 ; mêmes positions ; ≥ 150 greffes par h | **valide** : 8,7e-7 ; 0 ; oui ; 266 (h = 2) et 225 (h = 3) |
+
+**Critère global : non satisfait.**
+
+**Lecture fixée d'avance** (CHAIN échoue, condition préalable remplie) :
+« Les choix lisent surtout directement l'état ancien ; les états suivants
+en transmettent moins de la moitié. Ce n'est pas une chaîne, mais surtout
+une lecture directe du passé. »
+
+**Publié sans seuil : selon h.** Ce partage change fortement avec la
+distance.
+
+| | h = 2 (266 greffes, 126 vies) | h = 3 (225 greffes, 114 vies) |
+|---|---|---|
+| Total | +0,481 [0,434 ; 0,527] | +0,346 [0,299 ; 0,391] |
+| Direct | **+0,335** [0,293 ; 0,380] | +0,097 [0,075 ; 0,120] |
+| En chaîne | +0,146 [0,117 ; 0,174] | **+0,249** [0,211 ; 0,287] |
+| Part de la chaîne | 0,30 [0,25 ; 0,36] | **0,72** [0,67 ; 0,77] |
+| Par les médiateurs seuls | +0,101 | +0,172 |
+
+- **À deux tours** (un médiateur), le choix lit surtout directement l'état
+  ancien : la chaîne n'en porte que 30 %.
+- **À trois tours** (deux médiateurs), c'est l'inverse : la chaîne porte
+  72 % de l'effet, et la lecture directe de l'état ancien ne fait plus que
+  +0,097.
+- Les effets ne s'additionnent pas exactement : direct + médiateurs seuls
+  (+0,359) reste sous le total (+0,419).
+
+**Écarts d'exécution, déclarés.**
+- **Amendement 1** (un seul fil), avant toute greffe mesurée (voir plus
+  haut).
+- Le test 23 avait été lu (pour A) avant l'écriture de ce protocole : le
+  protocole le dit.
+
+### Ce que cela dit
+
+- **Pas de chaîne dominante en moyenne (CHAIN échoue, de peu).** Sur
+  l'ensemble, un peu moins de la moitié de l'effet passe par les états
+  intermédiaires (0,46 ; l'intervalle va jusqu'à 0,50).
+- **Mais le partage dépend de la distance** (publié sans seuil, non
+  prévu). La lecture directe d'un état ancien s'éteint vite : +0,335 à deux
+  tours, +0,097 à trois. Ce qui reste à trois tours passe surtout par les
+  états intermédiaires (72 %). Le besoin semble donc lu directement à
+  courte distance, et transmis d'état en état au-delà.
+- **Ce n'est qu'une observation après lecture.** Elle porte sur un seul
+  découpage (h = 2 contre h = 3) et sur les mêmes 128 vies. Elle doit être
+  confirmée par un test pré-enregistré, sur des vies neuves et à des
+  distances plus grandes, avant d'être revendiquée.
+- **Pour le cadre en cinq niveaux** : la récurrence au sens strict (un état
+  qui reprend le précédent) n'est pas établie. Une transmission d'état en
+  état est observée au-delà de deux tours, à confirmer.
+
+**Ce que le résultat ne dit pas.**
+- Rien sur un ressenti.
+- L'agent a appris d'un professeur qui connaît les besoins.
+- Remettre les médiateurs à leurs valeurs propres crée un état que l'agent
+  ne rencontre jamais : c'est la limite habituelle de ces décompositions.
+- Il ne dit pas comment l'état est mis à jour d'un tour à l'autre.
+
 ## Analyse exploratoire : le « oui » suit-il le besoin ou la décision ? (2 octobre)
 
 Écrite **après** le verdict du test 14, sur ses lectures publiées
