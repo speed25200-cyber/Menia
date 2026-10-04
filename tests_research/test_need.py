@@ -1211,6 +1211,46 @@ class ChainFarTests(unittest.TestCase):
                 CF.gather(folder)
 
 
+class RelayTests(unittest.TestCase):
+    def test_draw_and_verdicts(self):
+        import tempfile
+        from pathlib import Path
+        from research import need_relay as RY, need_carried_content as CC
+        held = RY.lives()
+        grafts = RY.draw(held)
+        self.assertEqual(len(grafts), 209)
+        self.assertEqual([g["index"] for g in grafts], list(range(len(grafts))))
+        at = [{x["t"]: x for x in W.decisions(l)} for l in held]
+        for g in grafts[:60]:
+            r, d, i, t = g["r"], g["d"], g["i"], g["t"]
+            self.assertEqual(t - i, RY.GAP)
+            self.assertTrue(all(k in at[r] for k in range(i, t + 1)))
+            self.assertEqual(at[r][i]["action"], at[d][i]["action"])
+            self.assertNotEqual((at[r][i]["E"], at[r][i]["N"]), (at[d][i]["E"], at[d][i]["N"]))
+            self.assertEqual(g["rule_effect"], CC.rule_effect(held[r], held[d], i, t))
+        rng = np.random.default_rng(11)
+        ok = {"extend_gap": 1e-8, "self_graft_gap": 0.0, "positions_same": True, "threads": 1}
+
+        def rows(complete, through_i, through_next):
+            return [dict(g, p_R={"own": 0.5, "total": 0.5 + g["rule_effect"] * 0.3,
+                                 "complete": 0.5 + g["rule_effect"] * complete + 0.01 * rng.standard_normal(),
+                                 "through_i": 0.5 + g["rule_effect"] * through_i,
+                                 "through_next": 0.5 + g["rule_effect"] * through_next}) for g in grafts]
+
+        self.assertTrue(all(RY.verdicts(rows(0.2, 0.03, 0.15), ok)["verdicts"].values()))
+        self.assertFalse(RY.verdicts(rows(0.2, 0.15, 0.12), ok)["verdicts"]["RELAY"])  # not above i alone
+        self.assertFalse(RY.verdicts(rows(0.2, 0.0, 0.08), ok)["verdicts"]["RELAY"])  # under half
+        v = RY.verdicts(rows(0.02, 0.0, 0.02), ok)["verdicts"]
+        self.assertFalse(v["prior"] or v["RELAY"])
+        self.assertFalse(RY.verdicts(rows(0.2, 0.03, 0.15)[:100], ok)["verdicts"]["valid"])
+        measured = rows(0.2, 0.03, 0.15)
+        with tempfile.TemporaryDirectory() as folder:
+            for k in range(3):
+                W.write_jsonl(Path(folder) / f"grafts-{k}-of-3.jsonl.gz", [r for r in measured if r["index"] % 3 == k])
+            (Path(folder) / "setup.json").write_text(json.dumps(ok))
+            self.assertEqual(RY.gather(folder)["verdicts"], RY.verdicts(measured, ok)["verdicts"])
+
+
 class ReliefTests(unittest.TestCase):
     def test_lives_texts_and_targets(self):
         from research import need_relief as RL, need_rules as NR
