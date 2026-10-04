@@ -1709,18 +1709,21 @@ distance.
 ## Test 25 pré-enregistré : à distance, le besoin passe-t-il d'état en état ?
 
 Protocole `docs/LLM_NEED_CHAIN_FAR_PROTOCOL.md` (commit `e2920e7`), écrit
-après la publication et la relecture du test 24, avant tout code et toute
-mesure. Code écrit avant toute mesure (`29e9800`). Mesures torch sur le
-processeur local, le 4 octobre 2026, en trois processus à un seul fil
-(chaque greffe calculée seule). Artefacts : `artifacts/llm-need/chain-far`.
-Verdicts recalculés en local (identiques) ; la CI les vérifie à chaque
-envoi.
+après la publication et la relecture du test 24, avant le code du test et
+toute mesure (seul le nombre de greffes du tirage avait été compté, sur les
+vies du professeur, sans modèle). Code écrit avant toute mesure
+(`29e9800`). Mesures torch sur le processeur local, le 4 octobre 2026, en
+trois processus à un seul fil (chaque greffe calculée seule). Artefacts :
+`artifacts/llm-need/chain-far`. Verdicts recalculés en local (identiques) ;
+la CI les vérifie à chaque envoi.
 
 **Pourquoi ce test.** Au test 24, après lecture, la part de l'effet qui
 passe par les états des tours intermédiaires semblait grandir avec la
 distance : 30 % à deux tours, 72 % à trois (21 % et 50 % en comptant par
-les médiateurs seuls). Ce test le met à l'épreuve sur **128 vies neuves**,
-jamais utilisées, à trois, quatre et cinq tours.
+les médiateurs seuls). Ce test met à l'épreuve la seconde partie de cette
+observation, sur **128 vies neuves**, jamais utilisées, à trois, quatre et
+cinq tours : la part qui passe par les états intermédiaires y est-elle
+clairement au-dessus de la moitié ? Deux tours ne sont pas remesurés.
 
 **La mesure** est celle du test 24. On greffe les tokens portés du tour i
 d'une autre vie (même action au tour i, autres besoins ; avec ses besoins,
@@ -1740,15 +1743,15 @@ Chaque effet est compté dans le sens où la règle changerait le choix. La
 | Total | **+0,307** [0,281 ; 0,334] |
 | Direct | +0,074 [0,062 ; 0,087] |
 | Chaîne (total − direct) | **+0,233** [0,210 ; 0,256] |
-| Par les médiateurs seuls | **+0,183** [0,158 ; 0,208] |
-| Terme non additif (total − direct − médiateurs seuls) | +0,050 [0,036 ; 0,065] |
+| Par les médiateurs seuls | **+0,182** [0,158 ; 0,208] |
+| Terme non additif (la part qui n'apparaît que lorsque l'état greffé et les états suivants agissent ensemble : total − direct − médiateurs seuls) | +0,050 [0,036 ; 0,065] |
 
 | | Critère | Verdict |
 |---|---|---|
 | Condition préalable | effet total ≥ **0,10** (borne basse > 0) | **remplie** : +0,307 [0,281 ; 0,334] |
 | **FAR1** | borne basse de (chaîne − la moitié du total) > 0 | **passe** : +0,079 [0,067 ; 0,092] ; la chaîne fait 0,76 du total [0,72 ; 0,79] |
 | **FAR2** | borne basse de (médiateurs seuls − la moitié du total) > 0 | **passe** : +0,029 [0,015 ; 0,044] ; les médiateurs seuls font 0,60 du total [0,55 ; 0,64] |
-| | Validité : lecture prolongée ≤ 1e-4 ; greffe de soi ≤ 1e-6 ; mêmes positions (vérifié à chaque greffe) ; ≥ 150 greffes par h | **valide** : 5,2e-7 ; 0 ; oui ; 219, 217 et 173 |
+| | Validité : lecture prolongée (le calcul par morceaux redonne la lecture du texte entier) ≤ 1e-4 ; greffe de soi (greffer sa propre vie ne change rien) ≤ 1e-6 ; mêmes positions (vérifié à chaque greffe) ; ≥ 150 greffes par h | **valide** : 5,2e-7 ; 0 ; oui ; 219, 217 et 173 |
 
 **Critère global (FAR1 et FAR2) : satisfait.**
 
@@ -1760,6 +1763,11 @@ sens fonctionnel. L'agent l'a apprise alors que son masque lui permettait
 de lire directement tout son passé. L'observation du test 24 est confirmée
 sur des vies neuves. »
 
+Cette lecture va un peu au-delà des données. La mesure remet ensemble tous
+les tours intermédiaires : elle ne montre pas que chaque état reprend celui
+d'avant. Et, comptée par les médiateurs seuls, la part n'est nettement
+au-dessus de la moitié qu'à quatre tours (voir selon h).
+
 **Publié sans seuil : selon h.**
 
 | | h = 3 (219 greffes, 119 vies) | h = 4 (217, 119) | h = 5 (173, 109) |
@@ -1768,6 +1776,7 @@ sur des vies neuves. »
 | Direct | +0,114 | +0,045 | +0,059 |
 | Chaîne (part) | +0,244 (0,68 [0,62 ; 0,74]) | +0,260 (0,85 [0,81 ; 0,89]) | +0,184 (0,76 [0,69 ; 0,82]) |
 | Médiateurs seuls (part) | +0,174 (0,49 [0,43 ; 0,54]) | +0,227 (0,74 [0,68 ; 0,80]) | +0,137 (0,56 [0,49 ; 0,63]) |
+| Médiateurs seuls − moitié du total | −0,005 [−0,025 ; 0,016] | +0,075 [0,051 ; 0,099] | +0,016 [−0,002 ; 0,034] |
 | Terme non additif | +0,070 | +0,033 | +0,047 |
 
 - **Comptée comme au test 24**, la chaîne porte plus de la moitié à chaque
@@ -1775,32 +1784,47 @@ sur des vies neuves. »
 - **Comptée par les médiateurs seuls**, elle porte la moitié à trois tours
   (0,49, comme au test 24 : 0,50), les trois quarts à quatre tours, un peu
   plus de la moitié à cinq tours. Séparément, seul h = 4 est nettement
-  au-dessus de la moitié ; le critère porte sur l'ensemble.
+  au-dessus de la moitié. Le critère porte sur l'ensemble, et **FAR2 ne
+  passe que grâce à h = 4** : sans h = 4, +0,004 [−0,012 ; 0,020] (analyse
+  après lecture, relevée par la relecture indépendante). FAR1, lui, passe
+  sans h = 4 (+0,064 [0,049 ; 0,079]).
+- **La part ne grandit pas régulièrement avec la distance** : elle est la
+  plus haute à quatre tours et redescend à cinq.
 - **La lecture directe de l'état ancien reste faible** à toutes ces
   distances (+0,045 à +0,114).
 
 **Écarts d'exécution, déclarés.**
-- **Le conteneur a redémarré pendant la mesure** (vers 17 h 20). Les trois
-  processus n'ont pas été arrêtés ; ils ont fini normalement. Seule une
-  attente en arrière-plan a été relancée.
+- **La session de l'agent a redémarré pendant la mesure** (vers 17 h 23 ;
+  la machine, elle, n'a pas redémarré). Les trois processus n'ont pas été
+  arrêtés : leurs journaux montrent un seul chargement du modèle et une
+  progression continue ; ils ont fini normalement (17 h 58, 17 h 59,
+  18 h 01). Seule une attente en arrière-plan a été relancée.
 - Aucun autre écart.
 
 ### Ce que cela dit
 
-- **À trois tours et plus, le besoin passe surtout par les états des tours
-  intermédiaires.** Une greffe de l'état porté d'un tour change le choix
-  trois à cinq tours plus tard (+0,31 en moyenne). Les trois quarts de cet
-  effet disparaissent quand on remet les états intermédiaires à leurs
-  valeurs sans greffe. Et ces états seuls, pris de la vie greffée, en
+- **De trois à cinq tours, prises ensemble, le besoin passe surtout par les
+  états des tours intermédiaires.** Une greffe de l'état porté d'un tour
+  fait pencher le choix trois à cinq tours plus tard : la probabilité de R
+  bouge en moyenne de 0,31 dans le sens où la règle changerait le choix.
+  76 % de cet effet disparaissent quand on remet les états intermédiaires
+  à leurs valeurs sans greffe. Ces états seuls, pris de la vie greffée, en
   portent 60 %. La lecture directe de l'état ancien ne fait que +0,07.
-- **C'est confirmé sur des vies neuves**, avec deux façons de compter, et
-  après une observation faite sur d'autres vies (test 24).
-- **C'est une forme de récurrence apprise.** Rien n'y obligeait l'agent :
-  son masque lui laisse lire directement les états portés de tout son
-  passé. Il a pourtant appris à faire passer son besoin par les états
-  successifs, surtout au-delà de deux tours.
+- **C'est confirmé sur des vies neuves, des deux façons de compter, sur
+  l'ensemble des distances.** Par les médiateurs seuls, distance par
+  distance, seul quatre tours est net.
+- **C'est une forme de récurrence fonctionnelle, apparue avec
+  l'apprentissage.** L'architecture ne l'imposait pas : son masque lui
+  laisse lire directement les états portés de tout son passé. Mais la tâche
+  s'y prête. L'agent décide sur les tokens portés eux-mêmes, et la décision
+  dépend des besoins du moment. Ces besoins se déduisent de ceux du tour
+  précédent, de l'événement et de l'action (avec un plafond à 8). Et les
+  événements passés ne sont visibles qu'à travers les états portés.
+  Reprendre l'état précédent est donc une solution naturelle ; l'agent l'a
+  trouvée, surtout au-delà de deux tours.
 - **Pour le cadre en cinq niveaux** : c'est le premier résultat
-  pré-enregistré et valide de Menia sur la récurrence elle-même, et non
+  **positif**, pré-enregistré et valide, de Menia sur la récurrence
+  elle-même (les tests 13 et 24, valides, avaient échoué), et non
   seulement sur une information portée.
 
 **Ce que le résultat ne dit pas.**
@@ -1815,6 +1839,10 @@ sur des vies neuves. »
   prendre seuls de la vie greffée, crée des mélanges que l'agent ne
   rencontre jamais : c'est la limite de ces décompositions. C'est pourquoi
   les deux façons de compter étaient exigées.
+- Plus h est grand, plus il y a de tours remis ensemble. Cela peut à lui
+  seul baisser l'effet direct et grossir la chaîne comptée comme au
+  test 24 (FAR1). La lecture par les médiateurs seuls (FAR2) n'en dépend
+  pas ; elle passe, de peu.
 
 ## Analyse exploratoire : le « oui » suit-il le besoin ou la décision ? (2 octobre)
 
