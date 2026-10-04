@@ -1433,6 +1433,109 @@ L'hypothèse n'est donc ni établie ni écartée.
 - La mesure ne sépare pas la route « Choix : » de la route de l'action :
   les deux sont portées.
 
+## Test 23 pré-enregistré : que porte l'état ?
+
+Protocole `docs/LLM_NEED_CARRIED_CONTENT_PROTOCOL.md` (commit `50e490e`),
+**amendement 1** (`057f7c7`), écrit avant toute mesure : le tirage prévu ne
+donnait que 80 greffes (a) à effet de règle non nul, sous le minimum de
+100 ; les greffes (a) sont désormais tirées parmi les donneuses qui
+changent le choix de la règle, et celles à effet nul forment un groupe
+(a0) publié sans seuil.
+
+Code écrit avant toute mesure (`23f07fa`). Mesures torch sur le processeur
+local, le 4 octobre 2026. Artefacts : `artifacts/llm-need/carried-content`.
+Verdicts vérifiés en CI.
+
+**La greffe.** On prend l'agent A du test 22 (« porte », 4 000
+itérations). Sous son masque, les tours suivants ne voient le tour j qu'à
+travers ses 4 tokens portés (« Cho », « ix », « : » et l'action). On
+remplace, dans toutes les couches, leurs clés et valeurs par celles d'une
+autre vie (la donneuse), qui a écrit la même action au tour j. Puis on lit
+le choix de la vie receveuse un ou deux tours plus tard (g = 1 ou 2).
+
+| Greffes (128 vies receveuses tenues à l'écart) | Nombre | A, porte : \|ΔP(R)\| moyen | B, actions : \|ΔP(R)\| moyen |
+|---|---|---|---|
+| (a) autres besoins, la règle changerait de choix | 374 | **0,510** | 0,041 |
+| (a0) autres besoins, la règle ne changerait pas | 200 | 0,073 | 0,026 |
+| (b) mêmes besoins, autre histoire | 200 | **0,070** | 0,022 |
+
+| | Critère | Verdict |
+|---|---|---|
+| **STATE1** | sur les greffes (a) : moyenne de ΔP(R) × (effet de la règle) ≥ **0,10** (borne basse > 0) | **passe** : +0,484 [0,438 ; 0,530] |
+| **STATE2** | \|ΔP(R)\| des greffes (b) ≤ **la moitié** de celui des greffes (a), et différence à borne basse > 0 | **passe** : 0,070 contre 0,510 (seuil 0,255) ; différence +0,440 [0,392 ; 0,489] |
+| | Validité : sans greffe ≤ 1e-4 ; greffe de soi ≤ 1e-6 ; mêmes positions ; ≥ 100 greffes (a) et (b) | **valide** : 5e-9 ; 0 ; oui ; 374 et 200 |
+
+**Critère global (STATE1 et STATE2) : satisfait.**
+
+**Lecture fixée d'avance** (STATE1 et STATE2 passent) : « L'état que
+l'agent porte d'un tour à l'autre contient son besoin. Greffé dans une
+autre vie, il fait choisir selon les besoins de la vie d'origine. Un état
+aux mêmes besoins, venu d'une autre histoire, ne change presque rien. Ce
+qui est porté est un état de soi (le niveau de ses besoins), pas une trace
+des événements. »
+
+**Publié sans seuil.**
+- **Selon g** : effet aligné +0,470 à un tour (199 greffes (a)), +0,499 à
+  deux tours (175) ; \|ΔP(R)\| des greffes (b) : 0,073 et 0,067. L'effet
+  ne baisse pas entre un et deux tours.
+- **Greffes (a0)** : autres besoins, mais la règle ne changerait pas de
+  choix. \|ΔP(R)\| = 0,073, comme les greffes (b) (0,070).
+- **La part de l'effet de la règle que A retrouve.** La règle change son
+  choix d'un tout (de 0 à 1 ou de 1 à 0). A déplace en moyenne sa
+  probabilité de 0,484 dans ce sens. Par sens : quand la règle passerait à
+  R (178 greffes), P(R) va de 0,062 à 0,556 ; quand elle passerait à M
+  (196), de 0,896 à 0,422.
+- **Le témoin B** (« actions » du test 22, 4 000 itérations ; sans greffe
+  4e-7, greffe de soi 0). Ses tokens portés ne sont que ses actions, et
+  la donneuse a écrit la même action au tour j. Greffés, ils changent à
+  peine le choix : effet aligné +0,025 [0,018 ; 0,031], \|ΔP(R)\| de 0,041
+  (a), 0,026 (a0) et 0,022 (b). Ce petit effet vient sans doute des
+  actions passées de la donneuse, que voit le token de l'action sous le
+  masque de B et qui disent un peu ses besoins.
+
+**Écarts d'exécution, déclarés.**
+- **Amendement 1**, avant toute mesure (voir plus haut).
+- **374 greffes (a) au lieu de 400** : le tirage a parcouru les 128 vies
+  receveuses sans atteindre 400. Le protocole fixait un maximum ; le
+  minimum de validité (100) est largement atteint.
+- **Les greffes (b) viennent de 60 vies receveuses** : le tirage s'arrête
+  à 200, atteint avant la fin des vies. L'intervalle bootstrap tient compte
+  de ce regroupement (tirage par vie).
+- **Lecture anticipée.** Les verdicts de A ont été calculés dès ses greffes
+  finies, avant les greffes du témoin B. Aucune règle n'a changé. B ne
+  compte pas dans les verdicts.
+- **Le protocole du test 24** (`docs/LLM_NEED_CHAIN_PROTOCOL.md`) a été
+  écrit après cette lecture anticipée, et avant la fin de B.
+
+### Ce que cela dit
+
+- **Ce que l'agent porte d'un tour à l'autre, c'est son besoin.** Greffé
+  dans une autre vie, l'état porté d'un seul tour fait choisir selon les
+  besoins de la vie d'origine, à la moitié environ d'un changement complet,
+  un ou deux tours plus tard. Venu d'une vie aux mêmes besoins, mais à
+  l'histoire différente (et souvent à l'événement différent au tour même),
+  il ne change presque rien.
+- **C'est un état de soi, pas une trace des événements.** Le contenu qui
+  compte pour les choix est le niveau des besoins à ce tour, non
+  l'événement qui l'a produit ni les tours d'avant.
+- **Des besoins différents qui ne changeraient pas le choix de la règle
+  (a0) changent aussi peu le choix que des besoins égaux (b)** (publié sans
+  seuil). C'est attendu si l'état code les niveaux, puisque la règle ne
+  changerait pas de choix. Mais c'est aussi ce qu'on verrait s'il ne
+  codait que ce qui commande le choix (par exemple, quel besoin est le plus
+  bas). Ce test ne sépare pas les deux.
+- **Pour le cadre en cinq niveaux** : au test 22, nous savions que ces
+  états portent une information au-delà des actions. Nous savons
+  maintenant laquelle : le besoin de l'agent.
+
+**Ce que le résultat ne dit pas.**
+- Rien sur un ressenti.
+- L'agent a appris d'un professeur qui connaît les besoins.
+- La greffe porte sur les 4 tokens d'un seul tour : les tours précédents
+  de la receveuse restent les siens.
+- La mesure ne sépare pas « Choix : » de l'action : les 4 tokens sont
+  greffés ensemble.
+
 ## Analyse exploratoire : le « oui » suit-il le besoin ou la décision ? (2 octobre)
 
 Écrite **après** le verdict du test 14, sur ses lectures publiées

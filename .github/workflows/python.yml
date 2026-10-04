@@ -114,6 +114,7 @@ jobs:
       - run: python -m research.need_carry verdicts
       - run: python -m research.need_memory verdicts
       - run: python -m research.need_memory_no_leak verdicts
+      - run: python -m research.need_carried_content verdicts
       - run: python scripts/check_reliability_artifacts.py
       - run: python scripts/check_self_model_artifacts.py
       - run: python scripts/audit_self_monitor_information.py
