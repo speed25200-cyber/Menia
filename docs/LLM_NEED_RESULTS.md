@@ -1587,9 +1587,11 @@ la lecture anticipée des résultats de A au test 23, avant tout code et
 toute mesure. Code écrit avant toute mesure (`0d9a80a`). **Amendement 1**
 (`e4f97c0`), avant toute greffe mesurée : avec 4 fils de calcul, la greffe
 de soi donnait 1,3e-6, au-dessus de la tolérance de 1e-6 (erreurs
-d'arrondi qui dépendent de l'ordre des additions). Contrôles et greffes ont
-été refaits avec un seul fil, tolérances inchangées ; les contrôles à 4
-fils sont publiés.
+d'arrondi qui dépendent de l'ordre des additions). Les contrôles ont été
+refaits, et les greffes calculées, avec un seul fil, tolérances
+inchangées ; les contrôles à 4 fils sont publiés. Commande :
+`python -m research.need_chain run --threads 1` ; le nombre de fils n'est
+pas écrit dans les artefacts.
 
 Mesures torch sur le processeur local, le 4 octobre 2026. Artefacts :
 `artifacts/llm-need/chain`. Verdicts recalculés en local (identiques) ; la
@@ -1600,9 +1602,10 @@ un ou deux tours plus tard. Mais par quelle route ? Le tour t peut lire
 **directement** l'état porté du tour i. Ou bien l'état porté du tour i + 1
 le lit et le transmet, **en chaîne**.
 
-**La mesure.** Même greffe qu'au test 23 (tokens portés du tour i, autres
-besoins, la règle changerait de choix au tour t = i + h, h = 2 ou 3). On
-lit P(R) au tour t de quatre façons :
+**La mesure.** Même greffe qu'au test 23. On remplace les tokens portés du
+tour i par ceux d'une autre vie. Cette vie a la même action au tour i,
+mais d'autres besoins. Avec ses besoins, la règle changerait de choix au
+tour t = i + h (h = 2 ou 3). On lit P(R) au tour t de quatre façons :
 - **propre** : sans greffe ;
 - **totale** : avec la greffe, les tours suivants calculés avec elle ;
 - **directe** : la totale, mais les tokens portés des tours i + 1 à t − 1
@@ -1610,20 +1613,21 @@ lit P(R) au tour t de quatre façons :
 - **par les médiateurs seuls** : sans greffe au tour i, mais les
   médiateurs reçoivent leurs valeurs de la lecture totale.
 
-Chaque effet est aligné sur la règle (multiplié par +1 ou −1).
-L'**effet en chaîne** est l'effet total moins l'effet direct.
+Chaque effet est compté dans le sens où la règle changerait le choix
+(multiplié par +1 ou −1). L'**effet en chaîne** est l'effet total moins
+l'effet direct.
 
 | 491 greffes (128 vies receveuses) | Effet aligné moyen |
 |---|---|
 | Total | **+0,419** [0,386 ; 0,451] |
-| Direct (médiateurs remis à leurs valeurs propres) | +0,226 [0,200 ; 0,253] |
+| Direct (médiateurs remis à leurs valeurs sans greffe) | +0,226 [0,200 ; 0,253] |
 | En chaîne (total − direct) | **+0,193** [0,170 ; 0,215] |
-| Par les médiateurs seuls | +0,133 [0,111 ; 0,157] |
+| Par les médiateurs seuls | +0,133 [0,110 ; 0,157] |
 
 | | Critère | Verdict |
 |---|---|---|
 | Condition préalable | effet total ≥ **0,10** (borne basse > 0) | **remplie** : +0,419 [0,386 ; 0,451] |
-| **CHAIN** | effet en chaîne ≥ **la moitié** de l'effet total, et borne basse de l'effet en chaîne > 0 | **échoue** : la chaîne fait 0,461 de l'effet total [0,417 ; 0,504] (+0,193 pour un seuil de 0,209) |
+| **CHAIN** | effet en chaîne ≥ **la moitié** de l'effet total, et borne basse de l'effet en chaîne > 0 | **échoue** : la chaîne fait 0,461 de l'effet total [0,417 ; 0,504] (+0,193 pour un seuil de 0,209) ; la borne basse (0,170 > 0) est remplie, l'échec vient seulement de la moitié |
 | | Validité : lecture prolongée ≤ 1e-4 ; greffe de soi ≤ 1e-6 ; mêmes positions ; ≥ 150 greffes par h | **valide** : 8,7e-7 ; 0 ; oui ; 266 (h = 2) et 225 (h = 3) |
 
 **Critère global : non satisfait.**
@@ -1632,6 +1636,10 @@ L'**effet en chaîne** est l'effet total moins l'effet direct.
 « Les choix lisent surtout directement l'état ancien ; les états suivants
 en transmettent moins de la moitié. Ce n'est pas une chaîne, mais surtout
 une lecture directe du passé. »
+
+Cette lecture va un peu au-delà des données. La part directe (0,54)
+n'est pas nettement au-dessus de la moitié : son intervalle va de 0,50 à
+0,58. Et elle ne vaut qu'à deux tours (voir selon h).
 
 **Publié sans seuil : selon h.** Ce partage change fortement avec la
 distance.
@@ -1642,15 +1650,20 @@ distance.
 | Direct | **+0,335** [0,293 ; 0,380] | +0,097 [0,075 ; 0,120] |
 | En chaîne | +0,146 [0,117 ; 0,174] | **+0,249** [0,211 ; 0,287] |
 | Part de la chaîne | 0,30 [0,25 ; 0,36] | **0,72** [0,67 ; 0,77] |
-| Par les médiateurs seuls | +0,101 | +0,172 |
+| Par les médiateurs seuls | +0,101 [0,074 ; 0,130] | +0,172 [0,137 ; 0,209] |
 
-- **À deux tours** (un médiateur), le choix lit surtout directement l'état
-  ancien : la chaîne n'en porte que 30 %.
-- **À trois tours** (deux médiateurs), c'est l'inverse : la chaîne porte
-  72 % de l'effet, et la lecture directe de l'état ancien ne fait plus que
-  +0,097.
-- Les effets ne s'additionnent pas exactement : direct + médiateurs seuls
-  (+0,359) reste sous le total (+0,419).
+- **À deux tours** (un tour intermédiaire), le choix lit surtout
+  directement l'état ancien : la chaîne n'en porte que 30 %.
+- **À trois tours** (deux tours intermédiaires), la chaîne pèse bien
+  plus : 72 % de l'effet selon la mesure prévue. La lecture directe ne
+  fait plus que +0,097.
+- **Les effets ne s'additionnent pas** : direct + médiateurs seuls
+  (+0,359) reste sous le total (+0,419). L'écart (+0,060 [0,036 ; 0,083])
+  n'appartient ni à la seule route directe, ni aux seuls médiateurs ; la
+  mesure prévue le compte dans la chaîne. Comptée par les médiateurs
+  seuls, la part de la chaîne est plus basse : 0,32 en tout, 0,21 à deux
+  tours, 0,50 à trois. L'écart entre deux et trois tours reste net
+  (relevé à la relecture).
 
 **Écarts d'exécution, déclarés.**
 - **Amendement 1** (un seul fil), avant toute greffe mesurée (voir plus
@@ -1663,24 +1676,34 @@ distance.
 - **Pas de chaîne dominante en moyenne (CHAIN échoue, de peu).** Sur
   l'ensemble, un peu moins de la moitié de l'effet passe par les états
   intermédiaires (0,46 ; l'intervalle va jusqu'à 0,50).
-- **Mais le partage dépend de la distance** (publié sans seuil, non
-  prévu). La lecture directe d'un état ancien s'éteint vite : +0,335 à deux
-  tours, +0,097 à trois. Ce qui reste à trois tours passe surtout par les
-  états intermédiaires (72 %). Le besoin semble donc lu directement à
-  courte distance, et transmis d'état en état au-delà.
+- **Mais le partage dépend de la distance** (résultats selon h prévus sans
+  seuil ; leur lecture ne l'était pas). L'effet direct baisse nettement :
+  +0,335 à deux tours, +0,097 à trois. À trois tours, la moitié de l'effet
+  ou plus passe par les états intermédiaires (50 à 72 % selon la façon de
+  compter). Le besoin semble donc surtout lu directement à deux tours, et
+  passer davantage par les états intermédiaires à trois. La relecture a
+  vérifié que cet écart tient à t, à i et à l'écart des besoins égaux, et
+  au sein des mêmes vies.
 - **Ce n'est qu'une observation après lecture.** Elle porte sur un seul
   découpage (h = 2 contre h = 3) et sur les mêmes 128 vies. Elle doit être
   confirmée par un test pré-enregistré, sur des vies neuves et à des
   distances plus grandes, avant d'être revendiquée.
+- **Deux biais restent possibles** : l'écart non additif, compté dans la
+  chaîne ; et la lecture directe remet à leurs valeurs sans greffe deux
+  tours à trois tours de distance, contre un seul à deux tours, ce qui
+  crée un conflit plus fort avec le tour greffé. La moyenne générale mêle
+  ces deux distances : son verdict dépend de leur proportion (266 et 225
+  greffes).
 - **Pour le cadre en cinq niveaux** : la récurrence au sens strict (un état
-  qui reprend le précédent) n'est pas établie. Une transmission d'état en
-  état est observée au-delà de deux tours, à confirmer.
+  qui reprend le précédent) n'est pas établie. Une part plus grande passe
+  par les états intermédiaires à trois tours qu'à deux, à confirmer.
 
 **Ce que le résultat ne dit pas.**
 - Rien sur un ressenti.
 - L'agent a appris d'un professeur qui connaît les besoins.
-- Remettre les médiateurs à leurs valeurs propres crée un état que l'agent
-  ne rencontre jamais : c'est la limite habituelle de ces décompositions.
+- Remettre les médiateurs à leurs valeurs sans greffe crée un état que
+  l'agent ne rencontre jamais : c'est la limite habituelle de ces
+  décompositions.
 - Il ne dit pas comment l'état est mis à jour d'un tour à l'autre.
 
 ## Analyse exploratoire : le « oui » suit-il le besoin ou la décision ? (2 octobre)
