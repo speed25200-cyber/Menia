@@ -1305,6 +1305,41 @@ class ReliefGraftTests(unittest.TestCase):
             self.assertEqual(RG.gather(folder)["verdicts"], RG.verdicts(measured, ok)["verdicts"])
 
 
+class TinyReliefTests(unittest.TestCase):
+    def test_tokens_and_masks(self):
+        from research import tiny_relief as TR, need_relief as RL
+        life = RL.writer_life(RL.HELD_STREAM, 0)
+        t = TR.tokens(life)
+        self.assertEqual(t[0], TR.BOS)
+        for k, x in enumerate(W.decisions(life)):
+            base = 1 + TR.PER_TURN * k
+            self.assertEqual(t[base:base + 5], [TR.EVENT0 + x["event"], TR.CHOICE, TR.R + x["action"], TR.RELIEF,
+                                                TR.LEVEL0 + x["level"]])
+        route, actions, free = (TR.mask(a) for a in TR.ARMS)
+        self.assertTrue((free == np.tril(np.ones_like(free))).all())
+        for m in (route, actions):
+            self.assertFalse((m & ~free).any())  # never the future
+            self.assertTrue(m[:, 0].all())  # always the start
+        turn2 = 1 + TR.PER_TURN  # turn 2's event token
+        self.assertTrue(route[turn2 + 3, 2] and route[turn2 + 3, 3] and not route[turn2 + 3, 1])  # carried only
+        self.assertTrue(actions[turn2 + 3, 3] and not actions[turn2 + 3, 2] and not actions[turn2 + 3, 1])
+        self.assertFalse(actions[3, 1] or actions[3, 2])  # an action token sees no event, not even its own
+        self.assertTrue(actions[turn2 + 2, 3] and not actions[turn2 + 2, turn2])
+
+    def test_verdicts(self):
+        from research import tiny_relief as TR
+        ceiling = 0.65
+        runs = lambda a, b: {"route": {str(s): {"accuracy": a + 0.01 * (s % 3), "survival": 0.8} for s in TR.SEEDS},
+                             "actions": {str(s): {"accuracy": b, "survival": 0.65 + 0.01 * (s % 2)} for s in TR.SEEDS},
+                             "free": {str(s): {"accuracy": 0.9, "survival": 0.85} for s in TR.SEEDS}}
+        ok = {"mask_gap": {"route": 0.0, "actions": 0.0}}
+        self.assertTrue(all(TR.verdicts(runs(0.85, 0.65), ok, ceiling)["verdicts"].values()))
+        self.assertFalse(TR.verdicts(runs(0.70, 0.65), ok, ceiling)["verdicts"]["TINY1"])
+        self.assertFalse(TR.verdicts(runs(0.85, 0.70), ok, ceiling)["verdicts"]["valid"])
+        self.assertFalse(TR.verdicts(runs(0.85, 0.65), {"mask_gap": {"route": 0.0, "actions": 1e-3}}, ceiling)
+                         ["verdicts"]["valid"])
+
+
 class ReliefTests(unittest.TestCase):
     def test_lives_texts_and_targets(self):
         from research import need_relief as RL, need_rules as NR
