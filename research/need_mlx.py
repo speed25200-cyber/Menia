@@ -390,6 +390,9 @@ def carry(a, log=print):
     log(json.dumps(record))
 
 
+CHUNK = 250  # iterations per chunk (amendment 2 of docs/LLM_NEED_MEMORY_NO_LEAK_PROTOCOL.md)
+
+
 def memory(a, log=print):
     """Memory that the choices require (docs/LLM_NEED_MEMORY_PROTOCOL.md): the final agent fused, a new adapter for
     the arm a.arm ("route", "actions" or "free") on the lives of the rule "needs" (research/need_memory.py), the
@@ -415,18 +418,43 @@ def memory(a, log=print):
     write_data(out / f"data-{a.arm}", docs, np.random.default_rng([W.SEED, stream, 2]), valid)
     final = out / f"adapters-{a.arm}"
     resume = None if a.continue_from in (None, "none") else a.continue_from
-    train(model, out / f"data-{a.arm}", final, a.iters, resume=resume, seed=W.SEED, skip=a.skip,
-          moments=resume is not None, val_batches=len(valid) // 4,
-          fixed_epochs=W.SEED if a.no_leak else None,  # amendment 1 of docs/LLM_NEED_MEMORY_NO_LEAK_PROTOCOL.md
-          deadline=None if a.minutes is None else start + 60 * a.minutes)
-    clean(final)
-    free()
-    rows = carry_rows(model, final, texts.replica_decisions(held), kind=a.arm)
-    Path(out / f"{a.arm}-replica.json").write_text(json.dumps(rows, ensure_ascii=False, indent=1) + "\n")
     record = {"stage": "memory", "arm": a.arm, "no_leak": a.no_leak, "continued_from": resume, "skip": a.skip,
               "from": a.start, "adapter": str(final), "iters": a.iters,
               "documents": len(docs), "left_out": sorted(set(range(len(lives))) - {d["life"] for d in docs}),
-              "validation_lives": len(valid), "replica_rows": len(rows)}
+              "validation_lives": len(valid)}
+    deadline = None if a.minutes is None else start + 60 * a.minutes
+    if a.until is None:
+        train(model, out / f"data-{a.arm}", final, a.iters, resume=resume, seed=W.SEED, skip=a.skip,
+              moments=resume is not None, val_batches=len(valid) // 4,
+              fixed_epochs=W.SEED if a.no_leak else None,  # amendment 1 of docs/LLM_NEED_MEMORY_NO_LEAK_PROTOCOL.md
+              deadline=deadline)
+        clean(final)
+        record["iterations_done"] = a.skip + a.iters
+    else:  # amendment 2 of docs/LLM_NEED_MEMORY_NO_LEAK_PROTOCOL.md: chunks continued exactly, while time is left
+        done, last, record["chunks"] = a.skip, None, []
+        while done < a.until:
+            n = min(CHUNK, a.until - done)
+            if deadline is not None and deadline - time.time() < (0 if last is None else 1.25 * last * n / CHUNK) + 300:
+                break
+            tic = time.time()
+            try:
+                train(model, out / f"data-{a.arm}", final, n, resume=resume, seed=W.SEED, skip=done,
+                      moments=resume is not None, val_batches=len(valid) // 4, fixed_epochs=W.SEED,
+                      deadline=None if deadline is None else deadline - 240)
+            except RuntimeError as error:  # the adapter of the last whole chunk is kept
+                log(f"chunk from {done} stopped: {error}")
+                break
+            done, resume, last = done + n, str(final), time.time() - tic
+            clean(final)
+            record["chunks"].append({"iterations": done, "seconds": round(last)})
+            log(json.dumps(record["chunks"][-1]))
+        if done == a.skip:
+            raise RuntimeError("no chunk could be trained in the time of the build")
+        record["iterations_done"] = done
+    free()
+    rows = carry_rows(model, final, texts.replica_decisions(held), kind=a.arm)
+    Path(out / f"{a.arm}-replica.json").write_text(json.dumps(rows, ensure_ascii=False, indent=1) + "\n")
+    record["replica_rows"] = len(rows)
     Path(out / f"memory-{a.arm}-stage.json").write_text(json.dumps(record, indent=1) + "\n")
     log(json.dumps(record))
 
@@ -614,6 +642,7 @@ def main(argv=None):
     m.add_argument("--continue-from", default=None, help="an adapter whose run is continued exactly")
     m.add_argument("--skip", type=int, default=0, help="batches the continued run has trained on")
     m.add_argument("--minutes", type=float, default=None, help="the training is stopped this long after the start")
+    m.add_argument("--until", type=int, default=None, help="chunks of CHUNK iterations up to this total, while time is left")
     t = sub.add_parser("test")
     t.add_argument("--final", required=True)
     t.add_argument("--control", required=True)

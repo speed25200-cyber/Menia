@@ -885,6 +885,7 @@ workflows:
         NEED_CONTINUE: "none"
         NEED_SKIP: "0"
         NEED_NO_LEAK: "0"
+        NEED_UNTIL: "none"
     scripts:
       - name: Installer mlx-lm dans un environnement isolé
         script: |
@@ -985,6 +986,7 @@ workflows:
             MEMORY=""
             if [ "$NEED_NO_LEAK" = "1" ]; then MEMORY="--no-leak"; fi
             if [ "$NEED_CONTINUE" != "none" ]; then MEMORY="$MEMORY --continue-from $NEED_CONTINUE --skip $NEED_SKIP"; fi
+            if [ "$NEED_UNTIL" != "none" ]; then MEMORY="$MEMORY --until $NEED_UNTIL"; fi  # amendment 2: chunks
             # the training itself is stopped NEED_MINUTES after the start, so that its log comes back
             python -m research.need_mlx memory --arm "$NEED_ARM" --start "$NEED_START" --model "$MODEL" \
               --iters "$NEED_ITERS" $MEMORY --minutes "$NEED_MINUTES" --out "$OUT" 2>&1 \

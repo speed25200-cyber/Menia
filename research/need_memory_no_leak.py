@@ -17,9 +17,7 @@ from . import need_memory as NM
 FILL = (4, 4, 2, 2, 0, 4)  # " -" after each event, up to the length of "tu trouves des baies" (Qwen3 tokenizer)
 TRAIN_STREAM, TRAIN_LIVES = 49, 8192
 ARMS = ("route", "actions")
-# the Mac build after which each measure is taken, 2000 and 4000 iterations (amendment 1: A learned its first 2000 in
-# one build, then 1000 per build; B 1000 per build)
-STAGES = {"route": {"half": 1, "final": 3}, "actions": {"half": 2, "final": 4}}
+STAGES = {"half": 2000, "final": 4000}  # the iterations after which each measure is taken
 ROOT = "artifacts/llm-need/memory-no-leak"
 
 
@@ -102,7 +100,16 @@ class Filled:
 
 
 def folder(root, arm, stage):
-    return Path(root) / f"{arm}-{STAGES[arm][stage]}"
+    """The Mac build that left the agent after STAGES[stage] iterations (its stage record says so); the builds are
+    root/<arm>-<n> (amendments 1 and 2: builds of uneven lengths)."""
+    found = []
+    for path in sorted(Path(root).glob(f"{arm}-*/memory-{arm}-stage.json")):
+        record = json.loads(path.read_text())
+        if record.get("iterations_done", record["skip"] + record["iters"]) == STAGES[stage]:
+            found.append(path.parent)
+    if len(found) != 1:
+        raise RuntimeError(f"{len(found)} builds of {arm} after {STAGES[stage]} iterations")
+    return found[0]
 
 
 def agent_of(root, arm, stage):

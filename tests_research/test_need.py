@@ -1002,6 +1002,37 @@ class MemoryNoLeakTests(unittest.TestCase):
         finally:
             need_lora.EPOCHS.clear()
 
+    def test_chunks_continue_one_another_until_the_target_or_the_time(self):
+        import argparse
+        from unittest import mock
+        from research import need_mlx as M
+        calls = []
+
+        def fake_train(model, data, adapter, iters, resume=None, skip=0, moments=False, fixed_epochs=None, **_):
+            calls.append((iters, skip, resume, moments, fixed_epochs))
+        with tempfile.TemporaryDirectory() as out:
+            (Path(out) / "fused-start").mkdir()
+            a = argparse.Namespace(arm="actions", start="s", model="m", iters=1000, no_leak=True,
+                                   continue_from="prev", skip=1000, minutes=None, until=2000, out=out)
+            with mock.patch.object(M, "train", fake_train), mock.patch.object(M, "free", lambda: None), \
+                    mock.patch.object(M, "carry_rows", lambda *x, **k: [{"p_R": 0.5}]), \
+                    mock.patch.object(M, "clean", lambda *x: None):
+                M.memory(a, log=lambda *x: None)
+                record = json.loads((Path(out) / "memory-actions-stage.json").read_text())
+                self.assertEqual(record["iterations_done"], 2000)
+                self.assertEqual([c[:2] for c in calls], [(250, 1000), (250, 1250), (250, 1500), (250, 1750)])
+                self.assertEqual(calls[0][2], "prev")
+                self.assertTrue(all(c[2] == str(Path(out) / "adapters-actions") for c in calls[1:]))
+                self.assertTrue(all(c[3] and c[4] == W.SEED for c in calls))
+                calls.clear()
+                a.minutes, a.skip, a.continue_from = 1.0, 0, "none"  # 1 minute: no room for the 5 kept for the end
+                with self.assertRaises(RuntimeError):
+                    M.memory(a, log=lambda *x: None)
+                self.assertEqual(len(calls), 0)
+                a.minutes = 30.0
+                M.memory(a, log=lambda *x: None)
+                self.assertEqual(calls[0][:4], (250, 0, None, False))
+
     def test_the_two_agents_measured_apart_are_put_together(self):
         from research import need_memory as NM, need_memory_no_leak as NL22
         held = NM.teacher_lives(NM.HELD_STREAM, NM.HELD_LIVES)
