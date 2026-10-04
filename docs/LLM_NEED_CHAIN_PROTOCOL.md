@@ -148,3 +148,27 @@ sont vécues par aucun modèle.
 - **Mesures** : `research/need_chain.py` (à écrire), torch sur le
   processeur local.
 - **Verdicts** : numpy seulement, vérifiés en CI.
+
+## Amendement 1 (4 octobre 2026, avant toute greffe mesurée)
+
+**Ce qui s'est passé.** La mesure a été lancée avec 4 fils de calcul. Les
+contrôles, calculés d'abord, donnent :
+- lecture prolongée : 1,7e-6 (tolérance 1e-4) ;
+- **greffe de soi : 1,3e-6, au-dessus de la tolérance de 1e-6.**
+
+Ils sont publiés tels quels
+(`artifacts/llm-need/chain/setup-4-threads.json`). La mesure a été arrêtée
+aussitôt, avant la fin de la 50e greffe : aucune greffe n'a été écrite ni
+lue.
+
+**La cause probable.** Avec plusieurs fils, l'ordre des additions dépend
+de la longueur des morceaux lus. La lecture « totale » lit le texte en
+deux morceaux (jusqu'au tour i, puis jusqu'au tour t − 1), la lecture
+« propre » en un seul. Les écarts sont des erreurs d'arrondi (de l'ordre de
+1e-6), pas un défaut de la greffe. Lors de l'essai du code, avec un seul
+fil, la greffe de soi donnait 0 exactement (une vie).
+
+**Ce qui change** (exécution seulement ; tolérances, seuils et tirage
+inchangés) : contrôles et greffes sont calculés avec **un seul fil**. Les
+contrôles sont refaits en entier. S'ils échouent encore, le test n'est pas
+valide, sans autre changement.
