@@ -94,10 +94,13 @@ Voir `docs/LITERATURE_CHECK_READER_2026-09-30.md`.
   - une même intervention qui change l'acte et la parole.
 
   Cela touche à la fois les niveaux 2 et 4 du cadre.
-- **Un second ensemble de résultats (tests 22 à 27, octobre 2026)**, dont
-  la nouveauté **n'a pas été vérifiée** dans la littérature. La greffe de
-  clés et valeurs d'attention est une technique connue en interprétabilité ;
-  c'est son usage ici qui est à situer.
+- **Un second ensemble de résultats (tests 22 à 27, octobre 2026)**.
+  Vérification rapide, non exhaustive :
+  `docs/LITERATURE_CHECK_MEMORY_2026-10-04.md`. La mémoire par des états
+  calculés (Transformer-XL, Recurrent Memory Transformer) et la greffe de
+  clés et valeurs d'attention (par exemple SCIT, août 2026) sont des outils
+  connus. Ce que nous n'avons pas trouvé, c'est leur usage pour un état de
+  besoin chez un modèle de langage :
   - Un modèle de langage qui ne voit son passé qu'à travers ses propres
     états calculés (masque) apprend à y porter son besoin, au-delà de ce
     que permettent ses seules actions (test 22).
