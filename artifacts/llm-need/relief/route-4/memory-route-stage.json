@@ -1,0 +1,42 @@
+{
+ "stage": "memory",
+ "arm": "route",
+ "no_leak": false,
+ "relief": true,
+ "continued_from": "artifacts/llm-need/relief/route-3/adapters-route",
+ "skip": 2000,
+ "from": "artifacts/llm-need/final/report/adapters-final",
+ "adapter": "/Users/builder/clone/llm-need/adapters-route",
+ "iters": 250,
+ "documents": 8192,
+ "left_out": [],
+ "validation_lives": 32,
+ "chunks": [
+  {
+   "iterations": 2250,
+   "seconds": 939
+  },
+  {
+   "iterations": 2500,
+   "seconds": 931
+  },
+  {
+   "iterations": 2750,
+   "seconds": 927
+  },
+  {
+   "iterations": 3000,
+   "seconds": 955
+  },
+  {
+   "iterations": 3250,
+   "seconds": 948
+  },
+  {
+   "iterations": 3500,
+   "seconds": 936
+  }
+ ],
+ "iterations_done": 3500,
+ "replica_rows": 80
+}

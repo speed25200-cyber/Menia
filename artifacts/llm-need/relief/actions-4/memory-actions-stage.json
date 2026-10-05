@@ -1,0 +1,42 @@
+{
+ "stage": "memory",
+ "arm": "actions",
+ "no_leak": false,
+ "relief": true,
+ "continued_from": "artifacts/llm-need/relief/actions-3/adapters-actions",
+ "skip": 2000,
+ "from": "artifacts/llm-need/final/report/adapters-final",
+ "adapter": "/Users/builder/clone/llm-need/adapters-actions",
+ "iters": 250,
+ "documents": 8192,
+ "left_out": [],
+ "validation_lives": 32,
+ "chunks": [
+  {
+   "iterations": 2250,
+   "seconds": 948
+  },
+  {
+   "iterations": 2500,
+   "seconds": 940
+  },
+  {
+   "iterations": 2750,
+   "seconds": 1004
+  },
+  {
+   "iterations": 3000,
+   "seconds": 963
+  },
+  {
+   "iterations": 3250,
+   "seconds": 998
+  },
+  {
+   "iterations": 3500,
+   "seconds": 1023
+  }
+ ],
+ "iterations_done": 3500,
+ "replica_rows": 80
+}
