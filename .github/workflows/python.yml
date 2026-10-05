@@ -119,6 +119,7 @@ jobs:
       - run: python -m research.need_chain_far verdicts
       - run: python -m research.need_relay verdicts
       - run: python -m research.tiny_relief verdicts
+      - run: python -m research.tiny_survival verdicts
       - run: python scripts/check_reliability_artifacts.py
       - run: python scripts/check_self_model_artifacts.py
       - run: python scripts/audit_self_monitor_information.py

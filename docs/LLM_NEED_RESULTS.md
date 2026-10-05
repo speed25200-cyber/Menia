@@ -2075,6 +2075,85 @@ vrai sur dix graines. »
   durées d'apprentissage ou d'autres tokens pourraient donner autre chose.
 - Les tokens sont simples et à positions fixes ; ce n'est pas du langage.
 
+## Test 30 pré-enregistré : seulement survivre (non valide)
+
+Protocole `docs/TINY_SURVIVAL_PROTOCOL.md` (commit `5d57bdb`), écrit avant le
+code et toute exécution. Code commis avant toute mesure (`5015d88`), essayé
+sur 20 mises à jour de la graine 99, hors protocole (survie non lue).
+Calcul torch sur le processeur local, les 4 et 5 octobre 2026. Artefacts :
+`artifacts/tiny-survival`. Verdicts recalculés en local (identiques) ; la CI
+les vérifie à chaque envoi.
+
+**Ce qu'on teste.** Au test 29, la cible (le niveau du soulagement)
+nommait encore le besoin. Ici, plus rien ne le nomme : de petits
+transformeurs appris de zéro agissent, et n'apprennent que de leur
+**survie** (1 par tour vécu), par renforcement (REINFORCE, 2 000 mises à
+jour de 64 vies), sous les masques A (« porte »), B (« actions ») et C
+(« libre »), sur 10 graines.
+
+| Moyenne sur 10 graines | A, porte | B, actions | C, libre |
+|---|---|---|---|
+| Survie (256 mondes du test 22, action la plus probable) | 0,308 | 0,405 | 0,381 |
+| Part des décisions où il prend l'action de la règle « besoins » | 0,612 | 0,693 | 0,687 |
+| Survie pendant l'apprentissage (100 premières mises à jour → 1 000 → 2 000) | 0.21 → 0.33 → 0.28 | 0.23 → 0.39 → 0.39 | 0.21 → 0.36 → 0.35 |
+
+Repères sans modèle, sur les mêmes mondes : règle « événement » 0,723 ;
+règle « besoins » 0,906.
+
+| | Critère | Valeur |
+|---|---|---|
+| **SURV1** | survie de A − survie de B ≥ 0,08 (borne basse > 0) | −0,097 [−0,182 ; −0,011] |
+| **SURV2** | survie de A − 0,723 ≥ 0,05 (borne basse > 0) | −0,414 [−0,506 ; −0,323] |
+| | Validité : masques (écart ≤ 1e-6) ; **survie moyenne de B ≥ 0,60** | masques 0 et 0 ; **B à 0,405 : non valide** |
+
+**Le test n'est pas valide** : l'apprentissage par renforcement n'a pas eu
+lieu assez pour que la question se pose. Les verdicts SURV1 et SURV2 ne
+sont pas revendiqués.
+
+**Lecture fixée d'avance** (l'apprentissage n'a pas eu lieu) : « le test
+n'est pas valide ».
+
+**Graine par graine (survie).**
+
+| Graine | A, porte | B, actions | C, libre |
+|---|---|---|---|
+| 0 | 0,383 | 0,414 | 0,461 |
+| 1 | 0,379 | 0,473 | 0,367 |
+| 2 | 0,305 | 0,340 | 0,371 |
+| 3 | 0,457 | 0,590 | 0,406 |
+| 4 | 0,418 | 0,371 | 0,363 |
+| 5 | 0,320 | 0,281 | 0,309 |
+| 6 | 0,000 | 0,367 | 0,371 |
+| 7 | 0,309 | 0,398 | 0,391 |
+| 8 | 0,289 | 0,422 | 0,371 |
+| 9 | 0,223 | 0,395 | 0,402 |
+
+**Écarts d'exécution, déclarés.**
+- **La machine a redémarré pendant le calcul** (vers 23 h 05 le 4 octobre).
+  Les apprentissages déjà écrits (graines 0 et 5 entières ; 1 et 6 sans
+  C) ont été publiés tels quels. Le code a été modifié pour reprendre sans
+  réapprendre les bras déjà mesurés (`b9f444b`), puis
+  les graines restantes ont été lancées.
+- Un pilote pour le test suivant a tourné en même temps, en priorité
+  basse, puis a été suspendu jusqu'à la fin de ce test (il ne touche pas
+  ces résultats).
+
+### Ce que cela dit
+
+- **Avec ce budget et cet algorithme, aucun agent n'apprend à survivre**,
+  quel que soit le masque : tous restent loin sous la règle « événement »
+  (0,72), qu'un témoin bien appris devrait atteindre. Une graine de A
+  s'effondre même à 0.
+- **Ce n'est pas une réponse à la question** (porter ses états aide-t-il,
+  sans aucune cible ?). C'est un échec de méthode : REINFORCE avec une
+  récompense de survie lointaine et bruitée apprend trop mal ici.
+- **Ce qui suit** : un pilote règle l'apprentissage sur le **témoin seul**
+  (`docs/TINY_SURVIVAL_PILOT_PLAN.md`), avant de reposer la question au
+  test 31.
+
+**Ce que le résultat ne dit pas.** Rien sur un ressenti ; rien sur la
+mémoire par l'état sans cible, ni pour ni contre.
+
 ## Analyse exploratoire : le « oui » suit-il le besoin ou la décision ? (2 octobre)
 
 Écrite **après** le verdict du test 14, sur ses lectures publiées
