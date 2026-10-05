@@ -371,9 +371,17 @@ def measure_arm(a, arm, stage, log):
     reader = Reader(folder(a.out, arm, stage) / f"adapters-{arm}", arm)
     held = writer_lives(HELD_STREAM, HELD_LIVES)
     reads_file = out / f"reads-{arm}.jsonl.gz"
-    if not reads_file.exists():
-        rows = [dict(r, life=i) for i, life in enumerate(held) for r in read_held(reader, life)]
+    if not reads_file.exists():  # kept every 8 lives, so that a stop of the machine loses little (resumed exactly)
+        partial = out / f"partial-reads-{arm}.jsonl.gz"
+        rows = W.read_jsonl(partial) if partial.exists() else []
+        done = len({r["life"] for r in rows})
+        for i in range(done, len(held)):
+            rows += [dict(r, life=i) for r in read_held(reader, held[i])]
+            if (i + 1) % 8 == 0:
+                W.write_jsonl(partial, rows)
         W.write_jsonl(reads_file, rows)
+        if partial.exists():
+            partial.unlink()
         log(f"  {arm} ({stage}): held-out reads done")
     if stage != "final":
         return

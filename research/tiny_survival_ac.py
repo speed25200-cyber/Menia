@@ -26,16 +26,24 @@ def verdicts(runs, setup, event_rule):
 
 # ----------------------------------------------------------------------------------------------------- torch part
 
-def train(arm, seed, log):
-    """The setting P2 of the pilot, for any mask."""
+def train(arm, seed, log, checkpoint=None):
+    """The setting P2 of the pilot, for any mask. With a checkpoint path, the model, the optimizer and the curve are
+    kept every 250 updates and taken back after a stop: each update draws its worlds and actions from its own streams,
+    so the run resumes exactly."""
     import torch
     c = SP.CONFIG[SETTING]
     net = SP.model(seed)
     seen = torch.tensor(TS.mask(arm))
     opt = torch.optim.AdamW(net.parameters(), lr=c["lr"])
-    curve, window = [], []
+    curve, window, start = [], [], 0
+    if checkpoint is not None and Path(checkpoint).exists():
+        state = torch.load(checkpoint, weights_only=False)
+        net.load_state_dict(state["net"])
+        opt.load_state_dict(state["opt"])
+        curve, window, start = state["curve"], state["window"], state["update"]
+        log(f"  {arm} seed {seed}: resumed at update {start}")
     g = c["gamma"]
-    for update in range(c["updates"]):
+    for update in range(start, c["updates"]):
         worlds = [np.random.default_rng([W.SEED, TS.WORLD_STREAM, seed, update, i]) for i in range(TS.LIVES_PER_UPDATE)]
         rng = np.random.default_rng([W.SEED, TS.ACTION_STREAM, seed, update])
         ids, decisions, length = TS.episodes(net, arm, worlds, lambda p, last: (rng.random(len(p)) >= p).astype(int))
@@ -61,6 +69,9 @@ def train(arm, seed, log):
         if (update + 1) % 100 == 0:
             curve.append(round(float(np.mean(window)), 4))
             window = []
+        if checkpoint is not None and (update + 1) % 250 == 0:
+            torch.save({"net": net.state_dict(), "opt": opt.state_dict(), "curve": curve, "window": window,
+                        "update": update + 1}, checkpoint)
     log(f"  {arm} seed {seed}: training survival {curve[-1] if curve else None}")
     return net, curve
 
@@ -72,13 +83,14 @@ def run(a):
     root = Path(a.out)
     out = root / "runs"
     out.mkdir(parents=True, exist_ok=True)
+    (root / "checkpoints").mkdir(exist_ok=True)
     for seed in a.seeds:
         paths = {arm: out / f"{arm}-{seed}.json" for arm in a.arms}
         nets = {}
         for arm in a.arms:
             if paths[arm].exists() and not (seed == 0 and arm != "free" and not (root / "setup.json").exists()):
                 continue
-            net, curve = train(arm, seed, log)
+            net, curve = train(arm, seed, log, checkpoint=root / "checkpoints" / f"{arm}-{seed}.pt")
             nets[arm] = net
             survived, agrees = TS.measure(net, arm)
             paths[arm].write_text(json.dumps({"arm": arm, "seed": seed, "survival": float(np.mean(survived)),
