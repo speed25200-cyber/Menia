@@ -1969,8 +1969,8 @@ que ses actions. »
   directement les tokens portés de tout son passé. Avec 28 couches, ces
   tokens peuvent porter plus que l'événement de leur tour (contrairement
   aux petits modèles à deux couches), mais ce qu'ils portent n'est pas
-  mesuré ici : c'est la question du test 28 (publié : ses besoins, mêlés à
-  l'événement du tour).
+  mesuré ici : c'est la question du test 28 (publié : surtout l'événement
+  du tour ; à événement égal, pas plus que ce que disent les actions).
 - Un seul apprentissage (une graine), sur un seul modèle.
 
 ## Test 27 pré-enregistré : le relais pas à pas
@@ -2069,9 +2069,11 @@ pas. »
 
 ## Test 28 pré-enregistré : sans professeur, que porte l'état ?
 
-Protocole `docs/LLM_NEED_RELIEF_GRAFT_PROTOCOL.md` (commit `39d6f4d`), écrit
-avant le code, avant la fin de l'apprentissage du test 26 et avant toute
-mesure de ses agents. Code commis avant toute mesure (`74d0c3d`). Calcul
+Protocole `docs/LLM_NEED_RELIEF_GRAFT_PROTOCOL.md` (commit `39d6f4d`),
+commis deux minutes avant le code (`74d0c3d`) ; les greffes possibles qu'il
+cite avaient été comptées, sans modèle, avec le tirage de ce code. Les deux
+ont été commis avant la fin de l'apprentissage du test 26 et avant toute
+mesure de ses agents. Calcul
 torch sur le processeur local, le 5 octobre 2026, en 4 parts à un fil.
 Artefacts : `artifacts/llm-need/relief-graft`. Verdicts recalculés en local
 (identiques) ; la CI les vérifie à chaque envoi.
@@ -2090,7 +2092,7 @@ soulagement, de donner à la receveuse les besoins de la donneuse au tour j.
 |---|---|---|
 | (a) autres besoins, e ≠ 0 | **0,402** | 0,158 |
 | (a0) autres besoins, e = 0 | 0,182 | 0,132 |
-| (b) mêmes besoins, autre histoire | **0,136** | 0,098 |
+| (b) mêmes besoins, autre histoire (dont 32 sans autre histoire, voir les écarts) | **0,136** | 0,098 |
 
 | | Critère | Verdict |
 |---|---|---|
@@ -2119,54 +2121,86 @@ différente, il change peu la prédiction. »
   actions renseignent un peu sur ses besoins (le plafond des actions du
   test 26). L'effet de A est plus de trois fois celui de B.
 
-**Nuance (après lecture, exploration non pré-enregistrée,
-`research/need_relief_graft_event.py`,
+**Nuance (après lecture, exploration non pré-enregistrée, étendue après la
+relecture indépendante ; `research/need_relief_graft_event.py`,
 `artifacts/llm-need/relief-graft/exploration-event.json`).** L'événement
 du tour j compte beaucoup. On sépare les greffes selon que donneuse et
 receveuse avaient le même événement au tour j :
 
-| A : \|ΔL\| moyen | même événement au tour j | autre événement |
+| \|ΔL\| moyen (A / B) | même événement au tour j | autre événement |
 |---|---|---|
-| (a) autres besoins, e ≠ 0 | 0,185 (74) | 0,451 (326) |
-| (a0) autres besoins, e = 0 | 0,117 (45) | 0,201 (155) |
-| (b) mêmes besoins | **0,034** (112) | **0,266** (88) |
+| (a) autres besoins, e ≠ 0 | 0,185 / 0,163 (74) | 0,451 / 0,157 (326) |
+| (a0) autres besoins, e = 0 | 0,117 / 0,132 (45) | 0,201 / 0,131 (155) |
+| (b) mêmes besoins | **0,034** / 0,051 (112, dont 32 sans autre histoire) | **0,266** / 0,157 (88) |
 
-- **À événement égal**, des besoins différents bougent la prédiction plus
-  de cinq fois plus que des besoins égaux (0,185 contre 0,034) : l'état
-  porté contient bien les besoins.
-- **À besoins égaux**, un autre événement au tour j la bouge déjà de
-  0,266 : l'état porté contient aussi, fortement, **l'événement du tour**.
-- Les donneuses (b) partagent plus souvent l'événement de la receveuse
-  (56 %) que les donneuses (a) (19 %). SELF2 passe donc en partie grâce à
-  cela : à événement différent, \|ΔL\| (b) vaut 0,59 fois \|ΔL\| (a),
-  au-dessus de la moitié. « Surtout son besoin » est donc trop fort :
-  l'état porte **ses besoins et l'événement du tour**.
-- Chez B, l'effet ne dépend pas de l'événement pour (a) (0,163 et 0,157),
-  comme attendu : son token d'action ne voit pas l'événement.
+| Greffes (a) : effet aligné ΔL × signe(e) | A | B | A − B (apparié) |
+|---|---|---|---|
+| même événement au tour j (74) | +0,162 [0,107 ; 0,225] | +0,139 [0,100 ; 0,183] | +0,023 [−0,036 ; 0,082] |
+| autre événement (326) | +0,390 [0,342 ; 0,437] | +0,098 [0,078 ; 0,119] | +0,292 [0,242 ; 0,343] |
+
+- **L'avantage de A sur le témoin passe par l'événement du tour j.** À
+  événement égal, l'effet aligné de A n'est pas plus grand que celui de B,
+  qui ne porte que ses actions (différence appariée +0,02 [−0,04 ; 0,08]).
+  Presque tout l'écart entre A et B vient des greffes à événement
+  différent.
+- **À besoins égaux**, un autre événement au tour j bouge déjà la
+  prédiction de 0,266 : l'état porté contient fortement **l'événement du
+  tour**.
+- À événement égal, des besoins différents bougent la prédiction près de
+  quatre fois plus que des besoins égaux venus d'une autre histoire
+  (0,185 contre 0,048 ; 0,034 avec les 32 greffes sans autre histoire).
+  Mais B, qui ne voit pas l'événement, montre le même contraste (0,163
+  contre 0,051) : il vient au moins en partie de ce que disent les
+  actions, pas d'un besoin porté au-delà.
+- **SELF2 passe grâce au partage d'événement.** Les donneuses (b)
+  partagent plus souvent l'événement de la receveuse (56 % ; 48 % sans les
+  32 greffes sans autre histoire) que les donneuses (a) (18,5 %). À
+  événement différent, \|ΔL\| (b) vaut 0,59 fois \|ΔL\| (a) ; à la
+  composition d'événements des greffes (a), il vaudrait 0,22, soit 0,55
+  fois \|ΔL\| (a), et SELF2 ne passerait pas.
+- Pour (b), \|ΔL\| de B dépend aussi du partage d'événement (0,051 contre
+  0,157), alors que B ne voit pas l'événement : à besoins égaux, les
+  donneuses qui partagent l'événement ont aussi une histoire plus proche.
+  Le contraste de A (0,034 contre 0,266) ne mesure donc pas l'événement
+  seul.
 
 **Écarts d'exécution, déclarés.**
+- **32 des 200 greffes (b) n'ont pas d'autre histoire** (relevé à la
+  relecture, comme au test 23) : la donneuse a vécu les mêmes événements et
+  actions que la receveuse jusqu'au tour j (j ≤ 3 ; toutes celles de
+  j = 1). Leur greffe ne change rien par construction (ΔL = 0). Le
+  protocole disait « autre histoire » sans l'imposer. Sans elles,
+  \|ΔL\| (b) vaut 0,162 ; SELF2 passe toujours (différence +0,240
+  [0,182 ; 0,295]).
 - Les greffes ont commencé (17 h 17 UTC) avant la fin des vies du test 26 ;
-  les lectures finales de A et B du test 26 avaient été lues.
+  les lectures finales de A et B du test 26 avaient été lues. Parts
+  lancées : 1 à 17 h 17, 2 vers 17 h 20, 3 à 19 h 38, 4 à 20 h 48.
 - Vers 18 h UTC, la deuxième part, en passant de A à B, a chargé deux
   modèles et presque rempli la mémoire ; elle a été arrêtée, puis reprise
-  de sa sauvegarde (toutes les 25 greffes). Une garde a ensuite arrêté
-  automatiquement la quatrième part en cas de manque de mémoire (elle n'a
-  pas eu à le faire). Calcul déterministe à un fil : sans effet sur les
-  mesures.
+  de sa sauvegarde (toutes les 25 greffes) à 18 h 54. Une garde devait
+  ensuite arrêter automatiquement la quatrième part en cas de manque de
+  mémoire (elle n'a pas eu à le faire). Calcul déterministe à un fil : sans
+  effet sur les mesures.
 - D'autres calculs (tests 26, 31, 32) tournaient en même temps.
 
 ### Ce que cela dit
 
-- **Sans choix à imiter, l'état porté contient les besoins.** Greffé dans
-  une autre vie, l'état porté du modèle de langage fait prédire le
-  soulagement selon les besoins de la vie d'origine (+0,35 niveau), et, à
-  événement égal, des besoins égaux ne bougent presque rien (0,03).
-- **Mais il contient aussi, fortement, l'événement du tour.** Ce n'est pas
-  un état de soi pur : c'est un mélange de ses besoins et de ce qui vient
-  d'arriver.
-- Avec 28 couches, contrairement aux petits modèles à deux couches (test
-  29), l'état porté d'un tour contient plus que l'événement de ce tour :
-  à événement égal, il porte la différence de besoins.
+- **Sans choix à imiter, l'état porté fait prédire le soulagement dans le
+  sens des besoins d'origine** (+0,35 niveau), plus de trois fois plus que
+  chez le témoin B (+0,11).
+- **Mais cet avantage passe par l'événement du tour j.** À événement égal
+  (74 greffes (a)), l'effet aligné de A (+0,16 [0,11 ; 0,22]) n'est pas plus
+  grand que celui de B, qui ne porte que les actions (+0,14 ; différence
+  appariée +0,02 [−0,04 ; 0,08]) ; presque tout l'écart entre A et B vient
+  des greffes à événement différent (+0,29 [0,24 ; 0,34]). Ce n'est pas un
+  état des seuls besoins.
+- Ces données ne montrent donc pas qu'avec 28 couches l'état porté d'un
+  tour contienne plus que l'événement de ce tour et ce que disent les
+  actions passées, ce que portent aussi les petits modèles à deux couches
+  (test 29) ; elles ne l'excluent pas non plus (74 greffes).
+- La lecture fixée d'avance (« dépend surtout de son besoin ») est donc
+  trop forte : SELF1 et SELF2 passent, mais en grande partie par
+  l'événement du tour que l'état porte.
 
 **Ce que le résultat ne dit pas.**
 - Rien sur un ressenti.
