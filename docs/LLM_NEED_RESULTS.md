@@ -2071,6 +2071,24 @@ vrai sur dix graines. »
 - Il ne dit pas **ce que** les états portent (le besoin lui-même, ou ce qui
   commande le soulagement) : c'est la question du test 28, pour le modèle
   de langage.
+- **Précision ajoutée le 5 octobre, après lecture (vérifiée).** Avec
+  **deux couches**, l'état porté d'un tour ne peut contenir que
+  **l'événement de ce tour** et les actions passées. À la couche 0, ses
+  tokens ne voient des tours passés que les plongements de « Choix » et des
+  actions, qui ne disent rien des événements. Le besoin, qui dépend de tous
+  les événements passés, n'est donc **pas porté comme un état mis à jour**
+  de tour en tour : chaque décision le recompose en lisant, dans les états
+  portés de chaque tour passé, l'événement que ce tour y a écrit. Vérifié
+  sur les agents du test 31 (graine 0, exploration non pré-enregistrée,
+  `research/tiny_two_layer_check.py`,
+  `artifacts/tiny-survival-ac/exploration/two-layer-check.json`) : changer
+  un événement plus ancien que le tour j ne change pas du tout ce que les
+  tours suivants lisent des tokens portés du tour j (écart 0, 64 cas),
+  mais change la décision deux tours plus tard (écart moyen 0,39). Chez le
+  modèle libre, ce même état change (0,74). C'est une propriété du masque
+  et de la profondeur, vraie pour tous les poids. La « mémoire par
+  l'état » des tests 29 à 31 est donc une mémoire des événements écrite
+  dans ses propres états, **pas une récurrence**.
 - Ces modèles sont petits, le monde aussi. D'autres tailles, d'autres
   durées d'apprentissage ou d'autres tokens pourraient donner autre chose.
 - Les tokens sont simples et à positions fixes ; ce n'est pas du langage.

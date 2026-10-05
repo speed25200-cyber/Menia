@@ -1,0 +1,10 @@
+{
+ "route": {
+  "carried_state_of_turn_j_max_change_when_an_earlier_event_changes": 0.0,
+  "decision_at_turn_j_plus_2_mean_change": 0.3936215548310429
+ },
+ "free": {
+  "carried_state_of_turn_j_max_change_when_an_earlier_event_changes": 0.7409553527832031,
+  "decision_at_turn_j_plus_2_mean_change": 0.6043088221922517
+ }
+}
