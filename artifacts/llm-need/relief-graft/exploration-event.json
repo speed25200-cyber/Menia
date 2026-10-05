@@ -1,0 +1,66 @@
+{
+ "route": {
+  "a": {
+   "same_event": {
+    "count": 74,
+    "abs_delta": 0.18498933783783783
+   },
+   "other_event": {
+    "count": 326,
+    "abs_delta": 0.45134500000000005
+   }
+  },
+  "a0": {
+   "same_event": {
+    "count": 45,
+    "abs_delta": 0.11748917777777777
+   },
+   "other_event": {
+    "count": 155,
+    "abs_delta": 0.20055981290322583
+   }
+  },
+  "b": {
+   "same_event": {
+    "count": 112,
+    "abs_delta": 0.033991732142857146
+   },
+   "other_event": {
+    "count": 88,
+    "abs_delta": 0.26592747727272725
+   }
+  }
+ },
+ "actions": {
+  "a": {
+   "same_event": {
+    "count": 74,
+    "abs_delta": 0.16339047297297296
+   },
+   "other_event": {
+    "count": 326,
+    "abs_delta": 0.15701384662576687
+   }
+  },
+  "a0": {
+   "same_event": {
+    "count": 45,
+    "abs_delta": 0.1322632
+   },
+   "other_event": {
+    "count": 155,
+    "abs_delta": 0.13131130322580647
+   }
+  },
+  "b": {
+   "same_event": {
+    "count": 112,
+    "abs_delta": 0.05115213392857143
+   },
+   "other_event": {
+    "count": 88,
+    "abs_delta": 0.15719882954545455
+   }
+  }
+ }
+}

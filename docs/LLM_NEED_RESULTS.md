@@ -2052,6 +2052,117 @@ pas. »
 - Les lectures mélangent des états greffés et non greffés : c'est la
   limite de ces décompositions.
 
+## Test 28 pré-enregistré : sans professeur, que porte l'état ?
+
+Protocole `docs/LLM_NEED_RELIEF_GRAFT_PROTOCOL.md` (commit `39d6f4d`), écrit
+avant le code, avant la fin de l'apprentissage du test 26 et avant toute
+mesure de ses agents. Code commis avant toute mesure (`74d0c3d`). Calcul
+torch sur le processeur local, le 5 octobre 2026, en 4 parts à un fil.
+Artefacts : `artifacts/llm-need/relief-graft`. Verdicts recalculés en local
+(identiques) ; la CI les vérifie à chaque envoi.
+
+**Ce qu'on teste.** La greffe du test 23, sur l'agent A du test 26 (le
+modèle de langage appris **sans choix à imiter**, seulement à prédire le
+soulagement de ses actions). Sur 128 vies neuves écrites par la règle
+« événement », on remplace, dans toutes les couches, les clés et valeurs
+des 4 tokens portés du tour j d'une vie receveuse par ceux d'une vie
+donneuse qui a écrit la même action au tour j. On lit ensuite le
+soulagement prédit un ou deux tours plus tard. **ΔL** = niveau attendu (0 à
+3) avec la greffe − sans. **e** = ce que changerait, sur le vrai niveau du
+soulagement, de donner à la receveuse les besoins de la donneuse au tour j.
+
+| Greffes (400 (a), 200 (a0), 200 (b)) | A (« porte ») : \|ΔL\| moyen | B (« actions », témoin) : \|ΔL\| moyen |
+|---|---|---|
+| (a) autres besoins, e ≠ 0 | **0,402** | 0,158 |
+| (a0) autres besoins, e = 0 | 0,182 | 0,132 |
+| (b) mêmes besoins, autre histoire | **0,136** | 0,098 |
+
+| | Critère | Verdict |
+|---|---|---|
+| **SELF1** | sur les greffes (a) : moyenne de ΔL × signe(e) ≥ **0,15** niveau (borne basse > 0) | **passe** : +0,348 [0,306 ; 0,390] |
+| **SELF2** | \|ΔL\| des greffes (b) ≤ **la moitié** de celui des greffes (a), et différence à borne basse > 0 | **passe** : 0,136 contre 0,402 (seuil 0,201) ; différence +0,266 [0,213 ; 0,317] |
+| | Validité : sans greffe ≤ 1e-4 ; greffe de soi ≤ 1e-6 ; mêmes positions ; ≥ 100 greffes (a) et (b) | **valide** : 0 ; 0 ; oui ; 400 et 200 |
+
+Intervalles bootstrap à 95 % par vie receveuse (10 000 tirages).
+
+**Critère global (SELF1 et SELF2) : satisfait.**
+
+**Lecture fixée d'avance** (SELF1 et SELF2 passent) : « Sans professeur, ce
+que l'agent porte d'un tour à l'autre dépend surtout de son besoin. Greffé
+dans une autre vie, il fait prédire le soulagement selon les besoins de la
+vie d'origine ; venu d'une vie aux mêmes besoins mais à l'histoire
+différente, il change peu la prédiction. »
+
+**Publié sans seuil.**
+- **Selon g** (A) : effet aligné +0,428 à un tour, +0,267 à deux tours ;
+  \|ΔL\| des greffes (b) : 0,159 et 0,111.
+- **Pente de ΔL sur e** (A) : 0,28. A retrouve environ un quart de l'effet
+  qu'aurait, sur le vrai niveau, le changement de besoins.
+- **Le témoin B** bouge aussi, moins : effet aligné +0,106 [0,088 ; 0,124]
+  (pente 0,09). Sous son masque, les tours suivants ne lisent de la
+  donneuse que son token d'action, qui résume ses actions passées ; ces
+  actions renseignent un peu sur ses besoins (le plafond des actions du
+  test 26). L'effet de A est plus de trois fois celui de B.
+
+**Nuance (après lecture, exploration non pré-enregistrée,
+`research/need_relief_graft_event.py`,
+`artifacts/llm-need/relief-graft/exploration-event.json`).** L'événement
+du tour j compte beaucoup. On sépare les greffes selon que donneuse et
+receveuse avaient le même événement au tour j :
+
+| A : \|ΔL\| moyen | même événement au tour j | autre événement |
+|---|---|---|
+| (a) autres besoins, e ≠ 0 | 0,185 (74) | 0,451 (326) |
+| (a0) autres besoins, e = 0 | 0,117 (45) | 0,201 (155) |
+| (b) mêmes besoins | **0,034** (112) | **0,266** (88) |
+
+- **À événement égal**, des besoins différents bougent la prédiction plus
+  de cinq fois plus que des besoins égaux (0,185 contre 0,034) : l'état
+  porté contient bien les besoins.
+- **À besoins égaux**, un autre événement au tour j la bouge déjà de
+  0,266 : l'état porté contient aussi, fortement, **l'événement du tour**.
+- Les donneuses (b) partagent plus souvent l'événement de la receveuse
+  (56 %) que les donneuses (a) (19 %). SELF2 passe donc en partie grâce à
+  cela : à événement différent, \|ΔL\| (b) vaut 0,59 fois \|ΔL\| (a),
+  au-dessus de la moitié. « Surtout son besoin » est donc trop fort :
+  l'état porte **ses besoins et l'événement du tour**.
+- Chez B, l'effet ne dépend pas de l'événement pour (a) (0,163 et 0,157),
+  comme attendu : son token d'action ne voit pas l'événement.
+
+**Écarts d'exécution, déclarés.**
+- Les greffes ont commencé (17 h 17 UTC) avant la fin des vies du test 26 ;
+  les lectures finales de A et B du test 26 avaient été lues.
+- Vers 18 h UTC, la deuxième part, en passant de A à B, a chargé deux
+  modèles et presque rempli la mémoire ; elle a été arrêtée, puis reprise
+  de sa sauvegarde (toutes les 25 greffes). Une garde a ensuite arrêté
+  automatiquement la quatrième part en cas de manque de mémoire (elle n'a
+  pas eu à le faire). Calcul déterministe à un fil : sans effet sur les
+  mesures.
+- D'autres calculs (tests 26, 31, 32) tournaient en même temps.
+
+### Ce que cela dit
+
+- **Sans choix à imiter, l'état porté contient les besoins.** Greffé dans
+  une autre vie, l'état porté du modèle de langage fait prédire le
+  soulagement selon les besoins de la vie d'origine (+0,35 niveau), et, à
+  événement égal, des besoins égaux ne bougent presque rien (0,03).
+- **Mais il contient aussi, fortement, l'événement du tour.** Ce n'est pas
+  un état de soi pur : c'est un mélange de ses besoins et de ce qui vient
+  d'arriver.
+- Avec 28 couches, contrairement aux petits modèles à deux couches (test
+  29), l'état porté d'un tour contient plus que l'événement de ce tour :
+  à événement égal, il porte la différence de besoins.
+
+**Ce que le résultat ne dit pas.**
+- Rien sur un ressenti.
+- La cible du test 26 (le niveau du soulagement) est une supervision
+  directe du besoin servi.
+- La greffe porte sur les 4 tokens d'un seul tour ; un tour lit aussi
+  directement les tokens portés de tout son passé.
+- Il ne sépare pas le niveau des besoins de ce qui commande le soulagement
+  de l'action écrite.
+- Un seul agent (une graine d'apprentissage).
+
 ## Test 29 pré-enregistré : sans pré-entraînement, de petits transformeurs portent-ils leurs besoins ?
 
 Protocole `docs/TINY_RELIEF_PROTOCOL.md` (commit `d6c6f03`), écrit avant le
