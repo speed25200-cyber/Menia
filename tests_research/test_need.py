@@ -1361,6 +1361,19 @@ class TinySurvivalTests(unittest.TestCase):
         self.assertTrue(v["SURV1"] and not v["SURV2"])
 
 
+class TinySurvivalPilotTests(unittest.TestCase):
+    def test_choice_rule(self):
+        from research import tiny_survival_pilot as SP
+        r = lambda *v: {str(s): x for s, x in zip(SP.SEEDS, v)}
+        chosen, means = SP.choose({"P1": r(0.5, 0.5, 0.5), "P2": r(0.70, 0.70, 0.70), "P3": r(0.704, 0.704, 0.704),
+                                   "P4": r(0.6, 0.6, 0.6)})
+        self.assertEqual(chosen, "P2")  # P3 is better by less than the tie margin
+        chosen, _ = SP.choose({"P1": r(0.5, 0.5, 0.5), "P2": r(0.66, 0.66, 0.66), "P3": r(0.72, 0.72, 0.72)})
+        self.assertEqual(chosen, "P3")
+        chosen, _ = SP.choose({"P1": r(0.5, 0.5, 0.5), "P2": r(0.6, 0.6, 0.6)})
+        self.assertIsNone(chosen)
+
+
 class ReliefTests(unittest.TestCase):
     def test_lives_texts_and_targets(self):
         from research import need_relief as RL, need_rules as NR
