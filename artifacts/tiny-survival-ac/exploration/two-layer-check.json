@@ -1,10 +1,14 @@
 {
  "route": {
-  "carried_state_of_turn_j_max_change_when_an_earlier_event_changes": 0.0,
-  "decision_at_turn_j_plus_2_mean_change": 0.3936215548310429
+  "read_of_turn_j_carried_tokens_max_change": 0.0,
+  "final_state_at_choix_two_turns_later_mean_of_max_change": 0.42961308476515114,
+  "p_r_two_turns_later_mean_change": 0.016989946369142098,
+  "p_r_two_turns_later_median_change": 5.63801313546719e-06
  },
  "free": {
-  "carried_state_of_turn_j_max_change_when_an_earlier_event_changes": 0.7409553527832031,
-  "decision_at_turn_j_plus_2_mean_change": 0.6043088221922517
+  "read_of_turn_j_carried_tokens_max_change": 0.7409553527832031,
+  "final_state_at_choix_two_turns_later_mean_of_max_change": 0.5963654625229537,
+  "p_r_two_turns_later_mean_change": 0.017973006484669,
+  "p_r_two_turns_later_median_change": 5.018510537690979e-10
  }
 }

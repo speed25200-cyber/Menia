@@ -2184,24 +2184,34 @@ vrai sur dix graines. »
 - Il ne dit pas **ce que** les états portent (le besoin lui-même, ou ce qui
   commande le soulagement) : c'est la question du test 28, pour le modèle
   de langage.
-- **Précision ajoutée le 5 octobre, après lecture (vérifiée).** Avec
-  **deux couches**, l'état porté d'un tour ne peut contenir que
-  **l'événement de ce tour** et les actions passées. À la couche 0, ses
-  tokens ne voient des tours passés que les plongements de « Choix » et des
-  actions, qui ne disent rien des événements. Le besoin, qui dépend de tous
-  les événements passés, n'est donc **pas porté comme un état mis à jour**
-  de tour en tour : chaque décision le recompose en lisant, dans les états
-  portés de chaque tour passé, l'événement que ce tour y a écrit. Vérifié
-  sur les agents du test 31 (graine 0, exploration non pré-enregistrée,
+- **Précision ajoutée le 5 octobre, après lecture (vérifiée ; corrigée
+  après la relecture du test 31).** Avec **deux couches**, ce que les tours
+  suivants peuvent lire des tokens portés d'un tour (leur sortie de la
+  couche 0, seule lue par la couche 1) ne dépend que de **l'événement de ce
+  tour** et des actions jusqu'à ce tour. À la couche 0, ces tokens ne voient
+  des tours passés que les plongements de « Choix » et des actions, qui ne
+  disent rien des événements. Le besoin, qui dépend de tous les événements
+  passés, n'est donc **pas porté comme un état mis à jour** de tour en
+  tour : chaque décision le recompose en lisant, dans les tokens portés de
+  chaque tour passé, l'événement que ce tour y a écrit. Dans une vraie vie,
+  un événement plus ancien peut encore les atteindre à travers les actions
+  qu'il a fait choisir, un canal que le témoin B a aussi. Vérifié sur les
+  agents du test 31 (graine 0, exploration non pré-enregistrée,
   `research/tiny_two_layer_check.py`,
-  `artifacts/tiny-survival-ac/exploration/two-layer-check.json`) : changer
-  un événement plus ancien que le tour j ne change pas du tout ce que les
-  tours suivants lisent des tokens portés du tour j (écart 0, 64 cas),
-  mais change la décision deux tours plus tard (écart moyen 0,39). Chez le
-  modèle libre, ce même état change (0,74). C'est une propriété du masque
-  et de la profondeur, vraie pour tous les poids. La « mémoire par
-  l'état » des tests 29 à 31 est donc une mémoire des événements écrite
-  dans ses propres états, **pas une récurrence**.
+  `artifacts/tiny-survival-ac/exploration/two-layer-check.json`) : à
+  actions inchangées, changer un événement plus ancien que le tour j ne
+  change pas du tout ce que les tours suivants lisent des tokens portés du
+  tour j (écart 0, 64 cas). Pour comparaison, il change l'état final du
+  token « Choix » deux tours plus tard (moyenne, sur 64 cas, du plus grand
+  écart absolu sur ses 64 dimensions : 0,43), mais peu P(R) (écart moyen
+  0,017 ; médiane 6e-6). Chez le modèle libre, ce que les tours suivants
+  lisent des tokens du tour j change, jusqu'à 0,74 (plus grand écart sur
+  les 64 cas). C'est une propriété du masque et de la profondeur, vraie
+  pour tous les poids. La « mémoire par l'état » des tests 29 à 31 est donc
+  une mémoire des événements écrite dans ses propres tokens, **pas une
+  récurrence**. (Première version : l'événement changé n'était jamais
+  celui du tour juste avant j, et l'écart de l'état final à « Choix » était
+  appelé à tort un écart de « la décision » ; corrigé, nouveaux tirages.)
 - Ces modèles sont petits, le monde aussi. D'autres tailles, d'autres
   durées d'apprentissage ou d'autres tokens pourraient donner autre chose.
 - Les tokens sont simples et à positions fixes ; ce n'est pas du langage.
@@ -2308,6 +2318,8 @@ B seul**, dans 256 mondes à part, graines 100 à 102 ; A n'a jamais été
 appris pendant le pilote. Survie moyenne de B : P1 (REINFORCE long) 0,194 ;
 **P2 (acteur-critique, γ = 0,9) 0,688** ; P3 (γ = 0,97) 0,637 ; P4 (façon
 PPO) 0,681. Selon la règle fixée d'avance, P2 est retenu (seuil 0,65).
+Le code du pilote normalise l'avantage dans le lot (P2 à P4), ce que le
+plan ne précisait pas ; le protocole du test 31 le fixe.
 
 | Moyenne sur 10 graines | A, porte | B, actions | C, libre |
 |---|---|---|---|
@@ -2337,15 +2349,23 @@ l'événement du tour. Il a appris de lui-même à porter, dans ses états,
 quelque chose de ses besoins cachés. Rien ne lui a nommé ces besoins. Ce
 que ces états portent n'est pas mesuré ici. »
 
-**Nuance (après lecture, vérifiée ; voir aussi la précision du test 29).**
-Avec deux couches, l'état porté d'un tour ne peut contenir que
-**l'événement de ce tour** et les actions passées : changer un événement
-plus ancien ne le change pas du tout (écart 0, 64 cas, graine 0 ;
-`research/tiny_two_layer_check.py`). Ce que A porte dans ses états est donc
-**l'événement de chaque tour**, qu'il relit à chaque décision pour en
-recomposer ses besoins ; ce n'est pas un besoin porté comme un état qui
+**Nuance (après lecture, exploration non pré-enregistrée, vérifiée ; voir
+aussi la précision du test 29).** Avec deux couches, ce que les tours
+suivants peuvent lire des tokens portés d'un tour (leur sortie de la
+couche 0, seule lue par la couche 1) ne dépend que de **l'événement de ce
+tour** et des actions jusqu'à ce tour : à actions inchangées, changer un
+événement plus ancien ne le change pas du tout (écart 0, 64 cas, graine 0 ;
+`research/tiny_two_layer_check.py`). Dans une vraie vie, un événement plus
+ancien peut encore l'atteindre à travers les actions qu'il a fait choisir,
+un canal que le témoin B a aussi. Ce que A porte dans ses tokens est donc
+surtout **l'événement de chaque tour**, qu'il relit à chaque décision pour
+en recomposer ses besoins ; ce n'est pas un besoin porté comme un état qui
 dure. « Quelque chose de ses besoins cachés » veut dire ici : de quoi les
-retrouver.
+retrouver. Avec deux couches, A dispose donc de la même information que C
+(tous les événements et toutes les actions passés) ; seul le chemin
+diffère : chaque événement passé doit être réécrit dans les tokens portés
+de son tour. SURV1 mesure surtout ce que rapporte de voir ses événements
+passés sous cette forme, que B ne voit pas.
 
 **Publié sans seuil : graine par graine (survie).**
 
@@ -2367,10 +2387,13 @@ retrouver.
 - **C (« libre »), qui voit tout son passé, survit moins bien que A** :
   0,701 contre 0,813, A au-dessus de C pour 10 graines sur 10 (écart moyen
   +0,112 [0,073 ; 0,150] ; publié sans seuil, observation après lecture).
-  Avec cet apprentissage, ne voir son passé qu'à travers ses propres
-  tokens a **aidé** à apprendre. Explication possible, non testée : moins
-  d'entrées à trier, un chemin plus court vers ce qui compte. Au test 29
-  (cible directe, le soulagement), A et C survivaient autant (0,884).
+  Avec cet apprentissage et à ce budget, ne voir son passé qu'à travers
+  ses propres tokens a aidé à apprendre, à information égale. Les courbes
+  montent encore à 4 000 mises à jour pour les trois masques (de 3 000 à
+  4 000 : A +0,05, B +0,04, C +0,07) ; un apprentissage plus long pourrait
+  réduire l'écart, surtout avec C. Explication possible, non testée : moins
+  d'entrées à trier. Au test 29 (cible directe, le soulagement), A et C
+  survivaient autant (0,884).
 - B survit à peine moins bien que la règle « événement » (0,705 contre
   0,723) : il apprend à peu près ce que permet le tour seul.
 
@@ -2389,6 +2412,12 @@ retrouver.
 - D'autres calculs (tests 26, 28, 32) tournaient en même temps sur la même
   machine ; ils ne touchent pas ces résultats (calcul à un fil,
   déterministe).
+- Une exploration non pré-enregistrée (`research/tiny_two_layer_check.py`)
+  a été faite sur A et C de la graine 0 et publiée (`ae69a1b`, 18 h 41)
+  avant la fin des apprentissages (B et C des graines 4 et 7), après
+  lecture des dix résultats de A et de huit de B et de C ; elle ne touche
+  pas ces résultats. Corrigée après la relecture (voir la précision du
+  test 29).
 
 ### Ce que cela dit
 
@@ -2398,8 +2427,9 @@ retrouver.
   actions (+0,107, 10 graines sur 10), et mieux que la règle
   « événement ».
 - **Mais ce qu'il garde est une mémoire des événements, pas un besoin qui
-  dure.** Avec deux couches, chaque tour n'écrit dans ses états que son
-  propre événement ; le besoin est recomposé à chaque décision. Le test 32
+  dure.** Avec deux couches, ce que les tours suivants lisent des tokens
+  d'un tour ne dépend que de son événement et des actions jusque-là ; le
+  besoin est recomposé à chaque décision. Le test 32
   (« la boucle ») pose la question d'un état qui ne passe que d'un tour au
   suivant.
 - **Il ne dit pas ce que portent les états** au-delà de cette limite
@@ -2409,12 +2439,19 @@ retrouver.
 - Rien sur un ressenti.
 - La récompense (la survie) vient du monde, qui connaît les besoins ; elle
   ne nomme ni le besoin ni l'action à prendre.
+- « Sans aucune cible » veut dire : sans cible qui nomme le besoin ou
+  l'action. L'acteur-critique apprend toutefois une prédiction : sa tête de
+  valeur, au token « Choix », prédit le retour de survie escompté, et cet
+  apprentissage passe par le même réseau (chez A, B et C).
 - Le réglage a été choisi sur B seulement, dans d'autres mondes ; un
   réglage meilleur pour B ou pour C pourrait exister.
 - Ces modèles sont petits, le monde aussi. Ce qui est déjà connu : des
   agents apprennent une mémoire par la seule récompense (agents récurrents
-  en apprentissage par renforcement). L'apport ici est le montage
-  (le passé ne passe que par les tokens de l'agent) et le pré-enregistrement.
+  en apprentissage par renforcement), et des transformeurs à mémoire passent
+  leur passé par des tokens ou des états qu'ils écrivent eux-mêmes
+  (Transformer-XL, Recurrent Memory Transformer). Aucune recherche
+  bibliographique n'a été faite pour ce test ; l'apport revendiqué se
+  limite à ce montage précis, à son témoin et au pré-enregistrement.
 
 ## Analyse exploratoire : le « oui » suit-il le besoin ou la décision ? (2 octobre)
 
