@@ -36,3 +36,4 @@ artifacts/llm-need/**/*.tmp
 !artifacts/tiny-relief/runs/
 !artifacts/tiny-survival/runs/
 !artifacts/tiny-survival-pilot/
+!artifacts/tiny-survival-ac/runs/

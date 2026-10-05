@@ -1374,6 +1374,19 @@ class TinySurvivalPilotTests(unittest.TestCase):
         self.assertIsNone(chosen)
 
 
+class TinySurvivalACTests(unittest.TestCase):
+    def test_setting_and_verdicts_are_those_planned(self):
+        from research import tiny_survival_ac as AC, tiny_survival_pilot as SP, tiny_survival as TS
+        self.assertEqual(AC.SETTING, "P2")
+        self.assertEqual(SP.CONFIG["P2"], {"algo": "a2c", "updates": 4000, "lr": 3e-4, "gamma": 0.9, "epochs": 1})
+        self.assertEqual(AC.SEEDS, TS.SEEDS)
+        runs = {a: {str(s): {"survival": v, "agrees": 0.8} for s in TS.SEEDS}
+                for a, v in (("route", 0.85), ("actions", 0.70), ("free", 0.85))}
+        runs["route"]["1"]["survival"] = 0.86
+        ok = {"mask_gap": {"route": 0.0, "actions": 0.0}}
+        self.assertTrue(all(AC.verdicts(runs, ok, 0.72265625)["verdicts"].values()))
+
+
 class ReliefTests(unittest.TestCase):
     def test_lives_texts_and_targets(self):
         from research import need_relief as RL, need_rules as NR
