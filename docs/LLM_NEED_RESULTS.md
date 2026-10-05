@@ -2581,6 +2581,123 @@ passés sous cette forme, que B ne voit pas.
   bibliographique n'a été faite pour ce test ; l'apport revendiqué se
   limite à ce montage précis, à son témoin et au pré-enregistrement.
 
+## Test 32 pré-enregistré : la boucle, un état qui ne passe que d'un tour au suivant (échoue)
+
+Protocole `docs/TINY_LOOP_PROTOCOL.md` (commit `0488b5e`), écrit avant le
+code et toute exécution. Code commis avant toute mesure (`973c04c`), essayé
+sur 10 mises à jour de la graine 99, hors protocole (rien lu que le temps).
+Calcul torch sur le processeur local, le 5 octobre 2026 (deux processus à
+un fil, en priorité basse). Artefacts : `artifacts/tiny-loop`. Verdicts
+recalculés en local (identiques) ; la CI les vérifie à chaque envoi.
+
+**Ce qu'on teste.** Aux tests 29 et 31, avec deux couches, chaque tour
+n'écrit dans ses tokens que son propre événement : le besoin est recomposé
+à chaque décision, ce n'est pas une récurrence. Ici, un petit transformeur
+appris de zéro (2 couches, dimension 64) **ne voit jamais les tours
+passés** : à chaque tour, il lit un état s_t (un vecteur), la dernière
+action, l'événement et « Choix » ; la sortie de « Choix » donne le choix,
+la valeur et **l'état suivant**. Seul cet état passe d'un tour au suivant.
+Il n'apprend que de sa survie (acteur-critique P2 du test 31, le gradient
+traversant l'état sur toute la vie). Témoin : le même réseau, état coupé à
+chaque tour. Dix graines.
+
+| Moyenne sur 10 graines | A, boucle | B, coupé |
+|---|---|---|
+| Survie (256 mondes du test 22, action la plus probable) | 0,721 | 0,733 |
+| Part des décisions où il prend l'action de la règle « besoins » | 0,826 | 0,831 |
+| Survie pendant l'apprentissage (100 premières mises à jour → 1 000 → 2 000 → 3 000 → 4 000) | 0,07 → 0,53 → 0,60 → 0,63 → 0,67 | 0,07 → 0,64 → 0,69 → 0,69 → 0,69 |
+| Ce qu'un décodeur linéaire lit de E et N dans l'état transmis (part de variance, validation croisée) | 0,68 et 0,69 | 0,42 et 0,46 |
+
+Repères sans modèle, sur les mêmes mondes : règle « événement » 0,723 ;
+règle « besoins » 0,906.
+
+| | Critère | Valeur | Verdict |
+|---|---|---|---|
+| **LOOP1** | survie de A − survie de B ≥ **0,08** (borne basse > 0) | −0,012 [−0,068 ; +0,043] | **échoue** |
+| **LOOP2** | survie de A − 0,723 ≥ **0,05** (borne basse > 0) | −0,002 [−0,057 ; +0,053] | **échoue** |
+| **LOOP3** | greffes (a) : moyenne des m (ΔP(R) × e) ≥ **0,10**, borne basse > 0, et m > 0,05 pour 8 graines sur 10 | +0,049 [0,003 ; 0,095] ; 3 graines sur 10 | **échoue** |
+| **LOOP4** | \|ΔP(R)\| des greffes (b) ≤ la moitié de celui des greffes (a), différence à borne basse > 0 | 0,019 contre 0,064 ; +0,045 [0,003 ; 0,088] | passe |
+| | Validité : B ≥ 0,60 ; coupure ≤ 1e-6 ; greffe de soi ≤ 1e-6 ; ≥ 100 greffes (a) et (b) ; 10 graines | B 0,733 ; 0 ; 0 ; 391 et 200 ; oui | **valide** |
+
+Intervalles à 95 % sur les 10 graines (loi de Student, 9 degrés de
+liberté).
+
+**Critère global : non satisfait** (LOOP1, LOOP2 et LOOP3 échouent).
+
+**Lecture fixée d'avance** (LOOP1 échoue) : « À cette taille et avec cet
+apprentissage, l'état transmis ne le fait pas survivre assez mieux que le
+témoin coupé. »
+
+**Publié sans seuil : graine par graine.**
+
+| Graine | A : survie | B : survie | A − B | m (greffes (a)) | \|ΔP\| (b) | Décodeur E / N (A) |
+|---|---|---|---|---|---|---|
+| 0 | 0,746 | 0,730 | +0,016 | 0,075 | 0,039 | 0,72 / 0,63 |
+| 1 | 0,727 | 0,730 | −0,004 | 0,046 | 0,024 | 0,74 / 0,71 |
+| 2 | 0,730 | 0,734 | −0,004 | 0,019 | 0,008 | 0,57 / 0,60 |
+| 3 | 0,777 | 0,730 | +0,047 | **0,214** | 0,061 | 0,80 / 0,78 |
+| 4 | 0,730 | 0,734 | −0,004 | 0,001 | 0,001 | 0,56 / 0,71 |
+| 5 | 0,734 | 0,734 | 0,000 | 0,002 | 0,001 | 0,67 / 0,62 |
+| 6 | 0,789 | 0,730 | +0,059 | 0,071 | 0,023 | 0,75 / 0,72 |
+| 7 | 0,727 | 0,734 | −0,008 | 0,023 | 0,010 | 0,64 / 0,74 |
+| 8 | 0,512 | 0,734 | −0,222 | −0,001 | 0,001 | 0,64 / 0,65 |
+| 9 | 0,734 | 0,734 | 0,000 | 0,037 | 0,022 | 0,71 / 0,72 |
+
+- **L'état transmis contient les besoins** : un décodeur linéaire y lit E
+  et N bien mieux que dans la sortie du témoin coupé (0,68 contre 0,42 ;
+  0,69 contre 0,46), pour chaque graine. Le témoin ne voit que l'événement
+  et la dernière action.
+- **Mais l'agent s'en sert peu pour choisir.** Greffé, l'état ne déplace la
+  probabilité de choisir R que de 0,05 en moyenne dans le sens des besoins
+  d'origine (0,48 au test 23, chez le modèle de langage appris d'un
+  professeur). Trois graines seulement (0, 3, 6) s'en servent nettement ;
+  ce sont aussi celles qui survivent mieux que le témoin (+0,016 à +0,059).
+  La graine 3 en est l'exemple le plus net (m = 0,21).
+- **Quand il s'en sert, c'est le besoin plutôt que l'histoire** : LOOP4
+  passe, mais sur des effets petits.
+- **La graine 8 s'est effondrée** (0,512) : son apprentissage est resté
+  bloqué vers 0,47 dès 1 000 mises à jour.
+- Le témoin coupé, qui ne voit que l'événement et la dernière action (18
+  cas possibles), apprend presque toujours la même table : survie 0,730 ou
+  0,734 selon la graine.
+- **Selon g** : effet aligné +0,071 à un tour, +0,024 à deux tours ;
+  \|ΔP\| des greffes (a0) : 0,032.
+
+**Écarts d'exécution, déclarés.**
+- Le tirage n'a donné que 391 greffes (a) (le protocole s'arrêtait à 400 ;
+  il en faut 100). Compté et annoncé dans le commit du code, avant toute
+  mesure.
+- Les résultats bruts ont été publiés et lus graine par graine (survie et
+  décodeur) dès leur écriture ; les mesures de greffe n'ont été résumées
+  qu'à la fin. Aucun seuil n'a changé.
+- Le témoin de la graine 4 a été publié dans le même commit que celui de la
+  graine 9 (`8ab68bf`), dont le message ne nomme que la graine 9.
+- D'autres calculs (tests 26, 28, 31) tournaient en même temps ; calcul
+  déterministe à un fil.
+
+### Ce que cela dit
+
+- **Une vraie boucle, apprise par la seule survie, apprend à savoir où en
+  sont ses besoins, mais pas à s'en servir**, à ce budget et avec cet
+  apprentissage. L'information est dans l'état (le décodeur la lit), elle
+  n'entre que faiblement dans le choix (la greffe le montre).
+- **La récurrence au sens strict n'est donc pas obtenue de façon
+  fiable** : trois graines sur dix montrent un état transmis qui porte les
+  besoins et guide un peu le choix ; les autres s'en tiennent à ce que
+  permet le tour seul.
+- **Le contraste avec le test 31** (même apprentissage, même monde) : en
+  relisant ses tokens passés, le petit transformeur survit à 0,813 ; en
+  devant tout faire passer par un état transmis, il reste à 0,721.
+
+**Ce que le résultat ne dit pas.**
+- Rien sur un ressenti.
+- Il ne dit pas qu'une boucle ne peut pas apprendre à s'en servir : un
+  autre apprentissage (plus long, ou un état mieux protégé d'un tour à
+  l'autre) pourrait réussir. Le réglage a été choisi au pilote pour un
+  autre réseau.
+- Le décodeur est publié sans seuil ; il lit E et N après l'événement du
+  tour, et le témoin en lit déjà une part sans aucune mémoire.
+
 ## Analyse exploratoire : le « oui » suit-il le besoin ou la décision ? (2 octobre)
 
 Écrite **après** le verdict du test 14, sur ses lectures publiées
