@@ -40,3 +40,5 @@ artifacts/llm-need/**/*.tmp
 artifacts/tiny-survival-ac/checkpoints/
 !artifacts/tiny-loop/runs/
 artifacts/tiny-loop/checkpoints/
+!artifacts/tiny-loop-pilot/
+artifacts/tiny-loop-pilot/checkpoints/

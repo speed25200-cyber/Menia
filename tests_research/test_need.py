@@ -1454,6 +1454,46 @@ class TinyLoopTests(unittest.TestCase):
         self.assertTrue(all(1 <= x <= W.TURNS for x in length))
 
 
+class TinyLoopPilotTests(unittest.TestCase):
+    def test_choice_rule(self):
+        from research import tiny_loop_pilot as P
+        cuts = {"100": 0.73, "101": 0.73, "102": 0.73}
+        loops = {"L1": {"100": 0.78, "101": 0.77, "102": 0.78}, "L2": {"100": 0.73, "101": 0.74, "102": 0.73},
+                 "L3": {"100": 0.78, "101": 0.78, "102": 0.78}, "L4": {"100": 0.90, "101": 0.90, "102": 0.60}}
+        chosen, gains = P.choose(loops, cuts)
+        self.assertEqual(chosen, "L1")  # L3 is within the tie of L1; L4 collapses on one seed
+        self.assertAlmostEqual(gains["L4"], 0.07, places=6)  # the largest gain, but a collapse
+        loops["L3"] = {"100": 0.80, "101": 0.80, "102": 0.80}
+        self.assertEqual(P.choose(loops, cuts)[0], "L3")
+        self.assertIsNone(P.choose({"L2": loops["L2"]}, cuts)[0])
+        self.assertEqual(P.CONFIG["L1"]["updates"], 12000)
+        self.assertEqual(P.CUT, {"updates": 4000, "lr": 3e-4, "gate": False})
+
+    @unittest.skipUnless(__import__("importlib").util.find_spec("torch"), "needs torch")
+    def test_networks(self):
+        import torch
+        from research import tiny_loop as L, tiny_loop_pilot as P
+        torch.set_num_threads(1)
+        # without the gate, the pilot's network learns as the loop of test 32 (to rounding: the key bias of attention
+        # has no true gradient, and Adam turns its rounding noise into steps of the learning rate's size)
+        L.UPDATES, saved = 3, L.UPDATES
+        try:
+            a, curve_a = L.train("loop", 7, lambda m: None)
+        finally:
+            L.UPDATES = saved
+        b, curve_b = P.train("loop", 7, {"updates": 3, "lr": L.LR, "gate": False}, lambda m: None)
+        for (k, x), (_, y) in zip(sorted(a.state_dict().items()), sorted(b.base.state_dict().items())):
+            self.assertLess(float((x - y).abs().max()), 1e-3 if "in_proj_bias" in k else 1e-6, k)
+        # the gated state keeps part of the old one; the cut ignores it
+        g = P.model(0, True)
+        state = torch.randn(2, L.DIM)
+        _, _, nxt = g.step(state, torch.tensor([L.R, L.M]), torch.tensor([L.EVENT0, L.EVENT0 + 1]))
+        self.assertEqual(tuple(nxt.shape), (2, L.DIM))
+        worlds = [np.random.default_rng([2, i]) for i in range(3)]
+        d, _, _, _, length = L.episodes(g, "loop", worlds, lambda p, last: (p < 0.5).astype(int))
+        self.assertTrue(len(d) > 0 and all(1 <= x <= W.TURNS for x in length))
+
+
 class ReliefTests(unittest.TestCase):
     def test_lives_texts_and_targets(self):
         from research import need_relief as RL, need_rules as NR
