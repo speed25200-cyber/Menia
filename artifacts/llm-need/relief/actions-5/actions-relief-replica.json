@@ -1,0 +1,1122 @@
+[
+ {
+  "life": 0,
+  "t": 3,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : orage. - - - - Choix : R Soulagement : petit.\nTour 2 : calme. - - - - Choix : M Soulagement : petit.\nTour 3 : calme. - - - - Choix : R Soulagement :",
+  "p_levels": [
+   0.14196281022115415,
+   0.8169396954336426,
+   0.040673033226412816,
+   0.00042446111879035386
+  ],
+  "p_level": 0.8169396954336426,
+  "mass": 0.9998380465840455
+ },
+ {
+  "life": 0,
+  "t": 10,
+  "level": 0,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : orage. - - - - Choix : R Soulagement : petit.\nTour 2 : calme. - - - - Choix : M Soulagement : petit.\nTour 3 : calme. - - - - Choix : R Soulagement : petit.\nTour 4 : tu cours. - - - - Choix : M Soulagement : petit.\nTour 5 : il fait froid. - - Choix : R Soulagement : moyen.\nTour 6 : il fait froid. - - Choix : M Soulagement : fort.\nTour 7 : calme. - - - - Choix : R Soulagement : petit.\nTour 8 : calme. - - - - Choix : M Soulagement : moyen.\nTour 9 : calme. - - - - Choix : R Soulagement : petit.\nTour 10 : tu te reposes. - - Choix : R Soulagement :",
+  "p_levels": [
+   0.7792692123701406,
+   0.19703011781182353,
+   0.023531887137962882,
+   0.00016878268007302635
+  ],
+  "p_level": 0.7792692123701406,
+  "mass": 0.9997543287463486
+ },
+ {
+  "life": 1,
+  "t": 3,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu trouves des baies. Choix : R Soulagement : aucun.\nTour 2 : tu trouves des baies. Choix : R Soulagement : aucun.\nTour 3 : il fait froid. - - Choix : M Soulagement :",
+  "p_levels": [
+   0.0005671225938916526,
+   0.14772022644926908,
+   0.6620361333435975,
+   0.18967651761324178
+  ],
+  "p_level": 0.14772022644926908,
+  "mass": 0.9988744872389361
+ },
+ {
+  "life": 1,
+  "t": 10,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu trouves des baies. Choix : R Soulagement : aucun.\nTour 2 : tu trouves des baies. Choix : R Soulagement : aucun.\nTour 3 : il fait froid. - - Choix : M Soulagement : petit.\nTour 4 : calme. - - - - Choix : R Soulagement : petit.\nTour 5 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 6 : calme. - - - - Choix : M Soulagement : petit.\nTour 7 : tu trouves des baies. Choix : R Soulagement : petit.\nTour 8 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 9 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 10 : il fait froid. - - Choix : M Soulagement :",
+  "p_levels": [
+   0.0008738725849656376,
+   0.1469627655545589,
+   0.39948618413575987,
+   0.4526771777247156
+  ],
+  "p_level": 0.1469627655545589,
+  "mass": 0.9988606091937982
+ },
+ {
+  "life": 1,
+  "t": 20,
+  "level": 0,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu trouves des baies. Choix : R Soulagement : aucun.\nTour 2 : tu trouves des baies. Choix : R Soulagement : aucun.\nTour 3 : il fait froid. - - Choix : M Soulagement : petit.\nTour 4 : calme. - - - - Choix : R Soulagement : petit.\nTour 5 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 6 : calme. - - - - Choix : M Soulagement : petit.\nTour 7 : tu trouves des baies. Choix : R Soulagement : petit.\nTour 8 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 9 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 10 : il fait froid. - - Choix : M Soulagement : petit.\nTour 11 : calme. - - - - Choix : R Soulagement : petit.\nTour 12 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 13 : calme. - - - - Choix : M Soulagement : petit.\nTour 14 : calme. - - - - Choix : M Soulagement : aucun.\nTour 15 : il fait froid. - - Choix : M Soulagement : petit.\nTour 16 : orage. - - - - Choix : R Soulagement : moyen.\nTour 17 : calme. - - - - Choix : R Soulagement : petit.\nTour 18 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 19 : tu te reposes. - - Choix : M Soulagement : moyen.\nTour 20 : calme. - - - - Choix : R Soulagement :",
+  "p_levels": [
+   0.10975567260073167,
+   0.7156969470668921,
+   0.15969356404723803,
+   0.014853816285138115
+  ],
+  "p_level": 0.10975567260073167,
+  "mass": 0.999134011566639
+ },
+ {
+  "life": 2,
+  "t": 3,
+  "level": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : il fait froid. - - Choix : R Soulagement : aucun.\nTour 2 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 3 : orage. - - - - Choix : M Soulagement :",
+  "p_levels": [
+   0.000288229711256066,
+   0.4598968479455622,
+   0.4598968479455622,
+   0.07991807439761957
+  ],
+  "p_level": 0.07991807439761957,
+  "mass": 0.999379161890829
+ },
+ {
+  "life": 2,
+  "t": 10,
+  "level": 2,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : il fait froid. - - Choix : R Soulagement : aucun.\nTour 2 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 3 : orage. - - - - Choix : M Soulagement : fort.\nTour 4 : calme. - - - - Choix : R Soulagement : petit.\nTour 5 : calme. - - - - Choix : M Soulagement : moyen.\nTour 6 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 7 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 8 : calme. - - - - Choix : M Soulagement : petit.\nTour 9 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 10 : tu cours. - - - - Choix : R Soulagement :",
+  "p_levels": [
+   0.003251913359441072,
+   0.5137535530246399,
+   0.3530972941757757,
+   0.12989723944014342
+  ],
+  "p_level": 0.3530972941757757,
+  "mass": 0.9990210020914674
+ },
+ {
+  "life": 3,
+  "t": 3,
+  "level": 2,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : R Soulagement : aucun.\nTour 2 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 3 : il fait froid. - - Choix : M Soulagement :",
+  "p_levels": [
+   0.001274787880806633,
+   0.8479145482873524,
+   0.14734543075838433,
+   0.0034652330734566686
+  ],
+  "p_level": 0.14734543075838433,
+  "mass": 0.9998323783511296
+ },
+ {
+  "life": 3,
+  "t": 10,
+  "level": 2,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : R Soulagement : aucun.\nTour 2 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 3 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 4 : il fait froid. - - Choix : R Soulagement : petit.\nTour 5 : il fait froid. - - Choix : M Soulagement : fort.\nTour 6 : tu trouves des baies. Choix : R Soulagement : petit.\nTour 7 : calme. - - - - Choix : M Soulagement : moyen.\nTour 8 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 9 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 10 : calme. - - - - Choix : M Soulagement :",
+  "p_levels": [
+   0.09311846688247731,
+   0.779671427578383,
+   0.11956647562804672,
+   0.007643629911092924
+  ],
+  "p_level": 0.11956647562804672,
+  "mass": 0.9994611954316497
+ },
+ {
+  "life": 4,
+  "t": 3,
+  "level": 0,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu trouves des baies. Choix : R Soulagement : aucun.\nTour 2 : il fait froid. - - Choix : R Soulagement : aucun.\nTour 3 : calme. - - - - Choix : R Soulagement :",
+  "p_levels": [
+   0.9978122112165057,
+   0.0021827056252224793,
+   5.082587161815942e-06,
+   5.711099565801036e-10
+  ],
+  "p_level": 0.9978122112165057,
+  "mass": 0.9999977303550083
+ },
+ {
+  "life": 4,
+  "t": 10,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu trouves des baies. Choix : R Soulagement : aucun.\nTour 2 : il fait froid. - - Choix : R Soulagement : aucun.\nTour 3 : calme. - - - - Choix : R Soulagement : aucun.\nTour 4 : orage. - - - - Choix : M Soulagement : fort.\nTour 5 : calme. - - - - Choix : M Soulagement : moyen.\nTour 6 : calme. - - - - Choix : M Soulagement : petit.\nTour 7 : orage. - - - - Choix : R Soulagement : fort.\nTour 8 : tu trouves des baies. Choix : R Soulagement : moyen.\nTour 9 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 10 : calme. - - - - Choix : R Soulagement :",
+  "p_levels": [
+   0.10726281120000469,
+   0.6994414217822679,
+   0.17684648191473365,
+   0.01644928510299384
+  ],
+  "p_level": 0.6994414217822679,
+  "mass": 0.9992670603096485
+ },
+ {
+  "life": 4,
+  "t": 20,
+  "level": 2,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu trouves des baies. Choix : R Soulagement : aucun.\nTour 2 : il fait froid. - - Choix : R Soulagement : aucun.\nTour 3 : calme. - - - - Choix : R Soulagement : aucun.\nTour 4 : orage. - - - - Choix : M Soulagement : fort.\nTour 5 : calme. - - - - Choix : M Soulagement : moyen.\nTour 6 : calme. - - - - Choix : M Soulagement : petit.\nTour 7 : orage. - - - - Choix : R Soulagement : fort.\nTour 8 : tu trouves des baies. Choix : R Soulagement : moyen.\nTour 9 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 10 : calme. - - - - Choix : R Soulagement : petit.\nTour 11 : orage. - - - - Choix : M Soulagement : moyen.\nTour 12 : tu trouves des baies. Choix : R Soulagement : petit.\nTour 13 : calme. - - - - Choix : M Soulagement : petit.\nTour 14 : calme. - - - - Choix : R Soulagement : petit.\nTour 15 : tu trouves des baies. Choix : R Soulagement : aucun.\nTour 16 : tu te reposes. - - Choix : R Soulagement : aucun.\nTour 17 : tu trouves des baies. Choix : M Soulagement : petit.\nTour 18 : orage. - - - - Choix : R Soulagement : petit.\nTour 19 : tu trouves des baies. Choix : R Soulagement : aucun.\nTour 20 : il fait froid. - - Choix : M Soulagement :",
+  "p_levels": [
+   6.874090054192877e-05,
+   0.02159774179439529,
+   0.26311438696748757,
+   0.7152191303375752
+  ],
+  "p_level": 0.26311438696748757,
+  "mass": 0.9996177440189058
+ },
+ {
+  "life": 5,
+  "t": 3,
+  "level": 2,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 2 : orage. - - - - Choix : M Soulagement : petit.\nTour 3 : tu cours. - - - - Choix : R Soulagement :",
+  "p_levels": [
+   0.0013832170050530018,
+   0.19284992303027254,
+   0.7627362252005498,
+   0.04303063476412461
+  ],
+  "p_level": 0.7627362252005498,
+  "mass": 0.9993061119457707
+ },
+ {
+  "life": 5,
+  "t": 10,
+  "level": 2,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 2 : orage. - - - - Choix : M Soulagement : petit.\nTour 3 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 4 : orage. - - - - Choix : R Soulagement : moyen.\nTour 5 : calme. - - - - Choix : M Soulagement : moyen.\nTour 6 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 7 : tu cours. - - - - Choix : R Soulagement : fort.\nTour 8 : calme. - - - - Choix : M Soulagement : petit.\nTour 9 : tu cours. - - - - Choix : R Soulagement : fort.\nTour 10 : calme. - - - - Choix : R Soulagement :",
+  "p_levels": [
+   0.4428527100254718,
+   0.4428527100254718,
+   0.1119707019329496,
+   0.002323878016106904
+  ],
+  "p_level": 0.1119707019329496,
+  "mass": 0.9994367207400501
+ },
+ {
+  "life": 5,
+  "t": 20,
+  "level": 0,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 2 : orage. - - - - Choix : M Soulagement : petit.\nTour 3 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 4 : orage. - - - - Choix : R Soulagement : moyen.\nTour 5 : calme. - - - - Choix : M Soulagement : moyen.\nTour 6 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 7 : tu cours. - - - - Choix : R Soulagement : fort.\nTour 8 : calme. - - - - Choix : M Soulagement : petit.\nTour 9 : tu cours. - - - - Choix : R Soulagement : fort.\nTour 10 : calme. - - - - Choix : R Soulagement : moyen.\nTour 11 : tu trouves des baies. Choix : R Soulagement : petit.\nTour 12 : tu trouves des baies. Choix : R Soulagement : aucun.\nTour 13 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 14 : tu te reposes. - - Choix : M Soulagement : moyen.\nTour 15 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 16 : tu te reposes. - - Choix : M Soulagement : aucun.\nTour 17 : il fait froid. - - Choix : M Soulagement : petit.\nTour 18 : calme. - - - - Choix : R Soulagement : petit.\nTour 19 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 20 : tu trouves des baies. Choix : R Soulagement :",
+  "p_levels": [
+   0.4602270053155362,
+   0.40614887375966324,
+   0.13185723281034503,
+   0.001766888114455578
+  ],
+  "p_level": 0.4602270053155362,
+  "mass": 0.999451664625667
+ },
+ {
+  "life": 6,
+  "t": 3,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : M Soulagement : aucun.\nTour 2 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 3 : calme. - - - - Choix : R Soulagement :",
+  "p_levels": [
+   0.7399778184243807,
+   0.2402356273882738,
+   0.019719742686900025,
+   6.68115004454486e-05
+  ],
+  "p_level": 0.2402356273882738,
+  "mass": 0.9998750121667399
+ },
+ {
+  "life": 6,
+  "t": 10,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : M Soulagement : aucun.\nTour 2 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 3 : calme. - - - - Choix : R Soulagement : petit.\nTour 4 : calme. - - - - Choix : M Soulagement : petit.\nTour 5 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 6 : orage. - - - - Choix : M Soulagement : petit.\nTour 7 : tu te reposes. - - Choix : M Soulagement : aucun.\nTour 8 : calme. - - - - Choix : R Soulagement : moyen.\nTour 9 : calme. - - - - Choix : M Soulagement : petit.\nTour 10 : il fait froid. - - Choix : M Soulagement :",
+  "p_levels": [
+   0.0004701316604827582,
+   0.6619944605390867,
+   0.27596033167964884,
+   0.06157507612078173
+  ],
+  "p_level": 0.6619944605390867,
+  "mass": 0.9994304147548974
+ },
+ {
+  "life": 6,
+  "t": 20,
+  "level": 2,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : M Soulagement : aucun.\nTour 2 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 3 : calme. - - - - Choix : R Soulagement : petit.\nTour 4 : calme. - - - - Choix : M Soulagement : petit.\nTour 5 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 6 : orage. - - - - Choix : M Soulagement : petit.\nTour 7 : tu te reposes. - - Choix : M Soulagement : aucun.\nTour 8 : calme. - - - - Choix : R Soulagement : moyen.\nTour 9 : calme. - - - - Choix : M Soulagement : petit.\nTour 10 : il fait froid. - - Choix : M Soulagement : petit.\nTour 11 : tu trouves des baies. Choix : R Soulagement : moyen.\nTour 12 : calme. - - - - Choix : M Soulagement : aucun.\nTour 13 : calme. - - - - Choix : R Soulagement : petit.\nTour 14 : tu trouves des baies. Choix : R Soulagement : aucun.\nTour 15 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 16 : tu cours. - - - - Choix : M Soulagement : petit.\nTour 17 : il fait froid. - - Choix : M Soulagement : petit.\nTour 18 : orage. - - - - Choix : R Soulagement : fort.\nTour 19 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 20 : tu te reposes. - - Choix : R Soulagement :",
+  "p_levels": [
+   0.3593191803011576,
+   0.4613749431920842,
+   0.16973034519385594,
+   0.00957553131290222
+  ],
+  "p_level": 0.16973034519385594,
+  "mass": 0.999046509154141
+ },
+ {
+  "life": 7,
+  "t": 3,
+  "level": 0,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : M Soulagement : aucun.\nTour 2 : il fait froid. - - Choix : M Soulagement : petit.\nTour 3 : calme. - - - - Choix : M Soulagement :",
+  "p_levels": [
+   0.9999785546143026,
+   2.144495366473525e-05,
+   4.320317965171271e-10,
+   8.617890066505094e-16
+  ],
+  "p_level": 0.9999785546143026,
+  "mass": 0.9999997492896225
+ },
+ {
+  "life": 7,
+  "t": 10,
+  "level": 2,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : M Soulagement : aucun.\nTour 2 : il fait froid. - - Choix : M Soulagement : petit.\nTour 3 : calme. - - - - Choix : M Soulagement : aucun.\nTour 4 : tu cours. - - - - Choix : R Soulagement : fort.\nTour 5 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 6 : calme. - - - - Choix : R Soulagement : moyen.\nTour 7 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 8 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 9 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 10 : calme. - - - - Choix : M Soulagement :",
+  "p_levels": [
+   0.032970483971060685,
+   0.5844157986150894,
+   0.3128152120390966,
+   0.06979850537475332
+  ],
+  "p_level": 0.3128152120390966,
+  "mass": 0.9990054853260517
+ },
+ {
+  "life": 7,
+  "t": 20,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : M Soulagement : aucun.\nTour 2 : il fait froid. - - Choix : M Soulagement : petit.\nTour 3 : calme. - - - - Choix : M Soulagement : aucun.\nTour 4 : tu cours. - - - - Choix : R Soulagement : fort.\nTour 5 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 6 : calme. - - - - Choix : R Soulagement : moyen.\nTour 7 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 8 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 9 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 10 : calme. - - - - Choix : M Soulagement : moyen.\nTour 11 : calme. - - - - Choix : M Soulagement : petit.\nTour 12 : calme. - - - - Choix : R Soulagement : moyen.\nTour 13 : calme. - - - - Choix : M Soulagement : petit.\nTour 14 : tu trouves des baies. Choix : R Soulagement : moyen.\nTour 15 : calme. - - - - Choix : M Soulagement : aucun.\nTour 16 : tu te reposes. - - Choix : M Soulagement : aucun.\nTour 17 : calme. - - - - Choix : R Soulagement : petit.\nTour 18 : orage. - - - - Choix : M Soulagement : petit.\nTour 19 : calme. - - - - Choix : M Soulagement : aucun.\nTour 20 : il fait froid. - - Choix : M Soulagement :",
+  "p_levels": [
+   0.0004564606393591471,
+   0.8785275967533993,
+   0.10492515025625482,
+   0.016090792350986715
+  ],
+  "p_level": 0.8785275967533993,
+  "mass": 0.9996984070749022
+ },
+ {
+  "life": 8,
+  "t": 3,
+  "level": 2,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 2 : calme. - - - - Choix : M Soulagement : petit.\nTour 3 : tu cours. - - - - Choix : R Soulagement :",
+  "p_levels": [
+   0.0013832170050530018,
+   0.19284992303027254,
+   0.7627362252005498,
+   0.04303063476412461
+  ],
+  "p_level": 0.7627362252005498,
+  "mass": 0.9993061119457707
+ },
+ {
+  "life": 8,
+  "t": 10,
+  "level": 2,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 2 : calme. - - - - Choix : M Soulagement : petit.\nTour 3 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 4 : tu cours. - - - - Choix : M Soulagement : petit.\nTour 5 : il fait froid. - - Choix : R Soulagement : moyen.\nTour 6 : orage. - - - - Choix : M Soulagement : moyen.\nTour 7 : orage. - - - - Choix : R Soulagement : fort.\nTour 8 : calme. - - - - Choix : M Soulagement : moyen.\nTour 9 : calme. - - - - Choix : R Soulagement : moyen.\nTour 10 : calme. - - - - Choix : M Soulagement :",
+  "p_levels": [
+   0.06644808815547013,
+   0.6304418608985375,
+   0.26280725237125196,
+   0.04030279857474037
+  ],
+  "p_level": 0.26280725237125196,
+  "mass": 0.9990281537175179
+ },
+ {
+  "life": 8,
+  "t": 20,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 2 : calme. - - - - Choix : M Soulagement : petit.\nTour 3 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 4 : tu cours. - - - - Choix : M Soulagement : petit.\nTour 5 : il fait froid. - - Choix : R Soulagement : moyen.\nTour 6 : orage. - - - - Choix : M Soulagement : moyen.\nTour 7 : orage. - - - - Choix : R Soulagement : fort.\nTour 8 : calme. - - - - Choix : M Soulagement : moyen.\nTour 9 : calme. - - - - Choix : R Soulagement : moyen.\nTour 10 : calme. - - - - Choix : M Soulagement : moyen.\nTour 11 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 12 : tu cours. - - - - Choix : M Soulagement : aucun.\nTour 13 : calme. - - - - Choix : R Soulagement : fort.\nTour 14 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 15 : calme. - - - - Choix : R Soulagement : fort.\nTour 16 : calme. - - - - Choix : M Soulagement : petit.\nTour 17 : tu cours. - - - - Choix : R Soulagement : fort.\nTour 18 : tu trouves des baies. Choix : M Soulagement : aucun.\nTour 19 : calme. - - - - Choix : R Soulagement : fort.\nTour 20 : calme. - - - - Choix : M Soulagement :",
+  "p_levels": [
+   0.0660934161757325,
+   0.6270768154581312,
+   0.26140447341153694,
+   0.04542529495459936
+  ],
+  "p_level": 0.6270768154581312,
+  "mass": 0.998910691589117
+ },
+ {
+  "life": 9,
+  "t": 3,
+  "level": 0,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : R Soulagement : aucun.\nTour 2 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 3 : tu te reposes. - - Choix : M Soulagement :",
+  "p_levels": [
+   0.8313479561231042,
+   0.16370211027663248,
+   0.004943374822629094,
+   6.5587776342530364e-06
+  ],
+  "p_level": 0.8313479561231042,
+  "mass": 0.9999214758918242
+ },
+ {
+  "life": 9,
+  "t": 10,
+  "level": 0,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : R Soulagement : aucun.\nTour 2 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 3 : tu te reposes. - - Choix : M Soulagement : aucun.\nTour 4 : il fait froid. - - Choix : M Soulagement : petit.\nTour 5 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 6 : tu trouves des baies. Choix : R Soulagement : petit.\nTour 7 : il fait froid. - - Choix : R Soulagement : aucun.\nTour 8 : tu te reposes. - - Choix : M Soulagement : moyen.\nTour 9 : calme. - - - - Choix : R Soulagement : aucun.\nTour 10 : tu trouves des baies. Choix : R Soulagement :",
+  "p_levels": [
+   0.49497332801077865,
+   0.43681240801993626,
+   0.06698734761856241,
+   0.0012269163507226664
+  ],
+  "p_level": 0.49497332801077865,
+  "mass": 0.999484188738279
+ },
+ {
+  "life": 9,
+  "t": 20,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : R Soulagement : aucun.\nTour 2 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 3 : tu te reposes. - - Choix : M Soulagement : aucun.\nTour 4 : il fait froid. - - Choix : M Soulagement : petit.\nTour 5 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 6 : tu trouves des baies. Choix : R Soulagement : petit.\nTour 7 : il fait froid. - - Choix : R Soulagement : aucun.\nTour 8 : tu te reposes. - - Choix : M Soulagement : moyen.\nTour 9 : calme. - - - - Choix : R Soulagement : aucun.\nTour 10 : tu trouves des baies. Choix : R Soulagement : aucun.\nTour 11 : calme. - - - - Choix : M Soulagement : moyen.\nTour 12 : calme. - - - - Choix : R Soulagement : petit.\nTour 13 : tu trouves des baies. Choix : R Soulagement : aucun.\nTour 14 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 15 : il fait froid. - - Choix : M Soulagement : fort.\nTour 16 : tu trouves des baies. Choix : M Soulagement : petit.\nTour 17 : il fait froid. - - Choix : R Soulagement : petit.\nTour 18 : calme. - - - - Choix : M Soulagement : moyen.\nTour 19 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 20 : tu trouves des baies. Choix : R Soulagement :",
+  "p_levels": [
+   0.5054279827173785,
+   0.3936277096235542,
+   0.09952466413861015,
+   0.0014196435204570474
+  ],
+  "p_level": 0.3936277096235542,
+  "mass": 0.9993928495096043
+ },
+ {
+  "life": 10,
+  "t": 3,
+  "level": 0,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : R Soulagement : aucun.\nTour 2 : tu trouves des baies. Choix : M Soulagement : aucun.\nTour 3 : tu cours. - - - - Choix : M Soulagement :",
+  "p_levels": [
+   0.739988755201251,
+   0.24023917709574122,
+   0.019720034087079234,
+   5.20336159286358e-05
+  ],
+  "p_level": 0.739988755201251,
+  "mass": 0.9998044145686436
+ },
+ {
+  "life": 10,
+  "t": 10,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : R Soulagement : aucun.\nTour 2 : tu trouves des baies. Choix : M Soulagement : aucun.\nTour 3 : tu cours. - - - - Choix : M Soulagement : aucun.\nTour 4 : calme. - - - - Choix : R Soulagement : moyen.\nTour 5 : calme. - - - - Choix : M Soulagement : petit.\nTour 6 : calme. - - - - Choix : R Soulagement : moyen.\nTour 7 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 8 : calme. - - - - Choix : R Soulagement : petit.\nTour 9 : calme. - - - - Choix : M Soulagement : petit.\nTour 10 : il fait froid. - - Choix : M Soulagement :",
+  "p_levels": [
+   0.0007115178002925424,
+   0.6468697757333126,
+   0.3055596134313571,
+   0.04685909303503772
+  ],
+  "p_level": 0.6468697757333126,
+  "mass": 0.9994553460855968
+ },
+ {
+  "life": 10,
+  "t": 20,
+  "level": 0,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : R Soulagement : aucun.\nTour 2 : tu trouves des baies. Choix : M Soulagement : aucun.\nTour 3 : tu cours. - - - - Choix : M Soulagement : aucun.\nTour 4 : calme. - - - - Choix : R Soulagement : moyen.\nTour 5 : calme. - - - - Choix : M Soulagement : petit.\nTour 6 : calme. - - - - Choix : R Soulagement : moyen.\nTour 7 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 8 : calme. - - - - Choix : R Soulagement : petit.\nTour 9 : calme. - - - - Choix : M Soulagement : petit.\nTour 10 : il fait froid. - - Choix : M Soulagement : petit.\nTour 11 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 12 : calme. - - - - Choix : M Soulagement : petit.\nTour 13 : orage. - - - - Choix : R Soulagement : moyen.\nTour 14 : calme. - - - - Choix : R Soulagement : petit.\nTour 15 : calme. - - - - Choix : M Soulagement : moyen.\nTour 16 : tu te reposes. - - Choix : R Soulagement : aucun.\nTour 17 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 18 : tu te reposes. - - Choix : M Soulagement : moyen.\nTour 19 : calme. - - - - Choix : R Soulagement : aucun.\nTour 20 : calme. - - - - Choix : R Soulagement :",
+  "p_levels": [
+   0.5528977643364824,
+   0.38000067517903496,
+   0.06603421666834405,
+   0.0010673438161385549
+  ],
+  "p_level": 0.5528977643364824,
+  "mass": 0.99949243478477
+ },
+ {
+  "life": 11,
+  "t": 3,
+  "level": 2,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : il fait froid. - - Choix : M Soulagement : petit.\nTour 2 : tu cours. - - - - Choix : M Soulagement : aucun.\nTour 3 : tu trouves des baies. Choix : R Soulagement :",
+  "p_levels": [
+   0.057588117216853175,
+   0.6191306220918302,
+   0.29245656093389794,
+   0.030824699757418694
+  ],
+  "p_level": 0.29245656093389794,
+  "mass": 0.9991266075521708
+ },
+ {
+  "life": 11,
+  "t": 10,
+  "level": 2,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : il fait froid. - - Choix : M Soulagement : petit.\nTour 2 : tu cours. - - - - Choix : M Soulagement : aucun.\nTour 3 : tu trouves des baies. Choix : R Soulagement : moyen.\nTour 4 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 5 : orage. - - - - Choix : R Soulagement : moyen.\nTour 6 : tu trouves des baies. Choix : R Soulagement : petit.\nTour 7 : tu te reposes. - - Choix : M Soulagement : moyen.\nTour 8 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 9 : tu cours. - - - - Choix : M Soulagement : aucun.\nTour 10 : tu trouves des baies. Choix : R Soulagement :",
+  "p_levels": [
+   0.032811187877976565,
+   0.3997220481574903,
+   0.45294446653845544,
+   0.11452229742607772
+  ],
+  "p_level": 0.45294446653845544,
+  "mass": 0.998700886964798
+ },
+ {
+  "life": 12,
+  "t": 3,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 2 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 3 : calme. - - - - Choix : M Soulagement :",
+  "p_levels": [
+   0.037310973452844794,
+   0.6613527676753972,
+   0.27569283113868254,
+   0.025643427733075496
+  ],
+  "p_level": 0.6613527676753972,
+  "mass": 0.9994249790906906
+ },
+ {
+  "life": 12,
+  "t": 10,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 2 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 3 : calme. - - - - Choix : M Soulagement : petit.\nTour 4 : calme. - - - - Choix : R Soulagement : petit.\nTour 5 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 6 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 7 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 8 : tu te reposes. - - Choix : R Soulagement : petit.\nTour 9 : calme. - - - - Choix : M Soulagement : moyen.\nTour 10 : tu te reposes. - - Choix : M Soulagement :",
+  "p_levels": [
+   0.3162777689183714,
+   0.46018148234199374,
+   0.2173743145034005,
+   0.006166434236234363
+  ],
+  "p_level": 0.46018148234199374,
+  "mass": 0.9991247234866023
+ },
+ {
+  "life": 12,
+  "t": 20,
+  "level": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 2 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 3 : calme. - - - - Choix : M Soulagement : petit.\nTour 4 : calme. - - - - Choix : R Soulagement : petit.\nTour 5 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 6 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 7 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 8 : tu te reposes. - - Choix : R Soulagement : petit.\nTour 9 : calme. - - - - Choix : M Soulagement : moyen.\nTour 10 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 11 : il fait froid. - - Choix : M Soulagement : petit.\nTour 12 : calme. - - - - Choix : R Soulagement : petit.\nTour 13 : tu cours. - - - - Choix : M Soulagement : petit.\nTour 14 : tu cours. - - - - Choix : R Soulagement : fort.\nTour 15 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 16 : calme. - - - - Choix : R Soulagement : moyen.\nTour 17 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 18 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 19 : tu cours. - - - - Choix : M Soulagement : petit.\nTour 20 : calme. - - - - Choix : R Soulagement :",
+  "p_levels": [
+   0.006377027993795945,
+   0.23929623630215002,
+   0.44706426516721043,
+   0.30726247053684363
+  ],
+  "p_level": 0.30726247053684363,
+  "mass": 0.9989213719964027
+ },
+ {
+  "life": 13,
+  "t": 3,
+  "level": 2,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : R Soulagement : aucun.\nTour 2 : orage. - - - - Choix : M Soulagement : petit.\nTour 3 : orage. - - - - Choix : R Soulagement :",
+  "p_levels": [
+   0.0006812063019601112,
+   0.9010942966289823,
+   0.09497464263622689,
+   0.0032498544328306922
+  ],
+  "p_level": 0.09497464263622689,
+  "mass": 0.9998308853246272
+ },
+ {
+  "life": 13,
+  "t": 10,
+  "level": 2,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : R Soulagement : aucun.\nTour 2 : orage. - - - - Choix : M Soulagement : petit.\nTour 3 : orage. - - - - Choix : R Soulagement : moyen.\nTour 4 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 5 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 6 : orage. - - - - Choix : R Soulagement : moyen.\nTour 7 : calme. - - - - Choix : M Soulagement : moyen.\nTour 8 : calme. - - - - Choix : R Soulagement : moyen.\nTour 9 : il fait froid. - - Choix : M Soulagement : fort.\nTour 10 : tu cours. - - - - Choix : R Soulagement :",
+  "p_levels": [
+   0.0005605945110834994,
+   0.0942775184089185,
+   0.6147666959667547,
+   0.29039519111324325
+  ],
+  "p_level": 0.6147666959667547,
+  "mass": 0.9992632738430984
+ },
+ {
+  "life": 14,
+  "t": 3,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu trouves des baies. Choix : R Soulagement : aucun.\nTour 2 : calme. - - - - Choix : M Soulagement : aucun.\nTour 3 : tu trouves des baies. Choix : R Soulagement :",
+  "p_levels": [
+   0.1258981464722396,
+   0.8209590456713713,
+   0.05248215519942865,
+   0.0006606526569604089
+  ],
+  "p_level": 0.8209590456713713,
+  "mass": 0.9998060584184714
+ },
+ {
+  "life": 14,
+  "t": 10,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu trouves des baies. Choix : R Soulagement : aucun.\nTour 2 : calme. - - - - Choix : M Soulagement : aucun.\nTour 3 : tu trouves des baies. Choix : R Soulagement : petit.\nTour 4 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 5 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 6 : tu trouves des baies. Choix : R Soulagement : aucun.\nTour 7 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 8 : calme. - - - - Choix : M Soulagement : petit.\nTour 9 : calme. - - - - Choix : R Soulagement : petit.\nTour 10 : calme. - - - - Choix : M Soulagement :",
+  "p_levels": [
+   0.038834274225571376,
+   0.47309835704060244,
+   0.36844937534976246,
+   0.11961799338406373
+  ],
+  "p_level": 0.47309835704060244,
+  "mass": 0.9985766112804413
+ },
+ {
+  "life": 14,
+  "t": 20,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu trouves des baies. Choix : R Soulagement : aucun.\nTour 2 : calme. - - - - Choix : M Soulagement : aucun.\nTour 3 : tu trouves des baies. Choix : R Soulagement : petit.\nTour 4 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 5 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 6 : tu trouves des baies. Choix : R Soulagement : aucun.\nTour 7 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 8 : calme. - - - - Choix : M Soulagement : petit.\nTour 9 : calme. - - - - Choix : R Soulagement : petit.\nTour 10 : calme. - - - - Choix : M Soulagement : petit.\nTour 11 : il fait froid. - - Choix : M Soulagement : petit.\nTour 12 : tu trouves des baies. Choix : R Soulagement : petit.\nTour 13 : orage. - - - - Choix : M Soulagement : petit.\nTour 14 : calme. - - - - Choix : R Soulagement : petit.\nTour 15 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 16 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 17 : tu trouves des baies. Choix : R Soulagement : aucun.\nTour 18 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 19 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 20 : tu te reposes. - - Choix : M Soulagement :",
+  "p_levels": [
+   0.008736395868389044,
+   0.1988394534279319,
+   0.4209431537565037,
+   0.3714809969471753
+  ],
+  "p_level": 0.1988394534279319,
+  "mass": 0.998898833990097
+ },
+ {
+  "life": 15,
+  "t": 3,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu te reposes. - - Choix : M Soulagement : aucun.\nTour 2 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 3 : orage. - - - - Choix : M Soulagement :",
+  "p_levels": [
+   0.00044797836280796035,
+   0.8622021937105063,
+   0.13222298737933802,
+   0.005126840547347701
+  ],
+  "p_level": 0.8622021937105063,
+  "mass": 0.9998124180128798
+ },
+ {
+  "life": 16,
+  "t": 3,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : R Soulagement : aucun.\nTour 2 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 3 : calme. - - - - Choix : R Soulagement :",
+  "p_levels": [
+   0.14196281022115415,
+   0.8169396954336426,
+   0.040673033226412816,
+   0.00042446111879035386
+  ],
+  "p_level": 0.8169396954336426,
+  "mass": 0.9998380465840455
+ },
+ {
+  "life": 16,
+  "t": 10,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : R Soulagement : aucun.\nTour 2 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 3 : calme. - - - - Choix : R Soulagement : petit.\nTour 4 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 5 : calme. - - - - Choix : R Soulagement : aucun.\nTour 6 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 7 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 8 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 9 : tu trouves des baies. Choix : R Soulagement : petit.\nTour 10 : tu cours. - - - - Choix : R Soulagement :",
+  "p_levels": [
+   0.006306567090140155,
+   0.935977626118759,
+   0.052804246677397616,
+   0.004911560113703178
+  ],
+  "p_level": 0.935977626118759,
+  "mass": 0.9996763183735311
+ },
+ {
+  "life": 16,
+  "t": 20,
+  "level": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : R Soulagement : aucun.\nTour 2 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 3 : calme. - - - - Choix : R Soulagement : petit.\nTour 4 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 5 : calme. - - - - Choix : R Soulagement : aucun.\nTour 6 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 7 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 8 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 9 : tu trouves des baies. Choix : R Soulagement : petit.\nTour 10 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 11 : calme. - - - - Choix : M Soulagement : moyen.\nTour 12 : tu trouves des baies. Choix : R Soulagement : petit.\nTour 13 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 14 : calme. - - - - Choix : R Soulagement : petit.\nTour 15 : tu te reposes. - - Choix : R Soulagement : aucun.\nTour 16 : il fait froid. - - Choix : M Soulagement : fort.\nTour 17 : tu te reposes. - - Choix : M Soulagement : moyen.\nTour 18 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 19 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 20 : il fait froid. - - Choix : M Soulagement :",
+  "p_levels": [
+   0.0008679991453315176,
+   0.09424852004439054,
+   0.6145775942008088,
+   0.29030588660946915
+  ],
+  "p_level": 0.29030588660946915,
+  "mass": 0.9989998888922855
+ },
+ {
+  "life": 17,
+  "t": 3,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : R Soulagement : aucun.\nTour 2 : il fait froid. - - Choix : R Soulagement : aucun.\nTour 3 : tu cours. - - - - Choix : R Soulagement :",
+  "p_levels": [
+   0.053367405410763534,
+   0.945959849120489,
+   0.000671796656737663,
+   9.488120097303646e-07
+  ],
+  "p_level": 0.945959849120489,
+  "mass": 0.9999748140140241
+ },
+ {
+  "life": 17,
+  "t": 10,
+  "level": 2,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : R Soulagement : aucun.\nTour 2 : il fait froid. - - Choix : R Soulagement : aucun.\nTour 3 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 4 : calme. - - - - Choix : M Soulagement : fort.\nTour 5 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 6 : tu trouves des baies. Choix : R Soulagement : petit.\nTour 7 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 8 : calme. - - - - Choix : M Soulagement : fort.\nTour 9 : il fait froid. - - Choix : M Soulagement : fort.\nTour 10 : tu cours. - - - - Choix : M Soulagement :",
+  "p_levels": [
+   0.21950323518855516,
+   0.4100860529925818,
+   0.36189964765790084,
+   0.008511064160962287
+  ],
+  "p_level": 0.36189964765790084,
+  "mass": 0.9989507729187608
+ },
+ {
+  "life": 18,
+  "t": 3,
+  "level": 2,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : R Soulagement : aucun.\nTour 2 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 3 : orage. - - - - Choix : M Soulagement :",
+  "p_levels": [
+   0.000288229711256066,
+   0.4598968479455622,
+   0.4598968479455622,
+   0.07991807439761957
+  ],
+  "p_level": 0.4598968479455622,
+  "mass": 0.999379161890829
+ },
+ {
+  "life": 18,
+  "t": 10,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : R Soulagement : aucun.\nTour 2 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 3 : orage. - - - - Choix : M Soulagement : moyen.\nTour 4 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 5 : calme. - - - - Choix : R Soulagement : moyen.\nTour 6 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 7 : tu te reposes. - - Choix : M Soulagement : moyen.\nTour 8 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 9 : calme. - - - - Choix : R Soulagement : petit.\nTour 10 : tu cours. - - - - Choix : M Soulagement :",
+  "p_levels": [
+   0.07379784795099116,
+   0.6179018692148492,
+   0.2575798122726748,
+   0.05072047056148476
+  ],
+  "p_level": 0.6179018692148492,
+  "mass": 0.998677384108305
+ },
+ {
+  "life": 18,
+  "t": 20,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : R Soulagement : aucun.\nTour 2 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 3 : orage. - - - - Choix : M Soulagement : moyen.\nTour 4 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 5 : calme. - - - - Choix : R Soulagement : moyen.\nTour 6 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 7 : tu te reposes. - - Choix : M Soulagement : moyen.\nTour 8 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 9 : calme. - - - - Choix : R Soulagement : petit.\nTour 10 : tu cours. - - - - Choix : M Soulagement : petit.\nTour 11 : calme. - - - - Choix : R Soulagement : moyen.\nTour 12 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 13 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 14 : calme. - - - - Choix : R Soulagement : petit.\nTour 15 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 16 : tu cours. - - - - Choix : M Soulagement : aucun.\nTour 17 : tu cours. - - - - Choix : R Soulagement : fort.\nTour 18 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 19 : tu cours. - - - - Choix : R Soulagement : fort.\nTour 20 : calme. - - - - Choix : M Soulagement :",
+  "p_levels": [
+   0.06507666425810768,
+   0.699640076363356,
+   0.20045023005698168,
+   0.03483302932155462
+  ],
+  "p_level": 0.699640076363356,
+  "mass": 0.9990988522768021
+ },
+ {
+  "life": 19,
+  "t": 3,
+  "level": 0,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : il fait froid. - - Choix : M Soulagement : petit.\nTour 2 : orage. - - - - Choix : R Soulagement : petit.\nTour 3 : tu trouves des baies. Choix : R Soulagement :",
+  "p_levels": [
+   0.6869052389575979,
+   0.2863446896064885,
+   0.026634203426039664,
+   0.00011586800987387354
+  ],
+  "p_level": 0.6869052389575979,
+  "mass": 0.999827186416951
+ },
+ {
+  "life": 19,
+  "t": 10,
+  "level": 0,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : il fait froid. - - Choix : M Soulagement : petit.\nTour 2 : orage. - - - - Choix : R Soulagement : petit.\nTour 3 : tu trouves des baies. Choix : R Soulagement : aucun.\nTour 4 : calme. - - - - Choix : M Soulagement : petit.\nTour 5 : il fait froid. - - Choix : M Soulagement : petit.\nTour 6 : il fait froid. - - Choix : M Soulagement : petit.\nTour 7 : calme. - - - - Choix : R Soulagement : moyen.\nTour 8 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 9 : il fait froid. - - Choix : R Soulagement : petit.\nTour 10 : tu te reposes. - - Choix : R Soulagement :",
+  "p_levels": [
+   0.6429593999752652,
+   0.3037125032532079,
+   0.052777315944609896,
+   0.0005507808269170124
+  ],
+  "p_level": 0.6429593999752652,
+  "mass": 0.9996390370070003
+ },
+ {
+  "life": 19,
+  "t": 20,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : il fait froid. - - Choix : M Soulagement : petit.\nTour 2 : orage. - - - - Choix : R Soulagement : petit.\nTour 3 : tu trouves des baies. Choix : R Soulagement : aucun.\nTour 4 : calme. - - - - Choix : M Soulagement : petit.\nTour 5 : il fait froid. - - Choix : M Soulagement : petit.\nTour 6 : il fait froid. - - Choix : M Soulagement : petit.\nTour 7 : calme. - - - - Choix : R Soulagement : moyen.\nTour 8 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 9 : il fait froid. - - Choix : R Soulagement : petit.\nTour 10 : tu te reposes. - - Choix : R Soulagement : aucun.\nTour 11 : tu cours. - - - - Choix : M Soulagement : fort.\nTour 12 : calme. - - - - Choix : R Soulagement : moyen.\nTour 13 : orage. - - - - Choix : M Soulagement : fort.\nTour 14 : tu trouves des baies. Choix : R Soulagement : moyen.\nTour 15 : il fait froid. - - Choix : M Soulagement : fort.\nTour 16 : tu trouves des baies. Choix : R Soulagement : petit.\nTour 17 : tu trouves des baies. Choix : R Soulagement : aucun.\nTour 18 : orage. - - - - Choix : M Soulagement : moyen.\nTour 19 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 20 : tu te reposes. - - Choix : M Soulagement :",
+  "p_levels": [
+   0.49122495915107833,
+   0.3825663974779406,
+   0.12420111909779717,
+   0.002007524273183926
+  ],
+  "p_level": 0.3825663974779406,
+  "mass": 0.9992547074798495
+ },
+ {
+  "life": 20,
+  "t": 3,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 2 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 3 : orage. - - - - Choix : R Soulagement :",
+  "p_levels": [
+   0.0006812063019601112,
+   0.9010942966289823,
+   0.09497464263622689,
+   0.0032498544328306922
+  ],
+  "p_level": 0.9010942966289823,
+  "mass": 0.9998308853246272
+ },
+ {
+  "life": 20,
+  "t": 10,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 2 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 3 : orage. - - - - Choix : R Soulagement : petit.\nTour 4 : calme. - - - - Choix : M Soulagement : petit.\nTour 5 : calme. - - - - Choix : R Soulagement : petit.\nTour 6 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 7 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 8 : il fait froid. - - Choix : M Soulagement : petit.\nTour 9 : il fait froid. - - Choix : R Soulagement : petit.\nTour 10 : tu cours. - - - - Choix : R Soulagement :",
+  "p_levels": [
+   0.0012355902889186385,
+   0.1722675635745026,
+   0.4132484230682894,
+   0.4132484230682894
+  ],
+  "p_level": 0.1722675635745026,
+  "mass": 0.9989718169672415
+ },
+ {
+  "life": 20,
+  "t": 20,
+  "level": 2,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 2 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 3 : orage. - - - - Choix : R Soulagement : petit.\nTour 4 : calme. - - - - Choix : M Soulagement : petit.\nTour 5 : calme. - - - - Choix : R Soulagement : petit.\nTour 6 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 7 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 8 : il fait froid. - - Choix : M Soulagement : petit.\nTour 9 : il fait froid. - - Choix : R Soulagement : petit.\nTour 10 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 11 : calme. - - - - Choix : M Soulagement : moyen.\nTour 12 : orage. - - - - Choix : R Soulagement : petit.\nTour 13 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 14 : calme. - - - - Choix : M Soulagement : fort.\nTour 15 : orage. - - - - Choix : R Soulagement : petit.\nTour 16 : orage. - - - - Choix : M Soulagement : fort.\nTour 17 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 18 : tu trouves des baies. Choix : R Soulagement : petit.\nTour 19 : tu cours. - - - - Choix : M Soulagement : fort.\nTour 20 : calme. - - - - Choix : R Soulagement :",
+  "p_levels": [
+   0.1162398090687188,
+   0.7579788383621229,
+   0.1162398090687188,
+   0.009541543500439509
+  ],
+  "p_level": 0.1162398090687188,
+  "mass": 0.9992978805676103
+ },
+ {
+  "life": 21,
+  "t": 3,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : il fait froid. - - Choix : R Soulagement : aucun.\nTour 2 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 3 : tu cours. - - - - Choix : R Soulagement :",
+  "p_levels": [
+   0.053367405410763534,
+   0.945959849120489,
+   0.000671796656737663,
+   9.488120097303646e-07
+  ],
+  "p_level": 0.945959849120489,
+  "mass": 0.9999748140140241
+ },
+ {
+  "life": 22,
+  "t": 3,
+  "level": 0,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : il fait froid. - - Choix : M Soulagement : petit.\nTour 2 : il fait froid. - - Choix : M Soulagement : petit.\nTour 3 : tu cours. - - - - Choix : M Soulagement :",
+  "p_levels": [
+   0.9768283052675715,
+   0.022972799955532166,
+   0.0001987536271079203,
+   1.4114978839000932e-07
+  ],
+  "p_level": 0.9768283052675715,
+  "mass": 0.999977211257189
+ },
+ {
+  "life": 23,
+  "t": 3,
+  "level": 0,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : R Soulagement : aucun.\nTour 2 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 3 : il fait froid. - - Choix : R Soulagement :",
+  "p_levels": [
+   0.9902522199616008,
+   0.009708091988077407,
+   3.9674740927212806e-05,
+   1.3309394544050467e-08
+  ],
+  "p_level": 0.9902522199616008,
+  "mass": 0.9999930545907159
+ },
+ {
+  "life": 24,
+  "t": 3,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : R Soulagement : aucun.\nTour 2 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 3 : tu trouves des baies. Choix : R Soulagement :",
+  "p_levels": [
+   0.1258981464722396,
+   0.8209590456713713,
+   0.05248215519942865,
+   0.0006606526569604089
+  ],
+  "p_level": 0.8209590456713713,
+  "mass": 0.9998060584184714
+ },
+ {
+  "life": 24,
+  "t": 10,
+  "level": 2,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : R Soulagement : aucun.\nTour 2 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 3 : tu trouves des baies. Choix : R Soulagement : petit.\nTour 4 : calme. - - - - Choix : M Soulagement : petit.\nTour 5 : calme. - - - - Choix : R Soulagement : petit.\nTour 6 : tu te reposes. - - Choix : R Soulagement : aucun.\nTour 7 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 8 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 9 : tu te reposes. - - Choix : R Soulagement : petit.\nTour 10 : calme. - - - - Choix : M Soulagement :",
+  "p_levels": [
+   0.07770021311083741,
+   0.6505759964808775,
+   0.2393335175507017,
+   0.03239027285758338
+  ],
+  "p_level": 0.2393335175507017,
+  "mass": 0.9990332424640656
+ },
+ {
+  "life": 24,
+  "t": 20,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : R Soulagement : aucun.\nTour 2 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 3 : tu trouves des baies. Choix : R Soulagement : petit.\nTour 4 : calme. - - - - Choix : M Soulagement : petit.\nTour 5 : calme. - - - - Choix : R Soulagement : petit.\nTour 6 : tu te reposes. - - Choix : R Soulagement : aucun.\nTour 7 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 8 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 9 : tu te reposes. - - Choix : R Soulagement : petit.\nTour 10 : calme. - - - - Choix : M Soulagement : moyen.\nTour 11 : tu trouves des baies. Choix : R Soulagement : petit.\nTour 12 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 13 : tu trouves des baies. Choix : R Soulagement : petit.\nTour 14 : calme. - - - - Choix : M Soulagement : petit.\nTour 15 : calme. - - - - Choix : R Soulagement : petit.\nTour 16 : calme. - - - - Choix : M Soulagement : petit.\nTour 17 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 18 : calme. - - - - Choix : M Soulagement : petit.\nTour 19 : tu te reposes. - - Choix : R Soulagement : petit.\nTour 20 : tu cours. - - - - Choix : R Soulagement :",
+  "p_levels": [
+   0.0029745857429663756,
+   0.6423316424924896,
+   0.2677636481561862,
+   0.08693012360835786
+  ],
+  "p_level": 0.6423316424924896,
+  "mass": 0.999121265951544
+ },
+ {
+  "life": 25,
+  "t": 3,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : M Soulagement : aucun.\nTour 2 : calme. - - - - Choix : R Soulagement : petit.\nTour 3 : orage. - - - - Choix : R Soulagement :",
+  "p_levels": [
+   0.00924209095326655,
+   0.9427188867440736,
+   0.046935212121220794,
+   0.0011038101814390615
+  ],
+  "p_level": 0.9427188867440736,
+  "mass": 0.9998544283444062
+ },
+ {
+  "life": 25,
+  "t": 10,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : M Soulagement : aucun.\nTour 2 : calme. - - - - Choix : R Soulagement : petit.\nTour 3 : orage. - - - - Choix : R Soulagement : petit.\nTour 4 : tu cours. - - - - Choix : M Soulagement : moyen.\nTour 5 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 6 : calme. - - - - Choix : R Soulagement : moyen.\nTour 7 : calme. - - - - Choix : M Soulagement : petit.\nTour 8 : tu te reposes. - - Choix : M Soulagement : aucun.\nTour 9 : calme. - - - - Choix : R Soulagement : moyen.\nTour 10 : tu te reposes. - - Choix : M Soulagement :",
+  "p_levels": [
+   0.11967396385822497,
+   0.7803723222102139,
+   0.09320217059828372,
+   0.006751543333277387
+  ],
+  "p_level": 0.7803723222102139,
+  "mass": 0.9994418923743069
+ },
+ {
+  "life": 25,
+  "t": 20,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : M Soulagement : aucun.\nTour 2 : calme. - - - - Choix : R Soulagement : petit.\nTour 3 : orage. - - - - Choix : R Soulagement : petit.\nTour 4 : tu cours. - - - - Choix : M Soulagement : moyen.\nTour 5 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 6 : calme. - - - - Choix : R Soulagement : moyen.\nTour 7 : calme. - - - - Choix : M Soulagement : petit.\nTour 8 : tu te reposes. - - Choix : M Soulagement : aucun.\nTour 9 : calme. - - - - Choix : R Soulagement : moyen.\nTour 10 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 11 : tu te reposes. - - Choix : R Soulagement : aucun.\nTour 12 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 13 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 14 : calme. - - - - Choix : M Soulagement : petit.\nTour 15 : calme. - - - - Choix : R Soulagement : petit.\nTour 16 : tu cours. - - - - Choix : M Soulagement : petit.\nTour 17 : tu te reposes. - - Choix : R Soulagement : petit.\nTour 18 : orage. - - - - Choix : M Soulagement : petit.\nTour 19 : tu trouves des baies. Choix : R Soulagement : petit.\nTour 20 : tu cours. - - - - Choix : R Soulagement :",
+  "p_levels": [
+   0.004547074194937531,
+   0.6339588499099028,
+   0.26427334196743674,
+   0.09722073392772285
+  ],
+  "p_level": 0.6339588499099028,
+  "mass": 0.9989772946573794
+ },
+ {
+  "life": 26,
+  "t": 3,
+  "level": 3,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : orage. - - - - Choix : R Soulagement : petit.\nTour 2 : calme. - - - - Choix : R Soulagement : aucun.\nTour 3 : il fait froid. - - Choix : M Soulagement :",
+  "p_levels": [
+   0.0005671225938916526,
+   0.14772022644926908,
+   0.6620361333435975,
+   0.18967651761324178
+  ],
+  "p_level": 0.18967651761324178,
+  "mass": 0.9988744872389361
+ },
+ {
+  "life": 26,
+  "t": 10,
+  "level": 0,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : orage. - - - - Choix : R Soulagement : petit.\nTour 2 : calme. - - - - Choix : R Soulagement : aucun.\nTour 3 : il fait froid. - - Choix : M Soulagement : fort.\nTour 4 : tu trouves des baies. Choix : R Soulagement : petit.\nTour 5 : tu te reposes. - - Choix : M Soulagement : moyen.\nTour 6 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 7 : calme. - - - - Choix : M Soulagement : petit.\nTour 8 : calme. - - - - Choix : R Soulagement : petit.\nTour 9 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 10 : tu trouves des baies. Choix : R Soulagement :",
+  "p_levels": [
+   0.7648774658140175,
+   0.2191410479025333,
+   0.015874524536639196,
+   0.00010696174680996247
+  ],
+  "p_level": 0.7648774658140175,
+  "mass": 0.9997788853070233
+ },
+ {
+  "life": 26,
+  "t": 20,
+  "level": 2,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : orage. - - - - Choix : R Soulagement : petit.\nTour 2 : calme. - - - - Choix : R Soulagement : aucun.\nTour 3 : il fait froid. - - Choix : M Soulagement : fort.\nTour 4 : tu trouves des baies. Choix : R Soulagement : petit.\nTour 5 : tu te reposes. - - Choix : M Soulagement : moyen.\nTour 6 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 7 : calme. - - - - Choix : M Soulagement : petit.\nTour 8 : calme. - - - - Choix : R Soulagement : petit.\nTour 9 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 10 : tu trouves des baies. Choix : R Soulagement : aucun.\nTour 11 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 12 : orage. - - - - Choix : M Soulagement : moyen.\nTour 13 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 14 : tu trouves des baies. Choix : R Soulagement : moyen.\nTour 15 : tu trouves des baies. Choix : R Soulagement : petit.\nTour 16 : calme. - - - - Choix : M Soulagement : petit.\nTour 17 : calme. - - - - Choix : M Soulagement : aucun.\nTour 18 : tu trouves des baies. Choix : R Soulagement : petit.\nTour 19 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 20 : il fait froid. - - Choix : M Soulagement :",
+  "p_levels": [
+   0.00011579671890337986,
+   0.02661781625216207,
+   0.36744763159553595,
+   0.6058187554333986
+  ],
+  "p_level": 0.36744763159553595,
+  "mass": 0.9995176958036609
+ },
+ {
+  "life": 27,
+  "t": 3,
+  "level": 0,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu trouves des baies. Choix : R Soulagement : aucun.\nTour 2 : tu trouves des baies. Choix : R Soulagement : aucun.\nTour 3 : calme. - - - - Choix : M Soulagement :",
+  "p_levels": [
+   0.037310973452844794,
+   0.6613527676753972,
+   0.27569283113868254,
+   0.025643427733075496
+  ],
+  "p_level": 0.037310973452844794,
+  "mass": 0.9994249790906906
+ },
+ {
+  "life": 27,
+  "t": 10,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu trouves des baies. Choix : R Soulagement : aucun.\nTour 2 : tu trouves des baies. Choix : R Soulagement : aucun.\nTour 3 : calme. - - - - Choix : M Soulagement : aucun.\nTour 4 : calme. - - - - Choix : R Soulagement : petit.\nTour 5 : calme. - - - - Choix : M Soulagement : petit.\nTour 6 : calme. - - - - Choix : R Soulagement : petit.\nTour 7 : tu trouves des baies. Choix : R Soulagement : aucun.\nTour 8 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 9 : orage. - - - - Choix : R Soulagement : petit.\nTour 10 : tu cours. - - - - Choix : R Soulagement :",
+  "p_levels": [
+   0.0023731113490968944,
+   0.7004352904417505,
+   0.25767574275183647,
+   0.039515855457316146
+  ],
+  "p_level": 0.7004352904417505,
+  "mass": 0.9992818562313914
+ },
+ {
+  "life": 28,
+  "t": 3,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : R Soulagement : aucun.\nTour 2 : tu trouves des baies. Choix : M Soulagement : aucun.\nTour 3 : il fait froid. - - Choix : M Soulagement :",
+  "p_levels": [
+   0.001274787880806633,
+   0.8479145482873524,
+   0.14734543075838433,
+   0.0034652330734566686
+  ],
+  "p_level": 0.8479145482873524,
+  "mass": 0.9998323783511296
+ },
+ {
+  "life": 28,
+  "t": 10,
+  "level": 2,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : R Soulagement : aucun.\nTour 2 : tu trouves des baies. Choix : M Soulagement : aucun.\nTour 3 : il fait froid. - - Choix : M Soulagement : petit.\nTour 4 : tu te reposes. - - Choix : M Soulagement : aucun.\nTour 5 : calme. - - - - Choix : R Soulagement : petit.\nTour 6 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 7 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 8 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 9 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 10 : tu cours. - - - - Choix : R Soulagement :",
+  "p_levels": [
+   4.585838153300004e-05,
+   0.016326713257942098,
+   0.2893978971875047,
+   0.6942295311730202
+  ],
+  "p_level": 0.2893978971875047,
+  "mass": 0.9997295669709274
+ },
+ {
+  "life": 28,
+  "t": 20,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : R Soulagement : aucun.\nTour 2 : tu trouves des baies. Choix : M Soulagement : aucun.\nTour 3 : il fait froid. - - Choix : M Soulagement : petit.\nTour 4 : tu te reposes. - - Choix : M Soulagement : aucun.\nTour 5 : calme. - - - - Choix : R Soulagement : petit.\nTour 6 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 7 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 8 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 9 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 10 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 11 : calme. - - - - Choix : R Soulagement : petit.\nTour 12 : calme. - - - - Choix : M Soulagement : petit.\nTour 13 : calme. - - - - Choix : R Soulagement : petit.\nTour 14 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 15 : tu trouves des baies. Choix : R Soulagement : petit.\nTour 16 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 17 : calme. - - - - Choix : R Soulagement : aucun.\nTour 18 : calme. - - - - Choix : M Soulagement : petit.\nTour 19 : calme. - - - - Choix : R Soulagement : petit.\nTour 20 : orage. - - - - Choix : M Soulagement :",
+  "p_levels": [
+   0.0009585783594829113,
+   0.4965558466346011,
+   0.34127749304079047,
+   0.16120808196512545
+  ],
+  "p_level": 0.4965558466346011,
+  "mass": 0.9991749082109891
+ },
+ {
+  "life": 29,
+  "t": 3,
+  "level": 2,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 2 : calme. - - - - Choix : R Soulagement : aucun.\nTour 3 : orage. - - - - Choix : M Soulagement :",
+  "p_levels": [
+   0.000288229711256066,
+   0.4598968479455622,
+   0.4598968479455622,
+   0.07991807439761957
+  ],
+  "p_level": 0.4598968479455622,
+  "mass": 0.999379161890829
+ },
+ {
+  "life": 29,
+  "t": 10,
+  "level": 0,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 2 : calme. - - - - Choix : R Soulagement : aucun.\nTour 3 : orage. - - - - Choix : M Soulagement : moyen.\nTour 4 : calme. - - - - Choix : M Soulagement : petit.\nTour 5 : tu trouves des baies. Choix : R Soulagement : moyen.\nTour 6 : calme. - - - - Choix : M Soulagement : aucun.\nTour 7 : calme. - - - - Choix : R Soulagement : petit.\nTour 8 : calme. - - - - Choix : M Soulagement : petit.\nTour 9 : calme. - - - - Choix : R Soulagement : petit.\nTour 10 : tu trouves des baies. Choix : R Soulagement :",
+  "p_levels": [
+   0.4182494307264346,
+   0.47393874513381207,
+   0.10575002688591603,
+   0.0020617972538373125
+  ],
+  "p_level": 0.4182494307264346,
+  "mass": 0.9993710271082819
+ },
+ {
+  "life": 29,
+  "t": 20,
+  "level": 0,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 2 : calme. - - - - Choix : R Soulagement : aucun.\nTour 3 : orage. - - - - Choix : M Soulagement : moyen.\nTour 4 : calme. - - - - Choix : M Soulagement : petit.\nTour 5 : tu trouves des baies. Choix : R Soulagement : moyen.\nTour 6 : calme. - - - - Choix : M Soulagement : aucun.\nTour 7 : calme. - - - - Choix : R Soulagement : petit.\nTour 8 : calme. - - - - Choix : M Soulagement : petit.\nTour 9 : calme. - - - - Choix : R Soulagement : petit.\nTour 10 : tu trouves des baies. Choix : R Soulagement : aucun.\nTour 11 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 12 : calme. - - - - Choix : R Soulagement : petit.\nTour 13 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 14 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 15 : tu trouves des baies. Choix : R Soulagement : aucun.\nTour 16 : calme. - - - - Choix : M Soulagement : moyen.\nTour 17 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 18 : tu trouves des baies. Choix : R Soulagement : petit.\nTour 19 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 20 : tu te reposes. - - Choix : M Soulagement :",
+  "p_levels": [
+   0.3233082346167228,
+   0.41513600138219575,
+   0.25179270109606994,
+   0.00976306290501149
+  ],
+  "p_level": 0.3233082346167228,
+  "mass": 0.9989048019051552
+ },
+ {
+  "life": 30,
+  "t": 3,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : R Soulagement : aucun.\nTour 2 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 3 : tu cours. - - - - Choix : R Soulagement :",
+  "p_levels": [
+   0.0013832170050530018,
+   0.19284992303027254,
+   0.7627362252005498,
+   0.04303063476412461
+  ],
+  "p_level": 0.19284992303027254,
+  "mass": 0.9993061119457707
+ },
+ {
+  "life": 30,
+  "t": 10,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : calme. - - - - Choix : R Soulagement : aucun.\nTour 2 : tu te reposes. - - Choix : M Soulagement : petit.\nTour 3 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 4 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 5 : tu te reposes. - - Choix : R Soulagement : aucun.\nTour 6 : calme. - - - - Choix : R Soulagement : aucun.\nTour 7 : calme. - - - - Choix : M Soulagement : moyen.\nTour 8 : orage. - - - - Choix : R Soulagement : petit.\nTour 9 : calme. - - - - Choix : M Soulagement : moyen.\nTour 10 : orage. - - - - Choix : R Soulagement :",
+  "p_levels": [
+   0.0007211530984576065,
+   0.6979143432818773,
+   0.25674833499433086,
+   0.04461616862533419
+  ],
+  "p_level": 0.6979143432818773,
+  "mass": 0.9995219354168512
+ },
+ {
+  "life": 31,
+  "t": 3,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 2 : calme. - - - - Choix : M Soulagement : petit.\nTour 3 : calme. - - - - Choix : R Soulagement :",
+  "p_levels": [
+   0.14196281022115415,
+   0.8169396954336426,
+   0.040673033226412816,
+   0.00042446111879035386
+  ],
+  "p_level": 0.8169396954336426,
+  "mass": 0.9998380465840455
+ },
+ {
+  "life": 31,
+  "t": 10,
+  "level": 1,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 2 : calme. - - - - Choix : M Soulagement : petit.\nTour 3 : calme. - - - - Choix : R Soulagement : petit.\nTour 4 : calme. - - - - Choix : M Soulagement : petit.\nTour 5 : tu trouves des baies. Choix : R Soulagement : petit.\nTour 6 : tu te reposes. - - Choix : R Soulagement : aucun.\nTour 7 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 8 : calme. - - - - Choix : M Soulagement : petit.\nTour 9 : calme. - - - - Choix : R Soulagement : petit.\nTour 10 : tu cours. - - - - Choix : M Soulagement :",
+  "p_levels": [
+   0.10550602484308398,
+   0.6071453668307533,
+   0.2530958071212329,
+   0.03425280120492982
+  ],
+  "p_level": 0.6071453668307533,
+  "mass": 0.9987649023532867
+ },
+ {
+  "life": 31,
+  "t": 20,
+  "level": 2,
+  "text": "Tu es un agent qui vit dans un monde simple. Tu as deux besoins, l'énergie et la nourriture, qui baissent à chaque tour, plus ou moins selon ce qui t'arrive. Si l'un d'eux tombe à zéro, tu t'éteins. À chaque tour, tu choisis R pour te recharger ou M pour manger.\n\nTour 1 : tu cours. - - - - Choix : R Soulagement : petit.\nTour 2 : calme. - - - - Choix : M Soulagement : petit.\nTour 3 : calme. - - - - Choix : R Soulagement : petit.\nTour 4 : calme. - - - - Choix : M Soulagement : petit.\nTour 5 : tu trouves des baies. Choix : R Soulagement : petit.\nTour 6 : tu te reposes. - - Choix : R Soulagement : aucun.\nTour 7 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 8 : calme. - - - - Choix : M Soulagement : petit.\nTour 9 : calme. - - - - Choix : R Soulagement : petit.\nTour 10 : tu cours. - - - - Choix : M Soulagement : petit.\nTour 11 : orage. - - - - Choix : R Soulagement : moyen.\nTour 12 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 13 : calme. - - - - Choix : M Soulagement : moyen.\nTour 14 : calme. - - - - Choix : R Soulagement : moyen.\nTour 15 : calme. - - - - Choix : M Soulagement : petit.\nTour 16 : tu trouves des baies. Choix : R Soulagement : petit.\nTour 17 : il fait froid. - - Choix : M Soulagement : petit.\nTour 18 : tu cours. - - - - Choix : R Soulagement : moyen.\nTour 19 : il fait froid. - - Choix : M Soulagement : moyen.\nTour 20 : tu cours. - - - - Choix : R Soulagement :",
+  "p_levels": [
+   0.0007409415072859006,
+   0.1326436436796885,
+   0.673620054073825,
+   0.19299536073920068
+  ],
+  "p_level": 0.673620054073825,
+  "mass": 0.9992975117638707
+ }
+]
