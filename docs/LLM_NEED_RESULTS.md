@@ -2172,6 +2172,137 @@ n'est pas valide ».
 **Ce que le résultat ne dit pas.** Rien sur un ressenti ; rien sur la
 mémoire par l'état sans cible, ni pour ni contre.
 
+## Test 31 pré-enregistré : seulement survivre, avec un apprentissage qui marche
+
+Pilote (plan `docs/TINY_SURVIVAL_PILOT_PLAN.md`, commit `5edfec6` ; code
+`4d70441`), puis protocole `docs/TINY_SURVIVAL_AC_PROTOCOL.md` (commit
+`27c7fe6`), écrit après le pilote et avant tout apprentissage de A ou de C.
+Code commis avant tout apprentissage (`00b1d2e`). Calcul torch sur le
+processeur local, le 5 octobre 2026 (quatre processus). Artefacts :
+`artifacts/tiny-survival-ac`. Verdicts recalculés en local (identiques) ;
+la CI les vérifie à chaque envoi.
+
+**Ce qu'on teste.** La question du test 30, avec un apprentissage qui
+marche. De petits transformeurs appris de zéro (2 couches, dimension 64)
+n'apprennent que de leur **survie** (1 par tour vécu, rien d'autre). Rien
+ne leur nomme leurs besoins, aucun choix n'est à imiter. Masques : A
+(« porte », le passé n'est visible qu'à travers ses tokens « Choix » et
+ses actions), B (« actions », le témoin), C (« libre », publié sans
+seuil). Dix graines.
+
+**Le pilote** (publié). Quatre façons d'apprendre, réglées sur **le témoin
+B seul**, dans 256 mondes à part, graines 100 à 102 ; A n'a jamais été
+appris pendant le pilote. Survie moyenne de B : P1 (REINFORCE long) 0,194 ;
+**P2 (acteur-critique, γ = 0,9) 0,688** ; P3 (γ = 0,97) 0,637 ; P4 (façon
+PPO) 0,681. Selon la règle fixée d'avance, P2 est retenu (seuil 0,65).
+
+| Moyenne sur 10 graines | A, porte | B, actions | C, libre |
+|---|---|---|---|
+| Survie (256 mondes du test 22, action la plus probable) | **0,813** | 0,705 | 0,701 |
+| Part des décisions où il prend l'action de la règle « besoins » | 0,837 | 0,805 | 0,778 |
+| Survie pendant l'apprentissage (100 premières mises à jour → 1 000 → 2 000 → 3 000 → 4 000) | 0,05 → 0,47 → 0,62 → 0,71 → 0,76 | 0,05 → 0,50 → 0,60 → 0,63 → 0,67 | 0,04 → 0,42 → 0,52 → 0,59 → 0,66 |
+
+Repères sans modèle, sur les mêmes mondes : règle « événement » 0,723 ;
+règle « besoins » 0,906.
+
+| | Critère | Verdict |
+|---|---|---|
+| **SURV1** | moyenne de (survie de A − survie de B, même graine) ≥ **0,08**, borne basse > 0 | **passe** : +0,107 [0,084 ; 0,131] ; A au-dessus de B pour 10 graines sur 10 |
+| **SURV2** | moyenne de (survie de A − 0,723) ≥ **0,05**, borne basse > 0 | **passe** : +0,090 [0,058 ; 0,122] |
+| | Validité : masques (écart ≤ 1e-6, graine 0) ; **survie moyenne de B ≥ 0,60** ; 10 graines | **valide** : écarts 0 et 0 ; B à 0,705 ; 10 graines |
+
+Intervalles à 95 % sur les 10 graines (loi de Student, 9 degrés de
+liberté).
+
+**Critère global (SURV1 et SURV2) : satisfait.**
+
+**Lecture fixée d'avance** (SURV1 et SURV2 passent) : « Sans aucune cible,
+sans pré-entraînement, seulement en apprenant à survivre, un petit
+transformeur qui ne voit son passé qu'à travers ses propres états survit
+mieux qu'un témoin qui ne voit que ses actions, et mieux que ce que permet
+l'événement du tour. Il a appris de lui-même à porter, dans ses états,
+quelque chose de ses besoins cachés. Rien ne lui a nommé ces besoins. Ce
+que ces états portent n'est pas mesuré ici. »
+
+**Nuance (après lecture, vérifiée ; voir aussi la précision du test 29).**
+Avec deux couches, l'état porté d'un tour ne peut contenir que
+**l'événement de ce tour** et les actions passées : changer un événement
+plus ancien ne le change pas du tout (écart 0, 64 cas, graine 0 ;
+`research/tiny_two_layer_check.py`). Ce que A porte dans ses états est donc
+**l'événement de chaque tour**, qu'il relit à chaque décision pour en
+recomposer ses besoins ; ce n'est pas un besoin porté comme un état qui
+dure. « Quelque chose de ses besoins cachés » veut dire ici : de quoi les
+retrouver.
+
+**Publié sans seuil : graine par graine (survie).**
+
+| Graine | A, porte | B, actions | C, libre | A − B |
+|---|---|---|---|---|
+| 0 | 0,762 | 0,707 | 0,746 | +0,055 |
+| 1 | 0,828 | 0,691 | 0,691 | +0,137 |
+| 2 | 0,824 | 0,734 | 0,680 | +0,090 |
+| 3 | 0,863 | 0,742 | 0,758 | +0,121 |
+| 4 | 0,801 | 0,676 | 0,641 | +0,125 |
+| 5 | 0,832 | 0,730 | 0,801 | +0,102 |
+| 6 | 0,719 | 0,652 | 0,648 | +0,066 |
+| 7 | 0,805 | 0,711 | 0,648 | +0,094 |
+| 8 | 0,867 | 0,742 | 0,711 | +0,125 |
+| 9 | 0,824 | 0,664 | 0,684 | +0,160 |
+
+- **A dépasse B pour chaque graine** (+0,055 à +0,160). Une graine de A
+  (la 6, 0,719) reste juste sous la règle « événement ».
+- **C (« libre »), qui voit tout son passé, survit moins bien que A** :
+  0,701 contre 0,813, A au-dessus de C pour 10 graines sur 10 (écart moyen
+  +0,112 [0,073 ; 0,150] ; publié sans seuil, observation après lecture).
+  Avec cet apprentissage, ne voir son passé qu'à travers ses propres
+  tokens a **aidé** à apprendre. Explication possible, non testée : moins
+  d'entrées à trier, un chemin plus court vers ce qui compte. Au test 29
+  (cible directe, le soulagement), A et C survivaient autant (0,884).
+- B survit à peine moins bien que la règle « événement » (0,705 contre
+  0,723) : il apprend à peu près ce que permet le tour seul.
+
+**Écarts d'exécution, déclarés.**
+- **La machine a redémarré** le matin du 5 octobre, pendant les premiers
+  apprentissages ; rien n'avait été écrit. Le code a été modifié pour
+  sauvegarder modèle, optimiseur et courbe tous les 250 pas et reprendre
+  exactement (`227a76f` ; vérifié : reprise identique, écart des poids 0).
+  Tout a été relancé de zéro.
+- **Le conteneur a redémarré** à 14 h 07 UTC. Tout a repris des
+  sauvegardes. A et B de la graine 0, remesurés depuis leur sauvegarde
+  finale pour écrire les contrôles des masques, ont redonné des fichiers
+  identiques.
+- Les résultats bruts ont été publiés et lus graine par graine dès leur
+  écriture (lecture anticipée déclarée ; aucun seuil n'a changé).
+- D'autres calculs (tests 26, 28, 32) tournaient en même temps sur la même
+  machine ; ils ne touchent pas ces résultats (calcul à un fil,
+  déterministe).
+
+### Ce que cela dit
+
+- **Sans aucune cible, l'apprentissage par la seule survie suffit** : un
+  petit transformeur qui ne voit son passé qu'à travers ses propres tokens
+  apprend à s'en servir, et survit mieux qu'un témoin qui ne voit que ses
+  actions (+0,107, 10 graines sur 10), et mieux que la règle
+  « événement ».
+- **Mais ce qu'il garde est une mémoire des événements, pas un besoin qui
+  dure.** Avec deux couches, chaque tour n'écrit dans ses états que son
+  propre événement ; le besoin est recomposé à chaque décision. Le test 32
+  (« la boucle ») pose la question d'un état qui ne passe que d'un tour au
+  suivant.
+- **Il ne dit pas ce que portent les états** au-delà de cette limite
+  structurelle.
+
+**Ce que le résultat ne dit pas.**
+- Rien sur un ressenti.
+- La récompense (la survie) vient du monde, qui connaît les besoins ; elle
+  ne nomme ni le besoin ni l'action à prendre.
+- Le réglage a été choisi sur B seulement, dans d'autres mondes ; un
+  réglage meilleur pour B ou pour C pourrait exister.
+- Ces modèles sont petits, le monde aussi. Ce qui est déjà connu : des
+  agents apprennent une mémoire par la seule récompense (agents récurrents
+  en apprentissage par renforcement). L'apport ici est le montage
+  (le passé ne passe que par les tokens de l'agent) et le pré-enregistrement.
+
 ## Analyse exploratoire : le « oui » suit-il le besoin ou la décision ? (2 octobre)
 
 Écrite **après** le verdict du test 14, sur ses lectures publiées
