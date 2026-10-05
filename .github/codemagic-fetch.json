@@ -1,7 +1,7 @@
 {
- "request": 106,
+ "request": 107,
  "app": "Menia",
- "wait_minutes": 235,
+ "wait_minutes": 150,
  "builds": [
   {
    "launch": {
@@ -15,11 +15,11 @@
      "NEED_START": "artifacts/llm-need/final/report/adapters-final",
      "NEED_ARM": "route",
      "NEED_UNTIL": "4000",
-     "NEED_CONTINUE": "artifacts/llm-need/relief/route-3/adapters-route",
-     "NEED_SKIP": "2000"
+     "NEED_CONTINUE": "artifacts/llm-need/relief/route-4/adapters-route",
+     "NEED_SKIP": "3500"
     }
    },
-   "dest": "artifacts/llm-need/relief/route-4"
+   "dest": "artifacts/llm-need/relief/route-5"
   },
   {
    "launch": {
@@ -33,11 +33,11 @@
      "NEED_START": "artifacts/llm-need/final/report/adapters-final",
      "NEED_ARM": "actions",
      "NEED_UNTIL": "4000",
-     "NEED_CONTINUE": "artifacts/llm-need/relief/actions-3/adapters-actions",
-     "NEED_SKIP": "2000"
+     "NEED_CONTINUE": "artifacts/llm-need/relief/actions-4/adapters-actions",
+     "NEED_SKIP": "3500"
     }
    },
-   "dest": "artifacts/llm-need/relief/actions-4"
+   "dest": "artifacts/llm-need/relief/actions-5"
   }
  ]
 }
