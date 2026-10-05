@@ -72,3 +72,11 @@ pour la boucle **et** le témoin coupé. Il reprendra les critères du test 32
 greffe et le même tirage, sur des graines neuves (10 à 19).
 
 Tout est publié : réglages, survies par graine, courbes, et le choix.
+
+## Note ajoutée après la relecture du test 32 (5 octobre, après le commit du plan et du code du pilote, avant toute lecture de ses résultats)
+
+La phrase « a appris … à **porter** ses besoins dans cet état » est trop
+forte. La relecture a montré que le même réseau en boucle **non appris**
+donne déjà 0,54 et 0,57 au décodeur ; l'apprentissage n'ajoute qu'environ
+0,14 et 0,11, à peu près ce que diraient les deux ou trois derniers tours :
+une mémoire courte. Le plan et la règle de choix ne changent pas.

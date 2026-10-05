@@ -2640,7 +2640,7 @@ chaque tour. Dix graines.
 | Survie (256 mondes du test 22, action la plus probable) | 0,721 | 0,733 |
 | Part des décisions où il prend l'action de la règle « besoins » | 0,826 | 0,831 |
 | Survie pendant l'apprentissage (100 premières mises à jour → 1 000 → 2 000 → 3 000 → 4 000) | 0,07 → 0,53 → 0,60 → 0,63 → 0,67 | 0,07 → 0,64 → 0,69 → 0,69 → 0,69 |
-| Ce qu'un décodeur linéaire lit de E et N dans l'état transmis (part de variance, validation croisée) | 0,68 et 0,69 | 0,42 et 0,46 |
+| Ce qu'un décodeur linéaire lit de E et N dans l'état transmis (pour B, la sortie de « Choix », non transmise ; part de variance, validation croisée) | 0,68 et 0,69 | 0,42 et 0,46 |
 
 Repères sans modèle, sur les mêmes mondes : règle « événement » 0,723 ;
 règle « besoins » 0,906.
@@ -2674,28 +2674,46 @@ témoin coupé. »
 | 5 | 0,734 | 0,734 | 0,000 | 0,002 | 0,001 | 0,67 / 0,62 |
 | 6 | 0,789 | 0,730 | +0,059 | 0,071 | 0,023 | 0,75 / 0,72 |
 | 7 | 0,727 | 0,734 | −0,008 | 0,023 | 0,010 | 0,64 / 0,74 |
-| 8 | 0,512 | 0,734 | −0,222 | −0,001 | 0,001 | 0,64 / 0,65 |
+| 8 | 0,512 | 0,734 | −0,223 | −0,001 | 0,001 | 0,64 / 0,65 |
 | 9 | 0,734 | 0,734 | 0,000 | 0,037 | 0,022 | 0,71 / 0,72 |
 
-- **L'état transmis contient les besoins** : un décodeur linéaire y lit E
-  et N bien mieux que dans la sortie du témoin coupé (0,68 contre 0,42 ;
-  0,69 contre 0,46), pour chaque graine. Le témoin ne voit que l'événement
-  et la dernière action.
+- **L'état transmis porte une information sur les besoins au-delà du
+  tour** : un décodeur linéaire y lit E et N mieux que dans la sortie du
+  témoin coupé (0,68 contre 0,42 ; 0,69 contre 0,46), pour chaque graine.
+  Le témoin ne voit que l'événement et la dernière action (un décodeur sur
+  ces deux seules entrées donne aussi 0,42 et 0,46). Contrôles ajoutés
+  après la relecture (exploration non pré-enregistrée,
+  `research/tiny_loop_probe_controls.py`,
+  `artifacts/tiny-loop/exploration-probe.json`) : le même réseau en boucle
+  **non appris** en lit déjà 0,54 et 0,57 ; l'apprentissage n'ajoute
+  qu'environ 0,14 et 0,11 (rien pour la graine 2). 0,68 et 0,69, c'est à
+  peu près ce qu'un décodeur lit des deux ou trois derniers tours (0,66 et
+  0,69 avec deux tours de plus ; 0,71 et 0,74 avec trois) : **une mémoire
+  courte**, pas les besoins entiers.
 - **Mais l'agent s'en sert peu pour choisir.** Greffé, l'état ne déplace la
   probabilité de choisir R que de 0,05 en moyenne dans le sens des besoins
   d'origine (0,48 au test 23, chez le modèle de langage appris d'un
-  professeur). Trois graines seulement (0, 3, 6) s'en servent nettement ;
-  ce sont aussi celles qui survivent mieux que le témoin (+0,016 à +0,059).
-  La graine 3 en est l'exemple le plus net (m = 0,21).
+  professeur) : environ 5 % d'un changement complet. Trois graines
+  seulement (0, 3, 6) dépassent le seuil par graine de 0,05 (0,075 ;
+  0,214 ; 0,071) ; les graines 3 et 6 sont aussi les seules à survivre
+  nettement mieux que le témoin (+0,047 et +0,059 ; 20 vies contre 8 et 21
+  contre 6 sur les mêmes mondes), la graine 0 à peine (+0,016 ; 13 contre
+  9). Lien observé après lecture, sur trois graines.
 - **Quand il s'en sert, c'est le besoin plutôt que l'histoire** : LOOP4
   passe, mais sur des effets petits.
 - **La graine 8 s'est effondrée** (0,512) : son apprentissage est resté
-  bloqué vers 0,47 dès 1 000 mises à jour.
+  bloqué vers 0,45–0,47 dès 600 mises à jour.
 - Le témoin coupé, qui ne voit que l'événement et la dernière action (18
-  cas possibles), apprend presque toujours la même table : survie 0,730 ou
-  0,734 selon la graine.
+  cas possibles), apprend la même table pour 10 graines sur 10 à partir du
+  deuxième tour ; seul le choix du premier tour diffère : survie 0,730 ou
+  0,734 (vérifié sur les sauvegardes, à la relecture).
 - **Selon g** : effet aligné +0,071 à un tour, +0,024 à deux tours ;
-  \|ΔP\| des greffes (a0) : 0,032.
+  \|ΔP\| des greffes (b) : 0,029 et 0,010 ; \|ΔP\| des greffes (a0) :
+  0,032.
+- Vérifié à la relecture (exploration) : LOOP4 ne tient pas au partage
+  d'événement. Les donneuses (b) partagent l'événement du tour j dans 57 %
+  des cas, contre 26 % pour (a) ; mais à événement égal, \|ΔP\| vaut 0,057
+  pour (a) contre 0,018 pour (b) (différence +0,039 [0,0001 ; 0,079]).
 
 **Écarts d'exécution, déclarés.**
 - Le tirage n'a donné que 391 greffes (a) (le protocole s'arrêtait à 400 ;
@@ -2711,17 +2729,19 @@ témoin coupé. »
 
 ### Ce que cela dit
 
-- **Une vraie boucle, apprise par la seule survie, apprend à savoir où en
-  sont ses besoins, mais pas à s'en servir**, à ce budget et avec cet
-  apprentissage. L'information est dans l'état (le décodeur la lit), elle
-  n'entre que faiblement dans le choix (la greffe le montre).
-- **La récurrence au sens strict n'est donc pas obtenue de façon
-  fiable** : trois graines sur dix montrent un état transmis qui porte les
-  besoins et guide un peu le choix ; les autres s'en tiennent à ce que
-  permet le tour seul.
+- **Une vraie boucle, apprise par la seule survie, garde dans son état un
+  peu plus que le tour présent** (une mémoire courte, en partie présente
+  sans apprentissage), **mais s'en sert peu pour choisir**, à ce budget et
+  avec cet apprentissage (la greffe le montre).
+- **Une récurrence au sens strict qui serve au choix n'est donc pas obtenue
+  de façon fiable** : l'état transmis porte, pour les 10 graines, de
+  l'information au-delà du tour, mais trois graines sur dix seulement s'en
+  servent un peu pour choisir ; les autres choisissent presque comme le
+  témoin coupé (survie à 0,008 près), sauf la graine 8, effondrée.
 - **Le contraste avec le test 31** (même apprentissage, même monde) : en
   relisant ses tokens passés, le petit transformeur survit à 0,813 ; en
-  devant tout faire passer par un état transmis, il reste à 0,721.
+  devant tout faire passer par un état transmis, il reste à 0,721 (les
+  témoins diffèrent aussi : 0,705 au test 31, 0,733 ici).
 
 **Ce que le résultat ne dit pas.**
 - Rien sur un ressenti.
@@ -2730,7 +2750,8 @@ témoin coupé. »
   l'autre) pourrait réussir. Le réglage a été choisi au pilote pour un
   autre réseau.
 - Le décodeur est publié sans seuil ; il lit E et N après l'événement du
-  tour, et le témoin en lit déjà une part sans aucune mémoire.
+  tour, et le témoin en lit déjà une part sans aucune mémoire ; un réseau
+  en boucle non appris en lit déjà 0,54 et 0,57.
 
 ## Analyse exploratoire : le « oui » suit-il le besoin ou la décision ? (2 octobre)
 
