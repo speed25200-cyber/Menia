@@ -1,0 +1,89 @@
+{
+ "verdicts": {
+  "INTER1": true,
+  "INTER2": true,
+  "valid": true,
+  "global": true
+ },
+ "values": {
+  "accuracy": {
+   "route": 0.7846618813751417,
+   "actions": 0.6343029845107669,
+   "bayes": 0.6479032867397053
+  },
+  "beyond_ceiling": {
+   "mean": 0.13675859463543635,
+   "low": 0.11330009113501231,
+   "high": 0.1609246132695545,
+   "contexts": 2647
+  },
+  "accuracy_by_level": {
+   "route": {
+    "aucun": 0.9187358916478555,
+    "petit": 0.9559352517985612,
+    "moyen": 0.5900383141762452,
+    "fort": 0.4692556634304207
+   },
+   "actions": {
+    "aucun": 0.7539503386004515,
+    "petit": 0.8363309352517986,
+    "moyen": 0.4074074074074074,
+    "fort": 0.3106796116504854
+   },
+   "bayes": {
+    "aucun": 0.7945823927765236,
+    "petit": 0.7931654676258992,
+    "moyen": 0.5031928480204342,
+    "fort": 0.2815533980582524
+   }
+  },
+  "decisions": 2647,
+  "levels": {
+   "aucun": 443,
+   "petit": 1112,
+   "moyen": 783,
+   "fort": 309
+  },
+  "readout_agrees_with_rule": {
+   "route": 0.8719304873441632,
+   "actions": 0.8398186626369475
+  },
+  "survival": {
+   "route": 0.8203125,
+   "actions": 0.62109375
+  },
+  "survival_gain": {
+   "mean": 0.19921875,
+   "low": 0.1484375,
+   "high": 0.25,
+   "n": 256
+  },
+  "mass_route": 0.9997985906239599,
+  "turns_need_at_most_2": {
+   "route": 653,
+   "actions": 829
+  }
+ },
+ "setup": {
+  "replica": {
+   "route": {
+    "decisions": 80,
+    "mean_gap": 0.005924498656910353,
+    "max_gap": 0.04328414718639162
+   },
+   "actions": {
+    "decisions": 80,
+    "mean_gap": 0.007340313272809665,
+    "max_gap": 0.023883036598158658
+   }
+  },
+  "cache_gap": {
+   "route": 6.411134105543947e-08,
+   "actions": 3.0208841088341654e-07
+  },
+  "mask_gap": {
+   "route": 0.0,
+   "actions": 0.0
+  }
+ }
+}

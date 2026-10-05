@@ -1845,6 +1845,119 @@ au-dessus de la moitié qu'à quatre tours (voir selon h).
   test 24 (FAR1). La lecture par les médiateurs seuls (FAR2) n'en dépend
   pas ; elle passe, de peu.
 
+## Test 26 pré-enregistré : prédire ce que ses actes font à son corps (le modèle de langage)
+
+Protocole `docs/LLM_NEED_RELIEF_PROTOCOL.md` (commit `eb43887`), écrit avant
+le code et toute exécution. Code commis avant tout apprentissage et toute
+mesure (`36d4f2b`). Apprentissage sur le Mac (Codemagic, étape `memory`
+avec les textes du soulagement), par morceaux de 250 itérations repris
+exactement, en cinq demandes du relais (103 à 107 : `29d442f`, `ba3e2c4`,
+`a83b3c6`, `bae320b`, `3d3216d`), du 4 au 5 octobre 2026. Mesures torch sur
+le processeur local, le 5 octobre (un fil par processus). Artefacts :
+`artifacts/llm-need/relief`. Verdicts recalculés en local (identiques) ; la
+CI les vérifie à chaque envoi.
+
+**Ce qu'on teste.** Le modèle de langage (Qwen3-0.6B, à partir de l'agent
+final fondu) apprend un nouvel adaptateur avec une seule cible : **le mot
+du soulagement** que son action apporte (« aucun », « petit », « moyen »,
+« fort »), qui dépend du niveau du besoin servi. **Aucune cible de
+choix.** Les vies d'apprentissage sont écrites par une règle qui ignore
+les besoins (la règle « événement », 30 % au hasard). Deux masques, ceux du
+test 22 : A (« porte », le passé n'est visible qu'à travers ses tokens
+portés ; le soulagement passé n'est pas porté) et B (« actions », le
+témoin). Puis, sur 256 mondes, l'agent choisit l'action dont il prédit le
+plus grand soulagement (règle de lecture fixée par nous).
+
+| | A, porte | B, actions | Plafond des actions (bayésien exact) |
+|---|---|---|---|
+| Précision du soulagement prédit (128 vies tenues à l'écart, 2 647 décisions) | **0,785** | 0,634 | 0,648 |
+| Survie en choisissant par le soulagement prédit (256 mondes du test 22) | **0,820** | 0,621 | — |
+
+Repères sans modèle, sur les mêmes 256 mondes : la même lecture avec les
+niveaux exacts 0,852 ; règle « événement » 0,723 ; règle « besoins »
+0,906.
+
+| | Critère | Verdict |
+|---|---|---|
+| **INTER1** | précision de A − plafond des actions ≥ **0,10** (borne basse > 0) | **passe** : +0,137 [0,113 ; 0,161] |
+| **INTER2** | survie de A − survie de B, mêmes mondes ≥ **0,08** (paires de vies, borne basse > 0) | **passe** : +0,199 [0,148 ; 0,250] |
+| | Validité : réplique (≤ 0,02 en moyenne) ; cache (≤ 1e-4) ; masques (≤ 1e-5) ; masse ≥ 0,5 ; précision de B ≤ plafond + 0,02 | **valide** : réplique 0,006 (A) et 0,007 (B) ; cache 6e-8 et 3e-7 ; masques 0 et 0 ; masse 1,000 ; B à 0,634 (plafond 0,648) |
+
+Intervalles bootstrap à 95 % par vie (10 000 tirages).
+
+**Critère global (INTER1 et INTER2) : satisfait.**
+
+**Lecture fixée d'avance** (INTER1 et INTER2 passent) : « Sans professeur,
+en apprenant seulement à prédire ce que ses actes font à son corps, un
+modèle de langage qui ne voit son passé qu'à travers ses propres états
+apprend à y porter ses besoins. Il prédit son soulagement mieux que tout
+observateur de ses seules actions. Et en choisissant l'action dont il
+attend le plus grand soulagement, il survit mieux qu'un témoin qui ne porte
+que ses actions. »
+
+**Publié sans seuil.**
+- **Précision selon le niveau** (A / B / plafond) : « aucun » 0,919 /
+  0,754 / 0,795 ; « petit » 0,956 / 0,836 / 0,793 ; « moyen » 0,590 /
+  0,407 / 0,503 ; « fort » 0,469 / 0,311 / 0,282 (443, 1 112, 783 et 309
+  décisions). A dépasse le plafond à chaque niveau ; les besoins bas
+  restent les plus durs à prédire.
+- **Part des décisions où la lecture prend l'action de la règle
+  « besoins »** (128 vies de mesure, sans changer la vie) : A 0,872 ;
+  B 0,840.
+- **Après 2 000 itérations** (lectures publiées dès leur fin, avant la
+  suite de l'apprentissage) : A 0,747, soit +0,099 [0,076 ; 0,122] au-dessus
+  du plafond ; B 0,635 (−0,013). L'écart de A a continué de croître de
+  2 000 à 4 000 itérations.
+- **Pertes de validation** (32 vies tenues à l'écart, sur les mots du
+  soulagement) : A 0,79 après 250 itérations, 0,44 à 4 000 ; B 0,84, puis
+  vers 0,81 sans baisser nettement.
+- **Précautions** : tours vécus avec un besoin à 2 ou moins, sur les 256
+  vies : A 653, B 829.
+
+**Écarts d'exécution, déclarés.**
+- **Lectures anticipées.** Les lectures finales de A (`fe95bca`) puis de B
+  (`b9ec1e8`) ont été publiées dès leur fin, et la valeur d'INTER1 a été
+  calculée et annoncée avant la fin des vies (A +0,137 ; B sous le
+  plafond). Aucun seuil n'a changé ; INTER2 n'a été lu qu'à la fin.
+- **La machine a redémarré** le matin du 5 octobre, pendant les premières
+  lectures finales ; rien n'avait été écrit. Le code a été modifié pour
+  garder les lectures toutes les 8 vies et reprendre exactement (`227a76f`,
+  exécution seulement) ; les lectures ont été relancées de zéro.
+- **Le conteneur a redémarré** à 14 h 07 UTC, pendant les vies ; elles ont
+  repris de leur sauvegarde (toutes les 8 vies).
+- Vers 18 h UTC, un calcul du test 28 a presque rempli la mémoire et ralenti
+  la machine ; il a été arrêté puis repris. Sans effet sur ces mesures
+  (calcul déterministe à un fil).
+- D'autres calculs (tests 28, 31, 32) tournaient en même temps.
+
+### Ce que cela dit
+
+- **Le modèle de langage fait comme les petits transformeurs du test 29.**
+  Sans choix à imiter, en apprenant seulement à prédire le soulagement de
+  ses actions, l'agent qui ne voit son passé qu'à travers ses propres
+  tokens portés prédit ce soulagement bien mieux que tout observateur de
+  ses seules actions (+0,137). Il porte donc, dans ces tokens, une
+  information sur ses besoins que ses actions ne donnent pas.
+- **Lu par une règle fixée par nous, cela le fait survivre** : 0,820
+  contre 0,621 pour le témoin, près de ce que donnerait la même lecture avec
+  les niveaux exacts (0,852).
+
+**Ce que le résultat ne dit pas.**
+- Rien sur un ressenti. « Soulagement » est le nom d'un signal du monde.
+- « Sans professeur » veut dire : sans choix à imiter. **La cible reste une
+  supervision directe du besoin** : le niveau du soulagement est le besoin
+  servi par l'action, rangé par le monde en quatre classes. Le résultat
+  montre que ce besoin, ainsi supervisé, passe par les états portés ; pas
+  qu'il émerge sans signal qui le nomme (c'est la question du test 31,
+  pour les petits transformeurs).
+- La règle qui choisit l'action la plus soulageante est fixée par nous.
+- Ce n'est pas un état unique mis à jour à chaque tour : un tour lit
+  directement les tokens portés de tout son passé. Avec 28 couches, ces
+  tokens peuvent porter plus que l'événement de leur tour (contrairement
+  aux petits modèles à deux couches), mais ce qu'ils portent n'est pas
+  mesuré ici : c'est la question du test 28.
+- Un seul apprentissage (une graine), sur un seul modèle.
+
 ## Test 27 pré-enregistré : le relais pas à pas
 
 Protocole `docs/LLM_NEED_RELAY_PROTOCOL.md` (commit `4a4527a`), écrit après

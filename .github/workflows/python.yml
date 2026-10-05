@@ -118,6 +118,7 @@ jobs:
       - run: python -m research.need_chain verdicts
       - run: python -m research.need_chain_far verdicts
       - run: python -m research.need_relay verdicts
+      - run: python -m research.need_relief verdicts
       - run: python -m research.tiny_relief verdicts
       - run: python -m research.tiny_survival verdicts
       - run: python -m research.tiny_survival_ac verdicts
