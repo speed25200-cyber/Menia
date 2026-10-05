@@ -1,0 +1,9 @@
+test_under_the_carry_mask_the_past_reaches_a_turn_only_through_its_carried_tokens (tests_research.test_need.MLXCarryTests.test_under_the_carry_mask_the_past_reaches_a_turn_only_through_its_carried_tokens) ... ok
+test_under_the_actions_mask_no_past_event_reaches_a_later_turn (tests_research.test_need.MLXMemoryTests.test_under_the_actions_mask_no_past_event_reaches_a_later_turn) ... ok
+test_relief_texts_are_cut_as_planned (tests_research.test_need.MLXReliefTests.test_relief_texts_are_cut_as_planned)
+docs/LLM_NEED_RELIEF_PROTOCOL.md: one token per relief word, lines of one length, the relief words the only ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 8.976s
+
+OK
