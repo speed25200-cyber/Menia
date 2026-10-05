@@ -70,7 +70,7 @@ dit (niveau 2).
 | Indicateur | Résultat | Statut |
 |---|---|---|
 | Homéostasie, auto-maintien | Deux besoins à maintenir ; l'agent apprend à les maintenir, et sa survie en dépend. | **établi (au sens fonctionnel)** |
-| Intéroception | L'agent ne voit jamais ses niveaux. Il les infère et les rassemble en un état interne, que le lecteur lit. Cet état est suffisant et nécessaire pour agir et pour dire (tests 6 et 7). Mais le test 14 montre que ce qui est dit est surtout un « oui » général qui suit l'état (« fait-il nuit ? » bouge presque autant que « es-tu fatigué ? »), pas un contenu sur l'énergie. Au test 23, chez l'agent de la mémoire (test 22), l'état porté d'un tour à l'autre dépend surtout de son besoin : greffé dans une autre vie, il fait pencher le choix vers ce que demanderaient les besoins d'origine (en moyenne la moitié d'un changement complet). Au test 26, sans choix à imiter, le modèle de langage apprend à prédire le soulagement de ses actions (le niveau du besoin servi) mieux que tout observateur de ses actions (+0,137), et s'en sert pour survivre (0,820 contre 0,621). Au test 28 (valide), son état porté, greffé dans une autre vie, fait prédire le soulagement selon les besoins de la vie d'origine (+0,35 niveau ; à événement égal, des besoins égaux ne bougent presque rien : 0,03), mais il porte aussi fortement l'événement du tour (à besoins égaux, un autre événement bouge déjà 0,27 ; exploration après lecture). | **établi pour l'acte ; parole sans contenu propre** |
+| Intéroception | L'agent ne voit jamais ses niveaux. Il les infère et les rassemble en un état interne, que le lecteur lit. Cet état est suffisant et nécessaire pour agir et pour dire (tests 6 et 7). Mais le test 14 montre que ce qui est dit est surtout un « oui » général qui suit l'état (« fait-il nuit ? » bouge presque autant que « es-tu fatigué ? »), pas un contenu sur l'énergie. Au test 23, chez l'agent de la mémoire (test 22), l'état porté d'un tour à l'autre dépend surtout de son besoin : greffé dans une autre vie, il fait pencher le choix vers ce que demanderaient les besoins d'origine (en moyenne la moitié d'un changement complet). Au test 26, sans choix à imiter, le modèle de langage apprend à prédire le soulagement de ses actions (le niveau du besoin servi, une supervision directe du besoin) mieux que tout observateur de ses actions (+0,137) ; lue par une règle fixée par nous (prendre l'action au plus grand soulagement prédit), cette prédiction le fait survivre à 0,820 contre 0,621 pour le témoin. Au test 28 (valide), son état porté, greffé dans une autre vie, fait prédire le soulagement selon les besoins de la vie d'origine (+0,35 niveau ; à événement égal, des besoins égaux ne bougent presque rien : 0,03), mais il porte aussi fortement l'événement du tour (à besoins égaux, un autre événement bouge déjà 0,27 ; exploration après lecture). | **établi pour l'acte ; parole sans contenu propre** |
 | États de valence | Le seul signal d'apprentissage est la réduction du manque : un état de valence fonctionnel. Nous n'avons pas mesuré de valence « vécue » : aucun test connu ne le permet. | **fonctionnel seulement** |
 | Modèle de soi, possession | Le test « À qui est ce besoin ? » (neuvième test) échoue : l'état bouge autant pour les événements de l'autre que pour les siens (MINE9). | **échoue** |
 
@@ -118,10 +118,11 @@ Voir `docs/LITERATURE_CHECK_READER_2026-09-30.md`.
   faut pour retrouver leurs besoins (10 graines sur 10). Mais, avec deux
   couches, chaque tour n'y écrit que son propre événement : le besoin est
   recomposé à chaque décision, pas porté comme un état qui dure (précision
-  vérifiée après lecture). Au test 26 (valide), le modèle de langage fait de
-  même, sans choix à imiter : il prédit son soulagement à 0,785 contre 0,648
+  vérifiée après lecture). Au test 26 (valide), le modèle de langage (28
+  couches) obtient le même type de résultat, sans choix à imiter : il prédit son soulagement à 0,785 contre 0,648
   pour le meilleur observateur de ses actions (+0,137), et, en choisissant
-  l'action qu'il prédit la plus soulageante, survit à 0,820 contre 0,621
+  l'action qu'il prédit la plus soulageante (règle fixée par nous), survit
+  à 0,820 contre 0,621
   pour le témoin (INTER1 et INTER2 passent ; la cible reste une supervision
   directe du besoin servi).
 
@@ -153,15 +154,17 @@ Voir `docs/LITERATURE_CHECK_READER_2026-09-30.md`.
    leurs états, pour 10 graines sur 10 (test 29 ; la cible reste une
    supervision directe du besoin servi). Mais, avec deux couches, chaque
    tour n'y écrit que son propre événement : le besoin est recomposé à
-   chaque décision (précision vérifiée après lecture). Au test 31, la même
-   mémoire s'apprend **sans aucune cible** qui nomme le besoin ou l'action,
-   par la seule survie (+0,107 sur le témoin, 10 graines sur 10). Restent la mémoire
-   courte et la récurrence au sens strict (un état qui ne passe que d'un
-   tour au suivant ; test 32 en cours). Chez le modèle de langage, sans
-   choix à imiter, le même résultat tient (test 26, valide : +0,137 sur le
-   plafond des actions, survie 0,820 contre 0,621) ; ses états portés
-   contiennent ses besoins, mêlés à l'événement du tour (test 28, valide ;
-   nuance après lecture).
+   chaque décision (précision vérifiée après lecture). Chez le modèle de
+   langage, le résultat du test 29 tient aussi, avec la même cible du
+   soulagement (supervision directe du besoin servi, sans choix à imiter) :
+   test 26, valide, +0,137 sur le plafond des actions ; survie 0,820 contre
+   0,621 par une lecture fixée par nous ; ses états portés contiennent ses
+   besoins, mêlés à l'événement du tour (test 28, valide ; nuance après
+   lecture). Au test 31, chez les petits transformeurs, la même mémoire
+   s'apprend **sans aucune cible** qui nomme le besoin ou l'action, par la
+   seule survie (+0,107 sur le témoin, 10 graines sur 10). Restent la
+   mémoire courte et la récurrence au sens strict (un état qui ne passe que
+   d'un tour au suivant ; test 32 en cours).
 5. Un besoin de savoir (test 12, « soif de savoir ») : **arrêté au pilote**, comme le
    protocole le prévoyait. Aucun taux d'apprentissage ne rend l'interférence entre
    domaines assez petite (au mieux 0,32 pour un seuil de 0,25)

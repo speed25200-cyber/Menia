@@ -1853,7 +1853,8 @@ mesure (`36d4f2b`). Apprentissage sur le Mac (Codemagic, étape `memory`
 avec les textes du soulagement), par morceaux de 250 itérations repris
 exactement, en cinq demandes du relais (103 à 107 : `29d442f`, `ba3e2c4`,
 `a83b3c6`, `bae320b`, `3d3216d`), du 4 au 5 octobre 2026. Mesures torch sur
-le processeur local, le 5 octobre (un fil par processus). Artefacts :
+le processeur local, le 5 octobre (lancé avec `--threads 1`, un fil par
+processus ; le nombre de fils n'est pas noté dans les fichiers). Artefacts :
 `artifacts/llm-need/relief`. Verdicts recalculés en local (identiques) ; la
 CI les vérifie à chaque envoi.
 
@@ -1904,15 +1905,26 @@ que ses actions. »
 - **Part des décisions où la lecture prend l'action de la règle
   « besoins »** (128 vies de mesure, sans changer la vie) : A 0,872 ;
   B 0,840.
-- **Après 2 000 itérations** (lectures publiées dès leur fin, avant la
-  suite de l'apprentissage) : A 0,747, soit +0,099 [0,076 ; 0,122] au-dessus
-  du plafond ; B 0,635 (−0,013). L'écart de A a continué de croître de
-  2 000 à 4 000 itérations.
+- **Après 2 000 itérations** (lectures publiées dès leur fin, le 5 octobre
+  à 6 h 43 et 6 h 46 UTC, alors que les itérations 2 001 à 3 500 étaient
+  déjà lancées — finies pour A, en cours pour B — ; seules 3 501 à 4 000
+  ont été lancées après ; le nombre d'itérations était fixé d'avance) :
+  A 0,747, soit +0,099 [0,076 ; 0,122] au-dessus du plafond ; B 0,635
+  (−0,013). L'écart de A a continué de croître de 2 000 à 4 000
+  itérations ; la hausse vient des niveaux hauts : chez A, « moyen » et
+  « fort » ont baissé de 2 000 à 4 000 itérations (0,68 → 0,59 ;
+  0,57 → 0,47), « aucun » et « petit » ont monté (0,87 → 0,92 ;
+  0,80 → 0,96).
 - **Pertes de validation** (32 vies tenues à l'écart, sur les mots du
-  soulagement) : A 0,79 après 250 itérations, 0,44 à 4 000 ; B 0,84, puis
-  vers 0,81 sans baisser nettement.
+  soulagement ; notées par le Mac à la fin de chaque morceau, comme au
+  test 22) : A 1,18 après 250 itérations, 0,84 à 500, 0,79 à 750, 0,52 à
+  2 000 et 0,44 à 4 000 ; B 1,00 après 250, 0,84 à 500, puis entre 0,80 et
+  0,86 sans baisser nettement (0,80 à 2 000, 0,81 à 4 000). (Première
+  version publiée : « A 0,79 après 250 itérations », erreur de lecture des
+  journaux par morceau ; corrigée après relecture.)
 - **Précautions** : tours vécus avec un besoin à 2 ou moins, sur les 256
-  vies : A 653, B 829.
+  vies : A 653, B 829 (tour de la mort compris, comme aux tests
+  précédents ; 607 et 732 sans lui).
 
 **Écarts d'exécution, déclarés.**
 - **Lectures anticipées.** Les lectures finales de A (`fe95bca`) puis de B
@@ -1932,7 +1944,9 @@ que ses actions. »
 
 ### Ce que cela dit
 
-- **Le modèle de langage fait comme les petits transformeurs du test 29.**
+- **Le modèle de langage fait comme les petits transformeurs du test 29**,
+  en moins fort (+0,137 contre +0,237 ; survie 0,820 contre 0,884), et loin
+  d'une mémoire parfaite (1).
   Sans choix à imiter, en apprenant seulement à prédire le soulagement de
   ses actions, l'agent qui ne voit son passé qu'à travers ses propres
   tokens portés prédit ce soulagement bien mieux que tout observateur de
@@ -1955,7 +1969,8 @@ que ses actions. »
   directement les tokens portés de tout son passé. Avec 28 couches, ces
   tokens peuvent porter plus que l'événement de leur tour (contrairement
   aux petits modèles à deux couches), mais ce qu'ils portent n'est pas
-  mesuré ici : c'est la question du test 28.
+  mesuré ici : c'est la question du test 28 (publié : ses besoins, mêlés à
+  l'événement du tour).
 - Un seul apprentissage (une graine), sur un seul modèle.
 
 ## Test 27 pré-enregistré : le relais pas à pas
@@ -2176,7 +2191,9 @@ processeur local, le 4 octobre 2026 (deux processus : graines 0 à 4 et 5
 à 9). Artefacts : `artifacts/tiny-relief`. Verdicts recalculés en local
 (identiques) ; la CI les vérifie à chaque envoi.
 
-**Ce qu'on teste.** Le test 26 (en cours sur le Mac) demande si un modèle
+**Ce qu'on teste.** Le test 26 (en cours sur le Mac ; publié depuis : valide, INTER1 et
+INTER2 passent ; « sans professeur » au sens de sans choix à imiter)
+demande si un modèle
 de langage pré-entraîné apprend, **sans professeur**, à porter ses besoins
 dans ses propres états, en apprenant seulement à prédire le soulagement de
 ses actions. Ici, on pose la même question à de **petits transformeurs
