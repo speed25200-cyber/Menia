@@ -1387,6 +1387,73 @@ class TinySurvivalACTests(unittest.TestCase):
         self.assertTrue(all(AC.verdicts(runs, ok, 0.72265625)["verdicts"].values()))
 
 
+class TinyLoopTests(unittest.TestCase):
+    def test_draw(self):
+        from research import tiny_loop as L
+        held = L.lives()
+        grafts = L.draw(held)
+        self.assertEqual(grafts, L.draw(held))
+        kinds = {k: sum(g["kind"] == k for g in grafts) for k in L.COUNTS}
+        self.assertTrue(kinds["a"] >= L.MIN_GRAFTS and kinds["b"] >= L.MIN_GRAFTS)
+        self.assertTrue(all(kinds[k] <= L.COUNTS[k] for k in L.COUNTS))
+        for g in grafts:
+            r = {x["t"]: x for x in W.decisions(held[g["r"]])}
+            d = {x["t"]: x for x in W.decisions(held[g["d"]])}
+            self.assertEqual(g["t"] - g["j"], g["g"])
+            self.assertIn(g["t"], r)
+            self.assertEqual(r[g["j"]]["action"], d[g["j"]]["action"])
+            same = (r[g["j"]]["E"], r[g["j"]]["N"]) == (d[g["j"]]["E"], d[g["j"]]["N"])
+            self.assertEqual(same, g["kind"] == "b")
+            self.assertEqual(g["e"] != 0, g["kind"] == "a")
+
+    def test_verdicts(self):
+        from research import tiny_loop as L
+        grafts = [{"index": i, "kind": k, "r": i, "g": 1 + i % 2, "e": (1 if i % 2 else -1) if k == "a" else 0}
+                  for i, k in enumerate(["a"] * 120 + ["a0"] * 20 + ["b"] * 110)]
+
+        def rows(strength, noise):
+            return [[g["index"], 0.5, 0.5 + (strength * g["e"] if g["kind"] == "a" else noise)] for g in grafts]
+        runs = {"loop": {}, "cut": {}}
+        for s in L.SEEDS:
+            runs["loop"][str(s)] = {"survival": 0.86 + 0.002 * s, "agrees": 0.8, "probe": {}, "grafts": rows(0.3, 0.02)}
+            runs["cut"][str(s)] = {"survival": 0.70, "agrees": 0.7, "probe": {}, "grafts": rows(0.0, 0.0)}
+        ok = {"cut_gap": 0.0, "self_graft_gap": 0.0}
+        out = L.verdicts(runs, grafts, ok, 0.72265625)
+        self.assertTrue(all(out["verdicts"].values()), out["verdicts"])
+        self.assertAlmostEqual(out["values"]["align"]["mean"], 0.3)
+        weak = json.loads(json.dumps(runs))
+        for s in L.SEEDS:
+            weak["loop"][str(s)]["grafts"] = rows(0.3, 0.2)  # history moves the choice as much as the need
+        self.assertFalse(L.verdicts(weak, grafts, ok, 0.72265625)["verdicts"]["LOOP4"])
+        bad = dict(ok, cut_gap=0.1)
+        self.assertFalse(L.verdicts(runs, grafts, bad, 0.72265625)["verdicts"]["valid"])
+        with self.assertRaises(ValueError):
+            L.verdicts(runs, grafts[:-1], ok, 0.72265625)
+
+    @unittest.skipUnless(__import__("importlib").util.find_spec("torch"), "needs torch")
+    def test_loop_network(self):
+        import torch
+        from research import tiny_loop as L
+        torch.set_num_threads(1)
+        held = [l for l in L.lives()[:12] if len(W.decisions(l)) >= 6]
+        net = L.model(0)
+        # only the state passes: under "loop" an earlier event changes later choices, under "cut" it does not
+        life = held[0]
+        changed = json.loads(json.dumps(life))
+        changed["turns"][0]["event"] = (life["turns"][0]["event"] + 1) % len(W.EVENTS)
+        a, _ = L.Reader(net, "loop").read(life)
+        b, _ = L.Reader(net, "loop").read(changed)
+        self.assertGreater(max(abs(a[t] - b[t]) for t in a if t > 1), 1e-6)
+        setup = L.checks(net, net, held)
+        self.assertEqual(setup["cut_gap"], 0.0)
+        self.assertEqual(setup["self_graft_gap"], 0.0)
+        # an episode runs, one decision per live turn
+        worlds = [np.random.default_rng([1, i]) for i in range(4)]
+        decisions, logps, _, values, length = L.episodes(net, "loop", worlds, lambda p, last: (p < 0.5).astype(int))
+        self.assertEqual(len(decisions), sum(len(x) for x in logps))
+        self.assertTrue(all(1 <= x <= W.TURNS for x in length))
+
+
 class ReliefTests(unittest.TestCase):
     def test_lives_texts_and_targets(self):
         from research import need_relief as RL, need_rules as NR
