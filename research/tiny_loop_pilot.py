@@ -76,8 +76,9 @@ def model(seed, gate):
 
 
 def train(arm, seed, config, log, checkpoint=None):
-    """The training of research/tiny_loop.py with the given number of updates, learning rate and gate; kept every 250
-    updates and taken back exactly after a stop."""
+    """The training of research/tiny_loop.py with the given number of updates, learning rate and gate (and, if the
+    config has "clip", the norm of the gradient bounded to it); kept every 250 updates and taken back exactly after a
+    stop."""
     import torch
     net = model(seed, config["gate"])
     opt = torch.optim.AdamW(net.parameters(), lr=config["lr"])
@@ -104,6 +105,8 @@ def train(arm, seed, config, log, checkpoint=None):
         loss = -(advantage * chosen).mean() + TL.VALUE * ((v - ret) ** 2).mean() - TL.ENTROPY * entropy.mean()
         opt.zero_grad()
         loss.backward()
+        if config.get("clip"):
+            torch.nn.utils.clip_grad_norm_(net.parameters(), config["clip"])
         opt.step()
         window.append(float((length == W.TURNS).mean()))
         if (update + 1) % 100 == 0:

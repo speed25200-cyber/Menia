@@ -1530,6 +1530,76 @@ class TinyLoopGateTests(unittest.TestCase):
         self.assertEqual((setup["cut_gap"], setup["self_graft_gap"]), (0.0, 0.0))
 
 
+class TinyLoopPilot2Tests(unittest.TestCase):
+    def test_settings_draw_and_choice(self):
+        from research import tiny_loop as L, tiny_loop_pilot as P, tiny_loop_pilot2 as Q
+        self.assertEqual(Q.CONFIG["R1"], P.CONFIG["L4"])
+        self.assertEqual(Q.CONFIG["R2"], dict(P.CONFIG["L4"], clip=1.0))
+        self.assertEqual((Q.CONFIG["R3"]["updates"], Q.CONFIG["R4"]["updates"]), (24000, 24000))
+        self.assertEqual(Q.CONFIG["R4"]["clip"], 1.0)
+        self.assertNotIn("clip", Q.CONFIG["R3"])
+        self.assertEqual(L.draw(L.lives()), L.draw(L.lives(), L.DRAW_STREAM))  # test 32's draw unchanged
+        held = Q.lives()
+        self.assertNotEqual(held[0], L.lives()[0])
+        grafts = Q.draw(held)
+        kinds = {k: sum(g["kind"] == k for g in grafts) for k in L.COUNTS}
+        self.assertTrue(kinds["a"] >= L.MIN_GRAFTS and kinds["b"] >= L.MIN_GRAFTS, kinds)
+        rows = [[g["index"], 0.5, 0.5 + (0.2 * g["e"] if g["kind"] == "a" else 0.3)] for g in grafts]
+        self.assertAlmostEqual(Q.carried(rows, grafts), 0.2)
+        with self.assertRaises(ValueError):
+            Q.carried(rows[:-1], grafts)
+        cuts = {str(k): 0.73 for k in Q.SEEDS}
+
+        def runs(survival, m):
+            return {str(k): {"survival": survival[i], "m": m[i]} for i, k in enumerate(Q.SEEDS)}
+        loops = {"R1": runs([0.85] * 4, [0.40, 0.40, 0.40, 0.01]),  # one seed does not carry the needs
+                 "R2": runs([0.85] * 4, [0.30, 0.30, 0.30, 0.30]),
+                 "R3": runs([0.85] * 4, [0.31, 0.30, 0.31, 0.31]),  # within the tie of R2
+                 "R4": runs([0.85, 0.85, 0.85, 0.76], [0.50] * 4)}  # gains 0.03 on one seed
+        chosen, table = Q.choose(loops, cuts)
+        self.assertEqual(chosen, "R2")
+        self.assertFalse(table["R1"]["reliable"] or table["R4"]["reliable"])
+        loops["R3"] = runs([0.85] * 4, [0.32] * 4)
+        self.assertEqual(Q.choose(loops, cuts)[0], "R3")
+        self.assertIsNone(Q.choose({"R1": loops["R1"]}, cuts)[0])
+        three = {"R2": {k: v for k, v in loops["R2"].items() if k != "103"}}
+        self.assertIsNone(Q.choose(three, cuts)[0])  # all four seeds are needed
+
+    @unittest.skipUnless(__import__("importlib").util.find_spec("torch"), "needs torch")
+    def test_clip_and_resume(self):
+        import tempfile
+        import torch
+        from research import tiny_loop_pilot as P, tiny_loop_pilot2 as Q
+        torch.set_num_threads(1)
+        start = P.model(7, True).state_dict()
+        moved = {}
+        for clip in (None, 1e-12):
+            config = dict(P.CONFIG["L4"], updates=2)
+            if clip:
+                config["clip"] = clip
+            net, _ = P.train("loop", 7, config, lambda m: None)
+            moved[clip] = max(float((v - start[k]).abs().max()) for k, v in net.state_dict().items())
+        self.assertGreater(moved[None], 4e-4)  # about two steps of the learning rate
+        self.assertLess(moved[1e-12], moved[None] / 10)  # bounded to almost nothing: only the weight decay is left
+        with tempfile.TemporaryDirectory() as root, tempfile.TemporaryDirectory() as first:
+            for d in ("runs", "checkpoints"):
+                Path(root, d).mkdir()
+            Path(first, "checkpoints").mkdir()
+            torch.save({"update": 12000}, Path(first, "checkpoints", "L4-100.pt"))
+            self.assertTrue(Q.ready(root, "R1", 100, first))
+            self.assertTrue(Path(root, "checkpoints", "R1-100.pt").exists())
+            self.assertFalse(Q.ready(root, "R3", 100, first))  # R1 not done yet
+            Path(root, "runs", "R1-100.json").write_text("{}")
+            self.assertTrue(Q.ready(root, "R3", 100, first))
+            self.assertEqual(torch.load(Path(root, "checkpoints", "R3-100.pt"), weights_only=False)["update"], 12000)
+            self.assertTrue(Q.ready(root, "R2", 103, first))  # trained from the start
+            Path(root, "claims").mkdir()
+            self.assertTrue(Q.claim(root, "R2", 103))
+            self.assertFalse(Q.claim(root, "R2", 103))
+            Path(root, "claims", "R2-103").write_text("999999999")  # a process that died
+            self.assertTrue(Q.claim(root, "R2", 103))
+
+
 class ReliefTests(unittest.TestCase):
     def test_lives_texts_and_targets(self):
         from research import need_relief as RL, need_rules as NR

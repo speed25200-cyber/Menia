@@ -44,3 +44,7 @@ artifacts/tiny-loop/checkpoints/
 !artifacts/tiny-loop-gate/runs/
 artifacts/tiny-loop-gate/checkpoints/
 artifacts/tiny-loop-pilot/checkpoints/
+!artifacts/tiny-loop-pilot2/
+artifacts/tiny-loop-pilot2/checkpoints/
+artifacts/tiny-loop-pilot2/claims/
+!artifacts/tiny-loop-pilot2/runs/

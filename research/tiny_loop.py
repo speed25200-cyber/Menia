@@ -37,11 +37,11 @@ def lives():
     return RL.writer_lives(LIVES_STREAM, LIVES)
 
 
-def draw(held):
+def draw(held, stream=DRAW_STREAM):
     """The grafts of the protocol, without any model: recipients in order; per gap up to PER_GAP turns t; per t one
     donor of each kind, alive at j with the same written action at j: (a) other needs after the event of j and a rule
     effect not zero, (a0) other needs and a rule effect zero, (b) the same needs."""
-    rng = np.random.default_rng([W.SEED, DRAW_STREAM, 0])
+    rng = np.random.default_rng([W.SEED, stream, 0])
     at = [{x["t"]: x for x in W.decisions(life)} for life in held]
     out, counts = [], {kind: 0 for kind in COUNTS}
     for r, life in enumerate(held):
