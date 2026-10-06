@@ -2961,6 +2961,73 @@ les besoins. »
   qu'après lecture, dans sept graines sur dix.
 - Ces modèles sont petits, le monde aussi.
 
+## Second pilote avant le test 34 : rendre la boucle fiable
+
+Plan `docs/TINY_LOOP_PILOT2_PLAN.md` (commit `69d9b8f`), écrit après le
+test 33 et avant tout code du pilote ; code `ed0eb6f`, commis avant toute
+exécution, essayé sur 250 et 500 mises à jour de la graine 999, hors
+protocole. Calcul torch sur le processeur local, le 6 octobre 2026 (quatre
+processus à un fil). Artefacts : `artifacts/tiny-loop-pilot2` (choix
+recalculé en local, identique).
+
+**Ce qu'on règle.** L'apprentissage de la boucle à porte du test 33, sur les
+graines 100 à 103, cette fois **sur la greffe elle-même** : pour chaque
+réglage et chaque graine, la survie sur 256 mondes à part (flux
+`[270926, 73]`) et **m**, l'effet aligné des greffes (a), sur 128 vies de
+greffe à part (flux `[270926, 79]` ; tirage `[270926, 80, 0]` : 400 (a),
+200 (a0), 200 (b)). Le témoin coupé est appris une fois par graine avec R1.
+Quatre réglages : R1 (le test 33 tel quel, 12 000 mises à jour), R2 (R1,
+norme du gradient bornée à 1), R3 (R1, 24 000 mises à jour), R4 (R2,
+24 000 mises à jour).
+
+| Survie sur les mondes du pilote (m) | Graine 100 | Graine 101 | Graine 102 | Graine 103 | Gain moyen sur le témoin | m moyen | Fiable |
+|---|---|---|---|---|---|---|---|
+| Témoin coupé (R1) | 0,680 | 0,695 | 0,672 | 0,680 | — | — | — |
+| R1 (test 33) | 0,848 (+0,408) | 0,816 (+0,466) | 0,867 (+0,463) | 0,852 (+0,392) | +0,164 | +0,432 | oui |
+| R2 (gradient borné) | 0,871 (+0,428) | 0,879 (+0,427) | 0,703 (+0,500) | 0,863 (+0,559) | +0,147 | +0,478 | **non** (graine 102 : gain +0,031) |
+| **R3 (24 000 mises à jour)** | **0,887 (+0,592)** | **0,887 (+0,455)** | **0,879 (+0,565)** | **0,887 (+0,384)** | **+0,203** | **+0,499** | **oui** |
+| R4 (les deux) | 0,871 (+0,485) | 0,883 (+0,455) | 0,859 (+0,487) | 0,879 (+0,460) | +0,191 | +0,472 | oui |
+
+**Choix selon la règle fixée d'avance** (fiable : pour les quatre graines,
+m > 0,05 et un gain sur le témoin d'au moins 0,04 ; parmi les réglages
+fiables, le plus grand m moyen, le plus simple à 0,01 près) : **R3**, le
+réglage du test 33 appris deux fois plus longtemps. R4 est 0,027 en
+dessous, R1 0,067 en dessous.
+
+- R1 sur les graines 100 à 102 a été repris des points gardés par le
+  premier pilote : ses survies redonnent exactement celles publiées pour L4
+  (0,848, 0,816, 0,867). R3 et R4 prolongent R1 et R2 depuis 12 000 mises
+  à jour.
+- **Ce pilote départage peu.** Avec R1, le réglage du test 33, les quatre
+  graines du pilote portent déjà les besoins (m de +0,39 à +0,47), alors
+  qu'au test 33 trois graines sur dix ne les portaient pas. Si trois
+  graines sur dix échouent, quatre réussites de suite arrivent environ une
+  fois sur quatre par hasard. Le pilote ne montre donc pas que R3 corrige
+  l'échec du test 33. Il montre que, sur ces graines, apprendre plus
+  longtemps augmente un peu m (+0,499 contre +0,432) et la survie (gain
+  +0,203 contre +0,164).
+- **Borner le gradient n'empêche pas les effondrements.** Le plus bas des
+  courbes après 2 000 mises à jour (survie pendant l'apprentissage, moyenne
+  sur 100 mises à jour) : R1 et R3 0,67 ; 0,30 ; 0,10 ; 0,67 (R3 descend
+  aussi à 0,44 vers 12 900 mises à jour pour la graine 103) ; R2 et R4
+  0,68 ; 0,45 ; 0,23 ; 0,64 ; témoin 0,67 à 0,68. En fin d'apprentissage,
+  les boucles sont entre 0,80 et 0,86, le témoin vers 0,69.
+
+**Écarts, déclarés.**
+- Les résultats de R2 pour les graines 101 et 102 ont été publiés dans le
+  commit `c4ca8d9`, dont le message ne nomme que la graine 100 ; celui de
+  R3 pour la graine 101 dans le commit `4d6ab31`, dont le message ne nomme
+  que R2 graine 103. Les suivants ont été commis un par un.
+- Les résultats ont été lus au fil de l'eau ; la règle de choix n'a pas
+  changé.
+
+**Ce que cela dit.** Sur ces quatre graines, la boucle à porte apprise par
+la seule survie porte ses besoins avec chacun des quatre réglages ; le plus
+long (R3) le fait le plus. Ce n'est pas un résultat : ces graines, ces
+mondes et ces vies ont servi à choisir. La question est reposée au test 34,
+sur dix graines neuves et de nouvelles vies de greffe, avec les critères du
+test 33.
+
 ## Analyse exploratoire : le « oui » suit-il le besoin ou la décision ? (2 octobre)
 
 Écrite **après** le verdict du test 14, sur ses lectures publiées
