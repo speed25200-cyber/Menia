@@ -128,16 +128,19 @@ def taken(root, name, seed):
 
 
 def claim(root, name, seed):
-    """Take the job for this process, unless another living process holds it."""
+    """Take the job for this process, unless another living process holds it. The claim appears with its process id
+    already written (a hard link of a finished file), so that no other process ever reads it empty."""
     path = Path(root) / "claims" / f"{name}-{seed}"
     if taken(root, name, seed):
         return False
+    draft = path.with_name(f".{path.name}.{os.getpid()}")
+    draft.write_text(str(os.getpid()))
     try:
-        fd = os.open(path, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+        os.link(draft, path)
     except FileExistsError:
         return False
-    os.write(fd, str(os.getpid()).encode())
-    os.close(fd)
+    finally:
+        draft.unlink()
     return True
 
 

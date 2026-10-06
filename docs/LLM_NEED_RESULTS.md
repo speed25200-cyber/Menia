@@ -2965,8 +2965,8 @@ les besoins. »
 
 Plan `docs/TINY_LOOP_PILOT2_PLAN.md` (commit `69d9b8f`), écrit après le
 test 33 et avant tout code du pilote ; code `ed0eb6f`, commis avant toute
-exécution, essayé sur 250 et 500 mises à jour de la graine 999, hors
-protocole. Calcul torch sur le processeur local, le 6 octobre 2026 (quatre
+exécution du pilote ; un essai hors protocole (graine 999, 250 et 500 mises
+à jour) a commencé une minute avant ce commit. Calcul torch sur le processeur local, le 6 octobre 2026 (quatre
 processus à un fil). Artefacts : `artifacts/tiny-loop-pilot2` (choix
 recalculé en local, identique).
 
@@ -2996,7 +2996,9 @@ dessous, R1 0,067 en dessous.
 
 - R1 sur les graines 100 à 102 a été repris des points gardés par le
   premier pilote : ses survies redonnent exactement celles publiées pour L4
-  (0,848, 0,816, 0,867). R3 et R4 prolongent R1 et R2 depuis 12 000 mises
+  (0,848, 0,816, 0,867 ; ce sont les mêmes réseaux, mesurés à nouveau : cela
+  vérifie la mesure, pas l'apprentissage). Ces trois graines sont aussi
+  celles sur lesquelles L4 avait été choisi au premier pilote. R3 et R4 prolongent R1 et R2 depuis 12 000 mises
   à jour.
 - **Ce pilote départage peu.** Avec R1, le réglage du test 33, les quatre
   graines du pilote portent déjà les besoins (m de +0,39 à +0,47), alors
@@ -3004,13 +3006,16 @@ dessous, R1 0,067 en dessous.
   graines sur dix échouent, quatre réussites de suite arrivent environ une
   fois sur quatre par hasard. Le pilote ne montre donc pas que R3 corrige
   l'échec du test 33. Il montre que, sur ces graines, apprendre plus
-  longtemps augmente un peu m (+0,499 contre +0,432) et la survie (gain
+  longtemps augmente m en moyenne (+0,499 contre +0,432 : nettement sur
+  deux graines, 0,408 → 0,592 et 0,463 → 0,565 ; les deux autres baissent
+  un peu, 0,466 → 0,455 et 0,392 → 0,384) et la survie sur les quatre (gain
   +0,203 contre +0,164).
 - **Borner le gradient n'empêche pas les effondrements.** Le plus bas des
   courbes après 2 000 mises à jour (survie pendant l'apprentissage, moyenne
-  sur 100 mises à jour) : R1 et R3 0,67 ; 0,30 ; 0,10 ; 0,67 (R3 descend
-  aussi à 0,44 vers 12 900 mises à jour pour la graine 103) ; R2 et R4
-  0,68 ; 0,45 ; 0,23 ; 0,64 ; témoin 0,67 à 0,68. En fin d'apprentissage,
+  sur 100 mises à jour, graines 100 à 103) : R1 0,67 ; 0,30 ; 0,10 ;
+  0,67 ; R3 0,67 ; 0,30 ; 0,10 ; 0,44 (après 12 000, R3 redescend à 0,38
+  vers 12 300 pour la graine 101 et à 0,44 vers 12 900 pour la 103) ; R2
+  et R4 0,68 ; 0,45 ; 0,23 ; 0,64 ; témoin 0,67 à 0,68. En fin d'apprentissage,
   les boucles sont entre 0,80 et 0,86, le témoin vers 0,69.
 
 **Écarts, déclarés.**
@@ -3041,9 +3046,10 @@ Artefacts : `artifacts/tiny-loop-reliable`. Verdicts recalculés en local
 **Ce qu'on teste.** La question des tests 32 et 33, avec le réglage R3
 choisi au second pilote, pour la boucle **et** le témoin coupé : l'état à
 porte du test 33 et **24 000 mises à jour** (au lieu de 12 000). Un petit
-transformeur appris de zéro ne voit jamais les tours passés ; seul cet état
-passe d'un tour au suivant. Il n'apprend que de sa survie ; ses besoins ne
-lui sont jamais donnés. Dix graines neuves (20 à 29) et **128 vies de
+transformeur appris de zéro ne voit des tours passés que sa dernière action,
+comme le témoin ; sinon, seul cet état passe d'un tour au suivant. Il
+n'apprend que de sa survie ; ses besoins ne lui sont jamais donnés. Dix
+graines neuves (20 à 29) et **128 vies de
 greffe neuves** (flux `[270926, 81]` ; tirage `[270926, 82, 0]` : 400 (a),
 200 (a0), 200 (b)). Critères du test 33, inchangés.
 
@@ -3120,17 +3126,40 @@ ses besoins, que rien ne lui a nommé. »
   les mêmes graines) : survie 0,853 contre 0,734 (+0,119 [0,077 ; 0,161]) ;
   m +0,381 [0,243 ; 0,520], **9 graines sur 10 au-dessus de 0,05**, mais
   la graine 20 de justesse (0,057) et la graine 24 à peu près nulle
-  (0,009). À ce point, ces graines auraient donc aussi satisfait les seuils
-  de LOOP3. Ce qui change entre 12 000 et 24 000 : les graines 20 et 24
-  rattrapent les autres (0,586 et 0,510), et l'écart entre graines se
-  resserre (intervalle [0,510 ; 0,549] contre [0,243 ; 0,520]). Avec le
-  test 33 (7 graines sur 10 à 12 000 mises à jour), cela fait 16 graines
-  sur 20 à 12 000, et 10 sur 10 à 24 000 : une description, pas un test.
+  (0,009) ; ces deux graines survivaient à peine mieux que leur témoin
+  (+0,008 et +0,012). **À ce point, ces graines satisfaisaient déjà les
+  seuils des quatre critères** (calculé après lecture, avec les mêmes
+  formules : LOOP1 +0,119 [0,077 ; 0,161] ; LOOP2 +0,130 [0,089 ; 0,172] ;
+  LOOP3 ci-dessus ; LOOP4 0,055 contre 0,391, différence +0,336 [0,213 ;
+  0,458]) : avec le réglage du test 33, le critère global aurait été
+  satisfait sur ces graines. Ce qui change entre 12 000 et 24 000 : les
+  graines 20 et 24 rattrapent les autres (0,586 et 0,510), et l'écart entre
+  graines se resserre (intervalle [0,510 ; 0,549] contre [0,243 ; 0,520]).
+  Avec le test 33 (7 graines sur 10 à 12 000 mises à jour), cela fait 16
+  graines sur 20 à 12 000, et 10 sur 10 à 24 000 : une description, pas un
+  test ; l'écart entre le test 33 et ce test peut venir des graines.
 - **L'apprentissage reste instable** : quatre graines s'effondrent un moment
   après 2 000 mises à jour puis se rétablissent (0,01 vers 2 800 pour la
   graine 20, 0,08 vers 2 200 pour la 23, 0,00 vers 4 700 pour la 27, 0,08
-  vers 2 600 pour la 29). Le témoin coupé apprend, comme avant, presque la
-  même table (0,730 ou 0,734).
+  vers 2 600 pour la 29) ; la graine 21 descend aussi à 0,45 vers 7 500, la
+  26 à 0,53 vers 3 100. Le témoin coupé apprend, comme avant, presque la
+  même table (0,730 ou 0,734 ; son plus bas après 2 000 : 0,63 à 0,68).
+
+**Publié sans seuil : à 12 000 mises à jour et creux des courbes, graine par
+graine.**
+
+| Graine | m à 12 000 | m à 24 000 | A : survie à 12 000 | B : survie à 12 000 | Plus bas de A après 2 000 (vers) |
+|---|---|---|---|---|---|
+| 20 | 0,057 | 0,586 | 0,742 | 0,734 | 0,01 (2 800) |
+| 21 | 0,429 | 0,528 | 0,859 | 0,734 | 0,45 (7 500) |
+| 22 | 0,508 | 0,560 | 0,879 | 0,734 | 0,58 (2 100) |
+| 23 | 0,417 | 0,529 | 0,902 | 0,734 | 0,08 (2 200) |
+| 24 | 0,009 | 0,510 | 0,746 | 0,734 | 0,68 (6 900) |
+| 25 | 0,519 | 0,537 | 0,879 | 0,734 | 0,64 (11 200) |
+| 26 | 0,568 | 0,515 | 0,883 | 0,734 | 0,53 (3 100) |
+| 27 | 0,357 | 0,530 | 0,887 | 0,734 | 0,00 (4 700) |
+| 28 | 0,489 | 0,513 | 0,871 | 0,730 | 0,67 (4 800) |
+| 29 | 0,461 | 0,491 | 0,883 | 0,734 | 0,08 (2 600) |
 
 **Écarts d'exécution, déclarés.**
 - Les résultats bruts ont été publiés dès leur écriture, chacun dans son
@@ -3141,9 +3170,32 @@ ses besoins, que rien ne lui a nommé. »
 - Le brouillon du protocole (avec des blancs pour le réglage) et un
   brouillon du code ont été écrits pendant le second pilote, hors du dépôt ;
   le protocole a été complété et commis après le choix du pilote, le code
-  après le protocole.
+  après le protocole. La mesure à 12 000 mises à jour (et la phrase « Cela
+  dira si… ») a été ajoutée au protocole après le second pilote ; elle
+  n'était pas dans le brouillon. Sans seuil, elle a été commise avant tout
+  apprentissage.
+- Verdicts écrits à 19 h 07 UTC, publication à 19 h 10 ; le texte et le
+  script des tables ont été préparés pendant les apprentissages, les
+  nombres remplis après les verdicts.
 - Vers 16 h UTC, l'outil de la session a redémarré ; les calculs n'ont pas
   été touchés (les quatre processus ont continué depuis 10 h 15).
+
+**Relecture indépendante** (après publication). Tous les nombres publiés ont
+été recalculés à part, avec numpy, et retrouvés ; les graines 20 et 24,
+réapprises de zéro jusqu'à 12 000 mises à jour, redonnent exactement les
+mesures publiées ; un apprentissage coupé puis repris est identique, bit à
+bit, à un apprentissage d'une traite. Vérification de la relecture, après
+lecture : LOOP4 tient aussi quand on compare des greffes (a) et (b) dont
+l'histoire de la donneuse diffère autant (3, 2 ou 1 tours différents parmi
+les 3 derniers : \|ΔP\| 0,563 contre 0,064, 0,529 contre 0,081, 0,450
+contre 0,044). La relecture a corrigé une conclusion (« apprendre plus
+longtemps a rendu le résultat fiable » : à 12 000 mises à jour, ces graines
+passaient déjà les seuils) et fait préciser la dernière action, les valeurs
+graine par graine et les écarts ci-dessus. Le code de répartition des
+apprentissages entre processus a ensuite été rendu plus sûr (une
+réservation n'est plus jamais lue vide ; le contrôle de la graine 20 vérifie
+qu'il lit le point final) ; rien de cela n'est arrivé pendant le calcul, et
+les résultats n'en dépendent pas.
 
 ### Ce que cela dit
 
@@ -3152,13 +3204,19 @@ ses besoins, que rien ne lui a nommé. »
   s'en sert** : dix graines neuves sur dix, de nouvelles vies de greffe,
   tous les critères pré-enregistrés. Ses besoins ne lui sont jamais donnés ;
   il les reconstruit à partir des événements et de ses actions, les garde
-  dans le seul état qui passe d'un tour au suivant, et cet état, greffé
+  dans l'état qui passe d'un tour au suivant (sa seule autre entrée venue
+  du passé est sa dernière action, que le témoin reçoit aussi), et cet
+  état, greffé
   dans une autre vie, fait choisir selon les besoins de la vie d'origine,
   à événement égal et à histoire différente.
-- **Apprendre plus longtemps a rendu le résultat fiable.** À 12 000 mises
-  à jour, il manquait à deux graines sur dix (dont une à peine au-dessus du
-  seuil) ; à 24 000, toutes portent leurs besoins, avec très peu d'écart
-  entre elles. Le test ne dit pas pourquoi certaines graines tardent.
+- **Apprendre plus longtemps a resserré le résultat ; ce test ne montre
+  pas qu'il était nécessaire.** À 12 000 mises à jour (mesuré en chemin),
+  ces dix graines satisfaisaient déjà les seuils des quatre critères
+  (LOOP3 : 9 graines sur 10 ; la graine 24 à peu près nulle, 0,009, la 20
+  de justesse, 0,057, et ces deux graines survivaient à peine mieux que leur
+  témoin, +0,008 et +0,012). À 24 000, elles ont rattrapé les autres (m de
+  0,49 à 0,59). L'écart avec le test 33 (7 graines sur 10 à 12 000) peut
+  venir des graines. Le test ne dit pas pourquoi certaines graines tardent.
 
 **Ce que le résultat ne dit pas.**
 - Rien sur un ressenti.
@@ -3174,9 +3232,12 @@ ses besoins, que rien ne lui a nommé. »
   une lecture fine de E et de N.
 - **Ce qui est déjà connu** (`docs/LITERATURE_CHECK_LOOP_2026-10-06.md`) :
   des agents récurrents appris par renforcement ou par stratégie
-  évolutionnaire suivent un niveau interne dans leur état, et forcer cet
-  état change leur comportement, mais ce niveau leur est **donné en
-  entrée** (Hayes 2026 ; Chaturvedi et al. 2025). L'apport est étroit : des
+  évolutionnaire suivent un niveau interne dans leur état, et forcer ou
+  perturber cet état change leur comportement, mais ce niveau leur est
+  **donné en entrée**, parfois avec du bruit (Chaturvedi et al. 2025,
+  révisé en 2026 ; Hayes 2026) ; et qu'un agent récurrent appris par
+  renforcement sous observabilité partielle garde une mémoire des variables
+  cachées est attendu (DRQN, états à porte). L'apport est étroit : des
   besoins jamais observés, une greffe entre deux vies contre un témoin sans
   mémoire, la séparation du besoin et de l'histoire, le pré-enregistrement.
   Ce n'est pas une découverte de principe.

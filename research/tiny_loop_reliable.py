@@ -92,9 +92,13 @@ def job(root, arm, seed, held, grafts, log):
 
 def setup(root, held, log):
     """The checks of test 32 on seed 20, once both of its runs are done (their final checkpoints, without training)."""
+    import torch
     nets = {}
     for arm in ARMS:
-        net, _ = TLP.train(arm, SEEDS[0], CONFIG, log, checkpoint=Path(root) / "checkpoints" / f"{arm}-{SEEDS[0]}.pt")
+        checkpoint = Path(root) / "checkpoints" / f"{arm}-{SEEDS[0]}.pt"
+        if torch.load(checkpoint, weights_only=False)["update"] != CONFIG["updates"]:
+            raise ValueError(f"{checkpoint} is not at {CONFIG['updates']} updates")
+        net, _ = TLP.train(arm, SEEDS[0], CONFIG, log, checkpoint=checkpoint)
         net.eval()
         nets[arm] = net
     (Path(root) / "setup.json").write_text(json.dumps(TL.checks(nets["loop"], nets["cut"], held), indent=1) + "\n")
@@ -121,6 +125,10 @@ def run(a):
             if name == "setup" and any(not (root / "runs" / f"{arm}-{seed}.json").exists() for arm in ARMS):
                 continue
             if Q.claim(root, name, seed):
+                done = root / ("setup.json" if name == "setup" else f"runs/{name}-{seed}.json")
+                if done.exists():  # finished by another process since the list was made
+                    (root / "claims" / f"{name}-{seed}").unlink()
+                    break
                 if name == "setup":
                     setup(root, held, log)
                 else:
