@@ -32,7 +32,8 @@ une autre, fait-il choisir selon les besoins de la vie d'origine ?
   moment de l'évaluation changent le comportement.
 - **État caché qui suit une réserve, et intervention causale.** Chaturvedi,
   El-Gazzar et van Gerven, « Emergence of Internal State-Modulated Swarming
-  in Multi-Agent Patch Foraging System », arXiv 2510.18886, 2026. Réseau
+  in Multi-Agent Patch Foraging System », arXiv 2510.18886, 2025 (révisé en
+  2026). Réseau
   récurrent à temps continu, appris par stratégie évolutionnaire
   (CMA-ES) ; la réserve est **donnée en entrée** ; des unités cachées la
   suivent, et **les forcer** vers l'état « épuisé » avance le comportement
@@ -49,7 +50,8 @@ une autre, fait-il choisir selon les besoins de la vie d'origine ?
 
 - Qu'un agent récurrent appris par renforcement suive dans ses états un
   niveau interne, et que forcer ces états change son comportement, **est
-  déjà montré** (Chaturvedi et al. ; Hayes), mais avec le niveau **donné
+  déjà montré** (Chaturvedi et al., par stratégie évolutionnaire ; Hayes,
+  par renforcement), mais avec le niveau **donné
   en entrée** (ou observé avec du bruit).
 - Ce qui reste propre au test 33, si ses critères passent : les besoins ne
   sont **jamais observés** ; l'agent doit les reconstruire à partir des
