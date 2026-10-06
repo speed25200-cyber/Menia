@@ -3261,7 +3261,9 @@ j, et on lit le choix au tour t = j + g, pour **g = 1 à 6**, sur 128 vies
 de greffe neuves (flux `[270926, 83]` ; tirage `[270926, 84, 0]`, trois
 tours par receveuse et par g ; 5 282 greffes). m_g = moyenne sur les
 greffes (a) de ΔP(R) × e ; une boucle qui suivrait exactement la règle
-« besoins » aurait m_g = 1 à toute distance.
+« besoins » aurait m_g = 1 à toute distance. À g = 1, +0,550 ici contre
++0,613 au test 34 sur les mêmes réseaux : autres vies, et tirage sans
+plafond (celui du test 34 s'arrêtait à 400 greffes (a)).
 
 | g (tours entre la greffe et le choix) | 1 | 2 | 3 | **4** | 5 | **6** |
 |---|---|---|---|---|---|---|
@@ -3270,9 +3272,9 @@ greffes (a) de ΔP(R) × e ; une boucle qui suivrait exactement la règle
 | Intervalle à 95 % | [0,529 ; 0,570] | [0,378 ; 0,437] | [0,276 ; 0,338] | [0,229 ; 0,282] | [0,145 ; 0,214] | [0,114 ; 0,182] |
 | m_g / m_1 | 1 | 0,74 | 0,56 | 0,46 | 0,33 | 0,27 |
 | \|ΔP\| (a) | 0,568 | 0,424 | 0,318 | 0,268 | 0,216 | 0,169 |
-| \|ΔP\| (b) (sans autre histoire exclues) | 0,073 (0,084) | 0,060 (0,072) | 0,053 (0,063) | 0,036 (0,045) | 0,036 (0,045) | 0,023 (0,029) |
+| \|ΔP\| (b) (entre parenthèses : sans les greffes (b) de même histoire) | 0,073 (0,084) | 0,060 (0,072) | 0,053 (0,063) | 0,036 (0,045) | 0,036 (0,045) | 0,023 (0,029) |
 | \|ΔP\| (a0) | 0,156 | 0,108 | 0,096 | 0,072 | 0,060 | 0,041 |
-| m_g à événement égal au tour j | +0,495 | +0,385 | +0,343 | +0,266 | +0,165 | +0,220 |
+| m_g à événement égal au tour j (greffes (a) concernées) | +0,495 (82) | +0,385 (63) | +0,343 (72) | +0,266 (44) | +0,165 (38) | +0,220 (34) |
 
 | | Critère | Valeur | Verdict |
 |---|---|---|---|
@@ -3294,19 +3296,35 @@ chose à six tours. »
 | Graine | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 |
 |---|---|---|---|---|---|---|---|---|---|---|
 | m_1 | 0,602 | 0,572 | 0,551 | 0,556 | 0,518 | 0,581 | 0,542 | 0,536 | 0,530 | 0,509 |
+| m_2 | 0,480 | 0,415 | 0,445 | 0,424 | 0,365 | 0,404 | 0,441 | 0,361 | 0,386 | 0,353 |
+| m_3 | 0,378 | 0,299 | 0,351 | 0,346 | 0,282 | 0,322 | 0,311 | 0,280 | 0,235 | 0,266 |
 | m_4 | 0,299 | 0,251 | 0,299 | 0,258 | 0,188 | 0,293 | 0,279 | 0,234 | 0,225 | 0,229 |
+| m_5 | 0,270 | 0,138 | 0,215 | 0,239 | 0,131 | 0,186 | 0,169 | 0,166 | 0,128 | 0,153 |
 | m_6 | 0,227 | 0,114 | 0,206 | 0,183 | 0,087 | 0,155 | 0,172 | 0,102 | 0,116 | 0,121 |
 
-- **L'effet s'efface d'environ un quart par tour** (m_g / m_1 : 0,74 ;
-  0,56 ; 0,46 ; 0,33 ; 0,27), dans toutes les graines : une mémoire des
-  besoins qui s'estompe, pas une mémoire qui garde. Une boucle qui suivrait
-  exactement les besoins garderait tout l'effet. Après lecture : ce rythme
-  (environ 0,77 par tour) est proche de la part de l'ancien état que la
-  porte garde en moyenne à chaque tour (1 − 0,25 = 0,75) ; ce n'est qu'un
-  rapprochement, non testé.
+(\|ΔP\| par sorte et par graine : `verdicts.json`, `by_seed`.)
+
+- **L'effet sur le choix baisse d'environ un quart par tour** (m_g / m_1 :
+  0,74 ; 0,56 ; 0,46 ; 0,33 ; 0,27), dans toutes les graines ; une boucle
+  qui suivrait exactement la règle « besoins » garderait m_g = 1. Après
+  lecture (relecture, non pré-enregistré), une partie de cette baisse vient
+  du tirage : plus g est grand, plus les besoins rejoués de la donneuse et
+  ceux de la receveuse sont proches au tour t (écart moyen 3,9 points à
+  g = 1, 2,6 à g = 6 ; égalités 22 % puis 39 %), et un choix qui suivrait
+  exactement les besoins avec la douceur de ces réseaux bougerait déjà
+  moins (0,85 de l'effet de g = 1 à six tours). À écart de besoins égal,
+  m_6 / m_1 vaut environ 0,45 (environ 15 % de moins par tour). C'est une
+  mémoire qui s'estompe, moins vite que ne le dit le chiffre brut.
+- La part de l'ancien état que la porte garde en moyenne (0,75, mesurée au
+  test 34 sur ses vies) ne prédit pas ce rythme : graine par graine, aucun
+  lien (corrélation −0,15) ; l'écart entre l'état greffé et l'état propre ne
+  baisse comme la porte qu'au premier tour, puis d'environ 0,85 par tour
+  (relecture, quatre graines).
 - **À toutes les distances, c'est le besoin, pas l'histoire** : les greffes
   (b), aux mêmes besoins, bougent le choix six à huit fois moins que les
-  greffes (a) ; à événement égal au tour j, l'effet reste du même ordre.
+  greffes (a) (cinq à sept fois sans les greffes (b) de même histoire ;
+  différence (a) − (b) à borne basse > 0 à chaque g) ; à événement égal au
+  tour j, l'effet reste du même ordre (sur peu de greffes : 34 à 82).
 - Les greffes (a0) (autres besoins, sans que la règle change son choix au
   tour t) bougent aussi un peu le choix (0,16 à 0,04).
 
@@ -3315,18 +3333,30 @@ chose à six tours. »
   sur ces vies neuves, pour choisir trois tours par receveuse et par g.
 - Les effets à g = 1 et 2 étaient connus (test 34) quand les seuils à g = 4
   et 6 ont été fixés.
-- Rien d'autre : chaque fichier brut a été commis seul, sous un message qui
-  le nomme.
+- Le protocole annonçait « m_g sans les greffes (b) sans autre histoire » ;
+  m_g ne porte que sur les greffes (a) : on publie à la place \|ΔP\| des
+  greffes (b) sans celles de même histoire (34 à 61 par g).
+- Le code ne reprend pas `research/tiny_loop_gate.py`, contrairement à ce
+  qu'annonçait le protocole ; la moyenne de la porte citée vient du test 34,
+  sur ses vies.
+- Chaque fichier brut a été commis seul, sous un message qui le nomme (les
+  dix après la fin des mesures).
 
 ### Ce que cela dit
 
 - **L'état que la boucle apprend par la seule survie porte les besoins sur
   plusieurs tours** : quatre tours après la greffe, le choix suit encore
   les besoins de la vie d'origine dans les dix graines (+0,26), et il en
-  reste à six tours (+0,15). Ce n'est pas la mémoire courte du modèle de
-  langage (tests 13 et 22).
-- **Mais c'est une mémoire qui s'estompe** (environ un quart par tour),
-  pas un compte exact des besoins.
+  reste à six tours (+0,15). Contrairement au modèle de langage du test 13,
+  c'est un état transmis qui dure. La comparaison avec le test 22 n'est pas
+  directe (autre mesure) : rapporté à l'effet de la règle, l'agent A du
+  test 22, sous masque, gardait au-delà de quatre tours environ le tiers de
+  cet effet (+0,065 contre +0,183), la boucle ici environ le quart à quatre
+  tours (m_4 = 0,256 pour 1) ; on ne peut pas dire que sa mémoire est plus
+  longue.
+- **Mais c'est une mémoire qui s'estompe** (l'effet sur le choix baisse
+  d'environ un quart par tour, en partie parce que les écarts de besoins se
+  réduisent), pas un compte exact des besoins.
 
 **Ce que le résultat ne dit pas.**
 - Rien sur un ressenti.
