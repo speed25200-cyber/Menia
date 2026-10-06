@@ -2753,6 +2753,52 @@ témoin coupé. »
   tour, et le témoin en lit déjà une part sans aucune mémoire ; un réseau
   en boucle non appris en lit déjà 0,54 et 0,57.
 
+## Pilote avant le test 33 : faire servir l'état transmis
+
+Plan `docs/TINY_LOOP_PILOT_PLAN.md` (commit `3dfb0ab`), écrit après le test
+32 et avant tout code du pilote ; code `e90c4c0`, commis avant toute
+exécution. Calcul torch sur le processeur local, du 5 au 6 octobre 2026
+(quatre processus à un fil). Artefacts : `artifacts/tiny-loop-pilot`.
+
+**Ce qu'on règle.** L'apprentissage de **la boucle** du test 32, sur les
+graines 100 à 102 et 256 mondes à part (flux `[270926, 73]`) ; le témoin
+coupé est appris une fois par graine avec le réglage du test 32. Quatre
+réglages : L1 (12 000 mises à jour), L2 (taux 1e-3), L3 (**état à porte** :
+s_{t+1} = (1 − z) · s_t + z · n_t, z appris), L4 (porte et 12 000 mises à
+jour).
+
+| Survie sur les mondes du pilote | Graine 100 | Graine 101 | Graine 102 | Gain moyen sur le témoin |
+|---|---|---|---|---|
+| Témoin coupé | 0,688 | 0,688 | 0,672 | — |
+| L1 (12 000 mises à jour) | 0,695 | 0,785 | 0,773 | +0,069 |
+| L2 (taux 1e-3) | 0,672 | 0,680 | 0,684 | −0,004 |
+| L3 (état à porte) | 0,766 | 0,809 | 0,738 | +0,089 |
+| **L4 (porte, 12 000 mises à jour)** | **0,848** | **0,816** | **0,867** | **+0,161** |
+
+**Choix selon la règle fixée d'avance** (plus grand gain, au moins 0,04,
+sans graine sous son témoin − 0,05) : **L4**.
+
+- L3 est exactement le début de L4 (mêmes graines, mêmes tirages, 4 000
+  mises à jour au lieu de 12 000).
+- Les courbes de L4 montent jusque vers 8 000 à 9 000 mises à jour, puis
+  se stabilisent vers 0,82 à 0,84 (survie pendant l'apprentissage, actions
+  tirées).
+
+**Écarts, déclarés.**
+- Le résultat L3 de la graine 100 a été publié dans le même commit que
+  L1 de la graine 100 (`23cc102`), dont le message ne nomme que L1.
+- Les résultats ont été lus et commentés au fil de l'eau ; la règle de
+  choix n'a pas changé.
+- Après la relecture du test 32, une note datée a été ajoutée au plan (la
+  boucle du test 32 garde une mémoire courte plutôt que « ses besoins ») ;
+  ni le plan ni la règle n'ont changé.
+
+**Ce que cela dit.** Avec un état à porte et un apprentissage plus long,
+la boucle survit nettement mieux que le témoin coupé sur les trois
+graines du pilote. Ce n'est pas un résultat : ces graines et ces mondes ont
+servi à choisir. La question est reposée au test 33, sur des graines
+neuves, avec la greffe.
+
 ## Analyse exploratoire : le « oui » suit-il le besoin ou la décision ? (2 octobre)
 
 Écrite **après** le verdict du test 14, sur ses lectures publiées
