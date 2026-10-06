@@ -3244,6 +3244,98 @@ les résultats n'en dépendent pas.
 - Ces modèles sont petits (2 couches, dimension 64), le monde aussi (deux
   besoins, deux actions, six événements).
 
+## Test 35 pré-enregistré : le besoin qui dure (critère global satisfait)
+
+Protocole `docs/TINY_LOOP_DURATION_PROTOCOL.md` (commit `d17938d`), écrit
+après la publication du test 34 et avant tout code et toute mesure ; code
+commis avant toute mesure (`0befa54`). Mesure torch sur le processeur local,
+le 6 octobre 2026, de 20 h 25 à 20 h 28 UTC (deux processus, cinq graines
+chacun ; puis un passage sur les dix graines pour écrire les contrôles).
+Artefacts : `artifacts/tiny-loop-duration`. Verdicts recalculés en local
+(identiques) ; la CI les vérifie à chaque envoi.
+
+**Ce qu'on teste.** Au test 34, on ne greffait l'état transmis qu'à un ou
+deux tours de distance. Ici, sans nouvel apprentissage, on greffe l'état
+des dix boucles du test 34 (au point final de 24 000 mises à jour) au tour
+j, et on lit le choix au tour t = j + g, pour **g = 1 à 6**, sur 128 vies
+de greffe neuves (flux `[270926, 83]` ; tirage `[270926, 84, 0]`, trois
+tours par receveuse et par g ; 5 282 greffes). m_g = moyenne sur les
+greffes (a) de ΔP(R) × e ; une boucle qui suivrait exactement la règle
+« besoins » aurait m_g = 1 à toute distance.
+
+| g (tours entre la greffe et le choix) | 1 | 2 | 3 | **4** | 5 | **6** |
+|---|---|---|---|---|---|---|
+| Greffes (a) / (b) | 335 / 279 | 269 / 297 | 234 / 305 | 200 / 293 | 161 / 292 | 127 / 288 |
+| m_g (moyenne sur 10 graines) | +0,550 | +0,407 | +0,307 | **+0,256** | +0,179 | **+0,148** |
+| Intervalle à 95 % | [0,529 ; 0,570] | [0,378 ; 0,437] | [0,276 ; 0,338] | [0,229 ; 0,282] | [0,145 ; 0,214] | [0,114 ; 0,182] |
+| m_g / m_1 | 1 | 0,74 | 0,56 | 0,46 | 0,33 | 0,27 |
+| \|ΔP\| (a) | 0,568 | 0,424 | 0,318 | 0,268 | 0,216 | 0,169 |
+| \|ΔP\| (b) (sans autre histoire exclues) | 0,073 (0,084) | 0,060 (0,072) | 0,053 (0,063) | 0,036 (0,045) | 0,036 (0,045) | 0,023 (0,029) |
+| \|ΔP\| (a0) | 0,156 | 0,108 | 0,096 | 0,072 | 0,060 | 0,041 |
+| m_g à événement égal au tour j | +0,495 | +0,385 | +0,343 | +0,266 | +0,165 | +0,220 |
+
+| | Critère | Valeur | Verdict |
+|---|---|---|---|
+| **DUR1** | à g = 4 : moyenne des m_4 ≥ **0,10**, borne basse > 0, et m_4 > 0,05 pour au moins **8 graines sur 10** | +0,256 [0,229 ; 0,282] ; **10 graines sur 10** (de 0,188 à 0,299) | **passe** |
+| **DUR2** | à g = 4 : \|ΔP\| (b) ≤ la moitié de \|ΔP\| (a), différence à borne basse > 0 | 0,036 contre 0,268 ; +0,232 [0,209 ; 0,255] | **passe** |
+| **DUR3** | à g = 6 : moyenne des m_6, borne basse > 0 | +0,148 [0,114 ; 0,182] | **passe** |
+| | Validité : ≥ 100 greffes (a) et (b) à g = 4, ≥ 100 (a) à g = 6 ; greffe de soi ≤ 1e-6 ; dix réseaux à 24 000 mises à jour | 200 et 293 ; 127 ; 0 ; oui | **valide** |
+
+**Critère global : satisfait.**
+
+**Lecture fixée d'avance** (DUR1 à DUR3 passent) : « L'état que la boucle
+apprend par la seule survie n'est pas une mémoire de un ou deux tours :
+quatre tours plus tard, il fait encore choisir selon les besoins de la vie
+d'où il vient, plus que l'histoire à besoins égaux, et il en reste quelque
+chose à six tours. »
+
+**Publié sans seuil : graine par graine, m_g pour g = 1 à 6.**
+
+| Graine | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| m_1 | 0,602 | 0,572 | 0,551 | 0,556 | 0,518 | 0,581 | 0,542 | 0,536 | 0,530 | 0,509 |
+| m_4 | 0,299 | 0,251 | 0,299 | 0,258 | 0,188 | 0,293 | 0,279 | 0,234 | 0,225 | 0,229 |
+| m_6 | 0,227 | 0,114 | 0,206 | 0,183 | 0,087 | 0,155 | 0,172 | 0,102 | 0,116 | 0,121 |
+
+- **L'effet s'efface d'environ un quart par tour** (m_g / m_1 : 0,74 ;
+  0,56 ; 0,46 ; 0,33 ; 0,27), dans toutes les graines : une mémoire des
+  besoins qui s'estompe, pas une mémoire qui garde. Une boucle qui suivrait
+  exactement les besoins garderait tout l'effet. Après lecture : ce rythme
+  (environ 0,77 par tour) est proche de la part de l'ancien état que la
+  porte garde en moyenne à chaque tour (1 − 0,25 = 0,75) ; ce n'est qu'un
+  rapprochement, non testé.
+- **À toutes les distances, c'est le besoin, pas l'histoire** : les greffes
+  (b), aux mêmes besoins, bougent le choix six à huit fois moins que les
+  greffes (a) ; à événement égal au tour j, l'effet reste du même ordre.
+- Les greffes (a0) (autres besoins, sans que la règle change son choix au
+  tour t) bougent aussi un peu le choix (0,16 à 0,04).
+
+**Écarts, déclarés.**
+- Les nombres de greffes ont été comptés avant le protocole, sans modèle,
+  sur ces vies neuves, pour choisir trois tours par receveuse et par g.
+- Les effets à g = 1 et 2 étaient connus (test 34) quand les seuils à g = 4
+  et 6 ont été fixés.
+- Rien d'autre : chaque fichier brut a été commis seul, sous un message qui
+  le nomme.
+
+### Ce que cela dit
+
+- **L'état que la boucle apprend par la seule survie porte les besoins sur
+  plusieurs tours** : quatre tours après la greffe, le choix suit encore
+  les besoins de la vie d'origine dans les dix graines (+0,26), et il en
+  reste à six tours (+0,15). Ce n'est pas la mémoire courte du modèle de
+  langage (tests 13 et 22).
+- **Mais c'est une mémoire qui s'estompe** (environ un quart par tour),
+  pas un compte exact des besoins.
+
+**Ce que le résultat ne dit pas.**
+- Rien sur un ressenti.
+- Les réseaux sont ceux du test 34, déjà lus ; seules les vies de greffe
+  sont neuves.
+- La greffe lit des vies écrites par une règle, pas des vies vécues par
+  l'agent.
+- Petit réseau, petit monde.
+
 ## Analyse exploratoire : le « oui » suit-il le besoin ou la décision ? (2 octobre)
 
 Écrite **après** le verdict du test 14, sur ses lectures publiées
