@@ -38,6 +38,17 @@ sur H : deux sorties, deux contenus différents, un seul état transmis.
   0,048. Garder H en mémoire est nécessaire ; ni l'événement du tour, ni
   une horloge, ni le hasard ne suffisent.
 
+**Note datée (correction avant tout code).** Les repères ci-dessus ont été
+calculés avec de mauvais effets sur E et N pour « tu te reposes » et « tu
+trouves des baies » (0 et 0, 0 et +1, au lieu de 0 et −1, −1 et 0). Le monde
+est celui des vrais événements, comme écrit plus haut. Repères recalculés
+avec eux (1 500 mondes d'un flux de préparation) : appeler quand H ≤ 3 :
+**0,638** (H ≤ 2 : 0,427 ; H ≤ 4 : 0,577) ; la meilleure horloge (tous les
+4 tours) : 0,467 ; appeler quand l'événement du tour baisse H d'au moins 2 :
+0,401 ; au hasard (meilleur p, 0,4) : 0,232 ; jamais : 0,001 ; toujours :
+0,001. La conclusion ne change pas : garder H en mémoire est nécessaire.
+Rien d'autre ne change dans ce plan.
+
 ## L'agent
 
 Le réseau à porte du test 34 (2 couches, dimension 64, 4 têtes ; état à
