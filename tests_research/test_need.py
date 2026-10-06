@@ -1494,6 +1494,42 @@ class TinyLoopPilotTests(unittest.TestCase):
         self.assertTrue(len(d) > 0 and all(1 <= x <= W.TURNS for x in length))
 
 
+class TinyLoopGateTests(unittest.TestCase):
+    def test_setting_and_extras(self):
+        from research import tiny_loop as L, tiny_loop_gate as G, tiny_loop_pilot as P
+        self.assertEqual(G.CONFIG, P.CONFIG["L4"])
+        self.assertEqual(G.SEEDS, tuple(range(10, 20)))
+        held = L.lives()
+        grafts = L.draw(held)
+
+        def rows(strength):
+            return [[g["index"], 0.5, 0.5 + (strength * g["e"] if g["kind"] == "a" else 0.01)] for g in grafts]
+        runs = {"loop": {}, "cut": {}}
+        for s in G.SEEDS:
+            runs["loop"][str(s)] = {"survival": 0.85, "agrees": 0.8, "probe": {"E": 0.8, "N": 0.8},
+                                    "probe_untrained": {"E": 0.5, "N": 0.5}, "gate_mean": 0.3, "grafts": rows(0.3)}
+            runs["cut"][str(s)] = {"survival": 0.70 + 0.001 * s, "agrees": 0.7, "probe": {"E": 0.4, "N": 0.4},
+                                   "probe_untrained": {"E": 0.4, "N": 0.4}, "grafts": rows(0.0)}
+        out = G.verdicts(runs, grafts, {"cut_gap": 0.0, "self_graft_gap": 0.0}, 0.72265625, held)
+        self.assertTrue(all(out["verdicts"].values()), out["verdicts"])
+        x = out["values"]["extras"]
+        self.assertEqual(x["b_without_other_history"], 38)
+        self.assertAlmostEqual(x["same_event_align"]["mean"], 0.3)
+        self.assertTrue(x["loop4_without_alike_b"]["half_holds"])
+        self.assertAlmostEqual(x["gate_mean"], 0.3)
+
+    @unittest.skipUnless(__import__("importlib").util.find_spec("torch"), "needs torch")
+    def test_gate_mean(self):
+        import torch
+        from research import tiny_loop as L, tiny_loop_gate as G, tiny_loop_pilot as P
+        torch.set_num_threads(1)
+        net = P.model(10, True)
+        z = G.gate_mean(net, L.lives()[:3])
+        self.assertTrue(0 < z < 1)
+        setup = L.checks(net, P.model(10, True), [l for l in L.lives()[:12] if len(W.decisions(l)) >= 6])
+        self.assertEqual((setup["cut_gap"], setup["self_graft_gap"]), (0.0, 0.0))
+
+
 class ReliefTests(unittest.TestCase):
     def test_lives_texts_and_targets(self):
         from research import need_relief as RL, need_rules as NR

@@ -41,4 +41,6 @@ artifacts/tiny-survival-ac/checkpoints/
 !artifacts/tiny-loop/runs/
 artifacts/tiny-loop/checkpoints/
 !artifacts/tiny-loop-pilot/
+!artifacts/tiny-loop-gate/runs/
+artifacts/tiny-loop-gate/checkpoints/
 artifacts/tiny-loop-pilot/checkpoints/
