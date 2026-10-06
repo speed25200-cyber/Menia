@@ -1636,6 +1636,51 @@ class TinyLoopReliableTests(unittest.TestCase):
         self.assertAlmostEqual(x["at_12000"]["survival_gain"]["mean"], 0.16)
 
 
+class TinyLoopDurationTests(unittest.TestCase):
+    def test_draw_and_verdicts(self):
+        from research import tiny_loop as L, tiny_loop_duration as D, tiny_loop_reliable as R
+        held = D.lives()
+        self.assertNotEqual(held[0], R.lives()[0])
+        grafts = D.draw(held)
+        counts = {k: [sum(x["g"] == g and x["kind"] == k for x in grafts) for g in D.GAPS] for k in D.KINDS}
+        self.assertEqual(counts, {"a": [335, 269, 234, 200, 161, 127], "a0": [382, 379, 372, 362, 359, 348],
+                                  "b": [279, 297, 305, 293, 292, 288]})  # counted before the protocol, without model
+        for x in grafts[:200]:
+            r = {y["t"]: y for y in W.decisions(held[x["r"]])}
+            d = {y["t"]: y for y in W.decisions(held[x["d"]])}
+            self.assertEqual(x["t"] - x["j"], x["g"])
+            self.assertEqual(r[x["j"]]["action"], d[x["j"]]["action"])
+            self.assertEqual((r[x["j"]]["E"], r[x["j"]]["N"]) == (d[x["j"]]["E"], d[x["j"]]["N"]), x["kind"] == "b")
+            self.assertEqual(x["e"] != 0, x["kind"] == "a")
+
+        def rows(strength):
+            return [[x["index"], 0.5, 0.5 + (strength[x["g"]] * x["e"] if x["kind"] == "a" else 0.01)] for x in grafts]
+        decay = {g: 0.6 * 0.8 ** (g - 1) for g in D.GAPS}
+        runs = {str(s): {"grafts": rows(decay)} for s in D.SEEDS}
+        setup = {"self_graft_gap": 0.0, "updates": {str(s): 24000 for s in D.SEEDS}}
+        out = D.verdicts(runs, grafts, setup, held)
+        self.assertTrue(all(out["verdicts"].values()), out["verdicts"])
+        self.assertAlmostEqual(out["values"]["m"][4]["mean"], decay[4])
+        self.assertAlmostEqual(out["values"]["m_ratio_to_g1"][6], 0.8 ** 5)
+        short = {str(s): {"grafts": rows({g: 0.6 if g <= 2 else 0.0 for g in D.GAPS})} for s in D.SEEDS}
+        weak = D.verdicts(short, grafts, setup, held)["verdicts"]
+        self.assertFalse(weak["DUR1"] or weak["DUR3"] or weak["global"])
+        self.assertFalse(D.verdicts(runs, grafts, dict(setup, updates={**setup["updates"], "20": 12000}), held)["verdicts"]["valid"])
+
+    @unittest.skipUnless(__import__("importlib").util.find_spec("torch"), "needs torch")
+    def test_load_and_self_graft(self):
+        import tempfile
+        import torch
+        from research import tiny_loop_duration as D, tiny_loop_pilot as P
+        torch.set_num_threads(1)
+        net = P.model(20, True)
+        self.assertEqual(D.self_graft(net, D.lives()[:12]), 0.0)
+        with tempfile.TemporaryDirectory() as source:
+            torch.save({"update": 12000}, Path(source, "loop-20.pt"))
+            with self.assertRaises(ValueError):
+                D.load(20, source)
+
+
 class ReliefTests(unittest.TestCase):
     def test_lives_texts_and_targets(self):
         from research import need_relief as RL, need_rules as NR

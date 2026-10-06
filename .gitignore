@@ -52,3 +52,5 @@ artifacts/tiny-loop-pilot2/claims/
 !artifacts/tiny-loop-reliable/runs/
 artifacts/tiny-loop-reliable/checkpoints/
 artifacts/tiny-loop-reliable/claims/
+!artifacts/tiny-loop-duration/
+!artifacts/tiny-loop-duration/runs/
