@@ -1600,6 +1600,42 @@ class TinyLoopPilot2Tests(unittest.TestCase):
             self.assertTrue(Q.claim(root, "R2", 103))
 
 
+class TinyLoopReliableTests(unittest.TestCase):
+    def test_setting_lives_and_verdicts(self):
+        from research import tiny_loop as L, tiny_loop_pilot2 as Q, tiny_loop_reliable as R
+        self.assertEqual(R.CONFIG, Q.CONFIG["R3"])
+        self.assertEqual(R.CONFIG["updates"], 24000)
+        self.assertNotIn("clip", R.CONFIG)
+        self.assertEqual(R.SEEDS, tuple(range(20, 30)))
+        self.assertEqual(R.MID, 12000)
+        held = R.lives()
+        self.assertNotEqual(held[0], L.lives()[0])
+        self.assertNotEqual(held[0], Q.lives()[0])
+        grafts = R.draw(held)
+        self.assertEqual({k: sum(g["kind"] == k for g in grafts) for k in L.COUNTS}, {"a": 400, "a0": 200, "b": 200})
+
+        def rows(strength):
+            return [[g["index"], 0.5, 0.5 + (strength * g["e"] if g["kind"] == "a" else 0.01)] for g in grafts]
+        curve = [0.1] * 20 + [0.3] + [0.8] * 219
+        runs, mid = {"loop": {}, "cut": {}}, {"loop": {}, "cut": {}}
+        for s in R.SEEDS:
+            runs["loop"][str(s)] = {"survival": 0.88, "agrees": 0.8, "probe": {"E": 0.8, "N": 0.8},
+                                    "probe_untrained": {"E": 0.5, "N": 0.5}, "gate_mean": 0.3, "grafts": rows(0.4),
+                                    "curve": curve}
+            runs["cut"][str(s)] = {"survival": 0.69 + 0.001 * s, "agrees": 0.7, "probe": {"E": 0.4, "N": 0.4},
+                                   "probe_untrained": {"E": 0.4, "N": 0.4}, "grafts": rows(0.0), "curve": curve}
+            mid["loop"][str(s)] = {"survival": 0.85, "grafts": rows(0.3 if s < 27 else 0.0)}
+            mid["cut"][str(s)] = {"survival": 0.69, "grafts": rows(0.0)}
+        out = R.verdicts(runs, grafts, {"cut_gap": 0.0, "self_graft_gap": 0.0}, 0.72265625, held, mid)
+        self.assertTrue(all(out["verdicts"].values()), out["verdicts"])
+        x = out["values"]
+        self.assertEqual(x["extras"]["b_without_other_history"], 24)
+        self.assertEqual(x["lowest_after_2000"]["loop"]["20"], 0.3)
+        self.assertEqual(x["at_12000"]["seeds_above"], 7)
+        self.assertAlmostEqual(x["at_12000"]["m"]["20"], 0.3)
+        self.assertAlmostEqual(x["at_12000"]["survival_gain"]["mean"], 0.16)
+
+
 class ReliefTests(unittest.TestCase):
     def test_lives_texts_and_targets(self):
         from research import need_relief as RL, need_rules as NR
