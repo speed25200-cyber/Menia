@@ -3028,6 +3028,161 @@ mondes et ces vies ont servi à choisir. La question est reposée au test 34,
 sur dix graines neuves et de nouvelles vies de greffe, avec les critères du
 test 33.
 
+## Test 34 pré-enregistré : la boucle fiable (critère global satisfait)
+
+Protocole `docs/TINY_LOOP_RELIABLE_PROTOCOL.md` (commit `c24f777`), écrit
+après le second pilote et avant tout apprentissage sur ses graines ; code
+commis avant tout apprentissage (`57a862f`), essayé sur 250 et 500 mises à
+jour de la graine 998, hors protocole. Calcul torch sur le processeur local,
+le 6 octobre 2026, de 10 h 15 à 19 h 07 UTC (quatre processus à un fil).
+Artefacts : `artifacts/tiny-loop-reliable`. Verdicts recalculés en local
+(identiques) ; la CI les vérifie à chaque envoi.
+
+**Ce qu'on teste.** La question des tests 32 et 33, avec le réglage R3
+choisi au second pilote, pour la boucle **et** le témoin coupé : l'état à
+porte du test 33 et **24 000 mises à jour** (au lieu de 12 000). Un petit
+transformeur appris de zéro ne voit jamais les tours passés ; seul cet état
+passe d'un tour au suivant. Il n'apprend que de sa survie ; ses besoins ne
+lui sont jamais donnés. Dix graines neuves (20 à 29) et **128 vies de
+greffe neuves** (flux `[270926, 81]` ; tirage `[270926, 82, 0]` : 400 (a),
+200 (a0), 200 (b)). Critères du test 33, inchangés.
+
+| Moyenne sur 10 graines | A, boucle à porte | B, coupé |
+|---|---|---|
+| Survie (256 mondes du test 22, action la plus probable) | **0,896** | 0,733 |
+| Part des décisions où il prend l'action de la règle « besoins » | 0,898 | 0,830 |
+| Survie pendant l'apprentissage (100 premières mises à jour → 2 000 → 4 000 → 8 000 → 12 000 → 16 000 → 20 000 → 24 000) | 0,08 → 0,68 → 0,73 → 0,79 → 0,80 → 0,82 → 0,84 → 0,84 | 0,09 → 0,69 → 0,69 → 0,69 → 0,69 → 0,69 → 0,69 → 0,69 |
+| Décodeur linéaire de E et N dans l'état transmis (pour B, la sortie de « Choix », non transmise) | 0,87 et 0,87 | 0,44 et 0,44 |
+| Le même décodeur sur le réseau **non appris** de la même graine | 0,76 et 0,77 | — |
+
+Repères sans modèle : règle « événement » 0,723 ; règle « besoins » 0,906.
+
+| | Critère | Valeur | Verdict |
+|---|---|---|---|
+| **LOOP1** | survie de A − survie de B ≥ **0,08** (borne basse > 0) | +0,163 [0,146 ; 0,179] ; 10 graines sur 10 | **passe** |
+| **LOOP2** | survie de A − 0,723 ≥ **0,05** (borne basse > 0) | +0,173 [0,157 ; 0,189] | **passe** |
+| **LOOP3** | greffes (a) : moyenne des m (ΔP(R) × e) ≥ **0,10**, borne basse > 0, **et m > 0,05 pour 8 graines sur 10** | +0,530 [0,510 ; 0,549] ; **10 graines sur 10** (de 0,491 à 0,586) | **passe** |
+| **LOOP4** | \|ΔP(R)\| des greffes (b) ≤ la moitié de celui des greffes (a), différence à borne basse > 0 | 0,059 contre 0,534 ; +0,475 [0,452 ; 0,499] | **passe** |
+| | Validité : B ≥ 0,60 ; coupure ≤ 1e-6 ; greffe de soi ≤ 1e-6 ; ≥ 100 greffes (a) et (b) ; 10 graines | B 0,733 ; 0 ; 0 ; 400 et 200 ; oui | **valide** |
+
+Intervalles à 95 % sur les 10 graines (loi de Student, 9 degrés de
+liberté).
+
+**Critère global : satisfait.**
+
+**Lecture fixée d'avance** (LOOP1 à LOOP4 passent) : « Seulement en
+apprenant à survivre, un petit transformeur dont le passé ne passe que par
+un état transmis d'un tour au suivant apprend, de façon fiable, à y porter
+ses besoins cachés et à s'en servir. Greffé dans une autre vie, cet état
+fait choisir selon les besoins de la vie d'origine ; venu d'une vie aux
+mêmes besoins mais à l'histoire différente, il change peu le choix. C'est
+une récurrence au sens strict, et ce qu'elle porte est surtout le niveau de
+ses besoins, que rien ne lui a nommé. »
+
+**Publié sans seuil : graine par graine.**
+
+| Graine | A : survie | B : survie | A − B | m (greffes (a)) | \|ΔP\| (a) | \|ΔP\| (b) | m à événement égal | Décodeur E / N (A) | Porte z moyenne |
+|---|---|---|---|---|---|---|---|---|---|
+| 20 | 0,906 | 0,734 | +0,172 | **0,586** | 0,590 | 0,050 | 0,533 | 0,87 / 0,88 | 0,24 |
+| 21 | 0,914 | 0,730 | +0,184 | **0,528** | 0,532 | 0,055 | 0,445 | 0,87 / 0,86 | 0,29 |
+| 22 | 0,914 | 0,730 | +0,184 | **0,560** | 0,567 | 0,075 | 0,553 | 0,87 / 0,81 | 0,24 |
+| 23 | 0,879 | 0,734 | +0,145 | **0,529** | 0,540 | 0,051 | 0,441 | 0,88 / 0,86 | 0,26 |
+| 24 | 0,844 | 0,734 | +0,109 | **0,510** | 0,511 | 0,083 | 0,487 | 0,88 / 0,87 | 0,25 |
+| 25 | 0,914 | 0,734 | +0,180 | **0,537** | 0,539 | 0,041 | 0,464 | 0,88 / 0,90 | 0,23 |
+| 26 | 0,883 | 0,734 | +0,148 | **0,515** | 0,519 | 0,044 | 0,462 | 0,86 / 0,88 | 0,31 |
+| 27 | 0,895 | 0,730 | +0,164 | **0,530** | 0,531 | 0,070 | 0,473 | 0,88 / 0,90 | 0,19 |
+| 28 | 0,902 | 0,730 | +0,172 | **0,513** | 0,516 | 0,060 | 0,454 | 0,85 / 0,87 | 0,22 |
+| 29 | 0,906 | 0,734 | +0,172 | **0,491** | 0,497 | 0,063 | 0,447 | 0,88 / 0,84 | 0,29 |
+
+- **Les dix graines portent leurs besoins, et de façon très semblable**
+  (m de 0,49 à 0,59). Greffé dans une autre vie, l'état transmis fait
+  pencher le choix d'environ la moitié d'un changement complet dans le sens
+  des besoins de la vie d'origine ; venu d'une vie aux mêmes besoins, il ne
+  bouge presque rien (0,04 à 0,08). Toutes survivent nettement mieux que
+  leur témoin : sur les mêmes 256 mondes, de 37 vies gagnées contre 9
+  perdues (graine 24) à 50 contre 3 (graine 21).
+- **Ce n'est pas l'événement du tour** : à événement égal au tour j (26 %
+  des greffes (a), 49 % des greffes (b)), l'effet aligné reste de +0,476
+  [0,449 ; 0,503] (\|ΔP\| 0,477 pour (a), 0,052 pour (b)).
+- **Ce n'est pas l'histoire** : sans les 24 greffes (b) qui n'ont pas
+  d'autre histoire, \|ΔP\| (b) vaut 0,067 contre 0,534 ; LOOP4 tient
+  (différence +0,467 [0,443 ; 0,491]).
+- **Le décodeur seul ne suffit pas**, comme au test 33 : le même réseau non
+  appris laisse déjà lire 0,76 et 0,77 ; l'apprentissage ajoute environ
+  0,11 et 0,10. C'est la greffe qui montre que l'état sert au choix.
+- **Selon g** : effet aligné +0,613 à un tour, +0,435 à deux tours ;
+  \|ΔP\| des greffes (b) : 0,082 et 0,035. Les greffes (a0) (autres
+  besoins, mais la règle « besoins » ne changerait pas son choix) bougent
+  le choix de 0,128 : l'état porte plus que ce qui fait basculer la règle.
+- **La porte** laisse entrer en moyenne 25 % du nouvel état à chaque tour
+  (0,19 à 0,31 selon la graine).
+- **À 12 000 mises à jour** (le réglage du test 33, mesuré en chemin sur
+  les mêmes graines) : survie 0,853 contre 0,734 (+0,119 [0,077 ; 0,161]) ;
+  m +0,381 [0,243 ; 0,520], **9 graines sur 10 au-dessus de 0,05**, mais
+  la graine 20 de justesse (0,057) et la graine 24 à peu près nulle
+  (0,009). À ce point, ces graines auraient donc aussi satisfait les seuils
+  de LOOP3. Ce qui change entre 12 000 et 24 000 : les graines 20 et 24
+  rattrapent les autres (0,586 et 0,510), et l'écart entre graines se
+  resserre (intervalle [0,510 ; 0,549] contre [0,243 ; 0,520]). Avec le
+  test 33 (7 graines sur 10 à 12 000 mises à jour), cela fait 16 graines
+  sur 20 à 12 000, et 10 sur 10 à 24 000 : une description, pas un test.
+- **L'apprentissage reste instable** : quatre graines s'effondrent un moment
+  après 2 000 mises à jour puis se rétablissent (0,01 vers 2 800 pour la
+  graine 20, 0,08 vers 2 200 pour la 23, 0,00 vers 4 700 pour la 27, 0,08
+  vers 2 600 pour la 29). Le témoin coupé apprend, comme avant, presque la
+  même table (0,730 ou 0,734).
+
+**Écarts d'exécution, déclarés.**
+- Les résultats bruts ont été publiés dès leur écriture, chacun dans son
+  propre commit qui le nomme. Les survies, et m à 12 000 mises à jour
+  (affiché par le programme à ce point, comme prévu), ont été lus au fil de
+  l'eau ; m à 24 000 n'a été calculé qu'après les 20 apprentissages
+  (verdicts écrits à 19 h 07 UTC). Aucun seuil n'a changé.
+- Le brouillon du protocole (avec des blancs pour le réglage) et un
+  brouillon du code ont été écrits pendant le second pilote, hors du dépôt ;
+  le protocole a été complété et commis après le choix du pilote, le code
+  après le protocole.
+- Vers 16 h UTC, l'outil de la session a redémarré ; les calculs n'ont pas
+  été touchés (les quatre processus ont continué depuis 10 h 15).
+
+### Ce que cela dit
+
+- **Pour la première fois dans ce projet, une récurrence au sens strict,
+  apprise par la seule survie, porte de façon fiable ses besoins cachés et
+  s'en sert** : dix graines neuves sur dix, de nouvelles vies de greffe,
+  tous les critères pré-enregistrés. Ses besoins ne lui sont jamais donnés ;
+  il les reconstruit à partir des événements et de ses actions, les garde
+  dans le seul état qui passe d'un tour au suivant, et cet état, greffé
+  dans une autre vie, fait choisir selon les besoins de la vie d'origine,
+  à événement égal et à histoire différente.
+- **Apprendre plus longtemps a rendu le résultat fiable.** À 12 000 mises
+  à jour, il manquait à deux graines sur dix (dont une à peine au-dessus du
+  seuil) ; à 24 000, toutes portent leurs besoins, avec très peu d'écart
+  entre elles. Le test ne dit pas pourquoi certaines graines tardent.
+
+**Ce que le résultat ne dit pas.**
+- Rien sur un ressenti.
+- Le réglage a été choisi en regardant la boucle et la greffe (au second
+  pilote, sur d'autres graines, mondes et vies) ; le témoin a reçu le même.
+- La récompense (la survie) vient du monde, qui connaît les besoins ; elle
+  ne nomme ni le besoin ni l'action. La tête de valeur du critique prédit
+  le retour de survie.
+- La greffe lit des vies écrites par une règle, pas des vies vécues par
+  l'agent ; elle ne sépare pas le niveau des besoins de ce qui en commande
+  le choix. « Ce qu'elle porte est surtout le niveau de ses besoins » veut
+  dire : plus que l'histoire récente à besoins égaux (LOOP4) ; ce n'est pas
+  une lecture fine de E et de N.
+- **Ce qui est déjà connu** (`docs/LITERATURE_CHECK_LOOP_2026-10-06.md`) :
+  des agents récurrents appris par renforcement ou par stratégie
+  évolutionnaire suivent un niveau interne dans leur état, et forcer cet
+  état change leur comportement, mais ce niveau leur est **donné en
+  entrée** (Hayes 2026 ; Chaturvedi et al. 2025). L'apport est étroit : des
+  besoins jamais observés, une greffe entre deux vies contre un témoin sans
+  mémoire, la séparation du besoin et de l'histoire, le pré-enregistrement.
+  Ce n'est pas une découverte de principe.
+- Ces modèles sont petits (2 couches, dimension 64), le monde aussi (deux
+  besoins, deux actions, six événements).
+
 ## Analyse exploratoire : le « oui » suit-il le besoin ou la décision ? (2 octobre)
 
 Écrite **après** le verdict du test 14, sur ses lectures publiées
