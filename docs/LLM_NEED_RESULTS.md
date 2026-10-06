@@ -2799,6 +2799,143 @@ graines du pilote. Ce n'est pas un résultat : ces graines et ces mondes ont
 servi à choisir. La question est reposée au test 33, sur des graines
 neuves, avec la greffe.
 
+## Test 33 pré-enregistré : la boucle qui s'en sert (critère global non satisfait, à une graine près)
+
+Protocole `docs/TINY_LOOP_GATE_PROTOCOL.md` (commit `e232911`), écrit après
+le pilote et avant tout code et tout apprentissage sur ses graines. Code
+commis avant tout apprentissage (`f328ba6`), essayé sur 5 mises à jour de
+la graine 99, hors protocole. Calcul torch sur le processeur local, le 6
+octobre 2026 (cinq processus à un fil). Artefacts : `artifacts/tiny-loop-gate`.
+Verdicts recalculés en local (identiques) ; la CI les vérifie à chaque
+envoi. Vérification bibliographique faite pendant le calcul :
+`docs/LITERATURE_CHECK_LOOP_2026-10-06.md`.
+
+**Ce qu'on teste.** La question du test 32, avec le réglage L4 du pilote
+pour la boucle **et** le témoin coupé : un **état à porte**
+(s_{t+1} = (1 − z) · s_t + z · n_t, z appris) et 12 000 mises à jour. Un
+petit transformeur appris de zéro ne voit jamais les tours passés ; seul cet
+état passe d'un tour au suivant. Il n'apprend que de sa survie ; ses besoins
+ne lui sont jamais donnés. Dix graines neuves (10 à 19).
+
+| Moyenne sur 10 graines | A, boucle à porte | B, coupé |
+|---|---|---|
+| Survie (256 mondes du test 22, action la plus probable) | **0,846** | 0,734 |
+| Part des décisions où il prend l'action de la règle « besoins » | 0,872 | 0,832 |
+| Survie pendant l'apprentissage (100 premières mises à jour → 2 000 → 4 000 → 6 000 → 8 000 → 10 000 → 12 000) | 0,08 → 0,69 → 0,70 → 0,67 → 0,74 → 0,78 → 0,80 | 0,08 → 0,69 → 0,69 → 0,69 → 0,69 → 0,69 → 0,69 |
+| Décodeur linéaire de E et N dans l'état transmis (pour B, la sortie de « Choix », non transmise) | 0,82 et 0,83 | 0,42 et 0,46 |
+| Le même décodeur sur le réseau **non appris** de la même graine | 0,75 et 0,77 | — |
+
+Repères sans modèle : règle « événement » 0,723 ; règle « besoins » 0,906.
+
+| | Critère | Valeur | Verdict |
+|---|---|---|---|
+| **LOOP1** | survie de A − survie de B ≥ **0,08** (borne basse > 0) | +0,113 [0,075 ; 0,150] ; 10 graines sur 10 | **passe** |
+| **LOOP2** | survie de A − 0,723 ≥ **0,05** (borne basse > 0) | +0,124 [0,087 ; 0,161] | **passe** |
+| **LOOP3** | greffes (a) : moyenne des m (ΔP(R) × e) ≥ **0,10**, borne basse > 0, **et m > 0,05 pour 8 graines sur 10** | +0,321 [0,161 ; 0,481] ; **7 graines sur 10** | **échoue** (sur le nombre de graines) |
+| **LOOP4** | \|ΔP(R)\| des greffes (b) ≤ la moitié de celui des greffes (a), différence à borne basse > 0 | 0,051 contre 0,355 ; +0,304 [0,162 ; 0,445] | **passe** |
+| | Validité : B ≥ 0,60 ; coupure ≤ 1e-6 ; greffe de soi ≤ 1e-6 ; ≥ 100 greffes (a) et (b) ; 10 graines | B 0,734 ; 0 ; 0 ; 391 et 200 ; oui | **valide** |
+
+Intervalles à 95 % sur les 10 graines (loi de Student, 9 degrés de
+liberté).
+
+**Critère global : non satisfait.** LOOP1, LOOP2 et LOOP4 passent ; LOOP3
+échoue sur une de ses trois conditions : sa moyenne (+0,321) et sa borne
+basse (+0,161) passent largement, mais trois graines (11, 14, 15) restent
+sous 0,05, alors qu'il en fallait au plus deux.
+
+**Lecture fixée d'avance** (LOOP1 et LOOP2 passent, LOOP3 échoue) :
+« L'état sert à survivre, mais la greffe ne montre pas qu'il porte surtout
+les besoins. »
+
+**Publié sans seuil : graine par graine.**
+
+| Graine | A : survie | B : survie | A − B | m (greffes (a)) | \|ΔP\| (a) | \|ΔP\| (b) | m à événement égal | Décodeur E / N (A) | Porte z moyenne |
+|---|---|---|---|---|---|---|---|---|---|
+| 10 | 0,867 | 0,734 | +0,133 | **0,529** | 0,544 | 0,064 | 0,516 | 0,88 / 0,90 | 0,26 |
+| 11 | 0,805 | 0,734 | +0,070 | 0,040 | 0,050 | 0,019 | 0,051 | 0,78 / 0,81 | 0,20 |
+| 12 | 0,883 | 0,734 | +0,148 | **0,416** | 0,451 | 0,050 | 0,426 | 0,87 / 0,88 | 0,26 |
+| 13 | 0,898 | 0,734 | +0,164 | **0,453** | 0,491 | 0,072 | 0,489 | 0,89 / 0,88 | 0,24 |
+| 14 | 0,797 | 0,734 | +0,063 | −0,004 | 0,082 | 0,038 | 0,000 | 0,57 / 0,58 | 0,27 |
+| 15 | 0,770 | 0,734 | +0,035 | −0,002 | 0,047 | 0,027 | −0,010 | 0,72 / 0,77 | 0,25 |
+| 16 | 0,891 | 0,730 | +0,160 | **0,377** | 0,413 | 0,057 | 0,413 | 0,86 / 0,87 | 0,24 |
+| 17 | 0,781 | 0,734 | +0,047 | **0,344** | 0,371 | 0,069 | 0,349 | 0,88 / 0,85 | 0,29 |
+| 18 | 0,898 | 0,734 | +0,164 | **0,498** | 0,520 | 0,059 | 0,555 | 0,88 / 0,89 | 0,28 |
+| 19 | 0,875 | 0,734 | +0,141 | **0,558** | 0,580 | 0,055 | 0,568 | 0,92 / 0,85 | 0,30 |
+
+- **Sept graines sur dix portent leurs besoins dans l'état transmis et
+  s'en servent.** Greffé dans une autre vie, l'état fait pencher le choix
+  de 0,34 à 0,56 dans le sens des besoins de la vie d'origine (au test 23,
+  le modèle de langage appris d'un professeur : 0,48). Venu d'une vie aux
+  mêmes besoins, il ne bouge presque rien (0,05 à 0,07).
+- **Ce n'est pas l'événement du tour** (contrairement au test 28) : à
+  événement égal au tour j, l'effet aligné reste de +0,336 [0,169 ; 0,502]
+  en moyenne sur les 10 graines (\|ΔP\| 0,362 pour (a), 0,039 pour (b)).
+- **Ce n'est pas l'histoire** : sans les 38 greffes (b) qui n'ont pas
+  d'autre histoire, \|ΔP\| (b) vaut 0,063 contre 0,355 ; LOOP4 tient
+  (différence +0,292 [0,153 ; 0,431]).
+- **Trois graines (11, 14, 15) survivent mieux que le témoin** (+0,035 à
+  +0,070) **sans que la greffe le montre** : leur état ne fait pas pencher
+  le choix selon les besoins d'origine. La graine 14 a aussi le décodeur le
+  plus bas (0,57 et 0,58). Pourquoi elles survivent mieux n'est pas mesuré.
+- **Le décodeur seul ne suffit pas** : le même réseau à porte **non
+  appris** laisse déjà lire 0,75 et 0,77 (la porte garde l'information par
+  construction) ; l'apprentissage n'ajoute qu'environ 0,07 et 0,05. C'est la greffe
+  qui montre que l'état sert au choix.
+- **Selon g** : effet aligné +0,365 à un tour, +0,271 à deux tours ;
+  \|ΔP\| des greffes (b) : 0,050 et 0,052 ; (a0) : 0,081.
+- **La porte** laisse entrer en moyenne 26 % du nouvel état à chaque tour
+  (z moyen 0,20 à 0,30 selon la graine) : l'état dure plusieurs tours.
+- Le témoin coupé apprend, comme au test 32, presque la même table
+  (0,730 ou 0,734).
+
+**Écarts d'exécution, déclarés.**
+- Les résultats bruts ont été publiés et lus graine par graine (survie,
+  décodeur) dès leur écriture ; les greffes n'ont été résumées qu'à la fin.
+  Aucun seuil n'a changé.
+- Trois fichiers ont été publiés dans le commit d'une autre graine, dont le
+  message ne les nomme pas : la boucle de la graine 10 (`8e9a646`), celle de
+  la graine 18 (`858b5d5`), le témoin de la graine 11 (`1893552`).
+- La session a redémarré vers 3 h 05 UTC ; les calculs n'ont pas été
+  touchés (ils ont continué sans interruption).
+- La vérification bibliographique a été faite pendant le calcul, sans lire
+  les greffes.
+
+### Ce que cela dit
+
+- **Seulement en apprenant à survivre, une vraie boucle à porte survit
+  nettement mieux qu'un témoin sans mémoire** (0,846 contre 0,734, 10
+  graines sur 10), et plus que la règle « événement ». La porte et un
+  apprentissage plus long ont changé l'issue du test 32.
+- **Dans sept graines sur dix, l'état transmis porte les besoins cachés
+  et guide le choix**, à événement égal et à histoire différente. C'est,
+  dans ces graines, une récurrence au sens strict qui porte un état de soi
+  (le niveau de ses besoins), que rien ne lui a nommé et qu'il n'a jamais
+  vu.
+- **Mais le critère pré-enregistré demandait huit graines sur dix** : il
+  n'est pas atteint. Trois graines tirent profit de leur état sans que la
+  greffe montre qu'il porte leurs besoins. Le résultat est donc fort mais
+  pas universel, et la lecture fixée d'avance s'applique : la greffe ne
+  montre pas, sur l'ensemble des graines, qu'il porte surtout les besoins.
+
+**Ce que le résultat ne dit pas.**
+- Rien sur un ressenti.
+- Le réglage a été choisi en regardant la boucle (au pilote, sur d'autres
+  graines et d'autres mondes) ; le témoin a reçu le même.
+- La récompense (la survie) vient du monde, qui connaît les besoins ; elle
+  ne nomme ni le besoin ni l'action. La tête de valeur du critique prédit
+  le retour de survie.
+- La greffe lit des vies écrites par une règle, pas des vies vécues par
+  l'agent ; elle ne sépare pas le niveau des besoins de ce qui en commande
+  le choix.
+- **Ce qui est déjà connu** (vérification bibliographique) : des agents
+  récurrents appris par renforcement suivent un niveau interne dans leur
+  état, et forcer cet état change leur comportement (Chaturvedi et al.
+  2026 ; Hayes 2026), mais ce niveau leur est **donné en entrée**. L'apport
+  propre ici est étroit : besoins jamais observés, greffe entre deux vies
+  contre un témoin sans mémoire, séparation du besoin et de l'histoire,
+  pré-enregistrement.
+- Ces modèles sont petits, le monde aussi.
+
 ## Analyse exploratoire : le « oui » suit-il le besoin ou la décision ? (2 octobre)
 
 Écrite **après** le verdict du test 14, sur ses lectures publiées

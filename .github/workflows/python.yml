@@ -124,6 +124,7 @@ jobs:
       - run: python -m research.tiny_survival verdicts
       - run: python -m research.tiny_survival_ac verdicts
       - run: python -m research.tiny_loop verdicts
+      - run: python -m research.tiny_loop_gate verdicts
       - run: python scripts/check_reliability_artifacts.py
       - run: python scripts/check_self_model_artifacts.py
       - run: python scripts/audit_self_monitor_information.py
