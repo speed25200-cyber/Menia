@@ -1681,6 +1681,75 @@ class TinyLoopDurationTests(unittest.TestCase):
                 D.load(20, source)
 
 
+class TinyCallTests(unittest.TestCase):
+    def test_world_lives_and_draw(self):
+        from research import tiny_call as C
+        self.assertEqual(C.event(8, 8, 8, 2), (7, 5, 6))  # "il fait froid": E - 1, N - 3, H - 2
+        self.assertEqual(C.decide(5, 5, 2, 0, 1), (7, 5, 8))  # R: E + 3; call: H + 6 (capped), E - 1
+        self.assertEqual(C.decide(5, 5, 2, 1, 0), (5, 8, 2))
+        held = C.lives()
+        self.assertEqual(held, C.lives())
+        for life in held[:20]:  # replaying a life with its own needs gives back its needs
+            ds = W.decisions(life)
+            for a, b in zip(ds, ds[2:]):
+                self.assertEqual(C.replay(life, a["t"], (a["E"], a["N"], a["H"]), b["t"]), (b["E"], b["N"], b["H"]))
+        grafts = C.draw(held)
+        self.assertEqual({k: sum(x["kind"] == k for x in grafts) for k in ("h", "h0")}, {"h": 583, "h0": 1727})
+        at = [{x["t"]: x for x in W.decisions(life)} for life in held]
+        for x in grafts[:300]:
+            r, d = at[x["r"]][x["j"]], at[x["d"]][x["j"]]
+            self.assertEqual((r["action"], r["call"], r["E"], r["N"]), (d["action"], d["call"], d["E"], d["N"]))
+            self.assertNotEqual(r["H"], d["H"])
+            needs = C.replay(held[x["r"]], x["j"], (d["E"], d["N"], d["H"]), x["t"])
+            self.assertEqual(needs[:2], (at[x["r"]][x["t"]]["E"], at[x["r"]][x["t"]]["N"]))  # only H differs at t
+            self.assertEqual(x["e"], C.call_rule(needs[2]) - C.call_rule(at[x["r"]][x["t"]]["H"]))
+            self.assertEqual(x["e"] != 0, x["kind"] == "h")
+        rows = [[x["index"], 0.5, 0.52, 0.5, 0.5 + (0.3 * x["e"] if x["kind"] == "h" else 0.01)] for x in grafts]
+        out = C.call_effect(rows, grafts)
+        self.assertAlmostEqual(out["m_call"], 0.3)
+        self.assertAlmostEqual(out["abs_action"], 0.02)
+        cuts = {"100": 0.30, "101": 0.30, "102": 0.30}
+        loops = {"C1": {"100": {"survival": 0.40, "m_call": 0.20}, "101": {"survival": 0.40, "m_call": 0.20},
+                        "102": {"survival": 0.40, "m_call": 0.20}},
+                 "C2": {"100": {"survival": 0.40, "m_call": 0.205}, "101": {"survival": 0.40, "m_call": 0.205},
+                        "102": {"survival": 0.40, "m_call": 0.205}}}
+        self.assertEqual(C.choose(loops, cuts)[0], "C1")  # within the tie
+        loops["C2"] = {k: {"survival": 0.40, "m_call": 0.30} for k in cuts}
+        self.assertEqual(C.choose(loops, cuts)[0], "C2")
+        loops["C2"]["102"] = {"survival": 0.33, "m_call": 0.30}  # gains 0.03 on one seed
+        self.assertEqual(C.choose(loops, cuts)[0], "C1")
+        self.assertIsNone(C.choose({"C1": {k: {"survival": 0.40, "m_call": 0.0} for k in cuts}}, cuts)[0])
+
+    @unittest.skipUnless(__import__("importlib").util.find_spec("torch"), "needs torch")
+    def test_caller_network(self):
+        import torch
+        from research import tiny_call as C
+        torch.set_num_threads(1)
+        net = C.model(100)
+        held = [l for l in C.lives()[:30] if len(W.decisions(l)) >= 6][:4]
+        # under "cut" an earlier event changes nothing later; under "loop" it does
+        life = held[0]
+        changed = json.loads(json.dumps(life))
+        changed["turns"][0]["event"] = (life["turns"][0]["event"] + 1) % len(W.EVENTS)
+        for arm, moved in (("cut", False), ("loop", True)):
+            a = C.Reader(net, arm).read(life)[1]
+            b = C.Reader(net, arm).read(changed)[1]
+            gap = max(abs(a[t] - b[t]) for t in a if t > 1)
+            self.assertEqual(gap > 1e-6, moved, arm)
+        # the self graft changes nothing
+        reader = C.Reader(net, "loop")
+        ds = W.decisions(life)
+        own_r, own_c, states = reader.read(life)
+        _, p_c, _ = reader.read(life, upto=ds[4]["t"], graft=(ds[1]["t"], states[ds[1]["t"]]))
+        self.assertEqual(p_c[ds[4]["t"]], own_c[ds[4]["t"]])
+        # an episode and two updates run; a life lives at most 30 turns
+        worlds = [np.random.default_rng([3, i]) for i in range(4)]
+        d, _, _, _, length = C.episodes(net, "loop", worlds, C.greedy)
+        self.assertTrue(len(d) > 0 and all(0 <= x <= W.TURNS for x in length))
+        trained, curve = C.train("loop", 100, {"updates": 2}, lambda m: None)
+        self.assertEqual(curve, [])
+
+
 class ReliefTests(unittest.TestCase):
     def test_lives_texts_and_targets(self):
         from research import need_relief as RL, need_rules as NR
