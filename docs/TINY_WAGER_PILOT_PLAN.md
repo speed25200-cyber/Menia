@@ -25,6 +25,20 @@ pari peut suivre ce qui rend la tâche difficile sans rien « savoir » de
 soi. Les greffes servent à aller plus loin que le comportement : à choix
 égal, est-ce la confiance portée dans l'état qui fait parier ?
 
+**Note datée (7 octobre, après le commit de ce plan, avant toute exécution
+du pilote) : ce qui existe déjà.** Une recherche rapide, non exhaustive,
+trouve des tâches de pari ou de retrait chez des agents appris par
+renforcement : Phua (arXiv 2512.19155, décembre 2025) place un pari après la
+décision chez des agents munis d'un module de modèle de soi, et montre que
+léser ce module abolit la calibration sans toucher la tâche (un analogue de
+« vision aveugle ») ; d'autres travaux reprennent chez des agents profonds
+les tâches de retrait de la psychologie animale. Le pari chez un agent
+appris n'est donc pas nouveau. Ce que ce pilote et le test 37 ajoutent, s'ils
+réussissent, c'est autre chose : sans module dédié, une confiance **portée
+d'un tour à l'autre** par le seul état transmis d'une petite boucle, et
+**dissociée causalement** de ce qu'elle croit (greffes à action égale de la
+règle). Rien d'autre ne change dans ce plan.
+
 ## Le monde « pari », fixé ici
 
 - Le monde des besoins : E et N de 1 à 8, à 8 au départ ; 30 tours ; les
