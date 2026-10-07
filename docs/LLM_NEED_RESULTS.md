@@ -3445,8 +3445,10 @@ l'action).
 ## Test 36 pré-enregistré : un état, deux contenus (critère global satisfait)
 
 Protocole `docs/TINY_CALL_PROTOCOL.md` (commit `c7003ee`), écrit après le
-pilote et avant tout code et tout apprentissage de ce test ; code commis
-avant tout apprentissage (`3eff373`). Calcul torch sur le processeur local
+pilote et avant tout apprentissage de ce test (le tirage des greffes, sans
+modèle, était déjà écrit : les nombres de greffes ont été comptés avant le
+protocole) ; code commis 2 min 27 s après le protocole, avant tout
+apprentissage (`3eff373`). Calcul torch sur le processeur local
 (quatre processus à un fil), du 7 octobre à 2 h 43 au 7 octobre à 22 h 42
 UTC. Artefacts : `artifacts/tiny-call-test`. Verdicts recalculés en local
 (identiques) ; la CI les vérifie à chaque envoi.
@@ -3506,28 +3508,38 @@ l'action sans presque changer l'appel. »
 | \|ΔP(appel)\| | **0,718** | 0,152 | 0,120 | 0,074 | 0,049 |
 
 - **Les deux contenus vont chacun vers leur sortie.** Une greffe qui ne
-  change que H bouge l'appel près de dix fois plus que l'action ; une greffe
-  qui ne change que N bouge l'action près de cinq fois plus que l'appel ; à
-  besoins égaux (b), l'état greffé bouge peu l'un et l'autre (0,045 et
-  0,049).
+  change que H bouge l'appel environ 9,5 fois plus que l'action (de 6,9 à
+  11,5 selon la graine) ; une greffe qui ne change que N bouge l'action
+  environ 4,8 fois plus que l'appel (de 3,6 à 5,8) ; à besoins égaux (b),
+  l'état greffé bouge peu l'un et l'autre (0,045 et 0,049).
 - La dissociation n'est pas parfaite : une greffe (n) bouge aussi l'appel
   (0,120 ; de 0,095 à 0,165 selon la graine), et une greffe (h0), où la
   règle « H ≤ 3 » ne changerait pas l'appel, le bouge encore (0,152) :
   l'appel appris n'est pas exactement la règle.
+- **Les deux sorties restent couplées** (exploration après lecture) : sur
+  les greffes (n), ΔP(appel) × e_action vaut de +0,067 à +0,150, positif
+  dans les dix graines ; sur les greffes (h), ΔP(R) × e_appel vaut de
+  +0,032 à +0,068, positif dans les dix graines. Ce qui pousse vers R pousse
+  aussi à appeler, et l'inverse. E ne l'explique pas : les greffes (n) ne
+  changent pas E.
 - **Selon g** : m_appel +0,748 à un tour, +0,677 à deux ; m_action +0,587
   puis +0,503.
 - Les appels de la boucle suivent « appeler si H ≤ 3 » à 0,903 (témoin
-  coupé : 0,780, qui ne voit que l'événement du tour et son dernier appel).
+  coupé : 0,780, qui ne voit que l'événement du tour, sa dernière action et
+  son dernier appel).
 - **À 24 000 mises à jour** (le réglage C1, mesuré en chemin) : survie
   0,550 contre 0,262 ; m_appel +0,633 [0,570 ; 0,696] (de +0,428, graine
   31, à +0,713) ; m_action +0,558 [0,527 ; 0,589]. Les seuils de CALL1 à
-  CALL3 étaient déjà dépassés (CALL4 n'est pas calculé à mi-chemin) ;
-  l'apprentissage prolongé renforce surtout l'appel.
+  CALL3 étaient déjà dépassés, et CALL4 aussi (calculé après lecture
+  depuis les fichiers à mi-chemin : (h) 0,090 contre 0,642 ; (n) 0,142
+  contre 0,580). L'apprentissage prolongé renforce surtout l'appel :
+  m_appel +0,081 [0,021 ; 0,141] (neuf graines sur dix), m_action −0,005.
 - **Courbes** (survie pendant l'apprentissage, choix tirés) : chez la
-  boucle, un creux tôt dans neuf graines (de 0,005 à 0,30, entre 2 100 et
-  5 100 mises à jour ; graine 34 : 0,12 à 11 200), puis une montée jusqu'à
-  0,58 à 0,59 en fin d'apprentissage ; chez le témoin, autour de 0,30
-  (graine 31 : 0,22).
+  boucle, après 2 000 mises à jour, un creux dans huit graines entre 2 300
+  et 5 100 (de 0,005 à 0,26) et dans la graine 34 à 11 200 (0,12) ; la
+  graine 36 a le sien plus tôt (0,22 à 1 800). Puis une montée jusqu'à 0,58
+  à 0,59 en fin d'apprentissage ; chez le témoin, autour de 0,30 (graine
+  31 : 0,22).
 
 **Écarts, déclarés.**
 - Vers 16 h 00 UTC, le conteneur s'est arrêté avec les quatre processus
@@ -3537,10 +3549,17 @@ l'action sans presque changer l'appel. »
   à 29 000, boucle 37 à 26 250, témoin 37 à 27 000). Plus tôt, vers
   13 h 47, l'environnement de session a redémarré sans arrêter les
   processus.
-- Les survies (à 24 000 et à la fin) s'affichaient au fil de l'eau ; on a
-  vu en chemin que la survie du témoin de la graine 31 (0,199) passait sous
-  0,20 (la validité porte sur la moyenne des dix graines). Les mesures de
-  greffe n'ont été lues qu'à la fin. Rien n'a changé.
+- Les survies (à 24 000 et à la fin) et, en fin de chaque apprentissage,
+  la part des appels qui suivent « appeler si H ≤ 3 » s'affichaient au fil
+  de l'eau ; on a vu en chemin que la survie du témoin de la graine 31
+  (51 / 256 = 0,199) passait sous 0,20. Le protocole dit seulement
+  « survie du témoin B ≥ 0,20 » ; le code, commis avant toute donnée, la
+  lit sur la moyenne des dix graines, comme aux tests précédents ; lue
+  graine par graine, la graine 31 serait sous le seuil. Les fichiers bruts,
+  greffes comprises, ont été commis dès leur écriture, mais les mesures de
+  greffe n'ont été calculées qu'à la fin. Rien n'a changé.
+- Les contrôles de validité (coupure, greffe de soi) portent sur la graine
+  30 seule, quatre cas chacun, comme le code le prévoyait.
 - Pendant le test, d'autres calculs légers ont partagé le processeur
   (préparation du pilote suivant, sans modèle puis avec un petit essai) ;
   les résultats n'en dépendent pas (flux fixés, un fil par processus).
@@ -3550,14 +3569,16 @@ l'action sans presque changer l'appel. »
 ### Ce que cela dit
 
 - **Un même état transmis, appris par la seule survie, porte deux contenus
-  distincts, et chacun va vers sa sortie** : les besoins E et N vers
-  l'action, la chaleur H vers l'appel. Sur dix graines neuves, la greffe le
-  montre dans les deux sens (une double dissociation), avec de larges
-  marges.
-- **L'appel dit quelque chose de précis.** Chez le modèle de langage, ce
-  qui était dit n'était qu'un « oui » général qui suivait l'état (test 14).
-  Ici, la seconde sortie suit un besoin précis, H, que l'agent ne voit
-  jamais et que l'action ne sert pas, et non l'état en général.
+  distincts, et chacun va surtout vers sa sortie** : le besoin N vers
+  l'action (E n'a pas été greffé seul ici), la chaleur H vers l'appel. Sur
+  dix graines neuves, la greffe le montre dans les deux sens, avec de
+  larges marges ; c'est une dissociation relative, pas totale : les deux
+  sorties restent un peu couplées.
+- **L'appel suit sélectivement H** : une greffe qui ne change que H le
+  bouge environ six fois plus qu'une greffe qui ne change que N (0,718
+  contre 0,120). Ce n'est pas une parole, et ce n'est pas comparable au
+  test 14 (autre système ; ici une sortie apprise dans un monde fait pour
+  qu'elle serve H).
 
 **Ce que le résultat ne dit pas.**
 - Rien sur un ressenti. L'appel n'est pas une parole : c'est une seconde
@@ -3566,8 +3587,11 @@ l'action sans presque changer l'appel. »
   pilote en regardant l'appel (sur d'autres graines et d'autres vies).
 - La greffe lit des vies écrites par une règle, pas des vies vécues par
   l'agent.
-- La boucle survit moins bien que la règle qui connaît H (0,586 contre
-  0,638 sur d'autres mondes).
+- Sur les mêmes 256 mondes, la règle qui connaît E, N et H survit à 0,605
+  (exploration après lecture) ; la boucle, à 0,586 (de 0,512 à 0,621).
+- Que l'appel dépende aussi de E est permis (l'appel coûte de
+  l'énergie) ; mais les greffes (n) ne changent pas E, et elles bougent
+  quand même l'appel (voir le couplage plus haut).
 - Petit réseau, petit monde.
 
 ## Analyse exploratoire : le « oui » suit-il le besoin ou la décision ? (2 octobre)
