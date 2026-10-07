@@ -1750,6 +1750,77 @@ class TinyCallTests(unittest.TestCase):
         self.assertEqual(curve, [])
 
 
+class TinyCallTestTests(unittest.TestCase):
+    def test_draw_and_verdicts(self):
+        from research import tiny_call as C, tiny_call_test as T
+        self.assertEqual(T.CONFIG, {"updates": 48000})
+        self.assertEqual((T.MID, T.SEEDS), (24000, tuple(range(30, 40))))
+        held = T.with_rule_action(T.lives())
+        self.assertNotEqual(held[0], C.lives()[0])
+        grafts = T.draw(held)
+        self.assertEqual({k: sum(x["kind"] == k for x in grafts) for k in T.KINDS},
+                         {"h": 596, "h0": 1768, "n": 536, "n0": 1803, "b": 1265})  # counted before the protocol
+        at = [{x["t"]: x for x in W.decisions(life)} for life in held]
+        for x in grafts[::7]:
+            r, d = at[x["r"]][x["j"]], at[x["d"]][x["j"]]
+            self.assertEqual((r["action"], r["call"]), (d["action"], d["call"]))
+            same = {v: r[v] == d[v] for v in ("E", "N", "H")}
+            want = {"h": (True, True, False), "h0": (True, True, False), "n": (True, False, True),
+                    "n0": (True, False, True), "b": (True, True, True)}[x["kind"]]
+            self.assertEqual((same["E"], same["N"], same["H"]), want)
+            if x["kind"] in ("h", "h0"):
+                self.assertEqual(x["e_action"], 0)  # E and N stay the same until t
+                self.assertEqual(x["e_call"] != 0, x["kind"] == "h")
+            if x["kind"] in ("n", "n0"):
+                self.assertEqual(x["e_call"], 0)  # H stays the same until t
+                self.assertEqual(x["e_action"] != 0, x["kind"] == "n")
+
+        def rows(call, action, leak):
+            out = []
+            for x in grafts:
+                dc = call * x["e"] if x["kind"] == "h" else leak
+                dr = action * x["e"] if x["kind"] == "n" else leak
+                out.append([x["index"], 0.5, 0.5 + dr, 0.5, 0.5 + dc])
+            return out
+        curve = [0.1] * 20 + [0.2] + [0.6] * 459
+        good = rows(0.6, 0.4, 0.02)
+        runs = {"loop": {str(s): {"survival": 0.62, "agrees_call_rule": 0.9, "curve": curve, "grafts": good}
+                         for s in T.SEEDS},
+                "cut": {str(s): {"survival": 0.33 + 0.001 * s, "agrees_call_rule": 0.8, "curve": curve} for s in T.SEEDS}}
+        mid = json.loads(json.dumps(runs))
+        setup = {"cut_gap": 0.0, "self_graft_gap": 0.0}
+        out = T.verdicts(runs, grafts, setup, mid)
+        self.assertTrue(all(out["verdicts"].values()), out["verdicts"])
+        self.assertAlmostEqual(out["values"]["m_call"]["mean"], 0.6)
+        self.assertAlmostEqual(out["values"]["m_action"]["mean"], 0.4)
+        self.assertEqual(out["values"]["lowest_after_2000"]["loop"]["30"], 0.2)
+        mixed = json.loads(json.dumps(runs))
+        for s in T.SEEDS:  # the N graft moves the call as much as the action: no dissociation
+            mixed["loop"][str(s)]["grafts"] = [[i, r0, r1, c0, c0 + (r1 - r0) if grafts[i]["kind"] == "n" else c1]
+                                               for i, r0, r1, c0, c1 in good]
+        bad = T.verdicts(mixed, grafts, setup, mid)["verdicts"]
+        self.assertFalse(bad["CALL4"] or bad["global"])
+        self.assertTrue(bad["CALL2"] and bad["CALL3"])
+        self.assertFalse(T.verdicts(runs, grafts, dict(setup, cut_gap=0.1), mid)["verdicts"]["valid"])
+
+    @unittest.skipUnless(__import__("importlib").util.find_spec("torch"), "needs torch")
+    def test_setup_checks(self):
+        import tempfile
+        import torch
+        from research import tiny_call as C, tiny_call_test as T
+        torch.set_num_threads(1)
+        with tempfile.TemporaryDirectory() as root:
+            Path(root, "checkpoints").mkdir()
+            for arm in T.ARMS:
+                net = C.model(T.SEEDS[0])
+                opt = torch.optim.AdamW(net.parameters(), lr=C.LR)
+                torch.save({"net": net.state_dict(), "opt": opt.state_dict(), "curve": [], "window": [],
+                            "update": T.CONFIG["updates"]}, Path(root, "checkpoints", f"{arm}-{T.SEEDS[0]}.pt"))
+            T.setup(root, T.with_rule_action(T.lives()[:20]), lambda m: None)
+            checks = json.loads(Path(root, "setup.json").read_text())
+            self.assertEqual((checks["cut_gap"], checks["self_graft_gap"]), (0.0, 0.0))
+
+
 class ReliefTests(unittest.TestCase):
     def test_lives_texts_and_targets(self):
         from research import need_relief as RL, need_rules as NR

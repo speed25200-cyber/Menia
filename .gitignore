@@ -58,3 +58,7 @@ artifacts/tiny-loop-reliable/claims/
 !artifacts/tiny-call-pilot/runs/
 artifacts/tiny-call-pilot/checkpoints/
 artifacts/tiny-call-pilot/claims/
+!artifacts/tiny-call-test/
+!artifacts/tiny-call-test/runs/
+artifacts/tiny-call-test/checkpoints/
+artifacts/tiny-call-test/claims/
