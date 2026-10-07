@@ -159,6 +159,20 @@ l'action de l'agent sert un besoin le plus bas de ceux où elle ne le sert
 pas (aire sous la courbe), au total et à probabilité égale selon la règle
 (par tranches de 0,1).
 
+**Note datée (7 octobre, avant toute exécution du pilote) : une mesure
+descriptive de plus.** Une greffe (u) peut changer le pari de la règle
+parce que la croyance greffée est plus sûre (moins étalée) ou parce que
+ses moyennes sont plus éloignées l'une de l'autre (un contenu, pas une
+fiabilité). Pour séparer les deux, on publiera aussi, sans seuil, m_pari
+sur les seules greffes (u) dont les moyennes de E et de N, au tour t, avec
+et sans greffe, diffèrent chacune d'au plus **0,5** (« moyennes
+proches »). Compté sans modèle sur les vies de greffe du pilote : 443
+greffes (u) sur 4 055 ; parmi elles, le changement du pari de la règle
+suit l'étalement de la croyance (elle parie avec la greffe quand la
+croyance greffée est moins étalée, cesse de parier quand elle l'est plus ;
+variance de E plus variance de N) dans 91 % des cas. La règle de choix ne
+change pas.
+
 ## Règle de choix, fixée ici
 
 - **Un réglage est fiable** si, pour les trois graines, la récompense
