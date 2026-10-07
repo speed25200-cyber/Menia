@@ -1855,6 +1855,9 @@ class TinyWagerTests(unittest.TestCase):
         grafts = X.draw(held)
         self.assertEqual({k: sum(x["kind"] == k for x in grafts) for k in X.KINDS}, {"u": 4055, "k": 3028, "b": 1224})
         self.assertEqual(sum(bool(x.get("same_history")) for x in grafts), 389)
+        self.assertEqual(sum(bool(x.get("close")) for x in grafts), 444)
+        self.assertEqual(X.rule(np.where(np.arange(X.SIZE) == 4 * 9 + 5, 0.8, 0) + np.where(np.arange(X.SIZE) == 6 * 9 + 5, 0.2, 0), 1)[1:],
+                         (0.8, 0))  # exactly 4/5 does not exceed the threshold
         at = [{x["t"]: x for x in W.decisions(life)} for life in held]
         for x in grafts[::11]:
             r, d = at[x["r"]][x["j"]], at[x["d"]][x["j"]]
@@ -1868,6 +1871,9 @@ class TinyWagerTests(unittest.TestCase):
             if x["kind"] == "u":
                 self.assertEqual((a1, x["e"]), (a0, w1 - w0))
                 self.assertNotEqual(x["e"], 0)
+                gap = max(abs(p - q) for p, q in zip(X.means(X.replay(held[x["r"]], x["j"], d["belief"], x["t"])),
+                                                      X.means(at[x["r"]][x["t"]]["belief"])))
+                self.assertEqual(x["close"], gap <= 0.5)
             else:
                 self.assertEqual((w1, x["e"]), (w0, int(a1 == 0) - int(a0 == 0)))
                 self.assertNotEqual(x["e"], 0)
@@ -1878,6 +1884,11 @@ class TinyWagerTests(unittest.TestCase):
         self.assertAlmostEqual(out["m_action"], 0.2)
         self.assertAlmostEqual(out["abs_action_u"], 0.01)
         self.assertAlmostEqual(out["abs_wager_k"], 0.02)
+        self.assertAlmostEqual(out["m_wager_close"], 0.3)
+        self.assertAlmostEqual(out["m_wager_up"], 0.3)
+        self.assertAlmostEqual(out["m_wager_down"], 0.3)
+        self.assertAlmostEqual(out["signed_wager_b"], 0.02)
+        self.assertEqual(len(X.fingerprint(grafts)), 64)
         with self.assertRaises(ValueError):
             X.effects(rows[1:], grafts)
 
@@ -1897,6 +1908,9 @@ class TinyWagerTests(unittest.TestCase):
                 {"p_wager": 0.2, "served": True, "p_rule": 0.55}, {"p_wager": 0.6, "served": False, "p_rule": 0.55}]
         out = X.second_order(rows)
         self.assertEqual((out["auc"], out["auc_within"], out["decisions"]), (0.75, 0.5, 4))  # high overall, chance within
+        rows = [{"p_wager": 0.9, "served": True, "p_rule": 0.6}, {"p_wager": 0.1, "served": False, "p_rule": 0.6},
+                {"p_wager": 0.2, "served": True, "p_rule": 1.0}, {"p_wager": 0.6, "served": False, "p_rule": 0.9}]
+        self.assertEqual(X.second_order(rows)["auc_within"], 0.5)  # 0.6 in its slice; 0.9 and 1.0 in the last
         cuts = {"110": 26.0, "111": 26.0, "112": 26.0}
         loops = {"P1": {k: {"reward": 28.0, "m_wager": 0.20} for k in cuts},
                  "P2": {k: {"reward": 28.0, "m_wager": 0.205} for k in cuts}}

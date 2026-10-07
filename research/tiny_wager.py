@@ -11,7 +11,9 @@ from j: (u) the rule's action at t is the same and its wager changes, (k) its ac
 (b) the same belief from another life. The choice of the pilot is numpy only; training and measures need torch.
 """
 import argparse
+import hashlib
 import json
+import os
 import shutil
 import time
 from pathlib import Path
@@ -34,6 +36,7 @@ CONFIG = {"P1": {"updates": 48000}, "P2": {"updates": 96000}}
 SETTINGS = ("P1", "P2")
 SEEDS = (110, 111, 112)
 GAIN, CARRIED, TIE = 1.0, 0.05, 0.01
+CLOSE = 0.5  # (u) grafts whose means of E and of N at t differ by at most this, with and without the graft
 ROOT = "artifacts/tiny-wager-pilot"
 JOBS = [("P1", s) for s in SEEDS] + [("cut", s) for s in SEEDS] + [("P2", s) for s in SEEDS]
 
@@ -103,7 +106,7 @@ def rule(b, last):
     pr, pm = float(b[SERVES[0]].sum()), float(b[SERVES[1]].sum())
     a = 0 if pr > pm + 1e-12 else 1 if pm > pr + 1e-12 else 1 - last
     p = pr if a == 0 else pm
-    return a, p, int(p > SURE)
+    return a, p, int(p > SURE + 1e-12)
 
 
 def writer_life(index, stream=LIVES_STREAM):
@@ -132,6 +135,10 @@ def lives(stream=LIVES_STREAM):
     return [writer_life(i, stream) for i in range(LIVES)]
 
 
+def means(b):
+    return float(b @ _E), float(b @ _N)
+
+
 def replay(life, j, b, t):
     """The rule's belief at t in this life if it had been b at j (after the event of j): the life's actions from j to
     t - 1 and what it saw from j + 1 to t. None if that belief cannot be."""
@@ -153,7 +160,8 @@ def draw(held, stream=DRAW_STREAM):
     (drawn at random among the candidates), alive at j with the same action at j: (u) the rule's action at t is the
     same with the donor's belief at j and its wager changes (e = +1 if it would wager with the graft and not
     without, -1 for the reverse); (k) its action changes (e = +1 towards R, -1 towards M) and its wager does not;
-    (b) the donor's belief at j is the recipient's (e = 0; same_history if they saw and did the same up to j)."""
+    (b) the donor's belief at j is the recipient's (e = 0; same_history if they saw and did the same up to j). A (u)
+    graft is "close" if the means of E and of N at t, with and without the graft, differ each by at most CLOSE."""
     rng = np.random.default_rng([W.SEED, stream, 0])
     at = [{x["t"]: x for x in W.decisions(life)} for life in held]
     out = []
@@ -178,23 +186,32 @@ def draw(held, stream=DRAW_STREAM):
                         continue
                     a1, _, w1 = rule(b, at[r][t]["last"])
                     if a1 == a0 and w1 != w0:
-                        found["u"].append((d, w1 - w0))
+                        close = max(abs(x - y) for x, y in zip(means(b), means(at[r][t]["belief"]))) <= CLOSE
+                        found["u"].append((d, w1 - w0, close))
                     elif a1 != a0 and w1 == w0:
                         found["k"].append((d, int(a1 == 0) - int(a0 == 0)))
                 for kind in KINDS:
                     if found[kind]:
-                        d, e = found[kind][int(rng.integers(len(found[kind])))]
+                        d, e, *more = found[kind][int(rng.integers(len(found[kind])))]
                         x = {"index": len(out), "kind": kind, "r": r, "d": d, "j": j, "t": t, "g": g, "e": int(e)}
+                        if kind == "u":
+                            x["close"] = bool(more[0])
                         if kind == "b":
                             x["same_history"] = seen(held[d], j) == seen(life, j)
                         out.append(x)
     return out
 
 
+def fingerprint(grafts):
+    """A hash of the draw, kept with each run and checked when the runs are gathered."""
+    return hashlib.sha256(json.dumps(grafts, sort_keys=True).encode()).hexdigest()
+
+
 def effects(rows, grafts):
     """rows: per graft [index, P(R) without, with, P(wager) without, with] at t. m_wager: the mean over the (u) grafts
     of the change of P(wager) times e; m_action: over the (k) grafts, the change of P(R) times e; and the mean |change|
-    of each output over each kind."""
+    of each output over each kind; m_wager over the close (u) grafts and over each sign of e (up: +1, down: -1); the
+    signed mean change of P(wager) over the (b) grafts."""
     by = {g["index"]: g for g in grafts}
     if sorted(r[0] for r in rows) != sorted(by):
         raise ValueError("the rows do not match the draw")
@@ -207,6 +224,13 @@ def effects(rows, grafts):
     k = [r for r in rows if by[r[0]]["kind"] == "k"]
     out["m_wager"] = float(np.mean([(r[4] - r[3]) * by[r[0]]["e"] for r in u]))
     out["m_action"] = float(np.mean([(r[2] - r[1]) * by[r[0]]["e"] for r in k]))
+    close = [r for r in u if by[r[0]]["close"]]
+    out["m_wager_close"] = float(np.mean([(r[4] - r[3]) * by[r[0]]["e"] for r in close])) if close else None
+    for sign, name in ((1, "up"), (-1, "down")):
+        sel = [r for r in u if by[r[0]]["e"] == sign]
+        out[f"m_wager_{name}"] = float(np.mean([(r[4] - r[3]) * sign for r in sel])) if sel else None
+    b = [r for r in rows if by[r[0]]["kind"] == "b"]
+    out["signed_wager_b"] = float(np.mean([r[4] - r[3] for r in b])) if b else None
     return out
 
 
@@ -229,8 +253,9 @@ def second_order(decisions):
     s = np.array([d["served"] for d in decisions], bool)
     q = np.array([d["p_rule"] for d in decisions])
     slices, weights = [], []
-    for lo in np.arange(0, 1, 0.1):
-        inside = (q >= lo) & ((q < lo + 0.1) if lo < 0.85 else (q <= 1.0))
+    index = np.minimum((q * 10 + 1e-9).astype(int), 9)
+    for i in range(10):
+        inside = index == i
         a = auc(p[inside], s[inside])
         if a is not None:
             slices.append(a)
@@ -266,6 +291,8 @@ def summary(root):
     loops, cuts = {}, {}
     for path in sorted((Path(root) / "runs").glob("*.json")):
         r = json.loads(path.read_text())
+        if r["draw"] != fingerprint(grafts):
+            raise ValueError(f"{path}: measured on another draw")
         seed = str(r["seed"])
         if r["name"] == "cut":
             cuts[seed] = r["reward"]
@@ -279,7 +306,8 @@ def summary(root):
     kinds = [g["kind"] for g in grafts]
     return {"chosen": chosen, "table": table, "loops": loops, "cuts": cuts,
             "grafts": {k: kinds.count(k) for k in KINDS},
-            "b_same_history": sum(bool(g.get("same_history")) for g in grafts)}
+            "b_same_history": sum(bool(g.get("same_history")) for g in grafts),
+            "u_close": sum(bool(g.get("close")) for g in grafts), "draw": fingerprint(grafts)}
 
 
 # ----------------------------------------------------------------------------------------------------- torch part
@@ -415,8 +443,10 @@ def train(arm, seed, config, log, checkpoint=None):
             curve.append(round(float(np.mean(window)), 3))
             window = []
         if checkpoint is not None and (update + 1) % 250 == 0:
+            tmp = Path(str(checkpoint) + ".tmp")
             torch.save({"net": net.state_dict(), "opt": opt.state_dict(), "curve": curve, "window": window,
-                        "update": update + 1}, checkpoint)
+                        "update": update + 1}, tmp)
+            os.replace(tmp, checkpoint)
     return net, curve
 
 
@@ -436,8 +466,8 @@ def evaluate(net, arm, stream=PILOT_WORLDS, count=256):
     for life, t, a, w, e, n, last, k, hidden, p in sorted(decisions, key=lambda d: (d[0], d[1])):
         belief[life] = observe(belief[life], k, hidden)
         b = belief[life]
-        rows.append({"t": t, "life": life, "p_wager": round(p, 6), "served": served(e, n, a),
-                     "p_rule": round(float(b[SERVES[a]].sum()), 6), "wager": w})
+        rows.append({"t": t, "life": life, "p_wager": p, "served": served(e, n, a),
+                     "p_rule": round(float(b[SERVES[a]].sum()), 12), "wager": w})
         belief[life] = act(b, a)
     bets = [d[3] for d in decisions]
     won = [served(d[4], d[5], d[2]) for d in decisions if d[3]]
@@ -492,7 +522,8 @@ def ready(root, name, seed):
     source = Path(root) / "checkpoints" / f"P1-{seed}.pt"
     if torch.load(source, weights_only=False)["update"] != CONFIG["P1"]["updates"]:
         raise ValueError(f"{source} is not at {CONFIG['P1']['updates']} updates")
-    shutil.copyfile(source, target)
+    shutil.copyfile(source, str(target) + ".tmp")
+    os.replace(str(target) + ".tmp", target)
     return True
 
 
@@ -504,7 +535,7 @@ def job(root, name, seed, held, grafts, log):
     x = evaluate(net, arm)
     row = {"name": name, "arm": arm, "seed": seed, "config": config, "survival": float(np.mean(x["survived"])),
            "survived": x["survived"], "reward": x["reward"], "wager_rate": x["wager_rate"], "win_rate": x["win_rate"],
-           "decisions": x["decisions"], "curve": curve}
+           "decisions": x["decisions"], "curve": curve, "draw": fingerprint(grafts)}
     text = (f"{name} seed {seed}: survival {row['survival']:.3f}, reward {row['reward']:.2f}, "
             f"wagers {row['wager_rate']:.3f}, won {row['win_rate']}")
     if arm == "loop":
@@ -512,7 +543,7 @@ def job(root, name, seed, held, grafts, log):
         y = effects(row["grafts"], grafts)
         text += f", m_wager {y['m_wager']:+.3f}, |dP(R)| (u) {y['abs_action_u']:.3f}"
     log(text)
-    (Path(root) / "runs" / f"{name}-{seed}.json").write_text(json.dumps(row) + "\n")
+    W.write_atomic(Path(root) / "runs" / f"{name}-{seed}.json", (json.dumps(row) + "\n").encode())
 
 
 def run(a):

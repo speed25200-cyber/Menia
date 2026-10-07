@@ -173,6 +173,29 @@ croyance greffée est moins étalée, cesse de parier quand elle l'est plus ;
 variance de E plus variance de N) dans 91 % des cas. La règle de choix ne
 change pas.
 
+**Note datée (7 octobre, après relecture indépendante du code, avant
+toute exécution du pilote).** La relecture n'a trouvé aucun point
+bloquant. Corrections et ajouts, sans changer la règle de choix :
+- la règle parie si la probabilité **dépasse strictement** 0,8 ; une
+  égalité exacte à 4/5 (fréquente) ne compte plus comme un pari à cause
+  d'un arrondi. Quatre greffes changent de donneuse ; les nombres de
+  greffes ne changent pas (4 055 (u), 3 028 (k), 1 224 (b)) ; les greffes
+  (u) à moyennes proches sont **444** (et non 443) ;
+- dans le tableau des repères, la survie de 0,629 a été calculée avec une
+  égalité de probabilités prise au pied du chiffre ; avec la tolérance du
+  code (« à égalité »), elle est de 0,628 ; les récompenses ne changent
+  pas ;
+- les signes de e_pari ne sont pas équilibrés sur les greffes (u) (1 516
+  fois +1, 2 539 fois −1) : un déplacement de P(pari) commun à toutes les
+  greffes, quelle que soit la croyance, entrerait dans m_pari. On publiera
+  donc aussi, sans seuil, m_pari pour chaque signe de e_pari et la
+  moyenne signée de ΔP(pari) sur les greffes (b) ;
+- le témoin coupé reçoit, comme au test 34, la dernière action ;
+- techniques : écritures atomiques des points de reprise et des
+  résultats ; l'empreinte du tirage est gardée avec chaque résultat et
+  vérifiée au choix ; tranches de 0,1 exactes pour l'aire sous la courbe ;
+  P(pari) gardé sans arrondi.
+
 ## Règle de choix, fixée ici
 
 - **Un réglage est fiable** si, pour les trois graines, la récompense
