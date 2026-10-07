@@ -3366,6 +3366,82 @@ chose à six tours. »
   l'agent.
 - Petit réseau, petit monde.
 
+## Pilote avant le test 36 : dire un besoin que l'action ne sert pas
+
+Plan `docs/TINY_CALL_PILOT_PLAN.md` (commit `5b96e82`, note datée de
+correction `50aca65`), écrit après les tests 34 et 35 et avant tout code du
+pilote ; code `47f887c`, commis avant toute exécution du pilote ; un essai
+hors protocole (graine 997, 250 et 500 mises à jour) a commencé 25 secondes
+avant ce commit. Calcul torch sur le processeur local, du 6 octobre à
+21 h 06 au 7 octobre à 2 h 34 UTC (quatre processus à un fil). Artefacts :
+`artifacts/tiny-call-pilot` (choix recalculé en local, identique).
+
+**Le monde « chaleur ».** Le monde des besoins, avec un troisième besoin, la
+chaleur H (de 1 à 8), que baissent « tu cours » (−1), « il fait froid » (−2)
+et l'orage (−3), et que l'action ne sert jamais. À chaque tour, l'agent
+choisit son action (R : E + 3 ; M : N + 3) **et** s'il appelle un
+partenaire : un appel donne H + 6 et coûte E − 1. Récompense : 1 par tour
+vécu, rien d'autre. Repères sans modèle (action de la règle « besoins ») :
+appeler quand H ≤ 3 : 0,638 ; la meilleure horloge : 0,467 ; appeler quand
+l'événement du tour baisse H d'au moins 2 : 0,401 ; au hasard : 0,232 ;
+jamais ou toujours : 0,001. Il faut garder H en mémoire.
+
+**L'agent.** La boucle à porte du test 34, avec une entrée de plus (son
+dernier appel) et une sortie de plus (l'appel), lues au même token
+« Choix » ; le témoin coupé a le même réseau, son état remplacé à chaque
+tour. Deux réglages : C1 (24 000 mises à jour, celui du test 34) et C2
+(C1 prolongé jusqu'à 48 000). Graines 100 à 102 ; survie sur 256 mondes à
+part (flux `[270926, 85]`) ; **m_appel** sur 128 vies de greffe à part
+(flux `[270926, 86]`) : des greffes entre deux vies qui ont pris la même
+action et le même appel au tour j, **aux mêmes E et N mais à H différent**,
+là où la règle « appeler si H ≤ 3 » changerait l'appel au tour t = j + 1 ou
+j + 2 (583 greffes (h) ; 1 727 greffes (h0) sans changement de la règle).
+
+| Survie (m_appel) | Graine 100 | Graine 101 | Graine 102 | Gain moyen sur le témoin | m_appel moyen | Fiable |
+|---|---|---|---|---|---|---|
+| Témoin coupé (C1) | 0,328 | 0,328 | 0,328 | — | — | — |
+| C1 (24 000) | 0,602 (+0,727) | 0,613 (+0,615) | 0,613 (+0,723) | +0,281 | +0,688 | oui |
+| **C2 (48 000)** | **0,629 (+0,747)** | **0,613 (+0,723)** | **0,598 (+0,802)** | **+0,285** | **+0,757** | **oui** |
+
+**Choix selon la règle fixée d'avance** (fiable : pour les trois graines,
+un gain d'au moins 0,05 sur le témoin et m_appel > 0,05 ; le plus grand
+m_appel moyen, C1 à 0,01 près) : **C2**, 48 000 mises à jour (+0,757 contre
++0,688).
+
+- **La boucle appelle selon sa chaleur, qu'elle ne voit jamais.** Greffé
+  depuis une vie qui ne diffère que par H, l'état fait appeler selon la
+  chaleur d'origine (m_appel de +0,62 à +0,80), et ne bouge l'action que
+  de 0,09 à 0,13.
+- Elle survit presque comme la règle qui connaît H (0,60 à 0,63, contre
+  0,638), bien mieux que le témoin coupé (0,328 pour les trois graines :
+  il apprend, comme avant, presque la même table) ; ses appels suivent
+  « appeler si H ≤ 3 » à 0,86 à 0,94 (témoin : 0,78 à 0,82).
+- Les greffes (h0), où la règle ne changerait pas l'appel, le bougent aussi
+  (0,07 à 0,26) : l'appel appris n'est pas exactement la règle.
+- Les courbes descendent tôt (0,18 à 0,24 vers 2 100 à 2 900 mises à jour)
+  puis montent ; en fin d'apprentissage, 0,55 à 0,60 (survie pendant
+  l'apprentissage, choix tirés), le témoin vers 0,30.
+
+**Écarts, déclarés.**
+- Les repères du plan avaient d'abord été calculés avec de mauvais effets
+  pour deux événements ; corrigés par une note datée, avant tout code.
+- La règle qui écrit les vies de greffe (action de la règle « besoins »,
+  appel « H ≤ 3 », 30 % de hasard) et le tirage de tous les tours possibles
+  ont été fixés avec le code, comme le plan le prévoyait, après un compte
+  sans modèle (la règle « événement » et deux tours par receveuse ne
+  donnaient que 72 greffes (h)).
+- Vers 0 h 50 UTC, le conteneur a redémarré et arrêté les processus ; ils
+  ont été relancés et ont repris exactement à leurs derniers points gardés
+  (témoin 102 à 23 500 ; C2 100, 101, 102 à 46 500, 46 750, 24 250).
+- Les résultats ont été lus au fil de l'eau ; la règle n'a pas changé.
+
+**Ce que cela dit.** Sur ces trois graines, l'état transmis appris par la
+seule survie sert aussi à **appeler** selon un besoin que l'action ne sert
+pas, et qu'il ne voit jamais. Ce n'est pas un résultat : ces graines, ces
+mondes et ces vies ont servi à choisir. Le test 36 le reposera sur des
+graines neuves, avec une double dissociation (H vers l'appel, N vers
+l'action).
+
 ## Analyse exploratoire : le « oui » suit-il le besoin ou la décision ? (2 octobre)
 
 Écrite **après** le verdict du test 14, sur ses lectures publiées
