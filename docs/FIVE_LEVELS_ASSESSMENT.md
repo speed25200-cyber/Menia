@@ -1,6 +1,6 @@
 # Menia sur les cinq niveaux de Chandaria et al. (2026)
 
-État au 4 octobre 2026. Ce document est tenu à jour à chaque verdict.
+État au 7 octobre 2026. Ce document est tenu à jour à chaque verdict.
 
 Cadre : Chandaria, Muñoz Morán, Rosas, Seth, Shevlin, Hutter, Graepel,
 Bales, Comsa, Shanahan, Laukkonen, Kringelbach, Frith et Legg,
@@ -70,7 +70,7 @@ dit (niveau 2).
 | Indicateur | Résultat | Statut |
 |---|---|---|
 | Homéostasie, auto-maintien | Deux besoins à maintenir ; l'agent apprend à les maintenir, et sa survie en dépend. | **établi (au sens fonctionnel)** |
-| Intéroception | L'agent ne voit jamais ses niveaux. Il les infère et les rassemble en un état interne, que le lecteur lit. Cet état est suffisant et nécessaire pour agir et pour dire (tests 6 et 7). Mais le test 14 montre que ce qui est dit est surtout un « oui » général qui suit l'état (« fait-il nuit ? » bouge presque autant que « es-tu fatigué ? »), pas un contenu sur l'énergie. Au test 23, chez l'agent de la mémoire (test 22), l'état porté d'un tour à l'autre dépend surtout de son besoin : greffé dans une autre vie, il fait pencher le choix vers ce que demanderaient les besoins d'origine (en moyenne la moitié d'un changement complet). Au test 26, sans choix à imiter, le modèle de langage apprend à prédire le soulagement de ses actions (le niveau du besoin servi, une supervision directe du besoin) mieux que tout observateur de ses actions (+0,137) ; lue par une règle fixée par nous (prendre l'action au plus grand soulagement prédit), cette prédiction le fait survivre à 0,820 contre 0,621 pour le témoin. Au test 28 (valide), son état porté, greffé dans une autre vie, fait prédire le soulagement dans le sens des besoins de la vie d'origine (+0,35 niveau ; témoin qui ne porte que ses actions +0,11), mais surtout par l'événement du tour qu'il porte : à événement égal, l'effet n'est pas plus grand que chez le témoin (+0,16 contre +0,14 ; exploration après lecture). Au test 34 (valide, critère global satisfait), chez un petit réseau récurrent appris de zéro par la seule survie, l'état qui passe d'un tour au suivant (sa seule autre entrée venue du passé est sa dernière action) porte de façon fiable les besoins jamais observés et sert au choix : greffé, il fait choisir selon les besoins d'origine dans les dix graines (+0,53 en moyenne), aussi à événement égal. | **établi pour l'acte ; parole sans contenu propre** |
+| Intéroception | L'agent ne voit jamais ses niveaux. Il les infère et les rassemble en un état interne, que le lecteur lit. Cet état est suffisant et nécessaire pour agir et pour dire (tests 6 et 7). Mais le test 14 montre que ce qui est dit est surtout un « oui » général qui suit l'état (« fait-il nuit ? » bouge presque autant que « es-tu fatigué ? »), pas un contenu sur l'énergie. Au test 23, chez l'agent de la mémoire (test 22), l'état porté d'un tour à l'autre dépend surtout de son besoin : greffé dans une autre vie, il fait pencher le choix vers ce que demanderaient les besoins d'origine (en moyenne la moitié d'un changement complet). Au test 26, sans choix à imiter, le modèle de langage apprend à prédire le soulagement de ses actions (le niveau du besoin servi, une supervision directe du besoin) mieux que tout observateur de ses actions (+0,137) ; lue par une règle fixée par nous (prendre l'action au plus grand soulagement prédit), cette prédiction le fait survivre à 0,820 contre 0,621 pour le témoin. Au test 28 (valide), son état porté, greffé dans une autre vie, fait prédire le soulagement dans le sens des besoins de la vie d'origine (+0,35 niveau ; témoin qui ne porte que ses actions +0,11), mais surtout par l'événement du tour qu'il porte : à événement égal, l'effet n'est pas plus grand que chez le témoin (+0,16 contre +0,14 ; exploration après lecture). Au test 34 (valide, critère global satisfait), chez un petit réseau récurrent appris de zéro par la seule survie, l'état qui passe d'un tour au suivant (sa seule autre entrée venue du passé est sa dernière action) porte de façon fiable les besoins jamais observés et sert au choix : greffé, il fait choisir selon les besoins d'origine dans les dix graines (+0,53 en moyenne), aussi à événement égal. Au test 36 (valide, critère global satisfait), dans un monde où un troisième besoin, la chaleur H, n'est jamais servi par l'action mais seulement par un appel à un partenaire, le même genre de boucle porte dans son état **deux contenus distincts**, chacun vers sa sortie : greffé depuis une vie qui ne diffère que par H, l'état fait appeler selon la chaleur d'origine (+0,71, dix graines sur dix) et bouge peu l'action (0,08 contre 0,72) ; depuis une vie qui ne diffère que par N, il change l'action (+0,55) et bouge peu l'appel (0,12 contre 0,58). L'appel n'est pas une parole, mais c'est une seconde sortie au contenu précis. | **établi pour l'acte ; chez le modèle de langage, parole sans contenu propre ; chez la petite boucle, une seconde sortie (l'appel) au contenu précis (test 36)** |
 | États de valence | Le seul signal d'apprentissage est la réduction du manque : un état de valence fonctionnel. Nous n'avons pas mesuré de valence « vécue » : aucun test connu ne le permet. | **fonctionnel seulement** |
 | Modèle de soi, possession | Le test « À qui est ce besoin ? » (neuvième test) échoue : l'état bouge autant pour les événements de l'autre que pour les siens (MINE9). | **échoue** |
 
@@ -187,8 +187,13 @@ Voir `docs/LITERATURE_CHECK_READER_2026-09-30.md`.
    six tours plus tard (+0,15), en s'estompant (l'effet sur le choix baisse
    d'environ un quart par tour, en partie parce que les écarts de besoins se
    réduisent).
+   Au test 36, dans le monde « chaleur », le même genre d'état porte deux
+   contenus distincts, chacun vers sa sortie (besoins E et N vers
+   l'action, chaleur H vers l'appel ; double dissociation par greffe, dix
+   graines sur dix).
    Reste à porter cette récurrence vers le modèle de langage, et à voir si
-   ce qu'elle porte peut être dit.
+   ce qu'elle porte peut être dit (l'appel du test 36 est une sortie apprise,
+   pas une parole).
 5. Un besoin de savoir (test 12, « soif de savoir ») : **arrêté au pilote**, comme le
    protocole le prévoyait. Aucun taux d'apprentissage ne rend l'interférence entre
    domaines assez petite (au mieux 0,32 pour un seuil de 0,25)
