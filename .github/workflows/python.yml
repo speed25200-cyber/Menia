@@ -129,6 +129,7 @@ jobs:
       - run: python -m research.tiny_loop_reliable verdicts
       - run: python -m research.tiny_loop_duration verdicts
       - run: python -m research.tiny_call check
+      - run: python -m research.tiny_call_test verdicts
       - run: python scripts/check_reliability_artifacts.py
       - run: python scripts/check_self_model_artifacts.py
       - run: python scripts/audit_self_monitor_information.py
