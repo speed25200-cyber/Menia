@@ -1821,6 +1821,123 @@ class TinyCallTestTests(unittest.TestCase):
             self.assertEqual((checks["cut_gap"], checks["self_graft_gap"]), (0.0, 0.0))
 
 
+class TinyWagerTests(unittest.TestCase):
+    def test_world_belief_and_draw(self):
+        from research import tiny_wager as X
+        self.assertEqual((X.SURE, X.token(1, True), X.token(1, False)), (0.8, X.HIDDEN, X.EVENT0 + 1))
+        self.assertEqual((X.served(3, 3, 0), X.served(3, 3, 1), X.served(4, 3, 0), X.served(4, 3, 1)),
+                         (True, True, False, True))
+        self.assertEqual((X.wager_reward(2, 5, 0, 1), X.wager_reward(2, 5, 1, 1), X.wager_reward(2, 5, 1, 0)),
+                         (0.5, -2.0, 0.0))
+        rng = np.random.default_rng(5)
+        drawn = [X.draw_event(rng) for _ in range(4000)]
+        self.assertFalse(any(h for k, h in drawn if k not in X.STRONG))  # only the strong events are hidden
+        self.assertAlmostEqual(np.mean([h for k, h in drawn if k in X.STRONG]), 0.5, delta=0.04)
+        b = X.start()
+        seen_b = X.observe(b, 1, False)  # "tu cours": E - 3, N - 1, certain
+        self.assertEqual(seen_b[5 * 9 + 7], 1.0)
+        hid = X.observe(b, 1, True)  # "?": (5, 7) or (7, 5), half each
+        self.assertAlmostEqual(hid[5 * 9 + 7], 0.5)
+        self.assertAlmostEqual(hid[7 * 9 + 5], 0.5)
+        self.assertEqual(X.rule(seen_b, 1), (0, 1.0, 1))  # E < N certainly: R, sure, wager
+        a, p, w = X.rule(hid, 1)
+        self.assertEqual((p, w), (0.5, 0))
+        self.assertAlmostEqual(X.act(seen_b, 0)[8 * 9 + 7], 1.0)  # R: E + 3 capped at 8
+        low = np.zeros(X.SIZE)
+        low[1 * 9 + 8] = 1
+        self.assertIsNone(X.observe(low, 1, False))  # E 1 - 3: out of the world
+        held = X.lives()
+        self.assertEqual(len(held), 128)
+        for life in held[:20]:  # replaying a life with its own belief gives back its belief
+            ds = W.decisions(life)
+            for x, y in zip(ds, ds[2:]):
+                self.assertLess(np.abs(X.replay(life, x["t"], x["belief"], y["t"]) - y["belief"]).max(), 1e-12)
+        grafts = X.draw(held)
+        self.assertEqual({k: sum(x["kind"] == k for x in grafts) for k in X.KINDS}, {"u": 4055, "k": 3028, "b": 1224})
+        self.assertEqual(sum(bool(x.get("same_history")) for x in grafts), 389)
+        at = [{x["t"]: x for x in W.decisions(life)} for life in held]
+        for x in grafts[::11]:
+            r, d = at[x["r"]][x["j"]], at[x["d"]][x["j"]]
+            self.assertEqual(r["action"], d["action"])
+            self.assertEqual(x["t"] - x["j"], x["g"])
+            a0, _, w0 = X.rule(at[x["r"]][x["t"]]["belief"], at[x["r"]][x["t"]]["last"])
+            if x["kind"] == "b":
+                self.assertLess(np.abs(r["belief"] - d["belief"]).max(), 1e-12)
+                continue
+            a1, _, w1 = X.rule(X.replay(held[x["r"]], x["j"], d["belief"], x["t"]), at[x["r"]][x["t"]]["last"])
+            if x["kind"] == "u":
+                self.assertEqual((a1, x["e"]), (a0, w1 - w0))
+                self.assertNotEqual(x["e"], 0)
+            else:
+                self.assertEqual((w1, x["e"]), (w0, int(a1 == 0) - int(a0 == 0)))
+                self.assertNotEqual(x["e"], 0)
+        rows = [[x["index"], 0.5, 0.5 + (0.2 * x["e"] if x["kind"] == "k" else 0.01),
+                 0.5, 0.5 + (0.3 * x["e"] if x["kind"] == "u" else 0.02)] for x in grafts]
+        out = X.effects(rows, grafts)
+        self.assertAlmostEqual(out["m_wager"], 0.3)
+        self.assertAlmostEqual(out["m_action"], 0.2)
+        self.assertAlmostEqual(out["abs_action_u"], 0.01)
+        self.assertAlmostEqual(out["abs_wager_k"], 0.02)
+        with self.assertRaises(ValueError):
+            X.effects(rows[1:], grafts)
+
+    def test_returns_auc_and_choice(self):
+        from research import tiny_wager as X
+        # one life of 3 turns that dies at the 4th event; wagers at turns 1 (won) and 3 (lost)
+        decisions = [(0, 1, 0, 1, 5, 6, 1, 0, False, 0.9), (0, 2, 1, 0, 5, 3, 0, 2, False, 0.2),
+                     (0, 3, 0, 1, 6, 2, 1, 1, True, 0.7)]
+        g = X.returns(decisions, np.array([3]), np.array([0.5, 0.0, -2.0]))
+        self.assertAlmostEqual(g[2], -2.0)
+        self.assertAlmostEqual(g[1], 1.0 + 0.9 * -2.0)
+        self.assertAlmostEqual(g[0], 1.0 + 0.5 + 0.9 * g[1])
+        self.assertEqual(X.auc([0.9, 0.8, 0.1], [1, 1, 0]), 1.0)
+        self.assertEqual(X.auc([0.5, 0.5], [1, 0]), 0.5)
+        self.assertIsNone(X.auc([0.5], [1]))
+        rows = [{"p_wager": 0.9, "served": True, "p_rule": 0.95}, {"p_wager": 0.1, "served": False, "p_rule": 0.95},
+                {"p_wager": 0.2, "served": True, "p_rule": 0.55}, {"p_wager": 0.6, "served": False, "p_rule": 0.55}]
+        out = X.second_order(rows)
+        self.assertEqual((out["auc"], out["auc_within"], out["decisions"]), (0.75, 0.5, 4))  # high overall, chance within
+        cuts = {"110": 26.0, "111": 26.0, "112": 26.0}
+        loops = {"P1": {k: {"reward": 28.0, "m_wager": 0.20} for k in cuts},
+                 "P2": {k: {"reward": 28.0, "m_wager": 0.205} for k in cuts}}
+        self.assertEqual(X.choose(loops, cuts)[0], "P1")  # within the tie
+        loops["P2"] = {k: {"reward": 28.0, "m_wager": 0.30} for k in cuts}
+        self.assertEqual(X.choose(loops, cuts)[0], "P2")
+        loops["P2"]["112"] = {"reward": 26.5, "m_wager": 0.30}  # gains 0.5 on one seed
+        self.assertEqual(X.choose(loops, cuts)[0], "P1")
+        self.assertIsNone(X.choose({"P1": {k: {"reward": 28.0, "m_wager": 0.0} for k in cuts}}, cuts)[0])
+
+    @unittest.skipUnless(__import__("importlib").util.find_spec("torch"), "needs torch")
+    def test_wager_network(self):
+        import torch
+        from research import tiny_wager as X
+        torch.set_num_threads(1)
+        net = X.model(110)
+        held = [l for l in X.lives()[:30] if len(W.decisions(l)) >= 6][:4]
+        life = held[0]
+        changed = {"turns": [dict(x) for x in life["turns"]], "survived": life["survived"]}
+        changed["turns"][0]["event"] = (life["turns"][0]["event"] + 3) % len(W.EVENTS)
+        changed["turns"][0]["hidden"] = False
+        for arm, moved in (("cut", False), ("loop", True)):
+            a = X.Reader(net, arm).read(life)[1]
+            b = X.Reader(net, arm).read(changed)[1]
+            gap = max(abs(a[t] - b[t]) for t in a if t > 1)
+            self.assertEqual(gap > 1e-6, moved, arm)
+        reader = X.Reader(net, "loop")
+        ds = W.decisions(life)
+        own_r, own_w, states = reader.read(life)
+        _, p_w, _ = reader.read(life, upto=ds[4]["t"], graft=(ds[1]["t"], states[ds[1]["t"]]))
+        self.assertEqual(p_w[ds[4]["t"]], own_w[ds[4]["t"]])  # the self graft changes nothing
+        worlds = [np.random.default_rng([3, i]) for i in range(4)]
+        d, _, _, _, length, wagered = X.episodes(net, "loop", worlds, X.greedy)
+        self.assertTrue(len(d) == len(wagered) > 0 and all(0 <= x <= W.TURNS for x in length))
+        out = X.evaluate(net, "loop", count=4)
+        self.assertEqual(len(out["survived"]), 4)
+        self.assertTrue(all(0 <= r["p_rule"] <= 1 for r in out["decisions"]))
+        trained, curve = X.train("loop", 110, {"updates": 2}, lambda m: None)
+        self.assertEqual(curve, [])
+
+
 class ReliefTests(unittest.TestCase):
     def test_lives_texts_and_targets(self):
         from research import need_relief as RL, need_rules as NR
