@@ -3594,6 +3594,123 @@ l'action sans presque changer l'appel. »
   quand même l'appel (voir le couplage plus haut).
 - Petit réseau, petit monde.
 
+## Pilote avant le test 37 : le pari, sait-il quand il ne sait pas ?
+
+Plan `docs/TINY_WAGER_PILOT_PLAN.md` (commit `075c783`, notes datées
+`5e043ee`, `5d52f63`, `14e5c7e`), écrit pendant le test 36, avant tout code
+de ce pilote. Code `2b661f2`, corrigé après une relecture indépendante
+(`14e5c7e`), avant toute exécution. Deux essais hors protocole (graine 996,
+250 et 500 mises à jour) ont été faits pour vérifier la chaîne. Calcul torch
+sur le processeur local, du 7 octobre à 22 h 42 au 8 octobre à 8 h 14 UTC
+(quatre processus à un fil). Artefacts : `artifacts/tiny-wager-pilot`
+(choix recalculé en local, identique ; vérifié en CI).
+
+**Le monde « pari ».** Le monde des besoins, où « tu cours » et « il fait
+froid » sont cachés chacun avec une probabilité de 0,5. L'agent voit alors
+le même signe « ? » : il sait qu'un événement fort est arrivé, pas lequel.
+À chaque tour, avec son action, il parie ou non. Un pari gagne +0,5 si
+l'action sert un besoin le plus bas, et perd 2 sinon. Le pari ne change pas
+le monde, et l'agent ne voit jamais ses récompenses.
+
+Repères sans modèle (1 500 mondes de préparation), pour la récompense par
+vie (1 par tour vécu, plus les paris) :
+- **la règle**, qui garde la croyance exacte sur E et N et parie quand la
+  probabilité de servir un besoin le plus bas dépasse 0,8 : **32,61** ;
+- la même action, en pariant selon les seules moyennes de la croyance :
+  30,93 ;
+- en pariant si l'événement du tour n'est pas « ? » : 30,54.
+
+**L'agent.** La boucle à porte du test 34, avec une sortie de plus, le
+pari, lue au même token « Choix ». Le témoin coupé a le même réseau, son
+état remplacé à chaque tour. Deux réglages : P1 (48 000 mises à jour) et
+P2 (P1 prolongé jusqu'à 96 000). Graines 110 à 112, sur 256 mondes à part.
+
+**Les greffes.** Sur 128 vies de greffe à part, on greffe l'état d'une
+vie donneuse au tour j et on lit au tour t = j + 1 ou j + 2, entre deux vies
+qui ont pris la même action au tour j :
+- **(u)** l'action de la règle ne change pas, son pari change (4 055
+  greffes) ;
+- **(k)** l'action de la règle change, son pari non (3 028) ;
+- **(b)** même croyance, d'une autre vie (1 224).
+
+m_pari = moyenne sur (u) de ΔP(pari) × e_pari.
+
+| Récompense par vie (m_pari) | Graine 110 | Graine 111 | Graine 112 | Gain moyen sur le témoin | m_pari moyen | Fiable |
+|---|---|---|---|---|---|---|
+| Témoin coupé (P1) | 28,40 | 28,30 | 28,23 | — | — | — |
+| **P1 (48 000)** | **32,26 (+0,543)** | **32,12 (+0,478)** | **32,10 (+0,554)** | **+3,85** | **+0,525** | **oui** |
+| P2 (96 000) | 32,31 (+0,532) | 32,16 (+0,477) | 32,03 (+0,594) | +3,85 | +0,535 | oui |
+
+**Choix selon la règle fixée d'avance.** Un réglage est fiable si, pour
+les trois graines, il gagne au moins 1,0 sur le témoin et que m_pari dépasse
+0,05. On retient le plus grand m_pari moyen, et P1 à 0,01 près. Les deux
+réglages sont fiables ; P2 ne dépasse P1 que de 0,009. **Le réglage retenu
+est P1, 48 000 mises à jour.**
+
+Ce qui suit porte sur P1, sauf mention contraire.
+
+- **La boucle parie selon la confiance portée dans son état.** Greffé
+  depuis une vie où la règle garderait la même action mais changerait son
+  pari, l'état fait parier dans le sens de la règle : m_pari de +0,48 à
+  +0,55. L'action, elle, bouge peu : |ΔP(R)| de 0,12 à 0,17, contre
+  |ΔP(pari)| de 0,51 à 0,59.
+- **Ce n'est pas seulement l'écart entre les besoins.** Sur les greffes (u)
+  dont les moyennes de E et de N, avec et sans greffe, diffèrent chacune
+  d'au plus 0,5 (444 greffes), m_pari vaut encore +0,44 à +0,51.
+- **Ce n'est pas un déplacement commun.** m_pari est du même ordre quand
+  la règle parierait avec la greffe (+0,47 à +0,57) et quand elle
+  cesserait de parier (+0,48 à +0,56). Sur les greffes (b), même croyance,
+  le pari bouge à peine (ΔP signé +0,003 à +0,005 ; |ΔP| 0,03).
+- **Dans l'autre sens, la séparation est moins nette.** Sur les greffes
+  (k), où la règle change d'action sans changer son pari, l'action bouge
+  (m_action +0,44 à +0,56 ; |ΔP(R)| 0,47 à 0,58), mais le pari bouge aussi
+  (0,25 à 0,28), à peu près la moitié de l'action.
+- **Elle parie bien.** Elle parie à 60 % à 64 % des tours et gagne 97 % à
+  98 % de ses paris. Sa récompense (32,1 à 32,3) approche celle de la règle
+  (32,61 sur d'autres mondes). Le témoin coupé gagne 89 % à 90 % de ses
+  paris, et sa récompense (28,2 à 28,4) dépasse le repère sans mémoire du
+  plan (26,00) : il a appris mieux que la règle simple.
+- **Le pari suit la confiance de la règle, pas plus.** Sur les mondes du
+  pilote, P(pari) suit la probabilité de la règle que l'action serve
+  (corrélation 0,82 à 0,85). Il sépare bien les tours où l'action sert un
+  besoin le plus bas des autres (aire sous la courbe 0,83 à 0,84). Par
+  tranches de 0,1 de cette probabilité, l'aire vaut encore 0,59 à 0,73.
+  Mais, après lecture, à probabilité exactement égale (groupes de même
+  valeur), elle vaut 0,48 à 0,51, soit le hasard. L'aire par tranches
+  venait de la largeur des tranches. Le pari ne prédit pas les erreurs de
+  l'agent au-delà de ce que la règle idéale sait déjà.
+- **Courbes** (récompense pendant l'apprentissage, choix tirés). Chez la
+  boucle, un creux entre 2 100 et 3 100 mises à jour (24,0 ; 21,0 ; 16,7),
+  puis une montée vers 31,9 à 32,0 à 48 000. Le témoin se stabilise vers
+  28,0. P2 ne gagne presque rien de plus (32,0 à 32,2 à 96 000).
+
+**Écarts, déclarés.**
+- Vers 1 h 00 UTC le 8 octobre, le conteneur a redémarré et arrêté les
+  processus. Les réservations périmées ont été effacées et les processus
+  relancés à 1 h 11. Ils ont repris exactement à leurs derniers points
+  gardés : P1 110, 111, 112 à 37 500 et témoin 110 à 38 500.
+- Les résultats (survie, récompense, paris, m_pari) ont été lus au fil de
+  l'eau ; la règle n'a pas changé.
+- Le monde a été choisi parmi d'autres, sans modèle, avant le plan (dit
+  dans le plan).
+- L'aire sous la courbe à probabilité exactement égale a été calculée après
+  lecture.
+
+**Ce que cela dit.** Sur ces trois graines, l'état transmis, appris par la
+seule survie et par les paris, porte aussi **à quel point l'agent peut
+être sûr** de ses besoins. À action égale de la règle, une greffe qui ne
+change que cette fiabilité change le pari et bouge peu l'action. Ce n'est
+pas encore un résultat : ces graines, ces mondes et ces vies ont servi à
+choisir. Le test 37 le reposera sur des graines neuves.
+
+**Ce que cela ne dit pas.**
+- Rien sur un ressenti. Le pari est une sortie apprise, payée par le monde.
+- L'incertitude vient du monde (les « ? »), pas d'un doute de l'agent sur
+  lui-même.
+- Le pari ne repère pas les erreurs propres de l'agent au-delà de la règle
+  idéale.
+- Dans le sens (k), la séparation n'est que partielle.
+
 ## Analyse exploratoire : le « oui » suit-il le besoin ou la décision ? (2 octobre)
 
 Écrite **après** le verdict du test 14, sur ses lectures publiées
