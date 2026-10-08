@@ -1952,6 +1952,41 @@ class TinyWagerTests(unittest.TestCase):
         self.assertEqual(curve, [])
 
 
+class TinyWagerTestTests(unittest.TestCase):
+    def test_draw_and_verdicts(self):
+        from research import tiny_wager as X, tiny_wager_test as T
+        self.assertEqual((T.CONFIG, T.SEEDS), ({"updates": 48000}, tuple(range(40, 50))))
+        grafts = T.draw(T.lives())
+        self.assertEqual({k: sum(g["kind"] == k for g in grafts) for k in X.KINDS}, {"u": 4220, "k": 3307, "b": 1460})
+        self.assertEqual(sum(bool(g.get("close")) for g in grafts), 357)  # counted before the protocol
+        rng = np.random.default_rng(0)
+
+        def rows(scale):
+            return [[g["index"], 0.5, 0.5 + (0.3 * g["e"] if g["kind"] == "k" else 0.02),
+                     0.5, 0.5 + (scale * g["e"] if g["kind"] == "u" else (0.1 if g["kind"] == "k" else 0.01))]
+                    for g in grafts]
+        decisions = [{"p_wager": float(p), "served": bool(rng.random() < p), "p_rule": float(p)}
+                     for p in rng.choice([0.5, 0.8, 1.0], 300)]
+        runs = {a: {str(s): {"reward": 32.0 if a == "loop" else 28.0 + 0.1 * (s % 3), "survival": 0.6,
+                             "wager_rate": 0.6, "win_rate": 0.97, "decisions": decisions, "curve": [20.0] * 30,
+                             "draw": X.fingerprint(grafts), "grafts": rows(0.3 + 0.01 * (s % 4))}
+                     for s in T.SEEDS} for a in T.ARMS}
+        setup = {"cut_gap": 0.0, "self_graft_gap": 0.0}
+        out = T.verdicts(runs, grafts, setup)
+        self.assertTrue(out["verdicts"]["global"], out["verdicts"])
+        self.assertAlmostEqual(out["values"]["abs"]["u"]["action"], 0.02)
+        self.assertAlmostEqual(out["values"]["k_side"]["signed_wager_k"], 0.1)
+        weak = {a: {s: dict(r, grafts=rows(0.03)) for s, r in v.items()} for a, v in runs.items()}
+        v = T.verdicts(weak, grafts, setup)["verdicts"]
+        self.assertFalse(v["BET2"] or v["global"])
+        runs["cut"]["40"]["draw"] = "other"
+        self.assertFalse(T.verdicts(runs, grafts, setup)["verdicts"]["valid"])
+        self.assertEqual(T.exact_auc([{"p_wager": 0.9, "served": True, "p_rule": 0.6},
+                                      {"p_wager": 0.1, "served": False, "p_rule": 0.6},
+                                      {"p_wager": 0.5, "served": True, "p_rule": 1.0}]),
+                         {"auc_exact": 1.0, "share_exact": 2 / 3})
+
+
 class ReliefTests(unittest.TestCase):
     def test_lives_texts_and_targets(self):
         from research import need_relief as RL, need_rules as NR

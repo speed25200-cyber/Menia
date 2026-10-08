@@ -66,3 +66,7 @@ artifacts/tiny-call-test/claims/
 !artifacts/tiny-wager-pilot/runs/
 artifacts/tiny-wager-pilot/checkpoints/
 artifacts/tiny-wager-pilot/claims/
+!artifacts/tiny-wager-test/
+!artifacts/tiny-wager-test/runs/
+artifacts/tiny-wager-test/checkpoints/
+artifacts/tiny-wager-test/claims/
