@@ -1,64 +1,57 @@
 {
- "id": "6ac34d9301fc178de97b48ef",
+ "id": "6acec9cad3032f678b12683f",
  "tag": null,
  "branch": "claude/causal-self-model-llm-results-mauabk",
  "workflow": "menia-need-mac",
- "status": "finished",
- "createdAt": "2026-10-05T07:11:15.663000+00:00",
- "startedAt": "2026-10-05T07:50:32.688000+00:00",
- "finishedAt": "2026-10-05T08:53:41.356000+00:00",
- "commit": "3d3216d3f2da2473db68594b8979ff76953287e0",
- "message": null,
+ "status": "failed",
+ "createdAt": "2026-10-14T00:16:10.239000+00:00",
+ "startedAt": "2026-10-14T00:19:00.954000+00:00",
+ "finishedAt": "2026-10-14T00:21:24.006000+00:00",
+ "commit": "d039194cca2c277bc64d4134a3e3c6e8dcea6b8f",
+ "message": "Step 3 script `Vérifier le protocole sur des doubles` exited with status code 1",
  "steps": [
   {
    "name": "Preparing build machine",
    "status": "success",
-   "startedAt": "2026-10-05T07:50:32.960000+00:00",
-   "finishedAt": "2026-10-05T07:51:07.673000+00:00"
+   "startedAt": "2026-10-14T00:19:01.216000+00:00",
+   "finishedAt": "2026-10-14T00:19:28.839000+00:00"
   },
   {
    "name": "Fetching app sources",
    "status": "success",
-   "startedAt": "2026-10-05T07:51:07.673000+00:00",
-   "finishedAt": "2026-10-05T07:51:45.088000+00:00"
+   "startedAt": "2026-10-14T00:19:28.839000+00:00",
+   "finishedAt": "2026-10-14T00:20:20.377000+00:00"
   },
   {
    "name": "Installer mlx-lm dans un environnement isolé",
    "status": "success",
-   "startedAt": "2026-10-05T07:51:45.088000+00:00",
-   "finishedAt": "2026-10-05T07:52:07.138000+00:00"
+   "startedAt": "2026-10-14T00:20:20.377000+00:00",
+   "finishedAt": "2026-10-14T00:20:39.446000+00:00"
   },
   {
    "name": "Vérifier le protocole sur des doubles",
-   "status": "success",
-   "startedAt": "2026-10-05T07:52:07.138000+00:00",
-   "finishedAt": "2026-10-05T07:52:40.488000+00:00"
+   "status": "failed",
+   "startedAt": "2026-10-14T00:20:39.446000+00:00",
+   "finishedAt": "2026-10-14T00:21:23.772000+00:00"
   },
   {
    "name": "Une étape du besoin (tours d'apprentissage ; rapport puis direction ; ou vies de test)",
-   "status": "success",
-   "startedAt": "2026-10-05T07:52:40.488000+00:00",
-   "finishedAt": "2026-10-05T08:53:38.718000+00:00"
+   "status": "skipped",
+   "startedAt": "2026-10-14T00:21:23.772000+00:00",
+   "finishedAt": "2026-10-14T00:21:23.772000+00:00"
   },
   {
    "name": "Publishing",
    "status": "success",
-   "startedAt": "2026-10-05T08:53:38.718000+00:00",
-   "finishedAt": "2026-10-05T08:53:41.276000+00:00"
+   "startedAt": "2026-10-14T00:21:23.772000+00:00",
+   "finishedAt": "2026-10-14T00:21:23.926000+00:00"
   },
   {
    "name": "Cleaning up",
    "status": "success",
-   "startedAt": "2026-10-05T08:53:41.276000+00:00",
-   "finishedAt": "2026-10-05T08:53:41.356000+00:00"
+   "startedAt": "2026-10-14T00:21:23.926000+00:00",
+   "finishedAt": "2026-10-14T00:21:24.006000+00:00"
   }
  ],
- "artefacts": [
-  {
-   "name": "Menia_29_artifacts.zip",
-   "size": 32152311,
-   "md5": null,
-   "type": "bundle"
-  }
- ]
+ "artefacts": []
 }
