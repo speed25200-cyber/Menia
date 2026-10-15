@@ -8,8 +8,9 @@ suivant (`docs/APPRENDRE_SANS_FIN_PROTOCOLE.md`). Il ne change aucun résultat d
 
 - **Tout le dépôt `speed25200-cyber/Prophet_AGI`**, branche `claude/prophet-ai-architecture-gvyvbn`, commit
   `8a28066` (24 septembre 2026), dans le dossier `prophet_agi/`, **avec son historique** (fusion sans
-  ancêtre commun, stratégie « ours » puis `read-tree --prefix`). `git log -- prophet_agi/` montre les
-  commits d'origine.
+  ancêtre commun, stratégie « ours » puis `read-tree --prefix`). Les commits d'origine sont dans
+  l'historique, sous leurs anciens chemins (sans le préfixe) : `git log 69d80cf^2 -- docs/35_HYPOTHESIS_MAP.md`
+  les montre ; `git log -- prophet_agi/` ne montre que le commit d'import.
 - Rien n'a été modifié dans les fichiers importés. Ils gardent leurs propres tests, leur `CLAUDE.md` et
   leurs chemins relatifs : on travaille dans `prophet_agi/` comme dans le dépôt d'origine.
 - La CI de Menia ne lance pas les tests de `prophet_agi/` (ses commandes visent `tests/` et
