@@ -1,0 +1,125 @@
+# Prophet — notes pour les agents travaillant sur ce dépôt
+
+## Contexte
+
+Prophet est un projet de recherche multi-semaines : concevoir et entraîner une
+architecture de LLM de nouvelle génération sous des contraintes de compute extrêmes.
+Lire `docs/00_PROBLEM_LANDSCAPE.md` avant toute contribution.
+
+## Contraintes non négociables
+
+- **Entraînement** : un seul A100 80GB (Google Colab, sessions interruptibles).
+  Toute proposition exigeant du multi-GPU ou du multi-nœud est hors périmètre.
+  A100 = Ampere sm_80 : **pas de FP8 matériel**, pas de FlashAttention-3.
+- **Inférence** : doit tourner sur 1× RTX 5090 (32 Go), un Mac Studio, et — en
+  variante réduite — un iPhone 17 Pro (~8 Go, budget applicatif réel 3–5 Go).
+- **Reprise** : tout entraînement doit être interruptible et reprenable de façon
+  déterministe (dataloader inclus).
+
+## Règles d'ingénierie
+
+1. **Rien sans chiffres.** Toute affirmation de performance s'accompagne de son
+   arithmétique (FLOPs, octets, tok/s) ou d'une citation.
+2. **Ablation avant adoption.** Aucun composant architectural n'entre dans la version
+   principale sans une ablation à 50–500M paramètres qui le valide.
+3. **Réversibilité.** Chaque module est activable/désactivable par configuration.
+   Une idée non validée ne doit jamais être un couplage dur.
+4. **Pas de données dans git.** Corpus, checkpoints et poids restent hors dépôt.
+5. **Hygiène de contamination.** Toute source de données passe par la décontamination
+   avant d'entrer dans un mélange d'entraînement.
+6. **Honnêteté des résultats.** On rapporte les échecs. Un score non reproduit est
+   marqué comme tel.
+
+## Structure
+
+```
+docs/           Spécifications, registre de décisions, rapports de recherche
+                (R01–R12 verrous, W1–W4 murs, A1–A4 revue et agentique),
+                premiers runs (09) et architecture suivante (10)
+prophet/
+  config.py     Schéma de configuration — tout pari est un interrupteur explicite,
+                validate() refuse l'impossible, design_warnings() refuse l'incohérent
+  budget.py     Paramètres, mémoire, débit par appareil, alertes d'allocation
+  scaling.py    Points de fonctionnement sous budget d'heures-A100
+  plan.py       Allocation du compute entre les tracks (ordre strict, sans remplissage)
+  modeling/     Couches (attention GQA/SWA/NoPE, delta gated), MoE, modèle à
+                profondeur récurrente avec halte apprise, têtes d'action typées
+  data/         Tokenizer Prophet-Tok v1, mélanges, décontamination, streaming reprenable,
+                corpus réels (fichiers/Hub, phases, plafond d'époques au tirage)
+  train/        Muon + AdamW, planning WSD, checkpointing atomique, boucle, pertes,
+                KLPO (régression par token régularisée par la KL vers l'échantillonneur, A5)
+  eval/         Métriques (BPB), harnais à trois niveaux, benchmark agentique à vérificateurs
+  memory/       Registre à clés-produit (écriture en forme close), état de session,
+                consolidation de contexte et de profondeur
+  agent/        Boucle agentique : actions typées et grammaire, vérification à tiers,
+                quarantaine à provenance, état et retour arrière, rendu des épisodes
+  convert/      Conversion d'un donneur ouvert vers l'architecture Prophet
+  analysis/     Mesure de la bande passante des canaux de raisonnement
+  kernels/      Réservé aux noyaux Triton/CUDA — vide tant qu'aucun GPU n'a servi ;
+                le balayage delta par blocs (CPU/Mac) vit dans modeling/layers.py
+configs/        Configurations générées par scripts/build_configs.py (jamais à la main)
+scripts/        Scripts exécutables : entraînement, conversion, vérification, sondes
+tests/          ~512 tests ; les plus importants sont des tests d'équivalence
+third_party/    Copies de référence non modifiées (KLPO), empreintes et commit dans VENDORED.md
+```
+
+## Ce que ce dépôt a appris à ses dépens
+
+Vingt-cinq défauts **silencieux** ont été trouvés en construisant — chacun s'entraînait
+normalement (ou plantait à la première étape sur A100) et aurait produit un modèle fluide
+et faux :
+
+| Défaut | Comment il a été trouvé |
+|---|---|
+| Init aléatoire de l'état récurrent fuyant à l'inférence | test d'équivalence préremplissage/décodage |
+| Embeddings liés écrasés au chargement après copie du state dict | test sur dictionnaire copié en profondeur |
+| `β = sigmoid` bornant l'écriture delta à (0,1) : parité hors d'atteinte | track W2, vérifié par sonde : hasard → 0.996 |
+| Config livrée avec l'attention **dans** la boucle | track W2 ; désormais `design_warnings()` |
+| Sondes de halte écrivant *k* fois dans le même cache | test d'équivalence avec halte |
+| `nope_layers` réglé, vérifié, documenté — et ignoré par le modèle | revue A1 : grep des champs jamais lus |
+| Biais de routage MoE mis à jour *dans* le forward : sous checkpointing d'activations, le recalcul route autrement et le backward **plante** sur toute config MoE | expérience de comptage d'appels au routeur ; le pas est enregistré et appliqué après le backward |
+| Boucle agentique lisant à *k*=1 puis pensant à *k*=8 sur un cache dont l'état profond n'avait pas vu l'observation | modèle réel branché sur la boucle ; désormais plafonds par token, équivalence testée à 1e-4 |
+| Schémas d'outils encodés comme *texte* dans le prompt épinglé : leurs ids de contrôle étaient des octets, donc aucune ancre pour la tête de sélection | test de la boucle avec un modèle exposant des têtes d'action ; ids de contrôle épissés explicitement |
+| Balayage delta par blocs : gradient en 1/α et exp masquée *après* coup — NaN dès qu'une porte d'oubli se ferme, alors que tous les tests d'équivalence passaient | le premier entraînement réel (divergence au pas 280) ; log-sigmoïde et masque en espace log, garde anti-NaN dans le trainer |
+| Cibles de copie jamais alignées : un mot en prose est un token *avec son espace*, nu en JSON — zéro cible sur 40 valeurs, têtes apprises à 100 % et 5 % de transfert | le premier run agentique ; occurrence acceptée au token porteur d'espace, espace retiré à l'épissage : 0 → 40 cibles, 5 % → 55 % de succès |
+| Porte de rappel du registre d'attention ouverte à ½ dès le pas zéro : les lectures d'une mémoire vide noyaient l'attention, la couche n'apprenait rien, même dans la fenêtre | l'expérience de rappel avec bras de contrôle ; porte initialisée quasi fermée, ordre des blocs corrigé |
+| État de session porté entre épisodes : mécanique exacte, 57.5 % → 0 % — le modèle n'a jamais vu un état porté à l'entraînement | le benchmark agentique, poids gelés, seule variable l'état ; recette « séquences d'épisodes » à construire avant tout usage |
+| Position de requête du pointeur de copie : entraînée au token du guillemet ouvrant, interrogée un token plus tôt (après `"clé":`) au décodage — un checkpoint survivait par marge (55 %), le suivant tombait à 0 % avec des pointeurs exacts en forçage | sonde forçage contre décodage incrémental sur le même checkpoint ; cible déplacée là où la grammaire tire, test d'accord train/décodage |
+| Span de réflexion jamais rendu dans les trajectoires parfaites, ouvert par la boucle à chaque pas : un token de contrôle inconnu au décodage, rempli de fragments d'appel — **100 % → 0 %** sur les mêmes poids selon que la boucle l'ouvre ou non | banc avec et sans span sur le même checkpoint ; le rendu émet le span (vide) à chaque pas |
+| Masque d'attention par segment posé sur les couches pendant le forward et effacé à la sortie : sous checkpointing d'activations, le recalcul du backward ne le voit plus et PyTorch refuse — plantage au premier pas | le premier run à masque ; le masque reste posé jusqu'au forward suivant (qui le réécrit toujours), test sous checkpointing |
+| Registres d'attention jamais emportés par la session de l'agent (`extract_session` / `restore_session` appelés sans le modèle) : un état porté sans son registre, silencieusement | premier branchement du registre sur la boucle ; le modèle est passé, test de session avec registre |
+| Registres de la couche portés par les *tampons du module* : un épisode sans session héritait de ceux du précédent — fuite d'un épisode à l'autre par les poids, invisible au banc | même branchement ; remise à zéro à chaque épisode sans session, testée |
+| Grammaire d'action tolérante aux blancs alors que le rendu écrit les appels en JSON compact : un modèle qui dérive ouvre le span par des espaces, la grammaire les admet, et deux jetons plus loin plus aucun candidat n'est viable — 45 % de sorties « malformées » au banc, 0,233 contre 0,550 à poids égaux selon la grammaire | le premier pilote de boucle fermée (docs/32), diagnostic jeton par jeton ; `ActionGrammar(compact=True)`, tests d'accord rendu / grammaire |
+| Reprise après un arrêt entre la génération d'un tour et son enregistrement : les épisodes du tour étaient déjà en quarantaine, le tour rejoué les régénérait, et l'entraînement les voyait en double | un redémarrage de conteneur pendant le pilote v2 ; entrées étiquetées par tour, orphelins écartés à la reprise, test qui simule l'enregistrement manquant |
+| Grammaire d'action déclarant viable une chaîne contenant un retour à la ligne brut ou un échappement inconnu, que `json.loads` refuse toujours : le span était mort dès ce jeton et le décodeur le poursuivait jusqu'au bout du budget (27 propositions sur 30 malformées au premier barreau) ; un test consacrait même une tabulation brute « complète » | la sonde de propositions enregistrant chaque span (docs/33 amendements 7–8) ; la grammaire refuse ce que JSON refuse, testé contre `json.loads` |
+| `no_repeat_action` interdisant au pas suivant l'action *inscrite* : un `done` refusé est inscrit comme le `verify` qui le remplace, et le modèle réémettait `done`, refusé encore — 16 échecs sur 20 au banc, lus comme « une étape que la politique n'émet pas » | un diagnostic en lecture seule du banc glouton (docs/32 §24) ; `no_repeat_emitted` : 0,667 → 0,967 à poids égaux, ce mode 16 → 0 |
+| Miniatures CPU à *d* = 64 entraînées avec `init_std` 0,02, des embeddings liés et du GQA : l'attention y apprend une consultation sur 1 graine sur 4 (un transformeur minimal : 4 sur 4), et les bras à attention échouaient pour cette seule raison ; `FeedForwardConfig.activation` n'était lu par rien | les contrôles ratés de docs/36–37, puis un balayage ingrédient par ingrédient sur 4 graines (docs/38) ; `design_warnings()` signale ce régime, `validate()` refuse une activation non construite |
+| Grammaire admettant un échappement `\u` incomplet dans un **nom d'outil** : aucun chiffre ne le complète en préfixe d'un nom, et 30 propositions sur 30 mouraient sur `{"name":"propose_\udde` | la sonde de propositions du premier barreau SI-1 (docs/39 amendement 1) ; noms et clés refusent tout échappement, les valeurs les gardent |
+| Propositions entraînant la porte de copie à « ne pas copier » alors que le proposeur décode sans copie, sous `expression`, la clé que le solveur `calc` copie : 50 pas d'amorce, banc du solveur 1,0 → 0,0, la même expression inventée écrite pour chaque tâche | rejouer le banc du checkpoint avec la grammaire corrigée, puis lire la porte (docs/39 amendement 1) ; `TrainConfig.gate_keys` : la porte n'est entraînée que là où le décodeur l'interroge |
+
+**Règle qui en découle :** un champ de configuration que rien ne lit est un bug, pas une
+réserve. Toute nouvelle option doit être lue par le code qui l'honore *et* couverte par
+un test comportemental, dans le même commit.
+
+## Avant de proposer un changement d'architecture
+
+Passer par les outils, pas par l'intuition :
+
+```bash
+python -m prophet.budget <config.json>   # est-ce que ça tient en mémoire ?
+python scripts/design_search.py          # qu'est-ce qui satisfait toutes les contraintes ?
+python -m prophet.plan                   # d'où vient le compute ?
+```
+
+Ces outils ont déjà corrigé des erreurs de conception avant qu'elles ne coûtent quoi que
+ce soit. Une proposition sans passage par eux n'est pas recevable. Un changement de
+modèle passe aussi par la suite de tests d'équivalence (`tests/test_modeling.py`) : le
+décodage incrémental doit rester identique à une passe complète, avec cache, halte et
+mémoire activés.
+
+## Conventions
+
+- Python ≥ 3.11, PyTorch ≥ 2.5, typage explicite sur les interfaces publiques.
+- Formatage `ruff format`, lint `ruff check`.
+- Les configurations sont des dataclasses sérialisables, pas des dictionnaires libres.
+- Les noms de branches de travail : `claude/<sujet>`.
