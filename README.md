@@ -24,6 +24,10 @@ précise les mécanismes candidats, les hypothèses théoriques et les expérien
 envisagées. Elle ne constitue pas une recette validée. La continuité repose sur un journal
 explicite et des sauvegardes, sans objectif de résistance à l'arrêt ou d'auto-réplication.
 
+## Programme V : apprendre sans fin
+
+Le dépôt Prophet_AGI est importé dans `prophet_agi/`, avec son historique ([ce qui a été importé et ce qu'il apporte](docs/PROPHET_AGI_DANS_MENIA.md)). Le [programme suivant](docs/APPRENDRE_SANS_FIN_PROTOCOLE.md) fixe les tests 38 à 41 : une boucle jour–nuit où un petit modèle de langue apprend de ses propres épisodes vérifiés sans oublier, choisit ce qu'il apprend d'après un signal lu dans son propre état, et grandit quand il sature. Chaque test aura son pilote puis son protocole pré-enregistré.
+
 ## Expériences Atelier : un agent cherche-t-il la cause de son propre corps ?
 
 Trois expériences pré-enregistrées, exécutées sur CPU, avec audits indépendants.
