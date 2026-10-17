@@ -10,9 +10,10 @@ micro-step), D8 (8 micro-steps, units not drawn: z is the probability itself) an
 by the learned initial vector at each turn).
 
 At each decision of the pilot worlds taken at a "?", the run keeps the 8 workspaces, the templates (the units' firing
-frequencies when the "?" is replaced by "tu cours" (A) or by "il fait froid" (B), 16 independent draws) and P(wager)
-under imposed workspaces (unanimity A, unanimity B, sharing A B A B..., sharing B A B A...). The measures and the
-choice are numpy only, recomputed from the kept runs; training and runs need torch.
+frequencies at each micro-step when the "?" is replaced by "tu cours" (A) or by "il fait froid" (B), 16 independent
+draws) and P(wager) under imposed workspaces (unanimity A, unanimity B, sharing A B A B..., sharing B A B A...); the
+same for the network before any update (a null). The measures and the choice are numpy only, recomputed from the kept
+runs; training and runs need torch.
 """
 import argparse
 import json
@@ -24,10 +25,11 @@ from . import tiny_loop as TL
 from . import tiny_loop_pilot2 as Q
 from . import tiny_wager as X
 
-UNITS, MICRO, TEMPLATE_RUNS = 16, 8, 16
+UNITS, TEMPLATE_RUNS = 16, 16
 ARMS = {"S8": (8, True), "S1": (1, True), "D8": (8, False), "cut": (8, True)}
+ARMS_INDEX = {"S8": 0, "S1": 1, "D8": 2, "cut": 3}
 SEEDS = (120, 121, 122)
-UPDATES = 48000
+UPDATES, KEEP_EVERY = 48000, 250
 INIT_STREAM, WORLD_STREAM, ACTION_STREAM, UNIT_STREAM = 140, 141, 142, 143
 PILOT_WORLDS, EVAL_UNITS, TEMPLATE_UNITS, CONTROL_STREAM = 144, 145, 146, 147
 PREP_POSTERIOR, PREP_SAMPLER, PREP_DRAWS = 951, 952, 953
@@ -114,12 +116,13 @@ def unpack(masks):
 
 
 def loglik(z, p):
-    """Bernoulli log likelihood of each row of z (k, units) under the firing probabilities p (units)."""
+    """Bernoulli log likelihood of each row of z (k, units) under the firing probabilities p (k, units)."""
     return (z * np.log(p) + (1 - z) * np.log(1 - p)).sum(-1)
 
 
 def states(z, a, b):
-    """1 (closer to A) or 2 (closer to B) at each micro-step, by the sign of the log likelihood ratio (0 counts as B)."""
+    """1 (closer to A) or 2 (closer to B) at each micro-step, by the sign of the log likelihood ratio (0 counts as B);
+    a and b: the templates of each micro-step (k, units)."""
     return np.where(loglik(z, a) - loglik(z, b) > 0, 1, 2)
 
 
@@ -133,14 +136,14 @@ HALVES = (np.arange(UNITS) % 2 == 0, np.arange(UNITS) % 2 == 1)
 
 def split_half(z, a, b):
     """The state inferred on one half of the units, read on the other half: leaning of the mean of the other half
-    over state-1 micro-steps minus over state-2 micro-steps, averaged over the two directions that have both states;
-    None if neither has."""
+    over the state-1 micro-steps (against the means of the templates over the same micro-steps) minus the same over
+    the state-2 micro-steps; averaged over the directions that have both states; None if neither has."""
     values = []
     for infer, read in (HALVES, HALVES[::-1]):
-        s = states(z[:, infer], a[infer], b[infer])
+        s = states(z[:, infer], a[:, infer], b[:, infer])
         if (s == 1).any() and (s == 2).any():
-            values.append(leaning(z[s == 1][:, read].mean(0), a[read], b[read])
-                          - leaning(z[s == 2][:, read].mean(0), a[read], b[read]))
+            values.append(sum(sign * leaning(z[s == k][:, read].mean(0), a[s == k][:, read].mean(0),
+                                             b[s == k][:, read].mean(0)) for k, sign in ((1, 1), (2, -1))))
     return float(np.mean(values)) if values else None
 
 
@@ -149,44 +152,50 @@ def two_minus_one(z, a, b):
     template w A + (1 - w) B (w on WEIGHTS, the best for this decision), on each half, averaged over the halves."""
     out = []
     for h in HALVES:
-        zh, ah, bh = z[:, h], a[h], b[h]
+        zh, ah, bh = z[:, h], a[:, h], b[:, h]
         two = np.logaddexp(loglik(zh, ah), loglik(zh, bh)).sum() - len(zh) * np.log(2)
         one = max(loglik(zh, w * ah + (1 - w) * bh).sum() for w in WEIGHTS)
         out.append((two - one) / len(zh))
     return float(np.mean(out))
 
 
-def dwell(s):
-    """The mean length of the runs of equal states."""
-    changes = np.flatnonzero(np.diff(s) != 0)
-    return len(s) / (len(changes) + 1)
+def templates(c, per_step):
+    """The templates of a decision, one row per micro-step: those of each micro-step, or their mean repeated."""
+    if per_step:
+        return c["a_steps"], c["b_steps"]
+    k = len(c["z"])
+    return np.tile(c["a"], (k, 1)), np.tile(c["b"], (k, 1))
 
 
-def controls(cases, rng):
-    """The control models with the same templates and micro-steps: "average" (each unit drawn with (A + B) / 2) and
-    "uncoordinated" (each unit alone switches between A and B, starting at random, with probability 1 / D per
-    micro-step, D the mean dwell measured in the agent's workspaces, at least 1)."""
-    d = max(1.0, float(np.mean([dwell(states(c["z"], c["a"], c["b"])) for c in cases])))
-    average, uncoordinated = [], []
+def controls(cases, rng, per_step, sample):
+    """The control models with the same templates and micro-steps, drawn (or, for continuous workspaces, their
+    probabilities): "average" (each unit with (A + B) / 2 at its micro-step), "level" (the same scaled at each
+    micro-step to the agent's mean firing at that micro-step) and "uncoordinated" (each unit alone switches between A
+    and B, starting at random, with the probability per micro-step that gives the agent's mean number of changes)."""
+    s = [states(c["z"], *templates(c, per_step)) for c in cases]
+    k = len(cases[0]["z"])
+    q = float(np.clip(np.mean([np.count_nonzero(np.diff(x)) for x in s]) / (k - 1), 0, 1))
+    made = {"average": [], "level": [], "uncoordinated": []}
     for c in cases:
-        a, b, k = c["a"], c["b"], len(c["z"])
-        average.append(dict(c, z=(rng.random((k, UNITS)) < (a + b) / 2).astype(float)))
+        a, b = templates(c, per_step)
+        mid = (a + b) / 2
+        level = np.clip(mid * (c["z"].mean(1) / mid.mean(1))[:, None], CLIP, 1 - CLIP)
         own = np.zeros((k, UNITS), bool)
         own[0] = rng.random(UNITS) < 0.5
         for i in range(1, k):
-            flip = rng.random(UNITS) < 1 / d
-            own[i] = np.where(flip, ~own[i - 1], own[i - 1])
-        p = np.where(own, a, b)
-        uncoordinated.append(dict(c, z=(rng.random((k, UNITS)) < p).astype(float)))
-    return {"dwell": d, "average": average, "uncoordinated": uncoordinated}
+            own[i] = np.where(rng.random(UNITS) < q, ~own[i - 1], own[i - 1])
+        for name, p in (("average", mid), ("level", level), ("uncoordinated", np.where(own, a, b))):
+            made[name].append(dict(c, z=(rng.random((k, UNITS)) < p).astype(float) if sample else p))
+    return q, made
 
 
-def describe(cases):
+def describe(cases, per_step):
     """Alternation, split-half and two-against-one over the decisions at a "?"."""
-    s = [states(c["z"], c["a"], c["b"]) for c in cases]
-    halves = [split_half(c["z"], c["a"], c["b"]) for c in cases]
+    t = [templates(c, per_step) for c in cases]
+    s = [states(c["z"], a, b) for c, (a, b) in zip(cases, t)]
+    halves = [split_half(c["z"], a, b) for c, (a, b) in zip(cases, t)]
     halves = [h for h in halves if h is not None]
-    tmo = [two_minus_one(c["z"], c["a"], c["b"]) for c in cases]
+    tmo = [two_minus_one(c["z"], a, b) for c, (a, b) in zip(cases, t)]
     return {"both_states": float(np.mean([(x == 1).any() and (x == 2).any() for x in s])),
             "changes": float(np.mean([np.count_nonzero(np.diff(x)) for x in s])),
             "share_state1": float(np.mean([np.mean(x == 1) for x in s])),
@@ -213,41 +222,54 @@ def rank_correlation(x, y):
     return float(np.corrcoef(ranks(x), ranks(y))[0, 1])
 
 
-def wager_reading(cases):
-    """Within slices of the rule's probability of 0.1 (the probability that the agent's own action serves a lowest
-    need), the rank correlation of P(wager) with the agreement |share of state-1 micro-steps - 0.5|, averaged with the
-    weights of the slices where it exists; and the intervention: P(wager) under unanimity minus under sharing (the two
-    unanimities against the two sharings)."""
-    q = np.array([c["p_rule"] for c in cases])
-    index = np.minimum((q * 10 + 1e-9).astype(int), 9)
-    agreement = np.array([abs(np.mean(states(c["z"], c["a"], c["b"]) == 1) - 0.5) for c in cases])
-    p = np.array([c["p_wager"] for c in cases])
+def within(groups, x, y):
+    """The rank correlation of x and y within each group, averaged with the weights of the groups where it exists."""
     values, weights = [], []
-    for i in range(10):
-        inside = index == i
-        r = rank_correlation(agreement[inside], p[inside])
+    for g in np.unique(groups):
+        inside = groups == g
+        r = rank_correlation(x[inside], y[inside])
         if r is not None:
             values.append(r)
             weights.append(int(inside.sum()))
-    forced = np.array([np.mean(c["forced"][:2]) - np.mean(c["forced"][2:]) for c in cases])
-    return {"agreement_mean": float(agreement.mean()),
-            "rank_within": float(np.average(values, weights=weights)) if values else None,
-            "forced_unanimity_minus_sharing": float(forced.mean()),
-            "forced_positive": float(np.mean(forced > 0))}
+    return float(np.average(values, weights=weights)) if values else None
 
 
-def gains(cases):
-    """The mean distance of z to the middle of the templates, over the micro-steps in the state of the hypothesis
-    whose rule action is the agent's action, and over the others (decisions where the two hypotheses' rule actions
-    differ and both states appear)."""
+def wager_reading(cases, per_step):
+    """Within slices of 0.1 of the rule's probability that the agent's own action serves a lowest need, the rank
+    correlation of P(wager) with the agreement |share of state-1 micro-steps - 0.5| (and the same within each slice
+    and side of the share, so that a reader of the content alone does not count); the intervention as planned
+    (P(wager) under unanimity A minus under sharing A B A B...), its symmetric form (both unanimities against both
+    sharings) and, for continuous workspaces, the symmetric form with the continuous templates imposed."""
+    q = np.array([c["p_rule"] for c in cases])
+    index = np.minimum((q * 10 + 1e-9).astype(int), 9)
+    share = np.array([np.mean(states(c["z"], *templates(c, per_step)) == 1) for c in cases])
+    agreement = np.abs(share - 0.5)
+    p = np.array([c["p_wager"] for c in cases])
+    planned = np.array([c["forced"][0] - c["forced"][2] for c in cases])
+    symmetric = np.array([np.mean(c["forced"][:2]) - np.mean(c["forced"][2:]) for c in cases])
+    out = {"agreement_mean": float(agreement.mean()), "rank_within": within(index, agreement, p),
+           "rank_within_side": within(index * 3 + np.sign(share - 0.5).astype(int) + 1, agreement, p),
+           "forced_planned": float(planned.mean()), "forced_symmetric": float(symmetric.mean()),
+           "forced_symmetric_positive": float(np.mean(symmetric > 0))}
+    if cases[0].get("forced_continuous") is not None:
+        out["forced_continuous_symmetric"] = float(np.mean([np.mean(c["forced_continuous"][:2])
+                                                            - np.mean(c["forced_continuous"][2:]) for c in cases]))
+    return out
+
+
+def gains(cases, per_step):
+    """The mean distance of z to the middle of the templates of its micro-step, over the micro-steps in the state of
+    the hypothesis whose rule action is the agent's action, and over the others (decisions where the two hypotheses'
+    rule actions differ and both states appear)."""
     mine, other = [], []
     for c in cases:
         if c["hypothesis"] is None:
             continue
-        s = states(c["z"], c["a"], c["b"])
+        a, b = templates(c, per_step)
+        s = states(c["z"], a, b)
         if not ((s == 1).any() and (s == 2).any()):
             continue
-        d = np.linalg.norm(c["z"] - (c["a"] + c["b"]) / 2, axis=1)
+        d = np.linalg.norm(c["z"] - (a + b) / 2, axis=1)
         mine.append(d[s == c["hypothesis"]].mean())
         other.append(d[s != c["hypothesis"]].mean())
     return {"chosen": float(np.mean(mine)) if mine else None, "other": float(np.mean(other)) if other else None,
@@ -255,27 +277,33 @@ def gains(cases):
             "cases": len(mine)}
 
 
-def cases_of(row):
-    """The decisions at a "?" of a run, as arrays."""
-    out = []
-    for c in row["cases"]:
-        z = unpack(c["z"]) if row["sample"] else np.asarray(c["z"], float)
-        out.append({"z": z, "a": np.clip(np.asarray(c["a"]), CLIP, 1 - CLIP),
-                    "b": np.clip(np.asarray(c["b"]), CLIP, 1 - CLIP), "p_wager": c["p_wager"],
-                    "p_rule": c["p_rule"], "forced": c["forced"], "hypothesis": c["hypothesis"]})
-    return out
+def cases_of(kept, sample):
+    """The decisions at a "?" kept by a run, as arrays (templates clipped to [CLIP, 1 - CLIP])."""
+    clip = lambda x: np.clip(np.asarray(x, float), CLIP, 1 - CLIP)
+    return [{"z": unpack(c["z"]) if sample else np.asarray(c["z"], float), "a": clip(c["a"]), "b": clip(c["b"]),
+             "a_steps": clip(c["a_steps"]), "b_steps": clip(c["b_steps"]), "p_wager": c["p_wager"],
+             "p_rule": c["p_rule"], "forced": c["forced"], "forced_continuous": c.get("forced_continuous"),
+             "hypothesis": c["hypothesis"]} for c in kept]
 
 
 def measures(row):
-    """All the published measures of one run with micro-steps (none for S1 and the cut beyond the reward)."""
-    cases = cases_of(row)
-    if not cases or row["micro"] == 1:
+    """The published measures of a run with micro-steps (S8, D8 and the cut), with the templates of each micro-step
+    (the main reading) and with their mean over the micro-steps (as first written in the plan), for the trained
+    network and, as a null, for the same network before any update."""
+    if row["micro"] == 1 or not row["cases"]:
         return {}
-    out = {"agent": describe(cases), "reading": wager_reading(cases), "gains": gains(cases)}
-    if row["sample"]:
-        made = controls(cases, np.random.default_rng([W.SEED, CONTROL_STREAM, row["seed"]]))
-        out["controls"] = {"dwell": made["dwell"], "average": describe(made["average"]),
-                           "uncoordinated": describe(made["uncoordinated"])}
+    out = {}
+    for name, kept in (("trained", row["cases"]), ("untrained", row["untrained"]["cases"])):
+        cases = cases_of(kept, row["sample"])
+        out[name] = {}
+        for per_step in (True, False):
+            q, made = controls(cases, np.random.default_rng([W.SEED, CONTROL_STREAM, ARMS_INDEX[row["arm"]],
+                                                             row["seed"], int(per_step), int(name == "untrained")]),
+                               per_step, row["sample"])
+            out[name]["per_step" if per_step else "mean"] = {
+                "agent": describe(cases, per_step), "reading": wager_reading(cases, per_step),
+                "gains": gains(cases, per_step), "switch_probability": q,
+                "controls": {k: describe(v, per_step) for k, v in made.items()}}
     return out
 
 
@@ -298,7 +326,8 @@ def summary(root):
         runs.setdefault(r["arm"], {})[str(r["seed"])] = r
     rewards = {a: {s: r["reward"] for s, r in v.items()} for a, v in runs.items()}
     table = {a: {s: {"survival": r["survival"], "reward": r["reward"], "wager_rate": r["wager_rate"],
-                     "win_rate": r["win_rate"], **measures(r)} for s, r in v.items()} for a, v in runs.items()}
+                     "win_rate": r["win_rate"], "untrained_reward": r["untrained"]["reward"], **measures(r)}
+                 for s, r in v.items()} for a, v in runs.items()}
     return {"choice": choose(rewards), "runs": table}
 
 
@@ -361,7 +390,7 @@ def model(seed, micro, sample):
                 if force is not None:
                     z = force[:, k]
                 elif self.sample:
-                    z = (noise[:, k] < p).float() + p - p.detach()
+                    z = (noise[:, k] < p).float() + (p - p.detach())
                 else:
                     z = p
                 p_action = p_action + torch.softmax(self.out(z), -1)
@@ -459,7 +488,7 @@ def train(arm, seed, log, checkpoint=None):
         if (update + 1) % 100 == 0:
             curve.append(round(float(np.mean(window)), 3))
             window = []
-        if checkpoint is not None and (update + 1) % 250 == 0:
+        if checkpoint is not None and (update + 1) % KEEP_EVERY == 0:
             tmp = Path(str(checkpoint) + ".tmp")
             torch.save({"net": net.state_dict(), "opt": opt.state_dict(), "curve": curve, "window": window,
                         "update": update + 1}, tmp)
@@ -474,9 +503,10 @@ def pack(z):
 
 def evaluate(net, arm, count=256):
     """On the pilot worlds with the most probable action and wager (units drawn from stream EVAL_UNITS): survival,
-    reward, wager rate, win rate and, at each decision taken at a "?", the workspaces, the templates, P(wager), the
-    rule's probability that the agent's action serves a lowest need, P(wager) under the imposed workspaces, and the
-    hypothesis (1: A, 2: B) whose rule action is the agent's action when the two differ."""
+    reward, wager rate, win rate and, at each decision taken at a "?", the workspaces, the templates (per micro-step
+    and their mean), P(wager), the rule's probability that the agent's action serves a lowest need, P(wager) under the
+    imposed workspaces (the most probable draws of the templates; for continuous workspaces also the templates
+    themselves), and the hypothesis (1: A, 2: B) whose rule action is the agent's action when the two differ."""
     import torch
     micro, sample = ARMS[arm]
     worlds = [W.world_rng(PILOT_WORLDS, i) for i in range(count)]
@@ -492,26 +522,34 @@ def evaluate(net, arm, count=256):
             b = belief[life]
             if (life, t) in kept:
                 state, token_last, z = kept[(life, t)]
-                templates = []
+                steps = []
                 for event in X.STRONG:
                     h, _, _ = net.front(state[None].expand(TEMPLATE_RUNS, TL.DIM),
                                         torch.full((TEMPLATE_RUNS,), token_last), torch.full((TEMPLATE_RUNS,),
                                                                                              X.EVENT0 + event))
                     gt = generator(TEMPLATE_UNITS, life, t, event)
                     _, _, zs = net.workspace(h, noise=torch.rand((TEMPLATE_RUNS, micro, UNITS), generator=gt))
-                    templates.append(zs.reshape(-1, UNITS).mean(0).numpy())
-                modes = [torch.tensor((x > 0.5).astype(np.float32)) for x in templates]
-                forced_z = [torch.stack([modes[0]] * micro), torch.stack([modes[1]] * micro)] + [
-                    torch.stack([modes[(i + j) % 2] for i in range(micro)]) for j in (0, 1)]
+                    steps.append(zs.mean(0).numpy())
+                templates = [x.mean(0) for x in steps]
                 h, _, _ = net.front(state[None], torch.tensor([token_last]), torch.tensor([X.HIDDEN]))
-                forced = [float(net.workspace(h, force=f[None])[1][0, 1]) for f in forced_z]
+
+                def imposed(two):
+                    """P(wager) under unanimity A, unanimity B, sharing A B A B..., sharing B A B A..."""
+                    seqs = [torch.stack([two[0]] * micro), torch.stack([two[1]] * micro)] + [
+                        torch.stack([two[(i + j) % 2] for i in range(micro)]) for j in (0, 1)]
+                    return [round(float(net.workspace(h, force=f[None])[1][0, 1]), 7) for f in seqs]
+                forced = imposed([torch.tensor((x > 0.5).astype(np.float32)) for x in templates])
                 after = [before @ X.EVENT_MOVE[c] * X.LIVE for c in X.STRONG]
                 rules = [X.rule(x / x.sum(), last)[0] if x.sum() > 1e-12 else None for x in after]
                 hypothesis = (1 if rules[0] == a else 2) if None not in rules and rules[0] != rules[1] else None
-                cases.append({"life": life, "t": t, "z": pack(z) if sample else np.round(z, 6).tolist(),
-                              "a": np.round(templates[0], 6).tolist(), "b": np.round(templates[1], 6).tolist(),
-                              "p_wager": p, "p_rule": round(float(b[X.SERVES[a]].sum()), 12),
-                              "forced": [round(v, 7) for v in forced], "hypothesis": hypothesis})
+                case = {"life": life, "t": t, "z": pack(z) if sample else np.round(z, 6).tolist(),
+                        "a": np.round(templates[0], 6).tolist(), "b": np.round(templates[1], 6).tolist(),
+                        "a_steps": np.round(steps[0], 4).tolist(), "b_steps": np.round(steps[1], 4).tolist(),
+                        "p_wager": p, "p_rule": round(float(b[X.SERVES[a]].sum()), 12), "forced": forced,
+                        "hypothesis": hypothesis}
+                if not sample:
+                    case["forced_continuous"] = imposed([torch.tensor(x, dtype=torch.float32) for x in templates])
+                cases.append(case)
             belief[life] = X.act(b, a)
     bets = [d[3] for d in decisions]
     won = [X.served(d[4], d[5], d[2]) for d in decisions if d[3]]
@@ -520,18 +558,22 @@ def evaluate(net, arm, count=256):
 
 
 def job(root, arm, seed, log):
+    """Train, evaluate, and evaluate the same network before any update (the null of the measures)."""
+    micro, sample = ARMS[arm]
+    untrained = evaluate(model(seed, micro, sample).eval(), arm)
     net, curve = train(arm, seed, log, checkpoint=Path(root) / "checkpoints" / f"{arm}-{seed}.pt")
     net.eval()
     x = evaluate(net, arm)
-    micro, sample = ARMS[arm]
     row = {"arm": arm, "seed": seed, "updates": UPDATES, "micro": micro, "sample": sample,
            "survival": float(np.mean(x["survived"])), "survived": x["survived"], "reward": x["reward"],
-           "wager_rate": x["wager_rate"], "win_rate": x["win_rate"], "cases": x["cases"], "curve": curve}
+           "wager_rate": x["wager_rate"], "win_rate": x["win_rate"], "cases": x["cases"], "curve": curve,
+           "untrained": {"reward": untrained["reward"], "cases": untrained["cases"]}}
     m = measures(row)
     text = f"{arm} seed {seed}: survival {row['survival']:.3f}, reward {row['reward']:.2f}"
     if m:
-        text += (f", both states {m['agent']['both_states']:.3f}, split half {m['agent']['split_half']}, "
-                 f"forced {m['reading']['forced_unanimity_minus_sharing']:+.3f}")
+        y = m["trained"]["per_step"]
+        text += (f", split half {y['agent']['split_half']} (level control {y['controls']['level']['split_half']}), "
+                 f"forced {y['reading']['forced_symmetric']:+.3f}")
     log(text)
     W.write_atomic(Path(root) / "runs" / f"{arm}-{seed}.json", (json.dumps(row) + "\n").encode())
 

@@ -2541,36 +2541,71 @@ class TinyAlternationTests(unittest.TestCase):
         self.assertEqual((kept["posterior"]["ambiguous"], kept["posterior"]["differ"]), (0.997, 0.668))
         self.assertEqual((kept["samplers"]["1"]["reward"], kept["samplers"]["8"]["reward"]), (26.39, 31.84))
 
-    def test_measures_separate_alternation_from_average_and_uncoordinated(self):
+    @staticmethod
+    def synthetic(kind, rng, n=300, k=8):
+        """Decisions at a "?" from known models: "two" (coordinated alternation between A and B), "average", "locked"
+        (the average, with a low-activity pattern at the first micro-step shared by the templates, and B = 1.3 A) and
+        "level" (the average scaled by a level shared by all units, drawn at each micro-step)."""
+        out = []
+        for _ in range(n):
+            a = np.clip(rng.random(16) * 0.7, 0.05, 0.95)
+            b = np.clip(1.3 * a + rng.normal(0, 0.05, 16) if kind in ("locked", "level") else 1 - a, 0.05, 0.95)
+            a_steps, b_steps = np.tile(a, (k, 1)), np.tile(b, (k, 1))
+            if kind == "locked":
+                a_steps[0] = b_steps[0] = 0.05
+            mid = (a_steps + b_steps) / 2
+            if kind == "two":
+                s = np.zeros(k, int)
+                s[0] = rng.integers(2)
+                for j in range(1, k):
+                    s[j] = s[j - 1] if rng.random() > 0.4 else 1 - s[j - 1]
+                p = np.where(s[:, None] == 0, a_steps, b_steps)
+            elif kind == "level":
+                p = np.clip(mid * rng.uniform(0.5, 1.5, (k, 1)), 0.01, 0.99)
+            else:
+                p = mid
+            out.append({"z": (rng.random((k, 16)) < p).astype(float), "a": a_steps.mean(0), "b": b_steps.mean(0),
+                        "a_steps": a_steps, "b_steps": b_steps, "p_wager": 0.5, "p_rule": 0.5,
+                        "forced": [0.7, 0.6, 0.4, 0.5], "forced_continuous": None, "hypothesis": None})
+        return out
+
+    def test_measures_separate_alternation_from_the_controls(self):
         from research import tiny_alternation as A
         rng = np.random.default_rng(3)
+        two = A.describe(self.synthetic("two", rng), True)
+        q, made = A.controls(self.synthetic("two", rng), np.random.default_rng(1), True, True)
+        self.assertGreater(two["split_half"], 1.0)
+        self.assertGreater(two["two_better"], 0.8)
+        for name in ("average", "uncoordinated"):
+            d = A.describe(made[name], True)
+            self.assertLess(abs(d["split_half"]), 0.1, name)
+            self.assertLess(d["two_better"], 0.05, name)
+        # the level control copies the agent's firing level at each micro-step, so it inherits the part of a real
+        # alternation carried by the level (here A and B differ in level): a stricter bar, still well below
+        level = A.describe(made["level"], True)
+        self.assertLess(level["split_half"], two["split_half"] / 2)
+        self.assertLess(level["two_better"], two["two_better"] / 2)
+        self.assertAlmostEqual(np.mean([np.count_nonzero(np.diff(A.states(c["z"], c["a_steps"], c["b_steps"])))
+                                        for c in made["uncoordinated"]]), two["changes"], delta=0.6)
+        avg = A.describe(self.synthetic("average", rng), True)
+        self.assertLess(abs(avg["split_half"]), 0.1)
+        self.assertGreater(avg["both_states"], 0.9)  # both states appear in the average too: not diagnostic alone
+        reading = A.wager_reading(self.synthetic("two", rng), True)
+        self.assertAlmostEqual(reading["forced_planned"], 0.3)
+        self.assertAlmostEqual(reading["forced_symmetric"], 0.2)
 
-        def cases(kind, n=300, k=8):
-            out = []
-            for _ in range(n):
-                a = np.clip(rng.random(16), 0.05, 0.95)
-                b = np.clip(1 - a + rng.normal(0, 0.1, 16), 0.05, 0.95)
-                if kind == "two":
-                    s = np.zeros(k, int)
-                    s[0] = rng.integers(2)
-                    for j in range(1, k):
-                        s[j] = s[j - 1] if rng.random() > 0.4 else 1 - s[j - 1]
-                    p = np.where(s[:, None] == 0, a, b)
-                else:
-                    p = np.tile((a + b) / 2, (k, 1))
-                out.append({"z": (rng.random((k, 16)) < p).astype(float), "a": a, "b": b, "p_wager": 0.5,
-                            "p_rule": 0.5, "forced": [0.6, 0.6, 0.4, 0.4], "hypothesis": None})
-            return out
-        two, avg = cases("two"), cases("avg")
-        d2, da = A.describe(two), A.describe(avg)
-        du = A.describe(A.controls(two, np.random.default_rng(1))["uncoordinated"])
-        self.assertGreater(d2["split_half"], 1.0)
-        self.assertLess(abs(da["split_half"]), 0.1)
-        self.assertLess(abs(du["split_half"]), 0.1)
-        self.assertGreater(d2["two_better"], 0.8)
-        self.assertLess(max(da["two_better"], du["two_better"]), 0.05)
-        self.assertGreater(da["both_states"], 0.9)  # both states appear in the average too: not diagnostic alone
-        self.assertAlmostEqual(A.wager_reading(two)["forced_unanimity_minus_sharing"], 0.2)
+    def test_time_locked_and_shared_level_variation_is_not_alternation(self):
+        from research import tiny_alternation as A
+        rng = np.random.default_rng(4)
+        locked = self.synthetic("locked", rng)
+        self.assertGreater(A.describe(locked, False)["split_half"], 0.1)  # the mean templates are fooled
+        self.assertLess(abs(A.describe(locked, True)["split_half"]), 0.1)  # the templates of each micro-step are not
+        level = self.synthetic("level", rng)
+        agent = A.describe(level, True)
+        _, made = A.controls(level, np.random.default_rng(2), True, True)
+        control = A.describe(made["level"], True)  # the level control reproduces what the shared level does
+        self.assertLess(abs(agent["split_half"] - control["split_half"]), 0.15)
+        self.assertLess(abs(agent["two_better"] - control["two_better"]), 0.1)
 
     def test_pack_rank_and_choice(self):
         from research import tiny_alternation as A

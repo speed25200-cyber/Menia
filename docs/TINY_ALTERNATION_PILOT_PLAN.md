@@ -160,6 +160,52 @@ continu est traité comme une probabilité) :
 **Publié sans seuil** : tout ce qui précède, par graine et par bras, et les
 courbes.
 
+**Note datée (17 octobre, après relecture indépendante du code, avant toute
+exécution du pilote).** La relecture a trouvé un point bloquant pour les
+mesures (pas pour la règle de choix). Une variation **commune** à toutes les
+unités, ou **liée au rang du micro-pas** (le premier micro-pas part d'un
+micro-état nul), passerait pour une alternance coordonnée. Il suffit pour
+cela que A et B diffèrent par leur niveau d'activité moyen, ce que le plan
+attend lui-même (le « gain »). Sur un modèle sans aucune alternance, avec
+un tel motif au premier micro-pas et B = 1,3 A, la lecture sur l'autre
+moitié donne +0,24, contre moins de 0,03 pour les deux témoins. Les données
+pour le corriger après coup n'auraient pas été gardées. Corrections, avant
+toute exécution :
+- **Gabarits par micro-pas.** On garde, pour A et pour B, la fréquence de
+  chaque unité **à chaque micro-pas** (8 × 16, sur les 16 tirages). La
+  lecture principale étiquette chaque micro-pas avec les gabarits **de ce
+  micro-pas**. La lecture avec le gabarit moyen, telle qu'écrite plus haut,
+  est publiée aussi.
+- **Un témoin de plus, « niveau ».** C'est la moyenne (A + B)/2 de chaque
+  micro-pas, mise à l'échelle du niveau d'activité de l'agent à ce
+  micro-pas. Ce témoin hérite de toute alternance portée par le seul
+  niveau, ce qui en fait une barre plus haute. Le témoin « moyenne » devient
+  celui de chaque micro-pas.
+- **Témoin « non coordonné ».** La probabilité de bascule par micro-pas est
+  celle qui redonne le **nombre moyen de changements** de l'agent. Avec
+  1/D, la durée simulée était plus courte que celle mesurée.
+- **Intervention.** On publie la quantité du plan (unanimité A moins
+  partage A B A B…) et, ajoutée, la forme symétrique (les deux unanimités
+  contre les deux partages). La forme du plan mêle le contenu A et l'accord.
+  Pour D8, on impose aussi les gabarits continus, puisque des z binaires
+  sortent de ce qu'il a appris.
+- **Lecture du pari.** La corrélation de rang est calculée aussi à
+  l'intérieur de chaque côté de la part d'état 1 (au-dessus, au-dessous de
+  0,5). Ainsi, un lecteur qui ne suivrait que le contenu A ne compte pas.
+  Les tranches sont celles de la probabilité, selon la règle, que l'action
+  de l'agent serve un besoin le plus bas (comme au test 37).
+- **Un nul.** Chaque mesure est refaite sur le même réseau **avant tout
+  apprentissage** (même graine, mêmes mondes).
+- **Témoins pour tous les bras à 8 micro-pas**, D8 compris (probabilités
+  continues pour D8) et le coupé ; flux des témoins `[270926, 147, bras,
+  graine, …]`.
+- Techniques : unités tirées exactement binaires vers l'avant ; tests du
+  côté torch (gradient à travers les tirages, lecteur sous intervention,
+  coupé, reprise exacte) ; tests des mesures sur des modèles connus, dont le
+  scénario de la relecture.
+
+La règle de choix ne change pas.
+
 ## Règle de choix, fixée ici
 
 - **Le réglage S8 est fiable** si, pour les trois graines, sa récompense
