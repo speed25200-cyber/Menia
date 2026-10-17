@@ -85,6 +85,20 @@ de travail :
   « droit » (straight-through : valeur tirée vers l'avant, gradient de la
   probabilité vers l'arrière).
 
+**Note datée (17 octobre, après le commit de ce plan, avant tout code) : ce
+que lit le pari.** Tel qu'écrit plus haut, le pari serait une moyenne de
+lectures faites micro-pas par micro-pas. Une telle moyenne ne peut pas lire
+l'**accord** entre micro-pas, et l'intervention « unanimité imposée » contre
+« partage imposé » ne mesurerait que l'écart entre les paris lus sur A et
+sur B. Correction, avant tout code : **l'action** reste lue sur z à chaque
+micro-pas, probabilités moyennées (un vote). **Le pari** est lu sur un
+**lecteur** séparé : une seconde cellule GRU (dimension 64, nulle au premier
+micro-pas de chaque tour) dont la seule entrée est z, micro-pas après
+micro-pas ; le pari est lu sur son état au dernier micro-pas. Le lecteur ne
+voit ni h ni le micro-état qui produit z : il ne sait que ce qui est passé
+par l'espace de travail, et dans quel ordre. Sous intervention, le lecteur
+reçoit la suite de z imposée. Rien d'autre ne change.
+
 **Les bras du pilote** :
 - **S8** : K = 8, unités tirées ;
 - **S1** : K = 1, unités tirées (une seule hypothèse par tour) ;
