@@ -1,0 +1,42 @@
+{
+ "posterior": {
+  "decisions": 7474,
+  "quantiles": [
+   0.44,
+   0.5,
+   0.546
+  ],
+  "ambiguous": 0.997,
+  "differ": 0.668
+ },
+ "samplers": {
+  "exact": {
+   "survival": 0.629,
+   "reward": 32.76
+  },
+  "64": {
+   "survival": 0.622,
+   "reward": 32.6
+  },
+  "16": {
+   "survival": 0.606,
+   "reward": 32.07
+  },
+  "8": {
+   "survival": 0.601,
+   "reward": 31.84
+  },
+  "4": {
+   "survival": 0.584,
+   "reward": 31.52
+  },
+  "2": {
+   "survival": 0.583,
+   "reward": 29.49
+  },
+  "1": {
+   "survival": 0.53,
+   "reward": 26.39
+  }
+ }
+}

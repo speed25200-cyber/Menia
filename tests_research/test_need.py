@@ -2533,5 +2533,58 @@ class TorchWorkspaceTests(unittest.TestCase):
             agent.commit(turn["action"])
 
 
+class TinyAlternationTests(unittest.TestCase):
+    def test_landmarks_of_the_plan(self):
+        from research import tiny_alternation as A
+        kept = json.loads(Path("artifacts/tiny-alternation-pilot/landmarks.json").read_text())
+        self.assertEqual(A.landmarks(), kept)
+        self.assertEqual((kept["posterior"]["ambiguous"], kept["posterior"]["differ"]), (0.997, 0.668))
+        self.assertEqual((kept["samplers"]["1"]["reward"], kept["samplers"]["8"]["reward"]), (26.39, 31.84))
+
+    def test_measures_separate_alternation_from_average_and_uncoordinated(self):
+        from research import tiny_alternation as A
+        rng = np.random.default_rng(3)
+
+        def cases(kind, n=300, k=8):
+            out = []
+            for _ in range(n):
+                a = np.clip(rng.random(16), 0.05, 0.95)
+                b = np.clip(1 - a + rng.normal(0, 0.1, 16), 0.05, 0.95)
+                if kind == "two":
+                    s = np.zeros(k, int)
+                    s[0] = rng.integers(2)
+                    for j in range(1, k):
+                        s[j] = s[j - 1] if rng.random() > 0.4 else 1 - s[j - 1]
+                    p = np.where(s[:, None] == 0, a, b)
+                else:
+                    p = np.tile((a + b) / 2, (k, 1))
+                out.append({"z": (rng.random((k, 16)) < p).astype(float), "a": a, "b": b, "p_wager": 0.5,
+                            "p_rule": 0.5, "forced": [0.6, 0.6, 0.4, 0.4], "hypothesis": None})
+            return out
+        two, avg = cases("two"), cases("avg")
+        d2, da = A.describe(two), A.describe(avg)
+        du = A.describe(A.controls(two, np.random.default_rng(1))["uncoordinated"])
+        self.assertGreater(d2["split_half"], 1.0)
+        self.assertLess(abs(da["split_half"]), 0.1)
+        self.assertLess(abs(du["split_half"]), 0.1)
+        self.assertGreater(d2["two_better"], 0.8)
+        self.assertLess(max(da["two_better"], du["two_better"]), 0.05)
+        self.assertGreater(da["both_states"], 0.9)  # both states appear in the average too: not diagnostic alone
+        self.assertAlmostEqual(A.wager_reading(two)["forced_unanimity_minus_sharing"], 0.2)
+
+    def test_pack_rank_and_choice(self):
+        from research import tiny_alternation as A
+        z = (np.random.default_rng(0).random((8, 16)) < 0.5).astype(float)
+        self.assertTrue((A.unpack(A.pack(z)) == z).all())
+        self.assertEqual(A.ranks([3, 1, 1, 2]).tolist(), [3.0, 0.5, 0.5, 2.0])
+        self.assertIsNone(A.rank_correlation([1, 1, 1], [1, 2, 3]))
+        self.assertAlmostEqual(A.rank_correlation([1, 2, 3, 4], [10, 20, 30, 40]), 1.0)
+        ok = {"S8": {"120": 31.0, "121": 31.0, "122": 31.0}, "S1": {"120": 30.5, "121": 30.0, "122": 30.0},
+              "cut": {"120": 30.0, "121": 29.0, "122": 28.0}}
+        self.assertTrue(A.choose(ok)["reliable"])
+        self.assertFalse(A.choose(dict(ok, S1={"120": 30.6, "121": 30.0, "122": 30.0}))["reliable"])
+        self.assertFalse(A.choose({"S8": ok["S8"]})["complete"])
+
+
 if __name__ == "__main__":
     unittest.main()

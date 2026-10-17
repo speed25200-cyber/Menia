@@ -70,3 +70,7 @@ artifacts/tiny-wager-pilot/claims/
 !artifacts/tiny-wager-test/runs/
 artifacts/tiny-wager-test/checkpoints/
 artifacts/tiny-wager-test/claims/
+!artifacts/tiny-alternation-pilot/
+!artifacts/tiny-alternation-pilot/runs/
+artifacts/tiny-alternation-pilot/checkpoints/
+artifacts/tiny-alternation-pilot/claims/
